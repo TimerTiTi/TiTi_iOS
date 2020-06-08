@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
         second = 3000
-        CountTimeLabel.text = "50:00"
+        CountTimeLabel.text = "0:50:00"
         ifReset = true
     }
     @IBAction func Reset(_ sender: UIButton) {
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         
         AllTileLabel.text = "8:00:00"
         SumTimeLabel.text = "0:0:0"
-        CountTimeLabel.text = "50:00"
+        CountTimeLabel.text = "0:50:00"
     }
     
     @objc func updateCounter(){
