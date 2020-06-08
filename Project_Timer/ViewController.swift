@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     var timeTrigger = true
     var realTime = Timer()
-    var second : Double = 3000
-    var sum : Double = 1
-    var allTime : Double = 28800
+    var second : Int = 3000
+    var sum : Int = 0
+    var allTime : Int = 28800
     var IntSecond : Int = 0
     var ifReset = false
     
@@ -36,22 +36,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func StartButtonAction(_ sender: UIButton) {
-        if (ifReset) {
-            sum = sum + 1
-            allTime = allTime - 1
-            ifReset = false
-        }
         if timeTrigger { checkTimeTrigger() }
     }
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
-        AllTileLabel.text = printTime(temp: allTime)
-        SumTimeLabel.text = printTime(temp: sum)
-        CountTimeLabel.text = printTime(temp: second)
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
         second = 3000
-        CountTimeLabel.text = String(3000)
+        CountTimeLabel.text = "50:00"
         ifReset = true
     }
     @IBAction func Reset(_ sender: UIButton) {
@@ -59,34 +51,34 @@ class ViewController: UIViewController {
         timeTrigger = true
         realTime = Timer()
         second = 3000
-        sum = 1
+        sum = 0
         allTime = 28800
         IntSecond = 0
         ifReset = false
         
-        AllTileLabel.text = "28800"
-        SumTimeLabel.text = "0"
-        CountTimeLabel.text = "3000"
+        AllTileLabel.text = "8:00:00"
+        SumTimeLabel.text = "0:0:0"
+        CountTimeLabel.text = "50:00"
     }
     
     @objc func updateCounter(){
     //        if String(format: "%.2f",second) == "0.00"{
-            if second < 0.99 {
+            if second < 1 {
                 endGame()
                 CountTimeLabel.text = "종료"
                 //시간제한이 끝났을때 일어날 일(세그웨이로 실패한 페이지 혹은 팝업을 띄운다.)
             } else {
-                second = second - 0.01
-                sum = sum + 0.01
-                allTime = allTime - 0.01
-                CountTimeLabel.text = String(Int(second))
-                SumTimeLabel.text = String(Int(sum))
-                AllTileLabel.text = String(Int(allTime))
+                second = second - 1
+                sum = sum + 1
+                allTime = allTime - 1
+                AllTileLabel.text = printTime(temp: allTime)
+                SumTimeLabel.text = printTime(temp: sum)
+                CountTimeLabel.text = printTime(temp: second)
             }
         }
     
     func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timeTrigger = false
     }
     
@@ -95,11 +87,11 @@ class ViewController: UIViewController {
         timeTrigger = true
     }
     
-    func printTime(temp : Double) -> String
+    func printTime(temp : Int) -> String
     {
-        let S = Int(temp)%60
-        let H = Int(temp)/3600
-        let M = Int(temp)/60 - H*60
+        let S = temp%60
+        let H = temp/3600
+        let M = temp/60 - H*60
         
         let returnString = String(H) + ":" + String(M) + ":" + String(S)
         return returnString
