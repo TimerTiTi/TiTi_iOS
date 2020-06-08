@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project_Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 남은시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOD-Sd-IZ9">
+                                <rect key="frame" x="148.5" y="20" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="SystemMirror"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28800" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-lx-LRc">
+                                <rect key="frame" x="120" y="56" width="135" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7fc-UN-Exr"/>
+                                    <constraint firstAttribute="width" constant="135" id="zcw-iQ-7Ux"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" name="SystemMirror"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="누적 시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vva-sX-ocD">
+                                <rect key="frame" x="155.5" y="146" width="64" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="SystemMirror"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2P-pr-Wz1">
+                                <rect key="frame" x="120" y="182" width="135" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JIz-Kn-Ilx"/>
+                                    <constraint firstAttribute="width" constant="135" id="LfY-fi-Y8S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" name="SystemMirror"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4EO-y0-CtX">
+                                <rect key="frame" x="165" y="302" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="SystemMirror"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTc-Vo-IWk">
+                                <rect key="frame" x="102.5" y="338" width="170" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="5co-0M-PSX"/>
+                                    <constraint firstAttribute="height" constant="45" id="ThJ-PS-xDh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                <color key="textColor" red="1" green="0.41075348601323902" blue="0.53924235961827671" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7p-7c-ae8">
+                                <rect key="frame" x="45" y="453" width="285" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpr-jf-Fa6">
+                                        <rect key="frame" x="10" y="10" width="120" height="50"/>
+                                        <color key="backgroundColor" red="0.44572557200000001" green="0.432699954" blue="0.40543746689999999" alpha="0.2967144691780822" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="8gc-eR-4o7"/>
+                                            <constraint firstAttribute="height" constant="50" id="x9X-KU-8hN"/>
+                                        </constraints>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" name="SystemMirror"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="StartButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ANO-Kf-bcP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSK-la-adG">
+                                        <rect key="frame" x="155" y="10" width="120" height="50"/>
+                                        <color key="backgroundColor" red="0.44572557200000001" green="0.432699954" blue="0.40543746689999999" alpha="0.3009417808219178" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8gY-c8-cLn"/>
+                                            <constraint firstAttribute="width" constant="120" id="Ibh-eb-0cF"/>
+                                        </constraints>
+                                        <state key="normal" title="STOP">
+                                            <color key="titleColor" name="SystemMirror"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="StopButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y1j-47-NJ6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="kpr-jf-Fa6" firstAttribute="top" secondItem="R7p-7c-ae8" secondAttribute="top" constant="10" id="D4l-6J-VqB"/>
+                                    <constraint firstAttribute="bottom" secondItem="kpr-jf-Fa6" secondAttribute="bottom" constant="10" id="Rwa-sU-zXS"/>
+                                    <constraint firstAttribute="trailing" secondItem="SSK-la-adG" secondAttribute="trailing" constant="10" id="bHD-we-nhy"/>
+                                    <constraint firstItem="SSK-la-adG" firstAttribute="top" secondItem="R7p-7c-ae8" secondAttribute="top" constant="10" id="cnv-4O-09z"/>
+                                    <constraint firstItem="SSK-la-adG" firstAttribute="leading" secondItem="kpr-jf-Fa6" secondAttribute="trailing" constant="25" id="eqf-fz-OIc"/>
+                                    <constraint firstItem="kpr-jf-Fa6" firstAttribute="leading" secondItem="R7p-7c-ae8" secondAttribute="leading" constant="10" id="kU3-Ia-Rv8"/>
+                                    <constraint firstAttribute="bottom" secondItem="SSK-la-adG" secondAttribute="bottom" constant="10" id="qGO-bx-87c"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzm-yY-VRs">
+                                <rect key="frame" x="127.5" y="548" width="120" height="50"/>
+                                <color key="backgroundColor" red="0.44572557200000001" green="0.432699954" blue="0.40543746689999999" alpha="0.29840004280821919" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2NM-Uo-nz8"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZIB-ti-Fwd"/>
+                                </constraints>
+                                <state key="normal" title="RE START">
+                                    <color key="titleColor" name="SystemMirror"/>
+                                </state>
+                                <connections>
+                                    <action selector="ResetButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M2t-jx-hXg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-lY-83Z">
+                                <rect key="frame" x="164.5" y="613" width="46" height="30"/>
+                                <state key="normal" title="RESET">
+                                    <color key="titleColor" name="SystemMirror"/>
+                                </state>
+                                <connections>
+                                    <action selector="Reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IRp-5i-lia"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cM8-lx-LRc" firstAttribute="top" secondItem="yOD-Sd-IZ9" secondAttribute="bottom" constant="15" id="4My-JE-Rk2"/>
+                            <constraint firstItem="Yfv-lY-83Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7pC-0B-Y6p"/>
+                            <constraint firstItem="pzm-yY-VRs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8XR-2Z-lzb"/>
+                            <constraint firstItem="g2P-pr-Wz1" firstAttribute="top" secondItem="Vva-sX-ocD" secondAttribute="bottom" constant="15" id="Cja-qX-6dJ"/>
+                            <constraint firstItem="tTc-Vo-IWk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Hmg-jf-cm2"/>
+                            <constraint firstItem="yOD-Sd-IZ9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="LYF-wa-keP"/>
+                            <constraint firstItem="4EO-y0-CtX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PeE-vm-UBb"/>
+                            <constraint firstItem="Yfv-lY-83Z" firstAttribute="top" secondItem="pzm-yY-VRs" secondAttribute="bottom" constant="15" id="Q0i-yZ-Igk"/>
+                            <constraint firstItem="yOD-Sd-IZ9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RwH-uK-eUV"/>
+                            <constraint firstItem="Vva-sX-ocD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TtC-Du-dIs"/>
+                            <constraint firstItem="tTc-Vo-IWk" firstAttribute="top" secondItem="4EO-y0-CtX" secondAttribute="bottom" constant="15" id="Uo9-s3-ABS"/>
+                            <constraint firstItem="g2P-pr-Wz1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f5t-U8-pEC"/>
+                            <constraint firstItem="pzm-yY-VRs" firstAttribute="top" secondItem="R7p-7c-ae8" secondAttribute="bottom" constant="25" id="kK4-I4-Vjr"/>
+                            <constraint firstItem="4EO-y0-CtX" firstAttribute="top" secondItem="g2P-pr-Wz1" secondAttribute="bottom" constant="90" id="qTU-Tl-rHU"/>
+                            <constraint firstItem="Vva-sX-ocD" firstAttribute="top" secondItem="cM8-lx-LRc" secondAttribute="bottom" constant="60" id="sGR-8A-np3"/>
+                            <constraint firstItem="cM8-lx-LRc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ug2-mo-Agx"/>
+                            <constraint firstItem="R7p-7c-ae8" firstAttribute="top" secondItem="tTc-Vo-IWk" secondAttribute="bottom" constant="70" id="zEH-ih-WPt"/>
+                            <constraint firstItem="R7p-7c-ae8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zxd-mU-iTw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="AllTileLabel" destination="cM8-lx-LRc" id="zcO-ud-oHg"/>
+                        <outlet property="CountTimeLabel" destination="tTc-Vo-IWk" id="4ri-Kn-awk"/>
+                        <outlet property="ResetButton" destination="pzm-yY-VRs" id="XG9-yi-KDs"/>
+                        <outlet property="StartButton" destination="kpr-jf-Fa6" id="Qh3-5P-aDq"/>
+                        <outlet property="StopButton" destination="SSK-la-adG" id="2nl-Zk-fjV"/>
+                        <outlet property="SumTimeLabel" destination="g2P-pr-Wz1" id="r3C-jO-14c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="SystemMirror">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
