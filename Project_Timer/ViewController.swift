@@ -45,6 +45,9 @@ class ViewController: UIViewController {
     }
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
+        AllTileLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
         second = 3000
@@ -90,6 +93,16 @@ class ViewController: UIViewController {
     func endGame() {
         realTime.invalidate()
         timeTrigger = true
+    }
+    
+    func printTime(temp : Double) -> String
+    {
+        let S = Int(temp)%60
+        let H = Int(temp)/3600
+        let M = Int(temp)/60 - H*60
+        
+        let returnString = String(H) + ":" + String(M) + ":" + String(S)
+        return returnString
     }
 }
 
