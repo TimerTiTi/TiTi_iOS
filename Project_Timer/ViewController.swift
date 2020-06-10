@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     var timeTrigger = true
     var realTime = Timer()
     var second : Int = 3000
-    var sum : Int = 0
-    var allTime : Int = 28800
+    var sum : Int = 14400
+    var allTime : Int = 14400
     var IntSecond : Int = 0
     var ifReset = false
     
-    
     override func viewDidLoad() {
+        
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
@@ -34,9 +34,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
     @IBAction func StartButtonAction(_ sender: UIButton) {
         if timeTrigger { checkTimeTrigger() }
+        print("Start")
     }
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
@@ -51,8 +51,8 @@ class ViewController: UIViewController {
         timeTrigger = true
         realTime = Timer()
         second = 3000
-        sum = 0
-        allTime = 28800
+        sum = 14400
+        allTime = 14400
         IntSecond = 0
         ifReset = false
         
@@ -74,6 +74,7 @@ class ViewController: UIViewController {
                 AllTileLabel.text = printTime(temp: allTime)
                 SumTimeLabel.text = printTime(temp: sum)
                 CountTimeLabel.text = printTime(temp: second)
+                print("update")
             }
         }
     
@@ -96,5 +97,12 @@ class ViewController: UIViewController {
         let returnString = String(H) + ":" + String(M) + ":" + String(S)
         return returnString
     }
+    
+    //클래스 불러오는 메소드 영역
+    func getTimeData() {
+//        second = TimeData.getSecond.init()
+        
+    }
+    
 }
 
