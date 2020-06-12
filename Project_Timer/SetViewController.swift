@@ -20,10 +20,9 @@ class SetViewController: UIViewController {
     @IBOutlet var H2TextField: UITextField!
     @IBOutlet var M2TextField: UITextField!
     
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
         H1TextField.keyboardType = .numberPad
         M1TextField.keyboardType = .numberPad
         H2TextField.keyboardType = .numberPad
@@ -39,6 +38,9 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func SetButton(_ sender: UIButton) {
+        
+        let rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "RootViewController") as! ViewController
+        rootViewController.second = print(rootViewController.second)
         self.dismiss(animated: true, completion: nil)
     }
     

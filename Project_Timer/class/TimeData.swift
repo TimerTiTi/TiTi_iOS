@@ -10,7 +10,7 @@ import Foundation
 
 public class TimeData
 {
-    var second : Int = 3000
+    var second : Int = 1000
     var sum : Int = 0
     var allTime : Int = 28800
     

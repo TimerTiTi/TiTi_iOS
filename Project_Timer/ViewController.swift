@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
     @IBOutlet var AllTileLabel: UILabel!
     @IBOutlet var SumTimeLabel: UILabel!
@@ -30,20 +30,24 @@ class ViewController: UIViewController {
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
-        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func StartButtonAction(_ sender: UIButton) {
         if timeTrigger { checkTimeTrigger() }
         print("Start")
     }
+    
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
-        second = 3000
-        CountTimeLabel.text = "0:50:00"
+        print(second)
+        getTimeData()
+        //second = 3000
+        //CountTimeLabel.text = "0:50:00"
+        CountTimeLabel.text = printTime(temp: second)
         ifReset = true
     }
     @IBAction func Reset(_ sender: UIButton) {
@@ -100,8 +104,10 @@ class ViewController: UIViewController {
     
     //클래스 불러오는 메소드 영역
     func getTimeData() {
-//        second = TimeData.getSecond.init()
-        
+        second = 20
+        sum = SetViewController().real.sum
+        allTime = SetViewController().real.allTime
+        print(second)
     }
     
 }
