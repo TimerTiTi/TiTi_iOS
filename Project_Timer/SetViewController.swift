@@ -20,10 +20,15 @@ class SetViewController: UIViewController {
     @IBOutlet var H2TextField: UITextField!
     @IBOutlet var M2TextField: UITextField!
     
+    var second : Int = 3000
+    var sum : Int = 0
+    var allTime : Int = 28800
+    var temp = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboard()
+        
         H1TextField.keyboardType = .numberPad
         M1TextField.keyboardType = .numberPad
         H2TextField.keyboardType = .numberPad
@@ -39,9 +44,39 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func SetButton(_ sender: UIButton) {
+        //이전 화면으로 복귀
+        if(check())
+        {
+            allTime = Int(H1TextField.text!)! * 3600 + Int(M1TextField.text!)! * 60
+            second = Int(H2TextField.text!)! * 3600 + Int(M2TextField.text!)! * 60
+        }
+        
+        UserDefaults.standard.set(second, forKey: "second")
+        UserDefaults.standard.set(allTime, forKey: "allTime")
+        print("set complite")
         self.dismiss(animated: true, completion: nil)
     }
     
+    func check() -> Bool
+    {
+        if(H1TextField.text == "")
+        {
+            return false
+        }
+        if(M1TextField.text == "")
+        {
+            return false
+        }
+        if(H2TextField.text == "")
+        {
+            return false
+        }
+        if(M2TextField.text == "")
+        {
+            return false
+        }
+        return true
+    }
     /*
     // MARK: - Navigation
 
@@ -51,5 +86,16 @@ class SetViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
+
+extension UIViewController {
+    func hideKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+

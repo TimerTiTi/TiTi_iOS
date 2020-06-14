@@ -20,12 +20,16 @@ class ViewController: UIViewController {
     var timeTrigger = true
     var realTime = Timer()
     var second : Int = 3000
-    var sum : Int = 14400
-    var allTime : Int = 14400
+    var sum : Int = 0
+    var allTime : Int = 28800
     var IntSecond : Int = 0
     var ifReset = false
+    var data = TimeData()
     
     override func viewDidLoad() {
+        
+        UserDefaults.standard.set(second, forKey: "second")
+        UserDefaults.standard.set(allTime, forKey: "allTime")
         
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
@@ -33,6 +37,7 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     @IBAction func StartButtonAction(_ sender: UIButton) {
         if timeTrigger { checkTimeTrigger() }
@@ -42,23 +47,29 @@ class ViewController: UIViewController {
         endGame()
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
-        second = 3000
-        CountTimeLabel.text = "0:50:00"
+//        getTimeData() //data가 최신화
+//        print("reset Button complite")
+        second = UserDefaults.standard.value(forKey: "second") as! Int
+        CountTimeLabel.text = printTime(temp: second)
+//        AllTileLabel.text = printTime(temp: allTime)
+        print("print Time complite")
         ifReset = true
     }
     @IBAction func Reset(_ sender: UIButton) {
         endGame()
         timeTrigger = true
         realTime = Timer()
-        second = 3000
-        sum = 14400
-        allTime = 14400
+        getTimeData() //data가 최신화
+        print("reset Button complite")
+//        second = 3000
+        sum = 0
+//        allTime = 28800
         IntSecond = 0
         ifReset = false
         
-        AllTileLabel.text = "8:00:00"
-        SumTimeLabel.text = "0:0:0"
-        CountTimeLabel.text = "0:50:00"
+        AllTileLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
     }
     
     @objc func updateCounter(){
@@ -99,9 +110,11 @@ class ViewController: UIViewController {
     }
     
     //클래스 불러오는 메소드 영역
-    func getTimeData() {
-//        second = TimeData.getSecond.init()
-        
+    func getTimeData(){
+        second = UserDefaults.standard.value(forKey: "second") as! Int
+        print("second set complite")
+        allTime = UserDefaults.standard.value(forKey: "allTime") as! Int
+        print("allTime set complite")
     }
     
 }
