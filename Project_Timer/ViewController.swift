@@ -32,9 +32,13 @@ class ViewController: UIViewController {
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
         
-        sum = UserDefaults.standard.value(forKey: "sum") as! Int ?? 0
-        allTime = UserDefaults.standard.value(forKey: "allTime") as! Int ?? 28800
-        second = UserDefaults.standard.value(forKey: "second") as! Int ?? 3000
+        sum = UserDefaults.standard.value(forKey: "sum") as? Int ?? 0
+        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        
+        sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? sum
+        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? allTime
+        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? second
         
         AllTileLabel.text = printTime(temp: allTime)
         CountTimeLabel.text = printTime(temp: second)
@@ -93,9 +97,9 @@ class ViewController: UIViewController {
                 SumTimeLabel.text = printTime(temp: sum)
                 CountTimeLabel.text = printTime(temp: second)
                 print("update")
-                UserDefaults.standard.set(sum, forKey: "sum")
-                UserDefaults.standard.set(second, forKey: "second")
-                UserDefaults.standard.set(allTime, forKey: "allTime")
+                UserDefaults.standard.set(sum, forKey: "sum2")
+                UserDefaults.standard.set(second, forKey: "second2")
+                UserDefaults.standard.set(allTime, forKey: "allTime2")
             }
         }
     
@@ -121,9 +125,9 @@ class ViewController: UIViewController {
     
     //클래스 불러오는 메소드 영역
     func getTimeData(){
-        second = UserDefaults.standard.value(forKey: "second") as! Int ?? 3000
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         print("second set complite")
-        allTime = UserDefaults.standard.value(forKey: "allTime") as! Int ?? 28800
+        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
         print("allTime set complite")
     }
     
