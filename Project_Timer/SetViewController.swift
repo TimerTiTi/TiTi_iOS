@@ -20,10 +20,21 @@ class SetViewController: UIViewController {
     @IBOutlet var H2TextField: UITextField!
     @IBOutlet var M2TextField: UITextField!
     
+    @IBOutlet var AllTimeLabel: UILabel!
+    @IBOutlet var SecondLabel: UILabel!
+    
     var second : Int = 3000
     var sum : Int = 0
     var allTime : Int = 28800
     var temp = 0
+    var H1 = ""
+    var M1 = ""
+    var H2 = ""
+    var M2 = ""
+    var h1 = 8
+    var h2 = 0
+    var m1 = 0
+    var m2 = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +51,30 @@ class SetViewController: UIViewController {
         InputView2.layer.cornerRadius = 10
         SetButton.layer.cornerRadius = 10
         
+        H1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        M1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        H2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        M2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        
         // Do any additional setup after loading the view.
     }
     
+    @objc func textFieldDidChange(textField: UITextField){
+        H1 = H1TextField.text!
+        H2 = H2TextField.text!
+        M1 = M1TextField.text!
+        M2 = M2TextField.text!
+        
+        check()
+        
+        allTime = h1 * 3600 + m1 * 60
+        second = h2 * 3600 + m2 * 60
+        
+        AllTimeLabel.text = printTime(temp: allTime)
+        SecondLabel.text = printTime(temp: second)
+    }
+    
     @IBAction func SetButton(_ sender: UIButton) {
-        //이전 화면으로 복귀
-        if(check())
-        {
-            allTime = Int(H1TextField.text!)! * 3600 + Int(M1TextField.text!)! * 60
-            second = Int(H2TextField.text!)! * 3600 + Int(M2TextField.text!)! * 60
-        }
         
         UserDefaults.standard.set(second, forKey: "second")
         UserDefaults.standard.set(allTime, forKey: "allTime")
@@ -57,25 +82,30 @@ class SetViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func check() -> Bool
+    func check()
     {
-        if(H1TextField.text == "")
+        if (H1 != "")
         {
-            return false
+            h1 = Int(H1)!
+            m1 = 0
         }
-        if(M1TextField.text == "")
+        if (H2 != "")
         {
-            return false
+            h2 = Int(H2)!
+            m2 = 0
         }
-        if(H2TextField.text == "")
-        {
-            return false
-        }
-        if(M2TextField.text == "")
-        {
-            return false
-        }
-        return true
+        if (M1 != "") { m1 = Int(M1)! }
+        if (M2 != "") { m2 = Int(M2)! }
+    }
+    
+    func printTime(temp : Int) -> String
+    {
+        let S = temp%60
+        let H = temp/3600
+        let M = temp/60 - H*60
+        
+        let returnString = String(H) + ":" + String(M) + ":" + String(S)
+        return returnString
     }
     /*
     // MARK: - Navigation

@@ -25,7 +25,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR2-6n-9IY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AR2-6n-9IY">
                                         <rect key="frame" x="24.5" y="56" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="guL-Jy-alV"/>
@@ -111,7 +111,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:50:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buD-Y4-orv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buD-Y4-orv">
                                         <rect key="frame" x="24.5" y="56" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Aln-r6-Uj5"/>
@@ -217,12 +217,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="2bS-X4-gxO"/>
                     <connections>
+                        <outlet property="AllTimeLabel" destination="AR2-6n-9IY" id="KzE-pa-KKy"/>
                         <outlet property="H1TextField" destination="RF9-3a-Zkc" id="kTg-6C-3PG"/>
                         <outlet property="H2TextField" destination="6Dm-OD-w9e" id="X1X-Tx-tub"/>
                         <outlet property="InputView1" destination="vV6-dt-HQV" id="g5Z-Ht-EGl"/>
                         <outlet property="InputView2" destination="Xiw-Bf-ELk" id="rM7-W1-BcN"/>
                         <outlet property="M1TextField" destination="YJi-5I-7ZD" id="M6o-xP-m5X"/>
                         <outlet property="M2TextField" destination="lu9-na-XZC" id="vrI-zd-3wd"/>
+                        <outlet property="SecondLabel" destination="buD-Y4-orv" id="etE-n5-1e0"/>
                         <outlet property="SetButton" destination="Xiw-Bf-ELk" id="Pbr-aj-epp"/>
                         <outlet property="View1" destination="Pvk-Vd-EWB" id="akL-dt-GBu"/>
                         <outlet property="View2" destination="E5D-m3-gq6" id="eIp-Ek-tzH"/>
