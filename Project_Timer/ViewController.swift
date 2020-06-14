@@ -37,9 +37,9 @@ class ViewController: UIViewController {
         second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
 
         print("안녕")
-//        AllTileLabel.text = printTime(temp: allTime)
-//        CountTimeLabel.text = printTime(temp: second)
-//        SumTimeLabel.text = printTime(temp: sum)
+        AllTileLabel.text = printTime(temp: allTime)
+        CountTimeLabel.text = printTime(temp: second)
+        SumTimeLabel.text = printTime(temp: sum)
         
         super.viewDidLoad()
     }
@@ -82,6 +82,13 @@ class ViewController: UIViewController {
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
     }
+    
+    @IBAction func TimeSetButton(_ sender: UIButton) {
+        AllTileLabel.text = "-"
+        SumTimeLabel.text = "-"
+        CountTimeLabel.text = "Click RESET"
+    }
+    
     
     @objc func updateCounter(){
     //        if String(format: "%.2f",second) == "0.00"{

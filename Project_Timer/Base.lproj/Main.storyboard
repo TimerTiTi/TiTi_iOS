@@ -248,11 +248,11 @@
                                 <color key="textColor" name="SystemMirror"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-lx-LRc">
-                                <rect key="frame" x="87.5" y="56" width="200" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM8-lx-LRc">
+                                <rect key="frame" x="37.5" y="56" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="7fc-UN-Exr"/>
-                                    <constraint firstAttribute="width" constant="200" id="zcw-iQ-7Ux"/>
+                                    <constraint firstAttribute="width" constant="300" id="zcw-iQ-7Ux"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" name="SystemMirror"/>
@@ -264,11 +264,11 @@
                                 <color key="textColor" name="SystemMirror"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:0:0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2P-pr-Wz1">
-                                <rect key="frame" x="87.5" y="182" width="200" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2P-pr-Wz1">
+                                <rect key="frame" x="37.5" y="182" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JIz-Kn-Ilx"/>
-                                    <constraint firstAttribute="width" constant="200" id="LfY-fi-Y8S"/>
+                                    <constraint firstAttribute="width" constant="300" id="LfY-fi-Y8S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" name="SystemMirror"/>
@@ -280,10 +280,10 @@
                                 <color key="textColor" name="SystemMirror"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:50:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTc-Vo-IWk">
-                                <rect key="frame" x="87.5" y="338" width="200" height="45"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTc-Vo-IWk">
+                                <rect key="frame" x="37.5" y="338" width="300" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="5co-0M-PSX"/>
+                                    <constraint firstAttribute="width" constant="300" id="5co-0M-PSX"/>
                                     <constraint firstAttribute="height" constant="45" id="ThJ-PS-xDh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
@@ -357,6 +357,7 @@
                                         </state>
                                         <connections>
                                             <action selector="Reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GyN-0l-XUI"/>
+                                            <action selector="TimeSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qAV-KG-ycy"/>
                                             <segue destination="UBd-8m-COD" kind="show" id="g5k-va-dLN"/>
                                         </connections>
                                     </button>
