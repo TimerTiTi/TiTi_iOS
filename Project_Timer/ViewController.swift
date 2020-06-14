@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     
     var timeTrigger = true
     var realTime = Timer()
-    var second : Int = 3000
+    var second : Int = 0
     var sum : Int = 0
-    var allTime : Int = 28800
+    var allTime : Int = 0
     var IntSecond : Int = 0
     var ifReset = false
     var data = TimeData()
@@ -31,24 +31,19 @@ class ViewController: UIViewController {
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
-        
-        sum = UserDefaults.standard.value(forKey: "sum") as? Int ?? 0
-        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
-        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
-        
-        sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? sum
-        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? allTime
-        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? second
-        
-        AllTileLabel.text = printTime(temp: allTime)
-        CountTimeLabel.text = printTime(temp: second)
-        SumTimeLabel.text = printTime(temp: sum)
-//        getTimeData()
+
+        sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
+        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
+
+        print("안녕")
+//        AllTileLabel.text = printTime(temp: allTime)
+//        CountTimeLabel.text = printTime(temp: second)
+//        SumTimeLabel.text = printTime(temp: sum)
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
     }
+    
     @IBAction func StartButtonAction(_ sender: UIButton) {
         if timeTrigger { checkTimeTrigger() }
         print("Start")
@@ -59,7 +54,7 @@ class ViewController: UIViewController {
     @IBAction func ResetButtonAction(_ sender: UIButton) {
         getTimeData() //data가 최신화
 //        print("reset Button complite")
-        second = UserDefaults.standard.value(forKey: "second") as! Int
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
 //        AllTileLabel.text = printTime(temp: allTime)
@@ -72,9 +67,14 @@ class ViewController: UIViewController {
         realTime = Timer()
 //        getTimeData() //data가 최신화
         print("reset Button complite")
-        second = 3000
-        sum = 0
-        allTime = 28800
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        sum = UserDefaults.standard.value(forKey: "sum") as? Int ?? 0
+        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
+        
+        UserDefaults.standard.set(second, forKey: "second2")
+        UserDefaults.standard.set(allTime, forKey: "allTime2")
+        UserDefaults.standard.set(sum, forKey: "sum2")
+        
         IntSecond = 0
         ifReset = false
         
@@ -119,7 +119,11 @@ class ViewController: UIViewController {
         let H = temp/3600
         let M = temp/60 - H*60
         
-        let returnString = String(H) + ":" + String(M) + ":" + String(S)
+        let stringS = S<10 ? "0"+String(S) : String(S)
+//        let stringH = H<10 ? "0"+String(H) : String(H)
+        let stringM = M<10 ? "0"+String(M) : String(M)
+        
+        let returnString  = String(H) + ":" + stringM + ":" + stringS
         return returnString
     }
     
