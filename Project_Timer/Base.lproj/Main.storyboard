@@ -356,7 +356,6 @@
                                             <color key="titleColor" name="SystemMirror"/>
                                         </state>
                                         <connections>
-                                            <action selector="Reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GyN-0l-XUI"/>
                                             <action selector="TimeSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qAV-KG-ycy"/>
                                             <segue destination="UBd-8m-COD" kind="show" id="g5k-va-dLN"/>
                                         </connections>

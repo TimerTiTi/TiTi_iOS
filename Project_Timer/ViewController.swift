@@ -36,7 +36,6 @@ class ViewController: UIViewController {
         allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
         second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
 
-        print("안녕")
         AllTileLabel.text = printTime(temp: allTime)
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
@@ -52,7 +51,7 @@ class ViewController: UIViewController {
         endGame()
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
-        getTimeData() //data가 최신화
+//        getTimeData() //data가 최신화
 //        print("reset Button complite")
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CountTimeLabel.text = printTime(temp: second)
@@ -96,7 +95,11 @@ class ViewController: UIViewController {
                 endGame()
                 CountTimeLabel.text = "종료"
                 //시간제한이 끝났을때 일어날 일(세그웨이로 실패한 페이지 혹은 팝업을 띄운다.)
-            } else {
+            } else if allTime < 1{
+                endGame()
+                CountTimeLabel.text = "종료"
+            }
+            else {
                 second = second - 1
                 sum = sum + 1
                 allTime = allTime - 1

@@ -94,8 +94,23 @@ class SetViewController: UIViewController {
             h2 = Int(H2)!
             m2 = 0
         }
-        if (M1 != "") { m1 = Int(M1)! }
-        if (M2 != "") { m2 = Int(M2)! }
+        if (M1 != "")
+        {
+            if(H1 == "")
+            {
+                h1 = 0
+            }
+            m1 = Int(M1)!
+            
+        }
+        if (M2 != "")
+        {
+            if(H2 == "")
+            {
+                h2 = 0
+            }
+            m2 = Int(M2)!
+        }
     }
     
     func printTime(temp : Int) -> String
