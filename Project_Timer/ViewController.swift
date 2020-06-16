@@ -26,19 +26,29 @@ class ViewController: UIViewController {
     var ifReset = false
     var data = TimeData()
     
+    let BROWN = UIColor(named: "Brown")
+    let BUTTON = UIColor(named: "Button")
+    let STOP = UIColor(named: "Stop")
+    
     override func viewDidLoad() {
         
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
+//        ButtonView1.layer.cornerRadius = 10
+//        ButtonView2.layer.cornerRadius = 10
 
         sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
         allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
         second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
 
+        print("안녕")
         AllTileLabel.text = printTime(temp: allTime)
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
+        
+        self.view.backgroundColor = STOP
+        StartButton.backgroundColor = BUTTON
         
         super.viewDidLoad()
     }
@@ -46,13 +56,24 @@ class ViewController: UIViewController {
     @IBAction func StartButtonAction(_ sender: UIButton) {
         if timeTrigger { checkTimeTrigger() }
         print("Start")
+        StartButton.backgroundColor = BROWN
+        StopButton.backgroundColor = BUTTON
+        ResetButton.backgroundColor = BROWN
+        self.view.backgroundColor = UIColor.systemBackground
+//        ButtonView1.backgroundColor = UIColor.systemBackground
+//        ButtonView2.backgroundColor = UIColor.systemBackground
     }
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
+        StopButton.backgroundColor = BROWN
+        StartButton.backgroundColor = BUTTON
+        ResetButton.backgroundColor = BUTTON
     }
     @IBAction func ResetButtonAction(_ sender: UIButton) {
 //        getTimeData() //data가 최신화
 //        print("reset Button complite")
+        StartButton.backgroundColor = BUTTON
+        ResetButton.backgroundColor = BROWN
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
@@ -62,6 +83,7 @@ class ViewController: UIViewController {
     }
     @IBAction func Reset(_ sender: UIButton) {
         endGame()
+        ResetButton.backgroundColor = BROWN
         timeTrigger = true
         realTime = Timer()
 //        getTimeData() //data가 최신화
@@ -92,12 +114,21 @@ class ViewController: UIViewController {
     @objc func updateCounter(){
     //        if String(format: "%.2f",second) == "0.00"{
             if second < 1 {
+                self.view.backgroundColor = STOP
                 endGame()
                 CountTimeLabel.text = "종료"
+                StopButton.backgroundColor = BROWN
+                StartButton.backgroundColor = BROWN
+                ResetButton.backgroundColor = BUTTON
                 //시간제한이 끝났을때 일어날 일(세그웨이로 실패한 페이지 혹은 팝업을 띄운다.)
-            } else if allTime < 1{
+            }
+            else if allTime < 1
+            {
                 endGame()
                 CountTimeLabel.text = "종료"
+                StopButton.backgroundColor = BROWN
+                StartButton.backgroundColor = BROWN
+                ResetButton.backgroundColor = BUTTON
             }
             else {
                 second = second - 1
@@ -110,7 +141,8 @@ class ViewController: UIViewController {
                 UserDefaults.standard.set(sum, forKey: "sum2")
                 UserDefaults.standard.set(second, forKey: "second2")
                 UserDefaults.standard.set(allTime, forKey: "allTime2")
-            }
+        }
+                
         }
     
     func checkTimeTrigger() {
@@ -119,6 +151,9 @@ class ViewController: UIViewController {
     }
     
     func endGame() {
+        self.view.backgroundColor = STOP
+//        ButtonView1.backgroundColor = STOP
+//        ButtonView2.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
     }

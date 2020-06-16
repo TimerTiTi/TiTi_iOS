@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		937DC0E32490E63700F9095B /* TimeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeData.swift; sourceTree = "<group>"; };
-		93B0851D248DDF2F00E215BD /* Project_Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project_Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B08522248DDF2F00E215BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		93B08524248DDF2F00E215BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		93B0851E248DDF2F00E215BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93B0851D248DDF2F00E215BD /* Project_Timer.app */,
+				93B0851D248DDF2F00E215BD /* TiTi.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,7 +100,7 @@
 			);
 			name = Project_Timer;
 			productName = Project_Timer;
-			productReference = 93B0851D248DDF2F00E215BD /* Project_Timer.app */;
+			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -312,7 +312,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "FDEE.Project-Timer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -333,7 +333,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "FDEE.Project-Timer";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
