@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+
 import AudioToolbox
 
 class ViewController: UIViewController {
@@ -32,7 +34,6 @@ class ViewController: UIViewController {
     let STOP = UIColor(named: "Stop")
     
     override func viewDidLoad() {
-        
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
@@ -64,21 +65,22 @@ class ViewController: UIViewController {
 //        ButtonView1.backgroundColor = UIColor.systemBackground
 //        ButtonView2.backgroundColor = UIColor.systemBackground
     }
+    
     @IBAction func StopButtonAction(_ sender: UIButton) {
         endGame()
         StopButton.backgroundColor = BROWN
         StartButton.backgroundColor = BUTTON
         ResetButton.backgroundColor = BUTTON
     }
+    
     @IBAction func ResetButtonAction(_ sender: UIButton) {
-//        getTimeData() //data가 최신화
-//        print("reset Button complite")
+        getTimeData() //data가 최신화
+        print("reset Button complite")
         StartButton.backgroundColor = BUTTON
         ResetButton.backgroundColor = BROWN
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
-//        AllTileLabel.text = printTime(temp: allTime)
         print("print Time complite")
         ifReset = true
     }
@@ -90,7 +92,7 @@ class ViewController: UIViewController {
 //        getTimeData() //data가 최신화
         print("reset Button complite")
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
-        sum = UserDefaults.standard.value(forKey: "sum") as? Int ?? 0
+        sum = 0
         allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
         
         UserDefaults.standard.set(second, forKey: "second2")
@@ -106,9 +108,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func TimeSetButton(_ sender: UIButton) {
-        AllTileLabel.text = "-"
-        SumTimeLabel.text = "-"
-        CountTimeLabel.text = "Click RESET"
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
+            setVC.setViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
     }
     
     
@@ -157,8 +159,8 @@ class ViewController: UIViewController {
 //        ButtonView2.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
-        AudioServicesPlaySystemSound(1254)
-        AudioServicesPlaySystemSound(4095)
+//        AudioServicesPlaySystemSound(1254)
+//        AudioServicesPlaySystemSound(4095)
     }
     
     func printTime(temp : Int) -> String
@@ -185,3 +187,29 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController : ChangeViewController {
+    
+    func updateViewController() {
+         endGame()
+                 ResetButton.backgroundColor = BROWN
+                 timeTrigger = true
+                 realTime = Timer()
+         //        getTimeData() //data가 최신화
+                 print("reset Button complite")
+                 second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+                 sum = UserDefaults.standard.value(forKey: "sum") as? Int ?? 0
+                 allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
+                 
+                 UserDefaults.standard.set(second, forKey: "second2")
+                 UserDefaults.standard.set(allTime, forKey: "allTime2")
+                 UserDefaults.standard.set(sum, forKey: "sum2")
+                 
+                 IntSecond = 0
+                 ifReset = false
+                 
+                 AllTileLabel.text = printTime(temp: allTime)
+                 SumTimeLabel.text = printTime(temp: sum)
+                 CountTimeLabel.text = printTime(temp: second)
+    }
+
+}

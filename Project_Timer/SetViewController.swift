@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol ChangeViewController {
+    func updateViewController()
+}
+
 class SetViewController: UIViewController {
+
     @IBOutlet var View1: UIView!
     @IBOutlet var View2: UIView!
     @IBOutlet var InputView1: UIView!
@@ -23,6 +28,7 @@ class SetViewController: UIViewController {
     @IBOutlet var AllTimeLabel: UILabel!
     @IBOutlet var SecondLabel: UILabel!
     
+    var setViewControllerDelegate : ChangeViewController!
     var second : Int = 3000
     var sum : Int = 0
     var allTime : Int = 28800
@@ -79,6 +85,7 @@ class SetViewController: UIViewController {
         UserDefaults.standard.set(second, forKey: "second")
         UserDefaults.standard.set(allTime, forKey: "allTime")
         print("set complite")
+        setViewControllerDelegate.updateViewController()
         self.dismiss(animated: true, completion: nil)
     }
     
