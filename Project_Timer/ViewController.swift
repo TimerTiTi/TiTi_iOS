@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -156,6 +157,8 @@ class ViewController: UIViewController {
 //        ButtonView2.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
+        AudioServicesPlaySystemSound(1254)
+        AudioServicesPlaySystemSound(4095)
     }
     
     func printTime(temp : Int) -> String
