@@ -379,10 +379,12 @@
                     <connections>
                         <outlet property="AllTileLabel" destination="cM8-lx-LRc" id="zcO-ud-oHg"/>
                         <outlet property="CountTimeLabel" destination="tTc-Vo-IWk" id="4ri-Kn-awk"/>
+                        <outlet property="RESETButton" destination="Yfv-lY-83Z" id="8ow-Uw-iTc"/>
                         <outlet property="ResetButton" destination="pzm-yY-VRs" id="XG9-yi-KDs"/>
                         <outlet property="StartButton" destination="kpr-jf-Fa6" id="Qh3-5P-aDq"/>
                         <outlet property="StopButton" destination="SSK-la-adG" id="2nl-Zk-fjV"/>
                         <outlet property="SumTimeLabel" destination="g2P-pr-Wz1" id="r3C-jO-14c"/>
+                        <outlet property="TimeSETButton" destination="clw-Wf-hah" id="sEn-Z7-8cA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

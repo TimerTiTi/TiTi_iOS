@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     @IBOutlet var StopButton: UIButton!
     @IBOutlet var ResetButton: UIButton!
     
+    @IBOutlet var RESETButton: UIButton!
+    @IBOutlet var TimeSETButton: UIButton!
+    
+    
     var timeTrigger = true
     var realTime = Timer()
     var second : Int = 0
@@ -61,6 +65,13 @@ class ViewController: UIViewController {
         StartButton.backgroundColor = BROWN
         StopButton.backgroundColor = BUTTON
         ResetButton.backgroundColor = BROWN
+        
+        StartButton.isUserInteractionEnabled = false
+        ResetButton.isUserInteractionEnabled = false
+        StopButton.isUserInteractionEnabled = true
+        
+        RESETButton.isUserInteractionEnabled = false
+        TimeSETButton.isUserInteractionEnabled = false
         self.view.backgroundColor = UIColor.systemBackground
 //        ButtonView1.backgroundColor = UIColor.systemBackground
 //        ButtonView2.backgroundColor = UIColor.systemBackground
@@ -71,6 +82,14 @@ class ViewController: UIViewController {
         StopButton.backgroundColor = BROWN
         StartButton.backgroundColor = BUTTON
         ResetButton.backgroundColor = BUTTON
+        
+        StartButton.isUserInteractionEnabled = true
+        ResetButton.isUserInteractionEnabled = true
+        StopButton.isUserInteractionEnabled = false
+        
+        RESETButton.isUserInteractionEnabled = true
+        TimeSETButton.isUserInteractionEnabled = true
+        
     }
     
     @IBAction func ResetButtonAction(_ sender: UIButton) {
