@@ -22,7 +22,7 @@ import UIKit
 
 import AudioToolbox
 
-class ViewController: UIViewController { 
+class ViewController: UIViewController {
     
     @IBOutlet var AllTimeLabel: UILabel!
     @IBOutlet var SumTimeLabel: UILabel!
@@ -101,6 +101,7 @@ class ViewController: UIViewController {
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         print("print Time complite")
+        ResetButton.isUserInteractionEnabled = false
     }
     @IBAction func Reset(_ sender: UIButton) {
         endGame()
@@ -118,6 +119,10 @@ class ViewController: UIViewController {
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
+        
+        StartButton.isUserInteractionEnabled = true
+        ResetButton.backgroundColor = BROWN
+        ResetButton.isUserInteractionEnabled = false
     }
     
     @IBAction func TimeSetButton(_ sender: UIButton) {
@@ -136,6 +141,13 @@ class ViewController: UIViewController {
             StartButton.backgroundColor = BROWN
             ResetButton.backgroundColor = BUTTON
             
+            StartButton.isUserInteractionEnabled = false
+            ResetButton.isUserInteractionEnabled = true
+            StopButton.isUserInteractionEnabled = false
+            
+            RESETButton.isUserInteractionEnabled = true
+            TimeSETButton.isUserInteractionEnabled = true
+            
             AudioServicesPlaySystemSound(1254)
             AudioServicesPlaySystemSound(4095)
         }
@@ -145,6 +157,13 @@ class ViewController: UIViewController {
             StopButton.backgroundColor = BROWN
             StartButton.backgroundColor = BROWN
             ResetButton.backgroundColor = BUTTON
+            
+            StartButton.isUserInteractionEnabled = false
+            ResetButton.isUserInteractionEnabled = true
+            StopButton.isUserInteractionEnabled = false
+            
+            RESETButton.isUserInteractionEnabled = true
+            TimeSETButton.isUserInteractionEnabled = true
             
             AudioServicesPlaySystemSound(1254)
             AudioServicesPlaySystemSound(4095)
