@@ -102,6 +102,7 @@ class ViewController: UIViewController {
         SumTimeLabel.text = printTime(temp: sum)
         print("print Time complite")
         ResetButton.isUserInteractionEnabled = false
+        StopButton.isUserInteractionEnabled = false
     }
     @IBAction func Reset(_ sender: UIButton) {
         endGame()
