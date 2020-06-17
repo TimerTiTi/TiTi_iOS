@@ -101,6 +101,7 @@ class ViewController: UIViewController {
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         print("print Time complite")
+        StartButton.isUserInteractionEnabled = true
         ResetButton.isUserInteractionEnabled = false
         StopButton.isUserInteractionEnabled = false
     }
