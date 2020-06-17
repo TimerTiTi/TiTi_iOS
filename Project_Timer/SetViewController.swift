@@ -29,10 +29,9 @@ class SetViewController: UIViewController {
     @IBOutlet var SecondLabel: UILabel!
     
     var setViewControllerDelegate : ChangeViewController!
-    var second : Int = 3000
-    var sum : Int = 0
     var allTime : Int = 28800
-    var temp = 0
+    var second : Int = 3000
+    
     var H1 = ""
     var M1 = ""
     var H2 = ""
@@ -61,8 +60,6 @@ class SetViewController: UIViewController {
         M1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         H2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         M2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
-        
-        // Do any additional setup after loading the view.
     }
     
     @objc func textFieldDidChange(textField: UITextField){
@@ -126,18 +123,12 @@ class SetViewController: UIViewController {
         let H = temp/3600
         let M = temp/60 - H*60
         
-        let returnString = String(H) + ":" + String(M) + ":" + String(S)
+        let stringS = S<10 ? "0"+String(S) : String(S)
+        let stringM = M<10 ? "0"+String(M) : String(M)
+        
+        let returnString  = String(H) + ":" + stringM + ":" + stringS
         return returnString
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension UIViewController {
