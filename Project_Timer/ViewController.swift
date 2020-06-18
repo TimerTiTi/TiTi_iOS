@@ -44,11 +44,11 @@ class ViewController: UIViewController {
     let BUTTON = UIColor(named: "Button")
     let STOP = UIColor(named: "Stop")
     
-//    var backgroundTask : UIBackgroundTaskIdentifier = .invalid
-    
     var diffHrs = 0
     var diffMins = 0
     var diffSecs = 0
+    
+    var isStop = false
     
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
@@ -74,9 +74,11 @@ class ViewController: UIViewController {
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
         startAction()
+        isStop = false
     }
     
     @IBAction func StopButtonAction(_ sender: UIButton) {
+        isStop = true
         endGame()
         StopButton.backgroundColor = BROWN
         StartButton.backgroundColor = BUTTON
@@ -91,6 +93,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func ResetButtonAction(_ sender: UIButton) {
+        isStop = true
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         print("reset Button complite")
         StartButton.backgroundColor = BUTTON
@@ -103,6 +106,7 @@ class ViewController: UIViewController {
         StopButton.isUserInteractionEnabled = false
     }
     @IBAction func Reset(_ sender: UIButton) {
+        isStop = true
         endGame()
         getTimeData()
         sum = 0
@@ -180,10 +184,6 @@ class ViewController: UIViewController {
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timeTrigger = false
-//        registerBackgroundTask()
-//        if backgroundTask != .invalid {
-//          endBackgroundTask()
-//        }
     }
     
     func endGame() {
@@ -235,34 +235,27 @@ extension ViewController : ChangeViewController {
          CountTimeLabel.text = printTime(temp: second)
     }
     
-//    func registerBackgroundTask() {
-//      backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-//        self?.endBackgroundTask()
-//      }
-//      assert(backgroundTask != .invalid)
-//    }
-//
-//    func endBackgroundTask() {
-//      print("Background task ended.")
-//      UIApplication.shared.endBackgroundTask(backgroundTask)
-//      backgroundTask = .invalid
-//    }
-    
     // Selected for Lifecycle Methods
     @objc func pauseWhenBackground(noti: Notification) {
         print("background")
-        realTime.invalidate()
-        timeTrigger = true
-        let shared = UserDefaults.standard
-        shared.set(Date(), forKey: "savedTime")
+        if(!isStop)
+        {
+            realTime.invalidate()
+            timeTrigger = true
+            let shared = UserDefaults.standard
+            shared.set(Date(), forKey: "savedTime")
+        }
     }
     
     @objc func willEnterForeground(noti: Notification) {
-        if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
-            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: savedDate)
-            refresh(hours: diffHrs, mins: diffMins, secs: diffSecs)
-            removeSavedDate()
-            print("Enter")
+        print("Enter")
+        if(!isStop)
+        {
+            if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
+                (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: savedDate)
+                refresh(hours: diffHrs, mins: diffMins, secs: diffSecs)
+                removeSavedDate()
+            }
         }
     }
     
