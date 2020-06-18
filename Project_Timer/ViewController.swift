@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     var diffMins = 0
     var diffSecs = 0
     
-    var isStop = false
+    var isStop = true
     
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
@@ -65,6 +65,7 @@ class ViewController: UIViewController {
         
         self.view.backgroundColor = STOP
         StartButton.backgroundColor = BUTTON
+        ResetButton.backgroundColor = BUTTON
         
         super.viewDidLoad()
         
@@ -187,6 +188,7 @@ class ViewController: UIViewController {
     }
     
     func endGame() {
+        isStop = true
         self.view.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
