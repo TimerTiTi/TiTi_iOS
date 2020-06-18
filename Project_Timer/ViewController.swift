@@ -44,6 +44,12 @@ class ViewController: UIViewController {
     let BUTTON = UIColor(named: "Button")
     let STOP = UIColor(named: "Stop")
     
+//    var backgroundTask : UIBackgroundTaskIdentifier = .invalid
+    
+    var diffHrs = 0
+    var diffMins = 0
+    var diffSecs = 0
+    
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
@@ -61,22 +67,13 @@ class ViewController: UIViewController {
         StartButton.backgroundColor = BUTTON
         
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
-        if timeTrigger { checkTimeTrigger() }
-        print("Start")
-        StartButton.backgroundColor = BROWN
-        StopButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BROWN
-        
-        StartButton.isUserInteractionEnabled = false
-        ResetButton.isUserInteractionEnabled = false
-        StopButton.isUserInteractionEnabled = true
-        
-        RESETButton.isUserInteractionEnabled = false
-        TimeSETButton.isUserInteractionEnabled = false
-        self.view.backgroundColor = UIColor.systemBackground
+        startAction()
     }
     
     @IBAction func StopButtonAction(_ sender: UIButton) {
@@ -122,6 +119,7 @@ class ViewController: UIViewController {
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
         
+        StartButton.backgroundColor = BUTTON
         StartButton.isUserInteractionEnabled = true
         ResetButton.backgroundColor = BROWN
         ResetButton.isUserInteractionEnabled = false
@@ -174,13 +172,7 @@ class ViewController: UIViewController {
             second = second - 1
             sum = sum + 1
             allTime = allTime - 1
-            AllTimeLabel.text = printTime(temp: allTime)
-            SumTimeLabel.text = printTime(temp: sum)
-            CountTimeLabel.text = printTime(temp: second)
-            print("update")
-            UserDefaults.standard.set(sum, forKey: "sum2")
-            UserDefaults.standard.set(second, forKey: "second2")
-            UserDefaults.standard.set(allTime, forKey: "allTime2")
+            setPerSeconds()
         }
         
     }
@@ -188,6 +180,10 @@ class ViewController: UIViewController {
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timeTrigger = false
+//        registerBackgroundTask()
+//        if backgroundTask != .invalid {
+//          endBackgroundTask()
+//        }
     }
     
     func endGame() {
@@ -238,5 +234,101 @@ extension ViewController : ChangeViewController {
          SumTimeLabel.text = printTime(temp: sum)
          CountTimeLabel.text = printTime(temp: second)
     }
+    
+//    func registerBackgroundTask() {
+//      backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+//        self?.endBackgroundTask()
+//      }
+//      assert(backgroundTask != .invalid)
+//    }
+//
+//    func endBackgroundTask() {
+//      print("Background task ended.")
+//      UIApplication.shared.endBackgroundTask(backgroundTask)
+//      backgroundTask = .invalid
+//    }
+    
+    // Selected for Lifecycle Methods
+    @objc func pauseWhenBackground(noti: Notification) {
+        print("background")
+        realTime.invalidate()
+        timeTrigger = true
+        let shared = UserDefaults.standard
+        shared.set(Date(), forKey: "savedTime")
+    }
+    
+    @objc func willEnterForeground(noti: Notification) {
+        if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
+            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: savedDate)
+            refresh(hours: diffHrs, mins: diffMins, secs: diffSecs)
+            removeSavedDate()
+            print("Enter")
+        }
+    }
+    
+    static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .second], from: startDate, to: Date())
+        return(components.hour!, components.minute!, components.second!)
+    }
+    
+    func refresh (hours: Int, mins: Int, secs: Int) {
+        let tempSeconds = hours*3600 + mins*60 + secs
+        if(second - tempSeconds < 0)
+        {
+            allTime = allTime - second
+            sum = sum + second
+            second = 0
+        }
+        else if(allTime - tempSeconds < 0)
+        {
+            allTime = 0
+            sum = sum + allTime
+            second = second - allTime
+        }
+        else
+        {
+            allTime = allTime - tempSeconds
+            sum = sum + tempSeconds
+            second = second - tempSeconds
+        }
+        setPerSeconds()
+        startAction()
+    }
+    
+    func removeSavedDate() {
+        if (UserDefaults.standard.object(forKey: "savedTime") as? Date) != nil {
+            UserDefaults.standard.removeObject(forKey: "savedTime")
+        }
+    }
+    
+    func startAction()
+    {
+        if timeTrigger { checkTimeTrigger() }
+        print("Start")
+        StartButton.backgroundColor = BROWN
+        StopButton.backgroundColor = BUTTON
+        ResetButton.backgroundColor = BROWN
+        
+        StartButton.isUserInteractionEnabled = false
+        ResetButton.isUserInteractionEnabled = false
+        StopButton.isUserInteractionEnabled = true
+        
+        RESETButton.isUserInteractionEnabled = false
+        TimeSETButton.isUserInteractionEnabled = false
+        self.view.backgroundColor = UIColor.systemBackground
+    }
+    
+    func setPerSeconds()
+    {
+        AllTimeLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
+        print("update : " + String(second))
+        UserDefaults.standard.set(sum, forKey: "sum2")
+        UserDefaults.standard.set(second, forKey: "second2")
+        UserDefaults.standard.set(allTime, forKey: "allTime2")
+    }
 
 }
+
