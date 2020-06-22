@@ -32,6 +32,8 @@ class ViewController: UIViewController {
     @IBOutlet var ResetButton: UIButton!
     @IBOutlet var RESETButton: UIButton!
     @IBOutlet var TimeSETButton: UIButton!
+    @IBOutlet var persentLabel: UILabel!
+    
     
     var timeTrigger = true
     var realTime = Timer()
@@ -43,12 +45,17 @@ class ViewController: UIViewController {
     let BROWN = UIColor(named: "Brown")
     let BUTTON = UIColor(named: "Button")
     let STOP = UIColor(named: "Stop")
+    let TEXT = UIColor(named: "Text")
     
     var diffHrs = 0
     var diffMins = 0
     var diffSecs = 0
     
     var isStop = true
+    
+    //퍼센트 추가!
+    var isRESET = false
+    var timeForPersent = 0
     
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
@@ -71,9 +78,24 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        if (UserDefaults.standard.object(forKey: "startTime") == nil)
+        {
+            isRESET = true
+        }
+        checkPersent()
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
+        //persent 추가! RESET 후 시작시 시작하는 시간 저장!
+        if(isRESET)
+        {
+            let startTime = UserDefaults.standard
+            startTime.set(Date(), forKey: "startTime")
+            print("startTime SAVE")
+            isRESET = false
+        }
+        
         startAction()
         isStop = false
     }
@@ -128,12 +150,17 @@ class ViewController: UIViewController {
         StartButton.isUserInteractionEnabled = true
         ResetButton.backgroundColor = BROWN
         ResetButton.isUserInteractionEnabled = false
+        
+        //persent 추가! RESET 여부 추가
+        persentReset()
     }
     
     @IBAction func TimeSetButton(_ sender: UIButton) {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
             setVC.setViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
+        persentReset()
+        
     }
     
     
@@ -311,7 +338,7 @@ extension ViewController : ChangeViewController {
         
         RESETButton.isUserInteractionEnabled = false
         TimeSETButton.isUserInteractionEnabled = false
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = UIColor.black
     }
     
     func setPerSeconds()
@@ -323,6 +350,38 @@ extension ViewController : ChangeViewController {
         UserDefaults.standard.set(sum, forKey: "sum2")
         UserDefaults.standard.set(second, forKey: "second2")
         UserDefaults.standard.set(allTime, forKey: "allTime2")
+        
+        //persent 추가!
+        checkPersent()
+    }
+    
+    func persentReset()
+    {
+        isRESET = true
+        persentLabel.text = "빡공률 : 0.0%"
+        persentLabel.textColor = UIColor.white
+    }
+    
+    func checkPersent()
+    {
+        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
+            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
+            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
+            print("timeForPersent : " + String(timeForPersent))
+            
+            //계산부분
+            let per : Double = Double(sum)/Double(timeForPersent)*100
+            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
+            
+            if (per>50.0)
+            {
+                persentLabel.textColor = UIColor.white
+            }
+            else
+            {
+                persentLabel.textColor = TEXT
+            }
+        }
     }
 
 }
