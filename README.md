@@ -1,6 +1,6 @@
 # Project_Timer
 
-// 어플 : TiTi 출시예정!
+// 어플 : TiTi 
 
 //  간단한 타이머 어플 코드입니다
 //  1초마다 updateCounter() 실행되며 목표시간인 AllTime은 -1, 누적시간인 sum은 +1, 타이머 시간인 second는 -1됩니다

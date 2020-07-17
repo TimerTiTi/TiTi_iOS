@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     @IBOutlet var TimeSETButton: UIButton!
     @IBOutlet var persentLabel: UILabel!
 
+    @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer = AVAudioPlayer()
     
     
@@ -49,6 +50,7 @@ class ViewController: UIViewController {
     let BUTTON = UIColor(named: "Button")
     let STOP = UIColor(named: "Stop")
     let TEXT = UIColor(named: "Text")
+    let BABYRED = UIColor(named: "Text")
     
     var diffHrs = 0
     var diffMins = 0
@@ -59,6 +61,10 @@ class ViewController: UIViewController {
     //퍼센트 추가!
     var isRESET = false
     var timeForPersent = 0
+    
+    //프로그래스 퍼센트 추가!
+    var progressPer: Double = 0.0
+    var fixedSecond: Int = 0
     
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
@@ -88,6 +94,11 @@ class ViewController: UIViewController {
         }
         checkPersent()
         persentLabel.textColor = UIColor.white
+        
+        //프로그래스 추가
+        CircleView.trackColor = UIColor.darkGray
+        CircleView.progressColor = BABYRED!
+        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.6)
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -184,14 +195,14 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-//            AudioServicesPlaySystemSound(1254)
-//            AudioServicesPlaySystemSound(4095)
-            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-            } catch {
-                
-            }
+            AudioServicesPlaySystemSound(1254)
+            AudioServicesPlaySystemSound(4095)
+//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
+//            do {
+//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
+//            } catch {
+//
+//            }
         }
         else if allTime < 1 {
             endGame()
@@ -207,14 +218,14 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-//            AudioServicesPlaySystemSound(1254)
-//            AudioServicesPlaySystemSound(4095)
-            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-            } catch {
-                
-            }
+            AudioServicesPlaySystemSound(1254)
+            AudioServicesPlaySystemSound(4095)
+//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
+//            do {
+//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
+//            } catch {
+//
+//            }
         }
         else {
             second = second - 1
@@ -398,6 +409,11 @@ extension ViewController : ChangeViewController {
                 persentLabel.textColor = TEXT
             }
         }
+    }
+    
+    @objc func animateProgress() {
+        let cP = self.view.viewWithTag(101) as! CircularProgressView
+        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
     }
 
 }
