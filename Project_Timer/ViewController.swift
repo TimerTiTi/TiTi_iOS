@@ -21,6 +21,7 @@ import UIKit
 
 
 import AudioToolbox
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -33,6 +34,8 @@ class ViewController: UIViewController {
     @IBOutlet var RESETButton: UIButton!
     @IBOutlet var TimeSETButton: UIButton!
     @IBOutlet var persentLabel: UILabel!
+
+    var audioPlayer = AVAudioPlayer()
     
     
     var timeTrigger = true
@@ -84,6 +87,7 @@ class ViewController: UIViewController {
             isRESET = true
         }
         checkPersent()
+        persentLabel.textColor = UIColor.white
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -180,8 +184,14 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-            AudioServicesPlaySystemSound(1254)
-            AudioServicesPlaySystemSound(4095)
+//            AudioServicesPlaySystemSound(1254)
+//            AudioServicesPlaySystemSound(4095)
+            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
+            } catch {
+                
+            }
         }
         else if allTime < 1 {
             endGame()
@@ -197,8 +207,14 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-            AudioServicesPlaySystemSound(1254)
-            AudioServicesPlaySystemSound(4095)
+//            AudioServicesPlaySystemSound(1254)
+//            AudioServicesPlaySystemSound(4095)
+            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
+            } catch {
+                
+            }
         }
         else {
             second = second - 1
