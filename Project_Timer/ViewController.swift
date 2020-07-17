@@ -63,8 +63,9 @@ class ViewController: UIViewController {
     var timeForPersent = 0
     
     //프로그래스 퍼센트 추가!
-    var progressPer: Double = 0.0
+    var progressPer: Float = 0.0
     var fixedSecond: Int = 0
+    var fromSecond: Float = 0.0
     
     override func viewDidLoad() {
         StartButton.layer.cornerRadius = 10
@@ -98,7 +99,11 @@ class ViewController: UIViewController {
         //프로그래스 추가
         CircleView.trackColor = UIColor.darkGray
         CircleView.progressColor = BABYRED!
-        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.6)
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        
+        progressPer = Float(fixedSecond - second) / Float(fixedSecond)
+        fromSecond = progressPer
+        CircleView.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -109,6 +114,7 @@ class ViewController: UIViewController {
             startTime.set(Date(), forKey: "startTime")
             print("startTime SAVE")
             isRESET = false
+            fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         }
         
         startAction()
@@ -142,6 +148,9 @@ class ViewController: UIViewController {
         StartButton.isUserInteractionEnabled = true
         ResetButton.isUserInteractionEnabled = false
         StopButton.isUserInteractionEnabled = false
+        //프로그래스 추가!
+        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
     }
     @IBAction func Reset(_ sender: UIButton) {
         isStop = true
@@ -175,7 +184,6 @@ class ViewController: UIViewController {
             setVC.setViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
         persentReset()
-        
     }
     
     
@@ -380,6 +388,12 @@ extension ViewController : ChangeViewController {
         
         //persent 추가!
         checkPersent()
+        //프로그래스 추가!
+        progressPer = Float(fixedSecond - second) / Float(fixedSecond)
+        print("fixedSecond : " + String(fixedSecond))
+        print("second : " + String(second))
+        CircleView.setProgressWithAnimation(duration: 0.0, value: progressPer, from: fromSecond)
+        fromSecond = progressPer
     }
     
     func persentReset()
@@ -387,6 +401,10 @@ extension ViewController : ChangeViewController {
         isRESET = true
         persentLabel.text = "빡공률 : 0.0%"
         persentLabel.textColor = UIColor.white
+        //프로그래스 추가!
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
     }
     
     func checkPersent()
@@ -411,10 +429,10 @@ extension ViewController : ChangeViewController {
         }
     }
     
-    @objc func animateProgress() {
-        let cP = self.view.viewWithTag(101) as! CircularProgressView
-        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
-    }
+//    @objc func animateProgress() {
+//        let cP = self.view.viewWithTag(101) as! CircularProgressView
+//        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
+//    }
 
 }
 

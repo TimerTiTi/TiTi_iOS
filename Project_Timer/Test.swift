@@ -27,12 +27,12 @@ class Test: UIViewController {
         
         CircularProgress.trackColor = UIColor.darkGray
         CircularProgress.progressColor = BABYRED!
-        CircularProgress.setProgressWithAnimation(duration: 1.0, value: 0.6)
+        CircularProgress.setProgressWithAnimation(duration: 1.0, value: 0.6, from: 0.0)
     }
     
     @objc func animateProgress() {
         let cP = self.view.viewWithTag(101) as! CircularProgressView
-        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
+        cP.setProgressWithAnimation(duration: 1.0, value: 0.7, from: 0.0)
     }
     
 
