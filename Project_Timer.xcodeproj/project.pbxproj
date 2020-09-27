@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
+		93973A572520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A512520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf */; };
+		93973A582520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A522520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf */; };
+		93973A592520CF7C00813730 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A532520CF7C00813730 /* HGGGOTHICSSI_PRO_99G.otf */; };
+		93973A5A2520CF7C00813730 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A542520CF7C00813730 /* HGGGOTHICSSI_PRO_80G.otf */; };
+		93973A5B2520CF7C00813730 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A552520CF7C00813730 /* HGGGOTHICSSI_PRO_20G.otf */; };
+		93973A5C2520CF7C00813730 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A562520CF7C00813730 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		939ECFB62509D442005B0596 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 939ECFB52509D442005B0596 /* timer.mp3 */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93A892B324C1544A00F89180 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B224C1544A00F89180 /* Test.swift */; };
@@ -21,6 +27,12 @@
 
 /* Begin PBXFileReference section */
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
+		93973A512520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_40G.otf; path = fonts/HGGGOTHICSSI_PRO_40G.otf; sourceTree = SOURCE_ROOT; };
+		93973A522520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_00G.otf; path = fonts/HGGGOTHICSSI_PRO_00G.otf; sourceTree = SOURCE_ROOT; };
+		93973A532520CF7C00813730 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_99G.otf; path = fonts/HGGGOTHICSSI_PRO_99G.otf; sourceTree = SOURCE_ROOT; };
+		93973A542520CF7C00813730 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_80G.otf; path = fonts/HGGGOTHICSSI_PRO_80G.otf; sourceTree = SOURCE_ROOT; };
+		93973A552520CF7C00813730 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_20G.otf; path = fonts/HGGGOTHICSSI_PRO_20G.otf; sourceTree = SOURCE_ROOT; };
+		93973A562520CF7C00813730 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_60G.otf; path = fonts/HGGGOTHICSSI_PRO_60G.otf; sourceTree = SOURCE_ROOT; };
 		939ECFB52509D442005B0596 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = SOURCE_ROOT; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93A892B224C1544A00F89180 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -46,6 +58,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		93973A4F2520CF4900813730 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				93973A522520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf */,
+				93973A552520CF7C00813730 /* HGGGOTHICSSI_PRO_20G.otf */,
+				93973A512520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf */,
+				93973A562520CF7C00813730 /* HGGGOTHICSSI_PRO_60G.otf */,
+				93973A542520CF7C00813730 /* HGGGOTHICSSI_PRO_80G.otf */,
+				93973A532520CF7C00813730 /* HGGGOTHICSSI_PRO_99G.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		93B08514248DDF2F00E215BD = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +90,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				93973A4F2520CF4900813730 /* fonts */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
@@ -139,10 +165,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93973A5A2520CF7C00813730 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				93B0852A248DDF3000E215BD /* Assets.xcassets in Resources */,
+				93973A592520CF7C00813730 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				939ECFB62509D442005B0596 /* timer.mp3 in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
+				93973A5C2520CF7C00813730 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
+				93973A582520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
+				93973A572520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
+				93973A5B2520CF7C00813730 /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

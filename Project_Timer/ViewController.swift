@@ -45,11 +45,11 @@ class ViewController: UIViewController {
     var sum : Int = 0
     var allTime : Int = 0
     
-    let BROWN = UIColor(named: "Brown")
+    let BACKGROUND = UIColor(named: "Background")
+    let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
-    let STOP = UIColor(named: "Stop")
+    let CLICK = UIColor(named: "Click")
     let TEXT = UIColor(named: "Text")
-    let BABYRED = UIColor(named: "Text")
     
     var diffHrs = 0
     var diffMins = 0
@@ -80,9 +80,8 @@ class ViewController: UIViewController {
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         
-        self.view.backgroundColor = STOP
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BUTTON
+        stopColor()
+        stopEnable()
         
         super.viewDidLoad()
         
@@ -98,7 +97,6 @@ class ViewController: UIViewController {
         
         //프로그래스 추가
         CircleView.trackColor = UIColor.darkGray
-        CircleView.progressColor = BABYRED!
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
@@ -116,7 +114,7 @@ class ViewController: UIViewController {
             isRESET = false
             fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         }
-        
+        startColor()
         startAction()
         isStop = false
     }
@@ -124,40 +122,35 @@ class ViewController: UIViewController {
     @IBAction func StopButtonAction(_ sender: UIButton) {
         isStop = true
         endGame()
-        StopButton.backgroundColor = BROWN
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BUTTON
-        
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.isUserInteractionEnabled = true
-        StopButton.isUserInteractionEnabled = false
-        
-        RESETButton.isUserInteractionEnabled = true
-        TimeSETButton.isUserInteractionEnabled = true
+        stopColor()
+        stopEnable()
     }
     
     @IBAction func ResetButtonAction(_ sender: UIButton) {
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
         isStop = true
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         print("reset Button complite")
-        StartButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BROWN
         CountTimeLabel.text = printTime(temp: second)
         SumTimeLabel.text = printTime(temp: sum)
         print("print Time complite")
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.isUserInteractionEnabled = false
-        StopButton.isUserInteractionEnabled = false
+        
         //프로그래스 추가!
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
     }
     @IBAction func Reset(_ sender: UIButton) {
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
         isStop = true
         endGame()
         getTimeData()
         sum = 0
-        ResetButton.backgroundColor = BROWN
         timeTrigger = true
         realTime = Timer()
         print("reset Button complite")
@@ -169,11 +162,6 @@ class ViewController: UIViewController {
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
-        
-        StartButton.backgroundColor = BUTTON
-        StartButton.isUserInteractionEnabled = true
-        ResetButton.backgroundColor = BROWN
-        ResetButton.isUserInteractionEnabled = false
         
         //persent 추가! RESET 여부 추가
         persentReset()
@@ -189,44 +177,33 @@ class ViewController: UIViewController {
     
     @objc func updateCounter(){
         if second < 1 {
-            self.view.backgroundColor = STOP
             endGame()
+            stopColor()
+            stopEnable()
             CountTimeLabel.text = "종료"
-            StopButton.backgroundColor = BROWN
-            StartButton.backgroundColor = BROWN
-            ResetButton.backgroundColor = BUTTON
-            
-            StartButton.isUserInteractionEnabled = false
-            ResetButton.isUserInteractionEnabled = true
-            StopButton.isUserInteractionEnabled = false
-            
-            RESETButton.isUserInteractionEnabled = true
-            TimeSETButton.isUserInteractionEnabled = true
-            
 //            AudioServicesPlaySystemSound(1254)
 //            AudioServicesPlaySystemSound(4095)
             //오디오 재생 추가
             playAudioFromProject()
-
         }
-        else if allTime < 1 {
-            endGame()
-            CountTimeLabel.text = "종료"
-            StopButton.backgroundColor = BROWN
-            StartButton.backgroundColor = BROWN
-            ResetButton.backgroundColor = BUTTON
-            
-            StartButton.isUserInteractionEnabled = false
-            ResetButton.isUserInteractionEnabled = true
-            StopButton.isUserInteractionEnabled = false
-            
-            RESETButton.isUserInteractionEnabled = true
-            TimeSETButton.isUserInteractionEnabled = true
-            
-//            AudioServicesPlaySystemSound(1254)
-//            AudioServicesPlaySystemSound(4095)
-            playAudioFromProject()
-        }
+//        else if allTime < 1 {
+//            endGame()
+//            CountTimeLabel.text = "종료"
+//            StopButton.backgroundColor = BROWN
+//            StartButton.backgroundColor = BROWN
+//            ResetButton.backgroundColor = BUTTON
+//
+//            StartButton.isUserInteractionEnabled = false
+//            ResetButton.isUserInteractionEnabled = true
+//            StopButton.isUserInteractionEnabled = false
+//
+//            RESETButton.isUserInteractionEnabled = true
+//            TimeSETButton.isUserInteractionEnabled = true
+//
+////            AudioServicesPlaySystemSound(1254)
+////            AudioServicesPlaySystemSound(4095)
+//            playAudioFromProject()
+//        }
         else {
             second = second - 1
             sum = sum + 1
@@ -243,21 +220,27 @@ class ViewController: UIViewController {
     
     func endGame() {
         isStop = true
-        self.view.backgroundColor = STOP
         realTime.invalidate()
         timeTrigger = true
     }
     
     func printTime(temp : Int) -> String
     {
-        let S = temp%60
-        let H = temp/3600
-        let M = temp/60 - H*60
+        var returnString = "";
+        var num = temp;
+        if(num < 0)
+        {
+            num = -num;
+            returnString += "+";
+        }
+        let S = num%60
+        let H = num/3600
+        let M = num/60 - H*60
         
         let stringS = S<10 ? "0"+String(S) : String(S)
         let stringM = M<10 ? "0"+String(M) : String(M)
         
-        let returnString  = String(H) + ":" + stringM + ":" + stringS
+        returnString += String(H) + ":" + stringM + ":" + stringS
         return returnString
     }
     
@@ -275,21 +258,26 @@ class ViewController: UIViewController {
 extension ViewController : ChangeViewController {
     
     func updateViewController() {
-         endGame()
-         getTimeData()
-         sum = 0
-         ResetButton.backgroundColor = BROWN
-         timeTrigger = true
-         realTime = Timer()
-         print("reset Button complite")
-         
-         UserDefaults.standard.set(second, forKey: "second2")
-         UserDefaults.standard.set(allTime, forKey: "allTime2")
-         UserDefaults.standard.set(sum, forKey: "sum2")
-         
-         AllTimeLabel.text = printTime(temp: allTime)
-         SumTimeLabel.text = printTime(temp: sum)
-         CountTimeLabel.text = printTime(temp: second)
+        stopColor()
+        stopEnable()
+        ResetButton.backgroundColor = CLICK
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.isUserInteractionEnabled = false
+        
+        endGame()
+        getTimeData()
+        sum = 0
+        timeTrigger = true
+        realTime = Timer()
+        print("reset Button complite")
+        
+        UserDefaults.standard.set(second, forKey: "second2")
+        UserDefaults.standard.set(allTime, forKey: "allTime2")
+        UserDefaults.standard.set(sum, forKey: "sum2")
+        
+        AllTimeLabel.text = printTime(temp: allTime)
+        SumTimeLabel.text = printTime(temp: sum)
+        CountTimeLabel.text = printTime(temp: second)
     }
     
     // Selected for Lifecycle Methods
@@ -324,24 +312,25 @@ extension ViewController : ChangeViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int) {
         let tempSeconds = hours*3600 + mins*60 + secs
-        if(second - tempSeconds < 0)
-        {
-            allTime = allTime - second
-            sum = sum + second
-            second = 0
-        }
-        else if(allTime - tempSeconds < 0)
-        {
-            allTime = 0
-            sum = sum + allTime
-            second = second - allTime
-        }
-        else
-        {
+        
+//        if(second - tempSeconds < 0)
+//        {
+//            allTime = allTime - second
+//            sum = sum + second
+//            second = 0
+//        }
+//        else if(allTime - tempSeconds < 0)
+//        {
+//            allTime = 0
+//            sum = sum + allTime
+//            second = second - allTime
+//        }
+//        else
+//        {
             allTime = allTime - tempSeconds
             sum = sum + tempSeconds
             second = second - tempSeconds
-        }
+//        }
         setPerSeconds()
         startAction()
     }
@@ -355,18 +344,8 @@ extension ViewController : ChangeViewController {
     func startAction()
     {
         if timeTrigger { checkTimeTrigger() }
+        startEnable()
         print("Start")
-        StartButton.backgroundColor = BROWN
-        StopButton.backgroundColor = BUTTON
-        ResetButton.backgroundColor = BROWN
-        
-        StartButton.isUserInteractionEnabled = false
-        ResetButton.isUserInteractionEnabled = false
-        StopButton.isUserInteractionEnabled = true
-        
-        RESETButton.isUserInteractionEnabled = false
-        TimeSETButton.isUserInteractionEnabled = false
-        self.view.backgroundColor = UIColor.black
     }
     
     func setPerSeconds()
@@ -422,12 +401,53 @@ extension ViewController : ChangeViewController {
         }
     }
     
+    func stopColor()
+    {
+        self.view.backgroundColor = BACKGROUND
+        CircleView.progressColor = UIColor.white
+        StartButton.backgroundColor = BUTTON
+        StopButton.backgroundColor = CLICK
+        ResetButton.backgroundColor = BUTTON
+        StartButton.setTitleColor(BLUE, for: .normal)
+        StopButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.setTitleColor(BLUE, for: .normal)
+    }
+    
+    func startColor()
+    {
+        self.view.backgroundColor = UIColor.black
+        CircleView.progressColor = BLUE!
+        StartButton.backgroundColor = CLICK
+        StopButton.backgroundColor = BLUE
+        ResetButton.backgroundColor = CLICK
+        StartButton.setTitleColor(UIColor.white, for: .normal)
+        StopButton.setTitleColor(UIColor.white, for: .normal)
+        ResetButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func stopEnable()
+    {
+        StartButton.isUserInteractionEnabled = true
+        ResetButton.isUserInteractionEnabled = true
+        StopButton.isUserInteractionEnabled = false
+        RESETButton.isUserInteractionEnabled = true
+        TimeSETButton.isUserInteractionEnabled = true
+    }
+    
+    func startEnable()
+    {
+        StartButton.isUserInteractionEnabled = false
+        ResetButton.isUserInteractionEnabled = false
+        StopButton.isUserInteractionEnabled = true
+        RESETButton.isUserInteractionEnabled = false
+        TimeSETButton.isUserInteractionEnabled = false
+    }
+    
     private func playAudioFromProject() {
         guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
             print("error to get the mp3 file")
             return
         }
-
         do {
             audioPlayer = try AVPlayer(url: url)
         } catch {

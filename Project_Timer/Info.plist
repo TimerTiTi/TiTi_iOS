@@ -62,5 +62,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HGGGOTHICSSI_PRO_00G.otf</string>
+		<string>HGGGOTHICSSI_PRO_20G.otf</string>
+		<string>HGGGOTHICSSI_PRO_40G.otf</string>
+		<string>HGGGOTHICSSI_PRO_60G.otf</string>
+		<string>HGGGOTHICSSI_PRO_80G.otf</string>
+		<string>HGGGOTHICSSI_PRO_99G.otf</string>
+	</array>
 </dict>
 </plist>
