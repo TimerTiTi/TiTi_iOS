@@ -36,8 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet var persentLabel: UILabel!
 
     @IBOutlet var CircleView: CircularProgressView!
-    var audioPlayer = AVAudioPlayer()
-    
+    var audioPlayer : AVPlayer!
     
     var timeTrigger = true
     var realTime = Timer()
@@ -68,6 +67,7 @@ class ViewController: UIViewController {
     var fromSecond: Float = 0.0
     
     override func viewDidLoad() {
+        
         StartButton.layer.cornerRadius = 10
         StopButton.layer.cornerRadius = 10
         ResetButton.layer.cornerRadius = 10
@@ -203,14 +203,11 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-            AudioServicesPlaySystemSound(1254)
-            AudioServicesPlaySystemSound(4095)
-//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-//            do {
-//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-//            } catch {
-//
-//            }
+//            AudioServicesPlaySystemSound(1254)
+//            AudioServicesPlaySystemSound(4095)
+            //오디오 재생 추가
+            playAudioFromProject()
+
         }
         else if allTime < 1 {
             endGame()
@@ -226,14 +223,9 @@ class ViewController: UIViewController {
             RESETButton.isUserInteractionEnabled = true
             TimeSETButton.isUserInteractionEnabled = true
             
-            AudioServicesPlaySystemSound(1254)
-            AudioServicesPlaySystemSound(4095)
-//            let music = Bundle.main.path(forResource: "timer end sound", ofType: "wav")
-//            do {
-//                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: music!))
-//            } catch {
-//
-//            }
+//            AudioServicesPlaySystemSound(1254)
+//            AudioServicesPlaySystemSound(4095)
+            playAudioFromProject()
         }
         else {
             second = second - 1
@@ -276,6 +268,7 @@ class ViewController: UIViewController {
         allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
         print("allTime set complite")
     }
+    
     
 }
 
@@ -429,10 +422,19 @@ extension ViewController : ChangeViewController {
         }
     }
     
-//    @objc func animateProgress() {
-//        let cP = self.view.viewWithTag(101) as! CircularProgressView
-//        cP.setProgressWithAnimation(duration: 1.0, value: 0.7)
-//    }
+    private func playAudioFromProject() {
+        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
+            print("error to get the mp3 file")
+            return
+        }
+
+        do {
+            audioPlayer = try AVPlayer(url: url)
+        } catch {
+            print("audio file error")
+        }
+        audioPlayer?.play()
+    }
 
 }
 
