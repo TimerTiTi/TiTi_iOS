@@ -66,6 +66,9 @@ class ViewController: UIViewController {
     var fixedSecond: Int = 0
     var fromSecond: Float = 0.0
     
+    //빡공률 보이기 설정
+    var showPersent: Int = 0
+    
     override func viewDidLoad() {
         
         StartButton.layer.cornerRadius = 10
@@ -75,6 +78,7 @@ class ViewController: UIViewController {
         sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
         allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
         second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
+        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
 
         AllTimeLabel.text = printTime(temp: allTime)
         CountTimeLabel.text = printTime(temp: second)
@@ -92,8 +96,16 @@ class ViewController: UIViewController {
         {
             isRESET = true
         }
-        checkPersent()
-        persentLabel.textColor = UIColor.white
+        if(showPersent == 0)
+        {
+            persentLabel.alpha = 1
+            checkPersent()
+            persentLabel.textColor = UIColor.white
+        }
+        else
+        {
+            persentLabel.alpha = 0
+        }
         
         //프로그래스 추가
         CircleView.trackColor = UIColor.darkGray
@@ -171,7 +183,6 @@ class ViewController: UIViewController {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
             setVC.setViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
-        persentReset()
     }
     
     
@@ -250,6 +261,8 @@ class ViewController: UIViewController {
         print("second set complite")
         allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 28800
         print("allTime set complite")
+        //빡공률 보이기 설정
+        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
     }
     
     
@@ -278,19 +291,30 @@ extension ViewController : ChangeViewController {
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
         CountTimeLabel.text = printTime(temp: second)
+        
+        persentReset()
+        //빡공률 보이기 설정
+        if(showPersent == 0)
+        {
+            persentLabel.alpha = 1
+        }
+        else
+        {
+            persentLabel.alpha = 0
+        }
     }
     
     // Selected for Lifecycle Methods
-    @objc func pauseWhenBackground(noti: Notification) {
-        print("background")
-        if(!isStop)
-        {
-            realTime.invalidate()
-            timeTrigger = true
-            let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime")
+        @objc func pauseWhenBackground(noti: Notification) {
+            print("background")
+            if(!isStop)
+            {
+                realTime.invalidate()
+                timeTrigger = true
+                let shared = UserDefaults.standard
+                shared.set(Date(), forKey: "savedTime")
+            }
         }
-    }
     
     @objc func willEnterForeground(noti: Notification) {
         print("Enter")
@@ -313,24 +337,18 @@ extension ViewController : ChangeViewController {
     func refresh (hours: Int, mins: Int, secs: Int) {
         let tempSeconds = hours*3600 + mins*60 + secs
         
-//        if(second - tempSeconds < 0)
-//        {
-//            allTime = allTime - second
-//            sum = sum + second
-//            second = 0
-//        }
-//        else if(allTime - tempSeconds < 0)
-//        {
-//            allTime = 0
-//            sum = sum + allTime
-//            second = second - allTime
-//        }
-//        else
-//        {
+        if(second - tempSeconds < 0)
+        {
+            allTime = allTime - tempSeconds
+            sum = sum + tempSeconds
+            second = 0
+        }
+        else
+        {
             allTime = allTime - tempSeconds
             sum = sum + tempSeconds
             second = second - tempSeconds
-//        }
+        }
         setPerSeconds()
         startAction()
     }
@@ -411,6 +429,7 @@ extension ViewController : ChangeViewController {
         StartButton.setTitleColor(BLUE, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(BLUE, for: .normal)
+        CountTimeLabel.textColor = UIColor.white
     }
     
     func startColor()
@@ -423,6 +442,7 @@ extension ViewController : ChangeViewController {
         StartButton.setTitleColor(UIColor.white, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(UIColor.white, for: .normal)
+        CountTimeLabel.textColor = BLUE
     }
     
     func stopEnable()

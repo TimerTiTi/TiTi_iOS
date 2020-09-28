@@ -207,7 +207,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="EQN-Nv-ps8"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
-                                                <state key="normal" title="Time SET">
+                                                <state key="normal" title="SETTING">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -294,7 +294,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cyn-gR-M47">
-                                <rect key="frame" x="58.5" y="78" width="258" height="511"/>
+                                <rect key="frame" x="58.5" y="53.5" width="258" height="560.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 목표 시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDa-Kx-1hg">
                                         <rect key="frame" x="80" y="5" width="98" height="23.5"/>
@@ -303,7 +303,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머 시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xa7-O0-5gA">
-                                        <rect key="frame" x="83" y="215.5" width="92.5" height="23.5"/>
+                                        <rect key="frame" x="83" y="195.5" width="92.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -315,7 +315,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:50:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6g-Cf-4te">
-                                        <rect key="frame" x="70.5" y="247" width="117" height="41"/>
+                                        <rect key="frame" x="70.5" y="227" width="117" height="41"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="35"/>
                                         <color key="textColor" name="blue"/>
                                         <nil key="highlightedColor"/>
@@ -345,7 +345,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JzT-zW-yDc">
                                                 <rect key="frame" x="184" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="BPs-qI-AqR"/>
                                                     <constraint firstAttribute="width" constant="60" id="hiN-LY-0si"/>
@@ -356,7 +356,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMj-2m-QFW">
                                                 <rect key="frame" x="4" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="cfZ-v6-WbV"/>
                                                     <constraint firstAttribute="height" constant="40" id="nEd-i2-x0H"/>
@@ -367,7 +367,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="분" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-3D-0qF">
                                                 <rect key="frame" x="94" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="rxK-Xq-ZlN"/>
                                                     <constraint firstAttribute="height" constant="40" id="ya2-bi-6Uk"/>
@@ -395,7 +395,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWZ-1V-pzc">
-                                        <rect key="frame" x="69" y="456" width="120" height="50"/>
+                                        <rect key="frame" x="69" y="505.5" width="120" height="50"/>
                                         <color key="backgroundColor" name="Blue"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="719-qP-PBn"/>
@@ -409,7 +409,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQR-Mz-j2C">
-                                        <rect key="frame" x="5" y="308" width="248" height="48"/>
+                                        <rect key="frame" x="5" y="288" width="248" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgd-XM-xie">
                                                 <rect key="frame" x="69" y="6" width="20" height="36"/>
@@ -433,7 +433,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="초" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zDI-LB-6qB">
                                                 <rect key="frame" x="184" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="7go-EW-a3p"/>
                                                     <constraint firstAttribute="width" constant="60" id="HXc-fe-sd5"/>
@@ -444,7 +444,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I13-7w-Qbo">
                                                 <rect key="frame" x="4" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Xid-Q7-9IE"/>
                                                     <constraint firstAttribute="width" constant="60" id="nd3-We-EKY"/>
@@ -455,7 +455,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="분" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="puu-rL-Uka">
                                                 <rect key="frame" x="94" y="4" width="60" height="40"/>
-                                                <color key="backgroundColor" name="ColorInput"/>
+                                                <color key="backgroundColor" name="Click"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="12u-1I-sxX"/>
                                                     <constraint firstAttribute="height" constant="40" id="8bi-Sp-idG"/>
@@ -482,9 +482,27 @@
                                             <constraint firstItem="I13-7w-Qbo" firstAttribute="leading" secondItem="cQR-Mz-j2C" secondAttribute="leading" constant="4" id="vZc-x5-UkV"/>
                                         </constraints>
                                     </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hOV-17-14f">
+                                        <rect key="frame" x="76.5" y="429.5" width="105" height="32"/>
+                                        <color key="backgroundColor" name="Click"/>
+                                        <segments>
+                                            <segment title="보이기"/>
+                                            <segment title="숨기기"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="set_persent:" destination="ZOa-8O-R8V" eventType="valueChanged" id="IGJ-lz-zSC"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="빡공률 설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-aY-uQY">
+                                        <rect key="frame" x="83" y="386" width="92.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fSR-vv-jmb" firstAttribute="leading" secondItem="Cyn-gR-M47" secondAttribute="leading" constant="5" id="4Kf-BA-SRD"/>
+                                    <constraint firstItem="hOV-17-14f" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="Aea-6I-Ps3"/>
                                     <constraint firstItem="CIA-d9-K96" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="Aqg-QC-xdK"/>
                                     <constraint firstAttribute="trailing" secondItem="fSR-vv-jmb" secondAttribute="trailing" constant="5" id="Dlo-Ky-3q6"/>
                                     <constraint firstItem="t6g-Cf-4te" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="J89-M1-B6u"/>
@@ -495,12 +513,15 @@
                                     <constraint firstItem="Xa7-O0-5gA" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="WvC-uG-qLm"/>
                                     <constraint firstItem="cQR-Mz-j2C" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="icO-oB-pmb"/>
                                     <constraint firstItem="mWZ-1V-pzc" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="lFj-CN-UIy"/>
-                                    <constraint firstItem="mWZ-1V-pzc" firstAttribute="top" secondItem="cQR-Mz-j2C" secondAttribute="bottom" constant="100" id="mHO-5U-fvW"/>
                                     <constraint firstItem="bDa-Kx-1hg" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="ppW-kb-Alk"/>
                                     <constraint firstItem="t6g-Cf-4te" firstAttribute="top" secondItem="Xa7-O0-5gA" secondAttribute="bottom" constant="8" id="qqm-nu-esv"/>
+                                    <constraint firstItem="mWZ-1V-pzc" firstAttribute="top" secondItem="hOV-17-14f" secondAttribute="bottom" constant="45" id="rpq-8h-3hZ"/>
                                     <constraint firstItem="bDa-Kx-1hg" firstAttribute="top" secondItem="Cyn-gR-M47" secondAttribute="top" constant="5" id="tad-7S-SLs"/>
-                                    <constraint firstItem="Xa7-O0-5gA" firstAttribute="top" secondItem="fSR-vv-jmb" secondAttribute="bottom" constant="70" id="uWa-2q-vDx"/>
+                                    <constraint firstItem="Xa7-O0-5gA" firstAttribute="top" secondItem="fSR-vv-jmb" secondAttribute="bottom" constant="50" id="uWa-2q-vDx"/>
+                                    <constraint firstItem="8rc-aY-uQY" firstAttribute="centerX" secondItem="Cyn-gR-M47" secondAttribute="centerX" id="uhh-vB-YUl"/>
                                     <constraint firstItem="fSR-vv-jmb" firstAttribute="top" secondItem="CIA-d9-K96" secondAttribute="bottom" constant="20" id="vYi-T3-L4Y"/>
+                                    <constraint firstItem="8rc-aY-uQY" firstAttribute="top" secondItem="cQR-Mz-j2C" secondAttribute="bottom" constant="50" id="xmt-mJ-4Jy"/>
+                                    <constraint firstItem="hOV-17-14f" firstAttribute="top" secondItem="8rc-aY-uQY" secondAttribute="bottom" constant="20" id="ycl-7p-rTF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -514,6 +535,7 @@
                     <navigationItem key="navigationItem" id="6at-WM-mDt"/>
                     <connections>
                         <outlet property="AllTimeLabel" destination="CIA-d9-K96" id="1Ft-Bt-UE4"/>
+                        <outlet property="Control_persent" destination="hOV-17-14f" id="mFf-W2-S8p"/>
                         <outlet property="H1TextField" destination="VMj-2m-QFW" id="wI9-HI-ovs"/>
                         <outlet property="H2TextField" destination="I13-7w-Qbo" id="RoI-tr-z15"/>
                         <outlet property="M1TextField" destination="gxs-3D-0qF" id="Owe-iQ-OU4"/>
@@ -540,10 +562,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Click">
-            <color red="0.23788467639593913" green="0.23788467639593913" blue="0.23788467639593913" alpha="0.30177119006849318" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ColorInput">
-            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23800000548362732" green="0.23800000548362732" blue="0.23800000548362732" alpha="0.30199998617172241" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="blue">
             <color red="0.58431372549019611" green="0.76470588235294112" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -30,9 +30,13 @@ class SetViewController: UIViewController {
     @IBOutlet var AllTimeLabel: UILabel!
     @IBOutlet var SecondLabel: UILabel!
     
+    @IBOutlet var Control_persent: UISegmentedControl!
+    
     var setViewControllerDelegate : ChangeViewController!
     var allTime : Int = 28800
     var second : Int = 3000
+    //빡공률 보이기
+    var showPersent: Int = 0
     
     var H1 = ""
     var M1 = ""
@@ -51,6 +55,9 @@ class SetViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboard()
         
+        //
+        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        
         H1TextField.keyboardType = .numberPad
         M1TextField.keyboardType = .numberPad
         H2TextField.keyboardType = .numberPad
@@ -66,6 +73,8 @@ class SetViewController: UIViewController {
         M2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         S1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         S2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+        
+        Control_persent.selectedSegmentIndex = showPersent
     }
     
     @objc func textFieldDidChange(textField: UITextField){
@@ -89,11 +98,23 @@ class SetViewController: UIViewController {
         
         UserDefaults.standard.set(second, forKey: "second")
         UserDefaults.standard.set(allTime, forKey: "allTime")
+        UserDefaults.standard.set(showPersent, forKey: "showPersent")
         print("set complite")
         setViewControllerDelegate.updateViewController()
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func set_persent(_ sender: UISegmentedControl) {
+        switch Control_persent.selectedSegmentIndex {
+        case 0:
+            showPersent = 0
+            print("0")
+        case 1:
+            showPersent = 1
+            print("1")
+        default: return
+        }
+    }
     func check()
     {
         if (H1 != "")

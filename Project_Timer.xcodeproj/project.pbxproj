@@ -336,7 +336,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -344,7 +344,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -359,7 +359,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -367,7 +367,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
