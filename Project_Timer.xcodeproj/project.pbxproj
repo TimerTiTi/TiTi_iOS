@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93973A572520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A512520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		93973A582520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 93973A522520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93973A512520CF7C00813730 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_40G.otf; path = fonts/HGGGOTHICSSI_PRO_40G.otf; sourceTree = SOURCE_ROOT; };
 		93973A522520CF7C00813730 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HGGGOTHICSSI_PRO_00G.otf; path = fonts/HGGGOTHICSSI_PRO_00G.otf; sourceTree = SOURCE_ROOT; };
@@ -96,6 +98,7 @@
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				93B08524248DDF2F00E215BD /* ViewController.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				9312E4CB252231E600025C81 /* LogViewController.swift */,
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				93A892B224C1544A00F89180 /* Test.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
@@ -190,6 +193,7 @@
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
+				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -344,7 +348,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -359,7 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -367,7 +371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.3;
+				MARKETING_VERSION = 2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;

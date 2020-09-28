@@ -34,7 +34,8 @@ class ViewController: UIViewController {
     @IBOutlet var RESETButton: UIButton!
     @IBOutlet var TimeSETButton: UIButton!
     @IBOutlet var persentLabel: UILabel!
-
+    @IBOutlet var LogButton: UIButton!
+    
     @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer : AVPlayer!
     
@@ -68,6 +69,9 @@ class ViewController: UIViewController {
     
     //빡공률 보이기 설정
     var showPersent: Int = 0
+    //날짜 저장
+    var log_day = ["",""]
+    var day = ""
     
     override func viewDidLoad() {
         
@@ -125,6 +129,12 @@ class ViewController: UIViewController {
             print("startTime SAVE")
             isRESET = false
             fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
+            //log 기록
+            let now = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "M월 d일"
+            day = dateFormatter.string(from: now)
+            UserDefaults.standard.set(day, forKey: "day")
         }
         startColor()
         startAction()
@@ -233,6 +243,8 @@ class ViewController: UIViewController {
         isStop = true
         realTime.invalidate()
         timeTrigger = true
+        //log 저장
+        UserDefaults.standard.set(printTime(temp: sum), forKey: "time")
     }
     
     func printTime(temp : Int) -> String
@@ -452,6 +464,7 @@ extension ViewController : ChangeViewController {
         StopButton.isUserInteractionEnabled = false
         RESETButton.isUserInteractionEnabled = true
         TimeSETButton.isUserInteractionEnabled = true
+        LogButton.isUserInteractionEnabled = true
     }
     
     func startEnable()
@@ -461,6 +474,7 @@ extension ViewController : ChangeViewController {
         StopButton.isUserInteractionEnabled = true
         RESETButton.isUserInteractionEnabled = false
         TimeSETButton.isUserInteractionEnabled = false
+        LogButton.isUserInteractionEnabled = false
     }
     
     private func playAudioFromProject() {
