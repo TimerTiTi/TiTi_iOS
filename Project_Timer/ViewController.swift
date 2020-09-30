@@ -70,8 +70,8 @@ class ViewController: UIViewController {
     //빡공률 보이기 설정
     var showPersent: Int = 0
     //날짜 저장
-    var log_day = ["",""]
-    var day = ""
+    var array_day = [String](repeating: "", count: 7)
+    var array_time = [String](repeating: "", count: 7)
     
     override func viewDidLoad() {
         
@@ -129,12 +129,8 @@ class ViewController: UIViewController {
             print("startTime SAVE")
             isRESET = false
             fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
-            //log 기록
-            let now = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "M월 d일"
-            day = dateFormatter.string(from: now)
-            UserDefaults.standard.set(day, forKey: "day")
+            //log 추가
+            setLogData()
         }
         startColor()
         startAction()
@@ -197,6 +193,10 @@ class ViewController: UIViewController {
     
     
     @objc func updateCounter(){
+        if second < 61 {
+            CountTimeLabel.textColor = TEXT
+            CircleView.progressColor = TEXT!
+        }
         if second < 1 {
             endGame()
             stopColor()
@@ -207,24 +207,6 @@ class ViewController: UIViewController {
             //오디오 재생 추가
             playAudioFromProject()
         }
-//        else if allTime < 1 {
-//            endGame()
-//            CountTimeLabel.text = "종료"
-//            StopButton.backgroundColor = BROWN
-//            StartButton.backgroundColor = BROWN
-//            ResetButton.backgroundColor = BUTTON
-//
-//            StartButton.isUserInteractionEnabled = false
-//            ResetButton.isUserInteractionEnabled = true
-//            StopButton.isUserInteractionEnabled = false
-//
-//            RESETButton.isUserInteractionEnabled = true
-//            TimeSETButton.isUserInteractionEnabled = true
-//
-////            AudioServicesPlaySystemSound(1254)
-////            AudioServicesPlaySystemSound(4095)
-//            playAudioFromProject()
-//        }
         else {
             second = second - 1
             sum = sum + 1
@@ -244,7 +226,7 @@ class ViewController: UIViewController {
         realTime.invalidate()
         timeTrigger = true
         //log 저장
-        UserDefaults.standard.set(printTime(temp: sum), forKey: "time")
+        saveLogData()
     }
     
     func printTime(temp : Int) -> String
@@ -477,6 +459,36 @@ extension ViewController : ChangeViewController {
         LogButton.isUserInteractionEnabled = false
     }
     
+    func saveLogData()
+    {
+        //log 시간 저장
+        UserDefaults.standard.set(printTime(temp: sum), forKey: "time1")
+    }
+    
+    func setLogData()
+    {
+        //값 불러오기
+        for i in stride(from: 0, to: 7, by: 1)
+        {
+            array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
+            array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
+        }
+        //값 옮기기, 값 저장하기
+        for i in stride(from: 6, to: 0, by: -1)
+        {
+            array_day[i] = array_day[i-1]
+            UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
+            array_time[i] = array_time[i-1]
+            UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
+        }
+        
+        //log 날짜 설정
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일"
+        let today = dateFormatter.string(from: now)
+        UserDefaults.standard.set(today, forKey: "day1")
+    }
     private func playAudioFromProject() {
         guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
             print("error to get the mp3 file")
