@@ -203,9 +203,9 @@ class ViewController: UIViewController {
             stopEnable()
             CountTimeLabel.text = "종료"
 //            AudioServicesPlaySystemSound(1254)
-//            AudioServicesPlaySystemSound(4095)
             //오디오 재생 추가
             playAudioFromProject()
+            AudioServicesPlaySystemSound(4095)
         }
         else {
             second = second - 1

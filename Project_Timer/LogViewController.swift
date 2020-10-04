@@ -59,8 +59,4 @@ class LogViewController: UIViewController {
         Label_time6.text = time6
         Label_time7.text = time7
     }
-    
-
-    
-
 }
