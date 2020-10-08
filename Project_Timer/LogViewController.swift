@@ -58,5 +58,20 @@ class LogViewController: UIViewController {
         Label_time5.text = time5
         Label_time6.text = time6
         Label_time7.text = time7
+        
+//        Label_day1.text = day1
+//        Label_day2.text = "10월 7일"
+//        Label_day3.text = "10월 6일"
+//        Label_day4.text = "10월 5일"
+//        Label_day5.text = "10월 4일"
+//        Label_day6.text = "10월 3일"
+//        Label_day7.text = "10월 2일"
+//        Label_time1.text = time1
+//        Label_time2.text = "4:03:41"
+//        Label_time3.text = "6:08:14"
+//        Label_time4.text = "4:03:39"
+//        Label_time5.text = "5:44:07"
+//        Label_time6.text = "4:58:23"
+//        Label_time7.text = "3:37:20"
     }
 }
