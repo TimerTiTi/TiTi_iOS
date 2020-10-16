@@ -22,8 +22,8 @@
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
 		93B08525248DDF2F00E215BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08524248DDF2F00E215BD /* ViewController.swift */; };
 		93B08528248DDF2F00E215BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B08526248DDF2F00E215BD /* Main.storyboard */; };
-		93B0852A248DDF3000E215BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
 		93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */; };
+		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,8 +171,8 @@
 				93544DA92524BFDE009368C1 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				93544DAB2524BFDE009368C1 /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
-				93B0852A248DDF3000E215BD /* Assets.xcassets in Resources */,
 				93544DAC2524BFDE009368C1 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
+				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
 				939ECFB62509D442005B0596 /* timer.mp3 in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
 				93544DA82524BFDE009368C1 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
@@ -340,7 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -363,7 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -35,6 +35,9 @@ class ViewController: UIViewController {
     @IBOutlet var TimeSETButton: UIButton!
     @IBOutlet var persentLabel: UILabel!
     @IBOutlet var LogButton: UIButton!
+    //종료예정시간 추가
+    @IBOutlet var Label_to: UILabel!
+    @IBOutlet var Label_toTime: UILabel!
     
     @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer : AVPlayer!
@@ -121,6 +124,8 @@ class ViewController: UIViewController {
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
         fromSecond = progressPer
         CircleView.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     @IBAction func StartButtonAction(_ sender: UIButton) {
@@ -162,6 +167,8 @@ class ViewController: UIViewController {
         //프로그래스 추가!
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     @IBAction func Reset(_ sender: UIButton) {
         ResetButton.backgroundColor = CLICK
@@ -238,6 +245,8 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(stopCount, forKey: "stopCount")
         //종료카운트 보이기 테스트
         persentLabel.text = "STOP : " + String(stopCount) + "번"
+        //종료예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     func printTime(temp : Int) -> String
@@ -447,6 +456,9 @@ extension ViewController : ChangeViewController {
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(BLUE, for: .normal)
         CountTimeLabel.textColor = UIColor.white
+        //예상종료시간 보이기
+        Label_to.alpha = 1
+        Label_toTime.alpha = 1
     }
     
     func startColor()
@@ -460,6 +472,9 @@ extension ViewController : ChangeViewController {
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(UIColor.white, for: .normal)
         CountTimeLabel.textColor = BLUE
+        //예상종료시간 숨기기
+        Label_to.alpha = 0
+        Label_toTime.alpha = 0
     }
     
     func stopEnable()
@@ -523,6 +538,18 @@ extension ViewController : ChangeViewController {
             print("audio file error")
         }
         audioPlayer?.play()
+    }
+    
+    //예정종료시간 구하기
+    func getFutureTime() -> String
+    {
+        //log 날짜 설정
+        let now = Date()
+        let future = now.addingTimeInterval(TimeInterval(second))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        let today = dateFormatter.string(from: future)
+        return today
     }
 
 }

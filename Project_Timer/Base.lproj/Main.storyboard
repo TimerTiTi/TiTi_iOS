@@ -81,8 +81,20 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qS6-Nq-MwD">
-                                                <rect key="frame" x="103" y="62" width="44.5" height="20"/>
+                                                <rect key="frame" x="103" y="62.5" width="44.5" height="20"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료예정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5z-T6-oLO">
+                                                <rect key="frame" x="99" y="167.5" width="52" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAR-uY-e1v">
+                                                <rect key="frame" x="96" y="190" width="58" height="27"/>
+                                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -90,10 +102,14 @@
                                         <constraints>
                                             <constraint firstItem="8Jj-C0-oEf" firstAttribute="centerY" secondItem="JWO-XV-oGM" secondAttribute="centerY" id="09u-g4-Nmy"/>
                                             <constraint firstItem="8Jj-C0-oEf" firstAttribute="centerX" secondItem="JWO-XV-oGM" secondAttribute="centerX" id="Ciu-e9-H8N"/>
-                                            <constraint firstItem="8Jj-C0-oEf" firstAttribute="top" secondItem="qS6-Nq-MwD" secondAttribute="bottom" constant="20.5" id="ZrD-gK-VHV"/>
+                                            <constraint firstItem="u5z-T6-oLO" firstAttribute="top" secondItem="8Jj-C0-oEf" secondAttribute="bottom" constant="20" id="U7o-Mg-rfp"/>
+                                            <constraint firstItem="8Jj-C0-oEf" firstAttribute="top" secondItem="qS6-Nq-MwD" secondAttribute="bottom" constant="20" id="ZrD-gK-VHV"/>
                                             <constraint firstAttribute="height" constant="250" id="bJF-SB-dKZ"/>
                                             <constraint firstItem="qS6-Nq-MwD" firstAttribute="centerX" secondItem="JWO-XV-oGM" secondAttribute="centerX" id="mTl-zj-zo7"/>
+                                            <constraint firstItem="pAR-uY-e1v" firstAttribute="top" secondItem="u5z-T6-oLO" secondAttribute="bottom" constant="5" id="nOR-Ot-Dxb"/>
                                             <constraint firstAttribute="width" constant="250" id="qpG-ar-N8H"/>
+                                            <constraint firstItem="pAR-uY-e1v" firstAttribute="centerX" secondItem="JWO-XV-oGM" secondAttribute="centerX" id="z3r-gn-fPY"/>
+                                            <constraint firstItem="u5z-T6-oLO" firstAttribute="centerX" secondItem="JWO-XV-oGM" secondAttribute="centerX" id="zqX-S6-fPW"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy6-EI-A9Q">
@@ -288,6 +304,8 @@
                         <outlet property="AllTimeLabel" destination="CAI-GT-efl" id="myh-ls-rZt"/>
                         <outlet property="CircleView" destination="JWO-XV-oGM" id="rNR-7Q-96o"/>
                         <outlet property="CountTimeLabel" destination="8Jj-C0-oEf" id="hSl-pb-eX3"/>
+                        <outlet property="Label_to" destination="u5z-T6-oLO" id="fnk-5n-Diz"/>
+                        <outlet property="Label_toTime" destination="pAR-uY-e1v" id="vKa-Za-8bM"/>
                         <outlet property="LogButton" destination="4RT-t7-fcv" id="BCf-5l-Nca"/>
                         <outlet property="RESETButton" destination="Mgf-1A-Zfg" id="yPd-5I-jIb"/>
                         <outlet property="ResetButton" destination="3hX-Pp-OMI" id="WL1-Lk-522"/>
