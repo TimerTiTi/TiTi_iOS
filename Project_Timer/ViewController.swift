@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     //종료예정시간 추가
     @IBOutlet var Label_to: UILabel!
     @IBOutlet var Label_toTime: UILabel!
+    //사라지기 애니메이션 추가
+    @IBOutlet var View_labels: UIView!
+    
     
     @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer : AVPlayer!
@@ -85,8 +88,8 @@ class ViewController: UIViewController {
         ResetButton.layer.cornerRadius = 10
 
         sum = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
-        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 28800
-        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 3000
+        allTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
+        second = UserDefaults.standard.value(forKey: "second2") as? Int ?? 2400
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         stopCount = UserDefaults.standard.value(forKey: "stopCount") as? Int ?? 0
 
@@ -196,6 +199,8 @@ class ViewController: UIViewController {
         
         //persent 추가! RESET 여부 추가
         persentReset()
+        //예상종료시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     @IBAction func TimeSetButton(_ sender: UIButton) {
@@ -319,6 +324,8 @@ extension ViewController : ChangeViewController {
         {
             persentLabel.alpha = 0
         }
+        //종료 예상시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     
     // Selected for Lifecycle Methods
@@ -342,6 +349,11 @@ extension ViewController : ChangeViewController {
                 refresh(hours: diffHrs, mins: diffMins, secs: diffSecs)
                 removeSavedDate()
             }
+        }
+        else
+        {
+            //종료예상시간 보이기
+            Label_toTime.text = getFutureTime()
         }
     }
     
@@ -456,9 +468,21 @@ extension ViewController : ChangeViewController {
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(BLUE, for: .normal)
         CountTimeLabel.textColor = UIColor.white
-        //예상종료시간 보이기
-        Label_to.alpha = 1
-        Label_toTime.alpha = 1
+        //예상종료시간 보이기, stop 버튼 제자리로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.Label_to.alpha = 1
+            self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: 0)
+        })
+        //animation test
+        UIView.animate(withDuration: 0.5, animations: {
+            self.StartButton.alpha = 1
+            self.ResetButton.alpha = 1
+            self.RESETButton.alpha = 1
+            self.TimeSETButton.alpha = 1
+            self.LogButton.alpha = 1
+            self.View_labels.alpha = 1
+            self.persentLabel.alpha = 1
+        })
     }
     
     func startColor()
@@ -466,15 +490,26 @@ extension ViewController : ChangeViewController {
         self.view.backgroundColor = UIColor.black
         CircleView.progressColor = BLUE!
         StartButton.backgroundColor = CLICK
-        StopButton.backgroundColor = BLUE
+        StopButton.backgroundColor = UIColor.clear
         ResetButton.backgroundColor = CLICK
         StartButton.setTitleColor(UIColor.white, for: .normal)
         StopButton.setTitleColor(UIColor.white, for: .normal)
         ResetButton.setTitleColor(UIColor.white, for: .normal)
         CountTimeLabel.textColor = BLUE
-        //예상종료시간 숨기기
-        Label_to.alpha = 0
-        Label_toTime.alpha = 0
+        //예상종료시간 숨기기, stop 버튼 센터로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.Label_to.alpha = 0
+            self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: -15)
+        })
+        UIView.animate(withDuration: 0.3, animations: {
+            self.StartButton.alpha = 0
+            self.ResetButton.alpha = 0
+            self.RESETButton.alpha = 0
+            self.TimeSETButton.alpha = 0
+            self.LogButton.alpha = 0
+            self.View_labels.alpha = 0
+            self.persentLabel.alpha = 0
+        })
     }
     
     func stopEnable()
@@ -547,7 +582,7 @@ extension ViewController : ChangeViewController {
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(second))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: future)
         return today
     }

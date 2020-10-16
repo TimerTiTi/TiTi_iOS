@@ -33,8 +33,8 @@ class SetViewController: UIViewController {
     @IBOutlet var Control_persent: UISegmentedControl!
     
     var setViewControllerDelegate : ChangeViewController!
-    var allTime : Int = 28800
-    var second : Int = 3000
+    var allTime : Int = 21600
+    var second : Int = 2400
     //빡공률 보이기
     var showPersent: Int = 0
     
@@ -44,10 +44,10 @@ class SetViewController: UIViewController {
     var M2 = ""
     var S1 = ""
     var S2 = ""
-    var h1 = 8
+    var h1 = 6
     var h2 = 0
     var m1 = 0
-    var m2 = 50
+    var m2 = 40
     var s1 = 0
     var s2 = 0
     
