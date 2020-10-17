@@ -95,13 +95,17 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func SetButton(_ sender: UIButton) {
-        
-        UserDefaults.standard.set(second, forKey: "second")
-        UserDefaults.standard.set(allTime, forKey: "allTime")
-        UserDefaults.standard.set(showPersent, forKey: "showPersent")
-        print("set complite")
-        setViewControllerDelegate.updateViewController()
-        self.dismiss(animated: true, completion: nil)
+        //경고창 추가
+        let alert = UIAlertController(title:"SET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .default, handler:
+                                        {
+                                            action in
+                                            self.SET_action()
+                                        })
+        alert.addAction(cancel)
+        alert.addAction(okAction)
+        present(alert,animated: true,completion: nil)
     }
     
     @IBAction func set_persent(_ sender: UISegmentedControl) {
@@ -184,6 +188,16 @@ class SetViewController: UIViewController {
         
         let returnString  = String(H) + ":" + stringM + ":" + stringS
         return returnString
+    }
+    
+    func SET_action()
+    {
+        UserDefaults.standard.set(second, forKey: "second")
+        UserDefaults.standard.set(allTime, forKey: "allTime")
+        UserDefaults.standard.set(showPersent, forKey: "showPersent")
+        print("set complite")
+        setViewControllerDelegate.updateViewController()
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
