@@ -112,7 +112,14 @@ class ViewController: UIViewController {
         if(showPersent == 0)
         {
             persentLabel.alpha = 1
-            checkPersent()
+            if(stopCount != 0)
+            {
+                checkPersent()
+            }
+            else
+            {
+                persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
+            }
             persentLabel.textColor = UIColor.white
         }
         else
@@ -192,6 +199,7 @@ class ViewController: UIViewController {
         //정지 회수 저장
         stopCount = 0
         UserDefaults.standard.set(0, forKey: "stopCount")
+        persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
         
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
@@ -248,8 +256,7 @@ class ViewController: UIViewController {
         //stopCount 증가
         stopCount+=1
         UserDefaults.standard.set(stopCount, forKey: "stopCount")
-        //종료카운트 보이기 테스트
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
+        checkPersent()
         //종료예상시간 보이기
         Label_toTime.text = getFutureTime()
     }
@@ -309,6 +316,7 @@ extension ViewController : ChangeViewController {
         //정지 회수 저장
         stopCount = 0
         UserDefaults.standard.set(0, forKey: "stopCount")
+        persentLabel.text = "STOP : " + String(stopCount) + "\nAVER : 0:00:00"
         
         AllTimeLabel.text = printTime(temp: allTime)
         SumTimeLabel.text = printTime(temp: sum)
@@ -350,11 +358,8 @@ extension ViewController : ChangeViewController {
                 removeSavedDate()
             }
         }
-        else
-        {
-            //종료예상시간 보이기
-            Label_toTime.text = getFutureTime()
-        }
+        //백그라운드 진입시 다시 최신화 설정
+        Label_toTime.text = getFutureTime()
     }
     
     static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
@@ -411,7 +416,7 @@ extension ViewController : ChangeViewController {
         UserDefaults.standard.set(allTime, forKey: "allTime2")
         
         //persent 추가!
-        checkPersent()
+//        checkPersent()
         //프로그래스 추가!
         progressPer = Float(fixedSecond - second) / Float(fixedSecond)
         print("fixedSecond : " + String(fixedSecond))
@@ -429,19 +434,18 @@ extension ViewController : ChangeViewController {
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 3000
         CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
-        //정지회수 보이기
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
     }
     
+    //빡공률 -> 종료회수, 평균시간 보이기로 변경
     func checkPersent()
     {
-        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
-            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
-            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
-            print("timeForPersent : " + String(timeForPersent))
-
-            //계산부분
-            let per : Double = Double(sum)/Double(timeForPersent)*100
+//        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
+//            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
+//            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
+//            print("timeForPersent : " + String(timeForPersent))
+//
+//            //계산부분
+//            let per : Double = Double(sum)/Double(timeForPersent)*100
 //            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
 //
 //            if (per>50.0)
@@ -452,9 +456,13 @@ extension ViewController : ChangeViewController {
 //            {
 //                persentLabel.textColor = TEXT
 //            }
-        }
+//        }
         //정지회수 보이기
-        persentLabel.text = "STOP : " + String(stopCount) + "번"
+        var print = "STOP : " + String(stopCount)
+        let aver = (Int)(sum/stopCount)
+        print += "\nAVER : " + printTime(temp: aver)
+        //정지회수, 평균 시간 보이기
+        persentLabel.text = print
     }
     
     func stopColor()
@@ -481,8 +489,14 @@ extension ViewController : ChangeViewController {
             self.TimeSETButton.alpha = 1
             self.LogButton.alpha = 1
             self.View_labels.alpha = 1
-            self.persentLabel.alpha = 1
         })
+        //보이기 숨기기 설정
+        if(showPersent == 0)
+        {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.persentLabel.alpha = 1
+            })
+        }
     }
     
     func startColor()
@@ -500,8 +514,6 @@ extension ViewController : ChangeViewController {
         UIView.animate(withDuration: 0.3, animations: {
             self.Label_to.alpha = 0
             self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: -15)
-        })
-        UIView.animate(withDuration: 0.3, animations: {
             self.StartButton.alpha = 0
             self.ResetButton.alpha = 0
             self.RESETButton.alpha = 0
