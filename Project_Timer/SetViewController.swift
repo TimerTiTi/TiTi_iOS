@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChangeViewController {
     func updateViewController()
+    func changeTimer()
 }
 
 class SetViewController: UIViewController {
@@ -55,7 +56,11 @@ class SetViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboard()
         
-        //
+        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+        AllTimeLabel.text = printTime(temp: allTime)
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        SecondLabel.text = printTime(temp: second)
+        
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         
         H1TextField.keyboardType = .numberPad

@@ -40,6 +40,9 @@ class ViewController: UIViewController {
     @IBOutlet var Label_toTime: UILabel!
     //사라지기 애니메이션 추가
     @IBOutlet var View_labels: UIView!
+    //타이머 설정 버튼 추가
+    @IBOutlet var Button_setTimer: UIButton!
+    
     
     
     @IBOutlet var CircleView: CircularProgressView!
@@ -200,6 +203,12 @@ class ViewController: UIViewController {
             present(setVC,animated: true,completion: nil)
     }
     
+    //타이머 설정 버튼 추가
+    @IBAction func Button_setTimer(_ sender: UIButton) {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController") as! SetTimerViewController
+            setVC.SetTimerViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
     
     @objc func updateCounter(){
         if second < 61 {
@@ -211,9 +220,9 @@ class ViewController: UIViewController {
             stopColor()
             stopEnable()
             CountTimeLabel.text = "종료"
-//            AudioServicesPlaySystemSound(1254)
+            AudioServicesPlaySystemSound(1254)
             //오디오 재생 추가
-            playAudioFromProject()
+//            playAudioFromProject()
             AudioServicesPlaySystemSound(4095)
         }
         else {
@@ -317,6 +326,16 @@ extension ViewController : ChangeViewController {
         }
         //종료 예상시간 보이기
         Label_toTime.text = getFutureTime()
+    }
+    
+    func changeTimer() {
+        endGame()
+        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        CountTimeLabel.text = printTime(temp: second)
+        Label_toTime.text = getFutureTime()
+        fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        CircleView.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
+        fromSecond = 0.0
     }
     
     // Selected for Lifecycle Methods
@@ -515,6 +534,8 @@ extension ViewController : ChangeViewController {
         RESETButton.isUserInteractionEnabled = true
         TimeSETButton.isUserInteractionEnabled = true
         LogButton.isUserInteractionEnabled = true
+        
+        Button_setTimer.isUserInteractionEnabled = true
     }
     
     func startEnable()
@@ -525,6 +546,8 @@ extension ViewController : ChangeViewController {
         RESETButton.isUserInteractionEnabled = false
         TimeSETButton.isUserInteractionEnabled = false
         LogButton.isUserInteractionEnabled = false
+        
+        Button_setTimer.isUserInteractionEnabled = false
     }
     
     func saveLogData()
