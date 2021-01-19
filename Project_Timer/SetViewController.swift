@@ -15,11 +15,8 @@ protocol ChangeViewController {
 
 class SetViewController: UIViewController {
 
-//    @IBOutlet var View1: UIView!
-//    @IBOutlet var View2: UIView!
-//    @IBOutlet var InputView1: UIView!
-//    @IBOutlet var InputView2: UIView!
     @IBOutlet var SetButton: UIButton!
+    @IBOutlet var BackButton: UIButton!
     
     @IBOutlet var H1TextField: UITextField!
     @IBOutlet var M1TextField: UITextField!
@@ -52,6 +49,8 @@ class SetViewController: UIViewController {
     var s1 = 0
     var s2 = 0
     
+    let BLUE = UIColor(named: "Blue")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboard()
@@ -60,6 +59,8 @@ class SetViewController: UIViewController {
         AllTimeLabel.text = printTime(temp: allTime)
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         SecondLabel.text = printTime(temp: second)
+        getHMS1()
+        getHMS2()
         
         showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         
@@ -71,6 +72,12 @@ class SetViewController: UIViewController {
         S2TextField.keyboardType = .numberPad
         
         SetButton.layer.cornerRadius = 10
+        SetButton.layer.borderWidth = 2
+        SetButton.layer.borderColor = BLUE?.cgColor
+        
+        BackButton.layer.cornerRadius = 10
+        BackButton.layer.borderWidth = 2
+        BackButton.layer.borderColor = UIColor.white.cgColor
         
         H1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         M1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
@@ -111,6 +118,11 @@ class SetViewController: UIViewController {
         alert.addAction(cancel)
         alert.addAction(okAction)
         present(alert,animated: true,completion: nil)
+    }
+    
+    
+    @IBAction func Backbutton_action(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func set_persent(_ sender: UISegmentedControl) {
@@ -180,6 +192,20 @@ class SetViewController: UIViewController {
             }
             s2 = Int(S2)!
         }
+    }
+    
+    func getHMS1()
+    {
+        s1 = allTime%60
+        h1 = allTime/3600
+        m1 = allTime/60 - h1*60
+    }
+    
+    func getHMS2()
+    {
+        s2 = second%60
+        h2 = second/3600
+        m2 = second/60 - h2*60
     }
     
     func printTime(temp : Int) -> String

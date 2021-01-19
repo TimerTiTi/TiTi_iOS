@@ -31,8 +31,8 @@ class ViewController: UIViewController {
     @IBOutlet var StartButton: UIButton!
     @IBOutlet var StopButton: UIButton!
     @IBOutlet var ResetButton: UIButton!
-    @IBOutlet var RESETButton: UIButton!
-    @IBOutlet var TimeSETButton: UIButton!
+    @IBOutlet var SETTING_Button: UIButton!
+    @IBOutlet var TIMER_Button: UIButton!
     @IBOutlet var persentLabel: UILabel!
     @IBOutlet var LogButton: UIButton!
     //종료예정시간 추가
@@ -41,9 +41,6 @@ class ViewController: UIViewController {
     //사라지기 애니메이션 추가
     @IBOutlet var View_labels: UIView!
     //타이머 설정 버튼 추가
-    @IBOutlet var Button_setTimer: UIButton!
-    
-    
     
     @IBOutlet var CircleView: CircularProgressView!
     var audioPlayer : AVPlayer!
@@ -156,6 +153,7 @@ class ViewController: UIViewController {
         startColor()
         startAction()
         isStop = false
+        Label_toTime.text = getFutureTime()
     }
     
     @IBAction func StopButtonAction(_ sender: UIButton) {
@@ -183,32 +181,20 @@ class ViewController: UIViewController {
         //종료예상시간 보이기
         Label_toTime.text = getFutureTime()
     }
-    @IBAction func Reset(_ sender: UIButton) {
-        //경고창 추가
-        let alert = UIAlertController(title:"RESET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
-        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-        let okAction = UIAlertAction(title: "RESET", style: .default, handler:
-                                        {
-                                            action in
-                                            self.RESET_action()
-                                        })
-        alert.addAction(cancel)
-        alert.addAction(okAction)
-        present(alert,animated: true,completion: nil)
-    }
     
-    @IBAction func TimeSetButton(_ sender: UIButton) {
+    @IBAction func SETTINGButton(_ sender: UIButton) {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
             setVC.setViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
     
     //타이머 설정 버튼 추가
-    @IBAction func Button_setTimer(_ sender: UIButton) {
+    @IBAction func TIMERButton(_ sender: UIButton) {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController") as! SetTimerViewController
             setVC.SetTimerViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
+    
     
     @objc func updateCounter(){
         if second < 61 {
@@ -329,8 +315,8 @@ extension ViewController : ChangeViewController {
     }
     
     func changeTimer() {
-        endGame()
         second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        UserDefaults.standard.set(second, forKey: "second2")
         CountTimeLabel.text = printTime(temp: second)
         Label_toTime.text = getFutureTime()
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
@@ -441,24 +427,6 @@ extension ViewController : ChangeViewController {
     //빡공률 -> 종료회수, 평균시간 보이기로 변경
     func checkPersent()
     {
-//        if let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date {
-//            (diffHrs, diffMins, diffSecs) = ViewController.getTimeDifference(startDate: startTime)
-//            timeForPersent = diffHrs*3600 + diffMins*60 + diffSecs
-//            print("timeForPersent : " + String(timeForPersent))
-//
-//            //계산부분
-//            let per : Double = Double(sum)/Double(timeForPersent)*100
-//            persentLabel.text = "빡공률 : " + String(format: "%.1f", per) + "%"
-//
-//            if (per>50.0)
-//            {
-//                persentLabel.textColor = UIColor.white
-//            }
-//            else
-//            {
-//                persentLabel.textColor = TEXT
-//            }
-//        }
         //정지회수 보이기
         var print = "STOP : " + String(stopCount)
         let aver = (Int)(sum/stopCount)
@@ -487,8 +455,8 @@ extension ViewController : ChangeViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.StartButton.alpha = 1
             self.ResetButton.alpha = 1
-            self.RESETButton.alpha = 1
-            self.TimeSETButton.alpha = 1
+            self.SETTING_Button.alpha = 1
+            self.TIMER_Button.alpha = 1
             self.LogButton.alpha = 1
             self.View_labels.alpha = 1
         })
@@ -518,8 +486,8 @@ extension ViewController : ChangeViewController {
             self.Label_toTime.transform = CGAffineTransform(translationX: 0, y: -15)
             self.StartButton.alpha = 0
             self.ResetButton.alpha = 0
-            self.RESETButton.alpha = 0
-            self.TimeSETButton.alpha = 0
+            self.SETTING_Button.alpha = 0
+            self.TIMER_Button.alpha = 0
             self.LogButton.alpha = 0
             self.View_labels.alpha = 0
             self.persentLabel.alpha = 0
@@ -531,11 +499,9 @@ extension ViewController : ChangeViewController {
         StartButton.isUserInteractionEnabled = true
         ResetButton.isUserInteractionEnabled = true
         StopButton.isUserInteractionEnabled = false
-        RESETButton.isUserInteractionEnabled = true
-        TimeSETButton.isUserInteractionEnabled = true
+        SETTING_Button.isUserInteractionEnabled = true
+        TIMER_Button.isUserInteractionEnabled = true
         LogButton.isUserInteractionEnabled = true
-        
-        Button_setTimer.isUserInteractionEnabled = true
     }
     
     func startEnable()
@@ -543,11 +509,9 @@ extension ViewController : ChangeViewController {
         StartButton.isUserInteractionEnabled = false
         ResetButton.isUserInteractionEnabled = false
         StopButton.isUserInteractionEnabled = true
-        RESETButton.isUserInteractionEnabled = false
-        TimeSETButton.isUserInteractionEnabled = false
+        SETTING_Button.isUserInteractionEnabled = false
+        TIMER_Button.isUserInteractionEnabled = false
         LogButton.isUserInteractionEnabled = false
-        
-        Button_setTimer.isUserInteractionEnabled = false
     }
     
     func saveLogData()

@@ -45,11 +45,11 @@ class SetTimerViewController: UIViewController {
         Text_S.keyboardType = .numberPad
         
         Button_set.layer.cornerRadius = 10
-        Button_set.layer.borderWidth = 3
+        Button_set.layer.borderWidth = 2
         Button_set.layer.borderColor = BLUE?.cgColor
         
         Button_Back.layer.cornerRadius = 10
-        Button_Back.layer.borderWidth = 3
+        Button_Back.layer.borderWidth = 2
         Button_Back.layer.borderColor = UIColor.white.cgColor
 
         Text_H.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
