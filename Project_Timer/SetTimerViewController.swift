@@ -15,6 +15,9 @@ class SetTimerViewController: UIViewController {
     @IBOutlet var Text_M: UITextField!
     @IBOutlet var Text_S: UITextField!
     @IBOutlet var Button_set: UIButton!
+    @IBOutlet var Button_Back: UIButton!
+    
+    @IBOutlet weak var Label_toTime: UILabel!
     
     var SetTimerViewControllerDelegate : ChangeViewController!
     
@@ -25,6 +28,8 @@ class SetTimerViewController: UIViewController {
     var m: Int = 0
     var s: Int = 0
     var second: Int = 2400
+    
+    let BLUE = UIColor(named: "Blue")
     
     
     
@@ -40,11 +45,19 @@ class SetTimerViewController: UIViewController {
         Text_S.keyboardType = .numberPad
         
         Button_set.layer.cornerRadius = 10
+        Button_set.layer.borderWidth = 3
+        Button_set.layer.borderColor = BLUE?.cgColor
+        
+        Button_Back.layer.cornerRadius = 10
+        Button_Back.layer.borderWidth = 3
+        Button_Back.layer.borderColor = UIColor.white.cgColor
 
         Text_H.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         Text_M.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         Text_S.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         
+        //종료예정시간 보이기
+        Label_toTime.text = getFutureTime()
     }
     @objc func textFieldDidChange(textField: UITextField){
         H = Text_H.text!
@@ -52,10 +65,9 @@ class SetTimerViewController: UIViewController {
         S = Text_S.text!
         
         check()
-    
         second = h * 3600 + m * 60 + s
-        
         Label_timer.text = printTime(temp: second)
+        Label_toTime.text = getFutureTime()
     }
     
     func check()
@@ -108,4 +120,20 @@ class SetTimerViewController: UIViewController {
         SetTimerViewControllerDelegate.changeTimer()
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func Button_Back_adtion(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func getFutureTime() -> String
+    {
+        //log 날짜 설정
+        let now = Date()
+        let future = now.addingTimeInterval(TimeInterval(second))
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        let today = dateFormatter.string(from: future)
+        return today
+    }
+    
 }
