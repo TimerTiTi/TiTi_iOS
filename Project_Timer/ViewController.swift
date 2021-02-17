@@ -101,10 +101,10 @@ class ViewController: UIViewController {
         if timerTime < 1 {
             algoOfStop()
             TimerLabel.text = "종료"
-//            AudioServicesPlaySystemSound(1254)
+            AudioServicesPlaySystemSound(1254)
             //오디오 재생 추가
-            playAudioFromProject()
-//            AudioServicesPlaySystemSound(4095)
+//            playAudioFromProject()
+            AudioServicesPlaySystemSound(4095)
         }
         else {
             timerTime -= 1
@@ -266,7 +266,7 @@ extension ViewController {
     }
     
     func setBorner() {
-        ModeButton.layer.borderWidth = 3
+        ModeButton.layer.borderWidth = 2
         ModeButton.layer.borderColor = UIColor.white.cgColor
     }
     

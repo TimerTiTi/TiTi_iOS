@@ -256,7 +256,7 @@ extension ViewController2 {
     }
     
     func setBorder() {
-        ModeButton.layer.borderWidth = 3
+        ModeButton.layer.borderWidth = 2
         ModeButton.layer.borderColor = UIColor.white.cgColor
     }
     
