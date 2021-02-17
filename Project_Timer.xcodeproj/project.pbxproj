@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		872DE54025DCE7F400097560 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE53F25DCE7F400097560 /* ViewController2.swift */; };
+		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
+		874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
+		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
+		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
+		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
+		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
+		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
-		87C77B5725B6DAE10011993C /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5125B6DAE10011993C /* HGGGOTHICSSI_PRO_99G.otf */; };
-		87C77B5825B6DAE10011993C /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5225B6DAE10011993C /* HGGGOTHICSSI_PRO_00G.otf */; };
-		87C77B5925B6DAE10011993C /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5325B6DAE10011993C /* HGGGOTHICSSI_PRO_40G.otf */; };
-		87C77B5A25B6DAE10011993C /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5425B6DAE10011993C /* HGGGOTHICSSI_PRO_20G.otf */; };
-		87C77B5B25B6DAE10011993C /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5525B6DAE10011993C /* HGGGOTHICSSI_PRO_60G.otf */; };
-		87C77B5C25B6DAE10011993C /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 87C77B5625B6DAE10011993C /* HGGGOTHICSSI_PRO_80G.otf */; };
 		9312E4CC252231E600025C81 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9312E4CB252231E600025C81 /* LogViewController.swift */; };
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
@@ -28,13 +30,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		872DE53F25DCE7F400097560 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
+		874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
+		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
+		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
+		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
+		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
+		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
-		87C77B5125B6DAE10011993C /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
-		87C77B5225B6DAE10011993C /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
-		87C77B5325B6DAE10011993C /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
-		87C77B5425B6DAE10011993C /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
-		87C77B5525B6DAE10011993C /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
-		87C77B5625B6DAE10011993C /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		9312E4CB252231E600025C81 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
@@ -62,25 +66,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		874B9D1225CAB1EE006FCD04 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */,
+				874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */,
+				874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */,
+				874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */,
+				874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */,
+				874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		878B507025B6E2FB00B9EFD7 /* component */ = {
 			isa = PBXGroup;
 			children = (
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 			);
 			path = component;
-			sourceTree = "<group>";
-		};
-		93544DA12524BFC8009368C1 /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				87C77B5225B6DAE10011993C /* HGGGOTHICSSI_PRO_00G.otf */,
-				87C77B5425B6DAE10011993C /* HGGGOTHICSSI_PRO_20G.otf */,
-				87C77B5325B6DAE10011993C /* HGGGOTHICSSI_PRO_40G.otf */,
-				87C77B5525B6DAE10011993C /* HGGGOTHICSSI_PRO_60G.otf */,
-				87C77B5625B6DAE10011993C /* HGGGOTHICSSI_PRO_80G.otf */,
-				87C77B5125B6DAE10011993C /* HGGGOTHICSSI_PRO_99G.otf */,
-			);
-			path = fonts;
 			sourceTree = "<group>";
 		};
 		93B08514248DDF2F00E215BD = {
@@ -102,14 +106,16 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				874B9D1225CAB1EE006FCD04 /* fonts */,
 				878B507025B6E2FB00B9EFD7 /* component */,
-				93544DA12524BFC8009368C1 /* fonts */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				93B08524248DDF2F00E215BD /* ViewController.swift */,
+				872DE53F25DCE7F400097560 /* ViewController2.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
 				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
+				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				9312E4CB252231E600025C81 /* LogViewController.swift */,
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
@@ -179,16 +185,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87C77B5C25B6DAE10011993C /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
-				87C77B5A25B6DAE10011993C /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
-				87C77B5B25B6DAE10011993C /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
+				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
+				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
-				87C77B5925B6DAE10011993C /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
-				87C77B5825B6DAE10011993C /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
+				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
+				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
-				87C77B5725B6DAE10011993C /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
+				874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
+				874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +205,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
+				872DE54025DCE7F400097560 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,

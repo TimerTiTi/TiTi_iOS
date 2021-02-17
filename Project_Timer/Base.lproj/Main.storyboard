@@ -100,9 +100,6 @@ AVER : 1:02:03</string>
                                                 <state key="normal" title="TIMER">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="TIMERButton:" destination="yf8-ow-XX2" eventType="touchUpInside" id="kdo-Q4-B8l"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgf-1A-Zfg">
                                                 <rect key="frame" x="4" y="4" width="60" height="39"/>
@@ -113,9 +110,6 @@ AVER : 1:02:03</string>
                                                 <state key="normal" title="SETTING">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="SETTINGButton:" destination="yf8-ow-XX2" eventType="touchUpInside" id="9mK-DT-Ld6"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4RT-t7-fcv">
                                                 <rect key="frame" x="204" y="4" width="60" height="39"/>
@@ -127,7 +121,7 @@ AVER : 1:02:03</string>
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Nnf-jO-Ajw" kind="show" id="A0y-HU-AIh"/>
+                                                    <segue destination="Nnf-jO-Ajw" kind="show" id="Iyv-cu-eYb"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -158,9 +152,6 @@ AVER : 1:02:03</string>
                                                 <state key="normal" title="RE START">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="ResetButtonAction:" destination="yf8-ow-XX2" eventType="touchUpInside" id="3RP-bU-9xO"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gv-Ay-u3J">
                                                 <rect key="frame" x="4" y="4" width="90" height="40"/>
@@ -173,9 +164,6 @@ AVER : 1:02:03</string>
                                                 <state key="normal" title="START">
                                                     <color key="titleColor" name="Blue"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="StartButtonAction:" destination="yf8-ow-XX2" eventType="touchUpInside" id="XVi-Qv-tNB"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="463-xM-mGG">
                                                 <rect key="frame" x="114" y="4" width="90" height="40"/>
@@ -188,9 +176,6 @@ AVER : 1:02:03</string>
                                                 <state key="normal" title="STOP">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="StopButtonAction:" destination="yf8-ow-XX2" eventType="touchUpInside" id="FU9-tn-Ryi"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -208,8 +193,8 @@ AVER : 1:02:03</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWO-XV-oGM" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
                                         <rect key="frame" x="22" y="154" width="280" height="280"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jj-C0-oEf">
-                                                <rect key="frame" x="130.5" y="117.5" width="19.5" height="45"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Jj-C0-oEf">
+                                                <rect key="frame" x="56.5" y="117.5" width="167" height="45"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="iu0-Sq-buw"/>
@@ -280,26 +265,10 @@ AVER : 1:02:03</string>
                             <constraint firstItem="SuQ-re-5Ia" firstAttribute="centerX" secondItem="c7j-k9-Ypp" secondAttribute="centerX" id="I2U-aQ-FcP"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="AllTimeLabel" destination="CAI-GT-efl" id="myh-ls-rZt"/>
-                        <outlet property="CircleView" destination="JWO-XV-oGM" id="rNR-7Q-96o"/>
-                        <outlet property="CountTimeLabel" destination="8Jj-C0-oEf" id="hSl-pb-eX3"/>
-                        <outlet property="Label_to" destination="u5z-T6-oLO" id="fnk-5n-Diz"/>
-                        <outlet property="Label_toTime" destination="pAR-uY-e1v" id="vKa-Za-8bM"/>
-                        <outlet property="LogButton" destination="4RT-t7-fcv" id="BCf-5l-Nca"/>
-                        <outlet property="ResetButton" destination="fMh-gf-flK" id="sYT-2m-9Np"/>
-                        <outlet property="SETTING_Button" destination="Mgf-1A-Zfg" id="yix-Bk-iHE"/>
-                        <outlet property="StartButton" destination="4Gv-Ay-u3J" id="Swt-dt-PKY"/>
-                        <outlet property="StopButton" destination="463-xM-mGG" id="Zyl-Le-j2J"/>
-                        <outlet property="SumTimeLabel" destination="oy6-EI-A9Q" id="BF5-bN-8yo"/>
-                        <outlet property="TIMER_Button" destination="dqH-op-qzO" id="ncu-ys-a7c"/>
-                        <outlet property="View_labels" destination="Ziv-p0-WgA" id="r4E-L1-MOH"/>
-                        <outlet property="persentLabel" destination="6kH-C6-1lR" id="T5v-gE-hNh"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="59h-0Q-bUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="139"/>
+            <point key="canvasLocation" x="150" y="139"/>
         </scene>
         <!--Set View Controller-->
         <scene sceneID="q8u-yw-ewQ">
