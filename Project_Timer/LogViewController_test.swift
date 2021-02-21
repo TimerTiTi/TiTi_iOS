@@ -26,6 +26,14 @@ class LogViewController_test: UIViewController {
     @IBOutlet var Label_time6: UILabel!
     @IBOutlet var Label_time7: UILabel!
     
+    @IBOutlet var Label_break1: UILabel!
+    @IBOutlet var Label_break2: UILabel!
+    @IBOutlet var Label_break3: UILabel!
+    @IBOutlet var Label_break4: UILabel!
+    @IBOutlet var Label_break5: UILabel!
+    @IBOutlet var Label_break6: UILabel!
+    @IBOutlet var Label_break7: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -44,6 +52,7 @@ extension LogViewController_test {
         Label_day5.text = translate(input: UserDefaults.standard.value(forKey: "day5") as? String ?? "NO DATA")
         Label_day6.text = translate(input: UserDefaults.standard.value(forKey: "day6") as? String ?? "NO DATA")
         Label_day7.text = translate(input: UserDefaults.standard.value(forKey: "day7") as? String ?? "NO DATA")
+        
         Label_time1.text = UserDefaults.standard.value(forKey: "time1") as? String ?? "NO DATA"
         Label_time2.text = UserDefaults.standard.value(forKey: "time2") as? String ?? "NO DATA"
         Label_time3.text = UserDefaults.standard.value(forKey: "time3") as? String ?? "NO DATA"
@@ -51,6 +60,14 @@ extension LogViewController_test {
         Label_time5.text = UserDefaults.standard.value(forKey: "time5") as? String ?? "NO DATA"
         Label_time6.text = UserDefaults.standard.value(forKey: "time6") as? String ?? "NO DATA"
         Label_time7.text = UserDefaults.standard.value(forKey: "time7") as? String ?? "NO DATA"
+        
+        Label_break1.text = UserDefaults.standard.value(forKey: "break1") as? String ?? "NO DATA"
+        Label_break2.text = UserDefaults.standard.value(forKey: "break2") as? String ?? "NO DATA"
+        Label_break3.text = UserDefaults.standard.value(forKey: "break3") as? String ?? "NO DATA"
+        Label_break4.text = UserDefaults.standard.value(forKey: "break4") as? String ?? "NO DATA"
+        Label_break5.text = UserDefaults.standard.value(forKey: "break5") as? String ?? "NO DATA"
+        Label_break6.text = UserDefaults.standard.value(forKey: "break6") as? String ?? "NO DATA"
+        Label_break7.text = UserDefaults.standard.value(forKey: "break7") as? String ?? "NO DATA"
     }
     
     func setDummyData() {

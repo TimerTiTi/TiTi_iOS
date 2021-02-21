@@ -61,6 +61,7 @@ class ViewController: UIViewController {
     var showAverage: Int = 0
     var array_day = [String](repeating: "", count: 7)
     var array_time = [String](repeating: "", count: 7)
+    var array_break = [String](repeating: "", count: 7)
     var stopCount: Int = 0
     var VCNum: Int = 1
     
@@ -450,10 +451,10 @@ extension ViewController {
     }
     
     func setLogData() {
-        //값 불러오기
         for i in stride(from: 0, to: 7, by: 1) {
             array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
             array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
+            array_break[i] = UserDefaults.standard.value(forKey: "break"+String(i+1)) as? String ?? "NO DATA"
         }
         //값 옮기기, 값 저장하기
         for i in stride(from: 6, to: 0, by: -1) {
@@ -461,14 +462,17 @@ extension ViewController {
             UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
             array_time[i] = array_time[i-1]
             UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
+            array_break[i] = array_break[i-1]
+            UserDefaults.standard.set(array_break[i], forKey: "break"+String(i+1))
         }
-        
         //log 날짜 설정
         let now = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
         let today = dateFormatter.string(from: now)
         UserDefaults.standard.set(today, forKey: "day1")
+        //타이머 모드의 경우 쉬는시간을 0초로 저장한다
+        UserDefaults.standard.set(printTime(temp: 0), forKey: "break1")
     }
     
     private func playAudioFromProject() {
