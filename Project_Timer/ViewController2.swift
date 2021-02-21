@@ -146,6 +146,8 @@ class ViewController2: UIViewController {
 extension ViewController2 : ChangeViewController2 {
     
     func changeGoalTime() {
+        algoOfBreakStop()
+        
         isFirst = true
         setColor()
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
@@ -167,6 +169,7 @@ extension ViewController2 : ChangeViewController2 {
         stopColor()
         stopEnable()
         checkAverage()
+        allStopColor()
     }
 }
 
