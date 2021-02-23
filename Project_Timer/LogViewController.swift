@@ -69,4 +69,22 @@ extension LogViewController {
         Label_time6.text = "4:58:23"
         Label_time7.text = "3:37:20"
     }
+    
+    func printTime(temp : Int) -> String {
+        var returnString = "";
+        var num = temp;
+        if(num < 0) {
+            num = -num;
+            returnString += "+";
+        }
+        let S = num%60
+        let H = num/3600
+        let M = num/60 - H*60
+        
+        let stringS = S<10 ? "0"+String(S) : String(S)
+        let stringM = M<10 ? "0"+String(M) : String(M)
+        
+        returnString += String(H) + ":" + stringM + ":" + stringS
+        return returnString
+    }
 }

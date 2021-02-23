@@ -27,13 +27,13 @@ struct ContentView: View {
                 /* ----차트화면---- */
                 VStack {
                     //평균시간 텍스트
-                    Text("평균 : 3:20")
+                    Text("평균 : " + getHrs(value: getAverageTime(value: getStudyTimes())))
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .font(.system(size:17))
                     //그래프 틀
                     HStack(spacing:15) { //좌우로 15만큼 여백
-                        ForEach(workout_Data) {work in
+                        ForEach(DailyDatas) {work in
                             //세로 스택
                             VStack{
                                 //시간 + 그래프 막대
@@ -41,7 +41,7 @@ struct ContentView: View {
                                     //아래로 붙이기
                                     Spacer(minLength: 0)
                                     //시간 설정
-                                    Text(getHrs(value: work.totalTime))
+                                    Text(getHrs(value: work.studyTime))
                                         .foregroundColor(Color.white)
                                         .font(.system(size:14))
                                         .padding(.bottom,5)
@@ -49,11 +49,11 @@ struct ContentView: View {
                                     RoundedShape()
                                         .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
                                         //그래프 막대 높이설정
-                                        .frame(height:getHeight(value: work.totalTime))
+                                        .frame(height:getHeight(value: work.studyTime))
                                 }
                                 .frame(height:150)
                                 //날짜 설정
-                                Text(work.date)
+                                Text(work.day)
                                     .font(.caption)
                                     .foregroundColor(.white)
                             }
@@ -76,13 +76,13 @@ struct ContentView: View {
                 /* ----차트화면---- */
                 VStack {
                     //평균시간 텍스트
-                    Text("평균 : 3:20")
+                    Text("평균 : " + getHrs(value: getAverageTime(value: getBreakTimes())))
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .font(.system(size:17))
                     //그래프 틀
                     HStack(spacing:15) { //좌우로 15만큼 여백
-                        ForEach(workout_Data) {work in
+                        ForEach(DailyDatas) {work in
                             //세로 스택
                             VStack{
                                 //시간 + 그래프 막대
@@ -90,7 +90,7 @@ struct ContentView: View {
                                     //아래로 붙이기
                                     Spacer(minLength: 0)
                                     //시간 설정
-                                    Text(getHrs(value: work.totalTime))
+                                    Text(getHrs(value: work.breakTime))
                                         .foregroundColor(Color.white)
                                         .font(.system(size:14))
                                         .padding(.bottom,5)
@@ -98,11 +98,11 @@ struct ContentView: View {
                                     RoundedShape()
                                         .fill(LinearGradient(gradient: .init(colors: colors2), startPoint: .top, endPoint: .bottom))
                                         //그래프 막대 높이설정
-                                        .frame(height:getHeight(value: work.totalTime))
+                                        .frame(height:getHeight(value: work.breakTime))
                                 }
                                 .frame(height:150)
                                 //날짜 설정
-                                Text(work.date)
+                                Text(work.day)
                                     .font(.caption)
                                     .foregroundColor(.white)
                             }
@@ -120,25 +120,28 @@ struct ContentView: View {
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
-        
     }
 
     
     
-    func getHeight(value : CGFloat) -> CGFloat {
-        let max = getMaxInTotalTime(value: workout_Data)
-        return CGFloat(value / max) * 100
+    func getHeight(value : Int) -> CGFloat {
+        let max = getMaxInTotalTime(value: DailyDatas)
+        return (CGFloat(value) / CGFloat(max)) * 100
     }
     
-    func getHrs (value : CGFloat) -> String {
-        let minute = Int(value) - Int(value/60) * 60
-        return String(Int(value/60)) + ":" + String(minute)
-    }
+//    func getHrs (value : Int) -> String {
+//        let minute = Int(value) - Int(value/60) * 60
+//        return String(Int(value/60)) + ":" + String(minute)
+//    }
     
-    func getMaxInTotalTime (value : [Daily]) -> CGFloat {
-        let totalTimeArray = value.map { (value : Daily) -> CGFloat in value.totalTime}
-
-        return totalTimeArray.max()!
+    func getMaxInTotalTime (value : [Daily]) -> Int {
+        let sMax: Int = getStudyTimes().max()!
+        let bMax: Int = getBreakTimes().max()!
+        if sMax > bMax {
+            return sMax
+        } else {
+            return bMax
+        }
     }
     
 }
@@ -160,19 +163,93 @@ struct RoundedShape : Shape {
 
 struct Daily : Identifiable {
     var id : Int
-    var date : String
-    var totalTime : CGFloat
+    var day : String
+    var studyTime : Int
+    var breakTime : Int
 }
 
-var workout_Data = [
-
-    Daily(id: 1, date: "10/10", totalTime: 300),
-    Daily(id: 2, date: "10/11", totalTime: 254),
-    Daily(id: 3, date: "10/12", totalTime: 128),
-    Daily(id: 4, date: "10/13", totalTime: 100),
-    Daily(id: 5, date: "10/14", totalTime: 52),
-    Daily(id: 6, date: "10/15", totalTime: 270),
-    Daily(id: 7, date: "10/16", totalTime: 250)
-]
+var DailyDatas: [Daily] = []
 
 
+extension ContentView {
+    
+    func getHrs(value : Int) -> String {
+        var returnString = "";
+        var num = value;
+        if(num < 0) {
+            num = -num;
+            returnString += "+";
+        }
+        let H = num/3600
+        let M = num/60 - H*60
+        
+        let stringM = M<10 ? "0"+String(M) : String(M)
+        
+        returnString += String(H) + ":" + stringM
+        return returnString
+    }
+    
+    func translate(input: String) -> String {
+        if(input == "NO DATA") {
+            return "-/-"
+        } else {
+            print(input)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "M월 d일"
+            let exported = dateFormatter.date(from: input)!
+            let newDateFormatter = DateFormatter()
+            newDateFormatter.dateFormat = "M/d"
+            return newDateFormatter.string(from: exported)
+        }
+    }
+    
+    func translate2(input: String) -> Int {
+        if(input == "NO DATA") {
+            return 0
+        } else {
+            var sum: Int = 0
+            print(input)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss"
+            let exported = dateFormatter.date(from: input)!
+            
+            sum += Calendar.current.component(.hour, from: exported)*3600
+            sum += Calendar.current.component(.minute, from: exported)*60
+            sum += Calendar.current.component(.second, from: exported)
+            return sum
+        }
+    }
+    
+    func appendDailyDatas(){
+        
+        for i in 1...7 {
+            let id = i
+            let day = translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
+            let studyTime = translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
+            let breakTime = translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
+            DailyDatas.append(Daily(id: id, day: day, studyTime: studyTime, breakTime: breakTime))
+        }
+    }
+    
+    func getAverageTime(value: [Int]) -> Int {
+        var sum: Int = 0
+        for i in value {
+            sum += i
+        }
+        return sum/value.count
+    }
+    
+    func getStudyTimes() -> [Int] {
+        let studyArray = DailyDatas.map { (value : Daily) -> Int in value.studyTime}
+        return studyArray
+    }
+    
+    func getBreakTimes() -> [Int] {
+        let breakArray = DailyDatas.map { (value : Daily) -> Int in value.breakTime}
+        return breakArray
+    }
+    
+    func reset() {
+        DailyDatas = []
+    }
+}
