@@ -78,6 +78,7 @@ extension LogViewController_test {
         Label_day5.text = "1월 16일"
         Label_day6.text = "1월 15일"
         Label_day7.text = "1월 14일"
+        
         Label_time1.text = "3:23:10"
         Label_time2.text = "4:03:41"
         Label_time3.text = "6:08:14"

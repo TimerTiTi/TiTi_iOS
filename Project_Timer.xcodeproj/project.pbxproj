@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
+		870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE72025E529F2004DD27E /* GraphViewController.swift */; };
 		872DE54025DCE7F400097560 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE53F25DCE7F400097560 /* ViewController2.swift */; };
 		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
 		874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		870AE72025E529F2004DD27E /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		872DE53F25DCE7F400097560 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 				93B08524248DDF2F00E215BD /* ViewController.swift */,
 				872DE53F25DCE7F400097560 /* ViewController2.swift */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				870AE72025E529F2004DD27E /* GraphViewController.swift */,
 				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
 				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
@@ -124,6 +129,7 @@
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				93A892B224C1544A00F89180 /* Test.swift */,
 				93B08529248DDF3000E215BD /* Assets.xcassets */,
+				870AE71D25E52941004DD27E /* ContentView.swift */,
 				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
 			);
@@ -210,10 +216,12 @@
 			files = (
 				8762AB6325E0DF38003438B5 /* LogViewController_test.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
+				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				872DE54025DCE7F400097560 /* ViewController2.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
+				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
