@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -2422,7 +2421,7 @@ AVER : 1:02:03</string>
                                     <color key="titleColor" name="Blue"/>
                                 </state>
                                 <connections>
-                                    <segue destination="yRZ-mG-lyl" kind="show" id="iAq-d9-dfG"/>
+                                    <segue destination="yRZ-mG-lyl" kind="show" id="io2-i9-r60"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2472,13 +2471,13 @@ AVER : 1:02:03</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="TIA-4U-rvE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="SKl-Ga-xJA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CZx-eG-Dru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2975" y="793"/>
+            <point key="canvasLocation" x="2973.3644859813085" y="792.44060475161996"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -2503,8 +2502,5 @@ AVER : 1:02:03</string>
         <namedColor name="blue">
             <color red="0.58431372549019611" green="0.76470588235294112" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

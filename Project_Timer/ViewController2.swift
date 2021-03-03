@@ -37,7 +37,6 @@ class ViewController2: UIViewController {
     @IBOutlet var CircleView: CircularProgressView!
     @IBOutlet var ModeButton: UIButton!
     
-    
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
@@ -149,6 +148,7 @@ extension ViewController2 : ChangeViewController2 {
         algoOfBreakStop()
         
         isFirst = true
+        UserDefaults.standard.set(nil, forKey: "startTime")
         setColor()
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0

@@ -129,11 +129,6 @@ struct ContentView: View {
         return (CGFloat(value) / CGFloat(max)) * 100
     }
     
-//    func getHrs (value : Int) -> String {
-//        let minute = Int(value) - Int(value/60) * 60
-//        return String(Int(value/60)) + ":" + String(minute)
-//    }
-    
     func getMaxInTotalTime (value : [Daily]) -> Int {
         let sMax: Int = getStudyTimes().max()!
         let bMax: Int = getBreakTimes().max()!
@@ -222,8 +217,8 @@ extension ContentView {
     
     func appendDailyDatas(){
         
-        for i in 1...7 {
-            let id = i
+        for i in (1...7).reversed() {
+            let id = 8-i
             let day = translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
             let studyTime = translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
             let breakTime = translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
@@ -241,7 +236,12 @@ extension ContentView {
                 sum += i
             }
         }
-        return sum/(value.count - zeroCount)
+        let result = value.count - zeroCount
+        if result == 0 {
+            return 0
+        } else {
+            return sum/(value.count - zeroCount)
+        }
     }
     
     func getStudyTimes() -> [Int] {

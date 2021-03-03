@@ -106,6 +106,7 @@ class ViewController: UIViewController {
             //오디오 재생 추가
 //            playAudioFromProject()
             AudioServicesPlaySystemSound(4095)
+            saveTimes()
         }
         else {
             timerTime -= 1
@@ -159,6 +160,7 @@ extension ViewController : ChangeViewController {
         UserDefaults.standard.set(goalTime, forKey: "allTime2")
         UserDefaults.standard.set(sumTime, forKey: "sum2")
         UserDefaults.standard.set(0, forKey: "breakTime")
+        UserDefaults.standard.set(nil, forKey: "startTime")
         //정지 회수 저장
         stopCount = 0
         UserDefaults.standard.set(0, forKey: "stopCount")
@@ -436,13 +438,10 @@ extension ViewController {
         fromSecond = 0.0
     }
     
-    //빡공률 -> 종료회수, 평균시간 보이기로 변경
     func checkPersent() {
-        //정지회수 보이기
         var print = "STOP : " + String(stopCount)
         let aver = (Int)(sumTime/stopCount)
         print += "\nAVER : " + printTime(temp: aver)
-        //정지회수, 평균 시간 보이기
         AverageLabel.text = print
     }
     
