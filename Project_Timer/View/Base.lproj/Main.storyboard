@@ -28,6 +28,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-re-5Ia">
                                 <rect key="frame" x="30.666666666666657" y="139" width="329" height="566"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHZ-4Z-X6p" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                        <rect key="frame" x="29.333333333333343" y="148" width="270" height="270"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="270" id="Pn3-FV-h6D"/>
+                                            <constraint firstAttribute="width" constant="270" id="azT-3c-9kg"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kH-C6-1lR">
                                         <rect key="frame" x="107.66666666666666" y="10" width="113.66666666666666" height="40"/>
                                         <constraints>
@@ -270,12 +277,14 @@ AVER : 1:02:03</string>
                                     <constraint firstAttribute="bottom" secondItem="Cd6-4e-uRR" secondAttribute="bottom" constant="4" id="Dzd-nX-o44"/>
                                     <constraint firstItem="CAI-GT-efl" firstAttribute="leading" secondItem="SuQ-re-5Ia" secondAttribute="leading" constant="2" id="ErG-f1-uSk"/>
                                     <constraint firstItem="6kH-C6-1lR" firstAttribute="centerX" secondItem="SuQ-re-5Ia" secondAttribute="centerX" id="M7I-kq-HXq"/>
+                                    <constraint firstItem="KHZ-4Z-X6p" firstAttribute="centerX" secondItem="SuQ-re-5Ia" secondAttribute="centerX" id="Ngx-0l-qhT"/>
                                     <constraint firstItem="oy6-EI-A9Q" firstAttribute="top" secondItem="Ziv-p0-WgA" secondAttribute="bottom" constant="5" id="PUm-Ru-ACW"/>
                                     <constraint firstItem="CAI-GT-efl" firstAttribute="top" secondItem="Ziv-p0-WgA" secondAttribute="bottom" constant="5" id="WeC-hl-W5q"/>
                                     <constraint firstItem="Cd6-4e-uRR" firstAttribute="centerX" secondItem="SuQ-re-5Ia" secondAttribute="centerX" id="X4d-NW-9bh"/>
                                     <constraint firstItem="JWO-XV-oGM" firstAttribute="centerY" secondItem="SuQ-re-5Ia" secondAttribute="centerY" id="ZW2-ul-0br"/>
                                     <constraint firstAttribute="trailing" secondItem="oy6-EI-A9Q" secondAttribute="trailing" constant="2" id="cTe-6i-DF7"/>
                                     <constraint firstItem="oy6-EI-A9Q" firstAttribute="leading" secondItem="CAI-GT-efl" secondAttribute="trailing" constant="65" id="dAU-PC-K4Q"/>
+                                    <constraint firstItem="KHZ-4Z-X6p" firstAttribute="centerY" secondItem="SuQ-re-5Ia" secondAttribute="centerY" id="eKh-hY-uE2"/>
                                     <constraint firstItem="Cd6-4e-uRR" firstAttribute="top" secondItem="dcR-MJ-cpA" secondAttribute="bottom" constant="15" id="epu-wM-QQv"/>
                                     <constraint firstItem="Ziv-p0-WgA" firstAttribute="centerX" secondItem="SuQ-re-5Ia" secondAttribute="centerX" id="j2N-GG-qJH"/>
                                     <constraint firstItem="dcR-MJ-cpA" firstAttribute="top" secondItem="JWO-XV-oGM" secondAttribute="bottom" constant="40" id="ll7-Qs-uKk"/>
@@ -296,6 +305,7 @@ AVER : 1:02:03</string>
                     <connections>
                         <outlet property="AverageLabel" destination="6kH-C6-1lR" id="3Qf-cn-xeO"/>
                         <outlet property="CircleView" destination="JWO-XV-oGM" id="uI1-XP-kPm"/>
+                        <outlet property="CircleView2" destination="KHZ-4Z-X6p" id="LS9-hZ-h4T"/>
                         <outlet property="GoalTimeLabel" destination="CAI-GT-efl" id="XsI-k0-5Fm"/>
                         <outlet property="LogButton" destination="4RT-t7-fcv" id="nUj-sL-A62"/>
                         <outlet property="ModeButton" destination="JAf-6x-NsO" id="9WW-Qw-OPh"/>
@@ -1229,6 +1239,13 @@ AVER : 1:02:03</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-M9-Ev2">
                                 <rect key="frame" x="30.666666666666657" y="139" width="329" height="566"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqc-qY-AxM" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
+                                        <rect key="frame" x="29.333333333333343" y="148" width="270" height="270"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="270" id="CgV-56-puz"/>
+                                            <constraint firstAttribute="width" constant="270" id="el7-6e-Og5"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngg-yG-wxx">
                                         <rect key="frame" x="107.66666666666666" y="10" width="113.66666666666666" height="40"/>
                                         <constraints>
@@ -1455,6 +1472,7 @@ AVER : 1:02:03</string>
                                     <constraint firstItem="syC-Xw-rLo" firstAttribute="centerX" secondItem="OEu-M9-Ev2" secondAttribute="centerX" id="7MP-mM-tSk"/>
                                     <constraint firstAttribute="bottom" secondItem="syC-Xw-rLo" secondAttribute="bottom" constant="4" id="8ET-Rm-r73"/>
                                     <constraint firstItem="Ngg-yG-wxx" firstAttribute="centerX" secondItem="OEu-M9-Ev2" secondAttribute="centerX" id="9pK-uZ-V3j"/>
+                                    <constraint firstItem="oqc-qY-AxM" firstAttribute="centerX" secondItem="OEu-M9-Ev2" secondAttribute="centerX" id="CuN-Ft-xk3"/>
                                     <constraint firstItem="aSQ-WB-JeB" firstAttribute="centerX" secondItem="OEu-M9-Ev2" secondAttribute="centerX" id="FNE-vM-voF"/>
                                     <constraint firstItem="syC-Xw-rLo" firstAttribute="top" secondItem="9Lg-Ff-ysP" secondAttribute="bottom" constant="15" id="HrS-R2-Pav"/>
                                     <constraint firstItem="9Lg-Ff-ysP" firstAttribute="centerX" secondItem="OEu-M9-Ev2" secondAttribute="centerX" id="JBN-8x-Hfh"/>
@@ -1467,6 +1485,7 @@ AVER : 1:02:03</string>
                                     <constraint firstItem="aSQ-WB-JeB" firstAttribute="top" secondItem="BN3-eE-Lu9" secondAttribute="bottom" constant="20" id="i4N-2P-jKl"/>
                                     <constraint firstItem="9Lg-Ff-ysP" firstAttribute="top" secondItem="aSQ-WB-JeB" secondAttribute="bottom" constant="40" id="jqf-yh-cly"/>
                                     <constraint firstAttribute="trailing" secondItem="e3g-pG-G8z" secondAttribute="trailing" constant="2" id="lbZ-HJ-3dd"/>
+                                    <constraint firstItem="oqc-qY-AxM" firstAttribute="centerY" secondItem="OEu-M9-Ev2" secondAttribute="centerY" id="tfg-HV-rjZ"/>
                                     <constraint firstItem="e3g-pG-G8z" firstAttribute="leading" secondItem="BN3-eE-Lu9" secondAttribute="trailing" constant="65" id="wJO-9m-3bY"/>
                                 </constraints>
                             </view>
@@ -1482,6 +1501,7 @@ AVER : 1:02:03</string>
                         <outlet property="BreakButton" destination="BTf-y9-T01" id="znX-xs-vjE"/>
                         <outlet property="BreakTimeLabel" destination="e3g-pG-G8z" id="v1y-aq-3fX"/>
                         <outlet property="CircleView" destination="aSQ-WB-JeB" id="rKu-lG-xY1"/>
+                        <outlet property="CircleView2" destination="oqc-qY-AxM" id="igi-Bd-6qG"/>
                         <outlet property="CountTimeLabel" destination="ScO-2v-P5d" id="6rL-dC-AgL"/>
                         <outlet property="GoalTimeLabel" destination="BN3-eE-Lu9" id="NC4-vZ-4x7"/>
                         <outlet property="LogButton" destination="6yF-Tn-qOt" id="4nv-rV-jRI"/>
@@ -2481,7 +2501,7 @@ AVER : 1:02:03</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ged-qi-Hri"/>
+        <segue reference="sL3-xs-OG4"/>
     </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="Background">

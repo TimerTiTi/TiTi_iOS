@@ -72,6 +72,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87379F982615979D00A9445E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		87379F99261597AF00A9445E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				93B08529248DDF3000E215BD /* Assets.xcassets */,
+				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87379F9A261597C900A9445E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
+				93B08524248DDF2F00E215BD /* ViewController.swift */,
+				872DE53F25DCE7F400097560 /* ViewController2.swift */,
+				9312E4CB252231E600025C81 /* LogViewController.swift */,
+				8762AB6225E0DF38003438B5 /* LogViewController_test.swift */,
+				870AE72025E529F2004DD27E /* GraphViewController.swift */,
+				870AE71D25E52941004DD27E /* ContentView.swift */,
+				932EE0592490A78400B00774 /* SetViewController.swift */,
+				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
+				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		874B9D1225CAB1EE006FCD04 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,25 +147,14 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87379F982615979D00A9445E /* Model */,
+				87379F99261597AF00A9445E /* View */,
+				87379F9A261597C900A9445E /* Controller */,
 				874B9D1225CAB1EE006FCD04 /* fonts */,
 				878B507025B6E2FB00B9EFD7 /* component */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
-				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
-				93B08524248DDF2F00E215BD /* ViewController.swift */,
-				872DE53F25DCE7F400097560 /* ViewController2.swift */,
-				93B08526248DDF2F00E215BD /* Main.storyboard */,
-				870AE72025E529F2004DD27E /* GraphViewController.swift */,
-				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
-				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
-				932EE0592490A78400B00774 /* SetViewController.swift */,
-				9312E4CB252231E600025C81 /* LogViewController.swift */,
-				8762AB6225E0DF38003438B5 /* LogViewController_test.swift */,
-				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				93A892B224C1544A00F89180 /* Test.swift */,
-				93B08529248DDF3000E215BD /* Assets.xcassets */,
-				870AE71D25E52941004DD27E /* ContentView.swift */,
-				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
 			);
 			path = Project_Timer;
@@ -372,7 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -380,7 +404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -396,7 +420,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -404,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.2;
+				MARKETING_VERSION = 4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
