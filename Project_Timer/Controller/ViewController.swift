@@ -33,12 +33,15 @@ class ViewController: UIViewController {
     @IBOutlet var TimerButton: UIButton!
     @IBOutlet var AverageLabel: UILabel!
     @IBOutlet var LogButton: UIButton!
-    @IBOutlet var finishTimeLabel_show: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
     @IBOutlet var viewLabels: UIView!
     @IBOutlet var CircleView: CircularProgressView!
     @IBOutlet var CircleView2: CircularProgressView!
+    
+    @IBOutlet var targetLabel: UILabel!
+    @IBOutlet var sumLabel: UILabel!
     @IBOutlet var ModeButton: UIButton!
+    @IBOutlet var finishTimeLabel_show: UILabel!
     
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
@@ -71,6 +74,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getVCNum()
+        setLocalizable()
+        
         setRadius()
         setBorner()
         getDatas()
@@ -104,7 +109,7 @@ class ViewController: UIViewController {
         }
         if timerTime < 1 {
             algoOfStop()
-            TimerLabel.text = "종료"
+            TimerLabel.text = "FINISH".localized()
             AudioServicesPlaySystemSound(1254)
             AudioServicesPlaySystemSound(4095)
             saveTimes()
@@ -505,6 +510,7 @@ extension ViewController {
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(timerTime))
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: future)
         return today
@@ -594,6 +600,13 @@ extension ViewController {
         TimerButton.isUserInteractionEnabled = false
         LogButton.isUserInteractionEnabled = false
         ModeButton.isUserInteractionEnabled = false
+    }
+    
+    func setLocalizable() {
+        targetLabel.text = "Target Time".localized()
+        sumLabel.text = "Sum Time".localized()
+        ModeButton.setTitle("Timer".localized(), for: .normal)
+        finishTimeLabel_show.text = "End Time".localized()
     }
 }
 

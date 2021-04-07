@@ -1,0 +1,50 @@
+/*
+  Localizable.strings
+  Project_Timer
+
+  Created by Kang Minsang on 2021/03/07.
+  Copyright © 2021 FDEE. All rights reserved.
+*/
+"Now Time" = "Now Time";
+
+"Target Time" = "Target Time";
+
+"Sum Time" = "Sum Time";
+
+"Timer" = "Timer";
+
+"End Time" = "End Time";
+
+"Rest Time" = "Rest Time";
+
+"Stopwatch" = "Stopwatch";
+
+"Target Time2" = "Target Time";
+
+"Timer Time" = "Timer Time";
+
+"Average Study Time" = "Average Study Time";
+
+"Show" = "Show";
+
+"Hide" = "Hide";
+
+"Do you want to set it up?" = "Do you want to set it up?";
+
+"The Target, Sum Time will be reset and a new record starts!" = "The Target, Sum Time will be reset and a new record starts!";
+
+"Study Records" = "Study Records";
+
+"Study :" = "Study :";
+
+"Rest :" = "Rest :";
+
+"Study Time" = "Study Time";
+
+"Average : " = "Average : ";
+
+"Rest Time" = "Rest Time";
+
+"Change Color" = "Change Color";
+
+"FINISH" = "FINISH";

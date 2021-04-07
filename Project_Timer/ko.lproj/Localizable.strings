@@ -1,0 +1,50 @@
+/*
+  Localizable.strings
+  Project_Timer
+
+  Created by Kang Minsang on 2021/03/07.
+  Copyright © 2021 FDEE. All rights reserved.
+*/
+"Now Time" = "현재시각";
+
+"Target Time" = "총 남은시간";
+
+"Sum Time" = "누적 시간";
+
+"Timer" = "타이머";
+
+"End Time" = "종료예정";
+
+"Rest Time" = "휴식 시간";
+
+"Stopwatch" = "스톱워치";
+
+"Target Time2" = "목표 시간";
+
+"Timer Time" = "타이머 시간";
+
+"Average Study Time" = "평균 공부시간";
+
+"Show" = "보이기";
+
+"Hide" = "숨기기";
+
+"Do you want to set it up?" = "SET 하시겠습니까?";
+
+"The Target, Sum Time will be reset and a new record starts!" = "누적시간이 초기화되며 새로운 기록이 시작됩니다!";
+
+"Study Records" = "공부기록";
+
+"Study :" = "공부 :";
+
+"Rest :" = "휴식 :";
+
+"Study Time" = "공부시간";
+
+"Average : " = "평균 : ";
+
+"Rest Time" = "휴식시간";
+
+"Change Color" = "배경색 변경하기";
+
+"FINISH" = "종료";
