@@ -31,12 +31,16 @@ class ViewController2: UIViewController {
     @IBOutlet var SettingButton: UIButton!
     @IBOutlet var avarageLabel: UILabel!
     @IBOutlet var LogButton: UIButton!
-    @IBOutlet var finishTimeLabel_show: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
     @IBOutlet var viewLabels: UIView!
     @IBOutlet var CircleView: CircularProgressView!
     @IBOutlet var CircleView2: CircularProgressView!
+    
+    @IBOutlet var targetLabel: UILabel!
+    @IBOutlet var restLabel: UILabel!
     @IBOutlet var ModeButton: UIButton!
+    @IBOutlet var finishTimeLabel_show: UILabel!
+    
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
@@ -73,6 +77,8 @@ class ViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setVCNum()
+        setLocalizable()
+        
         setColor()
         setRadius()
         setBorder()
@@ -487,6 +493,7 @@ extension ViewController2 {
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(goalTime))
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
         let today = dateFormatter.string(from: future)
         return today
@@ -599,6 +606,13 @@ extension ViewController2 {
         BreakButton.isUserInteractionEnabled = false
         BreakButton.backgroundColor = CLICK
         BreakButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    func setLocalizable() {
+        targetLabel.text = "Target Time".localized()
+        restLabel.text = "Rest Time".localized()
+        ModeButton.setTitle("Stopwatch".localized(), for: .normal)
+        finishTimeLabel_show.text = "End Time".localized()
     }
 }
 

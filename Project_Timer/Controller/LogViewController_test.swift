@@ -34,8 +34,26 @@ class LogViewController_test: UIViewController {
     @IBOutlet var Label_break6: UILabel!
     @IBOutlet var Label_break7: UILabel!
     
+    @IBOutlet var studyTitle: UILabel!
+    @IBOutlet var studyL1: UILabel!
+    @IBOutlet var studyL2: UILabel!
+    @IBOutlet var studyL3: UILabel!
+    @IBOutlet var studyL4: UILabel!
+    @IBOutlet var studyL5: UILabel!
+    @IBOutlet var studyL6: UILabel!
+    @IBOutlet var studyL7: UILabel!
+    
+    @IBOutlet var restL1: UILabel!
+    @IBOutlet var restL2: UILabel!
+    @IBOutlet var restL3: UILabel!
+    @IBOutlet var restL4: UILabel!
+    @IBOutlet var restL5: UILabel!
+    @IBOutlet var restL6: UILabel!
+    @IBOutlet var restL7: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLocalizable()
         setData()
 //        setDummyData()
     }
@@ -108,5 +126,23 @@ extension LogViewController_test {
             newDateFormatter.dateFormat = "M/d"
             return newDateFormatter.string(from: exported)
         }
+    }
+    
+    func setLocalizable() {
+        studyTitle.text = "Study Records".localized()
+        studyL1.text = "Study :".localized()
+        studyL2.text = "Study :".localized()
+        studyL3.text = "Study :".localized()
+        studyL4.text = "Study :".localized()
+        studyL5.text = "Study :".localized()
+        studyL6.text = "Study :".localized()
+        studyL7.text = "Study :".localized()
+        restL1.text = "Rest :".localized()
+        restL2.text = "Rest :".localized()
+        restL3.text = "Rest :".localized()
+        restL4.text = "Rest :".localized()
+        restL5.text = "Rest :".localized()
+        restL6.text = "Rest :".localized()
+        restL7.text = "Rest :".localized()
     }
 }

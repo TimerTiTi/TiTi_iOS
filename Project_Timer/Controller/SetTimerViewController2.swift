@@ -20,8 +20,12 @@ class SetTimerViewController2: UIViewController {
     @IBOutlet var Text_S: UITextField!
     @IBOutlet var Button_set: UIButton!
     @IBOutlet var Button_Back: UIButton!
-    @IBOutlet var ColorButton: UIButton!
     @IBOutlet var Label_toTime: UILabel!
+    
+    @IBOutlet var targetLabel: UILabel!
+    @IBOutlet var endLabel: UILabel!
+    @IBOutlet var ColorButton: UIButton!
+    @IBOutlet var averageLabel: UILabel!
     @IBOutlet var controlShowAverage: UISegmentedControl!
     
     var SetTimerViewControllerDelegate : ChangeViewController2!
@@ -40,6 +44,8 @@ class SetTimerViewController2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboard()
+        setLocalizable()
+        setRadius()
         
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         showAverage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
@@ -49,13 +55,6 @@ class SetTimerViewController2: UIViewController {
         Text_H.keyboardType = .numberPad
         Text_M.keyboardType = .numberPad
         Text_S.keyboardType = .numberPad
-        
-        Button_set.layer.cornerRadius = 10
-        Button_set.layer.borderWidth = 3
-        
-        Button_Back.layer.cornerRadius = 10
-        Button_Back.layer.borderWidth = 3
-        ColorButton.layer.cornerRadius = 10
         
         updateColor()
 
@@ -79,55 +78,11 @@ class SetTimerViewController2: UIViewController {
         Label_toTime.text = getFutureTime()
     }
     
-    func check()
-    {
-        if (H != "")
-        {
-            h = Int(H)!
-            m = 0
-            s = 0
-        }
-        if (M != "")
-        {
-            if(H == "")
-            {
-                h = 0
-            }
-            m = Int(M)!
-            s = 0
-        }
-        if (S != "")
-        {
-            if(H == "")
-            {
-                h = 0
-            }
-            if(M == "")
-            {
-                m = 0
-            }
-            s = Int(S)!
-        }
-    }
-    
-    func printTime(temp : Int) -> String
-    {
-        let S = temp%60
-        let H = temp/3600
-        let M = temp/60 - H*60
-        
-        let stringS = S<10 ? "0"+String(S) : String(S)
-        let stringM = M<10 ? "0"+String(M) : String(M)
-        
-        let returnString  = String(H) + ":" + stringM + ":" + stringS
-        return returnString
-    }
-    
     @IBAction func Button_set(_ sender: UIButton) {
         //경고창 추가
-        let alert = UIAlertController(title:"SET 하시겠습니까?",message: "누적시간이 초기화되며 새로운 기록이 시작됩니다!",preferredStyle: UIAlertController.Style.alert)
-        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-        let okAction = UIAlertAction(title: "SET", style: .default, handler:
+        let alert = UIAlertController(title:"Do you want to set it up?".localized(),message: "The Target, Sum Time will be reset and a new record starts!".localized(),preferredStyle: UIAlertController.Style.alert)
+        let cancel = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .destructive, handler:
                                         {
                                             action in
                                             self.SET_action()
@@ -163,9 +118,47 @@ class SetTimerViewController2: UIViewController {
         default: return
         }
     }
+}
+
+extension SetTimerViewController2 {
     
-    func getFutureTime() -> String
-    {
+    func check() {
+        if (H != "") {
+            h = Int(H)!
+            m = 0
+            s = 0
+        }
+        if (M != "") {
+            if(H == "") {
+                h = 0
+            }
+            m = Int(M)!
+            s = 0
+        }
+        if (S != "") {
+            if(H == "") {
+                h = 0
+            }
+            if(M == "") {
+                m = 0
+            }
+            s = Int(S)!
+        }
+    }
+    
+    func printTime(temp : Int) -> String {
+        let S = temp%60
+        let H = temp/3600
+        let M = temp/60 - H*60
+        
+        let stringS = S<10 ? "0"+String(S) : String(S)
+        let stringM = M<10 ? "0"+String(M) : String(M)
+        
+        let returnString  = String(H) + ":" + stringM + ":" + stringS
+        return returnString
+    }
+    
+    func getFutureTime() -> String {
         //log 날짜 설정
         let now = Date()
         let future = now.addingTimeInterval(TimeInterval(goalTime))
@@ -194,6 +187,23 @@ class SetTimerViewController2: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func setRadius() {
+        Button_set.layer.cornerRadius = 10
+        Button_set.layer.borderWidth = 3
+        
+        Button_Back.layer.cornerRadius = 10
+        Button_Back.layer.borderWidth = 3
+        ColorButton.layer.cornerRadius = 10
+    }
+    
+    func setLocalizable() {
+        targetLabel.text = "Target Time2".localized()
+        endLabel.text = "End Time".localized()
+        ColorButton.setTitle("Change Color".localized(), for: .normal)
+        averageLabel.text = "Average Study Time".localized()
+        controlShowAverage.setTitle("Show".localized(), forSegmentAt: 0)
+        controlShowAverage.setTitle("Hide".localized(), forSegmentAt: 1)
+    }
 }
 
 

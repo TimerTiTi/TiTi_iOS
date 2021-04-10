@@ -243,9 +243,9 @@ AVER : 1:02:03</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAf-6x-NsO">
-                                                <rect key="frame" x="100" y="62.666666666666686" width="80" height="35"/>
+                                                <rect key="frame" x="95" y="62.666666666666686" width="90" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="GlV-M8-DFB"/>
+                                                    <constraint firstAttribute="width" constant="90" id="GlV-M8-DFB"/>
                                                     <constraint firstAttribute="height" constant="35" id="ocb-8X-gJh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
@@ -613,6 +613,9 @@ AVER : 1:02:03</string>
                         <outlet property="S2TextField" destination="zDI-LB-6qB" id="iSt-MW-N3X"/>
                         <outlet property="SecondLabel" destination="t6g-Cf-4te" id="NTS-V4-SLL"/>
                         <outlet property="SetButton" destination="bIR-6i-H44" id="BZi-48-q5b"/>
+                        <outlet property="averageLabel" destination="8rc-aY-uQY" id="7r0-8e-Eb9"/>
+                        <outlet property="targetLabel" destination="bDa-Kx-1hg" id="6h4-nX-deQ"/>
+                        <outlet property="timerLabel" destination="Xa7-O0-5gA" id="gxT-b2-n1J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Oe-kd-h2v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -805,6 +808,8 @@ AVER : 1:02:03</string>
                         <outlet property="Text_H" destination="mqa-H5-nkJ" id="jLb-1X-s62"/>
                         <outlet property="Text_M" destination="nWH-KT-ARI" id="5B0-tI-woa"/>
                         <outlet property="Text_S" destination="jEF-Gm-WQ4" id="jOl-2e-16i"/>
+                        <outlet property="endLabel" destination="giE-Yp-5JP" id="vZj-Iy-AMj"/>
+                        <outlet property="timerLabel" destination="lBm-OF-1i7" id="dhu-pV-BBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geR-2h-fCo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1021,9 +1026,9 @@ AVER : 1:02:03</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNG-Ok-GlA">
-                                                <rect key="frame" x="100" y="62.666666666666686" width="80" height="35"/>
+                                                <rect key="frame" x="95" y="62.666666666666686" width="90" height="35"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="R59-Eu-0Ki"/>
+                                                    <constraint firstAttribute="width" constant="90" id="R59-Eu-0Ki"/>
                                                     <constraint firstAttribute="height" constant="35" id="pOS-bb-dJ1"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
@@ -1095,6 +1100,8 @@ AVER : 1:02:03</string>
                         <outlet property="avarageLabel" destination="Ngg-yG-wxx" id="2IL-L8-oKl"/>
                         <outlet property="finishTimeLabel" destination="hoP-9e-uWk" id="PgH-MI-Ra3"/>
                         <outlet property="finishTimeLabel_show" destination="kPq-A4-Pe5" id="c60-2m-Rl2"/>
+                        <outlet property="restLabel" destination="sFl-wr-5Qo" id="zil-og-xZ9"/>
+                        <outlet property="targetLabel" destination="TAo-5e-iou" id="5V6-QT-diF"/>
                         <outlet property="viewLabels" destination="BYt-OF-zQC" id="JiZ-Ds-xtc"/>
                     </connections>
                 </viewController>
@@ -1328,7 +1335,10 @@ AVER : 1:02:03</string>
                         <outlet property="Text_H" destination="JLm-dS-lM9" id="JF5-5i-yug"/>
                         <outlet property="Text_M" destination="Jcn-hD-C7R" id="cUq-Kv-WWQ"/>
                         <outlet property="Text_S" destination="2Km-Dm-wT4" id="eY2-sO-hmC"/>
+                        <outlet property="averageLabel" destination="l35-0F-Pef" id="hdP-6r-P0y"/>
                         <outlet property="controlShowAverage" destination="3vK-mK-KJ0" id="vNe-90-knQ"/>
+                        <outlet property="endLabel" destination="Fib-zU-4R5" id="ANv-YD-vjJ"/>
+                        <outlet property="targetLabel" destination="zvS-tR-Vmf" id="r7P-ON-7DW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLA-Uv-dNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2060,6 +2070,21 @@ AVER : 1:02:03</string>
                         <outlet property="Label_time5" destination="Rb7-G9-U2b" id="jQx-82-OTA"/>
                         <outlet property="Label_time6" destination="bOw-7n-49t" id="sts-ce-coc"/>
                         <outlet property="Label_time7" destination="vxD-re-U01" id="URz-Y5-PGv"/>
+                        <outlet property="restL1" destination="dRw-r3-S5L" id="6iD-eV-6B1"/>
+                        <outlet property="restL2" destination="plL-uk-lIf" id="nbJ-S2-UpY"/>
+                        <outlet property="restL3" destination="LTx-TN-0Nj" id="I9R-ZQ-eZW"/>
+                        <outlet property="restL4" destination="QLt-f6-3Iw" id="Wje-Pk-tUT"/>
+                        <outlet property="restL5" destination="uqd-A1-G14" id="Aox-bV-bqs"/>
+                        <outlet property="restL6" destination="xHX-FG-CgA" id="3c2-Ng-zZy"/>
+                        <outlet property="restL7" destination="eDW-FB-QKe" id="aNh-OG-lGZ"/>
+                        <outlet property="studyL1" destination="aQ2-vr-0w5" id="js2-bt-LIg"/>
+                        <outlet property="studyL2" destination="hCf-gu-Bih" id="sWD-z6-r39"/>
+                        <outlet property="studyL3" destination="olh-oe-tHZ" id="ogf-FI-hPP"/>
+                        <outlet property="studyL4" destination="oC5-5G-Rjm" id="x6Y-7J-Zao"/>
+                        <outlet property="studyL5" destination="12E-Ot-QGz" id="UQP-JQ-ks6"/>
+                        <outlet property="studyL6" destination="qG9-ur-3Wy" id="RfH-AC-XTo"/>
+                        <outlet property="studyL7" destination="rWe-A3-dMY" id="6da-S0-P8V"/>
+                        <outlet property="studyTitle" destination="grq-oN-sl3" id="bLz-xm-FzJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsK-UN-w7v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

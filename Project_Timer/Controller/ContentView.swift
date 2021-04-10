@@ -18,7 +18,7 @@ struct ContentView: View {
             VStack {
                 Spacer(minLength: 30)
                 /* 차트화면 타이틀 */
-                Text("공부시간")
+                Text("Study Time".localized())
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -27,7 +27,7 @@ struct ContentView: View {
                 /* ----차트화면---- */
                 VStack {
                     //평균시간 텍스트
-                    Text("평균 : " + getHrs(value: getAverageTime(value: getStudyTimes())))
+                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .font(.system(size:17))
@@ -67,7 +67,7 @@ struct ContentView: View {
                 /* ----차트끝---- */
                 
                 /* 차트화면 타이틀 */
-                Text("휴식시간")
+                Text("Rest Time".localized())
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -76,7 +76,7 @@ struct ContentView: View {
                 /* ----차트화면---- */
                 VStack {
                     //평균시간 텍스트
-                    Text("평균 : " + getHrs(value: getAverageTime(value: getBreakTimes())))
+                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getBreakTimes())))
                         .fontWeight(.regular)
                         .foregroundColor(.white)
                         .font(.system(size:17))
@@ -129,7 +129,7 @@ struct ContentView: View {
         return (CGFloat(value) / CGFloat(max)) * 100
     }
     
-    func getMaxInTotalTime (value : [Daily]) -> Int {
+    func getMaxInTotalTime (value : [daily]) -> Int {
         let sMax: Int = getStudyTimes().max()!
         let bMax: Int = getBreakTimes().max()!
         if sMax > bMax {
@@ -156,14 +156,14 @@ struct RoundedShape : Shape {
 }
 // Dummy Data
 
-struct Daily : Identifiable {
+struct daily : Identifiable {
     var id : Int
     var day : String
     var studyTime : Int
     var breakTime : Int
 }
 
-var DailyDatas: [Daily] = []
+var DailyDatas: [daily] = []
 
 
 extension ContentView {
@@ -222,7 +222,7 @@ extension ContentView {
             let day = translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
             let studyTime = translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
             let breakTime = translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
-            DailyDatas.append(Daily(id: id, day: day, studyTime: studyTime, breakTime: breakTime))
+            DailyDatas.append(daily(id: id, day: day, studyTime: studyTime, breakTime: breakTime))
         }
     }
     
@@ -245,12 +245,12 @@ extension ContentView {
     }
     
     func getStudyTimes() -> [Int] {
-        let studyArray = DailyDatas.map { (value : Daily) -> Int in value.studyTime}
+        let studyArray = DailyDatas.map { (value : daily) -> Int in value.studyTime}
         return studyArray
     }
     
     func getBreakTimes() -> [Int] {
-        let breakArray = DailyDatas.map { (value : Daily) -> Int in value.breakTime}
+        let breakArray = DailyDatas.map { (value : daily) -> Int in value.breakTime}
         return breakArray
     }
     
@@ -259,25 +259,25 @@ extension ContentView {
     }
     
     func appendDumyDatas(){
-        DailyDatas.append(Daily(id: 1, day: "2/24",
+        DailyDatas.append(daily(id: 1, day: "2/24",
                                 studyTime: translate2(input: "2:35:20"),
                                 breakTime: translate2(input: "0:35:20")))
-        DailyDatas.append(Daily(id: 2, day: "2/23",
+        DailyDatas.append(daily(id: 2, day: "2/23",
                                 studyTime: translate2(input: "4:03:41"),
                                 breakTime: translate2(input: "2:01:00")))
-        DailyDatas.append(Daily(id: 3, day: "2/22",
+        DailyDatas.append(daily(id: 3, day: "2/22",
                                 studyTime: translate2(input: "6:08:14"),
                                 breakTime: translate2(input: "2:32:56")))
-        DailyDatas.append(Daily(id: 4, day: "2/21",
+        DailyDatas.append(daily(id: 4, day: "2/21",
                                 studyTime: translate2(input: "4:03:39"),
                                 breakTime: translate2(input: "1:05:00")))
-        DailyDatas.append(Daily(id: 5, day: "2/20",
+        DailyDatas.append(daily(id: 5, day: "2/20",
                                 studyTime: translate2(input: "5:44:07"),
                                 breakTime: translate2(input: "1:40:08")))
-        DailyDatas.append(Daily(id: 6, day: "2/19",
+        DailyDatas.append(daily(id: 6, day: "2/19",
                                 studyTime: translate2(input: "4:58:23"),
                                 breakTime: translate2(input: "2:02:15")))
-        DailyDatas.append(Daily(id: 7, day: "2/18",
+        DailyDatas.append(daily(id: 7, day: "2/18",
                                 studyTime: translate2(input: "3:37:20"),
                                 breakTime: translate2(input: "0:37:50")))
     }
