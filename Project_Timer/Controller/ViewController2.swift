@@ -147,7 +147,7 @@ class ViewController2: UIViewController {
     @IBAction func ModeBTAction(_ sender: UIButton) {
         algoOfBreakStop()
         UserDefaults.standard.set(1, forKey: "VCNum")
-        goToViewController(where: "ViewController")
+        goToViewController(where: "TimerViewController")
     }
 }
 

@@ -11,6 +11,9 @@
 		870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE72025E529F2004DD27E /* GraphViewController.swift */; };
 		872DE54025DCE7F400097560 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE53F25DCE7F400097560 /* ViewController2.swift */; };
 		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
+		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
+		87459706263FF0D700172C0F /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
+		87459708263FF0F000172C0F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
@@ -38,6 +41,9 @@
 		870AE72025E529F2004DD27E /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		872DE53F25DCE7F400097560 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
+		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		87459705263FF0D700172C0F /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
+		87459707263FF0F000172C0F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
@@ -81,6 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
+				87459705263FF0D700172C0F /* Daily.swift */,
+				87459707263FF0F000172C0F /* Storage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +118,14 @@
 				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		87459702263FEF5E00172C0F /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				87459703263FEF6B00172C0F /* TimerViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		874B9D1225CAB1EE006FCD04 /* fonts */ = {
@@ -152,6 +168,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87459702263FEF5E00172C0F /* Test */,
 				87379F982615979D00A9445E /* Model */,
 				87379F99261597AF00A9445E /* View */,
 				87379F9A261597C900A9445E /* Controller */,
@@ -256,7 +273,10 @@
 				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
+				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
+				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
+				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 			);
@@ -417,7 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -425,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -441,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -449,7 +469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.1;
+				MARKETING_VERSION = 5.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
