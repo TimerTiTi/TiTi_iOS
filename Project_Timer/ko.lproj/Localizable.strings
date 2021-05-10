@@ -39,10 +39,24 @@
 
 "Rest :" = "휴식 :";
 
-"Study Time" = "공부 시간";
+"Study Time" = "공부시간";
 
 "Average : " = "평균 : ";
+
+"Rest Time" = "휴식시간";
 
 "Change Color" = "배경색 변경하기";
 
 "FINISH" = "종료";
+
+"Change Background Color" = "배경색 변경하기";
+
+"Total : " = "누적 : ";
+
+"Enter a new subject" = "새로운 공부내용을 입력하세요";
+
+"Select a subject" = "공부내용을 선택하세요";
+
+"Enter a subject that's max length is 20" = "12자리 내의 새로운 과목을 입력하세요";
+
+"New subject" = "새로운 과목";

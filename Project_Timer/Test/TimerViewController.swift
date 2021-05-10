@@ -38,6 +38,9 @@ class TimerViewController: UIViewController {
     @IBOutlet var settingBT: UIButton!
     @IBOutlet var settingBTLabel: UILabel!
     
+    @IBOutlet var dock: UIView!
+    
+    
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
@@ -118,7 +121,7 @@ class TimerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
         if(VCNum == 2) {
-            goToViewController(where: "StopwatchViewController")
+            goToViewController(where: "ViewController2")
         }
     }
     
@@ -274,8 +277,8 @@ extension TimerViewController {
     }
     
     func setButtonRotation() {
-        settingBT.transform = CGAffineTransform(rotationAngle: .pi*1/9)
-        setTimerBT.transform = CGAffineTransform(rotationAngle: .pi*8/9)
+//        settingBT.transform = CGAffineTransform(rotationAngle: .pi*1/9)
+//        setTimerBT.transform = CGAffineTransform(rotationAngle: .pi*8/9)
         
         modeTimer.transform = CGAffineTransform(rotationAngle: .pi*8/9)
         log.transform = CGAffineTransform(rotationAngle: .pi*1/9)
@@ -284,13 +287,15 @@ extension TimerViewController {
     func setRadius() {
         taskButton.layer.cornerRadius = 12
         
-        startStopBT.layer.cornerRadius = 10
-        setTimerBT.layer.cornerRadius = 10
-        settingBT.layer.cornerRadius = 10
+        startStopBT.layer.cornerRadius = 15
+        setTimerBT.layer.cornerRadius = 15
+        settingBT.layer.cornerRadius = 15
         
         modeTimer.layer.cornerRadius = 10
         modeStopWatch.layer.cornerRadius = 10
         log.layer.cornerRadius = 10
+        
+        dock.layer.cornerRadius = 20
     }
     
     func setShadow() {
@@ -334,6 +339,7 @@ extension TimerViewController {
         startStopBT.layer.borderWidth = 3
         startStopBT.layer.borderColor = RED!.cgColor
         taskButton.layer.borderWidth = 2
+//        dock.layer.borderWidth = 3
     }
     
     func goToViewController(where: String) {
@@ -355,7 +361,7 @@ extension TimerViewController {
         fromSecond = progressPer
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
-        innerProgress.progressWidth = 5.0
+        innerProgress.progressWidth = 8.0
         innerProgress.trackColor = UIColor.clear
         beforePer2 = Float(sumTime)/Float(totalTime)
         innerProgress.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
@@ -589,6 +595,8 @@ extension TimerViewController {
             self.startStopBTLabel.textColor = UIColor.white
             self.setTimerBTLabel.alpha = 1
             self.settingBTLabel.alpha = 1
+            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 0)
+            self.dock.backgroundColor = UIColor(named: "dock")
         })
         //animation test
         UIView.animate(withDuration: 0.5, animations: {
@@ -608,6 +616,11 @@ extension TimerViewController {
         startStopBT.backgroundColor = UIColor.clear
         TIMEofTimer.textColor = BLUE
         //예상종료시간 숨기기, stop 버튼 센터로 이동
+        UIView.animate(withDuration: 0.2) {
+            self.startStopBTLabel.textColor = self.RED!
+            self.setTimerBTLabel.alpha = 0
+            self.settingBTLabel.alpha = 0
+        }
         UIView.animate(withDuration: 0.3, animations: {
             self.modeTimer.alpha = 0
             self.modeStopWatch.alpha = 0
@@ -618,9 +631,9 @@ extension TimerViewController {
             self.setTimerBT.alpha = 0
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = self.RED!
-            self.setTimerBTLabel.alpha = 0
-            self.settingBTLabel.alpha = 0
+            
+            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 60)
+            self.dock.layer.backgroundColor = UIColor.clear.cgColor
         })
     }
     

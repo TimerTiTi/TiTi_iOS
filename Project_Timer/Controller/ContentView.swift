@@ -8,115 +8,58 @@ import SwiftUI
 
 struct ContentView: View {
     //그래프 색상 그라데이션 설정
-    var colors = [Color.blue, Color.purple]
-    var colors2 = [Color.red, Color.purple]
+    var colors = [Color("CCC2"), Color("CCC1")]
     //화면
     var body : some View {
         //세로 스크롤 설정
-        ScrollView(.vertical, showsIndicators: false) {
-            /* 전체 큰 틀 */
+        /* 전체 큰 틀 */
+        VStack {
+            //평균시간 텍스트
+            let text = "Total : ".localized() + getHrs(value: getSumTime(value: getStudyTimes()))
+                + "   |   " + "Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes()))
+            Text(text)
+                .fontWeight(.regular)
+                .foregroundColor(.white)
+                .font(.system(size:15))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 15)
+            
+            /* ----차트화면---- */
             VStack {
-                Spacer(minLength: 30)
-                /* 차트화면 타이틀 */
-                Text("Study Time".localized())
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                Spacer(minLength: 0)
-                
-                /* ----차트화면---- */
-                VStack {
-                    //평균시간 텍스트
-                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes())))
-                        .fontWeight(.regular)
-                        .foregroundColor(.white)
-                        .font(.system(size:17))
-                    //그래프 틀
-                    HStack(spacing:15) { //좌우로 15만큼 여백
-                        ForEach(DailyDatas) {work in
-                            //세로 스택
+                //그래프 틀
+                HStack(spacing:15) { //좌우로 15만큼 여백
+                    ForEach(DailyDatas) {work in
+                        //세로 스택
+                        VStack{
+                            //시간 + 그래프 막대
                             VStack{
-                                //시간 + 그래프 막대
-                                VStack{
-                                    //아래로 붙이기
-                                    Spacer(minLength: 0)
-                                    //시간 설정
-                                    Text(getHrs(value: work.studyTime))
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size:14))
-                                        .padding(.bottom,5)
-                                    //그래프 막대
-                                    RoundedShape()
-                                        .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
-                                        //그래프 막대 높이설정
-                                        .frame(height:getHeight(value: work.studyTime))
-                                }
-                                .frame(height:150)
-                                //날짜 설정
-                                Text(work.day)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
+                                //아래로 붙이기
+                                Spacer(minLength: 0)
+                                //시간 설정
+                                Text(getHrs(value: work.studyTime))
+                                    .foregroundColor(Color.white)
+                                    .font(.system(size:14))
+                                    .padding(.bottom,-5)
+                                //그래프 막대
+                                RoundedShape()
+                                    .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
+                                    //그래프 막대 높이설정
+                                    .frame(height:getHeight(value: work.studyTime))
                             }
+                            .frame(height:140)
+                            //날짜 설정
+                            Text(work.day)
+                                .font(.system(size:14))
+                                .foregroundColor(.white)
                         }
                     }
                 }
-                .padding()
-                .background(Color.white.opacity(0.1))
-                .cornerRadius(15)
-                .padding()
-                /* ----차트끝---- */
-                
-                /* 차트화면 타이틀 */
-                Text("Rest Time".localized())
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                Spacer(minLength: 0)
-                
-                /* ----차트화면---- */
-                VStack {
-                    //평균시간 텍스트
-                    Text("Average : ".localized() + getHrs(value: getAverageTime(value: getBreakTimes())))
-                        .fontWeight(.regular)
-                        .foregroundColor(.white)
-                        .font(.system(size:17))
-                    //그래프 틀
-                    HStack(spacing:15) { //좌우로 15만큼 여백
-                        ForEach(DailyDatas) {work in
-                            //세로 스택
-                            VStack{
-                                //시간 + 그래프 막대
-                                VStack{
-                                    //아래로 붙이기
-                                    Spacer(minLength: 0)
-                                    //시간 설정
-                                    Text(getHrs(value: work.breakTime))
-                                        .foregroundColor(Color.white)
-                                        .font(.system(size:14))
-                                        .padding(.bottom,5)
-                                    //그래프 막대
-                                    RoundedShape()
-                                        .fill(LinearGradient(gradient: .init(colors: colors2), startPoint: .top, endPoint: .bottom))
-                                        //그래프 막대 높이설정
-                                        .frame(height:getHeight(value: work.breakTime))
-                                }
-                                .frame(height:150)
-                                //날짜 설정
-                                Text(work.day)
-                                    .font(.caption)
-                                    .foregroundColor(.white)
-                            }
-                        }
-                    }
-                }
-                .padding()
-                .background(Color.white.opacity(0.1))
-                .cornerRadius(15)
-                .padding()
-                /* ----차트끝---- */
-                
-                
             }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 10)
+            .background(Color.white.opacity(0.1))
+            .cornerRadius(15)
+            /* ----차트끝---- */
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
@@ -126,7 +69,7 @@ struct ContentView: View {
     
     func getHeight(value : Int) -> CGFloat {
         let max = getMaxInTotalTime(value: DailyDatas)
-        return (CGFloat(value) / CGFloat(max)) * 100
+        return (CGFloat(value) / CGFloat(max)) * 110
     }
     
     func getMaxInTotalTime (value : [daily]) -> Int {
@@ -244,6 +187,14 @@ extension ContentView {
         }
     }
     
+    func getSumTime(value: [Int]) -> Int {
+        var sum: Int = 0
+        for i in value {
+            sum += i
+        }
+        return sum
+    }
+    
     func getStudyTimes() -> [Int] {
         let studyArray = DailyDatas.map { (value : daily) -> Int in value.studyTime}
         return studyArray
@@ -259,26 +210,27 @@ extension ContentView {
     }
     
     func appendDumyDatas(){
-        DailyDatas.append(daily(id: 1, day: "2/24",
-                                studyTime: translate2(input: "2:35:20"),
-                                breakTime: translate2(input: "0:35:20")))
-        DailyDatas.append(daily(id: 2, day: "2/23",
-                                studyTime: translate2(input: "4:03:41"),
-                                breakTime: translate2(input: "2:01:00")))
-        DailyDatas.append(daily(id: 3, day: "2/22",
-                                studyTime: translate2(input: "6:08:14"),
-                                breakTime: translate2(input: "2:32:56")))
-        DailyDatas.append(daily(id: 4, day: "2/21",
-                                studyTime: translate2(input: "4:03:39"),
-                                breakTime: translate2(input: "1:05:00")))
-        DailyDatas.append(daily(id: 5, day: "2/20",
-                                studyTime: translate2(input: "5:44:07"),
-                                breakTime: translate2(input: "1:40:08")))
-        DailyDatas.append(daily(id: 6, day: "2/19",
-                                studyTime: translate2(input: "4:58:23"),
-                                breakTime: translate2(input: "2:02:15")))
-        DailyDatas.append(daily(id: 7, day: "2/18",
+        
+        DailyDatas.append(daily(id: 1, day: "4/30",
                                 studyTime: translate2(input: "3:37:20"),
                                 breakTime: translate2(input: "0:37:50")))
+        DailyDatas.append(daily(id: 2, day: "5/1",
+                                studyTime: translate2(input: "2:58:23"),
+                                breakTime: translate2(input: "2:02:15")))
+        DailyDatas.append(daily(id: 3, day: "5/2",
+                                studyTime: translate2(input: "6:02:07"),
+                                breakTime: translate2(input: "1:40:08")))
+        DailyDatas.append(daily(id: 4, day: "5/3",
+                                studyTime: translate2(input: "4:03:39"),
+                                breakTime: translate2(input: "1:05:00")))
+        DailyDatas.append(daily(id: 5, day: "5/4",
+                                studyTime: translate2(input: "3:35:15"),
+                                breakTime: translate2(input: "2:32:56")))
+        DailyDatas.append(daily(id: 6, day: "5/5",
+                                studyTime: translate2(input: "5:10:12"),
+                                breakTime: translate2(input: "2:01:00")))
+        DailyDatas.append(daily(id: 7, day: "5/6",
+                                studyTime: translate2(input: "4:21:00"),
+                                breakTime: translate2(input: "0:35:20")))
     }
 }

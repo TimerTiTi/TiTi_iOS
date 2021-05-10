@@ -11,16 +11,18 @@ import SwiftUI
 
 class GraphViewController: UIViewController {
 
+    
+    @IBOutlet var viewOfView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-        hostingController.view.frame = view.bounds
+        hostingController.view.frame = viewOfView.bounds
         ContentView().appendDailyDatas()
 //        ContentView().appendDumyDatas()
         addChild(hostingController)
-        view.addSubview(hostingController.view)
+        viewOfView.addSubview(hostingController.view)
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
