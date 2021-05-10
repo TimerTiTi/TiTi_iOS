@@ -16,10 +16,12 @@ class SetTimerViewController: UIViewController {
     @IBOutlet var Text_S: UITextField!
     @IBOutlet var Button_set: UIButton!
     @IBOutlet var Button_Back: UIButton!
-    @IBOutlet weak var Label_toTime: UILabel!
+    @IBOutlet var Label_toTime: UILabel!
     
-    @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var endLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet var view1: UIView!
+    
     
     var SetTimerViewControllerDelegate : ChangeViewController!
     
@@ -47,13 +49,7 @@ class SetTimerViewController: UIViewController {
         Text_M.keyboardType = .numberPad
         Text_S.keyboardType = .numberPad
         
-        Button_set.layer.cornerRadius = 10
-        Button_set.layer.borderWidth = 2
-        Button_set.layer.borderColor = BLUE?.cgColor
-        
-        Button_Back.layer.cornerRadius = 10
-        Button_Back.layer.borderWidth = 2
-        Button_Back.layer.borderColor = UIColor.white.cgColor
+        setRadius()
 
         Text_H.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         Text_M.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
@@ -124,7 +120,7 @@ class SetTimerViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func Button_Back_adtion(_ sender: Any) {
+    @IBAction func Button_Back_action(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -143,5 +139,17 @@ class SetTimerViewController: UIViewController {
     func setLocalizable() {
         timerLabel.text = "Timer Time".localized()
         endLabel.text = "End Time".localized()
+    }
+
+    func setRadius() {
+        Button_set.layer.cornerRadius = 12
+        Button_set.layer.borderWidth = 3
+        Button_set.layer.borderColor = UIColor.systemPink.cgColor
+
+        Button_Back.layer.cornerRadius = 12
+        Button_Back.layer.borderWidth = 3
+        Button_Back.layer.borderColor = UIColor.white.cgColor
+
+        view1.layer.cornerRadius = 15
     }
 }

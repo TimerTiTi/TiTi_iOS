@@ -25,18 +25,15 @@ class SetViewController: UIViewController {
     @IBOutlet var S2TextField: UITextField!
     @IBOutlet var AllTimeLabel: UILabel!
     @IBOutlet var SecondLabel: UILabel!
+    @IBOutlet var view1: UIView!
+    @IBOutlet var view2: UIView!
     
     @IBOutlet var targetLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var averageLabel: UILabel!
-    @IBOutlet var Control_persent: UISegmentedControl!
-    
     
     var setViewControllerDelegate : ChangeViewController!
     var allTime : Int = 21600
     var second : Int = 2400
-    //빡공률 보이기
-    var showPersent: Int = 0
     
     var H1 = ""
     var M1 = ""
@@ -65,8 +62,6 @@ class SetViewController: UIViewController {
         getHMS1()
         getHMS2()
         
-        showPersent = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
-        
         H1TextField.keyboardType = .numberPad
         M1TextField.keyboardType = .numberPad
         H2TextField.keyboardType = .numberPad
@@ -74,13 +69,7 @@ class SetViewController: UIViewController {
         S1TextField.keyboardType = .numberPad
         S2TextField.keyboardType = .numberPad
         
-        SetButton.layer.cornerRadius = 10
-        SetButton.layer.borderWidth = 2
-        SetButton.layer.borderColor = BLUE?.cgColor
-        
-        BackButton.layer.cornerRadius = 10
-        BackButton.layer.borderWidth = 2
-        BackButton.layer.borderColor = UIColor.white.cgColor
+        setRadius()
         
         H1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         M1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
@@ -88,8 +77,6 @@ class SetViewController: UIViewController {
         M2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         S1TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
         S2TextField.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
-        
-        Control_persent.selectedSegmentIndex = showPersent
     }
     
     @objc func textFieldDidChange(textField: UITextField){
@@ -111,14 +98,13 @@ class SetViewController: UIViewController {
     
     @IBAction func SetButton(_ sender: UIButton) {
         let alert = UIAlertController(title:"Do you want to set it up?".localized(),message: "The Target, Sum Time will be reset and a new record starts!".localized(),preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "SET", style: .destructive, handler: { action in
+            self.SET_action()
+        })
         let cancel = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-        let okAction = UIAlertAction(title: "SET", style: .destructive, handler:
-                                        {
-                                            action in
-                                            self.SET_action()
-                                        })
-        alert.addAction(cancel)
         alert.addAction(okAction)
+        alert.addAction(cancel)
+        
         present(alert,animated: true,completion: nil)
     }
     
@@ -127,17 +113,6 @@ class SetViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func set_persent(_ sender: UISegmentedControl) {
-        switch Control_persent.selectedSegmentIndex {
-        case 0:
-            showPersent = 0
-            print("0")
-        case 1:
-            showPersent = 1
-            print("1")
-        default: return
-        }
-    }
     func check()
     {
         if (H1 != "")
@@ -227,7 +202,6 @@ class SetViewController: UIViewController {
     {
         UserDefaults.standard.set(second, forKey: "second")
         UserDefaults.standard.set(allTime, forKey: "allTime")
-        UserDefaults.standard.set(showPersent, forKey: "showPersent")
         print("set complite")
         setViewControllerDelegate.updateViewController()
         self.dismiss(animated: true, completion: nil)
@@ -236,20 +210,19 @@ class SetViewController: UIViewController {
     func setLocalizable() {
         targetLabel.text = "Target Time2".localized()
         timerLabel.text = "Timer Time".localized()
-        averageLabel.text = "Average Study Time".localized()
-        Control_persent.setTitle("Show".localized(), forSegmentAt: 0)
-        Control_persent.setTitle("Hide".localized(), forSegmentAt: 1)
     }
-}
-
-extension UIViewController {
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-            action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+    
+    func setRadius() {
+        SetButton.layer.cornerRadius = 12
+        SetButton.layer.borderWidth = 3
+        SetButton.layer.borderColor = UIColor.systemPink.cgColor
+        
+        BackButton.layer.cornerRadius = 12
+        BackButton.layer.borderWidth = 3
+        BackButton.layer.borderColor = UIColor.white.cgColor
+        
+        view1.layer.cornerRadius = 15
+        view2.layer.cornerRadius = 15
     }
 }
 
