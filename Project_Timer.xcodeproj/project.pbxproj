@@ -14,6 +14,7 @@
 		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
 		87459706263FF0D700172C0F /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
 		87459708263FF0F000172C0F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
+		874964F52649590700113E25 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874964F42649590700113E25 /* StopwatchViewController.swift */; };
 		874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
@@ -48,6 +49,7 @@
 		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		87459705263FF0D700172C0F /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		87459707263FF0F000172C0F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		874964F42649590700113E25 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
 		874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
@@ -133,9 +135,10 @@
 		87459702263FEF5E00172C0F /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				87459703263FEF6B00172C0F /* TimerViewController.swift */,
 				87A7624626493BB500174401 /* GraphViewController2.swift */,
 				875AA59B26494365005D15D6 /* taskSelectViewController.swift */,
+				87459703263FEF6B00172C0F /* TimerViewController.swift */,
+				874964F42649590700113E25 /* StopwatchViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
+				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
@@ -453,7 +457,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -477,7 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
