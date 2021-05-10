@@ -69,7 +69,7 @@ struct ContentView: View {
     
     func getHeight(value : Int) -> CGFloat {
         let max = getMaxInTotalTime(value: DailyDatas)
-        return (CGFloat(value) / CGFloat(max)) * 110
+        return (CGFloat(value) / CGFloat(max)) * 120
     }
     
     func getMaxInTotalTime (value : [daily]) -> Int {

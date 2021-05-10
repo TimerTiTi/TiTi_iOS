@@ -260,7 +260,7 @@ extension GraphViewController2 {
         if(time == 0) {
             return
         }
-        view.backgroundColor = UIColor(named: "CC2")
+        view.backgroundColor = UIColor(named: "CCC2")
         if(time < 600) { //0 ~ 10
             view.alpha = 0.2
         } else if(time < 1200) { //10 ~ 20

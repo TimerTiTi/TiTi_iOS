@@ -180,6 +180,9 @@ extension ViewController2 : ChangeViewController2 {
         checkAverage()
         allStopColor()
     }
+    func changeTask() {
+//        setTask()
+    }
 }
 
 

@@ -10,6 +10,7 @@ import UIKit
 
 protocol ChangeViewController2 {
     func changeGoalTime()
+    func changeTask()
 }
 
 class SetTimerViewController2: UIViewController {
