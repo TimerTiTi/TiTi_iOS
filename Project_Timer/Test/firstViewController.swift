@@ -108,10 +108,15 @@ extension firstViewController {
         sumTimeLabel.text = "Sum Time".localized()
         timerLabel.text = "Timer".localized()
         targetTimeLabel.text = "Target Time".localized()
+        
+        text1.text = "before start, Enter a new Subject".localized()
+        text2.text = "Setting today's times".localized()
+        text5.text = "You can changes the modes".localized()
+        text7.text = "You can see your records".localized()
     }
     func setButtonRotation() {
-        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*8/9)
-        log.transform = CGAffineTransform(rotationAngle: .pi*1/9)
+        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*5/6)
+        log.transform = CGAffineTransform(rotationAngle: .pi*1/6)
     }
     func setRadius() {
         taskButton.layer.cornerRadius = 12
@@ -220,14 +225,14 @@ extension firstViewController {
         UIView.animate(withDuration: 0.3) {
             self.arrow2.alpha = 0
             self.arrow3.alpha = 1
-            self.text2.text = "start, stop button"
+            self.text2.text = "Start, Stop button".localized()
         }
     }
     func ani4() {
         UIView.animate(withDuration: 0.3) {
             self.arrow3.alpha = 0
             self.arrow4.alpha = 1
-            self.text2.text = "you can setting timer time"
+            self.text2.text = "You can modify Timer Time".localized()
         }
     }
     func ani5() {

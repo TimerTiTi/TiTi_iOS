@@ -106,14 +106,15 @@ class TimerViewController: UIViewController {
 
     @objc func deviceRotated(){
         if(isStop) {
-            if UIDevice.current.orientation.isPortrait {
-                //Code here
-                print("Portrait")
-                setPortrait()
-            } else {
+            if UIDevice.current.orientation.isLandscape {
                 //Code here
                 print("Landscape")
                 setLandscape()
+                
+            } else {
+                //Code here
+                print("Portrait")
+                setPortrait()
             }
         }
     }
@@ -165,13 +166,17 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func startStopBTAction(_ sender: Any) {
-        //start action
-        if(isStop == true) {
-            algoOfStart()
-        }
-        //stop action
-        else {
-            algoOfStop()
+        if(task == "Enter a new subject".localized()) {
+            showFirstAlert()
+        } else {
+            //start action
+            if(isStop == true) {
+                algoOfStart()
+            }
+            //stop action
+            else {
+                algoOfStop()
+            }
         }
     }
     
@@ -187,11 +192,31 @@ class TimerViewController: UIViewController {
 extension TimerViewController : ChangeViewController {
     
     func setLandscape() {
-        startStopBT.layer.borderColor = UIColor.clear.cgColor
+        UIView.animate(withDuration: 0.3) {
+            self.modeTimer.alpha = 0
+            self.modeTimerLabel.alpha = 0
+            self.modeStopWatch.alpha = 0
+            self.modeStopWatchLabel.alpha = 0
+            self.log.alpha = 0
+            self.logLabel.alpha = 0
+            
+            self.taskButton.alpha = 0
+            self.dock.alpha = 0
+        }
     }
     
     func setPortrait() {
-        startStopBT.layer.borderColor = RED!.cgColor
+        UIView.animate(withDuration: 0.3) {
+            self.modeTimer.alpha = 1
+            self.modeTimerLabel.alpha = 1
+            self.modeStopWatch.alpha = 1
+            self.modeStopWatchLabel.alpha = 1
+            self.log.alpha = 1
+            self.logLabel.alpha = 1
+            
+            self.taskButton.alpha = 1
+            self.dock.alpha = 1
+        }
     }
     
     func updateViewController() {
@@ -311,8 +336,8 @@ extension TimerViewController {
     }
     
     func setButtonRotation() {
-        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*8/9)
-        log.transform = CGAffineTransform(rotationAngle: .pi*1/9)
+        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*5/6)
+        log.transform = CGAffineTransform(rotationAngle: .pi*1/6)
     }
     
     func setRadius() {
@@ -664,7 +689,7 @@ extension TimerViewController {
         } else {
             taskButton.setTitleColor(UIColor.white, for: .normal)
             taskButton.layer.borderColor = UIColor.white.cgColor
-            startStopBT.isUserInteractionEnabled = true
+//            startStopBT.isUserInteractionEnabled = true
         }
         taskButton.setTitle(task, for: .normal)
     }
@@ -678,7 +703,20 @@ extension TimerViewController {
     func setFirstStart() {
         taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         taskButton.layer.borderColor = UIColor.systemPink.cgColor
-        startStopBT.isUserInteractionEnabled = false
+//        startStopBT.isUserInteractionEnabled = false
+    }
+    
+    func showFirstAlert() {
+        //1. 경고창 내용 만들기
+        let alert = UIAlertController(title:"Enter a new subject".localized(),
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        //2. 확인 버튼 만들기
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        //3. 확인 버튼을 경고창에 추가하기
+        alert.addAction(ok)
+        //4. 경고창 보이기
+        present(alert,animated: true,completion: nil)
     }
 }
 

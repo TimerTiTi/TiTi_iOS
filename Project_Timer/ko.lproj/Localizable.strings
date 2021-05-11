@@ -60,3 +60,15 @@
 "Enter a subject that's max length is 20" = "12자리 내의 새로운 과목을 입력하세요";
 
 "New subject" = "새로운 과목";
+
+"before start, Enter a new Subject" = "시작 전, 새로운 과목을 입력하세요";
+
+"Setting today's times" = "오늘의 시간을 설정하세요";
+
+"You can changes the modes" = "모드를 변경할 수 있습니다";
+
+"You can see your records" = "공부 기록을 볼 수 있습니다";
+
+"Start, Stop button" = "시작, 종료 버튼";
+
+"You can modify Timer Time" = "타이머 시간을 조절할 수 있습니다";
