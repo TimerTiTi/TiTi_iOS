@@ -118,12 +118,12 @@ class TimerViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
-        if(VCNum == 2) {
-            goToViewController(where: "StopwatchViewController")
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
+//        if(VCNum == 2) {
+//            goToViewController(where: "StopwatchViewController")
+//        }
+//    }
     
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
