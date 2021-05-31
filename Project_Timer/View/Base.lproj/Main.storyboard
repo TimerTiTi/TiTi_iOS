@@ -1043,18 +1043,45 @@ AVER : 1:02:03</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qk-B8-N3H">
+                                        <rect key="frame" x="292.5" y="6.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="PWS-q0-9eA"/>
+                                            <constraint firstAttribute="width" constant="25" id="SaQ-k3-oL2"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Blue"/>
+                                        <state key="normal" image="icloud.and.arrow.up" catalog="system"/>
+                                        <connections>
+                                            <action selector="upload:" destination="yRZ-mG-lyl" eventType="touchUpInside" id="ZoU-hK-fj0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-z0-ImQ">
+                                        <rect key="frame" x="332.5" y="6.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="F4x-Pb-lHN"/>
+                                            <constraint firstAttribute="height" constant="25" id="tbK-0g-VXW"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Blue"/>
+                                        <state key="normal" image="icloud.and.arrow.down" catalog="system"/>
+                                        <connections>
+                                            <action selector="download:" destination="yRZ-mG-lyl" eventType="touchUpInside" id="GSd-9K-l5K"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="5IH-de-TBK" firstAttribute="centerX" secondItem="wW5-e9-l9C" secondAttribute="centerX" id="1Cm-zb-BFw"/>
                                     <constraint firstItem="KCC-ZF-tP7" firstAttribute="top" secondItem="37b-ac-QXS" secondAttribute="bottom" constant="110" id="615-wN-W2Z"/>
                                     <constraint firstItem="J7S-HR-7lg" firstAttribute="centerX" secondItem="aHc-rQ-LU2" secondAttribute="centerX" id="7RZ-7l-41E"/>
+                                    <constraint firstItem="gcT-z0-ImQ" firstAttribute="centerY" secondItem="BCh-OF-bhg" secondAttribute="centerY" id="9bX-Tg-rrq"/>
                                     <constraint firstItem="PbI-u4-dFK" firstAttribute="centerX" secondItem="ATq-fi-8LO" secondAttribute="centerX" id="ANX-hX-6tJ"/>
                                     <constraint firstItem="PbI-u4-dFK" firstAttribute="top" secondItem="ATq-fi-8LO" secondAttribute="bottom" constant="5" id="AcS-JX-TGI"/>
                                     <constraint firstItem="0Hj-1R-Aiy" firstAttribute="centerX" secondItem="fl2-Qf-Qa3" secondAttribute="centerX" id="CeN-LR-C6f"/>
                                     <constraint firstItem="BCh-OF-bhg" firstAttribute="top" secondItem="MoY-Ma-bix" secondAttribute="top" constant="5" id="CtH-R5-SdK"/>
                                     <constraint firstItem="0Hj-1R-Aiy" firstAttribute="top" secondItem="fl2-Qf-Qa3" secondAttribute="bottom" constant="5" id="DC1-Os-9Xe"/>
+                                    <constraint firstAttribute="trailing" secondItem="gcT-z0-ImQ" secondAttribute="trailing" constant="15" id="Fm0-i2-H6x"/>
                                     <constraint firstItem="37b-ac-QXS" firstAttribute="top" secondItem="CKE-LL-lDA" secondAttribute="bottom" constant="20" id="G1P-w7-QvK"/>
                                     <constraint firstItem="J7S-HR-7lg" firstAttribute="top" secondItem="aHc-rQ-LU2" secondAttribute="bottom" constant="5" id="HZt-LL-gkp"/>
+                                    <constraint firstItem="gcT-z0-ImQ" firstAttribute="leading" secondItem="1Qk-B8-N3H" secondAttribute="trailing" constant="15" id="ILq-wT-8eb"/>
                                     <constraint firstItem="62f-T8-kZ2" firstAttribute="top" secondItem="37b-ac-QXS" secondAttribute="bottom" id="M2T-gk-quw"/>
                                     <constraint firstItem="hR3-ZP-fAE" firstAttribute="top" secondItem="NLw-fv-k6Z" secondAttribute="bottom" constant="5" id="NPn-x2-Ov0"/>
                                     <constraint firstItem="CKE-LL-lDA" firstAttribute="centerX" secondItem="MoY-Ma-bix" secondAttribute="centerX" id="Que-g2-MPb"/>
@@ -1065,6 +1092,7 @@ AVER : 1:02:03</string>
                                     <constraint firstItem="BCh-OF-bhg" firstAttribute="centerX" secondItem="MoY-Ma-bix" secondAttribute="centerX" id="Y18-jy-Kxa"/>
                                     <constraint firstItem="CKE-LL-lDA" firstAttribute="top" secondItem="BCh-OF-bhg" secondAttribute="bottom" constant="5" id="fiM-Mw-ihJ"/>
                                     <constraint firstItem="62f-T8-kZ2" firstAttribute="centerX" secondItem="37b-ac-QXS" secondAttribute="centerX" id="h4D-ZO-KQv"/>
+                                    <constraint firstItem="1Qk-B8-N3H" firstAttribute="centerY" secondItem="BCh-OF-bhg" secondAttribute="centerY" id="hxg-xx-3lz"/>
                                     <constraint firstAttribute="trailing" secondItem="ueF-b6-2N6" secondAttribute="trailing" constant="5" id="mpH-sl-7Yp"/>
                                     <constraint firstItem="5IH-de-TBK" firstAttribute="top" secondItem="wW5-e9-l9C" secondAttribute="bottom" constant="5" id="nRa-uM-NS2"/>
                                     <constraint firstItem="I8P-z1-yeP" firstAttribute="centerX" secondItem="6Uo-Pn-RUF" secondAttribute="centerX" id="oXP-Gw-kqx"/>
@@ -3079,6 +3107,8 @@ AVER : 1:02:03</string>
         <segue reference="jCe-tr-OoF"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="icloud.and.arrow.down" catalog="system" width="128" height="112"/>
+        <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="rainbow" width="50" height="50"/>
         <namedColor name="Background">

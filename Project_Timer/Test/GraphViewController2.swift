@@ -8,9 +8,12 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
 class GraphViewController2: UIViewController {
 
+    let db = Database.database().reference().child("test")
+    
     @IBOutlet var viewOfView: UIView!
     
     @IBOutlet var progress: UIView!
@@ -70,6 +73,7 @@ class GraphViewController2: UIViewController {
         fillHourColor()
         if(daily.tasks != [:]) {
             today.text = getDay(day: daily.day)
+//            today.text = "5/6"
             let temp: [String:Int] = daily.tasks
 //            let temp = addDumy()
             counts = temp.count
@@ -102,6 +106,72 @@ class GraphViewController2: UIViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
+    }
+    
+    @IBAction func upload(_ sender: Any) {
+        let temp = getTemp()
+        db.child("today").setValue(temp)
+        uploadAlert()
+    }
+    
+    @IBAction func download(_ sender: Any) {
+        
+    }
+    
+    func getTemp() -> [String:Any] {
+        let day = uploadDate(day: daily.day)
+        let fixedTotalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
+        let fixedSumTime = 0
+        let fixedTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 0
+        let currentTotalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 0
+        let currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+        let currentTimerTime = UserDefaults.standard.value(forKey: "second2") as? Int ?? 0
+        let breakTime = 0
+        let maxTime = daily.maxTime
+        let startTime = daily.startTime.timeIntervalSince1970
+        let currentTask = daily.currentTask
+        let tasks = daily.tasks
+        let beforeTime = daily.beforeTime
+        let timeline = daily.timeline
+        
+        var temp: [String:Any] = [:]
+        temp.updateValue(day, forKey: "day")
+        temp.updateValue(fixedTotalTime, forKey: "fixedTotalTime")
+        temp.updateValue(fixedSumTime, forKey: "fixedSumTime")
+        temp.updateValue(fixedTimerTime, forKey: "fixedTimerTime")
+        temp.updateValue(currentTotalTime, forKey: "currentTotalTime")
+        temp.updateValue(currentSumTime, forKey: "currentSumTime")
+        temp.updateValue(currentTimerTime, forKey: "currentTimerTime")
+        temp.updateValue(breakTime, forKey: "breakTime")
+        temp.updateValue(maxTime, forKey: "maxTime")
+        temp.updateValue(startTime, forKey: "startTime")
+        temp.updateValue(currentTask, forKey: "currentTask")
+        temp.updateValue(tasks, forKey: "tasks")
+        temp.updateValue(beforeTime, forKey: "beforeTime")
+        temp.updateValue(timeline, forKey: "timeline")
+        
+        
+        
+        return temp
+    }
+    
+    func uploadAlert() {
+        //1. 경고창 내용 만들기
+        let alert = UIAlertController(title:"Upload Success",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        //2. 확인 버튼 만들기
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        //3. 확인 버튼을 경고창에 추가하기
+        alert.addAction(ok)
+        //4. 경고창 보이기
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func uploadDate(day: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        return dateFormatter.string(from: day)
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81EBE2FB03B434DF4DF195C8 /* Pods_Project_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099BE4066E10B9905890B61D /* Pods_Project_Timer.framework */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
 		870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE72025E529F2004DD27E /* GraphViewController.swift */; };
 		872DE54025DCE7F400097560 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE53F25DCE7F400097560 /* ViewController2.swift */; };
@@ -25,6 +26,7 @@
 		8762AB6325E0DF38003438B5 /* LogViewController_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762AB6225E0DF38003438B5 /* LogViewController_test.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
+		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		87A4704826493D4D007B89D6 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* Time.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A7624726493BB500174401 /* GraphViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* GraphViewController2.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		099BE4066E10B9905890B61D /* Pods_Project_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23A56A88752B85FCA8E1CEEB /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		870AE72025E529F2004DD27E /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		872DE53F25DCE7F400097560 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		8762AB6225E0DF38003438B5 /* LogViewController_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController_test.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
+		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A7624626493BB500174401 /* GraphViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController2.swift; sourceTree = "<group>"; };
@@ -82,6 +87,7 @@
 		93B0852C248DDF3000E215BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93B0852E248DDF3000E215BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
+		9535247E1A74D4250DA2D822 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,12 +95,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81EBE2FB03B434DF4DF195C8 /* Pods_Project_Timer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03416D37EFF7071129D3876F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				099BE4066E10B9905890B61D /* Pods_Project_Timer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +187,8 @@
 			children = (
 				93B0851F248DDF2F00E215BD /* Project_Timer */,
 				93B0851E248DDF2F00E215BD /* Products */,
+				A6F443B8D892A8C1E2C42D12 /* Pods */,
+				03416D37EFF7071129D3876F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,8 +214,18 @@
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				93A892B224C1544A00F89180 /* Test.swift */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
+				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 			);
 			path = Project_Timer;
+			sourceTree = "<group>";
+		};
+		A6F443B8D892A8C1E2C42D12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9535247E1A74D4250DA2D822 /* Pods-Project_Timer.debug.xcconfig */,
+				23A56A88752B85FCA8E1CEEB /* Pods-Project_Timer.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B08531248DDF3000E215BD /* Build configuration list for PBXNativeTarget "Project_Timer" */;
 			buildPhases = (
+				DC0EC98A0AA233ED13C8C121 /* [CP] Check Pods Manifest.lock */,
 				93B08519248DDF2F00E215BD /* Sources */,
 				93B0851A248DDF2F00E215BD /* Frameworks */,
 				93B0851B248DDF2F00E215BD /* Resources */,
+				F732DB2CFFAB2DEA3C645653 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,6 +294,7 @@
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
+				878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
@@ -275,6 +305,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC0EC98A0AA233ED13C8C121 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Project_Timer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F732DB2CFFAB2DEA3C645653 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		93B08519248DDF2F00E215BD /* Sources */ = {
@@ -457,6 +529,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9535247E1A74D4250DA2D822 /* Pods-Project_Timer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
@@ -481,6 +554,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23A56A88752B85FCA8E1CEEB /* Pods-Project_Timer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
