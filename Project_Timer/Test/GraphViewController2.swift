@@ -65,6 +65,8 @@ class GraphViewController2: UIViewController {
         checkUser()
         setRadius()
         
+        db.childByAutoId().setValue("통계학 #2")
+        
 //        UserDefaults.standard.setValue("", forKey: "phoneNumber")
 //        UserDefaults.standard.setValue("", forKey: "password")
 //
@@ -166,9 +168,15 @@ class GraphViewController2: UIViewController {
         let breakTime = 0
         let maxTime = daily.maxTime
         let startTime = daily.startTime.timeIntervalSince1970
-//        let currentTask = daily.currentTask
-        let currentTask = ""
-        let tasks = daily.tasks
+        let currentTask = daily.currentTask
+//        let currentTask = ""
+//        let tasks = daily.tasks
+        var taskKeys: [String] = []
+        var taskValues: [Int] = []
+        for (key, value) in daily.tasks {
+            taskKeys.append(key)
+            taskValues.append(value)
+        }
         let beforeTime = daily.beforeTime
         let timeline = daily.timeline
         
@@ -184,7 +192,9 @@ class GraphViewController2: UIViewController {
         temp.updateValue(maxTime, forKey: "maxTime")
         temp.updateValue(startTime, forKey: "startTime")
         temp.updateValue(currentTask, forKey: "currentTask")
-        temp.updateValue(tasks, forKey: "tasks")
+//        temp.updateValue(tasks, forKey: "tasks")
+        temp.updateValue(taskKeys, forKey: "taskKeys")
+        temp.updateValue(taskValues, forKey: "taskValues")
         temp.updateValue(beforeTime, forKey: "beforeTime")
         temp.updateValue(timeline, forKey: "timeline")
         
@@ -224,8 +234,10 @@ class GraphViewController2: UIViewController {
         newDaily.breakTime = 0
         newDaily.maxTime = getDaily.maxTime
         newDaily.startTime = doubleToDate(getDaily.startTime)
-//        newDaily.currentTask = getDaily.currentTask
-        newDaily.tasks = getDaily.tasks
+        newDaily.currentTask = getDaily.currentTask
+        for i in 0..<getDaily.taskKeys.count {
+            newDaily.tasks.updateValue(getDaily.taskValues[i], forKey: getDaily.taskKeys[i])
+        }
         newDaily.beforeTime = getDaily.beforeTime
         newDaily.timeline = getDaily.timeline
         
@@ -234,7 +246,7 @@ class GraphViewController2: UIViewController {
         UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
         UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
         UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
-//        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
+        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
         UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
 
         return newDaily
@@ -552,7 +564,9 @@ struct GetDaily: Codable {
     
     var startTime: Double = 0
     var currentTask: String = ""
-    var tasks: [String:Int] = [:]
+//    var tasks: [String:Int] = [:]
+    var taskKeys: [String] = []
+    var taskValues: [Int] = []
     
     var beforeTime: Int = 0
     var timeline = Array(repeating: 0, count: 24)
