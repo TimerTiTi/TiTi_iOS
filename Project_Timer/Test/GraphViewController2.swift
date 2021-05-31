@@ -45,6 +45,8 @@ class GraphViewController2: UIViewController {
     @IBOutlet var time_03: UIView!
     @IBOutlet var time_04: UIView!
     
+    @IBOutlet var collectionView: UICollectionView!
+    
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
@@ -54,11 +56,18 @@ class GraphViewController2: UIViewController {
     var counts: Int = 0
     
     var logViewControllerDelegate : ChangeViewController2!
+    var phone: String = UserDefaults.standard.value(forKey: "phoneNumber") as? String ?? ""
+    var password = UserDefaults.standard.value(forKey: "password") as? String ?? ""
+    var isUser: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkUser()
         setRadius()
         
+//        UserDefaults.standard.setValue("", forKey: "phoneNumber")
+//        UserDefaults.standard.setValue("", forKey: "password")
+//
         //7days
         let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
@@ -109,40 +118,48 @@ class GraphViewController2: UIViewController {
     }
     
     @IBAction func upload(_ sender: Any) {
-        let temp = getTemp()
-        db.child("today").setValue(temp)
-        alert("upload Success")
+        if(isUser) {
+            let temp = getTemp()
+            db.child("data").child("\(phone)_\(password)").child("today").setValue(temp)
+            alert("upload Success")
+        } else {
+            newUser(true)
+        }
     }
     
     @IBAction func download(_ sender: Any) {
-        db.child("today").observeSingleEvent(of: .value) { (snapshot) in
-            do {
-                let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
-                let decoder = JSONDecoder()
-                let getDaily: GetDaily = try decoder.decode(GetDaily.self, from: data)
-                print("--> daily : \(getDaily)")
-                
-                let newDaily: Daily = self.transDaily(getDaily)
-                newDaily.save()
-                self.alert("download Success")
-                
-                DispatchQueue.main.async {
-                    ContentView().reset()
-                    self.viewDidLoad()
-                    self.view.layoutIfNeeded()
+        if(isUser) {
+            db.child("data").child("\(phone)_\(password)").child("today").observeSingleEvent(of: .value) { (snapshot) in
+                do {
+                    let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
+                    let decoder = JSONDecoder()
+                    let getDaily: GetDaily = try decoder.decode(GetDaily.self, from: data)
+                    print("--> daily : \(getDaily)")
                     
-                    self.logViewControllerDelegate.reload()
-                }
-            } catch let error { print("--> error: \(error)") }
+                    let newDaily: Daily = self.transDaily(getDaily)
+                    newDaily.save()
+                    self.alert("download Success") 
+                    
+                    DispatchQueue.main.async {
+                        ContentView().reset()
+                        self.viewDidLoad()
+                        self.view.layoutIfNeeded()
+                        self.collectionView.reloadData()
+                        self.logViewControllerDelegate.reload()
+                    }
+                } catch let error { print("--> error: \(error)") }
+            }
+            self.viewDidAppear(true)
+        } else {
+            newUser(false)
         }
-        self.viewDidAppear(true)
     }
     
     func getTemp() -> [String:Any] {
         let day = uploadDate(day: daily.day)
-        let fixedTotalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
+        let fixedTotalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         let fixedSumTime = 0
-        let fixedTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 0
+        let fixedTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         let currentTotalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 0
         let currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
         let currentTimerTime = UserDefaults.standard.value(forKey: "second2") as? Int ?? 0
@@ -241,6 +258,84 @@ class GraphViewController2: UIViewController {
         dateFormatter.dateFormat = "M월 d일"
         let day = dateFormatter.string(from: date)
         UserDefaults.standard.set(day, forKey: "day1")
+    }
+    
+    func checkUser() {
+        if(phone != "" && password != "") {
+            db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
+                do {
+                    guard let keyValues = snapshot.value as? [String:String] else { return }
+                    let users = Array(keyValues.values)
+                    print(users)
+                    
+                    if(users.contains("\(self.phone)_\(self.password)")) {
+                        print("isUser")
+                        self.isUser = true
+                    }
+                } catch let error { print("--> error: \(error)") }
+            }
+        }
+    }
+    
+    func newUser(_ upload: Bool) {
+        let alert = UIAlertController(title: "Beta 유저정보 등록", message: "핸드폰 번호와\n4자리 패스워드를 등록해주세요", preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "CANCLE", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "ENTER", style: .destructive, handler: {
+            action in
+            let phone: String = alert.textFields?[0].text ?? ""
+            let pass: String = alert.textFields?[1].text ?? ""
+            // 위 변수를 통해 특정기능 수행
+            self.checkUserInput(phone, pass, upload)
+        })
+        //텍스트 입력 추가
+        alert.addTextField { (inputNewNickName) in
+            inputNewNickName.placeholder = "01012123434"
+            inputNewNickName.textAlignment = .center
+            inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+            inputNewNickName.keyboardType = .numberPad
+        }
+        alert.addTextField { (inputNewNickName) in
+            inputNewNickName.placeholder = "1234"
+            inputNewNickName.textAlignment = .center
+            inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+            inputNewNickName.keyboardType = .numberPad
+        }
+        alert.addAction(ok)
+        alert.addAction(cancle)
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func checkUserInput(_ phone: String, _ pass: String, _ upload: Bool) {
+        if(phone.count != 11) {
+            alert("핸드폰 번호를 다시 입력해주세요")
+            return
+        }
+        else if(pass.count != 4) {
+            alert("패스워드를 다시 입력해주세요")
+            return
+        }
+        guard let _ = Int(phone) else {
+            alert("핸드폰 번호를 다시 입력해주세요")
+            return
+        }
+        guard let _ = Int(pass) else {
+            alert("패스워드를 다시 입력해주세요")
+            return
+        }
+        
+        db.child("Users").updateChildValues(["\(phone)_\(pass)" : "\(phone)_\(pass)"])
+        UserDefaults.standard.setValue(phone, forKey: "phoneNumber")
+        UserDefaults.standard.setValue(pass, forKey: "password")
+        self.phone = phone
+        self.password = pass
+        isUser = true
+        
+        if(upload) {
+            let temp = getTemp()
+            db.child("data").child("\(phone)_\(password)").child("today").setValue(temp)
+        }
+        
+        alert("등록이 완료되었습니다, 다시 눌러주시기 바랍니다")
     }
 }
 
