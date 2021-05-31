@@ -18,8 +18,6 @@ class GraphViewController2: UIViewController {
     
     @IBOutlet var progress: UIView!
     @IBOutlet var sumTime: UILabel!
-//    @IBOutlet var taskTitle: UILabel!
-//    @IBOutlet var taskTime: UILabel!
     @IBOutlet var today: UILabel!
     
     @IBOutlet var time_05: UIView!
