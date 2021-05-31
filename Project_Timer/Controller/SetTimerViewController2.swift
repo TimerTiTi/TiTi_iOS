@@ -11,6 +11,7 @@ import UIKit
 protocol ChangeViewController2 {
     func changeGoalTime()
     func changeTask()
+    func reload()
 }
 
 class SetTimerViewController2: UIViewController {

@@ -187,6 +187,10 @@ class TimerViewController: UIViewController {
     @IBAction func settingTimerBTAction(_ sender: Any) {
         showTimerView()
     }
+    
+    @IBAction func logBTAction(_ sender: Any) {
+        showLog()
+    }
 }
 
 extension TimerViewController : ChangeViewController {
@@ -263,6 +267,11 @@ extension TimerViewController: ChangeViewController2 {
     
     func changeTask() {
         setTask()
+    }
+    
+    func reload() {
+        self.viewDidLoad()
+        self.view.layoutIfNeeded()
     }
 }
 
@@ -468,6 +477,12 @@ extension TimerViewController {
     func showTaskView() {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
             setVC.SetTimerViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
+    func showLog() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! GraphViewController2
+            setVC.logViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
     

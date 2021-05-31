@@ -53,6 +53,8 @@ class GraphViewController2: UIViewController {
     var daily = Daily()
     var counts: Int = 0
     
+    var logViewControllerDelegate : ChangeViewController2!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setRadius()
@@ -124,8 +126,16 @@ class GraphViewController2: UIViewController {
                 newDaily.save()
                 self.alert("download Success")
                 
+                DispatchQueue.main.async {
+                    ContentView().reset()
+                    self.viewDidLoad()
+                    self.view.layoutIfNeeded()
+                    
+                    self.logViewControllerDelegate.reload()
+                }
             } catch let error { print("--> error: \(error)") }
         }
+        self.viewDidAppear(true)
     }
     
     func getTemp() -> [String:Any] {
@@ -139,7 +149,8 @@ class GraphViewController2: UIViewController {
         let breakTime = 0
         let maxTime = daily.maxTime
         let startTime = daily.startTime.timeIntervalSince1970
-        let currentTask = daily.currentTask
+//        let currentTask = daily.currentTask
+        let currentTask = ""
         let tasks = daily.tasks
         let beforeTime = daily.beforeTime
         let timeline = daily.timeline
@@ -196,7 +207,7 @@ class GraphViewController2: UIViewController {
         newDaily.breakTime = 0
         newDaily.maxTime = getDaily.maxTime
         newDaily.startTime = doubleToDate(getDaily.startTime)
-        newDaily.currentTask = getDaily.currentTask
+//        newDaily.currentTask = getDaily.currentTask
         newDaily.tasks = getDaily.tasks
         newDaily.beforeTime = getDaily.beforeTime
         newDaily.timeline = getDaily.timeline
@@ -206,7 +217,7 @@ class GraphViewController2: UIViewController {
         UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
         UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
         UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
-        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
+//        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
         UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
 
         return newDaily

@@ -176,37 +176,12 @@ class StopwatchViewController: UIViewController {
         resetSum_temp()
     }
     
+    @IBAction func logBTAction(_ sender: Any) {
+        showLog()
+    }
 }
 
 extension StopwatchViewController : ChangeViewController2 {
-    
-    func setLandscape() {
-        UIView.animate(withDuration: 0.3) {
-            self.modeTimer.alpha = 0
-            self.modeTimerLabel.alpha = 0
-            self.modeStopWatch.alpha = 0
-            self.modeStopWatchLabel.alpha = 0
-            self.log.alpha = 0
-            self.logLabel.alpha = 0
-            
-            self.taskButton.alpha = 0
-            self.dock.alpha = 0
-        }
-    }
-    
-    func setPortrait() {
-        UIView.animate(withDuration: 0.3) {
-            self.modeTimer.alpha = 1
-            self.modeTimerLabel.alpha = 1
-            self.modeStopWatch.alpha = 1
-            self.modeStopWatchLabel.alpha = 1
-            self.log.alpha = 1
-            self.logLabel.alpha = 1
-            
-            self.taskButton.alpha = 1
-            self.dock.alpha = 1
-        }
-    }
     
     func changeGoalTime() {
         isFirst = true
@@ -237,10 +212,43 @@ extension StopwatchViewController : ChangeViewController2 {
         setTask()
         resetSum_temp()
     }
+    
+    func reload() {
+        self.viewDidLoad()
+        self.view.layoutIfNeeded()
+    }
 }
 
 
 extension StopwatchViewController {
+    
+    func setLandscape() {
+        UIView.animate(withDuration: 0.3) {
+            self.modeTimer.alpha = 0
+            self.modeTimerLabel.alpha = 0
+            self.modeStopWatch.alpha = 0
+            self.modeStopWatchLabel.alpha = 0
+            self.log.alpha = 0
+            self.logLabel.alpha = 0
+            
+            self.taskButton.alpha = 0
+            self.dock.alpha = 0
+        }
+    }
+    
+    func setPortrait() {
+        UIView.animate(withDuration: 0.3) {
+            self.modeTimer.alpha = 1
+            self.modeTimerLabel.alpha = 1
+            self.modeStopWatch.alpha = 1
+            self.modeStopWatchLabel.alpha = 1
+            self.log.alpha = 1
+            self.logLabel.alpha = 1
+            
+            self.taskButton.alpha = 1
+            self.dock.alpha = 1
+        }
+    }
     
     func setBackground() {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
@@ -415,6 +423,12 @@ extension StopwatchViewController {
     func showTaskView() {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
             setVC.SetTimerViewControllerDelegate = self
+            present(setVC,animated: true,completion: nil)
+    }
+    
+    func showLog() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! GraphViewController2
+            setVC.logViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
     
