@@ -109,11 +109,23 @@ class GraphViewController2: UIViewController {
     @IBAction func upload(_ sender: Any) {
         let temp = getTemp()
         db.child("today").setValue(temp)
-        uploadAlert()
+        alert("upload Success")
     }
     
     @IBAction func download(_ sender: Any) {
-        
+        db.child("today").observeSingleEvent(of: .value) { (snapshot) in
+            do {
+                let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
+                let decoder = JSONDecoder()
+                let getDaily: GetDaily = try decoder.decode(GetDaily.self, from: data)
+                print("--> daily : \(getDaily)")
+                
+                let newDaily: Daily = self.transDaily(getDaily)
+                newDaily.save()
+                self.alert("download Success")
+                
+            } catch let error { print("--> error: \(error)") }
+        }
     }
     
     func getTemp() -> [String:Any] {
@@ -153,9 +165,9 @@ class GraphViewController2: UIViewController {
         return temp
     }
     
-    func uploadAlert() {
+    func alert(_ message: String) {
         //1. 경고창 내용 만들기
-        let alert = UIAlertController(title:"Upload Success",
+        let alert = UIAlertController(title:message,
             message: "",
             preferredStyle: UIAlertController.Style.alert)
         //2. 확인 버튼 만들기
@@ -170,6 +182,54 @@ class GraphViewController2: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
         return dateFormatter.string(from: day)
+    }
+    
+    func transDaily(_ getDaily: GetDaily) -> Daily {
+        var newDaily: Daily = Daily()
+        newDaily.day = stringToDate(getDaily.day)
+        newDaily.fixedTotalTime = getDaily.fixedTotalTime
+        newDaily.fixedSumTime = 0
+        newDaily.fixedTimerTime = getDaily.fixedTimerTime
+        newDaily.currentTotalTime = getDaily.currentTotalTime
+        newDaily.currentSumTime = getDaily.currentSumTime
+        newDaily.currentTimerTime = getDaily.currentTimerTime
+        newDaily.breakTime = 0
+        newDaily.maxTime = getDaily.maxTime
+        newDaily.startTime = doubleToDate(getDaily.startTime)
+        newDaily.currentTask = getDaily.currentTask
+        newDaily.tasks = getDaily.tasks
+        newDaily.beforeTime = getDaily.beforeTime
+        newDaily.timeline = getDaily.timeline
+        
+        UserDefaults.standard.set(newDaily.fixedTotalTime, forKey: "allTime")
+        UserDefaults.standard.set(newDaily.fixedTimerTime, forKey: "second")
+        UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
+        UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
+        UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
+        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
+        UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
+
+        return newDaily
+    }
+    
+    func stringToDate(_ stringDay: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        let date = dateFormatter.date(from: stringDay)!
+        setDay1(date)
+        return date
+    }
+    
+    func doubleToDate(_ doubleDay: Double) -> Date {
+        let date = Date(timeIntervalSince1970: doubleDay)
+        return date
+    }
+    
+    func setDay1(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M월 d일"
+        let day = dateFormatter.string(from: date)
+        UserDefaults.standard.set(day, forKey: "day1")
     }
 }
 
@@ -371,4 +431,23 @@ class ListCell: UICollectionViewCell {
     @IBOutlet var colorView: UIView!
     @IBOutlet var taskName: UILabel!
     @IBOutlet var taskTime: UILabel!
+}
+
+struct GetDaily: Codable {
+    var day: String = ""
+    var fixedTotalTime: Int = 0
+    var fixedSumTime: Int = 0
+    var fixedTimerTime: Int = 0
+    var currentTotalTime: Int = 0
+    var currentSumTime: Int = 0
+    var currentTimerTime: Int = 0
+    var breakTime: Int = 0
+    var maxTime: Int = 0
+    
+    var startTime: Double = 0
+    var currentTask: String = ""
+    var tasks: [String:Int] = [:]
+    
+    var beforeTime: Int = 0
+    var timeline = Array(repeating: 0, count: 24)
 }

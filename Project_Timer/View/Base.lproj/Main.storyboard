@@ -1717,8 +1717,8 @@ AVER : 1:02:03</string>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbD-s3-bAj">
-                                        <rect key="frame" x="171.5" y="34.5" width="13.5" height="27.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbD-s3-bAj">
+                                        <rect key="frame" x="166.5" y="34" width="23" height="28"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3104,7 +3104,7 @@ AVER : 1:02:03</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jCe-tr-OoF"/>
+        <segue reference="URB-F9-Kup"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icloud.and.arrow.down" catalog="system" width="128" height="112"/>

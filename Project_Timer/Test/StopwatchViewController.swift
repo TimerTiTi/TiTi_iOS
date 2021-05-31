@@ -539,6 +539,8 @@ extension StopwatchViewController {
             self.resetBTLabel.alpha = 1
             self.taskButton.transform = CGAffineTransform(translationX: 0, y: 0)
             self.dock.backgroundColor = UIColor(named: "dock")
+            self.startStopBT.layer.borderColor = self.RED?.cgColor
+            self.startStopBTLabel.text = "▶︎"
         })
         //animation test
         UIView.animate(withDuration: 0.5, animations: {
@@ -571,8 +573,10 @@ extension StopwatchViewController {
             self.settingBTLabel.alpha = 0
             self.resetBT.alpha = 0
             self.resetBTLabel.alpha = 0
-            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 60)
+            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 75)
             self.dock.layer.backgroundColor = UIColor.clear.cgColor
+            self.startStopBT.layer.borderColor = UIColor.clear.cgColor
+            self.startStopBTLabel.text = "◼︎"
         })
     }
     
@@ -665,6 +669,9 @@ extension StopwatchViewController {
 
 
 extension StopwatchViewController {
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
+    }
     
     func algoOfStart() {
         isStop = false
