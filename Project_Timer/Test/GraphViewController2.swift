@@ -65,8 +65,6 @@ class GraphViewController2: UIViewController {
         checkUser()
         setRadius()
         
-        db.childByAutoId().setValue("통계학 #2")
-        
 //        UserDefaults.standard.setValue("", forKey: "phoneNumber")
 //        UserDefaults.standard.setValue("", forKey: "password")
 //
@@ -119,6 +117,10 @@ class GraphViewController2: UIViewController {
         ContentView().reset()
     }
     
+    @IBAction func todayButtonAction(_ sender: Any) {
+        goToViewController(where: "TodayViewController")
+    }
+    
     @IBAction func upload(_ sender: Any) {
         if(isUser) {
             let temp = getTemp()
@@ -139,7 +141,11 @@ class GraphViewController2: UIViewController {
                     print("--> daily : \(getDaily)")
                     
                     let newDaily: Daily = self.transDaily(getDaily)
-                    newDaily.save()
+                    //동일날인지 여부
+                    if(self.deferentDay(getDaily.day)) {
+                        self.setNextDay()
+                    }
+                    self.saveData(newDaily)
                     self.alert("download Success") 
                     
                     DispatchQueue.main.async {
@@ -157,13 +163,16 @@ class GraphViewController2: UIViewController {
         }
     }
     
+    
     func getTemp() -> [String:Any] {
         let day = uploadDate(day: daily.day)
         let fixedTotalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         let fixedSumTime = 0
         let fixedTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        let currentTotalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 0
-        let currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+//        let currentTotalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 0
+        let currentTotalTime = fixedTotalTime - fixed_sum
+//        let currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+        let currentSumTime = fixed_sum
         let currentTimerTime = UserDefaults.standard.value(forKey: "second2") as? Int ?? 0
         let breakTime = 0
         let maxTime = daily.maxTime
@@ -240,14 +249,6 @@ class GraphViewController2: UIViewController {
         }
         newDaily.beforeTime = getDaily.beforeTime
         newDaily.timeline = getDaily.timeline
-        
-        UserDefaults.standard.set(newDaily.fixedTotalTime, forKey: "allTime")
-        UserDefaults.standard.set(newDaily.fixedTimerTime, forKey: "second")
-        UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
-        UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
-        UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
-        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
-        UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
 
         return newDaily
     }
@@ -256,7 +257,6 @@ class GraphViewController2: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
         let date = dateFormatter.date(from: stringDay)!
-        setDay1(date)
         return date
     }
     
@@ -265,11 +265,10 @@ class GraphViewController2: UIViewController {
         return date
     }
     
-    func setDay1(_ date: Date) {
+    func transdDay1(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
-        let day = dateFormatter.string(from: date)
-        UserDefaults.standard.set(day, forKey: "day1")
+        return dateFormatter.string(from: date)
     }
     
     func checkUser() {
@@ -348,6 +347,76 @@ class GraphViewController2: UIViewController {
         }
         
         alert("등록이 완료되었습니다, 다시 눌러주시기 바랍니다")
+    }
+    
+    func deferentDay(_ getDay: String) -> Bool {
+        let savedDay: String = UserDefaults.standard.value(forKey: "day1") as? String ?? "NO DATA"
+        if(savedDay == "NO DATA") { return false }
+        print("savedDay: \(savedDay)")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY/MM/dd"
+        let exported = dateFormatter.date(from: getDay)!
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "M월 d일"
+        let transdDay = newDateFormatter.string(from: exported)
+        print("transdDay: \(transdDay)")
+        
+        return(savedDay != transdDay)
+    }
+    
+    func setNextDay() {
+        var array_day = [String](repeating: "", count: 7)
+        var array_time = [String](repeating: "", count: 7)
+        var array_break = [String](repeating: "", count: 7)
+        
+        for i in stride(from: 0, to: 7, by: 1) {
+            array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
+            array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
+            array_break[i] = UserDefaults.standard.value(forKey: "break"+String(i+1)) as? String ?? "NO DATA"
+        }
+        //값 옮기기, 값 저장하기
+        for i in stride(from: 6, to: 0, by: -1) {
+            array_day[i] = array_day[i-1]
+            UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
+            array_time[i] = array_time[i-1]
+            UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
+            array_break[i] = array_break[i-1]
+            UserDefaults.standard.set(array_break[i], forKey: "break"+String(i+1))
+        }
+    }
+    
+    func saveData(_ newDaily: Daily) {
+        UserDefaults.standard.set(newDaily.fixedTotalTime, forKey: "allTime")
+        UserDefaults.standard.set(newDaily.fixedTimerTime, forKey: "second")
+        UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
+        UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
+        UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
+        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
+        UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
+        UserDefaults.standard.set(transdDay1(newDaily.day), forKey: "day1")
+        newDaily.save()
+    }
+    
+    func saveImageTest() {
+        let img1 = UIImage.init(view: viewOfView)
+        let img2 = UIImage.init(view: progress)
+        let img3 = UIImage.init(view: self.view)
+        
+        UIImageWriteToSavedPhotosAlbum(img1, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(img2, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(img3, nil, nil, nil)
+        
+        //1. 경고창 내용 만들기
+        let alert = UIAlertController(title:"저장되었습니다",
+            message: "",
+            preferredStyle: UIAlertController.Style.alert)
+        //2. 확인 버튼 만들기
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        //3. 확인 버튼을 경고창에 추가하기
+        alert.addAction(ok)
+        //4. 경고창 보이기
+        present(alert,animated: true,completion: nil)
     }
 }
 
@@ -520,6 +589,13 @@ extension GraphViewController2 {
         } else { //50 ~ 60
             view.alpha = 1.0
         }
+    }
+    
+    func goToViewController(where: String) {
+        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
+        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+        self.present(vcName!, animated: true, completion: nil)
     }
 }
 

@@ -81,3 +81,39 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+extension UIImage {
+    
+    convenience init(view: UIView) {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
+        view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.init(cgImage: (image?.cgImage)!)
+    }
+}
+
+//extension UITextField {
+//
+//    func underlined(){
+//        let border = CALayer()
+//        let width = CGFloat(1.0)
+//        border.borderColor = UIColor.lightGray.cgColor
+//        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+//        border.borderWidth = width
+//        self.layer.addSublayer(border)
+//        self.layer.masksToBounds = true
+//    }
+//}
+
+extension UITextField {
+    func underlined(){
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor.lightGray.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+}
