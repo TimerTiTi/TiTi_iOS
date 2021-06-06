@@ -36,13 +36,9 @@ class TodayViewController: UIViewController {
     @IBOutlet var sumTime: UILabel!
     @IBOutlet var maxTime: UILabel!
     
-    @IBOutlet var t1: UITextField!
-    @IBOutlet var t2: UITextField!
-    @IBOutlet var t3: UITextField!
-    @IBOutlet var t4: UITextField!
-    @IBOutlet var t5: UITextField!
-    
     @IBOutlet var bottomTerm: NSLayoutConstraint!
+    @IBOutlet var bottomInputView: NSLayoutConstraint!
+    
     @IBOutlet var collectionHeight: NSLayoutConstraint!//160
     
     @IBOutlet var check1: UIButton!
@@ -65,6 +61,9 @@ class TodayViewController: UIViewController {
     @IBOutlet var view4_progress: UIView!
     @IBOutlet var view4_collectionView: UICollectionView!
     
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var todoInputView: UIView!
+    @IBOutlet weak var inputTextField: UITextField!
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -75,7 +74,6 @@ class TodayViewController: UIViewController {
     var counts: Int = 0
     var array: [Int] = []
     var fixedSum: Int = 0
-    var memos: [String] = []
     var checks: [Bool] = []
     
     var COLOR: UIColor = UIColor(named: "D1")!
@@ -92,14 +90,7 @@ class TodayViewController: UIViewController {
         
         setTimeLine()
         setExtra()
-        setMemo()
         setChecks()
-        
-        t1.underlined()
-        t2.underlined()
-        t3.underlined()
-        t4.underlined()
-        t5.underlined()
         
         // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -119,14 +110,6 @@ class TodayViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        let m1 = t1.text!
-        let m2 = t2.text!
-        let m3 = t3.text!
-        let m4 = t4.text!
-        let m5 = t5.text!
-        memos = [m1,m2,m3,m4,m5]
-        UserDefaults.standard.set(memos, forKey: "memos")
-        
         let c1 = check1.isSelected
         let c2 = check2.isSelected
         let c3 = check3.isSelected
@@ -141,8 +124,8 @@ class TodayViewController: UIViewController {
     @IBAction func saveImage(_ sender: Any) {
         if(checks[0]) { saveImageTest(frame1) }
         if(checks[1]) { saveImageTest(frame2) }
-        if(checks[2]) { saveImageTest(frame3) }
         if(checks[3]) { saveImageTest(frame4) }
+        if(checks[2]) { saveImageTest(frame3) }
         showAlert()
     }
     
@@ -156,6 +139,22 @@ class TodayViewController: UIViewController {
         checks[index] = !checks[index]
     }
     
+    @IBAction func addTaskButtonTapped(_ sender: Any) {
+//        // TODO: Todo 태스크 추가 : OK
+//        // add task to view model
+//        guard let detail = inputTextField.text, detail.isEmpty == false else { return }
+//        let todo = TodoManager.shared.createTodo(detail: detail, isToday: isTodayButton.isSelected)
+//        todoListViewModel.addTodo(todo)
+//        // and tableview reload or update
+//        collectionView.reloadData()
+        inputTextField.text = ""
+//        isTodayButton.isSelected = false
+        self.view.endEditing(true)
+        bottomTerm.constant = 20
+        bottomInputView.constant = 95
+        self.view.layoutIfNeeded()
+    }
+    
 }
 
 extension TodayViewController {
@@ -165,6 +164,9 @@ extension TodayViewController {
         view2.layer.cornerRadius = 45
         view3.layer.cornerRadius = 10
         view4.layer.cornerRadius = 10
+        todoInputView.clipsToBounds = true
+        todoInputView.layer.cornerRadius = 10
+        todoInputView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     
     func setShadow(_ view: UIView) {
@@ -405,15 +407,6 @@ extension TodayViewController {
         makeProgress(array, progress, view4_progress)
     }
     
-    func setMemo() {
-        memos = UserDefaults.standard.value(forKey: "memos") as? [String] ?? ["", "", "", "", ""]
-        t1.text = memos[0]
-        t2.text = memos[1]
-        t3.text = memos[2]
-        t4.text = memos[3]
-        t5.text = memos[4]
-    }
-    
     func setChecks() {
         checks = UserDefaults.standard.value(forKey: "checks") as? [Bool] ?? [true,true,true,true]
         check1.isSelected = checks[0]
@@ -509,14 +502,54 @@ extension TodayViewController {
         var adjustmentHeight: CGFloat = 0
         //이동시킬 Height를 구한다
         if noti.name == UIResponder.keyboardWillShowNotification {
-            adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom-60
         } else {
             adjustmentHeight = 0
         }
         //구한 Height 만큼 변화시킨다
-        self.bottomTerm.constant = adjustmentHeight+15
-        self.view.layoutIfNeeded()
+        self.bottomTerm.constant = adjustmentHeight+20
+        self.bottomInputView.constant = adjustmentHeight+95
         
+        self.view.layoutIfNeeded()
+        scrollView.scrollToBottom()
         print("--> keyboard End Frame: \(keyboardFrame)")
     }
+}
+
+
+extension UIScrollView {
+    
+    // Scroll to a specific view so that it's top is at the top our scrollview
+    func scrollToView(view:UIView) {
+        if let origin = view.superview {
+            // Get the Y position of your child view
+            let childStartPoint = origin.convert(view.frame.origin, to: self)
+            
+            let bottomOffset = scrollBottomOffset()
+            if (childStartPoint.y > bottomOffset.y) {
+                setContentOffset(bottomOffset, animated: true)
+            } else {
+                setContentOffset(CGPoint(x: 0, y: childStartPoint.y), animated: true)
+            }
+        }
+    }
+    
+    // Bonus: Scroll to top
+    func scrollToTop() {
+        let topOffset = CGPoint(x: 0, y: -contentInset.top)
+        setContentOffset(topOffset, animated: true)
+    }
+    
+    // Bonus: Scroll to bottom
+    func scrollToBottom() {
+        let bottomOffset = scrollBottomOffset()
+        if(bottomOffset.y > 0) {
+            setContentOffset(bottomOffset, animated: true)
+        }
+    }
+    
+    private func scrollBottomOffset() -> CGPoint {
+        return CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
+    }
+    
 }
