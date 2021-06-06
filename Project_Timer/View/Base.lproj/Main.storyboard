@@ -2734,7 +2734,7 @@ AVER : 1:02:03</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9O9-uz-bJe">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1711.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1802.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-AP-sHG">
                                                 <rect key="frame" x="5" y="15" width="365" height="365"/>
@@ -3203,18 +3203,18 @@ AVER : 1:02:03</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekL-Ss-WtY">
-                                                <rect key="frame" x="5" y="785" width="365" height="365"/>
+                                                <rect key="frame" x="5" y="1261.5" width="365" height="456"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yKS-EL-7aW">
-                                                        <rect key="frame" x="10" y="10" width="345" height="345"/>
+                                                        <rect key="frame" x="10" y="10" width="345" height="436"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-i3-WMU">
-                                                                <rect key="frame" x="123.5" y="15" width="98.5" height="27.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todolist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-i3-WMU">
+                                                                <rect key="frame" x="133" y="35" width="79" height="28"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5F4-kK-Vw9">
-                                                                <rect key="frame" x="22.5" y="82.5" width="300" height="30"/>
+                                                                <rect key="frame" x="22.5" y="103" width="300" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="300" id="dZn-ZJ-PXj"/>
                                                                     <constraint firstAttribute="height" constant="30" id="nUS-Du-8Xl"/>
@@ -3223,7 +3223,7 @@ AVER : 1:02:03</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rag-FF-a3m">
-                                                                <rect key="frame" x="22.5" y="127.5" width="300" height="30"/>
+                                                                <rect key="frame" x="22.5" y="148" width="300" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="300" id="gZz-dt-1vY"/>
                                                                     <constraint firstAttribute="height" constant="30" id="tZ3-wi-Y0s"/>
@@ -3232,7 +3232,7 @@ AVER : 1:02:03</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcj-Y5-H6q">
-                                                                <rect key="frame" x="22.5" y="172.5" width="300" height="30"/>
+                                                                <rect key="frame" x="22.5" y="193" width="300" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="300" id="Qcy-VF-glB"/>
                                                                     <constraint firstAttribute="height" constant="30" id="yBL-g9-uK3"/>
@@ -3241,7 +3241,7 @@ AVER : 1:02:03</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ai-ST-ZEJ">
-                                                                <rect key="frame" x="22.5" y="217.5" width="300" height="30"/>
+                                                                <rect key="frame" x="22.5" y="238" width="300" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="2d5-Sd-cA1"/>
                                                                     <constraint firstAttribute="width" constant="300" id="w1Y-tv-SX8"/>
@@ -3250,7 +3250,7 @@ AVER : 1:02:03</string>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GYh-Yh-RjT">
-                                                                <rect key="frame" x="22.5" y="262.5" width="300" height="30"/>
+                                                                <rect key="frame" x="22.5" y="283" width="300" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="gMm-ap-BAG"/>
                                                                     <constraint firstAttribute="width" constant="300" id="jXb-9U-sv6"/>
@@ -3266,14 +3266,13 @@ AVER : 1:02:03</string>
                                                             <constraint firstItem="rag-FF-a3m" firstAttribute="top" secondItem="5F4-kK-Vw9" secondAttribute="bottom" constant="15" id="EvU-3C-lLv"/>
                                                             <constraint firstItem="5F4-kK-Vw9" firstAttribute="centerX" secondItem="yKS-EL-7aW" secondAttribute="centerX" id="L5Y-4C-IYt"/>
                                                             <constraint firstItem="1Ai-ST-ZEJ" firstAttribute="top" secondItem="fcj-Y5-H6q" secondAttribute="bottom" constant="15" id="R1h-0U-ij1"/>
-                                                            <constraint firstItem="9F7-i3-WMU" firstAttribute="top" secondItem="yKS-EL-7aW" secondAttribute="top" constant="15" id="SNg-3E-Aqd"/>
+                                                            <constraint firstItem="9F7-i3-WMU" firstAttribute="top" secondItem="yKS-EL-7aW" secondAttribute="top" constant="35" id="SNg-3E-Aqd"/>
                                                             <constraint firstItem="GYh-Yh-RjT" firstAttribute="top" secondItem="1Ai-ST-ZEJ" secondAttribute="bottom" constant="15" id="cJh-b4-C8j"/>
                                                             <constraint firstItem="5F4-kK-Vw9" firstAttribute="top" secondItem="9F7-i3-WMU" secondAttribute="bottom" constant="40" id="drh-rK-oIn"/>
                                                             <constraint firstItem="9F7-i3-WMU" firstAttribute="centerX" secondItem="yKS-EL-7aW" secondAttribute="centerX" id="dss-fG-Hlp"/>
                                                             <constraint firstItem="1Ai-ST-ZEJ" firstAttribute="centerX" secondItem="yKS-EL-7aW" secondAttribute="centerX" id="gdo-ag-zX8"/>
                                                             <constraint firstAttribute="width" constant="345" id="jxd-Ay-9Vb"/>
                                                             <constraint firstItem="rag-FF-a3m" firstAttribute="centerX" secondItem="yKS-EL-7aW" secondAttribute="centerX" id="kaP-2g-dgI"/>
-                                                            <constraint firstAttribute="height" constant="345" id="tUd-ev-2RF"/>
                                                             <constraint firstItem="GYh-Yh-RjT" firstAttribute="centerX" secondItem="yKS-EL-7aW" secondAttribute="centerX" id="zhP-Tl-q89"/>
                                                         </constraints>
                                                     </view>
@@ -3282,13 +3281,15 @@ AVER : 1:02:03</string>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="yKS-EL-7aW" secondAttribute="bottom" constant="10" id="11f-4t-oEm"/>
                                                     <constraint firstItem="yKS-EL-7aW" firstAttribute="leading" secondItem="ekL-Ss-WtY" secondAttribute="leading" constant="10" id="6CZ-rS-cRM"/>
+                                                    <constraint firstAttribute="width" constant="365" id="7E8-Et-tDu"/>
+                                                    <constraint firstAttribute="width" secondItem="ekL-Ss-WtY" secondAttribute="height" multiplier="8:10" id="WfX-eW-Dnp"/>
                                                     <constraint firstAttribute="trailing" secondItem="yKS-EL-7aW" secondAttribute="trailing" constant="10" id="aKb-8l-irR"/>
                                                     <constraint firstItem="yKS-EL-7aW" firstAttribute="top" secondItem="ekL-Ss-WtY" secondAttribute="top" constant="10" id="oVX-gG-hbZ"/>
                                                     <constraint firstItem="yKS-EL-7aW" firstAttribute="centerX" secondItem="ekL-Ss-WtY" secondAttribute="centerX" id="rm1-eh-N7V"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uox-2C-w2p">
-                                                <rect key="frame" x="5" y="1170" width="365" height="456.5"/>
+                                                <rect key="frame" x="5" y="785" width="365" height="456.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="klm-7F-5GQ">
                                                         <rect key="frame" x="10" y="10" width="345" height="436.5"/>
@@ -3754,7 +3755,7 @@ AVER : 1:02:03</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zvh-PD-WBe">
-                                                <rect key="frame" x="45" y="1646.5" width="285" height="45"/>
+                                                <rect key="frame" x="45" y="1737.5" width="285" height="45"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBt-cQ-1PW">
                                                         <rect key="frame" x="15" y="5" width="120" height="35"/>
@@ -3843,7 +3844,7 @@ AVER : 1:02:03</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjq-1w-NvC">
-                                                <rect key="frame" x="30" y="810" width="25" height="25"/>
+                                                <rect key="frame" x="25" y="1281.5" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="25" id="FM5-YH-xcZ"/>
                                                     <constraint firstAttribute="height" constant="25" id="jMf-dy-SCk"/>
@@ -3858,7 +3859,7 @@ AVER : 1:02:03</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTI-zT-fbT">
-                                                <rect key="frame" x="25" y="1190" width="25" height="25"/>
+                                                <rect key="frame" x="25" y="805" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Aad-F2-ffI"/>
                                                     <constraint firstAttribute="width" constant="25" id="zPt-tG-kWy"/>
@@ -3877,21 +3878,21 @@ AVER : 1:02:03</string>
                                         <constraints>
                                             <constraint firstItem="WTI-zT-fbT" firstAttribute="leading" secondItem="uox-2C-w2p" secondAttribute="leading" constant="20" id="1Qp-QW-LBU"/>
                                             <constraint firstItem="MOe-Y4-Qlh" firstAttribute="top" secondItem="LKN-AP-sHG" secondAttribute="top" constant="25" id="3lG-3s-gXv"/>
-                                            <constraint firstItem="kjq-1w-NvC" firstAttribute="leading" secondItem="ekL-Ss-WtY" secondAttribute="leading" constant="25" id="5Cd-ZT-NpJ"/>
-                                            <constraint firstItem="uox-2C-w2p" firstAttribute="top" secondItem="ekL-Ss-WtY" secondAttribute="bottom" constant="20" id="ANK-2K-6Zd"/>
+                                            <constraint firstItem="kjq-1w-NvC" firstAttribute="leading" secondItem="ekL-Ss-WtY" secondAttribute="leading" constant="20" id="5Cd-ZT-NpJ"/>
                                             <constraint firstItem="LKN-AP-sHG" firstAttribute="top" secondItem="9O9-uz-bJe" secondAttribute="top" constant="15" id="Ai5-rn-dYh"/>
                                             <constraint firstItem="i0p-Sd-8qZ" firstAttribute="top" secondItem="iV5-t0-bjC" secondAttribute="top" constant="25" id="Aua-L2-hjR"/>
+                                            <constraint firstItem="ekL-Ss-WtY" firstAttribute="top" secondItem="uox-2C-w2p" secondAttribute="bottom" constant="20" id="CjK-hd-FS5"/>
+                                            <constraint firstItem="zvh-PD-WBe" firstAttribute="top" secondItem="ekL-Ss-WtY" secondAttribute="bottom" constant="20" id="IJy-sh-Nlp"/>
                                             <constraint firstItem="i0p-Sd-8qZ" firstAttribute="leading" secondItem="iV5-t0-bjC" secondAttribute="leading" constant="25" id="O4h-Xl-sL2"/>
                                             <constraint firstAttribute="bottom" secondItem="zvh-PD-WBe" secondAttribute="bottom" constant="20" id="OOm-rE-Uoj"/>
-                                            <constraint firstItem="zvh-PD-WBe" firstAttribute="top" secondItem="uox-2C-w2p" secondAttribute="bottom" constant="20" id="PiJ-m4-ZBy"/>
-                                            <constraint firstItem="ekL-Ss-WtY" firstAttribute="top" secondItem="iV5-t0-bjC" secondAttribute="bottom" constant="20" id="Tj3-Po-HML"/>
                                             <constraint firstItem="MOe-Y4-Qlh" firstAttribute="leading" secondItem="LKN-AP-sHG" secondAttribute="leading" constant="25" id="ZsZ-0W-dk8"/>
                                             <constraint firstItem="WTI-zT-fbT" firstAttribute="top" secondItem="uox-2C-w2p" secondAttribute="top" constant="20" id="cr9-Hi-KL8"/>
-                                            <constraint firstItem="kjq-1w-NvC" firstAttribute="top" secondItem="ekL-Ss-WtY" secondAttribute="top" constant="25" id="dMK-kK-L3z"/>
+                                            <constraint firstItem="kjq-1w-NvC" firstAttribute="top" secondItem="ekL-Ss-WtY" secondAttribute="top" constant="20" id="dMK-kK-L3z"/>
                                             <constraint firstItem="LKN-AP-sHG" firstAttribute="centerX" secondItem="9O9-uz-bJe" secondAttribute="centerX" id="jlh-Ua-kJf"/>
                                             <constraint firstItem="iV5-t0-bjC" firstAttribute="centerX" secondItem="9O9-uz-bJe" secondAttribute="centerX" id="nrW-iE-cbm"/>
                                             <constraint firstItem="zvh-PD-WBe" firstAttribute="centerX" secondItem="9O9-uz-bJe" secondAttribute="centerX" id="oU5-4O-WWq"/>
                                             <constraint firstItem="iV5-t0-bjC" firstAttribute="top" secondItem="LKN-AP-sHG" secondAttribute="bottom" constant="20" id="rsI-L6-UCP"/>
+                                            <constraint firstItem="uox-2C-w2p" firstAttribute="top" secondItem="iV5-t0-bjC" secondAttribute="bottom" constant="20" id="sAp-eZ-jPp"/>
                                             <constraint firstItem="uox-2C-w2p" firstAttribute="centerX" secondItem="9O9-uz-bJe" secondAttribute="centerX" id="sMK-dD-iYn"/>
                                             <constraint firstItem="ekL-Ss-WtY" firstAttribute="centerX" secondItem="9O9-uz-bJe" secondAttribute="centerX" id="uMj-qz-gpk"/>
                                         </constraints>
@@ -3919,11 +3920,12 @@ AVER : 1:02:03</string>
                     </view>
                     <size key="freeformSize" width="375" height="1800"/>
                     <connections>
-                        <outlet property="bottomTerm" destination="ANK-2K-6Zd" id="rCN-cD-qbr"/>
+                        <outlet property="bottomTerm" destination="IJy-sh-Nlp" id="sps-px-ttx"/>
                         <outlet property="check1" destination="MOe-Y4-Qlh" id="cwX-Te-6Tr"/>
                         <outlet property="check2" destination="i0p-Sd-8qZ" id="1UG-O6-THl"/>
                         <outlet property="check3" destination="kjq-1w-NvC" id="ixI-xI-APG"/>
                         <outlet property="check4" destination="WTI-zT-fbT" id="9Rh-QA-7MV"/>
+                        <outlet property="collectionHeight" destination="8iO-Bn-2OS" id="Xgh-To-ciW"/>
                         <outlet property="collectionView" destination="IGD-qe-itF" id="DaE-Ad-bD1"/>
                         <outlet property="frame1" destination="LKN-AP-sHG" id="bqq-He-CU0"/>
                         <outlet property="frame2" destination="iV5-t0-bjC" id="WnA-AO-zxI"/>

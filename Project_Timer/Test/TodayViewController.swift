@@ -43,6 +43,7 @@ class TodayViewController: UIViewController {
     @IBOutlet var t5: UITextField!
     
     @IBOutlet var bottomTerm: NSLayoutConstraint!
+    @IBOutlet var collectionHeight: NSLayoutConstraint!//160
     
     @IBOutlet var check1: UIButton!
     @IBOutlet var check2: UIButton!
@@ -99,6 +100,14 @@ class TodayViewController: UIViewController {
         t3.underlined()
         t4.underlined()
         t5.underlined()
+        
+        // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -154,7 +163,7 @@ extension TodayViewController {
     func setRadius() {
         view1.layer.cornerRadius = 45
         view2.layer.cornerRadius = 45
-        view3.layer.cornerRadius = 45
+        view3.layer.cornerRadius = 10
         view4.layer.cornerRadius = 10
     }
     
@@ -192,6 +201,7 @@ extension TodayViewController {
             getTasks()
             setProgress()
             setTimes()
+            setHeight()
         } else {
             print("no data")
         }
@@ -428,6 +438,12 @@ extension TodayViewController {
         dumy.updateValue(3600, forKey: "TiTi develop")
         daily.tasks = dumy
     }
+    
+    func setHeight() {
+        if(array.count < 8) {
+            collectionHeight.constant = CGFloat(20*array.count)
+        }
+    }
 }
 
 
@@ -450,11 +466,6 @@ extension TodayViewController: UICollectionViewDataSource {
             cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
             cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
             cell.taskTime.textColor = color
-            
-//            cell.taskTime.shadowColor = UIColor.darkGray
-//            cell.taskTime.layer.shadowOpacity = 0.8
-//            cell.taskTime.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
-//            cell.taskTime.layer.shadowRadius = 0.2
             
             
             return cell
@@ -486,4 +497,26 @@ class todayCell2: UICollectionViewCell {
     @IBOutlet var taskName: UILabel!
     @IBOutlet var taskTime: UILabel!
     @IBOutlet var background: UIView!
+}
+
+
+extension TodayViewController {
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경 : OK
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        var adjustmentHeight: CGFloat = 0
+        //이동시킬 Height를 구한다
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+        } else {
+            adjustmentHeight = 0
+        }
+        //구한 Height 만큼 변화시킨다
+        self.bottomTerm.constant = adjustmentHeight+15
+        self.view.layoutIfNeeded()
+        
+        print("--> keyboard End Frame: \(keyboardFrame)")
+    }
 }
