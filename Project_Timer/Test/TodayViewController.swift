@@ -17,6 +17,8 @@ class TodayViewController: UIViewController {
     @IBOutlet var view2: UIView!
     @IBOutlet var frame3: UIView!
     @IBOutlet var view3: UIView!
+    @IBOutlet var frame4: UIView!
+    @IBOutlet var view4: UIView!
     
     @IBOutlet var timeline: UIView!
     @IBOutlet var progress: UIView!
@@ -42,6 +44,27 @@ class TodayViewController: UIViewController {
     
     @IBOutlet var bottomTerm: NSLayoutConstraint!
     
+    @IBOutlet var check1: UIButton!
+    @IBOutlet var check2: UIButton!
+    @IBOutlet var check3: UIButton!
+    @IBOutlet var check4: UIButton!
+    
+    @IBOutlet var view4_today: UILabel!
+    @IBOutlet var view4_mon: UIView!
+    @IBOutlet var view4_tue: UIView!
+    @IBOutlet var view4_wed: UIView!
+    @IBOutlet var view4_thu: UIView!
+    @IBOutlet var view4_fri: UIView!
+    @IBOutlet var view4_sat: UIView!
+    @IBOutlet var view4_sun: UIView!
+    @IBOutlet var view4_sumTime: UILabel!
+    @IBOutlet var view4_maxTime: UILabel!
+    
+    @IBOutlet var view4_timeline: UIView!
+    @IBOutlet var view4_progress: UIView!
+    @IBOutlet var view4_collectionView: UICollectionView!
+    
+    
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
@@ -52,8 +75,9 @@ class TodayViewController: UIViewController {
     var array: [Int] = []
     var fixedSum: Int = 0
     var memos: [String] = []
+    var checks: [Bool] = []
     
-    var COLOR: UIColor = UIColor(named: "CCC1")!
+    var COLOR: UIColor = UIColor(named: "D1")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,20 +87,18 @@ class TodayViewController: UIViewController {
         setShadow(view1)
         setShadow(view2)
         setShadow(view3)
+        setShadow(view4)
         
         setTimeLine()
         setExtra()
         setMemo()
+        setChecks()
         
         t1.underlined()
         t2.underlined()
         t3.underlined()
         t4.underlined()
         t5.underlined()
-        
-        // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -94,23 +116,37 @@ class TodayViewController: UIViewController {
         let m4 = t4.text!
         let m5 = t5.text!
         memos = [m1,m2,m3,m4,m5]
-        print(memos)
-        
         UserDefaults.standard.set(memos, forKey: "memos")
+        
+        let c1 = check1.isSelected
+        let c2 = check2.isSelected
+        let c3 = check3.isSelected
+        let c4 = check4.isSelected
+        checks = [c1,c2,c3,c4]
+        UserDefaults.standard.set(checks, forKey: "checks")
+        
         print("disappear in today")
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     @IBAction func saveImage(_ sender: Any) {
-        saveImageTest(frame1)
-        saveImageTest(frame2)
-        saveImageTest(frame3)
+        if(checks[0]) { saveImageTest(frame1) }
+        if(checks[1]) { saveImageTest(frame2) }
+        if(checks[2]) { saveImageTest(frame3) }
+        if(checks[3]) { saveImageTest(frame4) }
         showAlert()
     }
     
     @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func check(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        let index = Int(sender.tag)
+        checks[index] = !checks[index]
+    }
+    
 }
 
 extension TodayViewController {
@@ -119,6 +155,7 @@ extension TodayViewController {
         view1.layer.cornerRadius = 45
         view2.layer.cornerRadius = 45
         view3.layer.cornerRadius = 45
+        view4.layer.cornerRadius = 10
     }
     
     func setShadow(_ view: UIView) {
@@ -149,6 +186,7 @@ extension TodayViewController {
     func setExtra() {
         //extra
         daily.load()
+//        setDumyDaily()
         if(daily.tasks != [:]) {
             setDay()
             getTasks()
@@ -165,7 +203,7 @@ extension TodayViewController {
             i = 12
         }
         for _ in 1...counts {
-            colors.append(UIColor(named: "CCC\(i)")!)
+            colors.append(UIColor(named: "D\(i)")!)
             i -= 1
             if(i == 0) {
                 i = 12
@@ -173,7 +211,12 @@ extension TodayViewController {
         }
     }
     
-    func makeProgress(_ datas: [Int], _ width: CGFloat, _ height: CGFloat) {
+    func makeProgress(_ datas: [Int], _ view: UIView, _ view2: UIView) {
+        let width = view.bounds.width
+        let height = view.bounds.height
+        let width2 = view2.bounds.width
+        let height2 = view2.bounds.height
+        
         print(datas)
         for i in 0..<counts {
             fixedSum += datas[i]
@@ -185,53 +228,81 @@ extension TodayViewController {
         sum += f*Float(counts)
         
         var value: Float = 1
-        value = addBlock(value: value, width: width, height: height)
+        value = addBlock(value: value, view: view, view2: view2)
         for i in 0..<counts {
             let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+            let prog2 = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width2, height: height2))
             prog.progressWidth = 35
+            prog2.progressWidth = 25
             prog.trackColor = UIColor.clear
+            prog2.trackColor = UIColor.clear
             prog.progressColor = colors[i%colors.count]
+            prog2.progressColor = colors[i%colors.count]
             print(value)
             prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
+            prog2.setProgressWithAnimation(duration: 1, value: value, from: 0)
             
             let per = Float(datas[i])/Float(sum) //그래프 퍼센트
             value -= per
             
-            progress.addSubview(prog)
+            view.addSubview(prog)
+            view2.addSubview(prog2)
             
-            value = addBlock(value: value, width: width, height: height)
+            value = addBlock(value: value, view: view, view2: view2)
         }
         
     }
     
-    func addBlock(value: Float, width: CGFloat, height: CGFloat) -> Float {
+    func addBlock(value: Float, view: UIView, view2: UIView) -> Float {
+        let width = view.bounds.width
+        let height = view.bounds.width
+        let width2 = view2.bounds.width
+        let height2 = view2.bounds.height
         var value = value
         let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let block2 = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width2, height: height2))
         block.trackColor = UIColor.clear
+        block2.trackColor = UIColor.clear
         block.progressColor = UIColor.systemBackground
+        block2.progressColor = UIColor.systemBackground
         block.progressWidth = 35
+        block2.progressWidth = 25
         block.setProgressWithAnimation(duration: 1, value: value, from: 0)
+        block2.setProgressWithAnimation(duration: 1, value: value, from: 0)
         
         value -= f
-        progress.addSubview(block)
+        view.addSubview(block)
+        view2.addSubview(block2)
         return value
     }
     
     func setTimeLine() {
         //timeline
-        let hostingController = UIHostingController(rootView: todayContentView())
+        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D2"), Color("D1")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
         todayContentView().appendTimes()
 //        todayContentView().appendDumyDatas()
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
+        
+        todayContentView().reset()
+        
+        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D2"), Color("D1")], frameHeight: 97, height: 93))
+        hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController2.view.frame = view4_timeline.bounds
+        todayContentView().appendTimes()
+//        todayContentView().appendDumyDatas()
+        addChild(hostingController2)
+        view4_timeline.addSubview(hostingController2.view)
     }
     
     func setDay() {
-        today.text = getDay(day: daily.day)
+        let stringDay = getDay(day: daily.day)
+//        let stringDay = "2021.06.04"
+        today.text = stringDay
+        view4_today.text = stringDay
         setWeek()
-//        today.text = "2021.05.06"
 //        thu.backgroundColor = COLOR
     }
     
@@ -254,20 +325,28 @@ extension TodayViewController {
         switch(todayNum) {
         case 1:
             mon.backgroundColor = COLOR
+            view4_mon.backgroundColor = COLOR
         case 2:
             tue.backgroundColor = COLOR
+            view4_tue.backgroundColor = COLOR
         case 3:
             wed.backgroundColor = COLOR
+            view4_wed.backgroundColor = COLOR
         case 4:
             thu.backgroundColor = COLOR
+            view4_thu.backgroundColor = COLOR
         case 5:
             fri.backgroundColor = COLOR
+            view4_fri.backgroundColor = COLOR
         case 6:
             sat.backgroundColor = COLOR
+            view4_sat.backgroundColor = COLOR
         case 0:
             sun.backgroundColor = COLOR
+            view4_sun.backgroundColor = COLOR
         default:
             mon.backgroundColor = UIColor.clear
+            view4_mon.backgroundColor = UIColor.clear
         }
     }
     
@@ -298,18 +377,22 @@ extension TodayViewController {
     }
     
     func setTimes() {
-        sumTime.text = printTime(temp: fixedSum)
+        let stringSum = printTime(temp: fixedSum)
+        sumTime.text = stringSum
         sumTime.textColor = COLOR
-        maxTime.text = printTime(temp: daily.maxTime)
-//        maxTime.text = "1:12:30"
+        view4_sumTime.text = stringSum
+        view4_sumTime.textColor = COLOR
+        
+        let stringMax = printTime(temp: daily.maxTime)
+        maxTime.text = stringMax
         maxTime.textColor = COLOR
+        view4_maxTime.text = stringMax
+        view4_maxTime.textColor = COLOR
     }
     
     func setProgress() {
         appendColors()
-        let width = progress.bounds.width
-        let height = progress.bounds.height
-        makeProgress(array, width, height)
+        makeProgress(array, progress, view4_progress)
     }
     
     func setMemo() {
@@ -319,6 +402,31 @@ extension TodayViewController {
         t3.text = memos[2]
         t4.text = memos[3]
         t5.text = memos[4]
+    }
+    
+    func setChecks() {
+        checks = UserDefaults.standard.value(forKey: "checks") as? [Bool] ?? [true,true,true,true]
+        check1.isSelected = checks[0]
+        check2.isSelected = checks[1]
+        check3.isSelected = checks[2]
+        check4.isSelected = checks[3]
+    }
+    
+    func setDumyDaily() {
+        var dumy: [String:Int] = [:]
+        dumy.updateValue(2000, forKey: "Swift")
+        dumy.updateValue(3000, forKey: "Java")
+        dumy.updateValue(1200, forKey: "C++")
+        dumy.updateValue(2400, forKey: "Python")
+        dumy.updateValue(2800, forKey: "Algorithm")
+        dumy.updateValue(3200, forKey: "Programming")
+        dumy.updateValue(1000, forKey: "coding")
+        dumy.updateValue(800, forKey: "blog")
+        dumy.updateValue(2200, forKey: "design")
+        dumy.updateValue(2500, forKey: "develop")
+        dumy.updateValue(2600, forKey: "typing")
+        dumy.updateValue(3600, forKey: "TiTi develop")
+        daily.tasks = dumy
     }
 }
 
@@ -332,17 +440,38 @@ extension TodayViewController: UICollectionViewDataSource {
     }
     //셀 어떻게 표시 할까?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todayCell", for: indexPath) as? todayCell else {
-            return UICollectionViewCell()
+        if(collectionView == self.collectionView) {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todayCell", for: indexPath) as? todayCell else {
+                return UICollectionViewCell()
+            }
+            let color = colors[counts - indexPath.item - 1]
+            cell.colorView.backgroundColor = color
+            cell.colorView.layer.cornerRadius = 2
+            cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
+            cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
+            cell.taskTime.textColor = color
+            
+//            cell.taskTime.shadowColor = UIColor.darkGray
+//            cell.taskTime.layer.shadowOpacity = 0.8
+//            cell.taskTime.layer.shadowOffset = CGSize(width: 0.1, height: 0.1)
+//            cell.taskTime.layer.shadowRadius = 0.2
+            
+            
+            return cell
         }
-        let color = colors[counts - indexPath.item - 1]
-        cell.colorView.backgroundColor = color
-        cell.colorView.layer.cornerRadius = 2
-        cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
-        cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
-        cell.taskTime.textColor = color
-        
-        return cell
+        else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "todayCell2", for: indexPath) as? todayCell2 else {
+                return UICollectionViewCell()
+            }
+            let color = colors[counts - indexPath.item - 1]
+            cell.check.textColor = color
+            cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
+            cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
+            cell.taskTime.textColor = color
+            cell.background.backgroundColor = color
+            
+            return cell
+        }
     }
 }
 
@@ -352,24 +481,9 @@ class todayCell: UICollectionViewCell {
     @IBOutlet var taskTime: UILabel!
 }
 
-
-extension TodayViewController {
-    @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경 : OK
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var adjustmentHeight: CGFloat = 0
-        //이동시킬 Height를 구한다
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
-        } else {
-            adjustmentHeight = 0
-        }
-        //구한 Height 만큼 변화시킨다
-        self.bottomTerm.constant = adjustmentHeight+15
-        self.view.layoutIfNeeded()
-        
-        print("--> keyboard End Frame: \(keyboardFrame)")
-    }
+class todayCell2: UICollectionViewCell {
+    @IBOutlet var check: UILabel!
+    @IBOutlet var taskName: UILabel!
+    @IBOutlet var taskTime: UILabel!
+    @IBOutlet var background: UIView!
 }

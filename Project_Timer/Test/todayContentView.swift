@@ -9,6 +9,9 @@ import SwiftUI
 struct todayContentView: View {
     //그래프 색상 그라데이션 설정
     var colors = [Color("CCC2"), Color("CCC1")]
+    //크기값 설정
+    var frameHeight: CGFloat = 128
+    var height: CGFloat = 125
     //화면
     var body : some View {
         //세로 스크롤 설정
@@ -36,7 +39,7 @@ struct todayContentView: View {
                                     //그래프 막대 높이설정
                                     .frame(height:getHeight(value: time.sumTime))
                             }
-                            .frame(height:128)
+                            .frame(height:frameHeight)
                             //날짜 설정
                             Text(String(time.id))
                                 .font(.system(size: 8.5))
@@ -63,7 +66,7 @@ struct todayContentView: View {
     
     func getHeight(value : Int) -> CGFloat {
         let max = getMaxInTotalTime(value: times)
-        return (CGFloat(value) / CGFloat(max)) * 125
+        return (CGFloat(value) / CGFloat(max)) * height
     }
     
     func getMaxInTotalTime (value : [timeBlock]) -> Int {
