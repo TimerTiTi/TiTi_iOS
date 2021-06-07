@@ -44,8 +44,14 @@ class GraphViewController2: UIViewController {
     @IBOutlet var time_02: UIView!
     @IBOutlet var time_03: UIView!
     @IBOutlet var time_04: UIView!
-    
+
     @IBOutlet var collectionView: UICollectionView!
+    
+    @IBOutlet var view_7days: UIView!
+    @IBOutlet var view_today: UIView!
+    
+    @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -64,6 +70,8 @@ class GraphViewController2: UIViewController {
         super.viewDidLoad()
         checkUser()
         setRadius()
+        setShadow(view_7days)
+        setShadow(view_today)
         
 //        UserDefaults.standard.setValue("", forKey: "phoneNumber")
 //        UserDefaults.standard.setValue("", forKey: "password")
@@ -109,6 +117,8 @@ class GraphViewController2: UIViewController {
 //            taskTitle.text = p1
 //            taskTime.text = p2
             print("max : \(daily.maxTime)")
+            
+            setHeight()
         } else {
             print("no data")
         }
@@ -447,6 +457,9 @@ extension GraphViewController2 {
         time_02.layer.cornerRadius = 3
         time_03.layer.cornerRadius = 3
         time_04.layer.cornerRadius = 3
+        
+        view_7days.layer.cornerRadius = 18
+        view_today.layer.cornerRadius = 18
     }
     
     func getDay(day: Date) -> String {
@@ -596,6 +609,19 @@ extension GraphViewController2 {
         vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
+    }
+    
+    func setShadow(_ view: UIView) {
+        view.layer.shadowColor = UIColor(named: "shadow")?.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowRadius = 5
+    }
+    
+    func setHeight() {
+        if(counts < 8) {
+            collectionViewHeight.constant = CGFloat(20*counts)
+        }
     }
 }
 

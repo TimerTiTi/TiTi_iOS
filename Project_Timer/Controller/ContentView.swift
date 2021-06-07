@@ -20,7 +20,7 @@ struct ContentView: View {
             Text(text)
                 .fontWeight(.regular)
                 .foregroundColor(.white)
-                .font(.system(size:15))
+                .font(.system(size:13))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 15)
             
@@ -38,7 +38,7 @@ struct ContentView: View {
                                 //시간 설정
                                 Text(getHrs(value: work.studyTime))
                                     .foregroundColor(Color.white)
-                                    .font(.system(size:14))
+                                    .font(.system(size:12))
                                     .padding(.bottom,-5)
                                 //그래프 막대
                                 RoundedShape()
@@ -49,7 +49,7 @@ struct ContentView: View {
                             .frame(height:140)
                             //날짜 설정
                             Text(work.day)
-                                .font(.system(size:14))
+                                .font(.system(size:12))
                                 .foregroundColor(.white)
                         }
                     }
@@ -57,7 +57,7 @@ struct ContentView: View {
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 10)
-            .background(Color.white.opacity(0.1))
+            .background(Color.black)
             .cornerRadius(15)
             /* ----차트끝---- */
         }
