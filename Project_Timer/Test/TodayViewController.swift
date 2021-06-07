@@ -65,6 +65,22 @@ class TodayViewController: UIViewController {
     @IBOutlet var todoInputView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     
+    @IBOutlet var color1: UIButton!
+    @IBOutlet var color2: UIButton!
+    @IBOutlet var color3: UIButton!
+    @IBOutlet var color4: UIButton!
+    @IBOutlet var color5: UIButton!
+    @IBOutlet var color6: UIButton!
+    @IBOutlet var color7: UIButton!
+    @IBOutlet var color8: UIButton!
+    @IBOutlet var color9: UIButton!
+    @IBOutlet var color10: UIButton!
+    @IBOutlet var color11: UIButton!
+    @IBOutlet var color12: UIButton!
+    
+    @IBOutlet var leftGesture: UIScreenEdgePanGestureRecognizer!
+    @IBOutlet var rightGesture: UIScreenEdgePanGestureRecognizer!
+    
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
@@ -75,6 +91,8 @@ class TodayViewController: UIViewController {
     var array: [Int] = []
     var fixedSum: Int = 0
     var checks: [Bool] = []
+    var startColor: Int = 1
+    var reverseColor: Bool = false
     
     var COLOR: UIColor = UIColor(named: "D1")!
     
@@ -88,9 +106,13 @@ class TodayViewController: UIViewController {
         setShadow(view3)
         setShadow(view4)
         
+        getColor()
         setTimeLine()
         setExtra()
         setChecks()
+        
+        leftGesture.edges = .left
+        rightGesture.edges = .right
         
         // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -155,6 +177,34 @@ class TodayViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
+    @IBAction func changeColor(_ sender: UIButton) {
+        let i = Int(sender.tag)
+        if(i == startColor) {
+            reverseColor = !reverseColor
+        } else { reverseColor = false }
+        startColor = i
+        UserDefaults.standard.setValue(startColor, forKey: "startColor")
+        
+        reset()
+        todayContentView().reset()
+        self.viewDidLoad()
+        self.view.layoutIfNeeded()
+        collectionView.reloadData()
+        view4_collectionView.reloadData()
+    }
+    
+    @IBAction func leftGestureAction(_ sender: Any) {
+        print("left")
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func rightGestureAction(_ sender: Any) {
+        if(checks[0]) { saveImageTest(frame1) }
+        if(checks[1]) { saveImageTest(frame2) }
+        if(checks[3]) { saveImageTest(frame4) }
+        if(checks[2]) { saveImageTest(frame3) }
+        showAlert()
+    }
 }
 
 extension TodayViewController {
@@ -164,6 +214,19 @@ extension TodayViewController {
         view2.layer.cornerRadius = 45
         view3.layer.cornerRadius = 10
         view4.layer.cornerRadius = 10
+        color1.layer.cornerRadius = 5
+        color2.layer.cornerRadius = 5
+        color3.layer.cornerRadius = 5
+        color4.layer.cornerRadius = 5
+        color5.layer.cornerRadius = 5
+        color6.layer.cornerRadius = 5
+        color7.layer.cornerRadius = 5
+        color8.layer.cornerRadius = 5
+        color9.layer.cornerRadius = 5
+        color10.layer.cornerRadius = 5
+        color11.layer.cornerRadius = 5
+        color12.layer.cornerRadius = 5
+        
         todoInputView.clipsToBounds = true
         todoInputView.layer.cornerRadius = 10
         todoInputView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
@@ -198,7 +261,9 @@ extension TodayViewController {
         //extra
         daily.load()
 //        setDumyDaily()
+        counts = daily.tasks.count
         if(daily.tasks != [:]) {
+            setColors()
             setDay()
             getTasks()
             setProgress()
@@ -210,15 +275,33 @@ extension TodayViewController {
     }
     
     func appendColors() {
-        var i = counts%12
-        if(i == 0) {
-            i = 12
-        }
-        for _ in 1...counts {
-            colors.append(UIColor(named: "D\(i)")!)
-            i -= 1
+        if(!reverseColor) {
+            var i = (counts+(startColor-1))%12
             if(i == 0) {
                 i = 12
+            }
+            print(i)
+            for _ in 1...counts {
+                colors.append(UIColor(named: "D\(i)")!)
+                i -= 1
+                if(i == 0) {
+                    i = 12
+                }
+            }
+        }
+        else {
+            print("reverse")
+            var i = ((startColor-counts+1)+12)%12
+            if(i == 0) {
+                i = 12
+            }
+            print(i)
+            for _ in 1...counts {
+                colors.append(UIColor(named: "D\(i)")!)
+                i += 1
+                if(i == 13) {
+                    i = 1
+                }
             }
         }
     }
@@ -251,8 +334,8 @@ extension TodayViewController {
             prog.progressColor = colors[i%colors.count]
             prog2.progressColor = colors[i%colors.count]
             print(value)
-            prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
-            prog2.setProgressWithAnimation(duration: 1, value: value, from: 0)
+            prog.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
+            prog2.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
             
             let per = Float(datas[i])/Float(sum) //그래프 퍼센트
             value -= per
@@ -279,8 +362,8 @@ extension TodayViewController {
         block2.progressColor = UIColor.systemBackground
         block.progressWidth = 35
         block2.progressWidth = 25
-        block.setProgressWithAnimation(duration: 1, value: value, from: 0)
-        block2.setProgressWithAnimation(duration: 1, value: value, from: 0)
+        block.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
+        block2.setProgressWithAnimation(duration: 0.7, value: value, from: 0)
         
         value -= f
         view.addSubview(block)
@@ -290,7 +373,11 @@ extension TodayViewController {
     
     func setTimeLine() {
         //timeline
-        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D2"), Color("D1")], frameHeight: 128, height: 125))
+        var sc: Int = startColor
+        var nc: Int = startColor+1 == 13 ? 1 : startColor+1
+        if(reverseColor) { swap(&sc, &nc) }
+        
+        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(nc)"), Color("D\(sc)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
         todayContentView().appendTimes()
@@ -300,7 +387,7 @@ extension TodayViewController {
         
         todayContentView().reset()
         
-        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D2"), Color("D1")], frameHeight: 97, height: 93))
+        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(nc)"), Color("D\(sc)")], frameHeight: 97, height: 93))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
         todayContentView().appendTimes()
@@ -365,7 +452,6 @@ extension TodayViewController {
     func getTasks() {
         let temp: [String:Int] = daily.tasks
 //            let temp = addDumy()
-        counts = temp.count
         
         let tasks = temp.sorted(by: { $0.1 < $1.1 } )
         for (key, value) in tasks {
@@ -403,7 +489,7 @@ extension TodayViewController {
     }
     
     func setProgress() {
-        appendColors()
+//        appendColors()
         makeProgress(array, progress, view4_progress)
     }
     
@@ -420,15 +506,15 @@ extension TodayViewController {
         dumy.updateValue(2000, forKey: "Swift")
         dumy.updateValue(3000, forKey: "Java")
         dumy.updateValue(1200, forKey: "C++")
-        dumy.updateValue(2400, forKey: "Python")
-        dumy.updateValue(2800, forKey: "Algorithm")
-        dumy.updateValue(3200, forKey: "Programming")
-        dumy.updateValue(1000, forKey: "coding")
-        dumy.updateValue(800, forKey: "blog")
-        dumy.updateValue(2200, forKey: "design")
-        dumy.updateValue(2500, forKey: "develop")
-        dumy.updateValue(2600, forKey: "typing")
-        dumy.updateValue(3600, forKey: "TiTi develop")
+//        dumy.updateValue(2400, forKey: "Python")
+//        dumy.updateValue(2800, forKey: "Algorithm")
+//        dumy.updateValue(3200, forKey: "Programming")
+//        dumy.updateValue(1000, forKey: "coding")
+//        dumy.updateValue(800, forKey: "blog")
+//        dumy.updateValue(2200, forKey: "design")
+//        dumy.updateValue(2500, forKey: "develop")
+//        dumy.updateValue(2600, forKey: "typing")
+//        dumy.updateValue(3600, forKey: "TiTi develop")
         daily.tasks = dumy
     }
     
@@ -436,6 +522,28 @@ extension TodayViewController {
         if(array.count < 8) {
             collectionHeight.constant = CGFloat(20*array.count)
         }
+    }
+    
+    func setColors() {
+        COLOR = UIColor(named: "D\(startColor)")!
+        appendColors()
+    }
+    
+    func getColor() {
+        startColor = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+    }
+    
+    func reset() {
+        arrayTaskName = []
+        arrayTaskTime = []
+        colors = []
+        fixed_sum = 0
+        daily = Daily()
+        counts = 0
+        array = []
+        fixedSum = 0
+        checks = []
+        startColor = 1
     }
 }
 
