@@ -98,12 +98,12 @@ class SetViewController: UIViewController {
     
     @IBAction func SetButton(_ sender: UIButton) {
         let alert = UIAlertController(title:"Do you want to set it up?".localized(),message: "The Target, Sum Time will be reset and a new record starts!".localized(),preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "SET", style: .destructive, handler: { action in
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .default, handler: { action in
             self.SET_action()
         })
-        let cancel = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-        alert.addAction(okAction)
         alert.addAction(cancel)
+        alert.addAction(okAction)
         
         present(alert,animated: true,completion: nil)
     }

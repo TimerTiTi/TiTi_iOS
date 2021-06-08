@@ -90,12 +90,13 @@ class SetTimerViewController2: UIViewController {
     @IBAction func Button_set(_ sender: UIButton) {
         //경고창 추가
         let alert = UIAlertController(title:"Do you want to set it up?".localized(),message: "The Target, Sum Time will be reset and a new record starts!".localized(),preferredStyle: UIAlertController.Style.alert)
-        let cancel = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-        let okAction = UIAlertAction(title: "SET", style: .destructive, handler: { action in
+        let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+        let okAction = UIAlertAction(title: "SET", style: .default, handler: { action in
             self.SET_action()
         })
-        alert.addAction(okAction)
+        
         alert.addAction(cancel)
+        alert.addAction(okAction)
         
         present(alert,animated: true,completion: nil)
     }

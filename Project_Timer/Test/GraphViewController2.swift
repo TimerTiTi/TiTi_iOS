@@ -612,7 +612,7 @@ extension GraphViewController2 {
     }
     
     func setShadow(_ view: UIView) {
-        view.layer.shadowColor = UIColor(named: "shadow")?.cgColor
+        view.layer.shadowColor = UIColor.white.cgColor
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5
