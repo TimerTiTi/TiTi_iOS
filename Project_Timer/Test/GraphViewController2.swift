@@ -300,8 +300,8 @@ class GraphViewController2: UIViewController {
     
     func newUser(_ upload: Bool) {
         let alert = UIAlertController(title: "Beta 유저정보 등록", message: "핸드폰 번호와\n4자리 패스워드를 등록해주세요", preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "CANCLE", style: .default, handler: nil)
-        let ok = UIAlertAction(title: "ENTER", style: .destructive, handler: {
+        let cancle = UIAlertAction(title: "CANCLE", style: .destructive, handler: nil)
+        let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
             action in
             let phone: String = alert.textFields?[0].text ?? ""
             let pass: String = alert.textFields?[1].text ?? ""
@@ -321,8 +321,8 @@ class GraphViewController2: UIViewController {
             inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
             inputNewNickName.keyboardType = .numberPad
         }
-        alert.addAction(ok)
         alert.addAction(cancle)
+        alert.addAction(ok)
         present(alert,animated: true,completion: nil)
     }
     
@@ -458,8 +458,8 @@ extension GraphViewController2 {
         time_03.layer.cornerRadius = 3
         time_04.layer.cornerRadius = 3
         
-        view_7days.layer.cornerRadius = 18
-        view_today.layer.cornerRadius = 18
+        view_7days.layer.cornerRadius = 25
+        view_today.layer.cornerRadius = 25
     }
     
     func getDay(day: Date) -> String {

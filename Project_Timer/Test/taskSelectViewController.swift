@@ -36,8 +36,8 @@ class taskSelectViewController: UIViewController {
     
     @IBAction func test_new(_ sender: Any) {
         let alert = UIAlertController(title: "Enter a new subject".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "CANCLE", style: .default, handler: nil)
-        let ok = UIAlertAction(title: "ENTER", style: .destructive, handler: {
+        let cancle = UIAlertAction(title: "CANCLE", style: .destructive, handler: nil)
+        let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
             action in
             let newTask: String = alert.textFields?[0].text ?? ""
             // 위 변수를 통해 특정기능 수행
@@ -50,8 +50,8 @@ class taskSelectViewController: UIViewController {
             inputNewNickName.textAlignment = .center
             inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
         }
-        alert.addAction(ok)
         alert.addAction(cancle)
+        alert.addAction(ok)
         present(alert,animated: true,completion: nil)
     }
     

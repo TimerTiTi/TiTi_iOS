@@ -17,8 +17,6 @@ class TodayViewController: UIViewController {
     @IBOutlet var view2: UIView!
     @IBOutlet var frame3: UIView!
     @IBOutlet var view3: UIView!
-    @IBOutlet var frame4: UIView!
-    @IBOutlet var view4: UIView!
     
     @IBOutlet var timeline: UIView!
     @IBOutlet var progress: UIView!
@@ -36,15 +34,11 @@ class TodayViewController: UIViewController {
     @IBOutlet var sumTime: UILabel!
     @IBOutlet var maxTime: UILabel!
     
-    @IBOutlet var bottomTerm: NSLayoutConstraint!
-    @IBOutlet var bottomInputView: NSLayoutConstraint!
-    
     @IBOutlet var collectionHeight: NSLayoutConstraint!//160
     
     @IBOutlet var check1: UIButton!
     @IBOutlet var check2: UIButton!
     @IBOutlet var check3: UIButton!
-    @IBOutlet var check4: UIButton!
     
     @IBOutlet var view4_today: UILabel!
     @IBOutlet var view4_mon: UIView!
@@ -62,8 +56,6 @@ class TodayViewController: UIViewController {
     @IBOutlet var view4_collectionView: UICollectionView!
     
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var todoInputView: UIView!
-    @IBOutlet weak var inputTextField: UITextField!
     
     @IBOutlet var color1: UIButton!
     @IBOutlet var color2: UIButton!
@@ -79,7 +71,8 @@ class TodayViewController: UIViewController {
     @IBOutlet var color12: UIButton!
     
     @IBOutlet var leftGesture: UIScreenEdgePanGestureRecognizer!
-    @IBOutlet var rightGesture: UIScreenEdgePanGestureRecognizer!
+    
+    @IBOutlet var dailyDay: UILabel!
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -104,7 +97,6 @@ class TodayViewController: UIViewController {
         setShadow(view1)
         setShadow(view2)
         setShadow(view3)
-        setShadow(view4)
         
         getColor()
         setTimeLine()
@@ -112,11 +104,6 @@ class TodayViewController: UIViewController {
         setChecks()
         
         leftGesture.edges = .left
-        rightGesture.edges = .right
-        
-        // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -135,8 +122,7 @@ class TodayViewController: UIViewController {
         let c1 = check1.isSelected
         let c2 = check2.isSelected
         let c3 = check3.isSelected
-        let c4 = check4.isSelected
-        checks = [c1,c2,c3,c4]
+        checks = [c1,c2,c3]
         UserDefaults.standard.set(checks, forKey: "checks")
         
         print("disappear in today")
@@ -146,7 +132,6 @@ class TodayViewController: UIViewController {
     @IBAction func saveImage(_ sender: Any) {
         if(checks[0]) { saveImageTest(frame1) }
         if(checks[1]) { saveImageTest(frame2) }
-        if(checks[3]) { saveImageTest(frame4) }
         if(checks[2]) { saveImageTest(frame3) }
         showAlert()
     }
@@ -159,22 +144,6 @@ class TodayViewController: UIViewController {
         sender.isSelected = !sender.isSelected
         let index = Int(sender.tag)
         checks[index] = !checks[index]
-    }
-    
-    @IBAction func addTaskButtonTapped(_ sender: Any) {
-//        // TODO: Todo 태스크 추가 : OK
-//        // add task to view model
-//        guard let detail = inputTextField.text, detail.isEmpty == false else { return }
-//        let todo = TodoManager.shared.createTodo(detail: detail, isToday: isTodayButton.isSelected)
-//        todoListViewModel.addTodo(todo)
-//        // and tableview reload or update
-//        collectionView.reloadData()
-        inputTextField.text = ""
-//        isTodayButton.isSelected = false
-        self.view.endEditing(true)
-        bottomTerm.constant = 20
-        bottomInputView.constant = 95
-        self.view.layoutIfNeeded()
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
@@ -197,23 +166,15 @@ class TodayViewController: UIViewController {
         print("left")
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction func rightGestureAction(_ sender: Any) {
-        if(checks[0]) { saveImageTest(frame1) }
-        if(checks[1]) { saveImageTest(frame2) }
-        if(checks[3]) { saveImageTest(frame4) }
-        if(checks[2]) { saveImageTest(frame3) }
-        showAlert()
-    }
 }
 
 extension TodayViewController {
     
     func setRadius() {
-        view1.layer.cornerRadius = 45
-        view2.layer.cornerRadius = 45
-        view3.layer.cornerRadius = 10
-        view4.layer.cornerRadius = 10
+        view1.layer.cornerRadius = 25
+        view2.layer.cornerRadius = 25
+        view3.layer.cornerRadius = 25
+        
         color1.layer.cornerRadius = 5
         color2.layer.cornerRadius = 5
         color3.layer.cornerRadius = 5
@@ -226,10 +187,6 @@ extension TodayViewController {
         color10.layer.cornerRadius = 5
         color11.layer.cornerRadius = 5
         color12.layer.cornerRadius = 5
-        
-        todoInputView.clipsToBounds = true
-        todoInputView.layer.cornerRadius = 10
-        todoInputView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
     
     func setShadow(_ view: UIView) {
@@ -403,6 +360,7 @@ extension TodayViewController {
         view4_today.text = stringDay
         setWeek()
 //        thu.backgroundColor = COLOR
+        dailyDay.text = stringDay
     }
     
     func getDay(day: Date) -> String {
@@ -494,11 +452,10 @@ extension TodayViewController {
     }
     
     func setChecks() {
-        checks = UserDefaults.standard.value(forKey: "checks") as? [Bool] ?? [true,true,true,true]
+        checks = UserDefaults.standard.value(forKey: "checks") as? [Bool] ?? [true,true,true]
         check1.isSelected = checks[0]
         check2.isSelected = checks[1]
         check3.isSelected = checks[2]
-        check4.isSelected = checks[3]
     }
     
     func setDumyDaily() {
@@ -598,66 +555,4 @@ class todayCell2: UICollectionViewCell {
     @IBOutlet var taskName: UILabel!
     @IBOutlet var taskTime: UILabel!
     @IBOutlet var background: UIView!
-}
-
-
-extension TodayViewController {
-    @objc private func adjustInputView(noti: Notification) {
-        guard let userInfo = noti.userInfo else { return }
-        // TODO: 키보드 높이에 따른 인풋뷰 위치 변경 : OK
-        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        
-        var adjustmentHeight: CGFloat = 0
-        //이동시킬 Height를 구한다
-        if noti.name == UIResponder.keyboardWillShowNotification {
-            adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom-60
-        } else {
-            adjustmentHeight = 0
-        }
-        //구한 Height 만큼 변화시킨다
-        self.bottomTerm.constant = adjustmentHeight+20
-        self.bottomInputView.constant = adjustmentHeight+95
-        
-        self.view.layoutIfNeeded()
-        scrollView.scrollToBottom()
-        print("--> keyboard End Frame: \(keyboardFrame)")
-    }
-}
-
-
-extension UIScrollView {
-    
-    // Scroll to a specific view so that it's top is at the top our scrollview
-    func scrollToView(view:UIView) {
-        if let origin = view.superview {
-            // Get the Y position of your child view
-            let childStartPoint = origin.convert(view.frame.origin, to: self)
-            
-            let bottomOffset = scrollBottomOffset()
-            if (childStartPoint.y > bottomOffset.y) {
-                setContentOffset(bottomOffset, animated: true)
-            } else {
-                setContentOffset(CGPoint(x: 0, y: childStartPoint.y), animated: true)
-            }
-        }
-    }
-    
-    // Bonus: Scroll to top
-    func scrollToTop() {
-        let topOffset = CGPoint(x: 0, y: -contentInset.top)
-        setContentOffset(topOffset, animated: true)
-    }
-    
-    // Bonus: Scroll to bottom
-    func scrollToBottom() {
-        let bottomOffset = scrollBottomOffset()
-        if(bottomOffset.y > 0) {
-            setContentOffset(bottomOffset, animated: true)
-        }
-    }
-    
-    private func scrollBottomOffset() -> CGPoint {
-        return CGPoint(x: 0, y: contentSize.height - bounds.size.height + contentInset.bottom)
-    }
-    
 }
