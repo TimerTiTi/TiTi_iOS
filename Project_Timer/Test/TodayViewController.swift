@@ -70,9 +70,9 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
-    @IBOutlet var leftGesture: UIScreenEdgePanGestureRecognizer!
+    @IBOutlet var today2: UILabel!
     
-    @IBOutlet var dailyDay: UILabel!
+    @IBOutlet var leftGesture: UIScreenEdgePanGestureRecognizer!
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -154,6 +154,9 @@ class TodayViewController: UIViewController {
         startColor = i
         UserDefaults.standard.setValue(startColor, forKey: "startColor")
         
+        for view in self.progress.subviews {
+            view.removeFromSuperview()
+        }
         reset()
         todayContentView().reset()
         self.viewDidLoad()
@@ -203,7 +206,7 @@ extension TodayViewController {
     
     func showAlert() {
         //1. 경고창 내용 만들기
-        let alert = UIAlertController(title:"저장되었습니다",
+        let alert = UIAlertController(title:"Save completed".localized(),
             message: "",
             preferredStyle: UIAlertController.Style.alert)
         //2. 확인 버튼 만들기
@@ -330,11 +333,15 @@ extension TodayViewController {
     
     func setTimeLine() {
         //timeline
-        var sc: Int = startColor
-        var nc: Int = startColor+1 == 13 ? 1 : startColor+1
-        if(reverseColor) { swap(&sc, &nc) }
+        let colorNow: Int = startColor
+        var colorSecond: Int = 0
+        if(!reverseColor) {
+            colorSecond = startColor+1 == 13 ? 1 : startColor+1
+        } else {
+            colorSecond = startColor-1 == 0 ? 12 : startColor-1
+        }
         
-        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(nc)"), Color("D\(sc)")], frameHeight: 128, height: 125))
+        let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
         todayContentView().appendTimes()
@@ -344,7 +351,7 @@ extension TodayViewController {
         
         todayContentView().reset()
         
-        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(nc)"), Color("D\(sc)")], frameHeight: 97, height: 93))
+        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 97, height: 93))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
         todayContentView().appendTimes()
@@ -360,7 +367,7 @@ extension TodayViewController {
         view4_today.text = stringDay
         setWeek()
 //        thu.backgroundColor = COLOR
-        dailyDay.text = stringDay
+        today2.text = stringDay
     }
     
     func getDay(day: Date) -> String {

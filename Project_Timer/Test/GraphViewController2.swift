@@ -52,6 +52,10 @@ class GraphViewController2: UIViewController {
     
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet var upload: UIButton!
+    @IBOutlet var download: UIButton!
+    
+    
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -122,6 +126,9 @@ class GraphViewController2: UIViewController {
         } else {
             print("no data")
         }
+        
+        upload.isHidden = true
+        download.isHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
@@ -474,6 +481,7 @@ extension GraphViewController2 {
             i = 12
         }
         for _ in 1...counts {
+            print(i)
             colors.append(UIColor(named: "CCC\(i)")!)
             i -= 1
             if(i == 0) {

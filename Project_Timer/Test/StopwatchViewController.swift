@@ -73,6 +73,8 @@ class StopwatchViewController: UIViewController {
     //하루 그래프를 위한 구조
     var daily = Daily()
     
+    var isLandscape: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -110,16 +112,14 @@ class StopwatchViewController: UIViewController {
     }
 
     @objc func deviceRotated(){
-        if(isStop) {
-            if UIDevice.current.orientation.isLandscape {
-                //Code here
-                print("Landscape")
-                setLandscape()
-            } else {
-                //Code here
-                print("Portrait")
-                setPortrait()
-            }
+        if UIDevice.current.orientation.isLandscape {
+            //Code here
+            print("Landscape")
+            setLandscape()
+        } else {
+            //Code here
+            print("Portrait")
+            setPortrait()
         }
     }
     
@@ -223,31 +223,37 @@ extension StopwatchViewController : ChangeViewController2 {
 extension StopwatchViewController {
     
     func setLandscape() {
-        UIView.animate(withDuration: 0.3) {
-            self.modeTimer.alpha = 0
-            self.modeTimerLabel.alpha = 0
-            self.modeStopWatch.alpha = 0
-            self.modeStopWatchLabel.alpha = 0
-            self.log.alpha = 0
-            self.logLabel.alpha = 0
-            
-            self.taskButton.alpha = 0
-            self.dock.alpha = 0
+        if(isStop) {
+            UIView.animate(withDuration: 0.3) {
+                self.modeTimer.alpha = 0
+                self.modeTimerLabel.alpha = 0
+                self.modeStopWatch.alpha = 0
+                self.modeStopWatchLabel.alpha = 0
+                self.log.alpha = 0
+                self.logLabel.alpha = 0
+                
+                self.taskButton.alpha = 0
+                self.dock.alpha = 0
+            }
         }
+        isLandscape = true
     }
     
     func setPortrait() {
-        UIView.animate(withDuration: 0.3) {
-            self.modeTimer.alpha = 1
-            self.modeTimerLabel.alpha = 1
-            self.modeStopWatch.alpha = 1
-            self.modeStopWatchLabel.alpha = 1
-            self.log.alpha = 1
-            self.logLabel.alpha = 1
-            
-            self.taskButton.alpha = 1
-            self.dock.alpha = 1
+        if(isStop) {
+            UIView.animate(withDuration: 0.3) {
+                self.modeTimer.alpha = 1
+                self.modeTimerLabel.alpha = 1
+                self.modeStopWatch.alpha = 1
+                self.modeStopWatchLabel.alpha = 1
+                self.log.alpha = 1
+                self.logLabel.alpha = 1
+                
+                self.taskButton.alpha = 1
+                self.dock.alpha = 1
+            }
         }
+        isLandscape = false
     }
     
     func setBackground() {
@@ -463,11 +469,11 @@ extension StopwatchViewController {
     
     func updateProgress() {
         progressPer = Float(sumTime_temp%fixedSecond) / Float(fixedSecond)
-        outterProgress.setProgressWithAnimation(duration: 0.0, value: progressPer, from: beforePer)
+        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: beforePer)
         beforePer = progressPer
         //circle2
         let temp = Float(sumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 0.0, value: temp, from: beforePer2)
+        innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
         beforePer2 = temp
     }
     
@@ -572,14 +578,19 @@ extension StopwatchViewController {
             self.startStopBTLabel.text = "▶︎"
         })
         //animation test
-        UIView.animate(withDuration: 0.5, animations: {
-            self.modeTimer.alpha = 1
-            self.modeStopWatch.alpha = 1
-            self.log.alpha = 1
-            self.modeTimerLabel.alpha = 1
-            self.modeStopWatchLabel.alpha = 1
-            self.logLabel.alpha = 1
-        })
+        if(!self.isLandscape) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.modeTimer.alpha = 1
+                self.modeTimerLabel.alpha = 1
+                self.modeStopWatch.alpha = 1
+                self.modeStopWatchLabel.alpha = 1
+                self.log.alpha = 1
+                self.logLabel.alpha = 1
+                
+                self.taskButton.alpha = 1
+                self.dock.alpha = 1
+            })
+        }
     }
     
     func startColor() {
@@ -730,6 +741,5 @@ extension StopwatchViewController {
         stopEnable()
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
-        deviceRotated() //화면 회전 체크
     }
 }
