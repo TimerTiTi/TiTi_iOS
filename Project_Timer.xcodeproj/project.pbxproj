@@ -34,6 +34,8 @@
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
 		87AB10122670601800F29961 /* TodolistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AB10112670601800F29961 /* TodolistViewModel.swift */; };
 		87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */; };
+		87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51507267AEE40003DA21D /* TodayViewManager.swift */; };
+		87C5150A267B38C0003DA21D /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* ViewManager.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87CCB97B267AE893007D09E5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCB97A267AE893007D09E5 /* TodayViewModel.swift */; };
 		87DAF2EC2669F9F300FAB4CF /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */; };
@@ -79,6 +81,8 @@
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		87AB10112670601800F29961 /* TodolistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewModel.swift; sourceTree = "<group>"; };
 		87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayContentView.swift; sourceTree = "<group>"; };
+		87C51507267AEE40003DA21D /* TodayViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewManager.swift; sourceTree = "<group>"; };
+		87C51509267B38C0003DA21D /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		87CA3B522618591100DD9BB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CA3B552618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -207,6 +211,15 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
+		87C51506267AEE1E003DA21D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				87C51507267AEE40003DA21D /* TodayViewManager.swift */,
+				87C51509267B38C0003DA21D /* ViewManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		93B08514248DDF2F00E215BD = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +241,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87C51506267AEE1E003DA21D /* Manager */,
 				87AB101026705FFA00F29961 /* viewModel */,
 				87459702263FEF5E00172C0F /* Test */,
 				87379F982615979D00A9445E /* Model */,
@@ -379,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				8762AB6325E0DF38003438B5 /* LogViewController_test.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
@@ -397,6 +412,7 @@
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
+				87C5150A267B38C0003DA21D /* ViewManager.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				87AB10122670601800F29961 /* TodolistViewModel.swift in Sources */,
@@ -566,7 +582,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 71;
+				CURRENT_PROJECT_VERSION = 72;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -591,7 +607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 71;
+				CURRENT_PROJECT_VERSION = 72;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

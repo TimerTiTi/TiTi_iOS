@@ -9,5 +9,5 @@
 import UIKit
 
 class TodayViewModel {
-    
+    var stringDay: String = ""
 }
