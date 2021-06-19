@@ -77,9 +77,6 @@ class GraphViewController2: UIViewController {
         setShadow(view_7days)
         setShadow(view_today)
         
-//        UserDefaults.standard.setValue("", forKey: "phoneNumber")
-//        UserDefaults.standard.setValue("", forKey: "password")
-//
         //7days
         let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true

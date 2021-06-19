@@ -71,6 +71,8 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
+    @IBOutlet var datePicker: UIDatePicker!
+    
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
@@ -88,11 +90,24 @@ class TodayViewController: UIViewController {
         setShadow(view3)
         
         getColor()
-        showSwiftUIGraph()
-        showDatas()
+        let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
+        showSwiftUIGraph(isDumy: isDumy)
+        showDatas(isDumy: isDumy)
         
         setChecks()
         leftGesture.edges = .left
+        
+        datePicker.tintColor = todayViewManager.COLOR
+        if let currentDeviceLanguage = Locale.preferredLanguages.first {
+            print("currentLanguage", currentDeviceLanguage)
+
+            // For example
+            if currentDeviceLanguage == "ko-KR" {
+                datePicker.locale = Locale(identifier: "ko-KR")
+            } else {
+                datePicker.locale = .current
+            }
+        }
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -188,7 +203,7 @@ extension TodayViewController {
         todayViewManager.startColor = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
     }
     
-    func showSwiftUIGraph() {
+    func showSwiftUIGraph(isDumy: Bool) {
         let startColor = todayViewManager.startColor
         let colorNow: Int = startColor
         var colorSecond: Int = 0
@@ -201,8 +216,8 @@ extension TodayViewController {
         let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
-        todayContentView().appendTimes()
-//        todayContentView().appendDumyDatas()
+        todayContentView().appendTimes(isDumy: isDumy)
+        
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
         
@@ -211,15 +226,17 @@ extension TodayViewController {
         let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 97, height: 93))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
-        todayContentView().appendTimes()
-//        todayContentView().appendDumyDatas()
+        todayContentView().appendTimes(isDumy: isDumy)
+        
         addChild(hostingController2)
         view4_timeline.addSubview(hostingController2.view)
     }
     
-    func showDatas() {
+    func showDatas(isDumy: Bool) {
         todayViewManager.daily.load()
-//        setDumyDaily()
+        if(isDumy) {
+            todayViewManager.setDumyDaily()
+        }
         if(todayViewManager.daily.tasks != [:]) {
             todayViewManager.setTasksColor()
             todayViewManager.setDay(today, today2, view4_today)
