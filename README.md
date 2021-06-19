@@ -34,14 +34,17 @@
 * 공스타그램 갤러리 : 12가지의 테마색, 다크모드 및 라이트 모드를 통해 다양한 컬러 지원
 
 ## TiTi 스크린샷
-<img src = "https://user-images.githubusercontent.com/65349445/122640717-fb0ad980-d13b-11eb-9627-b1c063821d92.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640650-a8312200-d13b-11eb-8a53-12e0ed329c8f.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640729-0cec7c80-d13c-11eb-9c40-b69d5ab8b409.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640736-15dd4e00-d13c-11eb-9364-bccf36ac7e02.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640746-1ece1f80-d13c-11eb-8f2d-dfcb2ec27709.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640757-27265a80-d13c-11eb-9b74-8f6e72aa8155.png" width="25%">
-<img src = "https://user-images.githubusercontent.com/65349445/122640767-2e4d6880-d13c-11eb-9667-65986bd2de18.png" width="25%">
-
+<p align="center" width="100%">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640717-fb0ad980-d13b-11eb-9627-b1c063821d92.png">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640650-a8312200-d13b-11eb-8a53-12e0ed329c8f.png">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640729-0cec7c80-d13c-11eb-9c40-b69d5ab8b409.png">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640736-15dd4e00-d13c-11eb-9364-bccf36ac7e02.png">
+</p>
+<p align="center" width="100%">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640746-1ece1f80-d13c-11eb-8f2d-dfcb2ec27709.png">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640757-27265a80-d13c-11eb-9b74-8f6e72aa8155.png">
+<img width="25%" src = "https://user-images.githubusercontent.com/65349445/122640767-2e4d6880-d13c-11eb-9667-65986bd2de18.png">
+</p>
 
 ## 개발자 링크
 * DEV_FDEE / freedeveloper97@gmail.com
