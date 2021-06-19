@@ -7,6 +7,19 @@
 * 원하는 색으로 설정하여 그래프를 이쁘게 보여 드립니다
 * Todolist를 통해 중요한 내용을 남길 수 있습니다
 
+## TiTi 스크린샷
+<p align="center" width="100%">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640717-fb0ad980-d13b-11eb-9627-b1c063821d92.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640650-a8312200-d13b-11eb-8a53-12e0ed329c8f.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640729-0cec7c80-d13c-11eb-9c40-b69d5ab8b409.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640736-15dd4e00-d13c-11eb-9364-bccf36ac7e02.png">
+</p>
+<p align="center" width="100%">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640746-1ece1f80-d13c-11eb-8f2d-dfcb2ec27709.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640757-27265a80-d13c-11eb-9b74-8f6e72aa8155.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640767-2e4d6880-d13c-11eb-9667-65986bd2de18.png">
+</p>
+
 ## TiTi만의 특징
 * 공부용 타이머는 최대한 쉽게! 직관적인 UI를 느껴보세요!
 * 나만의 총 목표시간을 설정하여 달성할 수 있게끔 도와드립니다!
@@ -17,7 +30,6 @@
 * 실시간으로 누적시간, 총 남은시간을 같이 보여드립니다.
 * 시간대별 공부시간을 확인할 수 있습니다.
 * 공부내용을 입력하여 그래프에 보여드립니다.
-
 
 ## TiTi의 기능들
 * 타이머 모드
@@ -33,18 +45,10 @@
 * 공스타그램 갤러리 : 세가지 이미지를 통한 하루 공부내용 이미지로 저장 기능
 * 공스타그램 갤러리 : 12가지의 테마색, 다크모드 및 라이트 모드를 통해 다양한 컬러 지원
 
-## TiTi 스크린샷
-<p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640717-fb0ad980-d13b-11eb-9627-b1c063821d92.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640650-a8312200-d13b-11eb-8a53-12e0ed329c8f.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640729-0cec7c80-d13c-11eb-9c40-b69d5ab8b409.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640736-15dd4e00-d13c-11eb-9364-bccf36ac7e02.png">
-</p>
-<p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640746-1ece1f80-d13c-11eb-8f2d-dfcb2ec27709.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640757-27265a80-d13c-11eb-9b74-8f6e72aa8155.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640767-2e4d6880-d13c-11eb-9667-65986bd2de18.png">
-</p>
+## 개발예정사항들
+* 날짜별 기록 저장
+* 캘린더를 통한 날짜선택 및 기록 확인
+* 서버 연동을 통한 iPhone, iPad, Mac 간의 동기화 기능
 
 ## 개발자 링크
 * DEV_FDEE / freedeveloper97@gmail.com
