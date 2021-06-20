@@ -9,15 +9,20 @@
 
 ## TiTi 스크린샷
 <p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640717-fb0ad980-d13b-11eb-9627-b1c063821d92.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640650-a8312200-d13b-11eb-8a53-12e0ed329c8f.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640729-0cec7c80-d13c-11eb-9c40-b69d5ab8b409.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640736-15dd4e00-d13c-11eb-9364-bccf36ac7e02.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669740-ae85d380-d1f9-11eb-9be1-d0b34403dc59.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669760-cf4e2900-d1f9-11eb-93a0-6f6eb4fc47e6.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669769-daa15480-d1f9-11eb-9670-5129284203b0.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669779-e55be980-d1f9-11eb-8589-f73ce47165a2.png">
 </p>
 <p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640746-1ece1f80-d13c-11eb-8f2d-dfcb2ec27709.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640757-27265a80-d13c-11eb-9b74-8f6e72aa8155.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122640767-2e4d6880-d13c-11eb-9667-65986bd2de18.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669805-f7d62300-d1f9-11eb-83ce-d7c04fa33ee3.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669821-015f8b00-d1fa-11eb-8cc1-5620e933b42d.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669833-0a505c80-d1fa-11eb-84fd-824100492c59.png">
+</p>
+<p align="center" width="100%">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669850-176d4b80-d1fa-11eb-9c0e-9b8712de63ab.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669873-32d85680-d1fa-11eb-9df1-f64fc62947be.png">
+<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669884-3ec41880-d1fa-11eb-83e1-6b85d7a80f80.png">
 </p>
 
 ## TiTi만의 특징
