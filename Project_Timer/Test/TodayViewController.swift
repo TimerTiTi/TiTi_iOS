@@ -108,6 +108,8 @@ class TodayViewController: UIViewController {
                 datePicker.locale = .current
             }
         }
+        
+        datePicker.isHidden = true
     }
 
     override var prefersStatusBarHidden: Bool {

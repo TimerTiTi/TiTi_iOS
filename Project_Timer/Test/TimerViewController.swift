@@ -82,6 +82,9 @@ class TimerViewController: UIViewController {
         
         getVCNum()
         setLocalizable()
+        daily.load()
+        setTask()
+        setSumTime()
         
         setButtonRotation()
         setRadius()
@@ -96,9 +99,6 @@ class TimerViewController: UIViewController {
         setBackground()
         checkIsFirst()
         setProgress()
-        
-        daily.load()
-        setTask()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -336,6 +336,7 @@ extension TimerViewController {
         }
         //나간 시점 start, 현재 시각 Date 와 비교
         daily.addHoursInBackground(start, sumTime - temp)
+        saveTimes()
     }
     
     func removeSavedDate() {
@@ -762,6 +763,22 @@ extension TimerViewController {
         alert.addAction(ok)
         //4. 경고창 보이기
         present(alert,animated: true,completion: nil)
+    }
+    
+    func setSumTime() {
+        var tempSumTime: Int = 0
+        if(daily.tasks != [:]) {
+            for (_, value) in daily.tasks {
+                tempSumTime += value
+            }
+            sumTime = tempSumTime
+            UserDefaults.standard.set(sumTime, forKey: "sum2")
+            saveLogData()
+            
+            let tempGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+            goalTime = tempGoalTime - sumTime
+            UserDefaults.standard.set(goalTime, forKey: "allTime2")
+        }
     }
 }
 

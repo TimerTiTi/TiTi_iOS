@@ -55,8 +55,6 @@ class GraphViewController2: UIViewController {
     @IBOutlet var upload: UIButton!
     @IBOutlet var download: UIButton!
     
-    
-    
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
     var colors: [UIColor] = []
@@ -72,57 +70,14 @@ class GraphViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkUser()
+        checkUser() //파이어베이스
         setRadius()
         setShadow(view_7days)
         setShadow(view_today)
         
-        //7days
-        let hostingController = UIHostingController(rootView: ContentView())
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-        hostingController.view.frame = viewOfView.bounds
-        ContentView().appendDailyDatas()
-//        ContentView().appendDumyDatas()
-        addChild(hostingController)
-        viewOfView.addSubview(hostingController.view)
-        
-        //today
-        daily.load()
-        fillHourColor()
-        if(daily.tasks != [:]) {
-            today.text = getDay(day: daily.day)
-//            today.text = "5/6"
-            let temp: [String:Int] = daily.tasks
-//            let temp = addDumy()
-            counts = temp.count
-            appendColors()
-            
-            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
-            
-            var array: [Int] = []
-            for (key, value) in tasks {
-                arrayTaskName.append(key)
-                arrayTaskTime.append(printTime(temp: value))
-                array.append(value)
-            }
-            
-            let width = progress.bounds.width
-            let height = progress.bounds.height
-            makeProgress(array, width, height)
-            var p1 = ""
-            var p2 = ""
-            for i in (0..<tasks.count).reversed() {
-                p1 += "\(arrayTaskName[i])\n"
-                p2 += "\(arrayTaskTime[i])\n"
-            }
-//            taskTitle.text = p1
-//            taskTime.text = p2
-            print("max : \(daily.maxTime)")
-            
-            setHeight()
-        } else {
-            print("no data")
-        }
+        let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
+        showSwiftUIGraph(isDumy: isDumy)
+        showDatas(isDumy: isDumy)
         
         upload.isHidden = true
         download.isHidden = true
@@ -544,25 +499,10 @@ extension GraphViewController2 {
         return value
     }
     
-    func addDumy() -> [String:Int] {
-        var temp: [String:Int] = [:]
-//        temp["Learning Korean"] = 2100
-//        temp["Swift Programming"] = 4680
-//        temp["Cycleing"] = 3900
-//        temp["Running"] = 2700
-//        temp["Reading Book"] = 2280
-        temp["프로그래밍 공부"] = 4680
-        temp["전공수업 과제"] = 3900
-        temp["프로젝트 토의"] = 2700
-        temp["책읽기"] = 2280
-        temp["영문학 공부"] = 2100
-        return temp
-    }
-    
     func fillHourColor() {
         let timeline = daily.timeline
         print("timeLine : \(timeline)")
-//        let timeline = [3600,1300,0,0,0,0,0,0,0,1200,2000,3000,2600,2600,3600,3600,1000,0,500,2000,0,0,0,1200]
+        
         fillColor(time: timeline[0], view: time_24)
         fillColor(time: timeline[1], view: time_01)
         fillColor(time: timeline[2], view: time_02)
@@ -677,4 +617,59 @@ struct GetDaily: Codable {
     
     var beforeTime: Int = 0
     var timeline = Array(repeating: 0, count: 24)
+}
+
+
+
+
+extension GraphViewController2 {
+    func showSwiftUIGraph(isDumy: Bool) {
+        //7days
+        let hostingController = UIHostingController(rootView: ContentView())
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.frame = viewOfView.bounds
+        
+        ContentView().appendDailyDatas(isDumy: isDumy)
+        addChild(hostingController)
+        viewOfView.addSubview(hostingController.view)
+    }
+    
+    func showDatas(isDumy: Bool) {
+        //today
+        daily.load()
+        if(isDumy) { daily = Dumy().getDumyDaily() }
+        
+        if(daily.tasks != [:]) {
+            fillHourColor()
+            let temp: [String:Int] = daily.tasks
+            today.text = getDay(day: daily.day)
+            counts = temp.count
+            appendColors()
+            
+            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
+            
+            var array: [Int] = []
+            for (key, value) in tasks {
+                arrayTaskName.append(key)
+                arrayTaskTime.append(printTime(temp: value))
+                array.append(value)
+            }
+            
+            let width = progress.bounds.width
+            let height = progress.bounds.height
+            makeProgress(array, width, height)
+            var p1 = ""
+            var p2 = ""
+            for i in (0..<tasks.count).reversed() {
+                p1 += "\(arrayTaskName[i])\n"
+                p2 += "\(arrayTaskTime[i])\n"
+            }
+            
+            print("max : \(daily.maxTime)")
+            
+            setHeight()
+        } else {
+            print("no data")
+        }
+    }
 }

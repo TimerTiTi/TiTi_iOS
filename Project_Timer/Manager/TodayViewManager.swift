@@ -230,6 +230,6 @@ class TodayViewManager {
     }
     
     func setDumyDaily() {
-        daily.tasks = Dumy().getTasks()
+        daily = Dumy().getDumyDaily()
     }
 }
