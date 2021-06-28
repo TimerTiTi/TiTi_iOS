@@ -8,14 +8,21 @@
 import UIKit
 import FSCalendar
 
+protocol selectCalendar {
+    func getDailyIndex()
+}
+
 class calendarViewController: UIViewController {
 
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var frame: UIView!
     @IBOutlet var backBT: UIButton!
+    
     let dateFormatter = DateFormatter()
     var dumyDays: [Date] = []
     var colorIndex: Int = 0
+    var calendarViewControllerDelegate : selectCalendar!
+    var index: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +31,6 @@ class calendarViewController: UIViewController {
         getColor()
         
         calendar.appearance.headerDateFormat = "YYYY.MM"
-//        calendar.appearance.borderRadius = 0.6
-//        UIFont(name: "HGGGothicssiP60g", size: 35)
         calendar.appearance.headerTitleFont = UIFont(name: "HGGGothicssiP60g", size: 25)
         calendar.appearance.weekdayFont = UIFont(name: "HGGGothicssiP60g", size: 13)
         calendar.appearance.titleFont = UIFont(name: "HGGGothicssiP60g", size: 20)
@@ -40,47 +45,19 @@ class calendarViewController: UIViewController {
         calendar.appearance.eventDefaultColor = UIColor.systemRed.withAlphaComponent(0.5)
         backBT.tintColor = color
         
-        dumyDays = getDumyNSDays(getDumyDays())
+        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
     }
 
     @IBAction func back(_ sender: UIButton) {
-        if(sender.currentTitle != "NO DATA") {
-            //날짜 보내기
+        if(sender.currentTitle != "NO DATA" && index != nil) {
+            UserDefaults.standard.setValue(index, forKey: "dateIndex")
+            calendarViewControllerDelegate.getDailyIndex()
             self.dismiss(animated: true, completion: nil)
         }
     }
     
-    // FSCalendarDataSource
     func calendar(calendar: FSCalendar!, hasEventForDate date: NSDate!) -> Bool {
         return true
-    }
-    
-    func getDumyDays() -> [String] {
-        var days: [String] = []
-        days.append("2021.05.30")
-        days.append("2021.06.11")
-        days.append("2021.06.20")
-        days.append("2021.06.22")
-        days.append("2021.06.25")
-        days.append("2021.06.28")
-        return days
-    }
-    
-    func getDumyNSDays(_ stringDays: [String]) -> [Date] {
-        var days: [Date] = []
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
-        for day in stringDays {
-            let tempDay: Date = formatter.date(from: day)!
-            days.append(tempDay)
-        }
-        return days
-    }
-    
-    func showDayEvents(_ dumyDays: [NSDate]) {
-        for day in dumyDays {
-            calendar(calendar: calendar, hasEventForDate: day)
-        }
     }
     
     func getColor() {
@@ -104,6 +81,8 @@ extension calendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택됨")
         if(dumyDays.contains(date)) {
+            index = Int("\(dumyDays.firstIndex(of: date)!)")!
+            print("index : ",index!)
             backBT.setTitle(dateFormatter.string(from: date), for: .normal)
         } else {
             backBT.setTitle("NO DATA", for: .normal)

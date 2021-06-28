@@ -76,6 +76,28 @@ struct Dumy {
         daily.timeline = getTimelines()
         return daily
     }
+    
+    func getDumyStringDays() -> [String] {
+        var days: [String] = []
+        days.append("2021.05.30")
+        days.append("2021.06.11")
+        days.append("2021.06.20")
+        days.append("2021.06.22")
+        days.append("2021.06.25")
+        days.append("2021.06.28")
+        return days
+    }
+    
+    func getDumyDays(_ stringDays: [String]) -> [Date] {
+        var days: [Date] = []
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY.MM.dd"
+        for day in stringDays {
+            let tempDay: Date = formatter.date(from: day)!
+            days.append(tempDay)
+        }
+        return days
+    }
 }
 
 //        temp["Learning Korean"] = 2100

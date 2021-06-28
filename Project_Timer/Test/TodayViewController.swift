@@ -71,9 +71,14 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
+    @IBOutlet var selectDay: UIButton!
+    
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
+    var dateIndex: Int?
+    var dumyDays: [Date] = []
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,11 +94,14 @@ class TodayViewController: UIViewController {
         
         getColor()
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
-        showSwiftUIGraph(isDumy: isDumy)
         showDatas(isDumy: isDumy)
+        showSwiftUIGraph(isDumy: isDumy)
         
         setChecks()
         leftGesture.edges = .left
+        
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -134,23 +142,15 @@ class TodayViewController: UIViewController {
         let i = Int(sender.tag)
         todayViewManager.setStartColorIndex(i)
         
-        for view in self.progress.subviews {
-            view.removeFromSuperview()
-        }
-        for view in self.view4_progress.subviews {
-            view.removeFromSuperview()
-        }
-        
-        todayViewManager.reset()
-        todayContentView().reset()
-        self.viewDidLoad()
-        self.view.layoutIfNeeded()
-        collectionView.reloadData()
-        view4_collectionView.reloadData()
+        reset()
     }
     
     @IBAction func leftGestureAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showCalendar(_ sender: Any) {
+        showCalendar()
     }
 }
 
@@ -202,7 +202,7 @@ extension TodayViewController {
         let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy)
+        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
         
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
@@ -212,14 +212,21 @@ extension TodayViewController {
         let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 97, height: 93))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy)
+        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
         
         addChild(hostingController2)
         view4_timeline.addSubview(hostingController2.view)
     }
     
     func showDatas(isDumy: Bool) {
-        todayViewManager.daily.load()
+        if(dateIndex == nil) {
+            todayViewManager.daily.load()
+//            todayViewManager.daily = Dumy().getDumyDaily()
+        } else {
+            //배열에 있는 daily 보이기
+            todayViewManager.daily = Dumy().getDumyDaily()
+        }
+        
         if(isDumy) {
             todayViewManager.setDumyDaily()
         }
@@ -259,6 +266,36 @@ extension TodayViewController {
         if(todayViewManager.array.count < 8) {
             collectionHeight.constant = CGFloat(20*todayViewManager.array.count)
         }
+    }
+    
+    func showCalendar() {
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "calendarViewController") as! calendarViewController
+        setVC.calendarViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+    
+    func reset() {
+        for view in self.progress.subviews {
+            view.removeFromSuperview()
+        }
+        for view in self.view4_progress.subviews {
+            view.removeFromSuperview()
+        }
+        
+        todayViewManager.reset()
+        todayContentView().reset()
+        self.viewDidLoad()
+        self.view.layoutIfNeeded()
+        collectionView.reloadData()
+        view4_collectionView.reloadData()
+    }
+}
+
+extension TodayViewController: selectCalendar {
+    func getDailyIndex() {
+        dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? dumyDays.count-1
+        selectDay.setTitle(dateFormatter.string(from: dumyDays[dateIndex!]), for: .normal)
+        reset()
     }
 }
 

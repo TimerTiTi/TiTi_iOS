@@ -116,12 +116,19 @@ class TodayViewManager {
     
     func setWeek(_ weeks: [UIView]) {
         let todayNum = weekday(daily.day)
-        if(todayNum != 0) {
-            let target: UIView = weeks[todayNum-1]
-            target.backgroundColor = COLOR
-        } else {
-            let target: UIView = weeks[6]
-            target.backgroundColor = COLOR
+        for i in 0..<7 {
+            if(i == todayNum) {
+                if(todayNum != 0) {
+                    let target: UIView = weeks[todayNum-1]
+                    target.backgroundColor = COLOR
+                } else {
+                    let target: UIView = weeks[6]
+                    target.backgroundColor = COLOR
+                }
+            } else {
+                let target: UIView = weeks[i]
+                target.backgroundColor = UIColor.clear
+            }
         }
     }
     
