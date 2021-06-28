@@ -71,8 +71,6 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
-    @IBOutlet var datePicker: UIDatePicker!
-    
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
@@ -96,20 +94,6 @@ class TodayViewController: UIViewController {
         
         setChecks()
         leftGesture.edges = .left
-        
-        datePicker.tintColor = todayViewManager.COLOR
-        if let currentDeviceLanguage = Locale.preferredLanguages.first {
-            print("currentLanguage", currentDeviceLanguage)
-
-            // For example
-            if currentDeviceLanguage == "ko-KR" {
-                datePicker.locale = Locale(identifier: "ko-KR")
-            } else {
-                datePicker.locale = .current
-            }
-        }
-        
-        datePicker.isHidden = true
     }
 
     override var prefersStatusBarHidden: Bool {

@@ -8,4 +8,6 @@ target 'Project_Timer' do
   # Pods for Project_Timer
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
+  pod 'FSCalendar'
+  
 end

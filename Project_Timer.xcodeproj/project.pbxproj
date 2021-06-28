@@ -24,6 +24,7 @@
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		8762AB6325E0DF38003438B5 /* LogViewController_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8762AB6225E0DF38003438B5 /* LogViewController_test.swift */; };
+		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
 		8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772E91526705EE100A191BF /* TodolistViewController.swift */; };
 		877E448C267DF8DD00BF104A /* Dumy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dumy.swift */; };
@@ -72,6 +73,7 @@
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		8762AB6225E0DF38003438B5 /* LogViewController_test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController_test.swift; sourceTree = "<group>"; };
+		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */,
 				87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */,
 				8772E91526705EE100A191BF /* TodolistViewController.swift */,
+				876743342689E15600E690E4 /* calendarViewController.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				87DAF2EC2669F9F300FAB4CF /* TodayViewController.swift in Sources */,
+				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
@@ -586,7 +590,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 75;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -594,7 +598,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -611,7 +615,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 75;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -619,7 +623,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.0.1;
+				MARKETING_VERSION = 6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
