@@ -221,10 +221,10 @@ extension TodayViewController {
     func showDatas(isDumy: Bool) {
         if(dateIndex == nil) {
             todayViewManager.daily.load()
-//            todayViewManager.daily = Dumy().getDumyDaily()
         } else {
             //배열에 있는 daily 보이기
             todayViewManager.daily = Dumy().getDumyDaily()
+            todayViewManager.daily.day = dumyDays[dateIndex!]
         }
         
         if(isDumy) {
