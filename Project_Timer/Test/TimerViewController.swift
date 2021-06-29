@@ -70,8 +70,9 @@ class TimerViewController: UIViewController {
     var task: String = ""
     //하루 그래프를 위한 구조
     var daily = Daily()
-    
     var isLandcape: Bool = false
+    
+    let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +100,8 @@ class TimerViewController: UIViewController {
         setBackground()
         checkIsFirst()
         setProgress()
+        //저장된 daily들 로딩
+        dailyViewModel.loadDailys()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,13 +121,6 @@ class TimerViewController: UIViewController {
             setPortrait()
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        //로그인이 이미 되어있는 경우라면 홈페이지로 이동한다.
-//        if(VCNum == 2) {
-//            goToViewController(where: "StopwatchViewController")
-//        }
-//    }
     
     func checkTimeTrigger() {
         realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
@@ -153,7 +149,6 @@ class TimerViewController: UIViewController {
             saveTimes()
             printLogs()
             updateProgress()
-//            showNowTime()
         }
     }
 
@@ -711,17 +706,6 @@ extension TimerViewController {
         taskButton.isUserInteractionEnabled = false
     }
     
-//    func showNowTime() {
-//        let now = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        dateFormatter.dateFormat = "hh:mm a"
-//        let today = dateFormatter.string(from: now)
-//        AverageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
-//        nowTimeLabel.text = "\n" + "Now Time".localized()
-//        AverageLabel.text = "\(today)"
-//    }
-    
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
         timerLabel.text = "Timer".localized()
@@ -735,7 +719,6 @@ extension TimerViewController {
         } else {
             taskButton.setTitleColor(UIColor.white, for: .normal)
             taskButton.layer.borderColor = UIColor.white.cgColor
-//            startStopBT.isUserInteractionEnabled = true
         }
         taskButton.setTitle(task, for: .normal)
     }
@@ -749,7 +732,6 @@ extension TimerViewController {
     func setFirstStart() {
         taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         taskButton.layer.borderColor = UIColor.systemPink.cgColor
-//        startStopBT.isUserInteractionEnabled = false
     }
     
     func showFirstAlert() {
@@ -798,7 +780,6 @@ extension TimerViewController {
             firstStop()
             isFirst = false
         }
-//        showNowTime()
         daily.startTask(task) //하루 그래프 데이터 생성
     }
     
@@ -813,6 +794,8 @@ extension TimerViewController {
         stopColor()
         stopEnable()
         daily.save() //하루 그래프 데이터 계산
+        //dailys 저장
+        dailyViewModel.addDaily(daily)
     }
     
     func algoOfRestart() {

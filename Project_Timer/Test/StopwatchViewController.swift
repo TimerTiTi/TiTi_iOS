@@ -107,7 +107,6 @@ class StopwatchViewController: UIViewController {
         setFirstProgress()
         //저장된 daily들 로딩
         dailyViewModel.loadDailys()
-//        UserDefaults.standard.setValue([], forKey: "dates")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -145,7 +144,6 @@ class StopwatchViewController: UIViewController {
         updateProgress()
         printLogs()
         saveTimes()
-//        showNowTime()
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -656,17 +654,6 @@ extension StopwatchViewController {
         UserDefaults.standard.set(2, forKey: "VCNum")
     }
     
-//    func showNowTime() {
-//        let now = Date()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US")
-//        dateFormatter.dateFormat = "hh:mm a"
-//        let today = dateFormatter.string(from: now)
-//        avarageLabel.font = UIFont(name: "HGGGothicssiP60g", size: 35)
-//        nowTimeLabel.text = "\n" + "Now Time".localized()
-//        avarageLabel.text = "\(today)"
-//    }
-    
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
         stopWatchLabel.text = "Stopwatch".localized()
@@ -680,7 +667,6 @@ extension StopwatchViewController {
         } else {
             taskButton.setTitleColor(UIColor.white, for: .normal)
             taskButton.layer.borderColor = UIColor.white.cgColor
-//            startStopBT.isUserInteractionEnabled = true
         }
         taskButton.setTitle(task, for: .normal)
     }
@@ -695,7 +681,6 @@ extension StopwatchViewController {
     func setFirstStart() {
         taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         taskButton.layer.borderColor = UIColor.systemPink.cgColor
-//        startStopBT.isUserInteractionEnabled = false
     }
     
     func showFirstAlert() {
@@ -746,7 +731,6 @@ extension StopwatchViewController {
             firstStart()
             isFirst = false
         }
-//        showNowTime()
         daily.startTask(task) //하루 그래프 데이터 생성
     }
     
