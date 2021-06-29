@@ -22,6 +22,8 @@ class calendarViewController: UIViewController {
     var dumyDays: [Date] = []
     var colorIndex: Int = 0
     var calendarViewControllerDelegate : selectCalendar!
+    
+    var dailyViewModel = DailyViewModel()
     var index: Int?
     
     override func viewDidLoad() {
@@ -30,22 +32,11 @@ class calendarViewController: UIViewController {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         getColor()
         
-        calendar.appearance.headerDateFormat = "YYYY.MM"
-        calendar.appearance.headerTitleFont = UIFont(name: "HGGGothicssiP60g", size: 25)
-        calendar.appearance.weekdayFont = UIFont(name: "HGGGothicssiP60g", size: 13)
-        calendar.appearance.titleFont = UIFont(name: "HGGGothicssiP60g", size: 20)
+        setCalendar()
+        setColor()
         
-        let color = UIColor(named: "D\(colorIndex)")
-        let color2 = UIColor(named: "D\(colorIndex)")!.withAlphaComponent(0.5)
-        calendar.appearance.todayColor = UIColor.systemRed.withAlphaComponent(0.5)
-        calendar.appearance.headerTitleColor = color
-        calendar.appearance.weekdayTextColor = color
-        calendar.appearance.selectionColor = color2
-        calendar.appearance.eventSelectionColor = color2
-        calendar.appearance.eventDefaultColor = UIColor.systemRed.withAlphaComponent(0.5)
-        backBT.tintColor = color
-        
-        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
+//        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
+        dailyViewModel.loadDailys()
     }
 
     @IBAction func back(_ sender: UIButton) {
@@ -55,9 +46,27 @@ class calendarViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
+}
+
+
+extension calendarViewController {
+    func setCalendar() {
+        calendar.appearance.headerDateFormat = "YYYY.MM"
+        calendar.appearance.headerTitleFont = UIFont(name: "HGGGothicssiP60g", size: 25)
+        calendar.appearance.weekdayFont = UIFont(name: "HGGGothicssiP60g", size: 13)
+        calendar.appearance.titleFont = UIFont(name: "HGGGothicssiP60g", size: 20)
+    }
     
-    func calendar(calendar: FSCalendar!, hasEventForDate date: NSDate!) -> Bool {
-        return true
+    func setColor() {
+        let color = UIColor(named: "D\(colorIndex)")
+        let color2 = UIColor(named: "D\(colorIndex)")!.withAlphaComponent(0.5)
+        calendar.appearance.todayColor = UIColor.systemRed.withAlphaComponent(0.5)
+        calendar.appearance.headerTitleColor = color
+        calendar.appearance.weekdayTextColor = color
+        calendar.appearance.selectionColor = color2
+        calendar.appearance.eventSelectionColor = color2
+        calendar.appearance.eventDefaultColor = UIColor.systemRed.withAlphaComponent(0.5)
+        backBT.tintColor = color
     }
     
     func getColor() {
@@ -66,11 +75,10 @@ class calendarViewController: UIViewController {
 }
 
 
-
 extension calendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     //이벤트 표시 개수
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if self.dumyDays.contains(date) {
+        if self.dailyViewModel.dates.contains(date) {
             return 1
         } else {
             return 0
@@ -80,8 +88,8 @@ extension calendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print(dateFormatter.string(from: date) + " 선택됨")
-        if(dumyDays.contains(date)) {
-            index = Int("\(dumyDays.firstIndex(of: date)!)")!
+        if(self.dailyViewModel.dates.contains(date)) {
+            index = Int("\(self.dailyViewModel.dates.firstIndex(of: date)!)")!
             print("index : ",index!)
             backBT.setTitle(dateFormatter.string(from: date), for: .normal)
         } else {

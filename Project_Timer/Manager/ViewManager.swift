@@ -52,4 +52,13 @@ struct ViewManager {
             return sum
         }
     }
+    
+    func changeDate(_ day: Date) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        let beforeDay = dateFormatter.string(from: day)
+        
+        let afterDay: Date = dateFormatter.date(from: beforeDay)!
+        return afterDay
+    }
 }

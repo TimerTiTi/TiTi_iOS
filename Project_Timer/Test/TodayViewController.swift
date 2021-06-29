@@ -77,8 +77,9 @@ class TodayViewController: UIViewController {
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
     var dateIndex: Int?
-    var dumyDays: [Date] = []
     let dateFormatter = DateFormatter()
+    
+    let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +93,9 @@ class TodayViewController: UIViewController {
         setShadow(view2)
         setShadow(view3)
         
+        //저장된 dailys들 로딩
+        dailyViewModel.loadDailys()
+        
         getColor()
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
         showDatas(isDumy: isDumy)
@@ -101,7 +105,7 @@ class TodayViewController: UIViewController {
         leftGesture.edges = .left
         
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
+//        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -223,8 +227,8 @@ extension TodayViewController {
             todayViewManager.daily.load()
         } else {
             //배열에 있는 daily 보이기
-            todayViewManager.daily = Dumy().getDumyDaily()
-            todayViewManager.daily.day = dumyDays[dateIndex!]
+            todayViewManager.daily = dailyViewModel.dailys[dateIndex!]
+//            todayViewManager.daily.day = dumyDays[dateIndex!]
         }
         
         if(isDumy) {
@@ -293,8 +297,8 @@ extension TodayViewController {
 
 extension TodayViewController: selectCalendar {
     func getDailyIndex() {
-        dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? dumyDays.count-1
-        selectDay.setTitle(dateFormatter.string(from: dumyDays[dateIndex!]), for: .normal)
+        dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? nil
+        selectDay.setTitle(dateFormatter.string(from: dailyViewModel.dates[dateIndex!]), for: .normal)
         reset()
     }
 }

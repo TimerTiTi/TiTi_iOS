@@ -72,8 +72,9 @@ class StopwatchViewController: UIViewController {
     var time = Time()
     //하루 그래프를 위한 구조
     var daily = Daily()
-    
     var isLandscape: Bool = false
+    
+    let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +105,9 @@ class StopwatchViewController: UIViewController {
         checkIsFirst()
         
         setFirstProgress()
+        //저장된 daily들 로딩
+        dailyViewModel.loadDailys()
+//        UserDefaults.standard.setValue([], forKey: "dates")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -758,5 +762,7 @@ extension StopwatchViewController {
         stopEnable()
         time.startSumTimeTemp = sumTime_temp //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
+        //dailys 저장
+        dailyViewModel.addDaily(daily)
     }
 }
