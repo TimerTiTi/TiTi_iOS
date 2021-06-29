@@ -239,4 +239,9 @@ class TodayViewManager {
     func setDumyDaily() {
         daily = Dumy().getDumyDaily()
     }
+    
+    func getColor() {
+        startColor = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        COLOR = UIColor(named: "D\(startColor)")!
+    }
 }

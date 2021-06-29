@@ -71,7 +71,9 @@ class TodayViewController: UIViewController {
     @IBOutlet var color11: UIButton!
     @IBOutlet var color12: UIButton!
     
-    @IBOutlet var selectDay: UIButton!
+    @IBOutlet var selectDayBT: UIButton!
+    @IBOutlet var selectDay: UILabel!
+    @IBOutlet var selectDayBgView: UIView!
     
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
@@ -88,15 +90,16 @@ class TodayViewController: UIViewController {
         weeks = [mon, tue, wed, thu, fri, sat, sun]
         weeks2 = [view4_mon, view4_tue, view4_wed, view4_thu, view4_fri, view4_sat, view4_sun]
         
+        todayViewManager.getColor()
         setRadius()
         setShadow(view1)
         setShadow(view2)
         setShadow(view3)
+//        setShadow(selectDayBgView)
         
         //저장된 dailys들 로딩
         dailyViewModel.loadDailys()
         
-        getColor()
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
         showDatas(isDumy: isDumy)
         showSwiftUIGraph(isDumy: isDumy)
@@ -105,7 +108,6 @@ class TodayViewController: UIViewController {
         leftGesture.edges = .left
         
         dateFormatter.dateFormat = "yyyy.MM.dd"
-//        dumyDays = Dumy().getDumyDays(Dumy().getDumyStringDays())
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -180,6 +182,8 @@ extension TodayViewController {
         color10.layer.cornerRadius = 5
         color11.layer.cornerRadius = 5
         color12.layer.cornerRadius = 5
+        
+        selectDayBgView.layer.cornerRadius = 12
     }
     
     func setShadow(_ view: UIView) {
@@ -187,10 +191,17 @@ extension TodayViewController {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5
-    }
-    
-    func getColor() {
-        todayViewManager.startColor = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        
+        selectDayBgView.layer.masksToBounds = false
+        selectDayBgView.layer.shadowColor = todayViewManager.COLOR.cgColor
+        selectDayBgView.layer.shadowOpacity = 0.5
+        selectDayBgView.layer.shadowOffset = CGSize.zero
+        selectDayBgView.layer.shadowRadius = 5.5
+        
+        selectDay.layer.shadowColor = todayViewManager.COLOR.cgColor
+        selectDay.layer.shadowOpacity = 1
+        selectDay.layer.shadowOffset = CGSize(width: 1, height: 0.5)
+        selectDay.layer.shadowRadius = 1.5
     }
     
     func showSwiftUIGraph(isDumy: Bool) {
@@ -228,7 +239,6 @@ extension TodayViewController {
         } else {
             //배열에 있는 daily 보이기
             todayViewManager.daily = dailyViewModel.dailys[dateIndex!]
-//            todayViewManager.daily.day = dumyDays[dateIndex!]
         }
         
         if(isDumy) {
@@ -298,7 +308,7 @@ extension TodayViewController {
 extension TodayViewController: selectCalendar {
     func getDailyIndex() {
         dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? nil
-        selectDay.setTitle(dateFormatter.string(from: dailyViewModel.dates[dateIndex!]), for: .normal)
+        selectDay.text = dateFormatter.string(from: dailyViewModel.dates[dateIndex!])
         reset()
     }
 }
