@@ -142,6 +142,8 @@ class TimerViewController: UIViewController {
             goalTime = time.startGoalTime - seconds
             sumTime = time.startSumTime + seconds
             timerTime = time.startTimerTime - seconds
+            daily.updateTimes(seconds)
+            daily.updateTimerTime(time.startTimerTime, seconds)
             daily.updateTask(seconds)
             if(seconds > daily.maxTime) { daily.maxTime = seconds }
             
@@ -249,7 +251,7 @@ extension TimerViewController : ChangeViewController {
  
         //종료 예상시간 보이기
         finishTimeLabel.text = getFutureTime()
-        daily.reset() //하루 그래프 초기화
+        daily.reset(goalTime, timerTime) //하루 그래프 초기화
     }
     
     func changeTimer() {
@@ -260,6 +262,8 @@ extension TimerViewController : ChangeViewController {
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: fromSecond)
         fromSecond = 0.0
+        daily.fixedTimerTime = timerTime
+        daily.currentTimerTime = timerTime
     }
 }
 
@@ -319,6 +323,8 @@ extension TimerViewController {
         sumTime = time.startSumTime + seconds
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
         timerTime = time.startTimerTime - seconds
+        daily.updateTimes(seconds)
+        daily.updateTimerTime(time.startTimerTime, seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -754,6 +760,7 @@ extension TimerViewController {
                 tempSumTime += value
             }
             sumTime = tempSumTime
+            daily.currentSumTime = tempSumTime
             UserDefaults.standard.set(sumTime, forKey: "sum2")
             saveLogData()
             

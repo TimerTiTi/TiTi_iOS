@@ -87,8 +87,8 @@ class TodayViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboard()
 
-        weeks = [mon, tue, wed, thu, fri, sat, sun]
-        weeks2 = [view4_mon, view4_tue, view4_wed, view4_thu, view4_fri, view4_sat, view4_sun]
+        weeks = [sun, mon, tue, wed, thu, fri, sat]
+        weeks2 = [view4_sun, view4_mon, view4_tue, view4_wed, view4_thu, view4_fri, view4_sat]
         
         todayViewManager.getColor()
         setRadius()

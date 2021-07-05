@@ -9,14 +9,14 @@
 import UIKit
 struct Daily: Codable {
     var day: Date = Date()
-    var fixedTotalTime: Int = 0
-    var fixedSumTime: Int = 0
-    var fixedTimerTime: Int = 0
-    var currentTotalTime: Int = 0
-    var currentSumTime: Int = 0
-    var currentTimerTime: Int = 0
-    var breakTime: Int = 0
-    var maxTime: Int = 0
+    var fixedTotalTime: Int = 0 //목표 설정시간 (o)
+    var fixedSumTime: Int = 0 //의미x
+    var fixedTimerTime: Int = 0 //타이머 설정시간
+    var currentTotalTime: Int = 0 //목표까지 남은시간 (o)
+    var currentSumTime: Int = 0 //누적시간 (o)
+    var currentTimerTime: Int = 0 //타이머 남은 시간
+    var breakTime: Int = 0 //의미x
+    var maxTime: Int = 0 //최고연속시간
     
     var startTime: Date = Date()
     var currentTask: String = ""
@@ -38,6 +38,15 @@ struct Daily: Codable {
         tasks[currentTask] = value
     }
     
+    mutating func updateTimes(_ seconds: Int) {
+        currentSumTime = beforeTime+seconds
+        currentTotalTime = fixedTotalTime-currentSumTime
+    }
+    
+    mutating func updateTimerTime(_ startTimerTime: Int, _ seconds: Int) {
+        currentTimerTime = startTimerTime-seconds
+    }
+    
     mutating func updateTask(_ seconds: Int) {
         tasks[currentTask] = beforeTime+seconds
         //현재 시간에 따른 값을 증가
@@ -46,8 +55,11 @@ struct Daily: Codable {
         self.save()
     }
     
-    mutating func reset() {
+    mutating func reset(_ totalTime: Int, _ timerTime: Int) {
         self = Daily()
+        self.fixedTotalTime = totalTime
+        self.fixedTimerTime = timerTime
+        self.currentTimerTime = timerTime
         save()
     }
     

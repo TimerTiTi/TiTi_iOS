@@ -137,6 +137,7 @@ class StopwatchViewController: UIViewController {
         sumTime = time.startSumTime + seconds
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -191,6 +192,7 @@ extension StopwatchViewController : ChangeViewController2 {
         setColor()
         goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         showAvarage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
+        let timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         sumTime = 0
         sumTime_temp = 0
         breakTime = 0
@@ -206,7 +208,7 @@ extension StopwatchViewController : ChangeViewController2 {
         
         stopColor()
         stopEnable()
-        daily.reset() //하루 그래프 초기화
+        daily.reset(goalTime, timerTime) //하루 그래프 초기화
         resetSum_temp()
     }
     
@@ -299,6 +301,7 @@ extension StopwatchViewController {
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
+        daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
@@ -703,6 +706,7 @@ extension StopwatchViewController {
                 tempSumTime += value
             }
             sumTime = tempSumTime
+            daily.currentSumTime = tempSumTime
             UserDefaults.standard.set(sumTime, forKey: "sum2")
             saveLogData()
             
