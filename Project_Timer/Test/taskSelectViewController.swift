@@ -55,6 +55,14 @@ class taskSelectViewController: UIViewController {
         present(alert,animated: true,completion: nil)
     }
     
+    @IBAction func edit() {
+        if table.isEditing {
+            table.isEditing = false
+        } else {
+            table.isEditing = true
+        }
+    }
+    
     func selectTask(_ task: String) {
         UserDefaults.standard.set(task, forKey: "task")
         SetTimerViewControllerDelegate.changeTask()
@@ -108,6 +116,15 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
             self.table.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        tasks.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        saveTasks()
     }
 }
 
