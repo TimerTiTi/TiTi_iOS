@@ -32,6 +32,37 @@ class taskSelectViewController: UIViewController {
         super.viewDidLoad()
         setLocalizable()
         tasks = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        table.addGestureRecognizer(longPress)
+    }
+    
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: table)
+            if let indexPath = table.indexPathForRow(at: touchPoint) {
+                let alert = UIAlertController(title: "ReName".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
+                let cancle = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+                let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
+                    action in
+                    let newTask: String = alert.textFields?[0].text ?? ""
+                    
+                    self.tasks[indexPath.row] = newTask
+                    self.table.reloadData()
+                    self.saveTasks()
+                    //기록들 중 과목내용 수정부분 추가 예정
+                })
+                //텍스트 입력 추가
+                alert.addTextField { (inputNewNickName) in
+                    inputNewNickName.placeholder = "New subject".localized()
+                    inputNewNickName.textAlignment = .center
+                    inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                }
+                alert.addAction(cancle)
+                alert.addAction(ok)
+                present(alert,animated: true,completion: nil)
+            }
+        }
     }
     
     @IBAction func test_new(_ sender: Any) {
