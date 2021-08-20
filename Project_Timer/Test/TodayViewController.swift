@@ -78,9 +78,9 @@ class TodayViewController: UIViewController {
     let todayViewManager = TodayViewManager()
     var weeks: [UIView] = []
     var weeks2: [UIView] = []
+    
     var dateIndex: Int?
     let dateFormatter = DateFormatter()
-    
     let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
@@ -95,7 +95,7 @@ class TodayViewController: UIViewController {
         setShadow(view1)
         setShadow(view2)
         setShadow(view3)
-//        setShadow(selectDayBgView)
+        setShadowDayBgView()
         
         //저장된 dailys들 로딩
         dailyViewModel.loadDailys()
@@ -191,7 +191,9 @@ extension TodayViewController {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5
-        
+    }
+    
+    func setShadowDayBgView() {
         selectDayBgView.layer.masksToBounds = false
         selectDayBgView.layer.shadowColor = todayViewManager.COLOR.cgColor
         selectDayBgView.layer.shadowOpacity = 0.5
@@ -223,8 +225,8 @@ extension TodayViewController {
         timeline.addSubview(hostingController.view)
         
         todayContentView().reset()
-        //frame3
-        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 97, height: 93))
+        //frame3 97
+        let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 78, height: 78))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
         todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)

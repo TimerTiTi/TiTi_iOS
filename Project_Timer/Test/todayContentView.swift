@@ -33,13 +33,14 @@ struct todayContentView: View {
                                     .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
                                     //그래프 막대 높이설정
                                     .frame(height:getHeight(value: time.sumTime))
+                                    .padding(.bottom,-4)
                             }
                             .frame(height:frameHeight)
                             //날짜 설정
                             Text(String(time.id))
                                 .font(.system(size: 8.5))
                                 .foregroundColor(Color("SystemBackground_reverse"))
-                                .padding(.bottom,2)
+                                .padding(.bottom,0)
                         }
                     }
                 }
@@ -78,6 +79,7 @@ extension todayContentView {
 //        daily.load()
         var timeline = daily.timeline
         if(isDumy) {
+            daily = Dumy().getDumyDaily()
             timeline = Dumy().getTimelines()
         }
         print("timeline : \(timeline)")

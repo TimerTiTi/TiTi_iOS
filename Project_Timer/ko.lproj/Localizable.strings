@@ -76,3 +76,7 @@
 NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버튼을 눌러주세요";
 
 "Save completed" = "저장 완료";
+
+"Click to Youtube" = "Youtube 영상으로 이동";
+
+"How to use TiTi?" = "TiTi 사용방법";

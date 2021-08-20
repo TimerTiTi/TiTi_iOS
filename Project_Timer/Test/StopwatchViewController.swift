@@ -214,6 +214,7 @@ extension StopwatchViewController : ChangeViewController2 {
     
     func changeTask() {
         setTask()
+        daily.load()
         resetSum_temp()
     }
     
@@ -294,24 +295,25 @@ extension StopwatchViewController {
     }
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
+        print("refresh")
         let temp = sumTime
         let seconds = time.getSeconds()
-        
         sumTime = time.startSumTime + seconds
-        print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
+        //나간 시점 start, 현재 시각 Date 와 비교
+        daily.addHoursInBackground(start, sumTime - temp)
         sumTime_temp = time.startSumTimeTemp + seconds
         goalTime = time.startGoalTime - seconds
         daily.updateTimes(seconds)
         daily.updateTask(seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
-        printLogs()
-        updateProgress()
         updateTimeLabels()
-        startAction()
-        //나간 시점 start, 현재 시각 Date 와 비교
-        daily.addHoursInBackground(start, sumTime - temp)
+        updateProgress()
+        printLogs()
         saveTimes()
+        print("save!")
+        
+        startAction()
     }
     
     func removeSavedDate() {

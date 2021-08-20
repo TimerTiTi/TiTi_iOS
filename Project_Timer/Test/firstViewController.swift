@@ -50,6 +50,9 @@ class firstViewController: UIViewController {
     @IBOutlet var text7: UILabel!
     @IBOutlet var nextBT: UIButton!
     
+    @IBOutlet var howToUse: UILabel!
+    @IBOutlet var youtube: UIButton!
+    
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
@@ -85,9 +88,18 @@ class firstViewController: UIViewController {
         case 4: ani4()
         case 5: ani5()
         case 6: ani6()
+        case 7: ani7()
         default:
             UserDefaults.standard.set(false, forKey: "isFirst")
             goToViewController(where: "TimerViewController")
+        }
+    }
+    
+    @IBAction func clickYoutube(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey: "isFirst")
+        goToViewController(where: "TimerViewController")
+        if let url = URL(string: "https://youtu.be/VGbJT5zm9wE") {
+            UIApplication.shared.open(url, options: [:])
         }
     }
 }
@@ -113,6 +125,9 @@ extension firstViewController {
         text2.text = "Setting today's times".localized()
         text5.text = "You can changes the modes".localized()
         text7.text = "You can see your records".localized()
+        
+        youtube.setTitle("Click to Youtube".localized(), for: .normal)
+        howToUse.text = "How to use TiTi?".localized()
     }
     func setButtonRotation() {
         modeTimer.transform = CGAffineTransform(rotationAngle: .pi*5/6)
@@ -206,6 +221,8 @@ extension firstViewController {
         text5.alpha = 0
         arrow7.alpha = 0
         text7.alpha = 0
+        howToUse.alpha = 0
+        youtube.alpha = 0
     }
     func ani1() {
         UIView.animate(withDuration: 0.3) {
@@ -251,7 +268,16 @@ extension firstViewController {
             self.text5.alpha = 0
             self.arrow7.alpha = 1
             self.text7.alpha = 1
-            self.nextBT.setTitle("FINISH", for: .normal)
+        }
+    }
+    
+    func ani7() {
+        UIView.animate(withDuration: 0.3) {
+            self.arrow7.alpha = 0
+            self.text7.alpha = 0
+            self.nextBT.alpha = 0
+            self.howToUse.alpha = 1
+            self.youtube.alpha = 1
         }
     }
     func goToViewController(where: String) {

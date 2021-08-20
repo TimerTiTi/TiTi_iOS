@@ -192,40 +192,6 @@ class TimerViewController: UIViewController {
 
 extension TimerViewController : ChangeViewController {
     
-    func setLandscape() {
-        if(isStop) {
-            UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 0
-                self.modeTimerLabel.alpha = 0
-                self.modeStopWatch.alpha = 0
-                self.modeStopWatchLabel.alpha = 0
-                self.log.alpha = 0
-                self.logLabel.alpha = 0
-                
-                self.taskButton.alpha = 0
-                self.dock.alpha = 0
-            }
-        }
-        isLandcape = true
-    }
-    
-    func setPortrait() {
-        if(isStop) {
-            UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 1
-                self.modeTimerLabel.alpha = 1
-                self.modeStopWatch.alpha = 1
-                self.modeStopWatchLabel.alpha = 1
-                self.log.alpha = 1
-                self.logLabel.alpha = 1
-                
-                self.taskButton.alpha = 1
-                self.dock.alpha = 1
-            }
-        }
-        isLandcape = false
-    }
-    
     func updateViewController() {
         stopColor()
         stopEnable()
@@ -272,6 +238,7 @@ extension TimerViewController: ChangeViewController2 {
     
     func changeTask() {
         setTask()
+        daily.load()
     }
     
     func reload() {
@@ -281,6 +248,40 @@ extension TimerViewController: ChangeViewController2 {
 }
 
 extension TimerViewController {
+    
+    func setLandscape() {
+        if(isStop) {
+            UIView.animate(withDuration: 0.3) {
+                self.modeTimer.alpha = 0
+                self.modeTimerLabel.alpha = 0
+                self.modeStopWatch.alpha = 0
+                self.modeStopWatchLabel.alpha = 0
+                self.log.alpha = 0
+                self.logLabel.alpha = 0
+                
+                self.taskButton.alpha = 0
+                self.dock.alpha = 0
+            }
+        }
+        isLandcape = true
+    }
+    
+    func setPortrait() {
+        if(isStop) {
+            UIView.animate(withDuration: 0.3) {
+                self.modeTimer.alpha = 1
+                self.modeTimerLabel.alpha = 1
+                self.modeStopWatch.alpha = 1
+                self.modeStopWatchLabel.alpha = 1
+                self.log.alpha = 1
+                self.logLabel.alpha = 1
+                
+                self.taskButton.alpha = 1
+                self.dock.alpha = 1
+            }
+        }
+        isLandcape = false
+    }
     
     func setBackground() {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)

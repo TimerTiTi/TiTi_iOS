@@ -29,6 +29,7 @@ class taskSelectViewController: UIViewController {
     var SetTimerViewControllerDelegate : ChangeViewController2!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setLocalizable()
         tasks = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
@@ -46,17 +47,19 @@ class taskSelectViewController: UIViewController {
                 let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
                     action in
                     let newTask: String = alert.textFields?[0].text ?? ""
-                    
+                    //이건 기록들 중 과목내용 수정 및 저장
+                    self.resetTaskname(before: self.tasks[indexPath.row], after: newTask)
                     self.tasks[indexPath.row] = newTask
                     self.table.reloadData()
                     self.saveTasks()
-                    //기록들 중 과목내용 수정부분 추가 예정
                 })
                 //텍스트 입력 추가
                 alert.addTextField { (inputNewNickName) in
                     inputNewNickName.placeholder = "New subject".localized()
                     inputNewNickName.textAlignment = .center
                     inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                    //기존 내용 보이기
+                    inputNewNickName.text = self.tasks[indexPath.row]
                 }
                 alert.addAction(cancle)
                 alert.addAction(ok)
@@ -89,8 +92,10 @@ class taskSelectViewController: UIViewController {
     @IBAction func edit() {
         if table.isEditing {
             table.isEditing = false
+            table.reloadData()
         } else {
             table.isEditing = true
+            table.reloadData()
         }
     }
     
@@ -114,6 +119,29 @@ class taskSelectViewController: UIViewController {
         studyTitle.text = "Select a subject".localized()
     }
     
+    func resetTaskname(before: String, after: String) {
+        var daily = Daily()
+        daily.load()
+        var beforeTasks: [String:Int] = daily.tasks
+        let time = beforeTasks[before]
+        if(time != nil) {
+            //이전 데이터 삭제
+            beforeTasks[before] = nil
+            //새로운 데이터 생성
+            beforeTasks[after] = time!
+            //tasks 저장
+            daily.tasks = beforeTasks
+            daily.save()
+            SetTimerViewControllerDelegate.changeTask()
+        }
+        //현재 과목명이 이전 과목명일 경우 수정
+        let currentTask = UserDefaults.standard.value(forKey: "task") as? String ?? ""
+        if(currentTask == before) {
+            UserDefaults.standard.set(after, forKey: "task")
+            SetTimerViewControllerDelegate.changeTask()
+        }
+    }
+    
 }
 
 extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
@@ -127,6 +155,8 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.taskName.text = tasks[indexPath.row]
+        if(table.isEditing) { cell.line.alpha = 0 }
+        else { cell.line.alpha = 1 }
         return cell
     }
     // 클릭했을때 어떻게 할까?
@@ -161,4 +191,5 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
 
 class taskListCell: UITableViewCell {
     @IBOutlet var taskName: UILabel!
+    @IBOutlet var line: UIView!
 }
