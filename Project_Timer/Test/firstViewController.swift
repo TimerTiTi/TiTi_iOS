@@ -9,6 +9,8 @@
 import UIKit
 
 class firstViewController: UIViewController {
+    static let identifier = "firstViewController"
+    
     @IBOutlet var taskButton: UIButton!
     @IBOutlet var innerProgress: CircularProgressView!
     @IBOutlet var outterProgress: CircularProgressView!

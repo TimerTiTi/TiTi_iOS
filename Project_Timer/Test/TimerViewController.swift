@@ -11,6 +11,7 @@ import AudioToolbox
 import AVFoundation
 
 class TimerViewController: UIViewController {
+    static let identifier = "TimerViewController"
 
     @IBOutlet var taskButton: UIButton!
     @IBOutlet var innerProgress: CircularProgressView!
@@ -63,7 +64,6 @@ class TimerViewController: UIViewController {
     var array_day = [String](repeating: "", count: 7)
     var array_time = [String](repeating: "", count: 7)
     var array_break = [String](repeating: "", count: 7)
-    var VCNum: Int = 1
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
     var time = Time()
@@ -81,7 +81,6 @@ class TimerViewController: UIViewController {
         modeTimerLabel.textColor = UIColor.gray
         modeTimer.isUserInteractionEnabled = false
         
-        getVCNum()
         setLocalizable()
         daily.load()
         setTask()
@@ -102,6 +101,11 @@ class TimerViewController: UIViewController {
         setProgress()
         //저장된 daily들 로딩
         dailyViewModel.loadDailys()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setVCNum()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -436,9 +440,8 @@ extension TimerViewController {
         self.present(vcName!, animated: true, completion: nil)
     }
     
-    func getVCNum() {
-        VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
-        print(VCNum)
+    func setVCNum() {
+        UserDefaults.standard.set(1, forKey: "VCNum")
     }
     
     func setProgress() {

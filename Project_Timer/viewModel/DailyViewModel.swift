@@ -28,4 +28,16 @@ class DailyViewModel {
         manager.loadDailys()
     }
     
+    func totalStudyTimeOfAll() -> Int {
+        return dailys.reduce(0, { $0 + $1.currentSumTime })
+    }
+    
+    func totalStudyTimeofMonth(month: Int) -> Int {
+        return dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + $1.currentSumTime })
+    }
+    
+    func totalStudyTimeOfMonth() -> Int {
+        return dailys.filter { ViewManager.getMonth($0.day) == ViewManager.getMonth(Date()) }.reduce(0, { $0 + $1.currentSumTime })
+    }
+    
 }

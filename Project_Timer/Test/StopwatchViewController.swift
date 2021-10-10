@@ -9,6 +9,7 @@
 import UIKit
 
 class StopwatchViewController: UIViewController {
+    static let identifier = "StopwatchViewController"
 
     @IBOutlet var taskButton: UIButton!
     @IBOutlet var innerProgress: CircularProgressView!
@@ -65,7 +66,6 @@ class StopwatchViewController: UIViewController {
     var array_time = [String](repeating: "", count: 7)
     var array_break = [String](repeating: "", count: 7)
     var stopCount: Int = 0
-    var VCNum: Int = 2
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
     var task: String = ""
@@ -84,7 +84,6 @@ class StopwatchViewController: UIViewController {
         modeStopWatchLabel.textColor = UIColor.gray
         modeStopWatch.isUserInteractionEnabled = false
         
-        setVCNum()
         setLocalizable()
         daily.load()
         setTask()
@@ -107,6 +106,11 @@ class StopwatchViewController: UIViewController {
         setFirstProgress()
         //저장된 daily들 로딩
         dailyViewModel.loadDailys()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setVCNum()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

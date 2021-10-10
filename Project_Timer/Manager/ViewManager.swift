@@ -10,7 +10,7 @@ import UIKit
 
 struct ViewManager {
     
-    func printTime(_ temp : Int) -> String {
+    static func printTime(_ temp : Int) -> String {
         let S = temp%60
         let H = temp/3600
         let M = temp/60 - H*60
@@ -60,5 +60,12 @@ struct ViewManager {
         
         let afterDay: Date = dateFormatter.date(from: beforeDay)!
         return afterDay
+    }
+    
+    static func getMonth(_ date: Date) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        return Int(month) ?? 0
     }
 }

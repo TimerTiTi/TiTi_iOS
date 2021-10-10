@@ -108,6 +108,9 @@ class TodayViewController: UIViewController {
         leftGesture.edges = .left
         
         dateFormatter.dateFormat = "yyyy.MM.dd"
+//        print("전체시간 : " + ViewManager.printTime(dailyViewModel.totalStudyTimeOfAll()))
+//        print("\(7)월 시간 : " + ViewManager.printTime(dailyViewModel.totalStudyTimeofMonth(month: 7)))
+//        print("이번달 시간 : " + ViewManager.printTime(dailyViewModel.totalStudyTimeOfMonth()))
     }
 
     override var prefersStatusBarHidden: Bool {

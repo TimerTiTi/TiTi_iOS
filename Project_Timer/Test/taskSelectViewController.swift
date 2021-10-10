@@ -32,6 +32,7 @@ class taskSelectViewController: UIViewController {
         
         super.viewDidLoad()
         setLocalizable()
+        configureTableView()
         tasks = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
@@ -192,4 +193,12 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
 class taskListCell: UITableViewCell {
     @IBOutlet var taskName: UILabel!
     @IBOutlet var line: UIView!
+}
+
+
+extension taskSelectViewController {
+    func configureTableView() {
+        table.cellLayoutMarginsFollowReadableWidth = false
+        table.separatorInset.left = 0
+    }
 }
