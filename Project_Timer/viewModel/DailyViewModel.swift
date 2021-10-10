@@ -32,12 +32,19 @@ class DailyViewModel {
         return dailys.reduce(0, { $0 + $1.currentSumTime })
     }
     
-    func totalStudyTimeofMonth(month: Int) -> Int {
-        return dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + $1.currentSumTime })
+    func totalStudyTimeofMonth(month: Int, completion: @escaping (Int) -> ()) {
+        let monthData = dailys.filter { ViewManager.getMonth($0.day) == month }
+        monthData.forEach { print("\($0.day): \(ViewManager.printTime($0.currentSumTime))")}
+        completion(dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
     }
     
-    func totalStudyTimeOfMonth() -> Int {
-        return dailys.filter { ViewManager.getMonth($0.day) == ViewManager.getMonth(Date()) }.reduce(0, { $0 + $1.currentSumTime })
+    func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
+        let month = ViewManager.getMonth(Date())
+        completion(dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
+    }
+    
+    func dailyTotalTime(_ tasks: [String:Int]) -> Int {
+        return tasks.values.reduce(0, +)
     }
     
 }

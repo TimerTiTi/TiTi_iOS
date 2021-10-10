@@ -499,6 +499,13 @@ extension GraphViewController2 {
     func showMonthTime() {
         let manager = DailyViewModel()
         manager.loadDailys()
-        self.monthTime.text = ViewManager.printTime(manager.totalStudyTimeOfMonth())
+
+        DispatchQueue.global().async {
+            manager.totalStudyTimeOfMonth { totalTime in
+                DispatchQueue.main.async {
+                    self.monthTime.text = ViewManager.printTime(totalTime)
+                }
+            }
+        }
     }
 }
