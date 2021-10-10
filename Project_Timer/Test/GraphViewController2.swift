@@ -8,11 +8,8 @@
 
 import UIKit
 import SwiftUI
-import Firebase
 
 class GraphViewController2: UIViewController {
-
-    let db = Database.database().reference().child("test")
     
     @IBOutlet var viewOfView: UIView!
     
@@ -47,13 +44,16 @@ class GraphViewController2: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
-    @IBOutlet var view_7days: UIView!
-    @IBOutlet var view_today: UIView!
+    @IBOutlet weak var view_month: UIView!
+    @IBOutlet weak var view_7days: UIView!
+    @IBOutlet weak var view_today: UIView!
     
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet var upload: UIButton!
     @IBOutlet var download: UIButton!
+    
+    @IBOutlet weak var monthTime: UILabel!
     
     var arrayTaskName: [String] = []
     var arrayTaskTime: [String] = []
@@ -70,8 +70,8 @@ class GraphViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkUser() //파이어베이스
         setRadius()
+        setShadow(view_month)
         setShadow(view_7days)
         setShadow(view_today)
         
@@ -81,6 +81,8 @@ class GraphViewController2: UIViewController {
         
         upload.isHidden = true
         download.isHidden = true
+        
+        showMonthTime()
     }
     override func viewDidDisappear(_ animated: Bool) {
         ContentView().reset()
@@ -91,94 +93,11 @@ class GraphViewController2: UIViewController {
     }
     
     @IBAction func upload(_ sender: Any) {
-        if(isUser) {
-            let temp = getTemp()
-            db.child("data").child("\(phone)_\(password)").child("today").setValue(temp)
-            alert("upload Success")
-        } else {
-            newUser(true)
-        }
+
     }
     
     @IBAction func download(_ sender: Any) {
-        if(isUser) {
-            db.child("data").child("\(phone)_\(password)").child("today").observeSingleEvent(of: .value) { (snapshot) in
-                do {
-                    let data = try JSONSerialization.data(withJSONObject: snapshot.value, options: [])
-                    let decoder = JSONDecoder()
-                    let getDaily: GetDaily = try decoder.decode(GetDaily.self, from: data)
-                    print("--> daily : \(getDaily)")
-                    
-                    let newDaily: Daily = self.transDaily(getDaily)
-                    //동일날인지 여부
-                    if(self.deferentDay(getDaily.day)) {
-                        self.setNextDay()
-                    }
-                    self.saveData(newDaily)
-                    self.alert("download Success") 
-                    
-                    DispatchQueue.main.async {
-                        ContentView().reset()
-                        self.viewDidLoad()
-                        self.view.layoutIfNeeded()
-                        self.collectionView.reloadData()
-                        self.logViewControllerDelegate.reload()
-                    }
-                } catch let error { print("--> error: \(error)") }
-            }
-            self.viewDidAppear(true)
-        } else {
-            newUser(false)
-        }
-    }
-    
-    
-    func getTemp() -> [String:Any] {
-        let day = uploadDate(day: daily.day)
-        let fixedTotalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        let fixedSumTime = 0
-        let fixedTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-//        let currentTotalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 0
-        let currentTotalTime = fixedTotalTime - fixed_sum
-//        let currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
-        let currentSumTime = fixed_sum
-        let currentTimerTime = UserDefaults.standard.value(forKey: "second2") as? Int ?? 0
-        let breakTime = 0
-        let maxTime = daily.maxTime
-        let startTime = daily.startTime.timeIntervalSince1970
-        let currentTask = daily.currentTask
-//        let currentTask = ""
-//        let tasks = daily.tasks
-        var taskKeys: [String] = []
-        var taskValues: [Int] = []
-        for (key, value) in daily.tasks {
-            taskKeys.append(key)
-            taskValues.append(value)
-        }
-        let beforeTime = daily.beforeTime
-        let timeline = daily.timeline
-        
-        var temp: [String:Any] = [:]
-        temp.updateValue(day, forKey: "day")
-        temp.updateValue(fixedTotalTime, forKey: "fixedTotalTime")
-        temp.updateValue(fixedSumTime, forKey: "fixedSumTime")
-        temp.updateValue(fixedTimerTime, forKey: "fixedTimerTime")
-        temp.updateValue(currentTotalTime, forKey: "currentTotalTime")
-        temp.updateValue(currentSumTime, forKey: "currentSumTime")
-        temp.updateValue(currentTimerTime, forKey: "currentTimerTime")
-        temp.updateValue(breakTime, forKey: "breakTime")
-        temp.updateValue(maxTime, forKey: "maxTime")
-        temp.updateValue(startTime, forKey: "startTime")
-        temp.updateValue(currentTask, forKey: "currentTask")
-//        temp.updateValue(tasks, forKey: "tasks")
-        temp.updateValue(taskKeys, forKey: "taskKeys")
-        temp.updateValue(taskValues, forKey: "taskValues")
-        temp.updateValue(beforeTime, forKey: "beforeTime")
-        temp.updateValue(timeline, forKey: "timeline")
-        
-        
-        
-        return temp
+
     }
     
     func alert(_ message: String) {
@@ -200,28 +119,6 @@ class GraphViewController2: UIViewController {
         return dateFormatter.string(from: day)
     }
     
-    func transDaily(_ getDaily: GetDaily) -> Daily {
-        var newDaily: Daily = Daily()
-        newDaily.day = stringToDate(getDaily.day)
-        newDaily.fixedTotalTime = getDaily.fixedTotalTime
-        newDaily.fixedSumTime = 0
-        newDaily.fixedTimerTime = getDaily.fixedTimerTime
-        newDaily.currentTotalTime = getDaily.currentTotalTime
-        newDaily.currentSumTime = getDaily.currentSumTime
-        newDaily.currentTimerTime = getDaily.currentTimerTime
-        newDaily.breakTime = 0
-        newDaily.maxTime = getDaily.maxTime
-        newDaily.startTime = doubleToDate(getDaily.startTime)
-        newDaily.currentTask = getDaily.currentTask
-        for i in 0..<getDaily.taskKeys.count {
-            newDaily.tasks.updateValue(getDaily.taskValues[i], forKey: getDaily.taskKeys[i])
-        }
-        newDaily.beforeTime = getDaily.beforeTime
-        newDaily.timeline = getDaily.timeline
-
-        return newDaily
-    }
-    
     func stringToDate(_ stringDay: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY/MM/dd"
@@ -238,84 +135,6 @@ class GraphViewController2: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
         return dateFormatter.string(from: date)
-    }
-    
-    func checkUser() {
-        if(phone != "" && password != "") {
-            db.child("Users").observeSingleEvent(of: .value) { (snapshot) in
-                do {
-                    guard let keyValues = snapshot.value as? [String:String] else { return }
-                    let users = Array(keyValues.values)
-                    print(users)
-                    
-                    if(users.contains("\(self.phone)_\(self.password)")) {
-                        print("isUser")
-                        self.isUser = true
-                    }
-                } catch let error { print("--> error: \(error)") }
-            }
-        }
-    }
-    
-    func newUser(_ upload: Bool) {
-        let alert = UIAlertController(title: "Beta 유저정보 등록", message: "핸드폰 번호와\n4자리 패스워드를 등록해주세요", preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "CANCLE", style: .destructive, handler: nil)
-        let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
-            action in
-            let phone: String = alert.textFields?[0].text ?? ""
-            let pass: String = alert.textFields?[1].text ?? ""
-            // 위 변수를 통해 특정기능 수행
-            self.checkUserInput(phone, pass, upload)
-        })
-        //텍스트 입력 추가
-        alert.addTextField { (inputNewNickName) in
-            inputNewNickName.placeholder = "01012123434"
-            inputNewNickName.textAlignment = .center
-            inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
-            inputNewNickName.keyboardType = .numberPad
-        }
-        alert.addTextField { (inputNewNickName) in
-            inputNewNickName.placeholder = "1234"
-            inputNewNickName.textAlignment = .center
-            inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
-            inputNewNickName.keyboardType = .numberPad
-        }
-        alert.addAction(cancle)
-        alert.addAction(ok)
-        present(alert,animated: true,completion: nil)
-    }
-    
-    func checkUserInput(_ phone: String, _ pass: String, _ upload: Bool) {
-        if(phone.count != 11) {
-            alert("핸드폰 번호를 다시 입력해주세요")
-            return
-        }
-        else if(pass.count != 4) {
-            alert("패스워드를 다시 입력해주세요")
-            return
-        }
-        guard let _ = Int(phone) else {
-            alert("핸드폰 번호를 다시 입력해주세요")
-            return
-        }
-        guard let _ = Int(pass) else {
-            alert("패스워드를 다시 입력해주세요")
-            return
-        }
-        
-        db.child("Users").updateChildValues(["\(phone)_\(pass)" : "\(phone)_\(pass)"])
-        UserDefaults.standard.setValue(phone, forKey: "phoneNumber")
-        UserDefaults.standard.setValue(pass, forKey: "password")
-        self.phone = phone
-        self.password = pass
-        isUser = true
-        
-        if(upload) {
-            let temp = getTemp()
-            db.child("data").child("\(phone)_\(password)").child("today").setValue(temp)
-        }
-        
-        alert("등록이 완료되었습니다, 다시 눌러주시기 바랍니다")
     }
     
     func deferentDay(_ getDay: String) -> Bool {
@@ -417,6 +236,7 @@ extension GraphViewController2 {
         time_03.layer.cornerRadius = 3
         time_04.layer.cornerRadius = 3
         
+        view_month.layer.cornerRadius = 25
         view_7days.layer.cornerRadius = 25
         view_today.layer.cornerRadius = 25
     }
@@ -671,5 +491,14 @@ extension GraphViewController2 {
         } else {
             print("no data")
         }
+    }
+}
+
+
+extension GraphViewController2 {
+    func showMonthTime() {
+        let manager = DailyViewModel()
+        manager.loadDailys()
+        self.monthTime.text = ViewManager.printTime(manager.totalStudyTimeOfMonth())
     }
 }
