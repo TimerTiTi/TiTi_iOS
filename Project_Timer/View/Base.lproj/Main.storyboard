@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z1U-UL-am4">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -698,6 +698,7 @@ AVER : 1:02:03</string>
                                                     </view>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="YYe-eA-4zc">
                                                         <rect key="frame" x="140" y="5" width="190" height="160"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="160" id="Bcw-o1-naA"/>
                                                             <constraint firstAttribute="width" constant="190" id="qek-3q-13T"/>
@@ -1527,7 +1528,7 @@ AVER : 1:02:03</string>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XG9-6L-Hp1">
                                 <rect key="frame" x="12.5" y="77.5" width="350" height="559.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="AIv-Lr-HUQ"/>
                                 </constraints>
@@ -1554,7 +1555,7 @@ AVER : 1:02:03</string>
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="vdd-hl-1Jw" secondAttribute="bottom" id="KA9-sG-5jo"/>
                                                 <constraint firstItem="ue5-eI-1qs" firstAttribute="centerY" secondItem="aWt-df-I5F" secondAttribute="centerY" id="NID-xb-fxN"/>
@@ -1588,7 +1589,7 @@ AVER : 1:02:03</string>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vzl-uJ-xhA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vzl-uJ-xhA" firstAttribute="trailing" secondItem="9cn-5N-j9g" secondAttribute="trailing" constant="25" id="1PJ-0P-qxv"/>
                             <constraint firstItem="hFT-yb-rrk" firstAttribute="centerY" secondItem="9eZ-ey-Tb3" secondAttribute="centerY" id="1xO-5j-BcI"/>

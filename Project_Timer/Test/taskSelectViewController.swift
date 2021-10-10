@@ -177,6 +177,7 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
             self.saveTasks()
             self.table.deleteRows(at: [indexPath], with: .automatic)
         }
+        
         return [deleteAction]
     }
     
@@ -193,6 +194,10 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
 class taskListCell: UITableViewCell {
     @IBOutlet var taskName: UILabel!
     @IBOutlet var line: UIView!
+    
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor.black
+    }
 }
 
 
