@@ -26,11 +26,7 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var resetBT: UIButton!
-    @IBOutlet var resetBTLabel: UILabel!
     @IBOutlet var settingBT: UIButton!
-    @IBOutlet var settingBTLabel: UILabel!
-    @IBOutlet var dock: UIView!
-    
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
@@ -75,9 +71,7 @@ class StopwatchViewController: UIViewController {
         
         self.setLocalizable()
         self.setColor()
-        self.setRadius()
         self.setShadow()
-        self.setBorder()
         self.stopColor()
         self.stopEnable()
         self.setBackground()
@@ -209,7 +203,6 @@ extension StopwatchViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 0
-                self.dock.alpha = 0
             }
         }
         isLandscape = true
@@ -219,7 +212,6 @@ extension StopwatchViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 1
-                self.dock.alpha = 1
             }
         }
         isLandscape = false
@@ -286,16 +278,6 @@ extension StopwatchViewController {
         }
     }
     
-    func setRadius() {
-        taskButton.layer.cornerRadius = 12
-        
-        startStopBT.layer.cornerRadius = 15
-        resetBT.layer.cornerRadius = 15
-        settingBT.layer.cornerRadius = 15
-        
-        dock.layer.cornerRadius = 20
-    }
-    
     func setShadow() {
         startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
         startStopBT.layer.shadowOpacity = 0.3
@@ -326,12 +308,6 @@ extension StopwatchViewController {
         TIMEofTarget.layer.shadowOpacity = 0.6
         TIMEofTarget.layer.shadowOffset = CGSize.zero
         TIMEofTarget.layer.shadowRadius = 2
-    }
-    
-    func setBorder() {
-        startStopBT.layer.borderWidth = 3
-        startStopBT.layer.borderColor = RED!.cgColor
-        taskButton.layer.borderWidth = 2
     }
     
     func setDatas() {
@@ -522,10 +498,7 @@ extension StopwatchViewController {
             self.settingBT.alpha = 1
             self.taskButton.layer.borderColor = UIColor.white.cgColor
             self.startStopBTLabel.textColor = UIColor.white
-            self.settingBTLabel.alpha = 1
             self.resetBT.alpha = 1
-            self.resetBTLabel.alpha = 1
-            self.dock.backgroundColor = UIColor(named: "dock")
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
         })
@@ -533,7 +506,6 @@ extension StopwatchViewController {
         if(!self.isLandscape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
-                self.dock.alpha = 1
             })
         }
     }
@@ -549,10 +521,7 @@ extension StopwatchViewController {
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
-            self.settingBTLabel.alpha = 0
             self.resetBT.alpha = 0
-            self.resetBTLabel.alpha = 0
-            self.dock.layer.backgroundColor = UIColor.clear.cgColor
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
         })
