@@ -63,11 +63,6 @@ class firstViewController: UIViewController {
     
     var nextCount: Int = 1
     var isFirst: Bool = true
-    
-    override func viewDidAppear(_ animated: Bool) {
-        isFirst = UserDefaults.standard.value(forKey: "isFirst") as? Bool ?? true
-        checkIsFirst()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +87,12 @@ class firstViewController: UIViewController {
         case 6: ani6()
         case 7: ani7()
         default:
-            UserDefaults.standard.set(false, forKey: "isFirst")
-            goToViewController(where: "TimerViewController")
+            self.showTabbarController()
         }
     }
     
     @IBAction func clickYoutube(_ sender: Any) {
-        UserDefaults.standard.set(false, forKey: "isFirst")
-        goToViewController(where: "TimerViewController")
+        self.showTabbarController()
         if let url = URL(string: "https://youtu.be/VGbJT5zm9wE") {
             UIApplication.shared.open(url, options: [:])
         }
@@ -107,17 +100,6 @@ class firstViewController: UIViewController {
 }
 
 extension firstViewController {
-    func checkIsFirst() {
-        print(isFirst)
-        if(!isFirst) {
-            let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
-            if(VCNum == 2) {
-                goToViewController(where: "StopwatchViewController")
-            } else {
-                goToViewController(where: "TimerViewController")
-            }
-        }
-    }
     func setLocalizable() {
         sumTimeLabel.text = "Sum Time".localized()
         timerLabel.text = "Timer".localized()
@@ -282,10 +264,9 @@ extension firstViewController {
             self.youtube.alpha = 1
         }
     }
-    func goToViewController(where: String) {
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
-        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
-        self.present(vcName!, animated: true, completion: nil)
+    
+    private func showTabbarController() {
+        UserDefaultsManager.set(to: false, forKey: .isFirst)
+        NotificationCenter.default.post(name: .showTabbarController, object: nil)
     }
 }
