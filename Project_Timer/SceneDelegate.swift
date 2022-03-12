@@ -9,22 +9,48 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let isFirst = UserDefaults.standard.value(forKey: "isFirst") as? Bool ?? true
         let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
-        print("isFirst : \(isFirst)")
-        print("VCNum : \(VCNum)")
         
-        let identifier = isFirst == true ? firstViewController.identifier :
-        (VCNum == 1 ? TimerViewController.identifier : StopwatchViewController.identifier)
-        let rootViewController = storyboard.instantiateViewController(withIdentifier: identifier)
-        window?.rootViewController = rootViewController
+        if isFirst {
+            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: firstViewController.identifier)
+        } else {
+            let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+            if VCNum == 2 {
+                rootViewController.selectedIndex = 1
+            }
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            navigationController.navigationBar.tintColor = UIColor.label
+            navigationController.isNavigationBarHidden = true
+            self.window?.rootViewController = rootViewController
+        }
+        
+        NotificationCenter.default.addObserver(forName: .showTabbarController, object: nil, queue: .main) { [weak self] _ in
+            self?.showTabbarController()
+        }
+    }
+    
+    private func showTabbarController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let tabbarController = storyboard.instantiateInitialViewController() else { return }
+        let navigationController = UINavigationController(rootViewController: tabbarController)
+        navigationController.navigationBar.tintColor = UIColor.label
+        navigationController.isNavigationBarHidden = true
+        
+        let snapshot: UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
+        navigationController.view.addSubview(snapshot)
+        self.window?.rootViewController = navigationController
+        
+        UIView.animate(withDuration: 0.3) {
+            snapshot.layer.opacity = 0
+            snapshot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5)
+        } completion: { _ in
+            snapshot.removeFromSuperview()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

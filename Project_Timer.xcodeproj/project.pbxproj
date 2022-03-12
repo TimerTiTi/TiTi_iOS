@@ -32,6 +32,8 @@
 		877E448C267DF8DD00BF104A /* Dumy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dumy.swift */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
+		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
+		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
 		87A4704826493D4D007B89D6 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* Time.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A7624726493BB500174401 /* GraphViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* GraphViewController2.swift */; };
@@ -50,7 +52,6 @@
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
-		93A892B324C1544A00F89180 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B224C1544A00F89180 /* Test.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
 		93B08525248DDF2F00E215BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08524248DDF2F00E215BD /* ViewController.swift */; };
@@ -82,6 +83,8 @@
 		877E448B267DF8DD00BF104A /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
+		8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A7624626493BB500174401 /* GraphViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController2.swift; sourceTree = "<group>"; };
@@ -103,7 +106,6 @@
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
-		93A892B224C1544A00F89180 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B08522248DDF2F00E215BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,7 +139,6 @@
 				87459705263FF0D700172C0F /* Daily.swift */,
 				87459707263FF0F000172C0F /* Storage.swift */,
 				87A4704726493D4D007B89D6 /* Time.swift */,
-				87A7F5D3267270F800F69EBA /* Todo.swift */,
 				877E448B267DF8DD00BF104A /* Dumy.swift */,
 			);
 			path = Model;
@@ -175,12 +176,8 @@
 			children = (
 				87A7624626493BB500174401 /* GraphViewController2.swift */,
 				875AA59B26494365005D15D6 /* taskSelectViewController.swift */,
-				87459703263FEF6B00172C0F /* TimerViewController.swift */,
-				874964F42649590700113E25 /* StopwatchViewController.swift */,
-				876C107A264A635100CCCDB7 /* firstViewController.swift */,
 				87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */,
 				87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */,
-				8772E91526705EE100A191BF /* TodolistViewController.swift */,
 				876743342689E15600E690E4 /* calendarViewController.swift */,
 			);
 			path = Test;
@@ -202,15 +199,79 @@
 		878B507025B6E2FB00B9EFD7 /* component */ = {
 			isa = PBXGroup;
 			children = (
+				874B9D1225CAB1EE006FCD04 /* fonts */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 			);
 			path = component;
 			sourceTree = "<group>";
 		};
+		8791C1EA27DCCDF4000D6BA9 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				87459703263FEF6B00172C0F /* TimerViewController.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		8791C1EB27DCCDFC000D6BA9 /* Stopwatch */ = {
+			isa = PBXGroup;
+			children = (
+				874964F42649590700113E25 /* StopwatchViewController.swift */,
+			);
+			path = Stopwatch;
+			sourceTree = "<group>";
+		};
+		8791C1EC27DCCE08000D6BA9 /* Todolist */ = {
+			isa = PBXGroup;
+			children = (
+				87A7F5D3267270F800F69EBA /* Todo.swift */,
+				8772E91526705EE100A191BF /* TodolistViewController.swift */,
+				87DE1172268AC75F0012F043 /* TodoManager.swift */,
+				87AB10112670601800F29961 /* TodolistViewModel.swift */,
+			);
+			path = Todolist;
+			sourceTree = "<group>";
+		};
+		8791C1ED27DCCE10000D6BA9 /* Logs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logs;
+			sourceTree = "<group>";
+		};
+		8791C1EE27DCCEEB000D6BA9 /* zip */ = {
+			isa = PBXGroup;
+			children = (
+				87379F9A261597C900A9445E /* Controller */,
+				87379F99261597AF00A9445E /* View */,
+				87379F982615979D00A9445E /* Model */,
+				87459702263FEF5E00172C0F /* Test */,
+				87AB101026705FFA00F29961 /* viewModel */,
+				87C51506267AEE1E003DA21D /* Manager */,
+			);
+			path = zip;
+			sourceTree = "<group>";
+		};
+		8791C1EF27DCCF26000D6BA9 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				876C107A264A635100CCCDB7 /* firstViewController.swift */,
+			);
+			path = First;
+			sourceTree = "<group>";
+		};
+		8791C1F027DCD03E000D6BA9 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */,
+				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		87AB101026705FFA00F29961 /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
-				87AB10112670601800F29961 /* TodolistViewModel.swift */,
 				87CCB97A267AE893007D09E5 /* TodayViewModel.swift */,
 				87DE1178268ACB040012F043 /* DailyViewModel.swift */,
 			);
@@ -222,7 +283,6 @@
 			children = (
 				87C51507267AEE40003DA21D /* TodayViewManager.swift */,
 				87C51509267B38C0003DA21D /* ViewManager.swift */,
-				87DE1172268AC75F0012F043 /* TodoManager.swift */,
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 			);
 			path = Manager;
@@ -247,18 +307,17 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
-				87C51506267AEE1E003DA21D /* Manager */,
-				87AB101026705FFA00F29961 /* viewModel */,
-				87459702263FEF5E00172C0F /* Test */,
-				87379F982615979D00A9445E /* Model */,
-				87379F99261597AF00A9445E /* View */,
-				87379F9A261597C900A9445E /* Controller */,
+				8791C1F027DCD03E000D6BA9 /* Global */,
+				8791C1EF27DCCF26000D6BA9 /* First */,
+				8791C1EA27DCCDF4000D6BA9 /* Timer */,
+				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
+				8791C1EC27DCCE08000D6BA9 /* Todolist */,
+				8791C1ED27DCCE10000D6BA9 /* Logs */,
+				8791C1EE27DCCEEB000D6BA9 /* zip */,
 				878B507025B6E2FB00B9EFD7 /* component */,
-				874B9D1225CAB1EE006FCD04 /* fonts */,
 				87CA3B532618591100DD9BB5 /* Localizable.strings */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
-				93A892B224C1544A00F89180 /* Test.swift */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 			);
@@ -369,10 +428,12 @@
 				87A4704826493D4D007B89D6 /* Time.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
+				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				87DAF2EC2669F9F300FAB4CF /* TodayViewController.swift in Sources */,
 				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
+				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
@@ -388,7 +449,6 @@
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				87CCB97B267AE893007D09E5 /* TodayViewModel.swift in Sources */,
 				87DE1173268AC75F0012F043 /* TodoManager.swift in Sources */,
-				93A892B324C1544A00F89180 /* Test.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
