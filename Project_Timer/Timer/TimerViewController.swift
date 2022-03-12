@@ -596,7 +596,6 @@ extension TimerViewController {
             self.startStopBTLabel.textColor = UIColor.white
             self.setTimerBTLabel.alpha = 1
             self.settingBTLabel.alpha = 1
-            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 0)
             self.dock.backgroundColor = UIColor(named: "dock")
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
@@ -624,7 +623,6 @@ extension TimerViewController {
             self.startStopBTLabel.textColor = self.RED!
             self.setTimerBTLabel.alpha = 0
             self.settingBTLabel.alpha = 0
-            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 75)
             self.dock.layer.backgroundColor = UIColor.clear.cgColor
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"

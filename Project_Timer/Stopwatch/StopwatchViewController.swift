@@ -23,13 +23,6 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
     
-    @IBOutlet var modeTimer: UIButton!
-    @IBOutlet var modeTimerLabel: UILabel!
-    @IBOutlet var modeStopWatch: UIButton!
-    @IBOutlet var modeStopWatchLabel: UILabel!
-    @IBOutlet var log: UIButton!
-    @IBOutlet var logLabel: UILabel!
-    
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var resetBT: UIButton!
@@ -80,37 +73,27 @@ class StopwatchViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
-        modeStopWatch.backgroundColor = UIColor.gray
-        modeStopWatchLabel.textColor = UIColor.gray
-        modeStopWatch.isUserInteractionEnabled = false
-        
-        setLocalizable()
-        daily.load()
-        setTask()
-        setSumTime()
-        
-        setButtonRotation()
-        setColor()
-        setRadius()
-        setShadow()
-        setBorder()
-        setDatas()
-        setTimes()
-        
-        stopColor()
-        stopEnable()
-        
-        setBackground()
-        checkIsFirst()
-        
-        setFirstProgress()
-        //저장된 daily들 로딩
-        dailyViewModel.loadDailys()
+        self.setLocalizable()
+        self.setColor()
+        self.setRadius()
+        self.setShadow()
+        self.setBorder()
+        self.stopColor()
+        self.stopEnable()
+        self.setBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setVCNum()
+        self.daily.load()
+        self.setTask()
+        self.setSumTime()
+        self.setDatas()
+        self.setTimes()
+        self.checkIsFirst()
+        self.setFirstProgress()
+        self.dailyViewModel.loadDailys()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,11 +138,6 @@ class StopwatchViewController: UIViewController {
         showTaskView()
     }
     
-    @IBAction func modeTimerBTAction(_ sender: Any) {
-        UserDefaults.standard.set(1, forKey: "VCNum")
-        goToViewController(where: "TimerViewController")
-    }
-    
     @IBAction func startStopBTAction(_ sender: Any) {
         if(task == "Enter a new subject".localized()) {
             showFirstAlert()
@@ -181,10 +159,6 @@ class StopwatchViewController: UIViewController {
     
     @IBAction func resetBTAction(_ sender: Any) {
         resetSum_temp()
-    }
-    
-    @IBAction func logBTAction(_ sender: Any) {
-        showLog()
     }
 }
 
@@ -234,13 +208,6 @@ extension StopwatchViewController {
     func setLandscape() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 0
-                self.modeTimerLabel.alpha = 0
-                self.modeStopWatch.alpha = 0
-                self.modeStopWatchLabel.alpha = 0
-                self.log.alpha = 0
-                self.logLabel.alpha = 0
-                
                 self.taskButton.alpha = 0
                 self.dock.alpha = 0
             }
@@ -251,13 +218,6 @@ extension StopwatchViewController {
     func setPortrait() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 1
-                self.modeTimerLabel.alpha = 1
-                self.modeStopWatch.alpha = 1
-                self.modeStopWatchLabel.alpha = 1
-                self.log.alpha = 1
-                self.logLabel.alpha = 1
-                
                 self.taskButton.alpha = 1
                 self.dock.alpha = 1
             }
@@ -326,21 +286,12 @@ extension StopwatchViewController {
         }
     }
     
-    func setButtonRotation() {
-        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*5/6)
-        log.transform = CGAffineTransform(rotationAngle: .pi*1/6)
-    }
-    
     func setRadius() {
         taskButton.layer.cornerRadius = 12
         
         startStopBT.layer.cornerRadius = 15
         resetBT.layer.cornerRadius = 15
         settingBT.layer.cornerRadius = 15
-        
-        modeTimer.layer.cornerRadius = 10
-        modeStopWatch.layer.cornerRadius = 10
-        log.layer.cornerRadius = 10
         
         dock.layer.cornerRadius = 20
     }
@@ -360,16 +311,6 @@ extension StopwatchViewController {
         settingBT.layer.shadowOpacity = 0.5
         settingBT.layer.shadowOffset = CGSize.zero
         settingBT.layer.shadowRadius = 4
-        
-        modeTimer.layer.shadowColor = UIColor.gray.cgColor
-        modeTimer.layer.shadowOpacity = 0.4
-        modeTimer.layer.shadowOffset = CGSize.zero
-        modeTimer.layer.shadowRadius = 4
-        
-        log.layer.shadowColor = UIColor.gray.cgColor
-        log.layer.shadowOpacity = 0.4
-        log.layer.shadowOffset = CGSize.zero
-        log.layer.shadowRadius = 4
         
         TIMEofSum.layer.shadowColor = UIColor.gray.cgColor
         TIMEofSum.layer.shadowOpacity = 0.6
@@ -584,7 +525,6 @@ extension StopwatchViewController {
             self.settingBTLabel.alpha = 1
             self.resetBT.alpha = 1
             self.resetBTLabel.alpha = 1
-            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 0)
             self.dock.backgroundColor = UIColor(named: "dock")
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
@@ -592,13 +532,6 @@ extension StopwatchViewController {
         //animation test
         if(!self.isLandscape) {
             UIView.animate(withDuration: 0.5, animations: {
-                self.modeTimer.alpha = 1
-                self.modeTimerLabel.alpha = 1
-                self.modeStopWatch.alpha = 1
-                self.modeStopWatchLabel.alpha = 1
-                self.log.alpha = 1
-                self.logLabel.alpha = 1
-                
                 self.taskButton.alpha = 1
                 self.dock.alpha = 1
             })
@@ -613,19 +546,12 @@ extension StopwatchViewController {
         TIMEofStopwatch.textColor = COLOR
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
-            self.modeTimer.alpha = 0
-            self.modeStopWatch.alpha = 0
-            self.log.alpha = 0
-            self.modeTimerLabel.alpha = 0
-            self.modeStopWatchLabel.alpha = 0
-            self.logLabel.alpha = 0
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
             self.settingBTLabel.alpha = 0
             self.resetBT.alpha = 0
             self.resetBTLabel.alpha = 0
-            self.taskButton.transform = CGAffineTransform(translationX: 0, y: 75)
             self.dock.layer.backgroundColor = UIColor.clear.cgColor
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
@@ -634,16 +560,12 @@ extension StopwatchViewController {
     
     func stopEnable() {
         settingBT.isUserInteractionEnabled = true
-        log.isUserInteractionEnabled = true
-        modeTimer.isUserInteractionEnabled = true
         taskButton.isUserInteractionEnabled = true
         resetBT.isUserInteractionEnabled = true
     }
     
     func startEnable() {
         settingBT.isUserInteractionEnabled = false
-        log.isUserInteractionEnabled = false
-        modeTimer.isUserInteractionEnabled = false
         taskButton.isUserInteractionEnabled = false
         resetBT.isUserInteractionEnabled = false
     }
