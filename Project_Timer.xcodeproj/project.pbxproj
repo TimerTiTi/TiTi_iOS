@@ -34,6 +34,7 @@
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
 		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
+		8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */; };
 		87A4704826493D4D007B89D6 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* Time.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A7624726493BB500174401 /* GraphViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* GraphViewController2.swift */; };
@@ -85,6 +86,7 @@
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A7624626493BB500174401 /* GraphViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController2.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */,
 				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
+				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
+				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87A7624726493BB500174401 /* GraphViewController2.swift in Sources */,
 				9312E4CC252231E600025C81 /* LogViewController.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,

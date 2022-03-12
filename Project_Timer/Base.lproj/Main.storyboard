@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,6 +12,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="HGGGOTHICSSI_PRO_00G.otf">
+            <string>HGGGothicssiP00g</string>
+        </array>
         <array key="HGGGOTHICSSI_PRO_40G.otf">
             <string>HGGGothicssiP40g</string>
         </array>
@@ -779,95 +783,99 @@
                                 <state key="normal" title="Enter New Task">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="taskBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="nkh-iv-k3J"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4h5-kh-i7f">
-                                <rect key="frame" x="9.6666666666666572" y="628" width="356" height="96"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRI-h8-GeY">
-                                        <rect key="frame" x="248" y="20" width="88" height="56"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="4tB-rS-c67"/>
-                                            <constraint firstAttribute="width" constant="88" id="kgo-Yu-edQ"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="settingTimerBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="2uL-Oa-a0F"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kU-Or-kUM">
-                                        <rect key="frame" x="20" y="20" width="88" height="56"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="56" id="gMm-TO-YS3"/>
-                                            <constraint firstAttribute="width" constant="88" id="xOC-ed-nTq"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="settingBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="Hs6-lc-DTM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJq-5V-Ktb">
-                                        <rect key="frame" x="134" y="20" width="88" height="56"/>
-                                        <color key="backgroundColor" name="Text"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="88" id="6TL-3A-Wqm"/>
-                                            <constraint firstAttribute="height" constant="56" id="X93-Zr-9JE"/>
-                                        </constraints>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <action selector="startStopBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="dbQ-r7-dlV"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4lw-JR-CrJ">
-                                        <rect key="frame" x="286.33333333333331" y="34.333333333333371" width="11.333333333333314" height="27.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="St" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-T9-Wmk">
-                                        <rect key="frame" x="53.333333333333336" y="34.333333333333371" width="21.333333333333336" height="27.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yO-q6-Two">
-                                        <rect key="frame" x="166.66666666666669" y="34.333333333333371" width="22.666666666666657" height="27.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="dock"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-fg-Akz">
+                                <rect key="frame" x="77.666666666666671" y="626" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstItem="2Gs-T9-Wmk" firstAttribute="centerX" secondItem="0kU-Or-kUM" secondAttribute="centerX" id="2UU-OQ-Czv"/>
-                                    <constraint firstItem="4yO-q6-Two" firstAttribute="centerX" secondItem="NJq-5V-Ktb" secondAttribute="centerX" id="BHu-zG-paU"/>
-                                    <constraint firstAttribute="trailing" secondItem="LRI-h8-GeY" secondAttribute="trailing" constant="20" id="CCB-M4-9t9"/>
-                                    <constraint firstItem="NJq-5V-Ktb" firstAttribute="leading" secondItem="0kU-Or-kUM" secondAttribute="trailing" constant="26" id="IuC-sY-skC"/>
-                                    <constraint firstItem="NJq-5V-Ktb" firstAttribute="top" secondItem="4h5-kh-i7f" secondAttribute="top" constant="20" id="KOH-w0-5VY"/>
-                                    <constraint firstItem="LRI-h8-GeY" firstAttribute="centerY" secondItem="NJq-5V-Ktb" secondAttribute="centerY" id="Rbc-u6-6YT"/>
-                                    <constraint firstItem="LRI-h8-GeY" firstAttribute="leading" secondItem="NJq-5V-Ktb" secondAttribute="trailing" constant="26" id="SDs-oK-oGW"/>
-                                    <constraint firstItem="2Gs-T9-Wmk" firstAttribute="centerY" secondItem="0kU-Or-kUM" secondAttribute="centerY" id="Wo2-ua-e6V"/>
-                                    <constraint firstItem="0kU-Or-kUM" firstAttribute="leading" secondItem="4h5-kh-i7f" secondAttribute="leading" constant="20" id="ZTr-H5-QJ1"/>
-                                    <constraint firstItem="0kU-Or-kUM" firstAttribute="centerY" secondItem="NJq-5V-Ktb" secondAttribute="centerY" id="bcr-CM-fgh"/>
-                                    <constraint firstItem="4lw-JR-CrJ" firstAttribute="centerY" secondItem="LRI-h8-GeY" secondAttribute="centerY" id="dte-D3-pBT"/>
-                                    <constraint firstItem="4yO-q6-Two" firstAttribute="centerY" secondItem="NJq-5V-Ktb" secondAttribute="centerY" id="fe7-GH-6XF"/>
-                                    <constraint firstAttribute="bottom" secondItem="NJq-5V-Ktb" secondAttribute="bottom" constant="20" id="pia-x0-2Gg"/>
-                                    <constraint firstItem="4lw-JR-CrJ" firstAttribute="centerX" secondItem="LRI-h8-GeY" secondAttribute="centerX" id="zo3-eJ-E0N"/>
+                                    <constraint firstAttribute="width" constant="50" id="4ir-WT-caX"/>
+                                    <constraint firstAttribute="height" constant="50" id="eqq-sV-I2o"/>
                                 </constraints>
-                            </view>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="calendar.badge.plus" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="DXo-c8-85H"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-wj-rJW">
+                                <rect key="frame" x="152.66666666666666" y="616" width="70" height="70"/>
+                                <color key="backgroundColor" name="Text"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="NwT-RV-Tzs"/>
+                                    <constraint firstAttribute="width" constant="70" id="Vqu-dZ-SRG"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="Text"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startStopBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="GJ3-Un-NJg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-4v-yI5">
+                                <rect key="frame" x="176.33333333333334" y="637.33333333333337" width="22.666666666666657" height="27.666666666666629"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP00g" family="HGGGothicssi_Pro" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQJ-Xa-pVL">
+                                <rect key="frame" x="247.66666666666663" y="626" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2dE-ou-6hl"/>
+                                    <constraint firstAttribute="width" constant="50" id="Lrd-eb-VIe"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="clock.arrow.circlepath" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="settingTimerBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="zrQ-rq-GSk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="4h5-kh-i7f" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="2OD-gG-cZQ"/>
+                            <constraint firstItem="bRB-wj-rJW" firstAttribute="top" secondItem="ROV-CL-IbC" secondAttribute="bottom" constant="50" id="1fc-9x-jzl"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="3MO-dw-92u"/>
-                            <constraint firstItem="xTH-Uj-aTj" firstAttribute="bottom" secondItem="4h5-kh-i7f" secondAttribute="bottom" constant="5" id="BLQ-Zm-rxt"/>
+                            <constraint firstItem="IQJ-Xa-pVL" firstAttribute="leading" secondItem="bRB-wj-rJW" secondAttribute="trailing" constant="25" id="3Q9-2p-HSF"/>
+                            <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerX" secondItem="bRB-wj-rJW" secondAttribute="centerX" id="3bK-Jr-1hi"/>
+                            <constraint firstItem="bRB-wj-rJW" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="6AY-xB-zFG"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
+                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="50" id="O9d-O7-kdS"/>
+                            <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="W1k-Ca-43M"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="50" id="dQy-MK-jyK"/>
+                            <constraint firstItem="QFf-fg-Akz" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="dPN-5s-ejr"/>
+                            <constraint firstItem="bRB-wj-rJW" firstAttribute="leading" secondItem="QFf-fg-Akz" secondAttribute="trailing" constant="25" id="i3j-yi-UyY"/>
                             <constraint firstItem="NPQ-Xe-8up" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="ozw-CA-NND"/>
+                            <constraint firstItem="IQJ-Xa-pVL" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="wdS-BZ-UeA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -881,23 +889,20 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Timer" image="clock" catalog="system" id="cRK-4V-Jmg">
+                    <tabBarItem key="tabBarItem" title="Timer" image="timer" catalog="system" id="cRK-4V-Jmg">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="TIMEofSum" destination="KsN-sW-KMK" id="Yta-8S-oY7"/>
                         <outlet property="TIMEofTarget" destination="fbG-Mh-Apz" id="5Ip-fb-TsT"/>
                         <outlet property="TIMEofTimer" destination="7xW-xl-lfN" id="ia8-Yq-PSz"/>
-                        <outlet property="dock" destination="4h5-kh-i7f" id="plq-w7-3Cf"/>
                         <outlet property="finishTimeLabel" destination="naL-rE-KA8" id="5SU-l1-AYa"/>
                         <outlet property="innerProgress" destination="MKs-1O-JYl" id="0Dl-w7-I5Q"/>
                         <outlet property="outterProgress" destination="ROV-CL-IbC" id="FyQ-L8-2xs"/>
-                        <outlet property="setTimerBT" destination="LRI-h8-GeY" id="9bX-zp-qJq"/>
-                        <outlet property="setTimerBTLabel" destination="4lw-JR-CrJ" id="G8e-V2-s1w"/>
-                        <outlet property="settingBT" destination="0kU-Or-kUM" id="lF7-g1-6z0"/>
-                        <outlet property="settingBTLabel" destination="2Gs-T9-Wmk" id="1Js-dx-w0o"/>
-                        <outlet property="startStopBT" destination="NJq-5V-Ktb" id="yK0-CX-wKK"/>
-                        <outlet property="startStopBTLabel" destination="4yO-q6-Two" id="hTW-tV-Okn"/>
+                        <outlet property="setTimerBT" destination="IQJ-Xa-pVL" id="WZV-l4-TzP"/>
+                        <outlet property="settingBT" destination="QFf-fg-Akz" id="hH0-tP-DA2"/>
+                        <outlet property="startStopBT" destination="bRB-wj-rJW" id="KcE-t8-I3Z"/>
+                        <outlet property="startStopBTLabel" destination="9Xz-4v-yI5" id="pQf-ry-94n"/>
                         <outlet property="sumTimeLabel" destination="Vkm-0h-gfu" id="uVg-zK-j0y"/>
                         <outlet property="targetTimeLabel" destination="dFc-6M-MNJ" id="fzY-MU-GAA"/>
                         <outlet property="taskButton" destination="NPQ-Xe-8up" id="tkT-7r-Q8Z"/>
@@ -1235,7 +1240,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stopwatch" image="timer" catalog="system" id="bZF-dP-GJF"/>
+                    <tabBarItem key="tabBarItem" title="Stopwatch" image="stopwatch" catalog="system" id="bZF-dP-GJF"/>
                     <connections>
                         <outlet property="TIMEofStopwatch" destination="Q68-YR-Cew" id="e6r-U3-PO9"/>
                         <outlet property="TIMEofSum" destination="E29-HI-Z5d" id="y29-eX-4we"/>
@@ -2743,10 +2748,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2754,7 +2759,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -4264,6 +4269,7 @@
         <segue reference="KzV-fG-cqd"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="checklist" catalog="system" width="128" height="105"/>
@@ -4271,7 +4277,7 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="chevron.backward.circle" catalog="system" width="128" height="121"/>
-        <image name="clock" catalog="system" width="128" height="121"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
         <image name="icloud.and.arrow.down" catalog="system" width="128" height="112"/>
         <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="97"/>
@@ -4280,6 +4286,7 @@
         <image name="rainbow" width="33.333332061767578" height="33.333332061767578"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.fill.text.grid.1x2" catalog="system" width="128" height="100"/>
+        <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="121"/>
         <namedColor name="Background">
             <color red="0.6470588235294118" green="0.75294117647058822" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

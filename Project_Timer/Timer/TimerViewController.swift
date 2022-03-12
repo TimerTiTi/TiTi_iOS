@@ -28,10 +28,7 @@ class TimerViewController: UIViewController {
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var setTimerBT: UIButton!
-    @IBOutlet var setTimerBTLabel: UILabel!
     @IBOutlet var settingBT: UIButton!
-    @IBOutlet var settingBTLabel: UILabel!
-    @IBOutlet var dock: UIView!
     
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
@@ -72,9 +69,7 @@ class TimerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         self.setLocalizable()
-        self.setRadius()
         self.setShadow()
-        self.setBorner()
         self.stopColor()
         self.stopEnable()
         self.setBackground()
@@ -234,7 +229,6 @@ extension TimerViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 0
-                self.dock.alpha = 0
             }
         }
         isLandcape = true
@@ -244,7 +238,6 @@ extension TimerViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 1
-                self.dock.alpha = 1
             }
         }
         isLandcape = false
@@ -320,16 +313,6 @@ extension TimerViewController {
         }
     }
     
-    func setRadius() {
-        taskButton.layer.cornerRadius = 12
-        
-        startStopBT.layer.cornerRadius = 15
-        setTimerBT.layer.cornerRadius = 15
-        settingBT.layer.cornerRadius = 15
-        
-        dock.layer.cornerRadius = 20
-    }
-    
     func setShadow() {
         startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
         startStopBT.layer.shadowOpacity = 0.3
@@ -369,12 +352,6 @@ extension TimerViewController {
         showAverage = UserDefaults.standard.value(forKey: "showPersent") as? Int ?? 0
         fixedSecond = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-    }
-    
-    func setBorner() {
-        startStopBT.layer.borderWidth = 3
-        startStopBT.layer.borderColor = RED!.cgColor
-        taskButton.layer.borderWidth = 2
     }
     
     func goToViewController(where: String) {
@@ -594,9 +571,6 @@ extension TimerViewController {
             self.settingBT.alpha = 1
             self.taskButton.layer.borderColor = UIColor.white.cgColor
             self.startStopBTLabel.textColor = UIColor.white
-            self.setTimerBTLabel.alpha = 1
-            self.settingBTLabel.alpha = 1
-            self.dock.backgroundColor = UIColor(named: "dock")
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
         })
@@ -604,7 +578,6 @@ extension TimerViewController {
         if(!isLandcape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
-                self.dock.alpha = 1
             })
         }
     }
@@ -621,9 +594,6 @@ extension TimerViewController {
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
-            self.setTimerBTLabel.alpha = 0
-            self.settingBTLabel.alpha = 0
-            self.dock.layer.backgroundColor = UIColor.clear.cgColor
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
         })
