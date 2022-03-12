@@ -144,16 +144,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		87379F99261597AF00A9445E /* View */ = {
-			isa = PBXGroup;
-			children = (
-				93B08529248DDF3000E215BD /* Assets.xcassets */,
-				93B08526248DDF2F00E215BD /* Main.storyboard */,
-				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		87379F9A261597C900A9445E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				87379F9A261597C900A9445E /* Controller */,
-				87379F99261597AF00A9445E /* View */,
 				87379F982615979D00A9445E /* Model */,
 				87459702263FEF5E00172C0F /* Test */,
 				87AB101026705FFA00F29961 /* viewModel */,
@@ -315,6 +304,9 @@
 				8791C1ED27DCCE10000D6BA9 /* Logs */,
 				8791C1EE27DCCEEB000D6BA9 /* zip */,
 				878B507025B6E2FB00B9EFD7 /* component */,
+				93B08529248DDF3000E215BD /* Assets.xcassets */,
+				93B08526248DDF2F00E215BD /* Main.storyboard */,
+				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
 				87CA3B532618591100DD9BB5 /* Localizable.strings */,
 				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,

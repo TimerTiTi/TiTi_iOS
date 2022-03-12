@@ -25,13 +25,6 @@ class TimerViewController: UIViewController {
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
     
-    @IBOutlet var modeTimer: UIButton!
-    @IBOutlet var modeTimerLabel: UILabel!
-    @IBOutlet var modeStopWatch: UIButton!
-    @IBOutlet var modeStopWatchLabel: UILabel!
-    @IBOutlet var log: UIButton!
-    @IBOutlet var logLabel: UILabel!
-    
     @IBOutlet var startStopBT: UIButton!
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var setTimerBT: UIButton!
@@ -77,35 +70,27 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        modeTimer.backgroundColor = UIColor.gray
-        modeTimerLabel.textColor = UIColor.gray
-        modeTimer.isUserInteractionEnabled = false
         
-        setLocalizable()
-        daily.load()
-        setTask()
-        setSumTime()
-        
-        setButtonRotation()
-        setRadius()
-        setShadow()
-        setBorner()
-        getDatas()
-        
-        setTimes()
-        stopColor()
-        stopEnable()
-        
-        setBackground()
-        checkIsFirst()
-        setProgress()
-        //저장된 daily들 로딩
-        dailyViewModel.loadDailys()
+        self.setLocalizable()
+        self.setRadius()
+        self.setShadow()
+        self.setBorner()
+        self.stopColor()
+        self.stopEnable()
+        self.setBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setVCNum()
+        self.daily.load()
+        self.setTask()
+        self.setSumTime()
+        self.getDatas()
+        self.setTimes()
+        self.checkIsFirst()
+        self.setProgress()
+        self.dailyViewModel.loadDailys()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -162,10 +147,6 @@ class TimerViewController: UIViewController {
         showTaskView()
     }
     
-    @IBAction func modeStopWatchBTAction(_ sender: Any) {
-        goToViewController(where: "StopwatchViewController")
-    }
-    
     @IBAction func startStopBTAction(_ sender: Any) {
         if(task == "Enter a new subject".localized()) {
             showFirstAlert()
@@ -187,10 +168,6 @@ class TimerViewController: UIViewController {
     
     @IBAction func settingTimerBTAction(_ sender: Any) {
         showTimerView()
-    }
-    
-    @IBAction func logBTAction(_ sender: Any) {
-        showLog()
     }
 }
 
@@ -256,13 +233,6 @@ extension TimerViewController {
     func setLandscape() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 0
-                self.modeTimerLabel.alpha = 0
-                self.modeStopWatch.alpha = 0
-                self.modeStopWatchLabel.alpha = 0
-                self.log.alpha = 0
-                self.logLabel.alpha = 0
-                
                 self.taskButton.alpha = 0
                 self.dock.alpha = 0
             }
@@ -273,13 +243,6 @@ extension TimerViewController {
     func setPortrait() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
-                self.modeTimer.alpha = 1
-                self.modeTimerLabel.alpha = 1
-                self.modeStopWatch.alpha = 1
-                self.modeStopWatchLabel.alpha = 1
-                self.log.alpha = 1
-                self.logLabel.alpha = 1
-                
                 self.taskButton.alpha = 1
                 self.dock.alpha = 1
             }
@@ -357,21 +320,12 @@ extension TimerViewController {
         }
     }
     
-    func setButtonRotation() {
-        modeTimer.transform = CGAffineTransform(rotationAngle: .pi*5/6)
-        log.transform = CGAffineTransform(rotationAngle: .pi*1/6)
-    }
-    
     func setRadius() {
         taskButton.layer.cornerRadius = 12
         
         startStopBT.layer.cornerRadius = 15
         setTimerBT.layer.cornerRadius = 15
         settingBT.layer.cornerRadius = 15
-        
-        modeTimer.layer.cornerRadius = 10
-        modeStopWatch.layer.cornerRadius = 10
-        log.layer.cornerRadius = 10
         
         dock.layer.cornerRadius = 20
     }
@@ -391,16 +345,6 @@ extension TimerViewController {
         settingBT.layer.shadowOpacity = 0.5
         settingBT.layer.shadowOffset = CGSize.zero
         settingBT.layer.shadowRadius = 4
-        
-        modeStopWatch.layer.shadowColor = UIColor.gray.cgColor
-        modeStopWatch.layer.shadowOpacity = 0.4
-        modeStopWatch.layer.shadowOffset = CGSize.zero
-        modeStopWatch.layer.shadowRadius = 4
-        
-        log.layer.shadowColor = UIColor.gray.cgColor
-        log.layer.shadowOpacity = 0.4
-        log.layer.shadowOffset = CGSize.zero
-        log.layer.shadowRadius = 4
         
         TIMEofSum.layer.shadowColor = UIColor.gray.cgColor
         TIMEofSum.layer.shadowOpacity = 0.6
@@ -440,8 +384,8 @@ extension TimerViewController {
         self.present(vcName!, animated: true, completion: nil)
     }
     
-    func setVCNum() {
-        UserDefaults.standard.set(1, forKey: "VCNum")
+    private func setVCNum() {
+        UserDefaultsManager.set(to: 1, forKey: .VCNum)
     }
     
     func setProgress() {
@@ -660,13 +604,6 @@ extension TimerViewController {
         //animation test
         if(!isLandcape) {
             UIView.animate(withDuration: 0.5, animations: {
-                self.modeTimer.alpha = 1
-                self.modeTimerLabel.alpha = 1
-                self.modeStopWatch.alpha = 1
-                self.modeStopWatchLabel.alpha = 1
-                self.log.alpha = 1
-                self.logLabel.alpha = 1
-                
                 self.taskButton.alpha = 1
                 self.dock.alpha = 1
             })
@@ -681,12 +618,6 @@ extension TimerViewController {
         TIMEofTimer.textColor = BLUE
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
-            self.modeTimer.alpha = 0
-            self.modeStopWatch.alpha = 0
-            self.log.alpha = 0
-            self.modeTimerLabel.alpha = 0
-            self.modeStopWatchLabel.alpha = 0
-            self.logLabel.alpha = 0
             self.setTimerBT.alpha = 0
             self.settingBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
@@ -703,16 +634,12 @@ extension TimerViewController {
     func stopEnable() {
         settingBT.isUserInteractionEnabled = true
         setTimerBT.isUserInteractionEnabled = true
-        log.isUserInteractionEnabled = true
-        modeStopWatch.isUserInteractionEnabled = true
         taskButton.isUserInteractionEnabled = true
     }
     
     func startEnable() {
         settingBT.isUserInteractionEnabled = false
         setTimerBT.isUserInteractionEnabled = false
-        log.isUserInteractionEnabled = false
-        modeStopWatch.isUserInteractionEnabled = false
         taskButton.isUserInteractionEnabled = false
     }
     

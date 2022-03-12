@@ -672,7 +672,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROV-CL-IbC" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
-                                <rect key="frame" x="27.666666666666657" y="256" width="320" height="320"/>
+                                <rect key="frame" x="27.666666666666657" y="246" width="320" height="320"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKs-1O-JYl" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
                                         <rect key="frame" x="14" y="14" width="292" height="292"/>
@@ -770,7 +770,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPQ-Xe-8up">
-                                <rect key="frame" x="106.66666666666669" y="96" width="162" height="40"/>
+                                <rect key="frame" x="106.66666666666669" y="86" width="162" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sX4-Hx-fkH"/>
                                 </constraints>
@@ -783,44 +783,8 @@
                                     <action selector="taskBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="nkh-iv-k3J"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UO1-q1-iNa">
-                                <rect key="frame" x="172.66666666666666" y="201" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="modeStopWatchBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="brL-9Q-WCo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4D-pz-g6o">
-                                <rect key="frame" x="278" y="226" width="30" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="logBTAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="5E2-tg-8Vz"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKQ-CK-MbC">
-                                <rect key="frame" x="60" y="204" width="34.333333333333343" height="17"/>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
-                                <color key="textColor" systemColor="systemGrayColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stopwatch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AM6-Vv-NfO">
-                                <rect key="frame" x="155.33333333333334" y="179" width="64.666666666666657" height="17"/>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbg-6i-S66">
-                                <rect key="frame" x="287" y="204" width="22.333333333333314" height="17"/>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6r-D9-EtI">
-                                <rect key="frame" x="67" y="226" width="30" height="30"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor"/>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4h5-kh-i7f">
-                                <rect key="frame" x="9.6666666666666572" y="636" width="356" height="96"/>
+                                <rect key="frame" x="9.6666666666666572" y="628" width="356" height="96"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRI-h8-GeY">
                                         <rect key="frame" x="248" y="20" width="88" height="56"/>
@@ -898,24 +862,12 @@
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="4h5-kh-i7f" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="2OD-gG-cZQ"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" constant="10" id="3MO-dw-92u"/>
+                            <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="3MO-dw-92u"/>
+                            <constraint firstItem="xTH-Uj-aTj" firstAttribute="bottom" secondItem="4h5-kh-i7f" secondAttribute="bottom" constant="5" id="BLQ-Zm-rxt"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="q6r-D9-EtI" secondAttribute="bottom" id="HB2-PU-fwj"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="UO1-q1-iNa" secondAttribute="bottom" constant="25" id="MK0-ZU-Eew"/>
-                            <constraint firstItem="AM6-Vv-NfO" firstAttribute="centerX" secondItem="UO1-q1-iNa" secondAttribute="centerX" id="RTa-xY-kke"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="W1k-Ca-43M"/>
-                            <constraint firstItem="4h5-kh-i7f" firstAttribute="top" secondItem="ROV-CL-IbC" secondAttribute="bottom" constant="60" id="dPW-v8-cw8"/>
-                            <constraint firstItem="X4D-pz-g6o" firstAttribute="top" secondItem="Tbg-6i-S66" secondAttribute="bottom" constant="5" id="dPk-h0-8Kk"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="120" id="dQy-MK-jyK"/>
-                            <constraint firstItem="q6r-D9-EtI" firstAttribute="top" secondItem="hKQ-CK-MbC" secondAttribute="bottom" constant="5" id="eE7-7Z-SaR"/>
-                            <constraint firstItem="UO1-q1-iNa" firstAttribute="centerX" secondItem="ROV-CL-IbC" secondAttribute="centerX" id="lyy-Mw-jxL"/>
                             <constraint firstItem="NPQ-Xe-8up" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="ozw-CA-NND"/>
-                            <constraint firstItem="UO1-q1-iNa" firstAttribute="top" secondItem="AM6-Vv-NfO" secondAttribute="bottom" constant="5" id="qUJ-PM-FnZ"/>
-                            <constraint firstItem="UO1-q1-iNa" firstAttribute="leading" secondItem="q6r-D9-EtI" secondAttribute="trailing" constant="75.5" id="rV4-KK-kDv"/>
-                            <constraint firstItem="Tbg-6i-S66" firstAttribute="centerX" secondItem="X4D-pz-g6o" secondAttribute="centerX" constant="5" id="sur-0i-Sj9"/>
-                            <constraint firstItem="X4D-pz-g6o" firstAttribute="leading" secondItem="UO1-q1-iNa" secondAttribute="trailing" constant="75.5" id="uuD-Jg-ytQ"/>
-                            <constraint firstItem="hKQ-CK-MbC" firstAttribute="centerX" secondItem="q6r-D9-EtI" secondAttribute="centerX" constant="-5" id="uuQ-Vw-GTI"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="X4D-pz-g6o" secondAttribute="bottom" id="vje-Zm-doa"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -939,12 +891,6 @@
                         <outlet property="dock" destination="4h5-kh-i7f" id="plq-w7-3Cf"/>
                         <outlet property="finishTimeLabel" destination="naL-rE-KA8" id="5SU-l1-AYa"/>
                         <outlet property="innerProgress" destination="MKs-1O-JYl" id="0Dl-w7-I5Q"/>
-                        <outlet property="log" destination="X4D-pz-g6o" id="vHj-7K-Kcr"/>
-                        <outlet property="logLabel" destination="Tbg-6i-S66" id="c79-gh-5tj"/>
-                        <outlet property="modeStopWatch" destination="UO1-q1-iNa" id="Jjh-bZ-0d1"/>
-                        <outlet property="modeStopWatchLabel" destination="AM6-Vv-NfO" id="re0-SV-ucl"/>
-                        <outlet property="modeTimer" destination="q6r-D9-EtI" id="Ghh-xY-rWi"/>
-                        <outlet property="modeTimerLabel" destination="hKQ-CK-MbC" id="xfl-CM-dj1"/>
                         <outlet property="outterProgress" destination="ROV-CL-IbC" id="FyQ-L8-2xs"/>
                         <outlet property="setTimerBT" destination="LRI-h8-GeY" id="9bX-zp-qJq"/>
                         <outlet property="setTimerBTLabel" destination="4lw-JR-CrJ" id="G8e-V2-s1w"/>
@@ -1228,7 +1174,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnn-96-RKn">
-                                <rect key="frame" x="9.6666666666666572" y="636" width="356" height="96"/>
+                                <rect key="frame" x="9.6666666666666572" y="628" width="356" height="96"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27q-3z-TzY">
                                         <rect key="frame" x="248" y="20" width="88" height="56"/>
@@ -1320,7 +1266,7 @@
                             <constraint firstItem="rzE-75-v4U" firstAttribute="top" secondItem="bPm-ck-cTt" secondAttribute="bottom" id="bqY-k1-maD"/>
                             <constraint firstItem="bPm-ck-cTt" firstAttribute="top" secondItem="yeh-38-t8v" secondAttribute="bottom" constant="5" id="f8R-JH-QrE"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="top" secondItem="Xlh-cM-G9w" secondAttribute="bottom" id="h5Q-qY-XBS"/>
-                            <constraint firstItem="xnn-96-RKn" firstAttribute="top" secondItem="rzE-75-v4U" secondAttribute="bottom" constant="60" id="orx-qP-X7t"/>
+                            <constraint firstItem="yCZ-3D-BLQ" firstAttribute="bottom" secondItem="xnn-96-RKn" secondAttribute="bottom" constant="5" id="mmq-fw-Bko"/>
                             <constraint firstItem="E09-Gt-J0V" firstAttribute="centerX" secondItem="rzE-75-v4U" secondAttribute="centerX" id="uQ7-dN-AcP"/>
                             <constraint firstItem="gEt-rS-lNf" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="xsc-0Q-vAf"/>
                             <constraint firstItem="E09-Gt-J0V" firstAttribute="leading" secondItem="bPm-ck-cTt" secondAttribute="trailing" constant="75.5" id="zVp-79-l9P"/>
