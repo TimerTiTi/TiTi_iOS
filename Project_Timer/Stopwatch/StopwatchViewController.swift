@@ -27,6 +27,7 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var resetBT: UIButton!
     @IBOutlet var settingBT: UIButton!
+    @IBOutlet weak var colorSelector: UIButton!
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
@@ -155,6 +156,17 @@ class StopwatchViewController: UIViewController {
     
     @IBAction func resetBTAction(_ sender: Any) {
         resetSum_temp()
+    }
+    
+    @IBAction func colorSelect(_ sender: Any) {
+        if #available(iOS 14.0, *) {
+            let picker = UIColorPickerViewController()
+            picker.selectedColor = COLOR!
+            picker.delegate = self
+            self.present(picker, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 
@@ -503,6 +515,8 @@ extension StopwatchViewController {
             self.resetBT.alpha = 1
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
+            self.colorSelector.alpha = 1
+            self.tabBarController?.tabBar.isHidden = false
         })
         //animation test
         if(!self.isLandscape) {
@@ -526,6 +540,8 @@ extension StopwatchViewController {
             self.resetBT.alpha = 0
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
+            self.colorSelector.alpha = 0
+            self.tabBarController?.tabBar.isHidden = true
         })
     }
     
@@ -652,5 +668,26 @@ extension StopwatchViewController {
         daily.save() //하루 그래프 데이터 계산
         //dailys 저장
         dailyViewModel.addDaily(daily)
+    }
+}
+
+extension StopwatchViewController {
+    private func changeColor(color: UIColor) {
+        UserDefaults.standard.setColor(color: COLOR, forKey: "color")
+        self.COLOR = color
+        self.view.backgroundColor = self.COLOR
+    }
+}
+
+extension StopwatchViewController: UIColorPickerViewControllerDelegate {
+    
+    @available(iOS 14.0, *)
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        self.changeColor(color: viewController.selectedColor)
+    }
+    
+    @available(iOS 14.0, *)
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        self.changeColor(color: viewController.selectedColor)
     }
 }

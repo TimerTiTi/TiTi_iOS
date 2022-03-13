@@ -184,8 +184,6 @@ extension SetTimerViewController2 {
         self.view.backgroundColor = COLOR
         Label_timer.textColor = COLOR
         Label_toTime.textColor = COLOR
-//        ColorButton.backgroundColor = COLOR
-//        Button_set.setTitleColor(COLOR, for: .normal)
         Button_set.layer.borderColor = UIColor.systemPink.cgColor
         Button_Back.layer.borderColor = UIColor.white.cgColor
     }
