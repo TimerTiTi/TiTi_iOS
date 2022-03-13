@@ -12,6 +12,7 @@ struct UserDefaultsManager {
     enum Keys: String {
         case isFirst = "isFirst"
         case VCNum = "VCNum"
+        case sumTime_temp = "sumTime_temp"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
