@@ -88,10 +88,12 @@ class StopwatchViewController: UIViewController {
         self.checkIsFirst()
         self.setFirstProgress()
         self.dailyViewModel.loadDailys()
+        self.time.startSumTimeTemp = self.sumTime_temp
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         print("disappear in stopwatch")
+        UserDefaultsManager.set(to: self.sumTime_temp, forKey: .sumTime_temp)
         NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
@@ -318,7 +320,7 @@ extension StopwatchViewController {
         breakTime = UserDefaults.standard.value(forKey: "breakTime") as? Int ?? 0
         totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         //새로운 스톱워치 시간
-        sumTime_temp = 0
+        self.sumTime_temp = UserDefaultsManager.get(forKey: .sumTime_temp) as? Int ?? 0
         fixedSecond = 3600
     }
     
@@ -573,6 +575,7 @@ extension StopwatchViewController {
     
     func resetSum_temp() {
         sumTime_temp = 0
+        UserDefaultsManager.set(to: 0, forKey: .sumTime_temp)
         time.startSumTimeTemp = 0
         updateTimeLabels()
         updateProgress()
