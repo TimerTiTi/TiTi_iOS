@@ -50,9 +50,6 @@ class GraphViewController2: UIViewController {
     
     @IBOutlet var collectionViewHeight: NSLayoutConstraint!
     
-    @IBOutlet var upload: UIButton!
-    @IBOutlet var download: UIButton!
-    
     @IBOutlet weak var monthTime: UILabel!
     
     var arrayTaskName: [String] = []
@@ -74,137 +71,24 @@ class GraphViewController2: UIViewController {
         setShadow(view_month)
         setShadow(view_7days)
         setShadow(view_today)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
         showSwiftUIGraph(isDumy: isDumy)
         showDatas(isDumy: isDumy)
         
-        upload.isHidden = true
-        download.isHidden = true
-        
         showMonthTime()
     }
+    
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         ContentView().reset()
     }
     
     @IBAction func todayButtonAction(_ sender: Any) {
         goToViewController(where: "TodayViewController")
-    }
-    
-    @IBAction func upload(_ sender: Any) {
-
-    }
-    
-    @IBAction func download(_ sender: Any) {
-
-    }
-    
-    func alert(_ message: String) {
-        //1. 경고창 내용 만들기
-        let alert = UIAlertController(title:message,
-            message: "",
-            preferredStyle: UIAlertController.Style.alert)
-        //2. 확인 버튼 만들기
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //3. 확인 버튼을 경고창에 추가하기
-        alert.addAction(ok)
-        //4. 경고창 보이기
-        present(alert,animated: true,completion: nil)
-    }
-    
-    func uploadDate(day: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-        return dateFormatter.string(from: day)
-    }
-    
-    func stringToDate(_ stringDay: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-        let date = dateFormatter.date(from: stringDay)!
-        return date
-    }
-    
-    func doubleToDate(_ doubleDay: Double) -> Date {
-        let date = Date(timeIntervalSince1970: doubleDay)
-        return date
-    }
-    
-    func transdDay1(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        return dateFormatter.string(from: date)
-    }
-    
-    func deferentDay(_ getDay: String) -> Bool {
-        let savedDay: String = UserDefaults.standard.value(forKey: "day1") as? String ?? "NO DATA"
-        if(savedDay == "NO DATA") { return false }
-        print("savedDay: \(savedDay)")
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY/MM/dd"
-        let exported = dateFormatter.date(from: getDay)!
-        let newDateFormatter = DateFormatter()
-        newDateFormatter.dateFormat = "M월 d일"
-        let transdDay = newDateFormatter.string(from: exported)
-        print("transdDay: \(transdDay)")
-        
-        return(savedDay != transdDay)
-    }
-    
-    func setNextDay() {
-        var array_day = [String](repeating: "", count: 7)
-        var array_time = [String](repeating: "", count: 7)
-        var array_break = [String](repeating: "", count: 7)
-        
-        for i in stride(from: 0, to: 7, by: 1) {
-            array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
-            array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
-            array_break[i] = UserDefaults.standard.value(forKey: "break"+String(i+1)) as? String ?? "NO DATA"
-        }
-        //값 옮기기, 값 저장하기
-        for i in stride(from: 6, to: 0, by: -1) {
-            array_day[i] = array_day[i-1]
-            UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
-            array_time[i] = array_time[i-1]
-            UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
-            array_break[i] = array_break[i-1]
-            UserDefaults.standard.set(array_break[i], forKey: "break"+String(i+1))
-        }
-    }
-    
-    func saveData(_ newDaily: Daily) {
-        UserDefaults.standard.set(newDaily.fixedTotalTime, forKey: "allTime")
-        UserDefaults.standard.set(newDaily.fixedTimerTime, forKey: "second")
-        UserDefaults.standard.set(newDaily.currentTotalTime, forKey: "allTime2")
-        UserDefaults.standard.set(newDaily.currentSumTime, forKey: "sum2")
-        UserDefaults.standard.set(newDaily.currentTimerTime, forKey: "second2")
-        UserDefaults.standard.set(newDaily.currentTask, forKey: "task")
-        UserDefaults.standard.set(printTime(temp: newDaily.currentSumTime), forKey: "time1")
-        UserDefaults.standard.set(transdDay1(newDaily.day), forKey: "day1")
-        newDaily.save()
-    }
-    
-    func saveImageTest() {
-        let img1 = UIImage.init(view: viewOfView)
-        let img2 = UIImage.init(view: progress)
-        let img3 = UIImage.init(view: self.view)
-        
-        UIImageWriteToSavedPhotosAlbum(img1, nil, nil, nil)
-        UIImageWriteToSavedPhotosAlbum(img2, nil, nil, nil)
-        UIImageWriteToSavedPhotosAlbum(img3, nil, nil, nil)
-        
-        //1. 경고창 내용 만들기
-        let alert = UIAlertController(title:"저장되었습니다",
-            message: "",
-            preferredStyle: UIAlertController.Style.alert)
-        //2. 확인 버튼 만들기
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //3. 확인 버튼을 경고창에 추가하기
-        alert.addAction(ok)
-        //4. 경고창 보이기
-        present(alert,animated: true,completion: nil)
     }
 }
 
@@ -276,7 +160,10 @@ extension GraphViewController2 {
     }
     
     func makeProgress(_ datas: [Int], _ width: CGFloat, _ height: CGFloat) {
-        print(datas)
+        for view in self.progress.subviews {
+            view.removeFromSuperview()
+        }
+        
         fixed_sum = 0
         for i in 0..<counts {
             fixed_sum += datas[i]
