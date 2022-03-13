@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: firstViewController.identifier)
         } else {
             let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+            rootViewController.tabBar.backgroundColor = .clear
             if VCNum == 2 {
                 rootViewController.selectedIndex = 1
             }
@@ -36,7 +37,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func showTabbarController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let tabbarController = storyboard.instantiateInitialViewController() else { return }
+        let tabbarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        tabbarController.tabBar.backgroundColor = .clear
         let navigationController = UINavigationController(rootViewController: tabbarController)
         navigationController.navigationBar.tintColor = UIColor.label
         navigationController.isNavigationBarHidden = true
