@@ -166,9 +166,7 @@
 		87459702263FEF5E00172C0F /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				87A7624626493BB500174401 /* GraphViewController2.swift */,
 				875AA59B26494365005D15D6 /* taskSelectViewController.swift */,
-				87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */,
 				87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */,
 				876743342689E15600E690E4 /* calendarViewController.swift */,
 			);
@@ -227,6 +225,8 @@
 		8791C1ED27DCCE10000D6BA9 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
+				87A7624626493BB500174401 /* GraphViewController2.swift */,
+				87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */,
 			);
 			path = Logs;
 			sourceTree = "<group>";

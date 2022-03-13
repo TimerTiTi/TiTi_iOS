@@ -68,26 +68,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-z0-ImQ">
-                                                <rect key="frame" x="312" y="13.000000000000002" width="35" height="30.666666666666671"/>
-                                                <color key="tintColor" name="CCC1"/>
-                                                <state key="normal" image="icloud.and.arrow.down" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="download:" destination="yRZ-mG-lyl" eventType="touchUpInside" id="GSd-9K-l5K"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qk-B8-N3H">
-                                                <rect key="frame" x="252" y="13.000000000000002" width="35" height="29.666666666666671"/>
-                                                <color key="tintColor" name="CCC1"/>
-                                                <state key="normal" image="icloud.and.arrow.up" catalog="system">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="upload:" destination="yRZ-mG-lyl" eventType="touchUpInside" id="ZoU-hK-fj0"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKE-LL-lDA">
                                                 <rect key="frame" x="10" y="42.666666666666657" width="340" height="205"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,11 +79,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="gcT-z0-ImQ" firstAttribute="top" secondItem="rJs-fJ-vLX" secondAttribute="top" constant="13" id="7IM-8x-fYw"/>
-                                            <constraint firstItem="1Qk-B8-N3H" firstAttribute="top" secondItem="rJs-fJ-vLX" secondAttribute="top" constant="13" id="Ggm-Nq-Odr"/>
-                                            <constraint firstItem="gcT-z0-ImQ" firstAttribute="leading" secondItem="1Qk-B8-N3H" secondAttribute="trailing" constant="25" id="Su2-Ua-HwJ"/>
                                             <constraint firstAttribute="trailing" secondItem="CKE-LL-lDA" secondAttribute="trailing" constant="10" id="Wmu-04-2FK"/>
-                                            <constraint firstAttribute="trailing" secondItem="gcT-z0-ImQ" secondAttribute="trailing" constant="13" id="YlU-it-XR0"/>
                                             <constraint firstItem="BCh-OF-bhg" firstAttribute="top" secondItem="rJs-fJ-vLX" secondAttribute="top" constant="10" id="cX2-TV-bNw"/>
                                             <constraint firstItem="CKE-LL-lDA" firstAttribute="leading" secondItem="rJs-fJ-vLX" secondAttribute="leading" constant="10" id="mDK-rz-yxL"/>
                                             <constraint firstItem="BCh-OF-bhg" firstAttribute="centerX" secondItem="rJs-fJ-vLX" secondAttribute="centerX" id="sZZ-x9-0LT"/>
@@ -162,6 +138,9 @@
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qT-yT-NEc">
                                                                             <rect key="frame" x="147.66666666666666" y="3.6666666666666661" width="39.333333333333343" height="12.999999999999998"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="39.333333333333343" id="t38-e8-IsQ"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="11.5"/>
                                                                             <color key="textColor" name="CCC1"/>
                                                                             <nil key="highlightedColor"/>
@@ -614,7 +593,6 @@
                     <connections>
                         <outlet property="collectionView" destination="YYe-eA-4zc" id="Pbw-We-iQG"/>
                         <outlet property="collectionViewHeight" destination="Bcw-o1-naA" id="5jj-Y5-6gE"/>
-                        <outlet property="download" destination="gcT-z0-ImQ" id="3Uj-Pa-qdN"/>
                         <outlet property="monthTime" destination="WRs-5N-bkH" id="cE7-2x-0lG"/>
                         <outlet property="progress" destination="1FT-7d-JCl" id="yFt-vq-fPp"/>
                         <outlet property="sumTime" destination="9GQ-w6-jCr" id="9rC-ZO-VYC"/>
@@ -643,7 +621,6 @@
                         <outlet property="time_23" destination="CX1-sT-J17" id="3ef-P4-kVt"/>
                         <outlet property="time_24" destination="fl2-Qf-Qa3" id="F8P-37-IVN"/>
                         <outlet property="today" destination="62f-T8-kZ2" id="Ish-L7-VqT"/>
-                        <outlet property="upload" destination="1Qk-B8-N3H" id="7Qi-Bo-Frz"/>
                         <outlet property="viewOfView" destination="CKE-LL-lDA" id="ZXB-v3-3F8"/>
                         <outlet property="view_7days" destination="rJs-fJ-vLX" id="2hL-Z8-xbl"/>
                         <outlet property="view_month" destination="h98-H8-rhr" id="tOX-zs-HUu"/>
@@ -4267,8 +4244,6 @@
         <image name="chevron.backward.circle" catalog="system" width="128" height="121"/>
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="103"/>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
-        <image name="icloud.and.arrow.down" catalog="system" width="128" height="112"/>
-        <image name="icloud.and.arrow.up" catalog="system" width="128" height="106"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="97"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
