@@ -1181,12 +1181,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfx-iS-Kvh">
+                                <rect key="frame" x="334" y="60" width="25" height="25"/>
+                                <color key="backgroundColor" name="Color4"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="A7d-QQ-2RS"/>
+                                    <constraint firstAttribute="height" constant="25" id="akY-VH-irm"/>
+                                </constraints>
+                                <state key="normal" image="rainbow"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ColorBTAction:" destination="D0b-lb-qoG" eventType="touchUpInside" id="6U3-g4-DST"/>
+                                    <action selector="colorSelect:" destination="oQm-sw-2wm" eventType="touchUpInside" id="vQE-T4-J8V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yCZ-3D-BLQ"/>
                         <color key="backgroundColor" name="Background2"/>
                         <constraints>
                             <constraint firstItem="diS-gV-uEz" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="3ql-Ls-TWy"/>
+                            <constraint firstItem="Hfx-iS-Kvh" firstAttribute="top" secondItem="yCZ-3D-BLQ" secondAttribute="top" constant="16" id="6ke-c7-BpO"/>
                             <constraint firstItem="VkP-ZL-Ulq" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="9ZE-1W-mCy"/>
+                            <constraint firstItem="yCZ-3D-BLQ" firstAttribute="trailing" secondItem="Hfx-iS-Kvh" secondAttribute="trailing" constant="16" id="D8w-WK-soO"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="top" secondItem="gEt-rS-lNf" secondAttribute="bottom" constant="50" id="F4G-Qb-5PJ"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="FcF-vb-Ssx"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="Mv3-R4-L8P"/>
@@ -1216,6 +1236,7 @@
                         <outlet property="TIMEofStopwatch" destination="Q68-YR-Cew" id="e6r-U3-PO9"/>
                         <outlet property="TIMEofSum" destination="E29-HI-Z5d" id="y29-eX-4we"/>
                         <outlet property="TIMEofTarget" destination="DOY-RG-9hz" id="hUM-8h-PoT"/>
+                        <outlet property="colorSelector" destination="Hfx-iS-Kvh" id="xxs-g9-bAs"/>
                         <outlet property="finishTimeLabel" destination="Mj6-JS-iYc" id="Pjr-5H-7fR"/>
                         <outlet property="innerProgress" destination="2nh-Zz-J1h" id="c0c-de-Jim"/>
                         <outlet property="outterProgress" destination="rzE-75-v4U" id="dlA-LU-99w"/>

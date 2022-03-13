@@ -573,6 +573,7 @@ extension TimerViewController {
             self.startStopBTLabel.textColor = UIColor.white
             self.startStopBT.layer.borderColor = self.RED?.cgColor
             self.startStopBTLabel.text = "▶︎"
+            self.tabBarController?.tabBar.isHidden = false
         })
         //animation test
         if(!isLandcape) {
@@ -596,6 +597,7 @@ extension TimerViewController {
             self.startStopBTLabel.textColor = self.RED!
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
+            self.tabBarController?.tabBar.isHidden = true
         })
     }
     
