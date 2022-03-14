@@ -68,8 +68,6 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
         self.setLocalizable()
         self.setShadow()
         self.stopColor()
@@ -79,6 +77,7 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         self.setVCNum()
         self.daily.load()
         self.setTask()
@@ -323,10 +322,10 @@ extension TimerViewController {
     }
     
     func setShadow() {
-        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
-        startStopBT.layer.shadowOpacity = 0.3
-        startStopBT.layer.shadowOffset = CGSize.zero
-        startStopBT.layer.shadowRadius = 3
+//        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
+//        startStopBT.layer.shadowOpacity = 0.3
+//        startStopBT.layer.shadowOffset = CGSize.zero
+//        startStopBT.layer.shadowRadius = 3
         
         setTimerBT.layer.shadowColor = UIColor.gray.cgColor
         setTimerBT.layer.shadowOpacity = 0.5

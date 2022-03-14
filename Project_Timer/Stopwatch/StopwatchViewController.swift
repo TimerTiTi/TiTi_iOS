@@ -70,8 +70,6 @@ class StopwatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
         self.setLocalizable()
         self.setColor()
         self.setShadow()
@@ -82,6 +80,7 @@ class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
         self.setVCNum()
         self.daily.load()
         self.setTask()
@@ -302,10 +301,10 @@ extension StopwatchViewController {
     }
     
     func setShadow() {
-        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
-        startStopBT.layer.shadowOpacity = 0.3
-        startStopBT.layer.shadowOffset = CGSize.zero
-        startStopBT.layer.shadowRadius = 3
+//        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
+//        startStopBT.layer.shadowOpacity = 0.3
+//        startStopBT.layer.shadowOffset = CGSize.zero
+//        startStopBT.layer.shadowRadius = 3
         
         resetBT.layer.shadowColor = UIColor.gray.cgColor
         resetBT.layer.shadowOpacity = 0.5
