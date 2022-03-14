@@ -523,7 +523,7 @@ extension StopwatchViewController {
             self.resetBT.alpha = 1
             self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
-            self.colorSelector.alpha = 1
+            self.colorSelector.alpha = 0.7
             self.tabBarController?.tabBar.isHidden = false
         })
         //animation test

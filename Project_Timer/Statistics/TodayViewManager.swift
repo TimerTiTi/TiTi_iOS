@@ -147,7 +147,7 @@ class TodayViewManager {
         for (key, value) in tasks {
             let value = value
             arrayTaskName.append(key)
-            arrayTaskTime.append(ViewManager.printTime(value))
+            arrayTaskTime.append(value.toTimeString)
             array.append(value)
         }
     }
@@ -218,13 +218,13 @@ class TodayViewManager {
     }
     
     func showTimes(_ sum1: UILabel, _ sum2: UILabel, _ max1: UILabel, _ max2: UILabel) {
-        let stringSum = ViewManager.printTime(fixedSum)
+        let stringSum = fixedSum.toTimeString
         sum1.text = stringSum
         sum2.text = stringSum
         sum1.textColor = COLOR
         sum2.textColor = COLOR
         
-        let stringMax = ViewManager.printTime(daily.maxTime)
+        let stringMax = daily.maxTime.toTimeString
         max1.text = stringMax
         max2.text = stringMax
         max1.textColor = COLOR

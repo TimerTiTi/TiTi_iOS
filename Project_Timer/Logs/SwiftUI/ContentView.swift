@@ -131,9 +131,9 @@ extension ContentView {
         else {
             for i in (1...7).reversed() {
                 let id = 8-i
-                let day = ViewManager().translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
-                let studyTime = ViewManager().translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
-                let breakTime = ViewManager().translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
+                let day = Converter.translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
+                let studyTime = Converter.translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
+                let breakTime = Converter.translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
                 DailyDatas.append(daily(id: id, day: day, studyTime: studyTime, breakTime: breakTime))
             }
         }
