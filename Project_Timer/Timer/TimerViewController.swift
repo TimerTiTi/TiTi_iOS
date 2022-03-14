@@ -429,7 +429,7 @@ extension TimerViewController {
     }
     
     func showLog() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! GraphViewController2
+        let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! LogViewController
             setVC.logViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }

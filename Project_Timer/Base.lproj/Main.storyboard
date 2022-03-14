@@ -63,7 +63,7 @@
                                         <rect key="frame" x="14" y="14" width="292" height="292"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-sW-KMK">
-                                                <rect key="frame" x="97.666666666666686" y="44" width="96.666666666666686" height="27"/>
+                                                <rect key="frame" x="97.666666666666686" y="44" width="96.333333333333314" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="P2e-Dw-mik"/>
                                                 </constraints>
@@ -73,7 +73,7 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-Mh-Apz">
-                                                <rect key="frame" x="97.666666666666686" y="221" width="96.666666666666686" height="27"/>
+                                                <rect key="frame" x="97.666666666666686" y="221" width="96.333333333333314" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="z5B-aW-Mec"/>
                                                 </constraints>
@@ -89,7 +89,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naL-rE-KA8">
-                                                <rect key="frame" x="124.6666666666667" y="258" width="42.666666666666671" height="14"/>
+                                                <rect key="frame" x="124.66666666666667" y="258" width="42.333333333333329" height="14"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -115,13 +115,13 @@
                                         <size key="shadowOffset" width="1" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-pY-2wV">
-                                        <rect key="frame" x="142.66666666666669" y="103" width="34.666666666666657" height="17"/>
+                                        <rect key="frame" x="142.66666666666669" y="103" width="34.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkm-0h-gfu">
-                                        <rect key="frame" x="135.66666666666669" y="34" width="48.666666666666657" height="14"/>
+                                        <rect key="frame" x="135.66666666666669" y="34" width="48.333333333333343" height="14"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -2154,10 +2154,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2165,7 +2165,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -2960,7 +2960,7 @@
                                         <rect key="frame" x="14" y="14" width="292" height="292"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncC-QX-qx9">
-                                                <rect key="frame" x="97.666666666666686" y="44" width="96.666666666666686" height="27"/>
+                                                <rect key="frame" x="97.666666666666686" y="44" width="96.333333333333314" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="dmg-Q7-V3E"/>
                                                 </constraints>
@@ -2969,7 +2969,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjd-XZ-1hR">
-                                                <rect key="frame" x="97.666666666666686" y="221" width="96.666666666666686" height="27"/>
+                                                <rect key="frame" x="97.666666666666686" y="221" width="96.333333333333314" height="27"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="0KB-EG-RQm"/>
                                                 </constraints>
@@ -2978,13 +2978,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8u-UL-NGu">
-                                                <rect key="frame" x="110.66666666666669" y="199.66666666666669" width="70.666666666666686" height="16.333333333333343"/>
+                                                <rect key="frame" x="110.66666666666669" y="198.33333333333331" width="70.666666666666686" height="17.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:34 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Er-F5-gCF">
-                                                <rect key="frame" x="119.33333333333334" y="252.99999999999997" width="53" height="16.666666666666657"/>
+                                                <rect key="frame" x="119.33333333333334" y="252.99999999999997" width="53" height="17.666666666666657"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -3009,13 +3009,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUA-jc-Nvo">
-                                        <rect key="frame" x="142.66666666666669" y="103" width="34.666666666666657" height="17"/>
+                                        <rect key="frame" x="142.66666666666669" y="103" width="34.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sum Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwU-Yy-aVL">
-                                        <rect key="frame" x="129.66666666666669" y="36.666666666666686" width="60.666666666666657" height="16.333333333333329"/>
+                                        <rect key="frame" x="129.66666666666669" y="36.333333333333314" width="60.333333333333343" height="16.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3108,19 +3108,19 @@
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68d-Ky-WFa">
-                                        <rect key="frame" x="286.33333333333331" y="34.333333333333371" width="11.333333333333314" height="27.333333333333329"/>
+                                        <rect key="frame" x="286" y="34.333333333333371" width="11.666666666666686" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="St" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YqO-vh-cc9">
-                                        <rect key="frame" x="53.333333333333336" y="34.333333333333371" width="21.333333333333336" height="27.333333333333329"/>
+                                        <rect key="frame" x="53.333333333333336" y="34.333333333333371" width="21.333333333333336" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CF-5f-WA2">
-                                        <rect key="frame" x="171.33333333333334" y="34.333333333333371" width="13.333333333333343" height="27.333333333333329"/>
+                                        <rect key="frame" x="171.33333333333334" y="34.333333333333371" width="13.333333333333343" height="27.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3154,7 +3154,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="before start, Enter a new Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-dF-VIc">
-                                        <rect key="frame" x="33.666666666666657" y="169.66666666666666" width="308" height="27.333333333333343"/>
+                                        <rect key="frame" x="33.666666666666657" y="169.66666666666666" width="308" height="27.666666666666657"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3173,7 +3173,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="setting your today's times" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-no-Vfl">
-                                        <rect key="frame" x="54.333333333333343" y="582.66666666666663" width="266.66666666666663" height="27.333333333333371"/>
+                                        <rect key="frame" x="54.333333333333343" y="582.33333333333337" width="266.33333333333326" height="27.666666666666629"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3221,13 +3221,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you can change the mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nm-BZ-Vxm">
-                                        <rect key="frame" x="15" y="298.66666666666669" width="264.33333333333331" height="27.333333333333314"/>
+                                        <rect key="frame" x="15" y="298.66666666666669" width="264.33333333333331" height="27.666666666666686"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you can see the records" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYo-4V-auI">
-                                        <rect key="frame" x="109.33333333333333" y="298.66666666666669" width="247.66666666666669" height="27.333333333333314"/>
+                                        <rect key="frame" x="109.33333333333333" y="298.66666666666669" width="247.33333333333337" height="27.666666666666686"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3245,7 +3245,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use TiTi?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm2-6j-dzW">
-                                        <rect key="frame" x="103.66666666666669" y="431.66666666666669" width="168" height="29.333333333333314"/>
+                                        <rect key="frame" x="103.66666666666669" y="431.66666666666669" width="168" height="29.666666666666686"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -3579,7 +3579,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6Q-PO-Ufm">
-                                <rect key="frame" x="22.666666666666657" y="224.66666666666663" width="330" height="373"/>
+                                <rect key="frame" x="22.666666666666657" y="225" width="330" height="372"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxK-zG-VOP" customClass="FSCalendar">
                                         <rect key="frame" x="10" y="10" width="310" height="320"/>
@@ -3632,7 +3632,7 @@
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URw-fI-S5E">
-                                        <rect key="frame" x="121.33333333333331" y="335" width="87" height="33"/>
+                                        <rect key="frame" x="126.33333333333331" y="335" width="77" height="32"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <state key="normal" title="Select Day"/>
@@ -3673,7 +3673,7 @@
         <!--Log-->
         <scene sceneID="hW3-2t-yl1">
             <objects>
-                <viewController storyboardIdentifier="GraphViewController2" id="u5i-hn-5ua" customClass="GraphViewController2" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogViewController" id="u5i-hn-5ua" customClass="LogViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3k8-94-gJj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3685,16 +3685,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="711"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCP-UU-Ojl">
-                                                <rect key="frame" x="7.6666666666666572" y="10" width="360" height="86"/>
+                                                <rect key="frame" x="7.6666666666666572" y="10" width="360" height="85.666666666666671"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXm-7a-h85">
-                                                        <rect key="frame" x="149" y="10" width="62" height="28"/>
+                                                        <rect key="frame" x="149" y="10.000000000000002" width="61.666666666666657" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-:--:--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJF-0j-00I">
-                                                        <rect key="frame" x="131.33333333333334" y="43" width="97" height="33"/>
+                                                        <rect key="frame" x="131.33333333333334" y="42.666666666666671" width="97" height="33"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -3709,18 +3709,23 @@
                                                     <constraint firstItem="hJF-0j-00I" firstAttribute="centerX" secondItem="dCP-UU-Ojl" secondAttribute="centerX" id="wrF-wK-QNw"/>
                                                     <constraint firstItem="LXm-7a-h85" firstAttribute="centerX" secondItem="dCP-UU-Ojl" secondAttribute="centerX" id="zPY-8G-wUd"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jA8-Bf-qfa">
-                                                <rect key="frame" x="7.6666666666666572" y="111" width="360" height="257.66666666666669"/>
+                                                <rect key="frame" x="7.6666666666666572" y="110.66666666666666" width="360" height="257.66666666666674"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw0-bF-NiZ">
-                                                        <rect key="frame" x="146.66666666666669" y="10.000000000000002" width="66.666666666666686" height="27.666666666666671"/>
+                                                        <rect key="frame" x="146.66666666666669" y="10.000000000000002" width="66.333333333333314" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enQ-gZ-Zvz">
-                                                        <rect key="frame" x="10" y="42.666666666666657" width="340" height="205"/>
+                                                        <rect key="frame" x="10" y="42.666666666666686" width="340" height="205"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="205" id="UbU-0k-mkc"/>
@@ -3738,12 +3743,17 @@
                                                     <constraint firstItem="Vw0-bF-NiZ" firstAttribute="top" secondItem="jA8-Bf-qfa" secondAttribute="top" constant="10" id="jfG-a1-0q8"/>
                                                     <constraint firstAttribute="trailing" secondItem="enQ-gZ-Zvz" secondAttribute="trailing" constant="10" id="zmK-Ch-kef"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOc-IS-yJd">
-                                                <rect key="frame" x="5" y="383.66666666666674" width="365" height="317.33333333333326"/>
+                                                <rect key="frame" x="5" y="383.33333333333326" width="365" height="317.66666666666674"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jei-5J-hAV">
-                                                        <rect key="frame" x="15" y="137.33333333333331" width="335" height="170"/>
+                                                        <rect key="frame" x="15" y="137.66666666666669" width="335" height="170"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Jo-eM-J0B">
                                                                 <rect key="frame" x="10" y="30" width="110" height="110"/>
@@ -3782,7 +3792,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-WL-k9o">
-                                                                                    <rect key="frame" x="22" y="3.6666666666666661" width="78" height="12.999999999999998"/>
+                                                                                    <rect key="frame" x="22" y="3.6666666666666661" width="77.666666666666671" height="12.999999999999998"/>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11.5"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
@@ -3821,7 +3831,7 @@
                                                                 </connections>
                                                             </collectionView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-:--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njf-p3-mhl">
-                                                                <rect key="frame" x="31.333333333333336" y="73.333333333333371" width="67.666666666666657" height="23.333333333333329"/>
+                                                                <rect key="frame" x="31.333333333333336" y="73.333333333333371" width="67.333333333333314" height="23.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="21"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
@@ -3839,227 +3849,342 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2E-rO-ZSx">
-                                                        <rect key="frame" x="115" y="115.33333333333331" width="8.3333333333333286" height="11"/>
+                                                        <rect key="frame" x="115" y="115.66666666666669" width="8.6666666666666714" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMe-WH-t0s">
-                                                        <rect key="frame" x="16.666666666666668" y="115.33333333333331" width="10" height="11"/>
+                                                        <rect key="frame" x="16.666666666666668" y="115.66666666666669" width="10" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6t-D2-0R3">
-                                                        <rect key="frame" x="198.66666666666666" y="115.33333333333331" width="9" height="11"/>
+                                                        <rect key="frame" x="199" y="115.66666666666669" width="8.6666666666666572" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svh-1F-yJ9">
-                                                        <rect key="frame" x="241" y="115.33333333333331" width="8.3333333333333428" height="11"/>
+                                                        <rect key="frame" x="241" y="115.66666666666669" width="8.6666666666666572" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRU-SF-tSX">
-                                                        <rect key="frame" x="72.333333333333329" y="115.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="72.333333333333329" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRR-eU-exe">
-                                                        <rect key="frame" x="281.66666666666669" y="115.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="281.66666666666669" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyD-g0-dDi">
-                                                        <rect key="frame" x="13.333333333333343" y="62.333333333333314" width="338.33333333333326" height="51"/>
+                                                        <rect key="frame" x="13.333333333333343" y="62.666666666666686" width="338.33333333333326" height="51"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMG-8U-9Fm">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMG-8U-9Fm" userLabel="16">
                                                                 <rect key="frame" x="156.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="43q-KB-8mL"/>
                                                                     <constraint firstAttribute="width" constant="11" id="Lm0-9U-zJu"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfR-un-xKx">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfR-un-xKx" userLabel="24">
                                                                 <rect key="frame" x="268.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="i2d-2T-Qad"/>
                                                                     <constraint firstAttribute="height" constant="45" id="ipg-rf-uhH"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwV-9Y-wG4">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwV-9Y-wG4" userLabel="02">
                                                                 <rect key="frame" x="296.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="2qQ-Mo-5Gw"/>
                                                                     <constraint firstAttribute="width" constant="11" id="M0H-Il-PZQ"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZW-06-g4I">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ZW-06-g4I" userLabel="08">
                                                                 <rect key="frame" x="45" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="6Mw-IT-WoF"/>
                                                                     <constraint firstAttribute="width" constant="11" id="nOK-v1-pI6"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7F-hS-3do">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7F-hS-3do" userLabel="04">
                                                                 <rect key="frame" x="324.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="JON-zE-bSL"/>
                                                                     <constraint firstAttribute="height" constant="45" id="z8n-Jt-CQo"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTi-b1-S1K">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTi-b1-S1K" userLabel="18">
                                                                 <rect key="frame" x="184.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="2Vw-wA-VUm"/>
                                                                     <constraint firstAttribute="width" constant="11" id="G6d-xY-g4K"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mY-hT-eBB" userLabel="05">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mY-hT-eBB" userLabel="13">
                                                                 <rect key="frame" x="114.33333333333333" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="2Th-b1-WtR"/>
                                                                     <constraint firstAttribute="width" constant="11" id="Eop-Qo-fNH"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Foc-U7-nW5">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Foc-U7-nW5" userLabel="15">
                                                                 <rect key="frame" x="142.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="5ed-s1-oG5"/>
                                                                     <constraint firstAttribute="height" constant="45" id="e6m-8o-MO5"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9W-7h-IHP">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9W-7h-IHP" userLabel="22">
                                                                 <rect key="frame" x="240.33333333333334" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="4nh-db-URA"/>
                                                                     <constraint firstAttribute="width" constant="11" id="GhV-3b-Uex"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64I-dE-Jzz" userLabel="05">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64I-dE-Jzz" userLabel="01">
                                                                 <rect key="frame" x="282.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="8mt-le-Xuj"/>
                                                                     <constraint firstAttribute="width" constant="11" id="n6a-gh-LcO"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWZ-j9-5Lg">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWZ-j9-5Lg" userLabel="11">
                                                                 <rect key="frame" x="87" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="1Vl-S4-3AW"/>
                                                                     <constraint firstAttribute="width" constant="11" id="tjt-PB-O3g"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj1-NO-rY3" userLabel="05">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj1-NO-rY3" userLabel="21">
                                                                 <rect key="frame" x="226.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="gqa-EU-0Xg"/>
                                                                     <constraint firstAttribute="height" constant="45" id="nbI-iU-SnU"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auh-2w-x2N">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auh-2w-x2N" userLabel="10">
                                                                 <rect key="frame" x="73" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="evf-qF-fMc"/>
                                                                     <constraint firstAttribute="width" constant="11" id="o3f-I9-dGZ"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGt-h8-51t">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iGt-h8-51t" userLabel="06">
                                                                 <rect key="frame" x="17.000000000000004" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="S6V-wW-2cN"/>
                                                                     <constraint firstAttribute="width" constant="11" id="ihn-Qy-eqF"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWB-Zl-FOq">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dWB-Zl-FOq" userLabel="12">
                                                                 <rect key="frame" x="100.33333333333334" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="nbo-Zp-FYL"/>
                                                                     <constraint firstAttribute="height" constant="45" id="ybl-XC-9NV"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DO8-JZ-WPO">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DO8-JZ-WPO" userLabel="19">
                                                                 <rect key="frame" x="198.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="ZyL-Xq-vko"/>
                                                                     <constraint firstAttribute="width" constant="11" id="epG-0g-3lq"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tip-Lg-tm7" userLabel="05">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tip-Lg-tm7" userLabel="09">
                                                                 <rect key="frame" x="59" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="7Pj-yf-RS8"/>
                                                                     <constraint firstAttribute="height" constant="45" id="rcj-eb-b4B"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOR-Yo-KJP" userLabel="05">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOR-Yo-KJP" userLabel="17">
                                                                 <rect key="frame" x="170.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="TqV-sk-RrZ"/>
                                                                     <constraint firstAttribute="width" constant="11" id="oS0-FN-xGr"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPs-GE-T4L">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPs-GE-T4L" userLabel="23">
                                                                 <rect key="frame" x="254.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="IG4-ef-Uri"/>
                                                                     <constraint firstAttribute="height" constant="45" id="duY-8W-6UF"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWQ-7W-YHi">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWQ-7W-YHi" userLabel="14">
                                                                 <rect key="frame" x="128.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="JJf-hy-269"/>
                                                                     <constraint firstAttribute="height" constant="45" id="rl1-BY-ull"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWU-R2-Sji">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWU-R2-Sji" userLabel="20">
                                                                 <rect key="frame" x="212.33333333333331" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="JIC-mC-sdC"/>
                                                                     <constraint firstAttribute="width" constant="11" id="eSL-xc-xW5"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwI-nd-jcR">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwI-nd-jcR" userLabel="07">
                                                                 <rect key="frame" x="31" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="11" id="OcD-ag-ysl"/>
                                                                     <constraint firstAttribute="height" constant="45" id="UHb-dW-4BL"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-3K-EKK">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8C-3K-EKK" userLabel="03">
                                                                 <rect key="frame" x="310.33333333333337" y="3" width="11" height="45"/>
                                                                 <color key="backgroundColor" name="Empty"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="45" id="1oE-HP-tkC"/>
                                                                     <constraint firstAttribute="width" constant="11" id="O8u-2j-91r"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQL-D9-LzE" userLabel="05">
                                                                 <rect key="frame" x="3" y="3" width="11" height="45"/>
@@ -4068,6 +4193,11 @@
                                                                     <constraint firstAttribute="width" constant="11" id="OB4-iB-hsl"/>
                                                                     <constraint firstAttribute="height" constant="45" id="rzv-5S-144"/>
                                                                 </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="3"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
                                                         <constraints>
@@ -4124,19 +4254,19 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-/-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="914-vj-jce">
-                                                        <rect key="frame" x="172.66666666666666" y="37.333333333333314" width="20" height="16"/>
+                                                        <rect key="frame" x="172.66666666666666" y="37.666666666666686" width="20" height="16"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifR-hu-blL">
-                                                        <rect key="frame" x="157" y="115.33333333333331" width="8.3333333333333428" height="11"/>
+                                                        <rect key="frame" x="157" y="115.66666666666669" width="8.3333333333333428" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kC-ug-aQ8">
-                                                        <rect key="frame" x="153" y="9.9999999999999982" width="59.333333333333343" height="27.333333333333329"/>
+                                                        <rect key="frame" x="153" y="10.000000000000002" width="59.333333333333343" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -4152,7 +4282,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzm-ej-tcs">
-                                                        <rect key="frame" x="337.66666666666669" y="115.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="337.66666666666669" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -4188,6 +4318,11 @@
                                                     <constraint firstItem="vzm-ej-tcs" firstAttribute="centerX" secondItem="k7F-hS-3do" secondAttribute="centerX" id="w55-jC-M6v"/>
                                                     <constraint firstItem="m6t-D2-0R3" firstAttribute="centerX" secondItem="bTi-b1-S1K" secondAttribute="centerX" id="yeV-hm-qgl"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="25"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4227,40 +4362,40 @@
                     <tabBarItem key="tabBarItem" title="Log" image="chart.bar" catalog="system" id="s0w-wt-m7D"/>
                     <navigationItem key="navigationItem" id="49Q-et-JiP"/>
                     <connections>
-                        <outlet property="collectionView" destination="cm4-1H-cHa" id="3zS-bF-fSc"/>
-                        <outlet property="collectionViewHeight" destination="jFL-ID-7Kt" id="fgJ-qT-Iey"/>
-                        <outlet property="monthTime" destination="hJF-0j-00I" id="rEw-0R-bI5"/>
-                        <outlet property="progress" destination="1Jo-eM-J0B" id="6s2-t9-mp9"/>
-                        <outlet property="sumTime" destination="njf-p3-mhl" id="am0-Dm-GZX"/>
-                        <outlet property="time_01" destination="64I-dE-Jzz" id="Gsk-Xg-NF5"/>
-                        <outlet property="time_02" destination="VwV-9Y-wG4" id="aXg-hI-uJB"/>
-                        <outlet property="time_03" destination="f8C-3K-EKK" id="kvF-ZG-liC"/>
-                        <outlet property="time_04" destination="k7F-hS-3do" id="9WB-CV-4zp"/>
-                        <outlet property="time_05" destination="KQL-D9-LzE" id="PXE-yJ-BnH"/>
-                        <outlet property="time_06" destination="iGt-h8-51t" id="qT0-VP-Ygm"/>
-                        <outlet property="time_07" destination="VwI-nd-jcR" id="wdq-52-De6"/>
-                        <outlet property="time_08" destination="1ZW-06-g4I" id="if4-C2-gJV"/>
-                        <outlet property="time_09" destination="Tip-Lg-tm7" id="PmU-jP-Nh9"/>
-                        <outlet property="time_10" destination="auh-2w-x2N" id="5mZ-cv-mqx"/>
-                        <outlet property="time_11" destination="CWZ-j9-5Lg" id="Xjc-yo-YSJ"/>
-                        <outlet property="time_12" destination="dWB-Zl-FOq" id="0Bj-zr-Vhp"/>
-                        <outlet property="time_13" destination="4mY-hT-eBB" id="02e-mO-gZj"/>
-                        <outlet property="time_14" destination="CWQ-7W-YHi" id="FpA-im-Nya"/>
-                        <outlet property="time_15" destination="Foc-U7-nW5" id="B3b-Yw-RR6"/>
-                        <outlet property="time_16" destination="PMG-8U-9Fm" id="xuf-6g-pfZ"/>
-                        <outlet property="time_17" destination="GOR-Yo-KJP" id="D3x-zw-IGx"/>
-                        <outlet property="time_18" destination="bTi-b1-S1K" id="y2P-nB-K73"/>
-                        <outlet property="time_19" destination="DO8-JZ-WPO" id="Vle-1a-kvW"/>
-                        <outlet property="time_20" destination="nWU-R2-Sji" id="Tiy-8e-23F"/>
-                        <outlet property="time_21" destination="mj1-NO-rY3" id="AI9-Ni-TU9"/>
-                        <outlet property="time_22" destination="F9W-7h-IHP" id="BYW-DR-qtL"/>
-                        <outlet property="time_23" destination="BPs-GE-T4L" id="GRc-OE-trm"/>
-                        <outlet property="time_24" destination="MfR-un-xKx" id="T9Y-03-Ey7"/>
-                        <outlet property="today" destination="914-vj-jce" id="vGP-NF-IaU"/>
-                        <outlet property="viewOfView" destination="enQ-gZ-Zvz" id="Ale-1V-4Vs"/>
-                        <outlet property="view_7days" destination="jA8-Bf-qfa" id="y3K-BU-BnC"/>
-                        <outlet property="view_month" destination="dCP-UU-Ojl" id="NSt-1d-Wug"/>
-                        <outlet property="view_today" destination="xOc-IS-yJd" id="1dd-JG-UeQ"/>
+                        <outlet property="graphViewOfWeeks" destination="enQ-gZ-Zvz" id="phh-Xw-Fge"/>
+                        <outlet property="monthFrameView" destination="dCP-UU-Ojl" id="NSt-1d-Wug"/>
+                        <outlet property="monthTimeLabel" destination="hJF-0j-00I" id="rEw-0R-bI5"/>
+                        <outlet property="subjects" destination="cm4-1H-cHa" id="3zS-bF-fSc"/>
+                        <outlet property="subjectsHeight" destination="jFL-ID-7Kt" id="fgJ-qT-Iey"/>
+                        <outlet property="todayDateLabel" destination="914-vj-jce" id="qrc-k2-YwG"/>
+                        <outlet property="todayFrameView" destination="xOc-IS-yJd" id="1dd-JG-UeQ"/>
+                        <outlet property="todayProgressView" destination="1Jo-eM-J0B" id="6s2-t9-mp9"/>
+                        <outlet property="todaySumtimeLabel" destination="njf-p3-mhl" id="am0-Dm-GZX"/>
+                        <outlet property="weeksFrameView" destination="jA8-Bf-qfa" id="y3K-BU-BnC"/>
+                        <outletCollection property="timeSticks" destination="MfR-un-xKx" collectionClass="NSMutableArray" id="Fwh-XH-BHq"/>
+                        <outletCollection property="timeSticks" destination="64I-dE-Jzz" collectionClass="NSMutableArray" id="IvJ-fx-gFB"/>
+                        <outletCollection property="timeSticks" destination="VwV-9Y-wG4" collectionClass="NSMutableArray" id="SVP-lb-dPv"/>
+                        <outletCollection property="timeSticks" destination="f8C-3K-EKK" collectionClass="NSMutableArray" id="VVc-8e-ZLk"/>
+                        <outletCollection property="timeSticks" destination="k7F-hS-3do" collectionClass="NSMutableArray" id="Iow-rP-9Np"/>
+                        <outletCollection property="timeSticks" destination="KQL-D9-LzE" collectionClass="NSMutableArray" id="Gyw-zf-ST7"/>
+                        <outletCollection property="timeSticks" destination="iGt-h8-51t" collectionClass="NSMutableArray" id="4ng-yD-5RE"/>
+                        <outletCollection property="timeSticks" destination="VwI-nd-jcR" collectionClass="NSMutableArray" id="Rua-VH-xBC"/>
+                        <outletCollection property="timeSticks" destination="1ZW-06-g4I" collectionClass="NSMutableArray" id="Jfr-QF-XiO"/>
+                        <outletCollection property="timeSticks" destination="Tip-Lg-tm7" collectionClass="NSMutableArray" id="Oe9-6X-OiG"/>
+                        <outletCollection property="timeSticks" destination="auh-2w-x2N" collectionClass="NSMutableArray" id="Blw-8g-ShQ"/>
+                        <outletCollection property="timeSticks" destination="CWZ-j9-5Lg" collectionClass="NSMutableArray" id="LbP-VR-FPL"/>
+                        <outletCollection property="timeSticks" destination="dWB-Zl-FOq" collectionClass="NSMutableArray" id="m6v-WR-bRl"/>
+                        <outletCollection property="timeSticks" destination="4mY-hT-eBB" collectionClass="NSMutableArray" id="Y0P-cS-q5e"/>
+                        <outletCollection property="timeSticks" destination="CWQ-7W-YHi" collectionClass="NSMutableArray" id="mOP-h6-9Z9"/>
+                        <outletCollection property="timeSticks" destination="Foc-U7-nW5" collectionClass="NSMutableArray" id="q2z-el-KCz"/>
+                        <outletCollection property="timeSticks" destination="PMG-8U-9Fm" collectionClass="NSMutableArray" id="1nB-hN-vga"/>
+                        <outletCollection property="timeSticks" destination="GOR-Yo-KJP" collectionClass="NSMutableArray" id="YXj-C9-umA"/>
+                        <outletCollection property="timeSticks" destination="bTi-b1-S1K" collectionClass="NSMutableArray" id="pPz-x5-Dj6"/>
+                        <outletCollection property="timeSticks" destination="DO8-JZ-WPO" collectionClass="NSMutableArray" id="rZD-Zc-9Xq"/>
+                        <outletCollection property="timeSticks" destination="nWU-R2-Sji" collectionClass="NSMutableArray" id="Q5O-y7-uEV"/>
+                        <outletCollection property="timeSticks" destination="mj1-NO-rY3" collectionClass="NSMutableArray" id="4OX-yo-ce6"/>
+                        <outletCollection property="timeSticks" destination="F9W-7h-IHP" collectionClass="NSMutableArray" id="Wcr-fi-v93"/>
+                        <outletCollection property="timeSticks" destination="BPs-GE-T4L" collectionClass="NSMutableArray" id="R6A-N6-fB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIp-Wy-vXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
