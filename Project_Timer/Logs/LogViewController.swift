@@ -1,5 +1,5 @@
 //
-//  GraphViewController.swift
+//  LogViewController.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/02/23.
@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 class LogViewController: UIViewController {
     @IBOutlet weak var monthFrameView: UIView!
@@ -24,25 +25,29 @@ class LogViewController: UIViewController {
     @IBOutlet weak var subjects: UICollectionView!
     @IBOutlet weak var subjectsHeight: NSLayoutConstraint!
     
-    var arrayTaskName: [String] = []
-    var arrayTaskTime: [String] = []
-    var colors: [UIColor] = []
-    var fixed_sum: Int = 0
-    let f = Float(0.003)
-    var daily = Daily()
-    var counts: Int = 0
+    private var viewModel: LogVM?
+    private var cancellables: Set<AnyCancellable> = []
+    private var colors: [UIColor] = []
+    private var progressWidth: CGFloat = 0
+    private var progressHeight: CGFloat = 0
+    
+    var daily = Daily() //VM
     var logViewControllerDelegate : ChangeViewController2!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
+        self.configureWidthHeight()
+        self.configureViewModel()
+        self.bindAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.configureWeeksGraph()
-        self.configureTodaysData()
+        self.navigationController?.isNavigationBarHidden = true
         self.showMonthTime()
+        self.configureWeeksGraph()
+        self.viewModel?.loadDaily()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -51,7 +56,7 @@ class LogViewController: UIViewController {
     }
     
     @IBAction func todayButtonAction(_ sender: Any) {
-        goToViewController(where: "TodayViewController")
+        self.showStatistics()
     }
 }
 
@@ -65,66 +70,107 @@ extension LogViewController {
             view.layer.shadowRadius = 5
         }
     }
+    
+    private func configureWidthHeight() {
+        self.progressWidth = self.todayProgressView.bounds.width
+        self.progressHeight = self.todayProgressView.bounds.height
+    }
+    
+    private func configureViewModel() {
+        self.viewModel = LogVM()
+    }
 }
+
+// MARK: ShowGraph
 extension LogViewController {
-    private func configureWeeksGraph(_ isDumy: Bool = false) {
+    private func configureWeeksGraph(_ isDummy: Bool = false) {
         let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = self.graphViewOfWeeks.bounds
         
-        ContentView().appendDailyDatas(isDumy: isDumy)
+        ContentView().appendDailyDatas(isDummy: isDummy)
         self.addChild(hostingController)
         self.graphViewOfWeeks.addSubview(hostingController.view)
     }
     
-    private func configureTodaysData(_ isDumy: Bool = false) {
-        self.daily.load()
-        if isDumy { self.daily = Dumy().getDumyDaily() }
-        
-        if self.daily.tasks != [:] {
-            self.configureTodayDateLabel()
-            self.configureTimesticksGraph()
-            
-            let temp: [String: Int] = self.daily.tasks
-            counts = temp.count
-            appendColors()
-            
-            let tasks = temp.sorted(by: { $0.1 < $1.1 } )
-            
-            var array: [Int] = []
-            for (key, value) in tasks {
-                arrayTaskName.append(key)
-                arrayTaskTime.append(printTime(temp: value))
-                array.append(value)
+    private func showMonthTime() {
+        let manager = DailyViewModel()
+        manager.loadDailys()
+
+        DispatchQueue.global().async {
+            manager.totalStudyTimeOfMonth { totalTime in
+                DispatchQueue.main.async {
+                    self.monthTimeLabel.text = ViewManager.printTime(totalTime)
+                }
             }
-            
-            let width = todayProgressView.bounds.width
-            let height = todayProgressView.bounds.height
-            makeProgress(array, width, height)
-            var p1 = ""
-            var p2 = ""
-            for i in (0..<tasks.count).reversed() {
-                p1 += "\(arrayTaskName[i])\n"
-                p2 += "\(arrayTaskTime[i])\n"
-            }
-            
-            print("max : \(daily.maxTime)")
-            
-            setHeight()
-        } else {
-            print("no data")
         }
     }
     
-    private func configureTodayDateLabel() {
-        self.todayDateLabel.text = self.daily.day.MDstyleString
+    private func showStatistics() {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: StatisticsViewController.identifier) else { return }
+        viewController.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+        viewController.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+        self.present(viewController, animated: true, completion: nil)
+    }
+}
+
+// MARK: Binding
+extension LogViewController {
+    private func bindAll() {
+        self.bindDaily()
+        self.bindSubjectTimes()
+        self.bindSubjectNameTimes()
     }
     
-    private func configureTimesticksGraph() {
-        let timeline = daily.timeline
-        print("timeLine : \(timeline)")
+    private func bindDaily() {
+        self.viewModel?.$daily
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] daily in
+                guard daily.tasks != [:] else {
+                    print("no data error")
+                    return
+                }
+                self?.configureTodayDateLabel(daily: daily)
+                self?.configureTimesticksGraph(daily: daily)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSubjectTimes() {
+        self.viewModel?.$subjectTimes
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] subjectTimes in
+                let sumTime = subjectTimes.reduce(0, +)
+                self?.configureTodaysTime(sumTime)
+                self?.makeProgress(subjectTimes, sumTime)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSubjectNameTimes() {
+        self.viewModel?.$subjectNameTimes
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] subjects in
+                let count = subjects.count
+                self?.configureColors(count: count)
+                self?.setHeight(count: count)
+                self?.subjects.reloadData()
+            })
+            .store(in: &self.cancellables)
+    }
+}
+
+extension LogViewController {
+    private func configureTodayDateLabel(daily: Daily) {
+        self.todayDateLabel.text = daily.day.MDstyleString
+    }
+    
+    private func configureTimesticksGraph(daily: Daily) {
         for i in 0..<24 {
-            self.fillColor(time: timeline[i], view: self.timeSticks[i] as UIView)
+            self.fillColor(time: daily.timeline[i], view: self.timeSticks[i] as UIView)
         }
     }
     
@@ -145,169 +191,85 @@ extension LogViewController {
             view.alpha = 1.0
         }
     }
-}
-
-extension LogViewController {
-    private func appendColors() {
-        var i = counts % 12 == 0 ? 12 : counts % 12
-        for _ in 1...counts {
+    
+    private func configureColors(count: Int) {
+        self.colors = []
+        var i = count % 12 == 0 ? 12 : count % 12
+        
+        for _ in 1...count {
+            print(i)
             self.colors.append(UIColor(named: "CCC\(i)")!)
             i = i-1 == 0 ? 12 : i-1
         }
     }
     
-    
-    
-    func printTime(temp : Int) -> String
-    {
-        let S = temp%60
-        let H = temp/3600
-        let M = temp/60 - H*60
-        
-        let stringS = S<10 ? "0"+String(S) : String(S)
-        let stringM = M<10 ? "0"+String(M) : String(M)
-        
-        let returnString  = String(H) + ":" + stringM + ":" + stringS
-        return returnString
+    private func setHeight(count: Int) {
+        self.subjectsHeight.constant = CGFloat(20*min(8, count))
     }
     
-    func makeProgress(_ datas: [Int], _ width: CGFloat, _ height: CGFloat) {
+    private func configureTodaysTime(_ time: Int) {
+        self.todaySumtimeLabel.text = time.toTimeString
+    }
+}
+
+extension LogViewController {
+    private func makeProgress(_ subjectTimes: [Int], _ sumTime: Int) {
+        self.configureEmptyView()
+        var sumWithSeperator: Float = Float(sumTime)
+        
+        //그래프 간 구별선 추가
+        sumWithSeperator += Float(0.003)*Float(subjectTimes.count)
+        var progressPosition: Float = 1
+        
+        progressPosition -= self.addBlock(value: progressPosition)
+        for i in 0..<subjectTimes.count {
+            let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
+            prog.trackColor = UIColor.clear
+            prog.progressColor = self.colors[i % self.colors.count]
+            prog.setProgressWithAnimation(duration: 1, value: progressPosition, from: 0)
+            self.todayProgressView.addSubview(prog)
+            
+            progressPosition -= Float(subjectTimes[i])/Float(sumWithSeperator)
+            if i != subjectTimes.count-1 {
+                progressPosition -= self.addBlock(value: progressPosition)
+            }
+        }
+    }
+    
+    private func configureEmptyView() {
         for view in self.todayProgressView.subviews {
             view.removeFromSuperview()
         }
-        
-        fixed_sum = 0
-        for i in 0..<counts {
-            fixed_sum += datas[i]
-        }
-        var sum = Float(fixed_sum)
-        todaySumtimeLabel.text = printTime(temp: fixed_sum)
-//        breakLabel.text = printTime(temp: breakTime)
-        
-        //그래프 간 구별선 추가
-        sum += f*Float(counts)
-        
-        var value: Float = 1
-        value = addBlock(value: value, width: width, height: height)
-        for i in 0..<counts {
-            let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-            prog.trackColor = UIColor.clear
-            prog.progressColor = colors[i%colors.count]
-            print(value)
-            prog.setProgressWithAnimation(duration: 1, value: value, from: 0)
-            
-            let per = Float(datas[i])/Float(sum) //그래프 퍼센트
-            value -= per
-            
-            todayProgressView.addSubview(prog)
-            
-            value = addBlock(value: value, width: width, height: height)
-        }
-        
     }
     
-    func addBlock(value: Float, width: CGFloat, height: CGFloat) -> Float {
-        var value = value
-        let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+    private func addBlock(value: Float) -> Float {
+        let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
         block.trackColor = UIColor.clear
         block.progressColor = UIColor.black
         block.setProgressWithAnimation(duration: 1, value: value, from: 0)
+        self.todayProgressView.addSubview(block)
         
-        value -= f
-        todayProgressView.addSubview(block)
-        return value
-    }
-    
-    
-    
-    
-    
-    func goToViewController(where: String) {
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
-        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
-        self.present(vcName!, animated: true, completion: nil)
-    }
-    
-    
-    
-    func setHeight() {
-        if(counts < 8) {
-            subjectsHeight.constant = CGFloat(20*counts)
-        }
+        return Float(0.003)
     }
 }
 
 extension LogViewController: UICollectionViewDataSource {
     //몇개 표시 할까?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return counts
+        return self.viewModel?.subjectNameTimes.count ?? 0
     }
     //셀 어떻게 표시 할까?
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListCell", for: indexPath) as? ListCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubjectCell.identifier, for: indexPath) as? SubjectCell else {
             return UICollectionViewCell()
         }
-        let color = colors[counts - indexPath.item - 1]
-        cell.colorView.backgroundColor = color
-        cell.colorView.layer.cornerRadius = 2
-        cell.taskName.text = arrayTaskName[counts - indexPath.item - 1]
-        cell.taskTime.text = arrayTaskTime[counts - indexPath.item - 1]
-        cell.taskTime.textColor = color
+        guard let count = self.viewModel?.subjectNameTimes.count else { return cell }
+        guard let nameAndTime = self.viewModel?.subjectNameTimes[count - indexPath.item - 1] else { return cell }
+        guard self.colors.isEmpty == false else { return cell }
+        
+        let color = self.colors[count - indexPath.item - 1]
+        cell.configure(color: color, nameAndTime: nameAndTime)
         
         return cell
-    }
-}
-
-
-class ListCell: UICollectionViewCell {
-    @IBOutlet var colorView: UIView!
-    @IBOutlet var taskName: UILabel!
-    @IBOutlet var taskTime: UILabel!
-}
-
-struct GetDaily: Codable {
-    var day: String = ""
-    var fixedTotalTime: Int = 0
-    var fixedSumTime: Int = 0
-    var fixedTimerTime: Int = 0
-    var currentTotalTime: Int = 0
-    var currentSumTime: Int = 0
-    var currentTimerTime: Int = 0
-    var breakTime: Int = 0
-    var maxTime: Int = 0
-    
-    var startTime: Double = 0
-    var currentTask: String = ""
-//    var tasks: [String:Int] = [:]
-    var taskKeys: [String] = []
-    var taskValues: [Int] = []
-    
-    var beforeTime: Int = 0
-    var timeline = Array(repeating: 0, count: 24)
-}
-
-
-
-
-extension LogViewController {
-    
-    
-    
-}
-
-
-extension LogViewController {
-    func showMonthTime() {
-        let manager = DailyViewModel()
-        manager.loadDailys()
-
-        DispatchQueue.global().async {
-            manager.totalStudyTimeOfMonth { totalTime in
-                DispatchQueue.main.async {
-                    self.monthTimeLabel.text = ViewManager.printTime(totalTime)
-                }
-            }
-        }
     }
 }

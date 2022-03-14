@@ -9,7 +9,8 @@
 import UIKit
 import SwiftUI
 
-class TodayViewController: UIViewController {
+class StatisticsViewController: UIViewController {
+    static let identifier = "StatisticsViewController"
     //frame1
     @IBOutlet var frame1: UIView!
     @IBOutlet var view1: UIView!
@@ -163,7 +164,7 @@ class TodayViewController: UIViewController {
 
 
 
-extension TodayViewController {
+extension StatisticsViewController {
     
     func setRadius() {
         view1.layer.cornerRadius = 25
@@ -307,7 +308,7 @@ extension TodayViewController {
     }
 }
 
-extension TodayViewController: selectCalendar {
+extension StatisticsViewController: selectCalendar {
     func getDailyIndex() {
         dateIndex = UserDefaults.standard.value(forKey: "dateIndex") as? Int ?? nil
         selectDay.text = dateFormatter.string(from: dailyViewModel.dates[dateIndex!])
@@ -315,7 +316,7 @@ extension TodayViewController: selectCalendar {
     }
 }
 
-extension TodayViewController: UICollectionViewDataSource {
+extension StatisticsViewController: UICollectionViewDataSource {
     //몇개 표시 할까?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return todayViewManager.counts

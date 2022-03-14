@@ -37,6 +37,9 @@
 		87A4704826493D4D007B89D6 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* Time.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC627DEF0C200F46D0F /* Date+Extension.swift */; };
+		87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC827DF026800F46D0F /* Int+Extension.swift */; };
+		87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCA27DF112A00F46D0F /* LogVM.swift */; };
+		87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCC27DF182400F46D0F /* SubjectCell.swift */; };
 		87A7624726493BB500174401 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogViewController.swift */; };
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
 		87AB10122670601800F29961 /* TodolistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AB10112670601800F29961 /* TodolistViewModel.swift */; };
@@ -45,7 +48,7 @@
 		87C5150A267B38C0003DA21D /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* ViewManager.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87CCB97B267AE893007D09E5 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCB97A267AE893007D09E5 /* TodayViewModel.swift */; };
-		87DAF2EC2669F9F300FAB4CF /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */; };
+		87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */; };
 		87DE1173268AC75F0012F043 /* TodoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1172268AC75F0012F043 /* TodoManager.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
@@ -88,6 +91,9 @@
 		87A4704726493D4D007B89D6 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A48BC627DEF0C200F46D0F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		87A48BC827DF026800F46D0F /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		87A48BCA27DF112A00F46D0F /* LogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVM.swift; sourceTree = "<group>"; };
+		87A48BCC27DF182400F46D0F /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
 		87A7624626493BB500174401 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		87AB10112670601800F29961 /* TodolistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewModel.swift; sourceTree = "<group>"; };
@@ -99,7 +105,7 @@
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		87CA3B572618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CCB97A267AE893007D09E5 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
-		87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		87DE1172268AC75F0012F043 /* TodoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoManager.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
@@ -221,7 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				87A7624626493BB500174401 /* LogViewController.swift */,
-				87DAF2EB2669F9F300FAB4CF /* TodayViewController.swift */,
+				87A48BCA27DF112A00F46D0F /* LogVM.swift */,
+				87A48BCC27DF182400F46D0F /* SubjectCell.swift */,
+				87A48BCE27DF189D00F46D0F /* Statistics */,
 				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
 			);
 			path = Logs;
@@ -270,8 +278,17 @@
 				8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 				87A48BC627DEF0C200F46D0F /* Date+Extension.swift */,
+				87A48BC827DF026800F46D0F /* Int+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		87A48BCE27DF189D00F46D0F /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		87AB101026705FFA00F29961 /* viewModel */ = {
@@ -422,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
@@ -429,15 +447,17 @@
 				877E448C267DF8DD00BF104A /* Dumy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				93B08525248DDF2F00E215BD /* ViewController.swift in Sources */,
+				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				872DE54025DCE7F400097560 /* ViewController2.swift in Sources */,
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
+				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
 				87A4704826493D4D007B89D6 /* Time.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				870AE72125E529F2004DD27E /* GraphViewController.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
-				87DAF2EC2669F9F300FAB4CF /* TodayViewController.swift in Sources */,
+				87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
