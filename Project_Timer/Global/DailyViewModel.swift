@@ -33,18 +33,25 @@ class DailyViewModel {
     }
     
     func totalStudyTimeofMonth(month: Int, completion: @escaping (Int) -> ()) {
-        let monthData = dailys.filter { ViewManager.getMonth($0.day) == month }
-        monthData.forEach { print("\($0.day): \(ViewManager.printTime($0.currentSumTime))")}
-        completion(dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
+        let monthData = dailys.filter { self.getMonth($0.day) == month }
+        monthData.forEach { print("\($0.day): \($0.currentSumTime.toTimeString)")}
+        completion(dailys.filter { self.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
     }
     
     func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
-        let month = ViewManager.getMonth(Date())
-        completion(dailys.filter { ViewManager.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
+        let month = self.getMonth(Date())
+        completion(dailys.filter { self.getMonth($0.day) == month }.reduce(0, { $0 + dailyTotalTime($1.tasks) }))
     }
     
     func dailyTotalTime(_ tasks: [String:Int]) -> Int {
         return tasks.values.reduce(0, +)
+    }
+    
+    private func getMonth(_ date: Date) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let month = dateFormatter.string(from: date)
+        return Int(month) ?? 0
     }
     
 }

@@ -100,7 +100,7 @@ extension LogViewController {
         DispatchQueue.global().async {
             manager.totalStudyTimeOfMonth { totalTime in
                 DispatchQueue.main.async {
-                    self.monthTimeLabel.text = ViewManager.printTime(totalTime)
+                    self.monthTimeLabel.text = totalTime.toTimeString
                 }
             }
         }

@@ -8,21 +8,8 @@
 
 import UIKit
 
-struct ViewManager {
-    
-    static func printTime(_ temp : Int) -> String {
-        let S = temp%60
-        let H = temp/3600
-        let M = temp/60 - H*60
-        
-        let stringS = S<10 ? "0"+String(S) : String(S)
-        let stringM = M<10 ? "0"+String(M) : String(M)
-        
-        let returnString  = String(H) + ":" + stringM + ":" + stringS
-        return returnString
-    }
-    
-    func translate(input: String) -> String {
+struct Converter {
+    static func translate(input: String) -> String {
         if(input == "NO DATA") {
             return "-/-"
         } else {
@@ -36,7 +23,7 @@ struct ViewManager {
         }
     }
     
-    func translate2(input: String) -> Int {
+    static func translate2(input: String) -> Int {
         if(input == "NO DATA") {
             return 0
         } else {
@@ -51,21 +38,5 @@ struct ViewManager {
             sum += Calendar.current.component(.second, from: exported)
             return sum
         }
-    }
-    
-    func changeDate(_ day: Date) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        let beforeDay = dateFormatter.string(from: day)
-        
-        let afterDay: Date = dateFormatter.date(from: beforeDay)!
-        return afterDay
-    }
-    
-    static func getMonth(_ date: Date) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM"
-        let month = dateFormatter.string(from: date)
-        return Int(month) ?? 0
     }
 }
