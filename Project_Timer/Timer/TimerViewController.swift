@@ -29,12 +29,14 @@ class TimerViewController: UIViewController {
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var setTimerBT: UIButton!
     @IBOutlet var settingBT: UIButton!
+    @IBOutlet weak var todayLabel: UILabel!
     
     let BLUE = UIColor(named: "Blue")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
+    let startButtonColor = UIColor(named: "startButtonColor")
     
     var audioPlayer : AVPlayer!
     var timeTrigger = true
@@ -86,6 +88,7 @@ class TimerViewController: UIViewController {
         self.checkIsFirst()
         self.setProgress()
         self.dailyViewModel.loadDailys()
+        self.configureToday()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -194,6 +197,7 @@ extension TimerViewController : ChangeViewController {
         //종료 예상시간 보이기
         finishTimeLabel.text = getFutureTime()
         daily.reset(goalTime, timerTime) //하루 그래프 초기화
+        self.configureToday()
     }
     
     func changeTimer() {
@@ -224,11 +228,15 @@ extension TimerViewController: ChangeViewController2 {
 }
 
 extension TimerViewController {
+    private func configureToday() {
+        self.todayLabel.text = self.daily.day.YYYYMMDDstyleString
+    }
     
     func setLandscape() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 0
+                self.todayLabel.alpha = 0
             }
         }
         isLandcape = true
@@ -238,6 +246,7 @@ extension TimerViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
             }
         }
         isLandcape = false
@@ -563,7 +572,7 @@ extension TimerViewController {
         self.view.backgroundColor = BLUE
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = RED!
+        startStopBT.backgroundColor = startButtonColor!
         TIMEofTimer.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
@@ -571,7 +580,7 @@ extension TimerViewController {
             self.settingBT.alpha = 1
             self.taskButton.layer.borderColor = UIColor.white.cgColor
             self.startStopBTLabel.textColor = UIColor.white
-            self.startStopBT.layer.borderColor = self.RED?.cgColor
+            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.tabBarController?.tabBar.isHidden = false
         })
@@ -579,6 +588,7 @@ extension TimerViewController {
         if(!isLandcape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
             })
         }
     }
@@ -598,6 +608,7 @@ extension TimerViewController {
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
             self.tabBarController?.tabBar.isHidden = true
+            self.todayLabel.alpha = 0
         })
     }
     

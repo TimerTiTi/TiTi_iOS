@@ -28,12 +28,14 @@ class StopwatchViewController: UIViewController {
     @IBOutlet var resetBT: UIButton!
     @IBOutlet var settingBT: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
+    @IBOutlet weak var todayLabel: UILabel!
     
     var COLOR = UIColor(named: "Background2")
     let BUTTON = UIColor(named: "Button")
     let CLICK = UIColor(named: "Click")
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
+    let startButtonColor = UIColor(named: "startButtonColor")
     
     var timeTrigger = true
     var realTime = Timer()
@@ -90,6 +92,7 @@ class StopwatchViewController: UIViewController {
         self.setFirstProgress()
         self.dailyViewModel.loadDailys()
         self.time.startSumTimeTemp = self.sumTime_temp
+        self.configureToday()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -196,6 +199,7 @@ extension StopwatchViewController : ChangeViewController2 {
         stopEnable()
         daily.reset(goalTime, timerTime) //하루 그래프 초기화
         resetSum_temp()
+        self.configureToday()
     }
     
     func changeTask() {
@@ -212,11 +216,15 @@ extension StopwatchViewController : ChangeViewController2 {
 
 
 extension StopwatchViewController {
+    private func configureToday() {
+        self.todayLabel.text = self.daily.day.YYYYMMDDstyleString
+    }
     
     func setLandscape() {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 0
+                self.todayLabel.alpha = 0
             }
         }
         isLandscape = true
@@ -226,6 +234,7 @@ extension StopwatchViewController {
         if(isStop) {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
             }
         }
         isLandscape = false
@@ -505,7 +514,7 @@ extension StopwatchViewController {
         self.view.backgroundColor = COLOR
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = RED!
+        startStopBT.backgroundColor = startButtonColor!
         TIMEofStopwatch.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
@@ -513,7 +522,7 @@ extension StopwatchViewController {
             self.taskButton.layer.borderColor = UIColor.white.cgColor
             self.startStopBTLabel.textColor = UIColor.white
             self.resetBT.alpha = 1
-            self.startStopBT.layer.borderColor = self.RED?.cgColor
+            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelector.alpha = 1
             self.tabBarController?.tabBar.isHidden = false
@@ -522,6 +531,7 @@ extension StopwatchViewController {
         if(!self.isLandscape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
             })
         }
     }
@@ -542,6 +552,7 @@ extension StopwatchViewController {
             self.startStopBTLabel.text = "◼︎"
             self.colorSelector.alpha = 0
             self.tabBarController?.tabBar.isHidden = true
+            self.todayLabel.alpha = 0
         })
     }
     
