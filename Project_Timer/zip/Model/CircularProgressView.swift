@@ -31,6 +31,7 @@ class CircularProgressView: UIView {
     var trackColor = UIColor.white {
         didSet {
             trackLayer.strokeColor = trackColor.cgColor
+            trackLayer.opacity = 0.5
         }
     }
     

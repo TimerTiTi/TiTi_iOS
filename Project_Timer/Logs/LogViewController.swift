@@ -154,6 +154,7 @@ extension LogViewController {
             .receive(on: DispatchQueue.main)
             .dropFirst()
             .sink(receiveValue: { [weak self] subjects in
+                guard subjects.isEmpty == false else { return }
                 let count = subjects.count
                 self?.configureColors(count: count)
                 self?.setHeight(count: count)
