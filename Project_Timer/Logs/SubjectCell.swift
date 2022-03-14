@@ -27,6 +27,7 @@ class SubjectCell: UICollectionViewCell {
     func configure(color: UIColor, nameAndTime: (name: String, time: String)) {
         self.colorView.backgroundColor = color
         self.taskName.textColor = color
+        self.taskTime.textColor = color
         self.taskName.text = nameAndTime.name
         self.taskTime.text = nameAndTime.time
     }
