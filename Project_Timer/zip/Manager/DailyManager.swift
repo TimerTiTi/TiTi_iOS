@@ -17,8 +17,6 @@ class DailyManager {
         dailys = Storage.retrive("dailys.json", from: .documents, as: [Daily].self) ?? []
         dates = UserDefaults.standard.value(forKey: "dates") as? [Date] ?? []
         print("load dailys!")
-        print(dates)
-        print(dailys)
     }
     
     func saveDailys() {
@@ -34,16 +32,12 @@ class DailyManager {
             dates.append(day)
             saveDailys()
             print("save daily!")
-            print(dates)
-            print(dailys)
         } else {
             //동일데이터가 있기에 마지막 데이터만 업데이트
             dailys.removeLast()
             dailys.append(daily)
             saveDailys()
             print("update daily!")
-            print(dates)
-            print(dailys)
         }
     }
 }
