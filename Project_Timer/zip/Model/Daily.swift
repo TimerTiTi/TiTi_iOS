@@ -20,7 +20,7 @@ struct Daily: Codable {
     
     var startTime: Date = Date()
     var currentTask: String = ""
-    var tasks: [String:Int] = [:]
+    var tasks: [String: Int] = [:]
     
     var beforeTime: Int = 0
     var timeline = Array(repeating: 0, count: 24)

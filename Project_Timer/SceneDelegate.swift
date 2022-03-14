@@ -24,9 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             if VCNum == 2 {
                 rootViewController.selectedIndex = 1
             }
-            let navigationController = UINavigationController(rootViewController: rootViewController)
-            navigationController.navigationBar.tintColor = UIColor.label
-            navigationController.isNavigationBarHidden = true
             self.window?.rootViewController = rootViewController
         }
         
@@ -39,13 +36,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabbarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
         tabbarController.tabBar.backgroundColor = .clear
-        let navigationController = UINavigationController(rootViewController: tabbarController)
-        navigationController.navigationBar.tintColor = UIColor.label
-        navigationController.isNavigationBarHidden = true
         
         let snapshot: UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
-        navigationController.view.addSubview(snapshot)
-        self.window?.rootViewController = navigationController
+        tabbarController.view.addSubview(snapshot)
+        self.window?.rootViewController = tabbarController
         
         UIView.animate(withDuration: 0.3) {
             snapshot.layer.opacity = 0

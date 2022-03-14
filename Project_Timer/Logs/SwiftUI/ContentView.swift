@@ -108,7 +108,6 @@ struct daily : Identifiable {
 
 var DailyDatas: [daily] = []
 
-
 extension ContentView {
     
     func getHrs(value : Int) -> String {
@@ -127,10 +126,9 @@ extension ContentView {
         return returnString
     }
     
-    func appendDailyDatas(isDumy: Bool){
-        if(isDumy) {
-            DailyDatas = Dumy().get7Dailys()
-        } else {
+    func appendDailyDatas(isDummy: Bool){
+        if isDummy { DailyDatas = Dumy().get7Dailys() }
+        else {
             for i in (1...7).reversed() {
                 let id = 8-i
                 let day = ViewManager().translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
