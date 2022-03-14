@@ -369,7 +369,7 @@ extension StopwatchViewController {
     func setFirstProgress() {
         outterProgress.progressWidth = 20.0
         outterProgress.trackColor = UIColor.darkGray
-        progressPer = 0
+        progressPer = Float(sumTime_temp%fixedSecond) / Float(fixedSecond)
         beforePer = progressPer
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
