@@ -56,6 +56,9 @@ extension TodolistViewController {
         self.todos.delegate = self
         self.todos.cellLayoutMarginsFollowReadableWidth = false
         self.todos.separatorInset.left = 0
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        self.todos.addGestureRecognizer(longPress)
     }
     
     private func configureRadius() {
@@ -82,6 +85,34 @@ extension TodolistViewController {
         var daily = Daily()
         daily.load()
         self.todayLabel.text = daily.day.MDstyleString
+    }
+    
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: self.todos)
+            guard let indexPath = self.todos.indexPathForRow(at: touchPoint) else { return }
+            let alert = UIAlertController(title: "Modify Todo's content".localized(), message: "", preferredStyle: .alert)
+            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
+                action in
+                let newName: String = alert.textFields?[0].text ?? ""
+                //이건 기록들 중 과목내용 수정 및 저장
+                TodoManager.shared.todos[indexPath.row].rename(text: newName)
+                TodoManager.shared.saveTodo()
+                self.todos.reloadRows(at: [indexPath], with: .automatic)
+            })
+            //텍스트 입력 추가
+            alert.addTextField { (newName) in
+                newName.placeholder = "New Todo's content".localized()
+                newName.textAlignment = .center
+                newName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                //기존 내용 보이기
+                newName.text = TodoManager.shared.todos[indexPath.row].text
+            }
+            alert.addAction(cancle)
+            alert.addAction(ok)
+            present(alert,animated: true,completion: nil)
+        }
     }
     
     @objc private func adjustInputView(noti: Notification) {
