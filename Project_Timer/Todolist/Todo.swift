@@ -18,6 +18,10 @@ struct Todo: Codable, Equatable {
         self.text = text
     }
     
+    mutating func rename(text: String) {
+        self.text = text
+    }
+    
     static func == (lhs: Self, rhs: Self) -> Bool {
         return lhs.id == rhs.id
     }

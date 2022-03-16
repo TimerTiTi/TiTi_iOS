@@ -44,7 +44,7 @@ class taskSelectViewController: UIViewController {
             let touchPoint = sender.location(in: table)
             if let indexPath = table.indexPathForRow(at: touchPoint) {
                 let alert = UIAlertController(title: "Modify subject's name".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
-                let cancle = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
+                let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
                 let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
                     action in
                     let newTask: String = alert.textFields?[0].text ?? ""

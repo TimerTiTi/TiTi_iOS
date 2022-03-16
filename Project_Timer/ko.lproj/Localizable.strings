@@ -82,3 +82,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "How to use TiTi?" = "TiTi 사용방법";
 
 "Modify subject's name" = "과목명 수정";
+
+"Modify Todo's content" = "내용 수정";
+
+"New Todo's content" = "새로운 내용";
