@@ -28,12 +28,16 @@ class TodolistViewController: UIViewController {
         self.configureRadius()
         self.configureShadow(self.innerView)
         self.configureColor()
-        self.configureToday()
         self.todoListViewModel.loadTodos()
         
         // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.configureToday()
     }
     
     @IBAction func addList(_ sender: Any) {
