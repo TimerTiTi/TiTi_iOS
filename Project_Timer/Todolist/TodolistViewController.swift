@@ -21,21 +21,17 @@ class TodolistViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     let todoListViewModel = TodolistViewModel()
-    var startColorIndex: Int = 0
-    var colorIndex: Int = 0
-    var colors: [UIColor] = []
+    private var color: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboard()
+        self.hideKeyboard()
         
-        setRadius()
-        setShadow(innerView)
+        self.configureRadius()
+        self.configureShadow(self.innerView)
+        self.configureColor()
         
-        setColors()
-        setColorIndex()
-        
-        todoListViewModel.loadTodos()
+        self.todoListViewModel.loadTodos()
         
         // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -45,50 +41,32 @@ class TodolistViewController: UIViewController {
     @IBAction func addList(_ sender: Any) {
         guard let text = input.text, text.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(text: text)
-        todoListViewModel.addTodo(todo)
+        self.todoListViewModel.addTodo(todo)
+        self.collectionView.reloadData()
         
-        collectionView.reloadData()
-        input.text = ""
-        self.view.endEditing(true)
-        inputBottom.constant = 0
-        self.view.layoutIfNeeded()
+        self.input.text = ""
     }
-    
 }
 
 
 extension TodolistViewController {
-    
-    func setRadius() {
+    private func configureRadius() {
         innerView.layer.cornerRadius = 25
-//        inputFraim.layer.cornerRadius = 25
         inputFraim.clipsToBounds = true
         inputFraim.layer.cornerRadius = 5
         inputFraim.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    func setShadow(_ view: UIView) {
+    private func configureShadow(_ view: UIView) {
         view.layer.shadowColor = UIColor(named: "shadow")?.cgColor
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5
     }
     
-    func setColors() {
-        var colors: [UIColor] = []
-        for i in 1...12 {
-            colors.append(UIColor(named: "D\(i)")!)
-        }
-        self.colors = colors
-    }
-    
-    func setColorIndex() {
-        startColorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
-    }
-    
-    func getIndex(_ i: Int) -> Int {
-        let index = (startColorIndex-1+i)%12
-        return index
+    private func configureColor() {
+        let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        self.color = UIColor(named: "D\(colorIndex)")
     }
     
     @objc private func adjustInputView(noti: Notification) {
@@ -117,20 +95,15 @@ extension TodolistViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodoCell", for: indexPath) as? TodoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else {
             return UICollectionViewCell() }
         
         var todo = todoListViewModel.todos[indexPath.item]
-//        let index = getIndex(indexPath.row)
-        cell.check.tintColor = UIColor(named: "D\(startColorIndex)")
-        cell.colorView.backgroundColor = UIColor(named: "D\(startColorIndex)")
-        cell.updateUI(todo: todo)
-        self.view.layoutIfNeeded()
+        cell.configure(todo: todo, color: self.color)
         
         cell.doneButtonTapHandler = { isDone in
             todo.isDone = isDone
             self.todoListViewModel.updateTodo(todo)
-            self.collectionView.reloadData()
         }
         
         cell.deleteButtonTapHandler = {
@@ -140,58 +113,4 @@ extension TodolistViewController: UICollectionViewDataSource {
         
         return cell
     }
-}
-
-
-class TodoCell: UICollectionViewCell {
-    @IBOutlet weak var check: UIButton!
-    @IBOutlet weak var text: UILabel!
-    @IBOutlet weak var colorView: UIView!
-    @IBOutlet weak var delete: UIButton!
-    
-    var doneButtonTapHandler: ((Bool) -> Void)?
-    var deleteButtonTapHandler: (() -> Void)?
-    
-    @IBAction func checkTapped(_ sender: Any) {
-        check.isSelected = !check.isSelected
-        let isDone = check.isSelected
-        showColorView(isDone)
-        delete.isHidden = !isDone
-        doneButtonTapHandler?(isDone)
-    }
-    
-    @IBAction func deleteTapped(_ sender: Any) {
-        deleteButtonTapHandler?()
-    }
-    
-    func reset() {
-        delete.isHidden = true
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        reset()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        reset()
-    }
-    
-    func updateUI(todo: Todo) {
-        check.isSelected = todo.isDone
-        text.text = todo.text
-        delete.isHidden = todo.isDone == false
-        showColorView(todo.isDone)
-    }
-    
-    private func showColorView(_ show: Bool) {
-        if show {
-            colorView.alpha = 0.5
-        } else {
-            colorView.alpha = 0
-        }
-    }
-    
-    
 }
