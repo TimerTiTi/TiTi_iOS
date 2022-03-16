@@ -186,7 +186,9 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        tasks.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        let target = tasks.remove(at: sourceIndexPath.row)
+        tasks.insert(target, at: destinationIndexPath.row)
+        print("save: \(tasks)")
         saveTasks()
     }
 }

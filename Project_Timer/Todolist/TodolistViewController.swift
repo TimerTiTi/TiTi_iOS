@@ -9,29 +9,26 @@
 import UIKit
 
 class TodolistViewController: UIViewController {
-
-    @IBOutlet var fraim: UIView!
-    @IBOutlet var innerView: UIView!
-    
-    @IBOutlet var inputFraim: UIView!
-    @IBOutlet var input: UITextField!
-    @IBOutlet var add: UIButton!
-    @IBOutlet var inputBottom: NSLayoutConstraint!
-    
-    @IBOutlet var todos: UITableView!
+    @IBOutlet weak var fraim: UIView!
+    @IBOutlet weak var innerView: UIView!
+    @IBOutlet weak var inputFraim: UIView!
+    @IBOutlet weak var input: UITextField!
+    @IBOutlet weak var add: UIButton!
+    @IBOutlet weak var inputBottom: NSLayoutConstraint!
+    @IBOutlet weak var todos: UITableView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var todayLabel: UILabel!
     
     let todoListViewModel = TodolistViewModel()
     private var color: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboard()
-        
-        self.configureCollectionView()
+        self.configureTableView()
         self.configureRadius()
         self.configureShadow(self.innerView)
         self.configureColor()
-        
+        self.configureToday()
         self.todoListViewModel.loadTodos()
         
         // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
@@ -44,16 +41,21 @@ class TodolistViewController: UIViewController {
         let todo = TodoManager.shared.createTodo(text: text)
         self.todoListViewModel.addTodo(todo)
         self.todos.reloadData()
-        
         self.input.text = ""
+    }
+    
+    @IBAction func editAction(_ sender: Any) {
+        self.todos.setEditing(!self.todos.isEditing, animated: true)
     }
 }
 
 
 extension TodolistViewController {
-    private func configureCollectionView() {
+    private func configureTableView() {
         self.todos.dataSource = self
-//        self.todos.delegate = self
+        self.todos.delegate = self
+        self.todos.cellLayoutMarginsFollowReadableWidth = false
+        self.todos.separatorInset.left = 0
     }
     
     private func configureRadius() {
@@ -73,6 +75,13 @@ extension TodolistViewController {
     private func configureColor() {
         let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
         self.color = UIColor(named: "D\(colorIndex)")
+        self.editButton.setTitleColor(self.color, for: .normal)
+    }
+    
+    private func configureToday() {
+        var daily = Daily()
+        daily.load()
+        self.todayLabel.text = daily.day.MDstyleString
     }
     
     @objc private func adjustInputView(noti: Notification) {
@@ -83,8 +92,10 @@ extension TodolistViewController {
         var adjustmentHeight: CGFloat = 0
         //이동시킬 Height를 구한다
         if noti.name == UIResponder.keyboardWillShowNotification {
+            self.hideKeyboard()
             adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
         } else {
+            self.view.gestureRecognizers?.removeAll()
             adjustmentHeight = 0
         }
         //구한 Height 만큼 변화시킨다
@@ -104,7 +115,7 @@ extension TodolistViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else {
             return UITableViewCell() }
         
-        var todo = todoListViewModel.todos[indexPath.item]
+        var todo = todoListViewModel.todos[indexPath.row]
         cell.configure(todo: todo, color: self.color)
         
         cell.doneButtonTapHandler = { isDone in
@@ -118,5 +129,29 @@ extension TodolistViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension TodolistViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
+            let todo = self.todoListViewModel.todos[indexPath.row]
+            self.todoListViewModel.deleteTodo(todo)
+            self.todos.deleteRows(at: [indexPath], with: .automatic)
+        }
+
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var todos = TodoManager.shared.todos
+        let target = todos.remove(at: sourceIndexPath.row)
+        todos.insert(target, at: destinationIndexPath.row)
+        TodoManager.shared.todos = todos
+        TodoManager.shared.saveTodo()
     }
 }

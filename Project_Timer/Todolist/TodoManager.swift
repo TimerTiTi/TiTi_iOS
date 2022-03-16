@@ -36,6 +36,7 @@ class TodoManager {
     }
     
     func saveTodo() {
+        print("save: \(todos.map(\.text))")
         Storage.store(todos, to: .documents, as: "todos.json")
     }
     
