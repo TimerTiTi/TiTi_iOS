@@ -3495,10 +3495,6 @@
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="uzd-s8-c8h" id="uhA-oE-7q9"/>
-                                                    <outlet property="delegate" destination="uzd-s8-c8h" id="28V-js-c5p"/>
-                                                </connections>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" name="Background_second"/>
@@ -3575,12 +3571,12 @@
                     <navigationItem key="navigationItem" id="Eeh-2o-Bdr"/>
                     <connections>
                         <outlet property="add" destination="otT-o5-nDj" id="ZCz-L4-LFV"/>
-                        <outlet property="collectionView" destination="vhy-hn-XQc" id="UMo-cf-2eR"/>
                         <outlet property="fraim" destination="We2-Ru-mYq" id="dbj-ao-dau"/>
                         <outlet property="innerView" destination="JjE-as-Jcv" id="idE-Hl-rmI"/>
                         <outlet property="input" destination="zH5-Ty-dKJ" id="kq2-xF-ZSh"/>
                         <outlet property="inputBottom" destination="tt9-13-e3w" id="mcm-nM-xfH"/>
                         <outlet property="inputFraim" destination="31q-eP-gIb" id="cvA-Da-OFv"/>
+                        <outlet property="todos" destination="vhy-hn-XQc" id="UMo-cf-2eR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VK-E1-SeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3699,19 +3695,19 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-54-tL2" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="718"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="711"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCP-UU-Ojl">
-                                                <rect key="frame" x="7.6666666666666572" y="10" width="360" height="89.333333333333329"/>
+                                                <rect key="frame" x="7.6666666666666572" y="10" width="360" height="85.666666666666671"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXm-7a-h85">
-                                                        <rect key="frame" x="144" y="9.9999999999999982" width="72" height="29.333333333333329"/>
+                                                        <rect key="frame" x="149" y="10.000000000000002" width="61.666666666666657" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-:--:--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJF-0j-00I">
-                                                        <rect key="frame" x="142.33333333333334" y="44.333333333333329" width="75.333333333333343" height="35"/>
+                                                        <rect key="frame" x="131.33333333333334" y="42.666666666666671" width="97" height="33"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -3733,16 +3729,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jA8-Bf-qfa">
-                                                <rect key="frame" x="7.6666666666666572" y="114.33333333333334" width="360" height="259.33333333333326"/>
+                                                <rect key="frame" x="7.6666666666666572" y="110.66666666666666" width="360" height="257.66666666666674"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 Days" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw0-bF-NiZ">
-                                                        <rect key="frame" x="141.33333333333334" y="9.9999999999999982" width="77" height="29.333333333333329"/>
+                                                        <rect key="frame" x="146.66666666666669" y="10.000000000000002" width="66.333333333333314" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enQ-gZ-Zvz">
-                                                        <rect key="frame" x="10" y="44.333333333333314" width="340" height="205"/>
+                                                        <rect key="frame" x="10" y="42.666666666666686" width="340" height="205"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="205" id="UbU-0k-mkc"/>
@@ -3767,7 +3763,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOc-IS-yJd">
-                                                <rect key="frame" x="7.6666666666666572" y="388.66666666666674" width="360" height="319.33333333333326"/>
+                                                <rect key="frame" x="7.6666666666666572" y="383.33333333333326" width="360" height="317.66666666666674"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4V-RU-5ZW">
                                                         <rect key="frame" x="315" y="10" width="35" height="34"/>
@@ -3780,7 +3776,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyD-g0-dDi">
-                                                        <rect key="frame" x="10.666666666666657" y="64.333333333333314" width="338.33333333333337" height="51"/>
+                                                        <rect key="frame" x="10.666666666666657" y="62.666666666666686" width="338.33333333333337" height="51"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMG-8U-9Fm" userLabel="16">
                                                                 <rect key="frame" x="156.33333333333331" y="3" width="11" height="45"/>
@@ -4149,67 +4145,67 @@
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2E-rO-ZSx">
-                                                        <rect key="frame" x="111" y="117.33333333333331" width="11.333333333333329" height="11"/>
+                                                        <rect key="frame" x="112.33333333333333" y="115.66666666666669" width="8.6666666666666714" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMe-WH-t0s">
-                                                        <rect key="frame" x="13.333333333333332" y="117.33333333333331" width="11.333333333333332" height="11"/>
+                                                        <rect key="frame" x="14" y="115.66666666666669" width="10" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6t-D2-0R3">
-                                                        <rect key="frame" x="195" y="117.33333333333331" width="11.333333333333343" height="11"/>
+                                                        <rect key="frame" x="196.33333333333334" y="115.66666666666669" width="8.6666666666666572" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svh-1F-yJ9">
-                                                        <rect key="frame" x="237" y="117.33333333333331" width="11.333333333333343" height="11"/>
+                                                        <rect key="frame" x="238.33333333333334" y="115.66666666666669" width="8.6666666666666572" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRU-SF-tSX">
-                                                        <rect key="frame" x="69.666666666666657" y="117.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="69.666666666666657" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRR-eU-exe">
-                                                        <rect key="frame" x="279" y="117.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="279" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-/-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="914-vj-jce">
-                                                        <rect key="frame" x="172" y="39.333333333333314" width="15.666666666666657" height="16"/>
+                                                        <rect key="frame" x="170" y="37.666666666666686" width="20" height="16"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifR-hu-blL">
-                                                        <rect key="frame" x="153" y="117.33333333333331" width="11.333333333333343" height="11"/>
+                                                        <rect key="frame" x="154.33333333333334" y="115.66666666666669" width="8.3333333333333428" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kC-ug-aQ8">
-                                                        <rect key="frame" x="146.33333333333334" y="9.9999999999999982" width="67" height="29.333333333333329"/>
+                                                        <rect key="frame" x="150.33333333333334" y="10.000000000000002" width="59.333333333333343" height="27.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="25"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="04" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzm-ej-tcs">
-                                                        <rect key="frame" x="335" y="117.33333333333331" width="11" height="11"/>
+                                                        <rect key="frame" x="335" y="115.66666666666669" width="11" height="11"/>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jei-5J-hAV">
-                                                        <rect key="frame" x="15" y="139.33333333333331" width="330" height="170"/>
+                                                        <rect key="frame" x="15" y="137.66666666666669" width="330" height="170"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Jo-eM-J0B">
                                                                 <rect key="frame" x="5" y="30" width="110" height="110"/>
@@ -4248,7 +4244,7 @@
                                                                                     </constraints>
                                                                                 </view>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-WL-k9o">
-                                                                                    <rect key="frame" x="22" y="3.6666666666666661" width="79" height="12.999999999999998"/>
+                                                                                    <rect key="frame" x="22" y="3.6666666666666661" width="77.666666666666671" height="12.999999999999998"/>
                                                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11.5"/>
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
@@ -4287,7 +4283,7 @@
                                                                 </connections>
                                                             </collectionView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-:--:--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njf-p3-mhl">
-                                                                <rect key="frame" x="33.666666666666671" y="72.666666666666629" width="52.666666666666671" height="24.666666666666671"/>
+                                                                <rect key="frame" x="26.333333333333336" y="73.333333333333371" width="67.333333333333314" height="23.333333333333329"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="21"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
