@@ -18,7 +18,7 @@ class TodolistViewController: UIViewController {
     @IBOutlet var add: UIButton!
     @IBOutlet var inputBottom: NSLayoutConstraint!
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var todos: UICollectionView!
     
     let todoListViewModel = TodolistViewModel()
     private var color: UIColor?
@@ -27,6 +27,7 @@ class TodolistViewController: UIViewController {
         super.viewDidLoad()
         self.hideKeyboard()
         
+        self.configureCollectionView()
         self.configureRadius()
         self.configureShadow(self.innerView)
         self.configureColor()
@@ -42,7 +43,7 @@ class TodolistViewController: UIViewController {
         guard let text = input.text, text.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(text: text)
         self.todoListViewModel.addTodo(todo)
-        self.collectionView.reloadData()
+        self.todos.reloadData()
         
         self.input.text = ""
     }
@@ -50,6 +51,11 @@ class TodolistViewController: UIViewController {
 
 
 extension TodolistViewController {
+    private func configureCollectionView() {
+        self.todos.dataSource = self
+//        self.todos.delegate = self
+    }
+    
     private func configureRadius() {
         innerView.layer.cornerRadius = 25
         inputFraim.clipsToBounds = true
@@ -108,7 +114,7 @@ extension TodolistViewController: UICollectionViewDataSource {
         
         cell.deleteButtonTapHandler = {
             self.todoListViewModel.deleteTodo(todo)
-            self.collectionView.reloadData()
+            self.todos.reloadData()
         }
         
         return cell
