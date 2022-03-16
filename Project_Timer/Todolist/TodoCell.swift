@@ -8,11 +8,11 @@
 
 import UIKit
 
-class TodoCell: UICollectionViewCell {
+class TodoCell: UITableViewCell {
     static let identifier = "TodoCell"
     
     @IBOutlet weak var check: UIButton!
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var todoText: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var delete: UIButton!
     
@@ -39,7 +39,7 @@ class TodoCell: UICollectionViewCell {
         self.check.tintColor = color
         self.colorView.backgroundColor = color
         self.check.isSelected = todo.isDone
-        self.text.text = todo.text
+        self.todoText.text = todo.text
         self.showColorView(todo.isDone)
     }
     

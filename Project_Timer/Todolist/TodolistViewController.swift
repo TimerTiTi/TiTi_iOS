@@ -18,7 +18,7 @@ class TodolistViewController: UIViewController {
     @IBOutlet var add: UIButton!
     @IBOutlet var inputBottom: NSLayoutConstraint!
     
-    @IBOutlet var todos: UICollectionView!
+    @IBOutlet var todos: UITableView!
     
     let todoListViewModel = TodolistViewModel()
     private var color: UIColor?
@@ -95,14 +95,14 @@ extension TodolistViewController {
 }
 
 
-extension TodolistViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension TodolistViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoListViewModel.todos.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else {
-            return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else {
+            return UITableViewCell() }
         
         var todo = todoListViewModel.todos[indexPath.item]
         cell.configure(todo: todo, color: self.color)
