@@ -21,6 +21,7 @@
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
+		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
 		8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772E91526705EE100A191BF /* TodolistViewController.swift */; };
 		8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4C27DCB59400739A09 /* FirebaseAnalytics */; };
@@ -74,6 +75,7 @@
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
+		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				8772E91526705EE100A191BF /* TodolistViewController.swift */,
 				87DE1172268AC75F0012F043 /* TodoManager.swift */,
 				87AB10112670601800F29961 /* TodolistViewModel.swift */,
+				8769349627E1BBAF00D33F51 /* TodoCell.swift */,
 			);
 			path = Todolist;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
+				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				87DE1173268AC75F0012F043 /* TodoManager.swift in Sources */,
