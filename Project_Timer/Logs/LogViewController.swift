@@ -24,6 +24,7 @@ class LogViewController: UIViewController {
     @IBOutlet var timeSticks: [UIView]!
     @IBOutlet weak var subjects: UICollectionView!
     @IBOutlet weak var subjectsHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private var viewModel: LogVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -44,10 +45,15 @@ class LogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height + self.scrollView.contentInset.bottom)
+        self.scrollView.setContentOffset(bottomOffset, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
