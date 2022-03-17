@@ -40,6 +40,11 @@ class TodolistViewController: UIViewController {
         self.configureToday()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.configureShadow(self.innerView)
+    }
+    
     @IBAction func addList(_ sender: Any) {
         guard let text = input.text, text.isEmpty == false else { return }
         let todo = TodoManager.shared.createTodo(text: text)
