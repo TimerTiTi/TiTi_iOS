@@ -84,7 +84,10 @@ struct Daily: Codable {
         
         let now = Date()
         let startH = getHour(start)
-        let nowH = getHour(now)
+        // 현재시각이 백그라운드 진입 시각보다 작은 경우 : 00시를 지난 경우는 24를 더한다
+        var nowH = getHour(now)
+        if nowH < startH { nowH += 24 }
+        
         //동일 시간대에 백그라운드 컴백 : term 만큼 증가
         if(startH == nowH) {
             timeline[nowH] += term
@@ -97,11 +100,11 @@ struct Daily: Codable {
             for h in startH+1...nowH {
                 //종료 시간대가 아닌 경우 : 1시간 채우기
                 if(h != nowH) {
-                    timeline[h] += 3600
+                    timeline[h%24] += 3600
                 }
                 //종료 시간대인 경우 : 현재 시간의 초만큼 채우기
                 else {
-                    timeline[h] += getSeconds(now)
+                    timeline[h%24] += getSeconds(now)
                 }
             }
         }
