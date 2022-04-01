@@ -26,7 +26,6 @@ class TodolistViewController: UIViewController {
         super.viewDidLoad()
         self.configureTableView()
         self.configureRadius()
-        self.configureShadow(self.innerView)
         self.configureColor()
         self.todoListViewModel.loadTodos()
         
@@ -37,12 +36,12 @@ class TodolistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.configureToday()
+        self.configureTodayLabel()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.configureShadow(self.innerView)
+        self.configureShadow(self.innerView) // Dynamic CGColor
     }
     
     @IBAction func addList(_ sender: Any) {
@@ -63,7 +62,6 @@ extension TodolistViewController {
     private func configureTableView() {
         self.todos.dataSource = self
         self.todos.delegate = self
-        self.todos.cellLayoutMarginsFollowReadableWidth = false
         self.todos.separatorInset.left = 0
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
@@ -90,7 +88,7 @@ extension TodolistViewController {
         self.editButton.setTitleColor(self.color, for: .normal)
     }
     
-    private func configureToday() {
+    private func configureTodayLabel() {
         var daily = Daily()
         daily.load()
         self.todayLabel.text = daily.day.MDstyleString
