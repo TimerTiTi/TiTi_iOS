@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class TodolistViewController: UIViewController {
     @IBOutlet weak var fraim: UIView!
@@ -19,36 +20,38 @@ class TodolistViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
     
-    let todoListViewModel = TodolistViewModel()
     private var color: UIColor?
+    private var viewModel: TodolistVM?
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureViewModel()
         self.configureTableView()
         self.configureRadius()
-        self.configureColor()
-        self.todoListViewModel.loadTodos()
-        
-        // TODO: 키보드 디텍션 : keyboard가 띄워지고, 사라지면 adjustInputView가 실행되는 원리 : OK
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.configureKeyboard()
+        self.todos.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.configurePointColor()
         self.configureTodayLabel()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.configureShadow(self.innerView) // Dynamic CGColor
+        self.innerView.configureShadow() // Dynamic CGColor
+        
     }
     
     @IBAction func addList(_ sender: Any) {
-        guard let text = input.text, text.isEmpty == false else { return }
-        let todo = TodoManager.shared.createTodo(text: text)
-        self.todoListViewModel.addTodo(todo)
-        self.todos.reloadData()
+        guard let text = input.text,
+              text.isEmpty == false else { return }
+        self.viewModel?.addNewTodo(text: text)
+        let count = self.viewModel?.todos.count ?? 0
+        self.todos.insertRows(at: [IndexPath.init(row: count-1, section: 0)], with: .automatic)
+        self.reloadAfterAnimation()
         self.input.text = ""
     }
     
@@ -57,8 +60,11 @@ class TodolistViewController: UIViewController {
     }
 }
 
-
 extension TodolistViewController {
+    private func configureViewModel() {
+        self.viewModel = TodolistVM()
+    }
+    
     private func configureTableView() {
         self.todos.dataSource = self
         self.todos.delegate = self
@@ -75,17 +81,16 @@ extension TodolistViewController {
         inputFraim.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
-    private func configureShadow(_ view: UIView) {
-        view.layer.shadowColor = UIColor(named: "shadow")?.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowOffset = CGSize.zero
-        view.layer.shadowRadius = 5
+    private func configureKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private func configureColor() {
+    private func configurePointColor() {
         let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
         self.color = UIColor(named: "D\(colorIndex)")
         self.editButton.setTitleColor(self.color, for: .normal)
+        self.todos.reloadData()
     }
     
     private func configureTodayLabel() {
@@ -94,28 +99,34 @@ extension TodolistViewController {
         self.todayLabel.text = daily.day.MDstyleString
     }
     
+    private func reloadAfterAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400)) { [weak self] in
+            self?.todos.reloadData()
+        }
+    }
+    
     @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let touchPoint = sender.location(in: self.todos)
-            guard let indexPath = self.todos.indexPathForRow(at: touchPoint) else { return }
+            guard let indexPath = self.todos.indexPathForRow(at: touchPoint),
+                  let originText = self.viewModel?.todos[indexPath.row].text else { return }
+            
             let alert = UIAlertController(title: "Modify Todo's content".localized(), message: "", preferredStyle: .alert)
-            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-            let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
-                action in
-                let newName: String = alert.textFields?[0].text ?? ""
-                //이건 기록들 중 과목내용 수정 및 저장
-                TodoManager.shared.todos[indexPath.row].rename(text: newName)
-                TodoManager.shared.saveTodo()
-                self.todos.reloadRows(at: [indexPath], with: .automatic)
-            })
-            //텍스트 입력 추가
-            alert.addTextField { (newName) in
-                newName.placeholder = "New Todo's content".localized()
-                newName.textAlignment = .center
-                newName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
-                //기존 내용 보이기
-                newName.text = TodoManager.shared.todos[indexPath.row].text
+            alert.addTextField { textField in
+                textField.placeholder = "New Todo's content".localized()
+                textField.textAlignment = .center
+                textField.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                textField.text = originText
             }
+            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            let ok = UIAlertAction(title: "UPDATE", style: .default, handler: { [weak self] action in
+                guard let newText: String = alert.textFields?.first?.text else { return }
+                
+                self?.viewModel?.updateText(at: indexPath.row, to: newText)
+                self?.todos.reloadRows(at: [indexPath], with: .automatic)
+                self?.reloadAfterAnimation()
+            })
+            
             alert.addAction(cancle)
             alert.addAction(ok)
             present(alert,animated: true,completion: nil)
@@ -143,27 +154,27 @@ extension TodolistViewController {
     }
 }
 
-
 extension TodolistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return todoListViewModel.todos.count
+        print("todos: \(self.viewModel?.todos ?? [])")
+        return self.viewModel?.todos.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoCell.identifier, for: indexPath) as? TodoCell else {
             return UITableViewCell() }
+        guard let todo = self.viewModel?.todos[indexPath.row] else { return cell }
         
-        var todo = todoListViewModel.todos[indexPath.row]
         cell.configure(todo: todo, color: self.color)
-        
-        cell.doneButtonTapHandler = { isDone in
-            todo.isDone = isDone
-            self.todoListViewModel.updateTodo(todo)
+        cell.doneButtonTapHandler = { [weak self] isDone in
+            print("done: [\(indexPath.row)]: \(todo)")
+            self?.viewModel?.updateDone(at: indexPath.row, to: isDone)
         }
-        
-        cell.deleteButtonTapHandler = {
-            self.todoListViewModel.deleteTodo(todo)
-            self.todos.reloadData()
+        cell.deleteButtonTapHandler = { [weak self] in
+            print("delete: [\(indexPath.row)]: \(todo)")
+            self?.viewModel?.deleteTodo(at: indexPath.row)
+            self?.todos.deleteRows(at: [indexPath], with: .automatic)
+            self?.reloadAfterAnimation()
         }
         
         return cell
@@ -172,10 +183,11 @@ extension TodolistViewController: UITableViewDataSource {
 
 extension TodolistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
-            let todo = self.todoListViewModel.todos[indexPath.row]
-            self.todoListViewModel.deleteTodo(todo)
-            self.todos.deleteRows(at: [indexPath], with: .automatic)
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
+            print("delete: [\(indexPath.row)]")
+            self?.viewModel?.deleteTodo(at: indexPath.row)
+            self?.todos.deleteRows(at: [indexPath], with: .automatic)
+            self?.reloadAfterAnimation()
         }
 
         return [deleteAction]
@@ -186,10 +198,7 @@ extension TodolistViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var todos = TodoManager.shared.todos
-        let target = todos.remove(at: sourceIndexPath.row)
-        todos.insert(target, at: destinationIndexPath.row)
-        TodoManager.shared.todos = todos
-        TodoManager.shared.saveTodo()
+        self.viewModel?.moveTodo(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        self.reloadAfterAnimation()
     }
 }

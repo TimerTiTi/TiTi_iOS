@@ -29,12 +29,6 @@ class TodoManager {
         saveTodo()
     }
     
-    func updateTodo(_ todo: Todo) {
-        guard let index = todos.firstIndex(of: todo) else { return }
-        todos[index].update(isDone: todo.isDone, text: todo.text)
-        saveTodo()
-    }
-    
     func saveTodo() {
         print("save: \(todos.map(\.text))")
         Storage.store(todos, to: .documents, as: "todos.json")

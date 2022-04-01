@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import Combine
 
 final class TodolistVM {
     private let fileName = "todos.json"
     private var lastId: Int = 0
-    @Published private(set) var todos: [Todo] = []
+    private(set) var todos: [Todo] = []
     
     init() {
         self.loadTodos()
@@ -20,7 +19,7 @@ final class TodolistVM {
     
     private func loadTodos() {
         self.todos = Storage.retrive(self.fileName, from: .documents, as: [Todo].self) ?? []
-        self.lastId = todos.last?.id ?? 0
+        self.lastId = todos.map(\.id).max() ?? 0
     }
     
     private func saveTodos() {
@@ -41,14 +40,20 @@ final class TodolistVM {
     }
     
     func updateDone(at index: Int, to isDone: Bool) {
-        
+        self.todos[index].updateDone(to: isDone)
+        self.saveTodos()
     }
     
-    func updateText(at index: Int, text: String) {
-        
+    func updateText(at index: Int, to text: String) {
+        self.todos[index].updateText(to: text)
+        self.saveTodos()
     }
     
-    func swap(leftTodo: Int, rightTodo: Int) {
-        
+    func moveTodo(fromIndex: Int, toIndex: Int) {
+        var todos = self.todos
+        let targetTodo = todos.remove(at: fromIndex)
+        todos.insert(targetTodo, at: toIndex)
+        self.todos = todos
+        self.saveTodos()
     }
 }

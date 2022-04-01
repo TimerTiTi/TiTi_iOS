@@ -49,4 +49,11 @@ extension UIView {
             }
         }
     }
+    
+    func configureShadow() {
+        self.layer.shadowColor = UIColor(named: "shadow")?.cgColor
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 5
+    }
 }
