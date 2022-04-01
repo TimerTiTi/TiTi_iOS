@@ -13,12 +13,11 @@ struct Todo: Codable, Equatable {
     var isDone: Bool
     var text: String
     
-    mutating func update(isDone: Bool, text: String) {
+    mutating func updateDone(to isDone: Bool) {
         self.isDone = isDone
-        self.text = text
     }
     
-    mutating func rename(text: String) {
+    mutating func updateText(to text: String) {
         self.text = text
     }
     

@@ -24,10 +24,6 @@ class TodolistViewModel {
         manager.deleteTodo(todo)
     }
     
-    func updateTodo(_ todo: Todo) {
-        manager.updateTodo(todo)
-    }
-    
     func loadTodos() {
         manager.loadTodos()
     }
