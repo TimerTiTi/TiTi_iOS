@@ -109,11 +109,11 @@ class TimerViewController: UIViewController {
     }
     
     func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
         timeTrigger = false
     }
     
-    @objc func updateCounter(){
+    @objc func timerLogic() {
         if timerTime < 1 {
             algoOfStop()
             TIMEofTimer.text = "FINISH".localized()
