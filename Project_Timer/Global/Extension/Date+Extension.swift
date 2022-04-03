@@ -20,4 +20,14 @@ extension Date {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         return dateFormatter.string(from: self)
     }
+    
+    func isSameDate(with date: Date) -> Bool {
+        return self.YYYYMMDDstyleString == date.YYYYMMDDstyleString
+    }
+    
+    var hour: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH"
+        return Int(dateFormatter.string(from: self))!
+    }
 }

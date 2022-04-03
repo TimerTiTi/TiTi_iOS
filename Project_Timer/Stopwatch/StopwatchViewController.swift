@@ -37,9 +37,9 @@ final class StopwatchViewController: UIViewController {
     
     var timerStopped = true
     var realTime = Timer()
-    var sumTime : Int = 0
-    var currentStopwatchTime : Int = 0 //progress -> 시작기점 누적시간으로 용도 변경
-    var goalTime : Int = 0
+    var currentSumTime: Int = 0
+    var currentStopwatchTime: Int = 0
+    var currentGoalTime: Int = 0
     var diffHrs = 0
     var diffMins = 0
     var diffSecs = 0
@@ -111,18 +111,21 @@ final class StopwatchViewController: UIViewController {
     }
     
     @objc func timerLogic() {
-        let seconds = Time.seconds(from: self.time.startTime, to: Date())
-        sumTime = time.startSumTime + seconds
-        currentStopwatchTime = time.startStopwatchTime + seconds
-        goalTime = time.startGoalTime - seconds
-        daily.updateTimes(seconds)
-        daily.updateTask(seconds)
-        if(seconds > daily.maxTime) { daily.maxTime = seconds }
+        let seconds = Time.seconds(from: self.time.startDate, to: Date()) // 기록 시작점 ~ 현재까지 지난 초
+        self.updateTimes(interval: seconds)
+        self.daily.updateCurrentTaskTime(interval: seconds)
+        self.daily.updateMaxTime(with: seconds)
         
         updateTIMELabels()
         updateProgress()
         printLogs()
         saveTimes()
+    }
+    
+    private func updateTimes(interval: Int) {
+        self.currentSumTime = self.time.fromSumTime + interval // 기준 sum값 + 지난 초
+        self.currentStopwatchTime = self.time.fromStopwatchTime + interval // 기준 stopwatch값 + 지난 초
+        self.currentGoalTime = self.time.fromGoalTime - interval // 기준 goal값 - 지난 초
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -170,13 +173,13 @@ extension StopwatchViewController : ChangeViewController2 {
         firstRecordStart = true
         UserDefaults.standard.set(nil, forKey: "startTime")
         setColor()
-        goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
+        currentGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         let timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        sumTime = 0
+        currentSumTime = 0
         currentStopwatchTime = 0
         
-        UserDefaults.standard.set(goalTime, forKey: "allTime2")
-        UserDefaults.standard.set(sumTime, forKey: "sum2")
+        UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
+        UserDefaults.standard.set(currentSumTime, forKey: "sum2")
         
         resetProgress()
         updateTIMELabels()
@@ -184,7 +187,7 @@ extension StopwatchViewController : ChangeViewController2 {
         
         stopColor()
         setButtonsEnabledTrue()
-        daily.reset(goalTime, timerTime) //하루 그래프 초기화
+        daily.reset(currentGoalTime, timerTime) //하루 그래프 초기화
         resetCurrentStopwatchTime()
         self.configureToday()
     }
@@ -262,22 +265,15 @@ extension StopwatchViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         print("refresh")
-        let temp = sumTime
-        let seconds = Time.seconds(from: self.time.startTime, to: Date())
-        sumTime = time.startSumTime + seconds
-        //나간 시점 start, 현재 시각 Date 와 비교
-        daily.addHoursInBackground(start, sumTime - temp)
-        currentStopwatchTime = time.startStopwatchTime + seconds
-        goalTime = time.startGoalTime - seconds
-        daily.updateTimes(seconds)
-        daily.updateTask(seconds)
-        if(seconds > daily.maxTime) { daily.maxTime = seconds }
+        let seconds = Time.seconds(from: self.time.startDate, to: Date())
+        self.updateTimes(interval: seconds)
+        self.daily.updateCurrentTaskTimeOfBackground(startAt: self.time.startDate, interval: seconds)
+        self.daily.updateMaxTime(with: seconds)
         
         updateTIMELabels()
         updateProgress()
         printLogs()
         saveTimes()
-        print("save!")
         
         self.startTimer()
     }
@@ -289,11 +285,6 @@ extension StopwatchViewController {
     }
     
     func setShadow() {
-//        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
-//        startStopBT.layer.shadowOpacity = 0.3
-//        startStopBT.layer.shadowOffset = CGSize.zero
-//        startStopBT.layer.shadowRadius = 3
-        
         resetBT.layer.shadowColor = UIColor.gray.cgColor
         resetBT.layer.shadowOpacity = 0.5
         resetBT.layer.shadowOffset = CGSize.zero
@@ -321,9 +312,9 @@ extension StopwatchViewController {
     }
     
     private func configureTimes() {
-        self.sumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
+        self.currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
         self.currentStopwatchTime = UserDefaultsManager.get(forKey: .sumTime_temp) as? Int ?? 0
-        self.goalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
+        self.currentGoalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
         self.totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
     }
     
@@ -349,7 +340,7 @@ extension StopwatchViewController {
         //circle2
         innerProgress.progressWidth = 8.0
         innerProgress.trackColor = UIColor.clear
-        beforePer2 = Float(sumTime)/Float(totalTime)
+        beforePer2 = Float(currentSumTime)/Float(totalTime)
         innerProgress.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
     }
     
@@ -378,9 +369,9 @@ extension StopwatchViewController {
     }
     
     func updateTIMELabels() {
-        self.TIMEofSum.text = sumTime.toTimeString
+        self.TIMEofSum.text = currentSumTime.toTimeString
         self.TIMEofStopwatch.text = currentStopwatchTime.toTimeString
-        self.TIMEofTarget.text = goalTime.toTimeString
+        self.TIMEofTarget.text = currentGoalTime.toTimeString
     }
     
     func updateProgress() {
@@ -388,24 +379,24 @@ extension StopwatchViewController {
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: beforePer)
         beforePer = progressPer
         //circle2
-        let temp = Float(sumTime)/Float(totalTime)
+        let temp = Float(currentSumTime)/Float(totalTime)
         innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
         beforePer2 = temp
     }
     
     func printLogs() {
-        print("sum : " + String(sumTime))
+        print("sum : " + String(currentSumTime))
         print("stopwatch : \(currentStopwatchTime)")
-        print("target : " + String(goalTime))
+        print("target : " + String(currentGoalTime))
     }
     
     func saveTimes() {
-        UserDefaults.standard.set(sumTime, forKey: "sum2")
-        UserDefaults.standard.set(goalTime, forKey: "allTime2")
+        UserDefaults.standard.set(currentSumTime, forKey: "sum2")
+        UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
     }
     
     func saveLogData() {
-        UserDefaults.standard.set(sumTime.toTimeString, forKey: "time1")
+        UserDefaults.standard.set(currentSumTime.toTimeString, forKey: "time1")
     }
     
     func appendDateToWeekly() {
@@ -430,7 +421,7 @@ extension StopwatchViewController {
     
     func getFutureTime() -> String {
         let now = Date()
-        let future = now.addingTimeInterval(TimeInterval(goalTime))
+        let future = now.addingTimeInterval(TimeInterval(currentGoalTime))
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "hh:mm a"
@@ -560,12 +551,12 @@ extension StopwatchViewController {
     private func updateSumGoalTime() {
         guard self.daily.tasks != [:] else { return }
         
-        self.sumTime = self.daily.tasks.values.reduce(0, +)
-        self.goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600 - self.sumTime
+        self.currentSumTime = self.daily.tasks.values.reduce(0, +)
+        self.currentGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600 - self.currentSumTime
         
-        UserDefaults.standard.set(self.sumTime, forKey: "sum2")
-        UserDefaults.standard.set(self.goalTime, forKey: "allTime2")
-        self.daily.currentSumTime = self.sumTime
+        UserDefaults.standard.set(self.currentSumTime, forKey: "sum2")
+        UserDefaults.standard.set(self.currentGoalTime, forKey: "allTime2")
+        self.daily.currentSumTime = self.currentSumTime
         self.saveLogData()
     }
 }
@@ -579,14 +570,14 @@ extension StopwatchViewController {
     private func timerStartSetting() {
         self.setColorsOfstart()
         self.updateProgress()
-        self.time = Time(goal: self.goalTime, sum: self.sumTime, stopwatch: self.currentStopwatchTime)
+        self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
         self.startTimer()
         self.setButtonsEnabledFalse()
         self.finishTimeLabel.text = getFutureTime()
         if self.firstRecordStart {
             self.updateWeekly()
         }
-        self.daily.startTask(self.task) // 현재 task에 대한 기록 설정
+        self.daily.recordStartSetting(taskName: self.task) // 현재 task에 대한 기록 설정
     }
     
     func algoOfStop() {
@@ -598,7 +589,7 @@ extension StopwatchViewController {
         
         stopColor()
         setButtonsEnabledTrue()
-        time.startStopwatchTime = currentStopwatchTime //기준시간 저장
+        time.fromStopwatchTime = currentStopwatchTime //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
         //dailys 저장
         dailyViewModel.addDaily(daily)

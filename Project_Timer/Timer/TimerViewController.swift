@@ -122,13 +122,13 @@ class TimerViewController: UIViewController {
                 TIMEofTimer.textColor = RED
                 outterProgress.progressColor = RED!
             }
-            let seconds = Time.seconds(from: self.time.startTime, to: Date())
-            goalTime = time.startGoalTime - seconds
-            sumTime = time.startSumTime + seconds
-            timerTime = time.startTimerTime - seconds
+            let seconds = Time.seconds(from: self.time.startDate, to: Date())
+            goalTime = time.fromGoalTime - seconds
+            sumTime = time.fromSumTime + seconds
+            timerTime = time.fromTimerTime - seconds
             daily.updateTimes(seconds)
-            daily.updateTimerTime(time.startTimerTime, seconds)
-            daily.updateTask(seconds)
+            daily.updateTimerTime(time.fromTimerTime, seconds)
+            daily.updateCurrentTaskTime(interval: seconds)
             if(seconds > daily.maxTime) { daily.maxTime = seconds }
             
             updateTimeLabels()
@@ -284,15 +284,15 @@ extension TimerViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         let temp = sumTime
-        let seconds = Time.seconds(from: self.time.startTime, to: Date())
+        let seconds = Time.seconds(from: self.time.startDate, to: Date())
         
-        goalTime = time.startGoalTime - seconds
-        sumTime = time.startSumTime + seconds
+        goalTime = time.fromGoalTime - seconds
+        sumTime = time.fromSumTime + seconds
         print("before : \(temp), after : \(sumTime), term : \(sumTime - temp)")
-        timerTime = time.startTimerTime - seconds
+        timerTime = time.fromTimerTime - seconds
         daily.updateTimes(seconds)
-        daily.updateTimerTime(time.startTimerTime, seconds)
-        daily.updateTask(seconds)
+        daily.updateTimerTime(time.fromTimerTime, seconds)
+        daily.updateCurrentTaskTime(interval: seconds)
         if(seconds > daily.maxTime) { daily.maxTime = seconds }
         
         printLogs()
@@ -303,7 +303,7 @@ extension TimerViewController {
             TIMEofTimer.text = printTime(temp: timerTime)
         }
         //나간 시점 start, 현재 시각 Date 와 비교
-        daily.addHoursInBackground(start, sumTime - temp)
+        daily.updateCurrentTaskTimeOfBackground(start, sumTime - temp)
         saveTimes()
     }
     
@@ -696,7 +696,7 @@ extension TimerViewController {
             firstStop()
             isFirst = false
         }
-        daily.startTask(task) //하루 그래프 데이터 생성
+        daily.recordStartSetting(taskName: task) //하루 그래프 데이터 생성
     }
     
     func algoOfStop() {
