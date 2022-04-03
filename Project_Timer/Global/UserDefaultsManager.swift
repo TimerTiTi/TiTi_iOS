@@ -14,6 +14,7 @@ struct UserDefaultsManager {
         case VCNum = "VCNum"
         case sumTime_temp = "sumTime_temp"
         case startTime = "startTime"
+        case color = "color"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
