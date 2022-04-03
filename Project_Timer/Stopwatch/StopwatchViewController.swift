@@ -31,8 +31,6 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
     
     var COLOR = UIColor(named: "Background2")
-    let BUTTON = UIColor(named: "Button")
-    let CLICK = UIColor(named: "Click")
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
     let startButtonColor = UIColor(named: "startButtonColor")
@@ -537,7 +535,6 @@ extension StopwatchViewController {
     func resetCurrentStopwatchTime() {
         self.currentStopwatchTime = 0
         UserDefaultsManager.set(to: 0, forKey: .sumTime_temp)
-        self.time.resetStopwatchTime()
         self.updateTIMELabels()
         self.updateProgress()
     }
@@ -605,6 +602,7 @@ extension StopwatchViewController {
         daily.save() //하루 그래프 데이터 계산
         //dailys 저장
         dailyViewModel.addDaily(daily)
+        UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
     }
 }
 

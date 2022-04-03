@@ -30,10 +30,6 @@ struct Time {
         self.startTimerTime = timer
         self.startStopwatchTime = 0
     }
-    
-    mutating func resetStopwatchTime() {
-        self.startStopwatchTime = 0
-    }
 }
 
 extension Time {
