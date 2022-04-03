@@ -32,8 +32,6 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
     
     let BLUE = UIColor(named: "Blue")
-    let BUTTON = UIColor(named: "Button")
-    let CLICK = UIColor(named: "Click")
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
     let startButtonColor = UIColor(named: "startButtonColor")
