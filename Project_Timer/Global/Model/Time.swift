@@ -6,33 +6,39 @@
 //  Copyright © 2021 FDEE. All rights reserved.
 //
 
-//맥용 저장을 위한 구조 새로작성
-import UIKit
+import Foundation
+
 struct Time {
-    var startTime: Date? = nil
-    var startGoalTime: Int = 0
-    var startSumTime: Int = 0
-    var startTimerTime: Int = 0
-    var startSumTimeTemp: Int = 0
+    var startTime: Date // 시간측정 기준값
+    var startGoalTime: Int
+    var startSumTime: Int
+    var startTimerTime: Int // Timer 모드 설정값
+    var startStopwatchTime: Int // Stopwatch 모드 설정값
     
-    init() {
-        self.startTime = nil
-        self.startGoalTime = 0
-        self.startSumTime = 0
+    init(goal: Int, sum: Int, stopwatch: Int) { // Stopwatch 용 init
+        self.startTime = Date()
+        self.startGoalTime = goal
+        self.startSumTime = sum
+        self.startStopwatchTime = stopwatch
         self.startTimerTime = 0
     }
     
-    mutating func setTimes(goal: Int, sum: Int, timer: Int) {
+    init(goal: Int, sum: Int, timer: Int) { // Timer 용 init
         self.startTime = Date()
         self.startGoalTime = goal
         self.startSumTime = sum
         self.startTimerTime = timer
+        self.startStopwatchTime = 0
     }
     
-    func getSeconds() -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute, .second], from: self.startTime!, to: Date())
-        let result = components.hour!*3600 + components.minute!*60 + components.second!
-        return result
+    mutating func resetStopwatchTime() {
+        self.startStopwatchTime = 0
+    }
+}
+
+extension Time {
+    static func seconds(from: Date, to: Date) -> Int {
+        let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: from, to: to)
+        return (timeComponents.hour ?? 0)*3600 + (timeComponents.minute ?? 0)*60 + (timeComponents.second ?? 0)
     }
 }

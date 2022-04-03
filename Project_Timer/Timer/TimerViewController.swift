@@ -58,7 +58,7 @@ class TimerViewController: UIViewController {
     var array_break = [String](repeating: "", count: 7)
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
-    var time = Time()
+    var time: Time!
     var task: String = ""
     //하루 그래프를 위한 구조
     var daily = Daily()
@@ -124,7 +124,7 @@ class TimerViewController: UIViewController {
                 TIMEofTimer.textColor = RED
                 outterProgress.progressColor = RED!
             }
-            let seconds = time.getSeconds()
+            let seconds = Time.seconds(from: self.time.startTime, to: Date())
             goalTime = time.startGoalTime - seconds
             sumTime = time.startSumTime + seconds
             timerTime = time.startTimerTime - seconds
@@ -286,7 +286,7 @@ extension TimerViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         let temp = sumTime
-        let seconds = time.getSeconds()
+        let seconds = Time.seconds(from: self.time.startTime, to: Date())
         
         goalTime = time.startGoalTime - seconds
         sumTime = time.startSumTime + seconds
@@ -691,7 +691,7 @@ extension TimerViewController {
         isStop = false
         startColor()
         checkReset()
-        time.setTimes(goal: goalTime, sum: sumTime, timer: timerTime)
+        self.time = Time(goal: self.goalTime, sum: self.sumTime, timer: self.timerTime)
         startAction()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
