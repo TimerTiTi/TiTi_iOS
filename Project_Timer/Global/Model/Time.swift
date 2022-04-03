@@ -9,26 +9,26 @@
 import Foundation
 
 struct Time {
-    var startTime: Date // 시간측정 기준값
-    var startGoalTime: Int
-    var startSumTime: Int
-    var startTimerTime: Int // Timer 모드 설정값
-    var startStopwatchTime: Int // Stopwatch 모드 설정값
+    var startDate: Date // 시간측정 기준값
+    var fromGoalTime: Int
+    var fromSumTime: Int
+    var fromTimerTime: Int // Timer 모드 설정값
+    var fromStopwatchTime: Int // Stopwatch 모드 설정값
     
     init(goal: Int, sum: Int, stopwatch: Int) { // Stopwatch 용 init
-        self.startTime = Date()
-        self.startGoalTime = goal
-        self.startSumTime = sum
-        self.startStopwatchTime = stopwatch
-        self.startTimerTime = 0
+        self.startDate = Date()
+        self.fromGoalTime = goal
+        self.fromSumTime = sum
+        self.fromStopwatchTime = stopwatch
+        self.fromTimerTime = 0
     }
     
     init(goal: Int, sum: Int, timer: Int) { // Timer 용 init
-        self.startTime = Date()
-        self.startGoalTime = goal
-        self.startSumTime = sum
-        self.startTimerTime = timer
-        self.startStopwatchTime = 0
+        self.startDate = Date()
+        self.fromGoalTime = goal
+        self.fromSumTime = sum
+        self.fromTimerTime = timer
+        self.fromStopwatchTime = 0
     }
 }
 

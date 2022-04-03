@@ -6,68 +6,41 @@
 //  Copyright © 2021 FDEE. All rights reserved.
 //
 
-import UIKit
-struct Daily: Codable {
+import Foundation
+
+struct Daily: Codable, CustomStringConvertible {
+    var description: String {
+        return "\(self.day.YYYYMMDDstyleString)"
+    }
+    
     var day: Date = Date()
-    var fixedTotalTime: Int = 0 //목표 설정시간 (o)
-    var fixedSumTime: Int = 0 //의미x
-    var fixedTimerTime: Int = 0 //타이머 설정시간
-    var currentTotalTime: Int = 0 //목표까지 남은시간 (o)
-    var currentSumTime: Int = 0 //누적시간 (o)
-    var currentTimerTime: Int = 0 //타이머 남은 시간
-    var breakTime: Int = 0 //의미x
+    var timeline = Array(repeating: 0, count: 24) //24시 : 0, 01시 : 1
+    var tasks: [String: Int] = [:] // 과목명 : 누적시간
+    var currentTask: String = "" // tasks 증가를 위한 key값
+    var currentTaskFromTime: Int = 0 // tasks 증가를 위한 기준값
     var maxTime: Int = 0 //최고연속시간
-    
-    var startTime: Date = Date()
-    var currentTask: String = ""
-    var tasks: [String: Int] = [:]
-    
-    var beforeTime: Int = 0
-    var timeline = Array(repeating: 0, count: 24)
-    //24시 : 0, 01시 : 1
-    
-    mutating func startTask(_ task: String) {
-        self.currentTask = task
-        self.startTime = Date()
-        self.beforeTime = tasks[currentTask] ?? 0
+    var totalTime: Int {
+        return self.tasks.values.reduce(0, +)
     }
     
-    mutating func stopTask() {
-        var value = tasks[currentTask] ?? 0
-        value += getSeconds()
-        tasks[currentTask] = value
-    }
-    
-    mutating func updateTimes(_ seconds: Int) {
-        currentSumTime = beforeTime+seconds
-        currentTotalTime = fixedTotalTime-currentSumTime
-    }
-    
-    mutating func updateTimerTime(_ startTimerTime: Int, _ seconds: Int) {
-        currentTimerTime = startTimerTime-seconds
-    }
-    
-    mutating func updateTask(_ seconds: Int) {
-        tasks[currentTask] = beforeTime+seconds
-        //현재 시간에 따른 값을 증가
-        let H: Int = getHour(Date())
-        timeline[H] += 1
+    mutating func recordStartSetting(taskName: String) {
+        self.currentTask = taskName
+        self.currentTaskFromTime = self.tasks[self.currentTask] ?? 0
         self.save()
+    }
+    
+    mutating func updateCurrentTaskTime(interval: Int) {
+        self.tasks[self.currentTask] = self.currentTaskFromTime + interval
+        self.timeline[Date().hour] += 1
+    }
+    
+    mutating func updateMaxTime(with interval: Int) {
+        self.maxTime = max(self.maxTime, interval)
     }
     
     mutating func reset(_ totalTime: Int, _ timerTime: Int) {
         self = Daily()
-        self.fixedTotalTime = totalTime
-        self.fixedTimerTime = timerTime
-        self.currentTimerTime = timerTime
-        save()
-    }
-    
-    func getSeconds() -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute, .second], from: self.startTime, to: Date())
-        let result = components.hour!*3600 + components.minute!*60 + components.second!
-        return result
+        self.save()
     }
     
     func save() {
@@ -78,45 +51,32 @@ struct Daily: Codable {
         self = Storage.retrive("daily.json", from: .documents, as: Daily.self) ?? Daily()
     }
     
-    mutating func addHoursInBackground(_ start: Date, _ term: Int) {
-        let H: Int = getHour(Date())
-        timeline[H] -= 1
+    mutating func updateCurrentTaskTimeOfBackground(startAt: Date, interval: Int) {
+        self.tasks[self.currentTask] = self.currentTaskFromTime + interval
         
         let now = Date()
-        let startH = getHour(start)
-        // 현재시각이 백그라운드 진입 시각보다 작은 경우 : 00시를 지난 경우는 24를 더한다
-        var nowH = getHour(now)
-        if nowH < startH { nowH += 24 }
+        let startHour = startAt.hour
+        var nowHour = now.hour
+        if nowHour < startHour { nowHour += 24 } // 현재시각이 백그라운드 진입 시각보다 작은 경우 : 00시를 지난 경우는 24를 더한다
         
-        //동일 시간대에 백그라운드 컴백 : term 만큼 증가
-        if(startH == nowH) {
-            timeline[nowH] += term
+        // 동일 시간대에 백그라운드 컴백 : interval 만큼 증가
+        if startHour == nowHour {
+            self.timeline[nowHour] += interval
+            return
         }
-        //시간대가 달라진 경우 : 해당 시간대에 시간 저장
-        else {
-            //백그라운드 나간 시간대
-            timeline[startH] += 3599 - getSeconds(start)
-            
-            for h in startH+1...nowH {
-                //종료 시간대가 아닌 경우 : 1시간 채우기
-                if(h != nowH) {
-                    timeline[h%24] += 3600
-                }
-                //종료 시간대인 경우 : 현재 시간의 초만큼 채우기
-                else {
-                    timeline[h%24] += getSeconds(now)
-                }
+        // 백그라운드 나간 시간대 : 3599 - (해당시각까지의 분+초) 값 반영
+        self.timeline[startHour] += 3599 - self.getSecondsAt(startAt)
+        // 백그라운드 그외 시간대 반영
+        for h in startHour+1...nowHour {
+            if h != nowHour {
+                self.timeline[h%24] = 3600
+            } else {
+                self.timeline[h%24] += self.getSecondsAt(now)
             }
         }
     }
     
-    func getHour(_ date: Date) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH"
-        return Int(dateFormatter.string(from: date))! //시간
-    }
-    
-    func getSeconds(_ date: Date) -> Int {
+    private func getSecondsAt(_ date: Date) -> Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "mm"
         let M = Int(dateFormatter.string(from: date))! //분
