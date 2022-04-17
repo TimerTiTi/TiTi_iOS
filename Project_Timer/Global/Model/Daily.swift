@@ -19,7 +19,7 @@ struct Daily: Codable, CustomStringConvertible {
     var currentTask: String = "" // tasks 증가를 위한 key값
     var currentTaskFromTime: Int = 0 // tasks 증가를 위한 기준값
     var maxTime: Int = 0 //최고연속시간
-    var totalTime: Int {
+    var totalTime: Int { // computed property
         return self.tasks.values.reduce(0, +)
     }
     
@@ -30,8 +30,8 @@ struct Daily: Codable, CustomStringConvertible {
     }
     
     mutating func updateCurrentTaskTime(interval: Int) {
-        self.tasks[self.currentTask] = self.currentTaskFromTime + interval
-        self.timeline[Date().hour] += 1
+        self.tasks[self.currentTask] = self.currentTaskFromTime + interval // dictionary update
+        self.timeline[Date().hour] += 1 // timeline update
     }
     
     mutating func updateMaxTime(with interval: Int) {

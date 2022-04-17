@@ -10,9 +10,15 @@ import Foundation
 
 extension Int {
     var toTimeString: String {
-        let s = self % 60
-        let h = self / 3600
-        let m = (self / 60) - (h * 60)
-        return String(format: "%d:%02d:%02d", h, m, s)
+        let time = self < 0 ? -self : self
+        let s = time % 60
+        let h = time / 3600
+        let m = (time / 60) - (h * 60)
+        
+        if self < 0 {
+            return String(format: "+%d:%02d:%02d", h, m, s)
+        } else {
+            return String(format: "%d:%02d:%02d", h, m, s)
+        }
     }
 }
