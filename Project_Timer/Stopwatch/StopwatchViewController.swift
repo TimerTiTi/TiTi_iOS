@@ -45,7 +45,7 @@ final class StopwatchViewController: UIViewController {
     var diffSecs = 0
     var firstRecordStart = false
     var progressPer: Float = 0.0
-    let fixedSecond: Int = 3600
+    let progressPeriod: Int = 3600
     var fixedBreak: Int = 300
     var beforePer: Float = 0.0
     var array_day = [String](repeating: "", count: 7)
@@ -123,9 +123,10 @@ final class StopwatchViewController: UIViewController {
     }
     
     private func updateTimes(interval: Int) {
-        self.currentSumTime = self.time.fromSumTime + interval // 기준 sum값 + 지난 초
-        self.currentStopwatchTime = self.time.fromStopwatchTime + interval // 기준 stopwatch값 + 지난 초
-        self.currentGoalTime = self.time.fromGoalTime - interval // 기준 goal값 - 지난 초
+        // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
+        self.currentSumTime = self.time.fromSumTime + interval
+        self.currentStopwatchTime = self.time.fromStopwatchTime + interval
+        self.currentGoalTime = self.time.fromGoalTime - interval
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -241,7 +242,7 @@ extension StopwatchViewController {
         if self.timerStopped == false {
             self.realTime.invalidate()
             let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime") //나가는 시점의 시간 저장
+            shared.set(Date(), forKey: "savedTime") // 나가는 시점의 시간 저장
         }
     }
     
@@ -334,7 +335,7 @@ extension StopwatchViewController {
     private func setFirstProgress() {
         outterProgress.progressWidth = 20.0
         outterProgress.trackColor = UIColor.darkGray
-        progressPer = Float(currentStopwatchTime%fixedSecond) / Float(fixedSecond)
+        progressPer = Float(currentStopwatchTime%progressPeriod) / Float(progressPeriod)
         beforePer = progressPer
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
@@ -369,13 +370,13 @@ extension StopwatchViewController {
     }
     
     func updateTIMELabels() {
-        self.TIMEofSum.text = currentSumTime.toTimeString
-        self.TIMEofStopwatch.text = currentStopwatchTime.toTimeString
-        self.TIMEofTarget.text = currentGoalTime.toTimeString
+        self.TIMEofSum.text = self.currentSumTime.toTimeString
+        self.TIMEofStopwatch.text = self.currentStopwatchTime.toTimeString
+        self.TIMEofTarget.text = self.currentGoalTime.toTimeString
     }
     
     func updateProgress() {
-        progressPer = Float(currentStopwatchTime%fixedSecond) / Float(fixedSecond)
+        progressPer = Float(currentStopwatchTime%progressPeriod) / Float(progressPeriod)
         outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: beforePer)
         beforePer = progressPer
         //circle2
@@ -556,7 +557,6 @@ extension StopwatchViewController {
         
         UserDefaults.standard.set(self.currentSumTime, forKey: "sum2")
         UserDefaults.standard.set(self.currentGoalTime, forKey: "allTime2")
-        self.daily.currentSumTime = self.currentSumTime
         self.saveLogData()
     }
 }
@@ -570,6 +570,7 @@ extension StopwatchViewController {
     private func timerStartSetting() {
         self.setColorsOfstart()
         self.updateProgress()
+        // MARK: - init 은 정상적일 경우에만 하도록 개선 예정
         self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
         self.startTimer()
         self.setButtonsEnabledFalse()
