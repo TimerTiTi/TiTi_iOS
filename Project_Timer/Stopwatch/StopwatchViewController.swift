@@ -456,7 +456,7 @@ extension StopwatchViewController {
         }
     }
     
-    func setColorsOfstart() {
+    func setColorsOfStart() {
         self.view.backgroundColor = UIColor.black
         outterProgress.progressColor = COLOR!
         innerProgress.progressColor = UIColor.white
@@ -568,7 +568,7 @@ extension StopwatchViewController {
     }
     
     private func timerStartSetting() {
-        self.setColorsOfstart()
+        self.setColorsOfStart()
         self.updateProgress()
         // MARK: - init 은 정상적일 경우에만 하도록 개선 예정
         self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
