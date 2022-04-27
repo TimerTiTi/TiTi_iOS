@@ -10,7 +10,7 @@ import Foundation
 
 struct Daily: Codable, CustomStringConvertible {
     var description: String {
-        return "\(self.day.YYYYMMDDstyleString)"
+        return "\(self.day.YYYYMMDDstyleString) : \(self.tasks), \(self.timeline)"
     }
     
     var day: Date = Date()
@@ -30,8 +30,10 @@ struct Daily: Codable, CustomStringConvertible {
     }
     
     mutating func updateCurrentTaskTime(interval: Int) {
-        self.tasks[self.currentTask] = self.currentTaskFromTime ?? 0 + interval // dictionary update
+        guard let currentTaskFromTime = self.currentTaskFromTime else { return }
+        self.tasks[self.currentTask] = currentTaskFromTime + interval
         self.timeline[Date().hour] += 1 // timeline update
+        self.save()
     }
     
     mutating func updateMaxTime(with interval: Int) {
@@ -74,6 +76,7 @@ struct Daily: Codable, CustomStringConvertible {
                 self.timeline[h%24] += self.getSecondsAt(now)
             }
         }
+        self.save()
     }
     
     private func getSecondsAt(_ date: Date) -> Int {
