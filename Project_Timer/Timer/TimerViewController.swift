@@ -104,23 +104,21 @@ class TimerViewController: UIViewController {
         }
     }
     
-    func checkTimeTrigger() {
-        realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        timerStopped = false
+    func startTimer() {
+        self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+        self.timerStopped = false
+        print("timer start")
     }
     
     @objc func timerLogic() {
-        guard self.currentTimerTime > 60 else {
+        if self.currentTimerTime < 1 {
+            self.stopTimer()
+            return
+        }
+        
+        if self.currentTimerTime < 60 {
             self.TIMEofTimer.textColor = RED
             self.outterProgress.progressColor = RED!
-            
-            if self.currentTimerTime < 1 {
-                algoOfStop()
-                TIMEofTimer.text = "FINISH".localized()
-                playAudioFromProject()
-                saveTimes()
-            }
-            return
         }
         
         let seconds = Time.seconds(from: self.time.startDate, to: Date())
@@ -131,6 +129,13 @@ class TimerViewController: UIViewController {
         updateTIMELabes()
         updateProgress()
         printLogs()
+        saveTimes()
+    }
+    
+    private func stopTimer() {
+        algoOfStop()
+        TIMEofTimer.text = "FINISH".localized()
+        playAudioFromProject()
         saveTimes()
     }
     
@@ -151,7 +156,7 @@ class TimerViewController: UIViewController {
         } else {
             //start action
             if(timerStopped == true) {
-                algoOfStart()
+                timerStartSetting()
             }
             //stop action
             else {
@@ -294,7 +299,7 @@ extension TimerViewController {
         printLogs()
         saveTimes()
         
-        startAction() // MARK: startTimer 로직처럼 수정 예정
+        self.startTimer()
     }
     
     func removeSavedDate() {
@@ -426,12 +431,6 @@ extension TimerViewController {
         print("showAverage get complite")
     }
     
-    func startAction() {
-        if timerStopped { checkTimeTrigger() }
-        startEnable()
-        print("Start")
-    }
-    
     func updateTIMELabes() {
         self.TIMEofSum.text = self.currentSumTime.toTimeString
         self.TIMEofTimer.text = self.currentTimerTime.toTimeString
@@ -544,7 +543,7 @@ extension TimerViewController {
         }
     }
     
-    func startColor() {
+    func setColorsOfStart() {
         self.view.backgroundColor = UIColor.black
         outterProgress.progressColor = BLUE!
         innerProgress.progressColor = UIColor.white
@@ -569,7 +568,7 @@ extension TimerViewController {
         taskButton.isUserInteractionEnabled = true
     }
     
-    func startEnable() {
+    private func setButtonsEnabledFalse() {
         settingBT.isUserInteractionEnabled = false
         setTimerBT.isUserInteractionEnabled = false
         taskButton.isUserInteractionEnabled = false
@@ -633,13 +632,14 @@ extension TimerViewController {
         return true
     }
     
-    func algoOfStart() {
+    private func timerStartSetting() {
+        self.setColorsOfStart()
         timerStopped = false
-        startColor()
         checkReset()
         // MARK: init 은 정상적일 경우에만 하도록 개선 예정
         self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, timer: self.currentTimerTime)
-        startAction()
+        self.startTimer()
+        self.setButtonsEnabledFalse()
         finishTimeLabel.text = getFutureTime()
         if(isFirst) {
             firstStop()
