@@ -54,7 +54,7 @@ class TimerViewController: UIViewController {
     var array_time = [String](repeating: "", count: 7)
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
-    var time: Time!
+    var time: RecordTimes!
     var task: String = ""
     //하루 그래프를 위한 구조
     var daily = Daily()
@@ -121,7 +121,7 @@ class TimerViewController: UIViewController {
             self.outterProgress.progressColor = RED!
         }
         
-        let seconds = Time.seconds(from: self.time.startDate, to: Date())
+        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
         self.updateTimes(interval: seconds)
         self.daily.updateCurrentTaskTime(interval: seconds)
         self.daily.updateMaxTime(with: seconds)
@@ -141,9 +141,9 @@ class TimerViewController: UIViewController {
     
     private func updateTimes(interval: Int) {
         // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
-        self.currentSumTime = self.time.fromSumTime + interval
-        self.currentTimerTime = self.time.fromTimerTime - interval
-        self.currentGoalTime = self.time.fromGoalTime - interval
+        self.currentSumTime = self.time.savedSumTime + interval
+        self.currentTimerTime = self.time.savedTimerTime - interval
+        self.currentGoalTime = self.time.goalTime - interval
     }
 
     @IBAction func taskBTAction(_ sender: Any) {
@@ -289,7 +289,7 @@ extension TimerViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         print("refresh")
-        let seconds = Time.seconds(from: self.time.startDate, to: Date())
+        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
         self.updateTimes(interval: seconds)
         self.daily.updateCurrentTaskTimeOfBackground(startAt: self.time.startDate, interval: seconds)
         self.daily.updateMaxTime(with: seconds)
@@ -637,7 +637,7 @@ extension TimerViewController {
         timerStopped = false
         checkReset()
         // MARK: init 은 정상적일 경우에만 하도록 개선 예정
-        self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, timer: self.currentTimerTime)
+        self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, timer: self.currentTimerTime)
         self.startTimer()
         self.setButtonsEnabledFalse()
         finishTimeLabel.text = getFutureTime()

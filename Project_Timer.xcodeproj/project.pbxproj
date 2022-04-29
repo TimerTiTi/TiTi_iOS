@@ -34,7 +34,7 @@
 		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
 		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
 		8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */; };
-		87A4704826493D4D007B89D6 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* Time.swift */; };
+		87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* RecordTimes.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC627DEF0C200F46D0F /* Date+Extension.swift */; };
 		87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC827DF026800F46D0F /* Int+Extension.swift */; };
@@ -84,7 +84,7 @@
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		87A4704726493D4D007B89D6 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		87A4704726493D4D007B89D6 /* RecordTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimes.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A48BC627DEF0C200F46D0F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		87A48BC827DF026800F46D0F /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 			children = (
 				87459705263FF0D700172C0F /* Daily.swift */,
 				87459707263FF0F000172C0F /* Storage.swift */,
-				87A4704726493D4D007B89D6 /* Time.swift */,
+				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				877E448B267DF8DD00BF104A /* Dumy.swift */,
 			);
 			path = Model;
@@ -422,7 +422,7 @@
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
-				87A4704826493D4D007B89D6 /* Time.swift in Sources */,
+				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,

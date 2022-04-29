@@ -53,7 +53,7 @@ final class StopwatchViewController: UIViewController {
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
     var task: String = ""
-    var time: Time!
+    var time: RecordTimes!
     //하루 그래프를 위한 구조
     var daily = Daily()
     var isLandscape: Bool = false
@@ -111,7 +111,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     @objc func timerLogic() {
-        let seconds = Time.seconds(from: self.time.startDate, to: Date()) // 기록 시작점 ~ 현재까지 지난 초
+        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date()) // 기록 시작점 ~ 현재까지 지난 초
         self.updateTimes(interval: seconds)
         self.daily.updateCurrentTaskTime(interval: seconds)
         self.daily.updateMaxTime(with: seconds)
@@ -124,9 +124,9 @@ final class StopwatchViewController: UIViewController {
     
     private func updateTimes(interval: Int) {
         // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
-        self.currentSumTime = self.time.fromSumTime + interval
-        self.currentStopwatchTime = self.time.fromStopwatchTime + interval
-        self.currentGoalTime = self.time.fromGoalTime - interval
+        self.currentSumTime = self.time.savedSumTime + interval
+        self.currentStopwatchTime = self.time.savedStopwatchTime + interval
+        self.currentGoalTime = self.time.goalTime - interval
     }
     
     @IBAction func taskBTAction(_ sender: Any) {
@@ -266,7 +266,7 @@ extension StopwatchViewController {
     
     func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
         print("refresh")
-        let seconds = Time.seconds(from: self.time.startDate, to: Date())
+        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
         self.updateTimes(interval: seconds)
         self.daily.updateCurrentTaskTimeOfBackground(startAt: self.time.startDate, interval: seconds)
         self.daily.updateMaxTime(with: seconds)
@@ -571,7 +571,7 @@ extension StopwatchViewController {
         self.setColorsOfStart()
         self.updateProgress()
         // MARK: - init 은 정상적일 경우에만 하도록 개선 예정
-        self.time = Time(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
+        self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
         self.startTimer()
         self.setButtonsEnabledFalse()
         self.finishTimeLabel.text = getFutureTime()
@@ -590,7 +590,7 @@ extension StopwatchViewController {
         
         stopColor()
         setButtonsEnabledTrue()
-        time.fromStopwatchTime = currentStopwatchTime //기준시간 저장
+        time.savedStopwatchTime = currentStopwatchTime //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
         //dailys 저장
         dailyViewModel.addDaily(daily)

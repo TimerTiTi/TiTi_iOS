@@ -16,8 +16,6 @@ struct Daily: Codable, CustomStringConvertible {
     var day: Date = Date()
     var timeline = Array(repeating: 0, count: 24) //24시 : 0, 01시 : 1
     var tasks: [String: Int] = [:] // 과목명 : 누적시간
-    var currentTask: String = "" // tasks 증가를 위한 key값
-    var currentTaskFromTime: Int? = 0 // tasks 증가를 위한 기준값
     var maxTime: Int = 0 //최고연속시간
     var totalTime: Int { // computed property
         return self.tasks.values.reduce(0, +)
