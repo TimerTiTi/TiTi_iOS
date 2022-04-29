@@ -13,7 +13,6 @@ struct RecordTimes: Codable, CustomStringConvertible {
         return "\(self.currentTimes())"
     }
     static let fileName: String = "recordTimes.json"
-    typealias Times = (sum: Int, timer: Int, stopwatch: Int, goal: Int)
     
     private(set) var recordTask: String = "none" // 측정중인 과목명
     private(set) var recordTaskFromTime: Int = 0 // 측정중인 과목 기준시간값
@@ -110,7 +109,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     
     func currentTimes() -> Times { // VC 에서 매초
         guard self.recording else {
-            return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime)
+            return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
         }
         
         let currentAt = Date()
