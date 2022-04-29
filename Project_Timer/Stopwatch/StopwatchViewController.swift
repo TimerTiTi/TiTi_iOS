@@ -38,16 +38,8 @@ final class StopwatchViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: StopwatchVM?
     
-    var firstRecordStart = false
     var progressPer: Float = 0.0
     let progressPeriod: Int = 3600
-    var fixedBreak: Int = 300
-    var beforePer: Float = 0.0
-    var array_day = [String](repeating: "", count: 7)
-    var array_time = [String](repeating: "", count: 7)
-    var totalTime: Int = 0
-    var beforePer2: Float = 0.0
-    var task: String = ""
     var isLandscape: Bool = false
     
     override func viewDidLoad() {
@@ -55,6 +47,7 @@ final class StopwatchViewController: UIViewController {
         self.configureLocalizable()
         self.configureColor()
         self.configureShadow()
+        self.configureProgress()
         self.configureObservation()
         self.setStopColor()
         self.setButtonsEnabledTrue()
@@ -64,32 +57,9 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateModeNum()
-        self.setTask()
-        self.updateSumGoalTime()
-        self.configureTimes()
-        self.updateTIMELabels()
-        self.finishTimeLabel.text = self.getFutureTime()
-        self.checkFirstRecordStart()
-        self.setFirstProgress()
-        self.dailyViewModel.loadDailys()
-        self.configureToday()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
-    }
-
-    @objc func deviceRotated(){
-        if UIDevice.current.orientation.isLandscape {
-            //Code here
-            print("Landscape")
-            setLandscape()
-        } else {
-            //Code here
-            print("Portrait")
-            setPortrait()
-        }
+        self.viewModel?.updateModeNum()
+        self.viewModel?.updateTimes()
+        self.updateTask()
     }
     
     private func startTimer() {
@@ -186,28 +156,166 @@ extension StopwatchViewController {
 // MARK: - binding
 extension StopwatchViewController {
     private func bindAll() {
-        self.bindStopColor()
+        self.bindTimes()
+        self.bindDaily()
+        self.bindUI()
     }
-    
-    private func bindUI() {
-        self.viewModel?.$stopUI
+    private func bindTimes() {
+        self.viewModel?.$times
             .receive(on: DispatchQueue.main)
             .dropFirst()
-            .sink(receiveValue: { [weak self] stopUI in
-                if stopUI {
-                    self?.setStopColor()
-                    self?.setButtonsEnabledTrue()
-                } else {
+            .sink(receiveValue: { [weak self] times in
+                self?.updateTIMELabels(times: times)
+                self?.updateEndTime(goalTime: times.goal)
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindDaily() {
+        self.viewModel?.$daily
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] daily in
+                self?.updateToday(to: daily.day)
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindUI() {
+        self.viewModel?.$runningUI
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] runningUI in
+                if runningUI {
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
+                } else {
+                    self?.setStopColor()
+                    self?.setButtonsEnabledTrue()
                 }
             })
             .store(in: &self.cancellables)
     }
 }
 
+// MARK: - viewWillAppear logic
+extension StopwatchViewController {
+    private func updateTask() {
+        let task = self.viewModel?.task ?? "none"
+        if task == "none" {
+            self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
+            self.setFirstStart()
+        } else {
+            self.taskButton.setTitle(task, for: .normal)
+        }
+    }
+    
+    private func updateTIMELabels(times: Times) {
+        self.TIMEofSum.text = times.sum.toTimeString
+        self.TIMEofStopwatch.text = times.stopwatch.toTimeString
+        self.TIMEofTarget.text = times.goal.toTimeString
+    }
+    
+    private func updateEndTime(goalTime: Int) {
+        let endAt = Date().addingTimeInterval(TimeInterval(goalTime))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "TO hh:mm a"
+        let endTime = dateFormatter.string(from: endAt)
+        self.finishTimeLabel.text = endTime
+    }
+    
+    private func updateToday(to date: Date) {
+        self.todayLabel.text = date.YYYYMMDDstyleString
+    }
+    
+    private func setStartColor() {
+        self.view.backgroundColor = UIColor.black
+        outterProgress.progressColor = COLOR!
+        innerProgress.progressColor = UIColor.white
+        startStopBT.backgroundColor = UIColor.clear
+        TIMEofStopwatch.textColor = COLOR
+        //예상종료시간 숨기기, stop 버튼 센터로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.settingBT.alpha = 0
+            self.taskButton.layer.borderColor = UIColor.clear.cgColor
+            self.startStopBTLabel.textColor = self.RED!
+            self.resetBT.alpha = 0
+            self.startStopBT.layer.borderColor = UIColor.clear.cgColor
+            self.startStopBTLabel.text = "◼︎"
+            self.colorSelector.alpha = 0
+            self.tabBarController?.tabBar.isHidden = true
+            self.todayLabel.alpha = 0
+        })
+    }
+    
+    private func setButtonsEnabledFalse() {
+        self.settingBT.isUserInteractionEnabled = false
+        self.taskButton.isUserInteractionEnabled = false
+        self.resetBT.isUserInteractionEnabled = false
+    }
+    
+    private func setStopColor() {
+        self.view.backgroundColor = COLOR
+        outterProgress.progressColor = UIColor.white
+        innerProgress.progressColor = INNER!
+        startStopBT.backgroundColor = startButtonColor!
+        TIMEofStopwatch.textColor = UIColor.white
+        //예상종료시간 보이기, stop 버튼 제자리로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.settingBT.alpha = 1
+            self.taskButton.layer.borderColor = UIColor.white.cgColor
+            self.startStopBTLabel.textColor = UIColor.white
+            self.resetBT.alpha = 1
+            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
+            self.startStopBTLabel.text = "▶︎"
+            self.colorSelector.alpha = 0.7
+            self.tabBarController?.tabBar.isHidden = false
+        })
+        //animation test
+        if(!self.isLandscape) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
+            })
+        }
+    }
+    
+    private func setButtonsEnabledTrue() {
+        self.settingBT.isUserInteractionEnabled = true
+        self.taskButton.isUserInteractionEnabled = true
+        self.resetBT.isUserInteractionEnabled = true
+    }
+}
 
-
+// MARK: - Rotation
+extension StopwatchViewController {
+    @objc func deviceRotated(){
+        if UIDevice.current.orientation.isLandscape {
+            self.setLandscape()
+        } else {
+            self.setPortrait()
+        }
+    }
+    
+    private func setLandscape() {
+        if self.viewModel?.runningUI ?? false == false {
+            UIView.animate(withDuration: 0.3) {
+                self.taskButton.alpha = 0
+                self.todayLabel.alpha = 0
+            }
+        }
+        self.isLandscape = true
+    }
+    
+    private func setPortrait() {
+        if self.viewModel?.runningUI ?? false == false {
+            UIView.animate(withDuration: 0.3) {
+                self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
+            }
+        }
+        self.isLandscape = false
+    }
+}
 
 
 
@@ -234,11 +342,11 @@ extension StopwatchViewController : ChangeViewController2 {
         setButtonsEnabledTrue()
         daily.reset(currentGoalTime, timerTime) //하루 그래프 초기화
         resetCurrentStopwatchTime()
-        self.configureToday()
+        self.updateToday()
     }
     
     func changeTask() {
-        setTask()
+        updateTask()
         daily.load()
         resetCurrentStopwatchTime()
     }
@@ -251,29 +359,9 @@ extension StopwatchViewController : ChangeViewController2 {
 
 
 extension StopwatchViewController {
-    private func configureToday() {
-        self.todayLabel.text = self.daily.day.YYYYMMDDstyleString
-    }
     
-    func setLandscape() {
-        if self.timerStopped {
-            UIView.animate(withDuration: 0.3) {
-                self.taskButton.alpha = 0
-                self.todayLabel.alpha = 0
-            }
-        }
-        isLandscape = true
-    }
     
-    func setPortrait() {
-        if self.timerStopped {
-            UIView.animate(withDuration: 0.3) {
-                self.taskButton.alpha = 1
-                self.todayLabel.alpha = 1
-            }
-        }
-        isLandscape = false
-    }
+    
     
     
     
@@ -325,40 +413,21 @@ extension StopwatchViewController {
             UserDefaults.standard.removeObject(forKey: "savedTime")
         }
     }
-    
-    
-    
-    private func configureTimes() {
-        self.currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
-        self.currentStopwatchTime = UserDefaultsManager.get(forKey: .sumTime_temp) as? Int ?? 0
-        self.currentGoalTime = UserDefaults.standard.value(forKey: "allTime2") as? Int ?? 21600
-        self.totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-    }
-    
-    private func checkFirstRecordStart() {
-        self.firstRecordStart = UserDefaultsManager.get(forKey: .startTime) as? Date? == nil
-    }
 
     func resetProgress() {
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer)
+        outterProgress.setProgress(duration: 1.0, value: 0.0, from: beforePer)
         beforePer = 0.0
         //circle2
         totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: beforePer2)
+        innerProgress.setProgress(duration: 1.0, value: 0.0, from: beforePer2)
         beforePer2 = 0.0
     }
     
-    private func setFirstProgress() {
-        outterProgress.progressWidth = 20.0
-        outterProgress.trackColor = UIColor.darkGray
-        progressPer = Float(currentStopwatchTime%progressPeriod) / Float(progressPeriod)
-        beforePer = progressPer
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
-        //circle2
-        innerProgress.progressWidth = 8.0
-        innerProgress.trackColor = UIColor.clear
-        beforePer2 = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
+    private func configureProgress() {
+        self.outterProgress.progressWidth = 20.0
+        self.outterProgress.trackColor = UIColor.darkGray
+        self.innerProgress.progressWidth = 8.0
+        self.innerProgress.trackColor = UIColor.clear
     }
     
     private func updateWeekly() {
@@ -385,16 +454,13 @@ extension StopwatchViewController {
             present(setVC,animated: true,completion: nil)
     }
     
-    func updateTIMELabels() {
-        self.TIMEofSum.text = self.currentSumTime.toTimeString
-        self.TIMEofStopwatch.text = self.currentStopwatchTime.toTimeString
-        self.TIMEofTarget.text = self.currentGoalTime.toTimeString
-    }
     
-    func updateProgress() {
-        progressPer = Float(currentStopwatchTime%progressPeriod) / Float(progressPeriod)
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: beforePer)
-        beforePer = progressPer
+    
+    func updateProgress(times: Times) {
+        let newProgressPer = Float(times.stopwatch%progressPeriod) / Float(progressPeriod)
+        self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
+        self.progressPer = newProgressPer
+        
         //circle2
         let temp = Float(currentSumTime)/Float(totalTime)
         innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
@@ -410,10 +476,6 @@ extension StopwatchViewController {
     func saveTimes() {
         UserDefaults.standard.set(currentSumTime, forKey: "sum2")
         UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
-    }
-    
-    func saveLogData() {
-        UserDefaults.standard.set(currentSumTime.toTimeString, forKey: "time1")
     }
     
     func appendDateToWeekly() {
@@ -436,73 +498,9 @@ extension StopwatchViewController {
         UserDefaults.standard.set(today, forKey: "day1")
     }
     
-    func getFutureTime() -> String {
-        let now = Date()
-        let future = now.addingTimeInterval(TimeInterval(currentGoalTime))
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "hh:mm a"
-        let today = dateFormatter.string(from: future)
-        return today
-    }
     
-    private func setStopColor() {
-        self.view.backgroundColor = COLOR
-        outterProgress.progressColor = UIColor.white
-        innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = startButtonColor!
-        TIMEofStopwatch.textColor = UIColor.white
-        //예상종료시간 보이기, stop 버튼 제자리로 이동
-        UIView.animate(withDuration: 0.3, animations: {
-            self.settingBT.alpha = 1
-            self.taskButton.layer.borderColor = UIColor.white.cgColor
-            self.startStopBTLabel.textColor = UIColor.white
-            self.resetBT.alpha = 1
-            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
-            self.startStopBTLabel.text = "▶︎"
-            self.colorSelector.alpha = 0.7
-            self.tabBarController?.tabBar.isHidden = false
-        })
-        //animation test
-        if(!self.isLandscape) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.taskButton.alpha = 1
-                self.todayLabel.alpha = 1
-            })
-        }
-    }
     
-    private func setStartColor() {
-        self.view.backgroundColor = UIColor.black
-        outterProgress.progressColor = COLOR!
-        innerProgress.progressColor = UIColor.white
-        startStopBT.backgroundColor = UIColor.clear
-        TIMEofStopwatch.textColor = COLOR
-        //예상종료시간 숨기기, stop 버튼 센터로 이동
-        UIView.animate(withDuration: 0.3, animations: {
-            self.settingBT.alpha = 0
-            self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = self.RED!
-            self.resetBT.alpha = 0
-            self.startStopBT.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.text = "◼︎"
-            self.colorSelector.alpha = 0
-            self.tabBarController?.tabBar.isHidden = true
-            self.todayLabel.alpha = 0
-        })
-    }
     
-    private func setButtonsEnabledTrue() {
-        self.settingBT.isUserInteractionEnabled = true
-        self.taskButton.isUserInteractionEnabled = true
-        self.resetBT.isUserInteractionEnabled = true
-    }
-    
-    private func setButtonsEnabledFalse() {
-        self.settingBT.isUserInteractionEnabled = false
-        self.taskButton.isUserInteractionEnabled = false
-        self.resetBT.isUserInteractionEnabled = false
-    }
     
     func goToViewController(where: String) {
         let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
@@ -513,23 +511,7 @@ extension StopwatchViewController {
     
     
     
-    private func updateModeNum() {
-        UserDefaultsManager.set(to: 2, forKey: .VCNum)
-        RecordController.shared.recordTimes.updateMode(to: 2)
-    }
     
-    
-    
-    func setTask() {
-        task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter a new subject".localized()
-        if(task == "Enter a new subject".localized()) {
-            setFirstStart()
-        } else {
-            taskButton.setTitleColor(UIColor.white, for: .normal)
-            taskButton.layer.borderColor = UIColor.white.cgColor
-        }
-        taskButton.setTitle(task, for: .normal)
-    }
     
     func resetCurrentStopwatchTime() {
         self.currentStopwatchTime = 0
@@ -554,17 +536,6 @@ extension StopwatchViewController {
         alert.addAction(ok)
         //4. 경고창 보이기
         present(alert,animated: true,completion: nil)
-    }
-    
-    private func updateSumGoalTime() {
-        guard self.daily.tasks != [:] else { return }
-        
-        self.currentSumTime = self.daily.tasks.values.reduce(0, +)
-        self.currentGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600 - self.currentSumTime
-        
-        UserDefaults.standard.set(self.currentSumTime, forKey: "sum2")
-        UserDefaults.standard.set(self.currentGoalTime, forKey: "allTime2")
-        self.saveLogData()
     }
 }
 

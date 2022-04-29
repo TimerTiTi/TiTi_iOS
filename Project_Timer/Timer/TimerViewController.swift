@@ -211,7 +211,7 @@ extension TimerViewController : ChangeViewController {
         UserDefaults.standard.set(self.currentTimerTime, forKey: "second2")
         self.TIMEofTimer.text = self.currentTimerTime.toTimeString
         self.finishTimeLabel.text = getFutureTime()
-        self.outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: currentProgressPosition)
+        self.outterProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
         self.currentProgressPosition = 0.0
     }
 }
@@ -366,12 +366,12 @@ extension TimerViewController {
         outterProgress.trackColor = UIColor.darkGray
         progressPer = Float(progressPeriod - currentTimerTime) / Float(progressPeriod)
         currentProgressPosition = progressPer
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: 0.0)
+        outterProgress.setProgress(duration: 1.0, value: progressPer, from: 0.0)
         //circle2
         innerProgress.progressWidth = 8.0
         innerProgress.trackColor = UIColor.clear
         beforePer2 = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: beforePer2, from: 0.0)
+        innerProgress.setProgress(duration: 1.0, value: beforePer2, from: 0.0)
     }
     
     func setTimes() {
@@ -394,7 +394,7 @@ extension TimerViewController {
     }
     
     func resetProgress() {
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: currentProgressPosition)
+        outterProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
         currentProgressPosition = 0.0
     }
     
@@ -450,11 +450,11 @@ extension TimerViewController {
     
     func updateProgress() {
         progressPer = Float(progressPeriod - currentTimerTime) / Float(progressPeriod)
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: progressPer, from: currentProgressPosition)
+        outterProgress.setProgress(duration: 1.0, value: progressPer, from: currentProgressPosition)
         currentProgressPosition = progressPer
         //circle2
         let temp = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
+        innerProgress.setProgress(duration: 1.0, value: temp, from: beforePer2)
         beforePer2 = temp
     }
     
@@ -463,11 +463,11 @@ extension TimerViewController {
         UserDefaults.standard.set(nil, forKey: "startTime")
 //        AverageLabel.textColor = UIColor.white
         progressPeriod = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        outterProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: currentProgressPosition)
+        outterProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
         currentProgressPosition = 0.0
         //circle2
         totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: 0.0, from: currentProgressPosition)
+        innerProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
         beforePer2 = 0.0
     }
     
