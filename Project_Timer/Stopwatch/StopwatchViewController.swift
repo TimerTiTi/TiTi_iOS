@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 final class StopwatchViewController: UIViewController {
     static let identifier = "StopwatchViewController"
@@ -34,15 +35,9 @@ final class StopwatchViewController: UIViewController {
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
     let startButtonColor = UIColor(named: "startButtonColor")
+    private var cancellables: Set<AnyCancellable> = []
+    private var viewModel: StopwatchVM?
     
-    var timerStopped = true
-    var realTime = Timer()
-    var currentSumTime: Int = 0
-    var currentStopwatchTime: Int = 0
-    var currentGoalTime: Int = 0
-    var diffHrs = 0
-    var diffMins = 0
-    var diffSecs = 0
     var firstRecordStart = false
     var progressPer: Float = 0.0
     let progressPeriod: Int = 3600
@@ -53,28 +48,23 @@ final class StopwatchViewController: UIViewController {
     var totalTime: Int = 0
     var beforePer2: Float = 0.0
     var task: String = ""
-    var time: RecordTimes!
-    //하루 그래프를 위한 구조
-    var daily = Daily()
     var isLandscape: Bool = false
-    
-    let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setLocalizable()
-        self.setColor()
-        self.setShadow()
-        self.stopColor()
+        self.configureLocalizable()
+        self.configureColor()
+        self.configureShadow()
+        self.configureObservation()
+        self.setStopColor()
         self.setButtonsEnabledTrue()
-        self.setBackground()
+        self.configureViewModel()
+        self.bindAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        self.setVCNum()
-        self.daily.load()
+        self.updateModeNum()
         self.setTask()
         self.updateSumGoalTime()
         self.configureTimes()
@@ -87,9 +77,7 @@ final class StopwatchViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        print("disappear in stopwatch")
         UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     @objc func deviceRotated(){
@@ -105,7 +93,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     private func startTimer() {
-        self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
         self.timerStopped = false
         print("stopwatch start")
     }
@@ -168,12 +156,68 @@ final class StopwatchViewController: UIViewController {
     }
 }
 
+// MARK: - Configure
+extension StopwatchViewController {
+    private func configureLocalizable() {
+        self.sumTimeLabel.text = "Sum Time".localized()
+        self.stopWatchLabel.text = "Stopwatch".localized()
+        self.targetTimeLabel.text = "Target Time".localized()
+    }
+    private func configureColor() {
+        self.COLOR = UserDefaultsManager.get(forKey: .color) as? UIColor ?? UIColor(named: "Background2")
+    }
+    private func configureShadow() {
+        self.resetBT.configureShadow(opacity: 0.5, radius: 4)
+        self.settingBT.configureShadow(opacity: 0.5, radius: 4)
+        self.TIMEofSum.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofStopwatch.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofTarget.configureShadow(opacity: 0.6, radius: 2)
+    }
+    private func configureObservation() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    private func configureViewModel() {
+        self.viewModel = StopwatchVM()
+    }
+}
+
+// MARK: - binding
+extension StopwatchViewController {
+    private func bindAll() {
+        self.bindStopColor()
+    }
+    
+    private func bindUI() {
+        self.viewModel?.$stopUI
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] stopUI in
+                if stopUI {
+                    self?.setStopColor()
+                    self?.setButtonsEnabledTrue()
+                } else {
+                    self?.setStartColor()
+                    self?.setButtonsEnabledFalse()
+                }
+            })
+            .store(in: &self.cancellables)
+    }
+}
+
+
+
+
+
+
+
 extension StopwatchViewController : ChangeViewController2 {
     
     func changeGoalTime() {
         firstRecordStart = true
         UserDefaults.standard.set(nil, forKey: "startTime")
-        setColor()
+        configureColor()
         currentGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
         let timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
         currentSumTime = 0
@@ -186,7 +230,7 @@ extension StopwatchViewController : ChangeViewController2 {
         updateTIMELabels()
         finishTimeLabel.text = getFutureTime()
         
-        stopColor()
+        setStopColor()
         setButtonsEnabledTrue()
         daily.reset(currentGoalTime, timerTime) //하루 그래프 초기화
         resetCurrentStopwatchTime()
@@ -231,16 +275,13 @@ extension StopwatchViewController {
         isLandscape = false
     }
     
-    func setBackground() {
-        NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
+    
     
     @objc func pauseWhenBackground(noti: Notification) {
         print("background")
         UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
         if self.timerStopped == false {
-            self.realTime.invalidate()
+            self.timer.invalidate()
             let shared = UserDefaults.standard
             shared.set(Date(), forKey: "savedTime") // 나가는 시점의 시간 저장
         }
@@ -285,32 +326,7 @@ extension StopwatchViewController {
         }
     }
     
-    func setShadow() {
-        resetBT.layer.shadowColor = UIColor.gray.cgColor
-        resetBT.layer.shadowOpacity = 0.5
-        resetBT.layer.shadowOffset = CGSize.zero
-        resetBT.layer.shadowRadius = 4
-        
-        settingBT.layer.shadowColor = UIColor.gray.cgColor
-        settingBT.layer.shadowOpacity = 0.5
-        settingBT.layer.shadowOffset = CGSize.zero
-        settingBT.layer.shadowRadius = 4
-        
-        TIMEofSum.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofSum.layer.shadowOpacity = 0.6
-        TIMEofSum.layer.shadowOffset = CGSize.zero
-        TIMEofSum.layer.shadowRadius = 2
-        
-        TIMEofStopwatch.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofStopwatch.layer.shadowOpacity = 0.6
-        TIMEofStopwatch.layer.shadowOffset = CGSize.zero
-        TIMEofStopwatch.layer.shadowRadius = 2
-        
-        TIMEofTarget.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofTarget.layer.shadowOpacity = 0.6
-        TIMEofTarget.layer.shadowOffset = CGSize.zero
-        TIMEofTarget.layer.shadowRadius = 2
-    }
+    
     
     private func configureTimes() {
         self.currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
@@ -430,7 +446,7 @@ extension StopwatchViewController {
         return today
     }
     
-    func stopColor() {
+    private func setStopColor() {
         self.view.backgroundColor = COLOR
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
@@ -456,7 +472,7 @@ extension StopwatchViewController {
         }
     }
     
-    func setColorsOfStart() {
+    private func setStartColor() {
         self.view.backgroundColor = UIColor.black
         outterProgress.progressColor = COLOR!
         innerProgress.progressColor = UIColor.white
@@ -495,23 +511,14 @@ extension StopwatchViewController {
         self.present(vcName!, animated: true, completion: nil)
     }
     
-    func setColor() {
-        if let color = UserDefaultsManager.get(forKey: .color) as? UIColor {
-            self.COLOR = color
-        } else {
-            self.COLOR = UIColor(named: "Background2")
-        }
+    
+    
+    private func updateModeNum() {
+        UserDefaultsManager.set(to: 2, forKey: .VCNum)
+        RecordController.shared.recordTimes.updateMode(to: 2)
     }
     
-    func setVCNum() {
-        UserDefaults.standard.set(2, forKey: "VCNum")
-    }
     
-    func setLocalizable() {
-        sumTimeLabel.text = "Sum Time".localized()
-        stopWatchLabel.text = "Stopwatch".localized()
-        targetTimeLabel.text = "Target Time".localized()
-    }
     
     func setTask() {
         task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter a new subject".localized()
@@ -568,7 +575,7 @@ extension StopwatchViewController {
     }
     
     private func timerStartSetting() {
-        self.setColorsOfStart()
+        self.setStartColor()
         self.updateProgress()
         // MARK: - init 은 정상적일 경우에만 하도록 개선 예정
         self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
@@ -582,13 +589,13 @@ extension StopwatchViewController {
     }
     
     func algoOfStop() {
-        self.realTime.invalidate()
+        self.timer.invalidate()
         self.timerStopped = true
         
         saveLogData()
         updateTIMELabels()
         
-        stopColor()
+        setStopColor()
         setButtonsEnabledTrue()
         time.savedStopwatchTime = currentStopwatchTime //기준시간 저장
         daily.save() //하루 그래프 데이터 계산
