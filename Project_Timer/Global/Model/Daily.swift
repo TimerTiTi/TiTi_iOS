@@ -10,71 +10,60 @@ import Foundation
 
 struct Daily: Codable, CustomStringConvertible {
     var description: String {
-        return "\(self.day.YYYYMMDDstyleString) : \(self.tasks), \(self.timeline)"
+        return "\(self.day.YYYYMMDDstyleString) : \(self.tasks)"
     }
-    
-    var day: Date = Date()
-    var timeline = Array(repeating: 0, count: 24) //24시 : 0, 01시 : 1
-    var tasks: [String: Int] = [:] // 과목명 : 누적시간
-    var maxTime: Int = 0 //최고연속시간
+    static let fileName: String = "daily.json"
+    private(set) var day: Date = Date() // 기록 날짜값
+    private(set) var tasks: [String: Int] = [:] // 과목명-누적시간 값
+    private(set) var maxTime: Int = 0 // 최고 연속시간
+    private(set) var timeline = Array(repeating: 0, count: 24) // 시간대별 그래프값, (24시: 0)
     var totalTime: Int { // computed property
         return self.tasks.values.reduce(0, +)
     }
     
-    mutating func recordStartSetting(taskName: String) {
-        self.currentTask = taskName
-        self.currentTaskFromTime = self.tasks[self.currentTask] ?? 0
-        self.save()
-    }
-    
-    mutating func updateCurrentTaskTime(interval: Int) {
-        guard let currentTaskFromTime = self.currentTaskFromTime else { return }
-        self.tasks[self.currentTask] = currentTaskFromTime + interval
-        self.timeline[Date().hour] += 1 // timeline update
-        self.save()
-    }
-    
-    mutating func updateMaxTime(with interval: Int) {
+    // 10간격, 또는 종료시 update 반영
+    mutating func update(recordTimes: RecordTimes) {
+        let current = Date()
+        let interval = recordTimes.interval(to: current)
+        self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
         self.maxTime = max(self.maxTime, interval)
+        self.updateTimeline(recordTimes: recordTimes, interval: interval, current: current)
+        self.save()
     }
     
-    mutating func reset(_ totalTime: Int, _ timerTime: Int) {
+    private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
+        let startHour = recordTimes.recordStartAt.hour
+        let nowHour = current.hour < startHour ? current.hour+24 : current.hour
+        // 동일 시간대: interval 만큼 증가
+        if startHour == nowHour {
+            self.timeline[nowHour] = recordTimes.recordStartTimeline[nowHour] + interval
+            self.save()
+            return
+        }
+        
+        self.timeline[startHour] = 3600
+        for h in startHour+1...nowHour {
+            if h != nowHour {
+                self.timeline[h%24] = 3600
+            } else {
+                self.timeline[h%24] = self.getSecondsAt(current)
+            }
+        }
+        self.save()
+    }
+    
+    // 새로운 날짜의 기록 시작시 reset
+    mutating func reset() {
         self = Daily()
         self.save()
     }
     
     func save() {
-        Storage.store(self, to: .documents, as: "daily.json")
+        Storage.store(self, to: .documents, as: Daily.fileName)
     }
     
     mutating func load() {
-        self = Storage.retrive("daily.json", from: .documents, as: Daily.self) ?? Daily()
-    }
-    
-    mutating func updateCurrentTaskTimeOfBackground(startAt: Date, interval: Int) {
-        self.tasks[self.currentTask] = self.currentTaskFromTime ?? 0 + interval
-        
-        let now = Date()
-        let startHour = startAt.hour
-        var nowHour = now.hour
-        if nowHour < startHour { nowHour += 24 } // 현재시각이 백그라운드 진입 시각보다 작은 경우 : 00시를 지난 경우는 24를 더한다
-        
-        // 동일 시간대에 백그라운드 컴백 : interval 만큼 증가
-        if startHour == nowHour {
-            self.timeline[nowHour] += interval
-            return
-        }
-        // 백그라운드 나간 시간대 : 3599 - (해당시각까지의 분+초) 값 반영
-        self.timeline[startHour] += 3599 - self.getSecondsAt(startAt)
-        // 백그라운드 그외 시간대 반영
-        for h in startHour+1...nowHour {
-            if h != nowHour {
-                self.timeline[h%24] = 3600
-            } else {
-                self.timeline[h%24] += self.getSecondsAt(now)
-            }
-        }
-        self.save()
+        self = Storage.retrive(Daily.fileName, from: .documents, as: Daily.self) ?? Daily()
     }
     
     private func getSecondsAt(_ date: Date) -> Int {
