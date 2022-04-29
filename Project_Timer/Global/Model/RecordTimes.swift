@@ -30,23 +30,27 @@ struct RecordTimes: Codable, CustomStringConvertible {
     private var savedStopwatchTime: Int  = 0// stopwath 기준값 및 저장된 stopwatch 값
     private var savedGoalTime: Int = 21600 // 저장된 goalTime 값
     
+    private(set) var recordStartTimeline = Array(repeating: 0, count: 24) // 기록시작시 timeline 값
+    
+    // task 를 변경할 경우 반영 (기록하기 전 반영)
     mutating func updateTask(to taskName: String, fromTime: Int) {
         self.recordTask = taskName
         self.recordTaskFromTime = fromTime
         self.save()
     }
-    
+    // mode 를 변경할 경우 반영 (기록하기 전 반영)
     mutating func updateMode(to mode: Int) {
         self.recordingMode = mode
         self.save()
     }
-    
-    mutating func recordStart() {
+    // 기록 시작시 설정
+    mutating func recordStart(daily: Daily) {
         self.recordStartAt = Date()
         self.recording = true
+        self.recordStartTimeline = daily.timeline
         self.save()
     }
-    
+    // 기록 종료시 설정
     mutating func recordStop(finishAt: Date) {
         self.recording = false
         self.savedSumTime += self.interval(to: finishAt)
@@ -58,17 +62,17 @@ struct RecordTimes: Codable, CustomStringConvertible {
         }
         self.save()
     }
-    
+    // 사용자가 timer 시간을 변경시 반영 (기록하기 전 반영)
     mutating func updateTimerTime(to timerTime: Int) {
         self.settedTimerTime = timerTime
         self.save()
     }
-    
+    // 사용자가 goal 시간을 변경시 반영 (기록하기 전 반영)
     mutating func updateGoalTime(to goalTime: Int) {
         self.settedGoalTime = goalTime
         self.save()
     }
-    
+    // 앱 시작시 load 및 초기화 작업
     mutating func load() {
         guard let savedRecordTimes = Storage.retrive(RecordTimes.fileName, from: .documents, as: RecordTimes.self) else {
             self = RecordTimes()
@@ -85,9 +89,19 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self = savedRecordTimes
     }
     
-    private func save() {
+    func save() {
         Storage.store(self, to: .documents, as: RecordTimes.fileName)
         // MARK: network 상에 반영한다면?
+    }
+    // 새로운 날짜의 기록 시작시 reset
+    mutating func reset() {
+        self.recordTaskFromTime = 0
+        self.recording = false
+        self.savedSumTime = 0
+        self.savedTimerTime = self.settedTimerTime
+        self.savedStopwatchTime = 0
+        self.savedGoalTime = self.settedGoalTime
+        self.save()
     }
     
     func interval(to: Date) -> Int {
