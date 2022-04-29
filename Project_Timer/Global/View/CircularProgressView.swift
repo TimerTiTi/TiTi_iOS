@@ -64,7 +64,7 @@ class CircularProgressView: UIView {
          
     }
     
-    func setProgressWithAnimation(duration: TimeInterval, value: Float, from: Float) {
+    func setProgress(duration: TimeInterval, value: Float, from: Float) {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = duration
         animation.fromValue = from
