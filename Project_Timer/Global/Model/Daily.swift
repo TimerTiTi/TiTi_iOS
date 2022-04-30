@@ -40,7 +40,9 @@ struct Daily: Codable, CustomStringConvertible {
             return
         }
         
-        self.timeline[startHour] = 3600
+        self.timeline[startHour] = recordTimes.recordStartTimeline[startHour] + (3600 - self.getSecondsAt(recordTimes.recordStartAt))
+        self.timeline[startHour] = min(3600, self.timeline[startHour])
+        
         for h in startHour+1...nowHour {
             if h != nowHour {
                 self.timeline[h%24] = 3600
