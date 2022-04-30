@@ -28,7 +28,6 @@ struct Daily: Codable, CustomStringConvertible {
         self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
         self.maxTime = max(self.maxTime, interval)
         self.updateTimeline(recordTimes: recordTimes, interval: interval, current: current)
-        self.save()
     }
     
     private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
