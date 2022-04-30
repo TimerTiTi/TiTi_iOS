@@ -15,6 +15,7 @@ protocol ChangeViewController2 {
 }
 
 class SetTimerViewController2: UIViewController {
+    static let identifier = "SetTimerViewController2"
     
     @IBOutlet var Label_timer: UILabel!
     @IBOutlet var Text_H: UITextField!
