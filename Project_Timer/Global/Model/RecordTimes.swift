@@ -20,10 +20,10 @@ struct RecordTimes: Codable, CustomStringConvertible {
     private(set) var recordStartAt: Date = Date() // 기록측정 시작시각
     private(set) var recording: Bool = false // 기록중인지 여부값, network 상 다른 기기에서도 표시 가능
     
-    private var recordingMode: Int = 1 // 기록모드값, 1: timer, 2: stopwatch
-    private var settedGoalTime: Int = 21600// 사용자가 설정한 목표시간값
-    private var settedTimerTime: Int = 2400 // 사용자가 설정한 타이머 시간값
+    private(set) var settedGoalTime: Int = 21600// 사용자가 설정한 목표시간값
+    private(set) var settedTimerTime: Int = 2400 // 사용자가 설정한 타이머 시간값
     
+    private var recordingMode: Int = 1 // 기록모드값, 1: timer, 2: stopwatch
     private var savedSumTime: Int = 0 // sum 기준값 및 저장된 sum 값
     private var savedTimerTime: Int = 2400 // timer 기준값 및 저장된 timer 값
     private var savedStopwatchTime: Int  = 0// stopwath 기준값 및 저장된 stopwatch 값

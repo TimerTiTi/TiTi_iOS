@@ -39,6 +39,7 @@ final class StopwatchViewController: UIViewController {
     private var viewModel: StopwatchVM?
     
     var progressPer: Float = 0.0
+    var innerProgressPer: Float = 0.0
     let progressPeriod: Int = 3600
     var isLandscape: Bool = false
     
@@ -110,6 +111,12 @@ extension StopwatchViewController {
         self.TIMEofStopwatch.configureShadow(opacity: 0.6, radius: 2)
         self.TIMEofTarget.configureShadow(opacity: 0.6, radius: 2)
     }
+    private func configureProgress() {
+        self.outterProgress.progressWidth = 20.0
+        self.outterProgress.trackColor = UIColor.darkGray
+        self.innerProgress.progressWidth = 8.0
+        self.innerProgress.trackColor = UIColor.clear
+    }
     private func configureObservation() {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -134,6 +141,8 @@ extension StopwatchViewController {
             .sink(receiveValue: { [weak self] times in
                 self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: times.goal)
+                self?.updateProgress(times: times)
+                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
     }
@@ -172,7 +181,7 @@ extension StopwatchViewController {
     }
 }
 
-// MARK: - viewWillAppear logic
+// MARK: - logic
 extension StopwatchViewController {
     private func updateTask(to task: String) {
         if task == "none" {
@@ -264,6 +273,22 @@ extension StopwatchViewController {
         self.taskButton.isUserInteractionEnabled = true
         self.resetBT.isUserInteractionEnabled = true
     }
+    
+    private func updateProgress(times: Times) {
+        let newProgressPer = Float(times.stopwatch % self.progressPeriod) / Float(self.progressPeriod)
+        self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
+        self.progressPer = newProgressPer
+        
+        let newInnerProgressPer = Float(times.sum) / Float(self.viewModel?.setttedGoalTime ?? 21600)
+        self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
+        self.innerProgressPer = newInnerProgressPer
+    }
+    
+    private func printTimes(with times: Times) {
+        print("sum: \(times.sum.toTimeString)")
+        print("stopwatch: \(times.stopwatch.toTimeString)")
+        print("goal: \(times.goal.toTimeString)")
+    }
 }
 
 // MARK: - Rotation
@@ -309,7 +334,6 @@ extension StopwatchViewController {
 
 
 extension StopwatchViewController : ChangeViewController2 {
-    
     func changeGoalTime() {
         firstRecordStart = true
         UserDefaults.standard.set(nil, forKey: "startTime")
@@ -332,27 +356,10 @@ extension StopwatchViewController : ChangeViewController2 {
         resetCurrentStopwatchTime()
         self.updateToday()
     }
-    
-    func changeTask() {
-        updateTask()
-        daily.load()
-        resetCurrentStopwatchTime()
-    }
-    
-    func reload() {
-        self.viewDidLoad()
-        self.view.layoutIfNeeded()
-    }
 }
 
 
 extension StopwatchViewController {
-    
-    
-    
-    
-    
-    
     @objc func pauseWhenBackground(noti: Notification) {
         print("background")
         UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
@@ -395,12 +402,6 @@ extension StopwatchViewController {
         
         self.startTimer()
     }
-    
-    func removeSavedDate() {
-        if (UserDefaults.standard.object(forKey: "savedTime") as? Date) != nil {
-            UserDefaults.standard.removeObject(forKey: "savedTime")
-        }
-    }
 
     func resetProgress() {
         outterProgress.setProgress(duration: 1.0, value: 0.0, from: beforePer)
@@ -411,82 +412,10 @@ extension StopwatchViewController {
         beforePer2 = 0.0
     }
     
-    private func configureProgress() {
-        self.outterProgress.progressWidth = 20.0
-        self.outterProgress.trackColor = UIColor.darkGray
-        self.innerProgress.progressWidth = 8.0
-        self.innerProgress.trackColor = UIColor.clear
-    }
-    
-    private func updateWeekly() {
-        UserDefaultsManager.set(to: Date(), forKey: .startTime)
-        self.appendDateToWeekly()
-        self.firstRecordStart = false
-    }
-    
     private func showSettingView() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
         setVC.SetTimerViewControllerDelegate = self
         present(setVC,animated: true,completion: nil)
-    }
-    
-    func showLog() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! LogViewController
-            setVC.logViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
-    }
-    
-    func updateProgress(times: Times) {
-        let newProgressPer = Float(times.stopwatch%progressPeriod) / Float(progressPeriod)
-        self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
-        self.progressPer = newProgressPer
-        
-        //circle2
-        let temp = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgressWithAnimation(duration: 1.0, value: temp, from: beforePer2)
-        beforePer2 = temp
-    }
-    
-    func printLogs() {
-        print("sum : " + String(currentSumTime))
-        print("stopwatch : \(currentStopwatchTime)")
-        print("target : " + String(currentGoalTime))
-    }
-    
-    func saveTimes() {
-        UserDefaults.standard.set(currentSumTime, forKey: "sum2")
-        UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
-    }
-    
-    func appendDateToWeekly() {
-        for i in stride(from: 0, to: 7, by: 1) {
-            array_day[i] = UserDefaults.standard.value(forKey: "day"+String(i+1)) as? String ?? "NO DATA"
-            array_time[i] = UserDefaults.standard.value(forKey: "time"+String(i+1)) as? String ?? "NO DATA"
-        }
-        //값 옮기기, 값 저장하기
-        for i in stride(from: 6, to: 0, by: -1) {
-            array_day[i] = array_day[i-1]
-            UserDefaults.standard.set(array_day[i], forKey: "day"+String(i+1))
-            array_time[i] = array_time[i-1]
-            UserDefaults.standard.set(array_time[i], forKey: "time"+String(i+1))
-        }
-        //log 날짜 설정
-        let now = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        let today = dateFormatter.string(from: now)
-        UserDefaults.standard.set(today, forKey: "day1")
-    }
-    
-    
-    
-    
-    
-    func goToViewController(where: String) {
-        let vcName = self.storyboard?.instantiateViewController(withIdentifier: `where`)
-        vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
-        vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
-        self.present(vcName!, animated: true, completion: nil)
     }
 }
 
@@ -494,36 +423,6 @@ extension StopwatchViewController {
 extension StopwatchViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
-    }
-    
-    private func timerStartSetting() {
-        self.setStartColor()
-        self.updateProgress()
-        // MARK: - init 은 정상적일 경우에만 하도록 개선 예정
-        self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, stopwatch: self.currentStopwatchTime)
-        self.startTimer()
-        self.setButtonsEnabledFalse()
-        self.finishTimeLabel.text = getFutureTime()
-        if self.firstRecordStart {
-            self.updateWeekly()
-        }
-        self.daily.recordStartSetting(taskName: self.task) // 현재 task에 대한 기록 설정
-    }
-    
-    func algoOfStop() {
-        self.timer.invalidate()
-        self.timerStopped = true
-        
-        saveLogData()
-        updateTIMELabels()
-        
-        setStopColor()
-        setButtonsEnabledTrue()
-        time.savedStopwatchTime = currentStopwatchTime //기준시간 저장
-        daily.save() //하루 그래프 데이터 계산
-        //dailys 저장
-        dailyViewModel.addDaily(daily)
-        UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
     }
 }
 
