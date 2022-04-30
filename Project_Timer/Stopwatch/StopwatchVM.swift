@@ -66,6 +66,11 @@ final class StopwatchVM {
         }
     }
     
+    func stopwatchReset() {
+        RecordController.shared.recordTimes.resetStopwatch()
+        self.times = RecordController.shared.recordTimes.currentTimes()
+    }
+    
     private func timerStart() {
         // timer 동작, runningUI 반영
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
@@ -87,6 +92,7 @@ final class StopwatchVM {
         self.timer.invalidate()
         self.timerRunning = false
         self.runningUI = false
+        self.timerCount = 0
         let endAt = Date()
         RecordController.shared.recordTimes.recordStop(finishAt: endAt)
         RecordController.shared.daily.update(at: endAt)
@@ -95,10 +101,14 @@ final class StopwatchVM {
         RecordController.shared.dailys.addDaily(self.daily)
     }
     
-    func stopwatchReset() {
-//        self.currentStopwatchTime = 0
-//        UserDefaultsManager.set(to: 0, forKey: .sumTime_temp)
-//        self.updateTIMELabels()
-//        self.updateProgress()
+    func enterBackground() {
+        print("background")
+        self.timer.invalidate()
+    }
+    
+    func enterForground() {
+        print("forground")
+        self.updateTimes()
+        self.timerStart()
     }
 }
