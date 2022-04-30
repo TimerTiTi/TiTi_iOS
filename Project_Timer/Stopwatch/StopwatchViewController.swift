@@ -57,61 +57,28 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
-        self.updateTask()
     }
     
-    private func startTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        self.timerStopped = false
-        print("stopwatch start")
+    @IBAction func taskSelect(_ sender: Any) {
+        self.showTaskSelectVC()
     }
     
-    @objc func timerLogic() {
-        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date()) // 기록 시작점 ~ 현재까지 지난 초
-        self.updateTimes(interval: seconds)
-        self.daily.updateCurrentTaskTime(interval: seconds)
-        self.daily.updateMaxTime(with: seconds)
-        
-        updateTIMELabels()
-        updateProgress()
-        printLogs()
-        saveTimes()
-    }
-    
-    private func updateTimes(interval: Int) {
-        // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
-        self.currentSumTime = self.time.savedSumTime + interval
-        self.currentStopwatchTime = self.time.savedStopwatchTime + interval
-        self.currentGoalTime = self.time.goalTime - interval
-    }
-    
-    @IBAction func taskBTAction(_ sender: Any) {
-        showTaskView()
-    }
-    
-    @IBAction func startStopBTAction(_ sender: Any) {
-        if(task == "Enter a new subject".localized()) {
-            showFirstAlert()
-        } else {
-            //start action
-            if(self.timerStopped == true) {
-                timerStartSetting()
-            }
-            //stop action
-            else {
-                algoOfStop()
-            }
+    @IBAction func timerStartStopAction(_ sender: Any) {
+        guard self.viewModel?.task ?? "none" != "none" else {
+            self.showTaskWarningAlert()
         }
+        self.viewModel?.timerAction()
     }
     
-    @IBAction func settingBTAction(_ sender: Any) {
-        showSettingView()
+    @IBAction func setting(_ sender: Any) {
+        self.showSettingView()
     }
     
-    @IBAction func resetBTAction(_ sender: Any) {
-        resetCurrentStopwatchTime()
+    @IBAction func reset(_ sender: Any) {
+        self.viewModel?.stopwatchReset()
     }
     
     @IBAction func colorSelect(_ sender: Any) {
@@ -121,7 +88,7 @@ final class StopwatchViewController: UIViewController {
             picker.delegate = self
             self.present(picker, animated: true, completion: nil)
         } else {
-            // Fallback on earlier versions
+            self.showAlertWithOK(title: "iOS 14.0 이상 기능", text: "업데이트 후 사용해주시기 바랍니다.")
         }
     }
 }
@@ -179,6 +146,15 @@ extension StopwatchViewController {
             })
             .store(in: &self.cancellables)
     }
+    private func bindTask() {
+        self.viewModel?.$task
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] task in
+                self?.updateTask(to: task)
+            })
+            .store(in: &self.cancellables)
+    }
     private func bindUI() {
         self.viewModel?.$runningUI
             .receive(on: DispatchQueue.main)
@@ -198,14 +174,18 @@ extension StopwatchViewController {
 
 // MARK: - viewWillAppear logic
 extension StopwatchViewController {
-    private func updateTask() {
-        let task = self.viewModel?.task ?? "none"
+    private func updateTask(to task: String) {
         if task == "none" {
             self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
-            self.setFirstStart()
+            self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)
         }
+    }
+    
+    private func setTaskWarningColor() {
+        self.taskButton.setTitleColor(UIColor.systemPink, for: .normal)
+        self.taskButton.layer.borderColor = UIColor.systemPink.cgColor
     }
     
     private func updateTIMELabels(times: Times) {
@@ -317,6 +297,14 @@ extension StopwatchViewController {
     }
 }
 
+// MARK: - IBAction
+extension StopwatchViewController {
+    private func showTaskSelectVC() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
+        setVC.SetTimerViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+}
 
 
 
@@ -436,16 +424,10 @@ extension StopwatchViewController {
         self.firstRecordStart = false
     }
     
-    func showSettingView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController2") as! SetTimerViewController2
-            setVC.SetTimerViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
-    }
-    
-    func showTaskView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
-            setVC.SetTimerViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
+    private func showSettingView() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
+        setVC.SetTimerViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
     }
     
     func showLog() {
@@ -453,8 +435,6 @@ extension StopwatchViewController {
             setVC.logViewControllerDelegate = self
             present(setVC,animated: true,completion: nil)
     }
-    
-    
     
     func updateProgress(times: Times) {
         let newProgressPer = Float(times.stopwatch%progressPeriod) / Float(progressPeriod)
@@ -507,35 +487,6 @@ extension StopwatchViewController {
         vcName?.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
         vcName?.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(vcName!, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    func resetCurrentStopwatchTime() {
-        self.currentStopwatchTime = 0
-        UserDefaultsManager.set(to: 0, forKey: .sumTime_temp)
-        self.updateTIMELabels()
-        self.updateProgress()
-    }
-    
-    func setFirstStart() {
-        taskButton.setTitleColor(UIColor.systemPink, for: .normal)
-        taskButton.layer.borderColor = UIColor.systemPink.cgColor
-    }
-    
-    func showFirstAlert() {
-        //1. 경고창 내용 만들기
-        let alert = UIAlertController(title:"Enter a new subject".localized(),
-            message: "",
-            preferredStyle: UIAlertController.Style.alert)
-        //2. 확인 버튼 만들기
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //3. 확인 버튼을 경고창에 추가하기
-        alert.addAction(ok)
-        //4. 경고창 보이기
-        present(alert,animated: true,completion: nil)
     }
 }
 

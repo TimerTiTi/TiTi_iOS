@@ -43,10 +43,10 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.save()
     }
     // 기록 시작시 설정
-    mutating func recordStart(daily: Daily) {
+    mutating func recordStart() {
         self.recordStartAt = Date()
         self.recording = true
-        self.recordStartTimeline = daily.timeline
+        self.recordStartTimeline = RecordController.shared.daily.timeline
         self.save()
     }
     // 기록 종료시 설정
