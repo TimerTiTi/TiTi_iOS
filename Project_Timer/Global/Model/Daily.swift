@@ -51,6 +51,11 @@ struct Daily: Codable, CustomStringConvertible {
         }
         self.save()
     }
+    // 기존 tasks 정보 수정시
+    mutating func updateTasks(to newTasks: [String: Int]) {
+        self.tasks = newTasks
+        self.save()
+    }
     
     // 새로운 날짜의 기록 시작시 reset
     mutating func reset() {
