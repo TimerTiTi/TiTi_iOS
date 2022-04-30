@@ -71,6 +71,13 @@ final class StopwatchVM {
         self.times = RecordController.shared.recordTimes.currentTimes()
     }
     
+    func newRecord() {
+        RecordController.shared.daily.reset()
+        RecordController.shared.recordTimes.reset()
+        self.updateDaily()
+        self.updateTimes()
+    }
+    
     private func timerStart() {
         // timer 동작, runningUI 반영
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
