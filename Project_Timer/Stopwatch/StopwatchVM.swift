@@ -15,6 +15,7 @@ final class StopwatchVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
     private(set) var timerRunning = false
+    private var timerCount: Int = 0
     
     private var timer = Timer()
     
@@ -30,12 +31,8 @@ final class StopwatchVM {
         }
     }
     
-    func timerAction() {
-        if self.timerRunning {
-            self.timerStart()
-        } else {
-            self.timerStop()
-        }
+    var setttedGoalTime: Int {
+        return RecordController.shared.recordTimes.settedGoalTime
     }
     
     func updateTimes() {
@@ -44,12 +41,6 @@ final class StopwatchVM {
     
     func updateDaily() {
         self.daily = RecordController.shared.daily
-    }
-    
-    func updateTask(to task: String) {
-        self.task = task
-        let taskTime = RecordController.shared.daily.tasks[task] ?? 0
-        RecordController.shared.recordTimes.updateTask(to: task, fromTime: taskTime)
     }
     
     func updateTask() {
@@ -61,6 +52,20 @@ final class StopwatchVM {
         RecordController.shared.recordTimes.updateMode(to: 2)
     }
     
+    func changeTask(to task: String) {
+        self.task = task
+        let taskTime = RecordController.shared.daily.tasks[task] ?? 0
+        RecordController.shared.recordTimes.updateTask(to: task, fromTime: taskTime)
+    }
+    
+    func timerAction() {
+        if self.timerRunning {
+            self.timerStart()
+        } else {
+            self.timerStop()
+        }
+    }
+    
     private func timerStart() {
         // timer 동작, runningUI 반영
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
@@ -70,19 +75,24 @@ final class StopwatchVM {
     }
     
     @objc func timerLogic() {
-//        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date()) // 기록 시작점 ~ 현재까지 지난 초
-//        self.updateTimes(interval: seconds)
-//        self.daily.updateCurrentTaskTime(interval: seconds)
-//        self.daily.updateMaxTime(with: seconds)
-//
-//        updateTIMELabels()
-//        updateProgress()
-//        printLogs()
-//        saveTimes()
+        self.timerCount += 1
+        self.times = RecordController.shared.recordTimes.currentTimes()
+        if self.timerCount%5 == 0 {
+            let current = Date()
+            RecordController.shared.daily.update(at: current)
+        }
     }
     
     private func timerStop() {
+        self.timer.invalidate()
+        self.timerRunning = false
+        self.runningUI = false
+        let endAt = Date()
+        RecordController.shared.recordTimes.recordStop(finishAt: endAt)
+        RecordController.shared.daily.update(at: endAt)
         
+        self.updateDaily()
+        RecordController.shared.dailys.addDaily(self.daily)
     }
     
     func stopwatchReset() {

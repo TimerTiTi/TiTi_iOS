@@ -22,8 +22,8 @@ struct Daily: Codable, CustomStringConvertible {
     }
     
     // 10간격, 또는 종료시 update 반영
-    mutating func update(recordTimes: RecordTimes) {
-        let current = Date()
+    mutating func update(at current: Date) {
+        let recordTimes = RecordController.shared.recordTimes
         let interval = recordTimes.interval(to: current)
         self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
         self.maxTime = max(self.maxTime, interval)
