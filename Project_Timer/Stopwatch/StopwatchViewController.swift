@@ -70,6 +70,7 @@ final class StopwatchViewController: UIViewController {
     @IBAction func timerStartStopAction(_ sender: Any) {
         guard self.viewModel?.task ?? "none" != "none" else {
             self.showTaskWarningAlert()
+            return
         }
         self.viewModel?.timerAction()
     }
@@ -124,7 +125,7 @@ extension StopwatchViewController {
 extension StopwatchViewController {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
-        setVC.SetTimerViewControllerDelegate = self
+//        setVC.SetTimerViewControllerDelegate = self
         present(setVC,animated: true,completion: nil)
     }
     
@@ -360,6 +361,12 @@ extension StopwatchViewController: NewRecordCreatable {
     func newRecord() {
         self.configureColor()
         self.viewModel?.newRecord()
+    }
+}
+
+extension StopwatchViewController: TaskChangeable {
+    func selectTask(to task: String) {
+        self.viewModel?.changeTask(to: task)
     }
 }
 

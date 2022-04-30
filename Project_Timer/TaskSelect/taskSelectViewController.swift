@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol TaskChangeable: AnyObject {
+    func selectTask(to: String)
+}
+
 class taskSelectViewController: UIViewController {
     static let identifier = "taskSelectViewController"
     
@@ -27,7 +31,7 @@ class taskSelectViewController: UIViewController {
     @IBOutlet var table: UITableView!
     
     var tasks: [String] = []
-    var SetTimerViewControllerDelegate : ChangeViewController2!
+    weak var delegate: TaskChangeable?
     
     override func viewDidLoad() {
         
@@ -102,8 +106,7 @@ class taskSelectViewController: UIViewController {
     }
     
     func selectTask(_ task: String) {
-        UserDefaults.standard.set(task, forKey: "task")
-        SetTimerViewControllerDelegate.changeTask()
+        self.delegate?.selectTask(to: task)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -122,25 +125,17 @@ class taskSelectViewController: UIViewController {
     }
     
     func resetTaskname(before: String, after: String) {
-        var daily = Daily()
-        daily.load()
-        var beforeTasks: [String:Int] = daily.tasks
-        let time = beforeTasks[before]
-        if(time != nil) {
-            //이전 데이터 삭제
-            beforeTasks[before] = nil
-            //새로운 데이터 생성
-            beforeTasks[after] = time!
-            //tasks 저장
-            daily.tasks = beforeTasks
-            daily.save()
-            SetTimerViewControllerDelegate.changeTask()
+        let currentTask = RecordController.shared.recordTimes.recordTask
+        var tasks = RecordController.shared.daily.tasks
+        
+        if let beforeTime = tasks[before] {
+            tasks.removeValue(forKey: before)
+            tasks[after] = beforeTime
+            RecordController.shared.daily.updateTasks(to: tasks)
         }
-        //현재 과목명이 이전 과목명일 경우 수정
-        let currentTask = UserDefaults.standard.value(forKey: "task") as? String ?? ""
-        if(currentTask == before) {
-            UserDefaults.standard.set(after, forKey: "task")
-            SetTimerViewControllerDelegate.changeTask()
+        
+        if currentTask == before {
+            self.delegate?.selectTask(to: after)
         }
     }
     
