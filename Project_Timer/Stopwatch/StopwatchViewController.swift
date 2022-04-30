@@ -61,6 +61,7 @@ final class StopwatchViewController: UIViewController {
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
+        self.viewModel?.updateDaily()
     }
     
     @IBAction func taskSelect(_ sender: Any) {
@@ -125,7 +126,7 @@ extension StopwatchViewController {
 extension StopwatchViewController {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
-//        setVC.SetTimerViewControllerDelegate = self
+        setVC.delegate = self
         present(setVC,animated: true,completion: nil)
     }
     
@@ -152,24 +153,23 @@ extension StopwatchViewController {
     private func bindAll() {
         self.bindTimes()
         self.bindDaily()
+        self.bindTask()
         self.bindUI()
     }
     private func bindTimes() {
         self.viewModel?.$times
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] times in
                 self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: times.goal)
                 self?.updateProgress(times: times)
-                self?.printTimes(with: times)
+//                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
     }
     private func bindDaily() {
         self.viewModel?.$daily
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] daily in
                 self?.updateToday(to: daily.day)
             })
@@ -178,7 +178,6 @@ extension StopwatchViewController {
     private func bindTask() {
         self.viewModel?.$task
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] task in
                 self?.updateTask(to: task)
             })
@@ -187,7 +186,6 @@ extension StopwatchViewController {
     private func bindUI() {
         self.viewModel?.$runningUI
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] runningUI in
                 if runningUI {
                     self?.setStartColor()
@@ -204,6 +202,7 @@ extension StopwatchViewController {
 // MARK: - logic
 extension StopwatchViewController {
     private func updateTask(to task: String) {
+        
         if task == "none" {
             self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
             self.setTaskWarningColor()
