@@ -33,7 +33,6 @@ class LogViewController: UIViewController {
     private var progressHeight: CGFloat = 0
     
     var daily = Daily() //VM
-    var logViewControllerDelegate : ChangeViewController2!
     
     override func viewDidLoad() {
         super.viewDidLoad()
