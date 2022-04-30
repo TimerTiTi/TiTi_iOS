@@ -226,9 +226,9 @@ extension StopwatchViewController {
         let endAt = Date().addingTimeInterval(TimeInterval(goalTime))
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "TO hh:mm a"
+        dateFormatter.dateFormat = "hh:mm a"
         let endTime = dateFormatter.string(from: endAt)
-        self.finishTimeLabel.text = endTime
+        self.finishTimeLabel.text = "To " + endTime
     }
     
     private func updateToday(to date: Date) {
