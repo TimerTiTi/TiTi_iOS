@@ -10,7 +10,7 @@ import Foundation
 
 struct RecordTimes: Codable, CustomStringConvertible {
     var description: String {
-        return "\(self.currentTimes())"
+        return "\(self.currentTimes()), \(self.recordTaskFromTime))"
     }
     static let fileName: String = "recordTimes.json"
     
@@ -33,8 +33,10 @@ struct RecordTimes: Codable, CustomStringConvertible {
     
     // task 를 변경할 경우 반영 (기록하기 전 반영)
     mutating func updateTask(to taskName: String, fromTime: Int) {
+        print("fromTime: \(fromTime)")
         self.recordTask = taskName
         self.recordTaskFromTime = fromTime
+        self.savedStopwatchTime = fromTime
         self.save()
     }
     // mode 를 변경할 경우 반영 (기록하기 전 반영)
@@ -50,8 +52,9 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.save()
     }
     // 기록 종료시 설정
-    mutating func recordStop(finishAt: Date) {
+    mutating func recordStop(finishAt: Date, taskTime: Int) {
         self.recording = false
+        self.recordTaskFromTime = taskTime
         self.savedSumTime += self.interval(to: finishAt)
         self.savedGoalTime = self.settedGoalTime - self.savedSumTime
         switch self.recordingMode {
@@ -95,6 +98,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     
     func save() {
         Storage.store(self, to: .documents, as: RecordTimes.fileName)
+        print("recordTimes: \(self)")
         // MARK: network 상에 반영한다면?
     }
     // 새로운 날짜의 기록 시작시 reset
