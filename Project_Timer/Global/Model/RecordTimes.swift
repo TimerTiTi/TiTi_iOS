@@ -71,6 +71,11 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.settedGoalTime = goalTime
         self.save()
     }
+    // stopwatch 시간 초기화 (기록하기 전 반영)
+    mutating func resetStopwatch() {
+        self.savedStopwatchTime = 0
+        self.save()
+    }
     // 앱 시작시 load 및 초기화 작업
     mutating func load() {
         guard let savedRecordTimes = Storage.retrive(RecordTimes.fileName, from: .documents, as: RecordTimes.self) else {
@@ -113,10 +118,11 @@ struct RecordTimes: Codable, CustomStringConvertible {
         }
         
         let currentAt = Date()
-        let currentSum = self.savedSumTime + self.interval(to: currentAt)
+        let interval = self.interval(to: currentAt)
+        let currentSum = self.savedSumTime + interval
         let currentGoal = self.settedGoalTime - currentSum
-        let currentTimer = self.savedTimerTime - self.interval(to: currentAt)
-        let currentStopwatch = self.savedStopwatchTime + self.interval(to: currentAt)
+        let currentTimer = self.savedTimerTime - interval
+        let currentStopwatch = self.savedStopwatchTime + interval
         return Times(sum: currentSum, timer: currentTimer, stopwatch: currentStopwatch, goal: currentGoal)
     }
 }

@@ -83,14 +83,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     @IBAction func colorSelect(_ sender: Any) {
-        if #available(iOS 14.0, *) {
-            let picker = UIColorPickerViewController()
-            picker.selectedColor = COLOR!
-            picker.delegate = self
-            self.present(picker, animated: true, completion: nil)
-        } else {
-            self.showAlertWithOK(title: "iOS 14.0 이상 기능", text: "업데이트 후 사용해주시기 바랍니다.")
-        }
+        self.showColorSelectVC()
     }
 }
 
@@ -124,6 +117,32 @@ extension StopwatchViewController {
     }
     private func configureViewModel() {
         self.viewModel = StopwatchVM()
+    }
+}
+
+// MARK: - IBAction
+extension StopwatchViewController {
+    private func showTaskSelectVC() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
+        setVC.SetTimerViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+    
+    private func showSettingView() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
+        setVC.SetTimerViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+    
+    private func showColorSelectVC() {
+        if #available(iOS 14.0, *) {
+            let picker = UIColorPickerViewController()
+            picker.selectedColor = COLOR!
+            picker.delegate = self
+            self.present(picker, animated: true, completion: nil)
+        } else {
+            self.showAlertWithOK(title: "iOS 14.0 이상 기능", text: "업데이트 후 사용해주시기 바랍니다.")
+        }
     }
 }
 
@@ -322,14 +341,22 @@ extension StopwatchViewController {
     }
 }
 
-// MARK: - IBAction
+// MARK: Background
 extension StopwatchViewController {
-    private func showTaskSelectVC() {
-        guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
-        setVC.SetTimerViewControllerDelegate = self
-        present(setVC,animated: true,completion: nil)
+    @objc func pauseWhenBackground(noti: Notification) {
+        guard let running = self.viewModel?.runningUI,
+              running == true else { return }
+        self.viewModel?.enterBackground()
+    }
+    
+    @objc func willEnterForeground(noti: Notification) {
+        guard let running = self.viewModel?.runningUI,
+              running == true else { return }
+        self.viewModel?.enterForground()
     }
 }
+
+
 
 
 
@@ -360,27 +387,7 @@ extension StopwatchViewController : ChangeViewController2 {
 
 
 extension StopwatchViewController {
-    @objc func pauseWhenBackground(noti: Notification) {
-        print("background")
-        UserDefaultsManager.set(to: self.currentStopwatchTime, forKey: .sumTime_temp)
-        if self.timerStopped == false {
-            self.timer.invalidate()
-            let shared = UserDefaults.standard
-            shared.set(Date(), forKey: "savedTime") // 나가는 시점의 시간 저장
-        }
-    }
     
-    @objc func willEnterForeground(noti: Notification) {
-        print("Enter")
-        if self.timerStopped == false {
-            if let savedDate = UserDefaults.standard.object(forKey: "savedTime") as? Date {
-                (diffHrs, diffMins, diffSecs) = StopwatchViewController.getTimeDifference(startDate: savedDate)
-                refresh(hours: diffHrs, mins: diffMins, secs: diffSecs, start: savedDate)
-                removeSavedDate()
-            }
-            finishTimeLabel.text = getFutureTime()
-        }
-    }
     
     static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
         let calendar = Calendar.current
@@ -412,25 +419,12 @@ extension StopwatchViewController {
         beforePer2 = 0.0
     }
     
-    private func showSettingView() {
-        guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
-        setVC.SetTimerViewControllerDelegate = self
-        present(setVC,animated: true,completion: nil)
-    }
+    
 }
-
 
 extension StopwatchViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
-    }
-}
-
-extension StopwatchViewController {
-    private func changeColor(color: UIColor) {
-        UserDefaults.standard.setColor(color: COLOR, forKey: "color")
-        self.COLOR = color
-        self.view.backgroundColor = self.COLOR
     }
 }
 
@@ -443,5 +437,11 @@ extension StopwatchViewController: UIColorPickerViewControllerDelegate {
     @available(iOS 14.0, *)
     func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
         self.changeColor(color: viewController.selectedColor)
+    }
+    
+    private func changeColor(color: UIColor) {
+        UserDefaults.standard.setColor(color: COLOR, forKey: "color")
+        self.COLOR = color
+        self.view.backgroundColor = self.COLOR
     }
 }
