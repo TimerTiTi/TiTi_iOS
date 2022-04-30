@@ -71,13 +71,13 @@ struct Dumy {
     
     func getDumyDaily() -> Daily {
         var daily: Daily = Daily()
-        daily.maxTime = 3730
-        daily.tasks = getTasks()
-        daily.timeline = getTimelines()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
-        let tempDay: Date = formatter.date(from: "2021.07.15")!
-        daily.day = tempDay
+//        daily.maxTime = 3730
+//        daily.tasks = getTasks()
+//        daily.timeline = getTimelines()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "YYYY.MM.dd"
+//        let tempDay: Date = formatter.date(from: "2021.07.15")!
+//        daily.day = tempDay
         return daily
     }
     
