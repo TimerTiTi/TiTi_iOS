@@ -130,7 +130,7 @@ extension StopwatchViewController {
     
     private func showSettingView() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
-        setVC.SetTimerViewControllerDelegate = self
+        setVC.delegate = self
         present(setVC,animated: true,completion: nil)
     }
     
@@ -356,70 +356,11 @@ extension StopwatchViewController {
     }
 }
 
-
-
-
-
-extension StopwatchViewController : ChangeViewController2 {
-    func changeGoalTime() {
-        firstRecordStart = true
-        UserDefaults.standard.set(nil, forKey: "startTime")
-        configureColor()
-        currentGoalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 0
-        let timerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        currentSumTime = 0
-        currentStopwatchTime = 0
-        
-        UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
-        UserDefaults.standard.set(currentSumTime, forKey: "sum2")
-        
-        resetProgress()
-        updateTIMELabels()
-        finishTimeLabel.text = getFutureTime()
-        
-        setStopColor()
-        setButtonsEnabledTrue()
-        daily.reset(currentGoalTime, timerTime) //하루 그래프 초기화
-        resetCurrentStopwatchTime()
-        self.updateToday()
+extension StopwatchViewController: NewRecordCreatable {
+    func newRecord() {
+        self.configureColor()
+        self.viewModel?.newRecord()
     }
-}
-
-
-extension StopwatchViewController {
-    
-    
-    static func getTimeDifference(startDate: Date) -> (Int, Int, Int) {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute, .second], from: startDate, to: Date())
-        return(components.hour!, components.minute!, components.second!)
-    }
-    
-    func refresh (hours: Int, mins: Int, secs: Int, start: Date) {
-        print("refresh")
-        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
-        self.updateTimes(interval: seconds)
-        self.daily.updateCurrentTaskTimeOfBackground(startAt: self.time.startDate, interval: seconds)
-        self.daily.updateMaxTime(with: seconds)
-        
-        updateTIMELabels()
-        updateProgress()
-        printLogs()
-        saveTimes()
-        
-        self.startTimer()
-    }
-
-    func resetProgress() {
-        outterProgress.setProgress(duration: 1.0, value: 0.0, from: beforePer)
-        beforePer = 0.0
-        //circle2
-        totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
-        innerProgress.setProgress(duration: 1.0, value: 0.0, from: beforePer2)
-        beforePer2 = 0.0
-    }
-    
-    
 }
 
 extension StopwatchViewController {

@@ -8,10 +8,8 @@
 
 import UIKit
 
-protocol ChangeViewController2 {
-    func changeGoalTime()
-    func changeTask()
-    func reload()
+protocol NewRecordCreatable: AnyObject {
+    func newRecord()
 }
 
 class SetTimerViewController2: UIViewController {
@@ -43,7 +41,7 @@ class SetTimerViewController2: UIViewController {
     @IBOutlet var view1: UIView!
     @IBOutlet var view2: UIView!
     
-    var SetTimerViewControllerDelegate : ChangeViewController2!
+    weak var delegate: NewRecordCreatable?
     
     var H = ""
     var M = ""
@@ -190,12 +188,10 @@ extension SetTimerViewController2 {
     }
     
     func SET_action() {
-        let second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        UserDefaults.standard.set(second, forKey: "second2")
         UserDefaults.standard.setColor(color: COLOR, forKey: "color")
-        UserDefaults.standard.set(goalTime, forKey: "allTime")
+        RecordController.shared.recordTimes.updateGoalTime(to: self.goalTime)
         print("set complite")
-        SetTimerViewControllerDelegate.changeGoalTime()
+        self.delegate?.newRecord()
         self.dismiss(animated: true, completion: nil)
     }
     
