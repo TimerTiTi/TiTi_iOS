@@ -14,7 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
+        UNUserNotificationCenter.current().delegate = self
+        NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
+            UIApplication.shared.applicationIconBadgeNumber = 1
+        }
+        NotificationCenter.default.addObserver(forName: .removeBadge, object: nil, queue: .current) { _ in
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
         return true
     }
 
@@ -44,6 +50,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
     
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
 }
 
 

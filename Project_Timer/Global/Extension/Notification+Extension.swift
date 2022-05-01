@@ -10,4 +10,6 @@ import Foundation
 
 extension Notification.Name {
     static let showTabbarController = Self.init(rawValue: "showTabbarController")
+    static let setBadge = Self.init(rawValue: "setBadge")
+    static let removeBadge = Self.init(rawValue: "removeBadge")
 }
