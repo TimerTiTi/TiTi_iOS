@@ -97,7 +97,8 @@ extension StopwatchViewController {
         self.targetTimeLabel.text = "Target Time".localized()
     }
     private func configureColor() {
-        self.COLOR = UserDefaultsManager.get(forKey: .color) as? UIColor ?? UIColor(named: "Background2")
+        guard let color = UserDefaults.standard.colorForKey(key: "color") else { return }
+        self.COLOR = color
     }
     private func configureShadow() {
         self.resetBT.configureShadow(opacity: 0.5, radius: 4)
@@ -202,18 +203,25 @@ extension StopwatchViewController {
 // MARK: - logic
 extension StopwatchViewController {
     private func updateTask(to task: String) {
-        
         if task == "none" {
             self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
             self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)
+            if self.viewModel?.runningUI == false {
+                self.setTaskWhiteColor()
+            }
         }
     }
     
     private func setTaskWarningColor() {
         self.taskButton.setTitleColor(UIColor.systemPink, for: .normal)
         self.taskButton.layer.borderColor = UIColor.systemPink.cgColor
+    }
+    
+    private func setTaskWhiteColor() {
+        self.taskButton.setTitleColor(UIColor.white, for: .normal)
+        self.taskButton.layer.borderColor = UIColor.white.cgColor
     }
     
     private func updateTIMELabels(times: Times) {
