@@ -86,3 +86,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "Modify Todo's content" = "내용 수정";
 
 "New Todo's content" = "새로운 내용";
+
+"[Stopwatch]" = "[스톱워치]";
+
+"hours passed." = "시간 경과되었습니다.";
