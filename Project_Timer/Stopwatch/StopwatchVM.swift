@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import UserNotifications
 
 final class StopwatchVM {
     @Published private(set) var times: Times
@@ -16,6 +17,7 @@ final class StopwatchVM {
     @Published private(set) var runningUI = false
     private(set) var timerRunning = false
     private var timerCount: Int = 0
+    private let userNotificationCenter = UNUserNotificationCenter.current()
     
     private var timer = Timer()
     
@@ -23,10 +25,21 @@ final class StopwatchVM {
         self.times = RecordController.shared.recordTimes.currentTimes()
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
+        self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
             print("automatic start")
             self.timerStart()
+        }
+    }
+    
+    private func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions(arrayLiteral: .alert, .badge, .sound)
+        
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
+            if let error = error {
+                print("Error: \(error)")
+            }
         }
     }
     
@@ -61,9 +74,13 @@ final class StopwatchVM {
     func timerAction() {
         if self.timerRunning {
             self.timerStop()
+            self.removeBadge()
+            self.removeNotification()
         } else {
             RecordController.shared.recordTimes.recordStart()
             self.timerStart()
+            self.setBadge()
+            self.sendNotification()
         }
     }
     
@@ -97,6 +114,14 @@ final class StopwatchVM {
         }
     }
     
+    private func setBadge() {
+        NotificationCenter.default.post(name: .setBadge, object: nil)
+    }
+    
+    private func removeBadge() {
+        NotificationCenter.default.post(name: .removeBadge, object: nil)
+    }
+    
     private func timerStop() {
         print("timer stop")
         self.timer.invalidate()
@@ -120,5 +145,24 @@ final class StopwatchVM {
         print("forground")
         self.updateTimes()
         self.timerStart()
+    }
+    
+    private func sendNotification() {
+        // MARK: push 여부 설정값에 따라 guard 구문 필요
+        for i in 1...24 {
+            let notificationContent = UNMutableNotificationContent()
+            notificationContent.title = "[Stopwatch]".localized() + " \(i)" + "hours passed.".localized()
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(i*3600), repeats: false)
+            let request = UNNotificationRequest(identifier: "noti\(i)", content: notificationContent, trigger: trigger)
+            self.userNotificationCenter.add(request) { error in
+                if let error = error {
+                    print("Notification Error: \(error)")
+                }
+            }
+        }
+    }
+    
+    private func removeNotification() {
+        self.userNotificationCenter.removeAllPendingNotificationRequests()
     }
 }
