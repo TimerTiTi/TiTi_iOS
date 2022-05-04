@@ -83,6 +83,7 @@ final class TimerVM {
             self.removeNotification()
         } else {
             RecordController.shared.recordTimes.recordStart()
+            self.checkTimerReset()
             self.timerStart()
             self.setBadge()
             self.sendNotification()
@@ -90,8 +91,13 @@ final class TimerVM {
     }
     
     func timerReset() {
-        // MARK: 로직수정 필요
-        
+        RecordController.shared.recordTimes.resetTimer()
+        self.times = RecordController.shared.recordTimes.currentTimes()
+    }
+    
+    func updateTimerTime(to timer: Int) {
+        RecordController.shared.recordTimes.updateTimerTime(to: timer)
+        self.times = RecordController.shared.recordTimes.currentTimes()
     }
     
     func newRecord() {
@@ -99,6 +105,11 @@ final class TimerVM {
         RecordController.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
+    }
+    
+    private func checkTimerReset() {
+        guard self.times.timer <= 0 else { return }
+        self.timerReset()
     }
     
     private func timerStart() {

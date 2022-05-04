@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
+		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
 		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
 		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
+		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				87035DF6282225C800055378 /* Protocols.swift */,
 				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
 				87DE1178268ACB040012F043 /* DailyViewModel.swift */,
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
@@ -438,6 +441,7 @@
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
+				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,

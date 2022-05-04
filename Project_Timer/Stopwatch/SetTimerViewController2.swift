@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol NewRecordCreatable: AnyObject {
-    func newRecord()
-}
-
 class SetTimerViewController2: UIViewController {
     static let identifier = "SetTimerViewController2"
     
