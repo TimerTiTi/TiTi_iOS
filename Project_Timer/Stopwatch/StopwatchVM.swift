@@ -43,7 +43,7 @@ final class StopwatchVM {
         }
     }
     
-    var setttedGoalTime: Int {
+    var settedGoalTime: Int {
         return RecordController.shared.recordTimes.settedGoalTime
     }
     

@@ -43,7 +43,11 @@ final class TimerVM {
         }
     }
     
-    var setttedGoalTime: Int {
+    var settedTimerTime: Int {
+        return RecordController.shared.recordTimes.settedTimerTime
+    }
+    
+    var settedGoalTime: Int {
         return RecordController.shared.recordTimes.settedGoalTime
     }
     
