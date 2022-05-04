@@ -22,8 +22,7 @@ class SetTimerViewController: UIViewController {
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet var view1: UIView!
     
-    
-    var SetTimerViewControllerDelegate : ChangeViewController!
+    weak var delegate: TimerTimeSettable?
     
     var H = ""
     var M = ""
@@ -114,9 +113,8 @@ class SetTimerViewController: UIViewController {
     }
     
     @IBAction func Button_set(_ sender: UIButton) {
-        UserDefaults.standard.set(second, forKey: "second")
+        self.delegate?.updateTimerTime(to: self.second)
         print("set complite")
-        SetTimerViewControllerDelegate.changeTimer()
         self.dismiss(animated: true, completion: nil)
     }
     
