@@ -1,8 +1,8 @@
 //
-//  StopwatchVM.swift
+//  TimerVM.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/04/29.
+//  Created by Kang Minsang on 2022/05/04.
 //  Copyright © 2022 FDEE. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import UserNotifications
 
-final class StopwatchVM {
+final class TimerVM {
     @Published private(set) var times: Times
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
@@ -60,8 +60,8 @@ final class StopwatchVM {
     }
     
     func updateModeNum() {
-        UserDefaultsManager.set(to: 2, forKey: .VCNum)
-        RecordController.shared.recordTimes.updateMode(to: 2)
+        UserDefaultsManager.set(to: 1, forKey: .VCNum)
+        RecordController.shared.recordTimes.updateMode(to: 1)
     }
     
     func changeTask(to task: String) {
@@ -84,9 +84,9 @@ final class StopwatchVM {
         }
     }
     
-    func stopwatchReset() {
-        RecordController.shared.recordTimes.resetStopwatch()
-        self.times = RecordController.shared.recordTimes.currentTimes()
+    func timerReset() {
+        // MARK: 로직수정 필요
+        
     }
     
     func newRecord() {
@@ -106,12 +106,8 @@ final class StopwatchVM {
     }
     
     @objc func timerLogic() {
-        print("timer action")
-        self.timerCount += 1
-        self.times = RecordController.shared.recordTimes.currentTimes()
-        if self.timerCount%5 == 0 {
-            RecordController.shared.daily.update(at: Date())
-        }
+        // MARK: 타이머 로직 수정필요
+        
     }
     
     private func setBadge() {
@@ -149,18 +145,8 @@ final class StopwatchVM {
     
     private func sendNotification() {
         // MARK: push 여부 설정값에 따라 guard 구문 필요
-        for i in 1...24 {
-            let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "Stopwatch".localized()
-            notificationContent.body = " \(i)" + "hours passed.".localized()
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(i*3600), repeats: false)
-            let request = UNNotificationRequest(identifier: "noti\(i)", content: notificationContent, trigger: trigger)
-            self.userNotificationCenter.add(request) { error in
-                if let error = error {
-                    print("Notification Error: \(error)")
-                }
-            }
-        }
+        // MARK: 타이머 로직 필요
+        
     }
     
     private func removeNotification() {
