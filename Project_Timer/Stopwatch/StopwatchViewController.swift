@@ -302,11 +302,13 @@ extension StopwatchViewController {
     }
     
     private func updateProgress(times: Times) {
+        let goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        
         let newProgressPer = Float(times.stopwatch % self.progressPeriod) / Float(self.progressPeriod)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
-        let newInnerProgressPer = Float(times.sum) / Float(self.viewModel?.setttedGoalTime ?? 21600)
+        let newInnerProgressPer = Float(times.sum) / Float(goalPeriod)
         self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
     }

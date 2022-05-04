@@ -133,12 +133,97 @@ extension TimerViewController {
 // MARK: - binding
 extension TimerViewController {
     private func bindAll() {
-        
+        self.bindTimes()
+        self.bindDaily()
+        self.bindTask()
+        self.bindUI()
+    }
+    private func bindTimes() {
+        self.viewModel?.$times
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] times in
+                self?.updateTIMELabels(times: times)
+                self?.updateEndTime(goalTime: times.goal)
+                self?.updateProgress(times: times)
+//                self?.printTimes(with: times)
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindDaily() {
+        self.viewModel?.$daily
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] daily in
+                self?.updateToday(to: daily.day)
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindTask() {
+        self.viewModel?.$task
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] task in
+                self?.updateTask(to: task)
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindUI() {
+        self.viewModel?.$runningUI
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] runningUI in
+                if runningUI {
+                    self?.setStartColor()
+                    self?.setButtonsEnabledFalse()
+                } else {
+                    self?.setStopColor()
+                    self?.setButtonsEnabledTrue()
+                }
+            })
+            .store(in: &self.cancellables)
     }
 }
 
 // MARK: - logic
 extension TimerViewController {
+    private func updateTask(to task: String) {
+        if task == "none" {
+            self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
+            self.setTaskWarningColor()
+        } else {
+            self.taskButton.setTitle(task, for: .normal)
+            if self.viewModel?.runningUI == false {
+                self.setTaskWhiteColor()
+            }
+        }
+    }
+    
+    private func setTaskWarningColor() {
+        self.taskButton.setTitleColor(UIColor.systemPink, for: .normal)
+        self.taskButton.layer.borderColor = UIColor.systemPink.cgColor
+    }
+    
+    private func setTaskWhiteColor() {
+        self.taskButton.setTitleColor(UIColor.white, for: .normal)
+        self.taskButton.layer.borderColor = UIColor.white.cgColor
+    }
+    
+    private func updateTIMELabels(times: Times) {
+        self.TIMEofSum.text = times.sum.toTimeString
+        self.TIMEofTimer.text = times.timer.toTimeString
+        self.TIMEofTarget.text = times.goal.toTimeString
+    }
+    
+    private func updateEndTime(goalTime: Int) {
+        let endAt = Date().addingTimeInterval(TimeInterval(goalTime))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "hh:mm a"
+        let endTime = dateFormatter.string(from: endAt)
+        self.finishTimeLabel.text = "To " + endTime
+    }
+    
+    private func updateToday(to date: Date) {
+        self.todayLabel.text = date.YYYYMMDDstyleString
+    }
+    
     private func setStartColor() {
         self.view.backgroundColor = UIColor.black
         outterProgress.progressColor = BLUE!
@@ -194,6 +279,25 @@ extension TimerViewController {
         self.setTimerBT.isUserInteractionEnabled = true
         self.taskButton.isUserInteractionEnabled = true
     }
+    
+    private func updateProgress(times: Times) {
+        let timerPeriod = self.viewModel?.settedTimerTime ?? 2400
+        let goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        
+        let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod)
+        self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
+        self.progressPer = newProgressPer
+        
+        let newInnerProgressPer = Float(times.sum) / Float(goalPeriod)
+        self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
+        self.innerProgressPer = newInnerProgressPer
+    }
+    
+    private func printTimes(with times: Times) {
+        print("sum: \(times.sum.toTimeString)")
+        print("timer: \(times.timer.toTimeString)")
+        print("goal: \(times.goal.toTimeString)")
+    }
 }
 
 
@@ -239,7 +343,7 @@ extension TimerViewController {
         
         updateTIMELabes()
         updateProgress()
-        printLogs()
+        printTimes()
         saveTimes()
     }
     
@@ -248,13 +352,6 @@ extension TimerViewController {
         TIMEofTimer.text = "FINISH".localized()
         playAudioFromProject()
         saveTimes()
-    }
-    
-    private func updateTimes(interval: Int) {
-        // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
-//        self.currentSumTime = self.time.savedSumTime + interval
-//        self.currentTimerTime = self.time.savedTimerTime - interval
-//        self.currentGoalTime = self.time.goalTime - interval
     }
 }
 
@@ -284,7 +381,7 @@ extension TimerViewController : ChangeViewController {
         persentReset()
  
         //종료 예상시간 보이기
-        finishTimeLabel.text = getFutureTime()
+        finishTimeLabel.text = updateEndTime()
 //        daily.reset(currentGoalTime, currentTimerTime) //하루 그래프 초기화
         self.configureToday()
     }
@@ -294,7 +391,7 @@ extension TimerViewController : ChangeViewController {
         self.progressPeriod = self.currentTimerTime
         UserDefaults.standard.set(self.currentTimerTime, forKey: "second2")
         self.TIMEofTimer.text = self.currentTimerTime.toTimeString
-        self.finishTimeLabel.text = getFutureTime()
+        self.finishTimeLabel.text = updateEndTime()
         self.outterProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
         self.currentProgressPosition = 0.0
     }
@@ -315,9 +412,7 @@ extension TimerViewController : ChangeViewController {
 //}
 
 extension TimerViewController {
-    private func configureToday() {
-        self.todayLabel.text = self.daily.day.YYYYMMDDstyleString
-    }
+    
     
     func setLandscape() {
         if(timerStopped) {
@@ -358,7 +453,7 @@ extension TimerViewController {
 //                refresh(hours: diffHrs, mins: diffMins, secs: diffSecs, start: savedDate)
                 removeSavedDate()
             }
-            finishTimeLabel.text = getFutureTime()
+            finishTimeLabel.text = updateEndTime()
         }
     }
     
@@ -426,7 +521,7 @@ extension TimerViewController {
     
     func setTimes() {
         self.updateTIMELabes()
-        self.finishTimeLabel.text = getFutureTime()
+        self.finishTimeLabel.text = updateEndTime()
     }
     
     func firstStop() {
@@ -479,20 +574,9 @@ extension TimerViewController {
         UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
     }
     
-    func printLogs() {
-        print("timer : " + String(currentTimerTime))
-        print("goalTime : " + String(currentGoalTime))
-    }
     
-    func updateProgress() {
-        progressPer = Float(progressPeriod - currentTimerTime) / Float(progressPeriod)
-        outterProgress.setProgress(duration: 1.0, value: progressPer, from: currentProgressPosition)
-        currentProgressPosition = progressPer
-        //circle2
-        let temp = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgress(duration: 1.0, value: temp, from: beforePer2)
-        beforePer2 = temp
-    }
+    
+    
     
     func persentReset() {
         isFirst = true
@@ -544,15 +628,7 @@ extension TimerViewController {
         audioPlayer?.play()
     }
     
-    func getFutureTime() -> String {
-        let now = Date()
-        let future = now.addingTimeInterval(TimeInterval(currentTimerTime))
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "hh:mm a"
-        let today = dateFormatter.string(from: future)
-        return today
-    }
+    
     
     
     
@@ -618,7 +694,7 @@ extension TimerViewController {
 //        self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, timer: self.currentTimerTime)
         self.startTimer()
         self.setButtonsEnabledFalse()
-        finishTimeLabel.text = getFutureTime()
+        finishTimeLabel.text = updateEndTime()
         if(isFirst) {
             firstStop()
             isFirst = false
@@ -644,7 +720,7 @@ extension TimerViewController {
     func algoOfRestart() {
         resetTimer()
         resetProgress()
-        finishTimeLabel.text = getFutureTime()
+        finishTimeLabel.text = updateEndTime()
     }
 }
 
