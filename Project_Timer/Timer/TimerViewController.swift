@@ -300,24 +300,42 @@ extension TimerViewController {
     }
 }
 
-
+// MARK: - Rotation
+extension TimerViewController {
+    @objc func deviceRotated(){
+        if UIDevice.current.orientation.isLandscape {
+            self.setLandscape()
+        } else {
+            self.setPortrait()
+        }
+    }
+    
+    private func setLandscape() {
+        if self.viewModel?.runningUI ?? false == false {
+            UIView.animate(withDuration: 0.3) {
+                self.taskButton.alpha = 0
+                self.todayLabel.alpha = 0
+            }
+        }
+        self.isLandcape = true
+    }
+    
+    private func setPortrait() {
+        if self.viewModel?.runningUI ?? false == false {
+            UIView.animate(withDuration: 0.3) {
+                self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
+            }
+        }
+        self.isLandcape = false
+    }
+}
 
 
 
 
 extension TimerViewController {
-    @objc func deviceRotated(){
-        if UIDevice.current.orientation.isLandscape {
-            //Code here
-            print("Landscape")
-            setLandscape()
-            
-        } else {
-            //Code here
-            print("Portrait")
-            setPortrait()
-        }
-    }
+    
     
     func startTimer() {
         self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
@@ -414,25 +432,7 @@ extension TimerViewController : ChangeViewController {
 extension TimerViewController {
     
     
-    func setLandscape() {
-        if(timerStopped) {
-            UIView.animate(withDuration: 0.3) {
-                self.taskButton.alpha = 0
-                self.todayLabel.alpha = 0
-            }
-        }
-        isLandcape = true
-    }
     
-    func setPortrait() {
-        if(timerStopped) {
-            UIView.animate(withDuration: 0.3) {
-                self.taskButton.alpha = 1
-                self.todayLabel.alpha = 1
-            }
-        }
-        isLandcape = false
-    }
     
     
     
