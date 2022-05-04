@@ -15,6 +15,7 @@ final class TimerVM {
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
+    @Published private(set) var soundAlert = false
     private(set) var timerRunning = false
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
@@ -110,8 +111,18 @@ final class TimerVM {
     }
     
     @objc func timerLogic() {
-        // MARK: 타이머 로직 수정필요
+        print("timer action")
+        self.timerCount += 1
+        self.times = RecordController.shared.recordTimes.currentTimes()
+        if self.timerCount%5 == 0 {
+            RecordController.shared.daily.update(at: Date())
+        }
         
+        if self.times.timer < 1 {
+            self.timerStop()
+            self.removeBadge()
+            self.removeNotification()
+        }
     }
     
     private func setBadge() {
@@ -128,6 +139,7 @@ final class TimerVM {
         self.timerRunning = false
         self.runningUI = false
         self.timerCount = 0
+        self.soundAlert = true
         let endAt = Date()
         RecordController.shared.daily.update(at: endAt)
         self.updateDaily()
