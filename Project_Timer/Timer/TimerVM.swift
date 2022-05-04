@@ -92,12 +92,12 @@ final class TimerVM {
     
     func timerReset() {
         RecordController.shared.recordTimes.resetTimer()
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.updateTimes()
     }
     
     func updateTimerTime(to timer: Int) {
         RecordController.shared.recordTimes.updateTimerTime(to: timer)
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.updateTimes()
     }
     
     func newRecord() {
@@ -124,7 +124,7 @@ final class TimerVM {
     @objc func timerLogic() {
         print("timer action")
         self.timerCount += 1
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.updateTimes()
         if self.timerCount%5 == 0 {
             RecordController.shared.daily.update(at: Date())
         }

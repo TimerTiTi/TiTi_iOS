@@ -8,11 +8,6 @@
 
 import UIKit
 
-protocol ChangeViewController {
-    func updateViewController()
-    func changeTimer()
-}
-
 class SetViewController: UIViewController {
     static let identifier = "SetViewController"
 
@@ -32,7 +27,7 @@ class SetViewController: UIViewController {
     @IBOutlet var targetLabel: UILabel!
     @IBOutlet var timerLabel: UILabel!
     
-    var setViewControllerDelegate : ChangeViewController!
+    weak var delegate: NewRecordCreatable?
     var allTime : Int = 21600
     var second : Int = 2400
     
@@ -199,12 +194,11 @@ class SetViewController: UIViewController {
         return returnString
     }
     
-    func SET_action()
-    {
-        UserDefaults.standard.set(second, forKey: "second")
-        UserDefaults.standard.set(allTime, forKey: "allTime")
+    func SET_action() {
+        RecordController.shared.recordTimes.updateGoalTime(to: self.allTime)
+        RecordController.shared.recordTimes.updateTimerTime(to: self.second)
         print("set complite")
-        setViewControllerDelegate.updateViewController()
+        self.delegate?.newRecord()
         self.dismiss(animated: true, completion: nil)
     }
     

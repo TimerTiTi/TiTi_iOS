@@ -133,7 +133,7 @@ extension TimerViewController {
     }
     private func showSettingView() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetViewController.identifier) as? SetViewController else { return }
-        setVC.setViewControllerDelegate = self
+        setVC.delegate = self
         present(setVC,animated: true,completion: nil)
     }
 }
@@ -382,7 +382,7 @@ extension TimerViewController: TaskChangeable {
         self.viewModel?.changeTask(to: task)
     }
 }
-
+// MARK: 추후 Setting 에서 수시로 수정시 사용될 부분
 extension TimerViewController: TimerTimeSettable {
     func updateTimerTime(to timer: Int) {
         self.viewModel?.updateTimerTime(to: timer)
@@ -392,44 +392,5 @@ extension TimerViewController: TimerTimeSettable {
 extension TimerViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
-    }
-}
-
-extension TimerViewController {
-    private func timerStartSetting() {
-        self.setStartColor()
-        timerStopped = false
-        checkReset()
-        // MARK: init 은 정상적일 경우에만 하도록 개선 예정
-        self.time = RecordTimes(goal: self.currentGoalTime, sum: self.currentSumTime, timer: self.currentTimerTime)
-        self.startTimer()
-        self.setButtonsEnabledFalse()
-        finishTimeLabel.text = updateEndTime()
-        if(isFirst) {
-            firstStop()
-            isFirst = false
-        }
-        daily.recordStartSetting(taskName: task) //하루 그래프 데이터 생성
-    }
-    
-    func algoOfStop() {
-        timerStopped = true
-        timerStopped = true
-        realTime.invalidate()
-        
-        saveLogData()
-        setTimes()
-        
-        setStopColor()
-        setButtonsEnabledTrue()
-        daily.save() //하루 그래프 데이터 계산
-        //dailys 저장
-        dailyViewModel.addDaily(daily)
-    }
-    
-    func algoOfRestart() {
-        resetTimer()
-        resetProgress()
-        finishTimeLabel.text = updateEndTime()
     }
 }
