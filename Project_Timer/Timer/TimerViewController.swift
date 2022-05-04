@@ -39,7 +39,7 @@ class TimerViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
     
-    var audioPlayer : AVPlayer!
+    var audioPlayer: AVPlayer?
     var progressPer: Float = 0.0
     var progressPeriod: Int = 0
     var innerProgressPer: Float = 0.0
@@ -51,6 +51,7 @@ class TimerViewController: UIViewController {
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
+        self.configureSound()
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
@@ -111,6 +112,13 @@ extension TimerViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
+    private func configureSound() {
+        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
+            print("error to get the mp3 file")
+            return
+        }
+        self.audioPlayer = AVPlayer(url: url)
+    }
     private func configureViewModel() {
         self.viewModel = TimerVM()
     }
@@ -137,6 +145,7 @@ extension TimerViewController {
         self.bindDaily()
         self.bindTask()
         self.bindUI()
+        self.bindSound()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -145,6 +154,7 @@ extension TimerViewController {
                 self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: times.goal)
                 self?.updateProgress(times: times)
+                self?.updateRunningColor(times: times)
 //                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
@@ -176,6 +186,15 @@ extension TimerViewController {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                 }
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindSound() {
+        self.viewModel?.$soundAlert
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] alert in
+                guard alert else { return }
+                self?.audioPlayer?.play()
             })
             .store(in: &self.cancellables)
     }
@@ -298,6 +317,12 @@ extension TimerViewController {
         print("timer: \(times.timer.toTimeString)")
         print("goal: \(times.goal.toTimeString)")
     }
+    
+    private func updateRunningColor(times: Times) {
+        guard times.timer < 60 else { return }
+        self.TIMEofTimer.textColor = RED
+        self.outterProgress.progressColor = RED!
+    }
 }
 
 // MARK: - Rotation
@@ -358,42 +383,6 @@ extension TimerViewController {
     }
 }
 
-
-
-
-
-
-extension TimerViewController {
-    @objc func timerLogic() {
-        if self.currentTimerTime < 1 {
-            self.stopTimer()
-            return
-        }
-        
-        if self.currentTimerTime < 60 {
-            self.TIMEofTimer.textColor = RED
-            self.outterProgress.progressColor = RED!
-        }
-        
-        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
-        self.updateTimes(interval: seconds)
-        self.daily.updateCurrentTaskTime(interval: seconds)
-        self.daily.updateMaxTime(with: seconds)
-        
-        updateTIMELabes()
-        updateProgress()
-        printTimes()
-        saveTimes()
-    }
-    
-    private func stopTimer() {
-        algoOfStop()
-        TIMEofTimer.text = "FINISH".localized()
-        playAudioFromProject()
-        saveTimes()
-    }
-}
-
 extension TimerViewController : ChangeViewController {
     
     func updateViewController() {
@@ -451,18 +440,7 @@ extension TimerViewController: ChangeViewController2 {
 }
 
 extension TimerViewController {
-    private func playAudioFromProject() {
-        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
-            print("error to get the mp3 file")
-            return
-        }
-        do {
-            audioPlayer = try AVPlayer(url: url)
-        } catch {
-            print("audio file error")
-        }
-        audioPlayer?.play()
-    }
+    
     
     func checkReset() {
         if(currentTimerTime <= 0) {
