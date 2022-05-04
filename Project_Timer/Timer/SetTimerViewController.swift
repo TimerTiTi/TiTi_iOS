@@ -9,6 +9,7 @@
 import UIKit
 
 class SetTimerViewController: UIViewController {
+    static let identifier = "SetTimerViewController"
     
     @IBOutlet var Label_timer: UILabel!
     @IBOutlet var Text_H: UITextField!
