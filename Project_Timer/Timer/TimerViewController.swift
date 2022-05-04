@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import AudioToolbox
 import AVFoundation
 
@@ -35,45 +36,30 @@ class TimerViewController: UIViewController {
     let RED = UIColor(named: "Text")
     let INNER = UIColor(named: "innerColor")
     let startButtonColor = UIColor(named: "startButtonColor")
+    private var cancellables: Set<AnyCancellable> = []
+    private var viewModel: TimerVM?
     
     var audioPlayer : AVPlayer!
-    var timerStopped = true
-    var realTime = Timer()
-    var currentTimerTime : Int = 0
-    var currentSumTime : Int = 0
-    var currentGoalTime : Int = 0
-    var diffHrs = 0
-    var diffMins = 0
-    var diffSecs = 0
-    var isFirst = false
     var progressPer: Float = 0.0
     var progressPeriod: Int = 0
-    var currentProgressPosition: Float = 0.0
-    var showAverage: Int = 0
-    var array_day = [String](repeating: "", count: 7)
-    var array_time = [String](repeating: "", count: 7)
-    var totalTime: Int = 0
-    var beforePer2: Float = 0.0
-    var time: RecordTimes!
-    var task: String = ""
-    //하루 그래프를 위한 구조
-    var daily = Daily()
+    var innerProgressPer: Float = 0.0
     var isLandcape: Bool = false
-    
-    let dailyViewModel = DailyViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setLocalizable()
-        self.setShadow()
-        self.stopColor()
-        self.stopEnable()
-        self.setBackground()
+        self.configureLocalizable()
+        self.configureShadow()
+        self.configureProgress()
+        self.configureObservation()
+        self.setStopColor()
+        self.setButtonsEnabledTrue()
+        self.configureViewModel()
+        self.bindAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
         self.setVCNum()
         self.daily.load()
         self.setTask()
@@ -81,14 +67,9 @@ class TimerViewController: UIViewController {
         self.getDatas()
         self.setTimes()
         self.checkIsFirst()
-        self.setProgress()
+        self.configureProgress()
         self.dailyViewModel.loadDailys()
         self.configureToday()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        print("disappear in timer")
-        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     @objc func deviceRotated(){
@@ -174,11 +155,109 @@ class TimerViewController: UIViewController {
     }
 }
 
+// MARK: - Configure
+extension TimerViewController {
+    private func configureLocalizable() {
+        self.sumTimeLabel.text = "Sum Time".localized()
+        self.timerLabel.text = "Timer".localized()
+        self.targetTimeLabel.text = "Target Time".localized()
+    }
+    private func configureShadow() {
+        self.setTimerBT.configureShadow(opacity: 0.5, radius: 4)
+        self.settingBT.configureShadow(opacity: 0.5, radius: 4)
+        self.TIMEofSum.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofTimer.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofTarget.configureShadow(opacity: 0.6, radius: 2)
+    }
+    private func configureProgress() {
+        self.outterProgress.progressWidth = 20.0
+        self.outterProgress.trackColor = UIColor.darkGray
+        self.innerProgress.progressWidth = 8.0
+        self.innerProgress.trackColor = UIColor.clear
+    }
+    private func configureObservation() {
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+    private func configureViewModel() {
+        self.viewModel = TimerVM()
+    }
+}
+
+// MARK: - IBAction
+
+// MARK: - binding
+extension TimerViewController {
+    private func bindAll() {
+        
+    }
+}
+
+// MARK: - logic
+extension TimerViewController {
+    private func setStartColor() {
+        self.view.backgroundColor = UIColor.black
+        outterProgress.progressColor = BLUE!
+        innerProgress.progressColor = UIColor.white
+        startStopBT.backgroundColor = UIColor.clear
+        TIMEofTimer.textColor = BLUE
+        //예상종료시간 숨기기, stop 버튼 센터로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.setTimerBT.alpha = 0
+            self.settingBT.alpha = 0
+            self.taskButton.layer.borderColor = UIColor.clear.cgColor
+            self.startStopBTLabel.textColor = self.RED!
+            self.startStopBT.layer.borderColor = UIColor.clear.cgColor
+            self.startStopBTLabel.text = "◼︎"
+            self.tabBarController?.tabBar.isHidden = true
+            self.todayLabel.alpha = 0
+        })
+    }
+    
+    private func setButtonsEnabledFalse() {
+        self.settingBT.isUserInteractionEnabled = false
+        self.setTimerBT.isUserInteractionEnabled = false
+        self.taskButton.isUserInteractionEnabled = false
+    }
+    
+    private func setStopColor() {
+        self.view.backgroundColor = BLUE
+        outterProgress.progressColor = UIColor.white
+        innerProgress.progressColor = INNER!
+        startStopBT.backgroundColor = startButtonColor!
+        TIMEofTimer.textColor = UIColor.white
+        //예상종료시간 보이기, stop 버튼 제자리로 이동
+        UIView.animate(withDuration: 0.3, animations: {
+            self.setTimerBT.alpha = 1
+            self.settingBT.alpha = 1
+            self.taskButton.layer.borderColor = UIColor.white.cgColor
+            self.startStopBTLabel.textColor = UIColor.white
+            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
+            self.startStopBTLabel.text = "▶︎"
+            self.tabBarController?.tabBar.isHidden = false
+        })
+        //animation test
+        if(!isLandcape) {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.taskButton.alpha = 1
+                self.todayLabel.alpha = 1
+            })
+        }
+    }
+    
+    private func setButtonsEnabledTrue() {
+        self.settingBT.isUserInteractionEnabled = true
+        self.setTimerBT.isUserInteractionEnabled = true
+        self.taskButton.isUserInteractionEnabled = true
+    }
+}
+
 extension TimerViewController : ChangeViewController {
     
     func updateViewController() {
-        stopColor()
-        stopEnable()
+        setStopColor()
+        setButtonsEnabledTrue()
         
         timerStopped = true
         realTime.invalidate()
@@ -255,10 +334,7 @@ extension TimerViewController {
         isLandcape = false
     }
     
-    func setBackground() {
-        NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
-    }
+    
     
     @objc func pauseWhenBackground(noti: Notification) {
         print("background")
@@ -314,32 +390,7 @@ extension TimerViewController {
         }
     }
     
-    func setShadow() {
-        setTimerBT.layer.shadowColor = UIColor.gray.cgColor
-        setTimerBT.layer.shadowOpacity = 0.5
-        setTimerBT.layer.shadowOffset = CGSize.zero
-        setTimerBT.layer.shadowRadius = 4
-        
-        settingBT.layer.shadowColor = UIColor.gray.cgColor
-        settingBT.layer.shadowOpacity = 0.5
-        settingBT.layer.shadowOffset = CGSize.zero
-        settingBT.layer.shadowRadius = 4
-        
-        TIMEofSum.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofSum.layer.shadowOpacity = 0.6
-        TIMEofSum.layer.shadowOffset = CGSize.zero
-        TIMEofSum.layer.shadowRadius = 2
-        
-        TIMEofTimer.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofTimer.layer.shadowOpacity = 0.6
-        TIMEofTimer.layer.shadowOffset = CGSize.zero
-        TIMEofTimer.layer.shadowRadius = 2
-        
-        TIMEofTarget.layer.shadowColor = UIColor.gray.cgColor
-        TIMEofTarget.layer.shadowOpacity = 0.6
-        TIMEofTarget.layer.shadowOffset = CGSize.zero
-        TIMEofTarget.layer.shadowRadius = 2
-    }
+    
     
     func getDatas() {
         currentSumTime = UserDefaults.standard.value(forKey: "sum2") as? Int ?? 0
@@ -361,17 +412,11 @@ extension TimerViewController {
         UserDefaultsManager.set(to: 1, forKey: .VCNum)
     }
     
-    func setProgress() {
-        outterProgress.progressWidth = 20.0
-        outterProgress.trackColor = UIColor.darkGray
-        progressPer = Float(progressPeriod - currentTimerTime) / Float(progressPeriod)
-        currentProgressPosition = progressPer
-        outterProgress.setProgress(duration: 1.0, value: progressPer, from: 0.0)
-        //circle2
-        innerProgress.progressWidth = 8.0
-        innerProgress.trackColor = UIColor.clear
-        beforePer2 = Float(currentSumTime)/Float(totalTime)
-        innerProgress.setProgress(duration: 1.0, value: beforePer2, from: 0.0)
+    private func configureProgress() {
+        self.outterProgress.progressWidth = 20.0
+        self.outterProgress.trackColor = UIColor.darkGray
+        self.innerProgress.progressWidth = 8.0
+        self.innerProgress.trackColor = UIColor.clear
     }
     
     func setTimes() {
@@ -468,7 +513,7 @@ extension TimerViewController {
         //circle2
         totalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
         innerProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
-        beforePer2 = 0.0
+        innerProgressPer = 0.0
     }
     
     func saveLogData() {
@@ -518,67 +563,9 @@ extension TimerViewController {
         return today
     }
     
-    func stopColor() {
-        self.view.backgroundColor = BLUE
-        outterProgress.progressColor = UIColor.white
-        innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = startButtonColor!
-        TIMEofTimer.textColor = UIColor.white
-        //예상종료시간 보이기, stop 버튼 제자리로 이동
-        UIView.animate(withDuration: 0.3, animations: {
-            self.setTimerBT.alpha = 1
-            self.settingBT.alpha = 1
-            self.taskButton.layer.borderColor = UIColor.white.cgColor
-            self.startStopBTLabel.textColor = UIColor.white
-            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
-            self.startStopBTLabel.text = "▶︎"
-            self.tabBarController?.tabBar.isHidden = false
-        })
-        //animation test
-        if(!isLandcape) {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.taskButton.alpha = 1
-                self.todayLabel.alpha = 1
-            })
-        }
-    }
     
-    func setColorsOfStart() {
-        self.view.backgroundColor = UIColor.black
-        outterProgress.progressColor = BLUE!
-        innerProgress.progressColor = UIColor.white
-        startStopBT.backgroundColor = UIColor.clear
-        TIMEofTimer.textColor = BLUE
-        //예상종료시간 숨기기, stop 버튼 센터로 이동
-        UIView.animate(withDuration: 0.3, animations: {
-            self.setTimerBT.alpha = 0
-            self.settingBT.alpha = 0
-            self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = self.RED!
-            self.startStopBT.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.text = "◼︎"
-            self.tabBarController?.tabBar.isHidden = true
-            self.todayLabel.alpha = 0
-        })
-    }
     
-    func stopEnable() {
-        settingBT.isUserInteractionEnabled = true
-        setTimerBT.isUserInteractionEnabled = true
-        taskButton.isUserInteractionEnabled = true
-    }
     
-    private func setButtonsEnabledFalse() {
-        settingBT.isUserInteractionEnabled = false
-        setTimerBT.isUserInteractionEnabled = false
-        taskButton.isUserInteractionEnabled = false
-    }
-    
-    func setLocalizable() {
-        sumTimeLabel.text = "Sum Time".localized()
-        timerLabel.text = "Timer".localized()
-        targetTimeLabel.text = "Target Time".localized()
-    }
     
     func setTask() {
         task = UserDefaults.standard.value(forKey: "task") as? String ?? "Enter a new subject".localized()
@@ -633,7 +620,7 @@ extension TimerViewController {
     }
     
     private func timerStartSetting() {
-        self.setColorsOfStart()
+        self.setStartColor()
         timerStopped = false
         checkReset()
         // MARK: init 은 정상적일 경우에만 하도록 개선 예정
@@ -656,8 +643,8 @@ extension TimerViewController {
         saveLogData()
         setTimes()
         
-        stopColor()
-        stopEnable()
+        setStopColor()
+        setButtonsEnabledTrue()
         daily.save() //하루 그래프 데이터 계산
         //dailys 저장
         dailyViewModel.addDaily(daily)
