@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol TaskChangeable: AnyObject {
-    func selectTask(to: String)
-}
-
 class taskSelectViewController: UIViewController {
     static let identifier = "taskSelectViewController"
     

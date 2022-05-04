@@ -67,7 +67,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     // 사용자가 timer 시간을 변경시 반영 (기록하기 전 반영)
     mutating func updateTimerTime(to timerTime: Int) {
         self.settedTimerTime = timerTime
-        self.save()
+        self.resetTimer()
     }
     // 사용자가 goal 시간을 변경시 반영 (기록하기 전 반영)
     mutating func updateGoalTime(to goalTime: Int) {
@@ -77,6 +77,11 @@ struct RecordTimes: Codable, CustomStringConvertible {
     // stopwatch 시간 초기화 (기록하기 전 반영)
     mutating func resetStopwatch() {
         self.savedStopwatchTime = 0
+        self.save()
+    }
+    // timer 재시작시 시간 초기화 (기록시 수행)
+    mutating func resetTimer() {
+        self.savedTimerTime = self.settedTimerTime
         self.save()
     }
     // 앱 시작시 load 및 초기화 작업
