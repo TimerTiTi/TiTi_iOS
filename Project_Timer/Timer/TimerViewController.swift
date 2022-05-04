@@ -371,81 +371,27 @@ extension TimerViewController {
     }
 }
 
+extension TimerViewController: NewRecordCreatable {
+    func newRecord() {
+        self.viewModel?.newRecord()
+    }
+}
+
 extension TimerViewController: TaskChangeable {
     func selectTask(to task: String) {
         self.viewModel?.changeTask(to: task)
     }
 }
 
+extension TimerViewController: TimerTimeSettable {
+    func updateTimerTime(to timer: Int) {
+        self.viewModel?.updateTimerTime(to: timer)
+    }
+}
+
 extension TimerViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
-    }
-}
-
-extension TimerViewController : ChangeViewController {
-    
-    func updateViewController() {
-        setStopColor()
-        setButtonsEnabledTrue()
-        
-        timerStopped = true
-        realTime.invalidate()
-        timerStopped = true
-        getTimeData()
-        currentSumTime = 0
-        print("reset Button complite")
-        
-        UserDefaults.standard.set(currentTimerTime, forKey: "second2")
-        UserDefaults.standard.set(currentGoalTime, forKey: "allTime2")
-        UserDefaults.standard.set(currentSumTime, forKey: "sum2")
-        UserDefaults.standard.set(0, forKey: "breakTime")
-        UserDefaults.standard.set(nil, forKey: "startTime")
-        
-        self.TIMEofSum.text = self.currentSumTime.toTimeString
-        self.TIMEofTimer.text = self.currentTimerTime.toTimeString
-        self.TIMEofTarget.text = self.currentGoalTime.toTimeString
-        
-        persentReset()
- 
-        //종료 예상시간 보이기
-        finishTimeLabel.text = updateEndTime()
-        daily.reset(currentGoalTime, currentTimerTime) //하루 그래프 초기화
-        self.configureToday()
-    }
-    
-    func changeTimer() {
-        self.currentTimerTime = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
-        self.progressPeriod = self.currentTimerTime
-        UserDefaults.standard.set(self.currentTimerTime, forKey: "second2")
-        self.TIMEofTimer.text = self.currentTimerTime.toTimeString
-        self.finishTimeLabel.text = updateEndTime()
-        self.outterProgress.setProgress(duration: 1.0, value: 0.0, from: currentProgressPosition)
-        self.currentProgressPosition = 0.0
-    }
-}
-
-extension TimerViewController: ChangeViewController2 {
-    func changeGoalTime() {}
-
-    func changeTask() {
-        setTask()
-        daily.load()
-    }
-
-    func reload() {
-        self.viewDidLoad()
-        self.view.layoutIfNeeded()
-    }
-}
-
-extension TimerViewController {
-    
-    
-    func checkReset() {
-        if(currentTimerTime <= 0) {
-            algoOfRestart()
-        }
     }
 }
 
