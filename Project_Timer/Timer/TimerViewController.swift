@@ -59,99 +59,30 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.setVCNum()
-        self.daily.load()
-        self.setTask()
-        self.updateSumGoalTime()
-        self.getDatas()
-        self.setTimes()
-        self.checkIsFirst()
-        self.configureProgress()
-        self.dailyViewModel.loadDailys()
-        self.configureToday()
+        self.viewModel?.updateTask()
+        self.viewModel?.updateModeNum()
+        self.viewModel?.updateTimes()
+        self.viewModel?.updateDaily()
     }
 
-    @objc func deviceRotated(){
-        if UIDevice.current.orientation.isLandscape {
-            //Code here
-            print("Landscape")
-            setLandscape()
-            
-        } else {
-            //Code here
-            print("Portrait")
-            setPortrait()
-        }
+    @IBAction func taskSelect(_ sender: Any) {
+        self.showTaskSelectVC()
     }
     
-    func startTimer() {
-        self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        self.timerStopped = false
-        print("timer start")
-    }
-    
-    @objc func timerLogic() {
-        if self.currentTimerTime < 1 {
-            self.stopTimer()
+    @IBAction func timerStartStopAction(_ sender: Any) {
+        guard self.viewModel?.task ?? "none" != "none" else {
+            self.showTaskWarningAlert()
             return
         }
-        
-        if self.currentTimerTime < 60 {
-            self.TIMEofTimer.textColor = RED
-            self.outterProgress.progressColor = RED!
-        }
-        
-//        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
-//        self.updateTimes(interval: seconds)
-//        self.daily.updateCurrentTaskTime(interval: seconds)
-//        self.daily.updateMaxTime(with: seconds)
-        
-        updateTIMELabes()
-        updateProgress()
-        printLogs()
-        saveTimes()
+        self.viewModel?.timerAction()
     }
     
-    private func stopTimer() {
-        algoOfStop()
-        TIMEofTimer.text = "FINISH".localized()
-        playAudioFromProject()
-        saveTimes()
+    @IBAction func setting(_ sender: Any) {
+        self.showSettingView()
     }
     
-    private func updateTimes(interval: Int) {
-        // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
-//        self.currentSumTime = self.time.savedSumTime + interval
-//        self.currentTimerTime = self.time.savedTimerTime - interval
-//        self.currentGoalTime = self.time.goalTime - interval
-    }
-
-    @IBAction func taskBTAction(_ sender: Any) {
-        showTaskView()
-    }
-    
-    @IBAction func startStopBTAction(_ sender: Any) {
-        if(task == "Enter a new subject".localized()) {
-            showFirstAlert()
-        } else {
-            //start action
-            if(timerStopped == true) {
-                timerStartSetting()
-            }
-            //stop action
-            else {
-                algoOfStop()
-            }
-        }
-    }
-    
-    @IBAction func settingBTAction(_ sender: Any) {
-        showSettingView()
-    }
-    
-    @IBAction func settingTimerBTAction(_ sender: Any) {
-        showTimerView()
+    @IBAction func reset(_ sender: Any) {
+        self.viewModel?.timerReset()
     }
 }
 
@@ -186,6 +117,18 @@ extension TimerViewController {
 }
 
 // MARK: - IBAction
+extension TimerViewController {
+    private func showTaskSelectVC() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
+        setVC.delegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+    private func showSettingView() {
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetViewController.identifier) as? SetViewController else { return }
+        setVC.setViewControllerDelegate = self
+        present(setVC,animated: true,completion: nil)
+    }
+}
 
 // MARK: - binding
 extension TimerViewController {
@@ -250,6 +193,68 @@ extension TimerViewController {
         self.settingBT.isUserInteractionEnabled = true
         self.setTimerBT.isUserInteractionEnabled = true
         self.taskButton.isUserInteractionEnabled = true
+    }
+}
+
+
+
+
+
+
+extension TimerViewController {
+    @objc func deviceRotated(){
+        if UIDevice.current.orientation.isLandscape {
+            //Code here
+            print("Landscape")
+            setLandscape()
+            
+        } else {
+            //Code here
+            print("Portrait")
+            setPortrait()
+        }
+    }
+    
+    func startTimer() {
+        self.realTime = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+        self.timerStopped = false
+        print("timer start")
+    }
+    
+    @objc func timerLogic() {
+        if self.currentTimerTime < 1 {
+            self.stopTimer()
+            return
+        }
+        
+        if self.currentTimerTime < 60 {
+            self.TIMEofTimer.textColor = RED
+            self.outterProgress.progressColor = RED!
+        }
+        
+//        let seconds = RecordTimes.seconds(from: self.time.startDate, to: Date())
+//        self.updateTimes(interval: seconds)
+//        self.daily.updateCurrentTaskTime(interval: seconds)
+//        self.daily.updateMaxTime(with: seconds)
+        
+        updateTIMELabes()
+        updateProgress()
+        printLogs()
+        saveTimes()
+    }
+    
+    private func stopTimer() {
+        algoOfStop()
+        TIMEofTimer.text = "FINISH".localized()
+        playAudioFromProject()
+        saveTimes()
+    }
+    
+    private func updateTimes(interval: Int) {
+        // time 값을 기준으로 interval 만큼 지난 시간을 계산하여 표시
+//        self.currentSumTime = self.time.savedSumTime + interval
+//        self.currentTimerTime = self.time.savedTimerTime - interval
+//        self.currentGoalTime = self.time.goalTime - interval
     }
 }
 
@@ -443,23 +448,9 @@ extension TimerViewController {
         currentProgressPosition = 0.0
     }
     
-    func showSettingView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetViewController") as! SetViewController
-            setVC.setViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
-    }
     
-    func showTimerView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "SetTimerViewController") as! SetTimerViewController
-            setVC.SetTimerViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
-    }
     
-    func showTaskView() {
-        let setVC = storyboard?.instantiateViewController(withIdentifier: "taskSelectViewController") as! taskSelectViewController
-//            setVC.SetTimerViewControllerDelegate = self
-            present(setVC,animated: true,completion: nil)
-    }
+    
     
     func showLog() {
         let setVC = storyboard?.instantiateViewController(withIdentifier: "GraphViewController2") as! LogViewController
@@ -654,5 +645,12 @@ extension TimerViewController {
         resetTimer()
         resetProgress()
         finishTimeLabel.text = getFutureTime()
+    }
+}
+
+
+extension TimerViewController: TaskChangeable {
+    func selectTask(to: String) {
+        self.viewModel?.changeTask(to: task)
     }
 }

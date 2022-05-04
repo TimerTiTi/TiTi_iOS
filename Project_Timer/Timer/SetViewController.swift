@@ -14,6 +14,7 @@ protocol ChangeViewController {
 }
 
 class SetViewController: UIViewController {
+    static let identifier = "SetViewController"
 
     @IBOutlet var SetButton: UIButton!
     @IBOutlet var BackButton: UIButton!
