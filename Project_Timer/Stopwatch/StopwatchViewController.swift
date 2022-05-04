@@ -128,13 +128,13 @@ extension StopwatchViewController {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
         setVC.delegate = self
-        present(setVC,animated: true,completion: nil)
+        present(setVC, animated: true, completion: nil)
     }
     
     private func showSettingView() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
         setVC.delegate = self
-        present(setVC,animated: true,completion: nil)
+        present(setVC, animated: true, completion: nil)
     }
     
     private func showColorSelectVC() {

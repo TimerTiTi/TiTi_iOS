@@ -27,6 +27,7 @@ final class TimerVM {
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
         self.requestNotificationAuthorization()
+        self.soundAlert = false
         
         if RecordController.shared.recordTimes.recording {
             print("automatic start")
@@ -119,6 +120,7 @@ final class TimerVM {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
         self.timerRunning = true
         self.runningUI = true
+        self.soundAlert = false
     }
     
     @objc func timerLogic() {

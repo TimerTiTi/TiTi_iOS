@@ -39,7 +39,6 @@ class TimerViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
     
-    var audioPlayer: AVPlayer?
     var progressPer: Float = 0.0
     var progressPeriod: Int = 0
     var innerProgressPer: Float = 0.0
@@ -51,7 +50,6 @@ class TimerViewController: UIViewController {
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
-        self.configureSound()
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
@@ -81,9 +79,9 @@ class TimerViewController: UIViewController {
     @IBAction func setting(_ sender: Any) {
         self.showSettingView()
     }
-    
+    // MARK: 차기 업데이트시 viewModel?.timerReset 으로 수정 예정
     @IBAction func reset(_ sender: Any) {
-        self.viewModel?.timerReset()
+        self.showSettingTimerView()
     }
 }
 
@@ -112,13 +110,6 @@ extension TimerViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
-    private func configureSound() {
-        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
-            print("error to get the mp3 file")
-            return
-        }
-        self.audioPlayer = AVPlayer(url: url)
-    }
     private func configureViewModel() {
         self.viewModel = TimerVM()
     }
@@ -129,12 +120,17 @@ extension TimerViewController {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
         setVC.delegate = self
-        present(setVC,animated: true,completion: nil)
+        present(setVC, animated: true, completion: nil)
     }
     private func showSettingView() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetViewController.identifier) as? SetViewController else { return }
         setVC.delegate = self
-        present(setVC,animated: true,completion: nil)
+        present(setVC, animated: true, completion: nil)
+    }
+    private func showSettingTimerView() {
+        guard let setTimerVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController.identifier) as? SetTimerViewController else { return }
+        setTimerVC.delegate = self
+        present(setTimerVC, animated: true, completion: nil)
     }
 }
 
@@ -194,7 +190,7 @@ extension TimerViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] alert in
                 guard alert else { return }
-                self?.audioPlayer?.play()
+                self?.playSound()
             })
             .store(in: &self.cancellables)
     }
@@ -303,7 +299,7 @@ extension TimerViewController {
         let timerPeriod = self.viewModel?.settedTimerTime ?? 2400
         let goalPeriod = self.viewModel?.settedGoalTime ?? 21600
         
-        let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod)
+        let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod-1)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
@@ -319,9 +315,20 @@ extension TimerViewController {
     }
     
     private func updateRunningColor(times: Times) {
-        guard times.timer < 60 else { return }
+        guard self.viewModel?.runningUI == true,
+              times.timer < 60 else { return }
         self.TIMEofTimer.textColor = RED
         self.outterProgress.progressColor = RED!
+    }
+    
+    private func playSound() {
+        print("play sound")
+        guard let url = Bundle.main.url(forResource: "timer", withExtension: "mp3") else {
+            print("error to get the mp3 file")
+            return
+        }
+        let player = AVPlayer(url: url)
+        player.play()
     }
 }
 
