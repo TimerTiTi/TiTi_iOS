@@ -86,7 +86,7 @@ final class StopwatchVM {
     
     func stopwatchReset() {
         RecordController.shared.recordTimes.resetStopwatch()
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.updateTimes()
     }
     
     func newRecord() {
@@ -108,7 +108,7 @@ final class StopwatchVM {
     @objc func timerLogic() {
         print("timer action")
         self.timerCount += 1
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.updateTimes()
         if self.timerCount%5 == 0 {
             RecordController.shared.daily.update(at: Date())
         }
