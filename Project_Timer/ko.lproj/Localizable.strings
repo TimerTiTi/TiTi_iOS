@@ -88,3 +88,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "New Todo's content" = "새로운 내용";
 
 "hours passed." = "시간 경과되었습니다.";
+
+"Timer finished!" = "타이머가 종료되었습니다!";
+
+"5 minutes left" = "5분 남았습니다";

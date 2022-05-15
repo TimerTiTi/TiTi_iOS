@@ -174,8 +174,25 @@ final class TimerVM {
     
     private func sendNotification() {
         // MARK: push 여부 설정값에 따라 guard 구문 필요
-        // MARK: 타이머 로직 필요
-        
+        let remainTimer = self.times.timer
+        let alarm_5m = remainTimer - 300
+        self.postNoti(interval: remainTimer, body: "Timer finished!".localized(), identifier: "Timer finished")
+        if alarm_5m >= 0 {
+            self.postNoti(interval: alarm_5m, body: "5 minutes left".localized(), identifier: "Timer 5 min")
+        }
+    }
+    
+    private func postNoti(interval: Int, body: String, identifier: String) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Timer".localized()
+        notificationContent.body = body
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(interval), repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        self.userNotificationCenter.add(request) { error in
+            if let error = error {
+                print("Notification Error: \(error)")
+            }
+        }
     }
     
     private func removeNotification() {
