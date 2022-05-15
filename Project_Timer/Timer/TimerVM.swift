@@ -168,8 +168,8 @@ final class TimerVM {
     
     func enterForground() {
         print("forground")
-        self.updateTimes()
         self.timerStart()
+        self.timerLogic()
     }
     
     private func sendNotification() {
