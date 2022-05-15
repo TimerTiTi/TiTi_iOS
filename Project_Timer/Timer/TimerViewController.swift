@@ -222,7 +222,8 @@ extension TimerViewController {
     
     private func updateTIMELabels(times: Times) {
         self.TIMEofSum.text = times.sum.toTimeString
-        self.TIMEofTimer.text = times.timer.toTimeString
+        let timerText = times.timer == 0 ? "FINISH".localized() : times.timer.toTimeString
+        self.TIMEofTimer.text = timerText
         self.TIMEofTarget.text = times.goal.toTimeString
     }
     
