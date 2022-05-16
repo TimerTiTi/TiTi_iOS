@@ -186,6 +186,7 @@ final class TimerVM {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = "Timer".localized()
         notificationContent.body = body
+        notificationContent.sound = UNNotificationSound.default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(interval), repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
         self.userNotificationCenter.add(request) { error in
