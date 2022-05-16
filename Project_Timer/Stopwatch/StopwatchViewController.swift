@@ -99,6 +99,7 @@ extension StopwatchViewController {
     private func configureColor() {
         guard let color = UserDefaults.standard.colorForKey(key: "color") else { return }
         self.COLOR = color
+        self.view.backgroundColor = self.COLOR
     }
     private func configureShadow() {
         self.resetBT.configureShadow(opacity: 0.5, radius: 4)
@@ -397,7 +398,7 @@ extension StopwatchViewController: UIColorPickerViewControllerDelegate {
     }
     
     private func changeColor(color: UIColor) {
-        UserDefaults.standard.setColor(color: COLOR, forKey: "color")
+        UserDefaults.standard.setColor(color: color, forKey: "color")
         self.COLOR = color
         self.view.backgroundColor = self.COLOR
     }
