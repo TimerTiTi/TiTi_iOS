@@ -8,9 +8,22 @@
 
 import Foundation
 
-struct daily : Identifiable {
-    var id : Int
-    var day : String
-    var studyTime : Int
-    var breakTime : Int
+struct daily: Hashable {
+    let day: String
+    let studyTime: Int
+    
+    init(day: String, studyTime: Int) {
+        self.day = day
+        self.studyTime = studyTime
+    }
+    
+    init(_ Daily: Daily) {
+        self.day = Daily.day.MDstyleString
+        self.studyTime = Daily.totalTime
+    }
+    
+    init() {
+        self.day = "-/-"
+        self.studyTime = 0
+    }
 }
