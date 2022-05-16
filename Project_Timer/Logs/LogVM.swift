@@ -16,7 +16,7 @@ final class LogVM {
     
     func loadDaily(_ isDummy: Bool = false) {
         if isDummy {
-            self.daily = Dumy().getDumyDaily()
+            self.daily = Dumy.getDumyDaily()
         } else {
             self.daily.load()
         }

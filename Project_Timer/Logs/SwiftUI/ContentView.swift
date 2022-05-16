@@ -7,16 +7,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    //그래프 색상 그라데이션 설정
-    var colors = [Color("CCC2"), Color("CCC1")]
-    //화면
+    let colors = [Color("CCC2"), Color("CCC1")]
+    var DailyDatas: [daily] = []
+    
+    init() {
+        self.configureDailys()
+    }
+    
     var body : some View {
         //세로 스크롤 설정
         /* 전체 큰 틀 */
         VStack {
             //평균시간 텍스트
-            let text = "Total : ".localized() + getHrs(value: getSumTime(value: getStudyTimes()))
-                + "   |   " + "Average : ".localized() + getHrs(value: getAverageTime(value: getStudyTimes()))
+            let text = "Total : ".localized() + self.weeksStudyTime.toTimeString
+            + "   |   " + "Average : ".localized() + self.averageTime.toTimeString
             Text(text)
                 .fontWeight(.regular)
                 .foregroundColor(.white)
@@ -36,7 +40,7 @@ struct ContentView: View {
                                 //아래로 붙이기
                                 Spacer(minLength: 0)
                                 //시간 설정
-                                Text(getHrs(value: work.studyTime))
+                                Text(work.studyTime.toHM)
                                     .foregroundColor(Color.white)
                                     .font(.system(size:12))
                                     .padding(.bottom,-5)
@@ -64,9 +68,11 @@ struct ContentView: View {
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
     }
+    
+    func configureDailys() {
+        // TODO: [Daily] -> [daily] 로직 작성
+    }
 
-    
-    
     func getHeight(value : Int) -> CGFloat {
         let max = getMaxInTotalTime(value: DailyDatas)
         return (CGFloat(value) / CGFloat(max)) * 120
@@ -90,6 +96,17 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+extension ContentView {
+    var weeksStudyTime: Int {
+        return self.DailyDatas.reduce(0) { $0 + $1.studyTime }
+    }
+    
+    var averageTime: Int {
+        let realCount = self.DailyDatas.filter { $0.studyTime != 0 }.count
+        return self.weeksStudyTime / realCount
+    }
+}
+
 struct RoundedShape : Shape {
     func path(in rect : CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
@@ -97,37 +114,11 @@ struct RoundedShape : Shape {
         return Path(path.cgPath)
     }
 }
-// Dummy Data
-
-struct daily : Identifiable {
-    var id : Int
-    var day : String
-    var studyTime : Int
-    var breakTime : Int
-}
-
-var DailyDatas: [daily] = []
 
 extension ContentView {
-    
-    func getHrs(value : Int) -> String {
-        var returnString = "";
-        var num = value;
-        if(num < 0) {
-            num = -num;
-            returnString += "+";
-        }
-        let H = num/3600
-        let M = num/60 - H*60
-        
-        let stringM = M<10 ? "0"+String(M) : String(M)
-        
-        returnString += String(H) + ":" + stringM
-        return returnString
-    }
-    
-    func appendDailyDatas(isDummy: Bool){
-        if isDummy { DailyDatas = Dumy().get7Dailys() }
+    func appendDailyDatas(isDummy: Bool) {
+        DailyDatas = isDummy ? Dumy.get7Dailys() : RecordController.shared.dailys.dailys
+        if isDummy { DailyDatas = Dumy.get7Dailys() }
         else {
             for i in (1...7).reversed() {
                 let id = 8-i
@@ -139,41 +130,7 @@ extension ContentView {
         }
     }
     
-    func getAverageTime(value: [Int]) -> Int {
-        var sum: Int = 0
-        var zeroCount: Int = 0
-        for i in value {
-            if i == 0 {
-                zeroCount += 1
-            } else {
-                sum += i
-            }
-        }
-        let result = value.count - zeroCount
-        if result == 0 {
-            return 0
-        } else {
-            return sum/(value.count - zeroCount)
-        }
-    }
     
-    func getSumTime(value: [Int]) -> Int {
-        var sum: Int = 0
-        for i in value {
-            sum += i
-        }
-        return sum
-    }
-    
-    func getStudyTimes() -> [Int] {
-        let studyArray = DailyDatas.map { (value : daily) -> Int in value.studyTime}
-        return studyArray
-    }
-    
-    func getBreakTimes() -> [Int] {
-        let breakArray = DailyDatas.map { (value : daily) -> Int in value.breakTime}
-        return breakArray
-    }
     
     func reset() {
         DailyDatas = []
