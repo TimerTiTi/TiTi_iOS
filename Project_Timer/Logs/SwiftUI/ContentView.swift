@@ -10,8 +10,8 @@ struct ContentView: View {
     let colors = [Color("CCC2"), Color("CCC1")]
     var DailyDatas: [daily] = []
     
-    init() {
-        self.configureDailys()
+    init(isDummy: Bool) {
+        self.configureDailys(isDummy)
     }
     
     var body : some View {
@@ -19,8 +19,8 @@ struct ContentView: View {
         /* 전체 큰 틀 */
         VStack {
             //평균시간 텍스트
-            let text = "Total : ".localized() + self.weeksStudyTime.toTimeString
-            + "   |   " + "Average : ".localized() + self.averageTime.toTimeString
+            let text = "Total : ".localized() + self.weeksStudyTime.toHM
+            + "   |   " + "Average : ".localized() + self.averageTime.toHM
             Text(text)
                 .fontWeight(.regular)
                 .foregroundColor(.white)
@@ -32,7 +32,7 @@ struct ContentView: View {
             VStack {
                 //그래프 틀
                 HStack(spacing:15) { //좌우로 15만큼 여백
-                    ForEach(DailyDatas) {work in
+                    ForEach(self.DailyDatas, id: \.self) { work in
                         //세로 스택
                         VStack{
                             //시간 + 그래프 막대
@@ -48,7 +48,7 @@ struct ContentView: View {
                                 RoundedShape()
                                     .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
                                     //그래프 막대 높이설정
-                                    .frame(height:getHeight(value: work.studyTime))
+                                    .frame(height: height(value: work.studyTime))
                             }
                             .frame(height:140)
                             //날짜 설정
@@ -69,34 +69,34 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
     }
     
-    func configureDailys() {
-        // TODO: [Daily] -> [daily] 로직 작성
-    }
-
-    func getHeight(value : Int) -> CGFloat {
-        let max = getMaxInTotalTime(value: DailyDatas)
-        return (CGFloat(value) / CGFloat(max)) * 120
-    }
-    
-    func getMaxInTotalTime (value : [daily]) -> Int {
-        let sMax: Int = getStudyTimes().max()!
-        let bMax: Int = getBreakTimes().max()!
-        if sMax > bMax {
-            return sMax
+    mutating func configureDailys(_ isDummy: Bool) {
+        if isDummy {
+            self.DailyDatas = Dumy.get7Dailys()
         } else {
-            return bMax
+            let dailys = RecordController.shared.dailys.dailys
+            let dailysCount = dailys.count
+            if dailysCount > 6 {
+                self.DailyDatas = dailys[dailysCount-7..<dailysCount].map { daily($0) }
+            } else {
+                let emptyCount = 7 - dailysCount
+                self.DailyDatas = dailys.map { daily($0) }
+                self.DailyDatas += Array(repeating: daily(), count: emptyCount)
+            }
         }
     }
-    
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    func height(value: Int) -> CGFloat {
+        return (CGFloat(value) / CGFloat(self.maxTime)) * 120
     }
-}
-
-extension ContentView {
+    
+    var maxTime: Int {
+        return self.DailyDatas.map(\.studyTime).max() ?? 0
+    }
+    
+    mutating func reset() {
+        DailyDatas = []
+    }
+    
     var weeksStudyTime: Int {
         return self.DailyDatas.reduce(0) { $0 + $1.studyTime }
     }
@@ -107,32 +107,15 @@ extension ContentView {
     }
 }
 
-struct RoundedShape : Shape {
-    func path(in rect : CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
-        
-        return Path(path.cgPath)
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(isDummy: false)
     }
 }
 
-extension ContentView {
-    func appendDailyDatas(isDummy: Bool) {
-        DailyDatas = isDummy ? Dumy.get7Dailys() : RecordController.shared.dailys.dailys
-        if isDummy { DailyDatas = Dumy.get7Dailys() }
-        else {
-            for i in (1...7).reversed() {
-                let id = 8-i
-                let day = Converter.translate(input: UserDefaults.standard.value(forKey: "day\(i)") as? String ?? "NO DATA")
-                let studyTime = Converter.translate2(input: UserDefaults.standard.value(forKey: "time\(i)") as? String ?? "NO DATA")
-                let breakTime = Converter.translate2(input: UserDefaults.standard.value(forKey: "break\(i)") as? String ?? "NO DATA")
-                DailyDatas.append(daily(id: id, day: day, studyTime: studyTime, breakTime: breakTime))
-            }
-        }
-    }
-    
-    
-    
-    func reset() {
-        DailyDatas = []
+struct RoundedShape : Shape {
+    func path(in rect : CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+        return Path(path.cgPath)
     }
 }
