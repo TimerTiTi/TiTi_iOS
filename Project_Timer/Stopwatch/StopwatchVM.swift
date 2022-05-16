@@ -153,6 +153,7 @@ final class StopwatchVM {
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = "Stopwatch".localized()
             notificationContent.body = " \(i)" + "hours passed.".localized()
+            notificationContent.sound = UNNotificationSound.default
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(i*3600), repeats: false)
             let request = UNNotificationRequest(identifier: "noti\(i)", content: notificationContent, trigger: trigger)
             self.userNotificationCenter.add(request) { error in
