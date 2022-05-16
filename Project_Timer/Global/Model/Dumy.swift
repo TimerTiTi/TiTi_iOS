@@ -8,7 +8,7 @@
 
 import Foundation
 struct Dumy {
-    func getTasks() -> [String:Int] {
+    static func getTasks() -> [String:Int] {
         var dumy: [String:Int] = [:]
 //        dumy.updateValue(9200, forKey: "프로그래밍 공부")
 //        dumy.updateValue(4820, forKey: "전공수업 과제")
@@ -38,12 +38,12 @@ struct Dumy {
         return dumy
     }
     
-    func getTimelines() -> [Int] {
+    static func getTimelines() -> [Int] {
         let timeline = [3000,1800,0,0,0,0,0,0,0,1200,2000,3000,2600,1800,3000,3600,1000,0,500,2000,800,0,300,1200]
         return timeline
     }
     
-    func get7Dailys() -> [daily] {
+    static func get7Dailys() -> [daily] {
         var DailyDatas: [daily] = []
         DailyDatas.append(daily(id: 1, day: "7/9",
                                 studyTime: Converter.translate2(input: "3:37:20"),
@@ -69,7 +69,7 @@ struct Dumy {
         return DailyDatas
     }
     
-    func getDumyDaily() -> Daily {
+    static func getDumyDaily() -> Daily {
         var daily: Daily = Daily()
 //        daily.maxTime = 3730
 //        daily.tasks = getTasks()
@@ -81,7 +81,7 @@ struct Dumy {
         return daily
     }
     
-    func getDumyStringDays() -> [String] {
+    static func getDumyStringDays() -> [String] {
         var days: [String] = []
         days.append("2021.05.30")
         days.append("2021.06.11")
@@ -92,7 +92,7 @@ struct Dumy {
         return days
     }
     
-    func getDumyDays(_ stringDays: [String]) -> [Date] {
+    static func getDumyDays(_ stringDays: [String]) -> [Date] {
         var days: [Date] = []
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY.MM.dd"
@@ -103,14 +103,3 @@ struct Dumy {
         return days
     }
 }
-
-//        temp["Learning Korean"] = 2100
-//        temp["Swift Programming"] = 4680
-//        temp["Cycleing"] = 3900
-//        temp["Running"] = 2700
-//        temp["Reading Book"] = 2280
-//        temp["프로그래밍 공부"] = 4680
-//        temp["전공수업 과제"] = 3900
-//        temp["프로젝트 토의"] = 2700
-//        temp["책읽기"] = 2280
-//        temp["영문학 공부"] = 2100

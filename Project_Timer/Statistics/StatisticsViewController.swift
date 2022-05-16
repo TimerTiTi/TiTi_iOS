@@ -220,7 +220,7 @@ extension StatisticsViewController {
         let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
+        todayContentView().appendTimes(isDumy: isDumy)
         
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
@@ -230,7 +230,7 @@ extension StatisticsViewController {
         let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 78, height: 78))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
+        todayContentView().appendTimes(isDumy: isDumy)
         
         addChild(hostingController2)
         view4_timeline.addSubview(hostingController2.view)

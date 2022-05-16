@@ -24,6 +24,7 @@
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
+		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
 		8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772E91526705EE100A191BF /* TodolistViewController.swift */; };
 		8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4C27DCB59400739A09 /* FirebaseAnalytics */; };
@@ -83,6 +84,7 @@
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
@@ -191,6 +193,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		876A8552283212DE00978035 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		876A85532832134500978035 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				876A85542832135E00978035 /* daily.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		878B507025B6E2FB00B9EFD7 /* component */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +255,7 @@
 				87A7624626493BB500174401 /* LogViewController.swift */,
 				87A48BCA27DF112A00F46D0F /* LogVM.swift */,
 				87A48BCC27DF182400F46D0F /* SubjectCell.swift */,
+				876A85532832134500978035 /* Model */,
 				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
 			);
 			path = Logs;
@@ -277,6 +295,7 @@
 		87A48BC527DEF0B200F46D0F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				876A8552283212DE00978035 /* SwiftUI */,
 				8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 				87A48BC627DEF0C200F46D0F /* Date+Extension.swift */,
@@ -476,6 +495,7 @@
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
+				876A85552832135E00978035 /* daily.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 			);

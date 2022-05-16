@@ -232,7 +232,7 @@ class TodayViewManager {
     }
     
     func setDumyDaily() {
-        daily = Dumy().getDumyDaily()
+        daily = Dumy.getDumyDaily()
     }
     
     func getColor() {

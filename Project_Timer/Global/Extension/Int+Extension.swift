@@ -21,4 +21,10 @@ extension Int {
             return String(format: "%d:%02d:%02d", h, m, s)
         }
     }
+    
+    var toHM: String {
+        let h = self / 3600
+        let m = (self / 60) - (h * 60)
+        return String(format: "%d:%02d", h, m)
+    }
 }
