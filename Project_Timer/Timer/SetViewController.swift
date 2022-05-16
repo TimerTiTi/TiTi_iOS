@@ -51,9 +51,9 @@ class SetViewController: UIViewController {
         self.hideKeyboard()
         setLocalizable()
         
-        allTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+        allTime = RecordController.shared.recordTimes.settedGoalTime
         AllTimeLabel.text = printTime(temp: allTime)
-        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        second = RecordController.shared.recordTimes.settedTimerTime
         SecondLabel.text = printTime(temp: second)
         getHMS1()
         getHMS2()
