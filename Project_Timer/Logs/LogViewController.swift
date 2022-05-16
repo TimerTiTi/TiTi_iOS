@@ -57,7 +57,6 @@ class LogViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        ContentView().reset()
     }
     
     @IBAction func todayButtonAction(_ sender: Any) {
@@ -89,11 +88,10 @@ extension LogViewController {
 // MARK: ShowGraph
 extension LogViewController {
     private func configureWeeksGraph(_ isDummy: Bool = false) {
-        let hostingController = UIHostingController(rootView: ContentView())
+        let hostingController = UIHostingController(rootView: ContentView(isDummy: isDummy))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = self.graphViewOfWeeks.bounds
         
-        ContentView().appendDailyDatas(isDummy: isDummy)
         self.addChild(hostingController)
         self.graphViewOfWeeks.addSubview(hostingController.view)
     }
