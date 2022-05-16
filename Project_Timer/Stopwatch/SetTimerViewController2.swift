@@ -54,7 +54,7 @@ class SetTimerViewController2: UIViewController {
         setLocalizable()
         setRadius()
         
-        goalTime = UserDefaults.standard.value(forKey: "allTime") as? Int ?? 21600
+        goalTime = RecordController.shared.recordTimes.settedGoalTime
         COLOR = UserDefaults.standard.colorForKey(key: "color") as? UIColor ?? UIColor(named: "Background2")
         Label_timer.text = printTime(temp: goalTime)
         

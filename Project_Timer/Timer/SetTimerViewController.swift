@@ -42,7 +42,7 @@ class SetTimerViewController: UIViewController {
         hideKeyboard()
         setLocalizable()
         
-        second = UserDefaults.standard.value(forKey: "second") as? Int ?? 2400
+        second = RecordController.shared.recordTimes.settedTimerTime
         Label_timer.text = printTime(temp: second)
         
         Text_H.keyboardType = .numberPad
