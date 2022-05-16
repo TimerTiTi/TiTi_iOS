@@ -15,12 +15,7 @@ final class LogVM {
     @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
     
     func loadDaily(_ isDummy: Bool = false) {
-        if isDummy {
-            self.daily = Dumy.getDumyDaily()
-        } else {
-            self.daily.load()
-        }
-        
+        self.daily = isDummy ? Dumy.getDumyDaily() : RecordController.shared.daily
         self.configureSubjectNameTimes()
     }
     

@@ -32,8 +32,6 @@ class LogViewController: UIViewController {
     private var progressWidth: CGFloat = 0
     private var progressHeight: CGFloat = 0
     
-    var daily = Daily() //VM
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
@@ -97,11 +95,8 @@ extension LogViewController {
     }
     
     private func showMonthTime() {
-        let manager = DailyViewModel()
-        manager.loadDailys()
-
         DispatchQueue.global().async {
-            manager.totalStudyTimeOfMonth { totalTime in
+            RecordController.shared.dailys.totalStudyTimeOfMonth { totalTime in
                 DispatchQueue.main.async {
                     self.monthTimeLabel.text = totalTime.toTimeString
                 }

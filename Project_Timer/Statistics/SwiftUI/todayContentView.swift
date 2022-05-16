@@ -74,8 +74,15 @@ var times: [timeBlock] = []
 
 extension todayContentView {
     
-    func appendTimes(isDumy: Bool) {
-        let timeline = isDumy ? Dumy.getTimelines() : RecordController.shared.daily.timeline
+    func appendTimes(isDumy: Bool, daily: Daily){
+        var daily = daily
+        //        daily.load()
+        var timeline = daily.timeline
+        if(isDumy) {
+            daily = Dumy.getDumyDaily()
+            timeline = Dumy.getTimelines()
+        }
+        print("timeline : \(timeline)")
         
         var i = 5
         while(i < 29) {
