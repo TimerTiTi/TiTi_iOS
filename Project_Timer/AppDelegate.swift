@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        Analytics.logEvent("launch", parameters: [
+            AnalyticsParameterItemID: "ver 6.5",
+        ])
         UNUserNotificationCenter.current().delegate = self
         NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
             UIApplication.shared.applicationIconBadgeNumber = 1
