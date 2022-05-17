@@ -54,6 +54,7 @@ class TimerViewController: UIViewController {
         self.setButtonsEnabledTrue()
         self.configureViewModel()
         self.bindAll()
+        self.viewModel?.updateTask()
     }
     
     override func viewWillAppear(_ animated: Bool) {

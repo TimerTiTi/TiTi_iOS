@@ -155,13 +155,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPQ-Xe-8up">
-                                <rect key="frame" x="106.66666666666669" y="156" width="162" height="40"/>
+                                <rect key="frame" x="162.66666666666666" y="156" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sX4-Hx-fkH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
-                                <state key="normal" title="Enter New Task">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -519,13 +519,13 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-rS-lNf">
-                                <rect key="frame" x="106.66666666666669" y="156" width="162" height="40"/>
+                                <rect key="frame" x="162.66666666666666" y="156" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kaO-n4-ewZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
                                 <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
-                                <state key="normal" title="Enter New Task">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -2169,10 +2169,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2180,7 +2180,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>

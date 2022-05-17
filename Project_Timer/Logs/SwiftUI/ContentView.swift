@@ -86,7 +86,11 @@ struct ContentView: View {
     }
 
     func height(value: Int) -> CGFloat {
-        return (CGFloat(value) / CGFloat(self.maxTime)) * 120
+        if self.maxTime == 0 {
+            return 0
+        } else {
+            return (CGFloat(value) / CGFloat(self.maxTime)) * 120
+        }
     }
     
     var maxTime: Int {
@@ -103,7 +107,7 @@ struct ContentView: View {
     
     var averageTime: Int {
         let realCount = self.DailyDatas.filter { $0.studyTime != 0 }.count
-        return self.weeksStudyTime / realCount
+        return realCount == 0 ? 0 : self.weeksStudyTime / realCount
     }
 }
 
