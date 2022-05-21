@@ -337,6 +337,7 @@ extension TimerViewController {
 // MARK: - Rotation
 extension TimerViewController {
     @objc func deviceRotated(){
+        guard UIDevice.current.userInterfaceIdiom == .phone else { return }
         if UIDevice.current.orientation.isLandscape {
             self.setLandscape()
         } else {
