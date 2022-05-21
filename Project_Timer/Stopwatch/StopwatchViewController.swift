@@ -325,6 +325,7 @@ extension StopwatchViewController {
 // MARK: - Rotation
 extension StopwatchViewController {
     @objc func deviceRotated() {
+        guard UIDevice.current.userInterfaceIdiom == .phone else { return }
         if UIDevice.current.orientation.isLandscape {
             self.setLandscape()
         } else {
