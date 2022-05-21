@@ -10,4 +10,5 @@ import Foundation
 
 enum NetworkURL {
     static let appstoreVersion: String = "https://itunes.apple.com/lookup?id=1519159240&country=kr"
+    static let appstore: String = "itms-apps://itunes.apple.com/app/id1519159240"
 }

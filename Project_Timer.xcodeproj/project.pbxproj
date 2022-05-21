@@ -41,6 +41,7 @@
 		87910828283876DD005D7B10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 87910827283876DD005D7B10 /* Alamofire */; };
 		8791082A283877A4005D7B10 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910829283877A4005D7B10 /* Network.swift */; };
 		8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082C28387BA6005D7B10 /* AppstoreVersion.swift */; };
+		8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082E28387D1F005D7B10 /* String+Extension.swift */; };
 		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
 		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
 		8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */; };
@@ -104,6 +105,7 @@
 		879108242838761B005D7B10 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		87910829283877A4005D7B10 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8791082C28387BA6005D7B10 /* AppstoreVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppstoreVersion.swift; sourceTree = "<group>"; };
+		8791082E28387D1F005D7B10 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				87A48BC627DEF0C200F46D0F /* Date+Extension.swift */,
 				87A48BC827DF026800F46D0F /* Int+Extension.swift */,
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
+				8791082E28387D1F005D7B10 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
+				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
@@ -700,7 +704,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -708,7 +712,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.5;
+				MARKETING_VERSION = 6.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -724,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -732,7 +736,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 6.5;
+				MARKETING_VERSION = 6.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
