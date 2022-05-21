@@ -59,6 +59,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        NetworkController(network: Network()).getAppstoreVersion { status, version in
+            switch status {
+            case .SUCCESS:
+                guard let storeVersion = version else { return }
+                print(String.currentVersion, storeVersion)
+                
+                if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
+                    let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
+                    let alert = UIAlertController(title: "Update new version".localized(), message: message, preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "OK", style: .default)
+                    let update = UIAlertAction(title: "UPDATE", style: .default, handler: { _ in
+                        if let url = URL(string: NetworkURL.appstore),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:])
+//                            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                exit(0)
+//                            }
+                        }
+                    })
+                    
+                    alert.addAction(ok)
+                    alert.addAction(update)
+                    
+                    self.window?.rootViewController?.present(alert, animated: true)
+                }
+            default:
+                return
+            }
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
