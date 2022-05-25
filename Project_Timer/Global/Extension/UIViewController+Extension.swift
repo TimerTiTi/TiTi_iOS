@@ -13,7 +13,20 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default)
         alert.addAction(ok)
-        present(alert, animated: true)
+        self.present(alert, animated: true)
+    }
+    
+    func showAlertWithAction(title: String, text: String, completion: @escaping(() -> Void)) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+            NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
+        }
+        let ok = UIAlertAction(title: "OK", style: .destructive) { _ in
+            completion()
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true)
     }
     
     func showTaskWarningAlert() {

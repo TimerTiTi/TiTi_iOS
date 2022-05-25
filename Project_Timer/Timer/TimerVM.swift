@@ -16,6 +16,7 @@ final class TimerVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
     @Published private(set) var soundAlert = false
+    @Published private(set) var warningNewDate = false
     private(set) var timerRunning = false
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
@@ -32,6 +33,8 @@ final class TimerVM {
         if RecordController.shared.recordTimes.recording {
             print("automatic start")
             self.timerStart()
+        } else {
+            self.checkRecordDate()
         }
     }
     
@@ -42,6 +45,13 @@ final class TimerVM {
             if let error = error {
                 print("Error: \(error)")
             }
+        }
+    }
+    
+    private func checkRecordDate() {
+        let today = Date().YYYYMMDDstyleString
+        if today != self.daily.day.YYYYMMDDstyleString {
+            self.warningNewDate = true
         }
     }
     
