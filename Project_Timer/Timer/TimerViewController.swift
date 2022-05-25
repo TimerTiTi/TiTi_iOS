@@ -31,6 +31,7 @@ class TimerViewController: UIViewController {
     @IBOutlet var setTimerBT: UIButton!
     @IBOutlet var settingBT: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var warningRecordDate: UIButton!
     
     let BLUE = UIColor(named: "Blue")
     let RED = UIColor(named: "Text")
@@ -84,6 +85,12 @@ class TimerViewController: UIViewController {
     @IBAction func reset(_ sender: Any) {
         self.showSettingTimerView()
     }
+    
+    @IBAction func showRecordDateAlert(_ sender: Any) {
+        self.showAlertWithAction(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
+            self?.showSettingView()
+        }
+    }
 }
 
 // MARK: - Configure
@@ -110,6 +117,9 @@ extension TimerViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
+            self?.hideWarningRecordDate()
+        }
     }
     private func configureViewModel() {
         self.viewModel = TimerVM()
@@ -143,6 +153,7 @@ extension TimerViewController {
         self.bindTask()
         self.bindUI()
         self.bindSound()
+        self.bindWaringNewDate()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -152,7 +163,6 @@ extension TimerViewController {
                 self?.updateEndTime(goalTime: times.goal)
                 self?.updateProgress(times: times)
                 self?.updateRunningColor(times: times)
-//                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
     }
@@ -192,6 +202,15 @@ extension TimerViewController {
             .sink(receiveValue: { [weak self] alert in
                 guard alert else { return }
                 self?.playSound()
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindWaringNewDate() {
+        self.viewModel?.$warningNewDate
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] warning in
+                guard warning else { return }
+                self?.showWarningRecordDate()
             })
             .store(in: &self.cancellables)
     }
@@ -332,6 +351,20 @@ extension TimerViewController {
         let player = AVPlayer(url: url)
         player.play()
     }
+    
+    private func showWarningRecordDate() {
+        UIView.animate(withDuration: 0.15) {
+            self.warningRecordDate.alpha = 1
+            self.todayLabel.textColor = self.RED!
+        }
+    }
+    
+    private func hideWarningRecordDate() {
+        UIView.animate(withDuration: 0.15) {
+            self.warningRecordDate.alpha = 0
+            self.todayLabel.textColor = .white
+        }
+    }
 }
 
 // MARK: - Rotation
@@ -384,6 +417,7 @@ extension TimerViewController {
 extension TimerViewController: NewRecordCreatable {
     func newRecord() {
         self.viewModel?.newRecord()
+        self.hideWarningRecordDate()
     }
 }
 

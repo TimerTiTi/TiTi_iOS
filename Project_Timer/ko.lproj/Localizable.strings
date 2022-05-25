@@ -100,3 +100,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 " version of the App Store :)" = " 버전을 사용해보세요 :)";
 
 "Update new version" = "새로운 버전으로 업데이트";
+
+"Check the date of recording" = "기록중인 날짜를 확인해주세요";
+
+"Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";

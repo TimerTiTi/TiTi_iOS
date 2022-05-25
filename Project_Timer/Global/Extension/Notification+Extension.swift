@@ -13,4 +13,5 @@ extension Notification.Name {
     static let setBadge = Self.init(rawValue: "setBadge")
     static let removeBadge = Self.init(rawValue: "removeBadge")
     static let newVersion = Self.init(rawValue: "newVersion")
+    static let removeNewRecordWarning = Self.init(rawValue: "removeNewRecordWarning")
 }

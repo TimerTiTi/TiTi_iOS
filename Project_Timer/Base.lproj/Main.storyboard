@@ -246,6 +246,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roc-hq-Dls">
+                                <rect key="frame" x="199.66666666666666" y="53" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="cka-85-mwq"/>
+                                    <constraint firstAttribute="height" constant="32" id="i09-J1-iUL"/>
+                                </constraints>
+                                <color key="tintColor" name="Text"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="exclamationmark.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="semibold"/>
+                                </state>
+                                <connections>
+                                    <action selector="showRecordDateAlert:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="yYs-A2-aed"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
@@ -256,6 +271,7 @@
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerX" secondItem="bRB-wj-rJW" secondAttribute="centerX" id="3bK-Jr-1hi"/>
                             <constraint firstItem="bRB-wj-rJW" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="6AY-xB-zFG"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
+                            <constraint firstItem="roc-hq-Dls" firstAttribute="leading" secondItem="COc-GQ-Is1" secondAttribute="trailing" constant="-5" id="IGn-5f-81s"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="50" id="O9d-O7-kdS"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="W1k-Ca-43M"/>
@@ -263,6 +279,7 @@
                             <constraint firstItem="COc-GQ-Is1" firstAttribute="top" secondItem="xTH-Uj-aTj" secondAttribute="top" constant="16" id="gF0-HB-GTC"/>
                             <constraint firstItem="bRB-wj-rJW" firstAttribute="leading" secondItem="QFf-fg-Akz" secondAttribute="trailing" constant="25" id="i3j-yi-UyY"/>
                             <constraint firstItem="COc-GQ-Is1" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="kcW-dz-GEF"/>
+                            <constraint firstItem="roc-hq-Dls" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="otI-eI-V3t"/>
                             <constraint firstItem="NPQ-Xe-8up" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="ozw-CA-NND"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="wdS-BZ-UeA"/>
                         </constraints>
@@ -297,6 +314,7 @@
                         <outlet property="taskButton" destination="NPQ-Xe-8up" id="tkT-7r-Q8Z"/>
                         <outlet property="timerLabel" destination="Kl4-pY-2wV" id="CVq-J7-f2a"/>
                         <outlet property="todayLabel" destination="COc-GQ-Is1" id="y2U-aB-XyG"/>
+                        <outlet property="warningRecordDate" destination="roc-hq-Dls" id="S1K-mb-S7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxT-Fd-PUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2169,10 +2187,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2180,7 +2198,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -4441,6 +4459,7 @@
         <image name="chevron.backward.circle" catalog="system" width="128" height="121"/>
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="103"/>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
+        <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="97"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
