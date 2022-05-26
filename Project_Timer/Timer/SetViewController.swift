@@ -93,7 +93,8 @@ class SetViewController: UIViewController {
     }
     
     @IBAction func SetButton(_ sender: UIButton) {
-        let alert = UIAlertController(title:"New Record".localized(),message: "The recording of the new date begins.".localized(),preferredStyle: UIAlertController.Style.alert)
+        let message = "The recording of the new date begins.".localized() + "\n"+Date().YYYYMMDDstyleString
+        let alert = UIAlertController(title:"New Record".localized(),message: message,preferredStyle: UIAlertController.Style.alert)
         let cancel = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
             self.SET_action()
