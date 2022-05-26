@@ -7,9 +7,14 @@
 * 원하는 색으로 설정하여 그래프를 이쁘게 보여 드립니다
 * Todolist를 통해 중요한 내용을 남길 수 있습니다
 
-## TiTi 개발 진행상황 & 예정사항
-아래 Notion 링크를 통해 현재 TiTi의 개발 진행, 또는 예정 사항들을 확인하실 수 있습니다! 🙂
+## TiTi 개발 리스트
+아래 Notion 링크를 통해 현재 TiTi의 개발 진행, 또는 예정 사항들을 확인하실 수 있습니다!
 ### [TiTi Notion](https://deeply-eggplant-5ec.notion.site/TiTi-b089afc1a4eb4cdb8c06840ca9cb1273)
+
+## TiTi 인스타그램 계정
+아래 Instagram 링크를 통해 TiTi 의 새로운 소식들을 확인하실 수 있습니다!
+또한 앱의 피드백을 받을 수 있습니다. 🙂
+### [TiTi Instagram](https://www.instagram.com/study_withtiti/)
 
 ## TiTi 사용방법영상
 아래의 Youtube 링크를 통해 TiTi의 사용방법 영상을 확인하실 수 있습니다! 🙃
@@ -59,11 +64,11 @@
 * 공스타그램 갤러리 : 세가지 이미지를 통한 하루 공부내용 이미지로 저장 기능
 * 공스타그램 갤러리 : 12가지의 테마색, 다크모드 및 라이트 모드를 통해 다양한 컬러 지원
 
-## 개발자 링크
-* DEV_FDEE / freedeveloper97@gmail.com
+## 개발자 
+* [DEV_FDEE](https://github.com/FreeDeveloper97)
+* freedeveloper97@gmail.com
 * [instagram](https://www.instagram.com/dev_fdee/?hl=ko)
-* [blog](https://fdee.tistory.com)
-* [Youtube](https://www.youtube.com/channel/UCbdetgcLOrW7qRB0907UjTw)
 
 ### Copyright © 2021 FDEE.
 관심있는 Backend, 또는 Android 개발자 분은 연락 주시면 매우 감사합니다 :)
+
