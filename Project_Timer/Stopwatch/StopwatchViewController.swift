@@ -30,6 +30,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet var settingBT: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var warningRecordDate: UIButton!
     
     var COLOR = UIColor(named: "Background2")
     let RED = UIColor(named: "Text")
@@ -88,6 +89,12 @@ final class StopwatchViewController: UIViewController {
     @IBAction func colorSelect(_ sender: Any) {
         self.showColorSelectVC()
     }
+    
+    @IBAction func showRecordDateAlert(_ sender: Any) {
+        self.showAlertWithAction(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
+            self?.showSettingView()
+        }
+    }
 }
 
 // MARK: - Configure
@@ -119,6 +126,9 @@ extension StopwatchViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
+            self?.hideWarningRecordDate()
+        }
     }
     private func configureViewModel() {
         self.viewModel = StopwatchVM()
@@ -158,6 +168,7 @@ extension StopwatchViewController {
         self.bindDaily()
         self.bindTask()
         self.bindUI()
+        self.bindWaringNewDate()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -197,6 +208,15 @@ extension StopwatchViewController {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                 }
+            })
+            .store(in: &self.cancellables)
+    }
+    private func bindWaringNewDate() {
+        self.viewModel?.$warningNewDate
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] warning in
+                guard warning else { return }
+                self?.showWarningRecordDate()
             })
             .store(in: &self.cancellables)
     }
@@ -320,6 +340,20 @@ extension StopwatchViewController {
         print("stopwatch: \(times.stopwatch.toTimeString)")
         print("goal: \(times.goal.toTimeString)")
     }
+    
+    private func showWarningRecordDate() {
+        UIView.animate(withDuration: 0.15) {
+            self.warningRecordDate.alpha = 1
+            self.todayLabel.textColor = self.RED!
+        }
+    }
+    
+    private func hideWarningRecordDate() {
+        UIView.animate(withDuration: 0.15) {
+            self.warningRecordDate.alpha = 0
+            self.todayLabel.textColor = .white
+        }
+    }
 }
 
 // MARK: - Rotation
@@ -373,6 +407,7 @@ extension StopwatchViewController: NewRecordCreatable {
     func newRecord() {
         self.configureColor()
         self.viewModel?.newRecord()
+        self.hideWarningRecordDate()
     }
 }
 
