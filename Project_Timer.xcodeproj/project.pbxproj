@@ -64,6 +64,7 @@
 		87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
+		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
@@ -131,6 +132,7 @@
 		87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
+		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -362,6 +364,14 @@
 			path = RecordController;
 			sourceTree = "<group>";
 		};
+		87E6004928426EA3008D17B9 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				87E6004A28426EBF008D17B9 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		93B08514248DDF2F00E215BD = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +400,7 @@
 				8762717127DF83E400F812ED /* TaskSelect */,
 				8791C1EC27DCCE08000D6BA9 /* Todolist */,
 				8791C1ED27DCCE10000D6BA9 /* Logs */,
+				87E6004928426EA3008D17B9 /* Setting */,
 				87A48BCE27DF189D00F46D0F /* Statistics */,
 				878B507025B6E2FB00B9EFD7 /* component */,
 				93B08529248DDF3000E215BD /* Assets.xcassets */,
@@ -532,6 +543,7 @@
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
+				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
