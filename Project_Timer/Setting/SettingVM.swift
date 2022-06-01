@@ -22,6 +22,7 @@ final class SettingVM {
         self.sectionTitles.append("앱 소개")
         self.sectionTitles.append("알림 설정")
         self.sectionTitles.append("버전 및 업데이트 내역")
+        self.sectionTitles.append("개발자")
     }
     
     private func configureCells() {
@@ -72,7 +73,12 @@ final class SettingVM {
                                       touchable: true,
                                       switchable: false))
         // 개발자
-        self.cells = [cells1, cells2, cells3]
+        var cells4: [SettingCellInfo] = []
+        cells4.append(SettingCellInfo(title: "FDEE",
+                                      subTitle: nil,
+                                      rightTitle: nil,
+                                      touchable: false,
+                                      switchable: false))
+        self.cells = [cells1, cells2, cells3, cells4]
     }
-    
 }

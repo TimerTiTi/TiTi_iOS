@@ -67,6 +67,19 @@ extension SettingViewController: UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SettingHeaderView.identifier, for: indexPath) as? SettingHeaderView else { return UICollectionReusableView() }
+            guard let headerTitle = self.viewModel?.sectionTitles[safe: indexPath.section] else { return header }
+            
+            header.configure(title: headerTitle)
+            return header
+        } else if kind == UICollectionView.elementKindSectionFooter {
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SettingFooterView.identifier, for: indexPath)
+            return footer
+        } else { return UICollectionReusableView() }
+    }
 }
 
 extension SettingViewController: UICollectionViewDelegateFlowLayout {
