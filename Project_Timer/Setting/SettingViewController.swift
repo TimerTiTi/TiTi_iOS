@@ -27,6 +27,7 @@ final class SettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.settings.setContentOffset(.zero, animated: false)
+        self.settings.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

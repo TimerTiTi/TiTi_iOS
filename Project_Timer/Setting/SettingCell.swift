@@ -18,8 +18,6 @@ class SettingCell: UICollectionViewCell {
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
         toggle.translatesAutoresizingMaskIntoConstraints = false
-        toggle.tintColor = UIColor(named: "Blue")
-        toggle.onTintColor = UIColor(named: "Blue")
         toggle.isOn = true
         toggle.isHidden = true
         return toggle
@@ -47,8 +45,16 @@ class SettingCell: UICollectionViewCell {
         self.touchableMark.isHidden = !info.touchable
         
         if info.switchable {
+            self.configureSwitchColor()
             self.configureSwitch()
         }
+    }
+    
+    private func configureSwitchColor() {
+        let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        let color = UIColor(named: "D\(colorIndex)")
+        self.toggleSwitch.tintColor = color
+        self.toggleSwitch.onTintColor = color
     }
     
     private func configureSwitch() {
