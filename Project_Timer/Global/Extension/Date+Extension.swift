@@ -25,9 +25,21 @@ extension Date {
         return self.YYYYMMDDstyleString == date.YYYYMMDDstyleString
     }
     
+    var month: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        return Int(dateFormatter.string(from: self)) ?? 0
+    }
+    
     var hour: Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH"
-        return Int(dateFormatter.string(from: self))!
+        return Int(dateFormatter.string(from: self)) ?? 0
+    }
+    
+    var YYMMstyleInt: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyMM"
+        return Int(dateFormatter.string(from: self)) ?? 0
     }
 }

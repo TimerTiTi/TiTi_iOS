@@ -51,6 +51,7 @@ class LogViewController: UIViewController {
         super.viewWillDisappear(animated)
         let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height + self.scrollView.contentInset.bottom)
         self.scrollView.setContentOffset(bottomOffset, animated: false)
+        self.configureEmptyView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -213,7 +214,6 @@ extension LogViewController {
 
 extension LogViewController {
     private func makeProgress(_ subjectTimes: [Int], _ sumTime: Int) {
-        self.configureEmptyView()
         var sumWithSeperator: Float = Float(sumTime)
         
         //그래프 간 구별선 추가
