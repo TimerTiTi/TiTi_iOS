@@ -10,4 +10,8 @@ import Foundation
 
 extension String {
     static let currentVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+    static var userTintColor: String {
+        let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        return "D\(colorIndex)"
+    }
 }

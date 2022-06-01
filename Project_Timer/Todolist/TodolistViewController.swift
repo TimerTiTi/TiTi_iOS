@@ -35,6 +35,7 @@ class TodolistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.tintColor = .label
         self.configurePointColor()
         self.configureTodayLabel()
     }

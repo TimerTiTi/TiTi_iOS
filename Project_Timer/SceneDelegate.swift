@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
         rootViewController.tabBar.backgroundColor = .clear
+        rootViewController.tabBar.tintColor = .white
         if VCNum == 2 {
             rootViewController.selectedIndex = 1
         }

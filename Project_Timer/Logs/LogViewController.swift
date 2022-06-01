@@ -42,6 +42,8 @@ class LogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.barTintColor = .clear
         self.scrollView.setContentOffset(.zero, animated: false)
         self.showMonthTime()
         self.configureWeeksGraph()
