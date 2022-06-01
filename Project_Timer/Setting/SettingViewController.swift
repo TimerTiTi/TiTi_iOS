@@ -23,10 +23,22 @@ final class SettingViewController: UIViewController {
         self.configureViewModel()
         self.bindAll()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.settings.setContentOffset(.zero, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let bottomOffset = CGPoint(x: 0, y: self.settings.contentSize.height - self.settings.bounds.height + self.settings.contentInset.bottom)
+        self.settings.setContentOffset(bottomOffset, animated: false)
+    }
 }
 
 extension SettingViewController {
     private func configureCollectionView() {
+        self.extendedLayoutIncludesOpaqueBars = true
         self.settings.dataSource = self
         self.settings.delegate = self
     }
@@ -86,7 +98,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.settings.bounds.width
         guard let info = self.viewModel?.cells[indexPath.section][indexPath.item] else { return CGSize(width: width, height: 43)}
-        print(info.cellHeight)
+        
         return CGSize(width: width, height: CGFloat(info.cellHeight))
     }
 }

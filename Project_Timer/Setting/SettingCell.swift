@@ -15,14 +15,29 @@ class SettingCell: UICollectionViewCell {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var touchableMark: UIImageView!
+    private lazy var toggleSwitch: UISwitch = {
+        let toggle = UISwitch()
+        toggle.translatesAutoresizingMaskIntoConstraints = false
+        toggle.tintColor = UIColor(named: "Blue")
+        toggle.onTintColor = UIColor(named: "Blue")
+        toggle.isOn = true
+        toggle.isHidden = true
+        return toggle
+    }()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.addSubview(self.toggleSwitch)
         
+        NSLayoutConstraint.activate([
+            self.toggleSwitch.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.toggleSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+        ])
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.toggleSwitch.isHidden = true
     }
     
     func configure(with info: SettingCellInfo) {
@@ -30,5 +45,13 @@ class SettingCell: UICollectionViewCell {
         self.subTitleLabel.text = info.subTitle != nil ? info.subTitle : ""
         self.rightLabel.text = info.rightTitle != nil ? info.rightTitle : ""
         self.touchableMark.isHidden = !info.touchable
+        
+        if info.switchable {
+            self.configureSwitch()
+        }
+    }
+    
+    private func configureSwitch() {
+        self.toggleSwitch.isHidden = false
     }
 }
