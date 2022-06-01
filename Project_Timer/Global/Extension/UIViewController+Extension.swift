@@ -16,7 +16,7 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showAlertWithAction(title: String, text: String, completion: @escaping(() -> Void)) {
+    func showRecordDateWarning(title: String, text: String, completion: @escaping(() -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
             NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)

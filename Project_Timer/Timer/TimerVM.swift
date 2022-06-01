@@ -49,10 +49,7 @@ final class TimerVM {
     }
     
     private func checkRecordDate() {
-        let today = Date().YYYYMMDDstyleString
-        if today != self.daily.day.YYYYMMDDstyleString {
-            self.warningNewDate = true
-        }
+        self.warningNewDate = RecordController.shared.showWarningOfRecordDate
     }
     
     var settedTimerTime: Int {
