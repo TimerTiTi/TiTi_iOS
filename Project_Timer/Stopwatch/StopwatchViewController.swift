@@ -92,7 +92,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     @IBAction func showRecordDateAlert(_ sender: Any) {
-        self.showAlertWithAction(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
+        self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
             self?.showSettingView()
         }
     }
@@ -203,6 +203,7 @@ extension StopwatchViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] runningUI in
                 if runningUI {
+                    NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                 } else {
@@ -408,7 +409,7 @@ extension StopwatchViewController: NewRecordCreatable {
     func newRecord() {
         self.configureColor()
         self.viewModel?.newRecord()
-        self.hideWarningRecordDate()
+        NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
     }
 }
 
