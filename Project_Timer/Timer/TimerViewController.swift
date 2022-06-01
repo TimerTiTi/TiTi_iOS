@@ -60,6 +60,7 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.tintColor = .white
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -231,8 +232,8 @@ extension TimerViewController {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(UIColor.systemPink, for: .normal)
-        self.taskButton.layer.borderColor = UIColor.systemPink.cgColor
+        self.taskButton.setTitleColor(UIColor(named: "lightPink"), for: .normal)
+        self.taskButton.layer.borderColor = UIColor(named: "lightPink")?.cgColor
     }
     
     private func setTaskWhiteColor() {
