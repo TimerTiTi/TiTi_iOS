@@ -21,6 +21,10 @@
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
+		8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F328472066007FAFC4 /* SettingCell.swift */; };
+		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
+		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
+		8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection.swift */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
@@ -91,6 +95,10 @@
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
+		8751C6F328472066007FAFC4 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
+		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
+		8751C6F928472A8D007FAFC4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
@@ -343,6 +351,7 @@
 				87A48BC827DF026800F46D0F /* Int+Extension.swift */,
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791082E28387D1F005D7B10 /* String+Extension.swift */,
+				8751C6F928472A8D007FAFC4 /* Collection.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -371,6 +380,9 @@
 			children = (
 				87E6004A28426EBF008D17B9 /* SettingViewController.swift */,
 				87E6004C28428822008D17B9 /* SettingTableViewController.swift */,
+				8751C6F328472066007FAFC4 /* SettingCell.swift */,
+				8751C6F528472133007FAFC4 /* SettingCellInfo.swift */,
+				8751C6F72847234A007FAFC4 /* SettingVM.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -533,12 +545,14 @@
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
+				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
 				87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
+				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
 				87E6004D28428822008D17B9 /* SettingTableViewController.swift in Sources */,
@@ -557,8 +571,10 @@
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */,
+				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
+				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				876A85552832135E00978035 /* daily.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
