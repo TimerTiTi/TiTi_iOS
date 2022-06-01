@@ -15,6 +15,6 @@ struct SettingCellInfo {
     let touchable: Bool
     let switchable: Bool
     var cellHeight: Int {
-        return self.subTitle != nil ? 53 : 43
+        return self.subTitle != nil ? 60 : 47
     }
 }
