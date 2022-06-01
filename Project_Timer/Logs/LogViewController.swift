@@ -42,6 +42,7 @@ class LogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.scrollView.setContentOffset(.zero, animated: false)
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()

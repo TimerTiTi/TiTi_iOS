@@ -16,19 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let isFirst = UserDefaults.standard.value(forKey: "isFirst") as? Bool ?? true
         let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         
-        if isFirst {
-            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: firstViewController.identifier)
-        } else {
-            let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
-            rootViewController.tabBar.backgroundColor = .clear
-            if VCNum == 2 {
-                rootViewController.selectedIndex = 1
-            }
-            self.window?.rootViewController = rootViewController
+        let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        rootViewController.tabBar.backgroundColor = .clear
+        if VCNum == 2 {
+            rootViewController.selectedIndex = 1
         }
+        self.window?.rootViewController = rootViewController
         
         NotificationCenter.default.addObserver(forName: .showTabbarController, object: nil, queue: .main) { [weak self] _ in
             self?.showTabbarController()
