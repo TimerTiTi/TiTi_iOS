@@ -29,19 +29,12 @@ class DailyViewModel {
     }
     
     func totalStudyTimeofMonth(month: Int, completion: @escaping (Int) -> ()) {
-        let monthData = dailys.filter { self.getMonth($0.day) == month }
+        let monthData = dailys.filter { $0.day.month == month }
         completion(monthData.reduce(0, { $0 + $1.totalTime }))
     }
     
     func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
-        let month = self.getMonth(Date())
-        completion(dailys.filter { self.getMonth($0.day) == month }.reduce(0, { $0 + $1.totalTime }))
-    }
-    
-    private func getMonth(_ date: Date) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM"
-        let month = dateFormatter.string(from: date)
-        return Int(month) ?? 0
+        let yymm = Date().YYMMstyleInt
+        completion(dailys.filter { $0.day.YYMMstyleInt == yymm }.reduce(0, { $0 + $1.totalTime }))
     }
 }
