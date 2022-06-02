@@ -12,9 +12,11 @@ struct UserDefaultsManager {
     enum Keys: String {
         case isFirst = "isFirst"
         case VCNum = "VCNum"
-        case sumTime_temp = "sumTime_temp"
-        case startTime = "startTime"
-        case color = "color"
+        
+        case timerPushable = "timerPushable"
+        case stopwatchPushable = "stopwatchPushable"
+        case restPushable = "restPushable"
+        case updatePushable = "UpdatePushable"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {

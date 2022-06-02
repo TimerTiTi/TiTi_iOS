@@ -20,8 +20,16 @@ class SettingCell: UICollectionViewCell {
         toggle.translatesAutoresizingMaskIntoConstraints = false
         toggle.isOn = true
         toggle.isHidden = true
+        toggle.addTarget(self, action: #selector(switchValueDidChange(_:)), for: .valueChanged)
         return toggle
     }()
+    @objc func switchValueDidChange(_ sender: UISwitch!) {
+        guard let key = self.toggleKey else { return }
+        UserDefaultsManager.set(to: sender.isOn, forKey: key)
+        self.toggleSwitch.setOn(sender.isOn, animated: true)
+    }
+    
+    private var toggleKey: UserDefaultsManager.Keys?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,25 +47,31 @@ class SettingCell: UICollectionViewCell {
     }
     
     func configure(with info: SettingCellInfo) {
+        self.configureUI(with: info)
+        
+        if let key = info.toggleKey, info.switchable {
+            self.toggleKey = key
+            self.configureSwitchColor()
+            self.configureSwitch(key: key)
+        }
+    }
+    
+    private func configureUI(with info: SettingCellInfo) {
         self.titleLabel.text = info.title
         self.subTitleLabel.text = info.subTitle != nil ? info.subTitle : ""
         self.rightLabel.text = info.rightTitle != nil ? info.rightTitle : ""
         self.touchableMark.isHidden = !info.touchable
-        
-        if info.switchable {
-            self.configureSwitchColor()
-            self.configureSwitch()
-        }
     }
     
     private func configureSwitchColor() {
-        let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
-        let color = UIColor(named: "D\(colorIndex)")
+        let color = UIColor(named: String.userTintColor)
         self.toggleSwitch.tintColor = color
         self.toggleSwitch.onTintColor = color
     }
     
-    private func configureSwitch() {
+    private func configureSwitch(key: UserDefaultsManager.Keys) {
         self.toggleSwitch.isHidden = false
+        let value = UserDefaultsManager.get(forKey: key) as? Bool ?? true
+        self.toggleSwitch.setOn(value, animated: false)
     }
 }
