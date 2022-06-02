@@ -71,7 +71,6 @@
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
-		87E6004D28428822008D17B9 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004C28428822008D17B9 /* SettingTableViewController.swift */; };
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
@@ -146,7 +145,6 @@
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		87E6004C28428822008D17B9 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -383,10 +381,9 @@
 			isa = PBXGroup;
 			children = (
 				87E6004A28426EBF008D17B9 /* SettingViewController.swift */,
-				87E6004C28428822008D17B9 /* SettingTableViewController.swift */,
+				8751C6F72847234A007FAFC4 /* SettingVM.swift */,
 				8751C6F328472066007FAFC4 /* SettingCell.swift */,
 				8751C6F528472133007FAFC4 /* SettingCellInfo.swift */,
-				8751C6F72847234A007FAFC4 /* SettingVM.swift */,
 				879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */,
 				879A2BA7284746A500B69DA7 /* SettingFooterView.swift */,
 			);
@@ -561,7 +558,6 @@
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
-				87E6004D28428822008D17B9 /* SettingTableViewController.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,

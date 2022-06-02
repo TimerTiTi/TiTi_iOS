@@ -28,57 +28,21 @@ final class SettingVM {
     private func configureCells() {
         // 앱 소개
         var cells1: [SettingCellInfo] = []
-        cells1.append(SettingCellInfo(title: "TiTi 기능들",
-                                      subTitle: nil,
-                                      rightTitle: nil,
-                                      touchable: true,
-                                      switchable: false))
-        cells1.append(SettingCellInfo(title: "TiTi 연구소",
-                                      subTitle: nil,
-                                      rightTitle: nil,
-                                      touchable: true,
-                                      switchable: false))
+        cells1.append(SettingCellInfo(title: "TiTi 기능들", nextVCIdentifier: "SettingFunctionsListVC"))
+        cells1.append(SettingCellInfo(title: "TiTi 연구소", nextVCIdentifier: "SettingTiTiFactoryListVC"))
         // 알림 설정
         var cells2: [SettingCellInfo] = []
-        cells2.append(SettingCellInfo(title: "타이머",
-                                      subTitle: "종료 5분전, 종료시 알림",
-                                      rightTitle: nil,
-                                      touchable: false,
-                                      switchable: true))
-        cells2.append(SettingCellInfo(title: "스톱워치",
-                                      subTitle: "1시간단위 경과시 알림",
-                                      rightTitle: nil,
-                                      touchable: false,
-                                      switchable: true))
-        cells2.append(SettingCellInfo(title: "휴식",
-                                      subTitle: "5분단위 경과시 알림",
-                                      rightTitle: nil,
-                                      touchable: false,
-                                      switchable: true))
-        cells2.append(SettingCellInfo(title: "업데이트",
-                                      subTitle: "최신버전이 아닐시 알림",
-                                      rightTitle: nil,
-                                      touchable: false,
-                                      switchable: true))
+        cells2.append(SettingCellInfo(title: "타이머", subTitle: "종료 5분전, 종료시 알림", toggleKey: "TimerPushable"))
+        cells2.append(SettingCellInfo(title: "스톱워치", subTitle: "1시간단위 경과시 알림", toggleKey: "StopwatchPushable"))
+        cells2.append(SettingCellInfo(title: "휴식", subTitle: "5분단위 경과시 알림", toggleKey: "RestPushable"))
+        cells2.append(SettingCellInfo(title: "업데이트", subTitle: "최신버전 업데이트 알림", toggleKey: "UpdatePushable"))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
-        cells3.append(SettingCellInfo(title: "버전 정보",
-                                      subTitle: "최신버전: 6.5.3",
-                                      rightTitle: String.currentVersion,
-                                      touchable: true,
-                                      switchable: false))
-        cells3.append(SettingCellInfo(title: "업데이트 내역",
-                                      subTitle: nil,
-                                      rightTitle: nil,
-                                      touchable: true,
-                                      switchable: false))
+        cells3.append(SettingCellInfo(title: "버전 정보", subTitle: "최신버전: 6.5.3", rightTitle: String.currentVersion, link: NetworkURL.appstore))
+        cells3.append(SettingCellInfo(title: "업데이트 내역", nextVCIdentifier: "SettingUpdatesListVC"))
         // 개발자
         var cells4: [SettingCellInfo] = []
-        cells4.append(SettingCellInfo(title: "FDEE",
-                                      subTitle: nil,
-                                      rightTitle: nil,
-                                      touchable: false,
-                                      switchable: false))
+        cells4.append(SettingCellInfo(title: "FDEE"))
         self.cells = [cells1, cells2, cells3, cells4]
     }
 }
