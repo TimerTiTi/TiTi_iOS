@@ -17,7 +17,7 @@ struct SettingCellInfo {
     var rightTitle: String? = nil
     var touchable: Bool = true
     var switchable: Bool = false
-    var toggleKey: String? = nil
+    var toggleKey: UserDefaultsManager.Keys? = nil
     var action: SettingAction? = nil
     var nextVCIdentifier: String? = nil
     var url: String? = nil
@@ -29,7 +29,7 @@ struct SettingCellInfo {
         self.nextVCIdentifier = nextVCIdentifier
     }
     /// title + subtitle + switch
-    init(title: String, subTitle: String, toggleKey: String) {
+    init(title: String, subTitle: String, toggleKey: UserDefaultsManager.Keys) {
         self.title = title
         self.subTitle = subTitle
         self.toggleKey = toggleKey
