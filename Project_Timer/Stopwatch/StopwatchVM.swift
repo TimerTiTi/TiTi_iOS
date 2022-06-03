@@ -155,7 +155,7 @@ final class StopwatchVM {
     }
     
     private func sendNotification() {
-        // MARK: push 여부 설정값에 따라 guard 구문 필요
+        guard UserDefaultsManager.get(forKey: .stopwatchPushable) as? Bool ?? true else { return }
         for i in 1...24 {
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = "Stopwatch".localized()
