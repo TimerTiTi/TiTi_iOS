@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func checkVersion() {
+        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
         NetworkController(network: Network()).getAppstoreVersion { status, version in
             switch status {
             case .SUCCESS:
