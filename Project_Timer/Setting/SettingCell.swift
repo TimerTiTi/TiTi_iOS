@@ -24,12 +24,13 @@ class SettingCell: UICollectionViewCell {
         return toggle
     }()
     @objc func switchValueDidChange(_ sender: UISwitch!) {
-        guard let key = self.toggleKey else { return }
+        guard let key = self.info?.toggleKey else { return }
         UserDefaultsManager.set(to: sender.isOn, forKey: key)
         self.toggleSwitch.setOn(sender.isOn, animated: true)
     }
     
-    private var toggleKey: UserDefaultsManager.Keys?
+    private weak var delegate: SettingActionDelegate?
+    private var info: SettingCellInfo?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,13 +47,38 @@ class SettingCell: UICollectionViewCell {
         self.toggleSwitch.isHidden = true
     }
     
-    func configure(with info: SettingCellInfo) {
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                self.touchAction()
+            }
+        }
+    }
+    
+    func configure(with info: SettingCellInfo, delegate: SettingActionDelegate) {
+        self.delegate = delegate
+        self.info = info
         self.configureUI(with: info)
         
         if let key = info.toggleKey, info.switchable {
-            self.toggleKey = key
             self.configureSwitchColor()
             self.configureSwitch(key: key)
+        }
+    }
+    
+    private func touchAction() {
+        guard let info = self.info,
+              let action = info.action else { return }
+        switch action {
+        case .pushVC:
+            guard let nextVCIndentifier = info.nextVCIdentifier else { return }
+            self.delegate?.pushVC(nextVCIdentifier: nextVCIndentifier)
+        case .goSafari:
+            guard let url = info.url else { return }
+            self.delegate?.goSafari(url: url)
+        case .deeplink:
+            guard let link = info.url else { return }
+            self.delegate?.deeplink(link: link)
         }
     }
     

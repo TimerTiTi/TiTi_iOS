@@ -27,6 +27,7 @@ struct SettingCellInfo {
     init(title: String, nextVCIdentifier: String) {
         self.title = title
         self.nextVCIdentifier = nextVCIdentifier
+        self.action = .pushVC
     }
     /// title + subtitle + switch
     init(title: String, subTitle: String, toggleKey: UserDefaultsManager.Keys) {
@@ -63,4 +64,10 @@ enum SettingAction: String {
     case pushVC
     case goSafari
     case deeplink
+}
+
+protocol SettingActionDelegate: AnyObject {
+    func pushVC(nextVCIdentifier: String)
+    func goSafari(url: String)
+    func deeplink(link: String)
 }
