@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
-    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
@@ -3734,6 +3734,22 @@
             </objects>
             <point key="canvasLocation" x="5644" y="3075"/>
         </scene>
+        <!--TiTi Factory-->
+        <scene sceneID="JoX-xG-UgC">
+            <objects>
+                <viewController storyboardIdentifier="SettingTiTiFactoryListVC" id="ffv-oY-cre" customClass="SettingTiTiFactoryListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kKz-4l-nvj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="A6W-9Z-cwQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="TiTi Factory" id="GUg-uM-Jjg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gya-2J-f5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6817" y="2336"/>
+        </scene>
         <!--Log-->
         <scene sceneID="hW3-2t-yl1">
             <objects>
@@ -4583,11 +4599,30 @@
                     <navigationItem key="navigationItem" title="Setting" id="4dU-fq-E2y"/>
                     <connections>
                         <outlet property="settings" destination="P0o-1f-RCC" id="gvR-5R-6KI"/>
+                        <segue destination="ElF-Ze-3iu" kind="push" id="Qyd-IW-6oj"/>
+                        <segue destination="ofo-wR-c1L" kind="push" id="0Px-EE-1jV"/>
+                        <segue destination="ffv-oY-cre" kind="push" id="jf2-gl-FdY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uX8-iS-a2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5644" y="2336"/>
+        </scene>
+        <!--Update List-->
+        <scene sceneID="Suz-YO-ZXZ">
+            <objects>
+                <viewController storyboardIdentifier="SettingUpdateListVC" id="ElF-Ze-3iu" customClass="SettingUpdateListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DBN-Fp-t0G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qVc-vF-KaL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update List" id="Vyd-ef-fPk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFF-ow-efw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6817" y="3075"/>
         </scene>
         <!--Item-->
         <scene sceneID="l7d-Mb-nHn">
@@ -4608,6 +4643,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mog-cF-xw2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5644" y="1583"/>
+        </scene>
+        <!--Functions List-->
+        <scene sceneID="mQn-fA-Ep3">
+            <objects>
+                <viewController storyboardIdentifier="SettingFunctionsListVC" id="ofo-wR-c1L" customClass="SettingFunctionsListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aOH-tW-5G0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gta-DH-BV7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Functions List" id="cK0-vw-ciZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm6-eN-Kot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6857" y="1595"/>
         </scene>
     </scenes>
     <resources>
