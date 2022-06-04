@@ -8,7 +8,7 @@ import SwiftUI
 
 struct todayContentView: View {
     //그래프 색상 그라데이션 설정
-    var colors = [Color("CCC2"), Color("CCC1")]
+    var colors = [Color("D2"), Color("D1")]
     //크기값 설정
     var frameHeight: CGFloat = 128
     var height: CGFloat = 125

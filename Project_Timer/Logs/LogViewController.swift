@@ -42,12 +42,16 @@ class LogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.tintColor = .white
-        self.tabBarController?.tabBar.barTintColor = .clear
+        self.updateTabbarColor()
         self.scrollView.setContentOffset(.zero, animated: false)
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.updateTabbarColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,6 +93,12 @@ extension LogViewController {
 
 // MARK: ShowGraph
 extension LogViewController {
+    private func updateTabbarColor() {
+        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
+        self.tabBarController?.tabBar.barTintColor = .clear
+    }
+    
     private func configureWeeksGraph(_ isDummy: Bool = false) {
         let hostingController = UIHostingController(rootView: ContentView(isDummy: isDummy))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
@@ -179,7 +189,7 @@ extension LogViewController {
     
     private func fillColor(time: Int, view: UIView) {
         if time == 0 { return }
-        view.backgroundColor = UIColor(named: "CCC2")
+        view.backgroundColor = UIColor(named: "D2")
         if(time < 600) { //0 ~ 10
             view.alpha = 0.2
         } else if(time < 1200) { //10 ~ 20
@@ -201,7 +211,7 @@ extension LogViewController {
         
         for _ in 1...count {
             print(i)
-            self.colors.append(UIColor(named: "CCC\(i)")!)
+            self.colors.append(UIColor(named: "D\(i)")!)
             i = i-1 == 0 ? 12 : i-1
         }
     }

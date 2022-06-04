@@ -19,5 +19,8 @@ final class UpdateInfoCell: UICollectionViewCell {
         self.versionLabel.text = "ver: \(info.version)"
         self.dateLabel.text = "date: \(info.date)"
         self.textLabel.text = info.text
+        
+        self.versionLabel.textColor = UIColor(named: String.userTintColor)
+        self.dateLabel.textColor = UIColor(named: String.userTintColor)
     }
 }
