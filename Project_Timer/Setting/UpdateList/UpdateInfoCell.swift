@@ -15,12 +15,11 @@ final class UpdateInfoCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     
-    func configure(with info: UpdateInfo) {
-        self.versionLabel.text = "ver: \(info.version)"
-        self.dateLabel.text = "date: \(info.date)"
+    func configure(with info: UpdateInfo, superWidth: CGFloat) {
+        self.versionLabel.text = "ver \(info.version)"
+        self.dateLabel.text = "\(info.date)"
         self.textLabel.text = info.text
-        
-        self.versionLabel.textColor = UIColor(named: String.userTintColor)
-        self.dateLabel.textColor = UIColor(named: String.userTintColor)
+        self.textLabel.preferredMaxLayoutWidth = superWidth - 32
+        self.textLabel.sizeToFit()
     }
 }
