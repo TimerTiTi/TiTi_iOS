@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let colors = [Color("CCC2"), Color("CCC1")]
+    let colors = [Color("D2"), Color("D1")]
     var DailyDatas: [daily] = []
     
     init(isDummy: Bool) {

@@ -27,9 +27,14 @@ final class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.tintColor = .label
+        self.updateTabbarColor()
         self.settings.reloadData()
         self.stayScroll = false
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.updateTabbarColor()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,6 +48,12 @@ final class SettingViewController: UIViewController {
 }
 
 extension SettingViewController {
+    private func updateTabbarColor() {
+        self.tabBarController?.tabBar.tintColor = .label
+        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
+        self.tabBarController?.tabBar.barTintColor = UIColor(named: "tabbarBackground")
+    }
+    
     private func configureCollectionView() {
         self.extendedLayoutIncludesOpaqueBars = true
         self.settings.dataSource = self
