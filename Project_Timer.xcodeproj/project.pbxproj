@@ -10,6 +10,9 @@
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
+		872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */; };
+		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
+		872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */; };
 		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
 		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
 		87459706263FF0D700172C0F /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
@@ -85,6 +88,9 @@
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateListVC.swift; sourceTree = "<group>"; };
+		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
+		872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiFactoryListVC.swift; sourceTree = "<group>"; };
 		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		87459705263FF0D700172C0F /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
@@ -173,6 +179,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		872C0ED9284ADD6800E8E3F2 /* UpdateList */ = {
+			isa = PBXGroup;
+			children = (
+				872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */,
+			);
+			path = UpdateList;
+			sourceTree = "<group>";
+		};
+		872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */ = {
+			isa = PBXGroup;
+			children = (
+				872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */,
+			);
+			path = SettingFunctionsList;
+			sourceTree = "<group>";
+		};
+		872C0EDF284AE56700E8E3F2 /* SettingTiTiFactoryList */ = {
+			isa = PBXGroup;
+			children = (
+				872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */,
+			);
+			path = SettingTiTiFactoryList;
+			sourceTree = "<group>";
+		};
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +416,9 @@
 				8751C6F528472133007FAFC4 /* SettingCellInfo.swift */,
 				879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */,
 				879A2BA7284746A500B69DA7 /* SettingFooterView.swift */,
+				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
+				872C0EDF284AE56700E8E3F2 /* SettingTiTiFactoryList */,
+				872C0ED9284ADD6800E8E3F2 /* UpdateList */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -539,6 +572,7 @@
 				877E448C267DF8DD00BF104A /* Dumy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
+				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
@@ -563,6 +597,8 @@
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
+				872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */,
+				872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
