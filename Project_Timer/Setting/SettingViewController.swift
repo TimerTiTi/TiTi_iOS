@@ -76,7 +76,7 @@ extension SettingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingCell.identifier, for: indexPath) as? SettingCell else { return UICollectionViewCell() }
         guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item] else { return cell }
-        cell.configure(with: cellInfo)
+        cell.configure(with: cellInfo, delegate: self)
         
         return cell
     }
@@ -101,5 +101,22 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
         guard let info = self.viewModel?.cells[indexPath.section][indexPath.item] else { return CGSize(width: width, height: 43)}
         
         return CGSize(width: width, height: CGFloat(info.cellHeight))
+    }
+}
+
+extension SettingViewController: SettingActionDelegate {
+    func pushVC(nextVCIdentifier: String) {
+        print(nextVCIdentifier)
+    }
+    
+    func goSafari(url: String) {
+        print(url)
+    }
+    
+    func deeplink(link: String) {
+        if let url = URL(string: link),
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
 }
