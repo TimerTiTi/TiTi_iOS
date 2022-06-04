@@ -59,12 +59,17 @@ extension SettingUpdateListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return UICollectionViewCell() }
         guard let info = self.viewModel?.cells[safe: indexPath.item] else { return cell }
-        cell.configure(with: info)
+        cell.configure(with: info, superWidth: self.view.frame.width)
         
         return cell
     }
 }
 
 extension SettingUpdateListVC: UICollectionViewDelegateFlowLayout {
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
+        let textHeight = cell.textLabel.frame.height
+        
+        return CGSize(width: self.view.frame.width, height: textHeight + 77.67 - 17)
+    }
 }
