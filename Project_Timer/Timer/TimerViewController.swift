@@ -60,11 +60,16 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.tintColor = .white
+        self.updateTabbarColor()
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
         self.viewModel?.updateDaily()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.updateTabbarColor()
     }
 
     @IBAction func taskSelect(_ sender: Any) {
@@ -96,6 +101,12 @@ class TimerViewController: UIViewController {
 
 // MARK: - Configure
 extension TimerViewController {
+    private func updateTabbarColor() {
+        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: "tabbarNonSelectColor")
+        self.tabBarController?.tabBar.barTintColor = .clear
+    }
+    
     private func configureLocalizable() {
         self.sumTimeLabel.text = "Sum Time".localized()
         self.timerLabel.text = "Timer".localized()
