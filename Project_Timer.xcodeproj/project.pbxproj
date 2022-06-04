@@ -13,6 +13,9 @@
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */; };
+		872C0EE3284AF26A00E8E3F2 /* UpdateListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */; };
+		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
+		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
 		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
 		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
 		87459706263FF0D700172C0F /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
@@ -91,6 +94,9 @@
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateListVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
 		872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiFactoryListVC.swift; sourceTree = "<group>"; };
+		872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateListVM.swift; sourceTree = "<group>"; };
+		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
+		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
 		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		87459705263FF0D700172C0F /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
@@ -183,6 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */,
+				872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */,
+				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
+				872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */,
 			);
 			path = UpdateList;
 			sourceTree = "<group>";
@@ -201,6 +210,19 @@
 				872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */,
 			);
 			path = SettingTiTiFactoryList;
+			sourceTree = "<group>";
+		};
+		872C0EE4284AF2D000E8E3F2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				87E6004A28426EBF008D17B9 /* SettingViewController.swift */,
+				8751C6F72847234A007FAFC4 /* SettingVM.swift */,
+				8751C6F328472066007FAFC4 /* SettingCell.swift */,
+				8751C6F528472133007FAFC4 /* SettingCellInfo.swift */,
+				879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */,
+				879A2BA7284746A500B69DA7 /* SettingFooterView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		87379F982615979D00A9445E /* Model */ = {
@@ -410,12 +432,7 @@
 		87E6004928426EA3008D17B9 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				87E6004A28426EBF008D17B9 /* SettingViewController.swift */,
-				8751C6F72847234A007FAFC4 /* SettingVM.swift */,
-				8751C6F328472066007FAFC4 /* SettingCell.swift */,
-				8751C6F528472133007FAFC4 /* SettingCellInfo.swift */,
-				879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */,
-				879A2BA7284746A500B69DA7 /* SettingFooterView.swift */,
+				872C0EE4284AF2D000E8E3F2 /* Main */,
 				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
 				872C0EDF284AE56700E8E3F2 /* SettingTiTiFactoryList */,
 				872C0ED9284ADD6800E8E3F2 /* UpdateList */,
@@ -559,6 +576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
@@ -578,6 +596,7 @@
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
+				872C0EE3284AF26A00E8E3F2 /* UpdateListVM.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
@@ -599,6 +618,7 @@
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */,
+				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
