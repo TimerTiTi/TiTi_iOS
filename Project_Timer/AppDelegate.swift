@@ -26,14 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
         self.checkVersion()
-        if #available(iOS 15, *) {
-            let appearance = UITabBarAppearance()
-            let tabBar = UITabBar()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor.clear
-            tabBar.standardAppearance = appearance;
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
         return true
     }
     
