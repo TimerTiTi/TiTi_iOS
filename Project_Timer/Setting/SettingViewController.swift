@@ -16,6 +16,7 @@ final class SettingViewController: UIViewController {
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SettingVM?
+    private var stayScroll: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,18 @@ final class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.settings.setContentOffset(.zero, animated: false)
+        self.tabBarController?.tabBar.tintColor = .label
         self.settings.reloadData()
+        self.stayScroll = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let bottomOffset = CGPoint(x: 0, y: self.settings.contentSize.height - self.settings.bounds.height + self.settings.contentInset.bottom)
-        self.settings.setContentOffset(bottomOffset, animated: false)
+        if stayScroll == false {
+            let bottomOffset = CGPoint(x: 0, y: self.settings.contentSize.height - self.settings.bounds.height + self.settings.contentInset.bottom)
+            self.settings.setContentOffset(bottomOffset, animated: false)
+            self.tabBarController?.tabBar.barTintColor = .clear
+        }
     }
 }
 
@@ -106,7 +111,9 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension SettingViewController: SettingActionDelegate {
     func pushVC(nextVCIdentifier: String) {
-        print(nextVCIdentifier)
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
+        self.stayScroll = true
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func goSafari(url: String) {
