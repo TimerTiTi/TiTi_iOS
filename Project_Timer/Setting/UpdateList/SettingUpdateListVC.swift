@@ -42,7 +42,7 @@ extension SettingUpdateListVC {
     }
     
     private func bindCells() {
-        self.viewModel?.$cells
+        self.viewModel?.$infos
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.updateLists.reloadData()
@@ -53,12 +53,12 @@ extension SettingUpdateListVC {
 
 extension SettingUpdateListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.viewModel?.cells.count ?? 0
+        return self.viewModel?.infos.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return UICollectionViewCell() }
-        guard let info = self.viewModel?.cells[safe: indexPath.item] else { return cell }
+        guard let info = self.viewModel?.infos[safe: indexPath.item] else { return cell }
         cell.configure(with: info, superWidth: self.view.frame.width)
         
         return cell
