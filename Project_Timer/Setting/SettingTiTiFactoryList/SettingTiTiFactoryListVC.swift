@@ -23,6 +23,10 @@ final class SettingTiTiFactoryListVC: UIViewController {
         self.configureViewModel()
         self.bindAll()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
 }
 
 extension SettingTiTiFactoryListVC {
@@ -80,7 +84,7 @@ extension SettingTiTiFactoryListVC: UICollectionViewDataSource {
 
 extension SettingTiTiFactoryListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 55)
+        return CGSize(width: self.surveys.bounds.width, height: 55)
     }
 }
 

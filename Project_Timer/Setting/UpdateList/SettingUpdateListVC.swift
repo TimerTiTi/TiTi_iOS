@@ -12,7 +12,7 @@ import Combine
 final class SettingUpdateListVC: UIViewController {
     static let identifier = "SettingUpdateListVC"
 
-    @IBOutlet weak var updateLists: UICollectionView!
+    @IBOutlet weak var updateList: UICollectionView!
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: UpdateListVM?
@@ -23,12 +23,20 @@ final class SettingUpdateListVC: UIViewController {
         self.configureViewModel()
         self.bindAll()
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { _ in
+            self.updateList.adjustedContentInsetDidChange()
+            self.updateList.reloadData()
+        }
+    }
 }
 
 extension SettingUpdateListVC {
     private func configureCollectionView() {
-        self.updateLists.dataSource = self
-        self.updateLists.delegate = self
+        self.updateList.dataSource = self
+        self.updateList.delegate = self
     }
     
     private func configureViewModel() {
@@ -45,7 +53,7 @@ extension SettingUpdateListVC {
         self.viewModel?.$infos
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
-                self?.updateLists.reloadData()
+                self?.updateList.reloadData()
             })
             .store(in: &self.cancellables)
     }
@@ -59,7 +67,7 @@ extension SettingUpdateListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return UICollectionViewCell() }
         guard let info = self.viewModel?.infos[safe: indexPath.item] else { return cell }
-        cell.configure(with: info, superWidth: self.view.frame.width)
+        cell.configure(with: info, superWidth: self.updateList.bounds.width)
         
         return cell
     }
@@ -70,6 +78,6 @@ extension SettingUpdateListVC: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
         let textHeight = cell.textLabel.frame.height
         
-        return CGSize(width: self.view.frame.width, height: textHeight + 79.67 - 17)
+        return CGSize(width: self.updateList.bounds.width, height: textHeight + 79.67 - 17)
     }
 }
