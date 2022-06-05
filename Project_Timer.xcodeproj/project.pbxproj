@@ -81,6 +81,9 @@
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10933284C4561002E31EA /* SurveyInfo.swift */; };
 		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
+		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
+		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
+		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
@@ -165,6 +168,9 @@
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		87F10933284C4561002E31EA /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
+		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
+		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
+		87F10939284C589A002E31EA /* FunctionInfoListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoListVM.swift; sourceTree = "<group>"; };
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -208,6 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */,
+				87F10937284C589A002E31EA /* FunctionInfoCell.swift */,
+				87F10938284C589A002E31EA /* FunctionInfo.swift */,
+				87F10939284C589A002E31EA /* FunctionInfoListVM.swift */,
 			);
 			path = SettingFunctionsList;
 			sourceTree = "<group>";
@@ -600,6 +609,7 @@
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
+				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
 				877E448C267DF8DD00BF104A /* Dumy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
@@ -613,6 +623,7 @@
 				872C0EE3284AF26A00E8E3F2 /* UpdateListVM.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
+				87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
@@ -631,6 +642,7 @@
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */,
+				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
