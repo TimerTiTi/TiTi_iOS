@@ -10,12 +10,18 @@ import UIKit
 
 final class TiTiFactoryHeaderView: UICollectionReusableView {
     static let identifier = "TiTiFactoryHeaderView"
+    
+    private weak var delegate: FactoryActionDelegate?
+    
+    func configure(delegate: FactoryActionDelegate) {
+        self.delegate = delegate
+    }
         
     @IBAction func showDevelopmentList(_ sender: Any) {
-        
-    }
-    @IBAction func goInstaToTiTi(_ sender: Any) {
-        
+        self.delegate?.showWebview(url: NetworkURL.developmentList)
     }
     
+    @IBAction func goInstaToTiTi(_ sender: Any) {
+        self.delegate?.showWebview(url: NetworkURL.instagramToTiTi)
+    }
 }
