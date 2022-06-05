@@ -79,6 +79,8 @@
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
 		87F10930284C4337002E31EA /* TiTiFactoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
+		87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10933284C4561002E31EA /* SurveyInfo.swift */; };
+		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
 		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
 		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
@@ -161,6 +163,8 @@
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFactoryHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
+		87F10933284C4561002E31EA /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
+		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
 		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
 		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */,
 				87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */,
 				87F10931284C4367002E31EA /* SurveyCell.swift */,
+				87F10933284C4561002E31EA /* SurveyInfo.swift */,
+				87F10935284C47A1002E31EA /* SurveyListVM.swift */,
 			);
 			path = SettingTiTiFactoryList;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
+				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
@@ -642,6 +649,7 @@
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
+				87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				876A85552832135E00978035 /* daily.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
