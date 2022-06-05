@@ -70,6 +70,6 @@ extension SettingUpdateListVC: UICollectionViewDelegateFlowLayout {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
         let textHeight = cell.textLabel.frame.height
         
-        return CGSize(width: self.view.frame.width, height: textHeight + 77.67 - 17)
+        return CGSize(width: self.view.frame.width, height: textHeight + 79.67 - 17)
     }
 }
