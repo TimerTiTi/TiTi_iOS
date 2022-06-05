@@ -10,7 +10,7 @@ import Foundation
 
 struct SettingCellInfo {
     var cellHeight: Int {
-        return self.subTitle != nil ? 60 : 47
+        return self.subTitle != nil ? 64 : 55
     }
     let title: String
     var subTitle: String? = nil
