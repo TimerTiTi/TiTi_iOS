@@ -2207,10 +2207,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2218,7 +2218,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -3741,14 +3741,278 @@
                     <view key="view" contentMode="scaleToFill" id="kKz-4l-nvj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-t3-ioZ">
+                                <rect key="frame" x="0.0" y="140" width="375" height="638"/>
+                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="hkJ-2l-cDI">
+                                    <size key="itemSize" width="375" height="55"/>
+                                    <size key="estimatedItemSize" width="375" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="291"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SurveyCell" id="1R0-zR-x1U" customClass="SurveyCell" customModule="TiTi" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="291" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ShP-Nw-lGK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴식알림 기능" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-h7-iQb">
+                                                    <rect key="frame" x="16" y="19" width="91" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="fU6-mh-S7w"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e2c-YH-z02">
+                                                    <rect key="frame" x="349" y="20.333333333333336" width="10" height="14.333333333333336"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="DOy-R4-qw1"/>
+                                                        <constraint firstAttribute="width" constant="10" id="mWZ-H1-UwW"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 진행중인 설문조사가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-36-MJh">
+                                                    <rect key="frame" x="115.33333333333333" y="19" width="144.33333333333337" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="2xM-T4-Nao"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="e2c-YH-z02" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oCD-h7-iQb" secondAttribute="trailing" constant="5" id="6Qd-wS-Oq8"/>
+                                                <constraint firstItem="oCD-h7-iQb" firstAttribute="centerY" secondItem="ShP-Nw-lGK" secondAttribute="centerY" id="F4I-Yd-0yB"/>
+                                                <constraint firstItem="ObQ-36-MJh" firstAttribute="centerX" secondItem="ShP-Nw-lGK" secondAttribute="centerX" id="J0E-Cc-aWX"/>
+                                                <constraint firstItem="e2c-YH-z02" firstAttribute="centerY" secondItem="ShP-Nw-lGK" secondAttribute="centerY" id="SVK-eA-YP1"/>
+                                                <constraint firstItem="ObQ-36-MJh" firstAttribute="centerY" secondItem="ShP-Nw-lGK" secondAttribute="centerY" id="Wnp-Dh-4nz"/>
+                                                <constraint firstAttribute="trailing" secondItem="e2c-YH-z02" secondAttribute="trailing" constant="16" id="tU4-bh-765"/>
+                                                <constraint firstItem="oCD-h7-iQb" firstAttribute="leading" secondItem="ShP-Nw-lGK" secondAttribute="leading" constant="16" id="xfZ-kV-sVL"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="oCD-h7-iQb" id="ZqJ-eV-3SA"/>
+                                            <outlet property="touchableMark" destination="e2c-YH-z02" id="ozg-PZ-CRK"/>
+                                            <outlet property="warningLabel" destination="ObQ-36-MJh" id="cyI-AF-D4u"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TiTiFactoryHeaderView" id="dEk-1R-nht" customClass="TiTiFactoryHeaderView" customModule="TiTi" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="291"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-Qe-wGe">
+                                            <rect key="frame" x="0.0" y="36" width="375" height="75"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발진행리스트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igL-Tw-0m4">
+                                                    <rect key="frame" x="16" y="15" width="101" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="3hm-DS-ezW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Notion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-WD-pDG">
+                                                    <rect key="frame" x="127" y="18.666666666666664" width="43" height="13.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-CS-MFa">
+                                                    <rect key="frame" x="16" y="37" width="178.33333333333334" height="22"/>
+                                                    <string key="text">실시간 개발 진행상황을 확인할 수 있습니다.
+또한 차기 기능들을 미리 확인할 수 있습니다.</string>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Lu-Xic">
+                                                    <rect key="frame" x="349" y="30.333333333333336" width="10" height="14.333333333333336"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="6pA-uo-iae"/>
+                                                        <constraint firstAttribute="width" constant="10" id="LsU-hY-xgv"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ut-7o-aKp">
+                                                    <rect key="frame" x="8" y="-8" width="359" height="91"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="showDevelopmentList:" destination="dEk-1R-nht" eventType="touchUpInside" id="Sbz-mc-JBt"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="igL-Tw-0m4" firstAttribute="leading" secondItem="Bav-Qe-wGe" secondAttribute="leading" constant="16" id="1Th-Xd-Pcv"/>
+                                                <constraint firstItem="6Ut-7o-aKp" firstAttribute="centerY" secondItem="Bav-Qe-wGe" secondAttribute="centerY" id="43e-v6-oVW"/>
+                                                <constraint firstItem="bVF-CS-MFa" firstAttribute="top" secondItem="igL-Tw-0m4" secondAttribute="bottom" constant="5" id="7HT-TE-pog"/>
+                                                <constraint firstItem="vsA-WD-pDG" firstAttribute="bottom" secondItem="igL-Tw-0m4" secondAttribute="bottom" id="7q0-FQ-n1r"/>
+                                                <constraint firstItem="igL-Tw-0m4" firstAttribute="top" secondItem="Bav-Qe-wGe" secondAttribute="top" constant="15" id="H2R-DZ-YEg"/>
+                                                <constraint firstItem="vsA-WD-pDG" firstAttribute="leading" secondItem="igL-Tw-0m4" secondAttribute="trailing" constant="10" id="Njt-aF-6d9"/>
+                                                <constraint firstItem="bVF-CS-MFa" firstAttribute="leading" secondItem="igL-Tw-0m4" secondAttribute="leading" id="RcP-vS-ayv"/>
+                                                <constraint firstItem="s8f-Lu-Xic" firstAttribute="centerY" secondItem="Bav-Qe-wGe" secondAttribute="centerY" id="XMP-ee-qvg"/>
+                                                <constraint firstItem="6Ut-7o-aKp" firstAttribute="width" secondItem="Bav-Qe-wGe" secondAttribute="width" constant="-16" id="d3a-bT-IND"/>
+                                                <constraint firstItem="6Ut-7o-aKp" firstAttribute="centerX" secondItem="Bav-Qe-wGe" secondAttribute="centerX" id="tLI-m6-Jvj"/>
+                                                <constraint firstAttribute="trailing" secondItem="s8f-Lu-Xic" secondAttribute="trailing" constant="16" id="uHu-Fz-9K1"/>
+                                                <constraint firstAttribute="bottom" secondItem="bVF-CS-MFa" secondAttribute="bottom" constant="16" id="ycy-lr-Mbi"/>
+                                                <constraint firstItem="6Ut-7o-aKp" firstAttribute="height" secondItem="Bav-Qe-wGe" secondAttribute="height" constant="16" id="zuw-yy-gjd"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
+                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
+                                            <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-dl-GBr">
+                                            <rect key="frame" x="0.0" y="112" width="375" height="64"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-oS-OyD">
+                                                    <rect key="frame" x="16" y="15" width="66" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="kKI-bp-J9L"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@study_withtiti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-po-dlG">
+                                                    <rect key="frame" x="92" y="18" width="74" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RL-y6-Iih">
+                                                    <rect key="frame" x="16" y="37" width="250" height="11"/>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IGT-TV-ntK">
+                                                    <rect key="frame" x="349" y="24.999999999999993" width="10" height="14.333333333333336"/>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="7BF-CJ-xpa"/>
+                                                        <constraint firstAttribute="width" constant="10" id="Bkb-YA-CjX"/>
+                                                    </constraints>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSf-ki-Ewp">
+                                                    <rect key="frame" x="8" y="8" width="359" height="48"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="goInstaToTiTi:" destination="dEk-1R-nht" eventType="touchUpInside" id="8VX-yF-eje"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="GRN-po-dlG" firstAttribute="leading" secondItem="6fJ-oS-OyD" secondAttribute="trailing" constant="10" id="2z0-u8-gzp"/>
+                                                <constraint firstItem="jSf-ki-Ewp" firstAttribute="centerY" secondItem="4Li-dl-GBr" secondAttribute="centerY" id="5Rc-N4-Q2B"/>
+                                                <constraint firstItem="6fJ-oS-OyD" firstAttribute="leading" secondItem="4Li-dl-GBr" secondAttribute="leading" constant="16" id="7TL-pk-ZMc"/>
+                                                <constraint firstAttribute="bottom" secondItem="1RL-y6-Iih" secondAttribute="bottom" constant="16" id="Fs9-UH-uLr"/>
+                                                <constraint firstItem="jSf-ki-Ewp" firstAttribute="height" secondItem="4Li-dl-GBr" secondAttribute="height" constant="-16" id="HDw-4T-OL7"/>
+                                                <constraint firstItem="jSf-ki-Ewp" firstAttribute="width" secondItem="4Li-dl-GBr" secondAttribute="width" constant="-16" id="Mld-r0-0hG"/>
+                                                <constraint firstItem="GRN-po-dlG" firstAttribute="bottom" secondItem="6fJ-oS-OyD" secondAttribute="bottom" id="Q3p-P3-lTV"/>
+                                                <constraint firstItem="6fJ-oS-OyD" firstAttribute="top" secondItem="4Li-dl-GBr" secondAttribute="top" constant="15" id="Vw5-wU-w4C"/>
+                                                <constraint firstItem="jSf-ki-Ewp" firstAttribute="centerX" secondItem="4Li-dl-GBr" secondAttribute="centerX" id="aLC-tQ-oVr"/>
+                                                <constraint firstItem="1RL-y6-Iih" firstAttribute="top" secondItem="6fJ-oS-OyD" secondAttribute="bottom" constant="5" id="bbJ-vC-LVU"/>
+                                                <constraint firstItem="IGT-TV-ntK" firstAttribute="centerY" secondItem="4Li-dl-GBr" secondAttribute="centerY" id="iqQ-B4-mOT"/>
+                                                <constraint firstAttribute="trailing" secondItem="IGT-TV-ntK" secondAttribute="trailing" constant="16" id="qub-Yt-ZNw"/>
+                                                <constraint firstItem="1RL-y6-Iih" firstAttribute="leading" secondItem="6fJ-oS-OyD" secondAttribute="leading" id="slT-sl-QgD"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발에 참여" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-7e-p6F">
+                                            <rect key="frame" x="16" y="194" width="88" height="16"/>
+                                            <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlt-HN-M9c">
+                                            <rect key="frame" x="0.0" y="215" width="375" height="75"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설문조사" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9u-uz-2hh">
+                                                    <rect key="frame" x="15.999999999999996" y="15" width="57.666666666666657" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="PfA-y2-eyc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Google Forms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-jn-Dd1">
+                                                    <rect key="frame" x="83.666666666666671" y="18" width="79.000000000000014" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7m-yU-dfL">
+                                                    <rect key="frame" x="16" y="37" width="183" height="22"/>
+                                                    <string key="text">새로운 기능 개발 및 개선에 큰 도움이 됩니다. 
+실시간으로 새로운 설문조사들이 추가됩니다. </string>
+                                                    <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="x7m-yU-dfL" secondAttribute="bottom" constant="16" id="Mjm-kx-dc0"/>
+                                                <constraint firstItem="x7m-yU-dfL" firstAttribute="leading" secondItem="n9u-uz-2hh" secondAttribute="leading" id="SgE-e5-X1y"/>
+                                                <constraint firstItem="TCu-jn-Dd1" firstAttribute="leading" secondItem="n9u-uz-2hh" secondAttribute="trailing" constant="10" id="WzY-hL-zSD"/>
+                                                <constraint firstItem="n9u-uz-2hh" firstAttribute="leading" secondItem="Hlt-HN-M9c" secondAttribute="leading" constant="16" id="ahZ-2v-lbB"/>
+                                                <constraint firstItem="n9u-uz-2hh" firstAttribute="top" secondItem="Hlt-HN-M9c" secondAttribute="top" constant="15" id="fz5-uo-bOf"/>
+                                                <constraint firstItem="TCu-jn-Dd1" firstAttribute="bottom" secondItem="n9u-uz-2hh" secondAttribute="bottom" id="qpr-Qj-Mc7"/>
+                                                <constraint firstItem="x7m-yU-dfL" firstAttribute="top" secondItem="n9u-uz-2hh" secondAttribute="bottom" constant="5" id="sWj-nd-3Kq"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Hlt-HN-M9c" firstAttribute="top" secondItem="DKV-7e-p6F" secondAttribute="bottom" constant="5" id="MMz-eB-hI1"/>
+                                        <constraint firstItem="DKV-7e-p6F" firstAttribute="top" secondItem="4Li-dl-GBr" secondAttribute="bottom" constant="18" id="Mn9-6m-QeJ"/>
+                                        <constraint firstItem="Bav-Qe-wGe" firstAttribute="leading" secondItem="dEk-1R-nht" secondAttribute="leading" id="USY-aB-L1r"/>
+                                        <constraint firstItem="Bav-Qe-wGe" firstAttribute="top" secondItem="hGo-O3-ryt" secondAttribute="bottom" constant="5" id="YKm-dl-hdd"/>
+                                        <constraint firstItem="Hlt-HN-M9c" firstAttribute="leading" secondItem="dEk-1R-nht" secondAttribute="leading" id="YfR-uA-evy"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hlt-HN-M9c" secondAttribute="trailing" id="Zid-j2-dSu"/>
+                                        <constraint firstItem="4Li-dl-GBr" firstAttribute="top" secondItem="Bav-Qe-wGe" secondAttribute="bottom" constant="1" id="aZ8-Mn-Ggq"/>
+                                        <constraint firstItem="4Li-dl-GBr" firstAttribute="leading" secondItem="dEk-1R-nht" secondAttribute="leading" id="e2J-Mv-L3n"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Li-dl-GBr" secondAttribute="trailing" id="gME-N4-yGv"/>
+                                        <constraint firstItem="DKV-7e-p6F" firstAttribute="leading" secondItem="dEk-1R-nht" secondAttribute="leading" constant="16" id="kSm-vy-bPx"/>
+                                        <constraint firstItem="hGo-O3-ryt" firstAttribute="leading" secondItem="dEk-1R-nht" secondAttribute="leading" constant="16" id="nyt-74-vBy"/>
+                                        <constraint firstAttribute="trailing" secondItem="Bav-Qe-wGe" secondAttribute="trailing" id="oAE-b6-JeE"/>
+                                        <constraint firstItem="hGo-O3-ryt" firstAttribute="top" secondItem="dEk-1R-nht" secondAttribute="top" constant="15" id="qSr-FC-u9E"/>
+                                    </constraints>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="A6W-9Z-cwQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8FC-t3-ioZ" firstAttribute="top" secondItem="A6W-9Z-cwQ" secondAttribute="top" id="1GT-Ny-Vpr"/>
+                            <constraint firstItem="8FC-t3-ioZ" firstAttribute="leading" secondItem="A6W-9Z-cwQ" secondAttribute="leading" id="7kD-ls-rzv"/>
+                            <constraint firstItem="A6W-9Z-cwQ" firstAttribute="bottom" secondItem="8FC-t3-ioZ" secondAttribute="bottom" id="Sqc-lz-y5F"/>
+                            <constraint firstItem="8FC-t3-ioZ" firstAttribute="centerX" secondItem="A6W-9Z-cwQ" secondAttribute="centerX" id="fek-PX-hO8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TiTi Factory" id="GUg-uM-Jjg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gya-2J-f5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6817" y="2336"/>
+            <point key="canvasLocation" x="6816.8000000000002" y="2335.7142857142858"/>
         </scene>
         <!--Log-->
         <scene sceneID="hW3-2t-yl1">
