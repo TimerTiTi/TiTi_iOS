@@ -13,6 +13,7 @@ final class SettingFunctionsListVC: UIViewController {
     static let identifier = "SettingFunctionsListVC"
 
     @IBOutlet weak var functionList: UICollectionView!
+    @IBOutlet weak var youtubeBT: UIButton!
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: FunctionInfoListVM?
@@ -22,6 +23,13 @@ final class SettingFunctionsListVC: UIViewController {
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
+        self.youtubeBT.configureShadow(opacity: 0.25, radius: 5)
+    }
+    
+    @IBAction func goToYoutube(_ sender: Any) {
+        if let url = URL(string: NetworkURL.youtubeLink) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
 }
 
