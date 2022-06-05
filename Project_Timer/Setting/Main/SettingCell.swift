@@ -84,7 +84,12 @@ class SettingCell: UICollectionViewCell {
     
     private func configureUI(with info: SettingCellInfo) {
         self.titleLabel.text = info.title
-        self.subTitleLabel.text = info.subTitle != nil ? info.subTitle : ""
+        if let subTitle = info.subTitle {
+            self.subTitleLabel.isHidden = false
+            self.subTitleLabel.text = subTitle
+        } else {
+            self.subTitleLabel.isHidden = true
+        }
         self.rightLabel.text = info.rightTitle != nil ? info.rightTitle : ""
         self.touchableMark.isHidden = !info.touchable
     }
