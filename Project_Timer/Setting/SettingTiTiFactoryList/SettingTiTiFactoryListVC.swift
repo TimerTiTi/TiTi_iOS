@@ -13,12 +13,20 @@ final class SettingTiTiFactoryListVC: UIViewController {
     static let identifier = "SettingTiTiFactoryListVC"
 
     @IBOutlet weak var surveys: UICollectionView!
+    private let loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .medium)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        loader.color = UIColor.lightGray
+        loader.startAnimating()
+        return loader
+    }()
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SurveyListVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
@@ -30,6 +38,15 @@ final class SettingTiTiFactoryListVC: UIViewController {
 }
 
 extension SettingTiTiFactoryListVC {
+    private func configureLoader() {
+        self.view.addSubview(self.loader)
+        
+        NSLayoutConstraint.activate([
+            self.loader.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.loader.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
     private func configureCollectionView() {
         self.surveys.dataSource = self
         self.surveys.delegate = self
@@ -37,6 +54,11 @@ extension SettingTiTiFactoryListVC {
     
     private func configureViewModel() {
         self.viewModel = SurveyListVM()
+    }
+    
+    private func stopLoader() {
+        self.loader.isHidden = true
+        self.loader.stopAnimating()
     }
 }
 
@@ -48,7 +70,9 @@ extension SettingTiTiFactoryListVC {
     private func bindCells() {
         self.viewModel?.$infos
             .receive(on: DispatchQueue.main)
+            .dropFirst()
             .sink(receiveValue: { [weak self] _ in
+                self?.stopLoader()
                 self?.surveys.reloadData()
             })
             .store(in: &self.cancellables)
