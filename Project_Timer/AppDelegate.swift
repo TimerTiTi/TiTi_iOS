@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         Analytics.logEvent("launch", parameters: [
-            AnalyticsParameterItemID: "ver 6.5",
+            AnalyticsParameterItemID: "ver 7.0",
         ])
         UNUserNotificationCenter.current().delegate = self
         NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
@@ -26,6 +28,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
         self.checkVersion()
+        
+        /* firestore 저장 테스트 로직 */
+//        let db = Firestore.firestore()
+//        db.collection("titifuncs").document("func1").setData([
+//            "title": "타이머",
+//            "url": "https://deeply-eggplant-5ec.notion.site/1db945227c25409d874bf82e30a0523a"
+//        ]) { error in
+//            if let error = error {
+//                print("Error writing document: \(error)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
+        
         return true
     }
     

@@ -42,6 +42,7 @@
 		8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF5127DCB5D100739A09 /* FSCalendar */; };
 		877E448C267DF8DD00BF104A /* Dumy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dumy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
+		87861F1A284D917C00227731 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 87861F19284D917C00227731 /* FirebaseFirestore */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
@@ -192,6 +193,7 @@
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
+				87861F1A284D917C00227731 /* FirebaseFirestore in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +528,7 @@
 				8773AF4E27DCB59400739A09 /* FirebaseDatabase */,
 				8773AF5127DCB5D100739A09 /* FSCalendar */,
 				87910827283876DD005D7B10 /* Alamofire */,
+				87861F19284D917C00227731 /* FirebaseFirestore */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -560,6 +563,7 @@
 				8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -906,6 +910,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -931,6 +943,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		87861F19284D917C00227731 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		87910827283876DD005D7B10 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
