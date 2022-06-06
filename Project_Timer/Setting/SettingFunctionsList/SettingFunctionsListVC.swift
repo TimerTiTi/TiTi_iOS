@@ -14,12 +14,20 @@ final class SettingFunctionsListVC: UIViewController {
 
     @IBOutlet weak var functionList: UICollectionView!
     @IBOutlet weak var youtubeBT: UIButton!
+    private let loader: UIActivityIndicatorView = {
+        let loader = UIActivityIndicatorView(style: .medium)
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        loader.color = UIColor.lightGray
+        loader.startAnimating()
+        return loader
+    }()
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: FunctionInfoListVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
@@ -34,6 +42,15 @@ final class SettingFunctionsListVC: UIViewController {
 }
 
 extension SettingFunctionsListVC {
+    private func configureLoader() {
+        self.view.addSubview(self.loader)
+        
+        NSLayoutConstraint.activate([
+            self.loader.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.loader.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
     private func configureCollectionView() {
         self.functionList.dataSource = self
         self.functionList.delegate = self
@@ -41,6 +58,11 @@ extension SettingFunctionsListVC {
     
     private func configureViewModel() {
         self.viewModel = FunctionInfoListVM()
+    }
+    
+    private func stopLoader() {
+        self.loader.isHidden = true
+        self.loader.stopAnimating()
     }
 }
 
@@ -52,7 +74,9 @@ extension SettingFunctionsListVC {
     private func bindCells() {
         self.viewModel?.$infos
             .receive(on: DispatchQueue.main)
+            .dropFirst()
             .sink(receiveValue: { [weak self] _ in
+                self?.stopLoader()
                 self?.functionList.reloadData()
             })
             .store(in: &self.cancellables)
