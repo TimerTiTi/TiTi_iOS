@@ -17,8 +17,12 @@ final class SurveyListVM {
     }
     
     private func configureInfos() {
-        var infos: [SurveyInfo] = []
-        infos.append(SurveyInfo(title: "휴식알림 기능", url: "https://forms.gle/mgkJupspCpA9PvKi7"))
-        self.infos = infos
+        FirestoreManager.shared.db.collection("surveys").getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                self.infos = querySnapshot!.documents.map { SurveyInfo(data: $0.data()) }
+            }
+        }
     }
 }

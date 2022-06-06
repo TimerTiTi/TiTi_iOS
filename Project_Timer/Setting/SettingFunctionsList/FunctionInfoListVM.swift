@@ -8,7 +8,6 @@
 
 import Foundation
 import Combine
-import FirebaseFirestore
 
 final class FunctionInfoListVM {
     @Published private(set) var infos: [FunctionInfo] = []
