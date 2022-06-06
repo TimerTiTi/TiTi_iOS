@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct FunctionInfo {
+struct FunctionInfo: Codable {
     let title: String
     let url: String
+    
+    init(data: [String: Any]) {
+        self.title = data["title"] as? String ?? "title error"
+        self.url = data["url"] as? String ?? "url error"
+    }
 }
 
 protocol FunctionsActionDelegate: AnyObject {
