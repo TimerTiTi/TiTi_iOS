@@ -17,16 +17,23 @@ final class SettingDevInfoCell: UICollectionViewCell {
     
     weak var delegate: SettingActionDelegate?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.email.setImage(UIImage(named: "email")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.instagram.setImage(UIImage(named: "instagram")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.github.setImage(UIImage(named: "github")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    }
+    
     @IBAction func showEmail(_ sender: Any) {
-        print("showEmail")
+        self.delegate?.showEmailPopup()
     }
     
     @IBAction func showInstagram(_ sender: Any) {
-        print("showInstagram")
+        self.delegate?.goSafari(url: NetworkURL.instagramToFDEE)
     }
     
     @IBAction func showGithub(_ sender: Any) {
-        print("showGithub")
+        self.delegate?.goSafari(url: NetworkURL.github)
     }
 }
 

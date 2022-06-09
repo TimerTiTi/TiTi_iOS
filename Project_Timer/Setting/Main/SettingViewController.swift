@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import MessageUI
 
 final class SettingViewController: UIViewController {
     static let identifier = "SettingViewController"
@@ -136,7 +137,9 @@ extension SettingViewController: SettingActionDelegate {
     }
     
     func goSafari(url: String) {
-        print(url)
+        if let url = URL(string: url) {
+            UIApplication.shared.open(url, options: [:])
+        }
     }
     
     func deeplink(link: String) {
@@ -144,5 +147,27 @@ extension SettingViewController: SettingActionDelegate {
            UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:])
         }
+    }
+}
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func showEmailPopup() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["freedeveloper97@gmail.com"])
+            mail.setMessageBody("<p>작은 피드백 하나하나가 큰 도움이 됩니다 :)</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            let sendMailErrorAlert = UIAlertController(title: "이메일 실패", message: "아이폰 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "OK", style: .default)
+            sendMailErrorAlert.addAction(confirmAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
     }
 }
