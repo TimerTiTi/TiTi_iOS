@@ -34,7 +34,7 @@ final class SettingVM {
         var cells2: [SettingCellInfo] = []
         cells2.append(SettingCellInfo(title: "타이머", subTitle: "종료 5분전, 종료시 알림", toggleKey: .timerPushable))
         cells2.append(SettingCellInfo(title: "스톱워치", subTitle: "1시간단위 경과시 알림", toggleKey: .stopwatchPushable))
-        cells2.append(SettingCellInfo(title: "휴식", subTitle: "5분단위 경과시 알림", toggleKey: .restPushable))
+//        cells2.append(SettingCellInfo(title: "휴식", subTitle: "5분단위 경과시 알림", toggleKey: .restPushable))
         cells2.append(SettingCellInfo(title: "업데이트", subTitle: "최신버전 업데이트 알림", toggleKey: .updatePushable))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
