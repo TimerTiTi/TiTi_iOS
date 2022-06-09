@@ -90,11 +90,18 @@ extension SettingViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingCell.identifier, for: indexPath) as? SettingCell else { return UICollectionViewCell() }
-        guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item] else { return cell }
-        cell.configure(with: cellInfo, delegate: self)
-        
-        return cell
+        if indexPath.section == 3 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingDevInfoCell.identifier, for: indexPath) as? SettingDevInfoCell else { return UICollectionViewCell() }
+            cell.delegate = self
+            
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingCell.identifier, for: indexPath) as? SettingCell else { return UICollectionViewCell() }
+            guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item] else { return cell }
+            cell.configure(with: cellInfo, delegate: self)
+            
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -115,8 +122,9 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.settings.bounds.width
         guard let info = self.viewModel?.cells[indexPath.section][indexPath.item] else { return CGSize(width: width, height: 43)}
+        let height: CGFloat = indexPath.section == 3 ? 80 : CGFloat(info.cellHeight)
         
-        return CGSize(width: width, height: CGFloat(info.cellHeight))
+        return CGSize(width: width, height: height)
     }
 }
 
