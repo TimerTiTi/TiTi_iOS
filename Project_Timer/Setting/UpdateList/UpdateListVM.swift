@@ -17,11 +17,11 @@ final class UpdateListVM {
     }
     
     private func configureInfos() {
-        FirestoreManager.shared.db.collection("updates").getDocuments { querySnapshot, error in
+        FirestoreManager.shared.db.collection("updates").getDocuments { [weak self] querySnapshot, error in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
-                self.infos = querySnapshot!.documents.map { UpdateInfo(data: $0.data()) }
+                self?.infos = querySnapshot!.documents.map { UpdateInfo(data: $0.data()) }
                     .sorted(by: {
                         $0.version.compare($1.version, options: .numeric) == .orderedDescending
                     })

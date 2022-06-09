@@ -17,11 +17,11 @@ final class SurveyListVM {
     }
     
     private func configureInfos() {
-        FirestoreManager.shared.db.collection("surveys").getDocuments { querySnapshot, error in
+        FirestoreManager.shared.db.collection("surveys").getDocuments { [weak self] querySnapshot, error in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
-                self.infos = querySnapshot!.documents.map { SurveyInfo(data: $0.data()) }
+                self?.infos = querySnapshot!.documents.map { SurveyInfo(data: $0.data()) }
             }
         }
     }
