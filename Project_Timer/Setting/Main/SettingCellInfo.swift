@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SettingCellInfo {
+class SettingCellInfo {
     var cellHeight: Int {
         return self.subTitle != nil ? 64 : 55
     }
@@ -57,6 +57,13 @@ struct SettingCellInfo {
     init(title: String) {
         self.title = title
         self.touchable = false
+    }
+    
+    func fetchVersion() {
+        NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
+            guard status == .SUCCESS, let version = version else { return }
+            self?.subTitle = "최신버전: \(version)"
+        }
     }
 }
 
