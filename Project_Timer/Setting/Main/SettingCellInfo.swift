@@ -77,4 +77,5 @@ protocol SettingActionDelegate: AnyObject {
     func pushVC(nextVCIdentifier: String)
     func goSafari(url: String)
     func deeplink(link: String)
+    func showEmailPopup()
 }
