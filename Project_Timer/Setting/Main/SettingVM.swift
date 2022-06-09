@@ -38,7 +38,9 @@ final class SettingVM {
         cells2.append(SettingCellInfo(title: "업데이트", subTitle: "최신버전 업데이트 알림", toggleKey: .updatePushable))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
-        cells3.append(SettingCellInfo(title: "버전 정보", subTitle: "최신버전: 6.5.3", rightTitle: String.currentVersion, link: NetworkURL.appstore))
+        let versionCell = SettingCellInfo(title: "버전 정보", subTitle: "최신버전:", rightTitle: String.currentVersion, link: NetworkURL.appstore)
+        versionCell.fetchVersion()
+        cells3.append(versionCell)
         cells3.append(SettingCellInfo(title: "업데이트 내역", nextVCIdentifier: SettingUpdateListVC.identifier))
         // 개발자
         var cells4: [SettingCellInfo] = []
