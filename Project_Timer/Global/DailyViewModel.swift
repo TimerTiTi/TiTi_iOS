@@ -33,8 +33,17 @@ class DailyViewModel {
         completion(monthData.reduce(0, { $0 + $1.totalTime }))
     }
     
-    func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
+    func totalAndMontylySumTime(completion: @escaping (Int, Int) -> ()) {
         let yymm = Date().YYMMstyleInt
-        completion(dailys.filter { $0.day.YYMMstyleInt == yymm }.reduce(0, { $0 + $1.totalTime }))
+        var total: Int = 0
+        var monthly: Int = 0
+        
+        dailys.forEach { daily in
+            total += daily.totalTime
+            if daily.day.YYMMstyleInt == yymm {
+                monthly += daily.totalTime
+            }
+        }
+        completion(total, monthly)
     }
 }

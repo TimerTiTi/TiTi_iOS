@@ -11,6 +11,9 @@ import SwiftUI
 import Combine
 
 class LogViewController: UIViewController {
+    @IBOutlet weak var totalFrameView: UIView!
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    
     @IBOutlet weak var monthFrameView: UIView!
     @IBOutlet weak var monthTimeLabel: UILabel!
     
@@ -34,7 +37,7 @@ class LogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
+        self.configureShadows(self.totalFrameView, self.monthFrameView, self.weeksFrameView, self.todayFrameView)
         self.configureWidthHeight()
         self.configureViewModel()
         self.bindAll()
@@ -44,7 +47,7 @@ class LogViewController: UIViewController {
         super.viewWillAppear(animated)
         self.updateTabbarColor()
         self.scrollView.setContentOffset(.zero, animated: false)
-        self.showMonthTime()
+        self.showTotalAndMonthlyTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
     }
@@ -108,11 +111,12 @@ extension LogViewController {
         self.graphViewOfWeeks.addSubview(hostingController.view)
     }
     
-    private func showMonthTime() {
+    private func showTotalAndMonthlyTime() {
         DispatchQueue.global().async {
-            RecordController.shared.dailys.totalStudyTimeOfMonth { totalTime in
+            RecordController.shared.dailys.totalAndMontylySumTime { [weak self] totalTime, monthlyTime in
                 DispatchQueue.main.async {
-                    self.monthTimeLabel.text = totalTime.toTimeString
+                    self?.totalTimeLabel.text = totalTime.toTimeString
+                    self?.monthTimeLabel.text = monthlyTime.toTimeString
                 }
             }
         }
