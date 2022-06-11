@@ -165,6 +165,7 @@ final class TimerVM {
         self.updateDaily()
         RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.task] ?? 0)
         RecordController.shared.dailys.addDaily(self.daily)
+        self.updateTimes()
     }
     
     func enterBackground() {

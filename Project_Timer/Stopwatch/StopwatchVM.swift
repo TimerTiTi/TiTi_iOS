@@ -19,6 +19,8 @@ final class StopwatchVM {
     private(set) var timerRunning = false
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
+    // test용 변수
+    private var noSeconds: Bool = true
     
     private var timer = Timer()
     
@@ -54,8 +56,9 @@ final class StopwatchVM {
         return RecordController.shared.recordTimes.settedGoalTime
     }
     
-    func updateTimes() {
-        self.times = RecordController.shared.recordTimes.currentTimes()
+    func updateTimes(isFiltered: Bool = false) {
+        let noSeconds = isFiltered ? self.noSeconds : false
+        self.times = RecordController.shared.recordTimes.currentTimes(noSeconds: noSeconds)
     }
     
     func updateDaily() {
@@ -110,12 +113,13 @@ final class StopwatchVM {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
         self.timerRunning = true
         self.runningUI = true
+        self.updateTimes(isFiltered: true)
     }
     
     @objc func timerLogic() {
         print("timer action")
         self.timerCount += 1
-        self.updateTimes()
+        self.updateTimes(isFiltered: true)
         if self.timerCount%5 == 0 {
             RecordController.shared.daily.update(at: Date())
         }
@@ -140,6 +144,7 @@ final class StopwatchVM {
         self.updateDaily()
         RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.task] ?? 0)
         RecordController.shared.dailys.addDaily(self.daily)
+        self.updateTimes()
     }
     
     func enterBackground() {
@@ -150,7 +155,7 @@ final class StopwatchVM {
     
     func enterForground() {
         print("forground")
-        self.updateTimes()
+        self.updateTimes(isFiltered: true)
         self.timerStart()
     }
     

@@ -189,7 +189,7 @@ extension StopwatchViewController {
                 self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: times.goal)
                 self?.updateProgress(times: times)
-//                self?.printTimes(with: times)
+                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
     }

@@ -121,17 +121,24 @@ struct RecordTimes: Codable, CustomStringConvertible {
         return Self.interval(from: self.recordStartAt, to: to)
     }
     
-    func currentTimes() -> Times { // VC 에서 매초
+    func currentTimes(noSeconds: Bool = false) -> Times { // VC 에서 매초
         guard self.recording else {
             return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
         }
         
         let currentAt = Date()
         let interval = self.interval(to: currentAt)
-        let currentSum = self.savedSumTime + interval
-        let currentGoal = self.settedGoalTime - currentSum
-        let currentTimer = self.savedTimerTime - interval
-        let currentStopwatch = self.savedStopwatchTime + interval
+        var currentSum = self.savedSumTime + interval
+        var currentGoal = self.settedGoalTime - currentSum
+        var currentTimer = self.savedTimerTime - interval
+        var currentStopwatch = self.savedStopwatchTime + interval
+        // noSeconds 옵션인 경우 %60 제거
+        if noSeconds {
+            currentSum -= currentSum%60
+            currentGoal += currentGoal%60 == 0 ? 0 : (60 - currentGoal%60)
+            currentTimer += currentTimer%60 == 0 ? 0 : (60 - currentTimer%60)
+            currentStopwatch -= currentStopwatch%60
+        }
         return Times(sum: currentSum, timer: currentTimer, stopwatch: currentStopwatch, goal: currentGoal)
     }
 }
