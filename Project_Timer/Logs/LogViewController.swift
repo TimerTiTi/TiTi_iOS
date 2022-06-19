@@ -188,7 +188,11 @@ extension LogViewController {
     }
     
     private func fillColor(time: Int, view: UIView) {
-        if time == 0 { return }
+        if time == 0 {
+            view.backgroundColor = UIColor(named: "Empty")
+            view.alpha = 1.0
+            return
+        }
         view.backgroundColor = UIColor(named: "D2")
         if(time < 600) { //0 ~ 10
             view.alpha = 0.2
