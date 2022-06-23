@@ -9,14 +9,22 @@
 import SwiftUI
 
 struct SingleTimeLabelView: View {
-    @ObservedObject var viewModel: TimeLabelViewModel
+    private var update: Bool
+    private var oldValue: Int
+    private var newValue: Int
+    
+    init(oldValue: Int, newValue: Int, update: Bool) {
+        self.oldValue = oldValue
+        self.newValue = newValue
+        self.update = update
+    }
     
     var body: some View {
         GeometryReader { geometry  in
             VStack(spacing: 0) {
                 Group {
-                    Text("\(viewModel.oldValue)")
-                    Text("\(viewModel.newValue)")
+                    Text("\(oldValue)")
+                    Text("\(newValue)")
                 }
                 .font(Font.custom("HGGGothicssiP60g", size: 70))
                 .foregroundColor(.white)
@@ -24,8 +32,9 @@ struct SingleTimeLabelView: View {
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
             }
-            .offset(x: 0, y: viewModel.update ? -geometry.size.height : 0)
-            .frame(maxHeight: geometry.size.height, alignment: .top)
+            .offset(x: 0, y: update ? -geometry.size.height : 0)
+            .frame(maxHeight: geometry.size.height,
+                   alignment: .top)
             .clipped()
         }
     }
