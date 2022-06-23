@@ -149,7 +149,7 @@ extension StopwatchViewController {
     }
     private func showTimeLabel() {
         let timeLabelViewModel = TimeLabelViewModel(0, type: .countUp)
-        let hostingController = UIHostingController(rootView: SingleTimeLabelView(viewModel: timeLabelViewModel))
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeLabelViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofStopwatch.bounds
