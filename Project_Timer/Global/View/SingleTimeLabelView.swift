@@ -18,7 +18,8 @@ struct SingleTimeLabelView: View {
                     Text("\(viewModel.oldValue)")
                     Text("\(viewModel.newValue)")
                 }
-                .font(.system(size: 30))
+                .font(Font.custom("HGGGothicssiP60g", size: 70))
+                .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
