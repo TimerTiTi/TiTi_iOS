@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import SwiftUI
 
 final class StopwatchViewController: UIViewController {
     static let identifier = "StopwatchViewController"
@@ -51,6 +52,7 @@ final class StopwatchViewController: UIViewController {
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
+        self.showTimeLabel()
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
@@ -144,6 +146,16 @@ extension StopwatchViewController {
     }
     private func configureViewModel() {
         self.viewModel = StopwatchVM()
+    }
+    private func showTimeLabel() {
+        let timeLabelViewModel = TimeLabelViewModel(0, type: .countUp)
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeLabelViewModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofStopwatch.bounds
+        
+        addChild(hostingController)
+        TIMEofStopwatch.addSubview(hostingController.view)
     }
 }
 
