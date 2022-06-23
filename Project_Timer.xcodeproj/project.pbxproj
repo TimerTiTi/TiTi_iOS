@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04504C5B286485BE00CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5A286485BE00CA4C69 /* TimeLabelView.swift */; };
+		04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
@@ -104,6 +106,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04504C5A286485BE00CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
+		04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelViewModel.swift; sourceTree = "<group>"; };
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,6 +222,15 @@
 
 /* Begin PBXGroup section */
 		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
+		04504C5E2864AC2300CA4C69 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		872C0ED9284ADD6800E8E3F2 /* UpdateList */ = {
 			isa = PBXGroup;
 			children = (
 				872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */,
@@ -323,6 +336,7 @@
 			children = (
 				93A892B024C14D4700F89180 /* CircularProgressView.swift */,
 				87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */,
+				04504C5A286485BE00CA4C69 /* TimeLabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -427,6 +441,7 @@
 				87C51509267B38C0003DA21D /* Converter.swift */,
 				87A48BC527DEF0B200F46D0F /* Extension */,
 				8762717327DF88E700F812ED /* View */,
+				04504C5E2864AC2300CA4C69 /* ViewModel */,
 				87379F982615979D00A9445E /* Model */,
 				87D1250028771AAD00018658 /* Language.swift */,
 			);
@@ -660,6 +675,7 @@
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
+				04504C5B286485BE00CA4C69 /* TimeLabelView.swift in Sources */,
 				87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
@@ -700,6 +716,7 @@
 				875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
 				876A85552832135E00978035 /* daily.swift in Sources */,
+				04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
