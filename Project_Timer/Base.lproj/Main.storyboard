@@ -487,16 +487,12 @@
                                             <constraint firstItem="Mj6-JS-iYc" firstAttribute="centerX" secondItem="DOY-RG-9hz" secondAttribute="centerX" id="wkk-VX-wvz"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q68-YR-Cew">
-                                        <rect key="frame" x="54.666666666666671" y="130" width="210.66666666666663" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMa-tF-luS">
+                                        <rect key="frame" x="145" y="130" width="30" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="XbK-9k-7uC"/>
+                                            <constraint firstAttribute="height" constant="60" id="Gj0-ua-8ie"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="70"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="1" height="1"/>
-                                    </label>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stopwatch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqG-MZ-tWl">
                                         <rect key="frame" x="127.66666666666666" y="103" width="64.666666666666657" height="17"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
@@ -510,30 +506,30 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wt0-Rr-OFI">
-                                        <rect key="frame" x="54.666666666666671" y="130" width="210.66666666666663" height="60"/>
+                                        <rect key="frame" x="145" y="130" width="30" height="60"/>
                                         <connections>
                                             <action selector="timerStartStopAction:" destination="oQm-sw-2wm" eventType="touchUpInside" id="CZo-s0-6A9"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerX" secondItem="Wt0-Rr-OFI" secondAttribute="centerX" id="5Gg-A7-6FU"/>
                                     <constraint firstItem="WlF-mz-p27" firstAttribute="centerX" secondItem="E29-HI-Z5d" secondAttribute="centerX" id="6dU-4p-BEI"/>
-                                    <constraint firstItem="Wt0-Rr-OFI" firstAttribute="centerX" secondItem="Q68-YR-Cew" secondAttribute="centerX" id="Eqi-T3-Pl1"/>
-                                    <constraint firstItem="Q68-YR-Cew" firstAttribute="centerX" secondItem="2nh-Zz-J1h" secondAttribute="centerX" id="GBC-5B-xni"/>
-                                    <constraint firstItem="DOY-RG-9hz" firstAttribute="centerX" secondItem="Q68-YR-Cew" secondAttribute="centerX" id="TwJ-aJ-6SC"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerY" secondItem="2nh-Zz-J1h" secondAttribute="centerY" id="9Ow-xB-CcZ"/>
+                                    <constraint firstItem="DOY-RG-9hz" firstAttribute="top" secondItem="FMa-tF-luS" secondAttribute="bottom" constant="45" id="FTh-HJ-qOt"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="top" secondItem="E29-HI-Z5d" secondAttribute="bottom" constant="45" id="LKp-Jv-Y36"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="width" secondItem="Wt0-Rr-OFI" secondAttribute="width" id="Uun-4f-B5p"/>
                                     <constraint firstItem="2nh-Zz-J1h" firstAttribute="centerY" secondItem="rzE-75-v4U" secondAttribute="centerY" id="VBd-gf-oRX"/>
-                                    <constraint firstItem="Q68-YR-Cew" firstAttribute="centerY" secondItem="2nh-Zz-J1h" secondAttribute="centerY" id="WZR-ZZ-3M4"/>
-                                    <constraint firstItem="Wt0-Rr-OFI" firstAttribute="width" secondItem="Q68-YR-Cew" secondAttribute="width" id="dxP-4N-vhb"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="top" secondItem="dqG-MZ-tWl" secondAttribute="bottom" constant="10" id="XVP-TC-Dqp"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="height" secondItem="Wt0-Rr-OFI" secondAttribute="height" id="bkq-ec-hHH"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerX" secondItem="DOY-RG-9hz" secondAttribute="centerX" id="e9w-TX-K9Z"/>
                                     <constraint firstAttribute="width" constant="320" id="fY9-PL-qq4"/>
-                                    <constraint firstItem="Wt0-Rr-OFI" firstAttribute="height" secondItem="Q68-YR-Cew" secondAttribute="height" id="fhK-ZF-9xc"/>
-                                    <constraint firstItem="E29-HI-Z5d" firstAttribute="centerX" secondItem="Q68-YR-Cew" secondAttribute="centerX" id="hnm-8n-ld6"/>
-                                    <constraint firstItem="DOY-RG-9hz" firstAttribute="top" secondItem="Q68-YR-Cew" secondAttribute="bottom" constant="45" id="iCo-PI-40T"/>
-                                    <constraint firstItem="Wt0-Rr-OFI" firstAttribute="centerY" secondItem="Q68-YR-Cew" secondAttribute="centerY" id="jDZ-s5-sZP"/>
-                                    <constraint firstItem="Q68-YR-Cew" firstAttribute="top" secondItem="dqG-MZ-tWl" secondAttribute="bottom" constant="10" id="oMe-hr-7LQ"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerX" secondItem="E29-HI-Z5d" secondAttribute="centerX" id="rMt-pp-AhA"/>
                                     <constraint firstItem="dqG-MZ-tWl" firstAttribute="centerX" secondItem="2nh-Zz-J1h" secondAttribute="centerX" id="rWl-BM-jN1"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerY" secondItem="Wt0-Rr-OFI" secondAttribute="centerY" id="rbX-02-UfF"/>
+                                    <constraint firstItem="FMa-tF-luS" firstAttribute="centerX" secondItem="2nh-Zz-J1h" secondAttribute="centerX" id="v5e-fH-J3N"/>
                                     <constraint firstItem="2nh-Zz-J1h" firstAttribute="centerX" secondItem="rzE-75-v4U" secondAttribute="centerX" id="vfD-CD-aQh"/>
                                     <constraint firstAttribute="height" constant="320" id="x1F-j3-Baa"/>
-                                    <constraint firstItem="Q68-YR-Cew" firstAttribute="top" secondItem="E29-HI-Z5d" secondAttribute="bottom" constant="45" id="yPK-48-Wyc"/>
                                     <constraint firstItem="E29-HI-Z5d" firstAttribute="top" secondItem="WlF-mz-p27" secondAttribute="bottom" constant="10" id="ySE-qD-MDM"/>
                                 </constraints>
                             </view>
@@ -701,7 +697,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Stopwatch" image="stopwatch" catalog="system" id="bZF-dP-GJF"/>
                     <connections>
-                        <outlet property="TIMEofStopwatch" destination="Q68-YR-Cew" id="e6r-U3-PO9"/>
+                        <outlet property="TIMEofStopwatch" destination="FMa-tF-luS" id="0Fb-HV-Ajh"/>
                         <outlet property="TIMEofSum" destination="E29-HI-Z5d" id="y29-eX-4we"/>
                         <outlet property="TIMEofTarget" destination="DOY-RG-9hz" id="hUM-8h-PoT"/>
                         <outlet property="colorSelector" destination="Hfx-iS-Kvh" id="xxs-g9-bAs"/>
