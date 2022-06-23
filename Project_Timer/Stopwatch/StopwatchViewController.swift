@@ -19,7 +19,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet var sumTimeLabel: UILabel!
     @IBOutlet var TIMEofSum: UILabel!
     @IBOutlet var stopWatchLabel: UILabel!
-    @IBOutlet var TIMEofStopwatch: UILabel!
+    @IBOutlet var TIMEofStopwatch: UIView!
     @IBOutlet var targetTimeLabel: UILabel!
     @IBOutlet var TIMEofTarget: UILabel!
     @IBOutlet var finishTimeLabel: UILabel!
@@ -261,7 +261,7 @@ extension StopwatchViewController {
     
     private func updateTIMELabels(times: Times) {
         self.TIMEofSum.text = times.sum.toTimeString
-        self.TIMEofStopwatch.text = times.stopwatch.toTimeString
+//        self.TIMEofStopwatch.text = times.stopwatch.toTimeString
         self.TIMEofTarget.text = times.goal.toTimeString
     }
     
@@ -283,7 +283,7 @@ extension StopwatchViewController {
         outterProgress.progressColor = COLOR!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-        TIMEofStopwatch.textColor = COLOR
+//        TIMEofStopwatch.textColor = COLOR
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 0
@@ -309,7 +309,7 @@ extension StopwatchViewController {
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = startButtonColor!
-        TIMEofStopwatch.textColor = UIColor.white
+//        TIMEofStopwatch.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
