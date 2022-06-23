@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TimeLabelView: View {
+struct SingleTimeLabelView: View {
     @ObservedObject var viewModel: TimeLabelViewModel
     
     var body: some View {
