@@ -9,29 +9,15 @@
 import SwiftUI
 
 class SingleTimeLabelViewModel: ObservableObject {
-    enum UpdateType {
-        case countDown
-        case countUp
-        
-        func oldValue(_ newValue: Int) -> Int {
-            switch self {
-            case .countDown:
-                return newValue + 1
-            case .countUp:
-                return newValue - 1
-            }
-        }
-    }
-    
     @Published var oldValue: Int
     @Published var newValue: Int
     @Published var isUpdateComplete: Bool
-    private var updateType: UpdateType
+    private var updateType: TimeLabelViewModel.UpdateType
     
-    init(val: Int, type: UpdateType) {
+    init(val: Int, type: TimeLabelViewModel.UpdateType) {
         self.oldValue = type.oldValue(val)
         self.newValue = val
-        self.isUpdateComplete = false
+        self.isUpdateComplete = true
         self.updateType = type
     }
     
