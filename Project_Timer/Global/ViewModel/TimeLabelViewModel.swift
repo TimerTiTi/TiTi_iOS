@@ -32,28 +32,13 @@ class TimeLabelViewModel: ObservableObject  {
         }
     }
     
-    var oldHourTens: Int
-    var oldHourUnits: Int
-    var oldMinuteTens: Int
-    var oldMinuteUnits: Int
-    var oldSecondTens: Int
-    var oldSecondUnits: Int
-    
-    var newHourTens: Int
-    var newHourUnits: Int
-    var newMinuteTens: Int
-    var newMinuteUnits: Int
-    var newSecondTens: Int
-    var newSecondUnits: Int
-    
-    @Published var updateHourTens: Bool = true
-    @Published var updateHourUnits: Bool = true
-    @Published var updateMinuteTens: Bool = true
-    @Published var updateMinuteUnits: Bool = true
-    @Published var updateSecondTens: Bool = true
-    @Published var updateSecondUnits: Bool = true
-    
     private var updateType: UpdateType
+    var hourTensViewModel: SingleTimeLabelViewModel
+    var hourUnitsViewModel: SingleTimeLabelViewModel
+    var minuteTensViewModel: SingleTimeLabelViewModel
+    var minuteUnitsViewModel: SingleTimeLabelViewModel
+    var secondTensViewModel: SingleTimeLabelViewModel
+    var secondUnitsViewModel: SingleTimeLabelViewModel
     private var timeLabel: TimeLabel {
         didSet {
 //            self.oldHourTens = self.updateType.tensOldValue(timeLabel.hourTens)
@@ -73,47 +58,24 @@ class TimeLabelViewModel: ObservableObject  {
     }
     
     init(time: Int, type: UpdateType) {
-        let timeLabel = TimeLabel.toTimeLabel(time)
+        let timeLabel = Times.toTimeLabel(time)
         self.timeLabel = timeLabel
-        self.newHourTens = timeLabel.hourTens
-        self.newHourUnits = timeLabel.hourUnits
-        self.newMinuteTens = timeLabel.minuteTens
-        self.newMinuteUnits = timeLabel.minuteUnits
-        self.newSecondTens = timeLabel.secondTens
-        self.newSecondUnits = timeLabel.secondUnits
-        self.oldHourTens = type.tensOldValue(timeLabel.hourTens)
-        self.oldHourUnits = type.unitsOldValue(timeLabel.hourUnits)
-        self.oldMinuteTens = type.tensOldValue(timeLabel.minuteTens)
-        self.oldMinuteUnits = type.unitsOldValue(timeLabel.minuteUnits)
-        self.oldSecondTens = type.tensOldValue(timeLabel.secondTens)
-        self.oldSecondUnits = type.unitsOldValue(timeLabel.secondUnits)
         self.updateType = type
+        self.hourTensViewModel = SingleTimeLabelViewModel(val: timeLabel.hourTens, type: type)
+        self.hourUnitsViewModel = SingleTimeLabelViewModel(val: timeLabel.hourUnits, type: type)
+        self.minuteTensViewModel = SingleTimeLabelViewModel(val: timeLabel.minuteTens, type: type)
+        self.minuteUnitsViewModel = SingleTimeLabelViewModel(val: timeLabel.minuteUnits, type: type)
+        self.secondTensViewModel = SingleTimeLabelViewModel(val: timeLabel.secondTens, type: type)
+        self.secondUnitsViewModel = SingleTimeLabelViewModel(val: timeLabel.secondUnits, type: type)
     }
     
     func updateTime(_ newTime: Int) {
-        self.timeLabel = TimeLabel.toTimeLabel(newTime)
-        
-        if timeLabel.secondTens != self.newSecondTens {
-            self.oldSecondTens = self.updateType.tensOldValue(self.timeLabel.secondTens)
-            self.updateSecondTens = false
-            self.newSecondTens = timeLabel.secondTens
-
-            withAnimation(.easeIn(duration: 0.4)) { [weak self] in
-                self?.updateSecondTens = true
-            }
-        }
-
-        if timeLabel.secondUnits != self.newSecondUnits {
-            self.oldSecondUnits = self.updateType.unitsOldValue(self.timeLabel.secondUnits)
-            self.updateSecondUnits = false
-            self.newSecondUnits = timeLabel.secondUnits
-
-            withAnimation(.easeIn(duration: 0.4)) { [weak self] in
-                self?.updateSecondUnits = true
-            }
-        }
-        
-        // TODO: 분, 시간 표시 라벨도 작업 필요
-        // TODO: 하드코딩 리팩토링 필요 - SingleTimeLableViewModel 구현 등의 방법이 있음.
+        let timeLabel = Times.toTimeLabel(newTime)
+        hourTensViewModel.update(timeLabel.hourTens)
+        hourUnitsViewModel.update(timeLabel.hourUnits)
+        minuteTensViewModel.update(timeLabel.minuteTens)
+        minuteUnitsViewModel.update(timeLabel.minuteUnits)
+        secondTensViewModel.update(timeLabel.secondTens)
+        secondUnitsViewModel.update(timeLabel.secondUnits)
     }
 }
