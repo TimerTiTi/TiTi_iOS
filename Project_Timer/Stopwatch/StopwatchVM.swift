@@ -15,6 +15,7 @@ final class StopwatchVM {
         didSet {
             self.timeOfStopwatchViewModel.updateTime(times.stopwatch)
             self.timeOfSumViewModel.updateTime(times.sum)
+            self.timeOfTargetViewModel.updateTime(times.goal)
         }
     }
     @Published private(set) var daily: Daily
@@ -29,6 +30,7 @@ final class StopwatchVM {
     
     var timeOfStopwatchViewModel: TimeLabelViewModel
     var timeOfSumViewModel: TimeLabelViewModel
+    var timeOfTargetViewModel: TimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
@@ -37,6 +39,7 @@ final class StopwatchVM {
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, type: .countUp)
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, type: .countUp)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, type: .countDown)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
