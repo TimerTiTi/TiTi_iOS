@@ -48,7 +48,6 @@ struct TimeLabelView: View {
                                 newValue: viewModel.newSecondUnits,
                                 update: viewModel.updateSecondUnits)
         }
-        .frame(width: self.frameWidth, height: 100, alignment: .center)
         
     }
     
