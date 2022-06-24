@@ -13,42 +13,26 @@ struct TimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if viewModel.newHourTens > 0 {
-                SingleTimeLabelView(oldValue: viewModel.oldHourTens,
-                                    newValue: viewModel.newHourTens,
-                                    update: viewModel.updateHourTens)
-            }
+            SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
             
-                
-            SingleTimeLabelView(oldValue: viewModel.oldHourUnits,
-                                newValue: viewModel.newHourUnits,
-                                update: viewModel.updateHourUnits)
+            SingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)
+            
+            Text(":")
+                .font(Font.custom("HGGGothicssiP60g", size: 70))
+                .foregroundColor(.white)
+            
+            SingleTimeLabelView(viewModel: viewModel.minuteTensViewModel)
+            
+            SingleTimeLabelView(viewModel: viewModel.minuteUnitsViewModel)
 
             Text(":")
                 .font(Font.custom("HGGGothicssiP60g", size: 70))
                 .foregroundColor(.white)
-
-            SingleTimeLabelView(oldValue: viewModel.oldMinuteTens,
-                                newValue: viewModel.newMinuteTens,
-                                update: viewModel.updateMinuteTens)
             
-            SingleTimeLabelView(oldValue: viewModel.oldMinuteUnits,
-                                newValue: viewModel.newMinuteUnits,
-                                update: viewModel.updateMinuteUnits)
-
-            Text(":")
-                .font(Font.custom("HGGGothicssiP60g", size: 70))
-                .foregroundColor(.white)
-
-            SingleTimeLabelView(oldValue: viewModel.oldSecondTens,
-                                newValue: viewModel.newSecondTens,
-                                update: viewModel.updateSecondTens)
+            SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
             
-            SingleTimeLabelView(oldValue: viewModel.oldSecondUnits,
-                                newValue: viewModel.newSecondUnits,
-                                update: viewModel.updateSecondUnits)
+            SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
-        
     }
     
     var frameWidth: CGFloat {

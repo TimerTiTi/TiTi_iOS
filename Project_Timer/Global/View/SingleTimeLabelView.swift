@@ -9,30 +9,22 @@
 import SwiftUI
 
 struct SingleTimeLabelView: View {
-    private var update: Bool
-    private var oldValue: Int
-    private var newValue: Int
-    
-    init(oldValue: Int, newValue: Int, update: Bool) {
-        self.oldValue = oldValue
-        self.newValue = newValue
-        self.update = update
-    }
+    @ObservedObject var viewModel: SingleTimeLabelViewModel
     
     var body: some View {
         GeometryReader { geometry  in
             VStack(spacing: 0) {
                 Group {
-                    Text("\(oldValue)")
-                    Text("\(newValue)")
+                    Text("\(viewModel.oldValue)")
+                    Text("\(viewModel.newValue)")
                 }
-                .font(Font.custom("HGGGothicssiP60g", size: 70))
+                .font(Font.custom("HGGGothicssiP60g", size: 70))    // TODO: Contant로 폰트명 빼기
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
                 .frame(width: geometry.size.width,
                        height: geometry.size.height)
             }
-            .offset(x: 0, y: update ? -geometry.size.height : 0)
+            .offset(x: 0, y: viewModel.isUpdateComplete ? -geometry.size.height : 0)
             .frame(maxHeight: geometry.size.height,
                    alignment: .top)
             .clipped()
