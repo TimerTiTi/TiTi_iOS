@@ -79,8 +79,8 @@ extension todayContentView {
         //        daily.load()
         var timeline = daily.timeline
         if(isDumy) {
-            daily = Dumy.getDumyDaily()
-            timeline = Dumy.getTimelines()
+            daily = Dummy.getDumyDaily()
+            timeline = Dummy.getTimelines()
         }
         print("timeline : \(timeline)")
         

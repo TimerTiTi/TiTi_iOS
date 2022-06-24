@@ -41,7 +41,7 @@
 		8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4C27DCB59400739A09 /* FirebaseAnalytics */; };
 		8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4E27DCB59400739A09 /* FirebaseDatabase */; };
 		8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF5127DCB5D100739A09 /* FSCalendar */; };
-		877E448C267DF8DD00BF104A /* Dumy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dumy.swift */; };
+		877E448C267DF8DD00BF104A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dummy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		87861F1A284D917C00227731 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 87861F19284D917C00227731 /* FirebaseFirestore */; };
 		87861F1C284DA00900227731 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87861F1B284DA00900227731 /* FirestoreManager.swift */; };
@@ -129,7 +129,7 @@
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
-		877E448B267DF8DD00BF104A /* Dumy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dumy.swift; sourceTree = "<group>"; };
+		877E448B267DF8DD00BF104A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		87861F1B284DA00900227731 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				87459705263FF0D700172C0F /* Daily.swift */,
 				87459707263FF0F000172C0F /* Storage.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
-				877E448B267DF8DD00BF104A /* Dumy.swift */,
+				877E448B267DF8DD00BF104A /* Dummy.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
 			);
 			path = Model;
@@ -622,7 +622,7 @@
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
-				877E448C267DF8DD00BF104A /* Dumy.swift in Sources */,
+				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
@@ -836,7 +836,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -844,7 +844,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0;
+				MARKETING_VERSION = 7.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -860,7 +860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -868,7 +868,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.0;
+				MARKETING_VERSION = 7.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
