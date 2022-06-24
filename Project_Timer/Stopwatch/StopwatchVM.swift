@@ -12,7 +12,10 @@ import UserNotifications
 
 final class StopwatchVM {
     @Published private(set) var times: Times {
-        didSet { self.timeOfStopwatchViewModel.updateTime(times.stopwatch) }
+        didSet {
+            self.timeOfStopwatchViewModel.updateTime(times.stopwatch)
+            self.timeOfSumViewModel.updateTime(times.sum)
+        }
     }
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
@@ -25,12 +28,15 @@ final class StopwatchVM {
     private var timer = Timer()
     
     var timeOfStopwatchViewModel: TimeLabelViewModel
+    var timeOfSumViewModel: TimeLabelViewModel
     
     init() {
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: RecordController.shared.recordTimes.currentTimes().stopwatch, type: .countUp)
+        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, type: .countUp)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, type: .countUp)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
