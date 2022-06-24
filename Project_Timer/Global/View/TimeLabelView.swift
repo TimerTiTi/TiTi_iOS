@@ -19,6 +19,7 @@ struct TimeLabelView: View {
             
             Text(":")
                 .font(Font.custom("HGGGothicssiP60g", size: 70))
+                .minimumScaleFactor(0.1)
                 .foregroundColor(.white)
             
             SingleTimeLabelView(viewModel: viewModel.minuteTensViewModel)
@@ -27,6 +28,7 @@ struct TimeLabelView: View {
 
             Text(":")
                 .font(Font.custom("HGGGothicssiP60g", size: 70))
+                .minimumScaleFactor(0.1)
                 .foregroundColor(.white)
             
             SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
