@@ -33,7 +33,12 @@ class DailyViewModel {
         completion(monthData.reduce(0, { $0 + $1.totalTime }))
     }
     
-    func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
+    func totalStudyTimeOfMonth(_ isDummy: Bool = false, completion: @escaping (Int) -> ()) {
+        if isDummy {
+            completion(Dummy.getDummyMonthTime)
+            return
+        }
+        
         let yymm = Date().YYMMstyleInt
         completion(dailys.filter { $0.day.YYMMstyleInt == yymm }.reduce(0, { $0 + $1.totalTime }))
     }

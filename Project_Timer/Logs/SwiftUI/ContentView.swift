@@ -71,7 +71,7 @@ struct ContentView: View {
     
     mutating func configureDailys(_ isDummy: Bool) {
         if isDummy {
-            self.DailyDatas = Dumy.get7Dailys()
+            self.DailyDatas = Dummy.get7Dailys()
         } else {
             let dailys = RecordController.shared.dailys.dailys
             let dailysCount = dailys.count
