@@ -18,7 +18,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet var outterProgress: CircularProgressView!
     
     @IBOutlet var sumTimeLabel: UILabel!
-    @IBOutlet var TIMEofSum: UILabel!
+    @IBOutlet var TIMEofSum: UIView!
     @IBOutlet var stopWatchLabel: UILabel!
     @IBOutlet var TIMEofStopwatch: UIView!
     @IBOutlet var targetTimeLabel: UILabel!
@@ -273,7 +273,7 @@ extension StopwatchViewController {
     }
     
     private func updateTIMELabels(times: Times) {
-        self.TIMEofSum.text = times.sum.toTimeString
+//        self.TIMEofSum.text = times.sum.toTimeString
 //        self.TIMEofStopwatch.text = times.stopwatch.toTimeString
         self.TIMEofTarget.text = times.goal.toTimeString
     }
