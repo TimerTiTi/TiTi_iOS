@@ -22,10 +22,13 @@ final class StopwatchVM {
     
     private var timer = Timer()
     
+    var timeLabelViewModel: TimeLabelViewModel
+    
     init() {
         self.times = RecordController.shared.recordTimes.currentTimes()
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
+        self.timeLabelViewModel = TimeLabelViewModel(time: RecordController.shared.recordTimes.currentTimes().stopwatch, type: .countUp)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
@@ -56,6 +59,7 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
+        self.timeLabelViewModel.updateTime(self.times.stopwatch)
     }
     
     func updateDaily() {
