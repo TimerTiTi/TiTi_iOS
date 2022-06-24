@@ -22,7 +22,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet var stopWatchLabel: UILabel!
     @IBOutlet var TIMEofStopwatch: UIView!
     @IBOutlet var targetTimeLabel: UILabel!
-    @IBOutlet var TIMEofTarget: UILabel!
+    @IBOutlet var TIMEofTarget: UIView!
     @IBOutlet var finishTimeLabel: UILabel!
     
     @IBOutlet var startStopBT: UIButton!
