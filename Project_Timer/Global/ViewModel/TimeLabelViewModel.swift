@@ -16,7 +16,7 @@ class TimeLabelViewModel: ObservableObject  {
         func tensOldValue(_ newValue: Int) -> Int {
             switch self {
             case .countDown:
-                return newValue + 1
+                return newValue == 9 ? 0 : newValue + 1
             case .countUp:
                 return newValue == 0 ? 5 : (newValue - 1)
             }
