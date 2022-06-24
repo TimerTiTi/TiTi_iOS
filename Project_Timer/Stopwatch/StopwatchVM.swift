@@ -11,7 +11,9 @@ import Combine
 import UserNotifications
 
 final class StopwatchVM {
-    @Published private(set) var times: Times
+    @Published private(set) var times: Times {
+        didSet { self.timeLabelViewModel.updateTime(times.stopwatch) }
+    }
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
@@ -59,7 +61,6 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
-        self.timeLabelViewModel.updateTime(self.times.stopwatch)
     }
     
     func updateDaily() {
