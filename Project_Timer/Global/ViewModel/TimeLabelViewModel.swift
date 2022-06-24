@@ -13,47 +13,82 @@ class TimeLabelViewModel: ObservableObject  {
         case countDown
         case countUp
         
-        func updatedValue(_ value: Int) -> Int {
+        func oldValue(_ newValue: Int) -> Int {
             switch self {
             case .countDown:
-                if value == 0 {
-                    return 9
-                } else {
-                    return value - 1
-                }
+                return newValue + 1
             case .countUp:
-                if value == 9 {
-                    return 0
-                } else {
-                    return value + 1
-                }
+                return newValue - 1
             }
         }
     }
     
-    @Published var update = true
-    @Published var oldValue: Int
-    @Published var newValue: Int
-    let updateType: UpdateType
+    @Published var oldHourTens: Int
+    @Published var oldHourUnits: Int
+    @Published var oldMinuteTens: Int
+    @Published var oldMinuteUnits: Int
+    @Published var oldSecondTens: Int
+    @Published var oldSecondUnits: Int
     
-    init(_ value: Int, type: UpdateType) {
+    @Published var newHourTens: Int
+    @Published var newHourUnits: Int
+    @Published var newMinuteTens: Int
+    @Published var newMinuteUnits: Int
+    @Published var newSecondTens: Int
+    @Published var newSecondUnits: Int
+    
+    @Published var updateHourTens: Bool = true
+    @Published var updateHourUnits: Bool = true
+    @Published var updateMinuteTens: Bool = true
+    @Published var updateMinuteUnits: Bool = true
+    @Published var updateSecondTens: Bool = true
+    @Published var updateSecondUnits: Bool = true
+    
+    private var updateType: UpdateType
+    private var timeLabel: TimeLabel
+    
+    init(time: Int, type: UpdateType) {
+        let timeLabel = Times.toTimeLabel(time)
+        self.timeLabel = timeLabel
+        self.newHourTens = timeLabel.hourTens
+        self.newHourUnits = timeLabel.hourUnits
+        self.newMinuteTens = timeLabel.minuteTens
+        self.newMinuteUnits = timeLabel.minuteUnits
+        self.newSecondTens = timeLabel.secondTens
+        self.newSecondUnits = timeLabel.secondUnits
+        self.oldHourTens = type.oldValue(timeLabel.hourTens)
+        self.oldHourUnits = type.oldValue(timeLabel.hourUnits)
+        self.oldMinuteTens = type.oldValue(timeLabel.minuteTens)
+        self.oldMinuteUnits = type.oldValue(timeLabel.minuteUnits)
+        self.oldSecondTens = type.oldValue(timeLabel.secondTens)
+        self.oldSecondUnits = type.oldValue(timeLabel.secondUnits)
         self.updateType = type
-        self.newValue = value
-        switch type {
-        case .countDown:
-            self.oldValue = value + 1
-        case .countUp:
-            self.oldValue = value - 1
-        }
     }
     
-    func updateTime() {
-        oldValue = updateType.updatedValue(oldValue)
-        update = false
-        newValue = updateType.updatedValue(newValue)
+    func updateTime(_ newTime: Int) {
+        self.timeLabel = Times.toTimeLabel(newTime)
         
-        withAnimation(.easeIn(duration: 0.2)) {
-            update = true
+        if timeLabel.secondTens != self.newSecondTens {
+            oldSecondTens = self.updateType.oldValue(timeLabel.secondTens)
+            updateSecondTens = false
+            newSecondTens = timeLabel.secondTens
+            
+            withAnimation(.easeIn(duration: 0.2)) {
+                self.updateSecondTens = true
+            }
         }
+        
+        if timeLabel.secondUnits != self.newSecondUnits {
+            oldSecondUnits = self.updateType.oldValue(timeLabel.secondUnits)
+            updateSecondUnits = false
+            newSecondUnits = timeLabel.secondUnits
+            
+            withAnimation(.easeIn(duration: 0.2)) {
+                self.updateSecondUnits = true
+            }
+        }
+        
+        // TODO: 분, 시간 표시 라벨도 작업 필요
+        // TODO: 하드코딩 리팩토링 필요 - SingleTimeLableViewModel 구현 등의 방법이 있음.
     }
 }
