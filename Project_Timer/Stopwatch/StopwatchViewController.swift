@@ -52,12 +52,13 @@ final class StopwatchViewController: UIViewController {
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
-        self.showTimeLabel()
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
         self.bindAll()
         self.viewModel?.updateTask()
+        
+        self.showTimeLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -148,7 +149,7 @@ extension StopwatchViewController {
         self.viewModel = StopwatchVM()
     }
     private func showTimeLabel() {
-        let timeLabelViewModel = TimeLabelViewModel(0, type: .countUp)
+        guard let timeLabelViewModel = self.viewModel?.timeLabelViewModel else { return }
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeLabelViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
