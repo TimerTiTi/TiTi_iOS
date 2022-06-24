@@ -59,6 +59,7 @@ final class StopwatchViewController: UIViewController {
         self.viewModel?.updateTask()
         
         self.showTimeOfStopwatch()
+        self.showTimeOfSum()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,6 +159,17 @@ extension StopwatchViewController {
         
         addChild(hostingController)
         TIMEofStopwatch.addSubview(hostingController.view)
+    }
+    private func showTimeOfSum() {
+        guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
+        
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofSum.bounds
+        
+        addChild(hostingController)
+        TIMEofSum.addSubview(hostingController.view)
     }
 }
 
