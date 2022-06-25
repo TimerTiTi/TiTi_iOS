@@ -8,6 +8,13 @@
 
 import Foundation
 
+struct Times {
+    let sum: Int
+    let timer: Int
+    let stopwatch: Int
+    let goal: Int
+}
+
 struct TimeLabel {
     let hourTens: Int
     let hourUnits: Int
@@ -15,30 +22,12 @@ struct TimeLabel {
     let minuteUnits: Int
     let secondTens: Int
     let secondUnits: Int
-}
-
-struct Times {
-    let sum: Int
-    let timer: Int
-    let stopwatch: Int
-    let goal: Int
-    
-    static func hourFromSeconds(_ sec: Int) -> Int {
-        return sec / 3600
-    }
-    
-    static func minuteFromSeconds(_ sec: Int) -> Int {
-        return (sec - sec/3600*3600) / 60
-    }
-    
-    static func secondFromSeconds(_ sec: Int) -> Int {
-        return sec % 60
-    }
     
     static func toTimeLabel(_ sec: Int) -> TimeLabel {
-        let hour = hourFromSeconds(sec)
-        let minute = minuteFromSeconds(sec)
-        let second = secondFromSeconds(sec)
+        let second = sec % 60
+        let hour = sec / 3600
+        let minute = (sec / 60) - (hour * 60)
+        
         return TimeLabel(hourTens: hour / 10,
                          hourUnits: hour % 10,
                          minuteTens: minute / 10,

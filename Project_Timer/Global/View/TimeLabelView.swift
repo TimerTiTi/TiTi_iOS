@@ -13,9 +13,12 @@ struct TimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            SingleTimeLabelView(oldValue: viewModel.oldHourTens,
-                                newValue: viewModel.newHourTens,
-                                update: viewModel.updateHourTens)
+            if viewModel.newHourTens > 0 {
+                SingleTimeLabelView(oldValue: viewModel.oldHourTens,
+                                    newValue: viewModel.newHourTens,
+                                    update: viewModel.updateHourTens)
+            }
+            
                 
             SingleTimeLabelView(oldValue: viewModel.oldHourUnits,
                                 newValue: viewModel.newHourUnits,
@@ -38,14 +41,18 @@ struct TimeLabelView: View {
                 .foregroundColor(.white)
 
             SingleTimeLabelView(oldValue: viewModel.oldSecondTens,
-                                newValue: viewModel.oldSecondTens,
+                                newValue: viewModel.newSecondTens,
                                 update: viewModel.updateSecondTens)
             
             SingleTimeLabelView(oldValue: viewModel.oldSecondUnits,
                                 newValue: viewModel.newSecondUnits,
                                 update: viewModel.updateSecondUnits)
         }
-        .frame(width: 300, height: 100, alignment: .center)
+        .frame(width: self.frameWidth, height: 100, alignment: .center)
         
+    }
+    
+    var frameWidth: CGFloat {
+        return self.viewModel.newHourTens > 0 ? 250 : 220
     }
 }

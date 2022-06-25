@@ -13,29 +13,38 @@ class TimeLabelViewModel: ObservableObject  {
         case countDown
         case countUp
         
-        func oldValue(_ newValue: Int) -> Int {
+        func tensOldValue(_ newValue: Int) -> Int {
             switch self {
             case .countDown:
                 return newValue + 1
             case .countUp:
-                return newValue - 1
+                return newValue == 0 ? 5 : (newValue - 1)
+            }
+        }
+        
+        func unitsOldValue(_ newValue: Int) -> Int {
+            switch self {
+            case .countDown:
+                return newValue + 1
+            case .countUp:
+                return newValue == 0 ? 9 : (newValue - 1)
             }
         }
     }
     
-    @Published var oldHourTens: Int
-    @Published var oldHourUnits: Int
-    @Published var oldMinuteTens: Int
-    @Published var oldMinuteUnits: Int
-    @Published var oldSecondTens: Int
-    @Published var oldSecondUnits: Int
+    var oldHourTens: Int
+    var oldHourUnits: Int
+    var oldMinuteTens: Int
+    var oldMinuteUnits: Int
+    var oldSecondTens: Int
+    var oldSecondUnits: Int
     
-    @Published var newHourTens: Int
-    @Published var newHourUnits: Int
-    @Published var newMinuteTens: Int
-    @Published var newMinuteUnits: Int
-    @Published var newSecondTens: Int
-    @Published var newSecondUnits: Int
+    var newHourTens: Int
+    var newHourUnits: Int
+    var newMinuteTens: Int
+    var newMinuteUnits: Int
+    var newSecondTens: Int
+    var newSecondUnits: Int
     
     @Published var updateHourTens: Bool = true
     @Published var updateHourUnits: Bool = true
@@ -45,10 +54,26 @@ class TimeLabelViewModel: ObservableObject  {
     @Published var updateSecondUnits: Bool = true
     
     private var updateType: UpdateType
-    private var timeLabel: TimeLabel
+    private var timeLabel: TimeLabel {
+        didSet {
+//            self.oldHourTens = self.updateType.tensOldValue(timeLabel.hourTens)
+//            self.oldHourUnits = self.updateType.unitsOldValue(timeLabel.hourUnits)
+//            self.oldMinuteTens = self.updateType.tensOldValue(timeLabel.minuteTens)
+//            self.oldMinuteUnits = self.updateType.unitsOldValue(timeLabel.minuteUnits)
+//            self.oldSecondTens = self.updateType.tensOldValue(timeLabel.secondTens)
+//            self.oldSecondUnits = self.updateType.unitsOldValue(timeLabel.secondUnits)
+//
+//            self.newHourTens = timeLabel.hourTens
+//            self.newHourUnits = timeLabel.hourUnits
+//            self.newMinuteTens = timeLabel.minuteTens
+//            self.newMinuteUnits = timeLabel.minuteUnits
+//            self.newSecondTens = timeLabel.secondTens
+//            self.newSecondUnits = timeLabel.secondUnits
+        }
+    }
     
     init(time: Int, type: UpdateType) {
-        let timeLabel = Times.toTimeLabel(time)
+        let timeLabel = TimeLabel.toTimeLabel(time)
         self.timeLabel = timeLabel
         self.newHourTens = timeLabel.hourTens
         self.newHourUnits = timeLabel.hourUnits
@@ -56,35 +81,35 @@ class TimeLabelViewModel: ObservableObject  {
         self.newMinuteUnits = timeLabel.minuteUnits
         self.newSecondTens = timeLabel.secondTens
         self.newSecondUnits = timeLabel.secondUnits
-        self.oldHourTens = type.oldValue(timeLabel.hourTens)
-        self.oldHourUnits = type.oldValue(timeLabel.hourUnits)
-        self.oldMinuteTens = type.oldValue(timeLabel.minuteTens)
-        self.oldMinuteUnits = type.oldValue(timeLabel.minuteUnits)
-        self.oldSecondTens = type.oldValue(timeLabel.secondTens)
-        self.oldSecondUnits = type.oldValue(timeLabel.secondUnits)
+        self.oldHourTens = type.tensOldValue(timeLabel.hourTens)
+        self.oldHourUnits = type.unitsOldValue(timeLabel.hourUnits)
+        self.oldMinuteTens = type.tensOldValue(timeLabel.minuteTens)
+        self.oldMinuteUnits = type.unitsOldValue(timeLabel.minuteUnits)
+        self.oldSecondTens = type.tensOldValue(timeLabel.secondTens)
+        self.oldSecondUnits = type.unitsOldValue(timeLabel.secondUnits)
         self.updateType = type
     }
     
     func updateTime(_ newTime: Int) {
-        self.timeLabel = Times.toTimeLabel(newTime)
+        self.timeLabel = TimeLabel.toTimeLabel(newTime)
         
         if timeLabel.secondTens != self.newSecondTens {
-            oldSecondTens = self.updateType.oldValue(timeLabel.secondTens)
-            updateSecondTens = false
-            newSecondTens = timeLabel.secondTens
-            
-            withAnimation(.easeIn(duration: 0.2)) {
-                self.updateSecondTens = true
+            self.oldSecondTens = self.updateType.tensOldValue(self.timeLabel.secondTens)
+            self.updateSecondTens = false
+            self.newSecondTens = timeLabel.secondTens
+
+            withAnimation(.easeIn(duration: 0.4)) { [weak self] in
+                self?.updateSecondTens = true
             }
         }
-        
+
         if timeLabel.secondUnits != self.newSecondUnits {
-            oldSecondUnits = self.updateType.oldValue(timeLabel.secondUnits)
-            updateSecondUnits = false
-            newSecondUnits = timeLabel.secondUnits
-            
-            withAnimation(.easeIn(duration: 0.2)) {
-                self.updateSecondUnits = true
+            self.oldSecondUnits = self.updateType.unitsOldValue(self.timeLabel.secondUnits)
+            self.updateSecondUnits = false
+            self.newSecondUnits = timeLabel.secondUnits
+
+            withAnimation(.easeIn(duration: 0.4)) { [weak self] in
+                self?.updateSecondUnits = true
             }
         }
         
