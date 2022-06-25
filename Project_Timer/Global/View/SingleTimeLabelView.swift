@@ -28,7 +28,6 @@ struct SingleTimeLabelView: View {
             .frame(maxHeight: geometry.size.height,
                    alignment: .top)
             .clipped()
-
         }
     }
 }
