@@ -13,7 +13,11 @@ struct TimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
+            Spacer()
+            
+            if viewModel.hourTensViewModel.newValue > 0 {
+                SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
+            }
             
             SingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)
             
@@ -34,10 +38,8 @@ struct TimeLabelView: View {
             SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
             
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
+            
+            Spacer()
         }
-    }
-    
-    var frameWidth: CGFloat {
-        return self.viewModel.newHourTens > 0 ? 250 : 220
     }
 }
