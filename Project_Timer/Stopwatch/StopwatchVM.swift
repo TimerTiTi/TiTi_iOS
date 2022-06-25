@@ -37,9 +37,9 @@ final class StopwatchVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, type: .countUp)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, type: .countUp)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, type: .countDown)
+        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, updateType: .countUp)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, updateType: .countUp)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, updateType: .countDown)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
