@@ -55,12 +55,11 @@ final class StopwatchViewController: UIViewController {
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
+        self.configureTimeOfStopwatch()
+        self.configureTimeOfSum()
+        self.configureTimeOfTarget()
         self.bindAll()
         self.viewModel?.updateTask()
-        
-        self.showTimeOfStopwatch()
-        self.showTimeOfSum()
-        self.showTimeOfTarget()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -150,7 +149,7 @@ extension StopwatchViewController {
     private func configureViewModel() {
         self.viewModel = StopwatchVM()
     }
-    private func showTimeOfStopwatch() {
+    private func configureTimeOfStopwatch() {
         guard let timeOfStopwatchViewModel = self.viewModel?.timeOfStopwatchViewModel else { return }
         
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfStopwatchViewModel))
@@ -161,7 +160,7 @@ extension StopwatchViewController {
         addChild(hostingController)
         TIMEofStopwatch.addSubview(hostingController.view)
     }
-    private func showTimeOfSum() {
+    private func configureTimeOfSum() {
         guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
         
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel))
@@ -172,7 +171,7 @@ extension StopwatchViewController {
         addChild(hostingController)
         TIMEofSum.addSubview(hostingController.view)
     }
-    private func showTimeOfTarget() {
+    private func configureTimeOfTarget() {
         guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
         
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel))
