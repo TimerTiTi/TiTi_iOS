@@ -10,6 +10,7 @@ import UIKit
 import Combine
 import AudioToolbox
 import AVFoundation
+import SwiftUI
 
 class TimerViewController: UIViewController {
     static let identifier = "TimerViewController"
@@ -54,6 +55,9 @@ class TimerViewController: UIViewController {
         self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
+        self.configureTimeOfTimer()
+        self.configureTimeOfSum()
+        self.configureTimeOfTarget()
         self.bindAll()
         self.viewModel?.updateTask()
     }
@@ -135,6 +139,39 @@ extension TimerViewController {
     }
     private func configureViewModel() {
         self.viewModel = TimerVM()
+    }
+    private func configureTimeOfTimer() {
+        guard let timeOfTimerVieWModel = self.viewModel?.timeOfTimerViewModel else { return }
+        
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTimerVieWModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofTimer.bounds
+        
+        addChild(hostingController)
+        TIMEofTimer.addSubview(hostingController.view)
+    }
+    private func configureTimeOfSum() {
+        guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
+        
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofSum.bounds
+        
+        addChild(hostingController)
+        TIMEofSum.addSubview(hostingController.view)
+    }
+    private func configureTimeOfTarget() {
+        guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
+        
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofTarget.bounds
+        
+        addChild(hostingController)
+        TIMEofTarget.addSubview(hostingController.view)
     }
 }
 
