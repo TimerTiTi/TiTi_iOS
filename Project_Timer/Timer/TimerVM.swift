@@ -23,13 +23,17 @@ final class TimerVM {
     @Published private(set) var runningUI = false
     @Published private(set) var soundAlert = false
     @Published private(set) var warningNewDate = false
-    private(set) var timerRunning = false
+    private(set) var timerRunning = false {
+        didSet {
+            self.timeOfTimerViewModel.isRunning = timerRunning
+        }
+    }
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
     
     private var timer = Timer()
     
-    var timeOfTimerViewModel: TimeLabelViewModel
+    var timeOfTimerViewModel: TimeOfTimerViewModel
     var timeOfSumViewModel: TimeLabelViewModel
     var timeOfTargetViewModel: TimeLabelViewModel
     
@@ -38,7 +42,7 @@ final class TimerVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfTimerViewModel = TimeLabelViewModel(time: currentTimes.timer, showAnimation: false)
+        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, showAnimation: false)
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, showAnimation: false)
         self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, showAnimation: false)
         self.requestNotificationAuthorization()

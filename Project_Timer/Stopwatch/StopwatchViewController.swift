@@ -163,7 +163,7 @@ extension StopwatchViewController {
     private func configureTimeOfSum() {
         guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel))
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel).foregroundColor(.white))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofSum.bounds
@@ -174,7 +174,7 @@ extension StopwatchViewController {
     private func configureTimeOfTarget() {
         guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel))
+        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel).foregroundColor(.white))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofTarget.bounds
