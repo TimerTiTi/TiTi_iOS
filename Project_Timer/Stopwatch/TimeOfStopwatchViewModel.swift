@@ -1,0 +1,22 @@
+//
+//  TimeOfStopwatchViewModel.swift
+//  Project_Timer
+//
+//  Created by 최수정 on 2022/06/27.
+//  Copyright © 2022 FDEE. All rights reserved.
+//
+
+import SwiftUI
+
+class TimeOfStopwatchViewModel: ObservableObject {
+    var timeLabelViewModel: TimeLabelViewModel
+    @Published var isRunning: Bool = false
+    
+    init(time: Int, showAnimation: Bool) {
+        self.timeLabelViewModel = TimeLabelViewModel(time: time, showAnimation: showAnimation)
+    }
+    
+    func updateTime(_ newTime: Int) {
+        self.timeLabelViewModel.updateTime(newTime)
+    }
+}
