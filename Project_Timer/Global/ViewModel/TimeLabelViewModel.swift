@@ -17,9 +17,10 @@ class TimeLabelViewModel: ObservableObject  {
     var secondUnitsViewModel: SingleTimeLabelViewModel
     
     private var showAnimation: Bool
+    @Published var timeLabel: TimeLabel
     @Published var time: Int {
         didSet {
-            let timeLabel = TimeLabel.toTimeLabel(time)
+            self.timeLabel = TimeLabel.toTimeLabel(time)
             hourTensViewModel.update(timeLabel.hourTens)
             hourUnitsViewModel.update(timeLabel.hourUnits)
             minuteTensViewModel.update(timeLabel.minuteTens)
@@ -31,6 +32,7 @@ class TimeLabelViewModel: ObservableObject  {
     
     init(time: Int, showAnimation: Bool) {
         self.showAnimation = showAnimation
+        self.timeLabel = TimeLabel.toTimeLabel(time)
         self.time = time
         let timeLabel = TimeLabel.toTimeLabel(time)
         self.hourTensViewModel = SingleTimeLabelViewModel(val: timeLabel.hourTens, showAnimation: showAnimation)
