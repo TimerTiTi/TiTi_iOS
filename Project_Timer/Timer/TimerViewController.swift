@@ -141,9 +141,9 @@ extension TimerViewController {
         self.viewModel = TimerVM()
     }
     private func configureTimeOfTimer() {
-        guard let timeOfTimerVieWModel = self.viewModel?.timeOfTimerViewModel else { return }
+        guard let timeOfTimerViewModel = self.viewModel?.timeOfTimerViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTimerVieWModel))
+        let hostingController = UIHostingController(rootView: TimeOfTimerView(viewModel: timeOfTimerViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofTimer.bounds
