@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706262869D58C00A5D3AA /* TimeOfTimerView.swift */; };
+		0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */; };
 		04504C5B286485BE00CA4C69 /* SingleTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */; };
 		04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */; };
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
@@ -110,6 +111,7 @@
 
 /* Begin PBXFileReference section */
 		043706262869D58C00A5D3AA /* TimeOfTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerView.swift; sourceTree = "<group>"; };
+		0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerViewModel.swift; sourceTree = "<group>"; };
 		04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelView.swift; sourceTree = "<group>"; };
 		04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
@@ -402,6 +404,7 @@
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
 				87035DF1282201A500055378 /* TimerVM.swift */,
+				0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */,
 				043706282869D59100A5D3AA /* View */,
 			);
 			path = Timer;
@@ -725,6 +728,7 @@
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
+				0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */,
 				87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */,
 				04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */,
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,

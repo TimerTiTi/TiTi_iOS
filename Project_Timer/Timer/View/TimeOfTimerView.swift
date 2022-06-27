@@ -9,20 +9,30 @@
 import SwiftUI
 
 struct TimeOfTimerView: View {
-    @ObservedObject var viewModel: TimeLabelViewModel
-    var finished: Bool {
-        viewModel.time == 0
+    @ObservedObject var viewModel: TimeOfTimerViewModel
+    
+    var color: Color {
+        // TODO: 컬러 상수화
+        switch viewModel.timerState {
+        case .normalRunning:
+            return Color(UIColor(named: "Blue") ?? .clear)
+        case .lessThan60Sec:
+            return Color(UIColor(named: "Text") ?? .clear)
+        case .stopped:
+            return Color.white
+        }
     }
     
     var body: some View {
         ZStack {
-            if finished {
+            if viewModel.finished {
                 Text("FINISH".localized())
                 .font(Font.custom("HGGGothicssiP60g", size: 300))
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
             } else {
-                TimeLabelView(viewModel: viewModel)
+                TimeLabelView(viewModel: viewModel.timeLabelViewModel)
+                    .foregroundColor(self.color)
             }
         }
     }
