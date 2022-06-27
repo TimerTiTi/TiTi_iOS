@@ -11,7 +11,13 @@ import Combine
 import UserNotifications
 
 final class TimerVM {
-    @Published private(set) var times: Times
+    @Published private(set) var times: Times {
+        didSet {
+            self.timeOfTimerViewModel.updateTime(times.timer)
+            self.timeOfSumViewModel.updateTime(times.sum)
+            self.timeOfTargetViewModel.updateTime(times.goal)
+        }
+    }
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
@@ -23,10 +29,18 @@ final class TimerVM {
     
     private var timer = Timer()
     
+    var timeOfTimerViewModel: TimeLabelViewModel
+    var timeOfSumViewModel: TimeLabelViewModel
+    var timeOfTargetViewModel: TimeLabelViewModel
+    
     init() {
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
+        self.timeOfTimerViewModel = TimeLabelViewModel(time: currentTimes.timer, showAnimation: false)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, showAnimation: false)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, showAnimation: false)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         
