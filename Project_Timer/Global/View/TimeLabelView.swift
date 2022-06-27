@@ -13,33 +13,26 @@ struct TimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Spacer()
-            
-            if viewModel.hourTensViewModel.newValue > 0 {
+            if viewModel.hourTensViewModel.value > 0 {
                 SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
             }
-            
+
             SingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)
-            
+
             Text(":")
-                .font(Font.custom("HGGGothicssiP60g", size: 70))
-                .minimumScaleFactor(0.1)
-                .foregroundColor(.white)
-            
+
             SingleTimeLabelView(viewModel: viewModel.minuteTensViewModel)
-            
+
             SingleTimeLabelView(viewModel: viewModel.minuteUnitsViewModel)
 
             Text(":")
-                .font(Font.custom("HGGGothicssiP60g", size: 70))
-                .minimumScaleFactor(0.1)
-                .foregroundColor(.white)
-            
+
             SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
-            
+
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
-            
-            Spacer()
         }
+        .font(Font.custom("HGGGothicssiP60g", size: 300))    // TODO: Contant로 폰트명 빼기
+        .foregroundColor(.white)
+        .minimumScaleFactor(0.1)
     }
 }
