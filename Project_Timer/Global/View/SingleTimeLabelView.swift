@@ -12,22 +12,10 @@ struct SingleTimeLabelView: View {
     @ObservedObject var viewModel: SingleTimeLabelViewModel
     
     var body: some View {
-        GeometryReader { geometry  in
-            VStack(spacing: 0) {
-                Group {
-                    Text("\(viewModel.oldValue)")
-                    Text("\(viewModel.newValue)")
-                }
-                .font(Font.custom("HGGGothicssiP60g", size: 70))    // TODO: Contant로 폰트명 빼기
-                .foregroundColor(.white)
-                .minimumScaleFactor(0.1)
-                .frame(width: geometry.size.width,
-                       height: geometry.size.height)
-            }
-            .offset(x: 0, y: viewModel.isUpdateComplete ? -geometry.size.height : 0)
-            .frame(maxHeight: geometry.size.height,
-                   alignment: .top)
-            .clipped()
-        }
+        Text("\(viewModel.value)")
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .aspectRatio(0.5, contentMode: .fit)
+            .transition(.opacity)
+            .id(viewModel.uuid.uuidString + "\(viewModel.value)")
     }
 }
