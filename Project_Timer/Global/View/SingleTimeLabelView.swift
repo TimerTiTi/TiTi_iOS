@@ -14,7 +14,7 @@ struct SingleTimeLabelView: View {
     var body: some View {
         Text("\(viewModel.value)")
             .frame(minWidth: 0, maxWidth: .infinity)
-            .aspectRatio(0.5, contentMode: .fit)
+            .aspectRatio(0.55, contentMode: .fit)
             .transition(.opacity)
             .id(viewModel.uuid.uuidString + "\(viewModel.value)")
     }
