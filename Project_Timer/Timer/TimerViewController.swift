@@ -19,11 +19,11 @@ class TimerViewController: UIViewController {
     @IBOutlet var outterProgress: CircularProgressView!
     
     @IBOutlet var sumTimeLabel: UILabel!
-    @IBOutlet var TIMEofSum: UILabel!
+    @IBOutlet var TIMEofSum: UIView!
     @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var TIMEofTimer: UILabel!
+    @IBOutlet var TIMEofTimer: UIView!
     @IBOutlet var targetTimeLabel: UILabel!
-    @IBOutlet var TIMEofTarget: UILabel!
+    @IBOutlet var TIMEofTarget: UIView!
     @IBOutlet var finishTimeLabel: UILabel!
     
     @IBOutlet var startStopBT: UIButton!
@@ -254,10 +254,10 @@ extension TimerViewController {
     }
     
     private func updateTIMELabels(times: Times) {
-        self.TIMEofSum.text = times.sum.toTimeString
-        let timerText = times.timer == 0 ? "FINISH".localized() : times.timer.toTimeString
-        self.TIMEofTimer.text = timerText
-        self.TIMEofTarget.text = times.goal.toTimeString
+//        self.TIMEofSum.text = times.sum.toTimeString
+//        let timerText = times.timer == 0 ? "FINISH".localized() : times.timer.toTimeString
+//        self.TIMEofTimer.text = timerText
+//        self.TIMEofTarget.text = times.goal.toTimeString
     }
     
     private func updateEndTime(goalTime: Int) {
@@ -278,7 +278,7 @@ extension TimerViewController {
         outterProgress.progressColor = BLUE!
         innerProgress.progressColor = UIColor.white
         startStopBT.backgroundColor = UIColor.clear
-        TIMEofTimer.textColor = BLUE
+//        TIMEofTimer.textColor = BLUE
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.setTimerBT.alpha = 0
@@ -303,7 +303,7 @@ extension TimerViewController {
         outterProgress.progressColor = UIColor.white
         innerProgress.progressColor = INNER!
         startStopBT.backgroundColor = startButtonColor!
-        TIMEofTimer.textColor = UIColor.white
+//        TIMEofTimer.textColor = UIColor.white
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.setTimerBT.alpha = 1
@@ -351,7 +351,7 @@ extension TimerViewController {
     private func updateRunningColor(times: Times) {
         guard self.viewModel?.runningUI == true,
               times.timer < 60 else { return }
-        self.TIMEofTimer.textColor = RED
+//        self.TIMEofTimer.textColor = RED
         self.outterProgress.progressColor = RED!
     }
     

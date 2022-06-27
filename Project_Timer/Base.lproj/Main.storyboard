@@ -63,26 +63,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKs-1O-JYl" customClass="CircularProgressView" customModule="TiTi" customModuleProvider="target">
                                         <rect key="frame" x="14" y="14" width="292" height="292"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsN-sW-KMK">
-                                                <rect key="frame" x="97.666666666666686" y="44" width="96.333333333333314" height="27"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HM7-w2-0sQ">
+                                                <rect key="frame" x="81" y="44" width="130" height="27"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="27" id="P2e-Dw-mik"/>
+                                                    <constraint firstAttribute="height" constant="27" id="DKk-sE-uwi"/>
+                                                    <constraint firstAttribute="width" constant="130" id="P5K-sh-iuT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="32"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="1" height="1"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-Mh-Apz">
-                                                <rect key="frame" x="97.666666666666686" y="221" width="96.333333333333314" height="27"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a02-W8-bdw">
+                                                <rect key="frame" x="81" y="221" width="130" height="27"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="27" id="z5B-aW-Mec"/>
+                                                    <constraint firstAttribute="height" constant="27" id="Ig9-1i-xFc"/>
+                                                    <constraint firstAttribute="width" constant="130" id="j9m-3A-Mcv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="32"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="1" height="1"/>
-                                            </label>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFc-6M-MNJ">
                                                 <rect key="frame" x="117.6666666666667" y="197" width="56.666666666666671" height="14"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
@@ -97,26 +91,22 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="dFc-6M-MNJ" firstAttribute="centerX" secondItem="fbG-Mh-Apz" secondAttribute="centerX" id="592-3n-3TC"/>
-                                            <constraint firstItem="naL-rE-KA8" firstAttribute="centerX" secondItem="fbG-Mh-Apz" secondAttribute="centerX" id="HjS-Xn-bbw"/>
-                                            <constraint firstItem="fbG-Mh-Apz" firstAttribute="top" secondItem="dFc-6M-MNJ" secondAttribute="bottom" constant="10" id="bxb-f3-PcN"/>
+                                            <constraint firstItem="a02-W8-bdw" firstAttribute="centerX" secondItem="dFc-6M-MNJ" secondAttribute="centerX" id="7SU-QV-YsN"/>
+                                            <constraint firstItem="naL-rE-KA8" firstAttribute="top" secondItem="a02-W8-bdw" secondAttribute="bottom" constant="10" id="ZUy-w8-Ppn"/>
+                                            <constraint firstItem="a02-W8-bdw" firstAttribute="top" secondItem="dFc-6M-MNJ" secondAttribute="bottom" constant="10" id="m3I-ok-foE"/>
                                             <constraint firstAttribute="width" constant="292" id="rUK-Oa-ieq"/>
                                             <constraint firstAttribute="height" constant="292" id="usa-Qr-XfH"/>
-                                            <constraint firstItem="naL-rE-KA8" firstAttribute="top" secondItem="fbG-Mh-Apz" secondAttribute="bottom" constant="10" id="wa1-d0-PCg"/>
+                                            <constraint firstItem="a02-W8-bdw" firstAttribute="centerX" secondItem="naL-rE-KA8" secondAttribute="centerX" id="yHC-1n-LZ9"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xW-xl-lfN">
-                                        <rect key="frame" x="54.666666666666671" y="130" width="210.66666666666663" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pb-Gt-3Kk">
+                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="TIp-rL-gsq"/>
+                                            <constraint firstAttribute="height" constant="60" id="tiI-rc-JeH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="70"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <size key="shadowOffset" width="1" height="1"/>
-                                    </label>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-pY-2wV">
-                                        <rect key="frame" x="142.66666666666669" y="103" width="34.333333333333343" height="17"/>
+                                        <rect key="frame" x="142.66666666666669" y="103.33333333333331" width="34.333333333333343" height="16.666666666666671"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -128,30 +118,33 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-C3-zgf">
-                                        <rect key="frame" x="54.666666666666671" y="130" width="210.66666666666663" height="60"/>
+                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="0Bl-XF-zM4"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="timerStartStopAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="MUN-9l-nuS"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="fbG-Mh-Apz" firstAttribute="top" secondItem="7xW-xl-lfN" secondAttribute="bottom" constant="45" id="0ov-TV-sk8"/>
+                                    <constraint firstItem="HM7-w2-0sQ" firstAttribute="centerX" secondItem="3pb-Gt-3Kk" secondAttribute="centerX" id="2aE-cM-RlO"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="centerX" secondItem="MKs-1O-JYl" secondAttribute="centerX" id="3Ys-Gr-Bi9"/>
+                                    <constraint firstItem="HM7-w2-0sQ" firstAttribute="centerX" secondItem="Vkm-0h-gfu" secondAttribute="centerX" id="6Gz-P5-oa0"/>
                                     <constraint firstItem="MKs-1O-JYl" firstAttribute="centerY" secondItem="ROV-CL-IbC" secondAttribute="centerY" id="8XY-Kf-7WQ"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="centerX" secondItem="WjQ-C3-zgf" secondAttribute="centerX" id="9kG-3o-coo"/>
                                     <constraint firstAttribute="height" constant="320" id="A40-hg-iGW"/>
-                                    <constraint firstItem="WjQ-C3-zgf" firstAttribute="height" secondItem="7xW-xl-lfN" secondAttribute="height" id="D0S-Hd-rx0"/>
-                                    <constraint firstItem="7xW-xl-lfN" firstAttribute="centerY" secondItem="MKs-1O-JYl" secondAttribute="centerY" id="HDN-LT-xU9"/>
-                                    <constraint firstItem="7xW-xl-lfN" firstAttribute="top" secondItem="Kl4-pY-2wV" secondAttribute="bottom" constant="10" id="KT4-u6-3pg"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="top" secondItem="Kl4-pY-2wV" secondAttribute="bottom" constant="10" id="Dl4-Vk-tbo"/>
                                     <constraint firstItem="MKs-1O-JYl" firstAttribute="centerX" secondItem="ROV-CL-IbC" secondAttribute="centerX" id="NfU-Bw-SaI"/>
-                                    <constraint firstItem="WjQ-C3-zgf" firstAttribute="centerY" secondItem="7xW-xl-lfN" secondAttribute="centerY" id="WUT-Sj-Kr3"/>
-                                    <constraint firstItem="7xW-xl-lfN" firstAttribute="top" secondItem="KsN-sW-KMK" secondAttribute="bottom" constant="45" id="YjB-Eu-dbC"/>
-                                    <constraint firstItem="Vkm-0h-gfu" firstAttribute="centerX" secondItem="KsN-sW-KMK" secondAttribute="centerX" id="cKr-GX-pLX"/>
-                                    <constraint firstItem="7xW-xl-lfN" firstAttribute="centerX" secondItem="MKs-1O-JYl" secondAttribute="centerX" id="cNy-Mi-7on"/>
-                                    <constraint firstItem="KsN-sW-KMK" firstAttribute="centerX" secondItem="7xW-xl-lfN" secondAttribute="centerX" id="dpY-Bq-Hjc"/>
-                                    <constraint firstItem="WjQ-C3-zgf" firstAttribute="width" secondItem="7xW-xl-lfN" secondAttribute="width" id="eXt-oA-z8x"/>
+                                    <constraint firstItem="a02-W8-bdw" firstAttribute="centerX" secondItem="3pb-Gt-3Kk" secondAttribute="centerX" id="RSa-E0-Ond"/>
+                                    <constraint firstItem="HM7-w2-0sQ" firstAttribute="top" secondItem="Vkm-0h-gfu" secondAttribute="bottom" constant="10" id="Tw6-0u-ngP"/>
+                                    <constraint firstItem="a02-W8-bdw" firstAttribute="top" secondItem="3pb-Gt-3Kk" secondAttribute="bottom" constant="45" id="cST-U2-0hS"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="centerY" secondItem="MKs-1O-JYl" secondAttribute="centerY" id="enl-aR-S1s"/>
                                     <constraint firstItem="Kl4-pY-2wV" firstAttribute="centerX" secondItem="MKs-1O-JYl" secondAttribute="centerX" id="jzA-3b-xQA"/>
-                                    <constraint firstItem="KsN-sW-KMK" firstAttribute="top" secondItem="Vkm-0h-gfu" secondAttribute="bottom" constant="10" id="rpw-CW-fD9"/>
-                                    <constraint firstItem="WjQ-C3-zgf" firstAttribute="centerX" secondItem="7xW-xl-lfN" secondAttribute="centerX" id="vnG-w1-W36"/>
-                                    <constraint firstItem="fbG-Mh-Apz" firstAttribute="centerX" secondItem="7xW-xl-lfN" secondAttribute="centerX" id="vuO-Wr-Q6J"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="centerY" secondItem="WjQ-C3-zgf" secondAttribute="centerY" id="mZU-1K-JKX"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="height" secondItem="WjQ-C3-zgf" secondAttribute="height" id="qfC-wN-GRf"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="top" secondItem="HM7-w2-0sQ" secondAttribute="bottom" constant="45" id="sjX-ky-oIp"/>
+                                    <constraint firstItem="3pb-Gt-3Kk" firstAttribute="width" secondItem="WjQ-C3-zgf" secondAttribute="width" id="why-Lk-SPU"/>
                                     <constraint firstAttribute="width" constant="320" id="x6w-M4-kD7"/>
                                 </constraints>
                             </view>
@@ -300,9 +293,9 @@
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="TIMEofSum" destination="KsN-sW-KMK" id="Yta-8S-oY7"/>
-                        <outlet property="TIMEofTarget" destination="fbG-Mh-Apz" id="5Ip-fb-TsT"/>
-                        <outlet property="TIMEofTimer" destination="7xW-xl-lfN" id="ia8-Yq-PSz"/>
+                        <outlet property="TIMEofSum" destination="HM7-w2-0sQ" id="5cL-Rd-ifN"/>
+                        <outlet property="TIMEofTarget" destination="a02-W8-bdw" id="rZu-rW-9y9"/>
+                        <outlet property="TIMEofTimer" destination="3pb-Gt-3Kk" id="gZb-df-gg5"/>
                         <outlet property="finishTimeLabel" destination="naL-rE-KA8" id="5SU-l1-AYa"/>
                         <outlet property="innerProgress" destination="MKs-1O-JYl" id="0Dl-w7-I5Q"/>
                         <outlet property="outterProgress" destination="ROV-CL-IbC" id="FyQ-L8-2xs"/>
@@ -2200,10 +2193,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2211,7 +2204,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -4764,13 +4757,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
