@@ -22,13 +22,17 @@ final class StopwatchVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
     @Published private(set) var warningNewDate = false
-    private(set) var timerRunning = false
+    private(set) var timerRunning = false {
+        didSet {
+            self.timeOfStopwatchViewModel.isRunning = timerRunning
+        }
+    }
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
     
     private var timer = Timer()
     
-    var timeOfStopwatchViewModel: TimeLabelViewModel
+    var timeOfStopwatchViewModel: TimeOfStopwatchViewModel
     var timeOfSumViewModel: TimeLabelViewModel
     var timeOfTargetViewModel: TimeLabelViewModel
     
@@ -37,7 +41,7 @@ final class StopwatchVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, showAnimation: true)
+        self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch, showAnimation: true)
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, showAnimation: true)
         self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, showAnimation: true)
         self.requestNotificationAuthorization()
