@@ -9,52 +9,24 @@
 import SwiftUI
 
 class SingleTimeLabelViewModel: ObservableObject {
-    enum UpdateType {
-        case countUp
-        case countDown
-    }
-    enum DigitType {
-        case tens
-        case units
-    }
-    
     @Published var isUpdateComplete: Bool
+    @Published var oldValue: Int
     @Published var newValue: Int
-    var oldValue: Int {
-        switch digitType {
-        case .tens:
-            switch updateType {
-            case .countUp:
-                return newValue == 0 ? 5 : (newValue - 1)
-            case .countDown:
-                return newValue == 5 ? 0 : (newValue + 1)
-            }
-        case .units:
-            switch updateType {
-            case .countUp:
-                return newValue == 0 ? 9 : (newValue - 1)
-            case .countDown:
-                return newValue == 9 ? 0 : (newValue + 1)
-            }
-        }
-    }
     private var showAnimation: Bool
-    private var updateType: UpdateType
-    private var digitType: DigitType
     
-    init(value: Int, updateType: UpdateType, digitType: DigitType, showAnimation: Bool) {
-        self.newValue = value
-        self.showAnimation = showAnimation
-        self.updateType = updateType
-        self.digitType = digitType
+    init(old: Int, new: Int, showAnimation: Bool) {
         self.isUpdateComplete = true
+        self.oldValue = old
+        self.newValue = new
+        self.showAnimation = showAnimation
     }
     
-    func update(_ val: Int) {
-        guard val != newValue else { return }
+    func update(old: Int, new: Int) {
+        guard new != newValue else { return }
         
-        self.newValue = val
+        self.oldValue = old
         self.isUpdateComplete = false
+        self.newValue = new
         
         if showAnimation {
             withAnimation(.easeInOut(duration: 0.5)) {
