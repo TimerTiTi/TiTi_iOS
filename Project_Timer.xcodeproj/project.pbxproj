@@ -250,6 +250,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0449545C286AD49D0068BB0E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87035DF1282201A500055378 /* TimerVM.swift */,
+				0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0449545D286AD4AD0068BB0E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */,
+				043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		04504C5E2864AC2300CA4C69 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,8 +433,7 @@
 				87459703263FEF6B00172C0F /* TimerViewController.swift */,
 				932EE0592490A78400B00774 /* SetViewController.swift */,
 				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
-				87035DF1282201A500055378 /* TimerVM.swift */,
-				0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */,
+				0449545C286AD49D0068BB0E /* ViewModel */,
 				043706282869D59100A5D3AA /* View */,
 			);
 			path = Timer;
@@ -427,8 +444,7 @@
 			children = (
 				874964F42649590700113E25 /* StopwatchViewController.swift */,
 				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
-				87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */,
-				043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */,
+				0449545D286AD4AD0068BB0E /* ViewModel */,
 				0437062F2869FAFC00A5D3AA /* View */,
 			);
 			path = Stopwatch;
