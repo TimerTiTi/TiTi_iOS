@@ -12,10 +12,14 @@ struct SingleTimeLabelView: View {
     @ObservedObject var viewModel: SingleTimeLabelViewModel
     
     var body: some View {
-        Text("\(viewModel.value)")
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .aspectRatio(0.55, contentMode: .fit)
-            .transition(.opacity)
-            .id(viewModel.uuid.uuidString + "\(viewModel.value)")
+        ZStack {
+            Text("\(viewModel.oldValue)")
+                .opacity(viewModel.isUpdateComplete ? 0 : 1)
+            
+            Text("\(viewModel.newValue)")
+                .opacity(viewModel.isUpdateComplete ? 1 : 0)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .aspectRatio(0.55, contentMode: .fit)
     }
 }

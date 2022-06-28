@@ -36,7 +36,9 @@ class TimeOfTimerViewModel: ObservableObject {
     
     init(time: Int, showAnimation: Bool) {
         self.time = time
-        self.timeLabelViewModel = TimeLabelViewModel(time: time, showAnimation: showAnimation)
+        self.timeLabelViewModel = TimeLabelViewModel(time: time,
+                                                     updateType: .countDown,
+                                                     showAnimation: showAnimation)
     }
     
     func updateTime(_ newTime: Int) {
