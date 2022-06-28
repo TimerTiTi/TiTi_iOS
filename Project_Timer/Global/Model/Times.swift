@@ -23,16 +23,16 @@ struct TimeLabel {
     let secondTens: Int
     let secondUnits: Int
     
-    static func toTimeLabel(_ sec: Int) -> TimeLabel {
+    init(_ sec: Int) {
         let second = sec % 60
         let hour = sec / 3600
         let minute = (sec / 60) - (hour * 60)
         
-        return TimeLabel(hourTens: hour / 10,
-                         hourUnits: hour % 10,
-                         minuteTens: minute / 10,
-                         minuteUnits: minute % 10,
-                         secondTens: second / 10,
-                         secondUnits: second % 10)
+        self.hourTens = hour / 10
+        self.hourUnits = hour % 10
+        self.minuteTens = minute / 10
+        self.minuteUnits = minute % 10
+        self.secondTens = second / 10
+        self.secondUnits = second % 10
     }
 }
