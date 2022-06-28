@@ -44,7 +44,7 @@ final class TimerVM {
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, showAnimation: false)
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum,
-                                                     updateType: .countDown,
+                                                     updateType: .countUp,
                                                      showAnimation: false)
         self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal,
                                                         updateType: .countDown,
