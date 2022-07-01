@@ -32,9 +32,9 @@ final class StopwatchVM {
     
     private var timer = Timer()
     
-    var timeOfStopwatchViewModel: TimeOfStopwatchViewModel
-    var timeOfSumViewModel: TimeLabelViewModel
-    var timeOfTargetViewModel: TimeLabelViewModel
+    let timeOfStopwatchViewModel: TimeOfStopwatchViewModel
+    let timeOfSumViewModel: TimeLabelViewModel
+    let timeOfTargetViewModel: TimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
