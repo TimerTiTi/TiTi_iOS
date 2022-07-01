@@ -31,8 +31,16 @@ struct TimeOfTimerView: View {
                 .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
             } else {
-                TimeLabelView(viewModel: viewModel.timeLabelViewModel)
-                    .foregroundColor(self.color)
+                HStack {
+                    if viewModel.time < 0 {
+                        Text("+")
+                            .font(Font.custom("HGGGothicssiP60g", size: 300))
+                            .minimumScaleFactor(0.1)
+                    }
+                    
+                    TimeLabelView(viewModel: viewModel.timeLabelViewModel)
+                }
+                .foregroundColor(self.color)
             }
         }
     }
