@@ -59,7 +59,7 @@ class taskSelectViewController: UIViewController {
                 alert.addTextField { (inputNewNickName) in
                     inputNewNickName.placeholder = "New subject".localized()
                     inputNewNickName.textAlignment = .center
-                    inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                    inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
                     //기존 내용 보이기
                     inputNewNickName.text = self.tasks[indexPath.row]
                 }
@@ -84,7 +84,7 @@ class taskSelectViewController: UIViewController {
         alert.addTextField { (inputNewNickName) in
             inputNewNickName.placeholder = "New subject".localized()
             inputNewNickName.textAlignment = .center
-            inputNewNickName.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+            inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
         }
         alert.addAction(cancle)
         alert.addAction(ok)

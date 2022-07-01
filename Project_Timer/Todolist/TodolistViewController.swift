@@ -122,7 +122,7 @@ extension TodolistViewController {
             alert.addTextField { textField in
                 textField.placeholder = "New Todo's content".localized()
                 textField.textAlignment = .center
-                textField.font = UIFont(name: "HGGGothicssiP60g", size: 17)
+                textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
                 textField.text = originText
             }
             let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
