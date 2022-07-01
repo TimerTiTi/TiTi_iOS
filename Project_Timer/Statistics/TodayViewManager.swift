@@ -22,7 +22,7 @@ class TodayViewManager {
     var startColor: Int = 1
     var reverseColor: Bool = false
     
-    var COLOR: UIColor = UIColor(named: "D1")!
+    var COLOR: UIColor = TiTiColor.D1!
     
     func saveChecks(_ check1: UIButton, _ check2: UIButton, _ check3: UIButton) {
         let c1 = check1.isSelected

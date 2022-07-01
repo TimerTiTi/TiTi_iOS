@@ -33,10 +33,10 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
     
-    var COLOR = UIColor(named: "Background2")
-    let RED = UIColor(named: "Text")
-    let INNER = UIColor(named: "innerColor")
-    let startButtonColor = UIColor(named: "startButtonColor")
+    var COLOR = TiTiColor.background2
+    let RED = TiTiColor.text
+    let INNER = TiTiColor.innerColor
+    let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: StopwatchVM?
     
@@ -111,7 +111,7 @@ final class StopwatchViewController: UIViewController {
 extension StopwatchViewController {
     private func updateTabbarColor() {
         self.tabBarController?.tabBar.tintColor = .white
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: "tabbarNonSelectColor")
+        self.tabBarController?.tabBar.unselectedItemTintColor = TiTiColor.tabbarNonSelect
         self.tabBarController?.tabBar.barTintColor = .clear
     }
     
@@ -287,8 +287,8 @@ extension StopwatchViewController {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(UIColor(named: "lightpink"), for: .normal)
-        self.taskButton.layer.borderColor = UIColor(named: "lightpink")?.cgColor
+        self.taskButton.setTitleColor(TiTiColor.lightPink, for: .normal)
+        self.taskButton.layer.borderColor = TiTiColor.lightPink?.cgColor
     }
     
     private func setTaskWhiteColor() {

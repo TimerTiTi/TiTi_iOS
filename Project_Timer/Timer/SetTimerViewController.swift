@@ -33,7 +33,7 @@ class SetTimerViewController: UIViewController {
     var s: Int = 0
     var second: Int = 2400
     
-    let BLUE = UIColor(named: "Blue")
+    let BLUE = TiTiColor.blue
     
     
     
