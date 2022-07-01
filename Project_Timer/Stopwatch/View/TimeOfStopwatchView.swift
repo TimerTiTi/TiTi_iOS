@@ -13,7 +13,7 @@ struct TimeOfStopwatchView: View {
     
     var color: Color {
         if viewModel.isRunning {
-            return Color(UIColor(named: "Background2") ?? .clear)
+            return Color.stopWatchColor
         } else {
             return Color.white
         }
