@@ -32,27 +32,8 @@ class TimeLabelViewModel: ObservableObject  {
         }
     }
     
-    @Published var timeLabel: TimeLabel
-    @Published var time: Int {
-        didSet {
-            self.timeLabel = TimeLabel(time)
-            hourTensViewModel.update(old: updateType.tensOldValue(timeLabel.hourTens),
-                                     new: timeLabel.hourTens)
-            hourUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.hourUnits),
-                                      new: timeLabel.hourUnits)
-            minuteTensViewModel.update(old: updateType.tensOldValue(timeLabel.minuteTens),
-                                       new: timeLabel.minuteTens)
-            minuteUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.minuteUnits),
-                                        new: timeLabel.minuteUnits)
-            secondTensViewModel.update(old: updateType.tensOldValue(timeLabel.secondTens),
-                                       new: timeLabel.secondTens)
-            secondUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.secondUnits),
-                                        new: timeLabel.secondUnits)
-        }
-    }
-    private var showAnimation: Bool
+    @Published var time: Int
     private var updateType: UpdateType
-    
     var hourTensViewModel: SingleTimeLabelViewModel
     var hourUnitsViewModel: SingleTimeLabelViewModel
     var minuteTensViewModel: SingleTimeLabelViewModel
@@ -60,33 +41,47 @@ class TimeLabelViewModel: ObservableObject  {
     var secondTensViewModel: SingleTimeLabelViewModel
     var secondUnitsViewModel: SingleTimeLabelViewModel
     
-    init(time: Int, updateType: UpdateType, showAnimation: Bool) {
-        let timeLabel = TimeLabel(time)
-        self.timeLabel = timeLabel
-        self.time = time
-        self.showAnimation = showAnimation
-        self.updateType = updateType
-        self.hourTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.hourTens),
-                                                          new: timeLabel.hourTens,
-                                                          showAnimation: showAnimation)
-        self.hourUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.hourUnits),
-                                                           new: timeLabel.hourUnits,
-                                                           showAnimation: showAnimation)
-        self.minuteTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.minuteTens),
-                                                            new: timeLabel.minuteTens,
-                                                            showAnimation: showAnimation)
-        self.minuteUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.minuteUnits),
-                                                             new: timeLabel.minuteUnits,
-                                                             showAnimation: showAnimation)
-        self.secondTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.secondTens),
-                                                            new: timeLabel.secondTens,
-                                                            showAnimation: showAnimation)
-        self.secondUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.secondUnits),
-                                                             new: timeLabel.secondUnits,
-                                                             showAnimation: showAnimation)
+    var timeLabel: TimeLabel {
+        return TimeLabel(self.time)
     }
     
-    func updateTime(_ newTime: Int) {
+    init(time: Int, updateType: UpdateType) {
+        self.time = time
+        self.updateType = updateType
+        let timeLabel = TimeLabel(time)
+        self.hourTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.hourTens),
+                                                          new: timeLabel.hourTens)
+        self.hourUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.hourUnits),
+                                                           new: timeLabel.hourUnits)
+        self.minuteTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.minuteTens),
+                                                            new: timeLabel.minuteTens)
+        self.minuteUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.minuteUnits),
+                                                             new: timeLabel.minuteUnits)
+        self.secondTensViewModel = SingleTimeLabelViewModel(old: updateType.tensOldValue(timeLabel.secondTens),
+                                                            new: timeLabel.secondTens)
+        self.secondUnitsViewModel = SingleTimeLabelViewModel(old: updateType.unitsOldValue(timeLabel.secondUnits),
+                                                             new: timeLabel.secondUnits)
+    }
+    
+    func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
+        hourTensViewModel.update(old: updateType.tensOldValue(timeLabel.hourTens),
+                                 new: timeLabel.hourTens,
+                                 showsAnimation: showsAnimation)
+        hourUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.hourUnits),
+                                  new: timeLabel.hourUnits,
+                                  showsAnimation: showsAnimation)
+        minuteTensViewModel.update(old: updateType.tensOldValue(timeLabel.minuteTens),
+                                   new: timeLabel.minuteTens,
+                                   showsAnimation: showsAnimation)
+        minuteUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.minuteUnits),
+                                    new: timeLabel.minuteUnits,
+                                    showsAnimation: showsAnimation)
+        secondTensViewModel.update(old: updateType.tensOldValue(timeLabel.secondTens),
+                                   new: timeLabel.secondTens,
+                                   showsAnimation: showsAnimation)
+        secondUnitsViewModel.update(old: updateType.unitsOldValue(timeLabel.secondUnits),
+                                    new: timeLabel.secondUnits,
+                                    showsAnimation: showsAnimation)
     }
 }

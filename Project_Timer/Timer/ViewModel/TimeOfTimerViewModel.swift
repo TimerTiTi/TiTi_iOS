@@ -17,11 +17,7 @@ class TimeOfTimerViewModel: ObservableObject {
     
     var timeLabelViewModel: TimeLabelViewModel
     @Published var isRunning: Bool = false
-    @Published var time: Int {
-        didSet {
-            self.timeLabelViewModel.updateTime(abs(time))
-        }
-    }
+    @Published var time: Int
     
     var finished: Bool {
         self.time == 0
@@ -34,14 +30,13 @@ class TimeOfTimerViewModel: ObservableObject {
         }
     }
     
-    init(time: Int, showAnimation: Bool) {
+    init(time: Int) {
         self.time = time
-        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time),
-                                                     updateType: .countDown,
-                                                     showAnimation: showAnimation)
+        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time), updateType: .countDown)
     }
     
-    func updateTime(_ newTime: Int) {
+    func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
+        self.timeLabelViewModel.updateTime(abs(newTime), showsAnimation: showsAnimation)
     }
 }
