@@ -11,13 +11,7 @@ import Combine
 import UserNotifications
 
 final class TimerVM {
-    @Published private(set) var times: Times {
-        didSet {
-            self.timeOfTimerViewModel.updateTime(times.timer)
-            self.timeOfSumViewModel.updateTime(times.sum)
-            self.timeOfTargetViewModel.updateTime(times.goal)
-        }
-    }
+    @Published private(set) var times: Times
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
@@ -42,13 +36,9 @@ final class TimerVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, showAnimation: false)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum,
-                                                     updateType: .countUp,
-                                                     showAnimation: false)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal,
-                                                        updateType: .countDown,
-                                                        showAnimation: false)
+        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, updateType: .countUp)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, updateType: .countDown)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         
@@ -84,6 +74,10 @@ final class TimerVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
+        // TODO: showsAnimation 여부를 UserDefault에서 가져오도록
+        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: true)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: true)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: true)
     }
     
     func updateDaily() {
@@ -122,7 +116,10 @@ final class TimerVM {
     
     func timerReset() {
         RecordController.shared.recordTimes.resetTimer()
-        self.updateTimes()
+        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: false)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: false)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: false)
     }
     
     func updateTimerTime(to timer: Int) {
