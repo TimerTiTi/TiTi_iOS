@@ -13,10 +13,10 @@ class SingleTimeLabelViewModel: ObservableObject {
     @Published var oldValue: Int
     @Published var newValue: Int
     
-    init(old: Int, new: Int) {
+    init(_ value: Int) {
         self.isNewValueVisible = true
-        self.oldValue = old
-        self.newValue = new
+        self.oldValue = value
+        self.newValue = value
     }
     
     func update(old: Int, new: Int, showsAnimation: Bool) {

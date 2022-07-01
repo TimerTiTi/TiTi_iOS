@@ -37,8 +37,8 @@ final class TimerVM {
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, updateType: .countUp)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, updateType: .countDown)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         
@@ -116,10 +116,7 @@ final class TimerVM {
     
     func timerReset() {
         RecordController.shared.recordTimes.resetTimer()
-        self.times = RecordController.shared.recordTimes.currentTimes()
-        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: false)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: false)
-        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: false)
+        self.updateTimes()
     }
     
     func updateTimerTime(to timer: Int) {

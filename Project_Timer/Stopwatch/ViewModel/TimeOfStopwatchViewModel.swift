@@ -13,7 +13,7 @@ class TimeOfStopwatchViewModel: ObservableObject {
     @Published var isRunning: Bool = false
     
     init(time: Int) {
-        self.timeLabelViewModel = TimeLabelViewModel(time: time, updateType: .countUp)
+        self.timeLabelViewModel = TimeLabelViewModel(time: time)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
