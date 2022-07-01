@@ -11,13 +11,7 @@ import Combine
 import UserNotifications
 
 final class StopwatchVM {
-    @Published private(set) var times: Times {
-        didSet {
-            self.timeOfStopwatchViewModel.updateTime(times.stopwatch)
-            self.timeOfSumViewModel.updateTime(times.sum)
-            self.timeOfTargetViewModel.updateTime(times.goal)
-        }
-    }
+    @Published private(set) var times: Times
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
     @Published private(set) var runningUI = false
@@ -41,13 +35,9 @@ final class StopwatchVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch, showAnimation: true)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum,
-                                                     updateType: .countUp,
-                                                     showAnimation: true)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal,
-                                                        updateType: .countDown,
-                                                        showAnimation: true)
+        self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, updateType: .countUp)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, updateType: .countDown)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
@@ -78,6 +68,10 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
+        // TODO: showsAnimation 여부를 UserDefault에서 가져오기
+        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: true)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: true)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: true)
     }
     
     func updateDaily() {
@@ -115,7 +109,10 @@ final class StopwatchVM {
     
     func stopwatchReset() {
         RecordController.shared.recordTimes.resetStopwatch()
-        self.updateTimes()
+        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: false)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: false)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: false)
     }
     
     func newRecord() {
