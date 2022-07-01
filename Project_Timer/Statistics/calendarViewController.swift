@@ -51,9 +51,9 @@ class calendarViewController: UIViewController {
 extension calendarViewController {
     func setCalendar() {
         calendar.appearance.headerDateFormat = "YYYY.MM"
-        calendar.appearance.headerTitleFont = UIFont(name: "HGGGothicssiP60g", size: 25)
-        calendar.appearance.weekdayFont = UIFont(name: "HGGGothicssiP60g", size: 13)
-        calendar.appearance.titleFont = UIFont(name: "HGGGothicssiP60g", size: 20)
+        calendar.appearance.headerTitleFont = TiTiFont.HGGGothicssiP60g(size: 25)
+        calendar.appearance.weekdayFont = TiTiFont.HGGGothicssiP60g(size: 13)
+        calendar.appearance.titleFont = TiTiFont.HGGGothicssiP60g(size: 20)
     }
     
     func setColor() {
