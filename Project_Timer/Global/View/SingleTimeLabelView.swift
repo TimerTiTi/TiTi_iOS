@@ -14,10 +14,10 @@ struct SingleTimeLabelView: View {
     var body: some View {
         ZStack {
             Text("\(viewModel.oldValue)")
-                .opacity(viewModel.isUpdateComplete ? 0 : 1)
+                .opacity(viewModel.isNewValueVisible ? 0 : 1)
             
             Text("\(viewModel.newValue)")
-                .opacity(viewModel.isUpdateComplete ? 1 : 0)
+                .opacity(viewModel.isNewValueVisible ? 1 : 0)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .aspectRatio(0.55, contentMode: .fit)
