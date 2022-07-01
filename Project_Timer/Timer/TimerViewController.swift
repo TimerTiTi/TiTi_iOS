@@ -34,10 +34,10 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
     
-    let BLUE = UIColor(named: "Blue")
-    let RED = UIColor(named: "Text")
-    let INNER = UIColor(named: "innerColor")
-    let startButtonColor = UIColor(named: "startButtonColor")
+    let BLUE = TiTiColor.blue
+    let RED = TiTiColor.text
+    let INNER = TiTiColor.innerColor
+    let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
     
@@ -107,7 +107,7 @@ class TimerViewController: UIViewController {
 extension TimerViewController {
     private func updateTabbarColor() {
         self.tabBarController?.tabBar.tintColor = .white
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(named: "tabbarNonSelectColor")
+        self.tabBarController?.tabBar.unselectedItemTintColor = TiTiColor.tabbarNonSelect
         self.tabBarController?.tabBar.barTintColor = .clear
     }
     
@@ -281,8 +281,8 @@ extension TimerViewController {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(UIColor(named: "lightpink"), for: .normal)
-        self.taskButton.layer.borderColor = UIColor(named: "lightpink")?.cgColor
+        self.taskButton.setTitleColor(TiTiColor.lightPink, for: .normal)
+        self.taskButton.layer.borderColor = TiTiColor.lightPink?.cgColor
     }
     
     private func setTaskWhiteColor() {

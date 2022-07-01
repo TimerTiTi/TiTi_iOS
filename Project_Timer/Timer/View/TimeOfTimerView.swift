@@ -15,9 +15,9 @@ struct TimeOfTimerView: View {
         // TODO: 컬러 상수화
         switch viewModel.timerState {
         case .normalRunning:
-            return Color(UIColor(named: "Blue") ?? .clear)
+            return Color(TiTiColor.blue ?? .clear)
         case .lessThan60Sec:
-            return Color(UIColor(named: "Text") ?? .clear)
+            return Color(TiTiColor.text ?? .clear)
         case .stopped:
             return Color.white
         }
