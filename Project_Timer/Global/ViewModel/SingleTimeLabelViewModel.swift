@@ -9,12 +9,12 @@
 import SwiftUI
 
 class SingleTimeLabelViewModel: ObservableObject {
-    @Published var isUpdateComplete: Bool
+    @Published var isNewValueVisible: Bool
     @Published var oldValue: Int
     @Published var newValue: Int
     
     init(old: Int, new: Int) {
-        self.isUpdateComplete = true
+        self.isNewValueVisible = true
         self.oldValue = old
         self.newValue = new
     }
@@ -23,15 +23,15 @@ class SingleTimeLabelViewModel: ObservableObject {
         guard new != newValue else { return }
         
         self.oldValue = old
-        self.isUpdateComplete = false
+        self.isNewValueVisible = false
         self.newValue = new
         
         if showsAnimation {
             withAnimation(.easeInOut(duration: 0.5)) {
-                self.isUpdateComplete = true
+                self.isNewValueVisible = true
             }
         } else {
-            self.isUpdateComplete = true
+            self.isNewValueVisible = true
         }
     }
 }
