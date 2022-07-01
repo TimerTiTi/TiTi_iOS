@@ -15,6 +15,7 @@
 		04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */; };
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
+		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
@@ -120,6 +121,7 @@
 		04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
+		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 				875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */,
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
 				875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */,
+				04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
+				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
