@@ -31,7 +31,7 @@ struct TimeLabelView: View {
 
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
-        .font(Font.custom("HGGGothicssiP60g", size: 300))    // TODO: Contant로 폰트명 빼기
+        .font(TiTiFont.HGGGothicssiP60g(size: 300))
         .minimumScaleFactor(0.1)
     }
 }

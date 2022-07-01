@@ -17,6 +17,7 @@
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
+		04FA75D8286F2AB900BAE2B2 /* TiTiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
@@ -124,6 +125,7 @@
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
+		04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFont.swift; sourceTree = "<group>"; };
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				04FA75D5286F263300BAE2B2 /* TiTiColor.swift */,
+				04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -750,6 +753,7 @@
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
+				04FA75D8286F2AB900BAE2B2 /* TiTiFont.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
