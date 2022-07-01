@@ -32,7 +32,7 @@ class TimeOfTimerViewModel: ObservableObject {
     
     init(time: Int) {
         self.time = time
-        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time), updateType: .countDown)
+        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time))
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {

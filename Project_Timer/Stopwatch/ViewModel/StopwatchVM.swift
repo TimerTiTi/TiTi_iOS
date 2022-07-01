@@ -36,8 +36,8 @@ final class StopwatchVM {
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, updateType: .countUp)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, updateType: .countDown)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum)
+        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
@@ -109,10 +109,7 @@ final class StopwatchVM {
     
     func stopwatchReset() {
         RecordController.shared.recordTimes.resetStopwatch()
-        self.times = RecordController.shared.recordTimes.currentTimes()
-        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: false)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: false)
-        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: false)
+        self.updateTimes()
     }
     
     func newRecord() {
