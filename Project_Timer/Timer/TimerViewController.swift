@@ -20,11 +20,11 @@ class TimerViewController: UIViewController {
     @IBOutlet var outterProgress: CircularProgressView!
     
     @IBOutlet var sumTimeLabel: UILabel!
-    @IBOutlet var TIMEofSum: UIView!
+    @IBOutlet var TIMEofSumFrameView: UIView!
     @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var TIMEofTimer: UIView!
+    @IBOutlet var TIMEofTimerFrameView: UIView!
     @IBOutlet var targetTimeLabel: UILabel!
-    @IBOutlet var TIMEofTarget: UIView!
+    @IBOutlet var TIMEofTargetFrameView: UIView!
     @IBOutlet var finishTimeLabel: UILabel!
     
     @IBOutlet var startStopBT: UIButton!
@@ -119,9 +119,9 @@ extension TimerViewController {
     private func configureShadow() {
         self.setTimerBT.configureShadow(opacity: 0.5, radius: 4)
         self.settingBT.configureShadow(opacity: 0.5, radius: 4)
-        self.TIMEofSum.configureShadow(opacity: 0.6, radius: 2)
-        self.TIMEofTimer.configureShadow(opacity: 0.6, radius: 2)
-        self.TIMEofTarget.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofSumFrameView.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofTimerFrameView.configureShadow(opacity: 0.6, radius: 2)
+        self.TIMEofTargetFrameView.configureShadow(opacity: 0.6, radius: 2)
     }
     private func configureProgress() {
         self.outterProgress.progressWidth = 20.0
@@ -146,10 +146,10 @@ extension TimerViewController {
         let hostingController = UIHostingController(rootView: TimeOfTimerView(viewModel: timeOfTimerViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
-        hostingController.view.frame = TIMEofTimer.bounds
+        hostingController.view.frame = TIMEofTimerFrameView.bounds
         
         addChild(hostingController)
-        TIMEofTimer.addSubview(hostingController.view)
+        TIMEofTimerFrameView.addSubview(hostingController.view)
     }
     private func configureTimeOfSum() {
         guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
@@ -157,10 +157,10 @@ extension TimerViewController {
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel).foregroundColor(.white))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
-        hostingController.view.frame = TIMEofSum.bounds
+        hostingController.view.frame = TIMEofSumFrameView.bounds
         
         addChild(hostingController)
-        TIMEofSum.addSubview(hostingController.view)
+        TIMEofSumFrameView.addSubview(hostingController.view)
     }
     private func configureTimeOfTarget() {
         guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
@@ -168,10 +168,10 @@ extension TimerViewController {
         let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel).foregroundColor(.white))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
-        hostingController.view.frame = TIMEofTarget.bounds
+        hostingController.view.frame = TIMEofTargetFrameView.bounds
         
         addChild(hostingController)
-        TIMEofTarget.addSubview(hostingController.view)
+        TIMEofTargetFrameView.addSubview(hostingController.view)
     }
 }
 
