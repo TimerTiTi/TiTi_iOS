@@ -33,9 +33,9 @@ final class TimerVM {
     
     private var timer = Timer()
     
-    var timeOfTimerViewModel: TimeOfTimerViewModel
-    var timeOfSumViewModel: TimeLabelViewModel
-    var timeOfTargetViewModel: TimeLabelViewModel
+    let timeOfTimerViewModel: TimeOfTimerViewModel
+    let timeOfSumViewModel: TimeLabelViewModel
+    let timeOfTargetViewModel: TimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
