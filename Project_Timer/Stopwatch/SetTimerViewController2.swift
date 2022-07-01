@@ -46,7 +46,7 @@ class SetTimerViewController2: UIViewController {
     var m: Int = 0
     var s: Int = 0
     var goalTime: Int = 21600
-    var COLOR = UIColor(named: "Background2")
+    var COLOR = TiTiColor.background2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class SetTimerViewController2: UIViewController {
         setRadius()
         
         goalTime = RecordController.shared.recordTimes.settedGoalTime
-        COLOR = UserDefaults.standard.colorForKey(key: "color") as? UIColor ?? UIColor(named: "Background2")
+        COLOR = UserDefaults.standard.colorForKey(key: "color") as? UIColor ?? TiTiColor.background2
         Label_timer.text = printTime(temp: goalTime)
         
         Text_H.keyboardType = .numberPad

@@ -52,7 +52,7 @@ extension SettingViewController {
     private func updateTabbarColor() {
         self.tabBarController?.tabBar.tintColor = .label
         self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = UIColor(named: "tabbarBackground")
+        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
     }
     
     private func configureCollectionView() {

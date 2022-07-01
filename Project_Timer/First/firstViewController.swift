@@ -55,11 +55,11 @@ class firstViewController: UIViewController {
     @IBOutlet var howToUse: UILabel!
     @IBOutlet var youtube: UIButton!
     
-    let BLUE = UIColor(named: "Blue")
-    let BUTTON = UIColor(named: "Button")
-    let CLICK = UIColor(named: "Click")
-    let RED = UIColor(named: "Text")
-    let INNER = UIColor(named: "innerColor")
+    let BLUE = TiTiColor.blue
+    let BUTTON = TiTiColor.button
+    let CLICK = TiTiColor.click
+    let RED = TiTiColor.text
+    let INNER = TiTiColor.innerColor
     
     var nextCount: Int = 1
     var isFirst: Bool = true
@@ -131,7 +131,7 @@ extension firstViewController {
         dock.layer.cornerRadius = 20
     }
     func setShadow() {
-        startStopBT.layer.shadowColor = UIColor(named: "darkRed")!.cgColor
+        startStopBT.layer.shadowColor = TiTiColor.darkRed!.cgColor
         startStopBT.layer.shadowOpacity = 0.3
         startStopBT.layer.shadowOffset = CGSize.zero
         startStopBT.layer.shadowRadius = 3
@@ -177,7 +177,7 @@ extension firstViewController {
             self.setTimerBTLabel.alpha = 1
             self.settingBTLabel.alpha = 1
             self.taskButton.transform = CGAffineTransform(translationX: 0, y: 0)
-            self.dock.backgroundColor = UIColor(named: "dock")
+            self.dock.backgroundColor = TiTiColor.dock
         })
         //animation test
         UIView.animate(withDuration: 0.5, animations: {

@@ -187,7 +187,7 @@ extension StatisticsViewController {
     }
     
     func setShadow(_ view: UIView) {
-        view.layer.shadowColor = UIColor(named: "shadow")?.cgColor
+        view.layer.shadowColor = TiTiColor.shadow?.cgColor
         view.layer.shadowOpacity = 0.5
         view.layer.shadowOffset = CGSize.zero
         view.layer.shadowRadius = 5

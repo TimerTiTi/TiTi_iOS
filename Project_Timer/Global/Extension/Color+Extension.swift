@@ -13,7 +13,7 @@ extension Color {
         if let userColor = UserDefaults.standard.colorForKey(key: "color") {
             return Color(userColor)
         } else {
-            return Color(UIColor(named: "Background2") ?? .clear)
+            return Color(TiTiColor.background2 ?? .clear)
         }
     }
 }
