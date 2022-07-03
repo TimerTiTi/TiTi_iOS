@@ -11,7 +11,7 @@ import Alamofire
 
 struct Network: NetworkFetchable {
     func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void) {
-        print("network request: \(url)")
+//        print("network request: \(url)")
         AF.request(url, method: method)
             .response { response in
                 completion(self.configureNetworkResult(response: response))
