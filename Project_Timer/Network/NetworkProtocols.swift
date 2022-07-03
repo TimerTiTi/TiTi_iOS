@@ -28,3 +28,7 @@ protocol UpdateInfosFetchable {
 protocol YoutubeLinkFetchable {
     func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void)
 }
+
+protocol SurveysFetchable {
+    func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void)
+}

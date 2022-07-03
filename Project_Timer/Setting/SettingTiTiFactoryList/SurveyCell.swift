@@ -26,7 +26,7 @@ final class SurveyCell: UICollectionViewCell {
         didSet {
             if isSelected {
                 guard let url = self.info?.url else { return }
-                self.delegate?.showWebview(url: url)
+                self.delegate?.showWebview(url: url.value)
             }
         }
     }
@@ -36,7 +36,7 @@ final class SurveyCell: UICollectionViewCell {
         self.info = info
         
         self.contentView.backgroundColor = UIColor.secondarySystemGroupedBackground
-        self.titleLabel.text = info.title
+        self.titleLabel.text = info.title.value
         self.touchableMark.isHidden = false
         self.warningLabel.isHidden = true
     }

@@ -53,7 +53,9 @@ extension SettingTiTiFactoryListVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = SurveyListVM()
+        // MARK: NetworkController 생성 관련 로직고민이 필요
+        let networkController = NetworkController(network: Network())
+        self.viewModel = SurveyListVM(networkController: networkController)
     }
     
     private func stopLoader() {
