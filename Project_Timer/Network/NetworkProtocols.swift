@@ -20,3 +20,7 @@ protocol VersionFetchable {
 protocol TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
 }
+
+protocol UpdateInfosFetchable {
+    func getUpdateInfos(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void)
+}
