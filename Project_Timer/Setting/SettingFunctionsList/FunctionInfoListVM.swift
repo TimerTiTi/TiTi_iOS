@@ -9,13 +9,15 @@
 import Foundation
 import Combine
 
+typealias FunctionInfoFetchable = (TiTiFunctionsFetchable & YoutubeLinkFetchable)
+
 final class FunctionInfoListVM {
-    private let networkController: TiTiFunctionsFetchable
+    private let networkController: FunctionInfoFetchable
     @Published private(set) var infos: [FunctionInfo] = []
     @Published private(set) var warning: (title: String, text: String)?
-    private(set) var link: String?
+    private(set) var youtubeLink: String?
     
-    init(networkController: TiTiFunctionsFetchable) {
+    init(networkController: FunctionInfoFetchable) {
         self.networkController = networkController
         self.configureInfos()
         self.configureYoutubeLink()
@@ -35,11 +37,18 @@ final class FunctionInfoListVM {
     }
     
     private func configureYoutubeLink() {
-        FirestoreManager.shared.db.collection("links").document("youtube").getDocument { [weak self] snapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                self?.link = snapshot?.data()?["url"] as? String
+        self.networkController.getYoutubeLink { [weak self] status, info in
+            switch status {
+            case .SUCCESS:
+                guard let info = info else {
+                    self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
+                    return
+                }
+                self?.youtubeLink = info.url.value
+            case .DECODEERROR:
+                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
+            default:
+                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
             }
         }
     }
