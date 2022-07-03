@@ -87,6 +87,7 @@ extension SettingTiTiFactoryListVC {
             .dropFirst()
             .sink(receiveValue: { [weak self] warning in
                 guard let warning = warning else { return }
+                self?.stopLoader()
                 self?.showAlertWithOK(title: warning.title, text: warning.text)
             })
             .store(in: &self.cancellables)
