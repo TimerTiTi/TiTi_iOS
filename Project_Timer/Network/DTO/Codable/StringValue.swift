@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StringValue: Encodable {
+struct StringValue: Codable {
     let value: String
     
     init(value: String) {

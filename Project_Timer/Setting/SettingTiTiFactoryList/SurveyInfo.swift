@@ -17,7 +17,3 @@ struct SurveyInfo {
         self.url = data["url"] as? String ?? "url error"
     }
 }
-
-protocol FactoryActionDelegate: AnyObject {
-    func showWebview(url: String)
-}
