@@ -42,11 +42,31 @@ extension NetworkController: TiTiFunctionsFetchable {
             case 200:
                 guard let data = result.data,
                       let functionInfos: FunctionInfos = try? JSONDecoder().decode(FunctionInfos.self, from: data) else {
-                    print("Decode Error: SurvayInfos")
+                    print("Decode Error: FunctionInfos")
                     completion(.DECODEERROR, [])
                     return
                 }
                 completion(.SUCCESS, functionInfos.functionInfos)
+            default:
+                completion(.FAIL, [])
+                return
+            }
+        }
+    }
+}
+
+extension NetworkController: UpdateInfosFetchable {
+    func getUpdateInfos(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void) {
+        self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
+            switch result.statusCode {
+            case 200:
+                guard let data = result.data,
+                      let updateInfos: UpdateInfos = try? JSONDecoder().decode(UpdateInfos.self, from: data) else {
+                    print("Decode Error: UpdateInfos")
+                    completion(.DECODEERROR, [])
+                    return
+                }
+                completion(.SUCCESS, updateInfos.updateInfos)
             default:
                 completion(.FAIL, [])
                 return

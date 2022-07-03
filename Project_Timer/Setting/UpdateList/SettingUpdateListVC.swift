@@ -57,7 +57,9 @@ extension SettingUpdateListVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = UpdateListVM()
+        // MARK: NetworkController 주입 고민이 필요
+        let networkController = NetworkController(network: Network())
+        self.viewModel = UpdateListVM(networkController: networkController)
     }
     
     private func stopLoader() {

@@ -16,9 +16,9 @@ final class UpdateInfoCell: UICollectionViewCell {
     @IBOutlet weak var textLabel: UILabel!
     
     func configure(with info: UpdateInfo, superWidth: CGFloat) {
-        self.versionLabel.text = "ver \(info.version)"
-        self.dateLabel.text = "\(info.date)"
-        self.textLabel.text = info.text
+        self.versionLabel.text = "ver \(info.version.value)"
+        self.dateLabel.text = "\(info.date.value)"
+        self.textLabel.text = info.text.value
         self.textLabel.preferredMaxLayoutWidth = superWidth - 32
         self.textLabel.sizeToFit()
     }
