@@ -94,3 +94,23 @@ extension NetworkController: YoutubeLinkFetchable {
         }
     }
 }
+
+extension NetworkController: SurveysFetchable {
+    func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void) {
+        self.network.request(url: NetworkURL.Firestore.surveys, method: .get) { result in
+            switch result.statusCode {
+            case 200:
+                guard let data = result.data,
+                      let surveys: SurveyInfos = try? JSONDecoder().decode(SurveyInfos.self, from: data) else {
+                    print("Decode Error: SurveyInfos")
+                    completion(.DECODEERROR, [])
+                    return
+                }
+                completion(.SUCCESS, surveys.surveyInfos ?? [])
+            default:
+                completion(.FAIL, [])
+                return
+            }
+        }
+    }
+}
