@@ -101,9 +101,8 @@ class StatisticsViewController: UIViewController {
         //저장된 dailys들 로딩
         dailyViewModel.loadDailys()
         
-        let isDumy: Bool = false //앱스토어 스크린샷을 위한 더미데이터 여부
-        showDatas(isDumy: isDumy)
-        showSwiftUIGraph(isDumy: isDumy)
+        showDatas()
+        showSwiftUIGraph()
         
         setChecks()
         leftGesture.edges = .left
@@ -207,7 +206,7 @@ extension StatisticsViewController {
         selectDay.layer.shadowRadius = 1.5
     }
     
-    func showSwiftUIGraph(isDumy: Bool) {
+    func showSwiftUIGraph() {
         let startColor = todayViewManager.startColor
         let colorNow: Int = startColor
         var colorSecond: Int = 0
@@ -220,7 +219,7 @@ extension StatisticsViewController {
         let hostingController = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 128, height: 125))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
+        todayContentView().appendTimes(daily: todayViewManager.daily)
         
         addChild(hostingController)
         timeline.addSubview(hostingController.view)
@@ -230,13 +229,13 @@ extension StatisticsViewController {
         let hostingController2 = UIHostingController(rootView: todayContentView(colors: [Color("D\(colorSecond)"), Color("D\(colorNow)")], frameHeight: 78, height: 78))
         hostingController2.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController2.view.frame = view4_timeline.bounds
-        todayContentView().appendTimes(isDumy: isDumy, daily: todayViewManager.daily)
+        todayContentView().appendTimes(daily: todayViewManager.daily)
         
         addChild(hostingController2)
         view4_timeline.addSubview(hostingController2.view)
     }
     
-    func showDatas(isDumy: Bool) {
+    func showDatas() {
         if(dateIndex == nil) {
             todayViewManager.daily.load()
         } else {
@@ -244,7 +243,7 @@ extension StatisticsViewController {
             todayViewManager.daily = dailyViewModel.dailys[dateIndex!]
         }
         
-        if(isDumy) {
+        if AppDelegate.isDummyData == true {
             todayViewManager.setDumyDaily()
         }
         if(todayViewManager.daily.tasks != [:]) {
