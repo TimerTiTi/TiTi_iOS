@@ -15,4 +15,12 @@ enum NetworkURL {
     static let instagramToTiTi: String = "https://www.instagram.com/study_withtiti/"
     static let instagramToFDEE: String = "https://www.instagram.com/dev_fdee/"
     static let github: String = "https://github.com/FreeDeveloper97"
+    
+    enum Firestore {
+        static let projectId: String = "titi-b8650"
+        static let domain: String = "https://firestore.googleapis.com/v1/projects/\(projectId)/databases/(default)/documents/"
+        static let links: String = domain + "/links"
+        static let titifuncs: String = domain + "/titifuncs"
+        static let updates: String = domain + "/updates"
+    }
 }
