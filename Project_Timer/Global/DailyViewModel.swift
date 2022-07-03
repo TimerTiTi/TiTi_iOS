@@ -33,8 +33,8 @@ class DailyViewModel {
         completion(monthData.reduce(0, { $0 + $1.totalTime }))
     }
     
-    func totalStudyTimeOfMonth(_ isDummy: Bool = false, completion: @escaping (Int) -> ()) {
-        if isDummy {
+    func totalStudyTimeOfMonth(completion: @escaping (Int) -> ()) {
+        if AppDelegate.isDummyData == true {
             completion(Dummy.getDummyMonthTime)
             return
         }
