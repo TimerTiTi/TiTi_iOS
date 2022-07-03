@@ -71,6 +71,7 @@ extension SettingUpdateListVC {
 extension SettingUpdateListVC {
     private func bindAll() {
         self.bindCells()
+        self.bindWarning()
     }
     
     private func bindCells() {
@@ -80,6 +81,17 @@ extension SettingUpdateListVC {
             .sink(receiveValue: { [weak self] _ in
                 self?.stopLoader()
                 self?.updateList.reloadData()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindWarning() {
+        self.viewModel?.$warning
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] warning in
+                guard let warning = warning else { return }
+                self?.showAlertWithOK(title: warning.title, text: warning.text)
             })
             .store(in: &self.cancellables)
     }
