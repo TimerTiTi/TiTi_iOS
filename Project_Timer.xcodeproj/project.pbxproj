@@ -37,6 +37,9 @@
 		875C98C1287175F7008F7ADD /* FactoryActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */; };
 		875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */; };
 		875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */; };
+		875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
+		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
+		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
 		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
@@ -48,7 +51,6 @@
 		877E448C267DF8DD00BF104A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dummy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		87861F1A284D917C00227731 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 87861F19284D917C00227731 /* FirebaseFirestore */; };
-		87861F1C284DA00900227731 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87861F1B284DA00900227731 /* FirestoreManager.swift */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
@@ -132,6 +134,9 @@
 		875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryActionDelegate.swift; sourceTree = "<group>"; };
 		875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsActionDelegate.swift; sourceTree = "<group>"; };
 		875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeLinkInfo.swift; sourceTree = "<group>"; };
+		875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
@@ -139,7 +144,6 @@
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
-		87861F1B284DA00900227731 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
@@ -330,13 +334,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		876A8552283212DE00978035 /* SwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SwiftUI;
-			sourceTree = "<group>";
-		};
 		876A85532832134500978035 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +359,6 @@
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
 				879108242838761B005D7B10 /* NetworkStatus.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
-				87861F1B284DA00900227731 /* FirestoreManager.swift */,
 				8791082B28387B9B005D7B10 /* DTO */,
 			);
 			path = Network;
@@ -455,7 +451,6 @@
 		87A48BC527DEF0B200F46D0F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				876A8552283212DE00978035 /* SwiftUI */,
 				8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 				87A48BC627DEF0C200F46D0F /* Date+Extension.swift */,
@@ -463,6 +458,9 @@
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791082E28387D1F005D7B10 /* String+Extension.swift */,
 				8751C6F928472A8D007FAFC4 /* Collection.swift */,
+				875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */,
+				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
+				875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -636,7 +634,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
-				87861F1C284DA00900227731 /* FirestoreManager.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
@@ -690,6 +687,7 @@
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
+				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
@@ -707,8 +705,10 @@
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
+				875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */,
 				876A85552832135E00978035 /* daily.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
+				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
