@@ -20,6 +20,7 @@ enum NetworkURL {
         static let projectId: String = "titi-b8650"
         static let domain: String = "https://firestore.googleapis.com/v1/projects/\(projectId)/databases/(default)/documents"
         static let links: String = domain + "/links"
+        static let youtubeLink: String = links + "/youtube"
         static let titifuncs: String = domain + "/titifuncs"
         static let updates: String = domain + "/updates"
     }

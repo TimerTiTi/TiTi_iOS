@@ -74,3 +74,23 @@ extension NetworkController: UpdateInfosFetchable {
         }
     }
 }
+
+extension NetworkController: YoutubeLinkFetchable {
+    func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void) {
+        self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
+            switch result.statusCode {
+            case 200:
+                guard let data = result.data,
+                      let youtubeLinkInfo: YoutubeLinkInfo = try? JSONDecoder().decode(YoutubeLinkInfo.self, from: data) else {
+                    print("Decode Error: YoutubeLinkInfoDTO")
+                    completion(.DECODEERROR, nil)
+                    return
+                }
+                completion(.SUCCESS, youtubeLinkInfo)
+            default:
+                completion(.FAIL, nil)
+                return
+            }
+        }
+    }
+}

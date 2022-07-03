@@ -35,7 +35,7 @@ final class SettingFunctionsListVC: UIViewController {
     }
     
     @IBAction func goToYoutube(_ sender: Any) {
-        guard let link = self.viewModel?.link,
+        guard let link = self.viewModel?.youtubeLink,
               let url = URL(string: link) else { return }
         UIApplication.shared.open(url, options: [:])
     }

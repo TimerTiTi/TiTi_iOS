@@ -24,3 +24,7 @@ protocol TiTiFunctionsFetchable {
 protocol UpdateInfosFetchable {
     func getUpdateInfos(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void)
 }
+
+protocol YoutubeLinkFetchable {
+    func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void)
+}
