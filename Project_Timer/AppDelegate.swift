@@ -8,19 +8,18 @@
 
 import UIKit
 import Firebase
-import FirebaseCore
-import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     static let isDummyData: Bool = false // 더미데이터를 통한 통계창 표시 여부 (App Store 제출용 스크린샷 필요시 사용)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        /// 앱 실행시 Analytics 에 정보 전달부분
         FirebaseApp.configure()
         Analytics.logEvent("launch", parameters: [
             AnalyticsParameterItemID: "ver 7.0",
         ])
+        /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
         UNUserNotificationCenter.current().delegate = self
         NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
             UIApplication.shared.applicationIconBadgeNumber = 1
@@ -28,24 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(forName: .removeBadge, object: nil, queue: .current) { _ in
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
+        /// 앱 실행시 최신버전 체크로직 실행
         self.checkVersion()
-        
-        /* firestore 저장 테스트 로직 */
-//        let db = Firestore.firestore()
-//        db.collection("titifuncs").document("func1").setData([
-//            "title": "타이머",
-//            "url": "https://deeply-eggplant-5ec.notion.site/1db945227c25409d874bf82e30a0523a"
-//        ]) { error in
-//            if let error = error {
-//                print("Error writing document: \(error)")
-//            } else {
-//                print("Document successfully written!")
-//            }
-//        }
         
         return true
     }
     
+    /// 최신버전 체크로직
     private func checkVersion() {
         guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
         NetworkController(network: Network()).getAppstoreVersion { status, version in
@@ -76,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: UISceneSession Lifecycle
-
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -92,9 +79,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
-       
-        
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -103,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+/// Foreground 모드에서 notification 알림을 설정하기 위한 부분
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         completionHandler()
@@ -110,77 +95,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .badge, .sound])
-    }
-}
-
-
-extension UserDefaults {
-    func colorForKey(key: String) -> UIColor? {
-        var color: UIColor?
-        if let colorData = data(forKey: key) {
-            color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
-        }
-        return color
-    }
-    
-    func setColor(color: UIColor?, forKey key: String) {
-        var colorData: NSData?
-        if let color = color {
-            colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
-        }
-        set(colorData, forKey: key)
-    }
-}
-
-extension String {
-    func localized(bundle: Bundle = .main, tableName: String = "Localizable") -> String {
-        return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
-    }
-}
-
-extension UIViewController {
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-            action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
-extension UIImage {
-    
-    convenience init(view: UIView) {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.isOpaque, 0.0)
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: false)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.init(cgImage: (image?.cgImage)!)
-    }
-}
-
-//extension UITextField {
-//
-//    func underlined(){
-//        let border = CALayer()
-//        let width = CGFloat(1.0)
-//        border.borderColor = UIColor.lightGray.cgColor
-//        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
-//        border.borderWidth = width
-//        self.layer.addSublayer(border)
-//        self.layer.masksToBounds = true
-//    }
-//}
-
-extension UITextField {
-    func underlined(){
-        let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor.lightGray.cgColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
-        border.borderWidth = width
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
     }
 }
