@@ -48,6 +48,7 @@
 		8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4C27DCB59400739A09 /* FirebaseAnalytics */; };
 		8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4E27DCB59400739A09 /* FirebaseDatabase */; };
 		8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF5127DCB5D100739A09 /* FSCalendar */; };
+		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		877E448C267DF8DD00BF104A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dummy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		87861F1A284D917C00227731 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 87861F19284D917C00227731 /* FirebaseFirestore */; };
@@ -88,7 +89,6 @@
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
 		87F10930284C4337002E31EA /* TiTiFactoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
-		87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10933284C4561002E31EA /* SurveyInfo.swift */; };
 		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
 		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
@@ -142,6 +142,7 @@
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
+		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
@@ -183,7 +184,6 @@
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFactoryHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
-		87F10933284C4561002E31EA /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
@@ -244,7 +244,6 @@
 				872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */,
 				87F10935284C47A1002E31EA /* SurveyListVM.swift */,
 				87F10931284C4367002E31EA /* SurveyCell.swift */,
-				87F10933284C4561002E31EA /* SurveyInfo.swift */,
 				87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */,
 				875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */,
 			);
@@ -297,6 +296,7 @@
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
+				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
 			);
 			path = Decodable;
 			sourceTree = "<group>";
@@ -703,9 +703,9 @@
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
-				87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */,
+				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
 				876A85552832135E00978035 /* daily.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,

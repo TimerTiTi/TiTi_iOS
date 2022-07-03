@@ -10,18 +10,24 @@ import Foundation
 import Combine
 
 final class SurveyListVM {
+    let networkController: SurveysFetchable
     @Published private(set) var infos: [SurveyInfo] = []
+    @Published private(set) var warning: (title: String, text: String)?
     
-    init() {
+    init(networkController: SurveysFetchable) {
+        self.networkController = networkController
         self.configureInfos()
     }
     
     private func configureInfos() {
-        FirestoreManager.shared.db.collection("surveys").getDocuments { [weak self] querySnapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                self?.infos = querySnapshot!.documents.map { SurveyInfo(data: $0.data()) }
+        self.networkController.getSurveys { [weak self] status, infos in
+            switch status {
+            case .SUCCESS:
+                self?.infos = infos
+            case .DECODEERROR:
+                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
+            default:
+                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
             }
         }
     }
