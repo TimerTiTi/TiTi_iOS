@@ -13,6 +13,7 @@ import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    static let isDummyData: Bool = false // 더미데이터를 통한 통계창 표시 여부 (App Store 제출용 스크린샷 필요시 사용)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

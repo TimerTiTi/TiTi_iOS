@@ -10,8 +10,8 @@ struct ContentView: View {
     let colors = [Color("D2"), Color("D1")]
     var DailyDatas: [daily] = []
     
-    init(isDummy: Bool) {
-        self.configureDailys(isDummy)
+    init() {
+        self.configureDailys()
     }
     
     var body : some View {
@@ -69,8 +69,8 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
     }
     
-    mutating func configureDailys(_ isDummy: Bool) {
-        if isDummy {
+    mutating func configureDailys() {
+        if AppDelegate.isDummyData == true {
             self.DailyDatas = Dummy.get7Dailys()
         } else {
             let dailys = RecordController.shared.dailys.dailys
@@ -113,7 +113,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(isDummy: false)
+        ContentView()
     }
 }
 

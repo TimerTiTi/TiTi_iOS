@@ -45,9 +45,9 @@ class LogViewController: UIViewController {
         self.updateTabbarColor()
         self.scrollView.setContentOffset(.zero, animated: false)
         // 세가지 함수 dummy의 경우 true 기입
-        self.showMonthTime(false)
-        self.configureWeeksGraph(false)
-        self.viewModel?.loadDaily(false)
+        self.showMonthTime()
+        self.configureWeeksGraph()
+        self.viewModel?.loadDaily()
     }
     
     override func viewWillLayoutSubviews() {
@@ -100,8 +100,8 @@ extension LogViewController {
         self.tabBarController?.tabBar.barTintColor = .clear
     }
     
-    private func configureWeeksGraph(_ isDummy: Bool = false) {
-        let hostingController = UIHostingController(rootView: ContentView(isDummy: isDummy))
+    private func configureWeeksGraph() {
+        let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.frame = self.graphViewOfWeeks.bounds
         
@@ -109,9 +109,9 @@ extension LogViewController {
         self.graphViewOfWeeks.addSubview(hostingController.view)
     }
     
-    private func showMonthTime(_ isDummy: Bool = false) {
+    private func showMonthTime() {
         DispatchQueue.global().async {
-            RecordController.shared.dailys.totalStudyTimeOfMonth(isDummy) { totalTime in
+            RecordController.shared.dailys.totalStudyTimeOfMonth() { totalTime in
                 DispatchQueue.main.async {
                     self.monthTimeLabel.text = totalTime.toTimeString
                 }
