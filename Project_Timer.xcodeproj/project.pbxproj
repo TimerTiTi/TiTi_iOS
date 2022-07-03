@@ -33,6 +33,7 @@
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection.swift */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
+		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
 		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
@@ -124,6 +125,7 @@
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
+		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
 		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
@@ -278,6 +280,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		875C98BC28717279008F7ADD /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				8791082C28387BA6005D7B10 /* AppstoreVersion.swift */,
+				875C98BD287172A5008F7ADD /* StringValue.swift */,
+			);
+			path = Decodable;
+			sourceTree = "<group>";
+		};
 		8762717127DF83E400F812ED /* TaskSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,8 +346,8 @@
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
 				879108242838761B005D7B10 /* NetworkStatus.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
-				8791082B28387B9B005D7B10 /* DTO */,
 				87861F1B284DA00900227731 /* FirestoreManager.swift */,
+				8791082B28387B9B005D7B10 /* DTO */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -344,7 +355,7 @@
 		8791082B28387B9B005D7B10 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				8791082C28387BA6005D7B10 /* AppstoreVersion.swift */,
+				875C98BC28717279008F7ADD /* Decodable */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -663,6 +674,7 @@
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
+				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
