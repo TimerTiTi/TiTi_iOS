@@ -16,3 +16,7 @@ protocol NetworkFetchable {
 protocol VersionFetchable {
     func getAppstoreVersion(completion: @escaping (NetworkStatus, String?) -> Void)
 }
+
+protocol TiTiFunctionsFetchable {
+    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
+}

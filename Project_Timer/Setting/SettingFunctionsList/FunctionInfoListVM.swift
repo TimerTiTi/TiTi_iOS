@@ -10,20 +10,26 @@ import Foundation
 import Combine
 
 final class FunctionInfoListVM {
+    private let networkController: TiTiFunctionsFetchable
     @Published private(set) var infos: [FunctionInfo] = []
+    @Published private(set) var warning: (title: String, text: String)?
     private(set) var link: String?
     
-    init() {
+    init(networkController: TiTiFunctionsFetchable) {
+        self.networkController = networkController
         self.configureInfos()
         self.configureYoutubeLink()
     }
     
     private func configureInfos() {
-        FirestoreManager.shared.db.collection("titifuncs").getDocuments { [weak self] querySnapshot, error in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                self?.infos = querySnapshot!.documents.map { FunctionInfo(data: $0.data()) }
+        self.networkController.getTiTiFunctions { [weak self] status, infos in
+            switch status {
+            case .SUCCESS:
+                self?.infos = infos
+            case .DECODEERROR:
+                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
+            default:
+                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
             }
         }
     }

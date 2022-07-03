@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkController {
+final class NetworkController {
     let network: NetworkFetchable
     init(network: NetworkFetchable) {
         self.network = network
@@ -29,6 +29,26 @@ extension NetworkController: VersionFetchable {
                 completion(.SUCCESS, appstoreVersion.results.first?.version)
             default:
                 completion(.FAIL, nil)
+                return
+            }
+        }
+    }
+}
+
+extension NetworkController: TiTiFunctionsFetchable {
+    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void) {
+        self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
+            switch result.statusCode {
+            case 200:
+                guard let data = result.data,
+                      let functionInfos: FunctionInfos = try? JSONDecoder().decode(FunctionInfos.self, from: data) else {
+                    print("Decode Error: SurvayInfos")
+                    completion(.DECODEERROR, [])
+                    return
+                }
+                completion(.SUCCESS, functionInfos.functionInfos)
+            default:
+                completion(.FAIL, [])
                 return
             }
         }

@@ -57,7 +57,9 @@ extension SettingFunctionsListVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = FunctionInfoListVM()
+        // MARK: NetworkController 를 생성하는 부분에 대한 고민이 필요
+        let networkController = NetworkController(network: Network())
+        self.viewModel = FunctionInfoListVM(networkController: networkController)
     }
     
     private func stopLoader() {

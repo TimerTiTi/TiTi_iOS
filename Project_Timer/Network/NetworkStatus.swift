@@ -15,5 +15,6 @@ struct NetworkResult {
 
 enum NetworkStatus {
     case SUCCESS // 200
+    case DECODEERROR
     case FAIL
 }
