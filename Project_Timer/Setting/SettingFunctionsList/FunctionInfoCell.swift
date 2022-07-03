@@ -19,7 +19,7 @@ final class FunctionInfoCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                guard let url = self.info?.url else { return }
+                guard let url = self.info?.url.value else { return }
                 self.delegate?.showWebview(url: url)
             }
         }
@@ -28,6 +28,6 @@ final class FunctionInfoCell: UICollectionViewCell {
     func configure(with info: FunctionInfo, delegate: FunctionsActionDelegate) {
         self.delegate = delegate
         self.info = info
-        self.titleLabel.text = info.title
+        self.titleLabel.text = info.title.value
     }
 }
