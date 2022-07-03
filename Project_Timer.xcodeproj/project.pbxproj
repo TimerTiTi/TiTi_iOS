@@ -216,7 +216,6 @@
 			children = (
 				872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */,
 				872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */,
-				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */,
 			);
 			path = UpdateList;
@@ -290,6 +289,7 @@
 			children = (
 				8791082C28387BA6005D7B10 /* AppstoreVersion.swift */,
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
+				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 			);
 			path = Decodable;
 			sourceTree = "<group>";
