@@ -20,7 +20,7 @@ enum TiTiColor {
     static let dock = UIColor(named: "dock")
     static let startButton = UIColor(named: "startButtonColor")
     static let tabbarNonSelect = UIColor(named: "tabbarNonSelectColor")
-    static let lightPink = UIColor(named: "lightPink")
+    static let lightpink = UIColor(named: "lightpink")
     static let D1 = UIColor(named: "D1")
     static let D2 = UIColor(named: "D2")
     static let tabbarBackground = UIColor(named: "tabbarBackground")
