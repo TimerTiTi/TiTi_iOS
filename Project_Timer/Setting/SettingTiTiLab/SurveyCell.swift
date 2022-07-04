@@ -14,7 +14,7 @@ final class SurveyCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var touchableMark: UIImageView!
     @IBOutlet weak var warningLabel: UILabel!
-    private weak var delegate: FactoryActionDelegate?
+    private weak var delegate: TiTiLabActionDelegate?
     private var info: SurveyInfo?
     
     override func awakeFromNib() {
@@ -31,7 +31,7 @@ final class SurveyCell: UICollectionViewCell {
         }
     }
     
-    func configure(with info: SurveyInfo, delegate: FactoryActionDelegate) {
+    func configure(with info: SurveyInfo, delegate: TiTiLabActionDelegate) {
         self.delegate = delegate
         self.info = info
         

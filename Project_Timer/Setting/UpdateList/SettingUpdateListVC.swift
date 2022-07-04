@@ -26,6 +26,7 @@ final class SettingUpdateListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Update list".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()

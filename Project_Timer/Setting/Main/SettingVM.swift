@@ -29,7 +29,7 @@ final class SettingVM {
         // 앱 소개
         var cells1: [SettingCellInfo] = []
         cells1.append(SettingCellInfo(title: "TiTi Functions".localized(), nextVCIdentifier: SettingFunctionsListVC.identifier))
-        cells1.append(SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiFactoryListVC.identifier))
+        cells1.append(SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiLabVC.identifier))
         // 알림 설정
         var cells2: [SettingCellInfo] = []
         cells2.append(SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before, and End time".localized(), toggleKey: .timerPushable))
