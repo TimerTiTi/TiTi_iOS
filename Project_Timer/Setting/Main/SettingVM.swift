@@ -21,7 +21,7 @@ final class SettingVM {
     private func configureTitles() {
         self.sectionTitles.append("Introducing app".localized())
         self.sectionTitles.append("Notification".localized())
-        self.sectionTitles.append("Version & Update list".localized())
+        self.sectionTitles.append("Version & Update history".localized())
         self.sectionTitles.append("Developer".localized())
     }
     
@@ -41,7 +41,7 @@ final class SettingVM {
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
         versionCell.fetchVersion()
         cells3.append(versionCell)
-        cells3.append(SettingCellInfo(title: "Update list".localized(), nextVCIdentifier: SettingUpdateListVC.identifier))
+        cells3.append(SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier))
         // 개발자
         var cells4: [SettingCellInfo] = []
         cells4.append(SettingCellInfo(title: "FDEE"))

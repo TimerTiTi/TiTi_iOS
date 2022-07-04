@@ -1,5 +1,5 @@
 //
-//  SettingUpdateListVC.swift
+//  SettingUpdateHistoryVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/04.
@@ -9,8 +9,8 @@
 import UIKit
 import Combine
 
-final class SettingUpdateListVC: UIViewController {
-    static let identifier = "SettingUpdateListVC"
+final class SettingUpdateHistoryVC: UIViewController {
+    static let identifier = "SettingUpdateHistoryVC"
 
     @IBOutlet weak var updateList: UICollectionView!
     private let loader: UIActivityIndicatorView = {
@@ -22,11 +22,11 @@ final class SettingUpdateListVC: UIViewController {
     }()
     
     private var cancellables: Set<AnyCancellable> = []
-    private var viewModel: UpdateListVM?
+    private var viewModel: UpdateHistoryVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Update list".localized()
+        self.title = "Update history".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
@@ -42,7 +42,7 @@ final class SettingUpdateListVC: UIViewController {
     }
 }
 
-extension SettingUpdateListVC {
+extension SettingUpdateHistoryVC {
     private func configureLoader() {
         self.view.addSubview(self.loader)
         
@@ -60,7 +60,7 @@ extension SettingUpdateListVC {
     private func configureViewModel() {
         // MARK: NetworkController 주입 고민이 필요
         let networkController = NetworkController(network: Network())
-        self.viewModel = UpdateListVM(networkController: networkController)
+        self.viewModel = UpdateHistoryVM(networkController: networkController)
     }
     
     private func stopLoader() {
@@ -69,7 +69,7 @@ extension SettingUpdateListVC {
     }
 }
 
-extension SettingUpdateListVC {
+extension SettingUpdateHistoryVC {
     private func bindAll() {
         self.bindCells()
         self.bindWarning()
@@ -99,7 +99,7 @@ extension SettingUpdateListVC {
     }
 }
 
-extension SettingUpdateListVC: UICollectionViewDataSource {
+extension SettingUpdateHistoryVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.infos.count ?? 0
     }
@@ -113,7 +113,7 @@ extension SettingUpdateListVC: UICollectionViewDataSource {
     }
 }
 
-extension SettingUpdateListVC: UICollectionViewDelegateFlowLayout {
+extension SettingUpdateHistoryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
         let textHeight = cell.textLabel.frame.height
