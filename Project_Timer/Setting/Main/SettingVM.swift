@@ -19,10 +19,10 @@ final class SettingVM {
     }
     
     private func configureTitles() {
-        self.sectionTitles.append("앱 소개")
-        self.sectionTitles.append("알림 설정")
-        self.sectionTitles.append("버전 및 업데이트 내역")
-        self.sectionTitles.append("개발자")
+        self.sectionTitles.append("Introducing app".localized())
+        self.sectionTitles.append("Notification".localized())
+        self.sectionTitles.append("Version & Update list".localized())
+        self.sectionTitles.append("Developer".localized())
     }
     
     private func configureCells() {
