@@ -124,3 +124,9 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "Every 1 hour passed" = "1시간단위 경과시 알림";
 
 "Pop-up alert for New version" = "최신버전 업데이트 알림";
+
+"Version Info" = "버전 정보";
+
+"Latest version" = "최신 버전";
+
+"Update list" = "업데이트 내역";
