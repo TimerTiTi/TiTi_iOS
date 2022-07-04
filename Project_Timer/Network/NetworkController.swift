@@ -36,8 +36,9 @@ extension NetworkController: VersionFetchable {
 }
 
 extension NetworkController: TiTiFunctionsFetchable {
-    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void) {
-        self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
+    func getTiTiFunctions(isKorean: Bool, completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void) {
+        let url = isKorean ? NetworkURL.Firestore.titifuncs : NetworkURL.Firestore.titifuncs_eng
+        self.network.request(url: url, method: .get) { result in
             switch result.statusCode {
             case 200:
                 guard let data = result.data,
