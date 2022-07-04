@@ -1,5 +1,5 @@
 //
-//  TiTiFactoryHeaderView.swift
+//  TiTiLabHeaderView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/05.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-final class TiTiFactoryHeaderView: UICollectionReusableView {
-    static let identifier = "TiTiFactoryHeaderView"
+final class TiTiLabHeaderView: UICollectionReusableView {
+    static let identifier = "TiTiLabHeaderView"
     
-    private weak var delegate: FactoryActionDelegate?
+    private weak var delegate: TiTiLabActionDelegate?
     
-    func configure(delegate: FactoryActionDelegate) {
+    func configure(delegate: TiTiLabActionDelegate) {
         self.delegate = delegate
     }
         

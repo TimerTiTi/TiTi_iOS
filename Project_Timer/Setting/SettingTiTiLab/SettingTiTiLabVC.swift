@@ -1,5 +1,5 @@
 //
-//  SettingTiTiFactoryListVC.swift
+//  SettingTiTiLabVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/04.
@@ -9,8 +9,8 @@
 import UIKit
 import Combine
 
-final class SettingTiTiFactoryListVC: UIViewController {
-    static let identifier = "SettingTiTiFactoryListVC"
+final class SettingTiTiLabVC: UIViewController {
+    static let identifier = "SettingTiTiLabVC"
 
     @IBOutlet weak var surveys: UICollectionView!
     private let loader: UIActivityIndicatorView = {
@@ -26,6 +26,7 @@ final class SettingTiTiFactoryListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "TiTi Lab".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
@@ -37,7 +38,7 @@ final class SettingTiTiFactoryListVC: UIViewController {
     }
 }
 
-extension SettingTiTiFactoryListVC {
+extension SettingTiTiLabVC {
     private func configureLoader() {
         self.view.addSubview(self.loader)
         
@@ -64,7 +65,7 @@ extension SettingTiTiFactoryListVC {
     }
 }
 
-extension SettingTiTiFactoryListVC {
+extension SettingTiTiLabVC {
     private func bindAll() {
         self.bindCells()
         self.bindWarning()
@@ -94,7 +95,7 @@ extension SettingTiTiFactoryListVC {
     }
 }
 
-extension SettingTiTiFactoryListVC: UICollectionViewDataSource {
+extension SettingTiTiLabVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return max(self.viewModel?.infos.count ?? 0, 1)
     }
@@ -113,7 +114,7 @@ extension SettingTiTiFactoryListVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TiTiFactoryHeaderView.identifier, for: indexPath) as? TiTiFactoryHeaderView else { return UICollectionReusableView() }
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TiTiLabHeaderView.identifier, for: indexPath) as? TiTiLabHeaderView else { return UICollectionReusableView() }
             header.configure(delegate: self)
             
             return header
@@ -121,13 +122,13 @@ extension SettingTiTiFactoryListVC: UICollectionViewDataSource {
     }
 }
 
-extension SettingTiTiFactoryListVC: UICollectionViewDelegateFlowLayout {
+extension SettingTiTiLabVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.surveys.bounds.width, height: 55)
     }
 }
 
-extension SettingTiTiFactoryListVC: FactoryActionDelegate {
+extension SettingTiTiLabVC: TiTiLabActionDelegate {
     func showWebview(url: String) {
         if let url = URL(string: url) {
             UIApplication.shared.open(url, options: [:])

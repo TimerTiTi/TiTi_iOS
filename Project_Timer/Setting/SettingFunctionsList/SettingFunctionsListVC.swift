@@ -27,6 +27,7 @@ final class SettingFunctionsListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "TiTi Functions".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
