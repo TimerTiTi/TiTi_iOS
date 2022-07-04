@@ -109,7 +109,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 
 "Notification" = "알림 설정";
 
-"Version & Update list" = "버전 및 업데이트 내역";
+"Version & Update history" = "버전 및 업데이트 내역";
 
 "Developer" = "개발자";
 
@@ -129,7 +129,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 
 "Latest version" = "최신 버전";
 
-"Update list" = "업데이트 내역";
+"Update history" = "업데이트 내역";
 
 "TiTi Development" = "TiTi 개발현황";
 
