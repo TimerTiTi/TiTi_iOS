@@ -28,8 +28,8 @@ final class SettingVM {
     private func configureCells() {
         // 앱 소개
         var cells1: [SettingCellInfo] = []
-        cells1.append(SettingCellInfo(title: "TiTi 기능들", nextVCIdentifier: SettingFunctionsListVC.identifier))
-        cells1.append(SettingCellInfo(title: "TiTi 연구소", nextVCIdentifier: SettingTiTiFactoryListVC.identifier))
+        cells1.append(SettingCellInfo(title: "TiTi Functions".localized(), nextVCIdentifier: SettingFunctionsListVC.identifier))
+        cells1.append(SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiFactoryListVC.identifier))
         // 알림 설정
         var cells2: [SettingCellInfo] = []
         cells2.append(SettingCellInfo(title: "타이머", subTitle: "종료 5분전, 종료시 알림", toggleKey: .timerPushable))
