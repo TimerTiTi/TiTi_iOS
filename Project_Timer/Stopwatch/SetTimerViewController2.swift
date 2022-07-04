@@ -50,7 +50,7 @@ class SetTimerViewController2: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboard()
+        appTapGestureForDismissingKeyboard()
         setLocalizable()
         setRadius()
         

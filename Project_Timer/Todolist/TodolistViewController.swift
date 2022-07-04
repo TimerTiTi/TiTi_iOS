@@ -148,7 +148,7 @@ extension TodolistViewController {
         var adjustmentHeight: CGFloat = 0
         //이동시킬 Height를 구한다
         if noti.name == UIResponder.keyboardWillShowNotification {
-            self.hideKeyboard()
+            self.appTapGestureForDismissingKeyboard()
             adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
         } else {
             self.view.gestureRecognizers?.removeAll()
