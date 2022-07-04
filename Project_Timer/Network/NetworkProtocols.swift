@@ -21,8 +21,8 @@ protocol TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
 }
 
-protocol UpdateInfosFetchable {
-    func getUpdateInfos(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void)
+protocol UpdateHistoryFetchable {
+    func getUpdateHistorys(isKorean: Bool, completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void)
 }
 
 protocol YoutubeLinkFetchable {

@@ -23,6 +23,7 @@ enum NetworkURL {
         static let youtubeLink: String = links + "/youtube"
         static let titifuncs: String = domain + "/titifuncs"
         static let updates: String = domain + "/updates"
+        static let updates_eng: String = domain + "/updates_eng"
         static let surveys: String = domain + "/surveys"
     }
 }

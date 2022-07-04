@@ -10,17 +10,17 @@ import Foundation
 import Combine
 
 final class UpdateHistoryVM {
-    let networkController: UpdateInfosFetchable
+    let networkController: UpdateHistoryFetchable
     @Published private(set) var infos: [UpdateInfo] = []
     @Published private(set) var warning: (title: String, text: String)?
     
-    init(networkController: UpdateInfosFetchable) {
+    init(networkController: UpdateHistoryFetchable) {
         self.networkController = networkController
         self.configureInfos()
     }
     
     private func configureInfos() {
-        self.networkController.getUpdateInfos { [weak self] status, infos in
+        self.networkController.getUpdateHistorys(isKorean: Locale.current.languageCode == "ko") { [weak self] status, infos in
             switch status {
             case .SUCCESS:
                 self?.infos = infos.sorted(by: {
