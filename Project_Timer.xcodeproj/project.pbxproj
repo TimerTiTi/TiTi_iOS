@@ -13,7 +13,7 @@
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
-		872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */; };
+		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
 		872C0EE3284AF26A00E8E3F2 /* UpdateListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */; };
 		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
 		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
@@ -34,7 +34,7 @@
 		8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection.swift */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
-		875C98C1287175F7008F7ADD /* FactoryActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */; };
+		875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */; };
 		875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */; };
 		875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */; };
 		875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
@@ -86,7 +86,7 @@
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
-		87F10930284C4337002E31EA /* TiTiFactoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */; };
+		87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
@@ -109,7 +109,7 @@
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateListVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
-		872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiFactoryListVC.swift; sourceTree = "<group>"; };
+		872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVC.swift; sourceTree = "<group>"; };
 		872C0EE2284AF26A00E8E3F2 /* UpdateListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateListVM.swift; sourceTree = "<group>"; };
 		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		8751C6F928472A8D007FAFC4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
-		875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryActionDelegate.swift; sourceTree = "<group>"; };
+		875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabActionDelegate.swift; sourceTree = "<group>"; };
 		875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsActionDelegate.swift; sourceTree = "<group>"; };
 		875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeLinkInfo.swift; sourceTree = "<group>"; };
 		875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFactoryHeaderView.swift; sourceTree = "<group>"; };
+		87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
@@ -236,16 +236,16 @@
 			path = SettingFunctionsList;
 			sourceTree = "<group>";
 		};
-		872C0EDF284AE56700E8E3F2 /* SettingTiTiFactoryList */ = {
+		872C0EDF284AE56700E8E3F2 /* SettingTiTiLab */ = {
 			isa = PBXGroup;
 			children = (
-				872C0EE0284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift */,
+				872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */,
 				87F10935284C47A1002E31EA /* SurveyListVM.swift */,
 				87F10931284C4367002E31EA /* SurveyCell.swift */,
-				87F1092F284C4337002E31EA /* TiTiFactoryHeaderView.swift */,
-				875C98C0287175F7008F7ADD /* FactoryActionDelegate.swift */,
+				87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */,
+				875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */,
 			);
-			path = SettingTiTiFactoryList;
+			path = SettingTiTiLab;
 			sourceTree = "<group>";
 		};
 		872C0EE4284AF2D000E8E3F2 /* Main */ = {
@@ -487,7 +487,7 @@
 			children = (
 				872C0EE4284AF2D000E8E3F2 /* Main */,
 				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
-				872C0EDF284AE56700E8E3F2 /* SettingTiTiFactoryList */,
+				872C0EDF284AE56700E8E3F2 /* SettingTiTiLab */,
 				872C0ED9284ADD6800E8E3F2 /* UpdateList */,
 			);
 			path = Setting;
@@ -640,7 +640,7 @@
 				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
-				875C98C1287175F7008F7ADD /* FactoryActionDelegate.swift in Sources */,
+				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
@@ -655,7 +655,7 @@
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
-				87F10930284C4337002E31EA /* TiTiFactoryHeaderView.swift in Sources */,
+				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* UpdateListVM.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
@@ -680,7 +680,7 @@
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateListVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
-				872C0EE1284AE57200E8E3F2 /* SettingTiTiFactoryListVC.swift in Sources */,
+				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,

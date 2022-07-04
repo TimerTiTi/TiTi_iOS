@@ -3734,10 +3734,10 @@
             </objects>
             <point key="canvasLocation" x="5644" y="3075"/>
         </scene>
-        <!--TiTi Factory-->
+        <!--TiTi Lab-->
         <scene sceneID="JoX-xG-UgC">
             <objects>
-                <viewController storyboardIdentifier="SettingTiTiFactoryListVC" id="ffv-oY-cre" customClass="SettingTiTiFactoryListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingTiTiLabVC" id="ffv-oY-cre" customClass="SettingTiTiLabVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kKz-4l-nvj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3802,7 +3802,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TiTiFactoryHeaderView" id="dEk-1R-nht" customClass="TiTiFactoryHeaderView" customModule="TiTi" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TiTiLabHeaderView" id="dEk-1R-nht" customClass="TiTiLabHeaderView" customModule="TiTi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -3993,7 +3993,7 @@
                             <constraint firstItem="8FC-t3-ioZ" firstAttribute="centerX" secondItem="A6W-9Z-cwQ" secondAttribute="centerX" id="fek-PX-hO8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="TiTi Factory" id="GUg-uM-Jjg"/>
+                    <navigationItem key="navigationItem" title="TiTi Lab" id="GUg-uM-Jjg"/>
                     <connections>
                         <outlet property="surveys" destination="8FC-t3-ioZ" id="S3C-UQ-K7H"/>
                     </connections>
@@ -4951,7 +4951,7 @@
             </objects>
             <point key="canvasLocation" x="5644" y="2335.7142857142858"/>
         </scene>
-        <!--Update List-->
+        <!--Update list-->
         <scene sceneID="Suz-YO-ZXZ">
             <objects>
                 <viewController storyboardIdentifier="SettingUpdateListVC" id="ElF-Ze-3iu" customClass="SettingUpdateListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
@@ -5037,7 +5037,7 @@
                             <constraint firstItem="RMT-qg-UF2" firstAttribute="centerX" secondItem="qVc-vF-KaL" secondAttribute="centerX" id="jmb-mp-Kyc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Update List" id="Vyd-ef-fPk"/>
+                    <navigationItem key="navigationItem" title="Update list" id="Vyd-ef-fPk"/>
                     <connections>
                         <outlet property="updateList" destination="RMT-qg-UF2" id="6Um-fQ-NZb"/>
                     </connections>
@@ -5066,7 +5066,7 @@
             </objects>
             <point key="canvasLocation" x="5644" y="1583"/>
         </scene>
-        <!--Functions List-->
+        <!--TiTi Functions-->
         <scene sceneID="mQn-fA-Ep3">
             <objects>
                 <viewController storyboardIdentifier="SettingFunctionsListVC" id="ofo-wR-c1L" customClass="SettingFunctionsListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
@@ -5155,7 +5155,7 @@
                             <constraint firstItem="Ekz-pG-wNt" firstAttribute="top" secondItem="gta-DH-BV7" secondAttribute="top" id="k8u-rw-FRY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Functions List" id="cK0-vw-ciZ"/>
+                    <navigationItem key="navigationItem" title="TiTi Functions" id="cK0-vw-ciZ"/>
                     <connections>
                         <outlet property="functionList" destination="Ekz-pG-wNt" id="Gi5-cz-sDa"/>
                         <outlet property="youtubeBT" destination="mun-mO-mq0" id="TNt-0K-n3w"/>

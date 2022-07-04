@@ -1,5 +1,5 @@
 //
-//  FactoryActionDelegate.swift
+//  TiTiLabActionDelegate.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/03.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol FactoryActionDelegate: AnyObject {
+protocol TiTiLabActionDelegate: AnyObject {
     func showWebview(url: String)
 }
