@@ -28,6 +28,7 @@ final class SettingFunctionsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TiTi Functions".localized()
+        self.youtubeBT.setTitle("How to use TiTi Move to YouTube".localized(), for: .normal)
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
