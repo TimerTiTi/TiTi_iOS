@@ -130,3 +130,19 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "Latest version" = "최신 버전";
 
 "Update list" = "업데이트 내역";
+
+"TiTi Development" = "TiTi 개발현황";
+
+"Development list" = "개발진행리스트";
+
+"Real-time development progress can be checked.\nYou can also check the next features in advance." = "실시간 개발 진행상황을 확인할 수 있습니다.\n또한 차기 기능들을 미리 확인할 수 있습니다.";
+
+"Check out the news on TiTi's official Instagram account." = "TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요.";
+
+"Participation in Develop" = "TiTi 개발에 참여";
+
+"Survey" = "설문조사";
+
+"It greatly helps to develop and improve new features.\nNew surveys are added in real time." = "새로운 기능 개발 및 개선에 큰 도움이 됩니다.\n실시간으로 새로운 설문조사들이 추가됩니다.";
+
+"No surveys in progress." = "현재 진행중인 설문조사가 없습니다.";

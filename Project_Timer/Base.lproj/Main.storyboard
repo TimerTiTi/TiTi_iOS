@@ -2207,10 +2207,10 @@
                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmi-uK-Eee">
                                                                                     <rect key="frame" x="31.666666666666671" y="0.0" width="127.00000000000001" height="20"/>
                                                                                     <subviews>
-                                                                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
+                                                                                        <view alpha="0.5" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ssj-HI-VEv">
                                                                                             <rect key="frame" x="2.3333333333333286" y="1.6666666666666661" width="76" height="17"/>
                                                                                         </view>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Swift 프로그래밍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qk5-hC-CrC">
                                                                                             <rect key="frame" x="5" y="3.333333333333333" width="71" height="13.333333333333336"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="95" id="AL5-WL-sbA"/>
@@ -2218,7 +2218,7 @@
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="10.5"/>
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
-                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12:59:59" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZj-4u-8my">
                                                                                             <rect key="frame" x="81" y="2.666666666666667" width="41" height="14.666666666666664"/>
                                                                                             <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                                             <color key="textColor" name="CCC1"/>
@@ -3806,6 +3806,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="303"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
+                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
+                                            <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-Qe-wGe">
                                             <rect key="frame" x="0.0" y="35.999999999999993" width="375" height="79.333333333333314"/>
                                             <subviews>
@@ -3863,12 +3869,6 @@
                                                 <constraint firstItem="6Ut-7o-aKp" firstAttribute="height" secondItem="Bav-Qe-wGe" secondAttribute="height" constant="16" id="zuw-yy-gjd"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
-                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
-                                            <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-dl-GBr">
                                             <rect key="frame" x="0.0" y="116.33333333333334" width="375" height="67.333333333333343"/>
                                             <subviews>
@@ -3981,6 +3981,15 @@
                                         <constraint firstAttribute="trailing" secondItem="Bav-Qe-wGe" secondAttribute="trailing" id="oAE-b6-JeE"/>
                                         <constraint firstItem="hGo-O3-ryt" firstAttribute="top" secondItem="dEk-1R-nht" secondAttribute="top" constant="15" id="qSr-FC-u9E"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="developmentListLabel" destination="igL-Tw-0m4" id="5NH-Xy-Ryy"/>
+                                        <outlet property="developmentListTextLabel" destination="bVF-CS-MFa" id="ijp-79-pie"/>
+                                        <outlet property="developmentStatusLabel" destination="hGo-O3-ryt" id="D8V-7L-IgJ"/>
+                                        <outlet property="instagramTextLabel" destination="1RL-y6-Iih" id="aCW-2N-LOO"/>
+                                        <outlet property="participationDevelopLabel" destination="DKV-7e-p6F" id="qt6-Tk-8JA"/>
+                                        <outlet property="surveyLabel" destination="n9u-uz-2hh" id="CYf-TD-Gmx"/>
+                                        <outlet property="surveyTextLabel" destination="x7m-yU-dfL" id="Zyu-2B-ghS"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -4762,13 +4771,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
