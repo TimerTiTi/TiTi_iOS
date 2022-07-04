@@ -281,8 +281,8 @@ extension TimerViewController {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(TiTiColor.lightPink, for: .normal)
-        self.taskButton.layer.borderColor = TiTiColor.lightPink?.cgColor
+        self.taskButton.setTitleColor(TiTiColor.lightpink, for: .normal)
+        self.taskButton.layer.borderColor = TiTiColor.lightpink?.cgColor
     }
     
     private func setTaskWhiteColor() {
