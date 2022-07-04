@@ -116,3 +116,11 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "TiTi Functions" = "TiTi 기능들";
 
 "TiTi Lab" = "TiTi 연구소";
+
+"Update" = "업데이트";
+
+"5 minutes before, and End time" = "종료 5분전, 종료시 알림";
+
+"Every 1 hour passed" = "1시간단위 경과시 알림";
+
+"Pop-up alert for New version" = "최신버전 업데이트 알림";
