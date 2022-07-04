@@ -32,10 +32,10 @@ final class SettingVM {
         cells1.append(SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiFactoryListVC.identifier))
         // 알림 설정
         var cells2: [SettingCellInfo] = []
-        cells2.append(SettingCellInfo(title: "타이머", subTitle: "종료 5분전, 종료시 알림", toggleKey: .timerPushable))
-        cells2.append(SettingCellInfo(title: "스톱워치", subTitle: "1시간단위 경과시 알림", toggleKey: .stopwatchPushable))
+        cells2.append(SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before, and End time".localized(), toggleKey: .timerPushable))
+        cells2.append(SettingCellInfo(title: "Stopwatch".localized(), subTitle: "Every 1 hour passed".localized(), toggleKey: .stopwatchPushable))
 //        cells2.append(SettingCellInfo(title: "휴식", subTitle: "5분단위 경과시 알림", toggleKey: .restPushable))
-        cells2.append(SettingCellInfo(title: "업데이트", subTitle: "최신버전 업데이트 알림", toggleKey: .updatePushable))
+        cells2.append(SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
         let versionCell = SettingCellInfo(title: "버전 정보", subTitle: "최신버전:", rightTitle: String.currentVersion, link: NetworkURL.appstore)
