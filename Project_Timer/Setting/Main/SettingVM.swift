@@ -38,10 +38,10 @@ final class SettingVM {
         cells2.append(SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
-        let versionCell = SettingCellInfo(title: "버전 정보", subTitle: "최신버전:", rightTitle: String.currentVersion, link: NetworkURL.appstore)
+        let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
         versionCell.fetchVersion()
         cells3.append(versionCell)
-        cells3.append(SettingCellInfo(title: "업데이트 내역", nextVCIdentifier: SettingUpdateListVC.identifier))
+        cells3.append(SettingCellInfo(title: "Update list".localized(), nextVCIdentifier: SettingUpdateListVC.identifier))
         // 개발자
         var cells4: [SettingCellInfo] = []
         cells4.append(SettingCellInfo(title: "FDEE"))

@@ -62,7 +62,7 @@ class SettingCellInfo {
     func fetchVersion() {
         NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
             guard status == .SUCCESS, let version = version else { return }
-            self?.subTitle = "최신버전: \(version)"
+            self?.subTitle = "Latest version".localized()+": \(version)"
         }
     }
 }
