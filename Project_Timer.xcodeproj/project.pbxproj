@@ -290,6 +290,7 @@
 		875C98BC28717279008F7ADD /* Decodable */ = {
 			isa = PBXGroup;
 			children = (
+				875C98BD287172A5008F7ADD /* StringValue.swift */,
 				8791082C28387BA6005D7B10 /* AppstoreVersion.swift */,
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
@@ -297,14 +298,6 @@
 				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
 			);
 			path = Decodable;
-			sourceTree = "<group>";
-		};
-		875C98BF2871759F008F7ADD /* Codable */ = {
-			isa = PBXGroup;
-			children = (
-				875C98BD287172A5008F7ADD /* StringValue.swift */,
-			);
-			path = Codable;
 			sourceTree = "<group>";
 		};
 		8762717127DF83E400F812ED /* TaskSelect */ = {
@@ -365,7 +358,6 @@
 		8791082B28387B9B005D7B10 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				875C98BF2871759F008F7ADD /* Codable */,
 				875C98BC28717279008F7ADD /* Decodable */,
 			);
 			path = DTO;
