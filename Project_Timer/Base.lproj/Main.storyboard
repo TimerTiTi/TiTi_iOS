@@ -4960,10 +4960,10 @@
             </objects>
             <point key="canvasLocation" x="5644" y="2335.7142857142858"/>
         </scene>
-        <!--Update list-->
+        <!--Update history-->
         <scene sceneID="Suz-YO-ZXZ">
             <objects>
-                <viewController storyboardIdentifier="SettingUpdateListVC" id="ElF-Ze-3iu" customClass="SettingUpdateListVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingUpdateHistoryVC" id="ElF-Ze-3iu" customClass="SettingUpdateHistoryVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DBN-Fp-t0G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5046,7 +5046,7 @@
                             <constraint firstItem="RMT-qg-UF2" firstAttribute="centerX" secondItem="qVc-vF-KaL" secondAttribute="centerX" id="jmb-mp-Kyc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Update list" id="Vyd-ef-fPk"/>
+                    <navigationItem key="navigationItem" title="Update history" id="Vyd-ef-fPk"/>
                     <connections>
                         <outlet property="updateList" destination="RMT-qg-UF2" id="6Um-fQ-NZb"/>
                     </connections>
