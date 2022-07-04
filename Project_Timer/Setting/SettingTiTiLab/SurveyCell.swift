@@ -19,6 +19,7 @@ final class SurveyCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.warningLabel.text = "No surveys in progress.".localized()
         self.warningLabel.isHidden = true
     }
     
