@@ -48,7 +48,7 @@ class SetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboard()
+        self.appTapGestureForDismissingKeyboard()
         setLocalizable()
         
         allTime = RecordController.shared.recordTimes.settedGoalTime
