@@ -86,7 +86,7 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboard()
+        self.appTapGestureForDismissingKeyboard()
 
         weeks = [sun, mon, tue, wed, thu, fri, sat]
         weeks2 = [view4_sun, view4_mon, view4_tue, view4_wed, view4_thu, view4_fri, view4_sat]

@@ -39,7 +39,7 @@ class SetTimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboard()
+        appTapGestureForDismissingKeyboard()
         setLocalizable()
         
         second = RecordController.shared.recordTimes.settedTimerTime
