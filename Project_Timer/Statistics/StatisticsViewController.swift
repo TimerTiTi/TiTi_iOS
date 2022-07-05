@@ -243,9 +243,6 @@ extension StatisticsViewController {
             todayViewManager.daily = dailyViewModel.dailys[dateIndex!]
         }
         
-        if AppDelegate.isDummyData == true {
-            todayViewManager.setDumyDaily()
-        }
         if(todayViewManager.daily.tasks != [:]) {
             todayViewManager.setTasksColor()
             todayViewManager.setDay(today, today2, view4_today)

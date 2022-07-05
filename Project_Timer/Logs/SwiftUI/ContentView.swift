@@ -70,18 +70,14 @@ struct ContentView: View {
     }
     
     mutating func configureDailys() {
-        if AppDelegate.isDummyData == true {
-            self.DailyDatas = Dummy.get7Dailys()
+        let dailys = RecordController.shared.dailys.dailys
+        let dailysCount = dailys.count
+        if dailysCount > 6 {
+            self.DailyDatas = dailys[dailysCount-7..<dailysCount].map { daily($0) }
         } else {
-            let dailys = RecordController.shared.dailys.dailys
-            let dailysCount = dailys.count
-            if dailysCount > 6 {
-                self.DailyDatas = dailys[dailysCount-7..<dailysCount].map { daily($0) }
-            } else {
-                let emptyCount = 7 - dailysCount
-                self.DailyDatas = dailys.map { daily($0) }
-                self.DailyDatas += Array(repeating: daily(), count: emptyCount)
-            }
+            let emptyCount = 7 - dailysCount
+            self.DailyDatas = dailys.map { daily($0) }
+            self.DailyDatas += Array(repeating: daily(), count: emptyCount)
         }
     }
 
