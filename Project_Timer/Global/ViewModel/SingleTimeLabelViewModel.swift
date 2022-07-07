@@ -27,7 +27,7 @@ class SingleTimeLabelViewModel: ObservableObject {
         self.newValue = new
         
         if showsAnimation {
-            withAnimation(.easeInOut(duration: 0.5)) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 self.isNewValueVisible = true
             }
         } else {

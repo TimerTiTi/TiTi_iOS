@@ -100,9 +100,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pb-Gt-3Kk">
-                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
+                                        <rect key="frame" x="35" y="130" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="tiI-rc-JeH"/>
+                                            <constraint firstAttribute="width" constant="250" id="uKj-SO-kEi"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kl4-pY-2wV">
@@ -118,10 +119,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WjQ-C3-zgf">
-                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="230" id="0Bl-XF-zM4"/>
-                                        </constraints>
+                                        <rect key="frame" x="35" y="130" width="250" height="60"/>
                                         <connections>
                                             <action selector="timerStartStopAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="MUN-9l-nuS"/>
                                         </connections>
@@ -475,10 +473,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMa-tF-luS">
-                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
+                                        <rect key="frame" x="35" y="130" width="250" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Gj0-ua-8ie"/>
-                                            <constraint firstAttribute="width" constant="230" id="dC7-Qa-1vn"/>
+                                            <constraint firstAttribute="width" constant="250" id="dC7-Qa-1vn"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stopwatch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqG-MZ-tWl">
@@ -494,7 +492,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wt0-Rr-OFI">
-                                        <rect key="frame" x="45" y="130" width="230" height="60"/>
+                                        <rect key="frame" x="35" y="130" width="250" height="60"/>
                                         <connections>
                                             <action selector="timerStartStopAction:" destination="oQm-sw-2wm" eventType="touchUpInside" id="CZo-s0-6A9"/>
                                         </connections>
@@ -4736,7 +4734,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P0o-1f-RCC">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="pBL-Sw-eL6">
                                     <size key="itemSize" width="375" height="64"/>
