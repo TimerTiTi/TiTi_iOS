@@ -31,7 +31,6 @@ struct TimeLabelView: View {
 
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: 300))
-        .minimumScaleFactor(0.1)
+        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
     }
 }
