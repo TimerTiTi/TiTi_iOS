@@ -57,8 +57,8 @@ extension NetworkController: TiTiFunctionsFetchable {
 }
 
 extension NetworkController: UpdateHistoryFetchable {
-    func getUpdateHistorys(isKorean: Bool, completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void) {
-        let url = isKorean ? NetworkURL.Firestore.updates : NetworkURL.Firestore.updates_eng
+    func getUpdateHistorys(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void) {
+        let url = Language.currentLanguage == .ko ? NetworkURL.Firestore.updates : NetworkURL.Firestore.updates_eng
         self.network.request(url: url, method: .get) { result in
             switch result.statusCode {
             case 200:
