@@ -24,7 +24,7 @@ final class FunctionInfoListVM {
     }
     
     private func configureInfos() {
-        self.networkController.getTiTiFunctions(isKorean: Locale.current.languageCode == "ko") { [weak self] status, infos in
+        self.networkController.getTiTiFunctions { [weak self] status, infos in
             switch status {
             case .SUCCESS:
                 self?.infos = infos
