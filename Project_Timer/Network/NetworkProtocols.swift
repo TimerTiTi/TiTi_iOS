@@ -18,7 +18,7 @@ protocol VersionFetchable {
 }
 
 protocol TiTiFunctionsFetchable {
-    func getTiTiFunctions(isKorean: Bool, completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
+    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
 }
 
 protocol UpdateHistoryFetchable {
