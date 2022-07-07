@@ -27,19 +27,16 @@ struct TimeOfTimerView: View {
         ZStack {
             if viewModel.finished {
                 Text("FINISH".localized())
-                .font(TiTiFont.HGGGothicssiP60g(size: 300))
+                .font(TiTiFont.HGGGothicssiP60g(size: 70))
                 .foregroundColor(.white)
-                .minimumScaleFactor(0.1)
             } else {
-                HStack {
+                HStack(spacing: 0) {
                     if viewModel.time < 0 {
                         Text("+")
-                            .font(TiTiFont.HGGGothicssiP60g(size: 300))
-                            .minimumScaleFactor(0.1)
                     }
-                    
                     TimeLabelView(viewModel: viewModel.timeLabelViewModel)
                 }
+                .font(TiTiFont.HGGGothicssiP60g(size: 70))
                 .foregroundColor(self.color)
             }
         }
