@@ -16,19 +16,12 @@ struct TimeLabelView: View {
             if viewModel.timeLabel.hourTens > 0 {
                 SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
             }
-
             SingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)
-
             Text(":")
-
             SingleTimeLabelView(viewModel: viewModel.minuteTensViewModel)
-
             SingleTimeLabelView(viewModel: viewModel.minuteUnitsViewModel)
-
             Text(":")
-
             SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
-
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
         .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
