@@ -20,7 +20,7 @@ final class UpdateHistoryVM {
     }
     
     private func configureInfos() {
-        self.networkController.getUpdateHistorys(isKorean: Locale.current.languageCode == "ko") { [weak self] status, infos in
+        self.networkController.getUpdateHistorys { [weak self] status, infos in
             switch status {
             case .SUCCESS:
                 self?.infos = infos.sorted(by: {
