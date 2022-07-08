@@ -15,7 +15,7 @@ class TimeOfTimerViewModel: ObservableObject {
         case stopped
     }
     
-    var timeLabelViewModel: TimeLabelViewModel
+    var timeLabelViewModel: CountdownTimeLabelViewModel
     @Published var isRunning: Bool = false
     @Published var time: Int
     
@@ -32,11 +32,11 @@ class TimeOfTimerViewModel: ObservableObject {
     
     init(time: Int) {
         self.time = time
-        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time), fontSize: 70)
+        self.timeLabelViewModel = CountdownTimeLabelViewModel(time: time, fontSize: 70)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
-        self.timeLabelViewModel.updateTime(abs(newTime), showsAnimation: showsAnimation)
+        self.timeLabelViewModel.updateTime(time, showsAnimation: showsAnimation)
     }
 }
