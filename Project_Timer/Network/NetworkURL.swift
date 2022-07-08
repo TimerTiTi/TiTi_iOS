@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum NetworkURL {
     static let appstoreVersion: String = "https://itunes.apple.com/lookup?id=1519159240&country=kr"
@@ -21,10 +22,20 @@ enum NetworkURL {
         static let domain: String = "https://firestore.googleapis.com/v1/projects/\(projectId)/databases/(default)/documents"
         static let links: String = domain + "/links"
         static let youtubeLink: String = links + "/youtube"
-        static let titifuncs: String = domain + "/titifuncs"
-        static let titifuncs_eng: String = domain + "/titifuncs_eng"
-        static let updates: String = domain + "/updates"
-        static let updates_eng: String = domain + "/updates_eng"
         static let surveys: String = domain + "/surveys"
+        
+        static var titifuncs: String {
+            switch Language.currentLanguage {
+            case .ko: return domain + "/titifuncs"
+            case .en: return domain + "/titifuncs_eng"
+            }
+        }
+        
+        static var updates: String {
+            switch Language.currentLanguage {
+            case .ko: return domain + "/updates"
+            case .en: return domain + "/updates_eng"
+            }
+        }
     }
 }
