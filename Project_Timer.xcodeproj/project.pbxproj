@@ -14,6 +14,8 @@
 		04504C5B286485BE00CA4C69 /* SingleTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */; };
 		04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */; };
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
+		04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */; };
+		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -122,6 +124,8 @@
 		04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelView.swift; sourceTree = "<group>"; };
 		04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
+		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
+		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
@@ -279,6 +283,7 @@
 			children = (
 				04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */,
 				04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */,
+				04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */,
 				04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */,
 				04504C632864C7F400CA4C69 /* TimeLabelView.swift */,
+				04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,7 +714,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
-				87861F1C284DA00900227731 /* FirestoreManager.swift in Sources */,
 				043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
@@ -720,6 +725,7 @@
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
+				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */,
@@ -775,6 +781,7 @@
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
+				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
@@ -788,7 +795,6 @@
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
-				87F10934284C4561002E31EA /* SurveyInfo.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */,
