@@ -243,7 +243,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
 		043706282869D59100A5D3AA /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,7 +296,7 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		872C0ED9284ADD6800E8E3F2 /* UpdateList */ = {
+		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
 			isa = PBXGroup;
 			children = (
 				872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */,
