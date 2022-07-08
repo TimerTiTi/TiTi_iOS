@@ -28,7 +28,7 @@ final class StopwatchVM {
     
     let timeOfStopwatchViewModel: TimeOfStopwatchViewModel
     let timeOfSumViewModel: TimeLabelViewModel
-    let timeOfTargetViewModel: TimeLabelViewModel
+    let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
@@ -37,7 +37,7 @@ final class StopwatchVM {
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch)
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32)
-        self.timeOfTargetViewModel = TimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
+        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
         self.requestNotificationAuthorization()
         
         if RecordController.shared.recordTimes.recording {
