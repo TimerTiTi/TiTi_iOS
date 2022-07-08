@@ -174,7 +174,7 @@ extension StopwatchViewController {
     private func configureTimeOfTarget() {
         guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfTargetViewModel).foregroundColor(.white))
+        let hostingController = UIHostingController(rootView: CountdownTimeLabelView(viewModel: timeOfTargetViewModel).foregroundColor(.white))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofTargetFrameView.bounds
