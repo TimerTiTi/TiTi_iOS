@@ -23,6 +23,7 @@ final class StopwatchVM {
     }
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
+    private var showAnimation: Bool = true
     
     private var timer = Timer()
     
@@ -39,6 +40,7 @@ final class StopwatchVM {
         self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32)
         self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
         self.requestNotificationAuthorization()
+        self.updateAnimationSetting()
         
         if RecordController.shared.recordTimes.recording {
             print("automatic start")
@@ -68,10 +70,9 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
-        // TODO: showsAnimation 여부를 UserDefault에서 가져오기
-        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: true)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: true)
-        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: true)
+        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
     }
     
     func updateDaily() {
@@ -100,6 +101,7 @@ final class StopwatchVM {
             self.removeBadge()
             self.removeNotification()
         } else {
+            self.updateAnimationSetting()
             RecordController.shared.recordTimes.recordStart()
             self.timerStart()
             self.setBadge()
@@ -108,6 +110,7 @@ final class StopwatchVM {
     }
     
     func stopwatchReset() {
+        self.updateAnimationSetting()
         RecordController.shared.recordTimes.resetStopwatch()
         self.updateTimes()
     }
@@ -189,5 +192,9 @@ final class StopwatchVM {
     
     private func removeNotification() {
         self.userNotificationCenter.removeAllPendingNotificationRequests()
+    }
+    
+    private func updateAnimationSetting() {
+        self.showAnimation = UserDefaultsManager.get(forKey: .timelabelsAnimation) as? Bool ?? true
     }
 }
