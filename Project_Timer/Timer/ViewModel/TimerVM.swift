@@ -24,6 +24,7 @@ final class TimerVM {
     }
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
+    private var showAnimation: Bool = true
     
     private var timer = Timer()
     
@@ -41,6 +42,7 @@ final class TimerVM {
         self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
         self.requestNotificationAuthorization()
         self.soundAlert = false
+        self.updateAnimationSetting()
         
         if RecordController.shared.recordTimes.recording {
             print("automatic start")
@@ -74,10 +76,9 @@ final class TimerVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
-        // TODO: showsAnimation 여부를 UserDefault에서 가져오도록
-        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: true)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: true)
-        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: true)
+        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
+        self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
     }
     
     func updateDaily() {
@@ -106,6 +107,7 @@ final class TimerVM {
             self.removeBadge()
             self.removeNotification()
         } else {
+            self.updateAnimationSetting()
             RecordController.shared.recordTimes.recordStart()
             self.checkTimerReset()
             self.timerStart()
@@ -115,6 +117,7 @@ final class TimerVM {
     }
     
     func timerReset() {
+        self.updateAnimationSetting()
         RecordController.shared.recordTimes.resetTimer()
         self.updateTimes()
     }
@@ -221,5 +224,9 @@ final class TimerVM {
     
     private func removeNotification() {
         self.userNotificationCenter.removeAllPendingNotificationRequests()
+    }
+    
+    private func updateAnimationSetting() {
+        self.showAnimation = UserDefaultsManager.get(forKey: .timelabelsAnimation) as? Bool ?? true
     }
 }
