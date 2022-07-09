@@ -39,7 +39,7 @@ final class SettingVM {
         cells1.append(SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable))
         // UI 설정
         var cells2: [SettingCellInfo] = []
-        cells2.append(SettingCellInfo(title: "Times Display".localized(), subTitle: "Gently display time changes".localized(), toggleKey: .timelabelsAnimation))
+        cells2.append(SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
