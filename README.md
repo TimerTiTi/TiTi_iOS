@@ -9,7 +9,7 @@
 
 ## TiTi 개발 리스트
 아래 Notion 링크를 통해 현재 TiTi의 개발 진행, 또는 예정 사항들을 확인하실 수 있습니다!
-### [TiTi Notion](https://deeply-eggplant-5ec.notion.site/TiTi-b089afc1a4eb4cdb8c06840ca9cb1273)
+### [TiTi Notion](https://deeply-eggplant-5ec.notion.site/TiTi-Development-List-b089afc1a4eb4cdb8c06840ca9cb1273)
 
 ## TiTi 인스타그램 계정
 아래 Instagram 링크를 통해 TiTi 의 새로운 소식들을 확인하실 수 있습니다!
@@ -22,21 +22,21 @@
 
 
 ## TiTi 스크린샷
+ver 7.1 기준 스크린샷 입니다.
 <p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669740-ae85d380-d1f9-11eb-9be1-d0b34403dc59.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669760-cf4e2900-d1f9-11eb-93a0-6f6eb4fc47e6.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669769-daa15480-d1f9-11eb-9670-5129284203b0.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669779-e55be980-d1f9-11eb-8589-f73ce47165a2.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112150-590a7c57-fefd-4406-bb3a-850c84d53747.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112162-91ca1aea-6108-4b96-ae2a-897969a0cc67.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112174-ceb7f74c-9b15-4042-b921-07cf41daa430.png">
 </p>
 <p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669805-f7d62300-d1f9-11eb-83ce-d7c04fa33ee3.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669821-015f8b00-d1fa-11eb-8cc1-5620e933b42d.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669833-0a505c80-d1fa-11eb-84fd-824100492c59.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112194-e45e30e0-4f50-47ec-9d1a-2a0520e82d8b.png">
+<img width="32.9%%" src = "https://user-images.githubusercontent.com/65349445/178112197-78d67c85-745e-47cf-a38d-f3c77886e8fd.png">
+<img width="32.9%%" src = "https://user-images.githubusercontent.com/65349445/178112203-7ad6408f-6035-45e0-9661-e117adc69636.png">
 </p>
 <p align="center" width="100%">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669850-176d4b80-d1fa-11eb-9c0e-9b8712de63ab.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669873-32d85680-d1fa-11eb-9df1-f64fc62947be.png">
-<img width="24%" src = "https://user-images.githubusercontent.com/65349445/122669884-3ec41880-d1fa-11eb-83e1-6b85d7a80f80.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112247-5b24b55c-17ad-4812-b2d5-4c8f800a67d2.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112250-7a6b9aa9-3bb0-4dd1-acf2-38e9d79c3720.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112252-c6381c9e-b93b-483a-b02d-0217affacf1c.png">
 </p>
 
 ## TiTi만의 특징
@@ -71,4 +71,3 @@
 
 ### Copyright © 2021 FDEE.
 관심있는 Backend, 또는 Android 개발자 분은 연락 주시면 매우 감사합니다 :)
-
