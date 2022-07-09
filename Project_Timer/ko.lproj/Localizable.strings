@@ -148,3 +148,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "No surveys in progress." = "현재 진행중인 설문조사가 없습니다.";
 
 "How to use TiTi Move to YouTube" = "TiTi 사용법 Youtube 이동";
+
+"Times Display" = "시간 표시";
+
+"Gently display time changes" = "시간변화를 부드럽게 표시합니다";
