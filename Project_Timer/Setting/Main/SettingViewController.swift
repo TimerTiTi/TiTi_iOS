@@ -18,6 +18,13 @@ final class SettingViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SettingVM?
     private var stayScroll: Bool = false
+    private var lastSection: Int {
+        if let sectionsCount = self.viewModel?.sectionTitles.count {
+            return sectionsCount-1
+        } else {
+            return 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +98,7 @@ extension SettingViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 3 {
+        if indexPath.section == self.lastSection {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingDevInfoCell.identifier, for: indexPath) as? SettingDevInfoCell else { return UICollectionViewCell() }
             cell.delegate = self
             
@@ -123,7 +130,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.settings.bounds.width
         guard let info = self.viewModel?.cells[indexPath.section][indexPath.item] else { return CGSize(width: width, height: 43)}
-        let height: CGFloat = indexPath.section == 3 ? 80 : CGFloat(info.cellHeight)
+        let height: CGFloat = indexPath.section == self.lastSection ? 80 : CGFloat(info.cellHeight)
         
         return CGSize(width: width, height: height)
     }
