@@ -152,3 +152,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "Times Display" = "시간 표시";
 
 "Smoothly display time changes" = "시간변화를 부드럽게 표시합니다";
+
+"Keep The Screen On" = "화면 자동 꺼짐 방지";
+
+"The screen does not turn off while the timer is running." = "타이머 실행 중에는 화면이 항상 켜진 상태로 유지됩니다";

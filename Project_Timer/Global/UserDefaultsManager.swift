@@ -18,6 +18,7 @@ struct UserDefaultsManager {
         case restPushable = "restPushable"
         case updatePushable = "updatePushable"
         case timelabelsAnimation = "timelabelsAnimation"
+        case keepTheScreenOn = "keepTheScreenOn"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
