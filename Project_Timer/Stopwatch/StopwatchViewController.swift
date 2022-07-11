@@ -254,10 +254,12 @@ extension StopwatchViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
+                    UIDevice.current.isProximityMonitoringEnabled = true
                     self?.disableIdleTimer()
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
+                    UIDevice.current.isProximityMonitoringEnabled = false
                     self?.enableIdleTimer()
                 }
             })
