@@ -239,13 +239,13 @@ extension TimerViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
+                    self?.enableProximityMonitoring()
                     self?.disableIdleTimer()
-                    UIDevice.current.isProximityMonitoringEnabled = true
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
-                    UIDevice.current.isProximityMonitoringEnabled = false
+                    self?.disableProximityMonitoring()
                 }
             })
             .store(in: &self.cancellables)
@@ -418,6 +418,17 @@ extension TimerViewController {
             self.warningRecordDate.alpha = 0
             self.todayLabel.textColor = .white
         }
+    }
+    
+    private func enableProximityMonitoring() {
+        let dimWhenFaceDown = UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true
+        if dimWhenFaceDown {
+            UIDevice.current.isProximityMonitoringEnabled = true
+        }
+    }
+    
+    private func disableProximityMonitoring() {
+        UIDevice.current.isProximityMonitoringEnabled = false
     }
     
     private func disableIdleTimer() {

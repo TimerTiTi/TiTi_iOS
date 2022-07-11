@@ -254,13 +254,13 @@ extension StopwatchViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
-                    UIDevice.current.isProximityMonitoringEnabled = true
                     self?.disableIdleTimer()
+                    self?.enableProximityMonitoring()
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
-                    UIDevice.current.isProximityMonitoringEnabled = false
                     self?.enableIdleTimer()
+                    self?.disableProximityMonitoring()
                 }
             })
             .store(in: &self.cancellables)
@@ -407,6 +407,17 @@ extension StopwatchViewController {
             self.warningRecordDate.alpha = 0
             self.todayLabel.textColor = .white
         }
+    }
+    
+    private func enableProximityMonitoring() {
+        let dimWhenFaceDown = UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true
+        if dimWhenFaceDown {
+            UIDevice.current.isProximityMonitoringEnabled = true
+        }
+    }
+    
+    private func disableProximityMonitoring() {
+        UIDevice.current.isProximityMonitoringEnabled = false
     }
     
     private func disableIdleTimer() {
