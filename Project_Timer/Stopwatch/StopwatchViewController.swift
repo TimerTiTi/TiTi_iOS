@@ -254,11 +254,11 @@ extension StopwatchViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
-                    UIApplication.shared.isIdleTimerDisabled = true
+                    self?.disableIdleTimer()
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
-                    UIApplication.shared.isIdleTimerDisabled = false
+                    self?.enableIdleTimer()
                 }
             })
             .store(in: &self.cancellables)
@@ -405,6 +405,17 @@ extension StopwatchViewController {
             self.warningRecordDate.alpha = 0
             self.todayLabel.textColor = .white
         }
+    }
+    
+    private func disableIdleTimer() {
+        let keepTheScreenOn = UserDefaultsManager.get(forKey: .keepTheScreenOn) as? Bool ?? true
+        if keepTheScreenOn {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+    }
+    
+    private func enableIdleTimer() {
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 }
 
