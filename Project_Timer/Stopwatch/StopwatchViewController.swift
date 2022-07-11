@@ -254,9 +254,11 @@ extension StopwatchViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
+                    UIApplication.shared.isIdleTimerDisabled = true
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
+                    UIApplication.shared.isIdleTimerDisabled = false
                 }
             })
             .store(in: &self.cancellables)
