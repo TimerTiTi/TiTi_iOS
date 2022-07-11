@@ -151,6 +151,10 @@
 
 "Smoothly display time changes" = "Smoothly display time changes";
 
+"Dim When Face Down" = "Dim When Face Down";
+
+"The screen will be dimmed when the screen facing downwards" = "The screen will be dimmed when the screen facing downwards";
+
 "Keep The Screen On" = "Keep The Screen On";
 
 "The screen does not turn off while the timer is running." = "The screen does not turn off while the timer is running.";
