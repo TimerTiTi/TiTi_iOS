@@ -240,10 +240,12 @@ extension TimerViewController {
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                     self?.disableIdleTimer()
+                    UIDevice.current.isProximityMonitoringEnabled = true
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
+                    UIDevice.current.isProximityMonitoringEnabled = false
                 }
             })
             .store(in: &self.cancellables)
