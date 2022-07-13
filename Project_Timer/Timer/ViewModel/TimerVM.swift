@@ -14,14 +14,14 @@ final class TimerVM {
     @Published private(set) var times: Times
     @Published private(set) var daily: Daily
     @Published private(set) var task: String
-    @Published private(set) var runningUI = false
-    @Published private(set) var soundAlert = false
-    @Published private(set) var warningNewDate = false
-    private(set) var timerRunning = false {
+    @Published private(set) var runningUI = false {
         didSet {
-            self.timeOfTimerViewModel.isRunning = timerRunning
+            self.timeOfTimerViewModel.isRunning = runningUI
         }
     }
+    @Published private(set) var soundAlert = false
+    @Published private(set) var warningNewDate = false
+    private(set) var timerRunning = false
     private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
