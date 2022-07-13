@@ -142,7 +142,7 @@ extension StopwatchViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didProximityValueChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
             self?.hideWarningRecordDate()
         }
@@ -421,7 +421,7 @@ extension StopwatchViewController {
         UIDevice.current.isProximityMonitoringEnabled = false
     }
     
-    @objc private func didProximityValueChange() {
+    @objc private func didProximityStateChange() {
         if UIDevice.current.proximityState {
             self.enterBackground()
         } else {
