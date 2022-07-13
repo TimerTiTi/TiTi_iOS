@@ -156,10 +156,10 @@ final class StopwatchVM {
         self.timerCount = 0
         let endAt = Date()
         RecordController.shared.daily.update(at: endAt)
+        self.updateDaily()
         RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.task] ?? 0)
         RecordController.shared.dailys.addDaily(self.daily)
         self.updateTimes()
-        self.updateDaily()
     }
     
     func enterBackground() {
