@@ -71,6 +71,16 @@ class TimerViewController: UIViewController {
         self.viewModel?.updateDaily()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.enableProximityMonitoring()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.disableProximityMonitoring()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.updateTabbarColor()
@@ -81,11 +91,7 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func timerStartStopAction(_ sender: Any) {
-        guard self.viewModel?.task ?? "none" != "none" else {
-            self.showTaskWarningAlert()
-            return
-        }
-        self.viewModel?.timerAction()
+        self.startOrStopTimer()
     }
     
     @IBAction func setting(_ sender: Any) {
@@ -133,7 +139,6 @@ extension TimerViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
             self?.hideWarningRecordDate()
         }
@@ -193,6 +198,14 @@ extension TimerViewController {
         setTimerVC.delegate = self
         present(setTimerVC, animated: true, completion: nil)
     }
+    
+    private func startOrStopTimer() {
+        guard self.viewModel?.task ?? "none" != "none" else {
+            self.showTaskWarningAlert()
+            return
+        }
+        self.viewModel?.timerAction()
+    }
 }
 
 // MARK: - binding
@@ -240,13 +253,11 @@ extension TimerViewController {
                     NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
-                    self?.enableProximityMonitoring()
                     self?.disableIdleTimer()
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
-                    self?.disableProximityMonitoring()
                 }
             })
             .store(in: &self.cancellables)
@@ -422,6 +433,7 @@ extension TimerViewController {
     }
     
     private func enableProximityMonitoring() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
         let dimWhenFaceDown = UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true
         if dimWhenFaceDown {
             UIDevice.current.isProximityMonitoringEnabled = true
@@ -430,10 +442,14 @@ extension TimerViewController {
     
     private func disableProximityMonitoring() {
         UIDevice.current.isProximityMonitoringEnabled = false
+        NotificationCenter.default.removeObserver(self, name: UIDevice.proximityStateDidChangeNotification, object: nil)
     }
     
     @objc private func didProximityStateChange() {
+        guard let running = viewModel?.timerRunning else { return }
+        
         if UIDevice.current.proximityState {
+            if !running { self.startOrStopTimer() }
             self.enterBackground()
         } else {
             self.enterForeground()
