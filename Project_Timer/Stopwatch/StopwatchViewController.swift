@@ -142,6 +142,7 @@ extension StopwatchViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didProximityValueChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
         NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
             self?.hideWarningRecordDate()
         }
@@ -420,6 +421,14 @@ extension StopwatchViewController {
         UIDevice.current.isProximityMonitoringEnabled = false
     }
     
+    @objc private func didProximityValueChange() {
+        if UIDevice.current.proximityState {
+            self.enterBackground()
+        } else {
+            self.enterForeground()
+        }
+    }
+    
     private func disableIdleTimer() {
         let keepTheScreenOn = UserDefaultsManager.get(forKey: .keepTheScreenOn) as? Bool ?? true
         if keepTheScreenOn {
@@ -466,16 +475,24 @@ extension StopwatchViewController {
 
 // MARK: Background
 extension StopwatchViewController {
-    @objc func pauseWhenBackground(noti: Notification) {
+    private func enterBackground() {
         guard let running = self.viewModel?.runningUI,
               running == true else { return }
         self.viewModel?.enterBackground()
     }
     
-    @objc func willEnterForeground(noti: Notification) {
+    private func enterForeground() {
         guard let running = self.viewModel?.runningUI,
               running == true else { return }
         self.viewModel?.enterForground()
+    }
+    
+    @objc func pauseWhenBackground(noti: Notification) {
+        self.enterBackground()
+    }
+    
+    @objc func willEnterForeground(noti: Notification) {
+        self.enterForeground()
     }
 }
 
