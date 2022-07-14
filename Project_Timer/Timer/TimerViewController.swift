@@ -446,10 +446,10 @@ extension TimerViewController {
     }
     
     @objc private func didProximityStateChange() {
-        guard let running = viewModel?.timerRunning else { return }
+        guard let isTimerRunning = viewModel?.timerRunning else { return }
         
         if UIDevice.current.proximityState {
-            if !running { self.startOrStopTimer() }
+            if isTimerRunning == false { self.startOrStopTimer() }
             self.enterBackground()
         } else {
             self.enterForeground()
