@@ -40,8 +40,8 @@ final class SettingVM {
         // UI 설정
         var cells2: [SettingCellInfo] = []
         cells2.append(SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation))
-        cells2.append(SettingCellInfo(title: "Dim When Face Down".localized(), subTitle: "The screen will be dimmed when the screen facing downwards".localized(), toggleKey: .dimWhenFaceDown))
-        cells2.append(SettingCellInfo(title: "Keep The Screen On".localized(), subTitle: "The screen does not turn off while the timer is running.".localized(), toggleKey: .keepTheScreenOn))
+        cells2.append(SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will be start automatically when flip the device".localized(), toggleKey: .dimWhenFaceDown))
+        cells2.append(SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn))
         // 버전 및 업데이트 내역
         var cells3: [SettingCellInfo] = []
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
