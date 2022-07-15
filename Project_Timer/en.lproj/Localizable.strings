@@ -151,10 +151,10 @@
 
 "Smoothly display time changes" = "Smoothly display time changes";
 
-"Dim When Face Down" = "Dim When Face Down";
+"Flip to start recording" = "Flip to start recording";
 
-"The screen will be dimmed when the screen facing downwards" = "The screen will be dimmed when the screen facing downwards";
+"Record will be start automatically when flip the device" = "Record will be start automatically when flip the device";
 
-"Keep The Screen On" = "Keep The Screen On";
+"Keep screen on" = "Keep screen on";
 
-"The screen does not turn off while the timer is running." = "The screen does not turn off while the timer is running.";
+"Keep the screen on during recording" = "Keep the screen on during recording";
