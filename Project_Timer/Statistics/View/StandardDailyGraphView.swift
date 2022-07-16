@@ -28,6 +28,17 @@ final class StandardDailyGraphView: UIView {
         stackView.spacing = 5
         return stackView
     }()
+    private var timeLineLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "TimeLine"
+        label.textColor = UIColor.label
+        label.font = TiTiFont.HGGGothicssiP60g(size: 16)
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 18)
+        ])
+        return label
+    }()
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -71,10 +82,42 @@ final class StandardDailyGraphView: UIView {
         self.contentView.addSubview(self.daysOfWeekStackView)
         NSLayoutConstraint.activate([
             self.daysOfWeekStackView.centerYAnchor.constraint(equalTo: self.dateLabel.centerYAnchor, constant: 4),
-            self.daysOfWeekStackView.leadingAnchor.constraint(equalTo: self.dateLabel.trailingAnchor, constant: 5)
+            self.daysOfWeekStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12.5)
+        ])
+        
+        self.contentView.addSubview(self.timeLineLabel)
+        NSLayoutConstraint.activate([
+            self.timeLineLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.timeLineLabel.topAnchor.constraint(equalTo: self.daysOfWeekStackView.bottomAnchor, constant: 5)
         ])
         
         self.contentView.configureShadow()
+    }
+    
+    func updateDarkLightMode() {
+        self.contentView.configureShadow()
+    }
+    
+    func updateFromDaily(_ daily: Daily?) {
+        self.updateDateLabel(daily?.day)
+        self.updateDayOfWeek(daily?.day)
+    }
+    
+    private func updateDateLabel(_ day: Date?) {
+        guard let day = day else {
+            self.dateLabel.text = "0000.00.00"
+            return
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        self.dateLabel.text = dateFormatter.string(from: day)
+    }
+    
+    private func updateDayOfWeek(_ day: Date?) {
+        self.daysOfWeekStackView.arrangedSubviews.forEach { $0.backgroundColor = UIColor.clear }
+        guard let day = day else { return }
+        let targetIndex = day.indexDayOfWeek
+        self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
     }
 }
 
@@ -84,6 +127,8 @@ final class DayOfWeekLabel: UILabel {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.font = TiTiFont.HGGGothicssiP60g(size: 13)
         self.textColor = UIColor.label
+        self.textAlignment = .center
+        
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 25),
             self.heightAnchor.constraint(equalToConstant: 15)
