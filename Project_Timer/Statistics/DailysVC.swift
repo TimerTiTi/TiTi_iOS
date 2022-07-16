@@ -16,16 +16,7 @@ final class DailysVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
     private var standardDailyGraphView = StandardDailyGraphView()
-    private var graph2: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 365),
-            view.heightAnchor.constraint(equalToConstant: 365)
-        ])
-        view.backgroundColor = .green
-        return view
-    }()
+    private var timelineDailyGraphView = TimelineDailyGraphView()
     private var graph3: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +29,7 @@ final class DailysVC: UIViewController {
     }()
     private var currentDaily: Daily? {
         didSet {
-            self.standardDailyGraphView.updateFromDaily(currentDaily)
+            self.updateGraphs()
         }
     }
     
@@ -55,10 +46,13 @@ final class DailysVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.standardDailyGraphView.updateDarkLightMode()
+        self.timelineDailyGraphView.updateDarkLightMode()
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
-        print(sender.tag)
+        UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
+        self.updateGraphs()
+        // reverse color 로직 고민
     }
 }
 
@@ -99,20 +93,26 @@ extension DailysVC {
             self.standardDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
-        self.graphsScrollView.addSubview(self.graph2)
+        self.graphsScrollView.addSubview(self.timelineDailyGraphView)
         NSLayoutConstraint.activate([
-            self.graph2.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.graph2.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
-            self.graph2.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+            self.timelineDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
+            self.timelineDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
         self.graphsScrollView.addSubview(self.graph3)
         NSLayoutConstraint.activate([
             self.graph3.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.graph3.leadingAnchor.constraint(equalTo: self.graph2.trailingAnchor),
+            self.graph3.leadingAnchor.constraint(equalTo: self.timelineDailyGraphView.trailingAnchor),
             self.graph3.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor),
             self.graph3.trailingAnchor.constraint(equalTo: self.graphsContentView.trailingAnchor)
         ])
+    }
+}
+
+extension DailysVC {
+    private func updateGraphs() {
+        self.standardDailyGraphView.updateFromDaily(self.currentDaily)
     }
 }
 

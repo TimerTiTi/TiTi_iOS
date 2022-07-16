@@ -11,7 +11,7 @@ import Foundation
 extension String {
     static let currentVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     static var userTintColor: String {
-        let colorIndex = UserDefaults.standard.value(forKey: "startColor") as? Int ?? 1
+        let colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         return "D\(colorIndex)"
     }
     /// 디바이스 언어별로 번역기능을 위한 함수, Localizable 파일 내 String 값에 해당되는 언어값 반환, 없는 경우 앞뒤에 ** 붙여서 반환
