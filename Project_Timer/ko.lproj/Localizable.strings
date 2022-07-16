@@ -155,7 +155,7 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 
 "Flip to start recording" = "뒤집어서 기록 시작";
 
-"Record will be start automatically when flip the device" = "기기를 뒤집으면 자동으로 기록이 시작됩니다";
+"Record will start automatically when flip the device" = "기기를 뒤집으면 자동으로 기록이 시작됩니다";
 
 "Keep screen on" = "항상 화면 켜짐 유지";
 
