@@ -14,6 +14,7 @@ final class DailysVC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
+    @IBOutlet weak var graphsPageControl: UIPageControl!
     private var graph1: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +42,7 @@ final class DailysVC: UIViewController {
             view.widthAnchor.constraint(equalToConstant: 365),
             view.heightAnchor.constraint(equalToConstant: 365)
         ])
-        view.backgroundColor = .yellow
+        view.backgroundColor = .orange
         return view
     }()
     
@@ -132,5 +133,9 @@ extension DailysVC: FSCalendarDataSource {
 }
 
 extension DailysVC: UIScrollViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView == self.graphsScrollView else { return }
+        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+        self.graphsPageControl.currentPage = Int(round(value))
+    }
 }
