@@ -15,4 +15,7 @@ enum TiTiFont {
     static func HGGGothicssiP60g(size: CGFloat) -> UIFont? {
         return UIFont(name: "HGGGothicssiP60g", size: size)
     }
+    static func HGGGothicssiP80g(size: CGFloat) -> UIFont? {
+        return UIFont(name: "HGGGothicssiP80g", size: size)
+    }
 }
