@@ -1619,10 +1619,10 @@
                                 </segments>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jam-iT-gHH" customClass="FSCalendar">
-                                <rect key="frame" x="34.5" y="83" width="345" height="285"/>
+                                <rect key="frame" x="34.5" y="83" width="345" height="280"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="285" id="YEN-t2-qFL"/>
+                                    <constraint firstAttribute="height" constant="280" id="YEN-t2-qFL"/>
                                     <constraint firstAttribute="width" constant="345" id="l60-SI-4v9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -1669,10 +1669,10 @@
                                 </connections>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXc-AT-98H" userLabel="verticalScrollView">
-                                <rect key="frame" x="0.0" y="376" width="414" height="486"/>
+                                <rect key="frame" x="0.0" y="371" width="414" height="491"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTV-iA-UWb" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="476"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="447"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ShY-ue-Blf">
                                                 <rect key="frame" x="37.5" y="8" width="339" height="20"/>
@@ -1884,7 +1884,7 @@
                                                 </subviews>
                                             </stackView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXG-gW-z5f" userLabel="graphsHorizontalScrollView">
-                                                <rect key="frame" x="24.5" y="44" width="365" height="365"/>
+                                                <rect key="frame" x="24.5" y="36" width="365" height="365"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6j-nd-2y0" userLabel="graphsContentView">
                                                         <rect key="frame" x="0.0" y="0.0" width="1095" height="365"/>
@@ -1907,7 +1907,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="hNY-c7-Mny"/>
                                             </scrollView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ztu-4c-w5T">
-                                                <rect key="frame" x="149.5" y="378" width="115.5" height="26"/>
+                                                <rect key="frame" x="149.5" y="367" width="115.5" height="26"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                                 <connections>
@@ -1915,12 +1915,12 @@
                                                 </connections>
                                             </pageControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Hss-nC-DUe">
-                                                <rect key="frame" x="72" y="425" width="270" height="35"/>
+                                                <rect key="frame" x="72" y="409" width="270" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpc-jf-jwJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="35" id="RRz-j3-tCK"/>
+                                                            <constraint firstAttribute="height" constant="30" id="RRz-j3-tCK"/>
                                                             <constraint firstAttribute="width" constant="120" id="ifr-Rc-GTZ"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
@@ -1936,10 +1936,10 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lom-8Q-jWv">
-                                                        <rect key="frame" x="150" y="0.0" width="120" height="35"/>
+                                                        <rect key="frame" x="150" y="0.0" width="120" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="0gN-Fg-Hje"/>
-                                                            <constraint firstAttribute="height" constant="35" id="R08-pZ-bzu"/>
+                                                            <constraint firstAttribute="height" constant="30" id="R08-pZ-bzu"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
@@ -1958,15 +1958,15 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="Hss-nC-DUe" firstAttribute="top" secondItem="E6j-nd-2y0" secondAttribute="bottom" constant="16" id="BXF-34-dJZ"/>
+                                            <constraint firstItem="Hss-nC-DUe" firstAttribute="top" secondItem="E6j-nd-2y0" secondAttribute="bottom" constant="8" id="BXF-34-dJZ"/>
                                             <constraint firstItem="ShY-ue-Blf" firstAttribute="centerX" secondItem="vTV-iA-UWb" secondAttribute="centerX" id="EBj-4n-hN6"/>
                                             <constraint firstItem="Hss-nC-DUe" firstAttribute="centerX" secondItem="vTV-iA-UWb" secondAttribute="centerX" id="Hfn-t9-JGz"/>
                                             <constraint firstItem="ShY-ue-Blf" firstAttribute="top" secondItem="vTV-iA-UWb" secondAttribute="top" constant="8" id="Pek-uJ-N3B"/>
                                             <constraint firstItem="ztu-4c-w5T" firstAttribute="centerX" secondItem="GXG-gW-z5f" secondAttribute="centerX" id="QZk-tJ-wb5"/>
-                                            <constraint firstAttribute="bottom" secondItem="Hss-nC-DUe" secondAttribute="bottom" constant="16" id="dAu-iw-CZk"/>
-                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="top" secondItem="ShY-ue-Blf" secondAttribute="bottom" constant="16" id="dpA-KC-lj7"/>
+                                            <constraint firstAttribute="bottom" secondItem="Hss-nC-DUe" secondAttribute="bottom" constant="8" id="dAu-iw-CZk"/>
+                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="top" secondItem="ShY-ue-Blf" secondAttribute="bottom" constant="8" id="dpA-KC-lj7"/>
                                             <constraint firstItem="GXG-gW-z5f" firstAttribute="centerX" secondItem="vTV-iA-UWb" secondAttribute="centerX" id="eBQ-J2-2if"/>
-                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="bottom" secondItem="ztu-4c-w5T" secondAttribute="bottom" constant="5" id="g47-Gs-EoX"/>
+                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="bottom" secondItem="ztu-4c-w5T" secondAttribute="bottom" constant="8" id="g47-Gs-EoX"/>
                                         </constraints>
                                     </view>
                                 </subviews>

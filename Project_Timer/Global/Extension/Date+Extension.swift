@@ -42,4 +42,9 @@ extension Date {
         dateFormatter.dateFormat = "yyMM"
         return Int(dateFormatter.string(from: self)) ?? 0
     }
+    
+    var indexDayOfWeek: Int {
+        // MARK: 0: Mun, 6: Sun 값으로 index 변환하여 반환
+        return (Calendar.current.component(.weekday, from: self) - 2)%7
+    }
 }
