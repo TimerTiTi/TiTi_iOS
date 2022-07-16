@@ -45,7 +45,7 @@ final class SettingVM {
             ],
             [
                 SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
-                SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will be start automatically when flip the device".localized(), toggleKey: .dimWhenFaceDown)
+                SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will start automatically when flip the device".localized(), toggleKey: .dimWhenFaceDown)
             ],
             [
                 versionCell,
