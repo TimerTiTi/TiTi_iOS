@@ -15,16 +15,7 @@ final class DailysVC: UIViewController {
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
-    private var graph1: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 365),
-            view.heightAnchor.constraint(equalToConstant: 365)
-        ])
-        view.backgroundColor = .blue
-        return view
-    }()
+    private var standardDailyGraphView = StandardDailyGraphView()
     private var graph2: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -88,17 +79,17 @@ extension DailysVC {
     }
     
     private func configureGraphs() {
-        self.graphsScrollView.addSubview(self.graph1)
+        self.graphsScrollView.addSubview(self.standardDailyGraphView)
         NSLayoutConstraint.activate([
-            self.graph1.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.graph1.leadingAnchor.constraint(equalTo: self.graphsContentView.leadingAnchor),
-            self.graph1.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+            self.standardDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.standardDailyGraphView.leadingAnchor.constraint(equalTo: self.graphsContentView.leadingAnchor),
+            self.standardDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
         self.graphsScrollView.addSubview(self.graph2)
         NSLayoutConstraint.activate([
             self.graph2.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.graph2.leadingAnchor.constraint(equalTo: self.graph1.trailingAnchor),
+            self.graph2.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
             self.graph2.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
