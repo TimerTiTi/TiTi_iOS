@@ -12,13 +12,50 @@ import FSCalendar
 final class DailysVC: UIViewController {
     static let identifier = "DailysVC"
     @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var graphsScrollView: UIScrollView!
+    @IBOutlet weak var graphsContentView: UIView!
+    private var graph1: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 365),
+            view.heightAnchor.constraint(equalToConstant: 365)
+        ])
+        view.backgroundColor = .blue
+        return view
+    }()
+    private var graph2: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 365),
+            view.heightAnchor.constraint(equalToConstant: 365)
+        ])
+        view.backgroundColor = .green
+        return view
+    }()
+    private var graph3: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 365),
+            view.heightAnchor.constraint(equalToConstant: 365)
+        ])
+        view.backgroundColor = .yellow
+        return view
+    }()
     
     let dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCalender()
         self.configureColor()
-        
+        self.configureScrollView()
+        self.configureGraphs()
+    }
+    
+    @IBAction func changeColor(_ sender: UIButton) {
+        print(sender.tag)
     }
 }
 
@@ -44,6 +81,34 @@ extension DailysVC {
         self.calendar.appearance.eventDefaultColor = UIColor.systemRed.withAlphaComponent(0.5)
         self.calendar.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
     }
+    
+    private func configureScrollView() {
+        self.graphsScrollView.delegate = self
+    }
+    
+    private func configureGraphs() {
+        self.graphsScrollView.addSubview(self.graph1)
+        NSLayoutConstraint.activate([
+            self.graph1.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.graph1.leadingAnchor.constraint(equalTo: self.graphsContentView.leadingAnchor),
+            self.graph1.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+        ])
+        
+        self.graphsScrollView.addSubview(self.graph2)
+        NSLayoutConstraint.activate([
+            self.graph2.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.graph2.leadingAnchor.constraint(equalTo: self.graph1.trailingAnchor),
+            self.graph2.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+        ])
+        
+        self.graphsScrollView.addSubview(self.graph3)
+        NSLayoutConstraint.activate([
+            self.graph3.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.graph3.leadingAnchor.constraint(equalTo: self.graph2.trailingAnchor),
+            self.graph3.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor),
+            self.graph3.trailingAnchor.constraint(equalTo: self.graphsContentView.trailingAnchor)
+        ])
+    }
 }
 
 extension DailysVC: FSCalendarDelegate {
@@ -64,4 +129,8 @@ extension DailysVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
     }
+}
+
+extension DailysVC: UIScrollViewDelegate {
+    
 }
