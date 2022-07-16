@@ -119,7 +119,11 @@ extension LogViewController {
     }
     
     private func showStatistics() {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: StatisticsViewController.identifier) else { return }
+//        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: StatisticsViewController.identifier) else { return }
+//        viewController.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
+//        viewController.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
+//        self.present(viewController, animated: true, completion: nil)
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier) else { return }
         viewController.modalPresentationStyle = .fullScreen //전체화면으로 보이게 설정
         viewController.modalTransitionStyle = .crossDissolve //전환 애니메이션 설정
         self.present(viewController, animated: true, completion: nil)

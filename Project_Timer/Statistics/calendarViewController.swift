@@ -19,7 +19,6 @@ class calendarViewController: UIViewController {
     @IBOutlet var backBT: UIButton!
     
     let dateFormatter = DateFormatter()
-    var dumyDays: [Date] = []
     var colorIndex: Int = 0
     var calendarViewControllerDelegate : selectCalendar!
     
