@@ -22,35 +22,38 @@ final class SettingVM {
         self.sectionTitles.append("Introducing app".localized())
         self.sectionTitles.append("Notification".localized())
         self.sectionTitles.append("UI")
+        self.sectionTitles.append("Control")
         self.sectionTitles.append("Version & Update history".localized())
         self.sectionTitles.append("Developer".localized())
     }
     
     private func configureCells() {
-        // 앱 소개
-        var cells0: [SettingCellInfo] = []
-        cells0.append(SettingCellInfo(title: "TiTi Functions".localized(), nextVCIdentifier: SettingFunctionsListVC.identifier))
-        cells0.append(SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiLabVC.identifier))
-        // 알림 설정
-        var cells1: [SettingCellInfo] = []
-        cells1.append(SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before, and End time".localized(), toggleKey: .timerPushable))
-        cells1.append(SettingCellInfo(title: "Stopwatch".localized(), subTitle: "Every 1 hour passed".localized(), toggleKey: .stopwatchPushable))
-//        cells2.append(SettingCellInfo(title: "휴식", subTitle: "5분단위 경과시 알림", toggleKey: .restPushable))
-        cells1.append(SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable))
-        // UI 설정
-        var cells2: [SettingCellInfo] = []
-        cells2.append(SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation))
-        cells2.append(SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will be start automatically when flip the device".localized(), toggleKey: .dimWhenFaceDown))
-        cells2.append(SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn))
-        // 버전 및 업데이트 내역
-        var cells3: [SettingCellInfo] = []
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
         versionCell.fetchVersion()
-        cells3.append(versionCell)
-        cells3.append(SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier))
-        // 개발자
-        var cells4: [SettingCellInfo] = []
-        cells4.append(SettingCellInfo(title: "FDEE"))
-        self.cells = [cells0, cells1, cells2, cells3, cells4]
+        self.cells = [
+            [
+                SettingCellInfo(title: "TiTi Functions".localized(), nextVCIdentifier: SettingFunctionsListVC.identifier),
+                SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiLabVC.identifier)
+            ],
+            [
+                SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before, and End time".localized(), toggleKey: .timerPushable),
+                SettingCellInfo(title: "Stopwatch".localized(), subTitle: "Every 1 hour passed".localized(), toggleKey: .stopwatchPushable),
+                SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable)
+            ],
+            [
+                SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation)
+            ],
+            [
+                SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
+                SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will be start automatically when flip the device".localized(), toggleKey: .dimWhenFaceDown)
+            ],
+            [
+                versionCell,
+                SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier)
+            ],
+            [
+                SettingCellInfo(title: "FDEE")
+            ]
+        ]
     }
 }
