@@ -36,14 +36,25 @@ final class DailysVC: UIViewController {
         view.backgroundColor = .orange
         return view
     }()
+    private var currentDaily: Daily? {
+        didSet {
+            self.standardDailyGraphView.updateFromDaily(currentDaily)
+        }
+    }
     
-    let dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCalender()
         self.configureColor()
         self.configureScrollView()
         self.configureGraphs()
+        
+        self.currentDaily = RecordController.shared.daily
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.standardDailyGraphView.updateDarkLightMode()
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
@@ -53,6 +64,8 @@ final class DailysVC: UIViewController {
 
 extension DailysVC {
     private func configureCalender() {
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
         self.calendar.appearance.headerDateFormat = "YYYY.MM"
         self.calendar.appearance.headerTitleFont = TiTiFont.HGGGothicssiP60g(size: 25)
         self.calendar.appearance.weekdayFont = TiTiFont.HGGGothicssiP60g(size: 13)
@@ -107,12 +120,9 @@ extension DailysVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if RecordController.shared.dailys.dates.contains(date),
            let targetIndex = RecordController.shared.dailys.dates.firstIndex(of: date) {
-            let targetDaily = RecordController.shared.dailys.dailys[targetIndex]
-            // daily 교체 로직
-            dump(targetDaily)
+            self.currentDaily = RecordController.shared.dailys.dailys[targetIndex]
         } else {
-            // 기록이 없는 날 로직
-            print("no records")
+            self.currentDaily = nil
         }
     }
 }
