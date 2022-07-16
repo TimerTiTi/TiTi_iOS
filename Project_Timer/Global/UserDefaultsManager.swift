@@ -20,6 +20,7 @@ struct UserDefaultsManager {
         case timelabelsAnimation = "timelabelsAnimation"
         case flipToStartRecording = "flipToStartRecording"
         case keepTheScreenOn = "keepTheScreenOn"
+        case startColor = "startColor"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
