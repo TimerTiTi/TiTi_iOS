@@ -20,6 +20,11 @@ final class DailysVC: UIViewController {
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var checkGraphButtons: [CheckGraphButton] = []
+    private var checkGraphs: [Bool] = [true, true, true] {
+        didSet {
+            UserDefaultsManager.set(to: checkGraphs, forKey: .checks)
+        }
+    }
     private var currentDaily: Daily? {
         didSet {
             self.updateGraphs()
@@ -34,6 +39,7 @@ final class DailysVC: UIViewController {
         self.updateCalendarColor()
         self.configureScrollView()
         self.configureGraphs()
+        self.configureChecks()
         self.configureCheckGraphs()
         self.configureTimelineHostingVC()
         
@@ -53,6 +59,26 @@ final class DailysVC: UIViewController {
         self.updateCalendarColor()
         self.timelineVM.updateColor()
         // reverse color 로직 고민
+    }
+    
+    @IBAction func saveGraphsToLibrary(_ sender: Any) {
+        if self.checkGraphs[0] == true {
+            let graphImage = UIImage.init(view: self.standardDailyGraphView)
+            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+        }
+        if self.checkGraphs[1] == true {
+            let graphImage = UIImage.init(view: self.timelineDailyGraphView)
+            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+        }
+        if self.checkGraphs[2] == true {
+            let graphImage = UIImage.init(view: self.tasksProgressDailyGraphView)
+            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+        }
+        self.showAlertWithOK(title: "Save completed".localized(), text: "")
+    }
+    
+    @IBAction func shareGraphs(_ sender: Any) {
+        
     }
 }
 
@@ -111,12 +137,18 @@ extension DailysVC {
         ])
     }
     
+    private func configureChecks() {
+        guard let checks = UserDefaultsManager.get(forKey: .checks) as? [Bool] else { return }
+        self.checkGraphs = checks
+    }
+    
     private func configureCheckGraphs() {
         (0...2).forEach { idx in
             let button = CheckGraphButton()
+            button.isSelected = self.checkGraphs[idx]
             button.addAction(UIAction(handler: { [weak self] _ in
                 button.isSelected.toggle()
-                self?.selectGraph(index: idx)
+                self?.checkGraphs[idx].toggle()
             }), for: .touchUpInside)
             self.checkGraphButtons.append(button)
         }
@@ -152,11 +184,6 @@ extension DailysVC {
 extension DailysVC {
     private func updateGraphs() {
         self.standardDailyGraphView.updateFromDaily(self.currentDaily)
-    }
-    
-    private func selectGraph(index: Int) {
-        // select 로직 구현
-        print(index)
     }
 }
 

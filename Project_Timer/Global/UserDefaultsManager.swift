@@ -21,6 +21,7 @@ struct UserDefaultsManager {
         case flipToStartRecording = "flipToStartRecording"
         case keepTheScreenOn = "keepTheScreenOn"
         case startColor = "startColor"
+        case checks = "checks"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
