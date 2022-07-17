@@ -74,6 +74,7 @@ final class StandardDailyGraphView: UIView {
     }()
     private var totalTimeView = TimeView(title: "Total")
     private var maxTimeView = TimeView(title: "Max")
+    private var progressView = TasksCircularProgressView()
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +90,8 @@ final class StandardDailyGraphView: UIView {
     private var tasks: [TaskInfo] = [] {
         didSet {
             self.tasksCollectionView.reloadData()
+            self.layoutIfNeeded()
+            self.progressView.updateProgress(tasks: tasks, width: .small)
         }
     }
     private let timelineVM = TimelineVM()
@@ -98,6 +101,7 @@ final class StandardDailyGraphView: UIView {
         self.commonInit()
         self.configureTimesView()
         self.configureCollectionView()
+        self.configureProgressView()
     }
     
     private func commonInit() {
@@ -178,6 +182,16 @@ final class StandardDailyGraphView: UIView {
         self.tasksCollectionView.dataSource = self
         let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
         self.tasksCollectionView.register(standardDailyTaskCellNib.self, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
+    }
+    
+    private func configureProgressView() {
+        self.timesFrameView.addSubview(self.progressView)
+        NSLayoutConstraint.activate([
+            self.progressView.topAnchor.constraint(equalTo: self.maxTimeView.bottomAnchor, constant: 18),
+            self.progressView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor),
+            self.progressView.widthAnchor.constraint(equalToConstant: 52),
+            self.progressView.heightAnchor.constraint(equalToConstant: 52)
+        ])
     }
     
     func configureTimelineLayout(_ view: UIView) {
