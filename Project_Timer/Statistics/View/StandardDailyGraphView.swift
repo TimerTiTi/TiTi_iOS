@@ -39,6 +39,34 @@ final class StandardDailyGraphView: UIView {
         ])
         return label
     }()
+    private var timelineFrameView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 325),
+            view.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        return view
+    }()
+    private var tasksCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .init())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.layer.borderWidth = 2
+        collectionView.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        NSLayoutConstraint.activate([
+            collectionView.widthAnchor.constraint(equalToConstant: 215)
+        ])
+        return collectionView
+    }()
+    private var timesFrameView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        return view
+    }()
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -91,11 +119,36 @@ final class StandardDailyGraphView: UIView {
             self.timeLineLabel.topAnchor.constraint(equalTo: self.daysOfWeekStackView.bottomAnchor, constant: 5)
         ])
         
+        self.contentView.addSubview(self.timelineFrameView)
+        NSLayoutConstraint.activate([
+            self.timelineFrameView.topAnchor.constraint(equalTo: self.timeLineLabel.bottomAnchor),
+            self.timelineFrameView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
+        self.contentView.addSubview(self.tasksCollectionView)
+        NSLayoutConstraint.activate([
+            self.tasksCollectionView.topAnchor.constraint(equalTo: self.timelineFrameView.bottomAnchor, constant: 5),
+            self.tasksCollectionView.leadingAnchor.constraint(equalTo: self.timelineFrameView.leadingAnchor),
+            self.tasksCollectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12.5)
+        ])
+        
+        self.contentView.addSubview(self.timesFrameView)
+        NSLayoutConstraint.activate([
+            self.timesFrameView.topAnchor.constraint(equalTo: self.tasksCollectionView.topAnchor),
+            self.timesFrameView.leadingAnchor.constraint(equalTo: self.tasksCollectionView.trailingAnchor, constant: 5),
+            self.timesFrameView.trailingAnchor.constraint(equalTo: self.timelineFrameView.trailingAnchor),
+            self.timesFrameView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12.5)
+        ])
+        
         self.contentView.configureShadow()
     }
     
     func updateDarkLightMode() {
         self.contentView.configureShadow()
+        let borderColor = UIColor(named: "System_border")?.cgColor
+        self.timelineFrameView.layer.borderColor = borderColor
+        self.tasksCollectionView.layer.borderColor = borderColor
+        self.timesFrameView.layer.borderColor = borderColor
     }
     
     func updateFromDaily(_ daily: Daily?) {
@@ -117,6 +170,7 @@ final class StandardDailyGraphView: UIView {
         self.daysOfWeekStackView.arrangedSubviews.forEach { $0.backgroundColor = UIColor.clear }
         guard let day = day else { return }
         let targetIndex = day.indexDayOfWeek
+        print(targetIndex)
         self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
     }
 }
