@@ -27,6 +27,10 @@
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
 		87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */; };
+		87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F4A2883C6D80017D01A /* StandardDailyTaskCell.swift */; };
+		87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87199F4E2883CCDB0017D01A /* StandardDailyTaskCell.xib */; };
+		87199F512883D0B00017D01A /* TaskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F502883D0B00017D01A /* TaskInfo.swift */; };
+		87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F522883D0F70017D01A /* UIColor+Extension.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
@@ -143,6 +147,10 @@
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
+		87199F4A2883C6D80017D01A /* StandardDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyTaskCell.swift; sourceTree = "<group>"; };
+		87199F4E2883CCDB0017D01A /* StandardDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardDailyTaskCell.xib; sourceTree = "<group>"; };
+		87199F502883D0B00017D01A /* TaskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInfo.swift; sourceTree = "<group>"; };
+		87199F522883D0F70017D01A /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -309,14 +317,23 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
-		87199F422882BC0C0017D01A /* View */ = {
+		87199F422882BC0C0017D01A /* Graph */ = {
 			isa = PBXGroup;
 			children = (
 				87199F432882BC430017D01A /* StandardDailyGraphView.swift */,
 				87199F452883018C0017D01A /* TimelineDailyGraphView.swift */,
 				87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */,
 			);
-			path = View;
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		87199F492883C68D0017D01A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				87199F4A2883C6D80017D01A /* StandardDailyTaskCell.swift */,
+				87199F4E2883CCDB0017D01A /* StandardDailyTaskCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
@@ -374,6 +391,7 @@
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				877E448B267DF8DD00BF104A /* Dummy.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
+				87199F502883D0B00017D01A /* TaskInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,6 +583,7 @@
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
 				875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */,
 				04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */,
+				87199F522883D0F70017D01A /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -572,7 +591,8 @@
 		87A48BCE27DF189D00F46D0F /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				87199F422882BC0C0017D01A /* View */,
+				87199F422882BC0C0017D01A /* Graph */,
+				87199F492883C68D0017D01A /* Cell */,
 				8788AFE428828D3500D26E7D /* DailysVC.swift */,
 				87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */,
 				87C51507267AEE40003DA21D /* TodayViewManager.swift */,
@@ -724,6 +744,7 @@
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */,
+				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
@@ -742,6 +763,8 @@
 			files = (
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */,
+				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
+				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
@@ -754,6 +777,7 @@
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
+				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */,
