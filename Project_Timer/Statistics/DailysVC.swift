@@ -63,22 +63,34 @@ final class DailysVC: UIViewController {
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
         if self.checkGraphs[0] == true {
-            let graphImage = UIImage.init(view: self.standardDailyGraphView)
+            let graphImage = UIImage(view: self.standardDailyGraphView)
             UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
         }
         if self.checkGraphs[1] == true {
-            let graphImage = UIImage.init(view: self.timelineDailyGraphView)
+            let graphImage = UIImage(view: self.timelineDailyGraphView)
             UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
         }
         if self.checkGraphs[2] == true {
-            let graphImage = UIImage.init(view: self.tasksProgressDailyGraphView)
+            let graphImage = UIImage(view: self.tasksProgressDailyGraphView)
             UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
         }
         self.showAlertWithOK(title: "Save completed".localized(), text: "")
     }
     
-    @IBAction func shareGraphs(_ sender: Any) {
+    @IBAction func shareGraphs(_ sender: UIButton) {
+        var images: [UIImage] = []
+        if self.checkGraphs[0] == true { images.append(UIImage(view: self.standardDailyGraphView)) }
+        if self.checkGraphs[1] == true { images.append(UIImage(view: self.timelineDailyGraphView)) }
+        if self.checkGraphs[2] == true { images.append(UIImage(view: self.tasksProgressDailyGraphView)) }
         
+        let activityViewController = UIActivityViewController(activityItems: images, applicationActivities: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = sender.frame
+        }
+        
+        self.present(activityViewController, animated: true)
     }
 }
 
