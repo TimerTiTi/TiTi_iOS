@@ -25,7 +25,8 @@ final class StandardDailyTaskCell: UICollectionViewCell {
     
     private func updateColor(index: Int) {
         let startColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        let color = UIColor.graphColor(num: (startColorIndex+index)%12)
+        let colorIndex = (startColorIndex+index)%12 == 0 ? 12 : (startColorIndex+index)%12
+        let color = UIColor.graphColor(num: colorIndex)
         self.checkIcon.textColor = color
         self.taskBackgroundView.backgroundColor = color
         self.taskTimeLabel.textColor = color

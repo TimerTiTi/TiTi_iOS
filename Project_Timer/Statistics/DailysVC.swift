@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 import FSCalendar
 
 final class DailysVC: UIViewController {
@@ -21,8 +22,10 @@ final class DailysVC: UIViewController {
     private var currentDaily: Daily? {
         didSet {
             self.updateGraphs()
+            self.timelineVM.update(daily: currentDaily)
         }
     }
+    private let timelineVM = TimelineVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,8 @@ final class DailysVC: UIViewController {
         self.updateCalendarColor()
         self.configureScrollView()
         self.configureGraphs()
+        self.configureTimelineHostingVC()
+        
         self.currentDaily = RecordController.shared.daily
     }
     
@@ -44,6 +49,7 @@ final class DailysVC: UIViewController {
         UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
         self.updateGraphs()
         self.updateCalendarColor()
+        self.timelineVM.updateColor()
         // reverse color 로직 고민
     }
 }
@@ -101,6 +107,14 @@ extension DailysVC {
             self.tasksProgressDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor),
             self.tasksProgressDailyGraphView.trailingAnchor.constraint(equalTo: self.graphsContentView.trailingAnchor)
         ])
+    }
+    
+    func configureTimelineHostingVC() {
+        let hostingController = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
+        addChild(hostingController)
+        hostingController.didMove(toParent: self)
+        
+        self.standardDailyGraphView.configureTimelineLayout(hostingController.view)
     }
 }
 
