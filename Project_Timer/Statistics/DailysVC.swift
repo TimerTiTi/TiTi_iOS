@@ -19,6 +19,7 @@ final class DailysVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
+    private var checkGraphButtons: [CheckGraphButton] = []
     private var currentDaily: Daily? {
         didSet {
             self.updateGraphs()
@@ -33,6 +34,7 @@ final class DailysVC: UIViewController {
         self.updateCalendarColor()
         self.configureScrollView()
         self.configureGraphs()
+        self.configureCheckGraphs()
         self.configureTimelineHostingVC()
         
         self.currentDaily = RecordController.shared.daily
@@ -86,21 +88,21 @@ extension DailysVC {
     }
     
     private func configureGraphs() {
-        self.graphsScrollView.addSubview(self.standardDailyGraphView)
+        self.graphsContentView.addSubview(self.standardDailyGraphView)
         NSLayoutConstraint.activate([
             self.standardDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
             self.standardDailyGraphView.leadingAnchor.constraint(equalTo: self.graphsContentView.leadingAnchor),
             self.standardDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
-        self.graphsScrollView.addSubview(self.timelineDailyGraphView)
+        self.graphsContentView.addSubview(self.timelineDailyGraphView)
         NSLayoutConstraint.activate([
             self.timelineDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
             self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
             self.timelineDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
-        self.graphsScrollView.addSubview(self.tasksProgressDailyGraphView)
+        self.graphsContentView.addSubview(self.tasksProgressDailyGraphView)
         NSLayoutConstraint.activate([
             self.tasksProgressDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
             self.tasksProgressDailyGraphView.leadingAnchor.constraint(equalTo: self.timelineDailyGraphView.trailingAnchor),
@@ -109,7 +111,36 @@ extension DailysVC {
         ])
     }
     
-    func configureTimelineHostingVC() {
+    private func configureCheckGraphs() {
+        (0...2).forEach { idx in
+            let button = CheckGraphButton()
+            button.addAction(UIAction(handler: { [weak self] _ in
+                button.isSelected.toggle()
+                self?.selectGraph(index: idx)
+            }), for: .touchUpInside)
+            self.checkGraphButtons.append(button)
+        }
+        
+        self.graphsContentView.addSubview(self.checkGraphButtons[0])
+        NSLayoutConstraint.activate([
+            self.checkGraphButtons[0].topAnchor.constraint(equalTo: self.standardDailyGraphView.topAnchor, constant: 73),
+            self.checkGraphButtons[0].leadingAnchor.constraint(equalTo: self.standardDailyGraphView.leadingAnchor, constant: 25)
+        ])
+        
+        self.graphsContentView.addSubview(self.checkGraphButtons[1])
+        NSLayoutConstraint.activate([
+            self.checkGraphButtons[1].topAnchor.constraint(equalTo: self.timelineDailyGraphView.topAnchor, constant: 25),
+            self.checkGraphButtons[1].leadingAnchor.constraint(equalTo: self.timelineDailyGraphView.leadingAnchor, constant: 25)
+        ])
+        
+        self.graphsContentView.addSubview(self.checkGraphButtons[2])
+        NSLayoutConstraint.activate([
+            self.checkGraphButtons[2].topAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.topAnchor, constant: 25),
+            self.checkGraphButtons[2].leadingAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.leadingAnchor, constant: 25)
+        ])
+    }
+    
+    private func configureTimelineHostingVC() {
         let hostingController = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
         addChild(hostingController)
         hostingController.didMove(toParent: self)
@@ -121,6 +152,11 @@ extension DailysVC {
 extension DailysVC {
     private func updateGraphs() {
         self.standardDailyGraphView.updateFromDaily(self.currentDaily)
+    }
+    
+    private func selectGraph(index: Int) {
+        // select 로직 구현
+        print(index)
     }
 }
 

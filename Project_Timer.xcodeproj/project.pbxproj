@@ -34,6 +34,7 @@
 		87199F552883EB160017D01A /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F542883EB160017D01A /* TimelineView.swift */; };
 		87199F582883F2E00017D01A /* TimelineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F572883F2E00017D01A /* TimelineVM.swift */; };
 		87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F5B28840E970017D01A /* TasksCircularProgressView.swift */; };
+		87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F5D28842F0E0017D01A /* CheckGraphButton.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
@@ -157,6 +158,7 @@
 		87199F542883EB160017D01A /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		87199F572883F2E00017D01A /* TimelineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVM.swift; sourceTree = "<group>"; };
 		87199F5B28840E970017D01A /* TasksCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressView.swift; sourceTree = "<group>"; };
+		87199F5D28842F0E0017D01A /* CheckGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGraphButton.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 				04504C632864C7F400CA4C69 /* TimeLabelView.swift */,
 				04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */,
 				87199F5B28840E970017D01A /* TasksCircularProgressView.swift */,
+				87199F5D28842F0E0017D01A /* CheckGraphButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
+				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* UpdateHistoryVM.swift in Sources */,
