@@ -218,7 +218,6 @@ extension LogViewController {
         var i = count % 12 == 0 ? 12 : count % 12
         
         for _ in 1...count {
-            print(i)
             self.colors.append(UIColor(named: "D\(i)")!)
             i = i-1 == 0 ? 12 : i-1
         }
