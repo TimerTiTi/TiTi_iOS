@@ -1,19 +1,28 @@
 //
-//  ContentView.swift
-//  chartEx
+//  TimelineView.swift
+//  Project_Timer
 //
-//  Created by minsang on 2021/01/12.
+//  Created by Kang Minsang on 2022/07/17.
+//  Copyright © 2022 FDEE. All rights reserved.
 //
+
 import SwiftUI
 
-struct todayContentView: View {
-    //그래프 색상 그라데이션 설정
-    var colors = [Color("D2"), Color("D1")]
-    //크기값 설정
-    var frameHeight: CGFloat = 128
-    var height: CGFloat = 125
-    //화면
-    var body : some View {
+struct TimeBlock : Identifiable {
+    var id : Int
+    var sumTime : Int
+}
+
+struct TimelineView: View {
+    var frameHeight: CGFloat = 100
+    @ObservedObject var viewModel: TimelineVM
+    
+    init(frameHeight: CGFloat, viewModel: TimelineVM) {
+        self.frameHeight = frameHeight - 20 // 왜 20을 빼야 정상적으로 보이는지는 의문인 상태..
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
         //세로 스크롤 설정
         /* 전체 큰 틀 */
         VStack {
@@ -21,7 +30,7 @@ struct todayContentView: View {
             VStack {
                 //그래프 틀
                 HStack(spacing:2) { //좌우로 45만큼 여백
-                    ForEach(times) {time in
+                    ForEach(viewModel.times) { time in
                         //세로 스택
                         VStack{
                             //시간 + 그래프 막대
@@ -30,7 +39,7 @@ struct todayContentView: View {
                                 Spacer(minLength: 0)
                                 //그래프 막대
                                 RoundedShape()
-                                    .fill(LinearGradient(gradient: .init(colors: colors), startPoint: .top, endPoint: .bottom))
+                                    .fill(LinearGradient(gradient: .init(colors: [Color("D\(viewModel.color1Index)"), Color("D\(viewModel.color2Index)")]), startPoint: .top, endPoint: .bottom))
                                     //그래프 막대 높이설정
                                     .frame(height:getHeight(value: time.sumTime))
                                     .padding(.bottom,-4)
@@ -53,38 +62,14 @@ struct todayContentView: View {
         .background(Color("Background_second").edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
     }
-
+    
     func getHeight(value : Int) -> CGFloat {
-        let max = getMaxInTotalTime(value: times)
-        return (CGFloat(value) / CGFloat(max)) * height
+        return (CGFloat(value) / CGFloat(3600)) * (self.frameHeight-3)
     }
-    
-    func getMaxInTotalTime (value : [TimeBlock]) -> Int {
-        return 3600
-    }
-    
 }
 
-var times: [TimeBlock] = []
-
-extension todayContentView {
-    
-    func appendTimes(daily: Daily) {
-        let daily = daily
-        let timeline = daily.timeline
-        print("timeline : \(timeline)")
-        
-        var i = 5
-        while(i < 29) {
-            var id = i%24
-            let sumTime = timeline[id]
-            if(id == 0) { id = 24 }
-            times.append(TimeBlock(id: id, sumTime: sumTime))
-            i += 1
-        }
-    }
-    
-    func reset() {
-        times = []
+struct timelineView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimelineView(frameHeight: 100, viewModel: TimelineVM())
     }
 }
