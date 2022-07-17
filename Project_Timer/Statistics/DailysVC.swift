@@ -30,7 +30,6 @@ final class DailysVC: UIViewController {
         self.updateCalendarColor()
         self.configureScrollView()
         self.configureGraphs()
-        
         self.currentDaily = RecordController.shared.daily
     }
     

@@ -1907,7 +1907,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="hNY-c7-Mny"/>
                                             </scrollView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ztu-4c-w5T">
-                                                <rect key="frame" x="149.5" y="367" width="115.5" height="26"/>
+                                                <rect key="frame" x="149.5" y="357" width="115.5" height="26"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                                 <connections>
@@ -1966,7 +1966,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Hss-nC-DUe" secondAttribute="bottom" constant="8" id="dAu-iw-CZk"/>
                                             <constraint firstItem="GXG-gW-z5f" firstAttribute="top" secondItem="ShY-ue-Blf" secondAttribute="bottom" constant="8" id="dpA-KC-lj7"/>
                                             <constraint firstItem="GXG-gW-z5f" firstAttribute="centerX" secondItem="vTV-iA-UWb" secondAttribute="centerX" id="eBQ-J2-2if"/>
-                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="bottom" secondItem="ztu-4c-w5T" secondAttribute="bottom" constant="8" id="g47-Gs-EoX"/>
+                                            <constraint firstItem="GXG-gW-z5f" firstAttribute="bottom" secondItem="ztu-4c-w5T" secondAttribute="bottom" constant="18" id="g47-Gs-EoX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -3129,6 +3129,7 @@
                                                             <constraint firstItem="pQL-te-A33" firstAttribute="centerX" secondItem="klm-7F-5GQ" secondAttribute="centerX" id="XI6-H4-0bI"/>
                                                             <constraint firstItem="ALE-N0-7b7" firstAttribute="top" secondItem="klm-7F-5GQ" secondAttribute="top" constant="10" id="XMZ-iE-hst"/>
                                                             <constraint firstItem="RoN-oF-9Kg" firstAttribute="leading" secondItem="mcC-xb-pGe" secondAttribute="trailing" constant="5" id="Z5o-gS-EQ8"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mcC-xb-pGe" secondAttribute="bottom" constant="12.5" id="aEq-9I-KH0"/>
                                                             <constraint firstItem="N6V-hm-hNN" firstAttribute="top" secondItem="6sG-Km-7fh" secondAttribute="bottom" constant="21" id="afm-Zr-07J"/>
                                                             <constraint firstAttribute="height" constant="345" id="koW-5v-iaR"/>
                                                             <constraint firstAttribute="width" constant="345" id="lw8-BN-p6F"/>
@@ -5485,7 +5486,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-qT-3eg">
-                                                    <rect key="frame" x="16" y="18" width="46" height="19"/>
+                                                    <rect key="frame" x="16" y="17.5" width="44.5" height="20"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
