@@ -50,8 +50,10 @@ final class StandardDailyGraphView: UIView {
         ])
         return view
     }()
-    private var tasksCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: .init())
+    private lazy var tasksCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.layer.borderWidth = 2
         collectionView.layer.borderColor = UIColor(named: "System_border")?.cgColor
@@ -81,10 +83,17 @@ final class StandardDailyGraphView: UIView {
         return view
     }()
     
+    private var tasks: [TaskInfo] = [] {
+        didSet {
+            self.tasksCollectionView.reloadData()
+        }
+    }
+    
     convenience init() {
         self.init(frame: CGRect())
         self.commonInit()
         self.configureTimesView()
+        self.configureCollectionView()
     }
     
     private func commonInit() {
@@ -159,6 +168,31 @@ final class StandardDailyGraphView: UIView {
             self.maxTimeView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor)
         ])
     }
+    
+    private func configureCollectionView() {
+        self.tasksCollectionView.delegate = self
+        self.tasksCollectionView.dataSource = self
+        let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
+        self.tasksCollectionView.register(standardDailyTaskCellNib.self, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
+    }
+}
+
+extension StandardDailyGraphView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.tasks.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
+        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item])
+        return cell
+    }
+}
+
+extension StandardDailyGraphView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
+    }
 }
 
 // MARK: StandardDailyGraphView Public Actions
@@ -177,6 +211,8 @@ extension StandardDailyGraphView {
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)
         self.maxTimeView.updateTime(to: daily?.maxTime)
+        
+        self.updateTasks(with: daily?.tasks)
     }
 }
 
@@ -187,6 +223,7 @@ extension StandardDailyGraphView {
             self.dateLabel.text = "0000.00.00"
             return
         }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM.dd"
         self.dateLabel.text = dateFormatter.string(from: day)
@@ -198,6 +235,16 @@ extension StandardDailyGraphView {
         let targetIndex = day.indexDayOfWeek
         print(targetIndex)
         self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
+    }
+    
+    private func updateTasks(with tasks: [String: Int]?) {
+        guard let tasks = tasks else {
+            self.tasks = []
+            return
+        }
+        
+        self.tasks = tasks.sorted(by: { $0.value > $1.value})
+            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
 }
 
@@ -218,7 +265,7 @@ final class DayOfWeekLabel: UILabel {
     }
 }
 
-// MARK: Times 표시용 CustomView
+// MARK: TimesFrameView 내 표시용 CustomView
 final class TimeView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
@@ -267,13 +314,17 @@ final class TimeView: UIView {
             self.timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+}
+
+// MARK: TimeView Public Actions
+extension TimeView {
     func updateTime(to time: Int?) {
         self.timeLabel.textColor = UIColor(named: String.userTintColor)
         guard let time = time else {
             self.timeLabel.text = "0:00:00"
             return
         }
+        
         self.timeLabel.text = time.toTimeString
     }
 }
