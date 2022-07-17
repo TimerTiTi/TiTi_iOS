@@ -7,8 +7,22 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class StandardDailyGraphView: UIView {
+    /* public */
+    var timelineFrameView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 325),
+            view.heightAnchor.constraint(equalToConstant: 100)
+        ])
+        return view
+    }()
+    /* private */
     private var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -38,17 +52,6 @@ final class StandardDailyGraphView: UIView {
             label.heightAnchor.constraint(equalToConstant: 18)
         ])
         return label
-    }()
-    private var timelineFrameView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 2
-        view.layer.borderColor = UIColor(named: "System_border")?.cgColor
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 325),
-            view.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        return view
     }()
     private lazy var tasksCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -88,6 +91,7 @@ final class StandardDailyGraphView: UIView {
             self.tasksCollectionView.reloadData()
         }
     }
+    private let timelineVM = TimelineVM()
     
     convenience init() {
         self.init(frame: CGRect())
@@ -175,6 +179,17 @@ final class StandardDailyGraphView: UIView {
         let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
         self.tasksCollectionView.register(standardDailyTaskCellNib.self, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
     }
+    
+    func configureTimelineLayout(_ view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.timelineFrameView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.timelineFrameView.topAnchor, constant: 2),
+            view.leadingAnchor.constraint(equalTo: self.timelineFrameView.leadingAnchor, constant: 2),
+            view.trailingAnchor.constraint(equalTo: self.timelineFrameView.trailingAnchor, constant: -2),
+            view.bottomAnchor.constraint(equalTo: self.timelineFrameView.bottomAnchor, constant: -2)
+        ])
+    }
 }
 
 extension StandardDailyGraphView: UICollectionViewDataSource {
@@ -211,6 +226,7 @@ extension StandardDailyGraphView {
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)
         self.maxTimeView.updateTime(to: daily?.maxTime)
+        self.timelineVM.update(daily: daily)
         
         self.updateTasks(with: daily?.tasks)
     }
