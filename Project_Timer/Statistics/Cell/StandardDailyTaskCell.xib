@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HGGGOTHICSSI_PRO_60G.otf">
+            <string>HGGGothicssiP60g</string>
+        </array>
+        <array key="HGGGOTHICSSI_PRO_80G.otf">
+            <string>HGGGothicssiP80g</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StandardDailyTaskCell" id="WuE-xK-pY8" customClass="StandardDailyTaskCell" customModule="TiTi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="215" height="20"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bRD-NK-7bn">
+                <rect key="frame" x="0.0" y="0.0" width="215" height="20"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKL-zS-jBj">
+                        <rect key="frame" x="8" y="2" width="11.5" height="16"/>
+                        <color key="tintColor" name="CCC1"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" name="D1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWi-WT-6MX" userLabel="background">
+                        <rect key="frame" x="25" y="3" width="31.5" height="14"/>
+                        <color key="backgroundColor" name="D1"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYK-Dm-ajs">
+                        <rect key="frame" x="27.5" y="3" width="26.5" height="14"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAQ-HA-aby">
+                        <rect key="frame" x="164" y="3" width="43" height="14"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="12"/>
+                        <color key="textColor" name="D1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FHh-Lt-8BY" userLabel="underLine">
+                        <rect key="frame" x="5" y="19" width="205" height="1"/>
+                        <color key="backgroundColor" name="System_border"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="6gl-eX-69F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xWi-WT-6MX" firstAttribute="width" secondItem="aYK-Dm-ajs" secondAttribute="width" constant="5" id="2G3-6q-RhO"/>
+                    <constraint firstItem="aYK-Dm-ajs" firstAttribute="leading" secondItem="DKL-zS-jBj" secondAttribute="trailing" constant="8" id="6KV-e8-cFo"/>
+                    <constraint firstItem="aYK-Dm-ajs" firstAttribute="centerY" secondItem="bRD-NK-7bn" secondAttribute="centerY" id="BSM-6D-cmK"/>
+                    <constraint firstItem="DKL-zS-jBj" firstAttribute="centerY" secondItem="bRD-NK-7bn" secondAttribute="centerY" id="EXW-aX-WUR"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aYK-Dm-ajs" secondAttribute="trailing" constant="50" id="Rdp-0j-V7U"/>
+                    <constraint firstItem="hAQ-HA-aby" firstAttribute="centerY" secondItem="bRD-NK-7bn" secondAttribute="centerY" id="ReM-RI-Ucs"/>
+                    <constraint firstItem="xWi-WT-6MX" firstAttribute="centerX" secondItem="aYK-Dm-ajs" secondAttribute="centerX" id="TVw-tt-dUC"/>
+                    <constraint firstItem="xWi-WT-6MX" firstAttribute="height" secondItem="aYK-Dm-ajs" secondAttribute="height" id="bg1-yc-MJy"/>
+                    <constraint firstAttribute="trailing" secondItem="FHh-Lt-8BY" secondAttribute="trailing" constant="5" id="ePy-yw-T36"/>
+                    <constraint firstItem="xWi-WT-6MX" firstAttribute="centerY" secondItem="aYK-Dm-ajs" secondAttribute="centerY" id="m3D-mo-Enl"/>
+                    <constraint firstAttribute="trailing" secondItem="hAQ-HA-aby" secondAttribute="trailing" constant="8" id="oJH-rS-bFs"/>
+                    <constraint firstItem="FHh-Lt-8BY" firstAttribute="leading" secondItem="bRD-NK-7bn" secondAttribute="leading" constant="5" id="tfK-fK-lEt"/>
+                    <constraint firstAttribute="bottom" secondItem="FHh-Lt-8BY" secondAttribute="bottom" id="tqA-5B-xpM"/>
+                    <constraint firstItem="DKL-zS-jBj" firstAttribute="leading" secondItem="bRD-NK-7bn" secondAttribute="leading" constant="8" id="wgW-jL-d2K"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="215" height="20"/>
+            <connections>
+                <outlet property="checkIcon" destination="DKL-zS-jBj" id="iei-x0-yhR"/>
+                <outlet property="taskBackgroundView" destination="xWi-WT-6MX" id="tcc-N5-yiw"/>
+                <outlet property="taskNameLabel" destination="aYK-Dm-ajs" id="kMQ-nX-qU1"/>
+                <outlet property="taskTimeLabel" destination="hAQ-HA-aby" id="9jj-RP-SQM"/>
+            </connections>
+            <point key="canvasLocation" x="557.24637681159425" y="154.6875"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="CCC1">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="D1">
+            <color red="0.50980392156862742" green="0.59999999999999998" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="System_border">
+            <color red="0.73299998044967651" green="0.73299998044967651" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
