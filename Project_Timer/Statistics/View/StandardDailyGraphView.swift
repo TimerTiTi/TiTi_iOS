@@ -67,6 +67,8 @@ final class StandardDailyGraphView: UIView {
         view.layer.borderColor = UIColor(named: "System_border")?.cgColor
         return view
     }()
+    private var totalTimeView = TimeView(title: "Total")
+    private var maxTimeView = TimeView(title: "Max")
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +84,7 @@ final class StandardDailyGraphView: UIView {
     convenience init() {
         self.init(frame: CGRect())
         self.commonInit()
+        self.configureTimesView()
     }
     
     private func commonInit() {
@@ -143,6 +146,24 @@ final class StandardDailyGraphView: UIView {
         self.contentView.configureShadow()
     }
     
+    private func configureTimesView() {
+        self.timesFrameView.addSubview(self.totalTimeView)
+        NSLayoutConstraint.activate([
+            self.totalTimeView.topAnchor.constraint(equalTo: self.timesFrameView.topAnchor, constant: 7),
+            self.totalTimeView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor)
+        ])
+        
+        self.timesFrameView.addSubview(self.maxTimeView)
+        NSLayoutConstraint.activate([
+            self.maxTimeView.topAnchor.constraint(equalTo: self.totalTimeView.bottomAnchor),
+            self.maxTimeView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor)
+        ])
+    }
+}
+
+// MARK: StandardDailyGraphView Public Actions
+extension StandardDailyGraphView {
+    /// dark, light mode 변경의 경우
     func updateDarkLightMode() {
         self.contentView.configureShadow()
         let borderColor = UIColor(named: "System_border")?.cgColor
@@ -150,12 +171,17 @@ final class StandardDailyGraphView: UIView {
         self.tasksCollectionView.layer.borderColor = borderColor
         self.timesFrameView.layer.borderColor = borderColor
     }
-    
+    /// daily 변경, 또는 color 변경의 경우
     func updateFromDaily(_ daily: Daily?) {
         self.updateDateLabel(daily?.day)
         self.updateDayOfWeek(daily?.day)
+        self.totalTimeView.updateTime(to: daily?.totalTime)
+        self.maxTimeView.updateTime(to: daily?.maxTime)
     }
-    
+}
+
+// MARK: StandardDailyGraphView Private Actions
+extension StandardDailyGraphView {
     private func updateDateLabel(_ day: Date?) {
         guard let day = day else {
             self.dateLabel.text = "0000.00.00"
@@ -175,6 +201,7 @@ final class StandardDailyGraphView: UIView {
     }
 }
 
+// MARK: 요일표시용 CustomView
 final class DayOfWeekLabel: UILabel {
     convenience init(day: String) {
         self.init(frame: CGRect())
@@ -188,5 +215,65 @@ final class DayOfWeekLabel: UILabel {
             self.heightAnchor.constraint(equalToConstant: 15)
         ])
         self.text = day
+    }
+}
+
+// MARK: Times 표시용 CustomView
+final class TimeView: UIView {
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TiTiFont.HGGGothicssiP60g(size: 12)
+        label.textColor = UIColor.label
+        label.textAlignment = .center
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 14)
+        ])
+        return label
+    }()
+    private var timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TiTiFont.HGGGothicssiP80g(size: 22)
+        label.textColor = UIColor(named: String.userTintColor)
+        label.textAlignment = .center
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 21)
+        ])
+        label.text = "0:00:00"
+        return label
+    }()
+    
+    convenience init(title: String) {
+        self.init(frame: CGRect())
+        self.commonInit(title)
+    }
+    
+    private func commonInit(_ title: String) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel.text = title
+        
+        self.addSubview(self.titleLabel)
+        NSLayoutConstraint.activate([
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+        
+        self.addSubview(self.timeLabel)
+        NSLayoutConstraint.activate([
+            self.timeLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
+            self.timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    
+    func updateTime(to time: Int?) {
+        self.timeLabel.textColor = UIColor(named: String.userTintColor)
+        guard let time = time else {
+            self.timeLabel.text = "0:00:00"
+            return
+        }
+        self.timeLabel.text = time.toTimeString
     }
 }
