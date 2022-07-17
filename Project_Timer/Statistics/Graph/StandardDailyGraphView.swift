@@ -56,6 +56,7 @@ final class StandardDailyGraphView: UIView {
     private lazy var tasksCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.layer.borderWidth = 2
