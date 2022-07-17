@@ -263,7 +263,6 @@ extension StandardDailyGraphView {
         self.daysOfWeekStackView.arrangedSubviews.forEach { $0.backgroundColor = UIColor.clear }
         guard let day = day else { return }
         let targetIndex = day.indexDayOfWeek
-        print(targetIndex)
         self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
     }
     
