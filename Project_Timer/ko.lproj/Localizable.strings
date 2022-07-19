@@ -160,3 +160,5 @@ NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버�
 "Keep screen on" = "항상 화면 켜짐 유지";
 
 "Keep the screen on during recording" = "기록중에는 화면이 항상 켜진 상태로 유지됩니다";
+
+"Recording started" = "기록이 시작되었습니다";
