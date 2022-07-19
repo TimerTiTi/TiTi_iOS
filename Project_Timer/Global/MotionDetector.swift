@@ -28,7 +28,7 @@ final class MotionDetector {
               self.isDetecting == false else { return }
         
         self.isDetecting = true
-        self.motion.deviceMotionUpdateInterval = 0.1
+        self.motion.deviceMotionUpdateInterval = 0.05
         self.motion.startDeviceMotionUpdates(to: OperationQueue()) { [weak self] motion, error in
             guard error == nil,
                   let self = self,
