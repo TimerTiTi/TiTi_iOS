@@ -18,7 +18,7 @@ struct UserDefaultsManager {
         case restPushable = "restPushable"
         case updatePushable = "updatePushable"
         case timelabelsAnimation = "timelabelsAnimation"
-        case dimWhenFaceDown = "dimWhenFaceDown"
+        case flipToStartRecording = "flipToStartRecording"
         case keepTheScreenOn = "keepTheScreenOn"
     }
     
