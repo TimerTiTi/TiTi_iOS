@@ -177,18 +177,30 @@ final class StopwatchVM {
     private func sendNotification() {
         guard UserDefaultsManager.get(forKey: .stopwatchPushable) as? Bool ?? true else { return }
         for i in 1...24 {
-            let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = "Stopwatch".localized()
-            notificationContent.body = " \(i)" + "hours passed.".localized()
-            notificationContent.sound = UNNotificationSound.default
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(i*3600), repeats: false)
-            let request = UNNotificationRequest(identifier: "noti\(i)", content: notificationContent, trigger: trigger)
-            self.userNotificationCenter.add(request) { error in
-                if let error = error {
-                    print("Notification Error: \(error)")
-                }
+            self.postNoti(interval: Double(i*3600),
+                          body: " \(i)" + "hours passed.".localized(),
+                          identifier: "noti\(i)")
+        }
+    }
+    
+    private func postNoti(interval: Double, body: String, identifier: String) {
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Stopwatch".localized()
+        notificationContent.body = body
+        notificationContent.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: notificationContent, trigger: trigger)
+        self.userNotificationCenter.add(request) { error in
+            if let error = error {
+                print("Notification Error: \(error)")
             }
         }
+    }
+    
+    func sendRecordingStartNotification() {
+        self.postNoti(interval: 0.3,
+                      body: "Recording started".localized(),
+                      identifier: "Stopwatch Recording Start")
     }
     
     private func removeNotification() {

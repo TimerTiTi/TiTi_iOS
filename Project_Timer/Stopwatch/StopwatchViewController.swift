@@ -499,6 +499,7 @@ extension StopwatchViewController {
             self?.enableProximityMonitoring()
             if isTimerRunning == false {
                 self?.startOrStopTimer()
+                self?.viewModel?.sendRecordingStartNotification()
             }
             self?.enterBackground()
         }
