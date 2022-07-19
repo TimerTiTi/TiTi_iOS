@@ -198,7 +198,7 @@ final class StopwatchVM {
     }
     
     func sendRecordingStartNotification() {
-        self.postNoti(interval: 0.3,
+        self.postNoti(interval: 0.1,
                       body: "Recording started".localized(),
                       identifier: "Stopwatch Recording Start")
     }
