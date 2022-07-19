@@ -10,7 +10,7 @@ import CoreMotion
 
 extension CMAttitude {
     var isFaceDown: Bool {
-        let isRollFaceDown = abs(roll) > 2.2
+        let isRollFaceDown = abs(roll) > 2.35
         let isPitchFaceDown = abs(pitch) < 0.8
         
         return isRollFaceDown && isPitchFaceDown
