@@ -74,11 +74,13 @@ final class StopwatchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.startMotionDetection()
+        self.configureApplicationActiveStateObserver()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.stopMotionDetection()
+        self.removeApplicationActiveStateObserver()
     }
     
     override func viewWillLayoutSubviews() {
@@ -467,9 +469,10 @@ extension StopwatchViewController {
 
 // MARK: - Device Motion Detection
 extension StopwatchViewController {
-    private func startMotionDetection() {
+    @objc private func startMotionDetection() {
         guard UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
         
+        print("Stopwatch: start motion detection")
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(orientationDidChangeToFaceDown),
                                                name: MotionDetector.orientationDidChangeToFaceDownNotification,
@@ -481,7 +484,8 @@ extension StopwatchViewController {
         MotionDetector.shared.beginGeneratingMotionNotification()
     }
     
-    private func stopMotionDetection() {
+    @objc private func stopMotionDetection() {
+        print("Stopwatch: stop motion detection")
         MotionDetector.shared.endGeneratingMotionNotification()
         NotificationCenter.default.removeObserver(self,
                                                   name: MotionDetector.orientationDidChangeToFaceDownNotification,
@@ -511,6 +515,16 @@ extension StopwatchViewController {
             self?.disableProximityMonitoring()
             self?.enterForeground()
         }
+    }
+    
+    private func configureApplicationActiveStateObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startMotionDetection), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    private func removeApplicationActiveStateObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 }
 
