@@ -16,7 +16,7 @@ final class MotionDetector {
     
     private let motion: CMMotionManager
     private(set) var isDetecting: Bool
-    private var lastAttitude: CMAttitude?
+    private var isFaceDown: Bool?
     
     private init() {
         self.motion = CMMotionManager()
@@ -28,20 +28,24 @@ final class MotionDetector {
         
         self.isDetecting = true
         self.motion.deviceMotionUpdateInterval = 0.05
-        self.motion.startDeviceMotionUpdates(to: OperationQueue()) { [weak self] motion, error in
+        self.motion.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: OperationQueue()) { [weak self] motion, error  in
             guard error == nil,
                   let self = self,
-                  let newAttitude = motion?.attitude else { return }
+                  let gravity = motion?.gravity else { return }
             
-            let oldAttitude = self.lastAttitude ?? newAttitude
-            self.lastAttitude = newAttitude
+            let isFaceDownNow = gravity.z > 0.85
+            let isFaceUpNow = !isFaceDownNow
+            let isFaceDownBefore = self.isFaceDown ?? isFaceDownNow
+            let isFaceUpBefore = !isFaceDownBefore
             
-            if !oldAttitude.isFaceUp && newAttitude.isFaceUp {
+            if !isFaceUpBefore && isFaceUpNow {
                 NotificationCenter.default.post(name: Self.orientationDidChangeToFaceUpNotification, object: self)
             }
-            if !oldAttitude.isFaceDown && newAttitude.isFaceDown {
+            if !isFaceDownBefore && isFaceDownNow {
                 NotificationCenter.default.post(name: Self.orientationDidChangeToFaceDownNotification, object: self)
             }
+            
+            self.isFaceDown = isFaceDownNow
         }
     }
     
