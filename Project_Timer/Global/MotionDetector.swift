@@ -15,7 +15,7 @@ final class MotionDetector {
     static let orientationDidChangeToFaceUpNotification = Notification.Name("orientationDidChangeToFaceUpNotification")
     
     private let motion: CMMotionManager
-    private var isDetecting: Bool
+    private(set) var isDetecting: Bool
     private var lastAttitude: CMAttitude?
     
     private init() {
@@ -24,8 +24,7 @@ final class MotionDetector {
     }
     
     func beginGeneratingMotionNotification() {
-        guard self.motion.isDeviceMotionAvailable,
-              self.isDetecting == false else { return }
+        guard self.motion.isDeviceMotionAvailable else { return }
         
         self.isDetecting = true
         self.motion.deviceMotionUpdateInterval = 0.05
@@ -47,8 +46,6 @@ final class MotionDetector {
     }
     
     func endGeneratingMotionNotification() {
-        guard isDetecting == true else { return }
-        
         self.motion.stopDeviceMotionUpdates()
         self.isDetecting = false
     }

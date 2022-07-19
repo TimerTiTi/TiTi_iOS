@@ -33,6 +33,12 @@ class TimerViewController: UIViewController {
     @IBOutlet var settingBT: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
+
+    private lazy var blackView: UIView = {
+        let view = UIView(frame: UIScreen.main.bounds)
+        view.backgroundColor = .black
+        return view
+    }()
     
     let BLUE = TiTiColor.blue
     let RED = TiTiColor.text
@@ -40,11 +46,16 @@ class TimerViewController: UIViewController {
     let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
+    private var isScreenDim: Bool = false
     
     var progressPer: Float = 0.0
     var progressPeriod: Int = 0
     var innerProgressPer: Float = 0.0
     var isLandcape: Bool = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return self.isScreenDim
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -480,8 +491,19 @@ extension TimerViewController {
 
 // MARK: - Device Motion Detection
 extension TimerViewController {
+    private func configureApplicationActiveStateObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startMotionDetection), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    private func removeApplicationActiveStateObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
     @objc private func startMotionDetection() {
-        guard UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
+        guard MotionDetector.shared.isDetecting == false,
+              UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
         
         print("Timer: start motion detection")
         NotificationCenter.default.addObserver(self,
@@ -496,6 +518,8 @@ extension TimerViewController {
     }
     
     @objc private func stopMotionDetection() {
+        guard MotionDetector.shared.isDetecting == true else { return }
+        
         print("Timer: stop motion detection")
         MotionDetector.shared.endGeneratingMotionNotification()
         NotificationCenter.default.removeObserver(self,
@@ -506,16 +530,33 @@ extension TimerViewController {
                                                   object: MotionDetector.shared)
     }
     
+    private func dimTheScreen() {
+        guard isScreenDim == false,
+              let keyWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else { return }
+        
+        self.isScreenDim = true
+        self.setNeedsStatusBarAppearanceUpdate()
+        keyWindow.addSubview(self.blackView)
+    }
+    
+    private func brightenTheScreen() {
+        guard isScreenDim == true else { return }
+        
+        self.isScreenDim = false
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.blackView.removeFromSuperview()
+    }
+    
     @objc func orientationDidChangeToFaceDown() {
         print("Device Face Down")
         DispatchQueue.main.async { [weak self] in
             guard let isTimerRunning = self?.viewModel?.runningUI else { return }
             
-            self?.enableProximityMonitoring()
             if isTimerRunning == false {
                 self?.startOrStopTimer()
                 self?.viewModel?.sendRecordingStartNotification()
             }
+            self?.dimTheScreen()
             self?.enterBackground()
         }
     }
@@ -523,46 +564,8 @@ extension TimerViewController {
     @objc func orientationDidChangeToFaceUp() {
         print("Device Face Up")
         DispatchQueue.main.async { [weak self] in
-            self?.disableProximityMonitoring()
             self?.enterForeground()
-        }
-    }
-    
-    private func configureApplicationActiveStateObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(startMotionDetection), name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-    
-    private func removeApplicationActiveStateObserver() {
-        NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-}
-
-// MARK: Proximity
-extension TimerViewController {
-    private func enableProximityMonitoring() {
-        guard UIDevice.current.isProximityMonitoringEnabled == false else { return }
-        
-        OrientationLocker.shared.lockOrientation(.portrait)
-        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
-        UIDevice.current.isProximityMonitoringEnabled = true
-        print("Proximity Sensor ON")
-    }
-    
-    private func disableProximityMonitoring() {
-        OrientationLocker.shared.unlockOrientation()
-        UIDevice.current.isProximityMonitoringEnabled = false
-        NotificationCenter.default.removeObserver(self, name: UIDevice.proximityStateDidChangeNotification, object: nil)
-        print("Proximity Sensor OFF")
-    }
-    
-    @objc private func didProximityStateChange() {
-        if UIDevice.current.proximityState {
-            OrientationLocker.shared.unlockOrientation()
-            print("Proximity State - TRUE")
-        } else {
-            print("Proximity State- FALSE")
+            self?.brightenTheScreen()
         }
     }
 }
