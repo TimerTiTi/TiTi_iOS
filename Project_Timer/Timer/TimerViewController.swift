@@ -505,7 +505,7 @@ extension TimerViewController {
         guard MotionDetector.shared.isDetecting == false,
               UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
         
-        print("Timer: start motion detection")
+        print("start motion detection")
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(orientationDidChangeToFaceDown),
                                                name: MotionDetector.orientationDidChangeToFaceDownNotification,
@@ -520,7 +520,7 @@ extension TimerViewController {
     @objc private func stopMotionDetection() {
         guard MotionDetector.shared.isDetecting == true else { return }
         
-        print("Timer: stop motion detection")
+        print("stop motion detection")
         MotionDetector.shared.endGeneratingMotionNotification()
         NotificationCenter.default.removeObserver(self,
                                                   name: MotionDetector.orientationDidChangeToFaceDownNotification,
