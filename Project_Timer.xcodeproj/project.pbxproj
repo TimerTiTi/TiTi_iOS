@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04172E982885453F00F962F2 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172E972885453F00F962F2 /* MotionDetector.swift */; };
+		04172E9C2885812700F962F2 /* OrientationLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172E9B2885812700F962F2 /* OrientationLocker.swift */; };
 		043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706262869D58C00A5D3AA /* TimeOfTimerView.swift */; };
 		0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */; };
 		043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */; };
@@ -120,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		04172E972885453F00F962F2 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
+		04172E9B2885812700F962F2 /* OrientationLocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationLocker.swift; sourceTree = "<group>"; };
 		043706262869D58C00A5D3AA /* TimeOfTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerView.swift; sourceTree = "<group>"; };
 		0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerViewModel.swift; sourceTree = "<group>"; };
 		043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchView.swift; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 				87C51509267B38C0003DA21D /* Converter.swift */,
 				04172E972885453F00F962F2 /* MotionDetector.swift */,
+				04172E9B2885812700F962F2 /* OrientationLocker.swift */,
 				87A48BC527DEF0B200F46D0F /* Extension */,
 				8762717327DF88E700F812ED /* View */,
 				04504C5E2864AC2300CA4C69 /* ViewModel */,
@@ -732,6 +735,7 @@
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
+				04172E9C2885812700F962F2 /* OrientationLocker.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */,
