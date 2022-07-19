@@ -510,6 +510,7 @@ extension TimerViewController {
             self?.enableProximityMonitoring()
             if isTimerRunning == false {
                 self?.startOrStopTimer()
+                self?.viewModel?.postRecordingStartNoti()
             }
             self?.enterBackground()
         }
