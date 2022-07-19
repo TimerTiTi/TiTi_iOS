@@ -223,7 +223,7 @@ final class TimerVM {
         }
     }
     
-    func postRecordingStartNoti() {
+    func sendRecordingStartNotification() {
         self.postNoti(interval: 0.3,
                       body: "Recording started".localized(),
                       identifier: "Timer Recording Start")
