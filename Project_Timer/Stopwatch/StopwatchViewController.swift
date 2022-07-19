@@ -73,12 +73,12 @@ final class StopwatchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.enableProximityMonitoring()
+        self.startMotionDetection()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        self.disableProximityMonitoring()
+        self.stopMotionDetection()
     }
     
     override func viewWillLayoutSubviews() {
@@ -421,30 +421,6 @@ extension StopwatchViewController {
         }
     }
     
-    private func enableProximityMonitoring() {
-        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
-        let dimWhenFaceDown = UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true
-        if dimWhenFaceDown {
-            UIDevice.current.isProximityMonitoringEnabled = true
-        }
-    }
-    
-    private func disableProximityMonitoring() {
-        UIDevice.current.isProximityMonitoringEnabled = false
-        NotificationCenter.default.removeObserver(self, name: UIDevice.proximityStateDidChangeNotification, object: nil)
-    }
-    
-    @objc private func didProximityStateChange() {
-        guard let isTimerRunning = viewModel?.timerRunning else { return }
-        
-        if UIDevice.current.proximityState {
-            if isTimerRunning == false { self.startOrStopTimer() }
-            self.enterBackground()
-        } else {
-            self.enterForeground()
-        }
-    }
-    
     private func disableIdleTimer() {
         let keepTheScreenOn = UserDefaultsManager.get(forKey: .keepTheScreenOn) as? Bool ?? true
         if keepTheScreenOn {
@@ -486,6 +462,82 @@ extension StopwatchViewController {
             }
         }
         self.isLandscape = false
+    }
+}
+
+// MARK: - Device Motion Detection
+extension StopwatchViewController {
+    private func startMotionDetection() {
+        guard UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true else { return }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(orientationDidChangeToFaceDown),
+                                               name: MotionDetector.orientationDidChangeToFaceDownNotification,
+                                               object: MotionDetector.shared)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(orientationDidChangeToFaceUp),
+                                               name: MotionDetector.orientationDidChangeToFaceUpNotification,
+                                               object: MotionDetector.shared)
+        MotionDetector.shared.beginGeneratingMotionNotification()
+    }
+    
+    private func stopMotionDetection() {
+        MotionDetector.shared.endGeneratingMotionNotification()
+        NotificationCenter.default.removeObserver(self,
+                                                  name: MotionDetector.orientationDidChangeToFaceDownNotification,
+                                                  object: MotionDetector.shared)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: MotionDetector.orientationDidChangeToFaceUpNotification,
+                                                  object: MotionDetector.shared)
+    }
+    
+    @objc func orientationDidChangeToFaceDown() {
+        print("Device Face Down")
+        DispatchQueue.main.async { [weak self] in
+            guard let isTimerRunning = self?.viewModel?.runningUI else { return }
+            
+            self?.enableProximityMonitoring()
+            if isTimerRunning == false {
+                self?.startOrStopTimer()
+            }
+            self?.enterBackground()
+        }
+    }
+    
+    @objc func orientationDidChangeToFaceUp() {
+        print("Device Face Up")
+        DispatchQueue.main.async { [weak self] in
+            self?.disableProximityMonitoring()
+            self?.enterForeground()
+        }
+    }
+}
+
+// MARK: Proximity
+extension StopwatchViewController {
+    private func enableProximityMonitoring() {
+        guard UIDevice.current.isProximityMonitoringEnabled == false else { return }
+        
+        OrientationLocker.shared.lockOrientation(.portrait)
+        NotificationCenter.default.addObserver(self, selector: #selector(didProximityStateChange), name: UIDevice.proximityStateDidChangeNotification, object: nil)
+        UIDevice.current.isProximityMonitoringEnabled = true
+        print("Proximity Sensor ON")
+    }
+    
+    private func disableProximityMonitoring() {
+        OrientationLocker.shared.unlockOrientation()
+        UIDevice.current.isProximityMonitoringEnabled = false
+        NotificationCenter.default.removeObserver(self, name: UIDevice.proximityStateDidChangeNotification, object: nil)
+        print("Proximity Sensor OFF")
+    }
+    
+    @objc private func didProximityStateChange() {
+        if UIDevice.current.proximityState {
+            OrientationLocker.shared.unlockOrientation()
+            print("Proximity State - TRUE")
+        } else {
+            print("Proximity State- FALSE")
+        }
     }
 }
 
