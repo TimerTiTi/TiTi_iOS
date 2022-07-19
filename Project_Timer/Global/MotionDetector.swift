@@ -24,7 +24,8 @@ final class MotionDetector {
     }
     
     func beginGeneratingMotionNotification() {
-        guard self.motion.isDeviceMotionAvailable else { return }
+        guard self.motion.isDeviceMotionAvailable,
+              self.isDetecting == false else { return }
         
         self.isDetecting = true
         self.motion.deviceMotionUpdateInterval = 0.1
@@ -46,7 +47,7 @@ final class MotionDetector {
     }
     
     func endGeneratingMotionNotification() {
-        guard isDetecting else { return }
+        guard isDetecting == true else { return }
         
         self.motion.stopDeviceMotionUpdates()
         self.isDetecting = false
