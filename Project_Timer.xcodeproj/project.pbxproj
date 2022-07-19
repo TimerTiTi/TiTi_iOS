@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04172E982885453F00F962F2 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172E972885453F00F962F2 /* MotionDetector.swift */; };
 		043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706262869D58C00A5D3AA /* TimeOfTimerView.swift */; };
 		0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */; };
 		043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */; };
@@ -16,6 +17,7 @@
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
 		04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */; };
 		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
+		04824DE02886911500F3B496 /* CMAttitude+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04824DDF2886911500F3B496 /* CMAttitude+Extension.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -117,6 +119,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04172E972885453F00F962F2 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		043706262869D58C00A5D3AA /* TimeOfTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerView.swift; sourceTree = "<group>"; };
 		0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerViewModel.swift; sourceTree = "<group>"; };
 		043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchView.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
 		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
 		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
+		04824DDF2886911500F3B496 /* CMAttitude+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMAttitude+Extension.swift"; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
@@ -509,6 +513,7 @@
 				87DE1178268ACB040012F043 /* DailyViewModel.swift */,
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 				87C51509267B38C0003DA21D /* Converter.swift */,
+				04172E972885453F00F962F2 /* MotionDetector.swift */,
 				87A48BC527DEF0B200F46D0F /* Extension */,
 				8762717327DF88E700F812ED /* View */,
 				04504C5E2864AC2300CA4C69 /* ViewModel */,
@@ -541,6 +546,7 @@
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
 				875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */,
 				04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */,
+				04824DDF2886911500F3B496 /* CMAttitude+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
+				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
@@ -731,6 +738,7 @@
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
+				04824DE02886911500F3B496 /* CMAttitude+Extension.swift in Sources */,
 				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
