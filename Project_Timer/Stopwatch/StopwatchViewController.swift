@@ -468,7 +468,7 @@ extension StopwatchViewController {
 // MARK: - Device Motion Detection
 extension StopwatchViewController {
     private func startMotionDetection() {
-        guard UserDefaultsManager.get(forKey: .dimWhenFaceDown) as? Bool ?? true else { return }
+        guard UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(orientationDidChangeToFaceDown),
