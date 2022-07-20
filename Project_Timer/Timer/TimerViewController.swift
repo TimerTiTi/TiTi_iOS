@@ -46,12 +46,12 @@ class TimerViewController: UIViewController {
     let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
-    private var isScreenDim: Bool = false
     
     var progressPer: Float = 0.0
     var progressPeriod: Int = 0
     var innerProgressPer: Float = 0.0
     var isLandcape: Bool = false
+    private var isScreenDim: Bool = false
     
     override var prefersStatusBarHidden: Bool {
         return self.isScreenDim

@@ -45,12 +45,12 @@ final class StopwatchViewController: UIViewController {
     let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: StopwatchVM?
-    private var isScreenDim: Bool = false
     
     var progressPer: Float = 0.0
     var innerProgressPer: Float = 0.0
     let progressPeriod: Int = 3600
     var isLandscape: Bool = false
+    private var isScreenDim: Bool = false
     
     override var prefersStatusBarHidden: Bool {
         return self.isScreenDim

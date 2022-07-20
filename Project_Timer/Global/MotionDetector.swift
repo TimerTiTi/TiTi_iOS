@@ -11,6 +11,7 @@ import CoreMotion
 
 final class MotionDetector {
     static let shared = MotionDetector()
+    
     static let orientationDidChangeToFaceDownNotification = Notification.Name("orientationDidChangeToFaceDownNotification")
     static let orientationDidChangeToFaceUpNotification = Notification.Name("orientationDidChangeToFaceUpNotification")
     
