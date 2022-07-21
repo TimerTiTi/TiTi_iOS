@@ -491,16 +491,17 @@ extension TimerViewController {
 
 // MARK: - Device Motion Detection
 extension TimerViewController {
+    /// viewDidAppear 시점에 noti 수신 설정
     private func configureApplicationActiveStateObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startMotionDetection), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
-    
+    /// viewDidDisappear 시점에 noti 수신 해제
     private func removeApplicationActiveStateObserver() {
         NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
     }
-    
+    /// didAppear, active 상태일 경우 실시간으로 감지를 시작하기 위한 함수
     @objc private func startMotionDetection() {
         guard MotionDetector.shared.isDetecting == false,
               UserDefaultsManager.get(forKey: .flipToStartRecording) as? Bool ?? true else { return }
@@ -516,7 +517,7 @@ extension TimerViewController {
                                                object: MotionDetector.shared)
         MotionDetector.shared.beginGeneratingMotionNotification()
     }
-    
+    /// inactive, didDisappear 상태가 될 경우 감지 해제
     @objc private func stopMotionDetection() {
         guard MotionDetector.shared.isDetecting == true else { return }
         
@@ -546,7 +547,7 @@ extension TimerViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         self.blackView.removeFromSuperview()
     }
-    
+    /// FaceDown noti 를 받아 동작제어 로직 실행
     @objc func orientationDidChangeToFaceDown() {
         print("Device Face Down")
         DispatchQueue.main.async { [weak self] in
@@ -560,7 +561,7 @@ extension TimerViewController {
             self?.enterBackground()
         }
     }
-    
+    /// FaceUp noti 를 받아 foreground 로직 실행
     @objc func orientationDidChangeToFaceUp() {
         print("Device Face Up")
         DispatchQueue.main.async { [weak self] in
