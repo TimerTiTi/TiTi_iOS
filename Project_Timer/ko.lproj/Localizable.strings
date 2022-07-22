@@ -73,8 +73,6 @@
 
 "You can modify Timer Time" = "타이머 시간을 조절할 수 있습니다";
 
-NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버튼을 눌러주세요";
-
 "Save completed" = "저장 완료";
 
 "Click to Youtube" = "Youtube 영상으로 이동";
