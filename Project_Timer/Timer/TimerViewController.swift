@@ -557,10 +557,11 @@ extension TimerViewController {
     @objc func orientationDidChangeToFaceDown() {
         print("Device Face Down")
         DispatchQueue.main.async { [weak self] in
-            guard let isTimerRunning = self?.viewModel?.runningUI else { return }
+            guard let viewModel = self?.viewModel else { return }
             
-            if isTimerRunning == false {
+            if viewModel.runningUI == false {
                 self?.startOrStopTimer()
+                guard viewModel.runningUI == true else { return }
                 self?.viewModel?.sendRecordingStartNotification()
             }
             self?.dimTheScreen()
