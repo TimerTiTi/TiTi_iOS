@@ -30,10 +30,10 @@ final class MotionDetector {
         /// 동작과 상관없이 항상 계산이 진행되는 코드
         self.isDetecting = true
         self.motion.deviceMotionUpdateInterval = 0.1 /// 0.1초 간격으로 detect
-        self.motion.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: OperationQueue()) { [weak self] motion, error  in
+        self.motion.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: OperationQueue()) { [weak self] data, error  in
             guard error == nil,
                   let self = self,
-                  let gravity = motion?.gravity else { return }
+                  let gravity = data?.gravity else { return }
             
             let isFaceDownNow = gravity.z > 0.65 /// 독서대에서 뒤집는 각을 고려한 뒤집었다고 판정되는 vector 기준값
             let isFaceUpNow = !isFaceDownNow
@@ -51,7 +51,7 @@ final class MotionDetector {
         }
     }
     
-    func endGeneratingMotionNotification() {
+    func stopGeneratingMotionNotification() {
         self.motion.stopDeviceMotionUpdates()
         self.isDetecting = false
     }
