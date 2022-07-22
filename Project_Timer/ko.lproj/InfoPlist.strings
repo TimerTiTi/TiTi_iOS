@@ -1,1 +1,2 @@
 NSPhotoLibraryAddUsageDescription = "사진앨범에 저장되도록 허용버튼을 눌러주세요";
+NSMotionUsageDescription = "'뒤집어서 기록 시작' 기능을 위해 허용버튼을 눌러주세요";
