@@ -538,6 +538,7 @@ extension TimerViewController {
         self.isScreenDim = true
         self.setNeedsStatusBarAppearanceUpdate()
         keyWindow.addSubview(self.blackView)
+        UIDevice.current.isProximityMonitoringEnabled = true
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
@@ -547,6 +548,7 @@ extension TimerViewController {
         self.isScreenDim = false
         self.setNeedsStatusBarAppearanceUpdate()
         self.blackView.removeFromSuperview()
+        UIDevice.current.isProximityMonitoringEnabled = false
         UIApplication.shared.isIdleTimerDisabled = false
     }
     /// FaceDown noti 를 받아 동작제어 로직 실행
