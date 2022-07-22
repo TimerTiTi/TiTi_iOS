@@ -527,6 +527,7 @@ extension StopwatchViewController {
         self.isScreenDim = true
         self.setNeedsStatusBarAppearanceUpdate()
         keyWindow.addSubview(self.blackView)
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     private func brightenTheScreen() {
@@ -535,6 +536,7 @@ extension StopwatchViewController {
         self.isScreenDim = false
         self.setNeedsStatusBarAppearanceUpdate()
         self.blackView.removeFromSuperview()
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     /// FaceDown noti 를 받아 동작제어 로직 실행
     @objc func orientationDidChangeToFaceDown() {
