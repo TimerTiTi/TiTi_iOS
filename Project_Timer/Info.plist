@@ -30,6 +30,8 @@
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>NSPhotoLibraryAddUsageDescription</string>
+	<key>NSMotionUsageDescription</key>
+	<string>NSMotionUsageDescription</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_00G.otf</string>
@@ -65,6 +67,8 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>accelerometer</string>
+		<string>gyroscope</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
