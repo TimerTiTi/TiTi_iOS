@@ -522,7 +522,7 @@ extension TimerViewController {
         guard MotionDetector.shared.isDetecting == true else { return }
         
         print("stop motion detection")
-        MotionDetector.shared.endGeneratingMotionNotification()
+        MotionDetector.shared.stopGeneratingMotionNotification()
         NotificationCenter.default.removeObserver(self,
                                                   name: MotionDetector.orientationDidChangeToFaceDownNotification,
                                                   object: MotionDetector.shared)
