@@ -1,1 +1,2 @@
 NSPhotoLibraryAddUsageDescription = "Please press the Allow to be saved in the photo album button";
+NSMotionUsageDescription = "Please press the Allow for 'Flip to Start' function";
