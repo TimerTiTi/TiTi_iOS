@@ -29,7 +29,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app needs to be able to save a picture to your library.</string>
+	<string>NSPhotoLibraryAddUsageDescription</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_00G.otf</string>

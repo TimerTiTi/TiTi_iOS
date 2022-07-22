@@ -25,6 +25,7 @@
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
+		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
@@ -136,6 +137,8 @@
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
+		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
 		872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVC.swift; sourceTree = "<group>"; };
@@ -618,6 +621,7 @@
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
+				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
 			);
 			path = Project_Timer;
 			sourceTree = "<group>";
@@ -696,6 +700,7 @@
 				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
+				871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */,
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */,
@@ -813,6 +818,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		871EDFEE288AF6E900B428A6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				871EDFED288AF6E900B428A6 /* en */,
+				871EDFEF288AF6EE00B428A6 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		87CA3B532618591100DD9BB5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
