@@ -43,7 +43,7 @@ final class DailysVC: UIViewController {
         self.configureGraphs()
         self.configureChecks()
         self.configureCheckGraphs()
-        self.configureTimelineHostingVC()
+        self.configureHostingVC()
         
         self.currentDaily = RecordController.shared.daily
     }
@@ -196,7 +196,7 @@ extension DailysVC {
         ])
     }
     
-    private func configureTimelineHostingVC() {
+    private func configureHostingVC() {
         let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
         addChild(hostingStandardVC)
         hostingStandardVC.didMove(toParent: self)
