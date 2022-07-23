@@ -119,11 +119,11 @@ extension DailysVC {
     
     private func updateCalendarColor() {
         let color = UIColor(named: String.userTintColor)
+        self.calendar.appearance.eventSelectionColor = color?.withAlphaComponent(0.5)
+        self.calendar.appearance.selectionColor = color?.withAlphaComponent(0.5)
         self.calendar.appearance.titleTodayColor = color
         self.calendar.appearance.headerTitleColor = color
         self.calendar.appearance.weekdayTextColor = color
-        self.calendar.appearance.selectionColor = color?.withAlphaComponent(0.5)
-        self.calendar.appearance.eventSelectionColor = color?.withAlphaComponent(0.5)
     }
     
     private func configureScrollView() {

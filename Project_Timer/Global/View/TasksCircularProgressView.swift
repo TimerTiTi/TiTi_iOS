@@ -28,6 +28,7 @@ final class TasksCircularProgressView: UIView {
         self.progressValue = 1
         self.addBlock(progressFrame, width)
         
+        let tasks = tasks.sorted(by: { $0.taskTime < $1.taskTime })
         for (idx, task) in tasks.enumerated() {
             let progress = StaticCircularProgressView(frame: progressFrame)
             progress.progressWidth = width.rawValue
