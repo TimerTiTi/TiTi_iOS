@@ -201,6 +201,7 @@ extension DailysVC {
 extension DailysVC {
     private func updateGraphs() {
         self.standardDailyGraphView.updateFromDaily(self.currentDaily)
+        self.timelineDailyGraphView.updateFromDaily(self.currentDaily)
         self.tasksProgressDailyGraphView.updateFromDaily(self.currentDaily)
     }
 }
