@@ -21,6 +21,14 @@ final class TimelineDailyGraphView: UIView {
         label.text = "0000.00.00"
         return label
     }()
+    private var daysOfWeekStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .center
+        stackView.spacing = 5
+        return stackView
+    }()
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,6 +66,15 @@ final class TimelineDailyGraphView: UIView {
             self.dateLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
+        ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].forEach { day in
+            self.daysOfWeekStackView.addArrangedSubview(DayOfWeekLabel(day: day, size: .large))
+        }
+        self.contentView.addSubview(self.daysOfWeekStackView)
+        NSLayoutConstraint.activate([
+            self.daysOfWeekStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.daysOfWeekStackView.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 5)
+        ])
+        
         self.contentView.configureShadow()
     }
 }
@@ -71,6 +88,7 @@ extension TimelineDailyGraphView {
     /// daily 변경, 또는 color 변경이 경우
     func updateFromDaily(_ daily: Daily?) {
         self.updateDateLabel(daily?.day)
+        self.updateDayOfWeek(daily?.day)
     }
 }
 
@@ -85,5 +103,12 @@ extension TimelineDailyGraphView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM.dd"
         self.dateLabel.text = dateFormatter.string(from: day)
+    }
+    
+    private func updateDayOfWeek(_ day: Date?) {
+        self.daysOfWeekStackView.arrangedSubviews.forEach { $0.backgroundColor = UIColor.clear }
+        guard let day = day else { return }
+        let targetIndex = day.indexDayOfWeek
+        self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
     }
 }

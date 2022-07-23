@@ -127,7 +127,7 @@ final class StandardDailyGraphView: UIView {
         ])
         
         ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].forEach { day in
-            self.daysOfWeekStackView.addArrangedSubview(DayOfWeekLabel(day: day))
+            self.daysOfWeekStackView.addArrangedSubview(DayOfWeekLabel(day: day, size: .small))
         }
         self.contentView.addSubview(self.daysOfWeekStackView)
         NSLayoutConstraint.activate([
@@ -276,23 +276,6 @@ extension StandardDailyGraphView {
         
         self.tasks = tasks.sorted(by: { $0.value > $1.value})
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
-    }
-}
-
-// MARK: 요일표시용 CustomView
-final class DayOfWeekLabel: UILabel {
-    convenience init(day: String) {
-        self.init(frame: CGRect())
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.font = TiTiFont.HGGGothicssiP60g(size: 13)
-        self.textColor = UIColor.label
-        self.textAlignment = .center
-        
-        NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: 25),
-            self.heightAnchor.constraint(equalToConstant: 15)
-        ])
-        self.text = day
     }
 }
 
