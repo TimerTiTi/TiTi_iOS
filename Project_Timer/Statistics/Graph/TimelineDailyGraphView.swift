@@ -147,7 +147,7 @@ extension TimelineDailyGraphView {
         self.contentView.configureShadow()
     }
     /// daily 변경, 또는 color 변경이 경우
-    func updateFromDaily(_ daily: Daily?) {
+    func updateFromDaily(_ daily: Daily?, isReversColor: Bool) {
         self.updateDateLabel(daily?.day)
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)
