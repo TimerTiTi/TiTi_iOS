@@ -13,10 +13,10 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         /// 앱 실행시 Analytics 에 정보 전달부분
-        FirebaseApp.configure()
-        Analytics.logEvent("launch", parameters: [
-            AnalyticsParameterItemID: "ver 7.1",
-        ])
+//        FirebaseApp.configure()
+//        Analytics.logEvent("launch", parameters: [
+//            AnalyticsParameterItemID: "ver 7.1",
+//        ])
         /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
         UNUserNotificationCenter.current().delegate = self
         NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in

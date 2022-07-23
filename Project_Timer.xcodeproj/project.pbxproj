@@ -110,6 +110,8 @@
 		87C5150A267B38C0003DA21D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* Converter.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
+		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
+		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
 		87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
@@ -234,6 +236,8 @@
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		87CA3B572618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
+		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
 		87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 			children = (
 				87199F4A2883C6D80017D01A /* StandardDailyTaskCell.swift */,
 				87199F4E2883CCDB0017D01A /* StandardDailyTaskCell.xib */,
+				87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */,
+				87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
 				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
@@ -871,6 +878,7 @@
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
+				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
@@ -1051,7 +1059,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1075,7 +1083,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

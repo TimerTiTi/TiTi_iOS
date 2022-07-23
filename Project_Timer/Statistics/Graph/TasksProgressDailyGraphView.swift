@@ -21,6 +21,20 @@ final class TasksProgressDailyGraphView: UIView {
         label.text = "0000.00.00"
         return label
     }()
+    private var collectionViewHeightContstraint: NSLayoutConstraint?
+    private lazy var tasksCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            collectionView.widthAnchor.constraint(equalToConstant: 190),
+        ])
+        self.collectionViewHeightContstraint = collectionView.heightAnchor.constraint(equalToConstant: 160)
+        self.collectionViewHeightContstraint?.isActive = true
+        return collectionView
+    }()
     private var progressView = TasksCircularProgressView()
     private var contentView: UIView = {
         let view = UIView()
@@ -36,7 +50,8 @@ final class TasksProgressDailyGraphView: UIView {
     
     private var tasks: [TaskInfo] = [] {
         didSet {
-//            self.tasksCollectionView.reloadData()
+            self.collectionViewHeightContstraint?.constant = CGFloat(min(8, self.tasks.count))*ProgressDailyTaskCell.height
+            self.tasksCollectionView.reloadData()
             self.layoutIfNeeded()
             self.progressView.updateProgress(tasks: tasks, width: .medium)
         }
@@ -45,6 +60,7 @@ final class TasksProgressDailyGraphView: UIView {
     convenience init() {
         self.init(frame: CGRect())
         self.commonInit()
+        self.configureCollectionView()
         self.configureProgressView()
     }
     
@@ -68,7 +84,20 @@ final class TasksProgressDailyGraphView: UIView {
             self.dateLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
+        self.contentView.addSubview(self.tasksCollectionView)
+        NSLayoutConstraint.activate([
+            self.tasksCollectionView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.tasksCollectionView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 20)
+        ])
+        
         self.contentView.configureShadow()
+    }
+    
+    private func configureCollectionView() {
+        self.tasksCollectionView.delegate = self
+        self.tasksCollectionView.dataSource = self
+        let progressDailyTaskCellNib = UINib.init(nibName: ProgressDailyTaskCell.identifier, bundle: nil)
+        self.tasksCollectionView.register(progressDailyTaskCellNib.self, forCellWithReuseIdentifier: ProgressDailyTaskCell.identifier)
     }
     
     private func configureProgressView() {
@@ -79,6 +108,24 @@ final class TasksProgressDailyGraphView: UIView {
             self.progressView.widthAnchor.constraint(equalToConstant: 250),
             self.progressView.heightAnchor.constraint(equalToConstant: 250)
         ])
+    }
+}
+
+extension TasksProgressDailyGraphView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return min(8, self.tasks.count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
+        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item])
+        return cell
+    }
+}
+
+extension TasksProgressDailyGraphView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
     }
 }
 
