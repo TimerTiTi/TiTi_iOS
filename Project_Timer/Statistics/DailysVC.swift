@@ -190,11 +190,17 @@ extension DailysVC {
     }
     
     private func configureTimelineHostingVC() {
-        let hostingController = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
-        addChild(hostingController)
-        hostingController.didMove(toParent: self)
+        let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
+        addChild(hostingStandardVC)
+        hostingStandardVC.didMove(toParent: self)
         
-        self.standardDailyGraphView.configureTimelineLayout(hostingController.view)
+        self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
+        
+        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 140, viewModel: self.timelineVM))
+        addChild(hostingTimelineVC)
+        hostingTimelineVC.didMove(toParent: self)
+        
+        self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
 }
 
