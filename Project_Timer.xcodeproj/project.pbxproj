@@ -66,7 +66,6 @@
 		875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
-		876743352689E15600E690E4 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876743342689E15600E690E4 /* calendarViewController.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
@@ -107,14 +106,11 @@
 		87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */; };
 		87BEBEED281C282D0095CD29 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
 		87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */; };
-		87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */; };
-		87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51507267AEE40003DA21D /* TodayViewManager.swift */; };
 		87C5150A267B38C0003DA21D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* Converter.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
-		87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
@@ -195,7 +191,6 @@
 		875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		876743342689E15600E690E4 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
@@ -232,8 +227,6 @@
 		87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVM.swift; sourceTree = "<group>"; };
 		87BEBEEC281C282D0095CD29 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
 		87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = todayContentView.swift; sourceTree = "<group>"; };
-		87C51507267AEE40003DA21D /* TodayViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewManager.swift; sourceTree = "<group>"; };
 		87C51509267B38C0003DA21D /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		87CA3B522618591100DD9BB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CA3B552618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -242,7 +235,6 @@
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
-		87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -461,7 +453,6 @@
 		8762717227DF843B00F812ED /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				87C4EB2F266A4E8E00A6C3A9 /* todayContentView.swift */,
 				87199F542883EB160017D01A /* TimelineView.swift */,
 				87199F562883F2D40017D01A /* ViewModel */,
 			);
@@ -562,6 +553,7 @@
 				87A48BCC27DF182400F46D0F /* SubjectCell.swift */,
 				876A85532832134500978035 /* Model */,
 				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
+				87C9F423288BD2D600B9E04A /* Dailys */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -620,26 +612,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		87A48BCE27DF189D00F46D0F /* Statistics */ = {
-			isa = PBXGroup;
-			children = (
-				87199F422882BC0C0017D01A /* Graph */,
-				87199F492883C68D0017D01A /* Cell */,
-				8788AFE428828D3500D26E7D /* DailysVC.swift */,
-				87DAF2EB2669F9F300FAB4CF /* StatisticsViewController.swift */,
-				87C51507267AEE40003DA21D /* TodayViewManager.swift */,
-				876743342689E15600E690E4 /* calendarViewController.swift */,
-				8762717227DF843B00F812ED /* SwiftUI */,
-			);
-			path = Statistics;
-			sourceTree = "<group>";
-		};
 		87BEBEE7281C16D80095CD29 /* RecordController */ = {
 			isa = PBXGroup;
 			children = (
 				87BEBEE8281C17000095CD29 /* RecordController.swift */,
 			);
 			path = RecordController;
+			sourceTree = "<group>";
+		};
+		87C9F423288BD2D600B9E04A /* Dailys */ = {
+			isa = PBXGroup;
+			children = (
+				8788AFE428828D3500D26E7D /* DailysVC.swift */,
+				87199F422882BC0C0017D01A /* Graph */,
+				87199F492883C68D0017D01A /* Cell */,
+				8762717227DF843B00F812ED /* SwiftUI */,
+			);
+			path = Dailys;
 			sourceTree = "<group>";
 		};
 		87E6004928426EA3008D17B9 /* Setting */ = {
@@ -682,7 +671,6 @@
 				8791C1EC27DCCE08000D6BA9 /* Todolist */,
 				8791C1ED27DCCE10000D6BA9 /* Logs */,
 				87E6004928426EA3008D17B9 /* Setting */,
-				87A48BCE27DF189D00F46D0F /* Statistics */,
 				878B507025B6E2FB00B9EFD7 /* component */,
 				93B08529248DDF3000E215BD /* Assets.xcassets */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
@@ -805,7 +793,6 @@
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
-				87C51508267AEE40003DA21D /* TodayViewManager.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
@@ -825,7 +812,6 @@
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
-				87C4EB30266A4E8E00A6C3A9 /* todayContentView.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
@@ -840,10 +826,8 @@
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
 				04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* SingleTimeLabelView.swift in Sources */,
-				87DAF2EC2669F9F300FAB4CF /* StatisticsViewController.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
-				876743352689E15600E690E4 /* calendarViewController.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
