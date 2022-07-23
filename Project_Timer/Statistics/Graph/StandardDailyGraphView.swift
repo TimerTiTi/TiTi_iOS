@@ -93,9 +93,10 @@ final class StandardDailyGraphView: UIView {
         didSet {
             self.tasksCollectionView.reloadData()
             self.layoutIfNeeded()
-            self.progressView.updateProgress(tasks: tasks, width: .small)
+            self.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
         }
     }
+    private var isReversColor: Bool = false
     
     convenience init() {
         self.init(frame: CGRect())
@@ -214,7 +215,7 @@ extension StandardDailyGraphView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
-        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item])
+        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item], isReversColor: self.isReversColor)
         return cell
     }
 }
@@ -236,7 +237,8 @@ extension StandardDailyGraphView {
         self.timesFrameView.layer.borderColor = borderColor
     }
     /// daily 변경, 또는 color 변경의 경우
-    func updateFromDaily(_ daily: Daily?) {
+    func updateFromDaily(_ daily: Daily?, isReversColor: Bool) {
+        self.isReversColor = isReversColor
         self.updateDateLabel(daily?.day)
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)

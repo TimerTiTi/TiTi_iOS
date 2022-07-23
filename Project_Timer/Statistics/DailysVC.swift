@@ -32,6 +32,8 @@ final class DailysVC: UIViewController {
         }
     }
     private let timelineVM = TimelineVM()
+    private var previusColorIndex: Int?
+    private var isReversColor: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +58,15 @@ final class DailysVC: UIViewController {
     
     @IBAction func changeColor(_ sender: UIButton) {
         UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
+        if self.previusColorIndex == sender.tag {
+            self.isReversColor.toggle()
+        } else {
+            self.isReversColor = false
+        }
+        self.previusColorIndex = sender.tag
         self.updateGraphs()
         self.updateCalendarColor()
-        self.timelineVM.updateColor()
-        // reverse color 로직 고민
+        self.timelineVM.updateColor(isReversColor: self.isReversColor)
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
@@ -206,9 +213,9 @@ extension DailysVC {
 
 extension DailysVC {
     private func updateGraphs() {
-        self.standardDailyGraphView.updateFromDaily(self.currentDaily)
-        self.timelineDailyGraphView.updateFromDaily(self.currentDaily)
-        self.tasksProgressDailyGraphView.updateFromDaily(self.currentDaily)
+        self.standardDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
+        self.timelineDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
+        self.tasksProgressDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
     }
 }
 

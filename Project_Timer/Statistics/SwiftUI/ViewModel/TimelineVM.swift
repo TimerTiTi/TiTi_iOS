@@ -14,7 +14,7 @@ final class TimelineVM: ObservableObject {
     @Published var times: [TimeBlock] = []
     
     init() {
-        self.updateColor()
+        self.updateColor(isReversColor: false)
         self.resetTimes()
     }
     
@@ -29,10 +29,15 @@ final class TimelineVM: ObservableObject {
         }
     }
     
-    func updateColor() {
+    func updateColor(isReversColor: Bool) {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        self.color1Index = (userColorIndex+1)%12 == 0 ? 12 : (userColorIndex+1)%12
-        self.color2Index = userColorIndex
+        if isReversColor {
+            self.color1Index = (userColorIndex-1)%12 == 0 ? 12 : (userColorIndex-1)%12
+            self.color2Index = userColorIndex
+        } else {
+            self.color1Index = (userColorIndex+1)%12 == 0 ? 12 : (userColorIndex+1)%12
+            self.color2Index = userColorIndex
+        }
     }
     
     private func resetTimes() {

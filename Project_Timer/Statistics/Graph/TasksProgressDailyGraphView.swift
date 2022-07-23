@@ -53,9 +53,10 @@ final class TasksProgressDailyGraphView: UIView {
             self.collectionViewHeightContstraint?.constant = CGFloat(min(8, self.tasks.count))*ProgressDailyTaskCell.height
             self.tasksCollectionView.reloadData()
             self.layoutIfNeeded()
-            self.progressView.updateProgress(tasks: tasks, width: .medium)
+            self.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReversColor)
         }
     }
+    private var isReversColor: Bool = false
     
     convenience init() {
         self.init(frame: CGRect())
@@ -118,7 +119,7 @@ extension TasksProgressDailyGraphView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
-        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item])
+        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item], isReversColor: self.isReversColor)
         return cell
     }
 }
@@ -136,7 +137,8 @@ extension TasksProgressDailyGraphView {
         self.contentView.configureShadow()
     }
     /// daily 변경, 또는 color 변경의 경우
-    func updateFromDaily(_ daily: Daily?) {
+    func updateFromDaily(_ daily: Daily?, isReversColor: Bool) {
+        self.isReversColor = isReversColor
         self.updateDateLabel(daily?.day)
         self.updateTasks(with: daily?.tasks)
     }
