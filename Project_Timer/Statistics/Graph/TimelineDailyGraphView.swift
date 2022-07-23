@@ -9,6 +9,17 @@
 import UIKit
 
 final class TimelineDailyGraphView: UIView {
+    /* public */
+    var timelineFrameView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.widthAnchor.constraint(equalToConstant: 325),
+            view.heightAnchor.constraint(equalToConstant: 140)
+        ])
+        return view
+    }()
+    /* private */
     private var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +39,17 @@ final class TimelineDailyGraphView: UIView {
         stackView.alignment = .center
         stackView.spacing = 5
         return stackView
+    }()
+    private var timeLineLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "TimeLine"
+        label.textColor = UIColor.label
+        label.font = TiTiFont.HGGGothicssiP60g(size: 20)
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 22)
+        ])
+        return label
     }()
     private var contentView: UIView = {
         let view = UIView()
@@ -75,7 +97,30 @@ final class TimelineDailyGraphView: UIView {
             self.daysOfWeekStackView.topAnchor.constraint(equalTo: self.dateLabel.bottomAnchor, constant: 5)
         ])
         
+        self.contentView.addSubview(self.timeLineLabel)
+        NSLayoutConstraint.activate([
+            self.timeLineLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.timeLineLabel.topAnchor.constraint(equalTo: self.daysOfWeekStackView.bottomAnchor, constant: 15)
+        ])
+        
+        self.contentView.addSubview(self.timelineFrameView)
+        NSLayoutConstraint.activate([
+            self.timelineFrameView.topAnchor.constraint(equalTo: self.timeLineLabel.bottomAnchor),
+            self.timelineFrameView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
         self.contentView.configureShadow()
+    }
+    
+    func configureTimelineLayout(_ view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.timelineFrameView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.timelineFrameView.topAnchor, constant: 2),
+            view.leadingAnchor.constraint(equalTo: self.timelineFrameView.leadingAnchor, constant: 2),
+            view.trailingAnchor.constraint(equalTo: self.timelineFrameView.trailingAnchor, constant: -2),
+            view.bottomAnchor.constraint(equalTo: self.timelineFrameView.bottomAnchor, constant: -2)
+        ])
     }
 }
 
