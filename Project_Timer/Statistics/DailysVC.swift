@@ -196,7 +196,7 @@ extension DailysVC {
         
         self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
         
-        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 140, viewModel: self.timelineVM))
+        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: self.timelineVM))
         addChild(hostingTimelineVC)
         hostingTimelineVC.didMove(toParent: self)
         

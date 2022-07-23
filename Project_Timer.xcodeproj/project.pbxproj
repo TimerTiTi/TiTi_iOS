@@ -75,6 +75,7 @@
 		8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4E27DCB59400739A09 /* FirebaseDatabase */; };
 		8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF5127DCB5D100739A09 /* FSCalendar */; };
 		87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */; };
+		87789E44288BC1FC00759C01 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87789E43288BC1FC00759C01 /* TimeView.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		877E448C267DF8DD00BF104A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dummy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
@@ -200,6 +201,7 @@
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekLabel.swift; sourceTree = "<group>"; };
+		87789E43288BC1FC00759C01 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				87199F452883018C0017D01A /* TimelineDailyGraphView.swift */,
 				87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */,
 				87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */,
+				87789E43288BC1FC00759C01 /* TimeView.swift */,
 			);
 			path = Graph;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
+				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
 				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,

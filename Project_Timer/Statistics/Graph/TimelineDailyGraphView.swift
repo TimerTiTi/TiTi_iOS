@@ -15,7 +15,7 @@ final class TimelineDailyGraphView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.widthAnchor.constraint(equalToConstant: 325),
-            view.heightAnchor.constraint(equalToConstant: 140)
+            view.heightAnchor.constraint(equalToConstant: 150)
         ])
         return view
     }()
@@ -50,6 +50,16 @@ final class TimelineDailyGraphView: UIView {
             label.heightAnchor.constraint(equalToConstant: 22)
         ])
         return label
+    }()
+    private var totalTimeView = TimeView(title: "Total", size: .large)
+    private var maxTimeView = TimeView(title: "Max", size: .large)
+    private lazy var timesStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.totalTimeView, self.maxTimeView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 30
+        stackView.alignment = .center
+        return stackView
     }()
     private var contentView: UIView = {
         let view = UIView()
@@ -109,6 +119,12 @@ final class TimelineDailyGraphView: UIView {
             self.timelineFrameView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
+        self.contentView.addSubview(self.timesStackView)
+        NSLayoutConstraint.activate([
+            self.timesStackView.topAnchor.constraint(equalTo: self.timelineFrameView.bottomAnchor, constant: 14),
+            self.timesStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
         self.contentView.configureShadow()
     }
     
@@ -134,6 +150,8 @@ extension TimelineDailyGraphView {
     func updateFromDaily(_ daily: Daily?) {
         self.updateDateLabel(daily?.day)
         self.updateDayOfWeek(daily?.day)
+        self.totalTimeView.updateTime(to: daily?.totalTime)
+        self.maxTimeView.updateTime(to: daily?.maxTime)
     }
 }
 

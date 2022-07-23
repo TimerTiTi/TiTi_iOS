@@ -74,8 +74,8 @@ final class StandardDailyGraphView: UIView {
         view.layer.borderColor = UIColor(named: "System_border")?.cgColor
         return view
     }()
-    private var totalTimeView = TimeView(title: "Total")
-    private var maxTimeView = TimeView(title: "Max")
+    private var totalTimeView = TimeView(title: "Total", size: .small)
+    private var maxTimeView = TimeView(title: "Max", size: .small)
     private var progressView = TasksCircularProgressView()
     private var contentView: UIView = {
         let view = UIView()
@@ -96,7 +96,6 @@ final class StandardDailyGraphView: UIView {
             self.progressView.updateProgress(tasks: tasks, width: .small)
         }
     }
-    private let timelineVM = TimelineVM()
     
     convenience init() {
         self.init(frame: CGRect())
@@ -242,8 +241,6 @@ extension StandardDailyGraphView {
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)
         self.maxTimeView.updateTime(to: daily?.maxTime)
-        self.timelineVM.update(daily: daily)
-        
         self.updateTasks(with: daily?.tasks)
     }
 }
@@ -276,69 +273,5 @@ extension StandardDailyGraphView {
         
         self.tasks = tasks.sorted(by: { $0.value > $1.value})
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
-    }
-}
-
-// MARK: TimesFrameView 내 표시용 CustomView
-final class TimeView: UIView {
-    private var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 12)
-        label.textColor = UIColor.label
-        label.textAlignment = .center
-        NSLayoutConstraint.activate([
-            label.heightAnchor.constraint(equalToConstant: 14)
-        ])
-        return label
-    }()
-    private var timeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 22)
-        label.textColor = UIColor(named: String.userTintColor)
-        label.textAlignment = .center
-        NSLayoutConstraint.activate([
-            label.heightAnchor.constraint(equalToConstant: 21)
-        ])
-        label.text = "0:00:00"
-        return label
-    }()
-    
-    convenience init(title: String) {
-        self.init(frame: CGRect())
-        self.commonInit(title)
-    }
-    
-    private func commonInit(_ title: String) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.text = title
-        
-        self.addSubview(self.titleLabel)
-        NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        ])
-        
-        self.addSubview(self.timeLabel)
-        NSLayoutConstraint.activate([
-            self.timeLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor),
-            self.timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.timeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
-    }
-}
-
-// MARK: TimeView Public Actions
-extension TimeView {
-    func updateTime(to time: Int?) {
-        self.timeLabel.textColor = UIColor(named: String.userTintColor)
-        guard let time = time else {
-            self.timeLabel.text = "0:00:00"
-            return
-        }
-        
-        self.timeLabel.text = time.toTimeString
     }
 }
