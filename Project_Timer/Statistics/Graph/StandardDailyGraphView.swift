@@ -31,6 +31,7 @@ final class StandardDailyGraphView: UIView {
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 27.5)
         ])
+        label.textAlignment = .left
         label.text = "0000.00.00"
         return label
     }()

@@ -9,6 +9,18 @@
 import UIKit
 
 final class TasksProgressDailyGraphView: UIView {
+    private var dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TiTiFont.HGGGothicssiP80g(size: 25)
+        label.textColor = UIColor.label
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 27.5)
+        ])
+        label.textAlignment = .center
+        label.text = "0000.00.00"
+        return label
+    }()
     private var progressView = TasksCircularProgressView()
     private var contentView: UIView = {
         let view = UIView()
@@ -50,6 +62,12 @@ final class TasksProgressDailyGraphView: UIView {
             self.contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
         
+        self.contentView.addSubview(self.dateLabel)
+        NSLayoutConstraint.activate([
+            self.dateLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 15),
+            self.dateLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
         self.contentView.configureShadow()
     }
     
@@ -57,7 +75,7 @@ final class TasksProgressDailyGraphView: UIView {
         self.contentView.addSubview(self.progressView)
         NSLayoutConstraint.activate([
             self.progressView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
-            self.progressView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            self.progressView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: 20),
             self.progressView.widthAnchor.constraint(equalToConstant: 250),
             self.progressView.heightAnchor.constraint(equalToConstant: 250)
         ])
@@ -72,12 +90,24 @@ extension TasksProgressDailyGraphView {
     }
     /// daily 변경, 또는 color 변경의 경우
     func updateFromDaily(_ daily: Daily?) {
+        self.updateDateLabel(daily?.day)
         self.updateTasks(with: daily?.tasks)
     }
 }
 
 // MARK: TasksProgressDailyGraphView Private Actions
 extension TasksProgressDailyGraphView {
+    private func updateDateLabel(_ day: Date?) {
+        guard let day = day else {
+            self.dateLabel.text = "0000.00.00"
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        self.dateLabel.text = dateFormatter.string(from: day)
+    }
+    
     private func updateTasks(with tasks: [String: Int]?) {
         guard let tasks = tasks else {
             self.tasks = []
