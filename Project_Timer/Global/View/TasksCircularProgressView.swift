@@ -21,7 +21,7 @@ final class TasksCircularProgressView: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func updateProgress(tasks: [TaskInfo], width: ProgressWidth) {
+    func updateProgress(tasks: [TaskInfo], width: ProgressWidth, isReversColor: Bool) {
         self.resetProgress()
         let totalValue = Float(tasks.reduce(0, { $0 + $1.taskTime })) + self.blockValue*Float(tasks.count)
         let progressFrame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
@@ -33,7 +33,7 @@ final class TasksCircularProgressView: UIView {
             let progress = StaticCircularProgressView(frame: progressFrame)
             progress.progressWidth = width.rawValue
             progress.trackColor = UIColor.clear
-            progress.progressColor = self.progressColor(idx: idx, count: tasks.count)
+            progress.progressColor = self.progressColor(idx: idx, count: tasks.count, isReversColor: isReversColor)
             progress.setProgressWithAnimation(duration: 0.7, value: self.progressValue, from: 0)
             
             self.progressValue -= Float(task.taskTime)/totalValue
@@ -43,9 +43,14 @@ final class TasksCircularProgressView: UIView {
         }
     }
     
-    private func progressColor(idx: Int, count: Int) -> UIColor {
+    private func progressColor(idx: Int, count: Int, isReversColor: Bool) -> UIColor {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        let progressColorIndex = (userColorIndex + (count-1) - idx)%12
+        var progressColorIndex = 0
+        if isReversColor {
+            progressColorIndex = (userColorIndex - (count-1) + idx + 12)%12
+        } else {
+            progressColorIndex = (userColorIndex + (count-1) - idx + 12)%12
+        }
         return UIColor.graphColor(num: progressColorIndex == 0 ? 12 : progressColorIndex)
     }
     

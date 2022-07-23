@@ -21,15 +21,20 @@ final class ProgressDailyTaskCell: UICollectionViewCell {
         self.tasksBackgroundView.layer.cornerRadius = 2
     }
     
-    func configure(index: Int, taskInfo: TaskInfo) {
+    func configure(index: Int, taskInfo: TaskInfo, isReversColor: Bool) {
         self.taskNameLabel.text = taskInfo.taskName
         self.taskTimeLabel.text = taskInfo.taskTime.toTimeString
-        self.updateColor(index: index)
+        self.updateColor(index: index, isReversColor: isReversColor)
     }
     
-    private func updateColor(index: Int) {
+    private func updateColor(index: Int, isReversColor: Bool) {
         let startColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        let colorIndex = (startColorIndex + index)%12 == 0 ? 12 : (startColorIndex + index)%12
+        var colorIndex = 0
+        if isReversColor {
+            colorIndex = (startColorIndex - index + 12)%12 == 0 ? 12 : (startColorIndex - index + 12)%12
+        } else {
+            colorIndex = (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
+        }
         let color = UIColor.graphColor(num: colorIndex)
         self.tasksBackgroundView.backgroundColor = color
         self.taskTimeLabel.textColor = color
