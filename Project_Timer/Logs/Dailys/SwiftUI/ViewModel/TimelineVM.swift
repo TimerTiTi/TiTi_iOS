@@ -32,10 +32,10 @@ final class TimelineVM: ObservableObject {
     func updateColor(isReversColor: Bool) {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         if isReversColor {
-            self.color1Index = (userColorIndex-1)%12 == 0 ? 12 : (userColorIndex-1)%12
+            self.color1Index = (userColorIndex-1+12)%12 == 0 ? 12 : (userColorIndex-1+12)%12
             self.color2Index = userColorIndex
         } else {
-            self.color1Index = (userColorIndex+1)%12 == 0 ? 12 : (userColorIndex+1)%12
+            self.color1Index = (userColorIndex+1+12)%12 == 0 ? 12 : (userColorIndex+1+12)%12
             self.color2Index = userColorIndex
         }
     }
