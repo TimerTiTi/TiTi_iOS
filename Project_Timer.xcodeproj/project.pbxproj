@@ -99,10 +99,11 @@
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC627DEF0C200F46D0F /* Date+Extension.swift */; };
 		87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC827DF026800F46D0F /* Int+Extension.swift */; };
-		87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCA27DF112A00F46D0F /* LogVM.swift */; };
+		87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCA27DF112A00F46D0F /* LogHomeVM.swift */; };
 		87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCC27DF182400F46D0F /* SubjectCell.swift */; };
-		87A7624726493BB500174401 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogViewController.swift */; };
+		87A7624726493BB500174401 /* LogHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogHomeVC.swift */; };
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
+		87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8BC3A288D1436007ED793 /* LogVC.swift */; };
 		87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEE8281C17000095CD29 /* RecordController.swift */; };
 		87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */; };
 		87BEBEED281C282D0095CD29 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
@@ -221,10 +222,11 @@
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A48BC627DEF0C200F46D0F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		87A48BC827DF026800F46D0F /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
-		87A48BCA27DF112A00F46D0F /* LogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVM.swift; sourceTree = "<group>"; };
+		87A48BCA27DF112A00F46D0F /* LogHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVM.swift; sourceTree = "<group>"; };
 		87A48BCC27DF182400F46D0F /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
-		87A7624626493BB500174401 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		87A7624626493BB500174401 /* LogHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVC.swift; sourceTree = "<group>"; };
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		87A8BC3A288D1436007ED793 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
 		87BEBEE8281C17000095CD29 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVM.swift; sourceTree = "<group>"; };
 		87BEBEEC281C282D0095CD29 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
@@ -550,11 +552,8 @@
 		8791C1ED27DCCE10000D6BA9 /* Logs */ = {
 			isa = PBXGroup;
 			children = (
-				87A7624626493BB500174401 /* LogViewController.swift */,
-				87A48BCA27DF112A00F46D0F /* LogVM.swift */,
-				87A48BCC27DF182400F46D0F /* SubjectCell.swift */,
-				876A85532832134500978035 /* Model */,
-				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
+				87A8BC3A288D1436007ED793 /* LogVC.swift */,
+				87A8BC3C288D1448007ED793 /* LogHome */,
 				87C9F423288BD2D600B9E04A /* Dailys */,
 			);
 			path = Logs;
@@ -612,6 +611,18 @@
 				87199F522883D0F70017D01A /* UIColor+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		87A8BC3C288D1448007ED793 /* LogHome */ = {
+			isa = PBXGroup;
+			children = (
+				87A7624626493BB500174401 /* LogHomeVC.swift */,
+				87A48BCA27DF112A00F46D0F /* LogHomeVM.swift */,
+				87A48BCC27DF182400F46D0F /* SubjectCell.swift */,
+				876A85532832134500978035 /* Model */,
+				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
+			);
+			path = LogHome;
 			sourceTree = "<group>";
 		};
 		87BEBEE7281C16D80095CD29 /* RecordController */ = {
@@ -791,6 +802,7 @@
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
+				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
@@ -816,7 +828,7 @@
 				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
-				87A48BCB27DF112B00F46D0F /* LogVM.swift in Sources */,
+				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
@@ -876,7 +888,7 @@
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
-				87A7624726493BB500174401 /* LogViewController.swift in Sources */,
+				87A7624726493BB500174401 /* LogHomeVC.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class LogVM {
+final class LogHomeVM {
     @Published private(set) var daily: Daily = Daily()
     @Published private(set) var subjectTimes: [Int] = []
     @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
