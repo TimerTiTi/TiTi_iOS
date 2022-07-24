@@ -39,7 +39,7 @@ struct TimelineView: View {
                                 Spacer(minLength: 0)
                                 //그래프 막대
                                 RoundedShape()
-                                    .fill(LinearGradient(gradient: .init(colors: [Color("D\(viewModel.color1Index)"), Color("D\(viewModel.color2Index)")]), startPoint: .top, endPoint: .bottom))
+                                    .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
                                     //그래프 막대 높이설정
                                     .frame(height:getHeight(value: time.sumTime))
                                     .padding(.bottom,-4)

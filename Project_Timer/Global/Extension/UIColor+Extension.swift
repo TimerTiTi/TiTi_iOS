@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
-    static func graphColor(num: Int) -> UIColor {
-        return UIColor(named: "D\(num)") ?? .blue
+    var toColor: Color {
+        return Color(self)
     }
 }
