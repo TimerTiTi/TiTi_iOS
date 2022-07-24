@@ -41,7 +41,7 @@
                         <segue destination="uTZ-Xd-FDk" kind="relationship" relationship="viewControllers" id="Vdk-xC-VMe"/>
                         <segue destination="oQm-sw-2wm" kind="relationship" relationship="viewControllers" id="34B-GO-jqd"/>
                         <segue destination="uzd-s8-c8h" kind="relationship" relationship="viewControllers" id="OLM-IS-41E"/>
-                        <segue destination="u5i-hn-5ua" kind="relationship" relationship="viewControllers" id="nF3-hu-CLH"/>
+                        <segue destination="AEA-qf-y0K" kind="relationship" relationship="viewControllers" id="fF6-px-WYG"/>
                         <segue destination="XXO-cX-9ZJ" kind="relationship" relationship="viewControllers" id="y8r-84-g0j"/>
                     </connections>
                 </tabBarController>
@@ -1995,7 +1995,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IM5-Fx-Ru3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4857" y="3075"/>
+            <point key="canvasLocation" x="5643" y="3852"/>
         </scene>
         <!--Todo-->
         <scene sceneID="tUt-ol-eLL">
@@ -2207,6 +2207,47 @@
             </objects>
             <point key="canvasLocation" x="3990" y="2336"/>
         </scene>
+        <!--Log-->
+        <scene sceneID="Jba-LT-g3Y">
+            <objects>
+                <viewController storyboardIdentifier="LogVC" id="AEA-qf-y0K" customClass="LogVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cWw-C3-jEI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-4h-eDe">
+                                <rect key="frame" x="151.5" y="44" width="111" height="32"/>
+                                <segments>
+                                    <segment title="Home"/>
+                                    <segment title="Daily"/>
+                                </segments>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
+                                <rect key="frame" x="0.0" y="83" width="414" height="730"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VoZ-gf-MpS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="bottom" secondItem="9Hd-a4-Qq6" secondAttribute="bottom" id="3RO-Ph-1df"/>
+                            <constraint firstItem="Hcb-4h-eDe" firstAttribute="top" secondItem="VoZ-gf-MpS" secondAttribute="top" id="Gih-XI-zqo"/>
+                            <constraint firstItem="9Hd-a4-Qq6" firstAttribute="leading" secondItem="VoZ-gf-MpS" secondAttribute="leading" id="O0I-Pi-XTd"/>
+                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="trailing" secondItem="9Hd-a4-Qq6" secondAttribute="trailing" id="VvG-mA-G6v"/>
+                            <constraint firstItem="9Hd-a4-Qq6" firstAttribute="top" secondItem="Hcb-4h-eDe" secondAttribute="bottom" constant="8" id="l2z-rM-5xu"/>
+                            <constraint firstItem="Hcb-4h-eDe" firstAttribute="centerX" secondItem="VoZ-gf-MpS" secondAttribute="centerX" id="tiX-vO-zCz"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Log" image="chart.bar" catalog="system" selectedImage="chart.bar" id="zi6-N5-34R"/>
+                    <connections>
+                        <outlet property="frameView" destination="9Hd-a4-Qq6" id="fup-Ew-MHD"/>
+                        <outlet property="pageSegmentedControl" destination="Hcb-4h-eDe" id="XZi-jm-SUj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmH-bt-mrV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4823" y="2336"/>
+        </scene>
         <!--TiTi Lab-->
         <scene sceneID="JoX-xG-UgC">
             <objects>
@@ -2233,7 +2274,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴식알림 기능" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-h7-iQb">
-                                                    <rect key="frame" x="16" y="18" width="96" height="19"/>
+                                                    <rect key="frame" x="16" y="17.5" width="93" height="20"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2248,7 +2289,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 진행중인 설문조사가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-36-MJh">
-                                                    <rect key="frame" x="115.5" y="19" width="144.5" height="17"/>
+                                                    <rect key="frame" x="117" y="19" width="141" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="2xM-T4-Nao"/>
                                                     </constraints>
@@ -2280,28 +2321,28 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
-                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
+                                            <rect key="frame" x="16" y="15" width="75" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-Qe-wGe">
-                                            <rect key="frame" x="0.0" y="36" width="414" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="36" width="414" height="82"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발진행리스트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igL-Tw-0m4">
-                                                    <rect key="frame" x="16" y="15" width="107.5" height="19"/>
+                                                    <rect key="frame" x="16" y="15" width="103" height="20"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Notion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-WD-pDG">
-                                                    <rect key="frame" x="133.5" y="20" width="42.5" height="14"/>
+                                                    <rect key="frame" x="129" y="21" width="48.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-CS-MFa">
-                                                    <rect key="frame" x="16" y="39" width="196.5" height="24.5"/>
+                                                    <rect key="frame" x="16" y="40" width="193" height="26"/>
                                                     <string key="text">실시간 개발 진행상황을 확인할 수 있습니다.
 또한 차기 기능들을 미리 확인할 수 있습니다.</string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -2309,7 +2350,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Lu-Xic">
-                                                    <rect key="frame" x="388" y="32.5" width="10" height="15"/>
+                                                    <rect key="frame" x="388" y="33.5" width="10" height="15"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="6pA-uo-iae"/>
@@ -2318,7 +2359,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ut-7o-aKp">
-                                                    <rect key="frame" x="8" y="-8" width="398" height="95.5"/>
+                                                    <rect key="frame" x="8" y="-8" width="398" height="98"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="showDevelopmentList:" destination="dEk-1R-nht" eventType="touchUpInside" id="Sbz-mc-JBt"/>
@@ -2343,28 +2384,28 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-dl-GBr">
-                                            <rect key="frame" x="0.0" y="116.5" width="414" height="67.5"/>
+                                            <rect key="frame" x="0.0" y="119" width="414" height="69"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-oS-OyD">
-                                                    <rect key="frame" x="16" y="15" width="70" height="19"/>
+                                                    <rect key="frame" x="16" y="15" width="76" height="20"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@study_withtiti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-po-dlG">
-                                                    <rect key="frame" x="96" y="20" width="74" height="14"/>
+                                                    <rect key="frame" x="102" y="21" width="80.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RL-y6-Iih">
-                                                    <rect key="frame" x="16" y="39" width="275" height="12.5"/>
+                                                    <rect key="frame" x="16" y="40" width="273.5" height="13"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IGT-TV-ntK">
-                                                    <rect key="frame" x="388" y="26.5" width="10" height="15"/>
+                                                    <rect key="frame" x="388" y="27" width="10" height="15"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="7BF-CJ-xpa"/>
@@ -2373,7 +2414,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSf-ki-Ewp">
-                                                    <rect key="frame" x="8" y="8" width="398" height="51.5"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="53"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="goInstaToTiTi:" destination="dEk-1R-nht" eventType="touchUpInside" id="8VX-yF-eje"/>
@@ -2398,28 +2439,28 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발에 참여" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-7e-p6F">
-                                            <rect key="frame" x="16" y="202" width="88" height="16"/>
+                                            <rect key="frame" x="16" y="206" width="91" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlt-HN-M9c">
-                                            <rect key="frame" x="0.0" y="223" width="414" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="227" width="414" height="82"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설문조사" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9u-uz-2hh">
-                                                    <rect key="frame" x="16" y="15" width="61.5" height="19"/>
+                                                    <rect key="frame" x="16" y="15" width="59" height="20"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Google Forms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-jn-Dd1">
-                                                    <rect key="frame" x="87.5" y="20" width="78.5" height="14"/>
+                                                    <rect key="frame" x="85" y="21" width="89" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7m-yU-dfL">
-                                                    <rect key="frame" x="16" y="39" width="201.5" height="24.5"/>
+                                                    <rect key="frame" x="16" y="40" width="199" height="26"/>
                                                     <string key="text">새로운 기능 개발 및 개선에 큰 도움이 됩니다. 
 실시간으로 새로운 설문조사들이 추가됩니다. </string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -2487,13 +2528,13 @@
         <!--Log-->
         <scene sceneID="hW3-2t-yl1">
             <objects>
-                <viewController storyboardIdentifier="LogViewController" id="u5i-hn-5ua" customClass="LogViewController" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogHomeVC" id="u5i-hn-5ua" customClass="LogHomeVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3k8-94-gJj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaG-wS-pJ6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-54-tL2" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="710.5"/>
@@ -3214,7 +3255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIp-Wy-vXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4857" y="2336"/>
+            <point key="canvasLocation" x="4878" y="3852"/>
         </scene>
         <!--Setting-->
         <scene sceneID="ArU-Kn-mBl">
