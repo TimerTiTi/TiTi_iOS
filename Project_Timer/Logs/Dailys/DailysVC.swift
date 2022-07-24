@@ -20,15 +20,14 @@ final class DailysVC: UIViewController {
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var checkGraphButtons: [CheckGraphButton] = []
-    private var checkGraphs: [Bool] = [true, true, true] {
+    private var isGraphChecked: [Bool] = [true, true, true] {
         didSet {
-            UserDefaultsManager.set(to: checkGraphs, forKey: .checks)
+            UserDefaultsManager.set(to: isGraphChecked, forKey: .checks)
         }
     }
     private var currentDaily: Daily? {
         didSet {
             self.updateGraphs()
-            self.timelineVM.update(daily: currentDaily)
         }
     }
     private let timelineVM = TimelineVM()
@@ -64,32 +63,26 @@ final class DailysVC: UIViewController {
             self.isReversColor = false
         }
         self.previusColorIndex = sender.tag
-        self.updateGraphs()
         self.updateCalendarColor()
         self.timelineVM.updateColor(isReversColor: self.isReversColor)
+        self.updateGraphs()
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
-        if self.checkGraphs[0] == true {
-            let graphImage = UIImage(view: self.standardDailyGraphView)
-            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-        }
-        if self.checkGraphs[1] == true {
-            let graphImage = UIImage(view: self.timelineDailyGraphView)
-            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-        }
-        if self.checkGraphs[2] == true {
-            let graphImage = UIImage(view: self.tasksProgressDailyGraphView)
-            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+        let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
+                
+        for i in 0..<3 {
+            if self.isGraphChecked[i] == true {
+                let graphImage = UIImage(view: dailyGraphViews[i])
+                UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+            }
         }
         self.showAlertWithOK(title: "Save completed".localized(), text: "")
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {
-        var images: [UIImage] = []
-        if self.checkGraphs[0] == true { images.append(UIImage(view: self.standardDailyGraphView)) }
-        if self.checkGraphs[1] == true { images.append(UIImage(view: self.timelineDailyGraphView)) }
-        if self.checkGraphs[2] == true { images.append(UIImage(view: self.tasksProgressDailyGraphView)) }
+        let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
+        let images = (0..<3).filter{ self.isGraphChecked[$0] }.map{ UIImage(view: dailyGraphViews[$0]) }
         
         let activityViewController = UIActivityViewController(activityItems: images, applicationActivities: nil)
         
@@ -163,16 +156,16 @@ extension DailysVC {
     
     private func configureChecks() {
         guard let checks = UserDefaultsManager.get(forKey: .checks) as? [Bool] else { return }
-        self.checkGraphs = checks
+        self.isGraphChecked = checks
     }
     
     private func configureCheckGraphs() {
         (0...2).forEach { idx in
             let button = CheckGraphButton()
-            button.isSelected = self.checkGraphs[idx]
+            button.isSelected = self.isGraphChecked[idx]
             button.addAction(UIAction(handler: { [weak self] _ in
                 button.isSelected.toggle()
-                self?.checkGraphs[idx].toggle()
+                self?.isGraphChecked[idx].toggle()
             }), for: .touchUpInside)
             self.checkGraphButtons.append(button)
         }
@@ -216,6 +209,7 @@ extension DailysVC {
         self.standardDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
         self.timelineDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
         self.tasksProgressDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
+        self.timelineVM.update(daily: self.currentDaily)
     }
 }
 
