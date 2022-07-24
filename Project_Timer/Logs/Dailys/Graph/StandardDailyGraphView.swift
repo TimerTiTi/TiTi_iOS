@@ -22,6 +22,7 @@ final class StandardDailyGraphView: UIView {
         ])
         return view
     }()
+    let progressView = TasksCircularProgressView()
     /* private */
     private var dateLabel: UILabel = {
         let label = UILabel()
@@ -65,6 +66,7 @@ final class StandardDailyGraphView: UIView {
         NSLayoutConstraint.activate([
             collectionView.widthAnchor.constraint(equalToConstant: 215)
         ])
+        collectionView.tag = 0
         return collectionView
     }()
     private var timesFrameView: UIView = {
@@ -76,7 +78,6 @@ final class StandardDailyGraphView: UIView {
     }()
     private var totalTimeView = TimeView(title: "Total", size: .small)
     private var maxTimeView = TimeView(title: "Max", size: .small)
-    private var progressView = TasksCircularProgressView()
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -88,15 +89,6 @@ final class StandardDailyGraphView: UIView {
         ])
         return view
     }()
-    
-    private var tasks: [TaskInfo] = [] {
-        didSet {
-            self.tasksCollectionView.reloadData()
-            self.layoutIfNeeded()
-            self.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
-        }
-    }
-    private var isReversColor: Bool = false
     
     convenience init() {
         self.init(frame: CGRect())
@@ -180,10 +172,8 @@ final class StandardDailyGraphView: UIView {
     }
     
     private func configureCollectionView() {
-        self.tasksCollectionView.delegate = self
-        self.tasksCollectionView.dataSource = self
         let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
-        self.tasksCollectionView.register(standardDailyTaskCellNib.self, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
+        self.tasksCollectionView.register(standardDailyTaskCellNib, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
     }
     
     private func configureProgressView() {
@@ -194,6 +184,14 @@ final class StandardDailyGraphView: UIView {
             self.progressView.widthAnchor.constraint(equalToConstant: 52),
             self.progressView.heightAnchor.constraint(equalToConstant: 52)
         ])
+    }
+}
+
+// MARK: StandardDailyGraphView Public Configure Functions
+extension StandardDailyGraphView {
+    func configureDelegate(_ delegate: (UICollectionViewDelegate&UICollectionViewDataSource)) {
+        self.tasksCollectionView.delegate = delegate
+        self.tasksCollectionView.dataSource = delegate
     }
     
     func configureTimelineLayout(_ view: UIView) {
@@ -208,24 +206,6 @@ final class StandardDailyGraphView: UIView {
     }
 }
 
-extension StandardDailyGraphView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.tasks.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
-        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item], isReversColor: self.isReversColor)
-        return cell
-    }
-}
-
-extension StandardDailyGraphView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
-    }
-}
-
 // MARK: StandardDailyGraphView Public Actions
 extension StandardDailyGraphView {
     /// dark, light mode 변경의 경우
@@ -237,13 +217,15 @@ extension StandardDailyGraphView {
         self.timesFrameView.layer.borderColor = borderColor
     }
     /// daily 변경, 또는 color 변경의 경우
-    func updateFromDaily(_ daily: Daily?, isReversColor: Bool) {
-        self.isReversColor = isReversColor
+    func updateFromDaily(_ daily: Daily?) {
         self.updateDateLabel(daily?.day)
         self.updateDayOfWeek(daily?.day)
         self.totalTimeView.updateTime(to: daily?.totalTime)
         self.maxTimeView.updateTime(to: daily?.maxTime)
-        self.updateTasks(with: daily?.tasks)
+    }
+    /// tasks 가 변경되어 collectionView 를 update 하는 경우
+    func reload() {
+        self.tasksCollectionView.reloadData()
     }
 }
 
@@ -265,15 +247,5 @@ extension StandardDailyGraphView {
         guard let day = day else { return }
         let targetIndex = day.indexDayOfWeek
         self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
-    }
-    
-    private func updateTasks(with tasks: [String: Int]?) {
-        guard let tasks = tasks else {
-            self.tasks = []
-            return
-        }
-        
-        self.tasks = tasks.sorted(by: { $0.value > $1.value})
-            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
 }
