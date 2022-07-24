@@ -1611,13 +1611,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-YL-73O">
-                                <rect key="frame" x="151.5" y="44" width="111" height="32"/>
-                                <segments>
-                                    <segment title="Home"/>
-                                    <segment title="Daily"/>
-                                </segments>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jam-iT-gHH" customClass="FSCalendar">
                                 <rect key="frame" x="34.5" y="83" width="345" height="280"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1983,16 +1976,14 @@
                         <viewLayoutGuide key="safeArea" id="i11-sD-E0Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="e0B-nu-KYL" firstAttribute="centerY" secondItem="Btq-YL-73O" secondAttribute="centerY" id="40e-iE-flj"/>
                             <constraint firstItem="e0B-nu-KYL" firstAttribute="leading" secondItem="i11-sD-E0Q" secondAttribute="leading" constant="16" id="4xG-fs-pGf"/>
+                            <constraint firstItem="Jam-iT-gHH" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" constant="39" id="7er-KV-C7o"/>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="trailing" secondItem="AXc-AT-98H" secondAttribute="trailing" id="AWZ-JV-ZTt"/>
-                            <constraint firstItem="Btq-YL-73O" firstAttribute="centerX" secondItem="i11-sD-E0Q" secondAttribute="centerX" id="WIU-D9-Ycg"/>
                             <constraint firstItem="AXc-AT-98H" firstAttribute="top" secondItem="Jam-iT-gHH" secondAttribute="bottom" constant="8" id="WeC-4I-MI7"/>
-                            <constraint firstItem="Btq-YL-73O" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" id="Xtd-Cf-8RV"/>
                             <constraint firstItem="Jam-iT-gHH" firstAttribute="centerX" secondItem="mZe-Jw-PAb" secondAttribute="centerX" id="f5A-0S-Cdc"/>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="bottom" secondItem="AXc-AT-98H" secondAttribute="bottom" id="iAP-hS-Mus"/>
                             <constraint firstItem="AXc-AT-98H" firstAttribute="leading" secondItem="i11-sD-E0Q" secondAttribute="leading" id="qwK-a0-aAl"/>
-                            <constraint firstItem="Jam-iT-gHH" firstAttribute="top" secondItem="Btq-YL-73O" secondAttribute="bottom" constant="8" id="xv0-VP-NUI"/>
+                            <constraint firstItem="e0B-nu-KYL" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" constant="4.5" id="sOj-WR-cyr"/>
                         </constraints>
                     </view>
                     <connections>
