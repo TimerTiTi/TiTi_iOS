@@ -1,5 +1,5 @@
 //
-//  LogViewController.swift
+//  LogHomeVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/02/23.
@@ -10,7 +10,8 @@ import UIKit
 import SwiftUI
 import Combine
 
-class LogViewController: UIViewController {
+final class LogHomeVC: UIViewController {
+    static let identifier = "LogHomeVC"
     @IBOutlet weak var monthFrameView: UIView!
     @IBOutlet weak var monthTimeLabel: UILabel!
     
@@ -26,7 +27,7 @@ class LogViewController: UIViewController {
     @IBOutlet weak var subjectsHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    private var viewModel: LogVM?
+    private var viewModel: LogHomeVM?
     private var cancellables: Set<AnyCancellable> = []
     private var colors: [UIColor] = []
     private var progressWidth: CGFloat = 0
@@ -71,7 +72,7 @@ class LogViewController: UIViewController {
 }
 
 // MARK: Configure
-extension LogViewController {
+extension LogHomeVC {
     private func configureShadows(_ views: UIView...) {
         views.forEach { view in
             view.layer.shadowColor = UIColor.white.cgColor
@@ -87,12 +88,12 @@ extension LogViewController {
     }
     
     private func configureViewModel() {
-        self.viewModel = LogVM()
+        self.viewModel = LogHomeVM()
     }
 }
 
 // MARK: ShowGraph
-extension LogViewController {
+extension LogHomeVC {
     private func updateTabbarColor() {
         self.tabBarController?.tabBar.tintColor = .white
         self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
@@ -127,7 +128,7 @@ extension LogViewController {
 }
 
 // MARK: Binding
-extension LogViewController {
+extension LogHomeVC {
     private func bindAll() {
         self.bindDaily()
         self.bindSubjectTimes()
@@ -176,7 +177,7 @@ extension LogViewController {
     }
 }
 
-extension LogViewController {
+extension LogHomeVC {
     private func configureTodayDateLabel(daily: Daily) {
         self.todayDateLabel.text = daily.day.MDstyleString
     }
@@ -228,7 +229,7 @@ extension LogViewController {
     }
 }
 
-extension LogViewController {
+extension LogHomeVC {
     private func makeProgress(_ subjectTimes: [Int], _ sumTime: Int) {
         var sumWithSeperator: Float = Float(sumTime)
         
@@ -268,7 +269,7 @@ extension LogViewController {
     }
 }
 
-extension LogViewController: UICollectionViewDataSource {
+extension LogHomeVC: UICollectionViewDataSource {
     //몇개 표시 할까?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.subjectNameTimes.count ?? 0
