@@ -51,7 +51,7 @@ final class TasksCircularProgressView: UIView {
         } else {
             progressColorIndex = (userColorIndex + (count-1) - idx + 12)%12
         }
-        return UIColor.graphColor(num: progressColorIndex == 0 ? 12 : progressColorIndex)
+        return TiTiColor.graphColor(num: progressColorIndex == 0 ? 12 : progressColorIndex)
     }
     
     private func addBlock(_ frame: CGRect, _ width: ProgressWidth) {
