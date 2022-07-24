@@ -21,6 +21,12 @@ final class DailysVM {
     func updateDaily(to daily: Daily?) {
         self.currentDaily = daily
         self.timelineVM.update(daily: daily)
+        guard let tasks = daily?.tasks else {
+            self.tasks = []
+            return
+        }
+        self.tasks = tasks.sorted(by: { $0.value > $1.value })
+            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
     
     func updateColor(isReverseColor: Bool) {

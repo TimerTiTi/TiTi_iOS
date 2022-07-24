@@ -9,6 +9,9 @@
 import UIKit
 
 final class TasksProgressDailyGraphView: UIView {
+    /* public */
+    let progressView = TasksCircularProgressView()
+    /* private */
     private var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,9 +36,10 @@ final class TasksProgressDailyGraphView: UIView {
         ])
         self.collectionViewHeightContstraint = collectionView.heightAnchor.constraint(equalToConstant: 160)
         self.collectionViewHeightContstraint?.isActive = true
+        collectionView.tag = 1
         return collectionView
     }()
-    private var progressView = TasksCircularProgressView()
+    
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -47,16 +51,6 @@ final class TasksProgressDailyGraphView: UIView {
         ])
         return view
     }()
-    
-    private var tasks: [TaskInfo] = [] {
-        didSet {
-            self.collectionViewHeightContstraint?.constant = CGFloat(min(8, self.tasks.count))*ProgressDailyTaskCell.height
-            self.tasksCollectionView.reloadData()
-            self.layoutIfNeeded()
-            self.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReversColor)
-        }
-    }
-    private var isReversColor: Bool = false
     
     convenience init() {
         self.init(frame: CGRect())
@@ -95,10 +89,8 @@ final class TasksProgressDailyGraphView: UIView {
     }
     
     private func configureCollectionView() {
-        self.tasksCollectionView.delegate = self
-        self.tasksCollectionView.dataSource = self
         let progressDailyTaskCellNib = UINib.init(nibName: ProgressDailyTaskCell.identifier, bundle: nil)
-        self.tasksCollectionView.register(progressDailyTaskCellNib.self, forCellWithReuseIdentifier: ProgressDailyTaskCell.identifier)
+        self.tasksCollectionView.register(progressDailyTaskCellNib, forCellWithReuseIdentifier: ProgressDailyTaskCell.identifier)
     }
     
     private func configureProgressView() {
@@ -112,21 +104,11 @@ final class TasksProgressDailyGraphView: UIView {
     }
 }
 
-extension TasksProgressDailyGraphView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return min(8, self.tasks.count)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
-        cell.configure(index: indexPath.item, taskInfo: self.tasks[indexPath.item], isReversColor: self.isReversColor)
-        return cell
-    }
-}
-
-extension TasksProgressDailyGraphView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
+// MARK: TasksProgressDailyGraphView Public Configure Functions
+extension TasksProgressDailyGraphView {
+    func configureDelegate(_ delegate: (UICollectionViewDelegate&UICollectionViewDataSource)) {
+        self.tasksCollectionView.delegate = delegate
+        self.tasksCollectionView.dataSource = delegate
     }
 }
 
@@ -137,10 +119,13 @@ extension TasksProgressDailyGraphView {
         self.contentView.configureShadow()
     }
     /// daily 변경, 또는 color 변경의 경우
-    func updateFromDaily(_ daily: Daily?, isReversColor: Bool) {
-        self.isReversColor = isReversColor
+    func updateFromDaily(_ daily: Daily?) {
         self.updateDateLabel(daily?.day)
-        self.updateTasks(with: daily?.tasks)
+        self.collectionViewHeightContstraint?.constant = CGFloat(min(8, daily?.tasks.count ?? 0))*ProgressDailyTaskCell.height
+    }
+    /// tasks 가 변경되어 collectionView 를 update 하는 경우
+    func reload() {
+        self.tasksCollectionView.reloadData()
     }
 }
 
@@ -155,15 +140,5 @@ extension TasksProgressDailyGraphView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM.dd"
         self.dateLabel.text = dateFormatter.string(from: day)
-    }
-    
-    private func updateTasks(with tasks: [String: Int]?) {
-        guard let tasks = tasks else {
-            self.tasks = []
-            return
-        }
-        
-        self.tasks = tasks.sorted(by: { $0.value > $1.value})
-            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
 }

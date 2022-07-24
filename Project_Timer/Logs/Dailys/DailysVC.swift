@@ -30,6 +30,10 @@ final class DailysVC: UIViewController {
     private var isReversColor: Bool = false
     private var viewModel: DailysVM?
     private var cancellables: Set<AnyCancellable> = []
+    enum GraphCollectionView: Int {
+        case standardDailyGraphView = 0
+        case tasksProgressDailyGraphView = 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,7 @@ final class DailysVC: UIViewController {
         self.configureGraphs()
         self.configureChecks()
         self.configureCheckGraphs()
+        self.configureCollectionViewDelegate()
         self.configureViewModel()
         self.configureHostingVC()
         self.bindAll()
@@ -51,7 +56,8 @@ final class DailysVC: UIViewController {
         self.standardDailyGraphView.updateDarkLightMode()
         self.timelineDailyGraphView.updateDarkLightMode()
         self.tasksProgressDailyGraphView.updateDarkLightMode()
-        self.updateGraphs()
+        self.updateGraphsFromDaily()
+        self.updateGraphsFromTasks()
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
@@ -64,7 +70,8 @@ final class DailysVC: UIViewController {
         self.previusColorIndex = sender.tag
         self.updateCalendarColor()
         self.viewModel?.updateColor(isReverseColor: self.isReversColor)
-        self.updateGraphs()
+        self.updateGraphsFromDaily()
+        self.updateGraphsFromTasks()
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
@@ -188,6 +195,15 @@ extension DailysVC {
         ])
     }
     
+    private func configureCollectionViewDelegate() {
+        self.standardDailyGraphView.configureDelegate(self)
+        self.tasksProgressDailyGraphView.configureDelegate(self)
+    }
+    
+    private func configureViewModel() {
+        self.viewModel = DailysVM()
+    }
+    
     private func configureHostingVC() {
         guard let timelineVM = self.viewModel?.timelineVM else { return }
         let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: timelineVM))
@@ -202,10 +218,6 @@ extension DailysVC {
         
         self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
-    
-    private func configureViewModel() {
-        self.viewModel = DailysVM()
-    }
 }
 
 extension DailysVC {
@@ -219,22 +231,38 @@ extension DailysVC {
             .receive(on: DispatchQueue.main)
             .dropFirst()
             .sink(receiveValue: { [weak self] _ in
-                self?.updateGraphs()
+                self?.updateGraphsFromDaily()
             })
             .store(in: &self.cancellables)
     }
     
     private func bindTasks() {
-        
+        self.viewModel?.$tasks
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphsFromTasks()
+            })
+            .store(in: &self.cancellables)
     }
 }
 
 extension DailysVC {
-    private func updateGraphs() {
-        guard let daily = self.viewModel?.currentDaily else { return }
-        self.standardDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
+    private func updateGraphsFromDaily() {
+        let daily = self.viewModel?.currentDaily
+        self.standardDailyGraphView.updateFromDaily(daily)
         self.timelineDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
-        self.tasksProgressDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
+        self.tasksProgressDailyGraphView.updateFromDaily(daily)
+    }
+    
+    private func updateGraphsFromTasks() {
+        let tasks = self.viewModel?.tasks ?? []
+        self.standardDailyGraphView.reload()
+        self.standardDailyGraphView.layoutIfNeeded()
+        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
+        self.tasksProgressDailyGraphView.reload()
+        self.tasksProgressDailyGraphView.layoutIfNeeded()
+        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReversColor)
     }
 }
 
@@ -260,5 +288,48 @@ extension DailysVC: UIScrollViewDelegate {
         guard scrollView == self.graphsScrollView else { return }
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
         self.graphsPageControl.currentPage = Int(round(value))
+    }
+}
+
+extension DailysVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                return self.viewModel?.tasks.count ?? 0
+            case .tasksProgressDailyGraphView:
+                return min(8, self.viewModel?.tasks.count ?? 0)
+            }
+        } else { return 0 }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
+                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+                return cell
+            case .tasksProgressDailyGraphView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
+                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+                return cell
+            }
+        } else { return .init() }
+    }
+}
+
+extension DailysVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
+            case .tasksProgressDailyGraphView:
+                return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
+            }
+        } else { return .zero }
     }
 }
