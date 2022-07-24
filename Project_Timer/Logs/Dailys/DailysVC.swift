@@ -251,7 +251,7 @@ extension DailysVC {
     private func updateGraphsFromDaily() {
         let daily = self.viewModel?.currentDaily
         self.standardDailyGraphView.updateFromDaily(daily)
-        self.timelineDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
+        self.timelineDailyGraphView.updateFromDaily(daily)
         self.tasksProgressDailyGraphView.updateFromDaily(daily)
     }
     
