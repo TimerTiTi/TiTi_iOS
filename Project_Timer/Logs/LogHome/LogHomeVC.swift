@@ -44,7 +44,6 @@ final class LogHomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateTabbarColor()
-        self.scrollView.setContentOffset(.zero, animated: false)
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
@@ -57,17 +56,11 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let bottomOffset = CGPoint(x: 0, y: self.scrollView.contentSize.height - self.scrollView.bounds.height + self.scrollView.contentInset.bottom)
-        self.scrollView.setContentOffset(bottomOffset, animated: false)
         self.configureEmptyView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-    }
-    
-    @IBAction func todayButtonAction(_ sender: Any) {
-        self.showStatistics()
     }
 }
 
