@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 import SwiftUI
 import FSCalendar
 
@@ -25,14 +26,10 @@ final class DailysVC: UIViewController {
             UserDefaultsManager.set(to: isGraphChecked, forKey: .checks)
         }
     }
-    private var currentDaily: Daily? {
-        didSet {
-            self.updateGraphs()
-        }
-    }
-    private let timelineVM = TimelineVM()
     private var previusColorIndex: Int?
     private var isReversColor: Bool = false
+    private var viewModel: DailysVM?
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +39,11 @@ final class DailysVC: UIViewController {
         self.configureGraphs()
         self.configureChecks()
         self.configureCheckGraphs()
+        self.configureViewModel()
         self.configureHostingVC()
+        self.bindAll()
         
-        self.currentDaily = RecordController.shared.daily
+        self.viewModel?.updateDaily(to: RecordController.shared.daily)
     }
     
     override func viewWillLayoutSubviews() {
@@ -64,7 +63,7 @@ final class DailysVC: UIViewController {
         }
         self.previusColorIndex = sender.tag
         self.updateCalendarColor()
-        self.timelineVM.updateColor(isReversColor: self.isReversColor)
+        self.viewModel?.updateColor(isReverseColor: self.isReversColor)
         self.updateGraphs()
     }
     
@@ -190,26 +189,52 @@ extension DailysVC {
     }
     
     private func configureHostingVC() {
-        let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: self.timelineVM))
+        guard let timelineVM = self.viewModel?.timelineVM else { return }
+        let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: timelineVM))
         addChild(hostingStandardVC)
         hostingStandardVC.didMove(toParent: self)
         
         self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
         
-        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: self.timelineVM))
+        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: timelineVM))
         addChild(hostingTimelineVC)
         hostingTimelineVC.didMove(toParent: self)
         
         self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
+    
+    private func configureViewModel() {
+        self.viewModel = DailysVM()
+    }
+}
+
+extension DailysVC {
+    private func bindAll() {
+        self.bindDaily()
+        self.bindTasks()
+    }
+    
+    private func bindDaily() {
+        self.viewModel?.$currentDaily
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphs()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindTasks() {
+        
+    }
 }
 
 extension DailysVC {
     private func updateGraphs() {
-        self.standardDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
-        self.timelineDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
-        self.tasksProgressDailyGraphView.updateFromDaily(self.currentDaily, isReversColor: self.isReversColor)
-        self.timelineVM.update(daily: self.currentDaily)
+        guard let daily = self.viewModel?.currentDaily else { return }
+        self.standardDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
+        self.timelineDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
+        self.tasksProgressDailyGraphView.updateFromDaily(daily, isReversColor: self.isReversColor)
     }
 }
 
@@ -217,9 +242,9 @@ extension DailysVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         if RecordController.shared.dailys.dates.contains(date),
            let targetIndex = RecordController.shared.dailys.dates.firstIndex(of: date) {
-            self.currentDaily = RecordController.shared.dailys.dailys[targetIndex]
+            self.viewModel?.updateDaily(to: RecordController.shared.dailys.dailys[targetIndex])
         } else {
-            self.currentDaily = nil
+            self.viewModel?.updateDaily(to: nil)
         }
     }
 }
