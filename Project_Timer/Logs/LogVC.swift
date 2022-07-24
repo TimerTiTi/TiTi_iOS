@@ -16,7 +16,13 @@ final class LogVC: UIViewController {
         return pageViewController
     }()
     private var childVCs: [UIViewController] = []
-    private var pageIndex: Int = 0
+    private var currentPage: Int = 0 {
+        didSet {
+            self.pageSegmentedControl.selectedSegmentIndex = self.currentPage
+            let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
+            self.pageViewController.setViewControllers([self.childVCs[self.currentPage]], direction: direction, animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,9 @@ final class LogVC: UIViewController {
         self.configureChildViewControllers()
     }
     
+    @IBAction func changePage(_ sender: UISegmentedControl) {
+        self.currentPage = sender.selectedSegmentIndex
+    }
 }
 
 extension LogVC {
@@ -53,17 +62,25 @@ extension LogVC {
 }
 
 extension LogVC: UIPageViewControllerDelegate {
-    
+    /// 제스처가 완료된 후 호출
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let viewController = pageViewController.viewControllers?[0],
+              let index = self.childVCs.firstIndex(of: viewController) else { return }
+        self.currentPage = index
+        self.pageSegmentedControl.selectedSegmentIndex = index
+    }
 }
 
 extension LogVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        self.pageIndex -= 1
-        return self.childVCs[self.pageIndex]
+        guard let index = self.childVCs.firstIndex(of: viewController), index-1 >= 0 else { return nil }
+        self.currentPage = index-1
+        return self.childVCs[index - 1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        self.pageIndex += 1
-        return self.childVCs[self.pageIndex]
+        guard let index = self.childVCs.firstIndex(of: viewController), index+1 < self.childVCs.count else { return nil }
+        self.currentPage = index+1
+        return self.childVCs[index + 1]
     }
 }

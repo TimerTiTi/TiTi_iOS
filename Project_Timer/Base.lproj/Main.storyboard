@@ -1612,7 +1612,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jam-iT-gHH" customClass="FSCalendar">
-                                <rect key="frame" x="34.5" y="83" width="345" height="280"/>
+                                <rect key="frame" x="34.5" y="52" width="345" height="280"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="YEN-t2-qFL"/>
@@ -1658,7 +1658,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXc-AT-98H" userLabel="verticalScrollView">
-                                <rect key="frame" x="0.0" y="371" width="414" height="491"/>
+                                <rect key="frame" x="0.0" y="340" width="414" height="522"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTV-iA-UWb" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="447"/>
@@ -1957,33 +1957,16 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="yEr-LP-YAD"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Uyu-Jc-kxO"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0B-nu-KYL">
-                                <rect key="frame" x="16" y="48.5" width="60" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="F8X-ES-Dyn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Back" image="chevron.backward" catalog="system">
-                                    <color key="titleColor" systemColor="tintColor"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="8q7-4W-HO2" eventType="touchUpInside" id="KIh-4A-B5r"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i11-sD-E0Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="e0B-nu-KYL" firstAttribute="leading" secondItem="i11-sD-E0Q" secondAttribute="leading" constant="16" id="4xG-fs-pGf"/>
-                            <constraint firstItem="Jam-iT-gHH" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" constant="39" id="7er-KV-C7o"/>
+                            <constraint firstItem="Jam-iT-gHH" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" constant="8" id="7er-KV-C7o"/>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="trailing" secondItem="AXc-AT-98H" secondAttribute="trailing" id="AWZ-JV-ZTt"/>
                             <constraint firstItem="AXc-AT-98H" firstAttribute="top" secondItem="Jam-iT-gHH" secondAttribute="bottom" constant="8" id="WeC-4I-MI7"/>
                             <constraint firstItem="Jam-iT-gHH" firstAttribute="centerX" secondItem="mZe-Jw-PAb" secondAttribute="centerX" id="f5A-0S-Cdc"/>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="bottom" secondItem="AXc-AT-98H" secondAttribute="bottom" id="iAP-hS-Mus"/>
                             <constraint firstItem="AXc-AT-98H" firstAttribute="leading" secondItem="i11-sD-E0Q" secondAttribute="leading" id="qwK-a0-aAl"/>
-                            <constraint firstItem="e0B-nu-KYL" firstAttribute="top" secondItem="i11-sD-E0Q" secondAttribute="top" constant="4.5" id="sOj-WR-cyr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -2221,6 +2204,9 @@
                                     <segment title="Home"/>
                                     <segment title="Daily"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changePage:" destination="AEA-qf-y0K" eventType="valueChanged" id="1c1-Tl-kvI"/>
+                                </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
                                 <rect key="frame" x="0.0" y="83" width="414" height="730"/>
@@ -2274,7 +2260,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴식알림 기능" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-h7-iQb">
-                                                    <rect key="frame" x="16" y="17.5" width="93" height="20"/>
+                                                    <rect key="frame" x="16" y="18" width="96" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2289,7 +2275,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 진행중인 설문조사가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-36-MJh">
-                                                    <rect key="frame" x="117" y="19" width="141" height="17"/>
+                                                    <rect key="frame" x="115.5" y="19" width="144.5" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="2xM-T4-Nao"/>
                                                     </constraints>
@@ -2321,28 +2307,28 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
-                                            <rect key="frame" x="16" y="15" width="75" height="16"/>
+                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-Qe-wGe">
-                                            <rect key="frame" x="0.0" y="36" width="414" height="82"/>
+                                            <rect key="frame" x="0.0" y="36" width="414" height="79.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발진행리스트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igL-Tw-0m4">
-                                                    <rect key="frame" x="16" y="15" width="103" height="20"/>
+                                                    <rect key="frame" x="16" y="15" width="107.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Notion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-WD-pDG">
-                                                    <rect key="frame" x="129" y="21" width="48.5" height="14"/>
+                                                    <rect key="frame" x="133.5" y="20" width="42.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-CS-MFa">
-                                                    <rect key="frame" x="16" y="40" width="193" height="26"/>
+                                                    <rect key="frame" x="16" y="39" width="196.5" height="24.5"/>
                                                     <string key="text">실시간 개발 진행상황을 확인할 수 있습니다.
 또한 차기 기능들을 미리 확인할 수 있습니다.</string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -2350,7 +2336,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Lu-Xic">
-                                                    <rect key="frame" x="388" y="33.5" width="10" height="15"/>
+                                                    <rect key="frame" x="388" y="32.5" width="10" height="15"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="6pA-uo-iae"/>
@@ -2359,7 +2345,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ut-7o-aKp">
-                                                    <rect key="frame" x="8" y="-8" width="398" height="98"/>
+                                                    <rect key="frame" x="8" y="-8" width="398" height="95.5"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="showDevelopmentList:" destination="dEk-1R-nht" eventType="touchUpInside" id="Sbz-mc-JBt"/>
@@ -2384,28 +2370,28 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-dl-GBr">
-                                            <rect key="frame" x="0.0" y="119" width="414" height="69"/>
+                                            <rect key="frame" x="0.0" y="116.5" width="414" height="67.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-oS-OyD">
-                                                    <rect key="frame" x="16" y="15" width="76" height="20"/>
+                                                    <rect key="frame" x="16" y="15" width="70" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@study_withtiti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-po-dlG">
-                                                    <rect key="frame" x="102" y="21" width="80.5" height="14"/>
+                                                    <rect key="frame" x="96" y="20" width="74" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RL-y6-Iih">
-                                                    <rect key="frame" x="16" y="40" width="273.5" height="13"/>
+                                                    <rect key="frame" x="16" y="39" width="275" height="12.5"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IGT-TV-ntK">
-                                                    <rect key="frame" x="388" y="27" width="10" height="15"/>
+                                                    <rect key="frame" x="388" y="26.5" width="10" height="15"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="7BF-CJ-xpa"/>
@@ -2414,7 +2400,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSf-ki-Ewp">
-                                                    <rect key="frame" x="8" y="8" width="398" height="53"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="51.5"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="goInstaToTiTi:" destination="dEk-1R-nht" eventType="touchUpInside" id="8VX-yF-eje"/>
@@ -2439,28 +2425,28 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발에 참여" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-7e-p6F">
-                                            <rect key="frame" x="16" y="206" width="91" height="16"/>
+                                            <rect key="frame" x="16" y="202" width="88" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlt-HN-M9c">
-                                            <rect key="frame" x="0.0" y="227" width="414" height="82"/>
+                                            <rect key="frame" x="0.0" y="223" width="414" height="79.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설문조사" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9u-uz-2hh">
-                                                    <rect key="frame" x="16" y="15" width="59" height="20"/>
+                                                    <rect key="frame" x="16" y="15" width="61.5" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Google Forms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-jn-Dd1">
-                                                    <rect key="frame" x="85" y="21" width="89" height="14"/>
+                                                    <rect key="frame" x="87.5" y="20" width="78.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7m-yU-dfL">
-                                                    <rect key="frame" x="16" y="40" width="199" height="26"/>
+                                                    <rect key="frame" x="16" y="39" width="201.5" height="24.5"/>
                                                     <string key="text">새로운 기능 개발 및 개선에 큰 도움이 됩니다. 
 실시간으로 새로운 설문조사들이 추가됩니다. </string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -2607,16 +2593,6 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOc-IS-yJd">
                                                 <rect key="frame" x="27" y="383" width="360" height="317.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4V-RU-5ZW">
-                                                        <rect key="frame" x="315" y="10" width="35" height="34"/>
-                                                        <color key="tintColor" name="CCC1"/>
-                                                        <state key="normal" image="chart.pie.fill" catalog="system">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="todayButtonAction:" destination="u5i-hn-5ua" eventType="touchUpInside" id="mLH-mf-tpr"/>
-                                                        </connections>
-                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyD-g0-dDi">
                                                         <rect key="frame" x="11" y="62.5" width="338.5" height="51"/>
                                                         <subviews>
@@ -3161,11 +3137,9 @@
                                                     <constraint firstItem="914-vj-jce" firstAttribute="top" secondItem="0kC-ug-aQ8" secondAttribute="bottom" id="SZE-fl-xLP"/>
                                                     <constraint firstItem="0kC-ug-aQ8" firstAttribute="top" secondItem="xOc-IS-yJd" secondAttribute="top" constant="10" id="VZ3-q0-iMe"/>
                                                     <constraint firstItem="jRR-eU-exe" firstAttribute="top" secondItem="MfR-un-xKx" secondAttribute="bottom" constant="5" id="ZF7-4b-MOL"/>
-                                                    <constraint firstAttribute="trailing" secondItem="o4V-RU-5ZW" secondAttribute="trailing" constant="10" id="bQt-PT-Dwp"/>
                                                     <constraint firstItem="HMe-WH-t0s" firstAttribute="centerX" secondItem="KQL-D9-LzE" secondAttribute="centerX" id="ceA-bn-hI0"/>
                                                     <constraint firstItem="m6t-D2-0R3" firstAttribute="top" secondItem="bTi-b1-S1K" secondAttribute="bottom" constant="5" id="h1C-Kg-Vh3"/>
                                                     <constraint firstItem="914-vj-jce" firstAttribute="centerX" secondItem="0kC-ug-aQ8" secondAttribute="centerX" id="kFW-Wr-HdU"/>
-                                                    <constraint firstItem="o4V-RU-5ZW" firstAttribute="top" secondItem="xOc-IS-yJd" secondAttribute="top" constant="10" id="kaS-7J-wTT"/>
                                                     <constraint firstItem="Svh-1F-yJ9" firstAttribute="top" secondItem="mj1-NO-rY3" secondAttribute="bottom" constant="5" id="oiQ-gc-Z05"/>
                                                     <constraint firstItem="Svh-1F-yJ9" firstAttribute="centerX" secondItem="mj1-NO-rY3" secondAttribute="centerX" id="qBI-Wy-bzP"/>
                                                     <constraint firstItem="Y2E-rO-ZSx" firstAttribute="top" secondItem="dWB-Zl-FOq" secondAttribute="bottom" constant="5" id="sjA-gt-Zni"/>
@@ -3692,10 +3666,8 @@
     <resources>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="chart.bar" catalog="system" width="128" height="90"/>
-        <image name="chart.pie.fill" catalog="system" width="128" height="121"/>
         <image name="checklist" catalog="system" width="128" height="105"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
-        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="103"/>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="110"/>
@@ -3831,9 +3803,6 @@
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
             <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
