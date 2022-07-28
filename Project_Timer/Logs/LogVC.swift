@@ -31,7 +31,9 @@ final class LogVC: UIViewController {
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {
-        self.currentPage = sender.selectedSegmentIndex
+        if self.currentPage != sender.selectedSegmentIndex {
+            self.currentPage = sender.selectedSegmentIndex
+        }
     }
 }
 
@@ -66,7 +68,9 @@ extension LogVC: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         guard let viewController = pageViewController.viewControllers?[0],
               let index = self.childVCs.firstIndex(of: viewController) else { return }
-        self.currentPage = index
+        if self.currentPage != index {
+            self.currentPage = index
+        }
         self.pageSegmentedControl.selectedSegmentIndex = index
     }
 }
@@ -75,12 +79,12 @@ extension LogVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = self.childVCs.firstIndex(of: viewController), index-1 >= 0 else { return nil }
         self.currentPage = index-1
-        return self.childVCs[index - 1]
+        return self.childVCs[index-1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = self.childVCs.firstIndex(of: viewController), index+1 < self.childVCs.count else { return nil }
         self.currentPage = index+1
-        return self.childVCs[index + 1]
+        return self.childVCs[index+1]
     }
 }
