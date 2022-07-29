@@ -43,7 +43,6 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor()
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
@@ -88,9 +87,9 @@ extension LogHomeVC {
 // MARK: ShowGraph
 extension LogHomeVC {
     private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .white
+        self.tabBarController?.tabBar.tintColor = .label
         self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = .clear
+        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
     }
     
     private func configureWeeksGraph() {
