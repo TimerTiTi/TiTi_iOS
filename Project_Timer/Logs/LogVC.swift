@@ -30,6 +30,16 @@ final class LogVC: UIViewController {
         self.configureChildViewControllers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateTabbarColor()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.updateTabbarColor()
+    }
+    
     @IBAction func changePage(_ sender: UISegmentedControl) {
         if self.currentPage != sender.selectedSegmentIndex {
             self.currentPage = sender.selectedSegmentIndex
@@ -38,6 +48,12 @@ final class LogVC: UIViewController {
 }
 
 extension LogVC {
+    private func updateTabbarColor() {
+        self.tabBarController?.tabBar.tintColor = .label
+        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
+        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
+    }
+    
     private func configurePageViewController() {
         self.frameView.addSubview(self.pageViewController.view)
         self.addChild(self.pageViewController)
