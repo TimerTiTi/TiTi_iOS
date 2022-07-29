@@ -461,12 +461,14 @@ extension TimerViewController {
 extension TimerViewController {
     @objc func deviceRotated(){
         guard UIDevice.current.userInterfaceIdiom == .phone else { return }
-        
         self.blackView.frame = UIScreen.main.bounds
-        if UIDevice.current.orientation.isLandscape {
-            self.setLandscape()
-        } else {    // TODO: face up/down일 때도 setPortrait()가 실행되는 버그 있음.
+        switch UIDevice.current.orientation {
+        case .portrait, .portraitUpsideDown:
             self.setPortrait()
+        case .landscapeLeft, .landscapeRight:
+            self.setLandscape()
+        default:
+            return
         }
     }
     
