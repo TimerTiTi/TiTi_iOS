@@ -70,6 +70,9 @@ struct TimelineView: View {
 
 struct timelineView_Previews: PreviewProvider {
     static var previews: some View {
-        TimelineView(frameHeight: 100, viewModel: TimelineVM())
+        let dummyTimes = (0...23).map { idx in
+            TimeBlock(id: idx%24, sumTime: Int.random(in: 600..<3600))
+        }
+        TimelineView(frameHeight: 100, viewModel: TimelineVM(times: dummyTimes))
     }
 }

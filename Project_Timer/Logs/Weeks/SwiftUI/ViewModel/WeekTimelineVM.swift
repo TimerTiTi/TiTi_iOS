@@ -18,6 +18,11 @@ final class WeekTimelineVM: ObservableObject {
         self.resetTimes()
     }
     
+    init(weekTimes: [WeekTimeBlock]) {
+        self.updateColor(isReversColor: false)
+        self.weekTimes = weekTimes
+    }
+    
     func update(weekData: DailysWeekData) {
         var weekTimes = self.weekTimes
         for idx in 0...6 {
