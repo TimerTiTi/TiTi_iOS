@@ -33,16 +33,38 @@ final class StandardWeekGraphView: UIView {
         label.text = "00.00 ~ 00.00"
         return label
     }()
-    var timelineFrameView: UIView = {
+    private var timelineGraphFrameView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 2
-        view.layer.borderColor = UIColor(named: "System_border")?.cgColor
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: 325),
+            view.widthAnchor.constraint(equalToConstant: 223),
             view.heightAnchor.constraint(equalToConstant: 130)
         ])
         return view
+    }()
+    private var timelineTimesFrameView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.heightAnchor.constraint(equalToConstant: 130),
+            view.widthAnchor.constraint(equalToConstant: 97)
+        ])
+        return view
+    }()
+    private var totalTimeView = TimeView(title: "Total", size: .small)
+    private var averageTimeView = TimeView(title: "Average", size: .small)
+    private lazy var timelineStackView: UIView = {
+        let stackView = UIStackView(arrangedSubviews: [self.timelineGraphFrameView, self.timelineTimesFrameView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.layer.borderWidth = 2
+        stackView.layer.borderColor = UIColor(named: "System_border")?.cgColor
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        NSLayoutConstraint.activate([
+            stackView.widthAnchor.constraint(equalToConstant: 325),
+            stackView.heightAnchor.constraint(equalToConstant: 130)
+        ])
+        return stackView
     }()
     private lazy var tasksCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -112,16 +134,16 @@ final class StandardWeekGraphView: UIView {
             self.contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
         
-        self.contentView.addSubview(self.timelineFrameView)
+        self.contentView.addSubview(self.timelineStackView)
         NSLayoutConstraint.activate([
-            self.timelineFrameView.topAnchor.constraint(equalTo: self.weekTermLabel.bottomAnchor, constant: 5),
-            self.timelineFrameView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+            self.timelineStackView.topAnchor.constraint(equalTo: self.weekTermLabel.bottomAnchor, constant: 5),
+            self.timelineStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         self.contentView.addSubview(self.tasksCollectionView)
         NSLayoutConstraint.activate([
-            self.tasksCollectionView.topAnchor.constraint(equalTo: self.timelineFrameView.bottomAnchor, constant: 5),
-            self.tasksCollectionView.leadingAnchor.constraint(equalTo: self.timelineFrameView.leadingAnchor),
+            self.tasksCollectionView.topAnchor.constraint(equalTo: self.timelineStackView.bottomAnchor, constant: 5),
+            self.tasksCollectionView.leadingAnchor.constraint(equalTo: self.timelineStackView.leadingAnchor),
             self.tasksCollectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12.5)
         ])
         
@@ -129,16 +151,26 @@ final class StandardWeekGraphView: UIView {
         NSLayoutConstraint.activate([
             self.timesFrameView.topAnchor.constraint(equalTo: self.tasksCollectionView.topAnchor),
             self.timesFrameView.leadingAnchor.constraint(equalTo: self.tasksCollectionView.trailingAnchor, constant: 5),
-            self.timesFrameView.trailingAnchor.constraint(equalTo: self.timelineFrameView.trailingAnchor),
+            self.timesFrameView.trailingAnchor.constraint(equalTo: self.timelineStackView.trailingAnchor),
             self.timesFrameView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12.5)
         ])
-        
-        
         
         self.contentView.configureShadow()
     }
     
     private func configureTimesView() {
+        self.timelineTimesFrameView.addSubview(self.totalTimeView)
+        NSLayoutConstraint.activate([
+            self.totalTimeView.topAnchor.constraint(equalTo: self.timelineTimesFrameView.topAnchor, constant: 30),
+            self.totalTimeView.centerXAnchor.constraint(equalTo: self.timelineTimesFrameView.centerXAnchor)
+        ])
+        
+        self.timelineTimesFrameView.addSubview(self.averageTimeView)
+        NSLayoutConstraint.activate([
+            self.averageTimeView.topAnchor.constraint(equalTo: self.totalTimeView.bottomAnchor, constant: 3),
+            self.averageTimeView.centerXAnchor.constraint(equalTo: self.timelineTimesFrameView.centerXAnchor)
+        ])
+        
         self.timesFrameView.addSubview(self.Top5TimeView)
         NSLayoutConstraint.activate([
             self.Top5TimeView.topAnchor.constraint(equalTo: self.timesFrameView.topAnchor, constant: 10),
@@ -173,7 +205,7 @@ extension StandardWeekGraphView {
         /// dark, light mode 변경의 경우
         self.contentView.configureShadow()
         let borderColor = UIColor(named: "System_border")?.cgColor
-        self.timelineFrameView.layer.borderColor = borderColor
+        self.timelineStackView.layer.borderColor = borderColor
         self.tasksCollectionView.layer.borderColor = borderColor
         self.timesFrameView.layer.borderColor = borderColor
     }
@@ -181,6 +213,8 @@ extension StandardWeekGraphView {
     func updateFromWeekData(_ weekData: DailysWeekData) {
         self.updateMonthLabel(weekData.weekDates.first)
         self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)
+        self.totalTimeView.updateTime(to: weekData.totalTime)
+        self.averageTimeView.updateTime(to: weekData.averageTime)
         self.Top5TimeView.updateTime(to: weekData.top5Time)
     }
     /// tasks 가 변경되어 collectionView 를 update 하는 경우
