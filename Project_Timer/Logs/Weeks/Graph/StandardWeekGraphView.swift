@@ -54,7 +54,7 @@ final class StandardWeekGraphView: UIView {
         collectionView.layer.borderWidth = 2
         collectionView.layer.borderColor = UIColor(named: "System_border")?.cgColor
         NSLayoutConstraint.activate([
-            collectionView.widthAnchor.constraint(equalToConstant: 215)
+            collectionView.widthAnchor.constraint(equalToConstant: 223)
         ])
         collectionView.tag = 0
         return collectionView

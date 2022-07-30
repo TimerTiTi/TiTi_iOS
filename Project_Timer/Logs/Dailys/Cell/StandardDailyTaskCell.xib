@@ -29,6 +29,9 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKL-zS-jBj">
                         <rect key="frame" x="8" y="2" width="11.5" height="16"/>
                         <color key="tintColor" name="CCC1"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="11.5" id="FhG-ml-8sx"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" name="D1"/>
                         <nil key="highlightedColor"/>
