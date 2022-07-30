@@ -18,6 +18,7 @@ final class WeeksVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     
     private var viewModel: WeeksVM?
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,9 @@ final class WeeksVC: UIViewController {
         self.updateCalendarColor()
         
         self.configureViewModel()
+        self.bindAll()
+        
+        self.viewModel?.selectDate(to: RecordController.shared.daily.day.localDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +78,36 @@ extension WeeksVC {
     
     private func configureViewModel() {
         self.viewModel = WeeksVM()
+    }
+}
+
+extension WeeksVC {
+    private func bindAll() {
+        self.bindWeekData()
+        self.bindTasks()
+    }
+    
+    private func bindWeekData() {
+        self.viewModel?.$weekData
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] weekData in
+                guard let weekData = weekData else { return }
+                // MARK: 임시 로직
+                print(weekData.totalTime.toTimeString)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindTasks() {
+        self.viewModel?.$top5Tasks
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] tasks in
+                // MARK: 임시 로직
+                print(tasks)
+            })
+            .store(in: &self.cancellables)
     }
 }
 
