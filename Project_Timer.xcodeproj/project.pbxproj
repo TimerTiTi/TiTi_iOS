@@ -119,6 +119,7 @@
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
+		87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
@@ -251,6 +252,7 @@
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
+		87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysWeekData.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			children = (
 				878899792894EFEE00B7F378 /* WeeksVC.swift */,
 				8788997B2894F00000B7F378 /* WeeksVM.swift */,
+				87D4C95828950B24008ECAA4 /* Model */,
 				8788997D2894F01E00B7F378 /* Graph */,
 				878899802894F04B00B7F378 /* Cell */,
 				878899832894F07200B7F378 /* SwiftUI */,
@@ -701,6 +704,14 @@
 				8762717227DF843B00F812ED /* SwiftUI */,
 			);
 			path = Dailys;
+			sourceTree = "<group>";
+		};
+		87D4C95828950B24008ECAA4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		87E6004928426EA3008D17B9 /* Setting */ = {
@@ -918,6 +929,7 @@
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				043706332869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
+				87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
