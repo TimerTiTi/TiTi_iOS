@@ -17,11 +17,20 @@ final class StandardWeekGraphView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP80g(size: 25)
         label.textColor = UIColor.label
+        label.textAlignment = .center
+        label.text = "0000.00"
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 27.5)
         ])
+        return label
+    }()
+    private var weekTermLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TiTiFont.HGGGothicssiP60g(size: 14)
+        label.textColor = UIColor.label
         label.textAlignment = .center
-        label.text = "0000.00"
+        label.text = "00.00 ~ 00.00"
         return label
     }()
     private var contentView: UIView = {
@@ -55,6 +64,12 @@ final class StandardWeekGraphView: UIView {
             self.monthLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
+        self.contentView.addSubview(self.weekTermLabel)
+        NSLayoutConstraint.activate([
+            self.weekTermLabel.topAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
+            self.weekTermLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
         self.addSubview(self.contentView)
         NSLayoutConstraint.activate([
             self.contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -74,6 +89,7 @@ extension StandardWeekGraphView {
     
     func updateFromWeekData(_ weekData: DailysWeekData) {
         self.updateMonthLabel(weekData.weekDates.first)
+        self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)
     }
 }
 
@@ -87,5 +103,14 @@ extension StandardWeekGraphView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM"
         self.monthLabel.text = dateFormatter.string(from: day)
+    }
+    
+    private func updateWeekTermLabel(_ mon: Date?, _ sun: Date?) {
+        guard let mon = mon, let sun = sun else {
+            self.weekTermLabel.text = "00.00 ~ 00.00"
+            return
+        }
+        
+        self.weekTermLabel.text = "\(mon.MMDDstyleString) ~ \(sun.MMDDstyleString)"
     }
 }

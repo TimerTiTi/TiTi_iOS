@@ -52,7 +52,16 @@ final class WeeksVC: UIViewController {
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {
+        let images = [UIImage(view: self.standardWeekGraphView)]
         
+        let activityViewController = UIActivityViewController(activityItems: images, applicationActivities: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = sender.frame
+        }
+        
+        self.present(activityViewController, animated: true)
     }
 }
 
