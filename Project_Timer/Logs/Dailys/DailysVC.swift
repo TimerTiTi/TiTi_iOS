@@ -99,10 +99,6 @@ final class DailysVC: UIViewController {
         
         self.present(activityViewController, animated: true)
     }
-    
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
 }
 
 extension DailysVC {

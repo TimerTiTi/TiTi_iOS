@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import Combine
+import SwiftUI
+import FSCalendar
 
-class WeeksVC: UIViewController {
-
+final class WeeksVC: UIViewController {
+    static let identifier = "WeeksVC"
+    @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var graphsScrollView: UIScrollView!
+    @IBOutlet weak var graphsContentView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func changeColor(_ sender: UIButton) {
+        
     }
-    */
-
+    
+    @IBAction func saveGraphsToLibrary(_ sender: Any) {
+        
+    }
+    
+    @IBAction func shareGraphs(_ sender: UIButton) {
+        
+    }
 }
