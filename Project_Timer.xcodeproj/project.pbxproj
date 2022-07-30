@@ -79,6 +79,12 @@
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		877E448C267DF8DD00BF104A /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877E448B267DF8DD00BF104A /* Dummy.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
+		8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* WeeksVC.swift */; };
+		8788997C2894F00000B7F378 /* WeeksVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* WeeksVM.swift */; };
+		8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */; };
+		878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */; };
+		878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899842894F09600B7F378 /* WeekTimelineView.swift */; };
+		878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899872894F0B900B7F378 /* WeekTimelineVM.swift */; };
 		8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788AFE428828D3500D26E7D /* DailysVC.swift */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
@@ -203,6 +209,12 @@
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		877E448B267DF8DD00BF104A /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
+		878899792894EFEE00B7F378 /* WeeksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksVC.swift; sourceTree = "<group>"; };
+		8788997B2894F00000B7F378 /* WeeksVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksVM.swift; sourceTree = "<group>"; };
+		8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekGraphView.swift; sourceTree = "<group>"; };
+		878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekTaskCell.swift; sourceTree = "<group>"; };
+		878899842894F09600B7F378 /* WeekTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineView.swift; sourceTree = "<group>"; };
+		878899872894F0B900B7F378 /* WeekTimelineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineVM.swift; sourceTree = "<group>"; };
 		8788AFE428828D3500D26E7D /* DailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVC.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -485,6 +497,51 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		878899782894EFC500B7F378 /* Weeks */ = {
+			isa = PBXGroup;
+			children = (
+				878899792894EFEE00B7F378 /* WeeksVC.swift */,
+				8788997B2894F00000B7F378 /* WeeksVM.swift */,
+				8788997D2894F01E00B7F378 /* Graph */,
+				878899802894F04B00B7F378 /* Cell */,
+				878899832894F07200B7F378 /* SwiftUI */,
+			);
+			path = Weeks;
+			sourceTree = "<group>";
+		};
+		8788997D2894F01E00B7F378 /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */,
+			);
+			path = Graph;
+			sourceTree = "<group>";
+		};
+		878899802894F04B00B7F378 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		878899832894F07200B7F378 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				878899842894F09600B7F378 /* WeekTimelineView.swift */,
+				878899862894F0A700B7F378 /* ViewModel */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		878899862894F0A700B7F378 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				878899872894F0B900B7F378 /* WeekTimelineVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		878B507025B6E2FB00B9EFD7 /* component */ = {
 			isa = PBXGroup;
 			children = (
@@ -555,6 +612,7 @@
 				87A8BC3A288D1436007ED793 /* LogVC.swift */,
 				87A8BC3C288D1448007ED793 /* LogHome */,
 				87C9F423288BD2D600B9E04A /* Dailys */,
+				878899782894EFC500B7F378 /* Weeks */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -817,6 +875,7 @@
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
+				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
 				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
@@ -835,7 +894,9 @@
 				872C0EE3284AF26A00E8E3F2 /* UpdateHistoryVM.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
+				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
 				87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */,
+				8788997C2894F00000B7F378 /* WeeksVM.swift in Sources */,
 				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
@@ -861,12 +922,14 @@
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
+				8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
+				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
@@ -878,6 +941,7 @@
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */,
+				878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */,
 				87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */,
 				04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */,
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
