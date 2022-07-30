@@ -26,19 +26,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="215" height="27"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJY-Ol-RVE">
-                        <rect key="frame" x="8" y="6.5" width="23.5" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJY-Ol-RVE">
+                        <rect key="frame" x="8" y="7" width="22" height="13"/>
                         <color key="tintColor" name="CCC1"/>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="ehW-4o-fTb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="11"/>
                         <color key="textColor" name="D1"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2h-fp-e5D" userLabel="background">
-                        <rect key="frame" x="37" y="6.5" width="31.5" height="14"/>
+                        <rect key="frame" x="33.5" y="6.5" width="31.5" height="14"/>
                         <color key="backgroundColor" name="D1"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxh-6N-03j">
-                        <rect key="frame" x="39.5" y="6.5" width="26.5" height="14"/>
+                        <rect key="frame" x="36" y="6.5" width="26.5" height="14"/>
                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -70,7 +73,7 @@
                     <constraint firstAttribute="trailing" secondItem="aWr-xn-eRv" secondAttribute="trailing" constant="8" id="aST-bv-i39"/>
                     <constraint firstAttribute="bottom" secondItem="46F-Ej-KIZ" secondAttribute="bottom" id="aoq-My-mFj"/>
                     <constraint firstItem="u2h-fp-e5D" firstAttribute="centerX" secondItem="Gxh-6N-03j" secondAttribute="centerX" id="pjm-wP-aGT"/>
-                    <constraint firstItem="Gxh-6N-03j" firstAttribute="leading" secondItem="bJY-Ol-RVE" secondAttribute="trailing" constant="8" id="rOk-xJ-riF"/>
+                    <constraint firstItem="Gxh-6N-03j" firstAttribute="leading" secondItem="bJY-Ol-RVE" secondAttribute="trailing" constant="6" id="rOk-xJ-riF"/>
                     <constraint firstItem="bJY-Ol-RVE" firstAttribute="leading" secondItem="018-1D-P8E" secondAttribute="leading" constant="8" id="vB8-iz-g53"/>
                 </constraints>
             </collectionViewCellContentView>
