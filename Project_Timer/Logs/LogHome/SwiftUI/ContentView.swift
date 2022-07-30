@@ -23,7 +23,7 @@ struct ContentView: View {
             + "   |   " + "Average : ".localized() + self.averageTime.toHM
             Text(text)
                 .fontWeight(.regular)
-                .foregroundColor(.white)
+                .foregroundColor(.primary)
                 .font(.system(size:13))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 15)
@@ -41,7 +41,7 @@ struct ContentView: View {
                                 Spacer(minLength: 0)
                                 //시간 설정
                                 Text(work.studyTime.toHM)
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(.primary)
                                     .font(.system(size:12))
                                     .padding(.bottom,-5)
                                 //그래프 막대
@@ -54,18 +54,18 @@ struct ContentView: View {
                             //날짜 설정
                             Text(work.day)
                                 .font(.system(size:12))
-                                .foregroundColor(.white)
+                                .foregroundColor(.primary)
                         }
                     }
                 }
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 10)
-            .background(Color.black)
+            .background(Color(UIColor.systemBackground))
             .cornerRadius(15)
             /* ----차트끝---- */
         }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
         .preferredColorScheme(.dark)
     }
     

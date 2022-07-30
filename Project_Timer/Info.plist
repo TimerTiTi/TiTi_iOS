@@ -28,10 +28,10 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>NSPhotoLibraryAddUsageDescription</string>
 	<key>NSMotionUsageDescription</key>
 	<string>NSMotionUsageDescription</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>NSPhotoLibraryAddUsageDescription</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_00G.otf</string>

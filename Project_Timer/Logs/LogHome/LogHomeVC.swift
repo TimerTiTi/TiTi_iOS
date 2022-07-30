@@ -35,7 +35,6 @@ final class LogHomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
         self.configureWidthHeight()
         self.configureViewModel()
         self.bindAll()
@@ -51,11 +50,14 @@ final class LogHomeVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.updateTabbarColor()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.configureEmptyView()
+        self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
+        self.configureWeeksGraph()
+        
+        guard let subjectTimes = self.viewModel?.subjectTimes,
+              self.colors.isEmpty == false else { return }
+        let sumTime = subjectTimes.reduce(0, +)
+        self.configureTodaysTime(sumTime)
+        self.makeProgress(subjectTimes, sumTime)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -66,12 +68,7 @@ final class LogHomeVC: UIViewController {
 // MARK: Configure
 extension LogHomeVC {
     private func configureShadows(_ views: UIView...) {
-        views.forEach { view in
-            view.layer.shadowColor = UIColor.white.cgColor
-            view.layer.shadowOpacity = 0.5
-            view.layer.shadowOffset = CGSize.zero
-            view.layer.shadowRadius = 5
-        }
+        views.forEach { $0.configureShadow() }
     }
     
     private func configureWidthHeight() {
@@ -223,6 +220,7 @@ extension LogHomeVC {
 
 extension LogHomeVC {
     private func makeProgress(_ subjectTimes: [Int], _ sumTime: Int) {
+        self.configureEmptyView()
         var sumWithSeperator: Float = Float(sumTime)
         
         //그래프 간 구별선 추가
@@ -253,7 +251,7 @@ extension LogHomeVC {
     private func addBlock(value: Float) -> Float {
         let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
         block.trackColor = UIColor.clear
-        block.progressColor = UIColor.black
+        block.progressColor = UIColor.systemBackground
         block.setProgressWithAnimation(duration: 1, value: value, from: 0)
         self.todayProgressView.addSubview(block)
         
