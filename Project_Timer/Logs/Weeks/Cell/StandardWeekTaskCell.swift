@@ -10,7 +10,7 @@ import UIKit
 
 final class StandardWeekTaskCell: UICollectionViewCell {
     static let identifier = "StandardWeekTaskCell"
-    static let height = CGFloat(27)
+    static let size = CGSize(width: CGFloat(215), height: CGFloat(27))
     
     @IBOutlet var topLabel: UILabel!
     @IBOutlet var taskNameLabel: UILabel!
