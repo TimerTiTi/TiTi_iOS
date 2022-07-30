@@ -139,8 +139,16 @@ final class StandardWeekGraphView: UIView {
     private func configureTimesView() {
         self.timesFrameView.addSubview(self.Top5TimeView)
         NSLayoutConstraint.activate([
-            self.Top5TimeView.topAnchor.constraint(equalTo: self.timesFrameView.topAnchor, constant: 7),
+            self.Top5TimeView.topAnchor.constraint(equalTo: self.timesFrameView.topAnchor, constant: 10),
             self.Top5TimeView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor)
+        ])
+        
+        self.timesFrameView.addSubview(self.progressView)
+        NSLayoutConstraint.activate([
+            self.progressView.topAnchor.constraint(equalTo: self.Top5TimeView.bottomAnchor, constant: 18),
+            self.progressView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor),
+            self.progressView.widthAnchor.constraint(equalToConstant: 52),
+            self.progressView.heightAnchor.constraint(equalToConstant: 52)
         ])
     }
 }

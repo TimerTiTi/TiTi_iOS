@@ -18,6 +18,7 @@ final class WeeksVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     private var standardWeekGraphView = StandardWeekGraphView()
     
+    private var isReversColor: Bool = false
     private var viewModel: WeeksVM?
     private var cancellables: Set<AnyCancellable> = []
     
@@ -127,9 +128,8 @@ extension WeeksVC {
         self.viewModel?.$top5Tasks
             .receive(on: DispatchQueue.main)
             .dropFirst()
-            .sink(receiveValue: { [weak self] tasks in
-                // MARK: 임시 로직
-                print(tasks)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphsFromTasks()
             })
             .store(in: &self.cancellables)
     }
@@ -139,6 +139,12 @@ extension WeeksVC {
     private func updateGraphsFromWeekData() {
         guard let weekData = self.viewModel?.weekData else { return }
         self.standardWeekGraphView.updateFromWeekData(weekData)
+    }
+    
+    private func updateGraphsFromTasks() {
+        let tasks = self.viewModel?.top5Tasks ?? []
+        self.standardWeekGraphView.layoutIfNeeded()
+        self.standardWeekGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
     }
 }
 
