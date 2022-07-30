@@ -15,6 +15,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var MMDDstyleString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM.dd"
+        return dateFormatter.string(from: self)
+    }
+    
     var YYYYMMDDstyleString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
