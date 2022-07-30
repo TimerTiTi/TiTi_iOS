@@ -42,6 +42,7 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 0])
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()

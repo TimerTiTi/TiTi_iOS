@@ -16,8 +16,14 @@ final class WeeksVC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 2])
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
