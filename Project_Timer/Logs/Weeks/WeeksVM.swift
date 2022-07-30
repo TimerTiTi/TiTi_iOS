@@ -10,9 +10,22 @@ import Foundation
 
 final class WeeksVM {
     /* public */
+    @Published private(set) var weekData: DailysWeekData?
+    @Published private(set) var top5Tasks: [TaskInfo] = []
+    let timelineVM: WeekTimelineVM
+    
+    init() {
+        self.timelineVM = WeekTimelineVM()
+    }
     
     func selectDate(to date: Date) {
         let weekData = DailysWeekData(selectedDate: date, dailys: RecordController.shared.dailys.dailys)
-        dump(weekData)
+        self.weekData = weekData
+        self.timelineVM.update(weekData: weekData)
+        self.top5Tasks = weekData.top5Tasks
+    }
+    
+    func updateColor(isReverseColor: Bool) {
+        self.timelineVM.updateColor(isReversColor: isReverseColor)
     }
 }
