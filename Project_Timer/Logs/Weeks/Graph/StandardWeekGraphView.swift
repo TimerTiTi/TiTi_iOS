@@ -65,6 +65,7 @@ final class StandardWeekGraphView: UIView {
         view.layer.borderColor = UIColor(named: "System_border")?.cgColor
         return view
     }()
+    private var Top5TimeView = TimeView(title: "Top5", size: .small)
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +81,7 @@ final class StandardWeekGraphView: UIView {
     convenience init() {
         self.init(frame: CGRect())
         self.commonInit()
+        self.configureTimesView()
     }
     
     private func commonInit() {
@@ -133,6 +135,14 @@ final class StandardWeekGraphView: UIView {
         
         self.contentView.configureShadow()
     }
+    
+    private func configureTimesView() {
+        self.timesFrameView.addSubview(self.Top5TimeView)
+        NSLayoutConstraint.activate([
+            self.Top5TimeView.topAnchor.constraint(equalTo: self.timesFrameView.topAnchor, constant: 7),
+            self.Top5TimeView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor)
+        ])
+    }
 }
 
 extension StandardWeekGraphView {
@@ -143,6 +153,7 @@ extension StandardWeekGraphView {
     func updateFromWeekData(_ weekData: DailysWeekData) {
         self.updateMonthLabel(weekData.weekDates.first)
         self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)
+        self.Top5TimeView.updateTime(to: weekData.top5Time)
     }
 }
 
