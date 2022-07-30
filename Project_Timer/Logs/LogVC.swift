@@ -85,9 +85,9 @@ extension LogVC {
     }
     
     private func changeVC(oldValue: Int, newValue: Int) {
+        self.currentPage = newValue
         let direction: UIPageViewController.NavigationDirection = oldValue <= newValue ? .forward : .reverse
         self.pageViewController.setViewControllers([self.childVCs[self.currentPage]], direction: direction, animated: true)
-        self.currentPage = newValue
     }
 }
 
