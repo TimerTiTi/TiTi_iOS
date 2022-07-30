@@ -27,6 +27,7 @@ final class WeeksVC: UIViewController {
         self.configureCalender()
         self.updateCalendarColor()
         self.configureGraphs()
+        self.configureCollectionViewDelegate()
         
         self.configureViewModel()
         self.bindAll()
@@ -103,6 +104,10 @@ extension WeeksVC {
         ])
     }
     
+    private func configureCollectionViewDelegate() {
+        self.standardWeekGraphView.configureDelegate(self)
+    }
+    
     private func configureViewModel() {
         self.viewModel = WeeksVM()
     }
@@ -143,6 +148,7 @@ extension WeeksVC {
     
     private func updateGraphsFromTasks() {
         let tasks = self.viewModel?.top5Tasks ?? []
+        self.standardWeekGraphView.reload()
         self.standardWeekGraphView.layoutIfNeeded()
         self.standardWeekGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
     }
@@ -158,5 +164,18 @@ extension WeeksVC: FSCalendarDelegate {
 extension WeeksVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
+    }
+}
+
+extension WeeksVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.viewModel?.top5Tasks.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardWeekTaskCell.identifier, for: indexPath) as? StandardWeekTaskCell else { return .init() }
+        guard let taskInfo = self.viewModel?.top5Tasks[safe: indexPath.item] else { return cell }
+        cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+        return cell
     }
 }
