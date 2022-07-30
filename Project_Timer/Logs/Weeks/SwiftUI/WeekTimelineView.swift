@@ -15,6 +15,14 @@ struct WeekTimeBlock : Identifiable {
 }
 
 struct WeekTimelineView: View {
+    var frameHeight: CGFloat = 130
+    @ObservedObject var viewModel: WeekTimelineVM
+    
+    init(frameHeight: CGFloat, viewModel: WeekTimelineVM) {
+        self.frameHeight = frameHeight - 20
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -22,6 +30,9 @@ struct WeekTimelineView: View {
 
 struct WeekTimelineView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekTimelineView()
+        let dummyTimes = (0...6).map { idx in
+            WeekTimeBlock(id: idx, day: "7/\(idx)", sumTime: Int.random(in: 10800..<21600))
+        }
+        WeekTimelineView(frameHeight: 130, viewModel: WeekTimelineVM(weekTimes: dummyTimes))
     }
 }
