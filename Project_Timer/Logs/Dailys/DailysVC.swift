@@ -51,6 +51,11 @@ final class DailysVC: UIViewController {
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 1])
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.standardDailyGraphView.updateDarkLightMode()

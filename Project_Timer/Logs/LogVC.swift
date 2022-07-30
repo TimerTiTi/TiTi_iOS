@@ -9,6 +9,7 @@
 import UIKit
 
 final class LogVC: UIViewController {
+    static let changePageIndex = Notification.Name("changePageIndex")
     @IBOutlet weak var pageSegmentedControl: UISegmentedControl!
     @IBOutlet weak var frameView: UIView!
     private lazy var pageViewController: UIPageViewController = {
@@ -19,13 +20,12 @@ final class LogVC: UIViewController {
     private var currentPage: Int = 0 {
         didSet {
             self.pageSegmentedControl.selectedSegmentIndex = self.currentPage
-            let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
-            self.pageViewController.setViewControllers([self.childVCs[self.currentPage]], direction: direction, animated: true)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureObservation()
         self.configurePageViewController()
         self.configureChildViewControllers()
     }
@@ -41,9 +41,7 @@ final class LogVC: UIViewController {
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {
-        if self.currentPage != sender.selectedSegmentIndex {
-            self.currentPage = sender.selectedSegmentIndex
-        }
+        self.changeVC(oldValue: self.currentPage, newValue: sender.selectedSegmentIndex)
     }
 }
 
@@ -52,6 +50,14 @@ extension LogVC {
         self.tabBarController?.tabBar.tintColor = .label
         self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
         self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
+    }
+    
+    private func configureObservation() {
+        NotificationCenter.default.addObserver(forName: LogVC.changePageIndex, object: nil, queue: .main) { [weak self] noti in
+            if let pageIndex = noti.userInfo?["pageIndex"] as? Int {
+                self?.currentPage = pageIndex
+            }
+        }
     }
     
     private func configurePageViewController() {
@@ -67,40 +73,32 @@ extension LogVC {
             self.pageViewController.view.bottomAnchor.constraint(equalTo: self.frameView.bottomAnchor)
         ])
         
-        self.pageViewController.delegate = self
         self.pageViewController.dataSource = self
     }
     
     private func configureChildViewControllers() {
         guard let logHomeVC = self.storyboard?.instantiateViewController(withIdentifier: LogHomeVC.identifier),
-              let dailysVC = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier) else { return }
-        self.childVCs = [logHomeVC, dailysVC]
+              let dailysVC = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier),
+              let weeksVC = self.storyboard?.instantiateViewController(withIdentifier: WeeksVC.identifier) else { return }
+        self.childVCs = [logHomeVC, dailysVC, weeksVC]
         self.pageViewController.setViewControllers([logHomeVC], direction: .forward, animated: true)
     }
-}
-
-extension LogVC: UIPageViewControllerDelegate {
-    /// 제스처가 완료된 후 호출
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let viewController = pageViewController.viewControllers?[0],
-              let index = self.childVCs.firstIndex(of: viewController) else { return }
-        if self.currentPage != index {
-            self.currentPage = index
-        }
-        self.pageSegmentedControl.selectedSegmentIndex = index
+    
+    private func changeVC(oldValue: Int, newValue: Int) {
+        let direction: UIPageViewController.NavigationDirection = oldValue <= newValue ? .forward : .reverse
+        self.pageViewController.setViewControllers([self.childVCs[self.currentPage]], direction: direction, animated: true)
+        self.currentPage = newValue
     }
 }
 
 extension LogVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = self.childVCs.firstIndex(of: viewController), index-1 >= 0 else { return nil }
-        self.currentPage = index-1
         return self.childVCs[index-1]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = self.childVCs.firstIndex(of: viewController), index+1 < self.childVCs.count else { return nil }
-        self.currentPage = index+1
         return self.childVCs[index+1]
     }
 }
