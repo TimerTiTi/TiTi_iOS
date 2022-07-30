@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 final class StandardDailyGraphView: UIView {
     /* public */

@@ -16,6 +16,7 @@ final class WeeksVC: UIViewController {
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
+    private var standardWeekGraphView = StandardWeekGraphView()
     
     private var viewModel: WeeksVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -24,6 +25,7 @@ final class WeeksVC: UIViewController {
         super.viewDidLoad()
         self.configureCalender()
         self.updateCalendarColor()
+        self.configureGraphs()
         
         self.configureViewModel()
         self.bindAll()
@@ -74,6 +76,16 @@ extension WeeksVC {
         self.calendar.appearance.titleTodayColor = color
         self.calendar.appearance.headerTitleColor = color
         self.calendar.appearance.weekdayTextColor = color
+    }
+    
+    private func configureGraphs() {
+        self.graphsContentView.addSubview(self.standardWeekGraphView)
+        NSLayoutConstraint.activate([
+            self.standardWeekGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.standardWeekGraphView.leadingAnchor.constraint(equalTo: self.graphsContentView.leadingAnchor),
+            self.standardWeekGraphView.trailingAnchor.constraint(equalTo: self.graphsContentView.trailingAnchor),
+            self.standardWeekGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+        ])
     }
     
     private func configureViewModel() {
