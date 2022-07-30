@@ -17,9 +17,10 @@ struct DailysWeekData {
     private(set) var top5Time: Int = 0
     private var filteredDailys: [Daily] = []
     
-    init(selectedDate: Date, dates: [Date], dailys: [Daily]) {
+    init(selectedDate: Date, dailys: [Daily]) {
         /// weekDates 설정
         let indexDayOfWeek = selectedDate.indexDayOfWeek // 선택된 날짜의 요일 index값
+        print(Date(), selectedDate, indexDayOfWeek)
         let weekFirstDate = Calendar.current.date(byAdding: .day, value: -indexDayOfWeek, to: selectedDate) ?? Date() // 선택된 날짜를 포함하는 주의 월요일
         let weekLastDate = Calendar.current.date(byAdding: .day, value: 7, to: weekFirstDate) ?? Date() // 다음주간 월요일
         self.weekDates = (0...6).compactMap { Calendar.current.date(byAdding: .day, value: $0, to: weekFirstDate) } // 주의 월~일 날짜

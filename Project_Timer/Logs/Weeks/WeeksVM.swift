@@ -12,9 +12,7 @@ final class WeeksVM {
     /* public */
     
     func selectDate(to date: Date) {
-        let weekData = DailysWeekData(selectedDate: date,
-                                      dates: RecordController.shared.dailys.dates,
-                                      dailys: RecordController.shared.dailys.dailys)
+        let weekData = DailysWeekData(selectedDate: date, dailys: RecordController.shared.dailys.dailys)
         dump(weekData)
     }
 }

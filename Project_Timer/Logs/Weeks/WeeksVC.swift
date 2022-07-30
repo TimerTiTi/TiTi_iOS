@@ -23,6 +23,8 @@ final class WeeksVC: UIViewController {
         super.viewDidLoad()
         self.configureCalender()
         self.updateCalendarColor()
+        
+        self.configureViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +71,16 @@ extension WeeksVC {
         self.calendar.appearance.headerTitleColor = color
         self.calendar.appearance.weekdayTextColor = color
     }
+    
+    private func configureViewModel() {
+        self.viewModel = WeeksVM()
+    }
 }
 
 
 extension WeeksVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        self.viewModel?.selectDate(to: date)
+        self.viewModel?.selectDate(to: date.localDate)
     }
 }
 
