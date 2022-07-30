@@ -8,6 +8,12 @@
 
 import SwiftUI
 
+struct WeekTimeBlock : Identifiable {
+    var id : Int
+    var day: String
+    var sumTime : Int
+}
+
 struct WeekTimelineView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
