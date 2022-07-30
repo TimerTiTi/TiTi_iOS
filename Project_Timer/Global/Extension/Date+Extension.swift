@@ -47,4 +47,11 @@ extension Date {
         // MARK: 0: Mun, 6: Sun 값으로 index 변환하여 반환
         return ((Calendar.current.component(.weekday, from: self) - 2) + 7) % 7
     }
+    
+    var localDate: Date {
+        let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: self))
+        guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: self) else { return self }
+
+        return localDate
+    }
 }
