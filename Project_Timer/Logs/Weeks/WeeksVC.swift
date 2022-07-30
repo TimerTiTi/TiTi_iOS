@@ -38,8 +38,13 @@ final class WeeksVC: UIViewController {
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 2])
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.updateGraphsFromWeekData()
+    }
+    
     @IBAction func changeColor(_ sender: UIButton) {
-        
+        self.updateGraphsFromWeekData()
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
@@ -103,10 +108,8 @@ extension WeeksVC {
         self.viewModel?.$weekData
             .receive(on: DispatchQueue.main)
             .dropFirst()
-            .sink(receiveValue: { [weak self] weekData in
-                guard let weekData = weekData else { return }
-                // MARK: 임시 로직
-                print(weekData.totalTime.toTimeString)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphsFromWeekData()
             })
             .store(in: &self.cancellables)
     }
@@ -120,6 +123,13 @@ extension WeeksVC {
                 print(tasks)
             })
             .store(in: &self.cancellables)
+    }
+}
+
+extension WeeksVC {
+    private func updateGraphsFromWeekData() {
+        guard let weekData = self.viewModel?.weekData else { return }
+        self.standardWeekGraphView.updateFromWeekData(weekData)
     }
 }
 
