@@ -47,6 +47,7 @@ final class StandardWeekGraphView: UIView {
     private lazy var tasksCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
+        layout.itemSize = StandardWeekTaskCell.size
         layout.sectionInset = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +83,7 @@ final class StandardWeekGraphView: UIView {
         self.init(frame: CGRect())
         self.commonInit()
         self.configureTimesView()
+        self.configureCollectionView()
     }
     
     private func commonInit() {
@@ -151,20 +153,43 @@ final class StandardWeekGraphView: UIView {
             self.progressView.heightAnchor.constraint(equalToConstant: 52)
         ])
     }
+    
+    private func configureCollectionView() {
+        let standardWeekTaskCellNib = UINib.init(nibName: StandardWeekTaskCell.identifier, bundle: nil)
+        self.tasksCollectionView.register(standardWeekTaskCellNib, forCellWithReuseIdentifier: StandardWeekTaskCell.identifier)
+    }
 }
 
+// MARK: StandardWeekGraphView Public Configure Functions
+extension StandardWeekGraphView {
+    func configureDelegate(_ delegate: (UICollectionViewDataSource)) {
+        self.tasksCollectionView.dataSource = delegate
+    }
+}
+
+// MARK: StandardWeekGraphView Public Actions
 extension StandardWeekGraphView {
     func updateDarkLightMode() {
+        /// dark, light mode 변경의 경우
         self.contentView.configureShadow()
+        let borderColor = UIColor(named: "System_border")?.cgColor
+        self.timelineFrameView.layer.borderColor = borderColor
+        self.tasksCollectionView.layer.borderColor = borderColor
+        self.timesFrameView.layer.borderColor = borderColor
     }
-    
+    /// weekData 변경, 또는 color 변경의 경우
     func updateFromWeekData(_ weekData: DailysWeekData) {
         self.updateMonthLabel(weekData.weekDates.first)
         self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)
         self.Top5TimeView.updateTime(to: weekData.top5Time)
     }
+    /// tasks 가 변경되어 collectionView 를 update 하는 경우
+    func reload() {
+        self.tasksCollectionView.reloadData()
+    }
 }
 
+// MARK: StandardWeekGraphView Private Actions
 extension StandardWeekGraphView {
     private func updateMonthLabel(_ day: Date?) {
         guard let day = day else {
