@@ -27,7 +27,7 @@ struct WeekTimelineView: View {
         HStack(spacing: 6) {
             ForEach(self.viewModel.weekTimes) { weekTime in
                 VStack {
-                    Spacer(minLength: 5)
+                    Spacer(minLength: 2)
                     Text(weekTime.sumTime != 0 ? weekTime.sumTime.toHM : "")
                         .foregroundColor(.primary)
                         .font(.system(size: 9))
@@ -37,10 +37,10 @@ struct WeekTimelineView: View {
                         .frame(height: self.getHeight(value: weekTime.sumTime))
                         .padding(.bottom, -4)
                     Text(weekTime.day)
-                        .font(.system(size: 10))
+                        .font(.system(size: 9))
                         .foregroundColor(.primary)
                         .frame(height: 11)
-                        .padding(.bottom, 8)
+                        .padding(.bottom, 6)
                 }
                 .frame(height: self.frameHeight)
             }
@@ -52,7 +52,7 @@ struct WeekTimelineView: View {
     private func getHeight(value: Int) -> CGFloat {
         guard let maxTime = self.viewModel.weekTimes.map(\.sumTime).max(),
               maxTime != 0 else { return 0 }
-        return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 45)
+        return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 40)
     }
 }
 
