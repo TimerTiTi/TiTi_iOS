@@ -28,8 +28,8 @@ final class WeeksVC: UIViewController {
         self.updateCalendarColor()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
-        
         self.configureViewModel()
+        self.configureHostingVC()
         self.bindAll()
         
         self.viewModel?.selectDate(to: RecordController.shared.daily.day.localDate)
@@ -110,6 +110,15 @@ extension WeeksVC {
     
     private func configureViewModel() {
         self.viewModel = WeeksVM()
+    }
+    
+    private func configureHostingVC() {
+        guard let timelineVM = self.viewModel?.timelineVM else { return }
+        let hostingStandardVC = UIHostingController(rootView: WeekTimelineView(frameHeight: 130, viewModel: timelineVM))
+        addChild(hostingStandardVC)
+        hostingStandardVC.didMove(toParent: self)
+        
+        self.standardWeekGraphView.configureTimelineLayout(hostingStandardVC.view)
     }
 }
 
