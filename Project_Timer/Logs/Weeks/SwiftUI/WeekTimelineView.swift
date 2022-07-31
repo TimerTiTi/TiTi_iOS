@@ -19,36 +19,40 @@ struct WeekTimelineView: View {
     @ObservedObject var viewModel: WeekTimelineVM
     
     init(frameHeight: CGFloat, viewModel: WeekTimelineVM) {
-        self.frameHeight = frameHeight - 20
+        self.frameHeight = frameHeight
         self.viewModel = viewModel
     }
     
     var body: some View {
-        HStack(spacing: 15) {
+        HStack(spacing: 6) {
             ForEach(self.viewModel.weekTimes) { weekTime in
                 VStack {
-                    Spacer(minLength: 0)
-                    Text(weekTime.sumTime.toHM)
+                    Spacer(minLength: 5)
+                    Text(weekTime.sumTime != 0 ? weekTime.sumTime.toHM : "")
                         .foregroundColor(.primary)
-                        .font(.system(size: 12))
+                        .font(.system(size: 9))
                         .padding(.bottom, -6)
-                    RoundedShape(radius: 12)
+                    RoundedShape(radius: 6)
                         .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
                         .frame(height: self.getHeight(value: weekTime.sumTime))
                         .padding(.bottom, -4)
                     Text(weekTime.day)
-                        .font(.system(size: 12))
+                        .font(.system(size: 10))
                         .foregroundColor(.primary)
-                        .frame(height: 12)
+                        .frame(height: 11)
+                        .padding(.bottom, 8)
                 }
                 .frame(height: self.frameHeight)
             }
         }
+        .padding(.leading, 6)
+        .background(Color("Background_second")).edgesIgnoringSafeArea(.all)
     }
     
     private func getHeight(value: Int) -> CGFloat {
-        guard let maxTime = self.viewModel.weekTimes.map(\.sumTime).max() else { return 0 }
-        return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 35)
+        guard let maxTime = self.viewModel.weekTimes.map(\.sumTime).max(),
+              maxTime != 0 else { return 0 }
+        return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 45)
     }
 }
 

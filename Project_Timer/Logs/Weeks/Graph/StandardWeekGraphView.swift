@@ -59,7 +59,7 @@ final class StandardWeekGraphView: UIView {
         stackView.layer.borderWidth = 2
         stackView.layer.borderColor = UIColor(named: "System_border")?.cgColor
         stackView.axis = .horizontal
-        stackView.spacing = 5
+        stackView.spacing = 0
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalToConstant: 325),
             stackView.heightAnchor.constraint(equalToConstant: 130)
@@ -161,7 +161,7 @@ final class StandardWeekGraphView: UIView {
     private func configureTimesView() {
         self.timelineTimesFrameView.addSubview(self.totalTimeView)
         NSLayoutConstraint.activate([
-            self.totalTimeView.topAnchor.constraint(equalTo: self.timelineTimesFrameView.topAnchor, constant: 30),
+            self.totalTimeView.topAnchor.constraint(equalTo: self.timelineTimesFrameView.topAnchor, constant: 36),
             self.totalTimeView.centerXAnchor.constraint(equalTo: self.timelineTimesFrameView.centerXAnchor)
         ])
         
@@ -196,6 +196,17 @@ final class StandardWeekGraphView: UIView {
 extension StandardWeekGraphView {
     func configureDelegate(_ delegate: (UICollectionViewDataSource)) {
         self.tasksCollectionView.dataSource = delegate
+    }
+    
+    func configureTimelineLayout(_ view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.timelineGraphFrameView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.timelineGraphFrameView.topAnchor, constant: 2),
+            view.leadingAnchor.constraint(equalTo: self.timelineGraphFrameView.leadingAnchor, constant: 2),
+            view.trailingAnchor.constraint(equalTo: self.timelineGraphFrameView.trailingAnchor, constant: -2),
+            view.bottomAnchor.constraint(equalTo: self.timelineGraphFrameView.bottomAnchor, constant: -2)
+        ])
     }
 }
 
