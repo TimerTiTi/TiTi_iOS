@@ -32,7 +32,7 @@ final class WeeksVC: UIViewController {
         self.configureHostingVC()
         self.bindAll()
         
-        self.viewModel?.selectDate(to: RecordController.shared.daily.day.localDate)
+        self.viewModel?.selectDate(to: RecordController.shared.daily.day.zeroDate.localDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {

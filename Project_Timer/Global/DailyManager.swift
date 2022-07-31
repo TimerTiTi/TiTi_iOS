@@ -26,7 +26,7 @@ class DailyManager {
     }
     
     func addDaily(_ daily: Daily) {
-        let day = self.changeDate(daily.day)
+        let day = daily.day.zeroDate
         if(!dates.contains(day)) {
             //새로운 데이터 추가이기에 추가 및 dates도 추가
             dailys.append(daily)
@@ -40,14 +40,5 @@ class DailyManager {
             saveDailys()
             print("update daily!")
         }
-    }
-    
-    private func changeDate(_ day: Date) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        let beforeDay = dateFormatter.string(from: day)
-        
-        let afterDay: Date = dateFormatter.date(from: beforeDay)!
-        return afterDay
     }
 }
