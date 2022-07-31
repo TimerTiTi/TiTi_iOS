@@ -10,6 +10,7 @@ import Foundation
 
 struct DailysWeekData {
     private(set) var weekDates: [Date] = []
+    private(set) var weekNum: Int = 0
     private(set) var dailys: [Daily?] = Array(repeating: nil, count: 7)
     private(set) var totalTime: Int = 0
     private(set) var averageTime: Int = 0
@@ -24,6 +25,8 @@ struct DailysWeekData {
         let weekFirstDate = Calendar.current.date(byAdding: .day, value: -indexDayOfWeek, to: selectedDate) ?? Date() // 선택된 날짜를 포함하는 주의 월요일
         let weekLastDate = Calendar.current.date(byAdding: .day, value: 7, to: weekFirstDate) ?? Date() // 다음주간 월요일
         self.weekDates = (0...6).compactMap { Calendar.current.date(byAdding: .day, value: $0, to: weekFirstDate) } // 주의 월~일 날짜
+        /// weekNum 설정
+        self.weekNum = self.weekDates.map(\.weekOfMonth).min() ?? 0
         /// dailys 설정
         self.filteredDailys = dailys.filter { daily in
             daily.day >= weekFirstDate && daily.day < weekLastDate
