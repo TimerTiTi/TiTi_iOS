@@ -24,7 +24,7 @@ final class StandardWeekGraphView: UIView {
         ])
         return label
     }()
-    private var weekLabel: UILabel = {
+    private var weekNumLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP80g(size: 25)
@@ -134,16 +134,16 @@ final class StandardWeekGraphView: UIView {
             self.monthLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10)
         ])
         
-        self.contentView.addSubview(self.weekLabel)
+        self.contentView.addSubview(self.weekNumLabel)
         NSLayoutConstraint.activate([
-            self.weekLabel.bottomAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
-            self.weekLabel.leadingAnchor.constraint(equalTo: self.monthLabel.trailingAnchor, constant: 8)
+            self.weekNumLabel.bottomAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
+            self.weekNumLabel.leadingAnchor.constraint(equalTo: self.monthLabel.trailingAnchor, constant: 12)
         ])
         
         self.contentView.addSubview(self.weekTermLabel)
         NSLayoutConstraint.activate([
             self.weekTermLabel.bottomAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
-            self.weekTermLabel.leadingAnchor.constraint(equalTo: self.weekLabel.trailingAnchor, constant: 8)
+            self.weekTermLabel.leadingAnchor.constraint(equalTo: self.weekNumLabel.trailingAnchor, constant: 8)
         ])
         
         self.addSubview(self.contentView)
@@ -240,7 +240,8 @@ extension StandardWeekGraphView {
     }
     /// weekData 변경, 또는 color 변경의 경우
     func updateFromWeekData(_ weekData: DailysWeekData) {
-        self.updateMonthLabel(weekData.weekDates.first)
+        self.updateMonthLabel(weekData.weekDates.last)
+        self.updateWeekNumLabel(weekData.weekNum)
         self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)
         self.totalTimeView.updateTime(to: weekData.totalTime)
         self.averageTimeView.updateTime(to: weekData.averageTime)
@@ -263,6 +264,10 @@ extension StandardWeekGraphView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM"
         self.monthLabel.text = dateFormatter.string(from: day)
+    }
+    
+    private func updateWeekNumLabel(_ num: Int) {
+        self.weekNumLabel.text = "WEEK \(num)"
     }
     
     private func updateWeekTermLabel(_ mon: Date?, _ sun: Date?) {
