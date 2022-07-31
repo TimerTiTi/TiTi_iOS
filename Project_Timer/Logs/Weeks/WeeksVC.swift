@@ -18,6 +18,7 @@ final class WeeksVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     private var standardWeekGraphView = StandardWeekGraphView()
     
+    private var previusColorIndex: Int?
     private var isReversColor: Bool = false
     private var viewModel: WeeksVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -42,15 +43,29 @@ final class WeeksVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        self.standardWeekGraphView.updateDarkLightMode()
         self.updateGraphsFromWeekData()
+        self.updateGraphsFromTasks()
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
+        UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
+        if self.previusColorIndex == sender.tag {
+            self.isReversColor.toggle()
+        } else {
+            self.isReversColor = false
+        }
+        self.previusColorIndex = sender.tag
+        self.updateCalendarColor()
+        self.viewModel?.updateColor(isReverseColor: self.isReversColor)
         self.updateGraphsFromWeekData()
+        self.updateGraphsFromTasks()
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
-        
+        let graphImage = UIImage(view: self.standardWeekGraphView)
+        UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
+        self.showAlertWithOK(title: "Save completed".localized(), text: "")
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {

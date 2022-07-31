@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// 앱 실행시 Analytics 에 정보 전달부분
         FirebaseApp.configure()
         Analytics.logEvent("launch", parameters: [
-            AnalyticsParameterItemID: "ver 7.2",
+            AnalyticsParameterItemID: "ver 7.3",
         ])
         /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
         UNUserNotificationCenter.current().delegate = self
