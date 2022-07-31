@@ -60,4 +60,13 @@ extension Date {
 
         return localDate
     }
+    /// 0분0초의 Date로 변환
+    var zeroDate: Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        let beforeDay = dateFormatter.string(from: self)
+        
+        let afterDay: Date = dateFormatter.date(from: beforeDay)!
+        return afterDay
+    }
 }
