@@ -114,7 +114,7 @@ extension WeeksVC {
     
     private func configureHostingVC() {
         guard let timelineVM = self.viewModel?.timelineVM else { return }
-        let hostingStandardVC = UIHostingController(rootView: WeekTimelineView(frameHeight: 130, viewModel: timelineVM))
+        let hostingStandardVC = UIHostingController(rootView: WeekTimelineView(frameHeight: 140, viewModel: timelineVM))
         addChild(hostingStandardVC)
         hostingStandardVC.didMove(toParent: self)
         

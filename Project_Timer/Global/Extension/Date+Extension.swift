@@ -69,4 +69,13 @@ extension Date {
         let afterDay: Date = dateFormatter.date(from: beforeDay)!
         return afterDay
     }
+    /**
+     해당날짜가 속한 주의 달 번째 숫자
+     월요일 날짜 기준 1주차 ~ n주차 값이 된다. (7/
+     */
+    var weekOfMonth: Int {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.locale = Locale(identifier: "ko")
+        return(calendar.component(.weekOfMonth, from: self))
+    }
 }

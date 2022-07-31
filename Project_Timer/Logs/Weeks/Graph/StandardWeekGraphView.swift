@@ -17,8 +17,20 @@ final class StandardWeekGraphView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP80g(size: 25)
         label.textColor = UIColor.label
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.text = "0000.00"
+        NSLayoutConstraint.activate([
+            label.heightAnchor.constraint(equalToConstant: 27.5)
+        ])
+        return label
+    }()
+    private var weekLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = TiTiFont.HGGGothicssiP80g(size: 25)
+        label.textColor = UIColor.label
+        label.textAlignment = .left
+        label.text = "WEEK 5"
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 27.5)
         ])
@@ -29,7 +41,7 @@ final class StandardWeekGraphView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP60g(size: 14)
         label.textColor = UIColor.label
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.text = "00.00 ~ 00.00"
         return label
     }()
@@ -46,7 +58,7 @@ final class StandardWeekGraphView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.heightAnchor.constraint(equalToConstant: 130),
+            view.heightAnchor.constraint(equalToConstant: 140),
             view.widthAnchor.constraint(equalToConstant: 97)
         ])
         return view
@@ -62,7 +74,7 @@ final class StandardWeekGraphView: UIView {
         stackView.spacing = 0
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalToConstant: 325),
-            stackView.heightAnchor.constraint(equalToConstant: 130)
+            stackView.heightAnchor.constraint(equalToConstant: 140)
         ])
         return stackView
     }()
@@ -119,13 +131,19 @@ final class StandardWeekGraphView: UIView {
         self.contentView.addSubview(self.monthLabel)
         NSLayoutConstraint.activate([
             self.monthLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
-            self.monthLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+            self.monthLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 10)
+        ])
+        
+        self.contentView.addSubview(self.weekLabel)
+        NSLayoutConstraint.activate([
+            self.weekLabel.bottomAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
+            self.weekLabel.leadingAnchor.constraint(equalTo: self.monthLabel.trailingAnchor, constant: 8)
         ])
         
         self.contentView.addSubview(self.weekTermLabel)
         NSLayoutConstraint.activate([
-            self.weekTermLabel.topAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
-            self.weekTermLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+            self.weekTermLabel.bottomAnchor.constraint(equalTo: self.monthLabel.bottomAnchor),
+            self.weekTermLabel.leadingAnchor.constraint(equalTo: self.weekLabel.trailingAnchor, constant: 8)
         ])
         
         self.addSubview(self.contentView)
@@ -136,7 +154,7 @@ final class StandardWeekGraphView: UIView {
         
         self.contentView.addSubview(self.timelineStackView)
         NSLayoutConstraint.activate([
-            self.timelineStackView.topAnchor.constraint(equalTo: self.weekTermLabel.bottomAnchor, constant: 5),
+            self.timelineStackView.topAnchor.constraint(equalTo: self.weekTermLabel.bottomAnchor, constant: 8),
             self.timelineStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
@@ -161,7 +179,7 @@ final class StandardWeekGraphView: UIView {
     private func configureTimesView() {
         self.timelineTimesFrameView.addSubview(self.totalTimeView)
         NSLayoutConstraint.activate([
-            self.totalTimeView.topAnchor.constraint(equalTo: self.timelineTimesFrameView.topAnchor, constant: 36),
+            self.totalTimeView.topAnchor.constraint(equalTo: self.timelineTimesFrameView.topAnchor, constant: 48),
             self.totalTimeView.centerXAnchor.constraint(equalTo: self.timelineTimesFrameView.centerXAnchor)
         ])
         
@@ -179,7 +197,7 @@ final class StandardWeekGraphView: UIView {
         
         self.timesFrameView.addSubview(self.progressView)
         NSLayoutConstraint.activate([
-            self.progressView.topAnchor.constraint(equalTo: self.Top5TimeView.bottomAnchor, constant: 18),
+            self.progressView.topAnchor.constraint(equalTo: self.Top5TimeView.bottomAnchor, constant: 20),
             self.progressView.centerXAnchor.constraint(equalTo: self.timesFrameView.centerXAnchor),
             self.progressView.widthAnchor.constraint(equalToConstant: 52),
             self.progressView.heightAnchor.constraint(equalToConstant: 52)
