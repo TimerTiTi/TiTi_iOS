@@ -114,8 +114,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct RoundedShape : Shape {
+    let radius: CGFloat
+    init(radius: CGFloat = 5) {
+        self.radius = radius
+    }
+    
     func path(in rect : CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: 5, height: 5))
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft,.topRight], cornerRadii: CGSize(width: self.radius, height: self.radius))
         return Path(path.cgPath)
     }
 }
