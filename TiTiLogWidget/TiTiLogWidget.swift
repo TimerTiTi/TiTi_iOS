@@ -12,11 +12,15 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        SimpleEntry(date: Date(),
+                    configuration: ConfigurationIntent(),
+                    progress: 0)
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+        let entry = SimpleEntry(date: Date(),
+                                configuration: configuration,
+                                progress: 0)
         completion(entry)
     }
 
@@ -27,7 +31,9 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = SimpleEntry(date: entryDate,
+                                    configuration: configuration,
+                                    progress: hourOffset*10+3)
             entries.append(entry)
         }
 
@@ -39,13 +45,41 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
+    let progress: Int
 }
 
 struct TiTiLogWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
+    private let titleFontSize: CGFloat = 15
+    private let progressFontSize: CGFloat = 23
+    private let lineWidth: CGFloat = 13
+    private let size: CGFloat = 100
+    
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text("Month")
+                .font(TiTiFont.HGGGothicssiP60g(size: titleFontSize))
+                .foregroundColor(.primary)
+            
+            ZStack {
+                Circle()
+                    .stroke(TiTiColor.graphColor(num: 3).toColor.opacity(0.5), lineWidth: lineWidth)
+                    .frame(width: size, height: size, alignment: .center)
+                
+                Circle()
+                    .trim(from: 0, to: CGFloat(Double(entry.progress)*0.01))
+                    .stroke(TiTiColor.graphColor(num: 3).toColor.opacity(1.0),
+                            style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
+                    .frame(width: size, height: size, alignment: .center)
+                    .rotationEffect(.degrees(-90))
+                
+                Text("\(entry.progress)%")
+                    .font(TiTiFont.HGGGothicssiP60g(size: progressFontSize))
+                    .foregroundColor(.primary)
+            }
+            .padding(.vertical, 7)
+        }
     }
 }
 
@@ -64,7 +98,7 @@ struct TiTiLogWidget: Widget {
 
 struct TiTiLogWidget_Previews: PreviewProvider {
     static var previews: some View {
-        TiTiLogWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        TiTiLogWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), progress: 33))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

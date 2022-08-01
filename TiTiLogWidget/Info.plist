@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HGGGOTHICSSI_PRO_00G.otf</string>
+		<string>HGGGOTHICSSI_PRO_20G.otf</string>
+		<string>HGGGOTHICSSI_PRO_40G.otf</string>
+		<string>HGGGOTHICSSI_PRO_60G.otf</string>
+		<string>HGGGOTHICSSI_PRO_80G.otf</string>
+		<string>HGGGOTHICSSI_PRO_99G.otf</string>
+	</array>
 	<key>NSExtension</key>
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
