@@ -17,16 +17,17 @@ public class Storage {
     enum Directory {
         case documents
         case caches
+        case sharedContainer
         
         var url: URL {
-            let path: FileManager.SearchPathDirectory
             switch self {
             case .documents:
-                path = .documentDirectory
+                return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             case .caches:
-                path = .cachesDirectory
+                return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            case .sharedContainer:
+                return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.ProjectTimer.TiTi")!
             }
-            return FileManager.default.urls(for: path, in: .userDomainMask).first!
         }
     }
     

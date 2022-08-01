@@ -34,6 +34,15 @@
 		04E42F482897F27300C06B47 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		04E42F492897F27600C06B47 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		04E42F4A2897F27800C06B47 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
+		04E42F4D28981FE800C06B47 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
+		04E42F4E2898279D00C06B47 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
+		04E42F4F289827C800C06B47 /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
+		04E42F50289827E700C06B47 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEE8281C17000095CD29 /* RecordController.swift */; };
+		04E42F51289827FA00C06B47 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC627DEF0C200F46D0F /* Date+Extension.swift */; };
+		04E42F522898280A00C06B47 /* RecordTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* RecordTimes.swift */; };
+		04E42F532898281700C06B47 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
+		04E42F542898283400C06B47 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
+		04E42F552898284200C06B47 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -916,11 +925,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E42F552898284200C06B47 /* Times.swift in Sources */,
+				04E42F50289827E700C06B47 /* RecordController.swift in Sources */,
+				04E42F522898280A00C06B47 /* RecordTimes.swift in Sources */,
+				04E42F532898281700C06B47 /* DailyViewModel.swift in Sources */,
 				044075832897E94900384006 /* UIColor+Extension.swift in Sources */,
+				04E42F4F289827C800C06B47 /* Daily.swift in Sources */,
 				044075852897E95100384006 /* TiTiFont.swift in Sources */,
 				0440756E2897C58400384006 /* TiTiLogWidget.swift in Sources */,
+				04E42F51289827FA00C06B47 /* Date+Extension.swift in Sources */,
 				044075732897C58500384006 /* TiTiLogWidget.intentdefinition in Sources */,
+				04E42F542898283400C06B47 /* Notification+Extension.swift in Sources */,
 				044075842897E94D00384006 /* TiTiColor.swift in Sources */,
+				04E42F4D28981FE800C06B47 /* Storage.swift in Sources */,
+				04E42F4E2898279D00C06B47 /* DailyManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,7 +1114,7 @@
 				CODE_SIGN_ENTITLEMENTS = TiTiLogWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TiTiLogWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TiTiLogWidget;
@@ -1108,7 +1126,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu.TiTiLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1128,7 +1146,7 @@
 				CODE_SIGN_ENTITLEMENTS = TiTiLogWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TiTiLogWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = TiTiLogWidget;
@@ -1140,7 +1158,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu.TiTiLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1274,7 +1292,7 @@
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1282,7 +1300,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1299,7 +1317,7 @@
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1307,7 +1325,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

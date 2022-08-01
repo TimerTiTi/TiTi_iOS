@@ -14,7 +14,7 @@ class DailyManager {
     var dates: [Date] = []
     
     func loadDailys() {
-        dailys = Storage.retrive("dailys.json", from: .documents, as: [Daily].self) ?? []
+        dailys = Storage.retrive("dailys.json", from: .sharedContainer, as: [Daily].self) ?? []
         dates = UserDefaults.standard.value(forKey: "dates") as? [Date] ?? []
         print("load dailys!")
     }
@@ -22,6 +22,7 @@ class DailyManager {
     func saveDailys() {
         print("store dailys!")
         Storage.store(dailys, to: .documents, as: "dailys.json")
+        Storage.store(dailys, to: .sharedContainer, as: "dailys.json")
         UserDefaults.standard.setValue(dates, forKey: "dates")
     }
     
