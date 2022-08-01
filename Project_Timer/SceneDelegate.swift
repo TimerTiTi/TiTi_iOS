@@ -29,6 +29,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NotificationCenter.default.addObserver(forName: .showTabbarController, object: nil, queue: .main) { [weak self] _ in
             self?.showTabbarController()
         }
+        
+        let tabBarItemAppearance = UITabBarItemAppearance()
+//        tabBarItemAppearance.normal.titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10),
+//            .foregroundColor: TiTiColor.tabbarNonSelect!,
+//        ]
+//        tabBarItemAppearance.selected.titleTextAttributes = [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10),
+//            .foregroundColor: UIColor.white,
+//        ]
+//        tabBarItemAppearance.normal.iconColor = TiTiColor.tabbarNonSelect
+//        tabBarItemAppearance.selected.iconColor = .white
+        
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        tabBarAppearance.backgroundColor = .clear
+        tabBarAppearance.shadowColor = .clear
+        
+        tabBarAppearance.stackedLayoutAppearance = tabBarItemAppearance
+        tabBarAppearance.inlineLayoutAppearance = tabBarItemAppearance
+        
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
     }
     
     private func showTabbarController() {
