@@ -12,6 +12,13 @@
 		0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */; };
 		043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */; };
 		043706332869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */; };
+		044075692897C58400384006 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044075682897C58400384006 /* WidgetKit.framework */; };
+		0440756B2897C58400384006 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0440756A2897C58400384006 /* SwiftUI.framework */; };
+		0440756E2897C58400384006 /* TiTiLogWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440756D2897C58400384006 /* TiTiLogWidget.swift */; };
+		044075712897C58500384006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044075702897C58500384006 /* Assets.xcassets */; };
+		044075732897C58500384006 /* TiTiLogWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0440756F2897C58400384006 /* TiTiLogWidget.intentdefinition */; };
+		044075742897C58500384006 /* TiTiLogWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 0440756F2897C58400384006 /* TiTiLogWidget.intentdefinition */; };
+		044075772897C58500384006 /* TiTiLogWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 044075662897C58400384006 /* TiTiLogWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		04504C5B286485BE00CA4C69 /* SingleTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */; };
 		04504C602864AC3C00CA4C69 /* TimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */; };
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
@@ -132,12 +139,44 @@
 		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		044075752897C58500384006 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B08515248DDF2F00E215BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 044075652897C58400384006;
+			remoteInfo = TiTiLogWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		044075792897C58600384006 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				044075772897C58500384006 /* TiTiLogWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04172E972885453F00F962F2 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		043706262869D58C00A5D3AA /* TimeOfTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerView.swift; sourceTree = "<group>"; };
 		0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerViewModel.swift; sourceTree = "<group>"; };
 		043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchView.swift; sourceTree = "<group>"; };
 		043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchViewModel.swift; sourceTree = "<group>"; };
+		044075662897C58400384006 /* TiTiLogWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TiTiLogWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		044075682897C58400384006 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		0440756A2897C58400384006 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		0440756D2897C58400384006 /* TiTiLogWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLogWidget.swift; sourceTree = "<group>"; };
+		0440756F2897C58400384006 /* TiTiLogWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = TiTiLogWidget.intentdefinition; sourceTree = "<group>"; };
+		044075702897C58500384006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		044075722897C58500384006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		044075782897C58500384006 /* TiTiLogWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TiTiLogWidgetExtension.entitlements; sourceTree = "<group>"; };
 		04504C5A286485BE00CA4C69 /* SingleTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelView.swift; sourceTree = "<group>"; };
 		04504C5F2864AC3C00CA4C69 /* TimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
@@ -262,6 +301,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		044075632897C58400384006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0440756B2897C58400384006 /* SwiftUI.framework in Frameworks */,
+				044075692897C58400384006 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B0851A248DDF2F00E215BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +338,26 @@
 				043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		044075672897C58400384006 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				044075682897C58400384006 /* WidgetKit.framework */,
+				0440756A2897C58400384006 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0440756C2897C58400384006 /* TiTiLogWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0440756D2897C58400384006 /* TiTiLogWidget.swift */,
+				0440756F2897C58400384006 /* TiTiLogWidget.intentdefinition */,
+				044075702897C58500384006 /* Assets.xcassets */,
+				044075722897C58500384006 /* Info.plist */,
+			);
+			path = TiTiLogWidget;
 			sourceTree = "<group>";
 		};
 		0449545C286AD49D0068BB0E /* ViewModel */ = {
@@ -659,7 +727,10 @@
 		93B08514248DDF2F00E215BD = {
 			isa = PBXGroup;
 			children = (
+				044075782897C58500384006 /* TiTiLogWidgetExtension.entitlements */,
 				93B0851F248DDF2F00E215BD /* Project_Timer */,
+				0440756C2897C58400384006 /* TiTiLogWidget */,
+				044075672897C58400384006 /* Frameworks */,
 				93B0851E248DDF2F00E215BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -668,6 +739,7 @@
 			isa = PBXGroup;
 			children = (
 				93B0851D248DDF2F00E215BD /* TiTi.app */,
+				044075662897C58400384006 /* TiTiLogWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -703,6 +775,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		044075652897C58400384006 /* TiTiLogWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0440757C2897C58600384006 /* Build configuration list for PBXNativeTarget "TiTiLogWidgetExtension" */;
+			buildPhases = (
+				044075622897C58400384006 /* Sources */,
+				044075632897C58400384006 /* Frameworks */,
+				044075642897C58400384006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TiTiLogWidgetExtension;
+			productName = TiTiLogWidgetExtension;
+			productReference = 044075662897C58400384006 /* TiTiLogWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		93B0851C248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B08531248DDF3000E215BD /* Build configuration list for PBXNativeTarget "Project_Timer" */;
@@ -710,10 +799,12 @@
 				93B08519248DDF2F00E215BD /* Sources */,
 				93B0851A248DDF2F00E215BD /* Frameworks */,
 				93B0851B248DDF2F00E215BD /* Resources */,
+				044075792897C58600384006 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				044075762897C58500384006 /* PBXTargetDependency */,
 			);
 			name = Project_Timer;
 			packageProductDependencies = (
@@ -732,10 +823,13 @@
 		93B08515248DDF2F00E215BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = FDEE;
 				TargetAttributes = {
+					044075652897C58400384006 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					93B0851C248DDF2F00E215BD = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -762,11 +856,20 @@
 			projectRoot = "";
 			targets = (
 				93B0851C248DDF2F00E215BD /* Project_Timer */,
+				044075652897C58400384006 /* TiTiLogWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		044075642897C58400384006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				044075712897C58500384006 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B0851B248DDF2F00E215BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -792,6 +895,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		044075622897C58400384006 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0440756E2897C58400384006 /* TiTiLogWidget.swift in Sources */,
+				044075732897C58500384006 /* TiTiLogWidget.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B08519248DDF2F00E215BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -866,6 +978,7 @@
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
+				044075742897C58500384006 /* TiTiLogWidget.intentdefinition in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
@@ -904,6 +1017,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		044075762897C58500384006 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 044075652897C58400384006 /* TiTiLogWidgetExtension */;
+			targetProxy = 044075752897C58500384006 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		871EDFEE288AF6E900B428A6 /* InfoPlist.strings */ = {
@@ -945,6 +1066,70 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0440757A2897C58600384006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = TiTiLogWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TiTiLogWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TiTiLogWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 FDEE. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 7.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0440757B2897C58600384006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = TiTiLogWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TiTiLogWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TiTiLogWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 FDEE. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 7.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		93B0852F248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1064,6 +1249,7 @@
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1088,6 +1274,7 @@
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1112,6 +1299,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0440757C2897C58600384006 /* Build configuration list for PBXNativeTarget "TiTiLogWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0440757A2897C58600384006 /* Debug */,
+				0440757B2897C58600384006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93B08518248DDF2F00E215BD /* Build configuration list for PBXProject "Project_Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
