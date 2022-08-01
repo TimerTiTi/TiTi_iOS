@@ -204,7 +204,7 @@ final class TimerVM {
         let remainTimer = self.times.timer
         let alarm_5m = remainTimer - 300
         self.postNoti(interval: Double(remainTimer), body: "Timer finished!".localized(), identifier: "Timer finished")
-        if alarm_5m >= 0 {
+        if alarm_5m > 0 {
             self.postNoti(interval: Double(alarm_5m), body: "5 minutes left".localized(), identifier: "Timer 5 min")
         }
     }
