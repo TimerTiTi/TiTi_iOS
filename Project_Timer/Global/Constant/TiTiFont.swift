@@ -9,9 +9,29 @@
 import SwiftUI
 
 enum TiTiFont {
-    static func HGGGothicssiP60g(size: CGFloat) -> Font {
-        return Font.custom("HGGGothicssiP60g", size: size)
+    static func HGGGothicssi(size: CGFloat, weight: UIFont.Weight) -> Font {
+        let weightValue: String
+        
+        switch weight {
+        case .ultraLight, .thin, .light:
+            weightValue = "00"
+        case .regular, .medium:
+            weightValue = "20"
+        case .semibold:
+            weightValue = "40"
+        case .bold:
+            weightValue = "60"
+        case .heavy:
+            weightValue = "80"
+        case .black:
+            weightValue = "99"
+        default:
+            weightValue = "60"
+        }
+        
+        return Font.custom("HGGGothicssiP\(weightValue)g", size: size)
     }
+    
     static func HGGGothicssiP60g(size: CGFloat) -> UIFont? {
         return UIFont(name: "HGGGothicssiP60g", size: size)
     }

@@ -24,6 +24,6 @@ struct TimeLabelView: View {
             SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .font(TiTiFont.HGGGothicssi(size: viewModel.fontSize, weight: .bold))
     }
 }

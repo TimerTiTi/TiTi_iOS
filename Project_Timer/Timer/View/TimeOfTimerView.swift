@@ -27,7 +27,7 @@ struct TimeOfTimerView: View {
         ZStack {
             if viewModel.finished {
                 Text("FINISH".localized())
-                    .font(TiTiFont.HGGGothicssiP60g(size: 70))
+                    .font(TiTiFont.HGGGothicssi(size: 70, weight: .bold))
                     .foregroundColor(.white)
             } else {
                 CountdownTimeLabelView(viewModel: viewModel.timeLabelViewModel)

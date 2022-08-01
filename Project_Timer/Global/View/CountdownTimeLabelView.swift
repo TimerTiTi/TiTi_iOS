@@ -18,6 +18,6 @@ struct CountdownTimeLabelView: View {
             }
             TimeLabelView(viewModel: viewModel.timeLabelViewModel)
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .font(TiTiFont.HGGGothicssi(size: viewModel.fontSize, weight: .bold))
     }
 }
