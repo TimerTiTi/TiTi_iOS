@@ -50,7 +50,6 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.updateTabbarColor()
         self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
         self.configureWeeksGraph()
         
@@ -84,12 +83,6 @@ extension LogHomeVC {
 
 // MARK: ShowGraph
 extension LogHomeVC {
-    private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .label
-        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
-    }
-    
     private func configureWeeksGraph() {
         let hostingController = UIHostingController(rootView: ContentView())
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
