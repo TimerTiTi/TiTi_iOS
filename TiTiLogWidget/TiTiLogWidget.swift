@@ -54,31 +54,35 @@ struct TiTiLogWidgetEntryView : View {
     private let titleFontSize: CGFloat = 15
     private let progressFontSize: CGFloat = 23
     private let lineWidth: CGFloat = 13
-    private let size: CGFloat = 100
+    private let circleSize: CGFloat = 100
+    private let circleTopPadding: CGFloat = 7
+    private let circleBottompadding: CGFloat = 10
     
     var body: some View {
         VStack {
             Text("Month")
-                .font(TiTiFont.HGGGothicssiP60g(size: titleFontSize))
+                .font(TiTiFont.HGGGothicssi(size: titleFontSize, weight: .heavy))
                 .foregroundColor(.primary)
             
             ZStack {
                 Circle()
-                    .stroke(TiTiColor.graphColor(num: 3).toColor.opacity(0.5), lineWidth: lineWidth)
-                    .frame(width: size, height: size, alignment: .center)
+                    .stroke(TiTiColor.graphColor(num: 3).toColor.opacity(0.5),
+                            lineWidth: lineWidth)
+                    .frame(width: circleSize, height: circleSize, alignment: .center)
                 
                 Circle()
                     .trim(from: 0, to: CGFloat(Double(entry.progress)*0.01))
                     .stroke(TiTiColor.graphColor(num: 3).toColor.opacity(1.0),
                             style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
-                    .frame(width: size, height: size, alignment: .center)
+                    .frame(width: circleSize, height: circleSize, alignment: .center)
                     .rotationEffect(.degrees(-90))
                 
                 Text("\(entry.progress)%")
-                    .font(TiTiFont.HGGGothicssiP60g(size: progressFontSize))
+                    .font(TiTiFont.HGGGothicssi(size: progressFontSize, weight: .heavy))
                     .foregroundColor(.primary)
             }
-            .padding(.vertical, 7)
+            .padding(.top, circleTopPadding)
+            .padding(.bottom, circleBottompadding)
         }
     }
 }
@@ -93,12 +97,15 @@ struct TiTiLogWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemSmall])
     }
 }
 
 struct TiTiLogWidget_Previews: PreviewProvider {
     static var previews: some View {
-        TiTiLogWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), progress: 33))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            TiTiLogWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), progress: 33))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+        }
     }
 }
