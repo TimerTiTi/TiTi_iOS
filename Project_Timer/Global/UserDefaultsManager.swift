@@ -22,6 +22,7 @@ struct UserDefaultsManager {
         case keepTheScreenOn = "keepTheScreenOn"
         case startColor = "startColor"
         case checks = "checks"
+        case didSaveToSharedContainerBefore = "savedToSharedContainerBefore"
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {

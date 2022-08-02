@@ -144,6 +144,7 @@ final class TimerVM {
         guard self.timerRunning == false else { return }
         print("timer start")
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+        print("DEBUG: set timer 1 sec")
         self.timerRunning = true
         self.runningUI = true
         self.soundAlert = false
@@ -162,6 +163,8 @@ final class TimerVM {
             self.removeBadge()
             self.removeNotification()
         }
+        
+        print("DEBUG: timer Logic finish")
     }
     
     private func setBadge() {
@@ -204,7 +207,7 @@ final class TimerVM {
         let remainTimer = self.times.timer
         let alarm_5m = remainTimer - 300
         self.postNoti(interval: Double(remainTimer), body: "Timer finished!".localized(), identifier: "Timer finished")
-        if alarm_5m >= 0 {
+        if alarm_5m > 0 {
             self.postNoti(interval: Double(alarm_5m), body: "5 minutes left".localized(), identifier: "Timer 5 min")
         }
     }

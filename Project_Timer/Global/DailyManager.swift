@@ -14,15 +14,22 @@ class DailyManager {
     var dates: [Date] = []
     
     func loadDailys() {
-        dailys = Storage.retrive("dailys.json", from: .sharedContainer, as: [Daily].self) ?? []
+        dailys = Storage.retrive("dailys.json", from: .documents, as: [Daily].self) ?? []
         dates = UserDefaults.standard.value(forKey: "dates") as? [Date] ?? []
+        
+        // 최초 저장
+        if !(UserDefaultsManager.get(forKey: .didSaveToSharedContainerBefore) as? Bool ?? false) {
+            Storage.store(Log(dailys: dailys), to: .sharedContainer, as: Log.fileName)
+            UserDefaultsManager.set(to: true, forKey: .didSaveToSharedContainerBefore)
+        }
         print("load dailys!")
     }
     
     func saveDailys() {
         print("store dailys!")
         Storage.store(dailys, to: .documents, as: "dailys.json")
-        Storage.store(dailys, to: .sharedContainer, as: "dailys.json")
+        // 위젯 표시를 위해 sharedContainer에 Log 형태로 저장
+        Storage.store(Log(dailys: dailys), to: .sharedContainer, as: Log.fileName)
         UserDefaults.standard.setValue(dates, forKey: "dates")
     }
     
