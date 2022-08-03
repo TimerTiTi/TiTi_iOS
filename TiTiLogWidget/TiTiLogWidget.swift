@@ -86,7 +86,7 @@ struct TiTiLogWidgetEntryView : View {
 
 @main
 struct TiTiLogWidget: Widget {
-    let kind: String = "com.FDEE.TiTiu.TiTiLogWidget.month"
+    let kind: String = "com.FDEE.TiTi.TiTiLogWidget.month"
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in

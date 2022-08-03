@@ -1120,7 +1120,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu.TiTiLogWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1152,7 +1152,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu.TiTiLogWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.TiTiLogWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -1286,7 +1286,7 @@
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 22RJP8YV7Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1294,7 +1294,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1311,7 +1311,7 @@
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = 22RJP8YV7Q;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1319,7 +1319,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTiu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
