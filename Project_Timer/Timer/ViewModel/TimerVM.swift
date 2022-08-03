@@ -144,7 +144,6 @@ final class TimerVM {
         guard self.timerRunning == false else { return }
         print("timer start")
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        print("DEBUG: set timer 1 sec")
         self.timerRunning = true
         self.runningUI = true
         self.soundAlert = false
@@ -163,8 +162,6 @@ final class TimerVM {
             self.removeBadge()
             self.removeNotification()
         }
-        
-        print("DEBUG: timer Logic finish")
     }
     
     private func setBadge() {
