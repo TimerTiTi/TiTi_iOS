@@ -35,8 +35,8 @@
 		04E42F492897F27600C06B47 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		04E42F4A2897F27800C06B47 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		04E42F4D28981FE800C06B47 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
-		04E46D12289915D8008E849E /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E46D11289915D8008E849E /* Logs.swift */; };
-		04E46D13289915D8008E849E /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E46D11289915D8008E849E /* Logs.swift */; };
+		04E46D12289915D8008E849E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E46D11289915D8008E849E /* Log.swift */; };
+		04E46D13289915D8008E849E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E46D11289915D8008E849E /* Log.swift */; };
 		04E46D152899284A008E849E /* Log+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E46D142899284A008E849E /* Log+Extension.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
@@ -196,7 +196,7 @@
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
 		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
 		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
-		04E46D11289915D8008E849E /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		04E46D11289915D8008E849E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		04E46D142899284A008E849E /* Log+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Log+Extension.swift"; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -500,6 +500,7 @@
 				877E448B267DF8DD00BF104A /* Dummy.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
+				04E46D11289915D8008E849E /* Log.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -565,7 +566,6 @@
 			isa = PBXGroup;
 			children = (
 				876A85542832135E00978035 /* daily.swift */,
-				04E46D11289915D8008E849E /* Logs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -924,7 +924,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E46D13289915D8008E849E /* Logs.swift in Sources */,
+				04E46D13289915D8008E849E /* Log.swift in Sources */,
 				044075832897E94900384006 /* UIColor+Extension.swift in Sources */,
 				044075852897E95100384006 /* TiTiFont.swift in Sources */,
 				0440756E2897C58400384006 /* TiTiLogWidget.swift in Sources */,
@@ -1016,7 +1016,7 @@
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
-				04E46D12289915D8008E849E /* Logs.swift in Sources */,
+				04E46D12289915D8008E849E /* Log.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
