@@ -47,9 +47,29 @@ final class LogVC: UIViewController {
 
 extension LogVC {
     private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .label
-        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
+        if #available(iOS 15.0, *){
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = TiTiColor.tabbarBackground
+            
+            appearance.compactInlineLayoutAppearance.normal.iconColor = .lightGray
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
+            
+            appearance.inlineLayoutAppearance.normal.iconColor = .lightGray
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
+            
+            self.tabBarController?.tabBar.standardAppearance = appearance
+            self.tabBarController?.tabBar.scrollEdgeAppearance = appearance
+            self.tabBarController?.tabBar.tintColor = .label
+            
+        } else {
+            self.tabBarController?.tabBar.tintColor = .label
+            self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
+            self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
+        }
     }
     
     private func configureObservation() {
