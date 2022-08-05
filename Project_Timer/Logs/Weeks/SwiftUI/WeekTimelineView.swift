@@ -18,11 +18,6 @@ struct WeekTimelineView: View {
     var frameHeight: CGFloat = 130
     @ObservedObject var viewModel: WeekTimelineVM
     
-    init(frameHeight: CGFloat, viewModel: WeekTimelineVM) {
-        self.frameHeight = frameHeight
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         HStack(spacing: 6) {
             ForEach(self.viewModel.weekTimes) { weekTime in
