@@ -42,4 +42,30 @@ extension UIViewController {
     func showTaskWarningAlert() {
         self.showAlertWithOK(title: "Enter a new subject".localized(), text: "")
     }
+    
+    func updateTabbarColor(backgroundColor: UIColor?, tintColor: UIColor, normalColor: UIColor) {
+        if #available(iOS 15.0, *){
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = backgroundColor
+            
+            appearance.compactInlineLayoutAppearance.normal.iconColor = normalColor
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
+            
+            appearance.inlineLayoutAppearance.normal.iconColor = normalColor
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
+            
+            appearance.stackedLayoutAppearance.normal.iconColor = normalColor
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
+            
+            self.tabBarController?.tabBar.standardAppearance = appearance
+            self.tabBarController?.tabBar.scrollEdgeAppearance = appearance
+            self.tabBarController?.tabBar.tintColor = tintColor
+            
+        } else {
+            self.tabBarController?.tabBar.tintColor = tintColor
+            self.tabBarController?.tabBar.unselectedItemTintColor = normalColor
+            self.tabBarController?.tabBar.barTintColor = backgroundColor
+        }
+    }
 }
