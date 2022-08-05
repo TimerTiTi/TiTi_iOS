@@ -19,8 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         
         let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
-        rootViewController.tabBar.backgroundColor = .clear
-        rootViewController.tabBar.tintColor = .white
         if VCNum == 2 {
             rootViewController.selectedIndex = 1
         }
@@ -28,16 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         NotificationCenter.default.addObserver(forName: .showTabbarController, object: nil, queue: .main) { [weak self] _ in
             self?.showTabbarController()
-        }
-        
-        let tabBarAppearance = UITabBarAppearance()
-        tabBarAppearance.configureWithOpaqueBackground()
-        tabBarAppearance.backgroundColor = .clear
-        tabBarAppearance.shadowColor = .clear
-        
-        rootViewController.tabBar.standardAppearance = tabBarAppearance
-        if #available(iOS 15.0, *) {
-            rootViewController.tabBar.scrollEdgeAppearance = tabBarAppearance
         }
     }
     

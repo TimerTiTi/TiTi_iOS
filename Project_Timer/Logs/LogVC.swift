@@ -32,12 +32,12 @@ final class LogVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {
@@ -46,32 +46,6 @@ final class LogVC: UIViewController {
 }
 
 extension LogVC {
-    private func updateTabbarColor() {
-        if #available(iOS 15.0, *){
-            let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = TiTiColor.tabbarBackground
-            
-            appearance.compactInlineLayoutAppearance.normal.iconColor = .lightGray
-            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
-            
-            appearance.inlineLayoutAppearance.normal.iconColor = .lightGray
-            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
-            
-            appearance.stackedLayoutAppearance.normal.iconColor = .lightGray
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : UIColor.lightGray]
-            
-            self.tabBarController?.tabBar.standardAppearance = appearance
-            self.tabBarController?.tabBar.scrollEdgeAppearance = appearance
-            self.tabBarController?.tabBar.tintColor = .label
-            
-        } else {
-            self.tabBarController?.tabBar.tintColor = .label
-            self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-            self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
-        }
-    }
-    
     private func configureObservation() {
         NotificationCenter.default.addObserver(forName: LogVC.changePageIndex, object: nil, queue: .main) { [weak self] noti in
             if let pageIndex = noti.userInfo?["pageIndex"] as? Int {
