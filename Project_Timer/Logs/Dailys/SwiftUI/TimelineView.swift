@@ -67,12 +67,3 @@ struct TimelineView: View {
         return (CGFloat(value) / CGFloat(3600)) * (self.frameHeight-3)
     }
 }
-
-struct timelineView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dummyTimes = (0...23).map { idx in
-            TimeBlock(id: idx%24, sumTime: Int.random(in: 600..<3600))
-        }
-        TimelineView(frameHeight: 100, viewModel: TimelineVM(times: dummyTimes))
-    }
-}
