@@ -1,7 +1,7 @@
 # Timer TiTi 타이머 티티 - 공부를 위한 타이머
 ## [Appstore link](https://apps.apple.com/kr/app/titi-공부를-위한-타이머/id1519159240)
 
-## 나만의 색을 통한 매일 색다른 공부!
+## 나만의 아름다운 공부!
 * 아주 간편하게 하루의 공부시간을 측정합니다
 * 하루동안의 공부내용, 시간, 시간대별 집중도까지 다양하게 보여 드립니다
 * 원하는 색으로 설정하여 그래프를 이쁘게 보여 드립니다
@@ -22,15 +22,15 @@
 
 
 ## TiTi 스크린샷
-ver 7.1 기준 스크린샷 입니다.
+ver 7.3 기준 스크린샷 입니다.
 <p align="center" width="100%">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112150-590a7c57-fefd-4406-bb3a-850c84d53747.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112162-91ca1aea-6108-4b96-ae2a-897969a0cc67.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112174-ceb7f74c-9b15-4042-b921-07cf41daa430.png">
 </p>
 <p align="center" width="100%">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112194-e45e30e0-4f50-47ec-9d1a-2a0520e82d8b.png">
-<img width="32.9%%" src = "https://user-images.githubusercontent.com/65349445/178112197-78d67c85-745e-47cf-a38d-f3c77886e8fd.png">
+<img width="32.9%" src = "https://i.imgur.com/MTsReqR.png">
+<img width="32.9%%" src = "https://i.imgur.com/V37KdKD.png">
 <img width="32.9%%" src = "https://user-images.githubusercontent.com/65349445/178112203-7ad6408f-6035-45e0-9661-e117adc69636.png">
 </p>
 <p align="center" width="100%">
