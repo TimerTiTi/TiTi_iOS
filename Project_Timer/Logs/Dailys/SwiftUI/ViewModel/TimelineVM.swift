@@ -18,11 +18,6 @@ final class TimelineVM: ObservableObject {
         self.resetTimes()
     }
     
-    init(times: [TimeBlock]) {
-        self.updateColor(isReversColor: false)
-        self.times = times
-    }
-    
     func update(daily: Daily?) {
         guard let timeline = daily?.timeline else {
             self.resetTimes()
