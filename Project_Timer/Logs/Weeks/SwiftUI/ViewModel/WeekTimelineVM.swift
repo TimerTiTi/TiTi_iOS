@@ -37,14 +37,12 @@ final class WeekTimelineVM: ObservableObject {
     }
     
     func updateColor(isReversColor: Bool) {
+        let offset = isReversColor ? -1 : 1
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        if isReversColor {
-            self.color1Index = (userColorIndex-1+12)%12 == 0 ? 12 : (userColorIndex-1+12)%12
-            self.color2Index = userColorIndex
-        } else {
-            self.color1Index = (userColorIndex+1+12)%12 == 0 ? 12 : (userColorIndex+1+12)%12
-            self.color2Index = userColorIndex
-        }
+        let resultColorIndex = (userColorIndex+offset+12)%12
+        
+        self.color1Index = resultColorIndex == 0 ? 12 : resultColorIndex
+        self.color2Index = userColorIndex
     }
     
     private func resetTimes() {

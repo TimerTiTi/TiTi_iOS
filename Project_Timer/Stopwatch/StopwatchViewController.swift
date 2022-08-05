@@ -75,7 +75,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -96,7 +96,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
     }
     
     @IBAction func taskSelect(_ sender: Any) {

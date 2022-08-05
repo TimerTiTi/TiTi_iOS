@@ -56,9 +56,7 @@ extension Date {
     
     var localDate: Date {
         let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: self))
-        guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: self) else { return self }
-
-        return localDate
+        return Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: self) ?? self
     }
     /// 0분0초의 Date로 변환
     var zeroDate: Date {
