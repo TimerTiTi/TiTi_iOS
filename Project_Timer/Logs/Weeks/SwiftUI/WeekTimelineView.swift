@@ -50,12 +50,3 @@ struct WeekTimelineView: View {
         return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 40)
     }
 }
-
-struct WeekTimelineView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dummyTimes = (0...6).map { idx in
-            WeekTimeBlock(id: idx, day: "7/\(idx)", sumTime: Int.random(in: (10800..<21600)))
-        }
-        WeekTimelineView(frameHeight: 130, viewModel: WeekTimelineVM(weekTimes: dummyTimes))
-    }
-}
