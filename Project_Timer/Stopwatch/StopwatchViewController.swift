@@ -75,7 +75,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -96,7 +96,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
     }
     
     @IBAction func taskSelect(_ sender: Any) {
@@ -128,12 +128,6 @@ final class StopwatchViewController: UIViewController {
 
 // MARK: - Configure
 extension StopwatchViewController {
-    private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .white
-        self.tabBarController?.tabBar.unselectedItemTintColor = TiTiColor.tabbarNonSelect
-        self.tabBarController?.tabBar.barTintColor = .clear
-    }
-    
     private func configureLocalizable() {
         self.sumTimeLabel.text = "Sum Time".localized()
         self.stopWatchLabel.text = "Stopwatch".localized()

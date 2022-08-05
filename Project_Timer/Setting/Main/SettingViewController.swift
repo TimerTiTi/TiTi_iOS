@@ -17,7 +17,6 @@ final class SettingViewController: UIViewController {
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SettingVM?
-    private var stayScroll: Bool = false
     private var lastSection: Int {
         if let sectionsCount = self.viewModel?.sectionTitles.count {
             return sectionsCount-1
@@ -35,33 +34,17 @@ final class SettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
         self.settings.reloadData()
-        self.stayScroll = false
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.updateTabbarColor()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if stayScroll == false {
-            let bottomOffset = CGPoint(x: 0, y: self.settings.contentSize.height - self.settings.bounds.height + self.settings.contentInset.bottom)
-            self.settings.setContentOffset(bottomOffset, animated: false)
-            self.tabBarController?.tabBar.barTintColor = .clear
-        }
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
 }
 
 extension SettingViewController {
-    private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .label
-        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = TiTiColor.tabbarBackground
-    }
-    
     private func configureCollectionView() {
         self.extendedLayoutIncludesOpaqueBars = true
         self.settings.dataSource = self
@@ -139,7 +122,6 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 extension SettingViewController: SettingActionDelegate {
     func pushVC(nextVCIdentifier: String) {
         guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
-        self.stayScroll = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

@@ -35,7 +35,7 @@ class TodolistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
         self.configurePointColor()
         self.configureTodayLabel()
     }
@@ -43,7 +43,7 @@ class TodolistViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.innerView.configureShadow() // Dynamic CGColor
-        self.updateTabbarColor()
+        self.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     @IBAction func addList(_ sender: Any) {
@@ -62,12 +62,6 @@ class TodolistViewController: UIViewController {
 }
 
 extension TodolistViewController {
-    private func updateTabbarColor() {
-        self.tabBarController?.tabBar.tintColor = .label
-        self.tabBarController?.tabBar.unselectedItemTintColor = .lightGray
-        self.tabBarController?.tabBar.barTintColor = .clear
-    }
-    
     private func configureViewModel() {
         self.viewModel = TodolistVM()
     }

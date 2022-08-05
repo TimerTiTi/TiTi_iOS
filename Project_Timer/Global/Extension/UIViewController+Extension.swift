@@ -48,6 +48,7 @@ extension UIViewController {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = backgroundColor
+            appearance.shadowColor = .clear
             
             appearance.compactInlineLayoutAppearance.normal.iconColor = normalColor
             appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
