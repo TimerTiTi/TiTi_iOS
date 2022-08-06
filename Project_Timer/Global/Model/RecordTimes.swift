@@ -55,11 +55,11 @@ struct RecordTimes: Codable, CustomStringConvertible {
     mutating func recordStop(finishAt: Date, taskTime: Int) {
         self.recording = false
         self.recordTaskFromTime = taskTime
-        self.savedSumTime += self.interval(to: finishAt)
+        self.savedSumTime += Date.interval(from: self.recordStartAt, to: finishAt)
         self.savedGoalTime = self.settedGoalTime - self.savedSumTime
         switch self.recordingMode {
-        case 1: self.savedTimerTime -= self.interval(to: finishAt)
-        case 2: self.savedStopwatchTime += self.interval(to: finishAt)
+        case 1: self.savedTimerTime -= Date.interval(from: self.recordStartAt, to: finishAt)
+        case 2: self.savedStopwatchTime += Date.interval(from: self.recordStartAt, to: finishAt)
         default: break
         }
         self.save()
@@ -117,28 +117,17 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.save()
     }
     
-    func interval(to: Date) -> Int {
-        return Self.interval(from: self.recordStartAt, to: to)
-    }
-    
     func currentTimes() -> Times { // VC 에서 매초
         guard self.recording else {
             return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
         }
         
         let currentAt = Date()
-        let interval = self.interval(to: currentAt)
+        let interval = Date.interval(from: self.recordStartAt, to: currentAt)
         let currentSum = self.savedSumTime + interval
         let currentGoal = self.settedGoalTime - currentSum
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
         return Times(sum: currentSum, timer: currentTimer, stopwatch: currentStopwatch, goal: currentGoal)
-    }
-}
-
-extension RecordTimes {
-    static func interval(from: Date, to: Date) -> Int {
-        let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: from, to: to)
-        return (timeComponents.hour ?? 0)*3600 + (timeComponents.minute ?? 0)*60 + (timeComponents.second ?? 0)
     }
 }
