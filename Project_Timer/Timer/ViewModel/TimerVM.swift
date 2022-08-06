@@ -143,10 +143,13 @@ final class TimerVM {
         // timer 동작, runningUI 반영
         guard self.timerRunning == false else { return }
         print("timer start")
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        self.timerRunning = true
-        self.runningUI = true
-        self.soundAlert = false
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+            self.timerRunning = true
+            self.runningUI = true
+            self.soundAlert = false
+        }
     }
     
     @objc func timerLogic() {
