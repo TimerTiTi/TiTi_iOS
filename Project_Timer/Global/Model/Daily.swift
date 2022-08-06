@@ -42,6 +42,7 @@ struct Daily: Codable, CustomStringConvertible {
             self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
             self.updateTasks()
             self.updateMaxTime()
+            self.updateTimeline()
         }
         self.save()
     }
@@ -135,5 +136,32 @@ extension Daily {
             }
         }
         self.maxTime = maxTime
+    }
+    
+    private mutating func updateTimeline() {
+        guard let taskHistorys = self.taskHistorys else { return }
+        var timeline = Array(repeating: 0, count: 24)
+        taskHistorys.forEach { _, historys in
+            historys.forEach { history in
+                let startHour = history.startDate.hour
+                var endHour = history.endDate.hour
+                endHour = endHour < startHour ? endHour+24 : endHour
+                
+                if startHour == endHour {
+                    timeline[startHour] += Date.interval(from: history.startDate, to: history.endDate)
+                } else {
+                    timeline[startHour] += (3600 - self.getSecondsAt(history.startDate))
+                    for h in startHour+1...endHour {
+                        if h != endHour {
+                            timeline[h%24] = 3600
+                        } else {
+                            timeline[h%24] = self.getSecondsAt(history.endDate)
+                        }
+                    }
+                }
+            }
+        }
+        for i in 0...23 { timeline[i] = min(3600, timeline[i]) }
+        self.timeline = timeline
     }
 }
