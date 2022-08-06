@@ -25,39 +25,24 @@ struct Daily: Codable, CustomStringConvertible {
     var totalTime: Int { // computed property
         return self.tasks.values.reduce(0, +)
     }
-    private(set) var taskHistorys: [String: [TaskHistory]]?
+    private(set) var taskHistorys: [String: [TaskHistory]]? = [:]
     
     // 10간격, 또는 종료시 update 반영
     mutating func update(at current: Date) {
         let recordTimes = RecordController.shared.recordTimes
-        let interval = recordTimes.interval(to: current)
-        self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
-        self.maxTime = max(self.maxTime, interval)
-        self.updateTimeline(recordTimes: recordTimes, interval: interval, current: current)
-        self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
-        self.save()
-    }
-    
-    private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
-        if var taskHistorys = self.taskHistorys {
-            // file 내 값이 존재했으며, 해당과목의 이전 정보가 있는 경우
-            if var targetHistory = taskHistorys[taskName] {
-                targetHistory.append(TaskHistory(startDate: startDate, endDate: endDate))
-                taskHistorys[taskName] = targetHistory
-                self.taskHistorys = taskHistorys
-            }
-            // file 내 값이 존재했으며, 해당과목의 기록이 없었던 경우
-            else {
-                taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
-                self.taskHistorys = taskHistorys
-            }
+        // 기존 과거형식의 기록, 또는 기록중인 상태의 경우 -> 기존 update 로직을 통해 Daily 값을 update 한다
+        if self.taskHistorys == nil {
+            let interval = Date.interval(from: recordTimes.recordStartAt, to: current)
+            self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
+            self.maxTime = max(self.maxTime, interval)
+            self.updateTimeline(recordTimes: recordTimes, interval: interval, current: current)
         }
-        // file 내 값이 없었던 경우
+        // 업데이트 후 새로운 기록 이후 taskHistorys 가 nil 값이 아닌 상태의 경우 -> taskHistorys 를 기반으로 Daily 값을 update 한다
         else {
-            var taskHistorys: [String: [TaskHistory]] = [:]
-            taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
-            self.taskHistorys = taskHistorys
+            self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
+            self.updateTasks()
         }
+        self.save()
     }
     
     private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
@@ -108,5 +93,35 @@ struct Daily: Codable, CustomStringConvertible {
         dateFormatter.dateFormat = "ss"
         let S = Int(dateFormatter.string(from: date))! //초
         return M*60+S
+    }
+}
+
+// MARK: 새로운 기록저장 로직
+extension Daily {
+    private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
+        if var taskHistorys = self.taskHistorys {
+            // file 내 값이 존재했으며, 해당과목의 이전 정보가 있는 경우
+            if var targetHistory = taskHistorys[taskName] {
+                targetHistory.append(TaskHistory(startDate: startDate, endDate: endDate))
+                taskHistorys[taskName] = targetHistory
+                self.taskHistorys = taskHistorys
+            }
+            // file 내 값이 존재했으며, 해당과목의 기록이 없었던 경우
+            else {
+                taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
+                self.taskHistorys = taskHistorys
+            }
+        } else {
+            assertionFailure("taskHistorys 값이 nil 입니다.")
+        }
+    }
+    
+    private mutating func updateTasks() {
+        guard let taskHistorys = self.taskHistorys else { return }
+        var tasks: [String: Int] = [:]
+        taskHistorys.forEach { task, historys in
+            tasks[task] = historys.map { Date.interval(from: $0.startDate, to: $0.endDate) }.reduce(0, +)
+        }
+        self.tasks = tasks
     }
 }

@@ -73,4 +73,9 @@ extension Date {
 //        calendar.locale = Locale(identifier: "ko")
         return(calendar.component(.weekOfMonth, from: self))
     }
+    
+    static func interval(from: Date, to: Date) -> Int {
+        let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: from, to: to)
+        return (timeComponents.hour ?? 0)*3600 + (timeComponents.minute ?? 0)*60 + (timeComponents.second ?? 0)
+    }
 }
