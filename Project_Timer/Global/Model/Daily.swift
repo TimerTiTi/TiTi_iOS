@@ -164,4 +164,12 @@ extension Daily {
         for i in 0...23 { timeline[i] = min(3600, timeline[i]) }
         self.timeline = timeline
     }
+    
+    mutating func modifyTaskHistorys(to taskHistorys: [String: [TaskHistory]]) {
+        self.taskHistorys = taskHistorys
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
+        self.save()
+    }
 }
