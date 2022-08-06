@@ -17,7 +17,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     private(set) var recordTask: String = "none" // 측정중인 과목명
     private(set) var recordTaskFromTime: Int = 0 // 측정중인 과목 기준시간값
     
-    private(set) var recordStartAt: Date = Date() // 기록측정 시작시각
+    private(set) var recordStartAt = Date() // 기록측정 시작시각
     private(set) var recording: Bool = false // 기록중인지 여부값, network 상 다른 기기에서도 표시 가능
     
     private(set) var settedGoalTime: Int = 21600// 사용자가 설정한 목표시간값

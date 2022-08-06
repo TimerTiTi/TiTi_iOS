@@ -21,7 +21,6 @@ final class StopwatchVM {
     }
     @Published private(set) var warningNewDate = false
     private(set) var timerRunning = false
-    private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
     
@@ -135,12 +134,7 @@ final class StopwatchVM {
     }
     
     @objc func timerLogic() {
-        print("timer action")
-        self.timerCount += 1
         self.updateTimes()
-        if self.timerCount%5 == 0 {
-            RecordController.shared.daily.update(at: Date())
-        }
     }
     
     private func setBadge() {
@@ -156,7 +150,6 @@ final class StopwatchVM {
         self.timer.invalidate()
         self.timerRunning = false
         self.runningUI = false
-        self.timerCount = 0
         let endAt = Date()
         RecordController.shared.daily.update(at: endAt)
         self.updateDaily()

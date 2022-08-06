@@ -22,7 +22,6 @@ final class TimerVM {
     @Published private(set) var soundAlert = false
     @Published private(set) var warningNewDate = false
     private(set) var timerRunning = false
-    private var timerCount: Int = 0
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
     
@@ -153,12 +152,7 @@ final class TimerVM {
     }
     
     @objc func timerLogic() {
-        print("timer action")
-        self.timerCount += 1
         self.updateTimes()
-        if self.timerCount%5 == 0 {
-            RecordController.shared.daily.update(at: Date())
-        }
         
         if self.times.timer < 1 {
             self.timerStop()
@@ -180,7 +174,6 @@ final class TimerVM {
         self.timer.invalidate()
         self.timerRunning = false
         self.runningUI = false
-        self.timerCount = 0
         self.soundAlert = true
         let endAt = Date()
         RecordController.shared.daily.update(at: endAt)

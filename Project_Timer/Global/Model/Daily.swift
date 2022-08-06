@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct TaskHistory: Codable {
+    let startDate: Date
+    let endDate: Date
+}
+
 struct Daily: Codable, CustomStringConvertible {
     var description: String {
         return "\(self.day.YYYYMMDDstyleString) : \(self.tasks)"
@@ -20,6 +25,7 @@ struct Daily: Codable, CustomStringConvertible {
     var totalTime: Int { // computed property
         return self.tasks.values.reduce(0, +)
     }
+    private(set) var taskHistorys: [String: [TaskHistory]]?
     
     // 10간격, 또는 종료시 update 반영
     mutating func update(at current: Date) {
@@ -28,6 +34,30 @@ struct Daily: Codable, CustomStringConvertible {
         self.tasks[recordTimes.recordTask] = recordTimes.recordTaskFromTime + interval
         self.maxTime = max(self.maxTime, interval)
         self.updateTimeline(recordTimes: recordTimes, interval: interval, current: current)
+        self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
+        self.save()
+    }
+    
+    private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
+        if var taskHistorys = self.taskHistorys {
+            // file 내 값이 존재했으며, 해당과목의 이전 정보가 있는 경우
+            if var targetHistory = taskHistorys[taskName] {
+                targetHistory.append(TaskHistory(startDate: startDate, endDate: endDate))
+                taskHistorys[taskName] = targetHistory
+                self.taskHistorys = taskHistorys
+            }
+            // file 내 값이 존재했으며, 해당과목의 기록이 없었던 경우
+            else {
+                taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
+                self.taskHistorys = taskHistorys
+            }
+        }
+        // file 내 값이 없었던 경우
+        else {
+            var taskHistorys: [String: [TaskHistory]] = [:]
+            taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
+            self.taskHistorys = taskHistorys
+        }
     }
     
     private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
@@ -50,7 +80,6 @@ struct Daily: Codable, CustomStringConvertible {
                 self.timeline[h%24] = self.getSecondsAt(current)
             }
         }
-        self.save()
     }
     // 기존 tasks 정보 수정시
     mutating func updateTasks(to newTasks: [String: Int]) {
