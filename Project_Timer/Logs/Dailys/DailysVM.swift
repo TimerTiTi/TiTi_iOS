@@ -19,7 +19,6 @@ final class DailysVM {
     }
     
     func updateDaily(to daily: Daily?) {
-        dump(daily)
         self.currentDaily = daily
         self.timelineVM.update(daily: daily)
         guard let tasks = daily?.tasks else {
