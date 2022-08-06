@@ -41,6 +41,7 @@ struct Daily: Codable, CustomStringConvertible {
         else {
             self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
             self.updateTasks()
+            self.updateMaxTime()
         }
         self.save()
     }
@@ -123,5 +124,16 @@ extension Daily {
             tasks[task] = historys.map { Date.interval(from: $0.startDate, to: $0.endDate) }.reduce(0, +)
         }
         self.tasks = tasks
+    }
+    
+    private mutating func updateMaxTime() {
+        guard let taskHistorys = self.taskHistorys else { return }
+        var maxTime: Int = 0
+        taskHistorys.forEach { task, historys in
+            if historys.isEmpty == false {
+                maxTime = max(maxTime, historys.map { Date.interval(from: $0.startDate, to: $0.endDate) }.max()!)
+            }
+        }
+        self.maxTime = maxTime
     }
 }
