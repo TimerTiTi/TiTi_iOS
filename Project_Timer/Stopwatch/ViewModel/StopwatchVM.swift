@@ -126,9 +126,12 @@ final class StopwatchVM {
         // timer 동작, runningUI 반영
         guard self.timerRunning == false else { return }
         print("timer start")
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
-        self.timerRunning = true
-        self.runningUI = true
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
+            self.timerRunning = true
+            self.runningUI = true
+        }
     }
     
     @objc func timerLogic() {
