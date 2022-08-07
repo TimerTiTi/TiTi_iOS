@@ -11,19 +11,26 @@ import UIKit
 extension UITabBarController {
     func updateTabbarColor(backgroundColor: UIColor?, tintColor: UIColor, normalColor: UIColor) {
         if #available(iOS 15.0, *){
+            let tabBarItemAppearance = UITabBarItemAppearance()
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                tabBarItemAppearance.normal.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 13), .foregroundColor: normalColor]
+                tabBarItemAppearance.selected.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 13), .foregroundColor: tintColor]
+            } else {
+                tabBarItemAppearance.normal.titleTextAttributes = [.foregroundColor: normalColor]
+                tabBarItemAppearance.selected.titleTextAttributes = [.foregroundColor: tintColor]
+            }
+            
+            tabBarItemAppearance.normal.iconColor = normalColor
+            tabBarItemAppearance.selected.iconColor = tintColor
+            
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = backgroundColor
             appearance.shadowColor = .clear
             
-            appearance.compactInlineLayoutAppearance.normal.iconColor = normalColor
-            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
-            
-            appearance.inlineLayoutAppearance.normal.iconColor = normalColor
-            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
-            
-            appearance.stackedLayoutAppearance.normal.iconColor = normalColor
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor : normalColor]
+            appearance.compactInlineLayoutAppearance = tabBarItemAppearance
+            appearance.inlineLayoutAppearance = tabBarItemAppearance
+            appearance.stackedLayoutAppearance = tabBarItemAppearance
             
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = appearance
