@@ -11,6 +11,9 @@ import Foundation
 struct TaskHistory: Codable {
     let startDate: Date
     let endDate: Date
+    var interval: Int {
+        return Date.interval(from: startDate, to: endDate)
+    }
 }
 
 struct Daily: Codable, CustomStringConvertible {
@@ -102,17 +105,11 @@ struct Daily: Codable, CustomStringConvertible {
 extension Daily {
     private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
         if var taskHistorys = self.taskHistorys {
-            // file 내 값이 존재했으며, 해당과목의 이전 정보가 있는 경우
-            if var targetHistory = taskHistorys[taskName] {
-                targetHistory.append(TaskHistory(startDate: startDate, endDate: endDate))
-                taskHistorys[taskName] = targetHistory
-                self.taskHistorys = taskHistorys
+            if taskHistorys[taskName] == nil {  // 과목 기록이 없었던 경우
+                taskHistorys[taskName] = []     // 빈 배열로 초기화
             }
-            // file 내 값이 존재했으며, 해당과목의 기록이 없었던 경우
-            else {
-                taskHistorys[taskName] = [TaskHistory(startDate: startDate, endDate: endDate)]
-                self.taskHistorys = taskHistorys
-            }
+            taskHistorys[taskName]?.append(TaskHistory(startDate: startDate, endDate: endDate))
+            self.taskHistorys = taskHistorys
         } else {
             assertionFailure("taskHistorys 값이 nil 입니다.")
         }
@@ -122,7 +119,7 @@ extension Daily {
         guard let taskHistorys = self.taskHistorys else { return }
         var tasks: [String: Int] = [:]
         taskHistorys.forEach { task, historys in
-            tasks[task] = historys.map { Date.interval(from: $0.startDate, to: $0.endDate) }.reduce(0, +)
+            tasks[task] = historys.map { $0.interval }.reduce(0, +)
         }
         self.tasks = tasks
     }
@@ -132,7 +129,7 @@ extension Daily {
         var maxTime: Int = 0
         taskHistorys.forEach { task, historys in
             if historys.isEmpty == false {
-                maxTime = max(maxTime, historys.map { Date.interval(from: $0.startDate, to: $0.endDate) }.max()!)
+                maxTime = max(maxTime, historys.map { $0.interval }.max()!)
             }
         }
         self.maxTime = maxTime
@@ -148,7 +145,7 @@ extension Daily {
                 endHour = endHour < startHour ? endHour+24 : endHour
                 
                 if startHour == endHour {
-                    timeline[startHour] += Date.interval(from: history.startDate, to: history.endDate)
+                    timeline[startHour] += history.interval
                 } else {
                     timeline[startHour] += (3600 - self.getSecondsAt(history.startDate))
                     for h in startHour+1...endHour {
