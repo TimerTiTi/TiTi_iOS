@@ -19,9 +19,9 @@ extension String {
         return NSLocalizedString(self, tableName: tableName, value: "**\(self)**", comment: "")
     }
     
-    var toDate: Date {
+    var toDate: Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
-        return dateFormatter.date(from: self) ?? Date()
+        return dateFormatter.date(from: self)
     }
 }
