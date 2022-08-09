@@ -17,16 +17,16 @@ final class NetworkController {
 
 extension NetworkController: VersionFetchable {
     func getAppstoreVersion(completion: @escaping (NetworkStatus, String?) -> Void) {
-        self.network.request(url: NetworkURL.appstoreVersion, method: .get) { result in
+        self.network.request(url: NetworkURL.Firestore.lastestVersion, method: .get) { result in
             switch result.statusCode {
             case 200:
                 guard let data = result.data,
-                      let appstoreVersion = try? JSONDecoder().decode(AppstoreVersion.self, from: data) else {
-                    print("Decode Error: AppstoreVersion")
-                    completion(.FAIL, nil)
+                      let lastestVersionInfo: LastestVersionInfo = try? JSONDecoder().decode(LastestVersionInfo.self, from: data) else {
+                    print("Decode Error: LastestVersionInfo")
+                    completion(.DECODEERROR, nil)
                     return
                 }
-                completion(.SUCCESS, appstoreVersion.results.first?.version)
+                completion(.SUCCESS, lastestVersionInfo.version.value)
             default:
                 completion(.FAIL, nil)
                 return
