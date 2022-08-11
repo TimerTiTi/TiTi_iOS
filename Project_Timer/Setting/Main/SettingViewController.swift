@@ -42,6 +42,14 @@ final class SettingViewController: UIViewController {
         super.viewWillLayoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { [weak self] _ in
+            guard let settings = self?.settings else { return }
+            settings.collectionViewLayout.invalidateLayout()
+        }
+    }
 }
 
 extension SettingViewController {

@@ -36,6 +36,13 @@ final class SettingFunctionsListVC: UIViewController {
         self.youtubeBT.configureShadow(opacity: 0.25, radius: 5)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { [weak self] _ in
+            self?.functionList.collectionViewLayout.invalidateLayout()
+        }
+    }
+    
     @IBAction func goToYoutube(_ sender: Any) {
         guard let link = self.viewModel?.youtubeLink,
               let url = URL(string: link) else { return }
