@@ -33,8 +33,11 @@ final class SettingTiTiLabVC: UIViewController {
         self.bindAll()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { [weak self] _ in
+            self?.surveys.collectionViewLayout.invalidateLayout()
+        }
     }
 }
 
