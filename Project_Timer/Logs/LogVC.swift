@@ -32,11 +32,13 @@ final class LogVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
@@ -72,8 +74,10 @@ extension LogVC {
     
     private func configureChildViewControllers() {
         guard let logHomeVC = self.storyboard?.instantiateViewController(withIdentifier: LogHomeVC.identifier),
-              let dailysVC = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier),
+              let dailysVC = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier) as? DailysVC,
               let weeksVC = self.storyboard?.instantiateViewController(withIdentifier: WeeksVC.identifier) else { return }
+        dailysVC.configureDelegate(to: self)
+        
         self.childVCs = [logHomeVC, dailysVC, weeksVC]
         self.pageViewController.setViewControllers([logHomeVC], direction: .forward, animated: true)
     }
@@ -94,5 +98,13 @@ extension LogVC: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let index = self.childVCs.firstIndex(of: viewController), index+1 < self.childVCs.count else { return nil }
         return self.childVCs[index+1]
+    }
+}
+
+extension LogVC: ModifyRecordDelegate {
+    func showModifyRecordVC(daily: Daily) {
+        print(daily.day.YYYYMMDDstyleString)
+        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) else { return }
+        self.navigationController?.pushViewController(modifyRecordVC, animated: true)
     }
 }
