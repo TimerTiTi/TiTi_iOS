@@ -11,6 +11,10 @@ import Combine
 import SwiftUI
 import FSCalendar
 
+protocol ModifyRecordDelegate: AnyObject {
+    func showModifyRecordVC(daily: Daily)
+}
+
 final class DailysVC: UIViewController {
     static let identifier = "DailysVC"
     @IBOutlet var calendar: FSCalendar!
@@ -26,6 +30,7 @@ final class DailysVC: UIViewController {
             UserDefaultsManager.set(to: isGraphChecked, forKey: .checks)
         }
     }
+    private weak var delegate: ModifyRecordDelegate?
     private var previusColorIndex: Int?
     private var isReversColor: Bool = false
     private var viewModel: DailysVM?
@@ -103,6 +108,19 @@ final class DailysVC: UIViewController {
         }
         
         self.present(activityViewController, animated: true)
+    }
+    
+    @IBAction func modifyRecord(_ sender: Any) {
+        guard let viewModel = viewModel,
+              let targetDaily = viewModel.currentDaily else { return }
+        
+        self.delegate?.showModifyRecordVC(daily: targetDaily)
+    }
+}
+
+extension DailysVC {
+    func configureDelegate(to delegate: ModifyRecordDelegate) {
+        self.delegate = delegate
     }
 }
 

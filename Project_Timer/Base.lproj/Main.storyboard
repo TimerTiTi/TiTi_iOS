@@ -41,8 +41,8 @@
                         <segue destination="uTZ-Xd-FDk" kind="relationship" relationship="viewControllers" id="Vdk-xC-VMe"/>
                         <segue destination="oQm-sw-2wm" kind="relationship" relationship="viewControllers" id="34B-GO-jqd"/>
                         <segue destination="uzd-s8-c8h" kind="relationship" relationship="viewControllers" id="OLM-IS-41E"/>
-                        <segue destination="AEA-qf-y0K" kind="relationship" relationship="viewControllers" id="fF6-px-WYG"/>
-                        <segue destination="XXO-cX-9ZJ" kind="relationship" relationship="viewControllers" id="y8r-84-g0j"/>
+                        <segue destination="NYs-wW-0dw" kind="relationship" relationship="viewControllers" id="YuG-6x-T8N"/>
+                        <segue destination="XXO-cX-9ZJ" kind="relationship" relationship="viewControllers" id="mDd-tN-zqf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yot-5n-etL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -715,19 +715,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQv-fU-y58" userLabel="viewView">
-                                <rect key="frame" x="23" y="175" width="368" height="556"/>
+                                <rect key="frame" x="23" y="180" width="368" height="546"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-27-ZZ6">
-                                        <rect key="frame" x="15" y="15" width="338" height="200.5"/>
+                                        <rect key="frame" x="15" y="15" width="338" height="195.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A53-oP-arm">
-                                                <rect key="frame" x="94" y="70" width="150.5" height="52.5"/>
+                                                <rect key="frame" x="100.5" y="68" width="137.5" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kls-9H-cZC">
-                                                <rect key="frame" x="15" y="127.5" width="308" height="58"/>
+                                                <rect key="frame" x="15" y="122.5" width="308" height="58"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0E-Mx-Rif">
                                                         <rect key="frame" x="89" y="11" width="20" height="36"/>
@@ -801,7 +801,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0E7-gz-qZf">
-                                                <rect key="frame" x="91" y="15" width="156" height="35"/>
+                                                <rect key="frame" x="98.5" y="15" width="141" height="33"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -821,10 +821,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edD-gd-h6H">
-                                        <rect key="frame" x="15" y="245.5" width="338" height="200.5"/>
+                                        <rect key="frame" x="15" y="240.5" width="338" height="195.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68G-AG-PfF">
-                                                <rect key="frame" x="15" y="127.5" width="308" height="58"/>
+                                                <rect key="frame" x="15" y="122.5" width="308" height="58"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sS-06-gWm">
                                                         <rect key="frame" x="89" y="11" width="20" height="36"/>
@@ -898,13 +898,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:40:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtP-zJ-VOa">
-                                                <rect key="frame" x="94" y="70" width="150.5" height="52.5"/>
+                                                <rect key="frame" x="100" y="68" width="138.5" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="45"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpK-zX-28l">
-                                                <rect key="frame" x="94.5" y="15" width="149.5" height="35"/>
+                                                <rect key="frame" x="102.5" y="15" width="133.5" height="33"/>
                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -924,7 +924,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-3c-K7i">
-                                        <rect key="frame" x="34" y="461" width="300" height="80"/>
+                                        <rect key="frame" x="34" y="451" width="300" height="80"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJp-63-wg3">
                                                 <rect key="frame" x="15" y="15" width="120" height="50"/>
@@ -1917,6 +1917,9 @@
                                                             <imageReference key="image" image="hammer" catalog="system" symbolScale="default"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="modifyRecord:" destination="8q7-4W-HO2" eventType="touchUpInside" id="tcc-3H-Z9T"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1998,6 +2001,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IM5-Fx-Ru3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5643" y="3852"/>
+        </scene>
+        <!--Modify RecordVC-->
+        <scene sceneID="sOP-Cw-Gwj">
+            <objects>
+                <viewController storyboardIdentifier="ModifyRecordVC" id="RCx-ia-dL6" customClass="ModifyRecordVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Smr-li-Gyt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dU3-nF-CLZ">
+                                <rect key="frame" x="24.5" y="88" width="365" height="365"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JC6-0r-CT4" userLabel="graphContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1095" height="365"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1095" id="K3O-pR-vu6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JC6-0r-CT4" firstAttribute="bottom" secondItem="bjO-04-kX9" secondAttribute="bottom" id="24u-0h-Yga"/>
+                                    <constraint firstItem="JC6-0r-CT4" firstAttribute="height" secondItem="fqG-Vr-iE3" secondAttribute="height" id="9o6-PN-OQl"/>
+                                    <constraint firstItem="JC6-0r-CT4" firstAttribute="trailing" secondItem="bjO-04-kX9" secondAttribute="trailing" id="EPe-JS-ca8"/>
+                                    <constraint firstAttribute="height" constant="365" id="Qxi-vU-m45"/>
+                                    <constraint firstItem="JC6-0r-CT4" firstAttribute="top" secondItem="bjO-04-kX9" secondAttribute="top" id="Tog-N9-HW2"/>
+                                    <constraint firstItem="bjO-04-kX9" firstAttribute="leading" secondItem="JC6-0r-CT4" secondAttribute="leading" id="U3u-ZN-5bc"/>
+                                    <constraint firstAttribute="width" constant="365" id="gqh-wi-LK9"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="bjO-04-kX9"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="fqG-Vr-iE3"/>
+                            </scrollView>
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IJb-FP-Vh2">
+                                <rect key="frame" x="149.5" y="409" width="115.5" height="26"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
+                            </pageControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eZP-HJ-zLA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dU3-nF-CLZ" firstAttribute="centerX" secondItem="eZP-HJ-zLA" secondAttribute="centerX" id="R9Q-Np-tSy"/>
+                            <constraint firstItem="IJb-FP-Vh2" firstAttribute="centerX" secondItem="dU3-nF-CLZ" secondAttribute="centerX" id="Zvw-6Y-FVa"/>
+                            <constraint firstItem="dU3-nF-CLZ" firstAttribute="top" secondItem="eZP-HJ-zLA" secondAttribute="top" id="pVX-U0-bVC"/>
+                            <constraint firstItem="dU3-nF-CLZ" firstAttribute="bottom" secondItem="IJb-FP-Vh2" secondAttribute="bottom" constant="18" id="qAO-UB-T8A"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Wb-mX-6DU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2fw-UM-kHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5642" y="4533"/>
         </scene>
         <!--WeeksVC-->
         <scene sceneID="VO9-e7-f1o">
@@ -2577,7 +2632,7 @@
             </objects>
             <point key="canvasLocation" x="3990" y="2336"/>
         </scene>
-        <!--Log-->
+        <!--LogVC-->
         <scene sceneID="Jba-LT-g3Y">
             <objects>
                 <viewController storyboardIdentifier="LogVC" id="AEA-qf-y0K" customClass="LogVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
@@ -2586,7 +2641,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-4h-eDe">
-                                <rect key="frame" x="123.5" y="44" width="167" height="32"/>
+                                <rect key="frame" x="123.5" y="88" width="167" height="32"/>
                                 <segments>
                                     <segment title="Home"/>
                                     <segment title="Daily"/>
@@ -2597,7 +2652,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
-                                <rect key="frame" x="0.0" y="83" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="127" width="414" height="637"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -2612,15 +2667,16 @@
                             <constraint firstItem="Hcb-4h-eDe" firstAttribute="centerX" secondItem="VoZ-gf-MpS" secondAttribute="centerX" id="tiX-vO-zCz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Log" image="chart.bar" catalog="system" selectedImage="chart.bar" id="zi6-N5-34R"/>
+                    <navigationItem key="navigationItem" id="ZwW-CZ-gMB"/>
                     <connections>
                         <outlet property="frameView" destination="9Hd-a4-Qq6" id="fup-Ew-MHD"/>
                         <outlet property="pageSegmentedControl" destination="Hcb-4h-eDe" id="XZi-jm-SUj"/>
+                        <segue destination="RCx-ia-dL6" kind="show" id="MRQ-4r-Bz7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmH-bt-mrV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4823" y="2336"/>
+            <point key="canvasLocation" x="4838" y="2336"/>
         </scene>
         <!--TiTi Lab-->
         <scene sceneID="JoX-xG-UgC">
@@ -2897,7 +2953,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gya-2J-f5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6816.8000000000002" y="2335.7142857142858"/>
+            <point key="canvasLocation" x="6816" y="2336"/>
         </scene>
         <!--Log-->
         <scene sceneID="hW3-2t-yl1">
@@ -3827,7 +3883,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uX8-iS-a2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5644" y="2335.7142857142858"/>
+            <point key="canvasLocation" x="5707" y="2336"/>
         </scene>
         <!--Update history-->
         <scene sceneID="Suz-YO-ZXZ">
@@ -3924,6 +3980,23 @@
             </objects>
             <point key="canvasLocation" x="6817" y="3075"/>
         </scene>
+        <!--Log-->
+        <scene sceneID="Q7q-y1-egC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NYs-wW-0dw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Log" image="chart.bar" catalog="system" landscapeImage="chart.bar" id="kc3-cQ-wwb"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="54B-yO-kx0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AEA-qf-y0K" kind="relationship" relationship="rootViewController" id="Iez-It-hsJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cxi-4E-W3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4838" y="1582"/>
+        </scene>
         <!--Item-->
         <scene sceneID="l7d-Mb-nHn">
             <objects>
@@ -3942,7 +4015,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mog-cF-xw2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5644" y="1583"/>
+            <point key="canvasLocation" x="5706" y="1582"/>
         </scene>
         <!--TiTi Functions-->
         <scene sceneID="mQn-fA-Ep3">
