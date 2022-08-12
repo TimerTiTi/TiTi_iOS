@@ -117,6 +117,7 @@
 		87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */; };
 		87BEBEED281C282D0095CD29 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
 		87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */; };
+		87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */; };
 		87C5150A267B38C0003DA21D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* Converter.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
@@ -250,6 +251,7 @@
 		87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVM.swift; sourceTree = "<group>"; };
 		87BEBEEC281C282D0095CD29 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
 		87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVC.swift; sourceTree = "<group>"; };
 		87C51509267B38C0003DA21D /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		87CA3B522618591100DD9BB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CA3B552618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 				87A8BC3C288D1448007ED793 /* LogHome */,
 				87C9F423288BD2D600B9E04A /* Dailys */,
 				878899782894EFC500B7F378 /* Weeks */,
+				87C2F97928A6BF7F00F44D98 /* ModifyRecordVC */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -701,6 +704,14 @@
 				87BEBEE8281C17000095CD29 /* RecordController.swift */,
 			);
 			path = RecordController;
+			sourceTree = "<group>";
+		};
+		87C2F97928A6BF7F00F44D98 /* ModifyRecordVC */ = {
+			isa = PBXGroup;
+			children = (
+				87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */,
+			);
+			path = ModifyRecordVC;
 			sourceTree = "<group>";
 		};
 		87C9F423288BD2D600B9E04A /* Dailys */ = {
@@ -962,6 +973,7 @@
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
+				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */,
