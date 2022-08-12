@@ -34,6 +34,16 @@ final class LogVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
+        // test code
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let activityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            activityViewController.popoverPresentationController?.sourceRect = pageSegmentedControl.frame
+        }
+        
+        self.present(activityViewController, animated: true)
     }
     
     override func viewWillLayoutSubviews() {

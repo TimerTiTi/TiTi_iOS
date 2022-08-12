@@ -94,4 +94,20 @@ public class Storage {
             print("---> Failed to clear directory ms: \(error.localizedDescription)")
         }
     }
+    
+    static func filePath<T: Decodable>(_ fileName: String, from directory: Directory, as type: T.Type) -> T? {
+        let url = directory.url.appendingPathComponent(fileName, isDirectory: false)
+        guard FileManager.default.fileExists(atPath: url.path) else { return nil }
+        guard let data = FileManager.default.contents(atPath: url.path) else { return nil }
+        
+        let decoder = JSONDecoder()
+        
+        do {
+            let model = try decoder.decode(type, from: data)
+            return model
+        } catch let error {
+            print("---> Failed to decode msg: \(error.localizedDescription)")
+            return nil
+        }
+    }
 }
