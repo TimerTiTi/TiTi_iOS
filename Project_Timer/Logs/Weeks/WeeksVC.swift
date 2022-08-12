@@ -89,7 +89,7 @@ extension WeeksVC {
         self.calendar.appearance.headerDateFormat = "YYYY.MM"
         self.calendar.appearance.headerTitleFont = TiTiFont.HGGGothicssiP80g(size: 25)
         self.calendar.appearance.weekdayFont = TiTiFont.HGGGothicssiP80g(size: 13)
-        self.calendar.appearance.titleFont = TiTiFont.HGGGothicssiP60g(size: 20)
+        self.calendar.appearance.titleFont = TiTiFont.HGGGothicssiP60g(size: 18)
         self.calendar.clipsToBounds = true
         self.calendar.layer.cornerCurve = .continuous
         self.calendar.layer.borderWidth = 2
