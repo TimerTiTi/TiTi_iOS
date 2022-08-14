@@ -2011,7 +2011,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dU3-nF-CLZ">
-                                <rect key="frame" x="24.5" y="88" width="365" height="365"/>
+                                <rect key="frame" x="24.5" y="44" width="365" height="365"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JC6-0r-CT4" userLabel="graphContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="1095" height="365"/>
@@ -2034,7 +2034,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="fqG-Vr-iE3"/>
                             </scrollView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IJb-FP-Vh2">
-                                <rect key="frame" x="149.5" y="409" width="115.5" height="26"/>
+                                <rect key="frame" x="149.5" y="365" width="115.5" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                             </pageControl>
@@ -2641,7 +2641,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-4h-eDe">
-                                <rect key="frame" x="123.5" y="88" width="167" height="32"/>
+                                <rect key="frame" x="123.5" y="44" width="167" height="32"/>
                                 <segments>
                                     <segment title="Home"/>
                                     <segment title="Daily"/>
@@ -2652,7 +2652,7 @@
                                 </connections>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
-                                <rect key="frame" x="0.0" y="127" width="414" height="637"/>
+                                <rect key="frame" x="0.0" y="83" width="414" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -3983,10 +3983,10 @@
         <!--Log-->
         <scene sceneID="Q7q-y1-egC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="NYs-wW-0dw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" toolbarHidden="NO" id="NYs-wW-0dw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Log" image="chart.bar" catalog="system" landscapeImage="chart.bar" id="kc3-cQ-wwb"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="54B-yO-kx0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
