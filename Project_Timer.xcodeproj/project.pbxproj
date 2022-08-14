@@ -20,6 +20,7 @@
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
+		04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -160,6 +161,7 @@
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionView.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
@@ -355,6 +357,15 @@
 				04E0DFC628A9191A004DABBE /* HistoryCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		04E0DFC928A92652004DABBE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				04E0DFC428A918DE004DABBE /* Cell */,
+				04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		04FA75D4286F25FC00BAE2B2 /* Constant */ = {
@@ -726,7 +737,7 @@
 			children = (
 				87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */,
 				04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */,
-				04E0DFC428A918DE004DABBE /* Cell */,
+				04E0DFC928A92652004DABBE /* View */,
 			);
 			path = ModifyRecordVC;
 			sourceTree = "<group>";
@@ -906,6 +917,7 @@
 			files = (
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */,
+				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
