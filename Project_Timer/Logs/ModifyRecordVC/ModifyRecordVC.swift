@@ -45,6 +45,7 @@ final class ModifyRecordVC: UIViewController {
         self.configureTaskInteractionFrameView()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
+        self.configureTableViewDelegate()
         self.configureViewModel()
         self.configureHostingVC()
         self.bindAll()
@@ -112,6 +113,10 @@ extension ModifyRecordVC {
     private func configureCollectionViewDelegate() {
         self.standardDailyGraphView.configureDelegate(self)
         self.tasksProgressDailyGraphView.configureDelegate(self)
+    }
+    
+    private func configureTableViewDelegate() {
+        self.taskModifyInteractionView.configureDelegate(self)
     }
     
     private func configureViewModel() {
@@ -257,5 +262,16 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
             }
         } else { return .zero }
+    }
+}
+
+extension ModifyRecordVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+        return cell
     }
 }
