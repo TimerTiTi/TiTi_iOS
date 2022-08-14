@@ -16,6 +16,7 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var timeIntervalLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var underLine: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,10 +43,10 @@
                             <constraint firstAttribute="width" secondItem="8J7-I6-Ikv" secondAttribute="height" multiplier="1:1" id="xVD-9R-bSV"/>
                         </constraints>
                         <color key="tintColor" systemColor="labelColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system">
-                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
-                        </buttonConfiguration>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="pencil.circle" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
+                        </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-SW-1iF">
                         <rect key="frame" x="0.0" y="7.5" width="63" height="27"/>
@@ -54,13 +55,14 @@
                             <constraint firstAttribute="height" constant="27" id="1MA-0E-4wT"/>
                             <constraint firstAttribute="width" constant="63" id="heu-ih-D6Q"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS5-cU-1yx">
@@ -70,17 +72,26 @@
                             <constraint firstAttribute="height" constant="27" id="O0c-Ky-itE"/>
                             <constraint firstAttribute="width" constant="63" id="WMO-1D-wTh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCk-mq-fUL">
+                        <rect key="frame" x="0.0" y="41" width="245" height="1"/>
+                        <color key="backgroundColor" name="Blue"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="6Ye-Zq-IHG"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="VCk-mq-fUL" secondAttribute="trailing" id="1PM-nx-NsB"/>
                     <constraint firstItem="V5Q-SW-1iF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AbJ-Ep-dRc"/>
                     <constraint firstAttribute="trailing" secondItem="8J7-I6-Ikv" secondAttribute="trailing" id="BJq-cf-scH"/>
                     <constraint firstItem="8J7-I6-Ikv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G7M-D4-cJq"/>
@@ -89,7 +100,9 @@
                     <constraint firstItem="vjq-M1-ib5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tka-jD-fYw"/>
                     <constraint firstItem="vjq-M1-ib5" firstAttribute="leading" secondItem="FS5-cU-1yx" secondAttribute="trailing" constant="5" id="gJw-aR-M74"/>
                     <constraint firstItem="FS5-cU-1yx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="grB-7T-5KC"/>
+                    <constraint firstAttribute="bottom" secondItem="VCk-mq-fUL" secondAttribute="bottom" id="ndW-wI-47n"/>
                     <constraint firstItem="PiW-xl-TmG" firstAttribute="leading" secondItem="V5Q-SW-1iF" secondAttribute="trailing" constant="5" id="rpj-75-hMd"/>
+                    <constraint firstItem="VCk-mq-fUL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="w9s-26-8yy"/>
                     <constraint firstItem="V5Q-SW-1iF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xOE-wD-gZB"/>
                 </constraints>
             </tableViewCellContentView>
@@ -99,12 +112,16 @@
                 <outlet property="endTimeLabel" destination="FS5-cU-1yx" id="Req-P6-9tH"/>
                 <outlet property="startTimeLabel" destination="V5Q-SW-1iF" id="YSB-jz-g5S"/>
                 <outlet property="timeIntervalLabel" destination="vjq-M1-ib5" id="Z0e-Jp-PFc"/>
+                <outlet property="underLine" destination="VCk-mq-fUL" id="q3Z-te-Zhu"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="99.776785714285708"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="Blue">
+            <color red="0.6470588235294118" green="0.75294117647058822" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
