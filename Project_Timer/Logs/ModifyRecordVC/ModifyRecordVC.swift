@@ -19,6 +19,17 @@ final class ModifyRecordVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
+    private var taskInteractionFrameView = UIView()
+    private var taskModifyInteractionView = TaskInteractionView()
+    private var taskEmptyInteractionView: UILabel = {
+        let label = UILabel()
+        label.text = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = TiTiFont.HGGGothicssiP60g(size: 17)
+        label.textColor = UIColor.label
+        return label
+    }()
     private var isReverseColor: Bool = false    // Daily로부터 받아와야 함
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -31,6 +42,7 @@ final class ModifyRecordVC: UIViewController {
         super.viewDidLoad()
         self.title = "ModifyRecordVC"
         self.configureScrollView()
+        self.configureTaskInteractionView()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
         self.configureViewModel()
@@ -38,6 +50,7 @@ final class ModifyRecordVC: UIViewController {
         self.bindAll()
         
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
+        self.showTaskModifyInteractionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +62,17 @@ final class ModifyRecordVC: UIViewController {
 extension ModifyRecordVC {
     private func configureScrollView() {
         self.graphsScrollView.delegate = self
+    }
+    
+    private func configureTaskInteractionView() {
+        self.view.addSubview(self.taskInteractionFrameView)
+        self.taskInteractionFrameView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskInteractionFrameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.taskInteractionFrameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.taskInteractionFrameView.topAnchor.constraint(equalTo: self.graphsScrollView.bottomAnchor, constant: 16),
+            self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16 - (self.tabBarController?.tabBar.frame.height ?? 0))
+        ])
     }
     
     private func configureGraphs() {
@@ -143,6 +167,35 @@ extension ModifyRecordVC {
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
         self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
+    }
+}
+
+extension ModifyRecordVC {
+    private func emptyInteractionFrameView() {
+        self.taskInteractionFrameView.subviews.forEach { $0.removeFromSuperview() }
+    }
+    
+    private func showTaskEmptyInteractionView() {
+        self.emptyInteractionFrameView()
+        
+        self.taskInteractionFrameView.addSubview(self.taskEmptyInteractionView)
+        self.taskEmptyInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskEmptyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskEmptyInteractionView.centerYAnchor.constraint(equalTo: self.taskInteractionFrameView.centerYAnchor)
+        ])
+    }
+    
+    private func showTaskModifyInteractionView() {
+        self.emptyInteractionFrameView()
+        
+        self.taskInteractionFrameView.addSubview(self.taskModifyInteractionView)
+        self.taskModifyInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskModifyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskModifyInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
+            self.taskModifyInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
+        ])
     }
 }
 
