@@ -33,7 +33,7 @@ class TaskInteractionView: UIView {
         ])
         button.tintColor = UIColor.label
         button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
-        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22), forImageIn: .normal) // 이미지 사이즈 조정
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 21), forImageIn: .normal) // 이미지 사이즈 조정
         return button
     }()
     var historyTableView: UITableView = {
