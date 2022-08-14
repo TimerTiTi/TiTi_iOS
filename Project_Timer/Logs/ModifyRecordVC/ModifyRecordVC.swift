@@ -42,7 +42,7 @@ final class ModifyRecordVC: UIViewController {
         super.viewDidLoad()
         self.title = "ModifyRecordVC"
         self.configureScrollView()
-        self.configureTaskInteractionView()
+        self.configureTaskInteractionFrameView()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
         self.configureViewModel()
@@ -51,25 +51,35 @@ final class ModifyRecordVC: UIViewController {
         
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
         self.showTaskModifyInteractionView()
+//        self.showTaskEmptyInteractionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.configureShadows(self.taskModifyInteractionView)
+    }
 }
 
 extension ModifyRecordVC {
+    private func configureShadows(_ views: UIView...) {
+        views.forEach { $0.configureShadow() }
+    }
+    
     private func configureScrollView() {
         self.graphsScrollView.delegate = self
     }
     
-    private func configureTaskInteractionView() {
+    private func configureTaskInteractionFrameView() {
         self.view.addSubview(self.taskInteractionFrameView)
         self.taskInteractionFrameView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.taskInteractionFrameView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.taskInteractionFrameView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.taskInteractionFrameView.widthAnchor.constraint(equalToConstant: 365),
+            self.taskInteractionFrameView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.taskInteractionFrameView.topAnchor.constraint(equalTo: self.graphsScrollView.bottomAnchor, constant: 16),
             self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16 - (self.tabBarController?.tabBar.frame.height ?? 0))
         ])
