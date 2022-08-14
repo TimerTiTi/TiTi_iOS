@@ -89,7 +89,7 @@ class TaskInteractionView: UIView {
         self.backgroundColor = UIColor.systemBackground
         self.cornerRadius = 25
         NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalToConstant: 365)
+            self.widthAnchor.constraint(equalToConstant: 345)
         ])
         
         // taskCategoryLabel
