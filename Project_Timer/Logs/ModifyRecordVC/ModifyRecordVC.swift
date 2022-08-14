@@ -17,7 +17,6 @@ final class ModifyRecordVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
