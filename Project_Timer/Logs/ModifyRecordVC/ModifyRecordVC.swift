@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 final class ModifyRecordVC: UIViewController {
     static let identifier = "ModifyRecordVC"
@@ -18,15 +19,25 @@ final class ModifyRecordVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
+    private var isReverseColor: Bool = false    // Daily로부터 받아와야 함
     private var viewModel: ModifyRecordVM?
+    private var cancellables: Set<AnyCancellable> = []
+    enum GraphCollectionView: Int {
+        case standardDailyGraphView = 0
+        case tasksProgressDailyGraphView = 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "ModifyRecordVC"
         self.configureScrollView()
         self.configureGraphs()
+        self.configureCollectionViewDelegate()
         self.configureViewModel()
         self.configureHostingVC()
+        self.bindAll()
+        
+        self.viewModel?.updateDaily(to: RecordController.shared.daily)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +75,11 @@ extension ModifyRecordVC {
         ])
     }
     
+    private func configureCollectionViewDelegate() {
+        self.standardDailyGraphView.configureDelegate(self)
+        self.tasksProgressDailyGraphView.configureDelegate(self)
+    }
+    
     private func configureViewModel() {
         self.viewModel = ModifyRecordVM()
     }
@@ -84,10 +100,99 @@ extension ModifyRecordVC {
     }
 }
 
+extension ModifyRecordVC {
+    private func bindAll() {
+        self.bindDaily()
+        self.bindTasks()
+    }
+    
+    private func bindDaily() {
+        self.viewModel?.$currentDaily
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphsFromDaily()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindTasks() {
+        self.viewModel?.$tasks
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateGraphsFromTasks()
+            })
+            .store(in: &self.cancellables)
+    }
+}
+
+extension ModifyRecordVC {
+    private func updateGraphsFromDaily() {
+        let daily = self.viewModel?.currentDaily
+        self.standardDailyGraphView.updateFromDaily(daily)
+        self.timelineDailyGraphView.updateFromDaily(daily)
+        self.tasksProgressDailyGraphView.updateFromDaily(daily)
+    }
+    
+    private func updateGraphsFromTasks() {
+        let tasks = self.viewModel?.tasks ?? []
+        self.standardDailyGraphView.reload()
+        self.standardDailyGraphView.layoutIfNeeded()
+        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
+        self.tasksProgressDailyGraphView.reload()
+        self.tasksProgressDailyGraphView.layoutIfNeeded()
+        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
+    }
+}
+
 extension ModifyRecordVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.graphsScrollView else { return }
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
         self.graphsPageControl.currentPage = Int(round(value))
+    }
+}
+
+extension ModifyRecordVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                return self.viewModel?.tasks.count ?? 0
+            case .tasksProgressDailyGraphView:
+                return min(8, self.viewModel?.tasks.count ?? 0)
+            }
+        } else { return 0 }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
+                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                return cell
+            case .tasksProgressDailyGraphView:
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
+                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                return cell
+            }
+        } else { return .init() }
+    }
+}
+
+extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+            switch graph {
+            case .standardDailyGraphView:
+                return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
+            case .tasksProgressDailyGraphView:
+                return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
+            }
+        } else { return .zero }
     }
 }
