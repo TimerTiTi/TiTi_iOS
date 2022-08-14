@@ -21,6 +21,7 @@
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
 		04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */; };
+		04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFCC28A94460004DABBE /* PaddingLabel.swift */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -162,6 +163,7 @@
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionView.swift; sourceTree = "<group>"; };
+		04E0DFCC28A94460004DABBE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
@@ -522,6 +524,7 @@
 				04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */,
 				87199F5B28840E970017D01A /* TasksCircularProgressView.swift */,
 				87199F5D28842F0E0017D01A /* CheckGraphButton.swift */,
+				04E0DFCC28A94460004DABBE /* PaddingLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -985,6 +988,7 @@
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
+				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */,
