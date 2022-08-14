@@ -28,7 +28,7 @@ class TaskInteractionView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 38),
+            button.heightAnchor.constraint(equalToConstant: 35),
             button.widthAnchor.constraint(equalTo: button.heightAnchor)
         ])
         button.tintColor = UIColor.label
@@ -87,6 +87,7 @@ class TaskInteractionView: UIView {
     private func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.systemBackground
+        self.cornerRadius = 25
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 365)
         ])
