@@ -24,55 +24,57 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiW-xl-TmG">
-                        <rect key="frame" x="73" y="11.5" width="12" height="19"/>
+                        <rect key="frame" x="68" y="11.5" width="12" height="19"/>
                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:30:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjq-M1-ib5">
-                        <rect key="frame" x="165" y="14" width="43" height="14"/>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                        <rect key="frame" x="153" y="14" width="46" height="14"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J7-I6-Ikv">
-                        <rect key="frame" x="218" y="7.5" width="27" height="27"/>
+                        <rect key="frame" x="210" y="3.5" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="27" id="mu5-wg-KXX"/>
-                            <constraint firstAttribute="width" constant="27" id="tBV-QB-8yx"/>
+                            <constraint firstAttribute="width" constant="35" id="tBV-QB-8yx"/>
+                            <constraint firstAttribute="width" secondItem="8J7-I6-Ikv" secondAttribute="height" multiplier="1:1" id="xVD-9R-bSV"/>
                         </constraints>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="pencil.circle" catalog="system">
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21"/>
+                        </buttonConfiguration>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-SW-1iF">
-                        <rect key="frame" x="0.0" y="8.5" width="65" height="25"/>
+                        <rect key="frame" x="0.0" y="7.5" width="63" height="27"/>
                         <color key="backgroundColor" red="0.6470588235294118" green="0.75294117647058822" blue="0.80784313725490198" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="1MA-0E-4wT"/>
-                            <constraint firstAttribute="width" constant="65" id="heu-ih-D6Q"/>
+                            <constraint firstAttribute="height" constant="27" id="1MA-0E-4wT"/>
+                            <constraint firstAttribute="width" constant="63" id="heu-ih-D6Q"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS5-cU-1yx">
-                        <rect key="frame" x="93" y="8.5" width="65" height="25"/>
+                        <rect key="frame" x="85" y="7.5" width="63" height="27"/>
                         <color key="backgroundColor" red="0.64705882349999999" green="0.75294117650000003" blue="0.80784313730000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="O0c-Ky-itE"/>
-                            <constraint firstAttribute="width" constant="65" id="WMO-1D-wTh"/>
+                            <constraint firstAttribute="height" constant="27" id="O0c-Ky-itE"/>
+                            <constraint firstAttribute="width" constant="63" id="WMO-1D-wTh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
@@ -82,12 +84,12 @@
                     <constraint firstItem="V5Q-SW-1iF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="AbJ-Ep-dRc"/>
                     <constraint firstAttribute="trailing" secondItem="8J7-I6-Ikv" secondAttribute="trailing" id="BJq-cf-scH"/>
                     <constraint firstItem="8J7-I6-Ikv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G7M-D4-cJq"/>
-                    <constraint firstItem="FS5-cU-1yx" firstAttribute="leading" secondItem="PiW-xl-TmG" secondAttribute="trailing" constant="8" id="PsJ-uK-z9K"/>
+                    <constraint firstItem="FS5-cU-1yx" firstAttribute="leading" secondItem="PiW-xl-TmG" secondAttribute="trailing" constant="5" id="PsJ-uK-z9K"/>
                     <constraint firstItem="PiW-xl-TmG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S6g-AC-5iq"/>
                     <constraint firstItem="vjq-M1-ib5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tka-jD-fYw"/>
-                    <constraint firstItem="vjq-M1-ib5" firstAttribute="leading" secondItem="FS5-cU-1yx" secondAttribute="trailing" constant="7" id="gJw-aR-M74"/>
+                    <constraint firstItem="vjq-M1-ib5" firstAttribute="leading" secondItem="FS5-cU-1yx" secondAttribute="trailing" constant="5" id="gJw-aR-M74"/>
                     <constraint firstItem="FS5-cU-1yx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="grB-7T-5KC"/>
-                    <constraint firstItem="PiW-xl-TmG" firstAttribute="leading" secondItem="V5Q-SW-1iF" secondAttribute="trailing" constant="8" id="rpj-75-hMd"/>
+                    <constraint firstItem="PiW-xl-TmG" firstAttribute="leading" secondItem="V5Q-SW-1iF" secondAttribute="trailing" constant="5" id="rpj-75-hMd"/>
                     <constraint firstItem="V5Q-SW-1iF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xOE-wD-gZB"/>
                 </constraints>
             </tableViewCellContentView>
