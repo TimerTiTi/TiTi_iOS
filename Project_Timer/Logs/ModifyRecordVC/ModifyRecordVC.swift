@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 final class ModifyRecordVC: UIViewController {
     static let identifier = "ModifyRecordVC"
@@ -25,6 +26,7 @@ final class ModifyRecordVC: UIViewController {
         self.configureScrollView()
         self.configureGraphs()
         self.configureViewModel()
+        self.configureHostingVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +66,21 @@ extension ModifyRecordVC {
     
     private func configureViewModel() {
         self.viewModel = ModifyRecordVM()
+    }
+    
+    private func configureHostingVC() {
+        guard let timelineVM = self.viewModel?.timelineVM else { return }
+        let hostingStandardVC = UIHostingController(rootView: TimelineView(frameHeight: 100, viewModel: timelineVM))
+        addChild(hostingStandardVC)
+        hostingStandardVC.didMove(toParent: self)
+        
+        self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
+        
+        let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: timelineVM))
+        addChild(hostingTimelineVC)
+        hostingTimelineVC.didMove(toParent: self)
+        
+        self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
 }
 
