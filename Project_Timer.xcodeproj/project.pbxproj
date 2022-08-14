@@ -18,6 +18,8 @@
 		04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */; };
 		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
+		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
+		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
 		04F0D2B9286607A7007ED596 /* SingleTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
@@ -156,6 +158,8 @@
 		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
 		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
+		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
@@ -342,6 +346,15 @@
 				04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04E0DFC428A918DE004DABBE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				04E0DFC528A9191A004DABBE /* HistoryCell.swift */,
+				04E0DFC628A9191A004DABBE /* HistoryCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		04FA75D4286F25FC00BAE2B2 /* Constant */ = {
@@ -713,6 +726,7 @@
 			children = (
 				87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */,
 				04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */,
+				04E0DFC428A918DE004DABBE /* Cell */,
 			);
 			path = ModifyRecordVC;
 			sourceTree = "<group>";
@@ -871,6 +885,7 @@
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */,
+				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
@@ -995,6 +1010,7 @@
 				87A7624726493BB500174401 /* LogHomeVC.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
+				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
