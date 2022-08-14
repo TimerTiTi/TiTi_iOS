@@ -17,12 +17,14 @@ final class ModifyRecordVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
+    private var viewModel: ModifyRecordVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "ModifyRecordVC"
         self.configureScrollView()
         self.configureGraphs()
+        self.configureViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +60,10 @@ extension ModifyRecordVC {
             self.tasksProgressDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor),
             self.tasksProgressDailyGraphView.trailingAnchor.constraint(equalTo: self.graphsContentView.trailingAnchor)
         ])
+    }
+    
+    private func configureViewModel() {
+        self.viewModel = ModifyRecordVM()
     }
 }
 
