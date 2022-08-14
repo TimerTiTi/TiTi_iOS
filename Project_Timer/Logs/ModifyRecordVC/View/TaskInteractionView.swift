@@ -14,20 +14,26 @@ class TaskInteractionView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 25),
+            button.heightAnchor.constraint(equalToConstant: 30),
             button.widthAnchor.constraint(equalToConstant: 70)
         ])
         button.backgroundColor = TiTiColor.blue
-        button.titleLabel?.textColor = UIColor.label
+        button.cornerRadius = 6
+        button.setTitle("OK", for: .normal)
+        button.setTitleColor(UIColor.label, for: .normal)
+        button.titleLabel?.font = TiTiFont.HGGGothicssiP60g(size: 18)
         return button
     }()
     var editTaskButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 27),
+            button.heightAnchor.constraint(equalToConstant: 38),
             button.widthAnchor.constraint(equalTo: button.heightAnchor)
         ])
+        button.tintColor = UIColor.label
+        button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22), forImageIn: .normal) // 이미지 사이즈 조정
         return button
     }()
     var historyTableView: UITableView = {
@@ -48,8 +54,8 @@ class TaskInteractionView: UIView {
     private var taskCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Task:")
     private var timeCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Time:")
     private var historysCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Historys:")
-    private var taskLabel: UILabel = {
-        let label = UILabel()
+    private var taskLabel: PaddingLabel = {
+        let label = PaddingLabel(vertical: 0, horizontal: 7)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP60g(size: 16)
         label.textColor = UIColor.label
@@ -58,14 +64,18 @@ class TaskInteractionView: UIView {
         ])
         label.textAlignment = .center
         label.backgroundColor = TiTiColor.blue?.withAlphaComponent(0.5)
+        label.text = "알고리즘"
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 6
         return label
     }()
     private var totalTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 16)
+        label.font = TiTiFont.HGGGothicssiP80g(size: 18)
         label.textColor = TiTiColor.blue
         label.textAlignment = .center
+        label.text = "00:00:00"
         return label
     }()
     
@@ -102,25 +112,18 @@ class TaskInteractionView: UIView {
             historysCategoryLabel.topAnchor.constraint(equalTo: timeCategoryLabel.bottomAnchor, constant: 17)
         ])
         
-        // taskLabel
-        self.addSubview(self.taskLabel)
-        NSLayoutConstraint.activate([
-            self.taskLabel.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
-            self.taskLabel.leadingAnchor.constraint(equalTo: self.historyTableView.leadingAnchor)
-        ])
-        
         // editTaskButton
         self.addSubview(self.editTaskButton)
         NSLayoutConstraint.activate([
-            self.editTaskButton.centerYAnchor.constraint(equalTo: self.taskLabel.centerYAnchor),
+            self.editTaskButton.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
             self.editTaskButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14)
         ])
         
-        // totalTimeLabel
-        self.addSubview(self.totalTimeLabel)
+        // finishButton
+        self.addSubview(self.finishButton)
         NSLayoutConstraint.activate([
-            self.totalTimeLabel.centerYAnchor.constraint(equalTo: self.timeCategoryLabel.centerYAnchor),
-            self.totalTimeLabel.leadingAnchor.constraint(equalTo: taskLabel.leadingAnchor)
+            self.finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17),
+            self.finishButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
         
         // historyTableView
@@ -129,14 +132,21 @@ class TaskInteractionView: UIView {
             self.historyTableView.leadingAnchor.constraint(equalTo: self.historysCategoryLabel.trailingAnchor, constant: 10),
             self.historyTableView.topAnchor.constraint(equalTo: self.historysCategoryLabel.topAnchor),
             self.historyTableView.trailingAnchor.constraint(equalTo: self.editTaskButton.trailingAnchor),
-            self.historyTableView.bottomAnchor.constraint(equalTo: self.finishButton.topAnchor, constant: 8)
+            self.historyTableView.bottomAnchor.constraint(lessThanOrEqualTo: self.finishButton.topAnchor, constant: -17)
         ])
         
-        // okbutton
-        self.addSubview(self.finishButton)
+        // taskLabel
+        self.addSubview(self.taskLabel)
         NSLayoutConstraint.activate([
-            self.finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17),
-            self.finishButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            self.taskLabel.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
+            self.taskLabel.leadingAnchor.constraint(equalTo: self.historyTableView.leadingAnchor)
+        ])
+        
+        // totalTimeLabel
+        self.addSubview(self.totalTimeLabel)
+        NSLayoutConstraint.activate([
+            self.totalTimeLabel.centerYAnchor.constraint(equalTo: self.timeCategoryLabel.centerYAnchor),
+            self.totalTimeLabel.leadingAnchor.constraint(equalTo: taskLabel.leadingAnchor)
         ])
     }
 }
