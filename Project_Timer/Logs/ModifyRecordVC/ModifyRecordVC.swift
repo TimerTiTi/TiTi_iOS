@@ -50,7 +50,6 @@ final class ModifyRecordVC: UIViewController {
         self.configureHostingVC()
         self.bindAll()
         
-        self.viewModel?.updateDaily(to: RecordController.shared.daily)
         self.showTaskModifyInteractionView()
 //        self.showTaskEmptyInteractionView()
     }
@@ -120,7 +119,8 @@ extension ModifyRecordVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = ModifyRecordVM()
+        // TODO: 오늘이 아니라 전달받은 Daily로 뷰모델 생성해야 함
+        self.viewModel = ModifyRecordVM(daily: RecordController.shared.daily)
     }
     
     private func configureHostingVC() {
@@ -149,7 +149,6 @@ extension ModifyRecordVC {
     private func bindDaily() {
         self.viewModel?.$currentDaily
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.updateGraphsFromDaily()
                 self?.updateInteractionViews()
@@ -160,7 +159,6 @@ extension ModifyRecordVC {
     private func bindTasks() {
         self.viewModel?.$tasks
             .receive(on: DispatchQueue.main)
-            .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.updateGraphsFromTasks()
             })
@@ -314,7 +312,27 @@ extension ModifyRecordVC: UITableViewDataSource {
 extension ModifyRecordVC: EditTaskButtonDelegate {
     func editTaskButtonTapped() {
         print("DEBUG: edit task button tapped")
-        // TODO: 과목명 수정
+        // TODO: localize
+        let alert = UIAlertController(title: "과목명 수정",
+                                      message: "새로운 과목을 입력해주세요",
+                                      preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            let newTaskName = alert.textFields?[0].text ?? ""
+            self?.viewModel?.updateSelectedTaskName(to: newTaskName)
+        }
+        
+        alert.addTextField { (inputNewTaskName) in
+            inputNewTaskName.placeholder = "새로운 과목"
+            inputNewTaskName.textAlignment = .center
+            inputNewTaskName.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            inputNewTaskName.text = self.viewModel?.selectedTask
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
     }
 }
 
