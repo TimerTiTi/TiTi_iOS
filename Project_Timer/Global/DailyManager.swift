@@ -41,4 +41,10 @@ class DailyManager {
             print("update daily!")
         }
     }
+    
+    func modifyDaily(_ newDaily: Daily) {
+        guard let index = self.dailys.firstIndex(where: { $0.day == newDaily.day }) else { return }
+        self.dailys[index] = newDaily
+        self.saveDailys()
+    }
 }
