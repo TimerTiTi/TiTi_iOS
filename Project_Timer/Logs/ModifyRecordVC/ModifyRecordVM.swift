@@ -50,8 +50,12 @@ extension ModifyRecordVM {
     }
     
     func addHistory(_ history: TaskHistory) {
-        guard let taskName = self.selectedTask else { return }
-        
-        self.currentDaily.addHistory(history, to: taskName)
+        guard let selectedTask = self.selectedTask else { return }
+        self.currentDaily.addHistory(history, to: selectedTask)
+    }
+    
+    func updateHistory(at index: Int, to newHistory: TaskHistory) {
+        guard let selectedTask = self.selectedTask else { return }
+        self.currentDaily.editHistory(of: selectedTask, at: index, to: newHistory)
     }
 }
