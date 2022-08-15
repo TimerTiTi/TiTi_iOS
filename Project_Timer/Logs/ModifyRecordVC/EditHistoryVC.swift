@@ -20,6 +20,7 @@ class EditHistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bind()
+        self.configureColor()
     }
     
     @IBAction func startTimeButtonTapped(_ sender: UIButton) {
@@ -35,7 +36,9 @@ class EditHistoryVC: UIViewController {
             self?.history.updateEndDate(to: newEndDate)
         }
     }
-    
+}
+
+extension EditHistoryVC {
     private func bind() {
         self.$history
             .receive(on: DispatchQueue.main)
@@ -47,6 +50,17 @@ class EditHistoryVC: UIViewController {
             .store(in: &self.cancellables)
     }
     
+    private func configureColor() {
+        let userTintColor = UIColor(named: String.userTintColor)
+        self.startTimeButton.backgroundColor = userTintColor?.withAlphaComponent(0.5)
+        self.startTimeButton.borderColor = userTintColor
+        self.endTimeButton.backgroundColor = userTintColor?.withAlphaComponent(0.5)
+        self.endTimeButton.borderColor = userTintColor
+        self.intervalLabel.textColor = userTintColor
+    }
+}
+
+extension EditHistoryVC {
     private func popoverEditDateVC(on sourceView: UIView, date: Date, changeHandler: @escaping DateChangeHandler) {
         guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: "EditDateVC") as? EditDateVC else { return }
         

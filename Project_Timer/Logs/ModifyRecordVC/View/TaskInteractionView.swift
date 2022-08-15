@@ -27,7 +27,7 @@ class TaskInteractionView: UIView {
             button.heightAnchor.constraint(equalToConstant: 30),
             button.widthAnchor.constraint(equalToConstant: 70)
         ])
-        button.backgroundColor = TiTiColor.blue
+        button.backgroundColor = UIColor(named: String.userTintColor)
         button.cornerRadius = 6
         button.setTitle("OK", for: .normal)
         button.setTitleColor(UIColor.label, for: .normal)
@@ -75,7 +75,7 @@ class TaskInteractionView: UIView {
             label.heightAnchor.constraint(equalToConstant: 25)
         ])
         label.textAlignment = .center
-        label.backgroundColor = TiTiColor.blue?.withAlphaComponent(0.5)
+        label.backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
         label.text = "알고리즘"
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.clipsToBounds = true
@@ -86,7 +86,7 @@ class TaskInteractionView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP80g(size: 19)
-        label.textColor = TiTiColor.blue
+        label.textColor = UIColor(named: String.userTintColor)
         label.textAlignment = .center
         label.text = "00:00:00"
         return label
