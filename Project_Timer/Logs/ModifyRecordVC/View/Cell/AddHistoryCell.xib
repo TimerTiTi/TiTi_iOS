@@ -36,6 +36,9 @@
                         <state key="normal" title="기록 추가">
                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="medium"/>
                         </state>
+                        <connections>
+                            <action selector="addHistoryButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XGA-J2-7bP"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

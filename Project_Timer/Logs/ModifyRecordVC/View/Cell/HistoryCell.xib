@@ -47,6 +47,9 @@
                         <state key="normal" image="pencil.circle" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
                         </state>
+                        <connections>
+                            <action selector="editHistoryButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KpQ-sv-oPT"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-SW-1iF">
                         <rect key="frame" x="0.0" y="7.5" width="65" height="27"/>
