@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EditTaskButtonDelegate: AnyObject {
+    func editTaskButtonTapped()
+}
+
 class TaskInteractionView: UIView {
     /* public */
     var finishButton: UIButton = {
@@ -81,6 +85,13 @@ class TaskInteractionView: UIView {
         label.text = "00:00:00"
         return label
     }()
+    private weak var delegate: EditTaskButtonDelegate? {
+        didSet {
+            self.editTaskButton.addAction(UIAction(handler: { [weak self] _ in
+                self?.delegate?.editTaskButtonTapped()
+            }), for: .touchUpInside)
+        }
+    }
     
     convenience init() {
         self.init(frame: CGRect())
@@ -158,9 +169,10 @@ class TaskInteractionView: UIView {
 }
 
 extension TaskInteractionView {
-    func configureDelegate(_ delegate: UITableViewDelegate & UITableViewDataSource) {
+    func configureDelegate(_ delegate: UITableViewDelegate & UITableViewDataSource & EditTaskButtonDelegate) {
         self.historyTableView.delegate = delegate
         self.historyTableView.dataSource = delegate
+        self.delegate = delegate
     }
     
     func configureTableView() {
