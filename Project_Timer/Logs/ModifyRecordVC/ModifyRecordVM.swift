@@ -48,4 +48,10 @@ extension ModifyRecordVM {
         self.currentDaily.changeTaskName(from: oldName, to: newName)
         self.selectedTask = newName
     }
+    
+    func addHistory(_ history: TaskHistory) {
+        guard let taskName = self.selectedTask else { return }
+        
+        self.currentDaily.addHistory(history, to: taskName)
+    }
 }
