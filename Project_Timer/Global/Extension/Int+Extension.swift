@@ -23,13 +23,16 @@ extension Int {
     }
     
     var toHHmmss: String {
-        var timeString = self.toTimeString
+        let time = self < 0 ? -self : self
+        let s = time % 60
+        let h = time / 3600
+        let m = (time / 60) - (h * 60)
         
-        if timeString.first == "0" {
-            timeString = "0" + timeString
+        if self < 0 {
+            return String(format: "-%02d:%02d:%02d", h, m, s)
+        } else {
+            return String(format: "%02d:%02d:%02d", h, m, s)
         }
-        
-        return timeString
     }
     
     var toHM: String {

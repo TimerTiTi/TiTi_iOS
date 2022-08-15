@@ -199,4 +199,13 @@ extension Daily {
         self.updateMaxTime()
         self.updateTimeline()
     }
+    
+    mutating func editHistory(of taskName: String, at historyIndex: Int, to newHistory: TaskHistory) {
+        self.taskHistorys?[taskName]?[historyIndex] = newHistory
+        
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
+    }
+    
 }

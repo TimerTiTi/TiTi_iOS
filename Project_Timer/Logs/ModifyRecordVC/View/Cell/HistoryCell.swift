@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditHistoryButtonDelegate: AnyObject {
-    func editHistoryButtonTapped()
+    func editHistoryButtonTapped(at indexPath: IndexPath?)
 }
 
 class HistoryCell: UITableViewCell {
@@ -23,9 +23,12 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var underLine: UIView!
     
     private weak var delegate: EditHistoryButtonDelegate?
+    var indexPath: IndexPath? {
+        return (self.superview as? UITableView)?.indexPath(for: self)
+    }
     
     @IBAction func editHistoryButtonTapped(_ sender: UIButton) {
-        self.delegate?.editHistoryButtonTapped()
+        self.delegate?.editHistoryButtonTapped(at: self.indexPath)
     }
     
     override func prepareForReuse() {

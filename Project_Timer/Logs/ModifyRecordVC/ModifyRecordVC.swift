@@ -312,7 +312,6 @@ extension ModifyRecordVC: UITableViewDataSource {
 
 extension ModifyRecordVC: EditTaskButtonDelegate {
     func editTaskButtonTapped() {
-        print("DEBUG: edit task button tapped")
         // TODO: localize
         let alert = UIAlertController(title: "과목명 수정",
                                       message: "새로운 과목을 입력해주세요",
@@ -338,27 +337,48 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
 }
 
 extension ModifyRecordVC: EditHistoryButtonDelegate {
-    func editHistoryButtonTapped() {
-        print("DEBUG: edit history button tapped")
-        // TODO: row값 얻고 히스토리 수정
+    func editHistoryButtonTapped(at indexPath: IndexPath?) {
+        guard let viewModel = self.viewModel,
+              let index = indexPath?.row,
+              let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        editHistoryViewController.history = viewModel.selectedTaskHistorys[index]
+        alert.setValue(editHistoryViewController, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.viewModel?.updateHistory(at: index, to: editHistoryViewController.history)
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
     }
 }
 
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
-        print("DEBUG: add history button tapped")
-        // TODO: localize
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .alert)
         
-        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        // TODO: now가 아니라 선택된 날짜로 변경
+        let now = Date().zeroDate
+        editHistoryViewController.history = TaskHistory(startDate: now, endDate: now)
         alert.setValue(editHistoryViewController, forKey: "contentViewController")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            // TODO: 시작시각 > 종료시각인 경우 에러 처리
             self?.viewModel?.addHistory(editHistoryViewController.history)
         }
+        
         alert.addAction(cancel)
         alert.addAction(ok)
         

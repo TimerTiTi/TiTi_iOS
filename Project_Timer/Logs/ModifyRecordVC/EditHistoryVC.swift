@@ -14,7 +14,7 @@ class EditHistoryVC: UIViewController {
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var intervalLabel: UILabel!
     
-    @Published private(set) var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
+    @Published var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
