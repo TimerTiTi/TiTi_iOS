@@ -121,7 +121,6 @@ extension ModifyRecordVC {
     private func configureViewModel() {
         // TODO: 오늘이 아니라 전달받은 Daily로 뷰모델 생성해야 함
         self.viewModel = ModifyRecordVM(daily: RecordController.shared.daily)
-        self.viewModel?.selectedTask = "둠칫"
     }
     
     private func configureHostingVC() {
@@ -169,8 +168,12 @@ extension ModifyRecordVC {
     private func bindSelectedTask() {
         self.viewModel?.$selectedTask
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.updateInteractionViews()
+            .sink(receiveValue: { [weak self] selectedTask in
+                if selectedTask == nil {
+                    self?.showTaskEmptyInteractionView()
+                } else {
+                    self?.showTaskModifyInteractionView()
+                }
             })
             .store(in: &self.cancellables)
     }
@@ -383,5 +386,11 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
         alert.addAction(ok)
         
         present(alert, animated: true)
+    }
+}
+
+extension ModifyRecordVC: FinishButtonDelegate {
+    func finishButtonTapped() {
+        self.viewModel?.selectedTask = nil
     }
 }

@@ -8,8 +8,14 @@
 
 import UIKit
 
+typealias TaskInteractionViewDelegate = EditTaskButtonDelegate & FinishButtonDelegate & UITableViewDelegate & UITableViewDataSource
+
 protocol EditTaskButtonDelegate: AnyObject {
     func editTaskButtonTapped()
+}
+
+protocol FinishButtonDelegate: AnyObject {
+    func finishButtonTapped()
 }
 
 class TaskInteractionView: UIView {
@@ -85,10 +91,13 @@ class TaskInteractionView: UIView {
         label.text = "00:00:00"
         return label
     }()
-    private weak var delegate: EditTaskButtonDelegate? {
+    private weak var delegate: (EditTaskButtonDelegate & FinishButtonDelegate)? {
         didSet {
             self.editTaskButton.addAction(UIAction(handler: { [weak self] _ in
                 self?.delegate?.editTaskButtonTapped()
+            }), for: .touchUpInside)
+            self.finishButton.addAction(UIAction(handler: { [weak self] _ in
+                self?.delegate?.finishButtonTapped()
             }), for: .touchUpInside)
         }
     }
@@ -169,7 +178,7 @@ class TaskInteractionView: UIView {
 }
 
 extension TaskInteractionView {
-    func configureDelegate(_ delegate: UITableViewDelegate & UITableViewDataSource & EditTaskButtonDelegate) {
+    func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
         self.historyTableView.delegate = delegate
         self.historyTableView.dataSource = delegate
         self.delegate = delegate
