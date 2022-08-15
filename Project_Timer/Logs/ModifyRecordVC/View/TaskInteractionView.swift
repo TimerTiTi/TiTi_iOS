@@ -39,7 +39,8 @@ class TaskInteractionView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.contentInset = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
-        tableView.separatorColor = UIColor.clear
+        tableView.separatorColor = UIColor.clear    // 안됨
+        // TODO: separator 없애기
         return tableView
     }()
     
@@ -164,7 +165,9 @@ extension TaskInteractionView {
     
     func configureTableView() {
         let historyCellNib = UINib.init(nibName: HistoryCell.identifier, bundle: nil)
+        let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
         self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
+        self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
     }
 }
 

@@ -282,7 +282,15 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ModifyRecordVC: UITableViewDelegate, UITableViewDataSource {
+extension ModifyRecordVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let isLastCell = indexPath.row == (self.viewModel?.selectedTaskHistorys.count ?? 0)
+        
+        return isLastCell ? AddHistoryCell.height : HistoryCell.height
+    }
+}
+
+extension ModifyRecordVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.viewModel?.selectedTaskHistorys.count ?? 0) + 1
     }
@@ -291,8 +299,7 @@ extension ModifyRecordVC: UITableViewDelegate, UITableViewDataSource {
         let isLastCell = indexPath.row == (self.viewModel?.selectedTaskHistorys.count ?? 0)
         
         if isLastCell {
-            // TODO: 기록 추가 셀 만들기, identifier 수정
-            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
             return cell
         } else {
             guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
