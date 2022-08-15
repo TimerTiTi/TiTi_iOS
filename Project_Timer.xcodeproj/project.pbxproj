@@ -21,6 +21,8 @@
 		048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */; };
 		048D8ACB28AA49F800A2456D /* EditHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */; };
 		048D8ACD28AA608900A2456D /* EditDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACC28AA608900A2456D /* EditDateVC.swift */; };
+		048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */; };
+		048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -167,6 +169,8 @@
 		048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHistoryCell.xib; sourceTree = "<group>"; };
 		048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHistoryVC.swift; sourceTree = "<group>"; };
 		048D8ACC28AA608900A2456D /* EditDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateVC.swift; sourceTree = "<group>"; };
+		048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskHistoryCell.swift; sourceTree = "<group>"; };
+		048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewTaskHistoryCell.xib; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -367,6 +371,8 @@
 				04E0DFC628A9191A004DABBE /* HistoryCell.xib */,
 				048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */,
 				048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */,
+				048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */,
+				048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -905,6 +911,7 @@
 			files = (
 				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
 				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
+				048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */,
 				048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
@@ -932,6 +939,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
+				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */,
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
