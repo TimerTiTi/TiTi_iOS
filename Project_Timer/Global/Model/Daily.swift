@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TaskHistory: Codable {
+struct TaskHistory: Codable, Equatable {
     var startDate: Date
     var endDate: Date
     var interval: Int {
@@ -21,6 +21,11 @@ struct TaskHistory: Codable {
     
     mutating func updateEndDate(to date: Date) {
         self.endDate = date
+    }
+    
+    static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.startDate.YYYYMMDDHMSstyleString == rhs.startDate.YYYYMMDDHMSstyleString
+            && lhs.endDate.YYYYMMDDHMSstyleString == rhs.endDate.YYYYMMDDHMSstyleString
     }
 }
 
@@ -189,6 +194,7 @@ extension Daily {
                 taskHistorys[taskName] = []     // 빈 배열로 초기화
             }
             taskHistorys[taskName]?.append(history)
+            // TODO: sort 작동 오류 있음. 확인 필요
             taskHistorys[taskName]?.sort(by: { $0.startDate < $1.startDate })
             self.taskHistorys = taskHistorys
         } else {

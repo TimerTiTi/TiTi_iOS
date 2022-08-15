@@ -12,7 +12,8 @@ import Combine
 final class ModifyRecordVM {
     @Published private(set) var currentDaily: Daily
     @Published private(set) var tasks: [TaskInfo] = []
-    @Published var selectedTask: String?
+    @Published private(set) var isModified: Bool = false
+    @Published private(set) var selectedTask: String?
     var selectedTaskHistorys: [TaskHistory] {
         guard let selectedTask = selectedTask,
               let taskHistorys = currentDaily.taskHistorys,
@@ -20,7 +21,6 @@ final class ModifyRecordVM {
 
         return selectedTaskHistorys
     }
-    
     let timelineVM: TimelineVM
     private var cancellables: Set<AnyCancellable> = []
     
@@ -44,6 +44,12 @@ extension ModifyRecordVM {
         self.selectedTask = self.tasks[index].taskName
     }
     
+    func deselectTask() {
+        self.selectedTask = nil
+    }
+}
+
+extension ModifyRecordVM {
     func updateSelectedTaskName(to newName: String) {
         guard let oldName = selectedTask,
               oldName != newName,
@@ -51,15 +57,30 @@ extension ModifyRecordVM {
         
         self.currentDaily.changeTaskName(from: oldName, to: newName)
         self.selectedTask = newName
+        self.isModified = true
     }
-    
+
     func addHistory(_ history: TaskHistory) {
         guard let selectedTask = self.selectedTask else { return }
+        
         self.currentDaily.addHistory(history, to: selectedTask)
+        self.isModified = true
     }
     
     func updateHistory(at index: Int, to newHistory: TaskHistory) {
-        guard let selectedTask = self.selectedTask else { return }
+        guard let selectedTask = self.selectedTask,
+              selectedTaskHistorys[index] != newHistory else { return }
+        
         self.currentDaily.editHistory(of: selectedTask, at: index, to: newHistory)
+        self.isModified = true
+    }
+    
+    func save() {
+        DailyManager.shared.modifyDaily(self.currentDaily)
+    }
+    
+    func reset() {
+        self.isModified = false
+        self.deselectTask()
     }
 }

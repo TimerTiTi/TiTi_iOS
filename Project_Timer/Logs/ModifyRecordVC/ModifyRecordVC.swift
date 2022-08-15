@@ -40,13 +40,12 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "ModifyRecordVC"
+        self.configureNavigationBar()
         self.configureScrollView()
         self.configureTaskInteractionFrameView()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
         self.configureTableViewDelegate()
-        self.configureViewModel()
         self.configureHostingVC()
         self.bindAll()
         
@@ -62,6 +61,39 @@ final class ModifyRecordVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.configureShadows(self.taskModifyInteractionView)
+    }
+}
+
+extension ModifyRecordVC {
+    private func configureNavigationBar() {
+        self.configureTitle()
+        self.configureSaveButton()
+        self.configureBackButton()
+    }
+    
+    private func configureTitle() {
+        guard let day = self.viewModel?.currentDaily.day else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY.MM.dd"
+        self.title = dateFormatter.string(from: day)
+    }
+    
+    private func configureSaveButton() {
+        let saveButton = UIBarButtonItem(title: "SAVE",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(saveButtonTapped))
+        self.navigationItem.setRightBarButton(saveButton, animated: false)
+    }
+
+    private func configureBackButton() {
+        let backButton = UIBarButtonItem(title: "Back",
+                                         style: .done,
+                                         target: self,
+                                         action: #selector(backButtonTapped))
+        backButton.image = UIImage(systemName: "chevron.backward")
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
     }
 }
 
@@ -118,9 +150,8 @@ extension ModifyRecordVC {
         self.taskModifyInteractionView.configureDelegate(self)
     }
     
-    private func configureViewModel() {
-        // TODO: 오늘이 아니라 전달받은 Daily로 뷰모델 생성해야 함
-        self.viewModel = ModifyRecordVM(daily: RecordController.shared.daily)
+    func configureViewModel(with daily: Daily) {
+        self.viewModel = ModifyRecordVM(daily: daily)
     }
     
     private func configureHostingVC() {
@@ -144,6 +175,7 @@ extension ModifyRecordVC {
         self.bindDaily()
         self.bindTasks()
         self.bindSelectedTask()
+        self.bindIsModified()
     }
     
     private func bindDaily() {
@@ -178,6 +210,15 @@ extension ModifyRecordVC {
                     self?.standardDailyGraphView.removeCollectionViewHighlight()
                 }
                 self?.standardDailyGraphView.reload()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindIsModified() {
+        self.viewModel?.$isModified
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { isModified in
+                self.navigationItem.rightBarButtonItem?.isEnabled = isModified
             })
             .store(in: &self.cancellables)
     }
@@ -410,6 +451,50 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
 
 extension ModifyRecordVC: FinishButtonDelegate {
     func finishButtonTapped() {
-        self.viewModel?.selectedTask = nil
+        self.viewModel?.deselectTask()
+    }
+}
+
+extension ModifyRecordVC {
+    @objc func saveButtonTapped() {
+        self.viewModel?.save()
+        
+        // TODO: localize
+        let alert = UIAlertController(title: "저장 완료",
+                                      message: "변경 사항이 저장되었습니다.",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.viewModel?.reset()
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+        
+        // TODO: dailys를 쓰는 다른 화면에게 noti 보내서 화면 갱신 시키기
+    }
+    
+    @objc private func backButtonTapped() {
+        guard let isModified = self.viewModel?.isModified else { return }
+        
+        if isModified {
+            self.confirmCancel()
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    private func confirmCancel() {
+        // TODO: localize
+        let alert = UIAlertController(title: "경고",
+                                      message: "변경 사항이 제거됩니다.",
+                                      preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
     }
 }
