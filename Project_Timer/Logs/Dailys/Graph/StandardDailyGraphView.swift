@@ -172,7 +172,9 @@ final class StandardDailyGraphView: UIView {
     
     private func configureCollectionView() {
         let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
+        let addNewTaskHistoryCellNib = UINib.init(nibName: AddNewTaskHistoryCell.identifier, bundle: nil)
         self.tasksCollectionView.register(standardDailyTaskCellNib, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
+        self.tasksCollectionView.register(addNewTaskHistoryCellNib, forCellWithReuseIdentifier: AddNewTaskHistoryCell.identifier)
     }
     
     private func configureProgressView() {
