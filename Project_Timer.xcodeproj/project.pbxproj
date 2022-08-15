@@ -17,6 +17,8 @@
 		04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* TimeLabelView.swift */; };
 		04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */; };
 		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
+		048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */; };
+		048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -159,6 +161,8 @@
 		04504C632864C7F400CA4C69 /* TimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelView.swift; sourceTree = "<group>"; };
 		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
 		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
+		048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryCell.swift; sourceTree = "<group>"; };
+		048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHistoryCell.xib; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 			children = (
 				04E0DFC528A9191A004DABBE /* HistoryCell.swift */,
 				04E0DFC628A9191A004DABBE /* HistoryCell.xib */,
+				048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */,
+				048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -893,6 +899,7 @@
 			files = (
 				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
 				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
+				048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
 				871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */,
@@ -932,6 +939,7 @@
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
+				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
