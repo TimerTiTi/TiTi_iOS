@@ -40,6 +40,10 @@ final class ModifyRecordVM {
 }
 
 extension ModifyRecordVM {
+    func selectTask(at index: Int) {
+        self.selectedTask = self.tasks[index].taskName
+    }
+    
     func updateSelectedTaskName(to newName: String) {
         guard let oldName = selectedTask,
               oldName != newName,

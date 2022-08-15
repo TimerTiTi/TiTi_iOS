@@ -226,6 +226,14 @@ extension StandardDailyGraphView {
     func reload() {
         self.tasksCollectionView.reloadData()
     }
+    /// 컬렉션뷰 테두리 하이라이트
+    func highlightCollectionView() {
+        self.tasksCollectionView.layer.borderColor = UIColor.red.cgColor
+    }
+    /// 컬렉션뷰 테두리 하이라이트 제거
+    func removeCollectionViewHighlight() {
+        self.tasksCollectionView.layer.borderColor = UIColor(named: "System_border")?.cgColor
+    }
 }
 
 // MARK: StandardDailyGraphView Private Actions
