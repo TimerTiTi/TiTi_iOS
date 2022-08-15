@@ -194,7 +194,7 @@ extension Daily {
                 taskHistorys[taskName] = []     // 빈 배열로 초기화
             }
             taskHistorys[taskName]?.append(history)
-            // TODO: sort 작동 오류 있음. 확인 필요
+            // TODO: sort 로직 수정 필요 새벽 5시~새벽4시
             taskHistorys[taskName]?.sort(by: { $0.startDate < $1.startDate })
             self.taskHistorys = taskHistorys
         } else {

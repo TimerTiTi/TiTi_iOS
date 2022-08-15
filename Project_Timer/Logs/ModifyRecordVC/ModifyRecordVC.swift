@@ -425,15 +425,14 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
 
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
-        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC,
+              let day = self.viewModel?.currentDaily.day else { return }
 
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .alert)
         
-        // TODO: now가 아니라 선택된 날짜로 변경
-        let now = Date().zeroDate
-        editHistoryViewController.history = TaskHistory(startDate: now, endDate: now)
+        editHistoryViewController.history = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
         alert.setValue(editHistoryViewController, forKey: "contentViewController")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
