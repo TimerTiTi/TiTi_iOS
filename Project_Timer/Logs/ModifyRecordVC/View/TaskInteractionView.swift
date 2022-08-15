@@ -66,6 +66,7 @@ class TaskInteractionView: UIView {
         label.textAlignment = .center
         label.backgroundColor = TiTiColor.blue?.withAlphaComponent(0.5)
         label.text = "알고리즘"
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.clipsToBounds = true
         label.layer.cornerRadius = 6
         return label
@@ -142,7 +143,8 @@ class TaskInteractionView: UIView {
         self.addSubview(self.taskLabel)
         NSLayoutConstraint.activate([
             self.taskLabel.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
-            self.taskLabel.leadingAnchor.constraint(equalTo: self.historyTableView.leadingAnchor)
+            self.taskLabel.leadingAnchor.constraint(equalTo: self.historyTableView.leadingAnchor),
+            self.taskLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.editTaskButton.leadingAnchor, constant: -8)
         ])
         
         // totalTimeLabel
