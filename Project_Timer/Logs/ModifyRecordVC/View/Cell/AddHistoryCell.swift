@@ -8,7 +8,23 @@
 
 import UIKit
 
+protocol AddHistoryButtonDelegate: AnyObject {
+    func addHistoryButtonTapped()
+}
+
 class AddHistoryCell: UITableViewCell {
     static let identifier = "AddHistoryCell"
     static let height = CGFloat(42)
+    
+    private weak var delegate: AddHistoryButtonDelegate?
+    
+    @IBAction func addHistoryButtonTapped(_ sender: UIButton) {
+        self.delegate?.addHistoryButtonTapped()
+    }
+}
+
+extension AddHistoryCell {
+    func configureDelegate(_ delegate: AddHistoryButtonDelegate) {
+        self.delegate = delegate
+    }
 }

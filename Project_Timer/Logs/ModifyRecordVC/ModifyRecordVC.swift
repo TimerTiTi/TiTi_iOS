@@ -300,11 +300,34 @@ extension ModifyRecordVC: UITableViewDataSource {
         
         if isLastCell {
             guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
+            cell.configureDelegate(self)
             return cell
         } else {
             guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            cell.configureDelegate(self)
             cell.configure(with: self.viewModel?.selectedTaskHistorys[indexPath.row])
             return cell
         }
+    }
+}
+
+extension ModifyRecordVC: EditTaskButtonDelegate {
+    func editTaskButtonTapped() {
+        print("DEBUG: edit task button tapped")
+        // TODO: 과목명 수정
+    }
+}
+
+extension ModifyRecordVC: EditHistoryButtonDelegate {
+    func editHistoryButtonTapped() {
+        print("DEBUG: edit history button tapped")
+        // TODO: row값 얻고 히스토리 수정
+    }
+}
+
+extension ModifyRecordVC: AddHistoryButtonDelegate {
+    func addHistoryButtonTapped() {
+        print("DEBUG: add history button tapped")
+        // TODO: 히스토리 추가
     }
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EditHistoryButtonDelegate: AnyObject {
+    func editHistoryButtonTapped()
+}
+
 class HistoryCell: UITableViewCell {
     static let identifier = "HistoryCell"
     static let height = CGFloat(42)
@@ -18,12 +22,10 @@ class HistoryCell: UITableViewCell {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var underLine: UIView!
     
-    func configure(with taskHistory: TaskHistory?) {
-        guard let taskHistory = taskHistory else { return }
-        
-        self.startTimeLabel.text = taskHistory.startDate.HHmmssStyleString
-        self.endTimeLabel.text = taskHistory.endDate.HHmmssStyleString
-        self.timeIntervalLabel.text = taskHistory.interval.toHHmmss
+    private weak var delegate: EditHistoryButtonDelegate?
+    
+    @IBAction func editHistoryButtonTapped(_ sender: UIButton) {
+        self.delegate?.editHistoryButtonTapped()
     }
     
     override func prepareForReuse() {
@@ -32,5 +34,19 @@ class HistoryCell: UITableViewCell {
         self.startTimeLabel.text = defaultTimeLabelString
         self.endTimeLabel.text = defaultTimeLabelString
         self.timeIntervalLabel.text = defaultTimeLabelString
+    }
+}
+
+extension HistoryCell {
+    func configure(with taskHistory: TaskHistory?) {
+        guard let taskHistory = taskHistory else { return }
+        
+        self.startTimeLabel.text = taskHistory.startDate.HHmmssStyleString
+        self.endTimeLabel.text = taskHistory.endDate.HHmmssStyleString
+        self.timeIntervalLabel.text = taskHistory.interval.toHHmmss
+    }
+    
+    func configureDelegate(_ delegate: EditHistoryButtonDelegate) {
+        self.delegate = delegate
     }
 }
