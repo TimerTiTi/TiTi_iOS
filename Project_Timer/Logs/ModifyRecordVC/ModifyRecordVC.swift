@@ -143,6 +143,7 @@ extension ModifyRecordVC {
     private func bindAll() {
         self.bindDaily()
         self.bindTasks()
+        self.bindSelectedTask()
     }
     
     private func bindDaily() {
@@ -151,6 +152,7 @@ extension ModifyRecordVC {
             .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.updateGraphsFromDaily()
+                self?.updateInteractionViews()
             })
             .store(in: &self.cancellables)
     }
@@ -161,6 +163,15 @@ extension ModifyRecordVC {
             .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.updateGraphsFromTasks()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSelectedTask() {
+        self.viewModel?.$selectedTask
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateInteractionViews()
             })
             .store(in: &self.cancellables)
     }
@@ -182,6 +193,12 @@ extension ModifyRecordVC {
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
         self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
+    }
+    
+    private func updateInteractionViews() {
+        self.taskModifyInteractionView.update(task: self.viewModel?.selectedTask,
+                                                          historys: self.viewModel?.selectedTaskHistorys)
+        // TODO: self.taskCreateInteractionView.update
     }
 }
 
@@ -267,11 +284,20 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
 
 extension ModifyRecordVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return (self.viewModel?.selectedTaskHistorys.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
-        return cell
+        let isLastCell = indexPath.row == (self.viewModel?.selectedTaskHistorys.count ?? 0)
+        
+        if isLastCell {
+            // TODO: 기록 추가 셀 만들기, identifier 수정
+            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            return cell
+        } else {
+            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            cell.configure(with: self.viewModel?.selectedTaskHistorys[indexPath.row])
+            return cell
+        }
     }
 }
