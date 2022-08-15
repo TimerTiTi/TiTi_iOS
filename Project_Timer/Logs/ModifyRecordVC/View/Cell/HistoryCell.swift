@@ -31,6 +31,12 @@ class HistoryCell: UITableViewCell {
         self.delegate?.editHistoryButtonTapped(at: self.indexPath)
     }
     
+    override func awakeFromNib() {
+        self.startTimeLabel.backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
+        self.endTimeLabel.backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
+        self.underLine.backgroundColor = UIColor(named: String.userTintColor)
+    }
+    
     override func prepareForReuse() {
         let defaultTimeLabelString = "00:00:00"
         
