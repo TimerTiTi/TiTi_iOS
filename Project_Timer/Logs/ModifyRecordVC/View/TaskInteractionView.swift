@@ -167,3 +167,25 @@ extension TaskInteractionView {
         self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
     }
 }
+
+extension TaskInteractionView {
+    func update(task: String?, historys: [TaskHistory]?) {
+        self.updateTaskLabel(task)
+        self.updateTotalTimeLabel(historys?.reduce(0){ $0 + $1.interval } ?? 0)
+        self.updateHistoryTableView()
+    }
+}
+
+extension TaskInteractionView {
+    private func updateTaskLabel(_ task: String?) {
+        self.taskLabel.text = task
+    }
+    
+    private func updateTotalTimeLabel(_ totalTime: Int) {
+        self.totalTimeLabel.text = totalTime.toTimeString
+    }
+    
+    private func updateHistoryTableView() {
+        self.historyTableView.reloadData()
+    }
+}

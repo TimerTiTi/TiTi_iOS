@@ -12,6 +12,15 @@ final class ModifyRecordVM {
     /* public */
     @Published private(set) var currentDaily: Daily?
     @Published private(set) var tasks: [TaskInfo] = []
+    @Published var selectedTask: String?
+    var selectedTaskHistorys: [TaskHistory] {
+        guard let selectedTask = selectedTask,
+              let daily = currentDaily,
+              let taskHistorys = daily.taskHistorys,
+              let selectedTaskHistorys = taskHistorys[selectedTask] else { return [] }
+
+        return selectedTaskHistorys
+    }
     let timelineVM: TimelineVM
     
     init() {
