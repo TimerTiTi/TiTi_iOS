@@ -291,7 +291,12 @@ extension ModifyRecordVC: UICollectionViewDataSource {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                return self.viewModel?.tasks.count ?? 0
+                let taskNum = self.viewModel?.tasks.count ?? 0
+                if self.viewModel?.selectedTask == nil {
+                    return taskNum + 1
+                } else {
+                    return taskNum
+                }
             case .tasksProgressDailyGraphView:
                 return min(8, self.viewModel?.tasks.count ?? 0)
             }
@@ -302,16 +307,25 @@ extension ModifyRecordVC: UICollectionViewDataSource {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
-                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
-                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
-                if taskInfo.taskName == self.viewModel?.selectedTask {
-                    cell.layer.borderWidth = 2
-                    cell.layer.borderColor = UIColor.red.cgColor
+                let isTaskSelected = self.viewModel?.selectedTask == nil
+                let isLastCell = indexPath.row == (self.viewModel?.tasks.count ?? 0)
+                
+                if isTaskSelected && isLastCell {
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddNewTaskHistoryCell.identifier, for: indexPath) as? AddNewTaskHistoryCell else { return UICollectionViewCell() }
+                    cell.configureDelegate(self)
+                    return cell
                 } else {
-                    cell.layer.borderWidth = 0
+                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
+                    guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                    cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                    if taskInfo.taskName == self.viewModel?.selectedTask {
+                        cell.layer.borderWidth = 2
+                        cell.layer.borderColor = UIColor.red.cgColor
+                    } else {
+                        cell.layer.borderWidth = 0
+                    }
+                    return cell
                 }
-                return cell
             case .tasksProgressDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
                 guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
@@ -495,5 +509,12 @@ extension ModifyRecordVC {
         alert.addAction(ok)
         
         present(alert, animated: true)
+    }
+}
+
+extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
+    func addNewTaskHistoryButtonTapped() {
+        // TODO: 기록 추가 인터렉티브 창 보여주기
+        print("DEBUg: add new task history button tapped")
     }
 }
