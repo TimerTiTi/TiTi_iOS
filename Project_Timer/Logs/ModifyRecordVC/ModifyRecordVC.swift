@@ -171,9 +171,13 @@ extension ModifyRecordVC {
             .sink(receiveValue: { [weak self] selectedTask in
                 if selectedTask == nil {
                     self?.showTaskEmptyInteractionView()
+                    self?.standardDailyGraphView.highlightCollectionView()
                 } else {
+                    self?.updateInteractionViews()
                     self?.showTaskModifyInteractionView()
+                    self?.standardDailyGraphView.removeCollectionViewHighlight()
                 }
+                self?.standardDailyGraphView.reload()
             })
             .store(in: &self.cancellables)
     }
@@ -260,6 +264,12 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
                 guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
                 cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                if taskInfo.taskName == self.viewModel?.selectedTask {
+                    cell.layer.borderWidth = 2
+                    cell.layer.borderColor = UIColor.red.cgColor
+                } else {
+                    cell.layer.borderWidth = 0
+                }
                 return cell
             case .tasksProgressDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
@@ -271,12 +281,21 @@ extension ModifyRecordVC: UICollectionViewDataSource {
     }
 }
 
+extension ModifyRecordVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let graph = GraphCollectionView(rawValue: collectionView.tag),
+              graph == .standardDailyGraphView else { return }
+        self.viewModel?.selectTask(at: indexPath.row)
+    }
+}
+
 extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
+                // 컬렉션뷰 테두리가 안쪽으로 생겨서 셀 테두리를 덮는 버그 때문에 width 수정함
+                return CGSize(width: collectionView.bounds.width-4, height: StandardDailyTaskCell.height)
             case .tasksProgressDailyGraphView:
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
             }
