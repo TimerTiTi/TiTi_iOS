@@ -9,10 +9,18 @@
 import Foundation
 
 struct TaskHistory: Codable {
-    let startDate: Date
-    let endDate: Date
+    var startDate: Date
+    var endDate: Date
     var interval: Int {
         return Date.interval(from: startDate, to: endDate)
+    }
+    
+    mutating func updateStartDate(to date: Date) {
+        self.startDate = date
+    }
+    
+    mutating func updateEndDate(to date: Date) {
+        self.endDate = date
     }
 }
 
@@ -43,9 +51,6 @@ struct Daily: Codable, CustomStringConvertible {
         // 업데이트 후 새로운 기록 이후 taskHistorys 가 nil 값이 아닌 상태의 경우 -> taskHistorys 를 기반으로 Daily 값을 update 한다
         else {
             self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
-            self.updateTasks()
-            self.updateMaxTime()
-            self.updateTimeline()
         }
         self.save()
     }
@@ -104,15 +109,7 @@ struct Daily: Codable, CustomStringConvertible {
 // MARK: 새로운 기록저장 로직
 extension Daily {
     private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
-        if var taskHistorys = self.taskHistorys {
-            if taskHistorys[taskName] == nil {  // 과목 기록이 없었던 경우
-                taskHistorys[taskName] = []     // 빈 배열로 초기화
-            }
-            taskHistorys[taskName]?.append(TaskHistory(startDate: startDate, endDate: endDate))
-            self.taskHistorys = taskHistorys
-        } else {
-            assertionFailure("taskHistorys 값이 nil 입니다.")
-        }
+        self.addHistory(TaskHistory(startDate: startDate, endDate: endDate), to: taskName)
     }
     
     private mutating func updateTasks() {
@@ -168,5 +165,38 @@ extension Daily {
         self.updateMaxTime()
         self.updateTimeline()
         self.save()
+    }
+}
+
+extension Daily {
+    mutating func changeTaskName(from oldName: String, to newName: String) {
+        // 같은 이름의 과목이 없다는 것이 보장된 상태
+        
+        // tasks 업데이트
+        let totalTime = self.tasks[oldName]
+        self.tasks.removeValue(forKey: oldName)
+        self.tasks[newName] = totalTime
+        
+        // taskHistorys 업데이트
+        let historys = self.taskHistorys?[oldName]
+        self.taskHistorys?.removeValue(forKey: oldName)
+        self.taskHistorys?[newName] = historys
+    }
+    
+    mutating func addHistory(_ history: TaskHistory, to taskName: String) {
+        if var taskHistorys = self.taskHistorys {
+            if taskHistorys[taskName] == nil {  // 과목 기록이 없었던 경우
+                taskHistorys[taskName] = []     // 빈 배열로 초기화
+            }
+            taskHistorys[taskName]?.append(history)
+            taskHistorys[taskName]?.sort(by: { $0.startDate < $1.startDate })
+            self.taskHistorys = taskHistorys
+        } else {
+            assertionFailure("taskHistorys 값이 nil 입니다.")
+        }
+        
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
     }
 }

@@ -121,6 +121,7 @@ extension ModifyRecordVC {
     private func configureViewModel() {
         // TODO: 오늘이 아니라 전달받은 Daily로 뷰모델 생성해야 함
         self.viewModel = ModifyRecordVM(daily: RecordController.shared.daily)
+        self.viewModel?.selectedTask = "둠칫"
     }
     
     private func configureHostingVC() {
@@ -346,6 +347,21 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
         print("DEBUG: add history button tapped")
-        // TODO: 히스토리 추가
+        // TODO: localize
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        alert.setValue(editHistoryViewController, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            self?.viewModel?.addHistory(editHistoryViewController.history)
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
     }
 }
