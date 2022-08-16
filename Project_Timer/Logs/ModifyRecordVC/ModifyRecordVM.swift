@@ -95,6 +95,8 @@ extension ModifyRecordVM {
     func addHistory(_ history: TaskHistory) {
         guard self.mode != .none else { return }
         
+        // TODO: 새벽 12시-4시는 다음 날짜로 처리
+        // TODO: 시작시각 > 종료시각인 경우 예외처리
         self.selectedTaskHistorys?.append(history)
         self.selectedTaskHistorys?.sort(by: { $0.startDate < $1.startDate })
         self.isModified = true
