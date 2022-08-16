@@ -31,4 +31,13 @@ final class RecordController {
             self.showWarningOfRecordDate = true
         }
     }
+    
+    func modifyRecord(with newDaily: Daily) {
+        // 오늘의 기록인 경우 daily도 업데이트
+        if daily.day.YYYYMMDDstyleString == newDaily.day.YYYYMMDDstyleString {
+            self.daily = newDaily
+            self.daily.save()
+        }
+        self.dailys.modifyDaily(newDaily)
+    }
 }

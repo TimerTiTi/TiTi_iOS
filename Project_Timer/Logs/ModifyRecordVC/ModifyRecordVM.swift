@@ -120,7 +120,7 @@ extension ModifyRecordVM {
     
     func save() {
         // TODO: daily.json도 업데이트 필요?
-        DailyManager.shared.modifyDaily(self.currentDaily)
+        RecordController.shared.modifyRecord(with: self.currentDaily)
     }
 }
 
