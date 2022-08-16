@@ -55,7 +55,7 @@ extension ModifyRecordVM {
     
     func changeToNewTaskMode() {
         self.mode = .newTask
-        self.selectedTask = "과목명을 입력해주세요"
+        self.selectedTask = nil
         self.selectedTaskHistorys = []
     }
     
@@ -81,6 +81,10 @@ extension ModifyRecordVM {
         if self.mode == .existingTask {
             self.currentDaily.changeTaskName(from: oldName, to: newName)
         }
+    }
+    
+    func makeNewTaskName(_ name: String) {
+        self.selectedTask = name
     }
 
     func addHistory(_ history: TaskHistory) {
@@ -114,6 +118,7 @@ extension ModifyRecordVM {
     }
     
     func save() {
+        // TODO: daily.json도 업데이트 필요?
         DailyManager.shared.modifyDaily(self.currentDaily)
     }
     

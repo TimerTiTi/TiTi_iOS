@@ -150,15 +150,19 @@ class TaskInteractionView: UIView {
             self.totalTimeLabel.leadingAnchor.constraint(equalTo: taskLabel.leadingAnchor)
         ])
     }
-}
-
-extension TaskInteractionView {
+    
     func configure(task: String?, historys: [TaskHistory]?) {
         self.configureTaskLabel(task: task)
         self.configureTotalTimeLabel(totalTime: historys?.reduce(0){ $0 + $1.interval } ?? 0)
         self.updateHistoryTableView()
     }
     
+    private func updateHistoryTableView() {
+        self.historyTableView.reloadData()
+    }
+}
+
+extension TaskInteractionView {
     func configureTaskLabel(task: String?) {
         self.taskLabel.text = task
     }
@@ -194,11 +198,5 @@ extension TaskInteractionView {
         let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
         self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
         self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
-    }
-}
-
-extension TaskInteractionView {
-    private func updateHistoryTableView() {
-        self.historyTableView.reloadData()
     }
 }
