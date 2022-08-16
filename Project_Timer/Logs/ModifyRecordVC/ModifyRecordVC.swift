@@ -233,8 +233,13 @@ extension ModifyRecordVC {
     private func bindSelectedTask() {
         self.viewModel?.$selectedTask
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] selectedTask in
                 self?.updateInteractionViews()
+                if selectedTask == nil {
+                    self?.taskCreateInteractionView.disableFinishButton()
+                } else {
+                    self?.taskCreateInteractionView.enableFinishButton()
+                }
             })
             .store(in: &self.cancellables)
     }
@@ -435,22 +440,43 @@ extension ModifyRecordVC: UITableViewDataSource {
 
 extension ModifyRecordVC: EditTaskButtonDelegate {
     func editTaskButtonTapped() {
+        guard let mode = self.viewModel?.mode else { return }
+        
+        switch mode {
+        case .existingTask:
+            self.showTextFieldAlert(title: "과목명 수정",
+                                    message: "새로운 과목을 입력해주세요",
+                                    placeholder: "새로운 과목") { [weak self] text in
+                self?.viewModel?.changeTaskName(to: text)
+            }
+        case .newTask:
+            self.showTextFieldAlert(title: "과목명 입력",
+                                    message: "새로운 과목을 입력해주세요",
+                                    placeholder: "새로운 과목") { [weak self] text in
+                self?.viewModel?.makeNewTaskName(text)
+            }
+        default:
+            return
+        }
+    }
+    
+    private func showTextFieldAlert(title: String? = nil, message: String? = nil, placeholder: String? = nil, handler: @escaping (String)->Void) {
         // TODO: localize
-        let alert = UIAlertController(title: "과목명 수정",
-                                      message: "새로운 과목을 입력해주세요",
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            let newTaskName = alert.textFields?[0].text ?? ""
-            self?.viewModel?.changeTaskName(to: newTaskName)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            let text = alert.textFields?[0].text ?? ""
+            handler(text)
         }
         
-        alert.addTextField { (inputNewTaskName) in
-            inputNewTaskName.placeholder = "새로운 과목"
-            inputNewTaskName.textAlignment = .center
-            inputNewTaskName.font = TiTiFont.HGGGothicssiP60g(size: 17)
-            inputNewTaskName.text = self.viewModel?.selectedTask
+        alert.addTextField { (textField) in
+            textField.placeholder = placeholder
+            textField.textAlignment = .center
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.text = self.viewModel?.selectedTask
         }
         alert.addAction(cancel)
         alert.addAction(ok)
