@@ -21,6 +21,7 @@ final class ModifyRecordVC: UIViewController {
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var taskInteractionFrameView = UIView()
     private var taskModifyInteractionView = TaskInteractionView()
+    private var taskCreateInteractionView = TaskCreateInteractionView()
     private var taskEmptyInteractionView: UILabel = {
         let label = UILabel()
         label.text = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요"
@@ -60,7 +61,7 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.configureShadows(self.taskModifyInteractionView)
+        self.configureShadows(self.taskModifyInteractionView, self.taskCreateInteractionView)
     }
 }
 
@@ -148,6 +149,7 @@ extension ModifyRecordVC {
     
     private func configureTableViewDelegate() {
         self.taskModifyInteractionView.configureDelegate(self)
+        self.taskCreateInteractionView.configureDelegate(self)
     }
     
     func configureViewModel(with daily: Daily) {
@@ -206,7 +208,8 @@ extension ModifyRecordVC {
                     self?.standardDailyGraphView.highlightCollectionView()
                 } else {
                     self?.updateInteractionViews()
-                    self?.showTaskModifyInteractionView()
+//                    self?.showTaskModifyInteractionView()
+                    self?.showTaskCreateInteractionView()
                     self?.standardDailyGraphView.removeCollectionViewHighlight()
                 }
                 self?.standardDailyGraphView.reload()
@@ -274,6 +277,18 @@ extension ModifyRecordVC {
             self.taskModifyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
             self.taskModifyInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
             self.taskModifyInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
+        ])
+    }
+    
+    private func showTaskCreateInteractionView() {
+        self.emptyInteractionFrameView()
+        
+        self.taskInteractionFrameView.addSubview(self.taskCreateInteractionView)
+        self.taskCreateInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskCreateInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskCreateInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
+            self.taskCreateInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
         ])
     }
 }
