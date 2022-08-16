@@ -10,17 +10,21 @@ import Foundation
 import Combine
 
 final class ModifyRecordVM {
+    enum ModifyMode {
+        case existingTask
+        case newTask
+        case none
+    }
+    
     @Published private(set) var currentDaily: Daily
     @Published private(set) var tasks: [TaskInfo] = []
     @Published private(set) var isModified: Bool = false
-    @Published private(set) var selectedTask: String?
-    var selectedTaskHistorys: [TaskHistory] {
-        guard let selectedTask = selectedTask,
-              let taskHistorys = currentDaily.taskHistorys,
-              let selectedTaskHistorys = taskHistorys[selectedTask] else { return [] }
-
-        return selectedTaskHistorys
-    }
+    @Published private(set) var mode: ModifyMode = .none
+    
+    // 인터렉션 뷰에만 보여지는 내용
+    @Published var selectedTask: String?
+    @Published var selectedTaskHistorys: [TaskHistory]?
+    
     let timelineVM: TimelineVM
     private var cancellables: Set<AnyCancellable> = []
     
@@ -39,40 +43,74 @@ final class ModifyRecordVM {
     }
 }
 
+// MARK: 편집 모드 변경
 extension ModifyRecordVM {
-    func selectTask(at index: Int) {
-        self.selectedTask = self.tasks[index].taskName
+    func changeToExistingTaskMode(task: String) {
+        guard self.currentDaily.tasks[task] != nil else { return }
+        
+        self.mode = .existingTask
+        self.selectedTask = task
+        self.selectedTaskHistorys = self.currentDaily.taskHistorys?[task]
     }
     
-    func deselectTask() {
+    func changeToNewTaskMode() {
+        self.mode = .newTask
+        self.selectedTask = "과목명을 입력해주세요"
+        self.selectedTaskHistorys = []
+    }
+    
+    func changeToNoneMode() {
+        self.mode = .none
         self.selectedTask = nil
+        self.selectedTaskHistorys = nil
     }
 }
 
+// MARK: 기록 수정 메소드
 extension ModifyRecordVM {
-    func updateSelectedTaskName(to newName: String) {
+    func changeTaskName(to newName: String) {
         guard let oldName = selectedTask,
               oldName != newName,
               self.currentDaily.tasks[newName] == nil else { return }
         
-        self.currentDaily.changeTaskName(from: oldName, to: newName)
+        // TODO: 기존에 있는 테스크명인 경우 사용자 알림 필요
         self.selectedTask = newName
         self.isModified = true
+        
+        // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
+        if self.mode == .existingTask {
+            self.currentDaily.changeTaskName(from: oldName, to: newName)
+        }
     }
 
     func addHistory(_ history: TaskHistory) {
-        guard let selectedTask = self.selectedTask else { return }
+        guard self.mode != .none else { return }
         
-        self.currentDaily.addHistory(history, to: selectedTask)
+        self.selectedTaskHistorys?.append(history)
+        self.selectedTaskHistorys?.sort(by: { $0.startDate < $1.startDate })
         self.isModified = true
+        
+        // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
+        if self.mode == .existingTask {
+            guard let selectedTask = self.selectedTask,
+                  let selectedTaskHistorys = self.selectedTaskHistorys else { return }
+            self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
+        }
     }
     
-    func updateHistory(at index: Int, to newHistory: TaskHistory) {
-        guard let selectedTask = self.selectedTask,
-              selectedTaskHistorys[index] != newHistory else { return }
+    func modifyHistory(at index: Int, to newHistory: TaskHistory) {
+        guard self.mode != .none,
+              self.selectedTaskHistorys?[index] != newHistory else { return }
         
-        self.currentDaily.editHistory(of: selectedTask, at: index, to: newHistory)
+        self.selectedTaskHistorys?[index] = newHistory
         self.isModified = true
+        
+        // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
+        if self.mode == .existingTask {
+            guard let selectedTask = self.selectedTask,
+                  let selectedTaskHistorys = self.selectedTaskHistorys else { return }
+            self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
+        }
     }
     
     func save() {
@@ -81,6 +119,6 @@ extension ModifyRecordVM {
     
     func reset() {
         self.isModified = false
-        self.deselectTask()
+        self.changeToNoneMode()
     }
 }

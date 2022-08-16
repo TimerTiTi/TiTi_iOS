@@ -176,16 +176,17 @@ extension ModifyRecordVC {
     private func bindAll() {
         self.bindDaily()
         self.bindTasks()
-        self.bindSelectedTask()
+        self.bindMode()
         self.bindIsModified()
+        self.bindSelectedTask()
+        self.bindSelectedTaskHistorys()
     }
     
     private func bindDaily() {
         self.viewModel?.$currentDaily
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] daily in
                 self?.updateGraphsFromDaily()
-                self?.updateInteractionViews()
             })
             .store(in: &self.cancellables)
     }
@@ -199,20 +200,23 @@ extension ModifyRecordVC {
             .store(in: &self.cancellables)
     }
     
-    private func bindSelectedTask() {
-        self.viewModel?.$selectedTask
+    private func bindMode() {
+        self.viewModel?.$mode
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] selectedTask in
-                if selectedTask == nil {
-                    self?.showTaskEmptyInteractionView()
-                    self?.standardDailyGraphView.highlightCollectionView()
-                } else {
-                    self?.updateInteractionViews()
-//                    self?.showTaskModifyInteractionView()
+            .sink(receiveValue: { [weak self] mode in
+                self?.standardDailyGraphView.reload()
+                
+                switch mode {
+                case .existingTask:
+                    self?.showTaskModifyInteractionView()
+                    self?.standardDailyGraphView.removeCollectionViewHighlight()
+                case .newTask:
                     self?.showTaskCreateInteractionView()
                     self?.standardDailyGraphView.removeCollectionViewHighlight()
+                case .none:
+                    self?.showTaskEmptyInteractionView()
+                    self?.standardDailyGraphView.highlightCollectionView()
                 }
-                self?.standardDailyGraphView.reload()
             })
             .store(in: &self.cancellables)
     }
@@ -222,6 +226,24 @@ extension ModifyRecordVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { isModified in
                 self.navigationItem.rightBarButtonItem?.isEnabled = isModified
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSelectedTask() {
+        self.viewModel?.$selectedTask
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateInteractionViews()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSelectedTaskHistorys() {
+        self.viewModel?.$selectedTaskHistorys
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.updateInteractionViews()
             })
             .store(in: &self.cancellables)
     }
@@ -247,11 +269,13 @@ extension ModifyRecordVC {
     
     private func updateInteractionViews() {
         self.taskModifyInteractionView.update(task: self.viewModel?.selectedTask,
-                                                          historys: self.viewModel?.selectedTaskHistorys)
-        // TODO: self.taskCreateInteractionView.update
+                                              historys: self.viewModel?.selectedTaskHistorys)
+        self.taskCreateInteractionView.update(task: self.viewModel?.selectedTask,
+                                              historys: self.viewModel?.selectedTaskHistorys)
     }
 }
 
+// MARK: 인터렉션 뷰
 extension ModifyRecordVC {
     private func emptyInteractionFrameView() {
         self.taskInteractionFrameView.subviews.forEach { $0.removeFromSuperview() }
@@ -303,17 +327,18 @@ extension ModifyRecordVC: UIScrollViewDelegate {
 
 extension ModifyRecordVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let graph = GraphCollectionView(rawValue: collectionView.tag) {
+        if let graph = GraphCollectionView(rawValue: collectionView.tag),
+           let viewModel = self.viewModel {
             switch graph {
             case .standardDailyGraphView:
-                let taskNum = self.viewModel?.tasks.count ?? 0
-                if self.viewModel?.selectedTask == nil {
-                    return taskNum + 1
+                if viewModel.mode == .none {
+                    // 아무 과목도 선택하지 않은 경우 마지막에 기록 추가 셀 보여주기
+                    return viewModel.tasks.count + 1
                 } else {
-                    return taskNum
+                    return viewModel.tasks.count
                 }
             case .tasksProgressDailyGraphView:
-                return min(8, self.viewModel?.tasks.count ?? 0)
+                return min(8, viewModel.tasks.count)
             }
         } else { return 0 }
     }
@@ -354,8 +379,9 @@ extension ModifyRecordVC: UICollectionViewDataSource {
 extension ModifyRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let graph = GraphCollectionView(rawValue: collectionView.tag),
-              graph == .standardDailyGraphView else { return }
-        self.viewModel?.selectTask(at: indexPath.row)
+              graph == .standardDailyGraphView,
+              let taskName = self.viewModel?.tasks[indexPath.row].taskName else { return }
+        self.viewModel?.changeToExistingTaskMode(task: taskName)
     }
 }
 
@@ -373,21 +399,26 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: UITableViewDelegate
 extension ModifyRecordVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let isLastCell = indexPath.row == (self.viewModel?.selectedTaskHistorys.count ?? 0)
+        let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        let isLastCell = (indexPath.row == lastCellIndex)
         
         return isLastCell ? AddHistoryCell.height : HistoryCell.height
     }
 }
 
+// MARK: UITableViewDataSource
 extension ModifyRecordVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.viewModel?.selectedTaskHistorys.count ?? 0) + 1
+        let numberOfHistorys = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        return numberOfHistorys + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isLastCell = indexPath.row == (self.viewModel?.selectedTaskHistorys.count ?? 0)
+        let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        let isLastCell = (indexPath.row == lastCellIndex)
         
         if isLastCell {
             guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
@@ -396,7 +427,7 @@ extension ModifyRecordVC: UITableViewDataSource {
         } else {
             guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
             cell.configureDelegate(self)
-            cell.configure(with: self.viewModel?.selectedTaskHistorys[indexPath.row])
+            cell.configure(with: self.viewModel?.selectedTaskHistorys?[indexPath.row])
             return cell
         }
     }
@@ -412,7 +443,7 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
             let newTaskName = alert.textFields?[0].text ?? ""
-            self?.viewModel?.updateSelectedTaskName(to: newTaskName)
+            self?.viewModel?.changeTaskName(to: newTaskName)
         }
         
         alert.addTextField { (inputNewTaskName) in
@@ -432,18 +463,19 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
         guard let viewModel = self.viewModel,
               let index = indexPath?.row,
+              let history = viewModel.selectedTaskHistorys?[index],
               let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
         
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .alert)
         
-        editHistoryViewController.history = viewModel.selectedTaskHistorys[index]
+        editHistoryViewController.history = history
         alert.setValue(editHistoryViewController, forKey: "contentViewController")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.viewModel?.updateHistory(at: index, to: editHistoryViewController.history)
+            self?.viewModel?.modifyHistory(at: index, to: editHistoryViewController.history)
         }
         alert.addAction(cancel)
         alert.addAction(ok)
@@ -479,7 +511,7 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
 
 extension ModifyRecordVC: FinishButtonDelegate {
     func finishButtonTapped() {
-        self.viewModel?.deselectTask()
+        self.viewModel?.changeToNoneMode()
     }
 }
 
