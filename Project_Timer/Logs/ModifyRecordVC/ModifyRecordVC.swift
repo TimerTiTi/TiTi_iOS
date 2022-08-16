@@ -49,9 +49,6 @@ final class ModifyRecordVC: UIViewController {
         self.configureTableViewDelegate()
         self.configureHostingVC()
         self.bindAll()
-        
-        self.showTaskModifyInteractionView()
-//        self.showTaskEmptyInteractionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -235,11 +232,7 @@ extension ModifyRecordVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] selectedTask in
                 self?.updateInteractionViews()
-                if selectedTask == nil {
-                    self?.taskCreateInteractionView.disableFinishButton()
-                } else {
-                    self?.taskCreateInteractionView.enableFinishButton()
-                }
+                self?.updateADDButtonState()
             })
             .store(in: &self.cancellables)
     }
@@ -247,8 +240,9 @@ extension ModifyRecordVC {
     private func bindSelectedTaskHistorys() {
         self.viewModel?.$selectedTaskHistorys
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] selectedTaskHistorys in
                 self?.updateInteractionViews()
+                self?.updateADDButtonState()
             })
             .store(in: &self.cancellables)
     }
@@ -563,7 +557,29 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
 
 extension ModifyRecordVC: FinishButtonDelegate {
     func finishButtonTapped() {
-        self.viewModel?.changeToNoneMode()
+        guard let mode = self.viewModel?.mode else { return }
+        
+        switch mode {
+        case .existingTask:
+            self.viewModel?.changeToNoneMode()
+        case .newTask:
+            // 그래프에 반영
+            self.viewModel?.updateDailysTaskHistory()
+            self.viewModel?.changeToNoneMode()
+        default:
+            return
+        }
+    }
+    
+    func updateADDButtonState() {
+        // 과목명이 존재하고, 기록이 1개 이상인 경우에만 ADD 버튼 활성화
+        if self.viewModel?.selectedTask != nil,
+           let numberOfHistorys = self.viewModel?.selectedTaskHistorys?.count,
+           numberOfHistorys > 0 {
+            self.taskCreateInteractionView.enableFinishButton()
+        } else {
+            self.taskCreateInteractionView.disableFinishButton()
+        }
     }
 }
 
