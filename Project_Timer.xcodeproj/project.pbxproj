@@ -23,6 +23,8 @@
 		048D8ACD28AA608900A2456D /* EditDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACC28AA608900A2456D /* EditDateVC.swift */; };
 		048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */; };
 		048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */; };
+		048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */; };
+		049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -171,6 +173,8 @@
 		048D8ACC28AA608900A2456D /* EditDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateVC.swift; sourceTree = "<group>"; };
 		048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskHistoryCell.swift; sourceTree = "<group>"; };
 		048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewTaskHistoryCell.xib; sourceTree = "<group>"; };
+		048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateInteractionView.swift; sourceTree = "<group>"; };
+		049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyFinishButton.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -382,6 +386,8 @@
 			children = (
 				04E0DFC428A918DE004DABBE /* Cell */,
 				04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */,
+				048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */,
+				049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -946,6 +952,7 @@
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
+				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
@@ -956,6 +963,7 @@
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
+				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				048D8ACD28AA608900A2456D /* EditDateVC.swift in Sources */,

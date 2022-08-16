@@ -1,5 +1,5 @@
 //
-//  TaskModifyInteractionView.swift
+//  TaskInteractionView.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/08/14.
@@ -20,20 +20,7 @@ protocol FinishButtonDelegate: AnyObject {
 
 class TaskInteractionView: UIView {
     /* public */
-    var finishButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 30),
-            button.widthAnchor.constraint(equalToConstant: 70)
-        ])
-        button.backgroundColor = UIColor(named: String.userTintColor)
-        button.cornerRadius = 6
-        button.setTitle("OK", for: .normal)
-        button.setTitleColor(UIColor.label, for: .normal)
-        button.titleLabel?.font = TiTiFont.HGGGothicssiP60g(size: 18)
-        return button
-    }()
+    var finishButton = ModifyFinishButton()
     var editTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -53,20 +40,7 @@ class TaskInteractionView: UIView {
         // TODO: separator 없애기
         return tableView
     }()
-    
-    /* private */
-    private static let createCategoryLabel: (String) -> UILabel = { title in
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.font = TiTiFont.HGGGothicssiP60g(size: 16)
-        titleLabel.textColor = UIColor.label
-        return titleLabel
-    }
-    private var taskCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Task:")
-    private var timeCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Time:")
-    private var historysCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Historys:")
-    private var taskLabel: PaddingLabel = {
+    var taskLabel: PaddingLabel = {
         let label = PaddingLabel(vertical: 0, horizontal: 7)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP60g(size: 16)
@@ -82,6 +56,19 @@ class TaskInteractionView: UIView {
         label.layer.cornerRadius = 6
         return label
     }()
+    
+    /* private */
+    private static let createCategoryLabel: (String) -> UILabel = { title in
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = title
+        titleLabel.font = TiTiFont.HGGGothicssiP60g(size: 16)
+        titleLabel.textColor = UIColor.label
+        return titleLabel
+    }
+    private var taskCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Task:")
+    private var timeCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Time:")
+    private var historysCategoryLabel: UILabel = TaskInteractionView.createCategoryLabel("Historys:")
     private var totalTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -102,10 +89,18 @@ class TaskInteractionView: UIView {
         }
     }
     
-    convenience init() {
-        self.init(frame: CGRect())
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.commonInit()
         self.configureTableView()
+    }
+    
+    convenience init() {
+        self.init(frame: CGRect())
     }
     
     private func commonInit() {
