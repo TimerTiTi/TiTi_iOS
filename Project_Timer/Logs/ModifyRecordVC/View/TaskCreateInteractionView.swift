@@ -11,9 +11,8 @@ import UIKit
 class TaskCreateInteractionView: TaskInteractionView {
     convenience init() {
         self.init(frame: CGRect())
-        finishButton.setTitle("ADD", for: .normal)
-        finishButton.isEnabled = false
-        editTaskButton.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        taskLabel.text = "과목명을 입력해주세요"
+        self.configureFinishButton(title: "ADD")
+        self.disableFinishButton()
+        self.configureEditTaskButton(image: UIImage(systemName: "plus.circle"))
     }
 }
