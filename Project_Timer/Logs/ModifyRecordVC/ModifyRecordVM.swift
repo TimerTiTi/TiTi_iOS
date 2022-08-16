@@ -64,6 +64,11 @@ extension ModifyRecordVM {
         self.selectedTask = nil
         self.selectedTaskHistorys = nil
     }
+    
+    func reset() {
+        self.isModified = false
+        self.changeToNoneMode()
+    }
 }
 
 // MARK: 기록 수정 메소드
@@ -79,7 +84,7 @@ extension ModifyRecordVM {
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
         if self.mode == .existingTask {
-            self.currentDaily.changeTaskName(from: oldName, to: newName)
+            self.changeDailysTaskName(from: oldName, to: newName)
         }
     }
     
@@ -96,9 +101,7 @@ extension ModifyRecordVM {
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
         if self.mode == .existingTask {
-            guard let selectedTask = self.selectedTask,
-                  let selectedTaskHistorys = self.selectedTaskHistorys else { return }
-            self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
+            self.updateDailysTaskHistory()
         }
     }
     
@@ -111,9 +114,7 @@ extension ModifyRecordVM {
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
         if self.mode == .existingTask {
-            guard let selectedTask = self.selectedTask,
-                  let selectedTaskHistorys = self.selectedTaskHistorys else { return }
-            self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
+            self.updateDailysTaskHistory()
         }
     }
     
@@ -121,9 +122,16 @@ extension ModifyRecordVM {
         // TODO: daily.json도 업데이트 필요?
         DailyManager.shared.modifyDaily(self.currentDaily)
     }
+}
+
+extension ModifyRecordVM {
+    private func changeDailysTaskName(from oldName: String, to newName: String) {
+        self.currentDaily.changeTaskName(from: oldName, to: newName)
+    }
     
-    func reset() {
-        self.isModified = false
-        self.changeToNoneMode()
+    func updateDailysTaskHistory() {
+        guard let selectedTask = self.selectedTask,
+              let selectedTaskHistorys = self.selectedTaskHistorys else { return }
+        self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
     }
 }
