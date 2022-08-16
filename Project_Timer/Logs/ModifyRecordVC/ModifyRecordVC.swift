@@ -79,6 +79,7 @@ extension ModifyRecordVC {
     }
 
     private func configureBackButton() {
+        // TODO: 이미지만 보이고 타이틀 안보임. 해결 필요
         let backButton = UIBarButtonItem(title: "Back",
                                          style: .done,
                                          target: self,
@@ -102,9 +103,11 @@ extension ModifyRecordVC {
         self.view.addSubview(self.taskInteractionFrameView)
         self.taskInteractionFrameView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            // 가로 365로 고정
             self.taskInteractionFrameView.widthAnchor.constraint(equalToConstant: 365),
             self.taskInteractionFrameView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.taskInteractionFrameView.topAnchor.constraint(equalTo: self.graphsScrollView.bottomAnchor, constant: 16),
+            // 세로는 가변 길이, 단 탭바로부터 16만큼 띄우기
             self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16 - (self.tabBarController?.tabBar.frame.height ?? 0))
         ])
     }
@@ -217,6 +220,7 @@ extension ModifyRecordVC {
         self.viewModel?.$isModified
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { isModified in
+                // 변경 사항이 있는 경우에만 SAVE 버튼 enable
                 self.navigationItem.rightBarButtonItem?.isEnabled = isModified
             })
             .store(in: &self.cancellables)
@@ -264,14 +268,15 @@ extension ModifyRecordVC {
     
     private func updateInteractionViews() {
         self.taskModifyInteractionView.configure(task: self.viewModel?.selectedTask,
-                                              historys: self.viewModel?.selectedTaskHistorys)
+                                                 historys: self.viewModel?.selectedTaskHistorys)
         self.taskCreateInteractionView.configure(task: self.viewModel?.selectedTask,
-                                              historys: self.viewModel?.selectedTaskHistorys)
+                                                 historys: self.viewModel?.selectedTaskHistorys)
     }
 }
 
 // MARK: 인터렉션 뷰
 extension ModifyRecordVC {
+    /// 모든 인터렉션 뷰 제거
     private func emptyInteractionFrameView() {
         self.taskInteractionFrameView.subviews.forEach { $0.removeFromSuperview() }
     }
@@ -314,6 +319,7 @@ extension ModifyRecordVC {
 
 // MARK: Alert
 extension ModifyRecordVC {
+    /// 텍스트필드가 포함된 Alert 생성
     private func showTextFieldAlert(title: String? = nil, message: String? = nil, placeholder: String? = nil, handler: ((String)->Void)? = nil) {
         // TODO: localize
         let alert = UIAlertController(title: title,
@@ -338,6 +344,7 @@ extension ModifyRecordVC {
         present(alert, animated: true)
     }
     
+    /// TaskHistory를 편집할 수 있는 Alert 생성
     private func showEditHistoryAlert(with history: TaskHistory, handler: ((TaskHistory)->Void)? = nil) {
         guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
         
@@ -359,6 +366,7 @@ extension ModifyRecordVC {
         present(alert, animated: true)
     }
     
+    /// OK 버튼만 있는 Alert 생성
     private func showOKAlert(title: String?, message: String?, handler: (()->Void)?) {
         // TODO: localize
         let alert = UIAlertController(title: title,
@@ -371,6 +379,7 @@ extension ModifyRecordVC {
         present(alert, animated: true)
     }
     
+    /// Ok와 Cancel 버튼이 있는 Alert 생성
     private func showOKCancelAlert(title: String?, message: String?, handler: (()->Void)?) {
         // TODO: localize
         let alert = UIAlertController(title: title,
@@ -405,8 +414,8 @@ extension ModifyRecordVC: UICollectionViewDataSource {
            let viewModel = self.viewModel {
             switch graph {
             case .standardDailyGraphView:
+                // 아무 과목도 선택하지 않은 경우 마지막에 기록 추가 셀 보여주기
                 if viewModel.mode == .none {
-                    // 아무 과목도 선택하지 않은 경우 마지막에 기록 추가 셀 보여주기
                     return viewModel.tasks.count + 1
                 } else {
                     return viewModel.tasks.count
@@ -421,23 +430,27 @@ extension ModifyRecordVC: UICollectionViewDataSource {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                let isTaskSelected = self.viewModel?.selectedTask == nil
+                let isNoneMode = self.viewModel?.mode == ModifyRecordVM.ModifyMode.none
                 let isLastCell = indexPath.row == (self.viewModel?.tasks.count ?? 0)
                 
-                if isTaskSelected && isLastCell {
+                // 편집 중이 아닌 경우 마지막 셀은 +기록추가 셀
+                if isNoneMode && isLastCell {
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddNewTaskHistoryCell.identifier, for: indexPath) as? AddNewTaskHistoryCell else { return UICollectionViewCell() }
                     cell.configureDelegate(self)
                     return cell
                 } else {
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
                     guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                    
                     cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                    // 편집중인 Task는 빨간색 테두리 처리
                     if taskInfo.taskName == self.viewModel?.selectedTask {
                         cell.layer.borderWidth = 2
                         cell.layer.borderColor = UIColor.red.cgColor
                     } else {
                         cell.layer.borderWidth = 0
                     }
+                    
                     return cell
                 }
             case .tasksProgressDailyGraphView:
@@ -456,6 +469,7 @@ extension ModifyRecordVC: UICollectionViewDelegate {
         guard let graph = GraphCollectionView(rawValue: collectionView.tag),
               graph == .standardDailyGraphView,
               let taskName = self.viewModel?.tasks[indexPath.row].taskName else { return }
+        // 그래프에서 Task 선택 -> 기존 Task 편집 모드로 전환
         self.viewModel?.changeToExistingTaskMode(task: taskName)
     }
 }
@@ -466,6 +480,7 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
+                // TODO: 마지막 셀(기록추가셀) 높이 분기
                 // 컬렉션뷰 테두리가 안쪽으로 생겨서 셀 테두리를 덮는 버그 때문에 width 수정함
                 return CGSize(width: collectionView.bounds.width-4, height: StandardDailyTaskCell.height)
             case .tasksProgressDailyGraphView:
@@ -481,6 +496,7 @@ extension ModifyRecordVC: UITableViewDelegate {
         let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
         let isLastCell = (indexPath.row == lastCellIndex)
         
+        // 마지막 셀은 기록추가 셀
         return isLastCell ? AddHistoryCell.height : HistoryCell.height
     }
 }
@@ -496,11 +512,11 @@ extension ModifyRecordVC: UITableViewDataSource {
         let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
         let isLastCell = (indexPath.row == lastCellIndex)
         
-        if isLastCell {
+        if isLastCell {     // 마지막 셀은 기록추가 셀
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
             cell.configureDelegate(self)
             return cell
-        } else {
+        } else {            // 나머지는 일반 히스토리 셀
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
             cell.configureDelegate(self)
             cell.configure(with: self.viewModel?.selectedTaskHistorys?[indexPath.row])
@@ -525,7 +541,7 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
             self.showTextFieldAlert(title: "과목명 입력",
                                     message: "새로운 과목을 입력해주세요",
                                     placeholder: "새로운 과목") { [weak self] text in
-                self?.viewModel?.makeNewTaskName(text)
+                self?.viewModel?.setNewTaskName(text)
             }
         default:
             return
@@ -550,6 +566,7 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
         guard let day = self.viewModel?.currentDaily.day else { return }
         
+        // 초기 placeholder는 00:00:00
         let defaultHistory = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
         self.showEditHistoryAlert(with: defaultHistory) { [weak self] newHistory in
             self?.viewModel?.addHistory(newHistory)
@@ -573,7 +590,7 @@ extension ModifyRecordVC: FinishButtonDelegate {
         case .existingTask:
             self.viewModel?.changeToNoneMode()
         case .newTask:
-            // 그래프에 반영
+            // 그래프에도 반영하기 위해 Daily 업데이트
             self.viewModel?.updateDailysTaskHistory()
             self.viewModel?.changeToNoneMode()
         default:
@@ -607,6 +624,7 @@ extension ModifyRecordVC {
     @objc private func backButtonTapped() {
         guard let isModified = self.viewModel?.isModified else { return }
         
+        // 변경 사항이 있는 경우 얼럿 제공
         if isModified {
             self.confirmCancel()
         } else {
