@@ -27,7 +27,7 @@
 		049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */; };
 		049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */; };
 		049BBA9C28AB58D4005BAB1B /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */; };
-		049BBA9E28AB76B8005BAB1B /* InteractionViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9D28AB76B8005BAB1B /* InteractionViewPlaceholder.swift */; };
+		049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -180,7 +180,7 @@
 		049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyFinishButton.swift; sourceTree = "<group>"; };
 		049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModifyInteractionView.swift; sourceTree = "<group>"; };
 		049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
-		049BBA9D28AB76B8005BAB1B /* InteractionViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionViewPlaceholder.swift; sourceTree = "<group>"; };
+		049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionViewPlaceholder.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 				04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */,
 				048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */,
 				049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */,
-				049BBA9D28AB76B8005BAB1B /* InteractionViewPlaceholder.swift */,
+				049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */,
 				049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */,
 				049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */,
 			);
@@ -963,7 +963,7 @@
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
-				049BBA9E28AB76B8005BAB1B /* InteractionViewPlaceholder.swift in Sources */,
+				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,

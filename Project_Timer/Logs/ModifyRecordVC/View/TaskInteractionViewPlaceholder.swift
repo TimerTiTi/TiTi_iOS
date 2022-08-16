@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InteractionViewPlaceholder: UIView {
+class TaskInteractionViewPlaceholder: UIView {
     private var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
