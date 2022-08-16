@@ -322,6 +322,83 @@ extension ModifyRecordVC {
     }
 }
 
+// MARK: Alert
+extension ModifyRecordVC {
+    private func showTextFieldAlert(title: String? = nil, message: String? = nil, placeholder: String? = nil, handler: ((String)->Void)? = nil) {
+        // TODO: localize
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            let text = alert.textFields?[0].text ?? ""
+            handler?(text)
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = placeholder
+            textField.textAlignment = .center
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.text = self.viewModel?.selectedTask
+        }
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+    }
+    
+    private func showEditHistoryAlert(with history: TaskHistory, handler: ((TaskHistory)->Void)? = nil) {
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .alert)
+        
+        editHistoryViewController.history = history
+        alert.setValue(editHistoryViewController, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            handler?(editHistoryViewController.history)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+    }
+    
+    private func showOKAlert(title: String?, message: String?, handler: (()->Void)?) {
+        // TODO: localize
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            handler?()
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+    private func showOKCancelAlert(title: String?, message: String?, handler: (()->Void)?) {
+        // TODO: localize
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            handler?()
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true)
+    }
+}
+
 extension ModifyRecordVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.graphsScrollView else { return }
@@ -459,79 +536,28 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
             return
         }
     }
-    
-    private func showTextFieldAlert(title: String? = nil, message: String? = nil, placeholder: String? = nil, handler: @escaping (String)->Void) {
-        // TODO: localize
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
-            let text = alert.textFields?[0].text ?? ""
-            handler(text)
-        }
-        
-        alert.addTextField { (textField) in
-            textField.placeholder = placeholder
-            textField.textAlignment = .center
-            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
-            textField.text = self.viewModel?.selectedTask
-        }
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        present(alert, animated: true)
-    }
 }
 
 extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
-        guard let viewModel = self.viewModel,
-              let index = indexPath?.row,
-              let history = viewModel.selectedTaskHistorys?[index],
-              let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        guard let index = indexPath?.row,
+              let history = self.viewModel?.selectedTaskHistorys?[index] else { return }
         
-        let alert = UIAlertController(title: nil,
-                                      message: nil,
-                                      preferredStyle: .alert)
-        
-        editHistoryViewController.history = history
-        alert.setValue(editHistoryViewController, forKey: "contentViewController")
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            self?.viewModel?.modifyHistory(at: index, to: editHistoryViewController.history)
+        self.showEditHistoryAlert(with: history) { [weak self] newHistory in
+            self?.viewModel?.modifyHistory(at: index, to: newHistory)
         }
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        present(alert, animated: true)
     }
 }
 
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
-        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC,
-              let day = self.viewModel?.currentDaily.day else { return }
-
-        let alert = UIAlertController(title: nil,
-                                      message: nil,
-                                      preferredStyle: .alert)
+        guard let day = self.viewModel?.currentDaily.day else { return }
         
-        editHistoryViewController.history = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
-        alert.setValue(editHistoryViewController, forKey: "contentViewController")
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            // TODO: 시작시각 > 종료시각인 경우 에러 처리
-            self?.viewModel?.addHistory(editHistoryViewController.history)
+        let defaultHistory = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
+        self.showEditHistoryAlert(with: defaultHistory) { [weak self] newHistory in
+            // TODO: 시작시각 > 종료시각인 경우 예외처리
+            self?.viewModel?.addHistory(newHistory)
         }
-        
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        present(alert, animated: true)
     }
 }
 
@@ -544,16 +570,9 @@ extension ModifyRecordVC: FinishButtonDelegate {
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
         self.viewModel?.save()
-        
-        // TODO: localize
-        let alert = UIAlertController(title: "저장 완료",
-                                      message: "변경 사항이 저장되었습니다.",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
             self?.viewModel?.reset()
         }
-        alert.addAction(okAction)
-        present(alert, animated: true)
         
         // TODO: dailys를 쓰는 다른 화면에게 noti 보내서 화면 갱신 시키기
     }
@@ -569,25 +588,14 @@ extension ModifyRecordVC {
     }
     
     private func confirmCancel() {
-        // TODO: localize
-        let alert = UIAlertController(title: "경고",
-                                      message: "변경 사항이 제거됩니다.",
-                                      preferredStyle: .alert)
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+        self.showOKCancelAlert(title: "경고", message: "변경 사항이 제거됩니다.") { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        
-        present(alert, animated: true)
     }
 }
 
 extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
     func addNewTaskHistoryButtonTapped() {
-        print("DEBUg: add new task history button tapped")
         self.viewModel?.changeToNewTaskMode()
     }
 }
