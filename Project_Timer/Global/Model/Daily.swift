@@ -114,7 +114,21 @@ struct Daily: Codable, CustomStringConvertible {
 // MARK: 새로운 기록저장 로직
 extension Daily {
     private mutating func updateTaskHistorys(taskName: String, startDate: Date, endDate: Date) {
-        self.addHistory(TaskHistory(startDate: startDate, endDate: endDate), to: taskName)
+        if var taskHistorys = self.taskHistorys {
+            if taskHistorys[taskName] == nil {  // 과목 기록이 없었던 경우
+                taskHistorys[taskName] = []     // 빈 배열로 초기화
+            }
+            taskHistorys[taskName]?.append(TaskHistory(startDate: startDate, endDate: endDate))
+            // TODO: sort 로직 수정 필요 새벽 5시~새벽4시
+            taskHistorys[taskName]?.sort(by: { $0.startDate < $1.startDate })
+            self.taskHistorys = taskHistorys
+        } else {
+            assertionFailure("taskHistorys 값이 nil 입니다.")
+        }
+        
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
     }
     
     private mutating func updateTasks() {
@@ -188,30 +202,11 @@ extension Daily {
         self.taskHistorys?[newName] = historys
     }
     
-    mutating func addHistory(_ history: TaskHistory, to taskName: String) {
-        if var taskHistorys = self.taskHistorys {
-            if taskHistorys[taskName] == nil {  // 과목 기록이 없었던 경우
-                taskHistorys[taskName] = []     // 빈 배열로 초기화
-            }
-            taskHistorys[taskName]?.append(history)
-            // TODO: sort 로직 수정 필요 새벽 5시~새벽4시
-            taskHistorys[taskName]?.sort(by: { $0.startDate < $1.startDate })
-            self.taskHistorys = taskHistorys
-        } else {
-            assertionFailure("taskHistorys 값이 nil 입니다.")
-        }
+    mutating func updateTaskHistorys(of taskName: String, with historys: [TaskHistory]) {
+        self.taskHistorys?[taskName] = historys
         
         self.updateTasks()
         self.updateMaxTime()
         self.updateTimeline()
     }
-    
-    mutating func editHistory(of taskName: String, at historyIndex: Int, to newHistory: TaskHistory) {
-        self.taskHistorys?[taskName]?[historyIndex] = newHistory
-        
-        self.updateTasks()
-        self.updateMaxTime()
-        self.updateTimeline()
-    }
-    
 }
