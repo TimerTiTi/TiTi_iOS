@@ -15,4 +15,11 @@ class TaskCreateInteractionView: TaskInteractionView {
         self.disableFinishButton()
         self.configureEditTaskButton(image: UIImage(systemName: "plus.circle"))
     }
+    
+    override func configure(task: String?, historys: [TaskHistory]?) {
+        super.configure(task: task, historys: historys)
+        if task == nil {
+            self.configureTaskLabel(task: "과목명을 입력해주세요")
+        }
+    }
 }
