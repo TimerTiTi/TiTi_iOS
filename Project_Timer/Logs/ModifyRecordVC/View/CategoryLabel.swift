@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 인터렉션 뷰의 좌측 항목 명을 위한 커스텀 Label
 class CategoryLabel: UILabel {
     convenience init(title: String) {
         self.init(frame: CGRect())

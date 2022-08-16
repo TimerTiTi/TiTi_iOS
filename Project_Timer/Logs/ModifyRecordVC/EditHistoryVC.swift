@@ -9,6 +9,7 @@
 import UIKit
 import Combine
 
+/// TaskHistory 편집 창의 뷰컨트롤러
 class EditHistoryVC: UIViewController {
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var endTimeButton: UIButton!
@@ -38,6 +39,7 @@ class EditHistoryVC: UIViewController {
     }
 }
 
+// MARK: 바인딩 & configure
 extension EditHistoryVC {
     private func bind() {
         self.$history
@@ -60,7 +62,8 @@ extension EditHistoryVC {
     }
 }
 
-extension EditHistoryVC {
+// MARK: DatePicker 띄우기
+extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
     private func popoverEditDateVC(on sourceView: UIView, date: Date, changeHandler: @escaping DateChangeHandler) {
         guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: "EditDateVC") as? EditDateVC else { return }
         
@@ -69,13 +72,11 @@ extension EditHistoryVC {
         editDateVC.popoverPresentationController?.delegate = self
         
         editDateVC.date = date
-        editDateVC.changeHandler = changeHandler
+        editDateVC.changeHandler = changeHandler    // 변경된 Date값을 수행할 코드를 클로저로 전달
         
         present(editDateVC, animated: true)
     }
-}
-
-extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
