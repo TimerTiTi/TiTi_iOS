@@ -22,7 +22,7 @@ final class ModifyRecordVC: UIViewController {
     private var taskInteractionFrameView = UIView()                         // 인터렉션 뷰의 프레임 뷰
     private var taskModifyInteractionView = TaskModifyInteractionView()     // 기존 Task의 기록 편집 뷰
     private var taskCreateInteractionView = TaskCreateInteractionView()     // 새로운 Task의 기록 편집 뷰
-    private var interatcionViewPlaceholder = InteractionViewPlaceholder()   // 인터렉션뷰 placeholder
+    private var taskInteratcionViewPlaceholder = TaskInteractionViewPlaceholder()   // 인터렉션뷰 placeholder
     private var isReverseColor: Bool = false    // TODO: 받아와야서 반영해야 함
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -35,7 +35,7 @@ final class ModifyRecordVC: UIViewController {
         super.viewDidLoad()
         self.configureNavigationBar()
         self.configureScrollView()
-        self.configureTaskInteractionFrameView()
+        self.configureTaskInteractionViews()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
         self.configureTableViewDelegate()
@@ -99,7 +99,7 @@ extension ModifyRecordVC {
         self.graphsScrollView.delegate = self
     }
     
-    private func configureTaskInteractionFrameView() {
+    private func configureTaskInteractionViews() {
         self.view.addSubview(self.taskInteractionFrameView)
         self.taskInteractionFrameView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -109,6 +109,29 @@ extension ModifyRecordVC {
             self.taskInteractionFrameView.topAnchor.constraint(equalTo: self.graphsScrollView.bottomAnchor, constant: 16),
             // 세로는 가변 길이, 단 탭바로부터 16만큼 띄우기
             self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16 - (self.tabBarController?.tabBar.frame.height ?? 0))
+        ])
+        
+        self.taskInteractionFrameView.addSubview(self.taskInteratcionViewPlaceholder)
+        self.taskInteratcionViewPlaceholder.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskInteratcionViewPlaceholder.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskInteratcionViewPlaceholder.centerYAnchor.constraint(equalTo: self.taskInteractionFrameView.centerYAnchor)
+        ])
+        
+        self.taskInteractionFrameView.addSubview(self.taskModifyInteractionView)
+        self.taskModifyInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskModifyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskModifyInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
+            self.taskModifyInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
+        ])
+        
+        self.taskInteractionFrameView.addSubview(self.taskCreateInteractionView)
+        self.taskCreateInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.taskCreateInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.taskCreateInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
+            self.taskCreateInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
         ])
     }
     
@@ -209,7 +232,7 @@ extension ModifyRecordVC {
                     self?.showTaskCreateInteractionView()
                     self?.standardDailyGraphView.removeCollectionViewHighlight()
                 case .none:
-                    self?.showTaskEmptyInteractionView()
+                    self?.showTaskInteractionViewPlaceholder()
                     self?.standardDailyGraphView.highlightCollectionView()
                 }
             })
@@ -278,42 +301,22 @@ extension ModifyRecordVC {
 extension ModifyRecordVC {
     /// 모든 인터렉션 뷰 제거
     private func emptyInteractionFrameView() {
-        self.taskInteractionFrameView.subviews.forEach { $0.removeFromSuperview() }
+        self.taskInteractionFrameView.subviews.forEach { $0.isHidden = true }
     }
     
-    private func showTaskEmptyInteractionView() {
+    private func showTaskInteractionViewPlaceholder() {
         self.emptyInteractionFrameView()
-        
-        self.taskInteractionFrameView.addSubview(self.interatcionViewPlaceholder)
-        self.interatcionViewPlaceholder.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.interatcionViewPlaceholder.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
-            self.interatcionViewPlaceholder.centerYAnchor.constraint(equalTo: self.taskInteractionFrameView.centerYAnchor)
-        ])
+        self.taskInteratcionViewPlaceholder.isHidden = false
     }
     
     private func showTaskModifyInteractionView() {
         self.emptyInteractionFrameView()
-        
-        self.taskInteractionFrameView.addSubview(self.taskModifyInteractionView)
-        self.taskModifyInteractionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.taskModifyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
-            self.taskModifyInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
-            self.taskModifyInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
-        ])
+        self.taskModifyInteractionView.isHidden = false
     }
     
     private func showTaskCreateInteractionView() {
         self.emptyInteractionFrameView()
-        
-        self.taskInteractionFrameView.addSubview(self.taskCreateInteractionView)
-        self.taskCreateInteractionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.taskCreateInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
-            self.taskCreateInteractionView.topAnchor.constraint(equalTo: self.taskInteractionFrameView.topAnchor),
-            self.taskCreateInteractionView.bottomAnchor.constraint(equalTo: self.taskInteractionFrameView.bottomAnchor)
-        ])
+        self.taskCreateInteractionView.isHidden = false
     }
 }
 
