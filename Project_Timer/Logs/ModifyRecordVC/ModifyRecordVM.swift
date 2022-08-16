@@ -71,8 +71,9 @@ extension ModifyRecordVM {
     }
 }
 
-// MARK: 기록 수정 메소드
+// MARK: 기록 수정 관련 메소드
 extension ModifyRecordVM {
+    /// 선택된 Task의 이름을 newName으로 변경
     func changeTaskName(to newName: String) {
         guard let oldName = selectedTask,
               oldName != newName,
@@ -88,10 +89,12 @@ extension ModifyRecordVM {
         }
     }
     
-    func makeNewTaskName(_ name: String) {
+    /// 새로 추가하는 기록의 과목명을 name으로 설정
+    func setNewTaskName(_ name: String) {
         self.selectedTask = name
     }
 
+    /// 선택된 과목에 history 추가
     func addHistory(_ history: TaskHistory) {
         guard self.mode != .none else { return }
         
@@ -107,6 +110,7 @@ extension ModifyRecordVM {
         }
     }
     
+    /// 선택한 과목의 index번 히스토리를 newHistory로 변경
     func modifyHistory(at index: Int, to newHistory: TaskHistory) {
         guard self.mode != .none,
               self.selectedTaskHistorys?[index] != newHistory else { return }
@@ -120,17 +124,21 @@ extension ModifyRecordVM {
         }
     }
     
+    /// 편집 내용 로컬에 저장, dailys.json 파일 업데이트
     func save() {
         // TODO: daily.json도 업데이트 필요?
         RecordController.shared.modifyRecord(with: self.currentDaily)
     }
 }
 
+// MARK: 데일리 수정
 extension ModifyRecordVM {
+    /// oldName이라는 과목의 이름을 newName으로 변경
     private func changeDailysTaskName(from oldName: String, to newName: String) {
         self.currentDaily.changeTaskName(from: oldName, to: newName)
     }
     
+    /// 현재 인터렉션 뷰에서 편집 중인 내용을 Daily에도 반영
     func updateDailysTaskHistory() {
         guard let selectedTask = self.selectedTask,
               let selectedTaskHistorys = self.selectedTaskHistorys else { return }
