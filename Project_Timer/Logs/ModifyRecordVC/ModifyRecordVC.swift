@@ -19,19 +19,11 @@ final class ModifyRecordVC: UIViewController {
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
-    private var taskInteractionFrameView = UIView()
-    private var taskModifyInteractionView = TaskModifyInteractionView()
-    private var taskCreateInteractionView = TaskCreateInteractionView()
-    private var taskEmptyInteractionView: UILabel = {
-        let label = UILabel()
-        label.text = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요"
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        label.font = TiTiFont.HGGGothicssiP60g(size: 17)
-        label.textColor = UIColor.label
-        return label
-    }()
-    private var isReverseColor: Bool = false    // Daily로부터 받아와야 함
+    private var taskInteractionFrameView = UIView()                         // 인터렉션 뷰의 프레임 뷰
+    private var taskModifyInteractionView = TaskModifyInteractionView()     // 기존 Task의 기록 편집 뷰
+    private var taskCreateInteractionView = TaskCreateInteractionView()     // 새로운 Task의 기록 편집 뷰
+    private var interatcionViewPlaceholder = InteractionViewPlaceholder()   // 인터렉션뷰 placeholder
+    private var isReverseColor: Bool = false    // TODO: 받아와야서 반영해야 함
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
@@ -62,6 +54,7 @@ final class ModifyRecordVC: UIViewController {
     }
 }
 
+// MARK: 네비게이션 바 구성
 extension ModifyRecordVC {
     private func configureNavigationBar() {
         self.configureTitle()
@@ -95,6 +88,7 @@ extension ModifyRecordVC {
     }
 }
 
+// MARK: 뷰 구성
 extension ModifyRecordVC {
     private func configureShadows(_ views: UIView...) {
         views.forEach { $0.configureShadow() }
@@ -169,6 +163,7 @@ extension ModifyRecordVC {
     }
 }
 
+// MARK: 바인딩
 extension ModifyRecordVC {
     private func bindAll() {
         self.bindDaily()
@@ -248,6 +243,7 @@ extension ModifyRecordVC {
     }
 }
 
+// MARK: 뷰 업데이트
 extension ModifyRecordVC {
     private func updateGraphsFromDaily() {
         let daily = self.viewModel?.currentDaily
@@ -283,11 +279,11 @@ extension ModifyRecordVC {
     private func showTaskEmptyInteractionView() {
         self.emptyInteractionFrameView()
         
-        self.taskInteractionFrameView.addSubview(self.taskEmptyInteractionView)
-        self.taskEmptyInteractionView.translatesAutoresizingMaskIntoConstraints = false
+        self.taskInteractionFrameView.addSubview(self.interatcionViewPlaceholder)
+        self.interatcionViewPlaceholder.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.taskEmptyInteractionView.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
-            self.taskEmptyInteractionView.centerYAnchor.constraint(equalTo: self.taskInteractionFrameView.centerYAnchor)
+            self.interatcionViewPlaceholder.centerXAnchor.constraint(equalTo: self.taskInteractionFrameView.centerXAnchor),
+            self.interatcionViewPlaceholder.centerYAnchor.constraint(equalTo: self.taskInteractionFrameView.centerYAnchor)
         ])
     }
     
@@ -393,6 +389,7 @@ extension ModifyRecordVC {
     }
 }
 
+// MARK: UIScrollViewDelegate
 extension ModifyRecordVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.graphsScrollView else { return }
@@ -401,6 +398,7 @@ extension ModifyRecordVC: UIScrollViewDelegate {
     }
 }
 
+// MARK: UICollectionViewDataSource
 extension ModifyRecordVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let graph = GraphCollectionView(rawValue: collectionView.tag),
@@ -452,6 +450,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewDelegate
 extension ModifyRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let graph = GraphCollectionView(rawValue: collectionView.tag),
@@ -461,6 +460,7 @@ extension ModifyRecordVC: UICollectionViewDelegate {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
 extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
@@ -509,6 +509,7 @@ extension ModifyRecordVC: UITableViewDataSource {
     }
 }
 
+// MARK: Task 편집 버튼 (연필 모양)
 extension ModifyRecordVC: EditTaskButtonDelegate {
     func editTaskButtonTapped() {
         guard let mode = self.viewModel?.mode else { return }
@@ -532,6 +533,7 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
     }
 }
 
+// MARK: 히스토리 편집 버튼 (연필 모양)
 extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
         guard let index = indexPath?.row,
@@ -543,18 +545,26 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
     }
 }
 
+// MARK: 기존 Task에 기록 추가 버튼
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
         guard let day = self.viewModel?.currentDaily.day else { return }
         
         let defaultHistory = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
         self.showEditHistoryAlert(with: defaultHistory) { [weak self] newHistory in
-            // TODO: 시작시각 > 종료시각인 경우 예외처리
             self?.viewModel?.addHistory(newHistory)
         }
     }
 }
 
+// MARK: 새로운 Task 기록 추가 버튼
+extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
+    func addNewTaskHistoryButtonTapped() {
+        self.viewModel?.changeToNewTaskMode()
+    }
+}
+
+// MARK: OK & ADD 버튼
 extension ModifyRecordVC: FinishButtonDelegate {
     func finishButtonTapped() {
         guard let mode = self.viewModel?.mode else { return }
@@ -583,6 +593,7 @@ extension ModifyRecordVC: FinishButtonDelegate {
     }
 }
 
+// MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
         self.viewModel?.save()
@@ -607,11 +618,5 @@ extension ModifyRecordVC {
         self.showOKCancelAlert(title: "경고", message: "변경 사항이 제거됩니다.") { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
-    }
-}
-
-extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
-    func addNewTaskHistoryButtonTapped() {
-        self.viewModel?.changeToNewTaskMode()
     }
 }
