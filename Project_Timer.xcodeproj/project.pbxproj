@@ -25,6 +25,8 @@
 		048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */; };
 		048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */; };
 		049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */; };
+		049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */; };
+		049BBA9C28AB58D4005BAB1B /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -175,6 +177,8 @@
 		048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewTaskHistoryCell.xib; sourceTree = "<group>"; };
 		048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateInteractionView.swift; sourceTree = "<group>"; };
 		049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyFinishButton.swift; sourceTree = "<group>"; };
+		049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModifyInteractionView.swift; sourceTree = "<group>"; };
+		049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -387,7 +391,9 @@
 				04E0DFC428A918DE004DABBE /* Cell */,
 				04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */,
 				048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */,
+				049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */,
 				049BBA9728AB3D94005BAB1B /* ModifyFinishButton.swift */,
+				049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -984,6 +990,7 @@
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
+				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
@@ -1033,6 +1040,7 @@
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
+				049BBA9C28AB58D4005BAB1B /* CategoryLabel.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,

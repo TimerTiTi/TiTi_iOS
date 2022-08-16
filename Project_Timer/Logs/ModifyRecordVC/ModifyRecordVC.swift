@@ -20,7 +20,7 @@ final class ModifyRecordVC: UIViewController {
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var taskInteractionFrameView = UIView()
-    private var taskModifyInteractionView = TaskInteractionView()
+    private var taskModifyInteractionView = TaskModifyInteractionView()
     private var taskCreateInteractionView = TaskCreateInteractionView()
     private var taskEmptyInteractionView: UILabel = {
         let label = UILabel()
@@ -268,9 +268,9 @@ extension ModifyRecordVC {
     }
     
     private func updateInteractionViews() {
-        self.taskModifyInteractionView.update(task: self.viewModel?.selectedTask,
+        self.taskModifyInteractionView.configure(task: self.viewModel?.selectedTask,
                                               historys: self.viewModel?.selectedTaskHistorys)
-        self.taskCreateInteractionView.update(task: self.viewModel?.selectedTask,
+        self.taskCreateInteractionView.configure(task: self.viewModel?.selectedTask,
                                               historys: self.viewModel?.selectedTaskHistorys)
     }
 }
@@ -421,11 +421,11 @@ extension ModifyRecordVC: UITableViewDataSource {
         let isLastCell = (indexPath.row == lastCellIndex)
         
         if isLastCell {
-            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: AddHistoryCell.identifier, for: indexPath) as? AddHistoryCell else { return UITableViewCell() }
             cell.configureDelegate(self)
             return cell
         } else {
-            guard let cell = self.taskModifyInteractionView.historyTableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
             cell.configureDelegate(self)
             cell.configure(with: self.viewModel?.selectedTaskHistorys?[indexPath.row])
             return cell
@@ -561,7 +561,7 @@ extension ModifyRecordVC {
 
 extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
     func addNewTaskHistoryButtonTapped() {
-        // TODO: 기록 추가 인터렉티브 창 보여주기
         print("DEBUg: add new task history button tapped")
+        self.viewModel?.changeToNewTaskMode()
     }
 }
