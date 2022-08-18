@@ -56,6 +56,9 @@ struct Daily: Codable, CustomStringConvertible {
         // 업데이트 후 새로운 기록 이후 taskHistorys 가 nil 값이 아닌 상태의 경우 -> taskHistorys 를 기반으로 Daily 값을 update 한다
         else {
             self.updateTaskHistorys(taskName: recordTimes.recordTask, startDate: recordTimes.recordStartAt, endDate: current)
+            self.updateTasks()
+            self.updateMaxTime()
+            self.updateTimeline()
         }
         self.save()
     }
@@ -125,10 +128,6 @@ extension Daily {
         } else {
             assertionFailure("taskHistorys 값이 nil 입니다.")
         }
-        
-        self.updateTasks()
-        self.updateMaxTime()
-        self.updateTimeline()
     }
     
     private mutating func updateTasks() {
@@ -177,16 +176,9 @@ extension Daily {
         for i in 0...23 { timeline[i] = min(3600, timeline[i]) }
         self.timeline = timeline
     }
-    
-    mutating func modifyTaskHistorys(to taskHistorys: [String: [TaskHistory]]) {
-        self.taskHistorys = taskHistorys
-        self.updateTasks()
-        self.updateMaxTime()
-        self.updateTimeline()
-        self.save()
-    }
 }
 
+// MARK: ModifyRecordVM 내에서 불리는 메소드들
 extension Daily {
     mutating func changeTaskName(from oldName: String, to newName: String) {
         // 같은 이름의 과목이 없다는 것이 보장된 상태
