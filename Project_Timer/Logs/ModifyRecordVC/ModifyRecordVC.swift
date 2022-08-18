@@ -455,7 +455,8 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                     
                     cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
                     // 편집중인 Task는 빨간색 테두리 처리
-                    if taskInfo.taskName == self.viewModel?.selectedTask {
+                    if self.viewModel?.mode == .existingTask,
+                       taskInfo.taskName == self.viewModel?.selectedTask {
                         cell.layer.borderWidth = 2
                         cell.layer.borderColor = UIColor.red.cgColor
                     } else {
