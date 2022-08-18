@@ -151,24 +151,35 @@ class TaskInteractionView: UIView {
         ])
     }
     
-    func configure(task: String?, historys: [TaskHistory]?) {
+    func update(task: String?, historys: [TaskHistory]?) {
         self.configureTaskLabel(task: task)
         self.configureTotalTimeLabel(totalTime: historys?.reduce(0){ $0 + $1.interval } ?? 0)
-        self.updateHistoryTableView()
+        self.historyTableView.reloadData()
     }
     
-    private func updateHistoryTableView() {
-        self.historyTableView.reloadData()
+    func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
+        self.historyTableView.delegate = delegate
+        self.historyTableView.dataSource = delegate
+        self.delegate = delegate
+    }
+}
+
+extension TaskInteractionView {
+    private func configureTableView() {
+        let historyCellNib = UINib.init(nibName: HistoryCell.identifier, bundle: nil)
+        let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
+        self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
+        self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
+    }
+    
+    private func configureTotalTimeLabel(totalTime: Int) {
+        self.totalTimeLabel.text = totalTime.toTimeString
     }
 }
 
 extension TaskInteractionView {
     func configureTaskLabel(task: String?) {
         self.taskLabel.text = task
-    }
-    
-    func configureTotalTimeLabel(totalTime: Int) {
-        self.totalTimeLabel.text = totalTime.toTimeString
     }
     
     func configureFinishButton(title: String?) {
@@ -185,18 +196,5 @@ extension TaskInteractionView {
     
     func configureEditTaskButton(image: UIImage?) {
         self.editTaskButton.setImage(image, for: .normal)
-    }
-    
-    func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
-        self.historyTableView.delegate = delegate
-        self.historyTableView.dataSource = delegate
-        self.delegate = delegate
-    }
-    
-    func configureTableView() {
-        let historyCellNib = UINib.init(nibName: HistoryCell.identifier, bundle: nil)
-        let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
-        self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
-        self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
     }
 }

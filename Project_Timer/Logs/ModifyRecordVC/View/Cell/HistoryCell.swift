@@ -47,9 +47,7 @@ class HistoryCell: UITableViewCell {
 }
 
 extension HistoryCell {
-    func configure(with taskHistory: TaskHistory?) {
-        guard let taskHistory = taskHistory else { return }
-        
+    func configure(with taskHistory: TaskHistory) {
         self.startTimeLabel.text = taskHistory.startDate.HHmmssStyleString
         self.endTimeLabel.text = taskHistory.endDate.HHmmssStyleString
         self.timeIntervalLabel.text = taskHistory.interval.toHHmmss

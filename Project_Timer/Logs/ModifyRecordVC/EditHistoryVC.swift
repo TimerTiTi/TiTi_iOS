@@ -76,7 +76,7 @@ extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
         
         present(editDateVC, animated: true)
     }
-    
+    /// iPhone 에서 popover 형식으로 띄우기 위한 로직
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
