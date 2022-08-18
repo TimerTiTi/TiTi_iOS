@@ -29,9 +29,9 @@ extension Int {
         let m = (time / 60) - (h * 60)
         
         if self < 0 {
-            return String(format: "-%02d:%02d:%02d", h, m, s)
+            return String(format: "-%d:%02d:%02d", h, m, s)
         } else {
-            return String(format: "%02d:%02d:%02d", h, m, s)
+            return String(format: "%d:%02d:%02d", h, m, s)
         }
     }
     

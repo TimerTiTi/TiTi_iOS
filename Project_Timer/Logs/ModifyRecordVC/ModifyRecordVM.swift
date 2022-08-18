@@ -126,7 +126,6 @@ extension ModifyRecordVM {
     
     /// 편집 내용 로컬에 저장, dailys.json 파일 업데이트
     func save() {
-        // TODO: daily.json도 업데이트 필요?
         RecordController.shared.modifyRecord(with: self.currentDaily)
     }
 }

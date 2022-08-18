@@ -50,7 +50,19 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        self.standardDailyGraphView.updateDarkLightMode()
+        self.timelineDailyGraphView.updateDarkLightMode()
+        self.tasksProgressDailyGraphView.updateDarkLightMode()
+        self.updateGraphsFromDaily()
+        self.updateGraphsFromTasks()
         self.configureShadows(self.taskModifyInteractionView, self.taskCreateInteractionView)
+    }
+}
+
+// MARK: public configure
+extension ModifyRecordVC {
+    func configureViewModel(with daily: Daily) {
+        self.viewModel = ModifyRecordVM(daily: daily)
     }
 }
 
@@ -167,10 +179,6 @@ extension ModifyRecordVC {
     private func configureTableViewDelegate() {
         self.taskModifyInteractionView.configureDelegate(self)
         self.taskCreateInteractionView.configureDelegate(self)
-    }
-    
-    func configureViewModel(with daily: Daily) {
-        self.viewModel = ModifyRecordVM(daily: daily)
     }
     
     private func configureHostingVC() {
@@ -290,9 +298,9 @@ extension ModifyRecordVC {
     }
     
     private func updateInteractionViews() {
-        self.taskModifyInteractionView.configure(task: self.viewModel?.selectedTask,
+        self.taskModifyInteractionView.update(task: self.viewModel?.selectedTask,
                                                  historys: self.viewModel?.selectedTaskHistorys)
-        self.taskCreateInteractionView.configure(task: self.viewModel?.selectedTask,
+        self.taskCreateInteractionView.update(task: self.viewModel?.selectedTask,
                                                  historys: self.viewModel?.selectedTaskHistorys)
     }
 }
@@ -483,8 +491,6 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                // TODO: 마지막 셀(기록추가셀) 높이 분기
-                // 컬렉션뷰 테두리가 안쪽으로 생겨서 셀 테두리를 덮는 버그 때문에 width 수정함
                 return CGSize(width: collectionView.bounds.width-4, height: StandardDailyTaskCell.height)
             case .tasksProgressDailyGraphView:
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
@@ -521,8 +527,9 @@ extension ModifyRecordVC: UITableViewDataSource {
             return cell
         } else {            // 나머지는 일반 히스토리 셀
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
+            guard let history = self.viewModel?.selectedTaskHistorys?[indexPath.row] else { return cell }
             cell.configureDelegate(self)
-            cell.configure(with: self.viewModel?.selectedTaskHistorys?[indexPath.row])
+            cell.configure(with: history)
             return cell
         }
     }
@@ -620,8 +627,6 @@ extension ModifyRecordVC {
         self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
             self?.viewModel?.reset()
         }
-        
-        // TODO: dailys를 쓰는 다른 화면에게 noti 보내서 화면 갱신 시키기
     }
     
     @objc private func backButtonTapped() {
