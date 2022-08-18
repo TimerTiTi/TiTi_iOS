@@ -91,6 +91,8 @@ extension ModifyRecordVM {
     
     /// 새로 추가하는 기록의 과목명을 name으로 설정
     func setNewTaskName(_ name: String) {
+        // TODO: 사용자 알림 필요
+        guard !self.tasks.contains(where: { $0.taskName == name }) else { return }
         self.selectedTask = name
     }
 
