@@ -104,8 +104,9 @@ extension LogVC: UIPageViewControllerDataSource {
 extension LogVC: ModifyRecordDelegate {
     func showModifyRecordVC(daily: Daily) {
         print(daily.day.YYYYMMDDstyleString)
-        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) as? ModifyRecordVC else { return }
-        modifyRecordVC.configureViewModel(with: daily)
+        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) as? ModifyRecordVC,
+              let dailysVC = self.childVCs[1] as? DailysVC else { return }
+        modifyRecordVC.configureViewModel(with: daily, isReverseColor: dailysVC.isReversColor)
         self.navigationController?.pushViewController(modifyRecordVC, animated: true)
     }
 }

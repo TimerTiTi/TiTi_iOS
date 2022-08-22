@@ -16,6 +16,7 @@ class EditHistoryVC: UIViewController {
     @IBOutlet weak var intervalLabel: UILabel!
     
     @Published var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
+    private var colorIndex: Int = 0
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
@@ -41,6 +42,20 @@ class EditHistoryVC: UIViewController {
 
 // MARK: 바인딩 & configure
 extension EditHistoryVC {
+    func configure(history: TaskHistory, colorIndex: Int) {
+        self.history = history
+        self.colorIndex = colorIndex
+    }
+    
+    private func configureColor() {
+        let color = TiTiColor.graphColor(num: self.colorIndex)
+        self.startTimeButton.backgroundColor = color.withAlphaComponent(0.5)
+        self.startTimeButton.borderColor = color
+        self.endTimeButton.backgroundColor = color.withAlphaComponent(0.5)
+        self.endTimeButton.borderColor = color
+        self.intervalLabel.textColor = color
+    }
+    
     private func bind() {
         self.$history
             .receive(on: DispatchQueue.main)
@@ -50,15 +65,6 @@ extension EditHistoryVC {
                 self.intervalLabel.text = history.interval.toHHmmss
             }
             .store(in: &self.cancellables)
-    }
-    
-    private func configureColor() {
-        let userTintColor = UIColor(named: String.userTintColor)
-        self.startTimeButton.backgroundColor = userTintColor?.withAlphaComponent(0.5)
-        self.startTimeButton.borderColor = userTintColor
-        self.endTimeButton.backgroundColor = userTintColor?.withAlphaComponent(0.5)
-        self.endTimeButton.borderColor = userTintColor
-        self.intervalLabel.textColor = userTintColor
     }
 }
 

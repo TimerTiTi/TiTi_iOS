@@ -23,7 +23,6 @@ final class ModifyRecordVC: UIViewController {
     private var taskModifyInteractionView = TaskModifyInteractionView()     // 기존 Task의 기록 편집 뷰
     private var taskCreateInteractionView = TaskCreateInteractionView()     // 새로운 Task의 기록 편집 뷰
     private var taskInteratcionViewPlaceholder = TaskInteractionViewPlaceholder()   // 인터렉션뷰 placeholder
-    private var isReverseColor: Bool = false    // TODO: 받아와야서 반영해야 함
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
@@ -61,8 +60,8 @@ final class ModifyRecordVC: UIViewController {
 
 // MARK: public configure
 extension ModifyRecordVC {
-    func configureViewModel(with daily: Daily) {
-        self.viewModel = ModifyRecordVM(daily: daily)
+    func configureViewModel(with daily: Daily, isReverseColor: Bool) {
+        self.viewModel = ModifyRecordVM(daily: daily, isReverseColor: isReverseColor)
     }
 }
 
@@ -222,6 +221,7 @@ extension ModifyRecordVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.updateGraphsFromTasks()
+                self?.updateInteractionViews()
             })
             .store(in: &self.cancellables)
     }
@@ -288,20 +288,27 @@ extension ModifyRecordVC {
     }
     
     private func updateGraphsFromTasks() {
+        guard let isReverseColor = self.viewModel?.isReverseColor else { return }
+        
         let tasks = self.viewModel?.tasks ?? []
         self.standardDailyGraphView.reload()
         self.standardDailyGraphView.layoutIfNeeded()
-        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
+        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: isReverseColor)
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
-        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
+        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: isReverseColor)
     }
     
     private func updateInteractionViews() {
-        self.taskModifyInteractionView.update(task: self.viewModel?.selectedTask,
-                                                 historys: self.viewModel?.selectedTaskHistorys)
-        self.taskCreateInteractionView.update(task: self.viewModel?.selectedTask,
-                                                 historys: self.viewModel?.selectedTaskHistorys)
+        guard let viewModel = self.viewModel,
+              let historys = viewModel.selectedTaskHistorys else { return }
+        
+        self.taskModifyInteractionView.update(colorIndex: viewModel.selectedColorIndex,
+                                              task: viewModel.selectedTask,
+                                              historys: historys)
+        self.taskCreateInteractionView.update(colorIndex: viewModel.selectedColorIndex,
+                                              task: viewModel.selectedTask,
+                                              historys: historys)
     }
 }
 
@@ -357,13 +364,14 @@ extension ModifyRecordVC {
     
     /// TaskHistory를 편집할 수 있는 Alert 생성
     private func showEditHistoryAlert(with history: TaskHistory, handler: ((TaskHistory)->Void)? = nil) {
-        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC else { return }
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC,
+              let colorIndex = self.viewModel?.selectedColorIndex else { return }
         
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .alert)
         
-        editHistoryViewController.history = history
+        editHistoryViewController.configure(history: history, colorIndex: colorIndex)
         alert.setValue(editHistoryViewController, forKey: "contentViewController")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -451,9 +459,10 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                     return cell
                 } else {
                     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
-                    guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
+                    guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item],
+                          let isReverseColor = self.viewModel?.isReverseColor else { return cell }
                     
-                    cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                    cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: isReverseColor)
                     // 편집중인 Task는 빨간색 테두리 처리
                     if self.viewModel?.mode == .existingTask,
                        taskInfo.taskName == self.viewModel?.selectedTask {
@@ -467,8 +476,9 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                 }
             case .tasksProgressDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
-                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
-                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
+                guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item],
+                      let isReverseColor = self.viewModel?.isReverseColor else { return cell }
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: isReverseColor)
                 return cell
             }
         } else { return .init() }
@@ -528,9 +538,10 @@ extension ModifyRecordVC: UITableViewDataSource {
             return cell
         } else {            // 나머지는 일반 히스토리 셀
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
-            guard let history = self.viewModel?.selectedTaskHistorys?[indexPath.row] else { return cell }
+            guard let history = self.viewModel?.selectedTaskHistorys?[indexPath.row],
+                  let colorIndex = self.viewModel?.selectedColorIndex else { return cell }
             cell.configureDelegate(self)
-            cell.configure(with: history)
+            cell.configure(with: history, colorIndex: colorIndex)
             return cell
         }
     }

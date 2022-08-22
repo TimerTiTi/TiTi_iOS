@@ -32,7 +32,7 @@ final class DailysVC: UIViewController {
     }
     private weak var delegate: ModifyRecordDelegate?
     private var previusColorIndex: Int?
-    private var isReversColor: Bool = false
+    var isReversColor: Bool = false
     private var viewModel: DailysVM?
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
