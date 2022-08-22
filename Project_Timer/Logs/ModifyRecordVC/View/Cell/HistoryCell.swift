@@ -47,13 +47,23 @@ class HistoryCell: UITableViewCell {
 }
 
 extension HistoryCell {
-    func configure(with taskHistory: TaskHistory) {
+    func configure(with taskHistory: TaskHistory, colorIndex: Int) {
         self.startTimeLabel.text = taskHistory.startDate.HHmmssStyleString
         self.endTimeLabel.text = taskHistory.endDate.HHmmssStyleString
         self.timeIntervalLabel.text = taskHistory.interval.toHHmmss
+        self.configureColor(colorIndex: colorIndex)
     }
     
     func configureDelegate(_ delegate: EditHistoryButtonDelegate) {
         self.delegate = delegate
+    }
+}
+
+extension HistoryCell {
+    private func configureColor(colorIndex: Int) {
+        let color = TiTiColor.graphColor(num: colorIndex)
+        self.startTimeLabel.backgroundColor = color.withAlphaComponent(0.5)
+        self.endTimeLabel.backgroundColor = color.withAlphaComponent(0.5)
+        self.underLine.backgroundColor = color
     }
 }

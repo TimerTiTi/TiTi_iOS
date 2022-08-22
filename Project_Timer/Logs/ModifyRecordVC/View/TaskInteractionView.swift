@@ -151,9 +151,10 @@ class TaskInteractionView: UIView {
         ])
     }
     
-    func update(task: String?, historys: [TaskHistory]?) {
+    func update(colorIndex: Int, task: String?, historys: [TaskHistory]) {
         self.configureTaskLabel(task: task)
-        self.configureTotalTimeLabel(totalTime: historys?.reduce(0){ $0 + $1.interval } ?? 0)
+        self.configureTotalTimeLabel(totalTime: historys.reduce(0){ $0 + $1.interval })
+        self.configureColor(colorIndex: colorIndex)
         self.historyTableView.reloadData()
     }
     
@@ -170,6 +171,13 @@ extension TaskInteractionView {
         let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
         self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
         self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
+    }
+    
+    private func configureColor(colorIndex: Int) {
+        let color = TiTiColor.graphColor(num: colorIndex)
+        self.taskLabel.backgroundColor = color.withAlphaComponent(0.5)
+        self.totalTimeLabel.textColor = color
+        self.finishButton.backgroundColor = color
     }
     
     private func configureTotalTimeLabel(totalTime: Int) {
