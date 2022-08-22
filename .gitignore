@@ -53,3 +53,5 @@ GoogleService-Info.plist
 Secrets
 Secrets.tar
 # link : https://github.com/firebase/quickstart-ios/blob/master/.gitignore
+
+AdMob.xcconfig
