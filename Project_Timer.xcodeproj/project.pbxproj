@@ -190,6 +190,7 @@
 		04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionView.swift; sourceTree = "<group>"; };
 		04E0DFCC28A94460004DABBE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* SingleTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTimeLabelViewModel.swift; sourceTree = "<group>"; };
+		04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdMob.xcconfig; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
 		04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFont.swift; sourceTree = "<group>"; };
@@ -862,6 +863,7 @@
 				93B0852E248DDF3000E215BD /* Info.plist */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
+				04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */,
 			);
 			path = Project_Timer;
 			sourceTree = "<group>";
@@ -1259,6 +1261,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
@@ -1283,6 +1286,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
