@@ -8,10 +8,14 @@
 
 import UIKit
 import Firebase
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        /// 애드몹 이니셜라이즈
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         /// 앱 실행시 Analytics 에 정보 전달부분
         FirebaseApp.configure()
         Analytics.logEvent("launch", parameters: [
