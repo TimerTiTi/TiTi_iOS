@@ -24,13 +24,29 @@ final class ModifyRecordVM {
     // 인터렉션 뷰에만 보여지는 내용
     @Published var selectedTask: String?
     @Published var selectedTaskHistorys: [TaskHistory]?
+    private var selectedTaskIndex: Int? {
+        self.tasks.firstIndex(where: { $0.taskName == self.selectedTask })
+    }
     
     let timelineVM: TimelineVM
     private var cancellables: Set<AnyCancellable> = []
     
-    init(daily: Daily) {
+    var isReverseColor: Bool
+    var selectedColorIndex: Int {
+        let startColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        let index = self.selectedTaskIndex ?? 0
+        
+        if isReverseColor {
+            return (startColorIndex - index + 12)%12 == 0 ? 12 : (startColorIndex - index + 12)%12
+        } else {
+            return (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
+        }
+    }
+    
+    init(daily: Daily, isReverseColor: Bool) {
         self.currentDaily = daily
         self.timelineVM = TimelineVM()
+        self.isReverseColor = isReverseColor
         
         self.$currentDaily
             .receive(on: DispatchQueue.main)

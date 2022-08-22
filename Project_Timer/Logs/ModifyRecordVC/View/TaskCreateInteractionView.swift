@@ -16,8 +16,8 @@ class TaskCreateInteractionView: TaskInteractionView {
         self.configureEditTaskButton(image: UIImage(systemName: "plus.circle"))
     }
     
-    override func update(task: String?, historys: [TaskHistory]?) {
-        super.update(task: task, historys: historys)
+    override func update(colorIndex: Int, task: String?, historys: [TaskHistory]) {
+        super.update(colorIndex: colorIndex, task: task, historys: historys)
         if task == nil {
             self.configureTaskLabel(task: "과목명을 입력해주세요")
         }
