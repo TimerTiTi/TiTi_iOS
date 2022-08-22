@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import Combine
+import GoogleMobileAds
 
 final class ModifyRecordVC: UIViewController {
     static let identifier = "ModifyRecordVC"
@@ -25,6 +26,7 @@ final class ModifyRecordVC: UIViewController {
     private var taskInteratcionViewPlaceholder = TaskInteractionViewPlaceholder()   // 인터렉션뷰 placeholder
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
+    private var rewardedAd: GADRewardedAd?
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
         case tasksProgressDailyGraphView = 1
@@ -32,6 +34,7 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadRewardedAd()
         self.configureNavigationBar()
         self.configureScrollView()
         self.configureTaskInteractionViews()
@@ -650,10 +653,9 @@ extension ModifyRecordVC: FinishButtonDelegate {
 // MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
-        self.viewModel?.save()
-        self.showOKAlert(title: "Saved Complete".localized(),
-                         message: "Your changes have been saved.".localized()) { [weak self] in
-            self?.viewModel?.reset()
+        self.showOKCancelAlert(title: "안내",
+                               message: "저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?") { [weak self] in
+            self?.showRewardedAd()
         }
     }
     
@@ -673,5 +675,59 @@ extension ModifyRecordVC {
                                message: "Changes will be removed.".localized()) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
+    }
+}
+
+// MARK: 애드몹
+extension ModifyRecordVC: GADFullScreenContentDelegate {
+    /// 광고 로드
+    private func loadRewardedAd() {
+        guard let adID = Bundle.main.object(forInfoDictionaryKey: "ADMOB_AD_ID") as? String else { return }
+        
+        let request = GADRequest()
+        GADRewardedAd.load(withAdUnitID: adID,
+                           request: request) { [weak self] ad, error in
+            if let error = error {
+                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                return
+            }
+            
+            self?.rewardedAd = ad
+            self?.rewardedAd?.fullScreenContentDelegate = self
+            print("Rewarded ad loaded.")
+        }
+    }
+    
+    private func showRewardedAd() {
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: self) {
+                let reward = ad.adReward
+                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+                self.viewModel?.save()
+            }
+        } else {
+            print("Ad wasn't ready")
+        }
+    }
+    
+    /// 델리게이트에게 전면 광고 표시 실패를 알림
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        print("Ad did fail to present full screen content.")
+    }
+    
+    /// 델리게이트에게 전면 광고 표시 성공을 알림
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad will present full screen content.")
+    }
+    
+    /// 델리게이트에게 전면 광고가 dismiss 되었음을 알림
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        print("Ad did dismiss full screen content.")
+        
+        self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
+            self?.viewModel?.reset()
+        }
+        // 다음 광고 미리 로드
+        self.loadRewardedAd()
     }
 }
