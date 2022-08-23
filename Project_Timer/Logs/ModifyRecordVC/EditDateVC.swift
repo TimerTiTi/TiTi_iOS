@@ -13,7 +13,7 @@ typealias DateChangeHandler = (Date) -> Void
 /// DatePicker의 뷰컨트롤러
 class EditDateVC: UIViewController {
     var date: Date = Date()
-    var changeHandler: DateChangeHandler?
+    var dateChangeHandler: DateChangeHandler?
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
@@ -24,8 +24,13 @@ class EditDateVC: UIViewController {
     
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
         // Presenting ViewController로부터 전달받은 핸들러 실행
-        guard let changeHandler = changeHandler,
+        guard let changeHandler = dateChangeHandler,
               let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: sender.date)) else { return }
         changeHandler(date)
+    }
+    
+    func configure(date: Date, dateChangeHandler: @escaping DateChangeHandler) {
+        self.date = date
+        self.dateChangeHandler = dateChangeHandler
     }
 }
