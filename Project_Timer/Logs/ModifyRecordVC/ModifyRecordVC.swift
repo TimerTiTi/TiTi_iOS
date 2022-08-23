@@ -337,25 +337,37 @@ extension ModifyRecordVC {
 
 // MARK: Alert
 extension ModifyRecordVC {
-    /// 텍스트필드가 포함된 Alert 생성
-    private func showTextFieldAlert(title: String? = nil, message: String? = nil, placeholder: String? = nil, handler: ((String)->Void)? = nil) {
+    /// 과목명을 편집할 수 있는 Alert 생성
+    private func showEditTaskNameAlert(title: String? = nil, handler: ((String)->Void)? = nil) {
         // TODO: localize
-        let alert = UIAlertController(title: title,
-                                      message: message,
+        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "EditTaskNameVC") as? EditTaskNameVC else { return }
+        
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
                                       preferredStyle: .alert)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
-            let text = alert.textFields?[0].text ?? ""
+        let ok = UIAlertAction(title: "OK", style: .default) { [weak editTaskNameVC] _ in
+            let text = editTaskNameVC?.textField.text ?? ""
             handler?(text)
         }
         
-        alert.addTextField { (textField) in
-            textField.placeholder = placeholder
-            textField.textAlignment = .center
-            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
-            textField.text = self.viewModel?.selectedTask
-        }
+        editTaskNameVC.configure(title: title,
+                                 taskName: self.viewModel?.selectedTask,
+                                 handler: { [weak editTaskNameVC, weak ok, weak self] (text) in
+            guard let text = text,
+                  let isValidTaskName = self?.viewModel?.validateNewTaskName(text) else { return }
+        
+            if isValidTaskName {
+                editTaskNameVC?.showNormalMessage()
+                ok?.isEnabled = true
+            } else {
+                editTaskNameVC?.showErrorMessage()
+                ok?.isEnabled = false
+            }
+        })
+        
+        alert.setValue(editTaskNameVC, forKey: "contentViewController")
         alert.addAction(cancel)
         alert.addAction(ok)
         
@@ -371,16 +383,16 @@ extension ModifyRecordVC {
                                       message: nil,
                                       preferredStyle: .alert)
         
-        editHistoryViewController.configure(history: history,
-                                            isNewHistory: isNewHistory,
-                                            colorIndex: colorIndex)
-        alert.setValue(editHistoryViewController, forKey: "contentViewController")
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         let ok = UIAlertAction(title: "OK", style: .default) { _ in
             handler?(editHistoryViewController.history)
         }
         
+        editHistoryViewController.configure(history: history,
+                                            isNewHistory: isNewHistory,
+                                            colorIndex: colorIndex)
+        
+        alert.setValue(editHistoryViewController, forKey: "contentViewController")
         alert.addAction(cancel)
         alert.addAction(ok)
         
@@ -556,15 +568,11 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         
         switch mode {
         case .existingTask:
-            self.showTextFieldAlert(title: "과목명 수정",
-                                    message: "새로운 과목을 입력해주세요",
-                                    placeholder: "새로운 과목") { [weak self] text in
+            self.showEditTaskNameAlert(title: "과목명 수정") { [weak self] text in
                 self?.viewModel?.changeTaskName(to: text)
             }
         case .newTask:
-            self.showTextFieldAlert(title: "과목명 입력",
-                                    message: "새로운 과목을 입력해주세요",
-                                    placeholder: "새로운 과목") { [weak self] text in
+            self.showEditTaskNameAlert(title: "과목명 입력") { [weak self] text in
                 self?.viewModel?.setNewTaskName(text)
             }
         default:
