@@ -28,6 +28,7 @@
 		049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */; };
 		049BBA9C28AB58D4005BAB1B /* CategoryLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */; };
 		049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */; };
+		04B5293B28B4E40500906C86 /* EditTaskNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
 		04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0DFC628A9191A004DABBE /* HistoryCell.xib */; };
@@ -181,6 +182,7 @@
 		049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModifyInteractionView.swift; sourceTree = "<group>"; };
 		049BBA9B28AB58D4005BAB1B /* CategoryLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryLabel.swift; sourceTree = "<group>"; };
 		049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionViewPlaceholder.swift; sourceTree = "<group>"; };
+		04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskNameVC.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 				87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */,
 				048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */,
 				048D8ACC28AA608900A2456D /* EditDateVC.swift */,
+				04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */,
 				04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */,
 				04E0DFC928A92652004DABBE /* View */,
 			);
@@ -987,6 +990,7 @@
 				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
+				04B5293B28B4E40500906C86 /* EditTaskNameVC.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,

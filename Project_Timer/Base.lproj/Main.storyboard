@@ -2176,6 +2176,65 @@
             </objects>
             <point key="canvasLocation" x="6236" y="4533"/>
         </scene>
+        <!--EditTaskNameVC-->
+        <scene sceneID="foW-rS-sMN">
+            <objects>
+                <viewController storyboardIdentifier="EditTaskNameVC" title="EditTaskNameVC" id="28l-s3-UAX" customClass="EditTaskNameVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="foQ-rI-pEc">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="140"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과목명 수정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tav-hA-0TE">
+                                <rect key="frame" x="107.5" y="20" width="85.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새로운 과목" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkP-HF-w4r">
+                                <rect key="frame" x="40" y="86" width="220" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="EDT-Go-lDn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldValueChanged:" destination="28l-s3-UAX" eventType="editingChanged" id="oDv-fT-nh8"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 과목을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXG-LB-w6d">
+                                <rect key="frame" x="75" y="50" width="150" height="15"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Yp-Ke-zUY"/>
+                        <constraints>
+                            <constraint firstItem="EXG-LB-w6d" firstAttribute="centerX" secondItem="4Yp-Ke-zUY" secondAttribute="centerX" id="0Jz-PK-plQ"/>
+                            <constraint firstItem="Tav-hA-0TE" firstAttribute="top" secondItem="foQ-rI-pEc" secondAttribute="top" constant="20" id="1GW-4Q-HjL"/>
+                            <constraint firstItem="EXG-LB-w6d" firstAttribute="top" secondItem="Tav-hA-0TE" secondAttribute="bottom" constant="10" id="cFw-Pe-nhR"/>
+                            <constraint firstItem="ZkP-HF-w4r" firstAttribute="centerX" secondItem="4Yp-Ke-zUY" secondAttribute="centerX" id="cqP-Rh-i8s"/>
+                            <constraint firstItem="Tav-hA-0TE" firstAttribute="centerX" secondItem="4Yp-Ke-zUY" secondAttribute="centerX" id="f8m-ko-Yj2"/>
+                            <constraint firstItem="4Yp-Ke-zUY" firstAttribute="bottom" secondItem="ZkP-HF-w4r" secondAttribute="bottom" constant="20" id="nuG-uf-2c4"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="140"/>
+                    <size key="freeformSize" width="300" height="140"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="preferredContentSize.height">
+                            <integer key="value" value="140"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="messageLabel" destination="EXG-LB-w6d" id="SCs-55-jgu"/>
+                        <outlet property="textField" destination="ZkP-HF-w4r" id="bgP-c3-ezI"/>
+                        <outlet property="titleLabel" destination="Tav-hA-0TE" id="O6N-EU-sZA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oY-zo-r8w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6235" y="4373"/>
+        </scene>
         <!--EditDateVC-->
         <scene sceneID="Acf-dR-aTP">
             <objects>
@@ -3856,13 +3915,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14" width="105" height="36.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.5"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

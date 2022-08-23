@@ -146,6 +146,23 @@ extension ModifyRecordVM {
     func save() {
         RecordController.shared.modifyRecord(with: self.currentDaily)
     }
+    
+    /// 동일한 과목명이 이미 존재하는지 검증
+    func validateNewTaskName(_ taskName: String) -> Bool {
+        switch mode {
+        case .existingTask:
+            if let selectedTask = self.selectedTask,
+               selectedTask == taskName {   // 현재 과목명 그대로인 경우 중복이 아님
+                return true
+            } else {
+                return self.currentDaily.tasks[taskName] == nil
+            }
+        case .newTask:
+            return self.currentDaily.tasks[taskName] == nil
+        default:
+            return true
+        }
+    }
 }
 
 // MARK: 데일리 수정
