@@ -81,15 +81,14 @@ extension EditHistoryVC {
 
 // MARK: DatePicker 띄우기
 extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
-    func popoverEditDateVC(on sourceView: UIView, date: Date, changeHandler: @escaping DateChangeHandler) {
+    func popoverEditDateVC(on sourceView: UIView, date: Date, handler: @escaping DateChangeHandler) {
         guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: "EditDateVC") as? EditDateVC else { return }
         
         editDateVC.modalPresentationStyle = .popover
         editDateVC.popoverPresentationController?.sourceView = sourceView
         editDateVC.popoverPresentationController?.delegate = self
-        
-        editDateVC.date = date
-        editDateVC.changeHandler = changeHandler    // 변경된 Date값을 수행할 코드를 클로저로 전달
+        editDateVC.configure(date: date,
+                             dateChangeHandler: handler) // 변경된 Date값으로 수행할 코드를 클로저로 전달
         
         present(editDateVC, animated: true)
     }
