@@ -21,6 +21,7 @@ class EditTaskNameVC: UIViewController {
         super.viewDidLoad()
         self.titleLabel.text = self.alertTitle
         self.textField.text = self.taskName
+        self.showNormalMessage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,12 +30,12 @@ class EditTaskNameVC: UIViewController {
     }
     
     func showErrorMessage() {
-        self.messageLabel.text = "동일한 과목명이 존재합니다"
+        self.messageLabel.text = "The same task name already exists.".localized()
         self.messageLabel.textColor = .red
     }
     
     func showNormalMessage() {
-        self.messageLabel.text = "새로운 과목을 입력해주세요"
+        self.messageLabel.text = "Please enter a new task.".localized()
         self.messageLabel.textColor = .label
     }
     
