@@ -332,7 +332,6 @@ extension ModifyRecordVC {
 extension ModifyRecordVC {
     /// 과목명을 편집할 수 있는 Alert 생성
     private func showEditTaskNameAlert(title: String? = nil, handler: ((String)->Void)? = nil) {
-        // TODO: localize
         guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "EditTaskNameVC") as? EditTaskNameVC else { return }
         
         let alert = UIAlertController(title: nil,
@@ -394,7 +393,6 @@ extension ModifyRecordVC {
     
     /// OK 버튼만 있는 Alert 생성
     private func showOKAlert(title: String?, message: String?, handler: (()->Void)?) {
-        // TODO: localize
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
@@ -407,7 +405,6 @@ extension ModifyRecordVC {
     
     /// Ok와 Cancel 버튼이 있는 Alert 생성
     private func showOKCancelAlert(title: String?, message: String?, handler: (()->Void)?) {
-        // TODO: localize
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
@@ -560,11 +557,11 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         
         switch mode {
         case .existingTask:
-            self.showEditTaskNameAlert(title: "과목명 수정") { [weak self] text in
+            self.showEditTaskNameAlert(title: "Modify Task Name".localized()) { [weak self] text in
                 self?.viewModel?.changeTaskName(to: text)
             }
         case .newTask:
-            self.showEditTaskNameAlert(title: "과목명 입력") { [weak self] text in
+            self.showEditTaskNameAlert(title: "Enter Task Name".localized()) { [weak self] text in
                 self?.viewModel?.setNewTaskName(text)
             }
         default:
@@ -640,7 +637,8 @@ extension ModifyRecordVC: FinishButtonDelegate {
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
         self.viewModel?.save()
-        self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
+        self.showOKAlert(title: "Saved Complete".localized(),
+                         message: "Your changes have been saved.".localized()) { [weak self] in
             self?.viewModel?.reset()
         }
     }
@@ -657,7 +655,8 @@ extension ModifyRecordVC {
     }
     
     private func confirmCancel() {
-        self.showOKCancelAlert(title: "경고", message: "변경 사항이 제거됩니다.") { [weak self] in
+        self.showOKCancelAlert(title: "Warning".localized(),
+                               message: "Changes will be removed.".localized()) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }

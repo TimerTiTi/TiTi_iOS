@@ -160,3 +160,23 @@
 "Keep the screen on during recording" = "기록중에는 화면이 항상 켜진 상태로 유지됩니다";
 
 "Recording started" = "기록이 시작되었습니다";
+
+"Unable to Modify Records" = "기록 수정 불가";
+
+"No record exists to modify." = "수정할 기록이 존재하지 않습니다.";
+
+"Modify Task Name" = "과목명 수정";
+
+"Enter Task Name" = "과목명 입력";
+
+"Saved Complete" = "저장 완료";
+
+"Your changes have been saved." = "변경 사항이 저장되었습니다.";
+
+"Warning" = "경고";
+
+"Changes will be removed." = "변경 사항이 제거됩니다.";
+
+"The same task name already exists." = "동일한 과목명이 존재합니다.";
+
+"Please enter a new task." = "새로운 과목을 입력해주세요";

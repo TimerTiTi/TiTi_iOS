@@ -160,3 +160,23 @@
 "Keep the screen on during recording" = "Keep the screen on during recording";
 
 "Recording started" = "Recording started";
+
+"Unable to Modify Records" = "Unable to Modify Records";
+
+"No record exists to modify." = "No record exists to modify.";
+
+"Modify Task Name" = "Modify Task Name";
+
+"Enter Task Name" = "Enter Task Name";
+
+"Saved Complete" = "Saved Complete";
+
+"Your changes have been saved." = "Your changes have been saved.";
+
+"Warning" = "Warning";
+
+"Changes will be removed." = "Changes will be removed.";
+
+"The same task name already exists." = "The same task name already exists.";
+
+"Please enter a new task." = "Please enter a new task";
