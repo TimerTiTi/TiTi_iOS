@@ -59,6 +59,7 @@ final class DailysVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 1])
+        self.viewModel?.updateCurrentDaily()
     }
     
     override func viewWillLayoutSubviews() {
