@@ -229,19 +229,22 @@ extension ModifyRecordVC {
     private func bindMode() {
         self.viewModel?.$mode
             .receive(on: DispatchQueue.main)
+            .removeDuplicates()
             .sink(receiveValue: { [weak self] mode in
-                self?.standardDailyGraphView.reload()
+                guard let self = self else { return }
+                
+                self.standardDailyGraphView.reload()
                 
                 switch mode {
                 case .existingTask:
-                    self?.showTaskModifyInteractionView()
-                    self?.standardDailyGraphView.removeCollectionViewHighlight()
+                    self.changeInteractionView(to: self.taskModifyInteractionView)
+                    self.standardDailyGraphView.removeCollectionViewHighlight()
                 case .newTask:
-                    self?.showTaskCreateInteractionView()
-                    self?.standardDailyGraphView.removeCollectionViewHighlight()
+                    self.changeInteractionView(to: self.taskCreateInteractionView)
+                    self.standardDailyGraphView.removeCollectionViewHighlight()
                 case .none:
-                    self?.showTaskInteractionViewPlaceholder()
-                    self?.standardDailyGraphView.highlightCollectionView()
+                    self.changeInteractionView(to: self.taskInteratcionViewPlaceholder)
+                    self.standardDailyGraphView.highlightCollectionView()
                 }
             })
             .store(in: &self.cancellables)
@@ -314,24 +317,14 @@ extension ModifyRecordVC {
 
 // MARK: 인터렉션 뷰
 extension ModifyRecordVC {
-    /// 모든 인터렉션 뷰 제거
-    private func emptyInteractionFrameView() {
+    private func changeInteractionView(to view: UIView) {
         self.taskInteractionFrameView.subviews.forEach { $0.isHidden = true }
-    }
-    
-    private func showTaskInteractionViewPlaceholder() {
-        self.emptyInteractionFrameView()
-        self.taskInteratcionViewPlaceholder.isHidden = false
-    }
-    
-    private func showTaskModifyInteractionView() {
-        self.emptyInteractionFrameView()
-        self.taskModifyInteractionView.isHidden = false
-    }
-    
-    private func showTaskCreateInteractionView() {
-        self.emptyInteractionFrameView()
-        self.taskCreateInteractionView.isHidden = false
+
+        view.alpha = 0
+        view.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            view.alpha = 1
+        }
     }
 }
 
