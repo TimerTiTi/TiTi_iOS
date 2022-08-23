@@ -24,7 +24,8 @@ class EditDateVC: UIViewController {
     
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {
         // Presenting ViewController로부터 전달받은 핸들러 실행
-        guard let changeHandler = changeHandler else { return }
-        changeHandler(sender.date)
+        guard let changeHandler = changeHandler,
+              let date = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: sender.date)) else { return }
+        changeHandler(date)
     }
 }
