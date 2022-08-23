@@ -36,4 +36,13 @@ final class StandardDailyTaskCell: UICollectionViewCell {
         self.taskBackgroundView.backgroundColor = color
         self.taskTimeLabel.textColor = color
     }
+    
+    func highlightBorder() {
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func removeHighlight() {
+        self.layer.borderWidth = 0
+    }
 }
