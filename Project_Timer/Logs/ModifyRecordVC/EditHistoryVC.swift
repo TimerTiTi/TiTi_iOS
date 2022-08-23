@@ -16,6 +16,7 @@ class EditHistoryVC: UIViewController {
     @IBOutlet weak var intervalLabel: UILabel!
     
     @Published var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
+    var didEditEndDate: Bool = false
     private var colorIndex: Int = 0
     private var cancellables = Set<AnyCancellable>()
     
@@ -28,22 +29,32 @@ class EditHistoryVC: UIViewController {
     @IBAction func startTimeButtonTapped(_ sender: UIButton) {
         self.popoverEditDateVC(on: sender,
                                date: self.history.startDate) { [weak self] newStartDate in
-            self?.history.updateStartDate(to: newStartDate)
+            guard let self = self else { return }
+            
+            self.history.updateStartDate(to: newStartDate)
+            // endDate를 수정한 적이 없는 경우 startDate와 동일하게 자동 맞춤
+            if !self.didEditEndDate {
+                self.history.updateEndDate(to: newStartDate)
+            }
         }
     }
     
     @IBAction func endTimeButtonTapped(_ sender: UIButton) {
         self.popoverEditDateVC(on: sender,
                                date: self.history.endDate) { [weak self] newEndDate in
-            self?.history.updateEndDate(to: newEndDate)
+            guard let self = self else { return }
+            
+            self.history.updateEndDate(to: newEndDate)
+            self.didEditEndDate = true
         }
     }
 }
 
 // MARK: 바인딩 & configure
 extension EditHistoryVC {
-    func configure(history: TaskHistory, colorIndex: Int) {
+    func configure(history: TaskHistory, isNewHistory: Bool, colorIndex: Int) {
         self.history = history
+        self.didEditEndDate = !isNewHistory
         self.colorIndex = colorIndex
     }
     
@@ -70,7 +81,7 @@ extension EditHistoryVC {
 
 // MARK: DatePicker 띄우기
 extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
-    private func popoverEditDateVC(on sourceView: UIView, date: Date, changeHandler: @escaping DateChangeHandler) {
+    func popoverEditDateVC(on sourceView: UIView, date: Date, changeHandler: @escaping DateChangeHandler) {
         guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: "EditDateVC") as? EditDateVC else { return }
         
         editDateVC.modalPresentationStyle = .popover

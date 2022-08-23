@@ -363,7 +363,7 @@ extension ModifyRecordVC {
     }
     
     /// TaskHistory를 편집할 수 있는 Alert 생성
-    private func showEditHistoryAlert(with history: TaskHistory, handler: ((TaskHistory)->Void)? = nil) {
+    private func showEditHistoryAlert(with history: TaskHistory, isNewHistory: Bool, handler: ((TaskHistory)->Void)? = nil) {
         guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC,
               let colorIndex = self.viewModel?.selectedColorIndex else { return }
         
@@ -371,7 +371,9 @@ extension ModifyRecordVC {
                                       message: nil,
                                       preferredStyle: .alert)
         
-        editHistoryViewController.configure(history: history, colorIndex: colorIndex)
+        editHistoryViewController.configure(history: history,
+                                            isNewHistory: isNewHistory,
+                                            colorIndex: colorIndex)
         alert.setValue(editHistoryViewController, forKey: "contentViewController")
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -577,7 +579,8 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
         guard let index = indexPath?.row,
               let history = self.viewModel?.selectedTaskHistorys?[index] else { return }
         
-        self.showEditHistoryAlert(with: history) { [weak self] newHistory in
+        self.showEditHistoryAlert(with: history,
+                                  isNewHistory: false) { [weak self] newHistory in
             self?.viewModel?.modifyHistory(at: index, to: newHistory)
         }
     }
@@ -590,7 +593,8 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
         
         // 초기 placeholder는 00:00:00
         let defaultHistory = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
-        self.showEditHistoryAlert(with: defaultHistory) { [weak self] newHistory in
+        self.showEditHistoryAlert(with: defaultHistory,
+                                  isNewHistory: true) { [weak self] newHistory in
             self?.viewModel?.addHistory(newHistory)
         }
     }
