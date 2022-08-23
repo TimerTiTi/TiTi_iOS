@@ -113,7 +113,17 @@ final class DailysVC: UIViewController {
     
     @IBAction func modifyRecord(_ sender: Any) {
         guard let viewModel = viewModel,
-              let targetDaily = viewModel.currentDaily else { return }
+              let targetDaily = viewModel.currentDaily else {
+            // TODO: localize
+            let alert = UIAlertController(title: "알림",
+                                          message: "수정할 기록이 존재하지 않습니다.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
+            
+            return
+        }
         
         self.delegate?.showModifyRecordVC(daily: targetDaily)
     }
