@@ -29,6 +29,11 @@ final class DailysVM {
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
     
+    func updateCurrentDaily() {
+        let newDaily = RecordController.shared.dailys.dailys.first(where: { $0.day == self.currentDaily?.day })
+        self.updateDaily(to: newDaily)
+    }
+    
     func updateColor(isReverseColor: Bool) {
         self.timelineVM.updateColor(isReversColor: isReverseColor)
     }
