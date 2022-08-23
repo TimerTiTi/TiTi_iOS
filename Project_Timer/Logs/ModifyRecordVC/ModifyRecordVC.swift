@@ -473,10 +473,9 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                     // 편집중인 Task는 빨간색 테두리 처리
                     if self.viewModel?.mode == .existingTask,
                        taskInfo.taskName == self.viewModel?.selectedTask {
-                        cell.layer.borderWidth = 2
-                        cell.layer.borderColor = UIColor.red.cgColor
+                        cell.highlightBorder()
                     } else {
-                        cell.layer.borderWidth = 0
+                        cell.removeHighlight()
                     }
                     
                     return cell
