@@ -205,6 +205,7 @@ extension ModifyRecordVC {
         self.bindIsModified()
         self.bindSelectedTask()
         self.bindSelectedTaskHistorys()
+        self.bindAlert()
     }
     
     private func bindDaily() {
@@ -276,6 +277,19 @@ extension ModifyRecordVC {
             .sink(receiveValue: { [weak self] selectedTaskHistorys in
                 self?.updateInteractionViews()
                 self?.updateADDButtonState()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindAlert() {
+        self.viewModel?.$alert
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] alert in
+                guard let alert = alert else { return }
+                switch alert {
+                case .pastRecord:
+                    self?.showAlertWithOK(title: "Unable to Modify Records".localized(), text: "기록수정이 불가한 과거형식의 기록입니다. 추가 업데이트를 기다려주세요!")
+                }
             })
             .store(in: &self.cancellables)
     }
