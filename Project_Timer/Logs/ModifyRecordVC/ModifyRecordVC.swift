@@ -507,7 +507,7 @@ extension ModifyRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let graph = GraphCollectionView(rawValue: collectionView.tag),
               graph == .standardDailyGraphView,
-              let taskName = self.viewModel?.tasks[indexPath.row].taskName else { return }
+              let taskName = self.viewModel?.tasks[safe: indexPath.row]?.taskName else { return }
         // 그래프에서 Task 선택 -> 기존 Task 편집 모드로 전환
         self.viewModel?.changeToExistingTaskMode(task: taskName)
     }
