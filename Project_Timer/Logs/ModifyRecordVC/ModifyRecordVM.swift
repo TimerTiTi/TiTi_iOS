@@ -15,11 +15,15 @@ final class ModifyRecordVM {
         case newTask
         case none
     }
+    enum Alert {
+        case pastRecord
+    }
     
     @Published private(set) var currentDaily: Daily
     @Published private(set) var tasks: [TaskInfo] = []
     @Published private(set) var isModified: Bool = false
     @Published private(set) var mode: ModifyMode = .none
+    @Published private(set) var alert: Alert?
     
     // 인터렉션 뷰에만 보여지는 내용
     @Published var selectedTask: String?
@@ -62,7 +66,11 @@ final class ModifyRecordVM {
 // MARK: 편집 모드 변경
 extension ModifyRecordVM {
     func changeToExistingTaskMode(task: String) {
-        guard self.currentDaily.tasks[task] != nil else { return }
+        guard self.currentDaily.tasks[task] != nil,
+              self.currentDaily.taskHistorys?[task] != nil else {
+            self.alert = .pastRecord
+            return
+        }
         
         self.mode = .existingTask
         self.selectedTask = task
