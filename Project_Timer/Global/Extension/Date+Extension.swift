@@ -90,4 +90,8 @@ extension Date {
         let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: from, to: to)
         return (timeComponents.hour ?? 0)*3600 + (timeComponents.minute ?? 0)*60 + (timeComponents.second ?? 0)
     }
+    
+    var truncateSeconds: Date? {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self))
+    }
 }
