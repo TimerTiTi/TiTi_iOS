@@ -653,9 +653,16 @@ extension ModifyRecordVC: FinishButtonDelegate {
 // MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
-        self.showOKCancelAlert(title: "안내",
-                               message: "저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?") { [weak self] in
-            self?.showRewardedAd()
+        if self.viewModel?.isRemoveAd == true {
+            self.viewModel?.save()
+            self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
+                self?.viewModel?.reset()
+            }
+        } else {
+            self.showOKCancelAlert(title: "안내",
+                                   message: "저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?") { [weak self] in
+                self?.showRewardedAd()
+            }
         }
     }
     
