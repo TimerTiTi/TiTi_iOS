@@ -46,6 +46,7 @@ final class ModifyRecordVM {
             return (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
         }
     }
+    var isRemoveAd: Bool = true
     
     init(daily: Daily, isReverseColor: Bool) {
         self.currentDaily = daily

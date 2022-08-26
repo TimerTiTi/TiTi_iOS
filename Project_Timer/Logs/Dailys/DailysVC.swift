@@ -21,6 +21,7 @@ final class DailysVC: UIViewController {
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
+    @IBOutlet weak var editRecordButton: UIButton!
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
@@ -112,10 +113,9 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func modifyRecord(_ sender: Any) {
-        guard let viewModel = viewModel,
-              let targetDaily = viewModel.currentDaily else {
-            let alert = UIAlertController(title: "Unable to Modify Records".localized(),
-                                          message: "No record exists to modify.".localized(),
+        guard let targetDaily = self.viewModel?.currentDaily else {
+            let alert = UIAlertController(title: "Create Record".localized(),
+                                          message: "Please wait for updates :)".localized(),
                                           preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             alert.addAction(okAction)
@@ -259,8 +259,15 @@ extension DailysVC {
         self.viewModel?.$currentDaily
             .receive(on: DispatchQueue.main)
             .dropFirst()
-            .sink(receiveValue: { [weak self] _ in
+            .sink(receiveValue: { [weak self] daily in
                 self?.updateGraphsFromDaily()
+                if daily != nil {
+                    self?.editRecordButton.setTitle("Edit", for: .normal)
+                    self?.editRecordButton.setImage(UIImage.init(systemName: "hammer"), for: .normal)
+                } else {
+                    self?.editRecordButton.setTitle("Create", for: .normal)
+                    self?.editRecordButton.setImage(UIImage.init(systemName: "plus.app"), for: .normal)
+                }
             })
             .store(in: &self.cancellables)
     }
