@@ -37,7 +37,7 @@ final class RecordController {
         if daily.day.YYYYMMDDstyleString == newDaily.day.YYYYMMDDstyleString {
             self.daily = newDaily
             self.daily.save()
-            // TODO: recordTimes 동기화 로직 필요
+            self.recordTimes.sync(newDaily)
         }
         self.dailys.modifyDaily(newDaily)
     }
