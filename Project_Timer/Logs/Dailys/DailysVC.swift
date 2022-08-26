@@ -114,6 +114,7 @@ final class DailysVC: UIViewController {
     
     @IBAction func modifyRecord(_ sender: Any) {
         guard let targetDaily = self.viewModel?.currentDaily else {
+            FirebaseEvent.shared.postEvent(.createRecord)
             let alert = UIAlertController(title: "Create Record".localized(),
                                           message: "Please wait for updates :)".localized(),
                                           preferredStyle: .alert)
@@ -124,6 +125,7 @@ final class DailysVC: UIViewController {
             return
         }
         
+        FirebaseEvent.shared.postEvent(.editRecord)
         self.delegate?.showModifyRecordVC(daily: targetDaily)
     }
 }
