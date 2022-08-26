@@ -574,10 +574,12 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         
         switch mode {
         case .existingTask:
+            FirebaseEvent.shared.postEvent(.editTaskName)
             self.showEditTaskNameAlert(title: "Modify Task Name".localized()) { [weak self] text in
                 self?.viewModel?.changeTaskName(to: text)
             }
         case .newTask:
+            FirebaseEvent.shared.postEvent(.createTaskName)
             self.showEditTaskNameAlert(title: "Enter Task Name".localized()) { [weak self] text in
                 self?.viewModel?.setNewTaskName(text)
             }
@@ -590,6 +592,7 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
 // MARK: 히스토리 편집 버튼 (연필 모양)
 extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
+        FirebaseEvent.shared.postEvent(.editRecordHistory)
         guard let index = indexPath?.row,
               let history = self.viewModel?.selectedTaskHistorys?[index] else { return }
         
@@ -603,6 +606,7 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
 // MARK: 기존 Task에 기록 추가 버튼
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
+        FirebaseEvent.shared.postEvent(.createRecordInRecord)
         guard let day = self.viewModel?.currentDaily.day else { return }
         
         // 초기 placeholder는 00:00:00
@@ -617,6 +621,7 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
 // MARK: 새로운 Task 기록 추가 버튼
 extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
     func addNewTaskHistoryButtonTapped() {
+        FirebaseEvent.shared.postEvent(.createRecordInRecord)
         self.viewModel?.changeToNewTaskMode()
     }
 }
@@ -653,6 +658,7 @@ extension ModifyRecordVC: FinishButtonDelegate {
 // MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
+        FirebaseEvent.shared.postEvent(.saveRecord)
         if self.viewModel?.isRemoveAd == true {
             self.viewModel?.save()
             self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
