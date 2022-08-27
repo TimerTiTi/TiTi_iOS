@@ -363,7 +363,7 @@ extension ModifyRecordVC {
 extension ModifyRecordVC {
     /// 과목명을 편집할 수 있는 Alert 생성
     private func showEditTaskNameAlert(title: String? = nil, handler: ((String) -> Void)? = nil) {
-        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "EditTaskNameVC") as? EditTaskNameVC else { return }
+        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "PopupEditTaskNameVC") as? PopupEditTaskNameVC else { return }
         
         let alert = UIAlertController(title: nil,
                                       message: nil,
@@ -669,8 +669,8 @@ extension ModifyRecordVC: FinishButtonDelegate {
 
 // MARK: Date 선택시 겹치는 시각 확인
 extension ModifyRecordVC: DateValidator {
-    func isValidDate(selected date: Date) -> Bool {
-        return self.viewModel?.validateDate(selected: date) ?? false
+    func isValidDate(selected date: Date, currentHistory: TaskHistory) -> Bool {
+        return self.viewModel?.validateDate(selected: date, currentHistory: currentHistory) ?? false
     }
 }
 
@@ -680,12 +680,12 @@ extension ModifyRecordVC {
         FirebaseEvent.shared.postEvent(.saveRecord)
         if self.viewModel?.isRemoveAd == true {
             self.viewModel?.save()
-            self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
+            self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
                 self?.viewModel?.reset()
             }
         } else {
-            self.showOKCancelAlert(title: "안내",
-                                   message: "저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?") { [weak self] in
+            self.showOKCancelAlert(title: "Inform".localized(),
+                                   message: "You have to watch the ad to save edited record. Would you like to watch?".localized()) { [weak self] in
                 self?.showRewardedAd()
             }
         }
@@ -756,7 +756,7 @@ extension ModifyRecordVC: GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         
-        self.showOKAlert(title: "저장 완료", message: "변경 사항이 저장되었습니다") { [weak self] in
+        self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
             self?.viewModel?.reset()
         }
         // 다음 광고 미리 로드
