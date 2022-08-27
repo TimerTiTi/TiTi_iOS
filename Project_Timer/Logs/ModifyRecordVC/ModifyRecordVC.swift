@@ -362,7 +362,7 @@ extension ModifyRecordVC {
 // MARK: Alert
 extension ModifyRecordVC {
     /// 과목명을 편집할 수 있는 Alert 생성
-    private func showEditTaskNameAlert(title: String? = nil, handler: ((String)->Void)? = nil) {
+    private func showEditTaskNameAlert(title: String? = nil, handler: ((String) -> Void)? = nil) {
         guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "EditTaskNameVC") as? EditTaskNameVC else { return }
         
         let alert = UIAlertController(title: nil,
@@ -398,8 +398,8 @@ extension ModifyRecordVC {
     }
     
     /// TaskHistory를 편집할 수 있는 Alert 생성
-    private func showEditHistoryAlert(with history: TaskHistory, isNewHistory: Bool, handler: ((TaskHistory)->Void)? = nil) {
-        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: "EditHistoryVC") as? EditHistoryVC,
+    private func showEditHistoryAlert(with history: TaskHistory, isNewHistory: Bool, handler: ((TaskHistory) -> Void)? = nil) {
+        guard let editHistoryViewController = storyboard?.instantiateViewController(withIdentifier: PopupEditHistoryVC.identifier) as? PopupEditHistoryVC,
               let colorIndex = self.viewModel?.selectedColorIndex else { return }
         
         let alert = UIAlertController(title: nil,
@@ -411,7 +411,8 @@ extension ModifyRecordVC {
             handler?(editHistoryViewController.history)
         }
         
-        editHistoryViewController.configure(history: history,
+        editHistoryViewController.configure(delegate: self,
+                                            history: history,
                                             isNewHistory: isNewHistory,
                                             colorIndex: colorIndex)
         
@@ -663,6 +664,13 @@ extension ModifyRecordVC: FinishButtonDelegate {
         } else {
             self.taskCreateInteractionView.updateFinishButtonEnable(to: false)
         }
+    }
+}
+
+// MARK: Date 선택시 겹치는 시각 확인
+extension ModifyRecordVC: DateValidator {
+    func isValidDate(selected date: Date) -> Bool {
+        return self.viewModel?.validateDate(selected: date) ?? false
     }
 }
 
