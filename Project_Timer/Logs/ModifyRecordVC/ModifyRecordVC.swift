@@ -127,7 +127,7 @@ extension ModifyRecordVC {
             self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.superContentView.bottomAnchor, constant: -16)
         ])
         // MARK: 기기별 height 값 적용 (Max 인 경우와 아닌 경우)
-        let taskInteractionFrameViewHeight: CGFloat = self.view.frame.height >= 926 ? 325 : 280
+        let taskInteractionFrameViewHeight: CGFloat = self.view.frame.height >= 926 ? 321 : 277
         self.taskInteractionFrameViewHeight = self.taskInteractionFrameView.heightAnchor.constraint(equalToConstant: taskInteractionFrameViewHeight)
         self.taskInteractionFrameViewHeight?.isActive = true
         // scrollView.contentView.height 값 수정

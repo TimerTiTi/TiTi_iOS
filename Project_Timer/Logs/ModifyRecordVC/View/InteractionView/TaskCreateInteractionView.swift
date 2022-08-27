@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TaskCreateInteractionView: TaskInteractionView {
+final class TaskCreateInteractionView: TaskInteractionView {
+    // TaskInteractionView + ADD 비활성화 버튼 표시, plus 아이콘 표시
+    // task = nil -> 과목명 입력 title 표시
     convenience init() {
         self.init(frame: CGRect())
         self.configureFinishButton(title: "ADD")

@@ -1,5 +1,5 @@
 //
-//  CategoryLabel.swift
+//  InteractionLeftTitleLabel.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/08/16.
@@ -9,13 +9,16 @@
 import UIKit
 
 /// 인터렉션 뷰의 좌측 항목 명을 위한 커스텀 Label
-class CategoryLabel: UILabel {
+final class InteractionLeftTitleLabel: UILabel {
     convenience init(title: String) {
         self.init(frame: CGRect())
-        
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.text = title
         self.font = TiTiFont.HGGGothicssiP60g(size: 16)
         self.textColor = UIColor.label
+        self.text = title
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.widthAnchor.constraint(equalToConstant: 57)
+        ])
     }
 }

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class TaskModifyInteractionView: TaskInteractionView {
+final class TaskModifyInteractionView: TaskInteractionView {
+    // TaskInteractionView + OK 활성화 버튼 표시, edit 아이콘 표시
     convenience init() {
         self.init(frame: CGRect())
         self.configureFinishButton(title: "OK")
