@@ -17,6 +17,9 @@ final class ModifyRecordVC: UIViewController {
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
+    @IBOutlet weak var superContentView: UIView!
+    @IBOutlet weak var superContentViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
@@ -24,6 +27,7 @@ final class ModifyRecordVC: UIViewController {
     private var taskModifyInteractionView = TaskModifyInteractionView()     // 기존 Task의 기록 편집 뷰
     private var taskCreateInteractionView = TaskCreateInteractionView()     // 새로운 Task의 기록 편집 뷰
     private var taskInteratcionViewPlaceholder = TaskInteractionViewPlaceholder()   // 인터렉션뷰 placeholder
+    private var taskInteractionFrameViewHeight: NSLayoutConstraint?
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
     private var rewardedAd: GADRewardedAd?
@@ -114,16 +118,20 @@ extension ModifyRecordVC {
     }
     
     private func configureTaskInteractionViews() {
-        self.view.addSubview(self.taskInteractionFrameView)
+        self.superContentView.addSubview(self.taskInteractionFrameView)
         self.taskInteractionFrameView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            // 가로 365로 고정
             self.taskInteractionFrameView.widthAnchor.constraint(equalToConstant: 365),
-            self.taskInteractionFrameView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.taskInteractionFrameView.centerXAnchor.constraint(equalTo: self.superContentView.centerXAnchor),
             self.taskInteractionFrameView.topAnchor.constraint(equalTo: self.graphsScrollView.bottomAnchor, constant: 16),
-            // 세로는 가변 길이, 단 탭바로부터 16만큼 띄우기
-            self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16 - (self.tabBarController?.tabBar.frame.height ?? 0))
+            self.taskInteractionFrameView.bottomAnchor.constraint(equalTo: self.superContentView.bottomAnchor, constant: -16)
         ])
+        // MARK: 기기별 height 값 적용 (Max 인 경우와 아닌 경우)
+        let taskInteractionFrameViewHeight: CGFloat = self.view.frame.height >= 926 ? 325 : 280
+        self.taskInteractionFrameViewHeight = self.taskInteractionFrameView.heightAnchor.constraint(equalToConstant: taskInteractionFrameViewHeight)
+        self.taskInteractionFrameViewHeight?.isActive = true
+        // scrollView.contentView.height 값 수정
+        self.superContentViewHeight.constant = (365 + 16 + taskInteractionFrameViewHeight + 16)
         
         self.taskInteractionFrameView.addSubview(self.taskInteratcionViewPlaceholder)
         self.taskInteratcionViewPlaceholder.translatesAutoresizingMaskIntoConstraints = false
