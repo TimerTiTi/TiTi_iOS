@@ -186,11 +186,19 @@ extension ModifyRecordVM {
     }
     
     /// 겹치는 시각이 없는지 검증
-    func validateDate(selected: Date) -> Bool {
+    func validateDate(selected: Date, currentHistory: TaskHistory) -> Bool {
+        // currentHistory 이내인 경우 valid
+        if (currentHistory != TaskHistory(startDate: self.currentDaily.day.zeroDate, endDate: self.currentDaily.day.zeroDate) && (currentHistory.startDate <= selected || selected <= currentHistory.endDate)) {
+            return true
+        }
         // 모든 taskHistory 들을 1차원 배열로 생성
         var totalHistorysOfDay: [TaskHistory] = []
         self.currentDaily.taskHistorys?.keys.forEach { key in
-            totalHistorysOfDay += self.currentDaily.taskHistorys?[key] ?? []
+            if key == self.selectedTask {
+                totalHistorysOfDay += self.selectedTaskHistorys
+            } else {
+                totalHistorysOfDay += self.currentDaily.taskHistorys?[key] ?? []
+            }
         }
         guard totalHistorysOfDay.isEmpty == false else { return true }
         // start < selected < end 이면 not valid
@@ -202,6 +210,7 @@ extension ModifyRecordVM {
                 return false
             }
         }
+        
         return true
     }
 }

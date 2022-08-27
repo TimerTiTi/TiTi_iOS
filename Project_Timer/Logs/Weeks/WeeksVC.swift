@@ -65,7 +65,7 @@ final class WeeksVC: UIViewController {
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
         let graphImage = UIImage(view: self.standardWeekGraphView)
         UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-        self.showAlertWithOK(title: "Save completed".localized(), text: "")
+        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {

@@ -10,24 +10,28 @@ import UIKit
 import Combine
 
 protocol DateValidator: AnyObject {
-    func isValidDate(selected: Date) -> Bool
+    func isValidDate(selected: Date, currentHistory: TaskHistory) -> Bool
 }
 
 /// TaskHistory 편집 창의 뷰컨트롤러
 final class PopupEditHistoryVC: UIViewController {
     static let identifier = "PopupEditHistoryVC"
     private weak var delegate: DateValidator?
+    @IBOutlet weak var startDateLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var intervalLabel: UILabel!
     
     @Published var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
+    private var savedHistory: TaskHistory!
     private var didEditEndDate: Bool = false
     private var colorIndex: Int = 0
     private var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLocalized()
         self.bind()
         self.configureColor()
     }
@@ -35,7 +39,7 @@ final class PopupEditHistoryVC: UIViewController {
     @IBAction func startTimeButtonTapped(_ sender: UIButton) {
         self.popoverEditDateVC(on: sender, date: self.history.startDate) { [weak self] newStartDate in
             guard let self = self,
-                  self.delegate?.isValidDate(selected: newStartDate) == true else { return }
+                  self.delegate?.isValidDate(selected: newStartDate, currentHistory: self.savedHistory) == true else { return }
             
             self.history.updateStartDate(to: newStartDate)
             // endDate를 수정한 적이 없는 경우 startDate와 동일하게 자동 맞춤
@@ -48,7 +52,7 @@ final class PopupEditHistoryVC: UIViewController {
     @IBAction func endTimeButtonTapped(_ sender: UIButton) {
         self.popoverEditDateVC(on: sender, date: self.history.endDate) { [weak self] newEndDate in
             guard let self = self,
-                  self.delegate?.isValidDate(selected: newEndDate) == true else { return }
+                  self.delegate?.isValidDate(selected: newEndDate, currentHistory: self.savedHistory) == true else { return }
             
             self.history.updateEndDate(to: newEndDate)
             self.didEditEndDate = true
@@ -60,9 +64,15 @@ final class PopupEditHistoryVC: UIViewController {
 extension PopupEditHistoryVC {
     func configure(delegate: DateValidator, history: TaskHistory, isNewHistory: Bool, colorIndex: Int) {
         self.delegate = delegate
+        self.savedHistory = history
         self.history = history
         self.didEditEndDate = !isNewHistory
         self.colorIndex = colorIndex
+    }
+    
+    private func configureLocalized() {
+        self.startDateLabel.text = "StartAt".localized()
+        self.endDateLabel.text = "EndAt".localized()
     }
     
     private func configureColor() {

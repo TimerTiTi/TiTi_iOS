@@ -2195,8 +2195,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="endDateLabel" destination="K1l-Da-mXw" id="fNL-wR-K3D"/>
                         <outlet property="endTimeButton" destination="xeN-Zw-Jk4" id="koK-9b-80B"/>
                         <outlet property="intervalLabel" destination="vX2-Uj-dTr" id="9k6-7U-tjA"/>
+                        <outlet property="startDateLabel" destination="p1R-HJ-DCh" id="Fv6-mE-brh"/>
                         <outlet property="startTimeButton" destination="A1r-Uc-xcq" id="Dd8-OZ-kFa"/>
                     </connections>
                 </viewController>
@@ -2204,10 +2206,10 @@
             </objects>
             <point key="canvasLocation" x="6236" y="4533"/>
         </scene>
-        <!--EditTaskNameVC-->
+        <!--PopupEditTaskNameVC-->
         <scene sceneID="foW-rS-sMN">
             <objects>
-                <viewController storyboardIdentifier="EditTaskNameVC" title="EditTaskNameVC" id="28l-s3-UAX" customClass="EditTaskNameVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopupEditTaskNameVC" title="PopupEditTaskNameVC" id="28l-s3-UAX" customClass="PopupEditTaskNameVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="foQ-rI-pEc">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
