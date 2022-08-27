@@ -328,27 +328,33 @@ extension ModifyRecordVC {
     }
     
     private func updateInteractionViews() {
-        guard let viewModel = self.viewModel,
-              let historys = viewModel.selectedTaskHistorys else { return }
+        guard let viewModel = self.viewModel else { return }
+        let colorIndex = viewModel.selectedColorIndex
+        let historys = viewModel.selectedTaskHistorys
+        let mode = viewModel.mode
         
-        self.taskModifyInteractionView.update(colorIndex: viewModel.selectedColorIndex,
-                                              task: viewModel.selectedTask,
-                                              historys: historys)
-        self.taskCreateInteractionView.update(colorIndex: viewModel.selectedColorIndex,
-                                              task: viewModel.selectedTask,
-                                              historys: historys)
+        switch mode {
+        case .existingTask:
+            guard let task = viewModel.selectedTask else { return }
+            self.taskModifyInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
+            self.taskModifyInteractionView.reload()
+        case .newTask:
+            let task = viewModel.selectedTask ?? "Enter the new Task's name".localized()
+            self.taskCreateInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
+            self.taskCreateInteractionView.reload()
+        case .none:
+            return
+        }
     }
 }
 
 // MARK: 인터렉션 뷰
 extension ModifyRecordVC {
-    private func changeInteractionView(to view: UIView) {
-        self.taskInteractionFrameView.subviews.forEach { $0.isHidden = true }
-
-        view.alpha = 0
-        view.isHidden = false
-        UIView.animate(withDuration: 0.3) {
-            view.alpha = 1
+    private func changeInteractionView(to targetView: UIView) {
+        self.taskInteractionFrameView.subviews.forEach { view in
+            UIView.animate(withDuration: 0.2, animations: {
+                view.alpha = view == targetView ? 1 : 0
+            })
         }
     }
 }
@@ -541,7 +547,7 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
 // MARK: UITableViewDelegate
 extension ModifyRecordVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        let lastCellIndex = self.viewModel?.selectedTaskHistorys.count ?? 0
         let isLastCell = (indexPath.row == lastCellIndex)
         
         // 마지막 셀은 기록추가 셀
@@ -552,12 +558,12 @@ extension ModifyRecordVC: UITableViewDelegate {
 // MARK: UITableViewDataSource
 extension ModifyRecordVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfHistorys = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        let numberOfHistorys = self.viewModel?.selectedTaskHistorys.count ?? 0
         return numberOfHistorys + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let lastCellIndex = self.viewModel?.selectedTaskHistorys?.count ?? 0
+        let lastCellIndex = self.viewModel?.selectedTaskHistorys.count ?? 0
         let isLastCell = (indexPath.row == lastCellIndex)
         
         if isLastCell {     // 마지막 셀은 기록추가 셀
@@ -566,7 +572,7 @@ extension ModifyRecordVC: UITableViewDataSource {
             return cell
         } else {            // 나머지는 일반 히스토리 셀
             guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryCell.identifier, for: indexPath) as? HistoryCell else { return UITableViewCell() }
-            guard let history = self.viewModel?.selectedTaskHistorys?[indexPath.row],
+            guard let history = self.viewModel?.selectedTaskHistorys[safe: indexPath.row],
                   let colorIndex = self.viewModel?.selectedColorIndex else { return cell }
             cell.configureDelegate(self)
             cell.configure(with: history, colorIndex: colorIndex)
@@ -602,10 +608,9 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
         FirebaseEvent.shared.postEvent(.editRecordHistory)
         guard let index = indexPath?.row,
-              let history = self.viewModel?.selectedTaskHistorys?[index] else { return }
+              let history = self.viewModel?.selectedTaskHistorys[safe: index] else { return }
         
-        self.showEditHistoryAlert(with: history,
-                                  isNewHistory: false) { [weak self] newHistory in
+        self.showEditHistoryAlert(with: history, isNewHistory: false) { [weak self] newHistory in
             self?.viewModel?.modifyHistory(at: index, to: newHistory)
         }
     }
@@ -619,8 +624,7 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
         
         // 초기 placeholder는 00:00:00
         let defaultHistory = TaskHistory(startDate: day.zeroDate, endDate: day.zeroDate)
-        self.showEditHistoryAlert(with: defaultHistory,
-                                  isNewHistory: true) { [weak self] newHistory in
+        self.showEditHistoryAlert(with: defaultHistory, isNewHistory: true) { [weak self] newHistory in
             self?.viewModel?.addHistory(newHistory)
         }
     }
@@ -654,11 +658,10 @@ extension ModifyRecordVC: FinishButtonDelegate {
     func updateADDButtonState() {
         // 과목명이 존재하고, 기록이 1개 이상인 경우에만 ADD 버튼 활성화
         if self.viewModel?.selectedTask != nil,
-           let numberOfHistorys = self.viewModel?.selectedTaskHistorys?.count,
-           numberOfHistorys > 0 {
-            self.taskCreateInteractionView.enableFinishButton()
+           self.viewModel?.selectedTaskHistorys.count ?? 0 > 0 {
+            self.taskCreateInteractionView.updateFinishButtonEnable(to: true)
         } else {
-            self.taskCreateInteractionView.disableFinishButton()
+            self.taskCreateInteractionView.updateFinishButtonEnable(to: false)
         }
     }
 }
