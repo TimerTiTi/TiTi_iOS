@@ -73,7 +73,7 @@
 
 "You can modify Timer Time" = "You can modify Timer Time";
 
-"Save completed" = "Save completed";
+"Save Completed" = "Save Completed";
 
 "Click to Youtube" = "Click to Youtube";
 
@@ -186,3 +186,17 @@
 "Please wait for updates :)" = "Please wait for updates :)";
 
 "Enter the new Task's name" = "Enter the new Task's name";
+
+"StartAt" = "StartAt";
+
+"EndAt" = "EndAt";
+
+"Select a task, Edit the record\nand press the SAVE button" = "Select a task, Edit the record\nand press the SAVE button";
+
+"New Task" = "New Task";
+
+"New History" = "New History";
+
+"Inform" = "Inform";
+
+"You have to watch the ad to save edited record. Would you like to watch?" = "You have to watch the ad to save edited record. Would you like to watch?";

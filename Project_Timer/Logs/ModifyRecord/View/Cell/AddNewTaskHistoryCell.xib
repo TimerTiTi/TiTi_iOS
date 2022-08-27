@@ -42,6 +42,9 @@
                 <constraint firstItem="boF-9G-BgD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="o7O-eH-0WS"/>
                 <constraint firstItem="boF-9G-BgD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="vxL-4z-YLs"/>
             </constraints>
+            <connections>
+                <outlet property="createNewTask" destination="boF-9G-BgD" id="qhv-yp-PLp"/>
+            </connections>
             <point key="canvasLocation" x="126.81159420289856" y="85.714285714285708"/>
         </collectionViewCell>
     </objects>

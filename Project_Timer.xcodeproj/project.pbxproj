@@ -28,7 +28,7 @@
 		049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */; };
 		049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9B28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift */; };
 		049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */; };
-		04B5293B28B4E40500906C86 /* EditTaskNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */; };
+		04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5293A28B4E40500906C86 /* PopupEditTaskNameVC.swift */; };
 		04DA813928B3668C00D8ABC4 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 04DA813828B3668C00D8ABC4 /* GoogleMobileAds */; };
 		04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */; };
 		04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFC528A9191A004DABBE /* HistoryCell.swift */; };
@@ -184,7 +184,7 @@
 		049BBA9928AB5747005BAB1B /* TaskModifyInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModifyInteractionView.swift; sourceTree = "<group>"; };
 		049BBA9B28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionLeftTitleLabel.swift; sourceTree = "<group>"; };
 		049BBA9D28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionViewPlaceholder.swift; sourceTree = "<group>"; };
-		04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskNameVC.swift; sourceTree = "<group>"; };
+		04B5293A28B4E40500906C86 /* PopupEditTaskNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupEditTaskNameVC.swift; sourceTree = "<group>"; };
 		04E0DFC228A9031A004DABBE /* ModifyRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVM.swift; sourceTree = "<group>"; };
 		04E0DFC528A9191A004DABBE /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		04E0DFC628A9191A004DABBE /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 			children = (
 				048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */,
 				048D8ACC28AA608900A2456D /* PopupSelectDateVC.swift */,
-				04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */,
+				04B5293A28B4E40500906C86 /* PopupEditTaskNameVC.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -711,7 +711,7 @@
 				87A8BC3C288D1448007ED793 /* LogHome */,
 				87C9F423288BD2D600B9E04A /* Dailys */,
 				878899782894EFC500B7F378 /* Weeks */,
-				87C2F97928A6BF7F00F44D98 /* ModifyRecordVC */,
+				87C2F97928A6BF7F00F44D98 /* ModifyRecord */,
 			);
 			path = Logs;
 			sourceTree = "<group>";
@@ -792,7 +792,7 @@
 			path = RecordController;
 			sourceTree = "<group>";
 		};
-		87C2F97928A6BF7F00F44D98 /* ModifyRecordVC */ = {
+		87C2F97928A6BF7F00F44D98 /* ModifyRecord */ = {
 			isa = PBXGroup;
 			children = (
 				87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */,
@@ -800,7 +800,7 @@
 				04E0DFC928A92652004DABBE /* View */,
 				87782D6A28B607F400C65612 /* Popup */,
 			);
-			path = ModifyRecordVC;
+			path = ModifyRecord;
 			sourceTree = "<group>";
 		};
 		87C9F423288BD2D600B9E04A /* Dailys */ = {
@@ -1015,7 +1015,7 @@
 				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
-				04B5293B28B4E40500906C86 /* EditTaskNameVC.swift in Sources */,
+				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
@@ -1278,7 +1278,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1303,7 +1303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

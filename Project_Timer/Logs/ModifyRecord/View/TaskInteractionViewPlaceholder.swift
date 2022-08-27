@@ -12,7 +12,7 @@ class TaskInteractionViewPlaceholder: UIView {
     private var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요"
+        label.text = "Select a task, Edit the record\nand press the SAVE button".localized()
         label.numberOfLines = 2
         label.textAlignment = .center
         label.font = TiTiFont.HGGGothicssiP60g(size: 17)

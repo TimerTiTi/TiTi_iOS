@@ -95,7 +95,7 @@ final class DailysVC: UIViewController {
                 UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
             }
         }
-        self.showAlertWithOK(title: "Save completed".localized(), text: "")
+        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {

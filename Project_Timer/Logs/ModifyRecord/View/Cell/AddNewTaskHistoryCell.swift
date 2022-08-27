@@ -12,11 +12,17 @@ protocol AddNewTaskHistoryButtonDelegate: AnyObject {
     func addNewTaskHistoryButtonTapped()
 }
 
-class AddNewTaskHistoryCell: UICollectionViewCell {
+final class AddNewTaskHistoryCell: UICollectionViewCell {
     static let identifier = "AddNewTaskHistoryCell"
     static let height = CGFloat(20)
     
     private weak var delegate: AddNewTaskHistoryButtonDelegate?
+    @IBOutlet weak var createNewTask: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.createNewTask.setTitle("+ " + "New Task".localized(), for: .normal)
+    }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         self.delegate?.addNewTaskHistoryButtonTapped()

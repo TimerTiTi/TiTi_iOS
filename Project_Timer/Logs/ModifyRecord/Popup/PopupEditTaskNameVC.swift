@@ -1,5 +1,5 @@
 //
-//  EditTaskNameVC.swift
+//  PopupEditTaskNameVC.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/08/23.
@@ -8,14 +8,15 @@
 
 import UIKit
 
-class EditTaskNameVC: UIViewController {
+final class PopupEditTaskNameVC: UIViewController {
+    static let identifier = "PopupEditTaskNameVC"
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     private var alertTitle: String?
     private var taskName: String?
-    private var handler: ((String?)->Void)?
+    private var handler: ((String?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +25,19 @@ class EditTaskNameVC: UIViewController {
         self.showNormalMessage()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.textField.becomeFirstResponder()
+    }
+    
+    @IBAction func textFieldValueChanged(_ sender: UITextField) {
+        self.handler?(sender.text)
+    }
+    
+    func configure(title: String?, taskName: String?, handler: ((String?) -> Void)? = nil) {
+        self.alertTitle = title
+        self.taskName = taskName
+        self.handler = handler
     }
     
     func showErrorMessage() {
@@ -37,15 +48,5 @@ class EditTaskNameVC: UIViewController {
     func showNormalMessage() {
         self.messageLabel.text = "Please enter a new task.".localized()
         self.messageLabel.textColor = .label
-    }
-    
-    func configure(title: String?, taskName: String?, handler: ((String?)->Void)? = nil) {
-        self.alertTitle = title
-        self.taskName = taskName
-        self.handler = handler
-    }
-    
-    @IBAction func textFieldValueChanged(_ sender: UITextField) {
-        self.handler?(sender.text)
     }
 }
