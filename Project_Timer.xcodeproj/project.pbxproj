@@ -19,8 +19,8 @@
 		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
 		048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */; };
 		048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */; };
-		048D8ACB28AA49F800A2456D /* EditHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */; };
-		048D8ACD28AA608900A2456D /* EditDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACC28AA608900A2456D /* EditDateVC.swift */; };
+		048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */; };
+		048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACC28AA608900A2456D /* PopupSelectDateVC.swift */; };
 		048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */; };
 		048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */; };
 		048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */; };
@@ -175,8 +175,8 @@
 		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
 		048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryCell.swift; sourceTree = "<group>"; };
 		048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHistoryCell.xib; sourceTree = "<group>"; };
-		048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHistoryVC.swift; sourceTree = "<group>"; };
-		048D8ACC28AA608900A2456D /* EditDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDateVC.swift; sourceTree = "<group>"; };
+		048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupEditHistoryVC.swift; sourceTree = "<group>"; };
+		048D8ACC28AA608900A2456D /* PopupSelectDateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupSelectDateVC.swift; sourceTree = "<group>"; };
 		048D8ACE28AABC9D00A2456D /* AddNewTaskHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTaskHistoryCell.swift; sourceTree = "<group>"; };
 		048D8ACF28AABC9E00A2456D /* AddNewTaskHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewTaskHistoryCell.xib; sourceTree = "<group>"; };
 		048D8AD228AAC5CF00A2456D /* TaskCreateInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateInteractionView.swift; sourceTree = "<group>"; };
@@ -586,8 +586,8 @@
 		87782D6A28B607F400C65612 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				048D8ACA28AA49F800A2456D /* EditHistoryVC.swift */,
-				048D8ACC28AA608900A2456D /* EditDateVC.swift */,
+				048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */,
+				048D8ACC28AA608900A2456D /* PopupSelectDateVC.swift */,
 				04B5293A28B4E40500906C86 /* EditTaskNameVC.swift */,
 			);
 			path = Popup;
@@ -1004,7 +1004,7 @@
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
-				048D8ACD28AA608900A2456D /* EditDateVC.swift in Sources */,
+				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimeOfTimerView.swift in Sources */,
@@ -1054,7 +1054,7 @@
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
-				048D8ACB28AA49F800A2456D /* EditHistoryVC.swift in Sources */,
+				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
 				043706332869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */,
@@ -1278,7 +1278,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1303,7 +1303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

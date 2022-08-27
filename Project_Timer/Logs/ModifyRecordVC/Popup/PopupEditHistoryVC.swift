@@ -9,14 +9,20 @@
 import UIKit
 import Combine
 
+protocol DateValidator: AnyObject {
+    func isValidDate(selected: Date) -> Bool
+}
+
 /// TaskHistory 편집 창의 뷰컨트롤러
-class EditHistoryVC: UIViewController {
+final class PopupEditHistoryVC: UIViewController {
+    static let identifier = "PopupEditHistoryVC"
+    private weak var delegate: DateValidator?
     @IBOutlet weak var startTimeButton: UIButton!
     @IBOutlet weak var endTimeButton: UIButton!
     @IBOutlet weak var intervalLabel: UILabel!
     
     @Published var history: TaskHistory = TaskHistory(startDate: Date(), endDate: Date())
-    var didEditEndDate: Bool = false
+    private var didEditEndDate: Bool = false
     private var colorIndex: Int = 0
     private var cancellables = Set<AnyCancellable>()
     
@@ -27,22 +33,22 @@ class EditHistoryVC: UIViewController {
     }
     
     @IBAction func startTimeButtonTapped(_ sender: UIButton) {
-        self.popoverEditDateVC(on: sender,
-                               date: self.history.startDate) { [weak self] newStartDate in
-            guard let self = self else { return }
+        self.popoverEditDateVC(on: sender, date: self.history.startDate) { [weak self] newStartDate in
+            guard let self = self,
+                  self.delegate?.isValidDate(selected: newStartDate) == true else { return }
             
             self.history.updateStartDate(to: newStartDate)
             // endDate를 수정한 적이 없는 경우 startDate와 동일하게 자동 맞춤
-            if !self.didEditEndDate {
+            if self.didEditEndDate == false {
                 self.history.updateEndDate(to: newStartDate)
             }
         }
     }
     
     @IBAction func endTimeButtonTapped(_ sender: UIButton) {
-        self.popoverEditDateVC(on: sender,
-                               date: self.history.endDate) { [weak self] newEndDate in
-            guard let self = self else { return }
+        self.popoverEditDateVC(on: sender, date: self.history.endDate) { [weak self] newEndDate in
+            guard let self = self,
+                  self.delegate?.isValidDate(selected: newEndDate) == true else { return }
             
             self.history.updateEndDate(to: newEndDate)
             self.didEditEndDate = true
@@ -51,8 +57,9 @@ class EditHistoryVC: UIViewController {
 }
 
 // MARK: 바인딩 & configure
-extension EditHistoryVC {
-    func configure(history: TaskHistory, isNewHistory: Bool, colorIndex: Int) {
+extension PopupEditHistoryVC {
+    func configure(delegate: DateValidator, history: TaskHistory, isNewHistory: Bool, colorIndex: Int) {
+        self.delegate = delegate
         self.history = history
         self.didEditEndDate = !isNewHistory
         self.colorIndex = colorIndex
@@ -80,15 +87,14 @@ extension EditHistoryVC {
 }
 
 // MARK: DatePicker 띄우기
-extension EditHistoryVC: UIPopoverPresentationControllerDelegate {
+extension PopupEditHistoryVC: UIPopoverPresentationControllerDelegate {
     func popoverEditDateVC(on sourceView: UIView, date: Date, handler: @escaping DateChangeHandler) {
-        guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: "EditDateVC") as? EditDateVC else { return }
+        guard let editDateVC = storyboard?.instantiateViewController(withIdentifier: PopupSelectDateVC.identifier) as? PopupSelectDateVC else { return }
         
         editDateVC.modalPresentationStyle = .popover
         editDateVC.popoverPresentationController?.sourceView = sourceView
         editDateVC.popoverPresentationController?.delegate = self
-        editDateVC.configure(date: date,
-                             dateChangeHandler: handler) // 변경된 Date값으로 수행할 코드를 클로저로 전달
+        editDateVC.configure(date: date, dateChangeHandler: handler) // 변경된 Date값으로 수행할 코드를 클로저로 전달
         
         present(editDateVC, animated: true)
     }
