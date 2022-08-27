@@ -21,7 +21,7 @@ protocol FinishButtonDelegate: AnyObject {
 class TaskInteractionView: UIView {
     private weak var delegate: (EditTaskButtonDelegate & FinishButtonDelegate)? {
         didSet {
-            self.editTaskButton.addAction(UIAction(handler: { [weak self] _ in
+            self.editTaskNameButton.addAction(UIAction(handler: { [weak self] _ in
                 self?.delegate?.editTaskButtonTapped()
             }), for: .touchUpInside)
             self.finishButton.addAction(UIAction(handler: { [weak self] _ in
@@ -30,10 +30,10 @@ class TaskInteractionView: UIView {
         }
     }
     
-    private var taskCategoryLabel = CategoryLabel(title: "Task:")
-    private var timeCategoryLabel = CategoryLabel(title: "Time:")
-    private var historysCategoryLabel = CategoryLabel(title: "Historys:")
-    private var taskLabel: PaddingLabel = {
+    private var taskNameTitleLabel = InteractionLeftTitleLabel(title: "Task:")
+    private var totalTimeTitleLabel = InteractionLeftTitleLabel(title: "Time:")
+    private var historysTitleLabel = InteractionLeftTitleLabel(title: "Historys:")
+    private var taskNameLabel: PaddingLabel = {
         let label = PaddingLabel(vertical: 0, horizontal: 7)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = TiTiFont.HGGGothicssiP60g(size: 16)
@@ -48,7 +48,7 @@ class TaskInteractionView: UIView {
         label.layer.cornerRadius = 6
         return label
     }()
-    private var editTaskButton: UIButton = {
+    private var editTaskNameButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -67,7 +67,7 @@ class TaskInteractionView: UIView {
         label.text = "00:00:00"
         return label
     }()
-    private var historyTableView: UITableView = {
+    private var taskHistorysTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.contentInset = UIEdgeInsets(top: -5, left: 0, bottom: 0, right: 0)
@@ -94,60 +94,60 @@ class TaskInteractionView: UIView {
     private func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.systemBackground
-        self.cornerRadius = 25
+        self.layer.cornerRadius = 25
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 345)
         ])
-        
-        self.addSubview(self.taskCategoryLabel)
+        // taskName
+        self.addSubview(self.taskNameTitleLabel)
         NSLayoutConstraint.activate([
-            taskCategoryLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
-            taskCategoryLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17)
+            self.taskNameTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17),
+            self.taskNameTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14)
         ])
         
-        self.addSubview(self.timeCategoryLabel)
+        self.addSubview(self.taskNameLabel)
         NSLayoutConstraint.activate([
-            timeCategoryLabel.leadingAnchor.constraint(equalTo: self.taskCategoryLabel.leadingAnchor),
-            timeCategoryLabel.topAnchor.constraint(equalTo: taskCategoryLabel.bottomAnchor, constant: 17)
+            self.taskNameLabel.centerYAnchor.constraint(equalTo: self.taskNameTitleLabel.centerYAnchor),
+            self.taskNameLabel.leadingAnchor.constraint(equalTo: self.taskNameTitleLabel.trailingAnchor, constant: 10)
         ])
         
-        self.addSubview(self.historysCategoryLabel)
+        self.addSubview(self.editTaskNameButton)
         NSLayoutConstraint.activate([
-            historysCategoryLabel.leadingAnchor.constraint(equalTo: self.taskCategoryLabel.leadingAnchor),
-            historysCategoryLabel.topAnchor.constraint(equalTo: timeCategoryLabel.bottomAnchor, constant: 17)
+            self.editTaskNameButton.centerYAnchor.constraint(equalTo: self.taskNameTitleLabel.centerYAnchor),
+            self.editTaskNameButton.leadingAnchor.constraint(greaterThanOrEqualTo: self.taskNameLabel.trailingAnchor, constant: 8),
+            self.editTaskNameButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -9.5)
         ])
-        
-        self.addSubview(self.editTaskButton)
+        // totalTime
+        self.addSubview(self.totalTimeTitleLabel)
         NSLayoutConstraint.activate([
-            self.editTaskButton.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
-            self.editTaskButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14)
-        ])
-        
-        self.addSubview(self.finishButton)
-        NSLayoutConstraint.activate([
-            self.finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -17),
-            self.finishButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        ])
-        
-        self.addSubview(self.historyTableView)
-        NSLayoutConstraint.activate([
-            self.historyTableView.leadingAnchor.constraint(equalTo: self.historysCategoryLabel.trailingAnchor, constant: 10),
-            self.historyTableView.topAnchor.constraint(equalTo: self.historysCategoryLabel.topAnchor, constant: -3),
-            self.historyTableView.trailingAnchor.constraint(equalTo: self.editTaskButton.trailingAnchor),
-            self.historyTableView.bottomAnchor.constraint(equalTo: self.finishButton.topAnchor, constant: -17)
-        ])
-        
-        self.addSubview(self.taskLabel)
-        NSLayoutConstraint.activate([
-            self.taskLabel.centerYAnchor.constraint(equalTo: self.taskCategoryLabel.centerYAnchor),
-            self.taskLabel.leadingAnchor.constraint(equalTo: self.historyTableView.leadingAnchor),
-            self.taskLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.editTaskButton.leadingAnchor, constant: -8)
+            self.totalTimeTitleLabel.topAnchor.constraint(equalTo: self.taskNameTitleLabel.bottomAnchor, constant: 17),
+            self.totalTimeTitleLabel.leadingAnchor.constraint(equalTo: self.taskNameTitleLabel.leadingAnchor)
         ])
         
         self.addSubview(self.totalTimeLabel)
         NSLayoutConstraint.activate([
-            self.totalTimeLabel.centerYAnchor.constraint(equalTo: self.timeCategoryLabel.centerYAnchor),
-            self.totalTimeLabel.leadingAnchor.constraint(equalTo: taskLabel.leadingAnchor)
+            self.totalTimeLabel.centerYAnchor.constraint(equalTo: self.totalTimeTitleLabel.centerYAnchor),
+            self.totalTimeLabel.leadingAnchor.constraint(equalTo: self.taskNameLabel.leadingAnchor)
+        ])
+        // historys
+        self.addSubview(self.historysTitleLabel)
+        NSLayoutConstraint.activate([
+            self.historysTitleLabel.topAnchor.constraint(equalTo: self.totalTimeTitleLabel.bottomAnchor, constant: 17),
+            self.historysTitleLabel.leadingAnchor.constraint(equalTo: self.taskNameTitleLabel.leadingAnchor)
+        ])
+        
+        self.addSubview(self.taskHistorysTableView)
+        NSLayoutConstraint.activate([
+            self.taskHistorysTableView.topAnchor.constraint(equalTo: self.historysTitleLabel.topAnchor, constant: -3),
+            self.taskHistorysTableView.leadingAnchor.constraint(equalTo: self.taskNameLabel.leadingAnchor),
+            self.taskHistorysTableView.trailingAnchor.constraint(equalTo: self.editTaskNameButton.trailingAnchor)
+        ])
+        // finish button
+        self.addSubview(self.finishButton)
+        NSLayoutConstraint.activate([
+            self.finishButton.topAnchor.constraint(equalTo: self.taskHistorysTableView.bottomAnchor, constant: 17),
+            self.finishButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.finishButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -13.5)
         ])
     }
     
@@ -155,12 +155,12 @@ class TaskInteractionView: UIView {
         self.configureTaskLabel(task: task)
         self.configureTotalTimeLabel(totalTime: historys.reduce(0){ $0 + $1.interval })
         self.configureColor(colorIndex: colorIndex)
-        self.historyTableView.reloadData()
+        self.taskHistorysTableView.reloadData()
     }
     
     func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
-        self.historyTableView.delegate = delegate
-        self.historyTableView.dataSource = delegate
+        self.taskHistorysTableView.delegate = delegate
+        self.taskHistorysTableView.dataSource = delegate
         self.delegate = delegate
     }
 }
@@ -169,13 +169,13 @@ extension TaskInteractionView {
     private func configureTableView() {
         let historyCellNib = UINib.init(nibName: HistoryCell.identifier, bundle: nil)
         let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
-        self.historyTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
-        self.historyTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
+        self.taskHistorysTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
+        self.taskHistorysTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
     }
     
     private func configureColor(colorIndex: Int) {
         let color = TiTiColor.graphColor(num: colorIndex)
-        self.taskLabel.backgroundColor = color.withAlphaComponent(0.5)
+        self.taskNameLabel.backgroundColor = color.withAlphaComponent(0.5)
         self.totalTimeLabel.textColor = color
         self.finishButton.backgroundColor = color
     }
@@ -187,7 +187,7 @@ extension TaskInteractionView {
 
 extension TaskInteractionView {
     func configureTaskLabel(task: String?) {
-        self.taskLabel.text = task
+        self.taskNameLabel.text = task
     }
     
     func configureFinishButton(title: String?) {
@@ -203,6 +203,6 @@ extension TaskInteractionView {
     }
     
     func configureEditTaskButton(image: UIImage?) {
-        self.editTaskButton.setImage(image, for: .normal)
+        self.editTaskNameButton.setImage(image, for: .normal)
     }
 }
