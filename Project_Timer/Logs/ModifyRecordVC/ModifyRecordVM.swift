@@ -27,7 +27,7 @@ final class ModifyRecordVM {
     
     // 인터렉션 뷰에만 보여지는 내용
     @Published var selectedTask: String?
-    @Published var selectedTaskHistorys: [TaskHistory]?
+    @Published var selectedTaskHistorys: [TaskHistory] = []
     private var selectedTaskIndex: Int? {
         self.tasks.firstIndex(where: { $0.taskName == self.selectedTask })
     }
@@ -75,7 +75,7 @@ extension ModifyRecordVM {
         
         self.mode = .existingTask
         self.selectedTask = task
-        self.selectedTaskHistorys = self.currentDaily.taskHistorys?[task]
+        self.selectedTaskHistorys = self.currentDaily.taskHistorys?[task] ?? []
     }
     
     func changeToNewTaskMode() {
@@ -87,7 +87,7 @@ extension ModifyRecordVM {
     func changeToNoneMode() {
         self.mode = .none
         self.selectedTask = nil
-        self.selectedTaskHistorys = nil
+        self.selectedTaskHistorys = []
     }
     
     func reset() {
@@ -127,8 +127,8 @@ extension ModifyRecordVM {
         
         // TODO: 새벽 12시-4시는 다음 날짜로 처리
         // TODO: 시작시각 > 종료시각인 경우 예외처리
-        self.selectedTaskHistorys?.append(history)
-        self.selectedTaskHistorys?.sort(by: {
+        self.selectedTaskHistorys.append(history)
+        self.selectedTaskHistorys.sort(by: {
             var lhsHour = $0.startDate.hour
             var rhsHour = $1.startDate.hour
             
@@ -152,9 +152,9 @@ extension ModifyRecordVM {
     /// 선택한 과목의 index번 히스토리를 newHistory로 변경
     func modifyHistory(at index: Int, to newHistory: TaskHistory) {
         guard self.mode != .none,
-              self.selectedTaskHistorys?[index] != newHistory else { return }
+              self.selectedTaskHistorys[index] != newHistory else { return }
         
-        self.selectedTaskHistorys?[index] = newHistory
+        self.selectedTaskHistorys[index] = newHistory
         self.isModified = true
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
@@ -195,8 +195,7 @@ extension ModifyRecordVM {
     
     /// 현재 인터렉션 뷰에서 편집 중인 내용을 Daily에도 반영
     func updateDailysTaskHistory() {
-        guard let selectedTask = self.selectedTask,
-              let selectedTaskHistorys = self.selectedTaskHistorys else { return }
-        self.currentDaily.updateTaskHistorys(of: selectedTask, with: selectedTaskHistorys)
+        guard let selectedTask = self.selectedTask else { return }
+        self.currentDaily.updateTaskHistorys(of: selectedTask, with: self.selectedTaskHistorys)
     }
 }
