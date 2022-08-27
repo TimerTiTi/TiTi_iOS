@@ -11,7 +11,8 @@ import UIKit
 typealias DateChangeHandler = (Date) -> Void
 
 /// DatePicker의 뷰컨트롤러
-class EditDateVC: UIViewController {
+final class PopupSelectDateVC: UIViewController {
+    static let identifier = "PopupSelectDateVC"
     var date: Date = Date()
     var dateChangeHandler: DateChangeHandler?
     
@@ -27,7 +28,9 @@ class EditDateVC: UIViewController {
         guard let date = sender.date.truncateSeconds else { return }
         self.dateChangeHandler?(date)
     }
-    
+}
+
+extension PopupSelectDateVC {
     func configure(date: Date, dateChangeHandler: @escaping DateChangeHandler) {
         self.date = date
         self.dateChangeHandler = dateChangeHandler

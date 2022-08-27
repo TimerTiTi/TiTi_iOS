@@ -184,6 +184,26 @@ extension ModifyRecordVM {
             return true
         }
     }
+    
+    /// 겹치는 시각이 없는지 검증
+    func validateDate(selected: Date) -> Bool {
+        // 모든 taskHistory 들을 1차원 배열로 생성
+        var totalHistorysOfDay: [TaskHistory] = []
+        self.currentDaily.taskHistorys?.keys.forEach { key in
+            totalHistorysOfDay += self.currentDaily.taskHistorys?[key] ?? []
+        }
+        guard totalHistorysOfDay.isEmpty == false else { return true }
+        // start < selected < end 이면 not valid
+        for idx in 0..<totalHistorysOfDay.count {
+            let leftInvalid = totalHistorysOfDay[idx].startDate <= selected
+            let rightInvalid = selected <= totalHistorysOfDay[idx].endDate
+            
+            if (leftInvalid && rightInvalid) == true {
+                return false
+            }
+        }
+        return true
+    }
 }
 
 // MARK: 데일리 수정
