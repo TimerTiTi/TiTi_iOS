@@ -19,17 +19,11 @@ protocol FinishButtonDelegate: AnyObject {
 }
 
 class TaskInteractionView: UIView {
-    private weak var delegate: (EditTaskButtonDelegate & FinishButtonDelegate)? {
-        didSet {
-            self.editTaskNameButton.addAction(UIAction(handler: { [weak self] _ in
-                self?.delegate?.editTaskButtonTapped()
-            }), for: .touchUpInside)
-            self.finishButton.addAction(UIAction(handler: { [weak self] _ in
-                self?.delegate?.finishButtonTapped()
-            }), for: .touchUpInside)
-        }
+    enum Icon: String {
+        case plus = "plus.circle"
+        case edit = "pencil.circle"
     }
-    
+    private weak var delegate: (EditTaskButtonDelegate & FinishButtonDelegate)?
     private var taskNameTitleLabel = InteractionLeftTitleLabel(title: "Task:")
     private var totalTimeTitleLabel = InteractionLeftTitleLabel(title: "Time:")
     private var historysTitleLabel = InteractionLeftTitleLabel(title: "Historys:")
@@ -84,6 +78,7 @@ class TaskInteractionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.commonInit()
+        self.configureLayout()
         self.configureTableView()
     }
     
@@ -92,12 +87,16 @@ class TaskInteractionView: UIView {
     }
     
     private func commonInit() {
-        self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = UIColor.systemBackground
         self.layer.cornerRadius = 25
+    }
+    
+    private func configureLayout() {
+        self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 345)
         ])
+        
         // taskName
         self.addSubview(self.taskNameTitleLabel)
         NSLayoutConstraint.activate([
@@ -151,26 +150,62 @@ class TaskInteractionView: UIView {
         ])
     }
     
-    func update(colorIndex: Int, task: String?, historys: [TaskHistory]) {
-        self.configureTaskLabel(task: task)
-        self.configureTotalTimeLabel(totalTime: historys.reduce(0){ $0 + $1.interval })
-        self.configureColor(colorIndex: colorIndex)
-        self.taskHistorysTableView.reloadData()
-    }
-    
-    func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
-        self.taskHistorysTableView.delegate = delegate
-        self.taskHistorysTableView.dataSource = delegate
-        self.delegate = delegate
-    }
-}
-
-extension TaskInteractionView {
     private func configureTableView() {
         let historyCellNib = UINib.init(nibName: HistoryCell.identifier, bundle: nil)
         let addHistoryCellNib = UINib.init(nibName: AddHistoryCell.identifier, bundle: nil)
         self.taskHistorysTableView.register(historyCellNib, forCellReuseIdentifier: HistoryCell.identifier)
         self.taskHistorysTableView.register(addHistoryCellNib, forCellReuseIdentifier: AddHistoryCell.identifier)
+    }
+}
+
+// MARK: Public Configure Functions
+extension TaskInteractionView {
+    func configureDelegate(_ delegate: TaskInteractionViewDelegate) {
+        self.delegate = delegate
+        self.taskHistorysTableView.delegate = delegate
+        self.taskHistorysTableView.dataSource = delegate
+        
+        self.editTaskNameButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.delegate?.editTaskButtonTapped()
+        }), for: .touchUpInside)
+        self.finishButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.delegate?.finishButtonTapped()
+        }), for: .touchUpInside)
+    }
+    
+    func configureFinishButton(to title: String) {
+        self.finishButton.setTitle(title, for: .normal)
+    }
+    
+    func configureEditTaskButton(to icon: Icon) {
+        self.editTaskNameButton.setImage(UIImage(systemName: icon.rawValue), for: .normal)
+    }
+}
+
+// MARK: Public functions
+extension TaskInteractionView {
+    func update(colorIndex: Int, task: String, historys: [TaskHistory]) {
+        self.updateTaskName(to: task)
+        self.updateTotalTime(to: historys.reduce(0){ $0 + $1.interval })
+        self.configureColor(colorIndex: colorIndex)
+    }
+    
+    func reload() {
+        self.taskHistorysTableView.reloadData()
+    }
+    
+    func updateFinishButtonEnable(to enable: Bool) {
+        self.finishButton.isEnabled = enable
+    }
+}
+
+extension TaskInteractionView {
+    private func updateTaskName(to taskName: String) {
+        self.taskNameLabel.text = taskName
+    }
+    
+    private func updateTotalTime(to totalTime: Int) {
+        self.totalTimeLabel.text = totalTime.toTimeString
     }
     
     private func configureColor(colorIndex: Int) {
@@ -178,31 +213,5 @@ extension TaskInteractionView {
         self.taskNameLabel.backgroundColor = color.withAlphaComponent(0.5)
         self.totalTimeLabel.textColor = color
         self.finishButton.backgroundColor = color
-    }
-    
-    private func configureTotalTimeLabel(totalTime: Int) {
-        self.totalTimeLabel.text = totalTime.toTimeString
-    }
-}
-
-extension TaskInteractionView {
-    func configureTaskLabel(task: String?) {
-        self.taskNameLabel.text = task
-    }
-    
-    func configureFinishButton(title: String?) {
-        self.finishButton.setTitle(title, for: .normal)
-    }
-    
-    func enableFinishButton() {
-        self.finishButton.isEnabled = true
-    }
-    
-    func disableFinishButton() {
-        self.finishButton.isEnabled = false
-    }
-    
-    func configureEditTaskButton(image: UIImage?) {
-        self.editTaskNameButton.setImage(image, for: .normal)
     }
 }
