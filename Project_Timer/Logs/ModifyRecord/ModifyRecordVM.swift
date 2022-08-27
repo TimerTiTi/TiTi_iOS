@@ -46,7 +46,7 @@ final class ModifyRecordVM {
             return (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
         }
     }
-    var isRemoveAd: Bool = true
+    var isRemoveAd: Bool = false
     
     init(daily: Daily, isReverseColor: Bool) {
         self.currentDaily = daily
@@ -188,7 +188,7 @@ extension ModifyRecordVM {
     /// 겹치는 시각이 없는지 검증
     func validateDate(selected: Date, currentHistory: TaskHistory) -> Bool {
         // currentHistory 이내인 경우 valid
-        if (currentHistory != TaskHistory(startDate: self.currentDaily.day.zeroDate, endDate: self.currentDaily.day.zeroDate) && (currentHistory.startDate <= selected || selected <= currentHistory.endDate)) {
+        if (currentHistory != TaskHistory(startDate: self.currentDaily.day.zeroDate, endDate: self.currentDaily.day.zeroDate) && (currentHistory.startDate <= selected && selected <= currentHistory.endDate)) {
             return true
         }
         // 모든 taskHistory 들을 1차원 배열로 생성
