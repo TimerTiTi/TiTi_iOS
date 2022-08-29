@@ -36,7 +36,8 @@ final class SettingVM {
                 SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiLabVC.identifier)
             ],
             [
-                SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before, and End time".localized(), toggleKey: .timerPushable),
+                SettingCellInfo(title: "Timer".localized(), subTitle: "5 minutes before end".localized(), toggleKey: .timer5minPushable),
+                SettingCellInfo(title: "Timer".localized(), subTitle: "Ended".localized(), toggleKey: .timerPushable),
                 SettingCellInfo(title: "Stopwatch".localized(), subTitle: "Every 1 hour passed".localized(), toggleKey: .stopwatchPushable),
                 SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable)
             ],

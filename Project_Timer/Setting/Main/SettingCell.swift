@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingCell: UICollectionViewCell {
+final class SettingCell: UICollectionViewCell {
     static let identifier = "SettingCell"
     
     @IBOutlet weak var titleLabel: UILabel!
