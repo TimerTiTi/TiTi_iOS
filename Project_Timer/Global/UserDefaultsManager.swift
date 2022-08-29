@@ -13,6 +13,7 @@ struct UserDefaultsManager {
         case isFirst = "isFirst"
         case VCNum = "VCNum"
         
+        case timer5minPushable = "timer5minPushable"
         case timerPushable = "timerPushable"
         case stopwatchPushable = "stopwatchPushable"
         case restPushable = "restPushable"
