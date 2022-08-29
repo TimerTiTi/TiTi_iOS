@@ -139,5 +139,6 @@ struct RecordTimes: Codable, CustomStringConvertible {
         }
         self.savedSumTime = daily.totalTime
         self.savedGoalTime = self.settedGoalTime - self.savedSumTime
+        self.save()
     }
 }
