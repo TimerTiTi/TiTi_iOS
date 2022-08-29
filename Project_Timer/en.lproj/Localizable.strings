@@ -117,7 +117,9 @@
 
 "Update" = "Update";
 
-"5 minutes before, and End time" = "5 minutes before, and End time";
+"5 minutes before end" = "5 minutes before end";
+
+"Ended" = "Ended";
 
 "Every 1 hour passed" = "Every 1 hour passed";
 
