@@ -198,8 +198,10 @@ final class TimerVM {
     private func sendNotification() {
         guard UserDefaultsManager.get(forKey: .timerPushable) as? Bool ?? true else { return }
         let remainTimer = self.times.timer
-        let alarm_5m = remainTimer - 300
         self.postNoti(interval: Double(remainTimer), body: "Timer finished!".localized(), identifier: "Timer finished")
+        
+        guard UserDefaultsManager.get(forKey: .timer5minPushable) as? Bool ?? true else { return }
+        let alarm_5m = remainTimer - 300
         if alarm_5m > 0 {
             self.postNoti(interval: Double(alarm_5m), body: "5 minutes left".localized(), identifier: "Timer 5 min")
         }
