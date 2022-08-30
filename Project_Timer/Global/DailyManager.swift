@@ -8,44 +8,34 @@
 
 import Foundation
 
-class DailyManager {
+final class DailyManager {
     static let shared = DailyManager()
+    static let dailysFileName: String = "dailys.json"
     var dailys: [Daily] = []
-    var dates: [Date] = []
+    var dates: [Date] {
+        return dailys.map({ $0.day.zeroDate })
+    }
     
     func loadDailys() {
-        dailys = Storage.retrive("dailys.json", from: .documents, as: [Daily].self) ?? []
-        dates = UserDefaults.standard.value(forKey: "dates") as? [Date] ?? []
+        self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
         print("load dailys!")
     }
     
     func saveDailys() {
+        Storage.store(dailys, to: .documents, as: Self.dailysFileName)
         print("store dailys!")
-        Storage.store(dailys, to: .documents, as: "dailys.json")
-        UserDefaults.standard.setValue(dates, forKey: "dates")
     }
     
     func addDaily(_ daily: Daily) {
-        let day = daily.day.zeroDate
-        if(!dates.contains(day)) {
-            //새로운 데이터 추가이기에 추가 및 dates도 추가
-            dailys.append(daily)
-            dates.append(day)
-            saveDailys()
-            print("save daily!")
-        } else {
-            //동일데이터가 있기에 마지막 데이터만 업데이트
-            dailys.removeLast()
-            dailys.append(daily)
-            saveDailys()
-            print("update daily!")
-        }
+        self.dailys.removeAll(where: { $0.day.zeroDate == daily.day.zeroDate })
+        self.dailys.append(daily)
+        self.dailys.sort(by: { $0.day < $1.day })
+        self.saveDailys()
     }
 
     func modifyDaily(_ newDaily: Daily) {
         guard let index = self.dailys.firstIndex(where: { $0.day == newDaily.day }) else { return }
         self.dailys[index] = newDaily
-
         self.saveDailys()
     }
 }
