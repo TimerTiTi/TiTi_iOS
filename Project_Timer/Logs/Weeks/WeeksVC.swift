@@ -39,6 +39,8 @@ final class WeeksVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 2])
+        self.viewModel?.updateCurrentDate()
+        self.calendar.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -181,6 +183,7 @@ extension WeeksVC {
 
 extension WeeksVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.viewModel?.selectedDate = date
         self.viewModel?.selectDate(to: date.localDate)
     }
 }

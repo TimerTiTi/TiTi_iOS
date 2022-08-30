@@ -38,15 +38,15 @@ struct Dummy {
     }
     
     static func getDumyDaily() -> Daily {
-        let daily = Daily(day: Date(), tasks: [
-            "SwiftUI 스터디" : 3612,
-            "독서-린스타트업": 2854,
-            "세모문 개발": 6540,
-            "코테 구현": 2300,
-            "TiTi 개발": 3853
-        ], maxTime: 3612, timeline: [
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 1500, 3600, 2700, 2520, 0, 600, 3600, 3600, 3120, 2400, 780, 0, 0, 2520, 3450
-        ])
+//        let daily = Daily(day: Date(), tasks: [
+//            "SwiftUI 스터디" : 3612,
+//            "독서-린스타트업": 2854,
+//            "세모문 개발": 6540,
+//            "코테 구현": 2300,
+//            "TiTi 개발": 3853
+//        ], maxTime: 3612, timeline: [
+//            0, 0, 0, 0, 0, 0, 0, 0, 0, 1500, 3600, 2700, 2520, 0, 600, 3600, 3600, 3120, 2400, 780, 0, 0, 2520, 3450
+//        ])
 //        let daily = Daily(day: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, tasks: [
 //            "Combine 스터디" : 4112,
 //            "코테 그리디": 3447,
@@ -55,6 +55,7 @@ struct Dummy {
 //        ], maxTime: 3012, timeline: [
 //            0, 0, 0, 0, 0, 0, 0, 0, 0, 1000, 2800, 3600, 2320, 1800, 1200, 2800, 3600, 2820, 3430, 0, 0, 0, 2020, 3000
 //        ])
+        let daily = Daily()
         return daily
     }
     

@@ -13,6 +13,7 @@ final class DailysVM {
     @Published private(set) var currentDaily: Daily?
     @Published private(set) var tasks: [TaskInfo] = []
     let timelineVM: TimelineVM
+    var selectedDate: Date = Date().zeroDate
     
     init() {
         self.timelineVM = TimelineVM()
@@ -30,7 +31,7 @@ final class DailysVM {
     }
     
     func updateCurrentDaily() {
-        let newDaily = RecordController.shared.dailys.dailys.first(where: { $0.day == self.currentDaily?.day })
+        let newDaily = RecordController.shared.dailys.dailys.first(where: { $0.day.zeroDate == self.selectedDate })
         self.updateDaily(to: newDaily)
     }
     

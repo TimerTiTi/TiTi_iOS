@@ -12,7 +12,8 @@ import SwiftUI
 import FSCalendar
 
 protocol ModifyRecordDelegate: AnyObject {
-    func showModifyRecordVC(daily: Daily)
+    func showModifyRecordVC(daily: Daily, isReverseColor: Bool)
+    func showCreateRecordVC(date: Date, isReverseColor: Bool)
 }
 
 final class DailysVC: UIViewController {
@@ -33,7 +34,7 @@ final class DailysVC: UIViewController {
     }
     private weak var delegate: ModifyRecordDelegate?
     private var previusColorIndex: Int?
-    var isReversColor: Bool = false
+    private var isReverseColor: Bool = false
     private var viewModel: DailysVM?
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
@@ -61,6 +62,7 @@ final class DailysVC: UIViewController {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 1])
         self.viewModel?.updateCurrentDaily()
+        self.calendar.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
@@ -75,13 +77,13 @@ final class DailysVC: UIViewController {
     @IBAction func changeColor(_ sender: UIButton) {
         UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
         if self.previusColorIndex == sender.tag {
-            self.isReversColor.toggle()
+            self.isReverseColor.toggle()
         } else {
-            self.isReversColor = false
+            self.isReverseColor = false
         }
         self.previusColorIndex = sender.tag
         self.updateCalendarColor()
-        self.viewModel?.updateColor(isReverseColor: self.isReversColor)
+        self.viewModel?.updateColor(isReverseColor: self.isReverseColor)
         self.updateGraphsFromDaily()
         self.updateGraphsFromTasks()
     }
@@ -113,20 +115,14 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func modifyRecord(_ sender: Any) {
-        guard let targetDaily = self.viewModel?.currentDaily else {
+        if let targetDaily = self.viewModel?.currentDaily {
+            FirebaseEvent.shared.postEvent(.editRecord)
+            self.delegate?.showModifyRecordVC(daily: targetDaily, isReverseColor: self.isReverseColor)
+        } else {
             FirebaseEvent.shared.postEvent(.createRecord)
-            let alert = UIAlertController(title: "Create Record".localized(),
-                                          message: "Please wait for updates :)".localized(),
-                                          preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            alert.addAction(okAction)
-            present(alert, animated: true)
-            
-            return
+            guard let selectedDate = self.viewModel?.selectedDate else { return }
+            self.delegate?.showCreateRecordVC(date: selectedDate, isReverseColor: self.isReverseColor)
         }
-        
-        FirebaseEvent.shared.postEvent(.editRecord)
-        self.delegate?.showModifyRecordVC(daily: targetDaily)
     }
 }
 
@@ -297,15 +293,16 @@ extension DailysVC {
         let tasks = self.viewModel?.tasks ?? []
         self.standardDailyGraphView.reload()
         self.standardDailyGraphView.layoutIfNeeded()
-        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
+        self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
-        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReversColor)
+        self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
     }
 }
 
 extension DailysVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        self.viewModel?.selectedDate = date
         if RecordController.shared.dailys.dates.contains(date),
            let targetIndex = RecordController.shared.dailys.dates.firstIndex(of: date) {
             self.viewModel?.updateDaily(to: RecordController.shared.dailys.dailys[targetIndex])
@@ -347,12 +344,12 @@ extension DailysVC: UICollectionViewDataSource {
             case .standardDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
                 guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
-                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
                 return cell
             case .tasksProgressDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProgressDailyTaskCell.identifier, for: indexPath) as? ProgressDailyTaskCell else { return .init() }
                 guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
-                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+                cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
                 return cell
             }
         } else { return .init() }

@@ -43,6 +43,11 @@ struct Daily: Codable, CustomStringConvertible {
     }
     private(set) var taskHistorys: [String: [TaskHistory]]? = [:]
     
+    init() {}
+    init(newDate: Date) {
+        self.day = newDate
+    }
+    
     // 10간격, 또는 종료시 update 반영
     mutating func update(at current: Date) {
         let recordTimes = RecordController.shared.recordTimes
