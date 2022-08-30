@@ -193,6 +193,8 @@
 
 "Select a task, Edit the record\nand press the SAVE button" = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요";
 
+"Click a \"+ New Task\", Create the record\nand press the SAVE button" = "\"+ 기록 추가\" 를 눌러 기록생성 후\nSAVE를 눌러주세요";
+
 "New Task" = "기록 추가";
 
 "New History" = "기록 추가";

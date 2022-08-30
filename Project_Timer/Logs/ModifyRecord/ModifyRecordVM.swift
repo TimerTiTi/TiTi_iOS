@@ -14,11 +14,6 @@ final class ModifyRecordVM {
         case modify
         case create
     }
-    enum CreateMode {
-        case existingTask
-        case newTask
-        case none
-    }
     enum ModifyMode {
         case existingTask
         case newTask
@@ -38,7 +33,6 @@ final class ModifyRecordVM {
     @Published private(set) var tasks: [TaskInfo] = []
     @Published private(set) var isModified: Bool = false
     @Published private(set) var modifyMode: ModifyMode = .none
-    @Published private(set) var createMode: CreateMode = .none
     @Published private(set) var alert: Alert?
     private(set) var mode: Mode = .modify
     

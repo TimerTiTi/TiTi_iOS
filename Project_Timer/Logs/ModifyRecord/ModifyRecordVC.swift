@@ -69,10 +69,12 @@ final class ModifyRecordVC: UIViewController {
 extension ModifyRecordVC {
     func configureViewModel(daily: Daily, isReverseColor: Bool) {
         self.viewModel = ModifyRecordVM(daily: daily, isReverseColor: isReverseColor)
+        self.taskInteratcionViewPlaceholder.setText(mode: .modify)
     }
     
     func configureViewModel(date: Date, isReverseColor: Bool) {
         self.viewModel = ModifyRecordVM(newDate: date, isReverseColor: isReverseColor)
+        self.taskInteratcionViewPlaceholder.setText(mode: .create)
     }
 }
 
