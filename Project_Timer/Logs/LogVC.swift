@@ -102,11 +102,17 @@ extension LogVC: UIPageViewControllerDataSource {
 }
 
 extension LogVC: ModifyRecordDelegate {
-    func showModifyRecordVC(daily: Daily) {
+    func showModifyRecordVC(daily: Daily, isReverseColor: Bool) {
         print(daily.day.YYYYMMDDstyleString)
-        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) as? ModifyRecordVC,
-              let dailysVC = self.childVCs[1] as? DailysVC else { return }
-        modifyRecordVC.configureViewModel(with: daily, isReverseColor: dailysVC.isReversColor)
+        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) as? ModifyRecordVC else { return }
+        modifyRecordVC.configureViewModel(daily: daily, isReverseColor: isReverseColor)
+        self.navigationController?.pushViewController(modifyRecordVC, animated: true)
+    }
+    
+    func showCreateRecordVC(date: Date, isReverseColor: Bool) {
+        print(date.YYYYMMDDHMSstyleString)
+        guard let modifyRecordVC = self.storyboard?.instantiateViewController(withIdentifier: ModifyRecordVC.identifier) as? ModifyRecordVC else { return }
+        modifyRecordVC.configureViewModel(date: date, isReverseColor: isReverseColor)
         self.navigationController?.pushViewController(modifyRecordVC, animated: true)
     }
 }

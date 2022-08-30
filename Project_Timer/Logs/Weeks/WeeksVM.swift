@@ -13,6 +13,7 @@ final class WeeksVM {
     @Published private(set) var weekData: DailysWeekData?
     @Published private(set) var top5Tasks: [TaskInfo] = []
     let timelineVM: WeekTimelineVM
+    var selectedDate: Date = Date().zeroDate
     
     init() {
         self.timelineVM = WeekTimelineVM()
@@ -23,6 +24,10 @@ final class WeeksVM {
         self.weekData = weekData
         self.timelineVM.update(weekData: weekData)
         self.top5Tasks = weekData.top5Tasks
+    }
+    
+    func updateCurrentDate() {
+        self.selectDate(to: self.selectedDate.localDate)
     }
     
     func updateColor(isReverseColor: Bool) {
