@@ -10,6 +10,15 @@ import Foundation
 import Combine
 
 final class ModifyRecordVM {
+    enum Mode {
+        case modify
+        case create
+    }
+    enum CreateMode {
+        case existingTask
+        case newTask
+        case none
+    }
     enum ModifyMode {
         case existingTask
         case newTask
@@ -19,11 +28,19 @@ final class ModifyRecordVM {
         case pastRecord
     }
     
-    @Published private(set) var currentDaily: Daily
+    @Published private(set) var currentDaily: Daily {
+        didSet {
+            self.timelineVM.update(daily: self.currentDaily)
+            self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
+                .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+        }
+    }
     @Published private(set) var tasks: [TaskInfo] = []
     @Published private(set) var isModified: Bool = false
-    @Published private(set) var mode: ModifyMode = .none
+    @Published private(set) var modifyMode: ModifyMode = .none
+    @Published private(set) var createMode: CreateMode = .none
     @Published private(set) var alert: Alert?
+    private(set) var mode: Mode = .modify
     
     // 인터렉션 뷰에만 보여지는 내용
     @Published var selectedTask: String?
@@ -49,18 +66,23 @@ final class ModifyRecordVM {
     var isRemoveAd: Bool = false
     
     init(daily: Daily, isReverseColor: Bool) {
-        self.currentDaily = daily
+        self.mode = .modify
         self.timelineVM = TimelineVM()
+        self.currentDaily = daily
         self.isReverseColor = isReverseColor
-        
-        self.$currentDaily
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] daily in
-                self?.timelineVM.update(daily: daily)
-                self?.tasks = daily.tasks.sorted(by: { $0.value > $1.value })
-                    .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
-            }
-            .store(in: &self.cancellables)
+        self.timelineVM.update(daily: self.currentDaily)
+        self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
+            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+    }
+    
+    init(newDate: Date, isReverseColor: Bool) {
+        self.mode = .create
+        self.timelineVM = TimelineVM()
+        self.currentDaily = Daily(newDate: newDate)
+        self.isReverseColor = isReverseColor
+        self.timelineVM.update(daily: self.currentDaily)
+        self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
+            .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
     }
 }
 
@@ -73,19 +95,19 @@ extension ModifyRecordVM {
             return
         }
         
-        self.mode = .existingTask
+        self.modifyMode = .existingTask
         self.selectedTask = task
         self.selectedTaskHistorys = self.currentDaily.taskHistorys?[task] ?? []
     }
     
     func changeToNewTaskMode() {
-        self.mode = .newTask
+        self.modifyMode = .newTask
         self.selectedTask = nil
         self.selectedTaskHistorys = []
     }
     
     func changeToNoneMode() {
-        self.mode = .none
+        self.modifyMode = .none
         self.selectedTask = nil
         self.selectedTaskHistorys = []
     }
@@ -109,7 +131,7 @@ extension ModifyRecordVM {
         self.isModified = true
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
-        if self.mode == .existingTask {
+        if self.modifyMode == .existingTask {
             self.changeDailysTaskName(from: oldName, to: newName)
         }
     }
@@ -123,7 +145,7 @@ extension ModifyRecordVM {
 
     /// 선택된 과목에 history 추가
     func addHistory(_ history: TaskHistory) {
-        guard self.mode != .none else { return }
+        guard self.modifyMode != .none else { return }
         
         // TODO: 새벽 12시-4시는 다음 날짜로 처리
         // TODO: 시작시각 > 종료시각인 경우 예외처리
@@ -144,21 +166,21 @@ extension ModifyRecordVM {
         self.isModified = true
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
-        if self.mode == .existingTask {
+        if self.modifyMode == .existingTask {
             self.updateDailysTaskHistory()
         }
     }
     
     /// 선택한 과목의 index번 히스토리를 newHistory로 변경
     func modifyHistory(at index: Int, to newHistory: TaskHistory) {
-        guard self.mode != .none,
+        guard self.modifyMode != .none,
               self.selectedTaskHistorys[index] != newHistory else { return }
         
         self.selectedTaskHistorys[index] = newHistory
         self.isModified = true
         
         // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
-        if self.mode == .existingTask {
+        if self.modifyMode == .existingTask {
             self.updateDailysTaskHistory()
         }
     }
@@ -170,7 +192,7 @@ extension ModifyRecordVM {
     
     /// 동일한 과목명이 이미 존재하는지 검증
     func validateNewTaskName(_ taskName: String) -> Bool {
-        switch mode {
+        switch modifyMode {
         case .existingTask:
             if let selectedTask = self.selectedTask,
                selectedTask == taskName {   // 현재 과목명 그대로인 경우 중복이 아님

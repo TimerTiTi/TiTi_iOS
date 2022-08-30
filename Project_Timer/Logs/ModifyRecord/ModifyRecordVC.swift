@@ -67,8 +67,12 @@ final class ModifyRecordVC: UIViewController {
 
 // MARK: public configure
 extension ModifyRecordVC {
-    func configureViewModel(with daily: Daily, isReverseColor: Bool) {
+    func configureViewModel(daily: Daily, isReverseColor: Bool) {
         self.viewModel = ModifyRecordVM(daily: daily, isReverseColor: isReverseColor)
+    }
+    
+    func configureViewModel(date: Date, isReverseColor: Bool) {
+        self.viewModel = ModifyRecordVM(newDate: date, isReverseColor: isReverseColor)
     }
 }
 
@@ -239,7 +243,7 @@ extension ModifyRecordVC {
     }
     
     private func bindMode() {
-        self.viewModel?.$mode
+        self.viewModel?.$modifyMode
             .receive(on: DispatchQueue.main)
             .removeDuplicates()
             .sink(receiveValue: { [weak self] mode in
@@ -331,7 +335,7 @@ extension ModifyRecordVC {
         guard let viewModel = self.viewModel else { return }
         let colorIndex = viewModel.selectedColorIndex
         let historys = viewModel.selectedTaskHistorys
-        let mode = viewModel.mode
+        let mode = viewModel.modifyMode
         
         switch mode {
         case .existingTask:
@@ -470,7 +474,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
             switch graph {
             case .standardDailyGraphView:
                 // 아무 과목도 선택하지 않은 경우 마지막에 기록 추가 셀 보여주기
-                if viewModel.mode == .none {
+                if viewModel.modifyMode == .none {
                     return viewModel.tasks.count + 1
                 } else {
                     return viewModel.tasks.count
@@ -485,7 +489,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
             case .standardDailyGraphView:
-                let isNoneMode = self.viewModel?.mode == ModifyRecordVM.ModifyMode.none
+                let isNoneMode = self.viewModel?.modifyMode == ModifyRecordVM.ModifyMode.none
                 let isLastCell = indexPath.row == (self.viewModel?.tasks.count ?? 0)
                 
                 // 편집 중이 아닌 경우 마지막 셀은 +기록추가 셀
@@ -500,7 +504,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
                     
                     cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: isReverseColor)
                     // 편집중인 Task는 빨간색 테두리 처리
-                    if self.viewModel?.mode == .existingTask,
+                    if self.viewModel?.modifyMode == .existingTask,
                        taskInfo.taskName == self.viewModel?.selectedTask {
                         cell.highlightBorder()
                     } else {
@@ -585,7 +589,7 @@ extension ModifyRecordVC: UITableViewDataSource {
 // MARK: Task 편집 버튼 (연필 모양)
 extension ModifyRecordVC: EditTaskButtonDelegate {
     func editTaskButtonTapped() {
-        guard let mode = self.viewModel?.mode else { return }
+        guard let mode = self.viewModel?.modifyMode else { return }
         
         switch mode {
         case .existingTask:
@@ -642,7 +646,7 @@ extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
 // MARK: OK & ADD 버튼
 extension ModifyRecordVC: FinishButtonDelegate {
     func finishButtonTapped() {
-        guard let mode = self.viewModel?.mode else { return }
+        guard let mode = self.viewModel?.modifyMode else { return }
         
         switch mode {
         case .existingTask:
