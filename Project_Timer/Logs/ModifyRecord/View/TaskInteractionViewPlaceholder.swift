@@ -31,4 +31,13 @@ class TaskInteractionViewPlaceholder: UIView {
             self.messageLabel.leftAnchor.constraint(equalTo: self.leftAnchor)
         ])
     }
+    
+    func setText(mode: ModifyRecordVM.Mode) {
+        switch mode {
+        case .modify:
+            self.messageLabel.text = "Select a task, Edit the record\nand press the SAVE button".localized()
+        case .create:
+            self.messageLabel.text = "Click a \"+ New Task\", Create the record\nand press the SAVE button".localized()
+        }
+    }
 }

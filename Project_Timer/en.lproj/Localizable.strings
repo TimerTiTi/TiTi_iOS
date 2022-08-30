@@ -195,6 +195,8 @@
 
 "Select a task, Edit the record\nand press the SAVE button" = "Select a task, Edit the record\nand press the SAVE button";
 
+"Click a \"+ New Task\", Create the record\nand press the SAVE button" = "Click a \"+ New Task\", Create the record\nand press the SAVE button";
+
 "New Task" = "New Task";
 
 "New History" = "New History";
