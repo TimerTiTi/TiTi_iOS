@@ -305,7 +305,7 @@ extension ModifyRecordVC {
                 guard let alert = alert else { return }
                 switch alert {
                 case .pastRecord:
-                    self?.showAlertWithOK(title: "Unable to Modify Records".localized(), text: "기록수정이 불가한 과거형식의 기록입니다. 추가 업데이트를 기다려주세요!")
+                    self?.showAlertWithOK(title: "Unable to Modify Records".localized(), text: "Past format record can't editting, Please wait for update".localized())
                 }
             })
             .store(in: &self.cancellables)
