@@ -190,12 +190,22 @@ extension TaskInteractionView {
         self.configureColor(colorIndex: colorIndex)
     }
     
-    func reload() {
-        self.taskHistorysTableView.reloadData()
+    func reload(withDelay: Bool = false) {
+        if withDelay {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400)) { [weak self] in
+                self?.taskHistorysTableView.reloadData()
+            }
+        } else {
+            self.taskHistorysTableView.reloadData()
+        }
     }
     
     func updateFinishButtonEnable(to enable: Bool) {
         self.finishButton.isEnabled = enable
+    }
+    
+    func deleteRows(at: IndexPath) {
+        self.taskHistorysTableView.deleteRows(at: [at], with: .automatic)
     }
 }
 

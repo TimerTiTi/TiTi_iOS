@@ -342,8 +342,10 @@ extension ModifyRecordVC {
         switch mode {
         case .existingTask:
             guard let task = viewModel.selectedTask else { return }
+            let isDeleteAnimation = viewModel.isDeleteAnimation
+            self.viewModel?.isDeleteAnimation = false
             self.taskModifyInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
-            self.taskModifyInteractionView.reload()
+            self.taskModifyInteractionView.reload(withDelay: isDeleteAnimation)
         case .newTask:
             let task = viewModel.selectedTask ?? "Enter the new Task's name".localized()
             self.taskCreateInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
@@ -559,6 +561,19 @@ extension ModifyRecordVC: UITableViewDelegate {
         
         // 마지막 셀은 기록추가 셀
         return isLastCell ? AddHistoryCell.height : HistoryCell.height
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let lastCellIndex = self.viewModel?.selectedTaskHistorys.count ?? 0
+        guard indexPath.row != lastCellIndex, self.viewModel?.modifyMode == .existingTask else { return nil }
+        let deleteAction = UIContextualAction(style: .normal, title: "DELETE") { [weak self] action, view, completionHandler in
+            print("DELETE \(indexPath.row)")
+            self?.viewModel?.deleteHistory(at: indexPath.row)
+            self?.taskModifyInteractionView.deleteRows(at: indexPath)
+        }
+        deleteAction.backgroundColor = .systemRed
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
