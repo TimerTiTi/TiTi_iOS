@@ -58,6 +58,7 @@ final class ModifyRecordVM {
         }
     }
     var isRemoveAd: Bool = false
+    var isDeleteAnimation: Bool = false
     
     init(daily: Daily, isReverseColor: Bool) {
         self.mode = .modify
@@ -228,6 +229,12 @@ extension ModifyRecordVM {
         }
         
         return true
+    }
+    
+    /// TaskHistory 제거
+    func deleteHistory(at index: Int) {
+        self.isDeleteAnimation = true
+        self.selectedTaskHistorys.remove(at: index)
     }
 }
 
