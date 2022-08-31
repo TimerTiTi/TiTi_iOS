@@ -11,13 +11,16 @@ import Foundation
 final class DailyManager {
     static let shared = DailyManager()
     static let dailysFileName: String = "dailys.json"
-    var dailys: [Daily] = []
-    var dates: [Date] {
-        return dailys.map({ $0.day.zeroDate })
+    var dailys: [Daily] = [] {
+        didSet {
+            self.dates = self.dailys.map({ $0.day.zeroDate })
+        }
     }
+    var dates: [Date] = []
     
     func loadDailys() {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
+        self.dates = self.dailys.map({ $0.day.zeroDate })
         print("load dailys!")
     }
     
