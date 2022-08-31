@@ -145,25 +145,9 @@ extension ModifyRecordVM {
         // TODO: 새벽 12시-4시는 다음 날짜로 처리
         // TODO: 시작시각 > 종료시각인 경우 예외처리
         self.selectedTaskHistorys.append(history)
-        self.selectedTaskHistorys.sort(by: {
-            var lhsHour = $0.startDate.hour
-            var rhsHour = $1.startDate.hour
-            
-            if lhsHour < 5 { lhsHour += 24 }
-            if rhsHour < 5 { rhsHour += 24 }
-            
-            if lhsHour != rhsHour {
-                return lhsHour < rhsHour
-            } else {
-                return $0.startDate < $1.startDate
-            }
-        })
+        self.sortHistorys()
         self.isModified = true
-        
-        // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
-        if self.modifyMode == .existingTask {
-            self.updateDailysTaskHistory()
-        }
+        self.updateDailysTaskHistory()
     }
     
     /// 선택한 과목의 index번 히스토리를 newHistory로 변경
@@ -173,11 +157,7 @@ extension ModifyRecordVM {
         
         self.selectedTaskHistorys[index] = newHistory
         self.isModified = true
-        
-        // 기록 추가 모드가 아닌 경우, 그래프에도 반영하기 위해 Daily 업데이트
-        if self.modifyMode == .existingTask {
-            self.updateDailysTaskHistory()
-        }
+        self.updateDailysTaskHistory()
     }
     
     /// 편집 내용 로컬에 저장, dailys.json 파일 업데이트
@@ -233,8 +213,31 @@ extension ModifyRecordVM {
     
     /// TaskHistory 제거
     func deleteHistory(at index: Int) {
+        guard self.modifyMode != .none else { return }
         self.isDeleteAnimation = true
         self.selectedTaskHistorys.remove(at: index)
+        self.isModified = true
+        
+        self.updateDailysTaskHistory()
+        if self.selectedTaskHistorys.isEmpty {
+            self.changeToNoneMode()
+        }
+    }
+    
+    private func sortHistorys() {
+        self.selectedTaskHistorys.sort(by: {
+            var lhsHour = $0.startDate.hour
+            var rhsHour = $1.startDate.hour
+            
+            if lhsHour < 5 { lhsHour += 24 }
+            if rhsHour < 5 { rhsHour += 24 }
+            
+            if lhsHour != rhsHour {
+                return lhsHour < rhsHour
+            } else {
+                return $0.startDate < $1.startDate
+            }
+        })
     }
 }
 
