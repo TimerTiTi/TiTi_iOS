@@ -200,7 +200,11 @@ extension Daily {
     }
     
     mutating func updateTaskHistorys(of taskName: String, with historys: [TaskHistory]) {
-        self.taskHistorys?[taskName] = historys
+        if historys.isEmpty {
+            self.taskHistorys?[taskName] = nil
+        } else {
+            self.taskHistorys?[taskName] = historys
+        }
         
         self.updateTasks()
         self.updateMaxTime()
