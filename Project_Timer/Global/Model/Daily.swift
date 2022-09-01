@@ -172,7 +172,7 @@ extension Daily {
                         if h != endHour {
                             timeline[h%24] = 3600
                         } else {
-                            timeline[h%24] = self.getSecondsAt(history.endDate)
+                            timeline[h%24] += self.getSecondsAt(history.endDate)
                         }
                     }
                 }
