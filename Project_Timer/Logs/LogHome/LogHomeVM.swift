@@ -13,10 +13,32 @@ final class LogHomeVM {
     @Published private(set) var daily: Daily = Daily()
     @Published private(set) var subjectTimes: [Int] = []
     @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
+    private var dailys: [Daily] = [] {
+        didSet {
+            self.updateMonth()
+        }
+    }
+    let monthSmallVM: MonthSmallVM
+    
+    init() {
+        self.monthSmallVM = MonthSmallVM()
+    }
+    
+    func updateDailys() {
+        self.dailys = RecordController.shared.dailys.dailys
+    }
     
     func loadDaily() {
         self.daily = RecordController.shared.daily
         self.configureSubjectNameTimes()
+    }
+    
+    func updateColor() {
+        self.monthSmallVM.updateColor()
+    }
+    
+    private func updateMonth() {
+        self.monthSmallVM.update(monthTime: MonthTime(baseDate: Date(), dailys: self.dailys))
     }
     
     private func configureSubjectNameTimes() {
