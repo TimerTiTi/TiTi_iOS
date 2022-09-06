@@ -33,6 +33,7 @@ final class LogHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewModel()
+        self.configureMonthSmall()
         self.bindAll()
     }
     
@@ -42,11 +43,13 @@ final class LogHomeVC: UIViewController {
         self.showMonthTime()
         self.configureWeeksGraph()
         self.viewModel?.loadDaily()
+        self.viewModel?.updateDailys()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.configureShadows(self.totalView, self.monthSmallView, self.weekSmallView, self.weekView, self.dailyView)
+        self.viewModel?.updateColor()
 //        self.configureWeeksGraph()
 //
 //        guard let subjectTimes = self.viewModel?.subjectTimes,
@@ -69,6 +72,28 @@ extension LogHomeVC {
     
     private func configureViewModel() {
         self.viewModel = LogHomeVM()
+    }
+    
+    private func configureMonthSmall() {
+        guard let monthSmallVM = self.viewModel?.monthSmallVM else { return }
+        let hostingVC = UIHostingController(rootView: MonthSmallView(viewModel: monthSmallVM))
+        self.addChild(hostingVC)
+        hostingVC.didMove(toParent: self)
+        
+        self.addHostingVC(frameView: self.monthSmallView, view: hostingVC.view)
+    }
+    
+    private func addHostingVC(frameView: UIView, view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = CGFloat(25)
+        view.backgroundColor = UIColor(named: "Background_second")
+        frameView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: frameView.topAnchor),
+            view.leadingAnchor.constraint(equalTo: frameView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: frameView.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: frameView.bottomAnchor),
+        ])
     }
 }
 

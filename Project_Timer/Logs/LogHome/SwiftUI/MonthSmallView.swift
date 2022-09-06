@@ -11,7 +11,7 @@ import SwiftUI
 struct MonthSmallView: View {
     private let fontSize: CGFloat = 30
     private let lineWidth: CGFloat = 20
-    private let circleSize: CGFloat = 110
+    private let circleSize: CGFloat = 105
     @ObservedObject var viewModel: MonthSmallVM
     
     init(viewModel: MonthSmallVM) {
@@ -38,6 +38,8 @@ struct MonthSmallView: View {
                     .foregroundColor(.primary)
             }
         }
+        .padding()
+        .background(Color("Background_second").edgesIgnoringSafeArea(.all))
     }
     
     var progress: CGFloat {
