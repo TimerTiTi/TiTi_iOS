@@ -12,20 +12,17 @@ import Combine
 
 final class LogHomeVC: UIViewController {
     static let identifier = "LogHomeVC"
-    @IBOutlet weak var monthFrameView: UIView!
-    @IBOutlet weak var monthTimeLabel: UILabel!
-    
-    @IBOutlet weak var weeksFrameView: UIView!
-    @IBOutlet weak var graphViewOfWeeks: UIView!
-    
-    @IBOutlet weak var todayFrameView: UIView!
-    @IBOutlet weak var todayDateLabel: UILabel!
-    @IBOutlet weak var todayProgressView: UIView!
-    @IBOutlet weak var todaySumtimeLabel: UILabel!
-    @IBOutlet var timeSticks: [UIView]!
-    @IBOutlet weak var subjects: UICollectionView!
-    @IBOutlet weak var subjectsHeight: NSLayoutConstraint!
-    @IBOutlet weak var scrollView: UIScrollView!
+    // contentViews
+    @IBOutlet weak var totalView: UIView!
+    @IBOutlet weak var monthSmallView: UIView!
+    @IBOutlet weak var weekSmallView: UIView!
+    @IBOutlet weak var weekView: UIView!
+    @IBOutlet weak var dailyView: UIView!
+    // layers
+    @IBOutlet weak var totalLayer: UIStackView!
+    @IBOutlet weak var monthWeekLayer: UIStackView!
+    @IBOutlet weak var weekLayer: UIStackView!
+    @IBOutlet weak var dailyLayer: UIStackView!
     
     private var viewModel: LogHomeVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -35,7 +32,6 @@ final class LogHomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureWidthHeight()
         self.configureViewModel()
         self.bindAll()
     }
@@ -50,14 +46,14 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.configureShadows(self.monthFrameView, self.weeksFrameView, self.todayFrameView)
-        self.configureWeeksGraph()
-        
-        guard let subjectTimes = self.viewModel?.subjectTimes,
-              self.colors.isEmpty == false else { return }
-        let sumTime = subjectTimes.reduce(0, +)
-        self.configureTodaysTime(sumTime)
-        self.makeProgress(subjectTimes, sumTime)
+        self.configureShadows(self.totalView, self.monthSmallView, self.weekSmallView, self.weekView, self.dailyView)
+//        self.configureWeeksGraph()
+//
+//        guard let subjectTimes = self.viewModel?.subjectTimes,
+//              self.colors.isEmpty == false else { return }
+//        let sumTime = subjectTimes.reduce(0, +)
+//        self.configureTodaysTime(sumTime)
+//        self.makeProgress(subjectTimes, sumTime)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -71,11 +67,6 @@ extension LogHomeVC {
         views.forEach { $0.configureShadow() }
     }
     
-    private func configureWidthHeight() {
-        self.progressWidth = self.todayProgressView.bounds.width
-        self.progressHeight = self.todayProgressView.bounds.height
-    }
-    
     private func configureViewModel() {
         self.viewModel = LogHomeVM()
     }
@@ -84,22 +75,22 @@ extension LogHomeVC {
 // MARK: ShowGraph
 extension LogHomeVC {
     private func configureWeeksGraph() {
-        let hostingController = UIHostingController(rootView: ContentView())
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-        hostingController.view.frame = self.graphViewOfWeeks.bounds
-        
-        self.addChild(hostingController)
-        self.graphViewOfWeeks.addSubview(hostingController.view)
+//        let hostingController = UIHostingController(rootView: ContentView())
+//        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+//        hostingController.view.frame = self.graphViewOfWeeks.bounds
+//
+//        self.addChild(hostingController)
+//        self.graphViewOfWeeks.addSubview(hostingController.view)
     }
     
     private func showMonthTime() {
-        DispatchQueue.global().async {
-            RecordController.shared.dailys.totalStudyTimeOfMonth { totalTime in
-                DispatchQueue.main.async {
-                    self.monthTimeLabel.text = totalTime.toTimeString
-                }
-            }
-        }
+//        DispatchQueue.global().async {
+//            RecordController.shared.dailys.totalStudyTimeOfMonth { totalTime in
+//                DispatchQueue.main.async {
+//                    self.monthTimeLabel.text = totalTime.toTimeString
+//                }
+//            }
+//        }
     }
     
     private func showStatistics() {
@@ -154,7 +145,7 @@ extension LogHomeVC {
                 let count = subjects.count
                 self?.configureColors(count: count)
                 self?.setHeight(count: count)
-                self?.subjects.reloadData()
+//                self?.subjects.reloadData()
             })
             .store(in: &self.cancellables)
     }
@@ -162,13 +153,13 @@ extension LogHomeVC {
 
 extension LogHomeVC {
     private func configureTodayDateLabel(daily: Daily) {
-        self.todayDateLabel.text = daily.day.MDstyleString
+//        self.todayDateLabel.text = daily.day.MDstyleString
     }
     
     private func configureTimesticksGraph(daily: Daily) {
-        for i in 0..<24 {
-            self.fillColor(time: daily.timeline[i], view: self.timeSticks[i] as UIView)
-        }
+//        for i in 0..<24 {
+//            self.fillColor(time: daily.timeline[i], view: self.timeSticks[i] as UIView)
+//        }
     }
     
     private func fillColor(time: Int, view: UIView) {
@@ -204,51 +195,51 @@ extension LogHomeVC {
     }
     
     private func setHeight(count: Int) {
-        self.subjectsHeight.constant = CGFloat(20*min(8, count))
+//        self.subjectsHeight.constant = CGFloat(20*min(8, count))
     }
     
     private func configureTodaysTime(_ time: Int) {
-        self.todaySumtimeLabel.text = time.toTimeString
+//        self.todaySumtimeLabel.text = time.toTimeString
     }
 }
 
 extension LogHomeVC {
     private func makeProgress(_ subjectTimes: [Int], _ sumTime: Int) {
-        self.configureEmptyView()
-        var sumWithSeperator: Float = Float(sumTime)
-        
-        //그래프 간 구별선 추가
-        sumWithSeperator += Float(0.003)*Float(subjectTimes.count)
-        var progressPosition: Float = 1
-        
-        progressPosition -= self.addBlock(value: progressPosition)
-        for i in 0..<subjectTimes.count {
-            let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
-            prog.trackColor = UIColor.clear
-            prog.progressColor = self.colors[i % self.colors.count]
-            prog.setProgressWithAnimation(duration: 1, value: progressPosition, from: 0)
-            self.todayProgressView.addSubview(prog)
-            
-            progressPosition -= Float(subjectTimes[i])/Float(sumWithSeperator)
-            if i != subjectTimes.count-1 {
-                progressPosition -= self.addBlock(value: progressPosition)
-            }
-        }
+//        self.configureEmptyView()
+//        var sumWithSeperator: Float = Float(sumTime)
+//
+//        //그래프 간 구별선 추가
+//        sumWithSeperator += Float(0.003)*Float(subjectTimes.count)
+//        var progressPosition: Float = 1
+//
+//        progressPosition -= self.addBlock(value: progressPosition)
+//        for i in 0..<subjectTimes.count {
+//            let prog = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
+//            prog.trackColor = UIColor.clear
+//            prog.progressColor = self.colors[i % self.colors.count]
+//            prog.setProgressWithAnimation(duration: 1, value: progressPosition, from: 0)
+//            self.todayProgressView.addSubview(prog)
+//
+//            progressPosition -= Float(subjectTimes[i])/Float(sumWithSeperator)
+//            if i != subjectTimes.count-1 {
+//                progressPosition -= self.addBlock(value: progressPosition)
+//            }
+//        }
     }
     
     private func configureEmptyView() {
-        for view in self.todayProgressView.subviews {
-            view.removeFromSuperview()
-        }
+//        for view in self.todayProgressView.subviews {
+//            view.removeFromSuperview()
+//        }
     }
     
     private func addBlock(value: Float) -> Float {
-        let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
-        block.trackColor = UIColor.clear
-        block.progressColor = UIColor.systemBackground
-        block.setProgressWithAnimation(duration: 1, value: value, from: 0)
-        self.todayProgressView.addSubview(block)
-        
+//        let block = StaticCircularProgressView(frame: CGRect(x: 0, y: 0, width: self.progressWidth, height: self.progressHeight))
+//        block.trackColor = UIColor.clear
+//        block.progressColor = UIColor.systemBackground
+//        block.setProgressWithAnimation(duration: 1, value: value, from: 0)
+//        self.todayProgressView.addSubview(block)
+//
         return Float(0.003)
     }
 }
