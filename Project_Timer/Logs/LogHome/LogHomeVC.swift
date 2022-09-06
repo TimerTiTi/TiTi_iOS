@@ -33,6 +33,7 @@ final class LogHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewModel()
+        self.configureTotal()
         self.configureMonthSmall()
         self.configureWeekSmall()
         self.bindAll()
@@ -75,6 +76,15 @@ extension LogHomeVC {
         self.viewModel = LogHomeVM()
     }
     
+    private func configureTotal() {
+        guard let totalVM = self.viewModel?.totalVM else { return }
+        let hostingVC = UIHostingController(rootView: TotalView(viewModel: totalVM))
+        self.addChild(hostingVC)
+        hostingVC.didMove(toParent: self)
+        
+        self.addHostingVC(frameView: self.totalView, view: hostingVC.view)
+    }
+    
     private func configureMonthSmall() {
         guard let monthSmallVM = self.viewModel?.monthSmallVM else { return }
         let hostingVC = UIHostingController(rootView: MonthSmallView(viewModel: monthSmallVM))
@@ -96,6 +106,7 @@ extension LogHomeVC {
     private func addHostingVC(frameView: UIView, view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = CGFloat(25)
+        view.clipsToBounds = true
         view.backgroundColor = UIColor(named: "Background_second")
         frameView.addSubview(view)
         NSLayoutConstraint.activate([
