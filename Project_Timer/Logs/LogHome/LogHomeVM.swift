@@ -15,6 +15,7 @@ final class LogHomeVM {
     @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
     private var dailys: [Daily] = [] {
         didSet {
+            self.updateTotal()
             self.updateWeekDates()
             self.updateMonth()
         }
@@ -24,10 +25,12 @@ final class LogHomeVM {
             self.updateWeekSmall()
         }
     }
+    let totalVM: TotalVM
     let monthSmallVM: MonthSmallVM
     let weekSmallVM: WeekSmallVM
     
     init() {
+        self.totalVM = TotalVM()
         self.monthSmallVM = MonthSmallVM()
         self.weekSmallVM = WeekSmallVM()
     }
@@ -54,6 +57,10 @@ final class LogHomeVM {
 }
 
 extension LogHomeVM {
+    private func updateTotal() {
+        self.totalVM.update(totalTime: TotalTime(dailys: self.dailys, isReverseColor: false))
+    }
+    
     private func updateMonth() {
         self.monthSmallVM.update(monthTime: MonthTime(baseDate: Date(), dailys: self.dailys))
     }
