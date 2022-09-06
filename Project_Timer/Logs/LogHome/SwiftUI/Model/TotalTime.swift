@@ -12,6 +12,7 @@ struct TotalTime {
     let totalTime: Int
     let colorIndex: Int
     let reverseColor: Bool
+    let top5TotalTime: Int
     let top5Tasks: [TaskInfo]
     
     init(dailys: [Daily], isReverseColor: Bool) {
@@ -31,8 +32,10 @@ struct TotalTime {
         self.totalTime = sumTotalTime
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         self.reverseColor = isReverseColor
-        self.top5Tasks = Array(tasks.sorted { $0.value > $1.value }
+        let top5Tasks = Array(tasks.sorted { $0.value > $1.value }
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
             .prefix(5))
+        self.top5TotalTime = top5Tasks.reduce(0, { $0 + $1.taskTime })
+        self.top5Tasks = top5Tasks
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TaskInfo {
+struct TaskInfo: Hashable {
     let taskName: String
     let taskTime: Int
 }
