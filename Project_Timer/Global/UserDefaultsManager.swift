@@ -23,6 +23,9 @@ struct UserDefaultsManager {
         case keepTheScreenOn = "keepTheScreenOn"
         case startColor = "startColor"
         case checks = "checks"
+        // 사용자설정 목표시간
+        case goalTimeOfMonth
+        case goalTimeOfWeek
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
