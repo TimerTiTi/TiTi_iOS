@@ -86,6 +86,9 @@
 		875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
+		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
+		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
+		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
 		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
@@ -248,6 +251,9 @@
 		875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
+		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
+		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
 		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
@@ -766,6 +772,7 @@
 			children = (
 				870AE71D25E52941004DD27E /* ContentView.swift */,
 				8758E4F428C7124900A99484 /* MonthSmallView.swift */,
+				8765234928C7709700487BFB /* WeekSmallView.swift */,
 				87D5E65128C7475A00D53F8D /* Model */,
 				87D5E64E28C745EB00D53F8D /* viewModel */,
 			);
@@ -847,6 +854,7 @@
 			isa = PBXGroup;
 			children = (
 				87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */,
+				8765234728C76FFE00487BFB /* WeekSmallVM.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -855,6 +863,7 @@
 			isa = PBXGroup;
 			children = (
 				87D5E65228C7477100D53F8D /* MonthTime.swift */,
+				8765234528C76B6D00487BFB /* WeekSmallTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1084,12 +1093,14 @@
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
+				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
+				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
@@ -1107,6 +1118,7 @@
 				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
+				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
