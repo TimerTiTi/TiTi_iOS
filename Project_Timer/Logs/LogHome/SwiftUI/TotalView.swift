@@ -10,8 +10,8 @@ import SwiftUI
 
 struct TotalView: View {
     private let totalTimeFontSize: CGFloat = 28
-    private let totalTimeLineWidth: CGFloat = 20
-    private let circleSize: CGFloat = 95
+    private let totalTimeLineWidth: CGFloat = 19
+    private let circleSize: CGFloat = 90
     @ObservedObject var viewModel: TotalVM
     
     init(viewModel: TotalVM) {
@@ -37,16 +37,13 @@ struct TotalView: View {
                     .font(TiTiFont.HGGGothicssiP60g(size: totalTimeFontSize))
                     .foregroundColor(.primary)
             }
-            .padding()
+            .padding(10)
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(0..<viewModel.top5Tasks.count, id: \.self) { index in
-                    HStack(alignment: .center, spacing: 0) {
-                        Text("Top\(index+1) \(viewModel.top5Tasks[index].taskName)")
-                        Spacer()
-                        Text("\(viewModel.top5Tasks[index].taskTime.toTimeString)")
-                    }
-                    .font(TiTiFont.HGGGothicssiP60g(size: 11.5))
-                    .frame(width: 180, height: 25, alignment: .trailing)
+                    TotalTaskCellView(rank: index+1,
+                                      taskName: viewModel.top5Tasks[index].taskName,
+                                      taskTime: viewModel.top5Tasks[index].taskTime,
+                                      colorIndex: colorIndex(row: index))
                 }
             }
         }
@@ -55,5 +52,46 @@ struct TotalView: View {
     
     var totalHours: Int {
         return viewModel.totalTime/3600
+    }
+    
+    func colorIndex(row: Int) -> Int {
+        if viewModel.reverseColor {
+            let colorIndex = (viewModel.colorIndex-row+12)%12
+            return colorIndex != 0 ? colorIndex : 12
+        } else {
+            let colorIndex = (viewModel.colorIndex+row)%12
+            return colorIndex != 0 ? colorIndex : 12
+        }
+    }
+}
+
+struct TotalTaskCellView : View {
+    let rank: Int
+    let taskName: String
+    let taskTime: Int
+    let colorIndex: Int
+    
+    var body: some View {
+        VStack(alignment: .center, spacing: 4) {
+            HStack(alignment: .center, spacing: 0) {
+                Text("Top\(rank)")
+                    .font(TiTiFont.HGGGothicssiP80g(size: 10))
+                    .foregroundColor(TiTiColor.graphColor(num: colorIndex).toColor)
+                    .frame(width: 24, alignment: .leading)
+                Text("\(taskName)")
+                    .font(TiTiFont.HGGGothicssiP60g(size: 10.5))
+                    .padding(.horizontal, 2)
+                    .background(TiTiColor.graphColor(num: colorIndex).withAlphaComponent(0.5).toColor)
+                    .frame(width: 134, alignment: .leading)
+                    .lineLimit(1)
+                Spacer(minLength: 2)
+                Text("\(taskTime/3600) H")
+                    .font(TiTiFont.HGGGothicssiP80g(size: 10))
+                    .foregroundColor(TiTiColor.graphColor(num: colorIndex).toColor)
+            }
+            Divider()
+                .background(UIColor.lightGray.withAlphaComponent(0.5).toColor)
+        }
+        .frame(width: 188, height: 25, alignment: .trailing)
     }
 }
