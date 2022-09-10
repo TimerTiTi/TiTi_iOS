@@ -16,11 +16,13 @@ final class LogHomeVC: UIViewController {
     @IBOutlet weak var totalView: UIView!
     @IBOutlet weak var monthSmallView: UIView!
     @IBOutlet weak var weekSmallView: UIView!
+    @IBOutlet weak var monthView: UIView!
     @IBOutlet weak var weekView: UIView!
     @IBOutlet weak var dailyView: UIView!
     // layers
     @IBOutlet weak var totalLayer: UIStackView!
     @IBOutlet weak var monthWeekLayer: UIStackView!
+    @IBOutlet weak var monthLayer: UIStackView!
     @IBOutlet weak var weekLayer: UIStackView!
     @IBOutlet weak var dailyLayer: UIStackView!
     
@@ -50,7 +52,7 @@ final class LogHomeVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.configureShadows(self.totalView, self.monthSmallView, self.weekSmallView, self.weekView, self.dailyView)
+        self.configureShadows(self.totalView, self.monthSmallView, self.weekSmallView, self.monthView, self.weekView, self.dailyView)
         self.viewModel?.updateColor()
 //        self.configureWeeksGraph()
 //
