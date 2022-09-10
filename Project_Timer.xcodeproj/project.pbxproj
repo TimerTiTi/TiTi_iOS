@@ -133,6 +133,9 @@
 		87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC827DF026800F46D0F /* Int+Extension.swift */; };
 		87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCA27DF112A00F46D0F /* LogHomeVM.swift */; };
 		87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BCC27DF182400F46D0F /* SubjectCell.swift */; };
+		87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A722A328CCB8D9000DA304 /* MonthView.swift */; };
+		87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */; };
+		87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A722A728CCB95C000DA304 /* MonthVM.swift */; };
 		87A7624726493BB500174401 /* LogHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogHomeVC.swift */; };
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
 		87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8BC3A288D1436007ED793 /* LogVC.swift */; };
@@ -297,6 +300,9 @@
 		87A48BC827DF026800F46D0F /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		87A48BCA27DF112A00F46D0F /* LogHomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVM.swift; sourceTree = "<group>"; };
 		87A48BCC27DF182400F46D0F /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
+		87A722A328CCB8D9000DA304 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeTaskCellView.swift; sourceTree = "<group>"; };
+		87A722A728CCB95C000DA304 /* MonthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthVM.swift; sourceTree = "<group>"; };
 		87A7624626493BB500174401 /* LogHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVC.swift; sourceTree = "<group>"; };
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		87A8BC3A288D1436007ED793 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
@@ -779,9 +785,11 @@
 				870AE71D25E52941004DD27E /* ContentView.swift */,
 				8765235028C79C4400487BFB /* TotalView.swift */,
 				8758E4F428C7124900A99484 /* MonthSmallView.swift */,
+				87A722A328CCB8D9000DA304 /* MonthView.swift */,
 				8765234928C7709700487BFB /* WeekSmallView.swift */,
 				87D5E65128C7475A00D53F8D /* Model */,
 				87D5E64E28C745EB00D53F8D /* viewModel */,
+				87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -861,6 +869,7 @@
 			isa = PBXGroup;
 			children = (
 				8765234E28C7964500487BFB /* TotalVM.swift */,
+				87A722A728CCB95C000DA304 /* MonthVM.swift */,
 				87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */,
 				8765234728C76FFE00487BFB /* WeekSmallVM.swift */,
 			);
@@ -1099,8 +1108,10 @@
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
+				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
+				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
@@ -1156,6 +1167,7 @@
 				04504C642864C7F500CA4C69 /* TimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* SingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
+				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
@@ -1402,7 +1414,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.5.1;
+				MARKETING_VERSION = 7.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -1427,7 +1439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.5.1;
+				MARKETING_VERSION = 7.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;

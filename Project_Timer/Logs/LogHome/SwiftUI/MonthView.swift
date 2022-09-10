@@ -1,20 +1,20 @@
 //
-//  TotalView.swift
+//  MonthView.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/09/07.
+//  Created by Kang Minsang on 2022/09/10.
 //  Copyright © 2022 FDEE. All rights reserved.
 //
 
 import SwiftUI
 
-struct TotalView: View {
+struct MonthView: View {
     private let totalTimeFontSize: CGFloat = 28
     private let totalTimeLineWidth: CGFloat = 19
     private let circleSize: CGFloat = 90
-    @ObservedObject var viewModel: TotalVM
+    @ObservedObject var viewModel: MonthVM
     
-    init(viewModel: TotalVM) {
+    init(viewModel: MonthVM) {
         self.viewModel = viewModel
     }
     
