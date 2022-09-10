@@ -18,6 +18,7 @@ final class LogHomeVM {
             self.updateTotal()
             self.updateWeekDates()
             self.updateMonth()
+            self.updateMonth()
         }
     }
     private var weekDates: [Date] = [] {
@@ -28,11 +29,13 @@ final class LogHomeVM {
     let totalVM: TotalVM
     let monthSmallVM: MonthSmallVM
     let weekSmallVM: WeekSmallVM
+    let monthVM: MonthVM
     
     init() {
         self.totalVM = TotalVM()
         self.monthSmallVM = MonthSmallVM()
         self.weekSmallVM = WeekSmallVM()
+        self.monthVM = MonthVM()
     }
     
     func updateDailys() {
@@ -45,8 +48,10 @@ final class LogHomeVM {
     }
     
     func updateColor() {
+        self.totalVM.updateColor(isReverseColor: false)
         self.monthSmallVM.updateColor()
         self.weekSmallVM.updateColor()
+        self.monthVM.updateColor(isReverseColor: false)
     }
     
     private func configureSubjectNameTimes() {
@@ -62,7 +67,9 @@ extension LogHomeVM {
     }
     
     private func updateMonth() {
-        self.monthSmallVM.update(monthTime: MonthTime(baseDate: Date(), dailys: self.dailys))
+        let monthTime = MonthTime(baseDate: Date(), dailys: self.dailys, isReverseColor: false)
+        self.monthSmallVM.update(monthTime: monthTime)
+        self.monthVM.update(monthTime: monthTime)
     }
     
     private func updateWeekSmall() {
