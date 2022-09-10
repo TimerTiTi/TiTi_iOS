@@ -2847,10 +2847,10 @@
                                 <rect key="frame" x="0.0" y="44" width="390" height="766"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoT-Cu-LUq" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="784.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="980.66666666666663"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-iE-ijn">
-                                                <rect key="frame" x="25.666666666666657" y="8" width="339" height="768.33333333333337"/>
+                                                <rect key="frame" x="25.666666666666657" y="8" width="339" height="964.66666666666663"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Yg-qI-DeF">
                                                         <rect key="frame" x="0.0" y="0.0" width="339" height="179.33333333333334"/>
@@ -2929,8 +2929,32 @@
                                                             </stackView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="klM-kf-YWt">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uEW-LY-A6I">
                                                         <rect key="frame" x="0.0" y="392.66666666666669" width="339" height="179.33333333333331"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eb5-11-NGt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="339" height="158"/>
+                                                                <color key="backgroundColor" name="Background_second"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="158" id="07M-7B-OuM"/>
+                                                                    <constraint firstAttribute="width" constant="339" id="lYA-Vv-rnz"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="25"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccm-Dq-37F">
+                                                                <rect key="frame" x="154.66666666666669" y="165.99999999999994" width="29.666666666666657" height="13.333333333333343"/>
+                                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="klM-kf-YWt">
+                                                        <rect key="frame" x="0.0" y="589" width="339" height="179.33333333333337"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOk-g0-ZlX">
                                                                 <rect key="frame" x="0.0" y="0.0" width="339" height="158"/>
@@ -2946,7 +2970,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svy-bq-Gcw">
-                                                                <rect key="frame" x="155.66666666666669" y="165.99999999999994" width="27.333333333333343" height="13.333333333333343"/>
+                                                                <rect key="frame" x="155.66666666666669" y="166" width="27.333333333333343" height="13.333333333333343"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2954,7 +2978,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eDm-cs-U7k">
-                                                        <rect key="frame" x="0.0" y="589" width="339" height="179.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="785.33333333333337" width="339" height="179.33333333333337"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpI-WH-fc7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="339" height="158"/>
@@ -3013,7 +3037,9 @@
                     <connections>
                         <outlet property="dailyLayer" destination="eDm-cs-U7k" id="C4x-yc-nTq"/>
                         <outlet property="dailyView" destination="tpI-WH-fc7" id="I7R-58-g2o"/>
+                        <outlet property="monthLayer" destination="uEW-LY-A6I" id="BoH-py-e44"/>
                         <outlet property="monthSmallView" destination="Etl-fQ-Qzz" id="hhe-9P-Zib"/>
+                        <outlet property="monthView" destination="Eb5-11-NGt" id="Wnr-FZ-yJX"/>
                         <outlet property="monthWeekLayer" destination="5GW-fj-6K7" id="o2m-wa-qXZ"/>
                         <outlet property="totalLayer" destination="4Yg-qI-DeF" id="LKU-T0-oIo"/>
                         <outlet property="totalView" destination="V8p-gr-cwf" id="meZ-Tc-dus"/>
@@ -3054,13 +3080,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
