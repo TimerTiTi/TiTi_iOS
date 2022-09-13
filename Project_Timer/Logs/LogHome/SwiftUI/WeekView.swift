@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct WeekView: View {
+    let frameHeight: CGFloat = 120
     @ObservedObject var viewModel: WeekVM
     
     init(viewModel: WeekVM) {
@@ -22,6 +23,12 @@ struct WeekView: View {
                 self.WeekTextView
                 self.WeekTermTextView
             }
+            HStack(alignment: .bottom, spacing: 6) {
+                self.TimelineGraphView
+                self.TimeView
+            }
+            .padding(.horizontal, 12)
+            .frame(height: self.frameHeight)
         }
     }
 }
@@ -46,6 +53,50 @@ extension WeekView {
             .foregroundColor(.primary)
             .padding(.bottom, 3)
     }
+    
+    var TimelineGraphView: some View {
+        HStack(alignment: .bottom, spacing: 6) {
+            ForEach(viewModel.weekTimes) { weekTime in
+                VStack {
+                    Spacer(minLength: 2)
+                    Text(weekTime.sumTime != 0 ? weekTime.sumTime.toHM : "")
+                        .foregroundColor(.primary)
+                        .font(.system(size: 9))
+                        .padding(.bottom, -6)
+                    RoundedShape(radius: 6)
+                        .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
+                        .frame(height: self.getHeight(value: weekTime.sumTime))
+                        .padding(.bottom, -4)
+                    Text(weekTime.day)
+                        .font(.system(size: 9))
+                        .foregroundColor(.primary)
+                        .frame(height: 11)
+                        .padding(.bottom, 6)
+                }
+            }
+        }
+        .background(Color("Background_second")).edgesIgnoringSafeArea(.all)
+    }
+    
+    var TimeView: some View {
+        VStack(alignment: .center, spacing: 0) {
+            Text("Total")
+                .font(TiTiFont.HGGGothicssiP60g(size: 12))
+                .foregroundColor(.primary)
+            Text(self.totalTime)
+                .font(TiTiFont.HGGGothicssiP80g(size: 22))
+                .foregroundColor(TiTiColor.graphColor(num: viewModel.color2Index).toColor)
+                .padding(.bottom, 4)
+            Text("Average")
+                .font(TiTiFont.HGGGothicssiP60g(size: 12))
+                .foregroundColor(.primary)
+            Text(self.averageTime)
+                .font(TiTiFont.HGGGothicssiP80g(size: 22))
+                .foregroundColor(TiTiColor.graphColor(num: viewModel.color2Index).toColor)
+                .padding(.bottom, 16)
+        }
+        .background(Color("Background_second")).edgesIgnoringSafeArea(.all)
+    }
 }
 
 // MARK: propertys
@@ -66,5 +117,19 @@ extension WeekView {
         let sun = viewModel.weekDates[6]
         
         return "\(mon.MMDDstyleString) ~ \(sun.MMDDstyleString)"
+    }
+    
+    private func getHeight(value: Int) -> CGFloat {
+        guard let maxTime = self.viewModel.weekTimes.map(\.sumTime).max(),
+              maxTime != 0 else { return 0 }
+        return CGFloat(value) / CGFloat(maxTime) * (self.frameHeight - 35)
+    }
+    
+    private var totalTime: String {
+        return viewModel.totalTime.toTimeString
+    }
+    
+    private var averageTime: String {
+        return viewModel.averageTime.toTimeString
     }
 }
