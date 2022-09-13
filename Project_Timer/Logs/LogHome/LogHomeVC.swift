@@ -39,6 +39,7 @@ final class LogHomeVC: UIViewController {
         self.configureMonthSmall()
         self.configureWeekSmall()
         self.configureMonth()
+        self.configureWeek()
         self.bindAll()
     }
     
@@ -113,6 +114,15 @@ extension LogHomeVC {
         hostingVC.didMove(toParent: self)
         
         self.addHostingVC(frameView: self.monthView, view: hostingVC.view)
+    }
+    
+    private func configureWeek() {
+        guard let weekVM = self.viewModel?.weekVM else { return }
+        let hostingVC = UIHostingController(rootView: WeekView(viewModel: weekVM))
+        self.addChild(hostingVC)
+        hostingVC.didMove(toParent: self)
+        
+        self.addHostingVC(frameView: self.weekView, view: hostingVC.view)
     }
     
     private func addHostingVC(frameView: UIView, view: UIView) {
