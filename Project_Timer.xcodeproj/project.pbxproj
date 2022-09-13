@@ -154,6 +154,9 @@
 		87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
+		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
+		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
+		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
@@ -324,6 +327,9 @@
 		87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysWeekData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
+		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
+		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -783,13 +789,14 @@
 			isa = PBXGroup;
 			children = (
 				870AE71D25E52941004DD27E /* ContentView.swift */,
+				87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */,
 				8765235028C79C4400487BFB /* TotalView.swift */,
 				8758E4F428C7124900A99484 /* MonthSmallView.swift */,
-				87A722A328CCB8D9000DA304 /* MonthView.swift */,
 				8765234928C7709700487BFB /* WeekSmallView.swift */,
+				87A722A328CCB8D9000DA304 /* MonthView.swift */,
+				87DC6A4628D00DF400455A06 /* WeekView.swift */,
 				87D5E65128C7475A00D53F8D /* Model */,
 				87D5E64E28C745EB00D53F8D /* viewModel */,
-				87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -872,6 +879,7 @@
 				87A722A728CCB95C000DA304 /* MonthVM.swift */,
 				87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */,
 				8765234728C76FFE00487BFB /* WeekSmallVM.swift */,
+				87DC6A4828D0104300455A06 /* WeekVM.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -882,6 +890,7 @@
 				8765234B28C7948700487BFB /* TotalTime.swift */,
 				87D5E65228C7477100D53F8D /* MonthTime.swift */,
 				8765234528C76B6D00487BFB /* WeekSmallTime.swift */,
+				87DC6A4A28D010A400455A06 /* WeekTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1120,6 +1129,7 @@
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
+				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
@@ -1148,6 +1158,7 @@
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
+				87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
@@ -1169,6 +1180,7 @@
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
+				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
