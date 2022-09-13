@@ -10,7 +10,11 @@ import Foundation
 import Combine
 
 final class LogHomeVM {
-    @Published private(set) var daily: Daily = Daily()
+    @Published private(set) var daily: Daily = Daily() {
+        didSet {
+            self.updateDaily()
+        }
+    }
     @Published private(set) var subjectTimes: [Int] = []
     @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
     private var dailys: [Daily] = [] {
@@ -32,6 +36,7 @@ final class LogHomeVM {
     let weekSmallVM: WeekSmallVM
     let monthVM: MonthVM
     let weekVM: WeekVM
+    let dailyVM: DailyVM
     
     init() {
         self.totalVM = TotalVM()
@@ -39,6 +44,7 @@ final class LogHomeVM {
         self.weekSmallVM = WeekSmallVM()
         self.monthVM = MonthVM()
         self.weekVM = WeekVM()
+        self.dailyVM = DailyVM()
     }
     
     func updateDailys() {
@@ -47,7 +53,6 @@ final class LogHomeVM {
     
     func loadDaily() {
         self.daily = RecordController.shared.daily
-        self.configureSubjectNameTimes()
     }
     
     func updateColor() {
@@ -55,12 +60,8 @@ final class LogHomeVM {
         self.monthSmallVM.updateColor()
         self.weekSmallVM.updateColor()
         self.monthVM.updateColor(isReverseColor: false)
-    }
-    
-    private func configureSubjectNameTimes() {
-        let tasks = self.daily.tasks.sorted(by: { $0.value < $1.value } )
-        self.subjectNameTimes = tasks.map { ($0.key, $0.value.toTimeString) }
-        self.subjectTimes = tasks.map (\.value)
+        self.weekVM.updateColor(isReverseColor: false)
+        self.dailyVM.updateColor(isReverseColor: false)
     }
 }
 
@@ -81,6 +82,10 @@ extension LogHomeVM {
     
     private func updateWeek() {
         self.weekVM.update(weekTime: WeekTime(weekDates: self.weekDates, dailys: self.dailys, isReverseColor: false))
+    }
+    
+    private func updateDaily() {
+        self.dailyVM.update(daily: self.daily)
     }
 }
 
