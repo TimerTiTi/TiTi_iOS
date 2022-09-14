@@ -50,7 +50,7 @@ struct TotalView: View {
 
 extension TotalView {
     private var CircularProgressView: some View {
-        TasksCircularProgressSwiftUIView(tasks: viewModel.top5Tasks, isReverseColor: viewModel.reverseColor, colorIndex: viewModel.colorIndex)
+        TasksCircularProgressSwiftUIView(totalTime: viewModel.totalTime, tasks: viewModel.top5Tasks, isReverseColor: viewModel.reverseColor, colorIndex: viewModel.colorIndex)
             .padding(10)
     }
 }

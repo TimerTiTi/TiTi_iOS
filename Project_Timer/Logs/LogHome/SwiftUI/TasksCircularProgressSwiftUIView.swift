@@ -21,13 +21,13 @@ struct TasksCircularProgressSwiftUIView: View {
     private let totalValue: CGFloat
     private var progressValue: CGFloat = 1
     
-    init(tasks: [TaskInfo], isReverseColor: Bool, colorIndex: Int) {
+    init(totalTime: Int, tasks: [TaskInfo], isReverseColor: Bool, colorIndex: Int) {
         let tasksInfos = TasksCircularProgressDTO(tasks: tasks)
         self.tasksAndBlocks = tasksInfos.tasksAndBlocks
         self.isReverseColor = isReverseColor
         self.colorIndex = colorIndex
-        self.totalHours = tasks.reduce(0, { $0 + $1.taskTime })/3600
-        self.totalValue = CGFloat(self.totalHours) + self.blockValue*CGFloat(tasks.count)
+        self.totalHours = totalTime/3600
+        self.totalValue = CGFloat(tasks.reduce(0, { $0 + $1.taskTime })/3600) + self.blockValue*CGFloat(tasks.count)
     }
     
     var body: some View {
