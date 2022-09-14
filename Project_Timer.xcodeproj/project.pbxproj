@@ -163,6 +163,7 @@
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1178268ACB040012F043 /* DailyViewModel.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingViewController.swift */; };
+		87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */; };
 		87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
@@ -339,6 +340,7 @@
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87DE1178268ACB040012F043 /* DailyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyViewModel.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressSwiftUIView.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 				870AE71D25E52941004DD27E /* ContentView.swift */,
 				87A722A528CCB928000DA304 /* LogHomeTaskCellView.swift */,
 				873C197928D04B5B00E02ADC /* DayOfWeekText.swift */,
+				87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */,
 				8765235028C79C4400487BFB /* TotalView.swift */,
 				8758E4F428C7124900A99484 /* MonthSmallView.swift */,
 				8765234928C7709700487BFB /* WeekSmallView.swift */,
@@ -1134,6 +1137,7 @@
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
+				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,

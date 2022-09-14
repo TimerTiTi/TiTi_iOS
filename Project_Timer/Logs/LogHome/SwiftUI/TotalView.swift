@@ -20,24 +20,7 @@ struct TotalView: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            ZStack {
-                Circle()
-                    .stroke(TiTiColor.graphColor(num: viewModel.colorIndex).toColor.opacity(0.5),
-                            lineWidth: totalTimeLineWidth)
-                    .frame(width: circleSize, height: circleSize, alignment: .center)
-                
-                Circle()
-                    .trim(from: 0, to: 1)
-                    .stroke(TiTiColor.graphColor(num: viewModel.colorIndex).toColor.opacity(1.0),
-                            style: StrokeStyle(lineWidth: totalTimeLineWidth, lineCap: .round))
-                    .frame(width: circleSize, height: circleSize, alignment: .center)
-                    .rotationEffect(.degrees(-90))
-                
-                Text("\(totalHours)")
-                    .font(TiTiFont.HGGGothicssiP60g(size: totalTimeFontSize))
-                    .foregroundColor(.primary)
-            }
-            .padding(10)
+            self.CircularProgressView
             VStack(alignment: .leading, spacing: 0) {
                 ForEach(0..<viewModel.top5Tasks.count, id: \.self) { index in
                     LogHomeTaskCellView(rank: index+1,
@@ -62,5 +45,12 @@ struct TotalView: View {
             let colorIndex = (viewModel.colorIndex+row)%12
             return colorIndex != 0 ? colorIndex : 12
         }
+    }
+}
+
+extension TotalView {
+    private var CircularProgressView: some View {
+        TasksCircularProgressSwiftUIView(tasks: viewModel.top5Tasks, isReverseColor: viewModel.reverseColor, colorIndex: viewModel.colorIndex)
+            .padding(10)
     }
 }
