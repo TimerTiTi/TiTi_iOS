@@ -18,7 +18,7 @@ final class WeekVM: ObservableObject {
     @Published var color2Index: Int = 1
     
     init() {
-        self.updateColor(isReverseColor: false)
+        self.updateColor()
         self.resetTimes()
     }
     
@@ -27,7 +27,7 @@ final class WeekVM: ObservableObject {
         self.weekNum = weekTime.weekNum
         self.totalTime = weekTime.totalTime
         self.averageTime = weekTime.averageTime
-        self.updateColor(isReverseColor: weekTime.reverseColor)
+        self.updateColor()
         
         var weekTimes = self.weekTimes
         for idx in 0...6 {
@@ -41,9 +41,10 @@ final class WeekVM: ObservableObject {
         self.weekTimes = weekTimes
     }
 
-    func updateColor(isReverseColor: Bool) {
-        let offset = isReverseColor ? -1 : 1
+    func updateColor() {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        let isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
+        let offset = isReverseColor ? -1 : 1
         let resultColorIndex = (userColorIndex+offset+12)%12
 
         self.color1Index = resultColorIndex == 0 ? 12 : resultColorIndex

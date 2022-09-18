@@ -14,9 +14,10 @@ struct WeekTime {
     var dailys: [Daily?] = Array(repeating: nil, count: 7)
     let totalTime: Int
     let averageTime: Int
+    let colorIndex: Int
     let reverseColor: Bool
     
-    init(weekDates: [Date], dailys: [Daily], isReverseColor: Bool) {
+    init(weekDates: [Date], dailys: [Daily]) {
         self.weekDates = weekDates
         self.weekNum = weekDates.map(\.weekOfMonth).min() ?? 0
         let filteredDailys = dailys.filter { daily in
@@ -24,7 +25,8 @@ struct WeekTime {
         }
         self.totalTime = filteredDailys.reduce(0, { $0 + $1.totalTime })
         self.averageTime = filteredDailys.count != 0 ? self.totalTime/filteredDailys.count : 0
-        self.reverseColor = isReverseColor
+        self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        self.reverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
         filteredDailys.forEach { daily in
             self.dailys[daily.day.indexDayOfWeek] = daily
         }
