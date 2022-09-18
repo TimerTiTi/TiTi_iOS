@@ -56,7 +56,7 @@ final class LogHomeVM {
     }
     
     func updateColor() {
-        self.totalVM.updateColor(isReverseColor: false)
+        self.totalVM.updateColor()
         self.monthSmallVM.updateColor()
         self.weekSmallVM.updateColor()
         self.monthVM.updateColor(isReverseColor: false)
@@ -67,7 +67,7 @@ final class LogHomeVM {
 
 extension LogHomeVM {
     private func updateTotal() {
-        self.totalVM.update(totalTime: TotalTime(dailys: self.dailys, isReverseColor: false))
+        self.totalVM.update(totalTime: TotalTime(dailys: self.dailys))
     }
     
     private func updateMonth() {

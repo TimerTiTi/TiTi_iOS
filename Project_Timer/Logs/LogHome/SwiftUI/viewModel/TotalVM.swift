@@ -15,18 +15,18 @@ final class TotalVM: ObservableObject {
     @Published var top5Tasks: [TaskInfo] = []
     
     init() {
-        self.updateColor(isReverseColor: false)
+        self.updateColor()
     }
     
-    func update(totalTime: TotalTime, reverseColor: Bool = false) {
+    func update(totalTime: TotalTime) {
         self.totalTime = totalTime.totalTime
         self.colorIndex = totalTime.colorIndex
         self.top5Tasks = totalTime.top5Tasks
-        self.updateColor(isReverseColor: reverseColor)
+        self.updateColor()
     }
     
-    func updateColor(isReverseColor: Bool) {
+    func updateColor() {
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        self.reverseColor = isReverseColor
+        self.reverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
     }
 }
