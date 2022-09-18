@@ -33,7 +33,7 @@ final class DailysVC: UIViewController {
         }
     }
     private weak var delegate: ModifyRecordDelegate?
-    private var previusColorIndex: Int?
+    private var colorIndex: Int = 1
     private var isReverseColor: Bool = false
     private var viewModel: DailysVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -45,6 +45,7 @@ final class DailysVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCalender()
+        self.fetchColor()
         self.updateCalendarColor()
         self.configureScrollView()
         self.configureGraphs()
@@ -61,6 +62,9 @@ final class DailysVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 1])
+        self.fetchColor()
+        self.updateCalendarColor()
+        self.viewModel?.updateColor()
         self.viewModel?.updateCurrentDaily()
         self.calendar.reloadData()
     }
@@ -75,15 +79,14 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func changeColor(_ sender: UIButton) {
-        UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
-        if self.previusColorIndex == sender.tag {
+        if self.colorIndex == sender.tag {
             self.isReverseColor.toggle()
-        } else {
-            self.isReverseColor = false
         }
-        self.previusColorIndex = sender.tag
+        self.colorIndex = sender.tag
+        UserDefaultsManager.set(to: self.colorIndex, forKey: .startColor)
+        UserDefaultsManager.set(to: self.isReverseColor, forKey: .reverseColor)
         self.updateCalendarColor()
-        self.viewModel?.updateColor(isReverseColor: self.isReverseColor)
+        self.viewModel?.updateColor()
         self.updateGraphsFromDaily()
         self.updateGraphsFromTasks()
     }
@@ -151,7 +154,7 @@ extension DailysVC {
     }
     
     private func updateCalendarColor() {
-        let color = UIColor(named: String.userTintColor)
+        let color = UIColor(named: "D\(self.colorIndex)")
         self.calendar.appearance.eventSelectionColor = color?.withAlphaComponent(0.5)
         self.calendar.appearance.selectionColor = color?.withAlphaComponent(0.5)
         self.calendar.appearance.titleTodayColor = color
@@ -282,6 +285,11 @@ extension DailysVC {
 }
 
 extension DailysVC {
+    private func fetchColor() {
+        self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
+    }
+    
     private func updateGraphsFromDaily() {
         let daily = self.viewModel?.currentDaily
         self.standardDailyGraphView.updateFromDaily(daily)
