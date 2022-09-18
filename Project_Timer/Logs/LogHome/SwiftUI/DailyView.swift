@@ -58,6 +58,7 @@ extension DailyView {
         HStack(alignment: .bottom, spacing: 2) {
             ForEach(viewModel.times) { time in
                 VStack(alignment: .center, spacing: 2) {
+                    Spacer(minLength: 0)
                     RoundedShape()
                         .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
                         .frame(height: self.getHeight(time: time.sumTime))
@@ -68,6 +69,7 @@ extension DailyView {
             }
         }
         .padding(.top, 4)
+        .frame(height: self.frameHeight+6.5)
     }
 }
 
@@ -101,6 +103,6 @@ extension DailyView {
     }
     
     private func getHeight(time: Int) -> CGFloat {
-        return CGFloat(time)/CGFloat(3600)*self.frameHeight
+        return CGFloat(time)/CGFloat(3600)*(self.frameHeight-10)
     }
 }
