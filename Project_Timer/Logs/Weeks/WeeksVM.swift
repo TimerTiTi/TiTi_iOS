@@ -30,7 +30,7 @@ final class WeeksVM {
         self.selectDate(to: self.selectedDate.localDate)
     }
     
-    func updateColor(isReverseColor: Bool) {
-        self.timelineVM.updateColor(isReversColor: isReverseColor)
+    func updateColor() {
+        self.timelineVM.updateColor()
     }
 }
