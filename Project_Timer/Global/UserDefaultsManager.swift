@@ -10,20 +10,25 @@ import Foundation
 
 struct UserDefaultsManager {
     enum Keys: String {
+        // app start
         case isFirst = "isFirst"
         case VCNum = "VCNum"
-        
+        // notification
         case timer5minPushable = "timer5minPushable"
         case timerPushable = "timerPushable"
         case stopwatchPushable = "stopwatchPushable"
-        case restPushable = "restPushable"
+        // alert
         case updatePushable = "updatePushable"
+        // control
         case timelabelsAnimation = "timelabelsAnimation"
         case flipToStartRecording = "flipToStartRecording"
         case keepTheScreenOn = "keepTheScreenOn"
-        case startColor = "startColor"
+        // graph
         case checks = "checks"
-        // 사용자설정 목표시간
+        // color
+        case startColor = "startColor"
+        case reverseColor = "reverseColor"
+        // recordTimes
         case goalTimeOfMonth
         case goalTimeOfWeek
     }
