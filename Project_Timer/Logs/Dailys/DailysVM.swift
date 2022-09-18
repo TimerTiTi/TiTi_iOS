@@ -35,7 +35,7 @@ final class DailysVM {
         self.updateDaily(to: newDaily)
     }
     
-    func updateColor(isReverseColor: Bool) {
-        self.timelineVM.updateColor(isReversColor: isReverseColor)
+    func updateColor() {
+        self.timelineVM.updateColor()
     }
 }
