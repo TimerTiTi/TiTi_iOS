@@ -16,7 +16,7 @@ struct MonthTime {
     let top5TotalTime: Int
     let top5Tasks: [TaskInfo]
     
-    init(baseDate: Date = Date(), dailys: [Daily], isReverseColor: Bool) {
+    init(baseDate: Date = Date(), dailys: [Daily]) {
         var sumTotalTime: Int = 0
         var tasks: [String: Int] = [:]
         let baseYYMM = baseDate.YYMMstyleInt
@@ -34,7 +34,7 @@ struct MonthTime {
         self.totalTime = sumTotalTime
         self.maxTime = UserDefaultsManager.get(forKey: .goalTimeOfMonth) as? Int ?? 360000
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        self.reverseColor = isReverseColor
+        self.reverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
         let top5Tasks = Array(tasks.sorted { $0.value > $1.value }
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
             .prefix(5))
