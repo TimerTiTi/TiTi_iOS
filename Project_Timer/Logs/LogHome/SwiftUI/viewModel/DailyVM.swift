@@ -21,7 +21,7 @@ final class DailyVM: ObservableObject {
     }
     
     func update(daily: Daily?) {
-        self.day = Date()
+        self.day = daily?.day ?? Date()
         self.daily = daily
         guard let timeline = daily?.timeline else {
             self.resetTimes()
