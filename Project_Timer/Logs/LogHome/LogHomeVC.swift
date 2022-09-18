@@ -47,8 +47,6 @@ final class LogHomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 0])
-        self.showMonthTime()
-        self.configureWeeksGraph()
         self.viewModel?.loadDaily()
         self.viewModel?.updateDailys()
     }
@@ -57,13 +55,6 @@ final class LogHomeVC: UIViewController {
         super.viewWillLayoutSubviews()
         self.configureShadows(self.totalView, self.monthSmallView, self.weekSmallView, self.monthView, self.weekView, self.dailyView)
         self.viewModel?.updateColor()
-//        self.configureWeeksGraph()
-//
-//        guard let subjectTimes = self.viewModel?.subjectTimes,
-//              self.colors.isEmpty == false else { return }
-//        let sumTime = subjectTimes.reduce(0, +)
-//        self.configureTodaysTime(sumTime)
-//        self.makeProgress(subjectTimes, sumTime)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -152,24 +143,9 @@ extension LogHomeVC {
 
 // MARK: ShowGraph
 extension LogHomeVC {
-    private func configureWeeksGraph() {
-//        let hostingController = UIHostingController(rootView: ContentView())
-//        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-//        hostingController.view.frame = self.graphViewOfWeeks.bounds
-//
-//        self.addChild(hostingController)
-//        self.graphViewOfWeeks.addSubview(hostingController.view)
-    }
     
-    private func showMonthTime() {
-//        DispatchQueue.global().async {
-//            RecordController.shared.dailys.totalStudyTimeOfMonth { totalTime in
-//                DispatchQueue.main.async {
-//                    self.monthTimeLabel.text = totalTime.toTimeString
-//                }
-//            }
-//        }
-    }
+    
+    
     
     private func showStatistics() {
         guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier) else { return }
