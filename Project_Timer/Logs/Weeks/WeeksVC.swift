@@ -18,14 +18,15 @@ final class WeeksVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     private var standardWeekGraphView = StandardWeekGraphView()
     
-    private var previusColorIndex: Int?
-    private var isReversColor: Bool = false
+    private var colorIndex: Int = 1
+    private var isReverseColor: Bool = false
     private var viewModel: WeeksVM?
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureCalender()
+        self.fetchColor()
         self.updateCalendarColor()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
@@ -39,6 +40,9 @@ final class WeeksVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 2])
+        self.fetchColor()
+        self.updateCalendarColor()
+        self.viewModel?.updateColor()
         self.viewModel?.updateCurrentDate()
         self.calendar.reloadData()
     }
@@ -52,14 +56,14 @@ final class WeeksVC: UIViewController {
     
     @IBAction func changeColor(_ sender: UIButton) {
         UserDefaultsManager.set(to: sender.tag, forKey: .startColor)
-        if self.previusColorIndex == sender.tag {
-            self.isReversColor.toggle()
-        } else {
-            self.isReversColor = false
+        if self.colorIndex == sender.tag {
+            self.isReverseColor.toggle()
         }
-        self.previusColorIndex = sender.tag
+        self.colorIndex = sender.tag
+        UserDefaultsManager.set(to: self.colorIndex, forKey: .startColor)
+        UserDefaultsManager.set(to: self.isReverseColor, forKey: .reverseColor)
         self.updateCalendarColor()
-        self.viewModel?.updateColor(isReverseColor: self.isReversColor)
+        self.viewModel?.updateColor()
         self.updateGraphsFromWeekData()
         self.updateGraphsFromTasks()
     }
@@ -103,7 +107,7 @@ extension WeeksVC {
     }
     
     private func updateCalendarColor() {
-        let color = UIColor(named: String.userTintColor)
+        let color = UIColor(named: "D\(self.colorIndex)")
         self.calendar.appearance.eventSelectionColor = color?.withAlphaComponent(0.5)
         self.calendar.appearance.selectionColor = color?.withAlphaComponent(0.5)
         self.calendar.appearance.titleTodayColor = color
@@ -167,6 +171,11 @@ extension WeeksVC {
 }
 
 extension WeeksVC {
+    private func fetchColor() {
+        self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
+    }
+    
     private func updateGraphsFromWeekData() {
         guard let weekData = self.viewModel?.weekData else { return }
         self.standardWeekGraphView.updateFromWeekData(weekData)
@@ -176,7 +185,7 @@ extension WeeksVC {
         let tasks = self.viewModel?.top5Tasks ?? []
         self.standardWeekGraphView.reload()
         self.standardWeekGraphView.layoutIfNeeded()
-        self.standardWeekGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReversColor)
+        self.standardWeekGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
     }
 }
 
@@ -202,7 +211,7 @@ extension WeeksVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardWeekTaskCell.identifier, for: indexPath) as? StandardWeekTaskCell else { return .init() }
         guard let taskInfo = self.viewModel?.top5Tasks[safe: indexPath.item] else { return cell }
-        cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReversColor)
+        cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
         return cell
     }
 }
