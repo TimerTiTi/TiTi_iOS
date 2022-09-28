@@ -154,6 +154,7 @@
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
+		87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */; };
 		87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
@@ -332,6 +333,7 @@
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
+		87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
 		87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysWeekData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -877,6 +879,14 @@
 			path = Dailys;
 			sourceTree = "<group>";
 		};
+		87D3E49C28E49D3A00ACD5EC /* SettingRecord */ = {
+			isa = PBXGroup;
+			children = (
+				87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */,
+			);
+			path = SettingRecord;
+			sourceTree = "<group>";
+		};
 		87D4C95828950B24008ECAA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -916,6 +926,7 @@
 				872C0EE4284AF2D000E8E3F2 /* Main */,
 				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
 				872C0EDF284AE56700E8E3F2 /* SettingTiTiLab */,
+				87D3E49C28E49D3A00ACD5EC /* SettingRecord */,
 				872C0ED9284ADD6800E8E3F2 /* UpdateHistory */,
 			);
 			path = Setting;
@@ -1235,6 +1246,7 @@
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
+				87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
@@ -1438,7 +1450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1463,7 +1475,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
