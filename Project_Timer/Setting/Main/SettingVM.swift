@@ -23,6 +23,7 @@ final class SettingVM {
         self.sectionTitles.append("Notification".localized())
         self.sectionTitles.append("UI")
         self.sectionTitles.append("Control")
+        self.sectionTitles.append("Record")
         self.sectionTitles.append("Version & Update history".localized())
         self.sectionTitles.append("Developer".localized())
     }
@@ -47,6 +48,9 @@ final class SettingVM {
             [
                 SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
                 SettingCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will start automatically when flip the device".localized(), toggleKey: .flipToStartRecording)
+            ],
+            [
+                SettingCellInfo(title: "Target Times".localized(), subTitle: "Target times for graph in Log Home".localized(), rightTitle: "", nextVCIdentifier: SettingRecordVC.identifier)
             ],
             [
                 versionCell,
