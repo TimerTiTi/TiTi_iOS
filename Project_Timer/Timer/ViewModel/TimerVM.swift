@@ -191,8 +191,11 @@ final class TimerVM {
     
     func enterForground() {
         print("forground")
-        self.timerStart()
         self.timerLogic()
+        // 시간이 남은 경우 timer 실행
+        if self.times.timer > 0 {
+            self.timerStart()
+        }
     }
     
     private func sendNotification() {
