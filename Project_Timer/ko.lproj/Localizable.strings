@@ -208,3 +208,9 @@
 "Target Times" = "목표 시간";
 
 "Target times for graph in Log Home" = "Log Home 내 그래프 표시를 위한 목표시간을 설정합니다";
+
+"Target time of Month's Total Time" = "Month 목표 누적시간";
+
+"Target time of Week's Total Time" = "Week 목표 누적시간";
+
+"Target time of daily's Total Time" = "daily 목표 누적시간";
