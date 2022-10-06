@@ -38,6 +38,9 @@
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
 		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
 		04FA75D8286F2AB900BAE2B2 /* TiTiFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */; };
+		870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */; };
+		870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */; };
+		870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C228EE974600F8BCA9 /* SettingRecordVM.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
@@ -217,6 +220,9 @@
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
 		04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFont.swift; sourceTree = "<group>"; };
 		807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCell.swift; sourceTree = "<group>"; };
+		870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCellInfo.swift; sourceTree = "<group>"; };
+		870055C228EE974600F8BCA9 /* SettingRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVM.swift; sourceTree = "<group>"; };
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870AE71D25E52941004DD27E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -883,6 +889,9 @@
 			isa = PBXGroup;
 			children = (
 				87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */,
+				870055C228EE974600F8BCA9 /* SettingRecordVM.swift */,
+				870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */,
+				870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */,
 			);
 			path = SettingRecord;
 			sourceTree = "<group>";
@@ -1166,6 +1175,7 @@
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
+				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
@@ -1235,6 +1245,7 @@
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */,
+				870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
@@ -1246,6 +1257,7 @@
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
+				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
 				87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,

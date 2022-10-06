@@ -31,6 +31,7 @@ struct UserDefaultsManager {
         // recordTimes
         case goalTimeOfMonth
         case goalTimeOfWeek
+        case goalTimeOfDaily
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
