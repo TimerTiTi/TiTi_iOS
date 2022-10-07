@@ -30,6 +30,11 @@ final class SettingRecordVC: UIViewController {
             self?.settingCells.collectionViewLayout.invalidateLayout()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.settingCells.reloadData()
+    }
 }
 
 extension SettingRecordVC {
@@ -61,7 +66,9 @@ extension SettingRecordVC {
 extension SettingRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellInfo = self.viewModel?.cellInfos[safe: indexPath.item] else { return }
-        self.showAlertWithOK(title: cellInfo.titleText, text: "시간설정 팝업창 구현 예정 :)")
+        self.popoverEditDateVC(on: collectionView.cellForItem(at: indexPath)!, key: cellInfo.key) { [weak self] in
+            self?.settingCells.reloadItems(at: [indexPath])
+        }
     }
 }
 
@@ -85,5 +92,24 @@ extension SettingRecordVC: UICollectionViewDelegateFlowLayout {
         let height: CGFloat = 64
         
         return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: DatePicker 띄우기
+extension SettingRecordVC: UIPopoverPresentationControllerDelegate {
+    func popoverEditDateVC(on sourceView: UIView, key: UserDefaultsManager.Keys, handler: @escaping TargetTimeHandelr) {
+        guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: TargetTimePickerPopupVC.identifier) as? TargetTimePickerPopupVC else { return }
+        
+        pickerVC.modalPresentationStyle = .popover
+        pickerVC.popoverPresentationController?.sourceView = sourceView
+        pickerVC.popoverPresentationController?.delegate = self
+        let viewModel = TargetTimePickerVM(key: key)
+        pickerVC.configure(viewModel: viewModel, handler: handler)
+        
+        present(pickerVC, animated: true)
+    }
+    /// iPhone 에서 popover 형식으로 띄우기 위한 로직
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }
