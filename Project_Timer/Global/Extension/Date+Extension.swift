@@ -68,10 +68,8 @@ extension Date {
     var zeroDate: Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY.MM.dd"
-        let beforeDay = dateFormatter.string(from: self)
-        
-        let afterDay: Date = dateFormatter.date(from: beforeDay)!
-        return afterDay
+        let transedDate: Date = dateFormatter.date(from: dateFormatter.string(from: self))!
+        return transedDate
     }
     /// 해당날짜가 속한 달의 몇번째 주차인지를 나타내는 값
     var weekOfMonth: Int {
