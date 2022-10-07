@@ -193,7 +193,7 @@ extension WeeksVC {
 extension WeeksVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel?.selectedDate = date
-        self.viewModel?.selectDate(to: date.localDate)
+        self.viewModel?.selectDate(to: date.zeroDate.localDate)
     }
 }
 

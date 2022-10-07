@@ -20,8 +20,9 @@ struct WeekTime {
     init(weekDates: [Date], dailys: [Daily]) {
         self.weekDates = weekDates
         self.weekNum = weekDates.map(\.weekOfMonth).min() ?? 0
+        let weekLastDate = Calendar.current.date(byAdding: .day, value: 7, to: weekDates[0]) ?? Date()
         let filteredDailys = dailys.filter { daily in
-            daily.day >= weekDates[0] && daily.day < weekDates[6]
+            daily.day.zeroDate.localDate >= weekDates[0] && daily.day.zeroDate.localDate < weekLastDate
         }
         self.totalTime = filteredDailys.reduce(0, { $0 + $1.totalTime })
         self.averageTime = filteredDailys.count != 0 ? self.totalTime/filteredDailys.count : 0
