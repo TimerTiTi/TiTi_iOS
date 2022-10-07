@@ -198,6 +198,7 @@ class SetViewController: UIViewController {
     func SET_action() {
         RecordController.shared.recordTimes.updateGoalTime(to: self.allTime)
         RecordController.shared.recordTimes.updateTimerTime(to: self.second)
+        UserDefaultsManager.set(to: self.allTime, forKey: .goalTimeOfDaily)
         print("set complite")
         self.delegate?.newRecord()
         self.dismiss(animated: true, completion: nil)

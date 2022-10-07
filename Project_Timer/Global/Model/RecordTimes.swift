@@ -72,6 +72,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     // 사용자가 goal 시간을 변경시 반영 (기록하기 전 반영)
     mutating func updateGoalTime(to goalTime: Int) {
         self.settedGoalTime = goalTime
+        self.savedGoalTime = self.settedGoalTime - self.savedSumTime
         self.save()
     }
     // stopwatch 시간 초기화 (기록하기 전 반영)
