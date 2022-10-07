@@ -29,7 +29,7 @@ struct DailysWeekData {
         self.weekNum = self.weekDates.map(\.weekOfMonth).min() ?? 0
         /// dailys 설정
         self.filteredDailys = dailys.filter { daily in
-            daily.day >= weekFirstDate && daily.day < weekLastDate
+            daily.day.zeroDate.localDate >= weekFirstDate && daily.day.zeroDate.localDate < weekLastDate
         }
         self.filteredDailys.forEach { daily in
             self.dailys[daily.day.indexDayOfWeek] = daily

@@ -27,7 +27,7 @@ final class WeeksVM {
     }
     
     func updateCurrentDate() {
-        self.selectDate(to: self.selectedDate.localDate)
+        self.selectDate(to: self.selectedDate.zeroDate.localDate)
     }
     
     func updateColor() {
