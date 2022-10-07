@@ -186,6 +186,7 @@ extension SetTimerViewController2 {
     func SET_action() {
         UserDefaults.standard.setColor(color: COLOR, forKey: "color")
         RecordController.shared.recordTimes.updateGoalTime(to: self.goalTime)
+        UserDefaultsManager.set(to: self.goalTime, forKey: .goalTimeOfDaily)
         print("set complite")
         self.delegate?.newRecord()
         self.dismiss(animated: true, completion: nil)
