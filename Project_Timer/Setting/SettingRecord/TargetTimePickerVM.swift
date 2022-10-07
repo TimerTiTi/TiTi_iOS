@@ -32,5 +32,9 @@ final class TargetTimePickerVM {
     func updateValue(index: Int) {
         let selectedHour = (index+1)*3600
         UserDefaultsManager.set(to: selectedHour, forKey: self.key)
+        
+        if self.key == .goalTimeOfDaily {
+            RecordController.shared.recordTimes.updateGoalTime(to: selectedHour)
+        }
     }
 }
