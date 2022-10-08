@@ -43,7 +43,8 @@ final class SettingVM {
                 SettingCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable)
             ],
             [
-                SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation)
+                SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation),
+                SettingCellInfo(title: "Theme color".localized(), subTitle: "Setting Graph's theme color".localized(), rightTitle: "", nextVCIdentifier: SettingColorVC.identifier)
             ],
             [
                 SettingCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
