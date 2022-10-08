@@ -31,13 +31,25 @@ struct TasksCircularProgressSwiftUIView: View {
     }
     
     var body: some View {
-        ZStack {
-            ForEach(0..<tasksAndBlocks.count, id: \.self) { index in
-                self.getProgress(index: index, value: tasksAndBlocks[index], isBlock: index%2 == 0)
+        if self.tasksAndBlocks.isEmpty {
+            ZStack {
+                Circle()
+                    .stroke(TiTiColor.graphColor(num: colorIndex).toColor.opacity(0.5),
+                            lineWidth: lineWidth)
+                    .frame(width: circleSize, height: circleSize, alignment: .center)
+                Text("\(totalHours)")
+                    .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
+                    .foregroundColor(.primary)
             }
-            Text("\(totalHours)")
-                .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
-                .foregroundColor(.primary)
+        } else {
+            ZStack {
+                ForEach(0..<tasksAndBlocks.count, id: \.self) { index in
+                    self.getProgress(index: index, value: tasksAndBlocks[index], isBlock: index%2 == 0)
+                }
+                Text("\(totalHours)")
+                    .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
+                    .foregroundColor(.primary)
+            }
         }
     }
 }
