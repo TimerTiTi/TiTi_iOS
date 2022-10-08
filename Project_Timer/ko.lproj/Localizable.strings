@@ -214,3 +214,11 @@
 "Target time of Week's Total Time" = "Week 목표 누적시간";
 
 "Target time of daily's Total Time" = "daily 목표 누적시간";
+
+"Theme color" = "테마 컬러";
+
+"Setting Graph's theme color" = "그래프 테마 컬러 설정";
+
+"Color ordering" = "컬러 순서";
+
+"Setting the order of graph's color" = "그래프 색상표시 순서 설정";
