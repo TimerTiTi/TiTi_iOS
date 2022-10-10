@@ -22,11 +22,11 @@
 
 
 ## TiTi 스크린샷
-ver 7.3 기준 스크린샷 입니다.
+ver 7.6 기준 스크린샷 입니다.
 <p align="center" width="100%">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112150-590a7c57-fefd-4406-bb3a-850c84d53747.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112162-91ca1aea-6108-4b96-ae2a-897969a0cc67.png">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112174-ceb7f74c-9b15-4042-b921-07cf41daa430.png">
+<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/194910270-d70c08f4-b40f-401e-9919-bfcc2e0d3231.png">
 </p>
 <p align="center" width="100%">
 <img width="32.9%" src = "https://i.imgur.com/MTsReqR.png">
@@ -41,28 +41,31 @@ ver 7.3 기준 스크린샷 입니다.
 
 ## TiTi만의 특징
 * 공부용 타이머는 최대한 쉽게! 직관적인 UI를 느껴보세요!
-* 나만의 총 목표시간을 설정하여 달성할 수 있게끔 도와드립니다!
-* 세가지 이미지를 저장하여 공스타그램에 올려보세요!
+* Timer 모드, Stopwatch 모드를 선택할 수 있습니다.
+* 목표시간을 설정하여 남은 목표시간을 확인할 수 있습니다.
+* 시간대별, 요일별 누적 공부시간을 직관적으로 확인할 수 있습니다.
+* 총 누적시간, 월별 누적시간, 주간 누적시간을 직관적으로 확인해보세요!
 * iPhone 과 더불어 iPad, Mac용 TiTi까지 만나보세요!
-* 타이머 모드, 스톱워치 모드를 선택할 수 있습니다.
-* 원형 프로그래스를 통해 공부중인 상태를 한눈에 보여드립니다.
-* 실시간으로 누적시간, 총 남은시간을 같이 보여드립니다.
-* 시간대별 공부시간을 확인할 수 있습니다.
-* 공부내용을 입력하여 그래프에 보여드립니다.
 
 ## TiTi의 기능들
-* 타이머 모드
-* 스톱워치 모드
-* 타이머 초기화 : 하루단위 목표시간, 타이머 시간 설정
-* 스톱워치 초기화 : 하루단위 목표시간, 배경색 설정
-* 타이머 시간 조절
-* 기록 : 7일간 누적공부시간 그래프
-* 기록 : 시간대별 공부시간 그래프 농도별로 표시
-* 기록 : 공부내용별 공부시간 표시
-* 기록 : 공부내용별 퍼센트 원형그래프로 표시
-* Todolist : 간편하게 내용 저장, 체크, 삭제 가능
-* 공스타그램 갤러리 : 세가지 이미지를 통한 하루 공부내용 이미지로 저장 기능
-* 공스타그램 갤러리 : 12가지의 테마색, 다크모드 및 라이트 모드를 통해 다양한 컬러 지원
+* 기록 측정 - Timer 모드 (앱 종료시에도 기록 진행)
+* 기록 측정 - Stopwatch 모드 (앱 종료시에도 기록 진행)
+* 기록 설정 - 목표시간, 타이머시간 설정
+* 기록 설정 - Log 창 표시를 위한 Month, Week, Daily 목표시간 설정
+* Log Daily - 24시간 시간대별 누적시간 그래프 제공
+* Log Daily - 기록명 별 누적시간 그래프 제공
+* Log Week - 주간 요일별 누적시간 및 상위 5가지 기록명 별 누적시간 그래프 제공
+* Log Home - Total 총 누적시간 및 상위 5가지 기록명 별 누적시간 그래프 제공
+* Log Home - 현재 Month 누적시간 그래프 제공
+* Log Home - 현재 Month 상위 5가지 기록명 별 누적시간 그래프 제공
+* Log Home - 현재 Week 누적시간 그래프 제공
+* Notification - 타이머 종료 5분전, 종료 알림
+* Notification - 스탑워치 1시간단위 경과 알림
+* Control - 화면 항상 켜짐 기능
+* Control - 뒤집어서 기록 시작 기능
+* Color - Stopwatch 배경색 컬러 커스터마이징 제공
+* Color - 그래프 테마색상 12가지 제공 (다크 & 라이트 모드)
+* Todolist - Todo 추가, 수정, 체크, 삭제 기능 제공
 
 ## 개발자 
 * [DEV_FDEE](https://github.com/FreeDeveloper97)
