@@ -116,7 +116,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     @IBAction func colorSelect(_ sender: Any) {
-        self.showColorSelectVC()
+        self.showColorSelector()
     }
     
     @IBAction func showRecordDateAlert(_ sender: Any) {
@@ -134,8 +134,11 @@ extension StopwatchViewController {
         self.targetTimeLabel.text = "Target Time".localized()
     }
     private func configureColor() {
-        guard let color = UserDefaults.standard.colorForKey(key: "color") else { return }
-        self.COLOR = color
+        if let color = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
+            self.COLOR = color
+        } else if let color = UserDefaults.standard.colorForKey(key: .color) {
+            self.COLOR = color
+        }
         self.view.backgroundColor = self.COLOR
     }
     private func configureShadow() {
@@ -209,17 +212,6 @@ extension StopwatchViewController {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController2.identifier) as? SetTimerViewController2 else { return }
         setVC.delegate = self
         present(setVC, animated: true, completion: nil)
-    }
-    
-    private func showColorSelectVC() {
-        if #available(iOS 14.0, *) {
-            let picker = UIColorPickerViewController()
-            picker.selectedColor = COLOR!
-            picker.delegate = self
-            self.present(picker, animated: true, completion: nil)
-        } else {
-            self.showAlertWithOK(title: "iOS 14.0 이상 기능", text: "업데이트 후 사용해주시기 바랍니다.")
-        }
     }
     
     private func startOrStopTimer() {
@@ -606,20 +598,18 @@ extension StopwatchViewController {
     }
 }
 
-extension StopwatchViewController: UIColorPickerViewControllerDelegate {
-    @available(iOS 14.0, *)
-    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
-        self.changeColor(color: viewController.selectedColor)
+extension StopwatchViewController: ColorUpdateable {
+    private func showColorSelector() {
+        guard let colorSelector = storyboard?.instantiateViewController(withIdentifier: ColorSelectorVC.identifier) as? ColorSelectorVC else { return }
+        colorSelector.configure(target: .stopwatcch, delegate: self)
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.setValue(colorSelector, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
-    @available(iOS 14.0, *)
-    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
-        self.changeColor(color: viewController.selectedColor)
-    }
-    
-    private func changeColor(color: UIColor) {
-        UserDefaults.standard.setColor(color: color, forKey: "color")
-        self.COLOR = color
-        self.view.backgroundColor = self.COLOR
+    func updateColor() {
+        self.configureColor()
     }
 }
