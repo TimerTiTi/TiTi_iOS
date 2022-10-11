@@ -36,9 +36,9 @@ final class TimerVM {
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32)
-        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
+        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, fontSize: 70, isWhite: true)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32, isWhite: true)
+        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: true)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         self.updateAnimationSetting()
