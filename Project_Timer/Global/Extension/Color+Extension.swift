@@ -10,7 +10,9 @@ import SwiftUI
 
 extension Color {
     public static var stopWatchColor: Color {
-        if let userColor = UserDefaults.standard.colorForKey(key: "color") {
+        if let userColor = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
+            return Color(userColor)
+        } else if let userColor = UserDefaults.standard.colorForKey(key: .color) {
             return Color(userColor)
         } else {
             return Color(TiTiColor.background2 ?? .clear)
