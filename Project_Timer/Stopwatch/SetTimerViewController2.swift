@@ -55,7 +55,7 @@ class SetTimerViewController2: UIViewController {
         setRadius()
         
         goalTime = RecordController.shared.recordTimes.settedGoalTime
-        COLOR = UserDefaults.standard.colorForKey(key: "color") as? UIColor ?? TiTiColor.background2
+        COLOR = UserDefaults.standard.colorForKey(key: .stopwatchBackground) ?? TiTiColor.background2
         Label_timer.text = printTime(temp: goalTime)
         
         Text_H.keyboardType = .numberPad
@@ -184,7 +184,7 @@ extension SetTimerViewController2 {
     }
     
     func SET_action() {
-        UserDefaults.standard.setColor(color: COLOR, forKey: "color")
+        UserDefaults.standard.setColor(color: COLOR, forKey: .stopwatchBackground)
         RecordController.shared.recordTimes.updateGoalTime(to: self.goalTime)
         UserDefaultsManager.set(to: self.goalTime, forKey: .goalTimeOfDaily)
         print("set complite")

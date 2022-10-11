@@ -157,6 +157,7 @@
 		87C5150A267B38C0003DA21D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* Converter.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */; };
+		87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
@@ -342,6 +343,7 @@
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		87CA3B572618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
+		87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorVC.swift; sourceTree = "<group>"; };
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				87CEDD3B28F53370007ACF6E /* PopupView */,
 				87035DF6282225C800055378 /* Protocols.swift */,
 				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
 				87DE1178268ACB040012F043 /* DailyViewModel.swift */,
@@ -897,6 +900,14 @@
 				8762717227DF843B00F812ED /* SwiftUI */,
 			);
 			path = Dailys;
+			sourceTree = "<group>";
+		};
+		87CEDD3B28F53370007ACF6E /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */,
+			);
+			path = PopupView;
 			sourceTree = "<group>";
 		};
 		87D3E49C28E49D3A00ACD5EC /* SettingRecord */ = {
@@ -1183,6 +1194,7 @@
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
+				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,

@@ -13,4 +13,8 @@ extension UIColor {
     var toColor: Color {
         return Color(self)
     }
+    
+    var data: NSData? {
+        return NSKeyedArchiver.archivedData(withRootObject: self) as NSData?
+    }
 }
