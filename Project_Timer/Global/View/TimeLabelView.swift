@@ -11,6 +11,14 @@ import SwiftUI
 struct TimeLabelView: View {
     @ObservedObject var viewModel: TimeLabelViewModel
     
+    var color: Color {
+        if viewModel.isRunning {
+            return Color.white
+        } else {
+            return viewModel.isWhite ? .white : .black.opacity(0.5)
+        }
+    }
+    
     var body: some View {
         HStack(spacing: 0) {
             if viewModel.timeLabel.hourTens > 0 {
@@ -25,5 +33,6 @@ struct TimeLabelView: View {
             SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
         .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .foregroundColor(self.color)
     }
 }

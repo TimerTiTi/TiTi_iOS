@@ -9,18 +9,30 @@
 import SwiftUI
 
 struct TimeOfStopwatchView: View {
-    @ObservedObject var viewModel: TimeOfStopwatchViewModel
+    @ObservedObject var viewModel: TimeLabelViewModel
     
     var color: Color {
         if viewModel.isRunning {
             return Color.stopWatchColor
         } else {
-            return Color.white
+            return viewModel.isWhite ? .white : .black.opacity(0.5)
         }
     }
     
     var body: some View {
-        TimeLabelView(viewModel: viewModel.timeLabelViewModel)
-            .foregroundColor(self.color)
+        HStack(spacing: 0) {
+            if viewModel.timeLabel.hourTens > 0 {
+                SingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
+            }
+            SingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)
+            Text(":")
+            SingleTimeLabelView(viewModel: viewModel.minuteTensViewModel)
+            SingleTimeLabelView(viewModel: viewModel.minuteUnitsViewModel)
+            Text(":")
+            SingleTimeLabelView(viewModel: viewModel.secondTensViewModel)
+            SingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
+        }
+        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .foregroundColor(self.color)
     }
 }

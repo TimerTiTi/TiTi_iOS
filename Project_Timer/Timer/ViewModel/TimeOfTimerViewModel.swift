@@ -30,9 +30,9 @@ class TimeOfTimerViewModel: ObservableObject {
         }
     }
     
-    init(time: Int) {
+    init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
-        self.timeLabelViewModel = CountdownTimeLabelViewModel(time: time, fontSize: 70)
+        self.timeLabelViewModel = CountdownTimeLabelViewModel(time: time, fontSize: fontSize, isWhite: isWhite)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
