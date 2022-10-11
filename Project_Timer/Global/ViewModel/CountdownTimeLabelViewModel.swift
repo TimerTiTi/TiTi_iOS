@@ -12,15 +12,26 @@ class CountdownTimeLabelViewModel: ObservableObject {
     var timeLabelViewModel: TimeLabelViewModel
     var fontSize: CGFloat
     @Published var time: Int
+    @Published var isWhite: Bool
     
-    init(time: Int, fontSize: CGFloat) {
+    init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
+        self.isWhite = isWhite
         self.fontSize = fontSize
-        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time), fontSize: fontSize)
+        self.timeLabelViewModel = TimeLabelViewModel(time: abs(time), fontSize: fontSize, isWhite: isWhite)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
         self.timeLabelViewModel.updateTime(abs(newTime), showsAnimation: showsAnimation)
+    }
+    
+    func updateRunning(to isRunning: Bool) {
+        self.timeLabelViewModel.isRunning = isRunning
+    }
+    
+    func updateIsWhite(to isWhite: Bool) {
+        self.isWhite = isWhite
+        self.timeLabelViewModel.isWhite = isWhite
     }
 }

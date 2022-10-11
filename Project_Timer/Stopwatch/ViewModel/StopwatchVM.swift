@@ -16,7 +16,9 @@ final class StopwatchVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false {
         didSet {
+            self.timeOfSumViewModel.isRunning = runningUI
             self.timeOfStopwatchViewModel.isRunning = runningUI
+            self.timeOfTargetViewModel.updateRunning(to: runningUI)
         }
     }
     @Published private(set) var warningNewDate = false
@@ -26,18 +28,19 @@ final class StopwatchVM {
     
     private var timer = Timer()
     
-    let timeOfStopwatchViewModel: TimeOfStopwatchViewModel
+    let timeOfStopwatchViewModel: TimeLabelViewModel
     let timeOfSumViewModel: TimeLabelViewModel
     let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfStopwatchViewModel = TimeOfStopwatchViewModel(time: currentTimes.stopwatch)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32)
-        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32)
+        self.timeOfStopwatchViewModel = TimeLabelViewModel(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
+        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
+        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.updateAnimationSetting()
         
@@ -205,5 +208,11 @@ final class StopwatchVM {
     
     private func updateAnimationSetting() {
         self.showAnimation = UserDefaultsManager.get(forKey: .timelabelsAnimation) as? Bool ?? true
+    }
+    
+    func updateTextColor(isWhite: Bool) {
+        self.timeOfSumViewModel.isWhite = isWhite
+        self.timeOfStopwatchViewModel.isWhite = isWhite
+        self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
     }
 }

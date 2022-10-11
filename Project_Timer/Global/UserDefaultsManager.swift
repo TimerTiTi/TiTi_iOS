@@ -28,8 +28,8 @@ struct UserDefaultsManager {
         // color
         case startColor = "startColor"
         case reverseColor = "reverseColor"
-        case stopwatchTintIsWhite = "stopwatchTintIsWhite"
-        case timerTintColorIsWhite = "timerTintColorIsWhite"
+        case stopwatchTextIsWhite = "stopwatchTextIsWhite"
+        case timerTextIsWhite = "timerTextIsWhite"
         // recordTimes
         case goalTimeOfMonth
         case goalTimeOfWeek

@@ -4434,7 +4434,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Of-Kh-ALy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="2087"/>
+            <point key="canvasLocation" x="1533.8461538461538" y="2086.4928909952605"/>
+        </scene>
+        <!--Colorof Text SelectorVC-->
+        <scene sceneID="3Ft-jl-oVe">
+            <objects>
+                <viewController storyboardIdentifier="ColorofTextSelectorVC" id="j8i-iL-RKi" customClass="ColorofTextSelectorVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AqB-Oa-CZT">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="60"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="1tM-7r-HlH">
+                                <rect key="frame" x="20.666666666666671" y="21" width="69" height="28"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nj-42-vD8">
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="28" id="Ho5-4v-6gs"/>
+                                            <constraint firstAttribute="height" constant="28" id="ZWV-Ud-KMZ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectWhite:" destination="j8i-iL-RKi" eventType="touchUpInside" id="tqV-Mf-53V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abO-yp-9bf">
+                                        <rect key="frame" x="41" y="0.0" width="28" height="28"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="9X0-6T-9Ot"/>
+                                            <constraint firstAttribute="width" constant="28" id="ee9-xH-wWf"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectBlack:" destination="j8i-iL-RKi" eventType="touchUpInside" id="Lik-uw-k8T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="azw-Mk-Qtv"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1tM-7r-HlH" firstAttribute="centerY" secondItem="AqB-Oa-CZT" secondAttribute="centerY" constant="5" id="4h9-gr-4Ib"/>
+                            <constraint firstItem="1tM-7r-HlH" firstAttribute="centerX" secondItem="azw-Mk-Qtv" secondAttribute="centerX" id="ftZ-Pl-yJ4"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="110" height="60"/>
+                    <size key="freeformSize" width="110" height="60"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GSD-ei-vgz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1612" y="2192"/>
         </scene>
     </scenes>
     <resources>

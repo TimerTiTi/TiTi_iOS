@@ -39,7 +39,9 @@ final class StopwatchViewController: UIViewController {
         return view
     }()
     
-    var COLOR = TiTiColor.background2
+    private var backgroundColor = TiTiColor.background2
+    private var textColor = UIColor.white
+    private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
     let RED = TiTiColor.text
     let INNER = TiTiColor.innerColor
     let startButtonColor = TiTiColor.startButton
@@ -59,11 +61,11 @@ final class StopwatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureLocalizable()
-        self.configureColor()
+        self.configureRendering()
+        self.fetchColor()
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
-        self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
         self.configureTimeOfStopwatch()
@@ -75,7 +77,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -96,7 +98,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
     }
     
     @IBAction func taskSelect(_ sender: Any) {
@@ -133,13 +135,9 @@ extension StopwatchViewController {
         self.stopWatchLabel.text = "Stopwatch".localized()
         self.targetTimeLabel.text = "Target Time".localized()
     }
-    private func configureColor() {
-        if let color = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
-            self.COLOR = color
-        } else if let color = UserDefaults.standard.colorForKey(key: .color) {
-            self.COLOR = color
-        }
-        self.view.backgroundColor = self.COLOR
+    private func configureRendering() {
+        self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.resetBT.setImage(UIImage.init(systemName: "clock.arrow.2.circlepath")?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
     private func configureShadow() {
         self.resetBT.configureShadow(opacity: 0.5, radius: 4)
@@ -307,8 +305,8 @@ extension StopwatchViewController {
     }
     
     private func setTaskWhiteColor() {
-        self.taskButton.setTitleColor(UIColor.white, for: .normal)
-        self.taskButton.layer.borderColor = UIColor.white.cgColor
+        self.taskButton.setTitleColor(self.textColor, for: .normal)
+        self.taskButton.layer.borderColor = self.textColor.cgColor
     }
     
     private func updateTIMELabels(times: Times) {
@@ -331,11 +329,15 @@ extension StopwatchViewController {
     }
     
     private func setStartColor() {
-        self.view.backgroundColor = UIColor.black
-        outterProgress.progressColor = COLOR!
-        innerProgress.progressColor = UIColor.white
-        startStopBT.backgroundColor = UIColor.clear
-//        TIMEofStopwatch.textColor = COLOR
+        self.view.backgroundColor = .black
+        self.outterProgress.progressColor = self.backgroundColor!
+        self.innerProgress.progressColor = .white
+        self.startStopBT.backgroundColor = .clear
+        self.taskButton.setTitleColor(.white, for: .normal)
+        self.sumTimeLabel.textColor = .white
+        self.stopWatchLabel.textColor = .white
+        self.targetTimeLabel.textColor = .white
+        self.finishTimeLabel.textColor = .white
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 0
@@ -357,26 +359,34 @@ extension StopwatchViewController {
     }
     
     private func setStopColor() {
-        self.view.backgroundColor = COLOR
-        outterProgress.progressColor = UIColor.white
-        innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = startButtonColor!
-//        TIMEofStopwatch.textColor = UIColor.white
+        self.view.backgroundColor = self.backgroundColor
+        self.outterProgress.progressColor = self.textColor
+        self.innerProgress.progressColor = self.secondTextColor
+        self.startStopBT.backgroundColor = self.startButtonColor!
+        self.taskButton.setTitleColor(self.textColor, for: .normal)
+        self.sumTimeLabel.textColor = self.textColor
+        self.stopWatchLabel.textColor = self.textColor
+        self.targetTimeLabel.textColor = self.textColor
+        self.finishTimeLabel.textColor = self.textColor
+        self.settingBT.tintColor = self.textColor
+        self.resetBT.tintColor = self.textColor
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
-            self.taskButton.layer.borderColor = UIColor.white.cgColor
-            self.startStopBTLabel.textColor = UIColor.white
+            self.taskButton.layer.borderColor = self.textColor.cgColor
+            self.startStopBTLabel.textColor = self.textColor
             self.resetBT.alpha = 1
             self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelector.alpha = 0.7
+            self.colorSelector.layer.borderColor = self.textColor.cgColor
             self.tabBarController?.tabBar.isHidden = false
         })
         //animation test
         if(!self.isLandscape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
+                self.todayLabel.textColor = self.textColor
                 self.todayLabel.alpha = 1
             })
         }
@@ -416,7 +426,7 @@ extension StopwatchViewController {
     private func hideWarningRecordDate() {
         UIView.animate(withDuration: 0.15) {
             self.warningRecordDate.alpha = 0
-            self.todayLabel.textColor = .white
+            self.todayLabel.textColor = self.textColor
         }
     }
     
@@ -580,7 +590,7 @@ extension StopwatchViewController {
 
 extension StopwatchViewController: NewRecordCreatable {
     func newRecord() {
-        self.configureColor()
+        self.fetchColor()
         self.viewModel?.newRecord()
         NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
     }
@@ -609,7 +619,18 @@ extension StopwatchViewController: ColorUpdateable {
         present(alert, animated: true)
     }
     
-    func updateColor() {
-        self.configureColor()
+    func fetchColor() {
+        if let color = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
+            self.backgroundColor = color
+        } else if let color = UserDefaults.standard.colorForKey(key: .color) {
+            self.backgroundColor = color
+        }
+        let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
+        self.textColor = isWhite ? .white : .black.withAlphaComponent(0.5)
+        self.secondTextColor = isWhite ? .black.withAlphaComponent(0.7) : .white.withAlphaComponent(0.7)
+        self.setStopColor()
+        self.viewModel?.updateTextColor(isWhite: isWhite)
+        self.view.layoutSubviews()
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
     }
 }

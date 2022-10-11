@@ -10,6 +10,8 @@ import SwiftUI
 
 class TimeLabelViewModel: ObservableObject  {
     @Published var time: Int
+    @Published var isRunning: Bool = false
+    @Published var isWhite: Bool = true
     let fontSize: CGFloat
     var hourTensViewModel: SingleTimeLabelViewModel
     var hourUnitsViewModel: SingleTimeLabelViewModel
@@ -22,9 +24,10 @@ class TimeLabelViewModel: ObservableObject  {
         return TimeLabel(self.time)
     }
     
-    init(time: Int, fontSize: CGFloat) {
+    init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
         self.fontSize = fontSize
+        self.isWhite = isWhite
         let timeLabel = TimeLabel(time)
         self.hourTensViewModel = SingleTimeLabelViewModel(timeLabel.hourTens)
         self.hourUnitsViewModel = SingleTimeLabelViewModel(timeLabel.hourUnits)
