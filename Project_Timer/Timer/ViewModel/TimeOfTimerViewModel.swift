@@ -22,6 +22,7 @@ class TimeOfTimerViewModel: ObservableObject {
     var finished: Bool {
         self.time == 0
     }
+    
     var timerState: TimerState {
         if isRunning {
             return self.time < 60 ? .lessThan60Sec : .normalRunning

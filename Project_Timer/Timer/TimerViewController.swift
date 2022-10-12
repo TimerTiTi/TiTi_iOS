@@ -64,12 +64,12 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         self.configureLocalizable()
         self.configureRendering()
-        self.fetchColor()
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
+        self.fetchColor()
         self.configureTimeOfTimer()
         self.configureTimeOfSum()
         self.configureTimeOfTarget()
@@ -321,8 +321,8 @@ extension TimerViewController {
     }
     
     private func setTaskWhiteColor() {
-        self.taskButton.setTitleColor(UIColor.white, for: .normal)
-        self.taskButton.layer.borderColor = UIColor.white.cgColor
+        self.taskButton.setTitleColor(self.textColor, for: .normal)
+        self.taskButton.layer.borderColor = self.textColor.cgColor
     }
     
     private func updateTIMELabels(times: Times) {
@@ -461,7 +461,7 @@ extension TimerViewController {
     private func hideWarningRecordDate() {
         UIView.animate(withDuration: 0.15) {
             self.warningRecordDate.alpha = 0
-            self.todayLabel.textColor = .white
+            self.todayLabel.textColor = self.textColor
         }
     }
     
