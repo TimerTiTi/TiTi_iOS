@@ -16,7 +16,9 @@ final class TimerVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false {
         didSet {
+            self.timeOfSumViewModel.isRunning = runningUI
             self.timeOfTimerViewModel.isRunning = runningUI
+            self.timeOfTargetViewModel.updateRunning(to: runningUI)
         }
     }
     @Published private(set) var soundAlert = false
@@ -27,8 +29,8 @@ final class TimerVM {
     
     private var timer = Timer()
     
-    let timeOfTimerViewModel: TimeOfTimerViewModel
     let timeOfSumViewModel: TimeLabelViewModel
+    let timeOfTimerViewModel: TimeOfTimerViewModel
     let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
@@ -239,8 +241,7 @@ final class TimerVM {
     }
     
     func updateTextColor(isWhite: Bool) {
-//        self.timeOfSumViewModel.isWhite = isWhite
-//        self.timeOfStopwatchViewModel.isWhite = isWhite
-//        self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
+        self.timeOfSumViewModel.isWhite = isWhite
+        self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
     }
 }
