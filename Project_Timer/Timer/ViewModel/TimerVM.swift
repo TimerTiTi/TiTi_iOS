@@ -237,4 +237,10 @@ final class TimerVM {
     private func updateAnimationSetting() {
         self.showAnimation = UserDefaultsManager.get(forKey: .timelabelsAnimation) as? Bool ?? true
     }
+    
+    func updateTextColor(isWhite: Bool) {
+//        self.timeOfSumViewModel.isWhite = isWhite
+//        self.timeOfStopwatchViewModel.isWhite = isWhite
+//        self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
+    }
 }
