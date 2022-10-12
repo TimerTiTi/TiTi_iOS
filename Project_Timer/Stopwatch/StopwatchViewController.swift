@@ -341,9 +341,9 @@ extension StopwatchViewController {
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 0
+            self.resetBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
-            self.resetBT.alpha = 0
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
             self.colorSelector.alpha = 0
@@ -373,9 +373,9 @@ extension StopwatchViewController {
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
+            self.resetBT.alpha = 1
             self.taskButton.layer.borderColor = self.textColor.cgColor
             self.startStopBTLabel.textColor = self.textColor
-            self.resetBT.alpha = 1
             self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelector.alpha = 0.7

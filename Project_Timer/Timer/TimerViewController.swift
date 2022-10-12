@@ -31,6 +31,7 @@ class TimerViewController: UIViewController {
     @IBOutlet var startStopBTLabel: UILabel!
     @IBOutlet var setTimerBT: UIButton!
     @IBOutlet var settingBT: UIButton!
+    @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
 
@@ -40,7 +41,9 @@ class TimerViewController: UIViewController {
         return view
     }()
     
-    let BLUE = TiTiColor.blue
+    private var backgroundColor = TiTiColor.blue
+    private var textColor = UIColor.white
+    private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
     let RED = TiTiColor.text
     let INNER = TiTiColor.innerColor
     let startButtonColor = TiTiColor.startButton
@@ -60,10 +63,11 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureLocalizable()
+        self.configureRendering()
+        self.fetchColor()
         self.configureShadow()
         self.configureProgress()
         self.configureObservation()
-        self.setStopColor()
         self.setButtonsEnabledTrue()
         self.configureViewModel()
         self.configureTimeOfTimer()
@@ -75,7 +79,7 @@ class TimerViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -96,7 +100,7 @@ class TimerViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: .white, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
     }
 
     @IBAction func taskSelect(_ sender: Any) {
@@ -115,6 +119,10 @@ class TimerViewController: UIViewController {
         self.showSettingTimerView()
     }
     
+    @IBAction func colorSelect(_ sender: Any) {
+        self.showColorSelector()
+    }
+    
     @IBAction func showRecordDateAlert(_ sender: Any) {
         self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
             self?.showSettingView()
@@ -128,6 +136,10 @@ extension TimerViewController {
         self.sumTimeLabel.text = "Sum Time".localized()
         self.timerLabel.text = "Timer".localized()
         self.targetTimeLabel.text = "Target Time".localized()
+    }
+    private func configureRendering() {
+        self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.setTimerBT.setImage(UIImage.init(systemName: "clock.arrow.circlepath")?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
     private func configureShadow() {
         self.setTimerBT.configureShadow(opacity: 0.5, radius: 4)
@@ -334,19 +346,24 @@ extension TimerViewController {
     }
     
     private func setStartColor() {
-        self.view.backgroundColor = UIColor.black
-        outterProgress.progressColor = BLUE!
-        innerProgress.progressColor = UIColor.white
-        startStopBT.backgroundColor = UIColor.clear
-//        TIMEofTimer.textColor = BLUE
+        self.view.backgroundColor = .black
+        self.outterProgress.progressColor = self.backgroundColor!
+        self.innerProgress.progressColor = .white
+        self.startStopBT.backgroundColor = .clear
+        self.taskButton.setTitleColor(.white, for: .normal)
+        self.sumTimeLabel.textColor = .white
+        self.timerLabel.textColor = .white
+        self.targetTimeLabel.textColor = .white
+        self.finishTimeLabel.textColor = .white
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
-            self.setTimerBT.alpha = 0
             self.settingBT.alpha = 0
+            self.setTimerBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.textColor = self.RED!
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
+            self.colorSelector.alpha = 0
             self.tabBarController?.tabBar.isHidden = true
             self.todayLabel.alpha = 0
         })
@@ -359,25 +376,34 @@ extension TimerViewController {
     }
     
     private func setStopColor() {
-        self.view.backgroundColor = BLUE
-        outterProgress.progressColor = UIColor.white
-        innerProgress.progressColor = INNER!
-        startStopBT.backgroundColor = startButtonColor!
-//        TIMEofTimer.textColor = UIColor.white
+        self.view.backgroundColor = self.backgroundColor
+        self.outterProgress.progressColor = self.textColor
+        self.innerProgress.progressColor = self.secondTextColor
+        self.startStopBT.backgroundColor = self.startButtonColor!
+        self.taskButton.setTitleColor(self.textColor, for: .normal)
+        self.sumTimeLabel.textColor = self.textColor
+        self.timerLabel.textColor = self.textColor
+        self.targetTimeLabel.textColor = self.textColor
+        self.finishTimeLabel.textColor = self.textColor
+        self.settingBT.tintColor = self.textColor
+        self.setTimerBT.tintColor = self.textColor
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
-            self.setTimerBT.alpha = 1
             self.settingBT.alpha = 1
-            self.taskButton.layer.borderColor = UIColor.white.cgColor
-            self.startStopBTLabel.textColor = UIColor.white
+            self.setTimerBT.alpha = 1
+            self.taskButton.layer.borderColor = self.textColor.cgColor
+            self.startStopBTLabel.textColor = self.textColor
             self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
+            self.colorSelector.alpha = 0.7
+            self.colorSelector.layer.borderColor = self.textColor.cgColor
             self.tabBarController?.tabBar.isHidden = false
         })
         //animation test
         if(!isLandcape) {
             UIView.animate(withDuration: 0.5, animations: {
                 self.taskButton.alpha = 1
+                self.todayLabel.textColor = self.textColor
                 self.todayLabel.alpha = 1
             })
         }
@@ -619,5 +645,30 @@ extension TimerViewController: TimerTimeSettable {
 extension TimerViewController {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
+    }
+}
+
+extension TimerViewController: ColorUpdateable {
+    private func showColorSelector() {
+        guard let colorSelector = storyboard?.instantiateViewController(withIdentifier: ColorSelectorVC.identifier) as? ColorSelectorVC else { return }
+        colorSelector.configure(target: .timer, delegate: self)
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.setValue(colorSelector, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func fetchColor() {
+        if let color = UserDefaults.standard.colorForKey(key: .timerBackground) {
+            self.backgroundColor = color
+        }
+        let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
+        self.textColor = isWhite ? .white : .black.withAlphaComponent(0.5)
+        self.secondTextColor = isWhite ? .black.withAlphaComponent(0.7) : .white.withAlphaComponent(0.7)
+        self.setStopColor()
+        self.viewModel?.updateTextColor(isWhite: isWhite)
+        self.view.layoutSubviews()
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
     }
 }

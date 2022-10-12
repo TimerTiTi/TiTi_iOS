@@ -250,6 +250,31 @@
                                     <action selector="showRecordDateAlert:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="yYs-A2-aed"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.60000002384185791" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbC-9A-tLV">
+                                <rect key="frame" x="342" y="56" width="32" height="32"/>
+                                <color key="backgroundColor" name="Color4"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="TQc-zk-KBy"/>
+                                    <constraint firstAttribute="height" constant="32" id="yRP-yV-u4v"/>
+                                </constraints>
+                                <state key="normal" image="rainbow"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ColorBTAction:" destination="D0b-lb-qoG" eventType="touchUpInside" id="bhx-cd-eVE"/>
+                                    <action selector="colorSelect:" destination="oQm-sw-2wm" eventType="touchUpInside" id="9KN-ew-oZY"/>
+                                    <action selector="colorSelect:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="nEo-A2-nC6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
@@ -259,7 +284,9 @@
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="leading" secondItem="bRB-wj-rJW" secondAttribute="trailing" constant="25" id="3Q9-2p-HSF"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerX" secondItem="bRB-wj-rJW" secondAttribute="centerX" id="3bK-Jr-1hi"/>
                             <constraint firstItem="bRB-wj-rJW" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="6AY-xB-zFG"/>
+                            <constraint firstItem="xTH-Uj-aTj" firstAttribute="trailing" secondItem="RbC-9A-tLV" secondAttribute="trailing" constant="16" id="Abp-8I-SSS"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
+                            <constraint firstItem="RbC-9A-tLV" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="HGV-EP-Nmv"/>
                             <constraint firstItem="roc-hq-Dls" firstAttribute="leading" secondItem="COc-GQ-Is1" secondAttribute="trailing" constant="-5" id="IGn-5f-81s"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="50" id="O9d-O7-kdS"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
@@ -291,6 +318,7 @@
                         <outlet property="TIMEofSumFrameView" destination="HM7-w2-0sQ" id="5cL-Rd-ifN"/>
                         <outlet property="TIMEofTargetFrameView" destination="a02-W8-bdw" id="rZu-rW-9y9"/>
                         <outlet property="TIMEofTimerFrameView" destination="3pb-Gt-3Kk" id="gZb-df-gg5"/>
+                        <outlet property="colorSelector" destination="RbC-9A-tLV" id="9Va-XE-Oxt"/>
                         <outlet property="finishTimeLabel" destination="naL-rE-KA8" id="5SU-l1-AYa"/>
                         <outlet property="innerProgress" destination="MKs-1O-JYl" id="0Dl-w7-I5Q"/>
                         <outlet property="outterProgress" destination="ROV-CL-IbC" id="FyQ-L8-2xs"/>
@@ -2221,7 +2249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과목명 수정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tav-hA-0TE">
-                                <rect key="frame" x="108.66666666666669" y="20" width="83" height="21"/>
+                                <rect key="frame" x="107.33333333333334" y="20" width="85.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2238,7 +2266,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새로운 과목을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXG-LB-w6d">
-                                <rect key="frame" x="77" y="51" width="146" height="15"/>
+                                <rect key="frame" x="75.333333333333329" y="50" width="149.66666666666669" height="15"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2590,7 +2618,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴식알림 기능" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCD-h7-iQb">
-                                                    <rect key="frame" x="16" y="17.666666666666668" width="93" height="20.000000000000004"/>
+                                                    <rect key="frame" x="16" y="18" width="96" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2605,7 +2633,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 진행중인 설문조사가 없습니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ObQ-36-MJh">
-                                                    <rect key="frame" x="117" y="19" width="141" height="17"/>
+                                                    <rect key="frame" x="115.33333333333333" y="19" width="144.33333333333337" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="2xM-T4-Nao"/>
                                                     </constraints>
@@ -2637,28 +2665,28 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발현황" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGo-O3-ryt">
-                                            <rect key="frame" x="16" y="15" width="74.666666666666671" height="16"/>
+                                            <rect key="frame" x="16" y="15" width="72" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bav-Qe-wGe">
-                                            <rect key="frame" x="0.0" y="36.000000000000007" width="390" height="81.666666666666686"/>
+                                            <rect key="frame" x="0.0" y="35.999999999999993" width="390" height="79.333333333333314"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개발진행리스트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igL-Tw-0m4">
-                                                    <rect key="frame" x="16" y="15" width="103" height="20"/>
+                                                    <rect key="frame" x="15.999999999999993" y="15" width="107.33333333333331" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Notion" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsA-WD-pDG">
-                                                    <rect key="frame" x="129" y="21" width="48.333333333333343" height="14"/>
+                                                    <rect key="frame" x="133.33333333333334" y="20" width="42.333333333333343" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVF-CS-MFa">
-                                                    <rect key="frame" x="16" y="40" width="193" height="25.666666666666671"/>
+                                                    <rect key="frame" x="16" y="39" width="196.33333333333334" height="24.333333333333329"/>
                                                     <string key="text">실시간 개발 진행상황을 확인할 수 있습니다.
 또한 차기 기능들을 미리 확인할 수 있습니다.</string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -2666,7 +2694,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Lu-Xic">
-                                                    <rect key="frame" x="364" y="33.666666666666657" width="10" height="14.333333333333329"/>
+                                                    <rect key="frame" x="364" y="32.666666666666657" width="10" height="14.333333333333329"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="6pA-uo-iae"/>
@@ -2675,7 +2703,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ut-7o-aKp">
-                                                    <rect key="frame" x="8" y="-8" width="374" height="97.666666666666671"/>
+                                                    <rect key="frame" x="8" y="-8" width="374" height="95.333333333333329"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="showDevelopmentList:" destination="dEk-1R-nht" eventType="touchUpInside" id="Sbz-mc-JBt"/>
@@ -2700,28 +2728,28 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Li-dl-GBr">
-                                            <rect key="frame" x="0.0" y="118.66666666666669" width="390" height="69"/>
+                                            <rect key="frame" x="0.0" y="116.33333333333334" width="390" height="67.333333333333343"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fJ-oS-OyD">
-                                                    <rect key="frame" x="16" y="14.999999999999986" width="76" height="20"/>
+                                                    <rect key="frame" x="16" y="15.000000000000014" width="70" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@study_withtiti" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-po-dlG">
-                                                    <rect key="frame" x="102" y="20.999999999999986" width="80.333333333333314" height="14"/>
+                                                    <rect key="frame" x="96" y="20.000000000000014" width="74" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RL-y6-Iih">
-                                                    <rect key="frame" x="16" y="39.999999999999986" width="273.66666666666669" height="13"/>
+                                                    <rect key="frame" x="16" y="39.000000000000014" width="275" height="12.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IGT-TV-ntK">
-                                                    <rect key="frame" x="364" y="27.333333333333321" width="10" height="14.333333333333336"/>
+                                                    <rect key="frame" x="364" y="26.666666666666664" width="10" height="14.333333333333336"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="7BF-CJ-xpa"/>
@@ -2730,7 +2758,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSf-ki-Ewp">
-                                                    <rect key="frame" x="8" y="8" width="374" height="53"/>
+                                                    <rect key="frame" x="8" y="8.0000000000000036" width="374" height="51.333333333333343"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <connections>
                                                         <action selector="goInstaToTiTi:" destination="dEk-1R-nht" eventType="touchUpInside" id="8VX-yF-eje"/>
@@ -2755,28 +2783,28 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi 개발에 참여" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKV-7e-p6F">
-                                            <rect key="frame" x="16" y="205.66666666666666" width="90.666666666666671" height="16"/>
+                                            <rect key="frame" x="16" y="201.66666666666666" width="88" height="16"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hlt-HN-M9c">
-                                            <rect key="frame" x="0.0" y="226.66666666666666" width="390" height="81.666666666666657"/>
+                                            <rect key="frame" x="0.0" y="222.66666666666666" width="390" height="79.333333333333343"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설문조사" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9u-uz-2hh">
-                                                    <rect key="frame" x="16" y="15" width="59" height="20"/>
+                                                    <rect key="frame" x="16.000000000000004" y="15" width="61.333333333333343" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in Google Forms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-jn-Dd1">
-                                                    <rect key="frame" x="85" y="21" width="89" height="14"/>
+                                                    <rect key="frame" x="87.333333333333343" y="20" width="78.333333333333343" height="14"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7m-yU-dfL">
-                                                    <rect key="frame" x="16" y="40.000000000000028" width="199" height="25.666666666666671"/>
+                                                    <rect key="frame" x="16" y="39.000000000000028" width="201.33333333333334" height="24.333333333333329"/>
                                                     <string key="text">새로운 기능 개발 및 개선에 큰 도움이 됩니다. 
 실시간으로 새로운 설문조사들이 추가됩니다. </string>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
@@ -3224,16 +3252,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-3k-frA">
-                                                    <rect key="frame" x="16" y="13" width="163.66666666666666" height="38"/>
+                                                    <rect key="frame" x="16" y="14.000000000000004" width="146" height="36.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="42" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
-                                                            <rect key="frame" x="0.0" y="25" width="163.66666666666666" height="13"/>
+                                                            <rect key="frame" x="0.0" y="24" width="146" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -3250,7 +3278,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 H" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-6L-AUS">
-                                                    <rect key="frame" x="300" y="22.666666666666664" width="43" height="18.666666666666664"/>
+                                                    <rect key="frame" x="309" y="23.333333333333329" width="34" height="17.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP40g" family="HGGGothicssi_Pro" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3537,16 +3565,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
-                                                    <rect key="frame" x="16" y="13" width="104" height="38"/>
+                                                    <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="44.333333333333336" height="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                            <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
-                                                            <rect key="frame" x="0.0" y="25" width="104" height="13"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                            <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -3563,7 +3591,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.5.3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTz-g6-bQP">
-                                                    <rect key="frame" x="307.33333333333331" y="22.666666666666664" width="35.666666666666686" height="18.666666666666664"/>
+                                                    <rect key="frame" x="312" y="23.333333333333329" width="31" height="17.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP40g" family="HGGGothicssi_Pro" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3684,7 +3712,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림 설정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wZ-HF-pCK">
-                                            <rect key="frame" x="16.000000000000004" y="13.666666666666666" width="52.333333333333343" height="16.333333333333336"/>
+                                            <rect key="frame" x="16" y="14.333333333333336" width="54" height="15.666666666666664"/>
                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -3757,7 +3785,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSe-Ce-Cgr">
-                                                    <rect key="frame" x="16" y="8" width="22" height="18"/>
+                                                    <rect key="frame" x="16" y="8" width="20.666666666666671" height="18"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3781,7 +3809,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bt-Ej-SAt">
-                                                    <rect key="frame" x="331" y="9" width="28" height="16"/>
+                                                    <rect key="frame" x="333.66666666666669" y="9" width="25.333333333333314" height="16"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -3892,7 +3920,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2T3-qT-3eg">
-                                                    <rect key="frame" x="16.000000000000004" y="17.666666666666668" width="44.333333333333343" height="20.000000000000004"/>
+                                                    <rect key="frame" x="16" y="18" width="46" height="19"/>
                                                     <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
