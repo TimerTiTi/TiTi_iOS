@@ -10,12 +10,18 @@ import SwiftUI
 
 struct CountdownTimeLabelView: View {
     @ObservedObject var viewModel: CountdownTimeLabelViewModel
+    @ObservedObject var baseViewModel: BaseTimeLabelVM
+    
+    init(viewModel: CountdownTimeLabelViewModel) {
+        self.viewModel = viewModel
+        self.baseViewModel = viewModel.timeLabelVM
+    }
     
     var color: Color {
-        if viewModel.timeLabelViewModel.isRunning {
+        if baseViewModel.isRunning {
             return Color.white
         } else {
-            return viewModel.isWhite ? .white : .black.opacity(0.6)
+            return baseViewModel.isWhite ? .white : .black.opacity(0.6)
         }
     }
     
@@ -24,9 +30,9 @@ struct CountdownTimeLabelView: View {
             if viewModel.time < 0 {
                 Text("+")
             }
-            BaseTimeLabelView(viewModel: viewModel.timeLabelViewModel)
+            BaseTimeLabelView(viewModel: baseViewModel)
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .font(TiTiFont.HGGGothicssiP60g(size: baseViewModel.fontSize))
         .foregroundColor(self.color)
     }
 }

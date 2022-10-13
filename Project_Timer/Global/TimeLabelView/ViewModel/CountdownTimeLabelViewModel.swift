@@ -9,29 +9,24 @@
 import SwiftUI
 
 class CountdownTimeLabelViewModel: ObservableObject {
-    var timeLabelViewModel: BaseTimeLabelVM
-    var fontSize: CGFloat
+    @Published var timeLabelVM: BaseTimeLabelVM
     @Published var time: Int
-    @Published var isWhite: Bool
     
     init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
-        self.isWhite = isWhite
-        self.fontSize = fontSize
-        self.timeLabelViewModel = BaseTimeLabelVM(time: abs(time), fontSize: fontSize, isWhite: isWhite)
+        self.timeLabelVM = BaseTimeLabelVM(time: abs(time), fontSize: fontSize, isWhite: isWhite)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
-        self.timeLabelViewModel.updateTime(abs(newTime), showsAnimation: showsAnimation)
+        self.timeLabelVM.updateTime(abs(newTime), showsAnimation: showsAnimation)
     }
     
     func updateRunning(to isRunning: Bool) {
-        self.timeLabelViewModel.isRunning = isRunning
+        self.timeLabelVM.isRunning = isRunning
     }
     
     func updateIsWhite(to isWhite: Bool) {
-        self.isWhite = isWhite
-        self.timeLabelViewModel.isWhite = isWhite
+        self.timeLabelVM.isWhite = isWhite
     }
 }
