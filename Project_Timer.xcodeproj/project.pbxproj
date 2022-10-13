@@ -10,8 +10,8 @@
 		04172E982885453F00F962F2 /* MotionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04172E972885453F00F962F2 /* MotionDetector.swift */; };
 		043706272869D58C00A5D3AA /* CountdownTimerLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706262869D58C00A5D3AA /* CountdownTimerLabelView.swift */; };
 		0437062D2869EC2200A5D3AA /* TimeOfTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */; };
-		043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */; };
-		043706332869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */; };
+		043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706302869FB0E00A5D3AA /* StopwatchTimeLabelView.swift */; };
+		043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043706322869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift */; };
 		04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5A286485BE00CA4C69 /* BaseSingleTimeLabelView.swift */; };
 		04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* BaseTimeLabelVM.swift */; };
 		04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* BaseTimeLabelView.swift */; };
@@ -197,8 +197,8 @@
 		04172E972885453F00F962F2 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
 		043706262869D58C00A5D3AA /* CountdownTimerLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimerLabelView.swift; sourceTree = "<group>"; };
 		0437062C2869EC2200A5D3AA /* TimeOfTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTimerViewModel.swift; sourceTree = "<group>"; };
-		043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchView.swift; sourceTree = "<group>"; };
-		043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfStopwatchViewModel.swift; sourceTree = "<group>"; };
+		043706302869FB0E00A5D3AA /* StopwatchTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimeLabelView.swift; sourceTree = "<group>"; };
+		043706322869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchTimeLabelVM.swift; sourceTree = "<group>"; };
 		04504C5A286485BE00CA4C69 /* BaseSingleTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleTimeLabelView.swift; sourceTree = "<group>"; };
 		04504C5F2864AC3C00CA4C69 /* BaseTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeLabelVM.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* BaseTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeLabelView.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 		0437062F2869FAFC00A5D3AA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				043706302869FB0E00A5D3AA /* TimeOfStopwatchView.swift */,
+				043706302869FB0E00A5D3AA /* StopwatchTimeLabelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */,
-				043706322869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift */,
+				043706322869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1189,7 +1189,7 @@
 				87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */,
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
-				043706312869FB0E00A5D3AA /* TimeOfStopwatchView.swift in Sources */,
+				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
@@ -1285,7 +1285,7 @@
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
-				043706332869FB9F00A5D3AA /* TimeOfStopwatchViewModel.swift in Sources */,
+				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
