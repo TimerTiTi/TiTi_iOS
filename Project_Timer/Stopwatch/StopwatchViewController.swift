@@ -30,6 +30,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet var resetBT: UIButton!
     @IBOutlet var settingBT: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
+    @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
     
@@ -338,6 +339,7 @@ extension StopwatchViewController {
         self.stopWatchLabel.textColor = .white
         self.targetTimeLabel.textColor = .white
         self.finishTimeLabel.textColor = .white
+        self.colorSelector.backgroundColor = .black
         //예상종료시간 숨기기, stop 버튼 센터로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 0
@@ -346,7 +348,7 @@ extension StopwatchViewController {
             self.startStopBTLabel.textColor = self.RED!
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
-            self.colorSelector.alpha = 0
+            self.colorSelectorBorderView.alpha = 0
             self.tabBarController?.tabBar.isHidden = true
             self.todayLabel.alpha = 0
         })
@@ -370,6 +372,7 @@ extension StopwatchViewController {
         self.finishTimeLabel.textColor = self.textColor
         self.settingBT.tintColor = self.textColor
         self.resetBT.tintColor = self.textColor
+        self.colorSelector.backgroundColor = self.backgroundColor
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
@@ -378,8 +381,7 @@ extension StopwatchViewController {
             self.startStopBTLabel.textColor = self.textColor
             self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
             self.startStopBTLabel.text = "▶︎"
-            self.colorSelector.alpha = 0.7
-            self.colorSelector.layer.borderColor = self.textColor.cgColor
+            self.colorSelectorBorderView.alpha = 1
             self.tabBarController?.tabBar.isHidden = false
         })
         //animation test
