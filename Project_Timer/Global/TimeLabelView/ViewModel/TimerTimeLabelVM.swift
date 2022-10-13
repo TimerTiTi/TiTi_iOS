@@ -1,5 +1,5 @@
 //
-//  TimeOfTimerViewModel.swift
+//  TimerTimeLabelVM.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/06/27.
@@ -8,23 +8,21 @@
 
 import SwiftUI
 
-class TimeOfTimerViewModel: ObservableObject {
+class TimerTimeLabelVM: ObservableObject {
     enum TimerState {
         case normalRunning
         case lessThan60Sec
         case stopped
     }
-    var timeLabelViewModel: BaseTimeLabelVM
-    var fontSize: CGFloat
+    @Published var timeLabelVM: BaseTimeLabelVM
     @Published var time: Int
-    @Published var isWhite: Bool = true
     
     var finished: Bool {
         self.time == 0
     }
     
     var timerState: TimerState {
-        if timeLabelViewModel.isRunning {
+        if timeLabelVM.isRunning {
             return self.time < 60 ? .lessThan60Sec : .normalRunning
         } else {
             return .stopped
@@ -33,22 +31,19 @@ class TimeOfTimerViewModel: ObservableObject {
     
     init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
-        self.isWhite = isWhite
-        self.fontSize = fontSize
-        self.timeLabelViewModel = BaseTimeLabelVM(time: abs(time), fontSize: fontSize, isWhite: isWhite)
+        self.timeLabelVM = BaseTimeLabelVM(time: abs(time), fontSize: fontSize, isWhite: isWhite)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
         self.time = newTime
-        self.timeLabelViewModel.updateTime(abs(newTime), showsAnimation: showsAnimation)
+        self.timeLabelVM.updateTime(abs(newTime), showsAnimation: showsAnimation)
     }
     
     func updateRunning(to isRunning: Bool) {
-        self.timeLabelViewModel.isRunning = isRunning
+        self.timeLabelVM.isRunning = isRunning
     }
     
     func updateIsWhite(to isWhite: Bool) {
-        self.isWhite = isWhite
-        self.timeLabelViewModel.isWhite = isWhite
+        self.timeLabelVM.isWhite = isWhite
     }
 }
