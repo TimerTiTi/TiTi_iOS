@@ -1,5 +1,5 @@
 //
-//  SingleTimeLabelViewModel.swift
+//  BaseSingleTimeLabelVM.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/06/24.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class SingleTimeLabelViewModel: ObservableObject {
+class BaseSingleTimeLabelVM: ObservableObject {
     @Published var isNewValueVisible: Bool
     @Published var oldValue: Int
     @Published var newValue: Int

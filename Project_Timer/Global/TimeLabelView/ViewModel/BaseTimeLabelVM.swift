@@ -1,5 +1,5 @@
 //
-//  TimeLabelViewModel.swift
+//  BaseTimeLabelVM.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/06/23.
@@ -8,17 +8,17 @@
 
 import SwiftUI
 
-class TimeLabelViewModel: ObservableObject  {
+class BaseTimeLabelVM: ObservableObject  {
     @Published var time: Int
     @Published var isRunning: Bool = false
     @Published var isWhite: Bool = true
     let fontSize: CGFloat
-    var hourTensViewModel: SingleTimeLabelViewModel
-    var hourUnitsViewModel: SingleTimeLabelViewModel
-    var minuteTensViewModel: SingleTimeLabelViewModel
-    var minuteUnitsViewModel: SingleTimeLabelViewModel
-    var secondTensViewModel: SingleTimeLabelViewModel
-    var secondUnitsViewModel: SingleTimeLabelViewModel
+    var hourTensViewModel: BaseSingleTimeLabelVM
+    var hourUnitsViewModel: BaseSingleTimeLabelVM
+    var minuteTensViewModel: BaseSingleTimeLabelVM
+    var minuteUnitsViewModel: BaseSingleTimeLabelVM
+    var secondTensViewModel: BaseSingleTimeLabelVM
+    var secondUnitsViewModel: BaseSingleTimeLabelVM
     
     var timeLabel: TimeLabel {
         return TimeLabel(self.time)
@@ -29,12 +29,12 @@ class TimeLabelViewModel: ObservableObject  {
         self.fontSize = fontSize
         self.isWhite = isWhite
         let timeLabel = TimeLabel(time)
-        self.hourTensViewModel = SingleTimeLabelViewModel(timeLabel.hourTens)
-        self.hourUnitsViewModel = SingleTimeLabelViewModel(timeLabel.hourUnits)
-        self.minuteTensViewModel = SingleTimeLabelViewModel(timeLabel.minuteTens)
-        self.minuteUnitsViewModel = SingleTimeLabelViewModel(timeLabel.minuteUnits)
-        self.secondTensViewModel = SingleTimeLabelViewModel(timeLabel.secondTens)
-        self.secondUnitsViewModel = SingleTimeLabelViewModel(timeLabel.secondUnits)
+        self.hourTensViewModel = BaseSingleTimeLabelVM(timeLabel.hourTens)
+        self.hourUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.hourUnits)
+        self.minuteTensViewModel = BaseSingleTimeLabelVM(timeLabel.minuteTens)
+        self.minuteUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.minuteUnits)
+        self.secondTensViewModel = BaseSingleTimeLabelVM(timeLabel.secondTens)
+        self.secondUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.secondUnits)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {

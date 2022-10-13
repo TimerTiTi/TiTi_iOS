@@ -1,5 +1,5 @@
 //
-//  TimeLabelView.swift
+//  BaseSingleTimeLabelView.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/06/23.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct SingleTimeLabelView: View {
-    @ObservedObject var viewModel: SingleTimeLabelViewModel
+struct BaseSingleTimeLabelView: View {
+    @ObservedObject var viewModel: BaseSingleTimeLabelVM
     
     var body: some View {
         ZStack {

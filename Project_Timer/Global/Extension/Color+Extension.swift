@@ -18,4 +18,12 @@ extension Color {
             return Color(TiTiColor.background2 ?? .clear)
         }
     }
+    
+    public static var timerColor: Color {
+        if let userColor = UserDefaults.standard.colorForKey(key: .timerBackground) {
+            return Color(userColor)
+        } else {
+            return Color(TiTiColor.blue ?? .clear)
+        }
+    }
 }
