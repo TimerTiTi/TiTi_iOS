@@ -16,8 +16,8 @@ final class TimerVM {
     @Published private(set) var task: String
     @Published private(set) var runningUI = false {
         didSet {
-            self.timeOfSumViewModel.isRunning = runningUI
-            self.timeOfTimerViewModel.isRunning = runningUI
+            self.timeOfSumViewModel.updateRunning(to: runningUI)
+            self.timeOfTimerViewModel.updateRunning(to: runningUI)
             self.timeOfTargetViewModel.updateRunning(to: runningUI)
         }
     }
@@ -29,18 +29,19 @@ final class TimerVM {
     
     private var timer = Timer()
     
-    let timeOfSumViewModel: TimeLabelViewModel
+    let timeOfSumViewModel: NormalTimeLabelVM
     let timeOfTimerViewModel: TimeOfTimerViewModel
     let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
         self.times = currentTimes
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
-        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, fontSize: 70, isWhite: true)
-        self.timeOfSumViewModel = TimeLabelViewModel(time: currentTimes.sum, fontSize: 32, isWhite: true)
-        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: true)
+        self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
+        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
+        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         self.updateAnimationSetting()
@@ -77,8 +78,8 @@ final class TimerVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
-        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
+        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation)
         self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
     }
     
@@ -241,7 +242,8 @@ final class TimerVM {
     }
     
     func updateTextColor(isWhite: Bool) {
-        self.timeOfSumViewModel.isWhite = isWhite
+        self.timeOfSumViewModel.updateIsWhite(to: isWhite)
+        self.timeOfTimerViewModel.updateIsWhite(to: isWhite)
         self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
     }
 }
