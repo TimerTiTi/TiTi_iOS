@@ -21,7 +21,7 @@ struct StopwatchTimeLabelView: View {
         if baseViewModel.isRunning {
             return Color.stopWatchColor
         } else {
-            return baseViewModel.isWhite ? .white : .black.opacity(0.5)
+            return baseViewModel.isWhite ? .white : .black.opacity(0.55)
         }
     }
     

@@ -30,7 +30,7 @@ final class TimerVM {
     private var timer = Timer()
     
     let timeOfSumViewModel: NormalTimeLabelVM
-    let timeOfTimerViewModel: TimeOfTimerViewModel
+    let timeOfTimerViewModel: TimerTimeLabelVM
     let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
@@ -40,7 +40,7 @@ final class TimerVM {
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
-        self.timeOfTimerViewModel = TimeOfTimerViewModel(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
+        self.timeOfTimerViewModel = TimerTimeLabelVM(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
         self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.soundAlert = false
@@ -150,6 +150,7 @@ final class TimerVM {
             self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.timerLogic), userInfo: nil, repeats: true)
             self.timerRunning = true
             self.runningUI = true
+            self.updateTimes()
             self.soundAlert = false
         }
     }

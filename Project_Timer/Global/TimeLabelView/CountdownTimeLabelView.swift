@@ -21,7 +21,7 @@ struct CountdownTimeLabelView: View {
         if baseViewModel.isRunning {
             return Color.white
         } else {
-            return baseViewModel.isWhite ? .white : .black.opacity(0.6)
+            return baseViewModel.isWhite ? .white : .black.opacity(0.55)
         }
     }
     
