@@ -17,7 +17,7 @@ final class StopwatchVM {
     @Published private(set) var runningUI = false {
         didSet {
             self.timeOfSumViewModel.updateRunning(to: runningUI)
-            self.timeOfStopwatchViewModel.isRunning = runningUI
+            self.timeOfStopwatchViewModel.updateRunning(to: runningUI)
             self.timeOfTargetViewModel.updateRunning(to: runningUI)
         }
     }
@@ -29,7 +29,7 @@ final class StopwatchVM {
     private var timer = Timer()
     
     let timeOfSumViewModel: NormalTimeLabelVM
-    let timeOfStopwatchViewModel: BaseTimeLabelVM
+    let timeOfStopwatchViewModel: StopwatchTimeLabelVM
     let timeOfTargetViewModel: CountdownTimeLabelViewModel
     
     init() {
@@ -39,7 +39,7 @@ final class StopwatchVM {
         self.daily = RecordController.shared.daily
         self.task = RecordController.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
-        self.timeOfStopwatchViewModel = BaseTimeLabelVM(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
+        self.timeOfStopwatchViewModel = StopwatchTimeLabelVM(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
         self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.updateAnimationSetting()
@@ -212,7 +212,7 @@ final class StopwatchVM {
     
     func updateTextColor(isWhite: Bool) {
         self.timeOfSumViewModel.updateIsWhite(to: isWhite)
-        self.timeOfStopwatchViewModel.isWhite = isWhite
+        self.timeOfStopwatchViewModel.updateIsWhite(to: isWhite)
         self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
     }
 }
