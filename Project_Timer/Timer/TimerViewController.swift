@@ -179,7 +179,7 @@ extension TimerViewController {
     private func configureTimeOfTimer() {
         guard let timeOfTimerViewModel = self.viewModel?.timeOfTimerViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: CountdownTimerLabelView(viewModel: timeOfTimerViewModel))
+        let hostingController = UIHostingController(rootView: TimerTimeLabelView(viewModel: timeOfTimerViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofTimerFrameView.bounds
@@ -437,7 +437,6 @@ extension TimerViewController {
     private func updateRunningColor(times: Times) {
         guard self.viewModel?.runningUI == true,
               times.timer < 60 else { return }
-//        self.TIMEofTimer.textColor = RED
         self.outterProgress.progressColor = RED!
     }
     
@@ -664,8 +663,8 @@ extension TimerViewController: ColorUpdateable {
             self.backgroundColor = color
         }
         let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
-        self.textColor = isWhite ? .white : .black.withAlphaComponent(0.5)
-        self.secondTextColor = isWhite ? .black.withAlphaComponent(0.7) : .white.withAlphaComponent(0.7)
+        self.textColor = isWhite ? .white : .black.withAlphaComponent(0.55)
+        self.secondTextColor = isWhite ? .black.withAlphaComponent(0.6) : .white.withAlphaComponent(0.7)
         self.setStopColor()
         self.viewModel?.updateTextColor(isWhite: isWhite)
         self.view.layoutSubviews()

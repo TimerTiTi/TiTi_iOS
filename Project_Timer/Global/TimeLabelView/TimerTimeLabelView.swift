@@ -1,5 +1,5 @@
 //
-//  CountdownTimerLabelView.swift
+//  TimerTimeLabelView.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/06/27.
@@ -8,8 +8,14 @@
 
 import SwiftUI
 
-struct CountdownTimerLabelView: View {
-    @ObservedObject var viewModel: TimeOfTimerViewModel
+struct TimerTimeLabelView: View {
+    @ObservedObject var viewModel: TimerTimeLabelVM
+    @ObservedObject var baseViewModel: BaseTimeLabelVM
+    
+    init(viewModel: TimerTimeLabelVM) {
+        self.viewModel = viewModel
+        self.baseViewModel = viewModel.timeLabelVM
+    }
     
     var color: Color {
         switch viewModel.timerState {
@@ -18,7 +24,7 @@ struct CountdownTimerLabelView: View {
         case .lessThan60Sec:
             return Color(TiTiColor.text ?? .clear)
         case .stopped:
-            return viewModel.isWhite ? .white : .black.opacity(0.6)
+            return baseViewModel.isWhite ? .white : .black.opacity(0.55)
         }
     }
     
@@ -31,11 +37,11 @@ struct CountdownTimerLabelView: View {
                     if viewModel.time < 0 {
                         Text("+")
                     }
-                    BaseTimeLabelView(viewModel: viewModel.timeLabelViewModel)
+                    BaseTimeLabelView(viewModel: baseViewModel)
                 }
             }
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .font(TiTiFont.HGGGothicssiP60g(size: baseViewModel.fontSize))
         .foregroundColor(self.color)
     }
 }
