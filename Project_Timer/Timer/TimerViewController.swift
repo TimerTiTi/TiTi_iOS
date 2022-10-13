@@ -165,21 +165,10 @@ extension TimerViewController {
     private func configureViewModel() {
         self.viewModel = TimerVM()
     }
-    private func configureTimeOfTimer() {
-        guard let timeOfTimerViewModel = self.viewModel?.timeOfTimerViewModel else { return }
-        
-        let hostingController = UIHostingController(rootView: TimeOfTimerView(viewModel: timeOfTimerViewModel))
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
-        hostingController.view.backgroundColor = .clear
-        hostingController.view.frame = TIMEofTimerFrameView.bounds
-        
-        addChild(hostingController)
-        TIMEofTimerFrameView.addSubview(hostingController.view)
-    }
     private func configureTimeOfSum() {
         guard let timeOfSumViewModel = self.viewModel?.timeOfSumViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: TimeLabelView(viewModel: timeOfSumViewModel).foregroundColor(.white))
+        let hostingController = UIHostingController(rootView: NormalTimeLabelView(viewModel: timeOfSumViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofSumFrameView.bounds
@@ -187,10 +176,21 @@ extension TimerViewController {
         addChild(hostingController)
         TIMEofSumFrameView.addSubview(hostingController.view)
     }
+    private func configureTimeOfTimer() {
+        guard let timeOfTimerViewModel = self.viewModel?.timeOfTimerViewModel else { return }
+        
+        let hostingController = UIHostingController(rootView: CountdownTimerLabelView(viewModel: timeOfTimerViewModel))
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = true
+        hostingController.view.backgroundColor = .clear
+        hostingController.view.frame = TIMEofTimerFrameView.bounds
+        
+        addChild(hostingController)
+        TIMEofTimerFrameView.addSubview(hostingController.view)
+    }
     private func configureTimeOfTarget() {
         guard let timeOfTargetViewModel = self.viewModel?.timeOfTargetViewModel else { return }
         
-        let hostingController = UIHostingController(rootView: CountdownTimeLabelView(viewModel: timeOfTargetViewModel).foregroundColor(.white))
+        let hostingController = UIHostingController(rootView: CountdownTimeLabelView(viewModel: timeOfTargetViewModel))
         hostingController.view.translatesAutoresizingMaskIntoConstraints = true
         hostingController.view.backgroundColor = .clear
         hostingController.view.frame = TIMEofTargetFrameView.bounds

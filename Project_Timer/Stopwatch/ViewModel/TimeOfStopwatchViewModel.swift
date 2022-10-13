@@ -9,11 +9,11 @@
 import SwiftUI
 
 class TimeOfStopwatchViewModel: ObservableObject {
-    var timeLabelViewModel: TimeLabelViewModel
+    var timeLabelViewModel: BaseTimeLabelVM
     @Published var isRunning: Bool = false
     
     init(time: Int) {
-        self.timeLabelViewModel = TimeLabelViewModel(time: time, fontSize: 70, isWhite: true)
+        self.timeLabelViewModel = BaseTimeLabelVM(time: time, fontSize: 70, isWhite: true)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {

@@ -1,23 +1,15 @@
 //
-//  TimeOfStopwatchView.swift
+//  BaseTimeLabelView.swift
 //  Project_Timer
 //
-//  Created by 최수정 on 2022/06/27.
+//  Created by 최수정 on 2022/06/24.
 //  Copyright © 2022 FDEE. All rights reserved.
 //
 
 import SwiftUI
 
-struct TimeOfStopwatchView: View {
+struct BaseTimeLabelView: View {
     @ObservedObject var viewModel: BaseTimeLabelVM
-    
-    var color: Color {
-        if viewModel.isRunning {
-            return Color.stopWatchColor
-        } else {
-            return viewModel.isWhite ? .white : .black.opacity(0.5)
-        }
-    }
     
     var body: some View {
         HStack(spacing: 0) {
@@ -33,6 +25,5 @@ struct TimeOfStopwatchView: View {
             BaseSingleTimeLabelView(viewModel: viewModel.secondUnitsViewModel)
         }
         .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
-        .foregroundColor(self.color)
     }
 }

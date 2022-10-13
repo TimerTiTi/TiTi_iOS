@@ -15,7 +15,7 @@ struct CountdownTimeLabelView: View {
         if viewModel.timeLabelViewModel.isRunning {
             return Color.white
         } else {
-            return viewModel.isWhite ? .white : .black.opacity(0.5)
+            return viewModel.isWhite ? .white : .black.opacity(0.6)
         }
     }
     
@@ -23,10 +23,10 @@ struct CountdownTimeLabelView: View {
         HStack(spacing: 0) {
             if viewModel.time < 0 {
                 Text("+")
-                    .foregroundColor(self.color)
             }
-            TimeLabelView(viewModel: viewModel.timeLabelViewModel)
+            BaseTimeLabelView(viewModel: viewModel.timeLabelViewModel)
         }
         .font(TiTiFont.HGGGothicssiP60g(size: viewModel.fontSize))
+        .foregroundColor(self.color)
     }
 }
