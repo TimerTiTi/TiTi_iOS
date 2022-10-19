@@ -358,6 +358,7 @@ extension StopwatchViewController {
         self.settingBT.isUserInteractionEnabled = false
         self.taskButton.isUserInteractionEnabled = false
         self.resetBT.isUserInteractionEnabled = false
+        self.colorSelector.isUserInteractionEnabled = false
     }
     
     private func setStopColor() {
@@ -398,6 +399,7 @@ extension StopwatchViewController {
         self.settingBT.isUserInteractionEnabled = true
         self.taskButton.isUserInteractionEnabled = true
         self.resetBT.isUserInteractionEnabled = true
+        self.colorSelector.isUserInteractionEnabled = true
     }
     
     private func updateProgress(times: Times) {

@@ -375,6 +375,7 @@ extension TimerViewController {
         self.settingBT.isUserInteractionEnabled = false
         self.setTimerBT.isUserInteractionEnabled = false
         self.taskButton.isUserInteractionEnabled = false
+        self.colorSelector.isUserInteractionEnabled = false
     }
     
     private func setStopColor() {
@@ -415,6 +416,7 @@ extension TimerViewController {
         self.settingBT.isUserInteractionEnabled = true
         self.setTimerBT.isUserInteractionEnabled = true
         self.taskButton.isUserInteractionEnabled = true
+        self.colorSelector.isUserInteractionEnabled = true
     }
     
     private func updateProgress(times: Times) {
