@@ -14,8 +14,9 @@ struct WeekSmallTime {
     let colorIndex: Int
     
     init(weekDates: [Date], dailys: [Daily]) {
+        let weekLastDate = Calendar.current.date(byAdding: .day, value: 7, to: weekDates[0]) ?? Date()
         self.totalTime = dailys.filter { daily in
-            daily.day >= weekDates[0] && daily.day < weekDates[6]
+            daily.day.zeroDate.localDate >= weekDates[0] && daily.day.zeroDate.localDate < weekLastDate
         }.reduce(0, { $0 + $1.totalTime })
         self.maxTime = UserDefaultsManager.get(forKey: .goalTimeOfWeek) as? Int ?? 90000
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
