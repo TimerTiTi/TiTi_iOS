@@ -12,6 +12,7 @@ import Combine
 final class TaskSelectVM {
     static let fileName = "tasks.json"
     @Published private(set) var tasks: [Task] = []
+    @Published private(set) var selectedTask: String?
     
     init() {
         self.loadTasks()
@@ -46,8 +47,13 @@ final class TaskSelectVM {
         self.saveTasks()
     }
     
+    func isSameNameExist(name: String) -> Bool {
+        return self.tasks.map(\.taskName).contains(name)
+    }
+    
     func updateTaskName(at index: Int, to text: String) {
         guard self.tasks[safe: index] != nil else { return }
+        self.resetTaskname(before: self.tasks[index].taskName, after: text)
         self.tasks[index].update(taskName: text)
         self.saveTasks()
     }
@@ -70,5 +76,21 @@ final class TaskSelectVM {
         tasks.insert(targetTask, at: toIndex)
         self.tasks = tasks
         self.saveTasks()
+    }
+    
+    private func resetTaskname(before: String, after: String) {
+        let currentTask = RecordController.shared.recordTimes.recordTask
+        var tasks = RecordController.shared.daily.tasks
+        
+        if let beforeTime = tasks[before] {
+            tasks.removeValue(forKey: before)
+            tasks[after] = beforeTime
+            RecordController.shared.daily.updateTasks(to: tasks)
+            RecordController.shared.dailys.modifyDaily(RecordController.shared.daily)
+        }
+        
+        if currentTask == before {
+            self.selectedTask = after
+        }
     }
 }
