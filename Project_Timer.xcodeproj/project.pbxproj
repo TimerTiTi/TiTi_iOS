@@ -85,8 +85,9 @@
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection.swift */; };
-		8757AA3B290511AB00D97517 /* taskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* taskSelectVM.swift */; };
+		8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* TaskSelectVM.swift */; };
 		8757AA3D290511FF00D97517 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* Task.swift */; };
+		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
 		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
 		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
@@ -277,8 +278,9 @@
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		8757AA3A290511AB00D97517 /* taskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectVM.swift; sourceTree = "<group>"; };
+		8757AA3A290511AB00D97517 /* TaskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVM.swift; sourceTree = "<group>"; };
 		8757AA3C290511FF00D97517 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
 		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
@@ -601,8 +603,9 @@
 			isa = PBXGroup;
 			children = (
 				875AA59B26494365005D15D6 /* taskSelectViewController.swift */,
-				8757AA3A290511AB00D97517 /* taskSelectVM.swift */,
+				8757AA3A290511AB00D97517 /* TaskSelectVM.swift */,
 				8757AA3C290511FF00D97517 /* Task.swift */,
+				8757AA3E29052DDF00D97517 /* TaskCell.swift */,
 			);
 			path = TaskSelect;
 			sourceTree = "<group>";
@@ -1195,7 +1198,7 @@
 				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
-				8757AA3B290511AB00D97517 /* taskSelectVM.swift in Sources */,
+				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
@@ -1245,6 +1248,7 @@
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
+				8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,

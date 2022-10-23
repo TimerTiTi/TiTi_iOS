@@ -53,15 +53,15 @@
 
 "Total : " = "누적 : ";
 
-"Enter a new subject" = "공부내용 입력";
+"New task" = "새로운 과목";
 
-"Select a subject" = "공부내용을 선택하세요";
+"Task name's max length is 20" = "12자리 내의 새로운 과목명을 입력하세요";
 
-"Enter a subject that's max length is 20" = "12자리 내의 새로운 과목을 입력하세요";
+"Create a new task" = "과목을 생성해주세요";
 
-"New subject" = "새로운 과목";
+"Select a subject" = "과목을 선택하세요";
 
-"before start, Enter a new Subject" = "시작 전, 새로운 과목을 입력하세요";
+"before start recording, Create a new Task, and select that" = "기록을 위해서 과목생성 후 선택해주세요";
 
 "Setting today's times" = "오늘의 시간을 설정하세요";
 
