@@ -99,6 +99,10 @@ extension taskSelectViewController {
         alert.addAction(ok)
         present(alert,animated: true,completion: nil)
     }
+    
+    private func showAlertEditTargetTime(index: Int, time: Int) {
+        
+    }
 }
 
 // MARK: ModifyTask
@@ -156,31 +160,37 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell", for: indexPath) as? taskListCell else {
-            return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskCell.identifier, for: indexPath) as? TaskCell else {
+            return .init()
         }
-        cell.taskName.text = tasks[indexPath.row]
-        if(tasksTableView.isEditing) { cell.line.alpha = 0 }
-        else { cell.line.alpha = 1 }
+        guard let task = self.viewModel?.tasks[safe: indexPath.row] else { return cell }
+        
+        cell.configure(task: task, color: UIColor(named: "D1"))
+        cell.toggleTargetTime = { [weak self] isOn in
+            self?.viewModel?.updateTaskOn(at: indexPath.row, to: isOn)
+        }
+        cell.editTargetTime = { [weak self] in
+            self?.showAlertEditTargetTime(index: indexPath.row, time: task.taskTargetTime)
+        }
+        
         return cell
     }
-    // 클릭했을때 어떻게 할까?
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedTask = self.viewModel?.tasks[safe: indexPath.row] else { return }
         self.delegate?.selectTask(to: selectedTask.taskName)
         self.dismiss(animated: true, completion: nil)
     }
     
-    //제거 액션여부 설정
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     //제거 액션 설정
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { action, index in
-            self.tasks.remove(at: indexPath.row)
-            self.saveTasks()
-            self.table.deleteRows(at: [indexPath], with: .automatic)
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
+            self?.viewModel?.deleteTask(at: indexPath.row)
+            self?.tasksTableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         return [deleteAction]
@@ -191,19 +201,11 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let target = tasks.remove(at: sourceIndexPath.row)
-        tasks.insert(target, at: destinationIndexPath.row)
-        print("save: \(tasks)")
-        saveTasks()
+        self.viewModel?.moveTask(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
+        self.reloadAfterAnimation()
     }
-}
-
-class taskListCell: UITableViewCell {
-    @IBOutlet var taskName: UILabel!
-    @IBOutlet var line: UIView!
     
-    override func awakeFromNib() {
-        self.backgroundColor = UIColor.black
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return TaskCell.height
     }
 }
-
