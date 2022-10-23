@@ -1,5 +1,5 @@
 //
-//  taskSelectVM.swift
+//  TaskSelectVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/10/23.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class taskSelectVM {
+final class TaskSelectVM {
     static let fileName = "tasks.json"
     @Published private(set) var tasks: [Task] = []
     

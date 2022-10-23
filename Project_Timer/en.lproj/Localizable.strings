@@ -53,15 +53,15 @@
 
 "Total : " = "Total : ";
 
-"Enter a new subject" = "Enter a new subject";
+"New task" = "New task";
+
+"Task name's max length is 20" = "Task name's max length is 20";
+
+"Create a new task" = "Create a new task";
 
 "Select a subject" = "Select a subject";
 
-"Enter a subject that's max length is 20" = "Enter a subject that's max length is 20";
-
-"New subject" = "New subject";
-
-"before start, Enter a new Subject" = "before start, Enter a new Subject";
+"before start recording, Create a new Task, and select that" = "before start recording, Create a new Task, and select that";
 
 "Setting today's times" = "Setting today's times";
 

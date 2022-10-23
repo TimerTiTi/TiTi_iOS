@@ -306,7 +306,7 @@ extension TimerViewController {
 extension TimerViewController {
     private func updateTask(to task: String) {
         if task == "none" {
-            self.taskButton.setTitle("Enter a new subject".localized(), for: .normal)
+            self.taskButton.setTitle("Create a new task".localized(), for: .normal)
             self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)

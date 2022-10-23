@@ -7,70 +7,91 @@
 //
 
 import UIKit
+import Combine
 
 final class taskSelectViewController: UIViewController {
     static let identifier = "taskSelectViewController"
     
-    @IBOutlet var studyTitle: UILabel!
-    @IBOutlet var table: UITableView!
+    @IBOutlet weak var tasksTableView: UITableView!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var newTaskButton: UIButton!
     
-    var tasks: [String] = []
     weak var delegate: TaskChangeable?
+    private var viewModel: TaskSelectVM?
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        setLocalizable()
-        configureTableView()
-        tasks = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
+        self.configureColor()
+        self.configureTableView()
+        self.configureViewModel()
+        self.tasksTableView.reloadData()
+        self.bindAll()
+    }
+    
+    @IBAction func newTask(_ sender: Any) {
+        self.showAlertNewTask()
+    }
+    
+    @IBAction func edit() {
+        self.tasksTableView.setEditing(!self.tasksTableView.isEditing, animated: true)
+    }
+}
+
+// MARK: Configure
+extension taskSelectViewController {
+    private func configureColor() {
+        
+    }
+    
+    private func configureTableView() {
+        self.tasksTableView.dataSource = self
+        self.tasksTableView.delegate = self
+        self.tasksTableView.separatorInset.left = 0
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
-        table.addGestureRecognizer(longPress)
+        self.tasksTableView.addGestureRecognizer(longPress)
     }
     
-    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
-        if sender.state == .began {
-            let touchPoint = sender.location(in: table)
-            if let indexPath = table.indexPathForRow(at: touchPoint) {
-                let alert = UIAlertController(title: "Modify subject's name".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
-                let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-                let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
-                    action in
-                    let newTask: String = alert.textFields?[0].text ?? ""
-                    //이건 기록들 중 과목내용 수정 및 저장
-                    self.resetTaskname(before: self.tasks[indexPath.row], after: newTask)
-                    self.tasks[indexPath.row] = newTask
-                    self.table.reloadData()
-                    self.saveTasks()
-                })
-                //텍스트 입력 추가
-                alert.addTextField { (inputNewNickName) in
-                    inputNewNickName.placeholder = "New subject".localized()
-                    inputNewNickName.textAlignment = .center
-                    inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
-                    //기존 내용 보이기
-                    inputNewNickName.text = self.tasks[indexPath.row]
-                }
-                alert.addAction(cancle)
-                alert.addAction(ok)
-                present(alert,animated: true,completion: nil)
-            }
+    private func configureViewModel() {
+        self.viewModel = TaskSelectVM()
+    }
+}
+
+// MARK: Binding
+extension taskSelectViewController {
+    private func bindAll() {
+        self.bindTasks()
+    }
+    
+    private func bindTasks() {
+        self.viewModel?.$tasks
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.reloadAfterAnimation()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func reloadAfterAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400)) { [weak self] in
+            self?.tasksTableView.reloadData()
         }
     }
-    
-    @IBAction func test_new(_ sender: Any) {
-        let alert = UIAlertController(title: "Enter a new subject".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
+}
+
+// MARK: Popups
+extension taskSelectViewController {
+    private func showAlertNewTask() {
+        let alert = UIAlertController(title: "New task".localized(), message: "Task name's max length is 20".localized(), preferredStyle: .alert)
         let cancle = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-        let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
-            action in
-            let newTask: String = alert.textFields?[0].text ?? ""
-            // 위 변수를 통해 특정기능 수행
-//            self.selectTask(newTask)
-            self.addTableCell(newTask)
+        let ok = UIAlertAction(title: "ENTER", style: .default, handler: { [weak self] action in
+            guard let newTask: String = alert.textFields?[0].text else { return }
+            self?.viewModel?.addNewTask(taskName: newTask)
         })
-        //텍스트 입력 추가
+        
         alert.addTextField { (inputNewNickName) in
-            inputNewNickName.placeholder = "New subject".localized()
+            inputNewNickName.placeholder = "New task".localized()
             inputNewNickName.textAlignment = .center
             inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
         }
@@ -78,34 +99,38 @@ final class taskSelectViewController: UIViewController {
         alert.addAction(ok)
         present(alert,animated: true,completion: nil)
     }
-    
-    @IBAction func edit() {
-        if table.isEditing {
-            table.isEditing = false
-            table.reloadData()
-        } else {
-            table.isEditing = true
-            table.reloadData()
-        }
-    }
-    
-    func selectTask(_ task: String) {
-        self.delegate?.selectTask(to: task)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func addTableCell(_ task: String) {
-        tasks.append(task)
-        saveTasks()
-        table.reloadData()
-    }
-    
-    func saveTasks() {
-        UserDefaults.standard.set(tasks, forKey: "tasks")
-    }
-    
-    func setLocalizable() {
-        studyTitle.text = "Select a subject".localized()
+}
+
+// MARK: ModifyTask
+extension taskSelectViewController {
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+//        if sender.state == .began {
+//            let touchPoint = sender.location(in: tasksTableView)
+//            if let indexPath = tasksTableView.indexPathForRow(at: touchPoint) {
+//                let alert = UIAlertController(title: "Modify subject's name".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
+//                let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+//                let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
+//                    action in
+//                    let newTask: String = alert.textFields?[0].text ?? ""
+//                    //이건 기록들 중 과목내용 수정 및 저장
+//                    self.resetTaskname(before: self.tasks[indexPath.row], after: newTask)
+//                    self.tasks[indexPath.row] = newTask
+//                    self.table.reloadData()
+//                    self.saveTasks()
+//                })
+//                //텍스트 입력 추가
+//                alert.addTextField { (inputNewNickName) in
+//                    inputNewNickName.placeholder = "New subject".localized()
+//                    inputNewNickName.textAlignment = .center
+//                    inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
+//                    //기존 내용 보이기
+//                    inputNewNickName.text = self.tasks[indexPath.row]
+//                }
+//                alert.addAction(cancle)
+//                alert.addAction(ok)
+//                present(alert,animated: true,completion: nil)
+//            }
+//        }
     }
     
     func resetTaskname(before: String, after: String) {
@@ -122,28 +147,28 @@ final class taskSelectViewController: UIViewController {
             self.delegate?.selectTask(to: after)
         }
     }
-    
 }
 
+// MARK: TableView
 extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
-    //몇개 표시 할까?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return self.viewModel?.tasks.count ?? 0
     }
-    //셀 어떻게 표시 할까?
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskListCell", for: indexPath) as? taskListCell else {
             return UITableViewCell()
         }
         cell.taskName.text = tasks[indexPath.row]
-        if(table.isEditing) { cell.line.alpha = 0 }
+        if(tasksTableView.isEditing) { cell.line.alpha = 0 }
         else { cell.line.alpha = 1 }
         return cell
     }
     // 클릭했을때 어떻게 할까?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let task = tasks[indexPath.item]
-        selectTask(task)
+        guard let selectedTask = self.viewModel?.tasks[safe: indexPath.row] else { return }
+        self.delegate?.selectTask(to: selectedTask.taskName)
+        self.dismiss(animated: true, completion: nil)
     }
     
     //제거 액션여부 설정
@@ -182,10 +207,3 @@ class taskListCell: UITableViewCell {
     }
 }
 
-
-extension taskSelectViewController {
-    func configureTableView() {
-        table.cellLayoutMarginsFollowReadableWidth = false
-        table.separatorInset.left = 0
-    }
-}
