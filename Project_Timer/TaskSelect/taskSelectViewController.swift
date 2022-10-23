@@ -148,7 +148,13 @@ extension taskSelectViewController {
     }
     
     private func showAlertEditTargetTime(index: Int, time: Int) {
+        guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TaskTargetTimeSettingVC.identifier) as? TaskTargetTimeSettingVC else { return }
+//        colorSelector.configure(target: .timer, delegate: self)
         
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
 }
 

@@ -81,6 +81,7 @@
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
+		8750082D2905998200E27B4A /* TaskTargetTimeSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750082C2905998200E27B4A /* TaskTargetTimeSettingVC.swift */; };
 		8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F328472066007FAFC4 /* SettingCell.swift */; };
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
@@ -274,6 +275,7 @@
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
+		8750082C2905998200E27B4A /* TaskTargetTimeSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTargetTimeSettingVC.swift; sourceTree = "<group>"; };
 		8751C6F328472066007FAFC4 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				8757AA3A290511AB00D97517 /* TaskSelectVM.swift */,
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				8757AA3E29052DDF00D97517 /* TaskCell.swift */,
+				8750082C2905998200E27B4A /* TaskTargetTimeSettingVC.swift */,
 			);
 			path = TaskSelect;
 			sourceTree = "<group>";
@@ -1243,6 +1246,7 @@
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
+				8750082D2905998200E27B4A /* TaskTargetTimeSettingVC.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,

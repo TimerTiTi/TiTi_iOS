@@ -4597,6 +4597,109 @@
             </objects>
             <point key="canvasLocation" x="2309" y="1582"/>
         </scene>
+        <!--PopupEditHistoryVC-->
+        <scene sceneID="c0E-QK-Byy">
+            <objects>
+                <viewController storyboardIdentifier="TaskTargetTimeSettingVC" title="PopupEditHistoryVC" id="ud6-Si-s7U" customClass="TaskTargetTimeSettingVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eZV-xI-cDZ">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="130"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnw-fr-ljf">
+                                <rect key="frame" x="92" y="22" width="76" height="19"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Target Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GnY-4E-ayQ">
+                                <rect key="frame" x="79.333333333333343" y="45" width="101.33333333333334" height="14.333333333333336"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qwS-9y-cDa">
+                                <rect key="frame" x="22" y="75.333333333333329" width="216" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="H" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUV-wz-uA4">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                        <color key="backgroundColor" name="Click"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="WLV-Lh-hqF"/>
+                                            <constraint firstAttribute="height" constant="40" id="zlL-GC-bYx"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWt-pV-Iv4">
+                                        <rect key="frame" x="61" y="0.0" width="16" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kAK-9u-AHO"/>
+                                            <constraint firstAttribute="width" constant="16" id="xsk-1Z-nQI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="M" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKC-VR-NiU">
+                                        <rect key="frame" x="78" y="0.0" width="60" height="40"/>
+                                        <color key="backgroundColor" name="Click"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="fKj-3f-hcW"/>
+                                            <constraint firstAttribute="height" constant="40" id="zwC-Ht-AWZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-Ap-hgO">
+                                        <rect key="frame" x="139" y="0.0" width="16" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="DmD-pV-LI7"/>
+                                            <constraint firstAttribute="height" constant="40" id="dkj-J3-Gbq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="S" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWO-39-57W">
+                                        <rect key="frame" x="156" y="0.0" width="60" height="40"/>
+                                        <color key="backgroundColor" name="Click"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="2Q9-EK-D23"/>
+                                            <constraint firstAttribute="height" constant="40" id="hQX-Er-aN9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2sl-Zr-vRp"/>
+                        <constraints>
+                            <constraint firstItem="gnw-fr-ljf" firstAttribute="top" secondItem="eZV-xI-cDZ" secondAttribute="top" constant="22" id="8zT-XJ-PNw"/>
+                            <constraint firstItem="GnY-4E-ayQ" firstAttribute="top" secondItem="gnw-fr-ljf" secondAttribute="bottom" constant="4" id="Arb-YQ-GXq"/>
+                            <constraint firstItem="gnw-fr-ljf" firstAttribute="centerX" secondItem="2sl-Zr-vRp" secondAttribute="centerX" id="BWl-qw-L4w"/>
+                            <constraint firstItem="qwS-9y-cDa" firstAttribute="centerX" secondItem="2sl-Zr-vRp" secondAttribute="centerX" id="IDk-cG-Wlw"/>
+                            <constraint firstItem="qwS-9y-cDa" firstAttribute="top" secondItem="GnY-4E-ayQ" secondAttribute="bottom" constant="16" id="kN0-vn-g8b"/>
+                            <constraint firstItem="GnY-4E-ayQ" firstAttribute="centerX" secondItem="gnw-fr-ljf" secondAttribute="centerX" id="krS-Km-Y71"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="260" height="130"/>
+                    <size key="freeformSize" width="260" height="130"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="preferredContentSize.height">
+                            <integer key="value" value="150"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="hourTextField" destination="WUV-wz-uA4" id="O6Q-sn-5dF"/>
+                        <outlet property="minuteTextField" destination="qKC-VR-NiU" id="Z0u-ce-Wvr"/>
+                        <outlet property="secondTextField" destination="mWO-39-57W" id="B4R-Vd-fqB"/>
+                        <outlet property="subTitleLabel" destination="GnY-4E-ayQ" id="Ckx-Sq-rGa"/>
+                        <outlet property="taskNameLabel" destination="gnw-fr-ljf" id="Pl3-OQ-6se"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1A-3l-3fF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1533.8461538461538" y="1586.7298578199052"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
