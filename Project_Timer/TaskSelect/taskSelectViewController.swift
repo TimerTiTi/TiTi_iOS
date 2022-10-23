@@ -8,20 +8,8 @@
 
 import UIKit
 
-class taskSelectViewController: UIViewController {
+final class taskSelectViewController: UIViewController {
     static let identifier = "taskSelectViewController"
-    
-    open override var shouldAutorotate: Bool {
-        return false
-    }
-    
-    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-    }
-    
-    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
-        return .portrait
-    }
     
     @IBOutlet var studyTitle: UILabel!
     @IBOutlet var table: UITableView!
