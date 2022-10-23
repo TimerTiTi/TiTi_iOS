@@ -40,6 +40,6 @@ extension UIViewController {
     }
     
     func showTaskWarningAlert() {
-        self.showAlertWithOK(title: "Enter a new subject".localized(), text: "")
+        self.showAlertWithOK(title: "Create a new task".localized(), text: "before start recording, Create a new Task, and select that".localized())
     }
 }

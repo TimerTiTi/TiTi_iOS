@@ -4601,7 +4601,7 @@
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="52" id="QSk-N1-Dvd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="52" id="QSk-N1-Dvd" customClass="TaskCell" customModule="TiTi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="358" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QSk-N1-Dvd" id="Oxg-Pe-ja5">
@@ -4641,6 +4641,9 @@
                                                             <state key="normal" image="pencil.circle" catalog="system">
                                                                 <color key="titleColor" name="D1"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="editTargetTime:" destination="QSk-N1-Dvd" eventType="touchUpInside" id="slj-m7-Xnk"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -4648,6 +4651,9 @@
                                                     <rect key="frame" x="309" y="2.6666666666666679" width="51" height="31.000000000000004"/>
                                                     <color key="tintColor" name="D1"/>
                                                     <color key="onTintColor" name="D1"/>
+                                                    <connections>
+                                                        <action selector="toggleTargetTime:" destination="QSk-N1-Dvd" eventType="valueChanged" id="hN9-vL-ZJh"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -4659,6 +4665,14 @@
                                                 <constraint firstItem="bvF-4f-Jn1" firstAttribute="centerY" secondItem="2x6-oc-PRO" secondAttribute="centerY" id="vp7-iV-KLC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="editTaskTargetTimeButton" destination="4S4-0K-lNS" id="Kae-W1-z1K"/>
+                                            <outlet property="taskNameLabel" destination="2x6-oc-PRO" id="S2C-Wi-wKY"/>
+                                            <outlet property="taskTargetTime" destination="YvP-lI-9MN" id="7ca-fW-oif"/>
+                                            <outlet property="taskTargetTimeLabel" destination="Dto-4f-1Z7" id="2tm-GS-RuM"/>
+                                            <outlet property="taskTargetTimeSwitch" destination="bvF-4f-Jn1" id="JgQ-MX-njI"/>
+                                            <outlet property="taskTargetTimesStackView" destination="M5M-PH-gFV" id="yXl-FD-G1q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -4679,8 +4693,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="studyTitle" destination="7CJ-l8-dnj" id="IKx-bl-ASg"/>
-                        <outlet property="table" destination="KPu-9x-wVw" id="MNK-bh-phd"/>
+                        <outlet property="editButton" destination="esk-Je-aHU" id="IEd-lC-Zyl"/>
+                        <outlet property="newTaskButton" destination="dky-rl-REL" id="FUW-mg-N7v"/>
+                        <outlet property="tasksTableView" destination="KPu-9x-wVw" id="MNK-bh-phd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VVz-Ep-D8q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
