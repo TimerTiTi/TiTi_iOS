@@ -62,6 +62,7 @@ extension taskSelectViewController {
 extension taskSelectViewController {
     private func bindAll() {
         self.bindTasks()
+        self.bindSelectedTask()
     }
     
     private func bindTasks() {
@@ -69,6 +70,16 @@ extension taskSelectViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.reloadAfterAnimation()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSelectedTask() {
+        self.viewModel?.$selectedTask
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] taskName in
+                guard let taskName = taskName else { return }
+                self?.delegate?.selectTask(to: taskName)
             })
             .store(in: &self.cancellables)
     }
@@ -82,12 +93,47 @@ extension taskSelectViewController {
 
 // MARK: Popups
 extension taskSelectViewController {
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: self.tasksTableView)
+            guard let indexPath = self.tasksTableView.indexPathForRow(at: touchPoint),
+                  let beforeTaskName = self.viewModel?.tasks[safe: indexPath.row]?.taskName else { return }
+            
+            let alert = UIAlertController(title: "Modify task's name".localized(), message: "Task name's max length is 20".localized(), preferredStyle: .alert)
+            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+            let ok = UIAlertAction(title: "ENTER", style: .default, handler: { [weak self] action in
+                let newTask: String = alert.textFields?[0].text ?? ""
+                guard self?.viewModel?.isSameNameExist(name: newTask) == false else {
+                    self?.showAlertWithOK(title: "Same task exist".localized(), text: "Try to another task's name".localized())
+                    return
+                }
+                
+                self?.viewModel?.updateTaskName(at: indexPath.row, to: newTask)
+                self?.tasksTableView.reloadData()
+            })
+            
+            alert.addTextField { (inputNewNickName) in
+                inputNewNickName.placeholder = "New task".localized()
+                inputNewNickName.textAlignment = .center
+                inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
+                inputNewNickName.text = beforeTaskName
+            }
+            alert.addAction(cancle)
+            alert.addAction(ok)
+            
+            present(alert,animated: true,completion: nil)
+        }
+    }
+    
     private func showAlertNewTask() {
         let alert = UIAlertController(title: "New task".localized(), message: "Task name's max length is 20".localized(), preferredStyle: .alert)
         let cancle = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
         let ok = UIAlertAction(title: "ENTER", style: .default, handler: { [weak self] action in
-            guard let newTask: String = alert.textFields?[0].text else { return }
+            guard let newTask: String = alert.textFields?[0].text,
+                  let count = self?.viewModel?.tasks.count else { return }
+            
             self?.viewModel?.addNewTask(taskName: newTask)
+            self?.tasksTableView.insertRows(at: [IndexPath.init(row: count, section: 0)], with: .automatic)
         })
         
         alert.addTextField { (inputNewNickName) in
@@ -97,59 +143,12 @@ extension taskSelectViewController {
         }
         alert.addAction(cancle)
         alert.addAction(ok)
+        
         present(alert,animated: true,completion: nil)
     }
     
     private func showAlertEditTargetTime(index: Int, time: Int) {
         
-    }
-}
-
-// MARK: ModifyTask
-extension taskSelectViewController {
-    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
-//        if sender.state == .began {
-//            let touchPoint = sender.location(in: tasksTableView)
-//            if let indexPath = tasksTableView.indexPathForRow(at: touchPoint) {
-//                let alert = UIAlertController(title: "Modify subject's name".localized(), message: "Enter a subject that's max length is 20".localized(), preferredStyle: .alert)
-//                let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-//                let ok = UIAlertAction(title: "ENTER", style: .default, handler: {
-//                    action in
-//                    let newTask: String = alert.textFields?[0].text ?? ""
-//                    //이건 기록들 중 과목내용 수정 및 저장
-//                    self.resetTaskname(before: self.tasks[indexPath.row], after: newTask)
-//                    self.tasks[indexPath.row] = newTask
-//                    self.table.reloadData()
-//                    self.saveTasks()
-//                })
-//                //텍스트 입력 추가
-//                alert.addTextField { (inputNewNickName) in
-//                    inputNewNickName.placeholder = "New subject".localized()
-//                    inputNewNickName.textAlignment = .center
-//                    inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
-//                    //기존 내용 보이기
-//                    inputNewNickName.text = self.tasks[indexPath.row]
-//                }
-//                alert.addAction(cancle)
-//                alert.addAction(ok)
-//                present(alert,animated: true,completion: nil)
-//            }
-//        }
-    }
-    
-    func resetTaskname(before: String, after: String) {
-        let currentTask = RecordController.shared.recordTimes.recordTask
-        var tasks = RecordController.shared.daily.tasks
-        
-        if let beforeTime = tasks[before] {
-            tasks.removeValue(forKey: before)
-            tasks[after] = beforeTime
-            RecordController.shared.daily.updateTasks(to: tasks)
-        }
-        
-        if currentTask == before {
-            self.delegate?.selectTask(to: after)
-        }
     }
 }
 

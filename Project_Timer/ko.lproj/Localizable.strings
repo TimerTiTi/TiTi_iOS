@@ -59,8 +59,6 @@
 
 "Create a new task" = "과목을 생성해주세요";
 
-"Select a subject" = "과목을 선택하세요";
-
 "before start recording, Create a new Task, and select that" = "기록을 위해서 과목생성 후 선택해주세요";
 
 "Setting today's times" = "오늘의 시간을 설정하세요";
@@ -79,7 +77,7 @@
 
 "How to use TiTi?" = "TiTi 사용방법";
 
-"Modify subject's name" = "과목명 수정";
+"Modify task's name" = "과목명 수정";
 
 "Modify Todo's content" = "내용 수정";
 
@@ -230,3 +228,7 @@
 "TextColor" = "텍스트";
 
 "Setted Target Time:" = "목표시간 설정:";
+
+"Same task exist" = "동일한 과목 존재";
+
+"Try to another task's name" = "다른 과목명을 입력해주세요";
