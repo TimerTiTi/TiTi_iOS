@@ -404,11 +404,14 @@ extension StopwatchViewController {
     
     private func updateProgress(times: Times) {
         let goalPeriod: Int
+        let innerSum: Int
         if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
             goalPeriod = currentTask.taskTargetTime
+            innerSum = times.stopwatch
             self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+            innerSum = times.sum
             self.targetTimeLabel.text = "Target Time".localized()
         }
         
@@ -416,7 +419,7 @@ extension StopwatchViewController {
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
-        let newInnerProgressPer = Float(times.sum) / Float(goalPeriod)
+        let newInnerProgressPer = Float(innerSum) / Float(goalPeriod)
         self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
     }
