@@ -11,9 +11,13 @@ import Combine
 import UserNotifications
 
 final class TimerVM {
-    @Published private(set) var times: Times
+    @Published private(set) var times: Times {
+        didSet {
+            dump(times)
+        }
+    }
     @Published private(set) var daily: Daily
-    @Published private(set) var task: String
+    @Published private(set) var taskName: String
     @Published private(set) var runningUI = false {
         didSet {
             self.timeOfSumViewModel.updateRunning(to: runningUI)
@@ -38,7 +42,7 @@ final class TimerVM {
         let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
         self.times = currentTimes
         self.daily = RecordController.shared.daily
-        self.task = RecordController.shared.recordTimes.recordTask
+        self.taskName = RecordController.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfTimerViewModel = TimerTimeLabelVM(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
         self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
@@ -88,7 +92,8 @@ final class TimerVM {
     }
     
     func updateTask() {
-        self.task = RecordController.shared.recordTimes.recordTask
+        self.taskName = RecordController.shared.recordTimes.recordTask
+        self.updateTimes()
     }
     
     func updateModeNum() {
@@ -96,10 +101,10 @@ final class TimerVM {
         RecordController.shared.recordTimes.updateMode(to: 1)
     }
     
-    func changeTask(to task: String) {
-        self.task = task
-        let taskTime = RecordController.shared.daily.tasks[task] ?? 0
-        RecordController.shared.recordTimes.updateTask(to: task, fromTime: taskTime)
+    func changeTask(to taskName: String) {
+        let currentTaskSumTime = RecordController.shared.daily.tasks[taskName] ?? 0
+        self.taskName = taskName
+        RecordController.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
     }
     
@@ -182,7 +187,7 @@ final class TimerVM {
         let endAt = Date()
         RecordController.shared.daily.update(at: endAt)
         self.updateDaily()
-        RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.task] ?? 0)
+        RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
         RecordController.shared.dailys.addDaily(self.daily)
         self.updateTimes()
     }

@@ -13,10 +13,13 @@ final class RecordController {
     var recordTimes = RecordTimes()
     var daily = Daily()
     var dailys = DailyViewModel()
+    var tasks: [Task] = []
+    var currentTask: Task?
     var showWarningOfRecordDate: Bool = false
     
     private init() {
         self.recordTimes.load()
+        self.loadTasks()
         self.daily.load()
         self.dailys.loadDailys()
         self.configureWarningOfRecordDate()
@@ -30,6 +33,22 @@ final class RecordController {
         if today != self.daily.day.YYYYMMDDstyleString {
             self.showWarningOfRecordDate = true
         }
+    }
+    
+    private func loadTasks() {
+        self.tasks = Storage.retrive(Task.fileName, from: .documents, as: [Task].self) ?? []
+        if self.tasks.isEmpty {
+            self.loadFromUserDefaults()
+        }
+        if let task = tasks.first(where: { $0.taskName == recordTimes.recordTask }) {
+            self.currentTask = task
+        }
+    }
+    
+    private func loadFromUserDefaults() {
+        let taskNames = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
+        guard taskNames.isEmpty == false else { return }
+        self.tasks = taskNames.map { Task($0) }
     }
     
     func modifyRecord(with newDaily: Daily) {

@@ -214,7 +214,7 @@ extension StopwatchViewController {
     }
     
     private func startOrStopTimer() {
-        guard self.viewModel?.task ?? "none" != "none" else {
+        guard self.viewModel?.taskName ?? "none" != "none" else {
             self.showTaskWarningAlert()
             return
         }
@@ -251,7 +251,7 @@ extension StopwatchViewController {
             .store(in: &self.cancellables)
     }
     private func bindTask() {
-        self.viewModel?.$task
+        self.viewModel?.$taskName
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] task in
                 self?.updateTask(to: task)
@@ -403,7 +403,12 @@ extension StopwatchViewController {
     }
     
     private func updateProgress(times: Times) {
-        let goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        let goalPeriod: Int
+        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
+            goalPeriod = currentTask.taskTargetTime
+        } else {
+            goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        }
         
         let newProgressPer = Float(times.stopwatch % self.progressPeriod) / Float(self.progressPeriod)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
