@@ -424,8 +424,10 @@ extension TimerViewController {
         let goalPeriod: Int
         if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
             goalPeriod = currentTask.taskTargetTime
+            self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+            self.targetTimeLabel.text = "Target Time".localized()
         }
         
         let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod-1)
