@@ -53,6 +53,10 @@ final class TaskSelectVM {
     func updateTaskTime(at index: Int, to time: Int) {
         guard self.tasks[safe: index] != nil else { return }
         self.tasks[index].update(taskTime: time)
+        
+        if let currentTask = RecordController.shared.currentTask, currentTask == self.tasks[index] {
+            self.selectedTask = currentTask.taskName
+        }
     }
     
     func updateTaskOn(at index: Int, to isOn: Bool) {

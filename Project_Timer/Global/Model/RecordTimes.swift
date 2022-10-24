@@ -26,7 +26,7 @@ struct RecordTimes: Codable, CustomStringConvertible {
     private var recordingMode: Int = 1 // 기록모드값, 1: timer, 2: stopwatch
     private var savedSumTime: Int = 0 // sum 기준값 및 저장된 sum 값
     private var savedTimerTime: Int = 2400 // timer 기준값 및 저장된 timer 값
-    private var savedStopwatchTime: Int  = 0// stopwath 기준값 및 저장된 stopwatch 값
+    private var savedStopwatchTime: Int  = 0 // stopwath 기준값 및 저장된 stopwatch 값
     private var savedGoalTime: Int = 21600 // 저장된 goalTime 값
     
     private(set) var recordStartTimeline = Array(repeating: 0, count: 24) // 기록시작시 timeline 값    ->
@@ -124,10 +124,11 @@ struct RecordTimes: Codable, CustomStringConvertible {
     func currentTimes() -> Times { // VC 에서 매초
         guard self.recording else {
             if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
-                let goalTime = currentTask.taskTargetTime - self.savedSumTime
-                return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: goalTime)
+                let timerTaskGoal = currentTask.taskTargetTime - self.savedTimerTime
+                let stopwatchTaskGoal = currentTask.taskTargetTime - self.savedStopwatchTime
+                return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime, timerTaskGoal, stopwatchTaskGoal)
             } else {
-                return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
+                return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime)
             }
         }
         
@@ -137,14 +138,14 @@ struct RecordTimes: Codable, CustomStringConvertible {
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
         
-        let currentGoal: Int
+        let currentGoal = self.settedGoalTime - currentSum
         if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
-            currentGoal = currentTask.taskTargetTime - currentSum
+            let timerTaskGoal = currentTask.taskTargetTime - currentTimer
+            let stopwatchTaskGoal = currentTask.taskTargetTime - currentStopwatch
+            return Times(currentSum, currentTimer, currentStopwatch, currentGoal, timerTaskGoal, stopwatchTaskGoal)
         } else {
-            currentGoal = self.settedGoalTime - currentSum
+            return Times(currentSum, currentTimer, currentStopwatch, currentGoal)
         }
-        
-        return Times(sum: currentSum, timer: currentTimer, stopwatch: currentStopwatch, goal: currentGoal)
     }
     // 기록수정된 Daily 기준 sync
     mutating func sync(_ daily: Daily) {
