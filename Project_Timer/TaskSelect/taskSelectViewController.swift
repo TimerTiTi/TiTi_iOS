@@ -149,7 +149,8 @@ extension taskSelectViewController {
     
     private func showAlertEditTargetTime(index: Int, time: Int) {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TaskTargetTimeSettingVC.identifier) as? TaskTargetTimeSettingVC else { return }
-//        colorSelector.configure(target: .timer, delegate: self)
+        guard let task = self.viewModel?.tasks[safe: index] else { return }
+        targetTimeSettingVC.configure(task: task, index: index, delegate: self)
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
@@ -212,5 +213,11 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TaskCell.height
+    }
+}
+
+extension taskSelectViewController: TaskTargetTimeUpdateable {
+    func updateTargetTime(index: Int, to: Int) {
+        //
     }
 }

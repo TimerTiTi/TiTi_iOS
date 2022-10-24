@@ -31,7 +31,7 @@ final class TaskCell: UITableViewCell {
     
     @IBAction func toggleTargetTime(_ sender: UISwitch) {
         UIView.animate(withDuration: 0.3) {
-            self.taskNameLabelTopConst.constant = sender.isOn ? 8 : 15
+            self.taskNameLabelTopConst.constant = sender.isOn ? 8 : 16
             self.taskTargetTimesStackView.alpha = sender.isOn ? 1 : 0
             self.editTaskTargetTimeButton.alpha = sender.isOn ? 1 : 0
             self.layoutIfNeeded()
@@ -49,7 +49,7 @@ final class TaskCell: UITableViewCell {
         self.taskTargetTimeSwitch.isOn = task.isTaskTargetTimeOn
         self.taskTargetTimeLabel.text = "Setted Target Time:".localized()
         self.taskTargetTime.text = task.taskTargetTime.toTimeString
-        self.taskNameLabelTopConst.constant = task.isTaskTargetTimeOn ? 8 : 15
+        self.taskNameLabelTopConst.constant = task.isTaskTargetTimeOn ? 8 : 16
         self.taskTargetTimesStackView.alpha = task.isTaskTargetTimeOn ? 1 : 0
         self.editTaskTargetTimeButton.alpha = task.isTaskTargetTimeOn ? 1 : 0
     }
