@@ -217,7 +217,8 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension taskSelectViewController: TaskTargetTimeUpdateable {
-    func updateTargetTime(index: Int, to: Int) {
-        //
+    func updateTargetTime(index: Int, to time: Int) {
+        self.viewModel?.updateTaskTime(at: index, to: time)
+        self.tasksTableView.reloadData()
     }
 }
