@@ -220,7 +220,7 @@ extension TimerViewController {
     }
     
     private func startOrStopTimer() {
-        guard self.viewModel?.task ?? "none" != "none" else {
+        guard self.viewModel?.taskName ?? "none" != "none" else {
             self.showTaskWarningAlert()
             return
         }
@@ -258,7 +258,7 @@ extension TimerViewController {
             .store(in: &self.cancellables)
     }
     private func bindTask() {
-        self.viewModel?.$task
+        self.viewModel?.$taskName
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] task in
                 self?.updateTask(to: task)
@@ -421,7 +421,12 @@ extension TimerViewController {
     
     private func updateProgress(times: Times) {
         let timerPeriod = self.viewModel?.settedTimerTime ?? 2400
-        let goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        let goalPeriod: Int
+        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
+            goalPeriod = currentTask.taskTargetTime
+        } else {
+            goalPeriod = self.viewModel?.settedGoalTime ?? 21600
+        }
         
         let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod-1)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
