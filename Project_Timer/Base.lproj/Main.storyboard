@@ -4733,16 +4733,16 @@
             </objects>
             <point key="canvasLocation" x="1533.8461538461538" y="1586.7298578199052"/>
         </scene>
-        <!--View Controller-->
+        <!--Time Selector PopupVC-->
         <scene sceneID="CH9-I0-0Ej">
             <objects>
-                <viewController id="ZEw-JN-1ta" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeSelectorPopupVC" id="ZEw-JN-1ta" customClass="TimeSelectorPopupVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qyU-nn-6wy">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfU-XG-eIp">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                             </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1nh-RH-3Kr"/>
@@ -4754,15 +4754,15 @@
                             <constraint firstItem="1nh-RH-3Kr" firstAttribute="trailing" secondItem="hfU-XG-eIp" secondAttribute="trailing" id="qNh-t3-ESX"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="250" height="150"/>
-                    <size key="freeformSize" width="250" height="150"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="150" height="150"/>
+                    <size key="freeformSize" width="150" height="150"/>
                     <connections>
-                        <outlet property="picker" destination="hfU-XG-eIp" id="Avu-Za-a3F"/>
+                        <outlet property="picker" destination="hfU-XG-eIp" id="myw-Ju-rpo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mq-gL-TEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1534" y="1725"/>
+            <point key="canvasLocation" x="1533.8461538461538" y="1724.6445497630332"/>
         </scene>
     </scenes>
     <resources>
