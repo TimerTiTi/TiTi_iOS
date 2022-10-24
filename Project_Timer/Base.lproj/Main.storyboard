@@ -3163,13 +3163,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-3k-frA">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="146" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
                                                             <rect key="frame" x="0.0" y="24" width="146" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4617,57 +4617,90 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qwS-9y-cDa">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wuR-FO-5eJ">
                                 <rect key="frame" x="22" y="75.333333333333329" width="216" height="40"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="H" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUV-wz-uA4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXG-Ww-7Dz">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
-                                        <color key="backgroundColor" name="Click"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="WLV-Lh-hqF"/>
-                                            <constraint firstAttribute="height" constant="40" id="zlL-GC-bYx"/>
+                                            <constraint firstAttribute="height" constant="40" id="VRF-FA-BAv"/>
+                                            <constraint firstAttribute="width" constant="60" id="ybs-vu-dgM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWt-pV-Iv4">
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="H">
+                                            <color key="titleColor" systemColor="tertiaryLabelColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showMenus:" destination="ud6-Si-s7U" eventType="touchUpInside" id="llq-Ru-J6L"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZL-BD-Mda">
                                         <rect key="frame" x="61" y="0.0" width="16" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="kAK-9u-AHO"/>
-                                            <constraint firstAttribute="width" constant="16" id="xsk-1Z-nQI"/>
+                                            <constraint firstAttribute="width" constant="16" id="5pR-io-occ"/>
+                                            <constraint firstAttribute="height" constant="40" id="gEN-mQ-NZW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="M" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qKC-VR-NiU">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-dx-yHx">
                                         <rect key="frame" x="78" y="0.0" width="60" height="40"/>
-                                        <color key="backgroundColor" name="Click"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="fKj-3f-hcW"/>
-                                            <constraint firstAttribute="height" constant="40" id="zwC-Ht-AWZ"/>
+                                            <constraint firstAttribute="height" constant="40" id="1gl-ry-NwN"/>
+                                            <constraint firstAttribute="width" constant="60" id="uQt-q7-2q1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FY-Ap-hgO">
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="M">
+                                            <color key="titleColor" systemColor="tertiaryLabelColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showMenus:" destination="ud6-Si-s7U" eventType="touchUpInside" id="N9j-dF-KSj"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SB-FR-CfL">
                                         <rect key="frame" x="139" y="0.0" width="16" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="DmD-pV-LI7"/>
-                                            <constraint firstAttribute="height" constant="40" id="dkj-J3-Gbq"/>
+                                            <constraint firstAttribute="width" constant="16" id="0be-lH-6ey"/>
+                                            <constraint firstAttribute="height" constant="40" id="mvN-0i-hvo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="S" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWO-39-57W">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypK-7z-2iW">
                                         <rect key="frame" x="156" y="0.0" width="60" height="40"/>
-                                        <color key="backgroundColor" name="Click"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="2Q9-EK-D23"/>
-                                            <constraint firstAttribute="height" constant="40" id="hQX-Er-aN9"/>
+                                            <constraint firstAttribute="width" constant="60" id="7B8-p2-r52"/>
+                                            <constraint firstAttribute="height" constant="40" id="plV-3x-MkD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="22"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="S">
+                                            <color key="titleColor" systemColor="tertiaryLabelColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showMenus:" destination="ud6-Si-s7U" eventType="touchUpInside" id="CqC-7E-hda"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -4676,8 +4709,8 @@
                             <constraint firstItem="gnw-fr-ljf" firstAttribute="top" secondItem="eZV-xI-cDZ" secondAttribute="top" constant="22" id="8zT-XJ-PNw"/>
                             <constraint firstItem="GnY-4E-ayQ" firstAttribute="top" secondItem="gnw-fr-ljf" secondAttribute="bottom" constant="4" id="Arb-YQ-GXq"/>
                             <constraint firstItem="gnw-fr-ljf" firstAttribute="centerX" secondItem="2sl-Zr-vRp" secondAttribute="centerX" id="BWl-qw-L4w"/>
-                            <constraint firstItem="qwS-9y-cDa" firstAttribute="centerX" secondItem="2sl-Zr-vRp" secondAttribute="centerX" id="IDk-cG-Wlw"/>
-                            <constraint firstItem="qwS-9y-cDa" firstAttribute="top" secondItem="GnY-4E-ayQ" secondAttribute="bottom" constant="16" id="kN0-vn-g8b"/>
+                            <constraint firstItem="wuR-FO-5eJ" firstAttribute="top" secondItem="GnY-4E-ayQ" secondAttribute="bottom" constant="16" id="MmN-pM-Av4"/>
+                            <constraint firstItem="wuR-FO-5eJ" firstAttribute="centerX" secondItem="2sl-Zr-vRp" secondAttribute="centerX" id="isE-1t-9R7"/>
                             <constraint firstItem="GnY-4E-ayQ" firstAttribute="centerX" secondItem="gnw-fr-ljf" secondAttribute="centerX" id="krS-Km-Y71"/>
                         </constraints>
                     </view>
@@ -4689,9 +4722,9 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="hourTextField" destination="WUV-wz-uA4" id="O6Q-sn-5dF"/>
-                        <outlet property="minuteTextField" destination="qKC-VR-NiU" id="Z0u-ce-Wvr"/>
-                        <outlet property="secondTextField" destination="mWO-39-57W" id="B4R-Vd-fqB"/>
+                        <outlet property="hourButton" destination="yXG-Ww-7Dz" id="b0e-fd-IkZ"/>
+                        <outlet property="minuteButton" destination="f1z-dx-yHx" id="Y0F-HO-3aL"/>
+                        <outlet property="secondButton" destination="ypK-7z-2iW" id="kjW-nr-uKc"/>
                         <outlet property="subTitleLabel" destination="GnY-4E-ayQ" id="Ckx-Sq-rGa"/>
                         <outlet property="taskNameLabel" destination="gnw-fr-ljf" id="Pl3-OQ-6se"/>
                     </connections>
@@ -4699,6 +4732,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1A-3l-3fF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1533.8461538461538" y="1586.7298578199052"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CH9-I0-0Ej">
+            <objects>
+                <viewController id="ZEw-JN-1ta" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qyU-nn-6wy">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfU-XG-eIp">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1nh-RH-3Kr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1nh-RH-3Kr" firstAttribute="bottom" secondItem="hfU-XG-eIp" secondAttribute="bottom" id="BFo-ez-RT8"/>
+                            <constraint firstAttribute="top" secondItem="hfU-XG-eIp" secondAttribute="top" id="DmK-EE-h39"/>
+                            <constraint firstItem="1nh-RH-3Kr" firstAttribute="leading" secondItem="hfU-XG-eIp" secondAttribute="leading" id="ONv-nj-XhO"/>
+                            <constraint firstItem="1nh-RH-3Kr" firstAttribute="trailing" secondItem="hfU-XG-eIp" secondAttribute="trailing" id="qNh-t3-ESX"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="250" height="150"/>
+                    <size key="freeformSize" width="250" height="150"/>
+                    <connections>
+                        <outlet property="picker" destination="hfU-XG-eIp" id="Avu-Za-a3F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8mq-gL-TEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="1725"/>
         </scene>
     </scenes>
     <resources>
@@ -4838,6 +4902,12 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
             <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>

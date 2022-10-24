@@ -66,7 +66,7 @@ extension SettingRecordVC {
 extension SettingRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellInfo = self.viewModel?.cellInfos[safe: indexPath.item] else { return }
-        self.popoverEditDateVC(on: collectionView.cellForItem(at: indexPath)!, key: cellInfo.key) { [weak self] in
+        self.popoverVC(on: collectionView.cellForItem(at: indexPath)!, key: cellInfo.key) { [weak self] in
             self?.settingCells.reloadItems(at: [indexPath])
         }
     }
@@ -95,9 +95,9 @@ extension SettingRecordVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: DatePicker 띄우기
+// MARK: PickerView
 extension SettingRecordVC: UIPopoverPresentationControllerDelegate {
-    func popoverEditDateVC(on sourceView: UIView, key: UserDefaultsManager.Keys, handler: @escaping TargetTimeHandelr) {
+    func popoverVC(on sourceView: UIView, key: UserDefaultsManager.Keys, handler: @escaping TargetTimeHandelr) {
         guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: TargetTimePickerPopupVC.identifier) as? TargetTimePickerPopupVC else { return }
         
         pickerVC.modalPresentationStyle = .popover
