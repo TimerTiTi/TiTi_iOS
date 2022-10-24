@@ -24,28 +24,41 @@ final class TaskTargetTimeSettingVC: UIViewController {
     private var task: Task!
     private var index: Int!
     private var settedTargetTime: Int!
+    private var hour: Int!
+    private var minute: Int!
+    private var second: Int!
     private weak var delegate: TaskTargetTimeUpdateable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureLocalized()
+        self.configureTask()
         self.updateTargetTime()
     }
     
     func configure(task: Task, index: Int, delegate: TaskTargetTimeUpdateable) {
         self.task = task
         self.index = index
-        self.settedTargetTime = task.taskTargetTime
         self.delegate = delegate
     }
     
-    
     @IBAction func showMenus(_ sender: UIButton) {
-        let targetButton: UIButton
         switch sender.tag {
-        case 0: targetButton = self.hourButton
-        case 1: targetButton = self.minuteButton
-        case 2: targetButton = self.secondButton
+        case 0:
+            self.popoverVC(on: self.hourButton, type: .hour) { [weak self] hour in
+                self?.hour = hour
+                self?.updateSettedTargetTime()
+            }
+        case 1:
+            self.popoverVC(on: self.minuteButton, type: .minute) { [weak self] minute in
+                self?.minute = minute
+                self?.updateSettedTargetTime()
+            }
+        case 2:
+            self.popoverVC(on: self.secondButton, type: .second) { [weak self] second in
+                self?.second = second
+                self?.updateSettedTargetTime()
+            }
         default: return
         }
     }
@@ -53,18 +66,27 @@ final class TaskTargetTimeSettingVC: UIViewController {
 
 extension TaskTargetTimeSettingVC {
     private func configureLocalized() {
-        self.taskNameLabel.text = task.taskName
         self.subTitleLabel.text = "Setting Target Time".localized()
     }
     
+    private func configureTask() {
+        self.taskNameLabel.text = task.taskName
+        self.settedTargetTime = task.taskTargetTime
+        self.hour = settedTargetTime/3600
+        self.second = settedTargetTime%60
+        self.minute = settedTargetTime/60 - 60*hour
+    }
+    
+    private func updateSettedTargetTime() {
+        self.settedTargetTime = self.hour*3600 + self.minute*60 + self.second
+        self.updateTargetTime()
+        self.delegate?.updateTargetTime(index: self.index, to: self.settedTargetTime)
+    }
+    
     private func updateTargetTime() {
-        let h = self.settedTargetTime/3600
-        let s = self.settedTargetTime%60
-        let m = self.settedTargetTime/60 - 60*h
-        
-        self.setButtonTitle(button: self.hourButton, time: h, "H")
-        self.setButtonTitle(button: self.minuteButton, time: m, "M")
-        self.setButtonTitle(button: self.secondButton, time: s, "S")
+        self.setButtonTitle(button: self.hourButton, time: hour, "H")
+        self.setButtonTitle(button: self.minuteButton, time: minute, "M")
+        self.setButtonTitle(button: self.secondButton, time: second, "S")
     }
     
     private func setButtonTitle(button: UIButton, time: Int, _ placeHolder: String) {
@@ -80,14 +102,13 @@ extension TaskTargetTimeSettingVC {
 
 // MARK: PickerView
 extension TaskTargetTimeSettingVC: UIPopoverPresentationControllerDelegate {
-    func popoverVC(on sourceView: UIView, key: UserDefaultsManager.Keys, handler: @escaping TargetTimeHandelr) {
-        guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: TargetTimePickerPopupVC.identifier) as? TargetTimePickerPopupVC else { return }
+    func popoverVC(on sourceView: UIView, type: TimeSelectorPopupVC.type, handler: @escaping SelectTimeHandler) {
+        guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: TimeSelectorPopupVC.identifier) as? TimeSelectorPopupVC else { return }
         
         pickerVC.modalPresentationStyle = .popover
         pickerVC.popoverPresentationController?.sourceView = sourceView
         pickerVC.popoverPresentationController?.delegate = self
-        let viewModel = TargetTimePickerVM(key: key)
-        pickerVC.configure(viewModel: viewModel, handler: handler)
+        pickerVC.configure(type: type, handler: handler)
         
         present(pickerVC, animated: true)
     }
