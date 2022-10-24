@@ -10,8 +10,12 @@ import Foundation
 import Combine
 
 final class TaskSelectVM {
-    static let fileName = "tasks.json"
-    @Published private(set) var tasks: [Task] = []
+    @Published private(set) var tasks: [Task] = [] {
+        didSet {
+            RecordController.shared.tasks = self.tasks
+            self.saveTasks()
+        }
+    }
     @Published private(set) var selectedTask: String?
     
     init() {
@@ -19,32 +23,21 @@ final class TaskSelectVM {
     }
     
     private func loadTasks() {
-        self.tasks = Storage.retrive(Self.fileName, from: .documents, as: [Task].self) ?? []
-        if self.tasks.isEmpty {
-            self.loadFromUserDefaults()
-        }
-    }
-    
-    private func loadFromUserDefaults() {
-        let taskNames = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
-        guard taskNames.isEmpty == false else { return }
-        self.tasks = taskNames.map { Task($0) }
+        self.tasks = RecordController.shared.tasks
     }
     
     private func saveTasks() {
-        Storage.store(self.tasks, to: .documents, as: Self.fileName)
+        Storage.store(self.tasks, to: .documents, as: Task.fileName)
     }
     
     func addNewTask(taskName: String) {
         let newTask = Task(taskName)
         self.tasks.append(newTask)
-        self.saveTasks()
     }
     
     func deleteTask(at index: Int) {
         guard let targetTask = self.tasks[safe: index] else { return }
         self.tasks.removeAll(where: { $0.taskName == targetTask.taskName })
-        self.saveTasks()
     }
     
     func isSameNameExist(name: String) -> Bool {
@@ -55,19 +48,20 @@ final class TaskSelectVM {
         guard self.tasks[safe: index] != nil else { return }
         self.resetTaskname(before: self.tasks[index].taskName, after: text)
         self.tasks[index].update(taskName: text)
-        self.saveTasks()
     }
     
     func updateTaskTime(at index: Int, to time: Int) {
         guard self.tasks[safe: index] != nil else { return }
         self.tasks[index].update(taskTime: time)
-        self.saveTasks()
     }
     
     func updateTaskOn(at index: Int, to isOn: Bool) {
         guard self.tasks[safe: index] != nil else { return }
         self.tasks[index].update(isOn: isOn)
-        self.saveTasks()
+        
+        if let currentTask = RecordController.shared.currentTask, currentTask == self.tasks[index] {
+            self.selectedTask = currentTask.taskName
+        }
     }
     
     func moveTask(fromIndex: Int, toIndex: Int) {
@@ -75,7 +69,6 @@ final class TaskSelectVM {
         let targetTask = tasks.remove(at: fromIndex)
         tasks.insert(targetTask, at: toIndex)
         self.tasks = tasks
-        self.saveTasks()
     }
     
     private func resetTaskname(before: String, after: String) {

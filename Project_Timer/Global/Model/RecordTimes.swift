@@ -37,6 +37,9 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.recordTask = taskName
         self.recordTaskFromTime = fromTime
         self.savedStopwatchTime = fromTime
+        if let task = RecordController.shared.tasks.first(where: { $0.taskName == taskName }) {
+            RecordController.shared.currentTask = task
+        }
         self.save()
     }
     // mode 를 변경할 경우 반영 (기록하기 전 반영)
@@ -120,15 +123,27 @@ struct RecordTimes: Codable, CustomStringConvertible {
     
     func currentTimes() -> Times { // VC 에서 매초
         guard self.recording else {
-            return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
+            if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
+                let goalTime = currentTask.taskTargetTime - self.savedSumTime
+                return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: goalTime)
+            } else {
+                return Times(sum: self.savedSumTime, timer: self.savedTimerTime, stopwatch: self.savedStopwatchTime, goal: self.savedGoalTime)
+            }
         }
         
         let currentAt = Date()
         let interval = Date.interval(from: self.recordStartAt, to: currentAt)
         let currentSum = self.savedSumTime + interval
-        let currentGoal = self.settedGoalTime - currentSum
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
+        
+        let currentGoal: Int
+        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
+            currentGoal = currentTask.taskTargetTime - currentSum
+        } else {
+            currentGoal = self.settedGoalTime - currentSum
+        }
+        
         return Times(sum: currentSum, timer: currentTimer, stopwatch: currentStopwatch, goal: currentGoal)
     }
     // 기록수정된 Daily 기준 sync
