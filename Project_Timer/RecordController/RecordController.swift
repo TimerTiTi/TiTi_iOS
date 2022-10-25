@@ -17,6 +17,18 @@ final class RecordController {
     var currentTask: Task?
     var showWarningOfRecordDate: Bool = false
     
+    var currentTaskSumTime: Int {
+        if let taskName = currentTask?.taskName {
+            return daily.tasks[taskName] ?? 0
+        } else { return 0 }
+    }
+    var isTaskGargetOn: Bool {
+        return self.currentTask?.isTaskTargetTimeOn ?? false
+    }
+    var remainingTaskTime: Int {
+        return (currentTask?.taskTargetTime ?? 0) - currentTaskSumTime
+    }
+    
     private init() {
         self.recordTimes.load()
         self.loadTasks()

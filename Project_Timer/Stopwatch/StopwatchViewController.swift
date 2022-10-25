@@ -236,7 +236,7 @@ extension StopwatchViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] times in
                 self?.updateTIMELabels(times: times)
-                self?.updateEndTime(goalTime: times.goal)
+                self?.updateEndTime(goalTime: RecordController.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
                 self?.updateProgress(times: times)
 //                self?.printTimes(with: times)
             })
@@ -405,9 +405,9 @@ extension StopwatchViewController {
     private func updateProgress(times: Times) {
         let goalPeriod: Int
         let innerSum: Int
-        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
-            goalPeriod = currentTask.taskTargetTime
-            innerSum = times.stopwatch
+        if RecordController.shared.isTaskGargetOn {
+            goalPeriod = RecordController.shared.currentTask?.taskTargetTime ?? 3600
+            innerSum = times.remainingTaskTime
             self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600
