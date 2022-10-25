@@ -75,9 +75,8 @@ final class StopwatchVM {
         self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
         
-        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn,
-           let stopwatchTaskGoal = self.times.stopwatchTaskGoal {
-            self.timeOfTargetViewModel.updateTime(stopwatchTaskGoal, showsAnimation: self.showAnimation)
+        if RecordController.shared.isTaskGargetOn {
+            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
             self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
         }

@@ -123,13 +123,8 @@ struct RecordTimes: Codable, CustomStringConvertible {
     
     func currentTimes() -> Times { // VC 에서 매초
         guard self.recording else {
-            if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
-                let timerTaskGoal = currentTask.taskTargetTime - self.savedTimerTime
-                let stopwatchTaskGoal = currentTask.taskTargetTime - self.savedStopwatchTime
-                return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime, timerTaskGoal, stopwatchTaskGoal)
-            } else {
-                return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime)
-            }
+            let remainingTaskTime = RecordController.shared.remainingTaskTime
+            return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime, remainingTaskTime)
         }
         
         let currentAt = Date()
@@ -137,15 +132,10 @@ struct RecordTimes: Codable, CustomStringConvertible {
         let currentSum = self.savedSumTime + interval
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
-        
         let currentGoal = self.settedGoalTime - currentSum
-        if let currentTask = RecordController.shared.currentTask, currentTask.isTaskTargetTimeOn {
-            let timerTaskGoal = currentTask.taskTargetTime - currentTimer
-            let stopwatchTaskGoal = currentTask.taskTargetTime - currentStopwatch
-            return Times(currentSum, currentTimer, currentStopwatch, currentGoal, timerTaskGoal, stopwatchTaskGoal)
-        } else {
-            return Times(currentSum, currentTimer, currentStopwatch, currentGoal)
-        }
+        let remainingTaskTime = RecordController.shared.remainingTaskTime - interval
+        
+        return Times(currentSum, currentTimer, currentStopwatch, currentGoal, remainingTaskTime)
     }
     // 기록수정된 Daily 기준 sync
     mutating func sync(_ daily: Daily) {

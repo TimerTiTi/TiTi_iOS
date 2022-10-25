@@ -13,25 +13,14 @@ struct Times {
     let timer: Int
     let stopwatch: Int
     let goal: Int
-    let timerTaskGoal: Int?
-    let stopwatchTaskGoal: Int?
+    let remainingTaskTime: Int
     
-    init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int) {
+    init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int, _ remainingTaskTime: Int) {
         self.sum = sum
         self.timer = timer
         self.stopwatch = stopwatch
         self.goal = goal
-        self.timerTaskGoal = nil
-        self.stopwatchTaskGoal = nil
-    }
-    
-    init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int, _ timerTaskGoal: Int, _ stopwatchTaskGoal: Int) {
-        self.sum = sum
-        self.timer = timer
-        self.stopwatch = stopwatch
-        self.goal = goal
-        self.timerTaskGoal = timerTaskGoal
-        self.stopwatchTaskGoal = stopwatchTaskGoal
+        self.remainingTaskTime = remainingTaskTime
     }
 }
 
