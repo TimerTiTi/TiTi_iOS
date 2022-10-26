@@ -5,7 +5,7 @@
         "color-space" : "display-p3",
         "components" : {
           "alpha" : "1.000",
-          "blue" : "0xEA",
+          "blue" : "0xE5",
           "green" : "0xC0",
           "red" : "0xA5"
         }

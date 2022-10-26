@@ -44,7 +44,7 @@ class SetViewController: UIViewController {
     var s1 = 0
     var s2 = 0
     
-    let BLUE = TiTiColor.blue
+    let BLUE = TiTiColor.background
     
     override func viewDidLoad() {
         super.viewDidLoad()

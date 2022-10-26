@@ -65,7 +65,7 @@ extension ColorSelectorVC {
         
         switch self.target {
         case .timer:
-            self.backgroundColor = TiTiColor.blue
+            self.backgroundColor = TiTiColor.background
             if let color = UserDefaults.standard.colorForKey(key: .timerBackground) {
                 self.backgroundColor = color
             }
