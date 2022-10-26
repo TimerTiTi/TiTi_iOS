@@ -407,7 +407,7 @@ extension StopwatchViewController {
         let innerSum: Int
         if RecordController.shared.isTaskGargetOn {
             goalPeriod = RecordController.shared.currentTask?.taskTargetTime ?? 3600
-            innerSum = times.remainingTaskTime
+            innerSum = goalPeriod - times.remainingTaskTime
             self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600

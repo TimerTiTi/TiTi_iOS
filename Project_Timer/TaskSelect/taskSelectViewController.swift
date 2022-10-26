@@ -19,6 +19,7 @@ final class taskSelectViewController: UIViewController {
     weak var delegate: TaskChangeable?
     private var viewModel: TaskSelectVM?
     private var cancellables: Set<AnyCancellable> = []
+    private var tintColor: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,16 @@ final class taskSelectViewController: UIViewController {
     
     @IBAction func edit() {
         self.tasksTableView.setEditing(!self.tasksTableView.isEditing, animated: true)
+        self.editButton.setTitle(self.tasksTableView.isEditing ? "Done" : "Edit", for: .normal)
     }
 }
 
 // MARK: Configure
 extension taskSelectViewController {
     private func configureColor() {
-        
+        self.tintColor = UIColor(named: String.userTintColor)
+        self.editButton.setTitleColor(self.tintColor, for: .normal)
+        self.newTaskButton.tintColor = self.tintColor
     }
     
     private func configureTableView() {
@@ -171,7 +175,7 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
         }
         guard let task = self.viewModel?.tasks[safe: indexPath.row] else { return cell }
         
-        cell.configure(task: task, color: UIColor(named: "D1"))
+        cell.configure(task: task, color: self.tintColor)
         cell.toggleTargetTime = { [weak self] isOn in
             self?.viewModel?.updateTaskOn(at: indexPath.row, to: isOn)
         }
