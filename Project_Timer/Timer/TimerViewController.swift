@@ -676,7 +676,7 @@ extension TimerViewController: ColorUpdateable {
         if let color = UserDefaults.standard.colorForKey(key: .timerBackground) {
             self.backgroundColor = color
         }
-        let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
+        let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? false
         self.textColor = isWhite ? .white : .black.withAlphaComponent(0.55)
         self.secondTextColor = isWhite ? .black.withAlphaComponent(0.6) : .white.withAlphaComponent(0.7)
         self.setStopColor()
