@@ -639,7 +639,7 @@ extension StopwatchViewController: ColorUpdateable {
         } else if let color = UserDefaults.standard.colorForKey(key: .color) {
             self.backgroundColor = color
         }
-        let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
+        let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? false
         self.textColor = isWhite ? .white : .black.withAlphaComponent(0.55)
         self.secondTextColor = isWhite ? .black.withAlphaComponent(0.6) : .white.withAlphaComponent(0.7)
         self.setStopColor()
