@@ -10,6 +10,7 @@ import UIKit
 
 enum TiTiColor {
     static let shadow = UIColor(named: "shadow")
+    static let background = UIColor(named: "Background")
     static let background2 = UIColor(named: "Background2")
     static let blue = UIColor(named: "Blue")
     static let button = UIColor(named: "Button")
