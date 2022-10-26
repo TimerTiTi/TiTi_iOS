@@ -42,7 +42,7 @@ class TimerViewController: UIViewController {
         return view
     }()
     
-    private var backgroundColor = TiTiColor.blue
+    private var backgroundColor = TiTiColor.background
     private var textColor = UIColor.white
     private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
     let RED = TiTiColor.text
@@ -425,7 +425,7 @@ extension TimerViewController {
         let innerSum: Int
         if RecordController.shared.isTaskGargetOn {
             goalPeriod = RecordController.shared.currentTask?.taskTargetTime ?? 3600
-            innerSum = times.remainingTaskTime
+            innerSum = goalPeriod - times.remainingTaskTime
             self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600

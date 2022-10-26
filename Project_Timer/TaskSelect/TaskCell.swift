@@ -57,7 +57,7 @@ final class TaskCell: UITableViewCell {
 
 extension TaskCell {
     private func configureColor(color: UIColor?) {
-        self.editTaskTargetTimeButton.tintColor = color
+        self.editTaskTargetTimeButton.setTitleColor(color, for: .normal)
         self.taskTargetTimeSwitch.onTintColor = color
         self.taskTargetTimeSwitch.tintColor = color
     }

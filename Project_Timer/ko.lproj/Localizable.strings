@@ -55,13 +55,13 @@
 
 "Total : " = "누적 : ";
 
-"New task" = "새로운 과목";
+"New task" = "새로운 Task";
 
-"Task name's max length is 20" = "12자리 내의 새로운 과목명을 입력하세요";
+"Task name's max length is 20" = "12자리 내의 새로운 Task명을 입력하세요";
 
-"Create a new task" = "과목을 생성해주세요";
+"Create a new task" = "Task를 생성해주세요";
 
-"before start recording, Create a new Task, and select that" = "기록을 위해서 과목생성 후 선택해주세요";
+"before start recording, Create a new Task, and select that" = "기록을 위해서 Task생성 후 선택해주세요";
 
 "Setting today's times" = "오늘의 시간을 설정하세요";
 
@@ -79,7 +79,7 @@
 
 "How to use TiTi?" = "TiTi 사용방법";
 
-"Modify task's name" = "과목명 수정";
+"Modify task's name" = "Task명 수정";
 
 "Modify Todo's content" = "내용 수정";
 
@@ -167,9 +167,9 @@
 
 "No record exists to modify." = "수정할 기록이 존재하지 않습니다.";
 
-"Modify Task Name" = "과목명 수정";
+"Modify Task Name" = "Task명 수정";
 
-"Enter Task Name" = "과목명 입력";
+"Enter Task Name" = "Task명 입력";
 
 "Your changes have been saved." = "변경 사항이 저장되었습니다.";
 
@@ -177,21 +177,21 @@
 
 "Changes will be removed." = "변경 사항이 제거됩니다.";
 
-"The same task name already exists." = "동일한 과목명이 존재합니다.";
+"The same task name already exists." = "동일한 Task가 존재합니다.";
 
-"Please enter a new task." = "새로운 과목을 입력해주세요";
+"Please enter a new task." = "새로운 Task를 입력해주세요";
 
 "Create Record" = "기록 생성";
 
 "Please wait for updates :)" = "추가 업데이트를 기다려주세요!";
 
-"Enter the new Task's name" = "과목명을 입력해주세요";
+"Enter the new Task's name" = "Task명을 입력해주세요";
 
 "StartAt" = "시작 시각";
 
 "EndAt" = "종료 시각";
 
-"Select a task, Edit the record\nand press the SAVE button" = "과목을 선택하여 기록수정 후\nSAVE를 눌러주세요";
+"Select a task, Edit the record\nand press the SAVE button" = "Task를 선택하여 기록수정 후\nSAVE를 눌러주세요";
 
 "Click a \"+ New Task\", Create the record\nand press the SAVE button" = "\"+ 기록 추가\" 를 눌러 기록생성 후\nSAVE를 눌러주세요";
 
@@ -231,8 +231,8 @@
 
 "Setted Target Time:" = "목표시간 설정:";
 
-"Same task exist" = "동일한 과목 존재";
+"Same task exist" = "동일한 Task 존재";
 
-"Try to another task's name" = "다른 과목명을 입력해주세요";
+"Try to another task's name" = "다른 Task명을 입력해주세요";
 
 "Setting Target Time" = "목표시간 설정";
