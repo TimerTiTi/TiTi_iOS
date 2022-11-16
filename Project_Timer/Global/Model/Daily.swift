@@ -12,7 +12,12 @@ struct TaskHistory: Codable, Equatable {
     var startDate: Date
     var endDate: Date
     var interval: Int {
-        return Date.interval(from: startDate, to: endDate)
+        let interval = Date.interval(from: startDate, to: endDate)
+        if interval > 0 {
+            return interval
+        } else {
+            return 24*3600 + interval
+        }
     }
     
     mutating func updateStartDate(to date: Date) {
