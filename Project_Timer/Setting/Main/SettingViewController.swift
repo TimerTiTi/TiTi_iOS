@@ -81,6 +81,23 @@ extension SettingViewController: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.viewModel?.sectionTitles.count ?? 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item],
+              let action = cellInfo.action else { return }
+        
+        switch action {
+        case .pushVC:
+            guard let nextVCIndentifier = cellInfo.nextVCIdentifier else { return }
+            self.pushVC(nextVCIdentifier: nextVCIndentifier)
+        case .goSafari:
+            guard let url = cellInfo.url else { return }
+            self.goSafari(url: url)
+        case .deeplink:
+            guard let link = cellInfo.url else { return }
+            self.deeplink(link: link)
+        }
+    }
 }
 
 extension SettingViewController: UICollectionViewDataSource {
@@ -97,7 +114,7 @@ extension SettingViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingCell.identifier, for: indexPath) as? SettingCell else { return UICollectionViewCell() }
             guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item] else { return cell }
-            cell.configure(with: cellInfo, delegate: self)
+            cell.configure(with: cellInfo)
             
             return cell
         }
@@ -129,23 +146,21 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension SettingViewController: SettingActionDelegate {
     func pushVC(nextVCIdentifier: String) {
-        print("push")
         if nextVCIdentifier == "showBackup" {
             // test code
             let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let activityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
-            
+
             if UIDevice.current.userInterfaceIdiom == .pad {
                 activityViewController.popoverPresentationController?.sourceView = self.view
                 activityViewController.popoverPresentationController?.sourceRect = self.navigationController!.navigationBar.frame
             }
-            
+
             self.present(activityViewController, animated: true)
-            return
+        } else {
+            guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
-        
-        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
-        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func goSafari(url: String) {

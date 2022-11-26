@@ -59,7 +59,7 @@ final class SettingVM {
                 SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier)
             ],
             [
-                SettingCellInfo(title: "Backup", nextVCIdentifier: "showBackup")
+                SettingCellInfo(title: "Get stored JSON files".localized(), nextVCIdentifier: "showBackup")
             ],
             [
                 SettingCellInfo(title: "FDEE")
