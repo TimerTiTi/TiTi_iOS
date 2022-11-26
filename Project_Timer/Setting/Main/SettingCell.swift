@@ -29,7 +29,6 @@ final class SettingCell: UICollectionViewCell {
         self.toggleSwitch.setOn(sender.isOn, animated: true)
     }
     
-    private weak var delegate: SettingActionDelegate?
     private var info: SettingCellInfo?
     
     override func awakeFromNib() {
@@ -47,40 +46,13 @@ final class SettingCell: UICollectionViewCell {
         self.toggleSwitch.isHidden = true
     }
     
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                self.touchAction()
-                self.isSelected = false
-            }
-        }
-    }
-    
-    func configure(with info: SettingCellInfo, delegate: SettingActionDelegate) {
-        self.delegate = delegate
+    func configure(with info: SettingCellInfo) {
         self.info = info
         self.configureUI(with: info)
         
         if let key = info.toggleKey, info.switchable {
             self.configureSwitchColor()
             self.configureSwitch(key: key)
-        }
-    }
-    
-    private func touchAction() {
-        print("touch action")
-        guard let info = self.info,
-              let action = info.action else { return }
-        switch action {
-        case .pushVC:
-            guard let nextVCIndentifier = info.nextVCIdentifier else { return }
-            self.delegate?.pushVC(nextVCIdentifier: nextVCIndentifier)
-        case .goSafari:
-            guard let url = info.url else { return }
-            self.delegate?.goSafari(url: url)
-        case .deeplink:
-            guard let link = info.url else { return }
-            self.delegate?.deeplink(link: link)
         }
     }
     
