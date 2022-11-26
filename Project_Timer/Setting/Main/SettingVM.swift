@@ -25,6 +25,7 @@ final class SettingVM {
         self.sectionTitles.append("Control")
         self.sectionTitles.append("Record")
         self.sectionTitles.append("Version & Update history".localized())
+        self.sectionTitles.append("Backup")
         self.sectionTitles.append("Developer".localized())
     }
     
@@ -56,6 +57,9 @@ final class SettingVM {
             [
                 versionCell,
                 SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier)
+            ],
+            [
+                SettingCellInfo(title: "Backup", nextVCIdentifier: "showBackup")
             ],
             [
                 SettingCellInfo(title: "FDEE")
