@@ -51,6 +51,7 @@ final class SettingCell: UICollectionViewCell {
         didSet {
             if isSelected {
                 self.touchAction()
+                self.isSelected = false
             }
         }
     }
@@ -67,6 +68,7 @@ final class SettingCell: UICollectionViewCell {
     }
     
     private func touchAction() {
+        print("touch action")
         guard let info = self.info,
               let action = info.action else { return }
         switch action {
