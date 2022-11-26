@@ -39,6 +39,7 @@ public class Storage {
         print("---> save to here: \(url)")
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
         
         do {
             let data = try encoder.encode(obj)
@@ -62,12 +63,25 @@ public class Storage {
         guard let data = FileManager.default.contents(atPath: url.path) else { return nil }
         
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         
         do {
             let model = try decoder.decode(type, from: data)
             return model
         } catch let error {
             print("---> Failed to decode msg: \(error.localizedDescription)")
+            return retrivePastFormat(data: data, as: type.self)
+        }
+    }
+    
+    static func retrivePastFormat<T: Decodable>(data: Data, as type: T.Type) -> T? {
+        let decoder = JSONDecoder()
+        
+        do {
+            let model = try decoder.decode(type, from: data)
+            return model
+        } catch let error {
+            print("---> Failed to Past decode msg: \(error.localizedDescription)")
             return nil
         }
     }
