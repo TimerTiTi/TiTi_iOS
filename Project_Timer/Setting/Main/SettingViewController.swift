@@ -129,6 +129,21 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
 
 extension SettingViewController: SettingActionDelegate {
     func pushVC(nextVCIdentifier: String) {
+        print("push")
+        if nextVCIdentifier == "showBackup" {
+            // test code
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let activityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                activityViewController.popoverPresentationController?.sourceView = self.view
+                activityViewController.popoverPresentationController?.sourceRect = self.navigationController!.navigationBar.frame
+            }
+            
+            self.present(activityViewController, animated: true)
+            return
+        }
+        
         guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
