@@ -12,12 +12,7 @@ struct TaskHistory: Codable, Equatable {
     var startDate: Date
     var endDate: Date
     var interval: Int {
-        let interval = Date.interval(from: startDate, to: endDate)
-        if interval > 0 {
-            return interval
-        } else {
-            return 24*3600 + interval
-        }
+        return Date.interval(from: startDate, to: endDate)
     }
     
     mutating func updateStartDate(to date: Date) {
@@ -25,7 +20,12 @@ struct TaskHistory: Codable, Equatable {
     }
     
     mutating func updateEndDate(to date: Date) {
-        self.endDate = date
+        // endDate 값이 startDate 값보다 작은경우는 +1day 처리 후 저장
+        if (date.compare(self.startDate) == .orderedAscending) {
+            self.endDate = Calendar.current.date(byAdding: .day, value: 1, to: date)!
+        } else {
+            self.endDate = date
+        }
     }
     
     static func ==(lhs: Self, rhs: Self) -> Bool {
