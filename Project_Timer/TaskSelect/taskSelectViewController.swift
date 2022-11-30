@@ -15,6 +15,9 @@ final class taskSelectViewController: UIViewController {
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var newTaskButton: UIButton!
+    /* mac */
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: TaskChangeable?
     private var viewModel: TaskSelectVM?
@@ -23,6 +26,7 @@ final class taskSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureDevice()
         self.configureColor()
         self.configureTableView()
         self.configureViewModel()
@@ -38,14 +42,29 @@ final class taskSelectViewController: UIViewController {
         self.tasksTableView.setEditing(!self.tasksTableView.isEditing, animated: true)
         self.editButton.setTitle(self.tasksTableView.isEditing ? "Done" : "Edit", for: .normal)
     }
+    
+    @IBAction func close(_ sender: Any) {
+        self.presentingViewController?.dismiss(animated: true)
+    }
 }
 
 // MARK: Configure
 extension taskSelectViewController {
+    private func configureDevice() {
+        #if targetEnvironment(macCatalyst)
+        print("Mac")
+        self.closeButton.isHidden = false
+        self.collectionViewBottomConstraint.constant = 35
+        #else
+        print("iOS")
+        #endif
+    }
+    
     private func configureColor() {
         self.tintColor = UIColor(named: String.userTintColor)
         self.editButton.setTitleColor(self.tintColor, for: .normal)
         self.newTaskButton.tintColor = self.tintColor
+        self.closeButton.setTitleColor(self.tintColor, for: .normal)
     }
     
     private func configureTableView() {
