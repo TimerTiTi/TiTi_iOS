@@ -33,6 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// 앱 실행시 최신버전 체크로직 실행
         self.checkVersion()
         
+        #if targetEnvironment(macCatalyst)
+        UserDefaultsManager.set(to: false, forKey: .keepTheScreenOn)
+        UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
+        #else
+        #endif
+        
         return true
     }
     
