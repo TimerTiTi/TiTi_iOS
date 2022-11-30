@@ -32,13 +32,19 @@ final class LogVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #if targetEnvironment(macCatalyst)
+        #else
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        #endif
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        #if targetEnvironment(macCatalyst)
+        #else
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        #endif
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
