@@ -22,7 +22,10 @@ final class SettingVM {
         self.sectionTitles.append("Introducing app".localized())
         self.sectionTitles.append("Notification".localized())
         self.sectionTitles.append("UI")
+        #if targetEnvironment(macCatalyst)
+        #else
         self.sectionTitles.append("Control")
+        #endif
         self.sectionTitles.append("Record")
         self.sectionTitles.append("Version & Update history".localized())
         self.sectionTitles.append("Backup")
@@ -65,5 +68,9 @@ final class SettingVM {
                 SettingCellInfo(title: "FDEE")
             ]
         ]
+        #if targetEnvironment(macCatalyst)
+        self.cells.remove(at: 3)
+        #else
+        #endif
     }
 }
