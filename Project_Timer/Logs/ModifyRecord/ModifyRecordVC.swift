@@ -51,7 +51,10 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        #if targetEnvironment(macCatalyst)
+        #else
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        #endif
     }
     
     override func viewWillLayoutSubviews() {
