@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1806,7 +1806,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUS-jy-rWW">
                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="lUn-rj-C1i"/>
                                                             <constraint firstAttribute="width" constant="90" id="tFn-jG-xKR"/>
@@ -1825,7 +1825,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPr-yu-BRf">
                                                         <rect key="frame" x="115" y="0.0" width="90" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="m71-cg-BPt"/>
                                                             <constraint firstAttribute="width" constant="90" id="xrt-Bc-I6k"/>
@@ -1844,7 +1844,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KnG-DJ-jRv">
                                                         <rect key="frame" x="230" y="0.0" width="90" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="90" id="eOr-QL-ENF"/>
                                                             <constraint firstAttribute="height" constant="30" id="nvy-f4-DxX"/>
@@ -1869,12 +1869,13 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JX-wo-bUz" userLabel="graphsContentView">
                                                         <rect key="frame" x="0.0" y="0.0" width="1095" height="365"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1095" id="XKZ-Ot-wJ1"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <color key="backgroundColor" name="system_backg"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="365" id="IsU-Eh-jpf"/>
                                                     <constraint firstAttribute="height" constant="365" id="J09-Mg-gis"/>
@@ -1893,7 +1894,7 @@
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                             </pageControl>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="system_backg"/>
                                         <constraints>
                                             <constraint firstItem="mD9-dE-Aue" firstAttribute="top" secondItem="foR-W7-d9w" secondAttribute="bottom" constant="16" id="51X-6q-ay8"/>
                                             <constraint firstItem="f1d-5D-rea" firstAttribute="top" secondItem="mD9-dE-Aue" secondAttribute="bottom" constant="8" id="Iv5-9m-Mk2"/>
@@ -1921,7 +1922,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i11-sD-E0Q"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="trailing" secondItem="P9N-kE-Vhz" secondAttribute="trailing" id="0ts-Go-efg"/>
                             <constraint firstItem="i11-sD-E0Q" firstAttribute="bottom" secondItem="P9N-kE-Vhz" secondAttribute="bottom" id="C9p-WB-iAL"/>
@@ -1960,7 +1961,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-PA-6VW" userLabel="graphContentView">
                                                         <rect key="frame" x="0.0" y="0.0" width="1095" height="365"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1095" id="1xe-r4-Vzv"/>
                                                         </constraints>
@@ -1984,7 +1985,7 @@
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                             </pageControl>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="system_backg"/>
                                         <constraints>
                                             <constraint firstItem="bT1-qt-SlH" firstAttribute="centerX" secondItem="b49-dE-A4h" secondAttribute="centerX" id="3a6-DT-sKJ"/>
                                             <constraint firstAttribute="height" constant="700" id="N0m-Eh-u46"/>
@@ -2006,7 +2007,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eZP-HJ-zLA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="eZP-HJ-zLA" firstAttribute="bottom" secondItem="2g1-DH-oYZ" secondAttribute="bottom" id="JTj-fh-Iso"/>
                             <constraint firstItem="2g1-DH-oYZ" firstAttribute="leading" secondItem="eZP-HJ-zLA" secondAttribute="leading" id="NWj-ZW-Q0N"/>
@@ -2476,11 +2477,11 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
                                 <rect key="frame" x="0.0" y="130" width="390" height="680"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backg"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VoZ-gf-MpS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="VoZ-gf-MpS" firstAttribute="bottom" secondItem="9Hd-a4-Qq6" secondAttribute="bottom" id="3RO-Ph-1df"/>
                             <constraint firstItem="Hcb-4h-eDe" firstAttribute="top" secondItem="VoZ-gf-MpS" secondAttribute="top" id="Gih-XI-zqo"/>
@@ -2511,7 +2512,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8FC-t3-ioZ">
                                 <rect key="frame" x="0.0" y="143" width="390" height="667"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="hkJ-2l-cDI">
                                     <size key="itemSize" width="375" height="55"/>
                                     <size key="headerReferenceSize" width="50" height="303"/>
@@ -2551,7 +2552,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <color key="backgroundColor" name="system_backgroup2"/>
                                             <constraints>
                                                 <constraint firstItem="e2c-YH-z02" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oCD-h7-iQb" secondAttribute="trailing" constant="5" id="6Qd-wS-Oq8"/>
                                                 <constraint firstItem="oCD-h7-iQb" firstAttribute="centerY" secondItem="ShP-Nw-lGK" secondAttribute="centerY" id="F4I-Yd-0yB"/>
@@ -2619,7 +2620,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <color key="backgroundColor" name="system_backgroup2"/>
                                             <constraints>
                                                 <constraint firstItem="igL-Tw-0m4" firstAttribute="leading" secondItem="Bav-Qe-wGe" secondAttribute="leading" constant="16" id="1Th-Xd-Pcv"/>
                                                 <constraint firstItem="6Ut-7o-aKp" firstAttribute="centerY" secondItem="Bav-Qe-wGe" secondAttribute="centerY" id="43e-v6-oVW"/>
@@ -2674,7 +2675,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <color key="backgroundColor" name="system_backgroup2"/>
                                             <constraints>
                                                 <constraint firstItem="GRN-po-dlG" firstAttribute="leading" secondItem="6fJ-oS-OyD" secondAttribute="trailing" constant="10" id="2z0-u8-gzp"/>
                                                 <constraint firstItem="jSf-ki-Ewp" firstAttribute="centerY" secondItem="4Li-dl-GBr" secondAttribute="centerY" id="5Rc-N4-Q2B"/>
@@ -2721,7 +2722,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                            <color key="backgroundColor" name="system_backgroup2"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="x7m-yU-dfL" secondAttribute="bottom" constant="16" id="Mjm-kx-dc0"/>
                                                 <constraint firstItem="x7m-yU-dfL" firstAttribute="leading" secondItem="n9u-uz-2hh" secondAttribute="leading" id="SgE-e5-X1y"/>
@@ -2761,7 +2762,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A6W-9Z-cwQ"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="8FC-t3-ioZ" firstAttribute="top" secondItem="A6W-9Z-cwQ" secondAttribute="top" id="1GT-Ny-Vpr"/>
                             <constraint firstItem="8FC-t3-ioZ" firstAttribute="leading" secondItem="A6W-9Z-cwQ" secondAttribute="leading" id="7kD-ls-rzv"/>
@@ -2848,7 +2849,7 @@
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="6ux-sX-swJ"/>
                                     <constraint firstItem="Rog-od-cc1" firstAttribute="leading" secondItem="dzX-uN-Igi" secondAttribute="leading" constant="16" id="ORK-nL-15c"/>
@@ -3096,7 +3097,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="QOL-Z1-9Ah"/>
                                     <constraint firstAttribute="bottom" secondItem="Z0j-eo-c9K" secondAttribute="bottom" constant="16" id="Qsy-qc-6BP"/>
@@ -3109,7 +3110,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="b4n-aX-7QG"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="KaM-Q1-Udq" firstAttribute="leading" secondItem="b4n-aX-7QG" secondAttribute="leading" id="12O-dZ-jGC"/>
                             <constraint firstItem="NJo-5f-4hQ" firstAttribute="width" secondItem="PhT-AU-YFi" secondAttribute="width" id="HMj-tk-Chl"/>
@@ -3145,7 +3146,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wla-QY-T8X">
                                 <rect key="frame" x="0.0" y="143" width="390" height="667"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="nOM-a4-une">
                                     <size key="itemSize" width="390" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3202,7 +3203,7 @@
                                                 <constraint firstItem="WLq-6L-AUS" firstAttribute="centerY" secondItem="JoP-qf-MOh" secondAttribute="centerY" id="muF-dh-fwO"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="system_backgroup2"/>
                                         <size key="customSize" width="375" height="64"/>
                                         <connections>
                                             <outlet property="settedHourLabel" destination="WLq-6L-AUS" id="3Ie-b5-3I6"/>
@@ -3214,7 +3215,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s7W-Jm-vJk"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="wla-QY-T8X" firstAttribute="top" secondItem="s7W-Jm-vJk" secondAttribute="top" id="4qC-Wu-gAE"/>
                             <constraint firstItem="wla-QY-T8X" firstAttribute="leading" secondItem="s7W-Jm-vJk" secondAttribute="leading" id="9QJ-yt-5Nw"/>
@@ -3400,7 +3401,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="CCd-iE-ijn" firstAttribute="top" secondItem="YoT-Cu-LUq" secondAttribute="top" constant="8" id="Taj-Ne-0hx"/>
                                             <constraint firstItem="CCd-iE-ijn" firstAttribute="centerX" secondItem="YoT-Cu-LUq" secondAttribute="centerX" id="g2W-aE-wrN"/>
@@ -3420,7 +3421,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="umG-K6-R9S"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="MaG-wS-pJ6" firstAttribute="top" secondItem="umG-K6-R9S" secondAttribute="top" id="09A-ir-XWY"/>
                             <constraint firstItem="MaG-wS-pJ6" firstAttribute="leading" secondItem="umG-K6-R9S" secondAttribute="leading" id="92w-l7-qaD"/>
@@ -3458,7 +3459,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="P0o-1f-RCC">
                                 <rect key="frame" x="0.0" y="143" width="390" height="667"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="pBL-Sw-eL6">
                                     <size key="itemSize" width="375" height="64"/>
                                     <size key="headerReferenceSize" width="375" height="35"/>
@@ -3476,13 +3477,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3515,7 +3516,7 @@
                                                 <constraint firstItem="CTz-g6-bQP" firstAttribute="centerY" secondItem="1pw-FS-b6C" secondAttribute="centerY" id="oOy-GY-RH9"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="system_backgroup2"/>
                                         <size key="customSize" width="375" height="64"/>
                                         <connections>
                                             <outlet property="rightLabel" destination="CTz-g6-bQP" id="hub-HD-qng"/>
@@ -3536,7 +3537,7 @@
                                                     <subviews>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3w-MY-yAS">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                            <color key="backgroundColor" name="system_backgroup2"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="Ts8-m7-1Ft"/>
                                                                 <constraint firstAttribute="width" secondItem="n3w-MY-yAS" secondAttribute="height" multiplier="1:1" id="iOT-TT-bhR"/>
@@ -3558,7 +3559,7 @@
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w8-lx-fev">
                                                             <rect key="frame" x="70" y="0.0" width="50" height="50"/>
-                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                            <color key="backgroundColor" name="system_backgroup2"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="1w8-lx-fev" secondAttribute="height" multiplier="1:1" id="aKh-2p-4wx"/>
                                                                 <constraint firstAttribute="width" constant="50" id="nyy-jB-zgq"/>
@@ -3580,7 +3581,7 @@
                                                         </button>
                                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPn-w2-6bj">
                                                             <rect key="frame" x="140" y="0.0" width="50" height="50"/>
-                                                            <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                            <color key="backgroundColor" name="system_backgroup2"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="50" id="3IM-Vs-Q9U"/>
                                                                 <constraint firstAttribute="width" secondItem="GPn-w2-6bj" secondAttribute="height" multiplier="1:1" id="6j1-j9-lC0"/>
@@ -3627,7 +3628,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                    <color key="backgroundColor" name="system_backgroup"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="0wZ-HF-pCK" secondAttribute="bottom" constant="5" id="4dc-22-AKe"/>
                                         <constraint firstItem="0wZ-HF-pCK" firstAttribute="leading" secondItem="6ky-r7-yoe" secondAttribute="leading" constant="16" id="Gcx-DD-8Da"/>
@@ -3639,12 +3640,12 @@
                                 <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SettingFooterView" id="4Tb-uj-1az" customClass="SettingFooterView" customModule="TiTi" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="180" width="390" height="10"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                    <color key="backgroundColor" name="system_backgroup"/>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m6w-b3-G2N"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="P0o-1f-RCC" firstAttribute="centerX" secondItem="m6w-b3-G2N" secondAttribute="centerX" id="EXr-cI-55d"/>
                             <constraint firstItem="P0o-1f-RCC" firstAttribute="top" secondItem="m6w-b3-G2N" secondAttribute="top" id="Nhq-iR-fTU"/>
@@ -3677,7 +3678,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RMT-qg-UF2">
                                 <rect key="frame" x="0.0" y="143" width="390" height="667"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="HEv-UE-AY9">
                                     <size key="itemSize" width="375" height="125"/>
                                     <size key="estimatedItemSize" width="375" height="125"/>
@@ -3709,7 +3710,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                                    <color key="backgroundColor" name="system_backgroup2"/>
                                                     <constraints>
                                                         <constraint firstItem="oWw-yh-vTf" firstAttribute="leading" secondItem="3EQ-dl-EsV" secondAttribute="leading" constant="16" id="I9V-mS-Bu9"/>
                                                         <constraint firstItem="oWw-yh-vTf" firstAttribute="top" secondItem="3EQ-dl-EsV" secondAttribute="top" constant="16" id="Q8R-lP-JdN"/>
@@ -3745,7 +3746,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qVc-vF-KaL"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="RMT-qg-UF2" firstAttribute="top" secondItem="qVc-vF-KaL" secondAttribute="top" id="DRR-oR-6Ej"/>
                             <constraint firstItem="qVc-vF-KaL" firstAttribute="bottom" secondItem="RMT-qg-UF2" secondAttribute="bottom" id="N1R-HN-Cmu"/>
@@ -3813,7 +3814,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ekz-pG-wNt">
                                 <rect key="frame" x="0.0" y="143" width="390" height="601"/>
-                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <color key="backgroundColor" name="system_backgroup"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="l2Z-O3-rtJ">
                                     <size key="itemSize" width="375" height="55"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -3845,7 +3846,7 @@
                                                 </imageView>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" name="system_backgroup2"/>
                                         <constraints>
                                             <constraint firstItem="cm7-fO-8GH" firstAttribute="centerY" secondItem="sSD-1j-WVk" secondAttribute="centerY" id="7FI-4S-UMO"/>
                                             <constraint firstItem="2T3-qT-3eg" firstAttribute="leading" secondItem="sSD-1j-WVk" secondAttribute="leading" constant="16" id="Q8v-hQ-8xM"/>
@@ -3881,7 +3882,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gta-DH-BV7"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backgroup"/>
                         <constraints>
                             <constraint firstItem="Ekz-pG-wNt" firstAttribute="leading" secondItem="gta-DH-BV7" secondAttribute="leading" id="5Ax-3b-j05"/>
                             <constraint firstItem="mun-mO-mq0" firstAttribute="centerX" secondItem="gta-DH-BV7" secondAttribute="centerX" id="CVG-1i-qRm"/>
@@ -4164,7 +4165,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qlT-9k-A1j">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="OhA-Bb-57e"/>
                                                             <constraint firstAttribute="width" constant="120" id="X9C-xW-FAs"/>
@@ -4183,7 +4184,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8G-EP-KnC">
                                                         <rect key="frame" x="150" y="0.0" width="120" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="U5x-vm-xFk"/>
                                                             <constraint firstAttribute="width" constant="120" id="hIj-pj-H1p"/>
@@ -4207,12 +4208,13 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2CG-Fw-gmY" userLabel="graphsContentView">
                                                         <rect key="frame" x="0.0" y="0.0" width="365" height="365"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="backgroundColor" name="system_backg"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="365" id="Psi-fb-kph"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <color key="backgroundColor" name="system_backg"/>
                                                 <constraints>
                                                     <constraint firstItem="2CG-Fw-gmY" firstAttribute="top" secondItem="Klv-i5-OYG" secondAttribute="top" id="3om-Da-WxC"/>
                                                     <constraint firstAttribute="height" constant="365" id="4PV-dg-TPW"/>
@@ -4226,7 +4228,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="FLy-E0-b9e"/>
                                             </scrollView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="aSa-G9-7Ze" firstAttribute="top" secondItem="N12-J8-e5p" secondAttribute="bottom" constant="16" id="47U-Vv-RuL"/>
                                             <constraint firstItem="gZP-GK-zGo" firstAttribute="centerX" secondItem="BLZ-SN-rw6" secondAttribute="centerX" id="5RO-7F-Yru"/>
@@ -4252,7 +4254,7 @@
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fLM-co-gnC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="FUe-Ts-7OX" firstAttribute="leading" secondItem="fLM-co-gnC" secondAttribute="leading" id="4fT-Zj-MuH"/>
                             <constraint firstItem="FUe-Ts-7OX" firstAttribute="top" secondItem="fLM-co-gnC" secondAttribute="top" id="NP9-Rz-R2m"/>
@@ -4787,10 +4789,10 @@
         <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <namedColor name="Background">
-            <color red="0.6470588235294118" green="0.75294117647058822" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.6470588235294118" green="0.75294117647058822" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Background2">
-            <color red="0.89399999380111694" green="0.77300000190734863" blue="0.45500001311302185" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.5490196078431373" green="0.5607843137254902" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Background_second">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4879,6 +4881,12 @@
         <namedColor name="system_backg">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="system_backgroup">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="system_backgroup2">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -4893,9 +4901,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

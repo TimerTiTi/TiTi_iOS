@@ -37,6 +37,7 @@ final class TasksProgressDailyGraphView: UIView {
         self.collectionViewHeightContstraint = collectionView.heightAnchor.constraint(equalToConstant: 160)
         self.collectionViewHeightContstraint?.isActive = true
         collectionView.tag = 1
+        collectionView.backgroundView?.backgroundColor = TiTiColor.systemBackground
         return collectionView
     }()
     
@@ -61,7 +62,7 @@ final class TasksProgressDailyGraphView: UIView {
     
     private func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColor.systemBackground
+        self.backgroundColor = TiTiColor.systemBackground
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 365),
             self.heightAnchor.constraint(equalToConstant: 365)

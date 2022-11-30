@@ -28,4 +28,5 @@ enum TiTiColor {
     static func graphColor(num: Int) -> UIColor {
         return UIColor(named: "D\(num)") ?? .blue
     }
+    static let systemBackground = UIColor(named: "system_backg")
 }
