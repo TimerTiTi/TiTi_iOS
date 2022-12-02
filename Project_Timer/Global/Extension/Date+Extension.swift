@@ -67,7 +67,7 @@ extension Date {
     /// 0분0초의 Date로 변환
     var zeroDate: Date {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
+        dateFormatter.dateFormat = "yyyy.MM.dd"
         let transedDate: Date = dateFormatter.date(from: dateFormatter.string(from: self))!
         return transedDate
     }
