@@ -262,9 +262,7 @@ extension StandardWeekGraphView {
             return
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM"
-        self.monthLabel.text = dateFormatter.string(from: day)
+        self.monthLabel.text = day.YYYYMMstypeString
     }
     
     private func updateWeekNumLabel(_ num: Int) {

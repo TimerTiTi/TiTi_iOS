@@ -76,9 +76,7 @@ extension DailyView {
 // MARK: Propertys
 extension DailyView {
     private var dateText: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        return dateFormatter.string(from: viewModel.day.zeroDate.localDate)
+        return viewModel.day.zeroDate.localDate.YYYYMMDDstyleString
     }
     
     private func timeColor(time: Int) -> Color {

@@ -247,9 +247,7 @@ extension StandardDailyGraphView {
             return
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        self.dateLabel.text = dateFormatter.string(from: day)
+        self.dateLabel.text = day.YYYYMMDDstyleString
     }
     
     private func updateDayOfWeek(_ day: Date?) {
