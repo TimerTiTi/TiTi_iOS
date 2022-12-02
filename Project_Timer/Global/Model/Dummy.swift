@@ -73,7 +73,7 @@ struct Dummy {
     static func getDumyDays(_ stringDays: [String]) -> [Date] {
         var days: [Date] = []
         let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY.MM.dd"
+        formatter.dateFormat = "yyyy.MM.dd"
         for day in stringDays {
             let tempDay: Date = formatter.date(from: day)!
             days.append(tempDay)

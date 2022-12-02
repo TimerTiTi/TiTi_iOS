@@ -27,6 +27,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var YYYYMMstypeString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        return dateFormatter.string(from: self)
+    }
+    
     var HHmmssStyleString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"

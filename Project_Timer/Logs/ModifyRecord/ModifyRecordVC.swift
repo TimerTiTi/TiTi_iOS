@@ -91,10 +91,7 @@ extension ModifyRecordVC {
     
     private func configureTitle() {
         guard let day = self.viewModel?.currentDaily.day else { return }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM.dd"
-        self.title = dateFormatter.string(from: day)
+        self.title = day.YYYYMMDDstyleString
     }
     
     private func configureSaveButton() {

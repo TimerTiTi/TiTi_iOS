@@ -103,9 +103,7 @@ extension WeekView {
 extension WeekView {
     private var monthText: String {
         guard let day = viewModel.weekDates.last else { return "0000.00" }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY.MM"
-        return dateFormatter.string(from: day)
+        return day.YYYYMMstypeString
     }
     
     private var weekText: String {

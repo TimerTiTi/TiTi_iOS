@@ -139,7 +139,7 @@ extension DailysVC {
     private func configureCalender() {
         self.calendar.delegate = self
         self.calendar.dataSource = self
-        self.calendar.appearance.headerDateFormat = "YYYY.MM"
+        self.calendar.appearance.headerDateFormat = "yyyy.MM"
         self.calendar.appearance.headerTitleFont = TiTiFont.HGGGothicssiP80g(size: 25)
         self.calendar.appearance.weekdayFont = TiTiFont.HGGGothicssiP80g(size: 13)
         self.calendar.appearance.titleFont = TiTiFont.HGGGothicssiP60g(size: 18)
