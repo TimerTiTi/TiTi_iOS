@@ -102,6 +102,7 @@ class TimerViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        self.configureProgressSize()
     }
 
     @IBAction func taskSelect(_ sender: Any) {
@@ -127,6 +128,26 @@ class TimerViewController: UIViewController {
     @IBAction func showRecordDateAlert(_ sender: Any) {
         self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
             self?.showSettingView()
+        }
+    }
+}
+
+// MARK: - Device UI Configure
+extension TimerViewController {
+    private func configureProgressSize() {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { return }
+        
+        let iPadminiWidth: CGFloat = 744
+        let multipleScale: CGFloat = 1.8
+        let minLength = min(SceneDelegate.sharedWindow?.bounds.width ?? 0, SceneDelegate.sharedWindow?.bounds.height ?? 0)
+        
+        if (minLength >= iPadminiWidth) {
+            self.setLandscape()
+            let scale = (minLength/iPadminiWidth)*multipleScale
+            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+        } else {
+            self.setPortrait()
+            self.outterProgress.transform = .identity
         }
     }
 }
@@ -510,6 +531,10 @@ extension TimerViewController {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 0
                 self.todayLabel.alpha = 0
+                self.settingBT.alpha = 0
+                self.startStopBT.alpha = 0
+                self.startStopBTLabel.alpha = 0
+                self.setTimerBT.alpha = 0
             }
         }
         self.isLandcape = true
@@ -520,6 +545,10 @@ extension TimerViewController {
             UIView.animate(withDuration: 0.3) {
                 self.taskButton.alpha = 1
                 self.todayLabel.alpha = 1
+                self.settingBT.alpha = 1
+                self.startStopBT.alpha = 1
+                self.startStopBTLabel.alpha = 1
+                self.setTimerBT.alpha = 1
             }
         }
         self.isLandcape = false
