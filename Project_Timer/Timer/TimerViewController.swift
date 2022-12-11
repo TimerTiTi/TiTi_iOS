@@ -15,27 +15,33 @@ import SwiftUI
 class TimerViewController: UIViewController {
     static let identifier = "TimerViewController"
 
-    @IBOutlet var taskButton: UIButton!
-    @IBOutlet var innerProgress: CircularProgressView!
-    @IBOutlet var outterProgress: CircularProgressView!
-    
-    @IBOutlet var sumTimeLabel: UILabel!
-    @IBOutlet var TIMEofSumFrameView: UIView!
-    @IBOutlet var timerLabel: UILabel!
-    @IBOutlet var TIMEofTimerFrameView: UIView!
-    @IBOutlet var targetTimeLabel: UILabel!
-    @IBOutlet var TIMEofTargetFrameView: UIView!
-    @IBOutlet var finishTimeLabel: UILabel!
-    
-    @IBOutlet var startStopBT: UIButton!
-    @IBOutlet var startStopBTLabel: UILabel!
-    @IBOutlet var setTimerBT: UIButton!
-    @IBOutlet var settingBT: UIButton!
-    @IBOutlet weak var colorSelector: UIButton!
-    @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
-
+    @IBOutlet weak var colorSelector: UIButton!
+    @IBOutlet weak var colorSelectorBorderView: UIImageView!
+    @IBOutlet weak var taskButton: UIButton!
+    
+    @IBOutlet weak var innerProgress: CircularProgressView!
+    @IBOutlet weak var outterProgress: CircularProgressView!
+    @IBOutlet weak var sumTimeLabel: UILabel!
+    @IBOutlet weak var TIMEofSumFrameView: UIView!
+    @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var TIMEofTimerFrameView: UIView!
+    @IBOutlet weak var targetTimeLabel: UILabel!
+    @IBOutlet weak var TIMEofTargetFrameView: UIView!
+    @IBOutlet weak var finishTimeLabel: UILabel!
+    
+    @IBOutlet weak var settingBT: UIButton!
+    @IBOutlet weak var startStopBT: UIButton!
+    @IBOutlet weak var startStopBTLabel: UILabel!
+    @IBOutlet weak var setTimerBT: UIButton!
+    
+    @IBOutlet weak var todayTopConstraint: NSLayoutConstraint! // 16
+    @IBOutlet weak var taskTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var taskBottomConstraint: NSLayoutConstraint! // 50
+    @IBOutlet weak var startStopBTTopConstraint: NSLayoutConstraint! // 50
+    @IBOutlet weak var startStopBTBottomConstraint: NSLayoutConstraint!
+    
     private lazy var blackView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
         view.backgroundColor = .black
@@ -136,6 +142,8 @@ class TimerViewController: UIViewController {
 extension TimerViewController {
     private func updateProgressSize() {
         guard UIDevice.current.userInterfaceIdiom == .pad else { return }
+        // ipad: self.view.bounds 로
+        // mac: 좀더 고민 필요
         #if targetEnvironment(macCatalyst)
         self.updateProgressSizeForMac()
         #else
@@ -151,11 +159,11 @@ extension TimerViewController {
         let minLength: CGFloat = max(min(width, height), minHeight)
         let biggerUI = (width >= minWidth && height >= minHeight)
         let multipleScale = 1.55
-        print(width, height)
         
         if (biggerUI) {
-            self.zoomProgress(multipleScale: multipleScale, minLength: minLength, baseLength: minHeight)
-            // show recordDate
+            let scale = (minLength/minHeight)*multipleScale
+            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.setBiggerLandscapeUIforMac(scale: scale)
         } else {
             self.minimizeProgress()
         }
@@ -168,22 +176,54 @@ extension TimerViewController {
         let multipleScale = 1.6
         
         if (biggerUI) {
-            self.zoomProgress(multipleScale: multipleScale, minLength: minLength, baseLength: minWidth)
-            // show recordDate
+            let scale = (minLength/minWidth)*multipleScale
+            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.setBiggerLandscapeUIforiPad(scale: scale)
         } else {
             self.minimizeProgress()
         }
     }
     
-    private func zoomProgress(multipleScale: CGFloat, minLength: CGFloat, baseLength: CGFloat) {
-        let scale = (minLength/baseLength)*multipleScale
-        self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
-        self.setLandscape()
-    }
-    
     private func minimizeProgress() {
         self.outterProgress.transform = .identity
+        self.resetBiggerUI()
         self.setPortrait()
+    }
+    
+    private func setBiggerLandscapeUIforMac(scale: CGFloat) {
+        self.taskBottomConstraint.isActive = false
+        self.taskTopConstraint.isActive = true
+        self.taskTopConstraint.constant = 36*scale
+        
+        self.startStopBTTopConstraint.isActive = false
+        self.startStopBTBottomConstraint.isActive = true
+        self.startStopBTBottomConstraint.constant = 12*scale*2
+        
+        self.isLandcape = true
+    }
+    
+    private func setBiggerLandscapeUIforiPad(scale: CGFloat) {
+        self.todayTopConstraint.constant = -12
+        self.taskBottomConstraint.isActive = false
+        self.taskTopConstraint.isActive = true
+        self.taskTopConstraint.constant = 12*scale
+        
+        self.startStopBTTopConstraint.isActive = false
+        self.startStopBTBottomConstraint.isActive = true
+        self.startStopBTBottomConstraint.constant = 32*scale - 56
+        
+        self.isLandcape = true
+    }
+    
+    private func resetBiggerUI() {
+        self.todayTopConstraint.constant = 16
+        self.taskTopConstraint.isActive = false
+        self.taskBottomConstraint.isActive = true
+        self.taskBottomConstraint.constant = 50
+        
+        self.startStopBTBottomConstraint.isActive = false
+        self.startStopBTTopConstraint.isActive = true
+        self.startStopBTTopConstraint.constant = 50
     }
 }
 
@@ -496,12 +536,6 @@ extension TimerViewController {
         let newInnerProgressPer = Float(innerSum) / Float(goalPeriod)
         self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
-    }
-    
-    private func printTimes(with times: Times) {
-        print("sum: \(times.sum.toTimeString)")
-        print("timer: \(times.timer.toTimeString)")
-        print("goal: \(times.goal.toTimeString)")
     }
     
     private func updateRunningColor(times: Times) {
