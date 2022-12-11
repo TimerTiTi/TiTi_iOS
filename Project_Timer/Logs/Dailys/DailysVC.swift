@@ -10,6 +10,7 @@ import UIKit
 import Combine
 import SwiftUI
 import FSCalendar
+import Photos
 
 protocol ModifyRecordDelegate: AnyObject {
     func showModifyRecordVC(daily: Daily, isReverseColor: Bool)
@@ -93,13 +94,15 @@ final class DailysVC: UIViewController {
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
         let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
-                
-        for i in 0..<3 {
-            if self.isGraphChecked[i] == true {
-                let graphImage = UIImage(view: dailyGraphViews[i])
-                UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-            }
+//        let graphImages = dailyGraphViews.map({ UIImage(view: $0 )})
+        let graphImages = (0..<3).filter({ self.isGraphChecked[$0] }).map({ UIImage(view: dailyGraphViews[$0]) })
+        #if targetEnvironment(macCatalyst)
+        self.saveGraphImagesForMac(images: graphImages)
+        #else
+        graphImages.forEach { graphImage in
+            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
         }
+        #endif
         self.showAlertWithOK(title: "Save Completed".localized(), text: "")
     }
     
@@ -125,6 +128,28 @@ final class DailysVC: UIViewController {
             FirebaseEvent.shared.postEvent(.createRecord)
             guard let selectedDate = self.viewModel?.selectedDate else { return }
             self.delegate?.showCreateRecordVC(date: selectedDate, isReverseColor: self.isReverseColor)
+        }
+    }
+}
+
+// MARK: Catalyst(Mac) for save images
+extension DailysVC {
+    private func saveGraphImagesForMac(images: [UIImage]) {
+        guard let recordDay = self.viewModel?.currentDaily?.day else { return }
+        print("////////// save for mac")
+//        let fileUrl = URL(fileURLWithPath: NSHomeDirectory().appending("/Desktop"), isDirectory: true)
+//        for (idx, image) in images.enumerated() {
+//            let nameImage = "\(recordDay.localDate.YYYYMMDDstyleString)_\(idx+1).jpg"
+//            let fileUrlWithName = fileUrl.appendingPathComponent(nameImage)
+//            let imageData = image.pngData()
+//            do {
+//                try imageData!.write(to: fileUrlWithName)
+//            } catch {
+//                print("** saveImageData error: \(error)")
+//            }
+//        }
+        for (idx, image) in images.enumerated() {
+            self.insertImageMac(image: image, albumName: "\(recordDay.localDate.YYYYMMDDstyleString)_\(idx+1).jpg")
         }
     }
 }
@@ -374,5 +399,70 @@ extension DailysVC: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
             }
         } else { return .zero }
+    }
+}
+
+
+// test
+extension DailysVC {
+    func insertImageMac(image : UIImage, albumName : String) {
+        let collection = fetchAssetCollectionWithAlbumName(albumName: albumName)
+        if collection == nil {
+            DispatchQueue.main.async { [weak self] in
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: albumName)
+                    }, completionHandler: {(success, error) in
+                        if error != nil {
+                            print("Error: " + error!.localizedDescription)
+                        }
+
+                        if success {
+                            let newCollection = self?.fetchAssetCollectionWithAlbumName(albumName: albumName)
+                            self?.insertImage(image: image, intoAssetCollection: newCollection!)
+                        }
+                    }
+                )
+            }
+        } else {
+            self.insertImage(image: image, intoAssetCollection: collection!)
+        }
+    }
+
+    func fetchAssetCollectionWithAlbumName(albumName : String) -> PHAssetCollection? {
+        let fetchOption = PHFetchOptions()
+        fetchOption.predicate = NSPredicate(format: "title == '" + albumName + "'")
+
+        let fetchResult = PHAssetCollection.fetchAssetCollections(
+            with: PHAssetCollectionType.album,
+            subtype: PHAssetCollectionSubtype.albumRegular,
+            options: fetchOption)
+        let collection = fetchResult.firstObject as? PHAssetCollection
+
+        return collection
+    }
+
+    func insertImage(image : UIImage, intoAssetCollection collection : PHAssetCollection) {
+        PHPhotoLibrary.shared().performChanges({
+            let creationRequest = PHAssetCreationRequest.creationRequestForAsset(from: image)
+            let request = PHAssetCollectionChangeRequest(for: collection)
+                if request != nil && creationRequest.placeholderForCreatedAsset != nil {
+                    request!.addAssets([creationRequest.placeholderForCreatedAsset!] as NSFastEnumeration)
+                }
+
+            },
+
+            completionHandler: { (success, error) in
+                if error != nil {
+                    print("Error: " + error!.localizedDescription)
+                    let ac = UIAlertController(title: "Save error", message: error!.localizedDescription, preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Done", style: .default))
+                    self.present(ac, animated: true)
+                } else {
+                    let ac = UIAlertController(title: "Save success", message: "Image saved", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "Done", style: .default))
+                    self.present(ac, animated: true)
+                }
+            }
+        )
     }
 }
