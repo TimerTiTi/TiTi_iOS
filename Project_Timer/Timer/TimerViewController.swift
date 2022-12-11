@@ -102,7 +102,7 @@ class TimerViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
-        self.configureProgressSize()
+        self.updateProgressSize()
     }
 
     @IBAction func taskSelect(_ sender: Any) {
@@ -134,21 +134,56 @@ class TimerViewController: UIViewController {
 
 // MARK: - Device UI Configure
 extension TimerViewController {
-    private func configureProgressSize() {
+    private func updateProgressSize() {
         guard UIDevice.current.userInterfaceIdiom == .pad else { return }
+        #if targetEnvironment(macCatalyst)
+        self.updateProgressSizeForMac()
+        #else
+        self.updateProgressSizeForipad()
+        #endif
+    }
+    
+    private func updateProgressSizeForMac() {
+        let minWidth: CGFloat = 669
+        let minHeight: CGFloat = 800
+        let width: CGFloat = SceneDelegate.sharedWindow?.bounds.width ?? 0
+        let height: CGFloat = SceneDelegate.sharedWindow?.bounds.height ?? 0
+        let minLength: CGFloat = max(min(width, height), minHeight)
+        let biggerUI = (width >= minWidth && height >= minHeight)
+        let multipleScale = 1.55
+        print(width, height)
         
-        let iPadminiWidth: CGFloat = 744
-        let multipleScale: CGFloat = 1.8
-        let minLength = min(SceneDelegate.sharedWindow?.bounds.width ?? 0, SceneDelegate.sharedWindow?.bounds.height ?? 0)
-        
-        if (minLength >= iPadminiWidth) {
-            self.setLandscape()
-            let scale = (minLength/iPadminiWidth)*multipleScale
-            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+        if (biggerUI) {
+            self.zoomProgress(multipleScale: multipleScale, minLength: minLength, baseLength: minHeight)
+            // show recordDate
         } else {
-            self.setPortrait()
-            self.outterProgress.transform = .identity
+            self.minimizeProgress()
         }
+    }
+    
+    private func updateProgressSizeForipad() {
+        let minWidth: CGFloat = 744
+        let minLength: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 0, SceneDelegate.sharedWindow?.bounds.height ?? 0)
+        let biggerUI = (minLength >= minWidth)
+        let multipleScale = 1.6
+        
+        if (biggerUI) {
+            self.zoomProgress(multipleScale: multipleScale, minLength: minLength, baseLength: minWidth)
+            // show recordDate
+        } else {
+            self.minimizeProgress()
+        }
+    }
+    
+    private func zoomProgress(multipleScale: CGFloat, minLength: CGFloat, baseLength: CGFloat) {
+        let scale = (minLength/baseLength)*multipleScale
+        self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+        self.setLandscape()
+    }
+    
+    private func minimizeProgress() {
+        self.outterProgress.transform = .identity
+        self.setPortrait()
     }
 }
 
