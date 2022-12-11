@@ -30,6 +30,7 @@ final class ColorSelectorVC: UIViewController {
     private weak var delegate: ColorUpdateable?
     private var backgroundColor: UIColor?
     private var textTintColor: UIColor?
+    private var pickerDelegate: UIColorPickerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,7 @@ extension ColorSelectorVC {
     private func showColorSelectVC() {
         if #available(iOS 14.0, *) {
             let picker = UIColorPickerViewController()
+            self.pickerDelegate = picker
             picker.selectedColor = self.backgroundColor!
             picker.delegate = self
             self.present(picker, animated: true, completion: nil)
