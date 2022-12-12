@@ -34,8 +34,8 @@ enum NetworkURL {
         
         static var updates: String {
             switch Language.currentLanguage {
-            case .ko: return domain + "/updates"
-            case .en: return domain + "/updates_eng"
+            case .ko: return domain + "/updates?pageSize=100"
+            case .en: return domain + "/updates_eng?pageSize=100"
             }
         }
     }
