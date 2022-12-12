@@ -66,7 +66,7 @@ final class StandardDailyGraphView: UIView {
             collectionView.widthAnchor.constraint(equalToConstant: 215)
         ])
         collectionView.tag = 0
-        collectionView.backgroundColor = TiTiColor.systemBackground
+        collectionView.backgroundColor = UIColor(named: "Background_second")
         return collectionView
     }()
     private var timesFrameView: UIView = {
