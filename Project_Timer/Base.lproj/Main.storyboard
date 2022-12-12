@@ -143,7 +143,7 @@
                                     <constraint firstAttribute="width" constant="320" id="x6w-M4-kD7"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPQ-Xe-8up">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPQ-Xe-8up">
                                 <rect key="frame" x="170" y="172" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sX4-Hx-fkH"/>
@@ -168,7 +168,7 @@
                                     <action selector="taskSelect:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="c0H-6b-nfm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-fg-Akz">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-fg-Akz">
                                 <rect key="frame" x="85" y="642" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="4ir-WT-caX"/>
@@ -184,7 +184,7 @@
                                     <action selector="setting:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="6ye-Hg-u8J"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-wj-rJW">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRB-wj-rJW">
                                 <rect key="frame" x="160" y="632" width="70" height="70"/>
                                 <color key="backgroundColor" name="startButtonColor"/>
                                 <constraints>
@@ -207,13 +207,13 @@
                                     <action selector="timerStartStopAction:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="6bS-r8-fgN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-4v-yI5">
-                                <rect key="frame" x="183.66666666666666" y="653.33333333333337" width="22.666666666666657" height="27.666666666666629"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-4v-yI5">
+                                <rect key="frame" x="183.66666666666666" y="653.33333333333348" width="22.666666666666657" height="27.666666666666629"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQJ-Xa-pVL">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQJ-Xa-pVL">
                                 <rect key="frame" x="255" y="642" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2dE-ou-6hl"/>
@@ -285,7 +285,6 @@
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="bRB-wj-rJW" firstAttribute="top" secondItem="ROV-CL-IbC" secondAttribute="bottom" constant="50" id="1fc-9x-jzl"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="3MO-dw-92u"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="leading" secondItem="bRB-wj-rJW" secondAttribute="trailing" constant="25" id="3Q9-2p-HSF"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerX" secondItem="bRB-wj-rJW" secondAttribute="centerX" id="3bK-Jr-1hi"/>
@@ -295,7 +294,6 @@
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
                             <constraint firstItem="w3P-YJ-fGK" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="Fe9-h9-xMd"/>
                             <constraint firstItem="roc-hq-Dls" firstAttribute="leading" secondItem="COc-GQ-Is1" secondAttribute="trailing" constant="-5" id="IGn-5f-81s"/>
-                            <constraint firstItem="ROV-CL-IbC" firstAttribute="top" secondItem="NPQ-Xe-8up" secondAttribute="bottom" constant="50" id="O9d-O7-kdS"/>
                             <constraint firstItem="uFb-4K-sju" firstAttribute="centerY" secondItem="w3P-YJ-fGK" secondAttribute="centerY" id="Vhg-Wt-yuL"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="W1k-Ca-43M"/>
@@ -305,9 +303,7 @@
                             <constraint firstItem="COc-GQ-Is1" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="kcW-dz-GEF"/>
                             <constraint firstItem="roc-hq-Dls" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="otI-eI-V3t"/>
                             <constraint firstItem="NPQ-Xe-8up" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="ozw-CA-NND"/>
-                            <constraint firstItem="xTH-Uj-aTj" firstAttribute="bottom" secondItem="bRB-wj-rJW" secondAttribute="bottom" constant="59" id="p6H-yB-EsA"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="wdS-BZ-UeA"/>
-                            <constraint firstItem="NPQ-Xe-8up" firstAttribute="top" secondItem="xTH-Uj-aTj" secondAttribute="top" constant="125" id="zU7-cZ-pR4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -336,14 +332,10 @@
                         <outlet property="setTimerBT" destination="IQJ-Xa-pVL" id="WZV-l4-TzP"/>
                         <outlet property="settingBT" destination="QFf-fg-Akz" id="hH0-tP-DA2"/>
                         <outlet property="startStopBT" destination="bRB-wj-rJW" id="KcE-t8-I3Z"/>
-                        <outlet property="startStopBTBottomConstraint" destination="p6H-yB-EsA" id="E85-aR-tMA"/>
                         <outlet property="startStopBTLabel" destination="9Xz-4v-yI5" id="pQf-ry-94n"/>
-                        <outlet property="startStopBTTopConstraint" destination="1fc-9x-jzl" id="ffh-RF-ygD"/>
                         <outlet property="sumTimeLabel" destination="Vkm-0h-gfu" id="uVg-zK-j0y"/>
                         <outlet property="targetTimeLabel" destination="dFc-6M-MNJ" id="fzY-MU-GAA"/>
-                        <outlet property="taskBottomConstraint" destination="O9d-O7-kdS" id="ywV-Hd-d6f"/>
                         <outlet property="taskButton" destination="NPQ-Xe-8up" id="tkT-7r-Q8Z"/>
-                        <outlet property="taskTopConstraint" destination="zU7-cZ-pR4" id="Lp2-VL-7DZ"/>
                         <outlet property="timerLabel" destination="Kl4-pY-2wV" id="CVq-J7-f2a"/>
                         <outlet property="todayLabel" destination="COc-GQ-Is1" id="y2U-aB-XyG"/>
                         <outlet property="todayTopConstraint" destination="gF0-HB-GTC" id="eCc-uN-4dQ"/>
