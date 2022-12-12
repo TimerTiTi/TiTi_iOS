@@ -443,7 +443,7 @@
                                     <constraint firstAttribute="height" constant="320" id="x1F-j3-Baa"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-rS-lNf">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEt-rS-lNf">
                                 <rect key="frame" x="170" y="172" width="50" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kaO-n4-ewZ"/>
@@ -468,7 +468,7 @@
                                     <action selector="taskSelect:" destination="oQm-sw-2wm" eventType="touchUpInside" id="NUz-Kn-Df0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diS-gV-uEz">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diS-gV-uEz">
                                 <rect key="frame" x="85" y="642" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="2pt-In-rnd"/>
@@ -484,7 +484,7 @@
                                     <action selector="setting:" destination="oQm-sw-2wm" eventType="touchUpInside" id="j7s-9i-1sQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOs-fm-jq5">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOs-fm-jq5">
                                 <rect key="frame" x="160" y="632" width="70" height="70"/>
                                 <color key="backgroundColor" name="startButtonColor"/>
                                 <constraints>
@@ -507,7 +507,7 @@
                                     <action selector="timerStartStopAction:" destination="oQm-sw-2wm" eventType="touchUpInside" id="q6G-zT-SLT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jf-oH-8Jq">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jf-oH-8Jq">
                                 <rect key="frame" x="255" y="642" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="AEg-7l-f5z"/>
@@ -523,8 +523,8 @@
                                     <action selector="reset:" destination="oQm-sw-2wm" eventType="touchUpInside" id="LRI-dx-kUf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkP-ZL-Ulq">
-                                <rect key="frame" x="183.66666666666666" y="653.33333333333337" width="22.666666666666657" height="27.666666666666629"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="▶︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkP-ZL-Ulq">
+                                <rect key="frame" x="183.66666666666666" y="653.33333333333348" width="22.666666666666657" height="27.666666666666629"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -591,7 +591,6 @@
                             <constraint firstItem="diS-gV-uEz" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="3ql-Ls-TWy"/>
                             <constraint firstItem="VkP-ZL-Ulq" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="9ZE-1W-mCy"/>
                             <constraint firstItem="nRK-jy-UJa" firstAttribute="top" secondItem="yCZ-3D-BLQ" secondAttribute="top" constant="16" id="DbS-T9-RgM"/>
-                            <constraint firstItem="rzE-75-v4U" firstAttribute="top" secondItem="gEt-rS-lNf" secondAttribute="bottom" constant="50" id="F4G-Qb-5PJ"/>
                             <constraint firstItem="nRK-jy-UJa" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="FaX-mt-MMY"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="FcF-vb-Ssx"/>
                             <constraint firstItem="zHl-6H-tfo" firstAttribute="leading" secondItem="nRK-jy-UJa" secondAttribute="trailing" constant="-5" id="KJK-D6-U80"/>
@@ -599,7 +598,6 @@
                             <constraint firstItem="qOs-fm-jq5" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="NQX-fB-w0a"/>
                             <constraint firstItem="yCZ-3D-BLQ" firstAttribute="trailing" secondItem="TUI-kh-tOQ" secondAttribute="trailing" constant="16" id="RE0-Kz-Iry"/>
                             <constraint firstItem="qOs-fm-jq5" firstAttribute="leading" secondItem="diS-gV-uEz" secondAttribute="trailing" constant="25" id="Rvk-cQ-x1q"/>
-                            <constraint firstItem="qOs-fm-jq5" firstAttribute="top" secondItem="rzE-75-v4U" secondAttribute="bottom" constant="50" id="STX-BM-U7e"/>
                             <constraint firstItem="4jf-oH-8Jq" firstAttribute="leading" secondItem="qOs-fm-jq5" secondAttribute="trailing" constant="25" id="Xax-vO-yAl"/>
                             <constraint firstItem="zHl-6H-tfo" firstAttribute="centerY" secondItem="nRK-jy-UJa" secondAttribute="centerY" id="Y8A-px-rxo"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="ZDw-gQ-0Rw"/>
@@ -639,6 +637,7 @@
                         <outlet property="targetTimeLabel" destination="FTo-xw-CXf" id="BPc-gB-prr"/>
                         <outlet property="taskButton" destination="gEt-rS-lNf" id="6Zg-9Y-grc"/>
                         <outlet property="todayLabel" destination="nRK-jy-UJa" id="R5X-lK-yO9"/>
+                        <outlet property="todayTopConstraint" destination="DbS-T9-RgM" id="ZBF-go-fc9"/>
                         <outlet property="warningRecordDate" destination="zHl-6H-tfo" id="Tx2-KV-9Fp"/>
                     </connections>
                 </viewController>
@@ -3168,13 +3167,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-3k-frA">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="146" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
                                                             <rect key="frame" x="0.0" y="24" width="146" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
