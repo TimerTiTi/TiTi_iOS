@@ -13,26 +13,35 @@ import SwiftUI
 final class StopwatchViewController: UIViewController {
     static let identifier = "StopwatchViewController"
 
-    @IBOutlet var taskButton: UIButton!
-    @IBOutlet var innerProgress: CircularProgressView!
-    @IBOutlet var outterProgress: CircularProgressView!
-    
-    @IBOutlet var sumTimeLabel: UILabel!
-    @IBOutlet var TIMEofSumFrameView: UIView!
-    @IBOutlet var stopWatchLabel: UILabel!
-    @IBOutlet var TIMEofStopwatchFrameView: UIView!
-    @IBOutlet var targetTimeLabel: UILabel!
-    @IBOutlet var TIMEofTargetFrameView: UIView!
-    @IBOutlet var finishTimeLabel: UILabel!
-    
-    @IBOutlet var startStopBT: UIButton!
-    @IBOutlet var startStopBTLabel: UILabel!
-    @IBOutlet var resetBT: UIButton!
-    @IBOutlet var settingBT: UIButton!
-    @IBOutlet weak var colorSelector: UIButton!
-    @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
+    @IBOutlet weak var colorSelector: UIButton!
+    @IBOutlet weak var colorSelectorBorderView: UIImageView!
+    @IBOutlet weak var taskButton: UIButton!
+    
+    @IBOutlet weak var innerProgress: CircularProgressView!
+    @IBOutlet weak var outterProgress: CircularProgressView!
+    @IBOutlet weak var sumTimeLabel: UILabel!
+    @IBOutlet weak var TIMEofSumFrameView: UIView!
+    @IBOutlet weak var stopWatchLabel: UILabel!
+    @IBOutlet weak var TIMEofStopwatchFrameView: UIView!
+    @IBOutlet weak var targetTimeLabel: UILabel!
+    @IBOutlet weak var TIMEofTargetFrameView: UIView!
+    @IBOutlet weak var finishTimeLabel: UILabel!
+    
+    @IBOutlet weak var startStopBT: UIButton!
+    @IBOutlet weak var startStopBTLabel: UILabel!
+    @IBOutlet weak var resetBT: UIButton!
+    @IBOutlet weak var settingBT: UIButton!
+    
+    @IBOutlet var todayTopConstraint: NSLayoutConstraint! // 16
+    private var taskBottomConstraint: NSLayoutConstraint? // 50
+    private var startStopBTTopConstraint: NSLayoutConstraint? // 50
+    private var taskTopConstraint: NSLayoutConstraint?
+    private var startStopBTBottomConstraint: NSLayoutConstraint?
+    
+    private var lastViewSize: CGSize?
+    private var isBiggerUI: Bool = false
     
     private lazy var blackView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
@@ -61,6 +70,7 @@ final class StopwatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLayout()
         self.configureLocalizable()
         self.configureRendering()
         self.configureShadow()
@@ -100,6 +110,7 @@ final class StopwatchViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        self.updateProgressSize()
     }
     
     @IBAction func taskSelect(_ sender: Any) {
@@ -126,6 +137,141 @@ final class StopwatchViewController: UIViewController {
         self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
             self?.showSettingView()
         }
+    }
+}
+
+// MARK: - Device UI Configure
+extension StopwatchViewController {
+    private func configureLayout() {
+        self.taskButton.translatesAutoresizingMaskIntoConstraints = false
+        self.startStopBT.translatesAutoresizingMaskIntoConstraints = false
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            self.configurePhoneLayout()
+        default:
+            self.configurePadLayout()
+        }
+    }
+    
+    private func configurePhoneLayout() {
+        self.taskBottomConstraint = self.taskButton.bottomAnchor.constraint(equalTo: self.outterProgress.topAnchor, constant: -50)
+        self.taskBottomConstraint?.isActive = true
+        
+        self.startStopBTTopConstraint = self.startStopBT.topAnchor.constraint(equalTo: self.outterProgress.bottomAnchor, constant: 50)
+        self.startStopBTTopConstraint?.isActive = true
+        self.colorSelector.transform = CGAffineTransform.identity
+        self.colorSelectorBorderView.transform = CGAffineTransform.identity
+        self.isBiggerUI = false
+    }
+    
+    private func configurePadLayout() {
+        self.taskBottomConstraint?.isActive = false
+        if let taskBottomConstraint = self.taskBottomConstraint {
+            self.taskButton.removeConstraint(taskBottomConstraint)
+        }
+        self.taskTopConstraint = self.taskButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32)
+        self.taskTopConstraint?.isActive = true
+        
+        self.startStopBTTopConstraint?.isActive = false
+        if let startStopBTTopConstraint = self.startStopBTTopConstraint {
+            self.startStopBT.removeConstraint(startStopBTTopConstraint)
+        }
+        self.startStopBTBottomConstraint = self.startStopBT.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -81)
+        self.startStopBTBottomConstraint?.isActive = true
+        #if targetEnvironment(macCatalyst)
+        #else
+        self.colorSelector.transform = CGAffineTransform(translationX: 0, y: 29)
+        self.colorSelectorBorderView.transform = CGAffineTransform(translationX: 0, y: 29)
+        #endif
+        self.isBiggerUI = true
+    }
+    
+    private func updateProgressSize() {
+        guard UIDevice.current.userInterfaceIdiom == .pad,
+              self.lastViewSize != self.view.bounds.size else { return }
+        self.lastViewSize = self.view.bounds.size
+        
+        #if targetEnvironment(macCatalyst)
+        self.updateProgressSizeForMac()
+        #else
+        self.updateProgressSizeForipad()
+        #endif
+    }
+    
+    private func updateProgressSizeForMac() {
+        let minWidth: CGFloat = 669
+        let minHeight: CGFloat = 800
+        let width: CGFloat = self.view.bounds.width
+        let height: CGFloat = self.view.bounds.height
+        let minLength: CGFloat = max(min(width, height), minHeight)
+        let biggerUI = (width >= minWidth && height >= minHeight)
+        let multipleScale = 1.55
+        
+        if (biggerUI) {
+            if (isBiggerUI == false) {
+                self.configurePadLayout()
+            }
+            let scale = (minLength/minHeight)*multipleScale
+            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.setBiggerLandscapeUIforMac(scale: scale)
+        } else {
+            if (isBiggerUI) {
+                self.minimizeProgress()
+            }
+        }
+    }
+    
+    private func updateProgressSizeForipad() {
+        let minWidth: CGFloat = 744
+        let minLength: CGFloat = min(self.view.bounds.width, self.view.bounds.height)
+        let biggerUI = (minLength >= minWidth)
+        let multipleScale = 1.6
+        
+        if (biggerUI) {
+            if (isBiggerUI == false) {
+                self.configurePadLayout()
+            }
+            let scale = (minLength/minWidth)*multipleScale
+            self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
+            self.setBiggerLandscapeUIforiPad(scale: minLength/minWidth)
+        } else {
+            if (isBiggerUI) {
+                self.minimizeProgress()
+            }
+        }
+    }
+    
+    private func minimizeProgress() {
+        self.outterProgress.transform = .identity
+        self.resetBiggerUI()
+        self.setPortrait()
+    }
+    
+    private func setBiggerLandscapeUIforMac(scale: CGFloat) {
+        self.taskTopConstraint?.constant = 36*scale
+        self.startStopBTBottomConstraint?.constant = -12*scale*2-36
+    }
+    
+    private func setBiggerLandscapeUIforiPad(scale: CGFloat) {
+        self.todayTopConstraint.constant = -12
+        self.taskTopConstraint?.constant = 24*(scale*1.8-0.8)
+        self.startStopBTBottomConstraint?.constant = -68+(scale*35-35)
+    }
+    
+    private func resetBiggerUI() {
+        self.todayTopConstraint.constant = 16
+        self.taskTopConstraint?.isActive = false
+        if let taskTopConstraint = self.taskTopConstraint {
+            self.taskButton.removeConstraint(taskTopConstraint)
+        }
+        
+        self.startStopBTBottomConstraint?.isActive = false
+        if let startStopBTBottomConstraint = self.startStopBTBottomConstraint {
+            self.startStopBT.removeConstraint(startStopBTBottomConstraint)
+        }
+        
+        self.configurePhoneLayout()
     }
 }
 
@@ -235,10 +381,8 @@ extension StopwatchViewController {
         self.viewModel?.$times
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] times in
-                self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: RecordController.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
                 self?.updateProgress(times: times)
-//                self?.printTimes(with: times)
             })
             .store(in: &self.cancellables)
     }
@@ -308,12 +452,6 @@ extension StopwatchViewController {
     private func setTaskWhiteColor() {
         self.taskButton.setTitleColor(self.textColor, for: .normal)
         self.taskButton.layer.borderColor = self.textColor.cgColor
-    }
-    
-    private func updateTIMELabels(times: Times) {
-//        self.TIMEofSum.text = times.sum.toTimeString
-//        self.TIMEofStopwatch.text = times.stopwatch.toTimeString
-//        self.TIMEofTarget.text = times.goal.toTimeString
     }
     
     private func updateEndTime(goalTime: Int) {
@@ -422,12 +560,6 @@ extension StopwatchViewController {
         let newInnerProgressPer = Float(innerSum) / Float(goalPeriod)
         self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
-    }
-    
-    private func printTimes(with times: Times) {
-        print("sum: \(times.sum.toTimeString)")
-        print("stopwatch: \(times.stopwatch.toTimeString)")
-        print("goal: \(times.goal.toTimeString)")
     }
     
     private func showWarningRecordDate() {
