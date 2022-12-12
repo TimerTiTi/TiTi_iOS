@@ -36,11 +36,14 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var startStopBTLabel: UILabel!
     @IBOutlet weak var setTimerBT: UIButton!
     
-    @IBOutlet weak var todayTopConstraint: NSLayoutConstraint! // 16
-    @IBOutlet weak var taskTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var taskBottomConstraint: NSLayoutConstraint! // 50
-    @IBOutlet weak var startStopBTTopConstraint: NSLayoutConstraint! // 50
-    @IBOutlet weak var startStopBTBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var todayTopConstraint: NSLayoutConstraint! // 16
+    private var taskBottomConstraint: NSLayoutConstraint? // 50
+    private var startStopBTTopConstraint: NSLayoutConstraint? // 50
+    private var taskTopConstraint: NSLayoutConstraint?
+    private var startStopBTBottomConstraint: NSLayoutConstraint?
+    
+    private var lastViewSize: CGSize?
+    private var isBiggerUI: Bool = false
     
     private lazy var blackView: UIView = {
         let view = UIView(frame: UIScreen.main.bounds)
@@ -69,6 +72,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLayout()
         self.configureLocalizable()
         self.configureRendering()
         self.configureShadow()
@@ -140,10 +144,56 @@ class TimerViewController: UIViewController {
 
 // MARK: - Device UI Configure
 extension TimerViewController {
+    private func configureLayout() {
+        self.taskButton.translatesAutoresizingMaskIntoConstraints = false
+        self.startStopBT.translatesAutoresizingMaskIntoConstraints = false
+        
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone:
+            self.configurePhoneLayout()
+        default:
+            self.configurePadLayout()
+        }
+    }
+    
+    private func configurePhoneLayout() {
+        self.taskBottomConstraint = self.taskButton.bottomAnchor.constraint(equalTo: self.outterProgress.topAnchor, constant: -50)
+        self.taskBottomConstraint?.isActive = true
+        
+        self.startStopBTTopConstraint = self.startStopBT.topAnchor.constraint(equalTo: self.outterProgress.bottomAnchor, constant: 50)
+        self.startStopBTTopConstraint?.isActive = true
+        self.colorSelector.transform = CGAffineTransform.identity
+        self.colorSelectorBorderView.transform = CGAffineTransform.identity
+        self.isBiggerUI = false
+    }
+    
+    private func configurePadLayout() {
+        self.taskBottomConstraint?.isActive = false
+        if let taskBottomConstraint = self.taskBottomConstraint {
+            self.taskButton.removeConstraint(taskBottomConstraint)
+        }
+        self.taskTopConstraint = self.taskButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 32)
+        self.taskTopConstraint?.isActive = true
+        
+        self.startStopBTTopConstraint?.isActive = false
+        if let startStopBTTopConstraint = self.startStopBTTopConstraint {
+            self.startStopBT.removeConstraint(startStopBTTopConstraint)
+        }
+        self.startStopBTBottomConstraint = self.startStopBT.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -81)
+        self.startStopBTBottomConstraint?.isActive = true
+        #if targetEnvironment(macCatalyst)
+        #else
+        self.colorSelector.transform = CGAffineTransform(translationX: 0, y: 29)
+        self.colorSelectorBorderView.transform = CGAffineTransform(translationX: 0, y: 29)
+        #endif
+        self.isBiggerUI = true
+    }
+    
     private func updateProgressSize() {
-        guard UIDevice.current.userInterfaceIdiom == .pad else { return }
-        // ipad: self.view.bounds 로
-        // mac: 좀더 고민 필요
+        guard UIDevice.current.userInterfaceIdiom == .pad,
+              self.lastViewSize != self.view.bounds.size else { return }
+        self.lastViewSize = self.view.bounds.size
+        
         #if targetEnvironment(macCatalyst)
         self.updateProgressSizeForMac()
         #else
@@ -154,33 +204,43 @@ extension TimerViewController {
     private func updateProgressSizeForMac() {
         let minWidth: CGFloat = 669
         let minHeight: CGFloat = 800
-        let width: CGFloat = SceneDelegate.sharedWindow?.bounds.width ?? 0
-        let height: CGFloat = SceneDelegate.sharedWindow?.bounds.height ?? 0
+        let width: CGFloat = self.view.bounds.width
+        let height: CGFloat = self.view.bounds.height
         let minLength: CGFloat = max(min(width, height), minHeight)
         let biggerUI = (width >= minWidth && height >= minHeight)
         let multipleScale = 1.55
         
         if (biggerUI) {
+            if (isBiggerUI == false) {
+                self.configurePadLayout()
+            }
             let scale = (minLength/minHeight)*multipleScale
             self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
             self.setBiggerLandscapeUIforMac(scale: scale)
         } else {
-            self.minimizeProgress()
+            if (isBiggerUI) {
+                self.minimizeProgress()
+            }
         }
     }
     
     private func updateProgressSizeForipad() {
         let minWidth: CGFloat = 744
-        let minLength: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 0, SceneDelegate.sharedWindow?.bounds.height ?? 0)
+        let minLength: CGFloat = min(self.view.bounds.width, self.view.bounds.height)
         let biggerUI = (minLength >= minWidth)
         let multipleScale = 1.6
         
         if (biggerUI) {
+            if (isBiggerUI == false) {
+                self.configurePadLayout()
+            }
             let scale = (minLength/minWidth)*multipleScale
             self.outterProgress.transform = CGAffineTransform(scaleX: scale, y: scale)
-            self.setBiggerLandscapeUIforiPad(scale: scale)
+            self.setBiggerLandscapeUIforiPad(scale: minLength/minWidth)
         } else {
-            self.minimizeProgress()
+            if (isBiggerUI) {
+                self.minimizeProgress()
+            }
         }
     }
     
@@ -191,39 +251,29 @@ extension TimerViewController {
     }
     
     private func setBiggerLandscapeUIforMac(scale: CGFloat) {
-        self.taskBottomConstraint.isActive = false
-        self.taskTopConstraint.isActive = true
-        self.taskTopConstraint.constant = 36*scale
-        
-        self.startStopBTTopConstraint.isActive = false
-        self.startStopBTBottomConstraint.isActive = true
-        self.startStopBTBottomConstraint.constant = 12*scale*2
-        
-        self.isLandcape = true
+        self.taskTopConstraint?.constant = 36*scale
+        self.startStopBTBottomConstraint?.constant = -12*scale*2-36
     }
     
     private func setBiggerLandscapeUIforiPad(scale: CGFloat) {
         self.todayTopConstraint.constant = -12
-        self.taskBottomConstraint.isActive = false
-        self.taskTopConstraint.isActive = true
-        self.taskTopConstraint.constant = 12*scale
-        
-        self.startStopBTTopConstraint.isActive = false
-        self.startStopBTBottomConstraint.isActive = true
-        self.startStopBTBottomConstraint.constant = 32*scale - 56
-        
-        self.isLandcape = true
+        self.taskTopConstraint?.constant = 24*(scale*1.8-0.8)
+        self.startStopBTBottomConstraint?.constant = -68+(scale*35-35)
     }
     
     private func resetBiggerUI() {
         self.todayTopConstraint.constant = 16
-        self.taskTopConstraint.isActive = false
-        self.taskBottomConstraint.isActive = true
-        self.taskBottomConstraint.constant = 50
+        self.taskTopConstraint?.isActive = false
+        if let taskTopConstraint = self.taskTopConstraint {
+            self.taskButton.removeConstraint(taskTopConstraint)
+        }
         
-        self.startStopBTBottomConstraint.isActive = false
-        self.startStopBTTopConstraint.isActive = true
-        self.startStopBTTopConstraint.constant = 50
+        self.startStopBTBottomConstraint?.isActive = false
+        if let startStopBTBottomConstraint = self.startStopBTBottomConstraint {
+            self.startStopBT.removeConstraint(startStopBTBottomConstraint)
+        }
+        
+        self.configurePhoneLayout()
     }
 }
 
