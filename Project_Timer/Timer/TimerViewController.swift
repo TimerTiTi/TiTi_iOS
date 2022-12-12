@@ -388,7 +388,6 @@ extension TimerViewController {
         self.viewModel?.$times
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] times in
-                self?.updateTIMELabels(times: times)
                 self?.updateEndTime(goalTime: RecordController.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
                 self?.updateProgress(times: times)
                 self?.updateRunningColor(times: times)
@@ -470,13 +469,6 @@ extension TimerViewController {
     private func setTaskWhiteColor() {
         self.taskButton.setTitleColor(self.textColor, for: .normal)
         self.taskButton.layer.borderColor = self.textColor.cgColor
-    }
-    
-    private func updateTIMELabels(times: Times) {
-//        self.TIMEofSum.text = times.sum.toTimeString
-//        let timerText = times.timer == 0 ? "FINISH".localized() : times.timer.toTimeString
-//        self.TIMEofTimer.text = timerText
-//        self.TIMEofTarget.text = times.goal.toTimeString
     }
     
     private func updateEndTime(goalTime: Int) {

@@ -60,7 +60,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="system_backg"/>
+                <color key="backgroundColor" name="Background_second"/>
                 <constraints>
                     <constraint firstItem="xWi-WT-6MX" firstAttribute="width" secondItem="aYK-Dm-ajs" secondAttribute="width" constant="5" id="2G3-6q-RhO"/>
                     <constraint firstItem="aYK-Dm-ajs" firstAttribute="leading" secondItem="DKL-zS-jBj" secondAttribute="trailing" constant="8" id="6KV-e8-cFo"/>
@@ -89,6 +89,9 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <namedColor name="Background_second">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="CCC1">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -97,9 +100,6 @@
         </namedColor>
         <namedColor name="System_border">
             <color red="0.73299998044967651" green="0.73299998044967651" blue="0.73299998044967651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="system_backg">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

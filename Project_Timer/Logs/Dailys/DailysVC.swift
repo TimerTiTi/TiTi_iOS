@@ -94,7 +94,6 @@ final class DailysVC: UIViewController {
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
         let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
-//        let graphImages = dailyGraphViews.map({ UIImage(view: $0 )})
         let graphImages = (0..<3).filter({ self.isGraphChecked[$0] }).map({ UIImage(view: dailyGraphViews[$0]) })
         #if targetEnvironment(macCatalyst)
         self.saveGraphImagesForMac(images: graphImages)
@@ -114,7 +113,7 @@ final class DailysVC: UIViewController {
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             activityViewController.popoverPresentationController?.sourceView = self.view
-            activityViewController.popoverPresentationController?.sourceRect = sender.frame
+            activityViewController.popoverPresentationController?.sourceRect = self.navigationController!.navigationBar.frame
         }
         
         self.present(activityViewController, animated: true)
@@ -145,7 +144,7 @@ extension DailysVC {
             do {
                 try imageData.write(to: fileURL)
             } catch {
-                print(error)
+                self.showAlertWithOK(title: "Save Failed", text: "")
             }
         }
         
