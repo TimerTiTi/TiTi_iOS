@@ -13,6 +13,7 @@ import Combine
 final class LogHomeVC: UIViewController {
     static let identifier = "LogHomeVC"
     // contentViews
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalView: UIView!
     @IBOutlet weak var monthSmallView: UIView!
     @IBOutlet weak var weekSmallView: UIView!
@@ -32,6 +33,9 @@ final class LogHomeVC: UIViewController {
     private var progressWidth: CGFloat = 0
     private var progressHeight: CGFloat = 0
     
+    @IBOutlet var stackViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var stackViewBottomConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewModel()
@@ -42,6 +46,7 @@ final class LogHomeVC: UIViewController {
         self.configureWeek()
         self.configureDaily()
         self.bindAll()
+        self.configureBiggerUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +64,18 @@ final class LogHomeVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+}
+
+// MARK: Device UI Configure
+extension LogHomeVC {
+    private func configureBiggerUI() {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { return }
+        let height: CGFloat = self.contentView.bounds.height
+        let scale: CGFloat = 1.25
+        self.stackViewTopConstraint.constant = 8+((scale-1)/2*height)
+        self.stackViewBottomConstraint.constant = 8+((scale-1)/2*height)
+        self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
     }
 }
 
