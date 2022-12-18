@@ -21,6 +21,7 @@ struct UserDefaultsManager {
         case updatePushable = "updatePushable"
         // control
         case timelabelsAnimation = "timelabelsAnimation"
+        case bigUI = "bigUI"
         case flipToStartRecording = "flipToStartRecording"
         case keepTheScreenOn = "keepTheScreenOn"
         // graph

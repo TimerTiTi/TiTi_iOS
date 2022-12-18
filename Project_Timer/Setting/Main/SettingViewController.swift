@@ -60,7 +60,7 @@ extension SettingViewController {
     }
     
     private func configureViewModel() {
-        self.viewModel = SettingVM()
+        self.viewModel = SettingVM(isIpad: UIDevice.current.userInterfaceIdiom == .pad)
     }
     
     private func bindAll() {
