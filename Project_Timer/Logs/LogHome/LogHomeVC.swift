@@ -71,11 +71,14 @@ final class LogHomeVC: UIViewController {
 extension LogHomeVC {
     private func configureBiggerUI() {
         guard UIDevice.current.userInterfaceIdiom == .pad else { return }
+        #if targetEnvironment(macCatalyst)
         let height: CGFloat = self.contentView.bounds.height
         let scale: CGFloat = 1.25
         self.stackViewTopConstraint.constant = 8+((scale-1)/2*height)
         self.stackViewBottomConstraint.constant = 8+((scale-1)/2*height)
         self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+        #else
+        #endif
     }
 }
 

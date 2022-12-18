@@ -12,8 +12,10 @@ import Combine
 final class SettingVM {
     @Published private(set) var cells: [[SettingCellInfo]] = []
     private(set) var sectionTitles: [String] = []
+    private let isIpad: Bool
     
-    init() {
+    init(isIpad: Bool) {
+        self.isIpad = isIpad
         self.configureTitles()
         self.configureCells()
     }
@@ -48,6 +50,7 @@ final class SettingVM {
             ],
             [
                 SettingCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation),
+                SettingCellInfo(title: "Big UI", subTitle: "Activate Big UI for iPad".localized(), toggleKey: .bigUI),
                 SettingCellInfo(title: "Theme color".localized(), subTitle: "Setting Graph's theme color".localized(), rightTitle: "", nextVCIdentifier: SettingColorVC.identifier)
             ],
             [
@@ -68,9 +71,13 @@ final class SettingVM {
                 SettingCellInfo(title: "FDEE")
             ]
         ]
+        
         #if targetEnvironment(macCatalyst)
         self.cells.remove(at: 3)
         #else
+        if self.isIpad == false {
+            self.cells[2].remove(at: 1)
+        }
         #endif
     }
 }
