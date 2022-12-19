@@ -74,6 +74,7 @@ final class SettingVM {
         
         #if targetEnvironment(macCatalyst)
         self.cells.remove(at: 3)
+        self.cells[2].remove(at: 1)
         #else
         if self.isIpad == false {
             self.cells[2].remove(at: 1)
