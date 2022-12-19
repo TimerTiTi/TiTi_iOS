@@ -41,19 +41,33 @@ ver 7.6 기준 iOS 스크린샷 입니다.
 
 ver 7.9 기준 iPadOS 스크린샷 입니다.
 <p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/FVH9qfn.png">
-<img width="32.9%" src = "https://i.imgur.com/cv3CZcL.png">
-<img width="32.9%" src = "https://i.imgur.com/7SFSkj0.png">
+<img width="32.9%" src = "https://i.imgur.com/xXUbpFv.png">
+<img width="32.9%" src = "https://i.imgur.com/7X9Tp16.png">
+<img width="32.9%" src = "https://i.imgur.com/RSq665n.png">
 </p>
 <p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/5wdG3bk.png">
-<img width="32.9%%" src = "https://i.imgur.com/NA8JKY7.png">
-<img width="32.9%%" src = "https://i.imgur.com/G2QcpMt.png">
+<img width="32.9%" src = "https://i.imgur.com/reeYRKh.png">
+<img width="32.9%%" src = "https://i.imgur.com/iqhOfVn.png">
+<img width="32.9%%" src = "https://i.imgur.com/FH4SGKR.png">
 </p>
 <p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/rgmtOpJ.png">
-<img width="32.9%" src = "https://i.imgur.com/KzKbXuG.png">
-<img width="32.9%" src = "https://i.imgur.com/gUZuCMU.png">
+<img width="32.9%" src = "https://i.imgur.com/8828P7V.png">
+<img width="32.9%" src = "https://i.imgur.com/Pul0KEd.png">
+<img width="32.9%" src = "https://i.imgur.com/5bDip9S.png">
+</p>
+
+ver 7.9 기준 Mac 스크린샷 입니다.
+<p align="center" width="100%">
+<img width="49.6%" src = "https://i.imgur.com/SFMBxOK.png">
+<img width="49.6%" src = "https://i.imgur.com/KkNtsEk.png">
+</p>
+<p align="center" width="100%">
+<img width="49.6%" src = "https://i.imgur.com/1WloSJL.png">
+<img width="49.6%" src = "https://i.imgur.com/Te7qsyJ.png">
+</p>
+<p align="center" width="100%">
+<img width="49.6%" src = "https://i.imgur.com/mAiZ2li.png">
+<img width="49.6%" src = "https://i.imgur.com/UGqXXR5.png">
 </p>
 
 ## TiTi만의 특징
