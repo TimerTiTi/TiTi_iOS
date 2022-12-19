@@ -22,7 +22,7 @@
 
 
 ## TiTi 스크린샷
-ver 7.6 기준 스크린샷 입니다.
+ver 7.6 기준 iOS 스크린샷 입니다.
 <p align="center" width="100%">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112150-590a7c57-fefd-4406-bb3a-850c84d53747.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112162-91ca1aea-6108-4b96-ae2a-897969a0cc67.png">
@@ -37,6 +37,23 @@ ver 7.6 기준 스크린샷 입니다.
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112247-5b24b55c-17ad-4812-b2d5-4c8f800a67d2.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112250-7a6b9aa9-3bb0-4dd1-acf2-38e9d79c3720.png">
 <img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112252-c6381c9e-b93b-483a-b02d-0217affacf1c.png">
+</p>
+
+ver 7.9 기준 iPadOS 스크린샷 입니다.
+<p align="center" width="100%">
+<img width="32.9%" src = "https://i.imgur.com/FVH9qfn.png">
+<img width="32.9%" src = "https://i.imgur.com/cv3CZcL.png">
+<img width="32.9%" src = "https://i.imgur.com/7SFSkj0.png">
+</p>
+<p align="center" width="100%">
+<img width="32.9%" src = "https://i.imgur.com/5wdG3bk.png">
+<img width="32.9%%" src = "https://i.imgur.com/NA8JKY7.png">
+<img width="32.9%%" src = "https://i.imgur.com/G2QcpMt.png">
+</p>
+<p align="center" width="100%">
+<img width="32.9%" src = "https://i.imgur.com/rgmtOpJ.png">
+<img width="32.9%" src = "https://i.imgur.com/KzKbXuG.png">
+<img width="32.9%" src = "https://i.imgur.com/gUZuCMU.png">
 </p>
 
 ## TiTi만의 특징
