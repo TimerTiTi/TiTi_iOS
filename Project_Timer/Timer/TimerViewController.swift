@@ -95,6 +95,7 @@ class TimerViewController: UIViewController {
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
         self.viewModel?.updateDaily()
+        self.checkBigUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -112,6 +113,9 @@ class TimerViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        guard UIDevice.current.userInterfaceIdiom == .pad,
+              self.lastViewSize != self.view.bounds.size,
+              UserDefaultsManager.get(forKey: .bigUI) as? Bool ?? true else { return }
         self.updateProgressSize()
     }
 
@@ -148,11 +152,11 @@ extension TimerViewController {
         self.taskButton.translatesAutoresizingMaskIntoConstraints = false
         self.startStopBT.translatesAutoresizingMaskIntoConstraints = false
         
-        switch UIDevice.current.userInterfaceIdiom {
-        case .phone:
-            self.configurePhoneLayout()
-        default:
+        let bigUI = UserDefaultsManager.get(forKey: .bigUI) as? Bool ?? true
+        if (UIDevice.current.userInterfaceIdiom == .pad && bigUI) {
             self.configurePadLayout()
+        } else {
+            self.configurePhoneLayout()
         }
     }
     
@@ -189,11 +193,23 @@ extension TimerViewController {
         self.isBiggerUI = true
     }
     
-    private func updateProgressSize() {
-        guard UIDevice.current.userInterfaceIdiom == .pad,
-              self.lastViewSize != self.view.bounds.size else { return }
-        self.lastViewSize = self.view.bounds.size
+    /// viewWillAppear 시 setting: bigUI 값 변화 체크 후 반영
+    private func checkBigUI() {
+        guard UIDevice.current.userInterfaceIdiom == .pad else { return }
         
+        let bigUI = UserDefaultsManager.get(forKey: .bigUI) as? Bool ?? true
+        if (bigUI == true && isBiggerUI == false) {
+            // change to bigUI
+            self.updateProgressSize()
+        } else if (bigUI == false && isBiggerUI == true) {
+            // change to smallUI
+            self.minimizeProgress()
+        }
+    }
+    
+    /// 화면회전, 화면크기조절시 비율 조정
+    private func updateProgressSize() {
+        self.lastViewSize = self.view.bounds.size
         #if targetEnvironment(macCatalyst)
         self.updateProgressSizeForMac()
         #else
