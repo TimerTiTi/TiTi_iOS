@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TestUserSignupInfo {
+struct TestUserSignupInfo: Encodable {
     let username: String
     let email: String
     let password: String

@@ -11,8 +11,16 @@ import Alamofire
 
 struct Network: NetworkFetchable {
     func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void) {
-//        print("network request: \(url)")
         AF.request(url, method: method)
+            .response { response in
+                completion(self.configureNetworkResult(response: response))
+            }
+            .resume()
+    }
+    
+    func request<T: Encodable>(url: String, method: HTTPMethod, body: T, completion: @escaping (NetworkResult) -> Void) {
+        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted)
+            .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
             }
@@ -24,14 +32,14 @@ extension Network {
     private func configureNetworkResult(response: AFDataResponse<Data?>) -> NetworkResult {
         guard let statusCode = response.response?.statusCode else {
             print("Network Fail: No Status Code, \(String(describing: response.error))")
-            return NetworkResult(data: nil, statusCode: nil)
+            return NetworkResult(data: nil, status: .FAIL)
         }
         
         guard let data = response.data else {
             print("Network Fail \(statusCode): No Data, \(String(describing: response.data))")
-            return NetworkResult(data: nil, statusCode: statusCode)
+            return NetworkResult(data: nil, status: NetworkStatus.status(statusCode))
         }
         
-        return NetworkResult(data: data, statusCode: statusCode)
+        return NetworkResult(data: data, status: NetworkStatus.status(statusCode))
     }
 }
