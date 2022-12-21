@@ -32,3 +32,9 @@ protocol YoutubeLinkFetchable {
 protocol SurveysFetchable {
     func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void)
 }
+
+// MARK: TestServer
+protocol TestServerAuth {
+    func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void)
+    func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void)
+}
