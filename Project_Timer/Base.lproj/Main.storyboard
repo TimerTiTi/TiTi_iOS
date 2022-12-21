@@ -1970,10 +1970,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pj-Op-RY7">
-                                <rect key="frame" x="24" y="324" width="342" height="194"/>
+                                <rect key="frame" x="24" y="324" width="342" height="253"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="APu-ei-yDC">
-                                        <rect key="frame" x="24" y="32" width="294" height="130"/>
+                                        <rect key="frame" x="24" y="32" width="294" height="189"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="C83-XF-J9e">
                                                 <rect key="frame" x="0.0" y="0.0" width="294" height="34"/>
@@ -1989,8 +1989,9 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vz8-hy-dTp">
                                                         <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
@@ -2009,9 +2010,10 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-bm-bp8">
                                                         <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -2029,21 +2031,43 @@
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pgK-Sr-Hfk">
                                                         <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78l-8w-YYt">
+                                                <rect key="frame" x="0.0" y="144" width="294" height="45"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="OHP-XA-dgV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Signup">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="signup:" destination="Oh0-MG-ZKg" eventType="touchUpInside" id="Xgd-QJ-efT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="S1F-cO-vXH" secondAttribute="bottom" constant="32" id="17X-s3-A1k"/>
                                     <constraint firstItem="APu-ei-yDC" firstAttribute="centerX" secondItem="7pj-Op-RY7" secondAttribute="centerX" id="78j-Fh-zMp"/>
                                     <constraint firstItem="APu-ei-yDC" firstAttribute="leading" secondItem="7pj-Op-RY7" secondAttribute="leading" constant="24" id="G74-hV-RhB"/>
                                     <constraint firstItem="APu-ei-yDC" firstAttribute="top" secondItem="7pj-Op-RY7" secondAttribute="top" constant="32" id="jV0-rg-Ptj"/>
+                                    <constraint firstAttribute="bottom" secondItem="APu-ei-yDC" secondAttribute="bottom" constant="32" id="mF2-m7-IzH"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2052,44 +2076,20 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup [Test Server]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ib-Df-ZcF">
-                                <rect key="frame" x="134" y="299.33333333333331" width="122" height="16.666666666666686"/>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
+                                <rect key="frame" x="129" y="299" width="132.33333333333337" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78l-8w-YYt">
-                                <rect key="frame" x="154" y="550" width="82" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="82" id="F3B-rP-YgR"/>
-                                    <constraint firstAttribute="height" constant="35" id="OHP-XA-dgV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="18"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Signup">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="signup:" destination="Oh0-MG-ZKg" eventType="touchUpInside" id="Xgd-QJ-efT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u6z-cj-lxD"/>
                         <color key="backgroundColor" name="Blue"/>
                         <constraints>
                             <constraint firstItem="7pj-Op-RY7" firstAttribute="centerX" secondItem="u6z-cj-lxD" secondAttribute="centerX" id="068-Zc-jKu"/>
                             <constraint firstItem="7pj-Op-RY7" firstAttribute="leading" secondItem="u6z-cj-lxD" secondAttribute="leading" constant="24" id="46R-TX-3Q2"/>
-                            <constraint firstItem="78l-8w-YYt" firstAttribute="top" secondItem="7pj-Op-RY7" secondAttribute="bottom" constant="32" id="4Bh-yX-OWL"/>
                             <constraint firstItem="7pj-Op-RY7" firstAttribute="top" secondItem="Mdq-Fu-98H" secondAttribute="bottom" constant="50" id="9Lp-5v-kpr"/>
                             <constraint firstItem="Mdq-Fu-98H" firstAttribute="top" secondItem="Zre-en-EaK" secondAttribute="bottom" id="E3Y-5q-olr"/>
                             <constraint firstItem="Zre-en-EaK" firstAttribute="centerX" secondItem="u6z-cj-lxD" secondAttribute="centerX" id="FgA-1g-IuQ"/>
-                            <constraint firstItem="78l-8w-YYt" firstAttribute="centerX" secondItem="7pj-Op-RY7" secondAttribute="centerX" id="MtH-d2-CO6"/>
                             <constraint firstItem="Mdq-Fu-98H" firstAttribute="centerX" secondItem="Zre-en-EaK" secondAttribute="centerX" id="Ykh-nb-Kq7"/>
                             <constraint firstItem="7pj-Op-RY7" firstAttribute="top" secondItem="8Ib-Df-ZcF" secondAttribute="bottom" constant="8" id="nyu-Hf-W2K"/>
                             <constraint firstItem="8Ib-Df-ZcF" firstAttribute="centerX" secondItem="7pj-Op-RY7" secondAttribute="centerX" id="q7D-x2-aMl"/>
