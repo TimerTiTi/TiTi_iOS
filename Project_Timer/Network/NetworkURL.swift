@@ -39,4 +39,9 @@ enum NetworkURL {
             }
         }
     }
+    
+    enum TestServer {
+        static let base: String = Bundle.main.infoDictionary?["TestServerURL"] as? String ?? ""
+        
+    }
 }
