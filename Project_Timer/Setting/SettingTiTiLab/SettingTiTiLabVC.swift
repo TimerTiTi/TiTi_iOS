@@ -20,6 +20,7 @@ final class SettingTiTiLabVC: UIViewController {
         loader.startAnimating()
         return loader
     }()
+    @IBOutlet weak var loginTextLabel: UILabel!
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SurveyListVM?
@@ -27,6 +28,7 @@ final class SettingTiTiLabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TiTi Lab".localized()
+        self.loginTextLabel.text = "Login for synclonize Dailys [Test Server]".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
@@ -38,6 +40,19 @@ final class SettingTiTiLabVC: UIViewController {
         coordinator.animate { [weak self] _ in
             self?.surveys.collectionViewLayout.invalidateLayout()
         }
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        // MARK: login 여부에 따라 vc 분기로직 필요
+        self.showBetaLoginVC()
+    }
+}
+
+// MARK: TestServer Login
+extension SettingTiTiLabVC {
+    private func showBetaLoginVC() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupStartVC.identifier) else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

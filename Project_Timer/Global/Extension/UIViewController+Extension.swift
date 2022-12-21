@@ -26,6 +26,15 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    func showAlertWithOKAfterHandler(title: String, text: String, completion: @escaping(() -> Void)) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+            completion()
+        }
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+    }
+    
     func showRecordDateWarning(title: String, text: String, completion: @escaping(() -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
