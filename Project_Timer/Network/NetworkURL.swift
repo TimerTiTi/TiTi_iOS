@@ -42,6 +42,15 @@ enum NetworkURL {
     
     enum TestServer {
         static let base: String = Bundle.main.infoDictionary?["TestServerURL"] as? String ?? ""
-        
+        static let auth: String = base+"/auth"
+        static let dailys: String = base+"/dailys"
+        static let timelines: String = base+"/timelines"
+        static let tasks: String = base+"/tasks"
+        // auth
+        static let authSignup: String = auth+"/signup"
+        static let authLogin: String = auth+"/login"
+        // dailys
+        static let dailysCreate: String = dailys+"/create"
+        static let dailysUpload: String = dailys+"/upload"
     }
 }
