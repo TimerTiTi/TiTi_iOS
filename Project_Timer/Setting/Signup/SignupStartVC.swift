@@ -17,6 +17,7 @@ final class SignupStartVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.appTapGestureForDismissingKeyboard()
     }
     
     @IBAction func signup(_ sender: Any) {
