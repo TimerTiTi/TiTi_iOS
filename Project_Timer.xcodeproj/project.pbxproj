@@ -179,6 +179,8 @@
 		87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
+		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
+		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
@@ -378,6 +380,8 @@
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED12295215A200121DE6 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
+		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
@@ -747,6 +751,7 @@
 		8791082B28387B9B005D7B10 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				87D7ED132952B3B000121DE6 /* TestServer */,
 				875C98BC28717279008F7ADD /* Decodable */,
 			);
 			path = DTO;
@@ -974,6 +979,15 @@
 				87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		87D7ED132952B3B000121DE6 /* TestServer */ = {
+			isa = PBXGroup;
+			children = (
+				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
+				87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */,
+			);
+			path = TestServer;
 			sourceTree = "<group>";
 		};
 		87E6004928426EA3008D17B9 /* Setting */ = {
@@ -1255,6 +1269,7 @@
 				87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
+				87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
@@ -1272,6 +1287,7 @@
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
+				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
