@@ -377,6 +377,7 @@
 		87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysWeekData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
+		87D7ED12295215A200121DE6 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
@@ -1032,6 +1033,7 @@
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
 				04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */,
+				87D7ED12295215A200121DE6 /* env.xcconfig */,
 			);
 			path = Project_Timer;
 			sourceTree = "<group>";
@@ -1521,7 +1523,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */;
+			baseConfigurationReference = 87D7ED12295215A200121DE6 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
@@ -1547,7 +1549,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */;
+			baseConfigurationReference = 87D7ED12295215A200121DE6 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
