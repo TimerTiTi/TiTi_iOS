@@ -18,8 +18,8 @@ final class NetworkController {
 extension NetworkController: VersionFetchable {
     func getAppstoreVersion(completion: @escaping (NetworkStatus, String?) -> Void) {
         self.network.request(url: NetworkURL.Firestore.lastestVersion, method: .get) { result in
-            switch result.statusCode {
-            case 200:
+            switch result.status {
+            case .SUCCESS:
                 guard let data = result.data,
                       let lastestVersionInfo: LastestVersionInfo = try? JSONDecoder().decode(LastestVersionInfo.self, from: data) else {
                     print("Decode Error: LastestVersionInfo")
@@ -28,7 +28,7 @@ extension NetworkController: VersionFetchable {
                 }
                 completion(.SUCCESS, lastestVersionInfo.version.value)
             default:
-                completion(.FAIL, nil)
+                completion(result.status, nil)
                 return
             }
         }
@@ -38,8 +38,8 @@ extension NetworkController: VersionFetchable {
 extension NetworkController: TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void) {
         self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
-            switch result.statusCode {
-            case 200:
+            switch result.status {
+            case .SUCCESS:
                 guard let data = result.data,
                       let functionInfos: FunctionInfos = try? JSONDecoder().decode(FunctionInfos.self, from: data) else {
                     print("Decode Error: FunctionInfos")
@@ -48,7 +48,7 @@ extension NetworkController: TiTiFunctionsFetchable {
                 }
                 completion(.SUCCESS, functionInfos.functionInfos)
             default:
-                completion(.FAIL, [])
+                completion(result.status, [])
                 return
             }
         }
@@ -58,8 +58,8 @@ extension NetworkController: TiTiFunctionsFetchable {
 extension NetworkController: UpdateHistoryFetchable {
     func getUpdateHistorys(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void) {
         self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
-            switch result.statusCode {
-            case 200:
+            switch result.status {
+            case .SUCCESS:
                 guard let data = result.data,
                       let updateInfos: UpdateInfos = try? JSONDecoder().decode(UpdateInfos.self, from: data) else {
                     print("Decode Error: UpdateInfos")
@@ -68,7 +68,7 @@ extension NetworkController: UpdateHistoryFetchable {
                 }
                 completion(.SUCCESS, updateInfos.updateInfos)
             default:
-                completion(.FAIL, [])
+                completion(result.status, [])
                 return
             }
         }
@@ -78,8 +78,8 @@ extension NetworkController: UpdateHistoryFetchable {
 extension NetworkController: YoutubeLinkFetchable {
     func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void) {
         self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
-            switch result.statusCode {
-            case 200:
+            switch result.status {
+            case .SUCCESS:
                 guard let data = result.data,
                       let youtubeLinkInfo: YoutubeLinkInfo = try? JSONDecoder().decode(YoutubeLinkInfo.self, from: data) else {
                     print("Decode Error: YoutubeLinkInfoDTO")
@@ -88,7 +88,7 @@ extension NetworkController: YoutubeLinkFetchable {
                 }
                 completion(.SUCCESS, youtubeLinkInfo)
             default:
-                completion(.FAIL, nil)
+                completion(result.status, nil)
                 return
             }
         }
@@ -98,8 +98,8 @@ extension NetworkController: YoutubeLinkFetchable {
 extension NetworkController: SurveysFetchable {
     func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void) {
         self.network.request(url: NetworkURL.Firestore.surveys, method: .get) { result in
-            switch result.statusCode {
-            case 200:
+            switch result.status {
+            case .SUCCESS:
                 guard let data = result.data,
                       let surveys: SurveyInfos = try? JSONDecoder().decode(SurveyInfos.self, from: data) else {
                     print("Decode Error: SurveyInfos")
@@ -108,9 +108,35 @@ extension NetworkController: SurveysFetchable {
                 }
                 completion(.SUCCESS, surveys.surveyInfos ?? [])
             default:
-                completion(.FAIL, [])
+                completion(result.status, [])
                 return
             }
         }
+    }
+}
+
+// MARK: TestServer
+extension NetworkController: TestServerAuth {
+    func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, body: userInfo) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                      let token = dto["token"] as? String else {
+                    print("Decode Error: signup")
+                    completion(.DECODEERROR, nil)
+                    return
+                }
+                completion(.SUCCESS, token)
+            default:
+                completion(result.status, nil)
+                return
+            }
+        }
+    }
+
+    func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
+        //
     }
 }
