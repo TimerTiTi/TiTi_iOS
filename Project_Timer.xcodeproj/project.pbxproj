@@ -182,7 +182,7 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
-		87D7ED1D2952E3F600121DE6 /* SignupStartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupStartVC.swift */; };
+		87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
@@ -385,7 +385,7 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
-		87D7ED1C2952E3F600121DE6 /* SignupStartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupStartVC.swift; sourceTree = "<group>"; };
+		87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
@@ -1006,7 +1006,7 @@
 		87D7ED1B2952E3DF00121DE6 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
-				87D7ED1C2952E3F600121DE6 /* SignupStartVC.swift */,
+				87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -1356,7 +1356,7 @@
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
-				87D7ED1D2952E3F600121DE6 /* SignupStartVC.swift in Sources */,
+				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				87DE1179268ACB040012F043 /* DailyViewModel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
