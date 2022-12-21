@@ -10,7 +10,7 @@ import Foundation
 
 struct NetworkResult {
     let data: Data?
-    let statusCode: Int?
+    let status: NetworkStatus
 }
 
 enum NetworkStatus: Int {
@@ -22,7 +22,7 @@ enum NetworkStatus: Int {
     case SERVERERROR // 500
     case DECODEERROR // -1
     
-    func status(statusCode: Int) -> NetworkStatus {
+    static func status(_ statusCode: Int) -> NetworkStatus {
         switch statusCode {
         case 200: return .SUCCESS
         case 401: return .AUTHENTICATION

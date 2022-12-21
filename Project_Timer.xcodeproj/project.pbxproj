@@ -181,6 +181,7 @@
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
+		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
@@ -382,6 +383,7 @@
 		87D7ED12295215A200121DE6 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
+		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
 				879108242838761B005D7B10 /* NetworkStatus.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
+				87D7ED182952BA7200121DE6 /* Extension */,
 				8791082B28387B9B005D7B10 /* DTO */,
 			);
 			path = Network;
@@ -988,6 +991,14 @@
 				87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */,
 			);
 			path = TestServer;
+			sourceTree = "<group>";
+		};
+		87D7ED182952BA7200121DE6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		87E6004928426EA3008D17B9 /* Setting */ = {
@@ -1327,6 +1338,7 @@
 				87BF666A28F80E9400CD6F19 /* NormalTimeLabelView.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
+				87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */,
 				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
