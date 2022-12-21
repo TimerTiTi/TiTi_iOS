@@ -1877,14 +1877,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMW-s1-6hU">
                                 <rect key="frame" x="0.0" y="569" width="390" height="67.333333333333371"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNN-gk-Kfr">
-                                        <rect key="frame" x="15.999999999999996" y="15" width="37.666666666666657" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNN-gk-Kfr">
+                                        <rect key="frame" x="16.000000000000004" y="15" width="47.333333333333343" height="19"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dailys 기록 연동을 위한 로그인 [Test Server]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgp-wS-nj4">
-                                        <rect key="frame" x="16" y="39" width="194.66666666666666" height="12.333333333333336"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dailys 기록 연동 [Test Server]" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgp-wS-nj4">
+                                        <rect key="frame" x="16" y="39" width="130" height="12.333333333333336"/>
                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1902,7 +1902,7 @@
                                         <rect key="frame" x="8" y="-8" width="374" height="83.333333333333329"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
-                                            <action selector="login:" destination="ffv-oY-cre" eventType="touchUpInside" id="VzF-la-hKA"/>
+                                            <action selector="signupSync:" destination="ffv-oY-cre" eventType="touchUpInside" id="dUc-o5-m6r"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1921,6 +1921,19 @@
                                     <constraint firstAttribute="trailing" secondItem="TA9-6m-aKp" secondAttribute="trailing" constant="16" id="whf-Yo-rOF"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Anp-8v-LRP">
+                                <rect key="frame" x="8" y="644.33333333333337" width="374" height="31"/>
+                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="ffv-oY-cre" eventType="touchUpInside" id="amX-NO-cOG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A6W-9Z-cwQ"/>
                         <color key="backgroundColor" name="system_backgroup"/>
@@ -1930,17 +1943,22 @@
                             <constraint firstItem="FMW-s1-6hU" firstAttribute="leading" secondItem="A6W-9Z-cwQ" secondAttribute="leading" id="JNC-HY-0ST"/>
                             <constraint firstItem="A6W-9Z-cwQ" firstAttribute="bottom" secondItem="8FC-t3-ioZ" secondAttribute="bottom" constant="280" id="Sqc-lz-y5F"/>
                             <constraint firstItem="Bav-Qe-wGe" firstAttribute="top" secondItem="hGo-O3-ryt" secondAttribute="bottom" constant="5" id="VPu-XS-NlA"/>
+                            <constraint firstItem="Anp-8v-LRP" firstAttribute="centerX" secondItem="oaK-E0-auU" secondAttribute="centerX" id="ZXM-LQ-9Hv"/>
                             <constraint firstItem="HQL-yS-2Z3" firstAttribute="leading" secondItem="A6W-9Z-cwQ" secondAttribute="leading" constant="16" id="ZdR-Q5-EYT"/>
                             <constraint firstItem="FMW-s1-6hU" firstAttribute="top" secondItem="HQL-yS-2Z3" secondAttribute="bottom" constant="5" id="bqS-fz-rW5"/>
                             <constraint firstItem="4Li-dl-GBr" firstAttribute="top" secondItem="Bav-Qe-wGe" secondAttribute="bottom" constant="1" id="d7y-pj-IRc"/>
                             <constraint firstItem="8FC-t3-ioZ" firstAttribute="centerX" secondItem="A6W-9Z-cwQ" secondAttribute="centerX" id="fek-PX-hO8"/>
                             <constraint firstItem="A6W-9Z-cwQ" firstAttribute="trailing" secondItem="FMW-s1-6hU" secondAttribute="trailing" id="gnj-3x-pnB"/>
+                            <constraint firstItem="Anp-8v-LRP" firstAttribute="width" secondItem="oaK-E0-auU" secondAttribute="width" id="mRO-yR-7c5"/>
+                            <constraint firstItem="Anp-8v-LRP" firstAttribute="top" secondItem="oaK-E0-auU" secondAttribute="bottom" id="nTo-nN-ses"/>
                             <constraint firstItem="HQL-yS-2Z3" firstAttribute="top" secondItem="8FC-t3-ioZ" secondAttribute="bottom" constant="18" id="w0h-Ri-JdZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="TiTi Lab" id="GUg-uM-Jjg"/>
                     <connections>
+                        <outlet property="loginButton" destination="Anp-8v-LRP" id="n6y-Ia-8cs"/>
                         <outlet property="loginTextLabel" destination="hgp-wS-nj4" id="dAI-GE-wv3"/>
+                        <outlet property="signupSyncLabel" destination="UNN-gk-Kfr" id="HVx-Qu-YD2"/>
                         <outlet property="surveys" destination="8FC-t3-ioZ" id="S3C-UQ-K7H"/>
                     </connections>
                 </viewController>
@@ -1948,10 +1966,10 @@
             </objects>
             <point key="canvasLocation" x="7280" y="2335"/>
         </scene>
-        <!--Signup StartVC-->
+        <!--Signup LoginVC-->
         <scene sceneID="Pb4-Aa-Ii6">
             <objects>
-                <viewController storyboardIdentifier="SignupStartVC" id="Oh0-MG-ZKg" customClass="SignupStartVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignupLoginVC" id="Oh0-MG-ZKg" customClass="SignupLoginVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2gu-YY-20b">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2097,8 +2115,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailStackView" destination="S1F-cO-vXH" id="qAw-qT-QDE"/>
                         <outlet property="emailTextField" destination="pgK-Sr-Hfk" id="bBO-mB-qDy"/>
                         <outlet property="passwordTextField" destination="vbQ-bm-bp8" id="dXF-kZ-L1O"/>
+                        <outlet property="signupLoginButton" destination="78l-8w-YYt" id="Sip-Rd-0Yd"/>
+                        <outlet property="signupLoginStatusLabel" destination="8Ib-Df-ZcF" id="fYE-RO-5pV"/>
                         <outlet property="userNameTextField" destination="Vz8-hy-dTp" id="ZJt-mh-YBj"/>
                     </connections>
                 </viewController>

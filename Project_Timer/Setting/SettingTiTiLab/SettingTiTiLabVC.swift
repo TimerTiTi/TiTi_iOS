@@ -20,7 +20,9 @@ final class SettingTiTiLabVC: UIViewController {
         loader.startAnimating()
         return loader
     }()
+    @IBOutlet weak var signupSyncLabel: UILabel!
     @IBOutlet weak var loginTextLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SurveyListVM?
@@ -28,7 +30,7 @@ final class SettingTiTiLabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TiTi Lab".localized()
-        self.loginTextLabel.text = "Login for synclonize Dailys [Test Server]".localized()
+        self.loginTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
@@ -42,16 +44,23 @@ final class SettingTiTiLabVC: UIViewController {
         }
     }
     
+    @IBAction func signupSync(_ sender: Any) {
+        // MARK: login 여부에 따라 분기로직 필요
+        self.showBetaLoginSignupVC(login: false)
+    }
+    
     @IBAction func login(_ sender: Any) {
-        // MARK: login 여부에 따라 vc 분기로직 필요
-        self.showBetaLoginVC()
+        self.showBetaLoginSignupVC(login: true)
     }
 }
 
 // MARK: TestServer Login
 extension SettingTiTiLabVC {
-    private func showBetaLoginVC() {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupStartVC.identifier) else { return }
+    private func showBetaLoginSignupVC(login: Bool) {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupLoginVC.identifier)  as? SignupLoginVC else { return }
+        if login {
+            vc.configure(login: true)
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
