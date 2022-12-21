@@ -13,8 +13,8 @@ struct NetworkResult {
     let status: NetworkStatus
 }
 
-enum NetworkStatus: Int {
-    case SUCCESS // 200
+enum NetworkStatus: String {
+    case SUCCESS // 200~204
     case FAIL // 400
     case AUTHENTICATION // 401
     case NOTFOUND // 404
@@ -25,6 +25,8 @@ enum NetworkStatus: Int {
     static func status(_ statusCode: Int) -> NetworkStatus {
         switch statusCode {
         case 200: return .SUCCESS
+        case 201: return .SUCCESS
+        case 204: return .SUCCESS
         case 401: return .AUTHENTICATION
         case 404: return .NOTFOUND
         case 409: return .CONFLICT
