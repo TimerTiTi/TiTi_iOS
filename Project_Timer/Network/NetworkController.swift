@@ -137,6 +137,21 @@ extension NetworkController: TestServerAuth {
     }
 
     func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
-        //
+        self.network.request(url: NetworkURL.TestServer.authLogin, method: .post, body: userInfo) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                      let token = dto["token"] as? String else {
+                    print("Decode Error: signup")
+                    completion(.DECODEERROR, nil)
+                    return
+                }
+                completion(.SUCCESS, token)
+            default:
+                completion(result.status, nil)
+                return
+            }
+        }
     }
 }
