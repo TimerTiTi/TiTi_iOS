@@ -18,6 +18,7 @@ final class SignupLoginVC: UIViewController {
     @IBOutlet weak var signupLoginButton: UIButton!
     @IBOutlet weak var emailStackView: UIStackView!
     
+    private let network: TestServerAuth = NetworkController(network: Network())
     private var login: Bool = false
     
     override func viewDidLoad() {
@@ -55,15 +56,14 @@ extension SignupLoginVC {
     }
     
     private func signup(info: TestUserSignupInfo) {
-        let networkController: TestServerAuth = NetworkController(network: Network())
-        networkController.signup(userInfo: info) { [weak self] status, token in
+        self.network.signup(userInfo: info) { [weak self] status, token in
             switch status {
             case .SUCCESS:
                 guard let token = token else {
                     // fail
                     return
                 }
-                self?.saveUserInfo(userInfo: info, token: token)
+                self?.saveUserInfo(username: info.username, password: info.password, token: token)
             case .CONFLICT:
                 self?.showAlertWithOK(title: "CONFLICT", text: "need another infos")
             default:
@@ -73,12 +73,23 @@ extension SignupLoginVC {
     }
     
     private func login(info: TestUserLoginInfo) {
-        let networkController: TestServerAuth = NetworkController(network: Network())
+        self.network.login(userInfo: info) { [weak self] status, token in
+            switch status {
+            case .SUCCESS:
+                guard let token = token else {
+                    // fail
+                    return
+                }
+                self?.saveUserInfo(username: info.username, password: info.password, token: token)
+            default:
+                self?.showAlertWithOK(title: "FAIL", text: "\(status.rawValue)")
+            }
+        }
     }
     
-    private func saveUserInfo(userInfo: TestUserSignupInfo, token: String) {
+    private func saveUserInfo(username: String, password: String, token: String) {
         // MARK: Token 저장로직 필요, Noti Signup 필요
-        self.showAlertWithOKAfterHandler(title: "SUCCESS", text: "Click to Sync Dailys") { [weak self] in
+        self.showAlertWithOKAfterHandler(title: "SUCCESS", text: "") { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
