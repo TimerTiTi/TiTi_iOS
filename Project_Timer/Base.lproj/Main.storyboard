@@ -2074,7 +2074,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="signup:" destination="Oh0-MG-ZKg" eventType="touchUpInside" id="Xgd-QJ-efT"/>
+                                                    <action selector="signupLogin:" destination="Oh0-MG-ZKg" eventType="touchUpInside" id="8S6-vq-s7R"/>
                                                 </connections>
                                             </button>
                                         </subviews>
