@@ -116,7 +116,7 @@ extension NetworkController: SurveysFetchable {
 }
 
 // MARK: TestServer
-extension NetworkController: TestServerAuth {
+extension NetworkController: TestServerAuthFetchable {
     func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
         self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, body: userInfo) { result in
             switch result.status {
@@ -153,5 +153,21 @@ extension NetworkController: TestServerAuth {
                 return
             }
         }
+    }
+}
+
+extension NetworkController: TestServerUserInfoFetchable {
+    func getUserDailysStatus(completion: @escaping (NetworkStatus, UserDailysStatus?) -> Void) {
+        //
+    }
+}
+
+extension NetworkController: TestServerDailyFetchable {
+    func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void) {
+        //
+    }
+    
+    func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void) {
+        //
     }
 }

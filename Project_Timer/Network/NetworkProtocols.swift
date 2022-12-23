@@ -35,7 +35,16 @@ protocol SurveysFetchable {
 }
 
 // MARK: TestServer
-protocol TestServerAuth {
+protocol TestServerAuthFetchable {
     func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void)
     func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void)
+}
+
+protocol TestServerUserInfoFetchable {
+    func getUserDailysStatus(completion: @escaping (NetworkStatus, UserDailysStatus?) -> Void)
+}
+
+protocol TestServerDailyFetchable {
+    func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void)
+    func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void)
 }
