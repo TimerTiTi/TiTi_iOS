@@ -50,6 +50,7 @@ extension SyncDailysVM {
                     self?.error = ("Network Error", "get userDailysInfo Error")
                     return
                 }
+                self?.loading = false
                 self?.userDailysInfo = userDailysInfo
             case .DECODEERROR:
                 self?.error = ("Decode Error", "Decode UserDailysInfo Error")
@@ -83,7 +84,9 @@ extension SyncDailysVM {
 
 extension SyncDailysVM {
     private func store(_ dailys: [Daily]) {
-        // dailys 저장 로직 구현 필요
-        self.loading = false
+        // dailys 저장
+        RecordController.shared.dailys.changeDailys(to: dailys)
+        // userDailysInfo fetch
+        self.getUserDailysInfo()
     }
 }
