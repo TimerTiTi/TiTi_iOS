@@ -10,4 +10,10 @@ import UIKit
 
 final class SyncDailysVC: UIViewController {
     static let identifier = "SyncDailysVC"
+    
+    @IBOutlet weak var syncUserStatusView: SyncUserStatusView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
