@@ -114,7 +114,6 @@
 		8765235128C79C4400487BFB /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765235028C79C4400487BFB /* TotalView.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
-		876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C107A264A635100CCCDB7 /* firstViewController.swift */; };
 		8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8771190C28954B4A00F53FAD /* StandardWeekTaskCell.xib */; };
 		8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8772E91526705EE100A191BF /* TodolistViewController.swift */; };
 		8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF4C27DCB59400739A09 /* FirebaseAnalytics */; };
@@ -237,7 +236,6 @@
 		04E0DFCA28A926C1004DABBE /* TaskInteractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInteractionView.swift; sourceTree = "<group>"; };
 		04E0DFCC28A94460004DABBE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* BaseSingleTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleTimeLabelVM.swift; sourceTree = "<group>"; };
-		04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AdMob.xcconfig; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
 		04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFont.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 		8765235028C79C4400487BFB /* TotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 		876A85542832135E00978035 /* daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = daily.swift; sourceTree = "<group>"; };
-		876C107A264A635100CCCDB7 /* firstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstViewController.swift; sourceTree = "<group>"; };
 		8771190C28954B4A00F53FAD /* StandardWeekTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardWeekTaskCell.xib; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistViewController.swift; sourceTree = "<group>"; };
 		87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekLabel.swift; sourceTree = "<group>"; };
@@ -807,14 +804,6 @@
 			path = Logs;
 			sourceTree = "<group>";
 		};
-		8791C1EF27DCCF26000D6BA9 /* First */ = {
-			isa = PBXGroup;
-			children = (
-				876C107A264A635100CCCDB7 /* firstViewController.swift */,
-			);
-			path = First;
-			sourceTree = "<group>";
-		};
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -1008,12 +997,12 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		87D7ED1B2952E3DF00121DE6 /* Signup */ = {
+		87D7ED1B2952E3DF00121DE6 /* SignupLogin */ = {
 			isa = PBXGroup;
 			children = (
 				87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */,
 			);
-			path = Signup;
+			path = SignupLogin;
 			sourceTree = "<group>";
 		};
 		87E6004928426EA3008D17B9 /* Setting */ = {
@@ -1025,7 +1014,7 @@
 				870474F428F148A800CC03A8 /* SettingColor */,
 				87D3E49C28E49D3A00ACD5EC /* SettingRecord */,
 				872C0ED9284ADD6800E8E3F2 /* UpdateHistory */,
-				87D7ED1B2952E3DF00121DE6 /* Signup */,
+				87D7ED1B2952E3DF00121DE6 /* SignupLogin */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1054,7 +1043,6 @@
 				8721C6D52969123100410D57 /* Usecase */,
 				8791081D2838752D005D7B10 /* Network */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
-				8791C1EF27DCCF26000D6BA9 /* First */,
 				8791C1EA27DCCDF4000D6BA9 /* Timer */,
 				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
 				87BEBEE7281C16D80095CD29 /* RecordController */,
@@ -1063,17 +1051,16 @@
 				8791C1ED27DCCE10000D6BA9 /* Logs */,
 				87E6004928426EA3008D17B9 /* Setting */,
 				878B507025B6E2FB00B9EFD7 /* component */,
+				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
 				93B08529248DDF3000E215BD /* Assets.xcassets */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
 				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
 				87CA3B532618591100DD9BB5 /* Localizable.strings */,
-				93B08534248DEEBA00E215BD /* Project_Timer.entitlements */,
+				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
-				93B0852E248DDF3000E215BD /* Info.plist */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
-				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
-				04F6BCEB28B3758100344DC0 /* AdMob.xcconfig */,
+				93B0852E248DDF3000E215BD /* Info.plist */,
 				87D7ED12295215A200121DE6 /* env.xcconfig */,
 			);
 			path = Project_Timer;
@@ -1267,7 +1254,6 @@
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
-				876C107B264A635100CCCDB7 /* firstViewController.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
