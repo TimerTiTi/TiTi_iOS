@@ -12,6 +12,7 @@ final class SyncDailysVC: UIViewController {
     static let identifier = "SyncDailysVC"
     
     @IBOutlet weak var syncUserStatusView: SyncUserStatusView!
+    @IBOutlet weak var syncDeviceStatusView: SyncDeviceStatusView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
