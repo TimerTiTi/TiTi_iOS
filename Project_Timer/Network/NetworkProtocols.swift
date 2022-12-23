@@ -40,8 +40,8 @@ protocol TestServerAuthFetchable {
     func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void)
 }
 
-protocol TestServerUserInfoFetchable {
-    func getUserDailysStatus(completion: @escaping (NetworkStatus, UserDailysStatus?) -> Void)
+protocol TestServerUserDailysInfoFetchable {
+    func getUserDailysInfo(completion: @escaping (NetworkStatus, UserDailysInfo?) -> Void)
 }
 
 protocol TestServerDailyFetchable {
