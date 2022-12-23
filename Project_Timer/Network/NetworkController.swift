@@ -156,8 +156,8 @@ extension NetworkController: TestServerAuthFetchable {
     }
 }
 
-extension NetworkController: TestServerUserInfoFetchable {
-    func getUserDailysStatus(completion: @escaping (NetworkStatus, UserDailysStatus?) -> Void) {
+extension NetworkController: TestServerUserDailysInfoFetchable {
+    func getUserDailysInfo(completion: @escaping (NetworkStatus, UserDailysInfo?) -> Void) {
         //
     }
 }

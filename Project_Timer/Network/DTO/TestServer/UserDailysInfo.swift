@@ -1,5 +1,5 @@
 //
-//  UserDailysStatus.swift
+//  UserDailysInfo.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/12/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserDailysStatus: Decodable {
+struct UserDailysInfo: Decodable {
     let updatedAt: Date
     let dailysCount: Int
 }
