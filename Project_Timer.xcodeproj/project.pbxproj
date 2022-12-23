@@ -134,6 +134,7 @@
 		8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788AFE428828D3500D26E7D /* DailysVC.swift */; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
+		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
 		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
 		87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910822283875CF005D7B10 /* NetworkProtocols.swift */; };
@@ -334,6 +335,7 @@
 		8788AFE428828D3500D26E7D /* DailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVC.swift; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		87910822283875CF005D7B10 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
@@ -742,6 +744,15 @@
 			path = component;
 			sourceTree = "<group>";
 		};
+		879053FD29558ED2008B9258 /* SyncDailys */ = {
+			isa = PBXGroup;
+			children = (
+				8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */,
+				879053FE29558EF4008B9258 /* SyncUserStatusView.swift */,
+			);
+			path = SyncDailys;
+			sourceTree = "<group>";
+		};
 		8791081D2838752D005D7B10 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -1003,7 +1014,7 @@
 			isa = PBXGroup;
 			children = (
 				87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */,
-				8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */,
+				879053FD29558ED2008B9258 /* SyncDailys */,
 			);
 			path = TestServer;
 			sourceTree = "<group>";
@@ -1250,6 +1261,7 @@
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
+				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,

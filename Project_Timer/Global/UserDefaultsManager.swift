@@ -38,6 +38,7 @@ struct UserDefaultsManager {
         case goalTimeOfDaily
         // login
         case loginInTestServerV1
+        case lastUploadedDateV1
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
