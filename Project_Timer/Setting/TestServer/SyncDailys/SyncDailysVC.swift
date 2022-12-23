@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 final class SyncDailysVC: UIViewController {
     static let identifier = "SyncDailysVC"
@@ -14,7 +15,17 @@ final class SyncDailysVC: UIViewController {
     @IBOutlet weak var syncUserStatusView: SyncUserStatusView!
     @IBOutlet weak var syncDeviceStatusView: SyncDeviceStatusView!
     
+    private var viewModel: SyncDailysVM?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureViewModel()
+    }
+}
+
+extension SyncDailysVC {
+    private func configureViewModel() {
+        let targetDailys = self.syncDeviceStatusView.configureDailys()
+        self.viewModel = SyncDailysVM(networkController: NetworkController(network: Network()), targetDailys: targetDailys)
     }
 }
