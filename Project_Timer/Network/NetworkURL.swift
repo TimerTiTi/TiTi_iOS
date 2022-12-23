@@ -46,11 +46,14 @@ enum NetworkURL {
         static let dailys: String = base+"/dailys"
         static let timelines: String = base+"/timelines"
         static let tasks: String = base+"/tasks"
+        static let recordTimes: String = base+"/recordTimes"
         // auth
         static let authSignup: String = auth+"/signup"
         static let authLogin: String = auth+"/login"
         // dailys
         static let dailysCreate: String = dailys+"/create"
         static let dailysUpload: String = dailys+"/upload"
+        // recordTimes
+        static let recordTimesUpload: String = recordTimes+"/upload"
     }
 }
