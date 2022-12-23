@@ -29,6 +29,16 @@ final class SignupLoginVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     @IBAction func signupLogin(_ sender: Any) {
         guard let username = userNameTextField.text,
               let password = passwordTextField.text else { return }
