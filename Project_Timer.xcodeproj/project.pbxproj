@@ -104,6 +104,8 @@
 		875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
+		8760FCB729541B88000BCCD1 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */; };
+		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
 		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
 		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
@@ -307,6 +309,7 @@
 		875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
 		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
 		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
@@ -420,6 +423,7 @@
 			files = (
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
+				8760FCB729541B88000BCCD1 /* SwiftKeychainWrapper in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
@@ -828,6 +832,7 @@
 				87379F982615979D00A9445E /* Model */,
 				87D1250028771AAD00018658 /* Language.swift */,
 				04FA75D4286F25FC00BAE2B2 /* Constant */,
+				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				8773AF4E27DCB59400739A09 /* FirebaseDatabase */,
 				8773AF5127DCB5D100739A09 /* FSCalendar */,
 				87910827283876DD005D7B10 /* Alamofire */,
+				8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -1141,6 +1147,7 @@
 				8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -1308,6 +1315,7 @@
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
+				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
@@ -1637,6 +1645,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1672,6 +1688,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
 		8773AF4C27DCB59400739A09 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
