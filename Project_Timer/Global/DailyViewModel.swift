@@ -32,6 +32,10 @@ class DailyViewModel {
         manager.modifyDaily(daily)
     }
     
+    func changeDailys(to serverDailys: [Daily]) {
+        manager.changeDailys(to: serverDailys)
+    }
+    
     func totalStudyTimeofMonth(month: Int, completion: @escaping (Int) -> ()) {
         let monthData = dailys.filter { $0.day.month == month }
         completion(monthData.reduce(0, { $0 + $1.totalTime }))
