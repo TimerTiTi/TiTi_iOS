@@ -13,6 +13,16 @@ final class NetworkController {
     init(network: NetworkFetchable) {
         self.network = network
     }
+    
+    private func decoded<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
+        do {
+            let decoded = try JSONDecoder.dateFormatted.decode(type, from: data)
+            return decoded
+        } catch {
+            print("Decode \(T.self) failed. \(error)")
+            return nil
+        }
+    }
 }
 
 extension NetworkController: VersionFetchable {
@@ -164,10 +174,24 @@ extension NetworkController: TestServerUserDailysInfoFetchable {
 
 extension NetworkController: TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void) {
-        //
+        self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, body: dailys) { result in
+            completion(result.status)
+        }
     }
     
     func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void) {
-        //
+        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dailys = self.decoded([Daily].self, from: data) else {
+                    completion(.DECODEERROR, [])
+                    return
+                }
+                completion(.SUCCESS, dailys)
+            default:
+                completion(result.status, [])
+            }
+        }
     }
 }
