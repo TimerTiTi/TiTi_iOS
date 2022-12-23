@@ -258,3 +258,7 @@
 "Synchronization backs up your modified data and allows you to receive data backed up from other devices." = "동기화를 통해 수정된 데이터가 백업되며 다른 기기에서 백업한 데이터를 받을 수 있습니다.";
 
 "Synchronization" = "동기화";
+
+"The number of Dailys stored on the server and the number of Dailys on the current device." = "서버 내 저장된 Dailys 개수와 현재 기기의 Dailys 개수입니다.";
+
+"Created and Edited dailys are backed up at the time of synchronized." = "동기화시 Created 와 Edited 정보들이 백업됩니다.";

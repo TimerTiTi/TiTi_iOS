@@ -258,3 +258,7 @@
 "Synchronization backs up your modified data and allows you to receive data backed up from other devices." = "Synchronization backs up your modified data and allows you to receive data backed up from other devices.";
 
 "Synchronization" = "Synchronization";
+
+"The number of Dailys stored on the server and the number of Dailys on the current device." = "The number of Dailys stored on the server and the number of Dailys on the current device.";
+
+"Created and Edited dailys are backed up at the time of synchronized." = "Created and Edited dailys are backed up at the time of synchronized.";
