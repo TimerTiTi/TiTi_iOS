@@ -11,7 +11,7 @@ import Alamofire
 
 protocol NetworkFetchable {
     func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void)
-    func request<T: Encodable>(url: String, method: HTTPMethod, body: T, completion: @escaping (NetworkResult) -> Void)
+    func request<T: Encodable>(url: String, method: HTTPMethod, body: T?, completion: @escaping (NetworkResult) -> Void)
 }
 
 protocol VersionFetchable {
