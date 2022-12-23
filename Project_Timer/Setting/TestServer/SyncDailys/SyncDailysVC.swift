@@ -20,7 +20,11 @@ final class SyncDailysVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewModel()
+        // loading 구현
+        // combine 구현
     }
+    
+    // sync 버튼 연결 구현
 }
 
 extension SyncDailysVC {

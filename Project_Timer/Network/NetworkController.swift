@@ -195,3 +195,13 @@ extension NetworkController: TestServerDailyFetchable {
         }
     }
 }
+
+extension NetworkController: TestServerRecordTimesFetchable {
+    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void) {
+        //
+    }
+    
+    func getRecordTimes(completion: @escaping (NetworkStatus, RecordTimes?) -> Void) {
+        //
+    }
+}

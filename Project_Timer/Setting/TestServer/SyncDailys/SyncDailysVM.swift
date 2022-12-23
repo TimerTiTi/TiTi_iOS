@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-typealias DailysSyncable = (TestServerUserDailysInfoFetchable & TestServerDailyFetchable)
+typealias DailysSyncable = (TestServerUserDailysInfoFetchable & TestServerDailyFetchable & TestServerRecordTimesFetchable)
 
 final class SyncDailysVM {
     private let networkController: DailysSyncable
@@ -22,7 +22,7 @@ final class SyncDailysVM {
         self.networkController = networkController
         self.targetDailys = targetDailys
         
-        self.getUserDailysInfo()
+        self.getUserDailysInfo(isUploaded: false)
     }
 }
 
@@ -42,13 +42,16 @@ extension SyncDailysVM {
 }
 
 extension SyncDailysVM {
-    private func getUserDailysInfo() {
+    private func getUserDailysInfo(isUploaded: Bool) {
         self.networkController.getUserDailysInfo { [weak self] status, userDailysInfo in
             switch status {
             case .SUCCESS:
                 guard let userDailysInfo = userDailysInfo else {
                     self?.error = ("Network Error", "get userDailysInfo Error")
                     return
+                }
+                if (isUploaded) {
+                    self?.saveLastUploadedDate(to: userDailysInfo.updatedAt)
                 }
                 self?.loading = false
                 self?.userDailysInfo = userDailysInfo
@@ -87,6 +90,10 @@ extension SyncDailysVM {
         // dailys 저장
         RecordController.shared.dailys.changeDailys(to: dailys)
         // userDailysInfo fetch
-        self.getUserDailysInfo()
+        self.getUserDailysInfo(isUploaded: true)
+    }
+    
+    private func saveLastUploadedDate(to date: Date) {
+        UserDefaultsManager.set(to: date, forKey: .lastUploadedDateV1)
     }
 }
