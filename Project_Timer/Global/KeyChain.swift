@@ -22,6 +22,12 @@ final class KeyChain {
     func get(key: KeychainWrapper.Key) -> String? {
         return KeychainWrapper.standard[key]
     }
+    
+    func deleteAll() {
+        KeychainWrapper.standard.remove(forKey: .username)
+        KeychainWrapper.standard.remove(forKey: .password)
+        KeychainWrapper.standard.remove(forKey: .token)
+    }
 }
 
 extension KeychainWrapper.Key {

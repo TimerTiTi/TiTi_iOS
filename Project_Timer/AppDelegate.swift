@@ -33,10 +33,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// 앱 실행시 최신버전 체크로직 실행
         self.checkVersion()
         
+        /// Mac 의 경우 Control 옵션 비활성화
         #if targetEnvironment(macCatalyst)
         UserDefaultsManager.set(to: false, forKey: .keepTheScreenOn)
         UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
         #endif
+        
+        /// logout 상태의 경우 KeyChain 초기화
+        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
+        if logined == false {
+            KeyChain.shared.deleteAll()
+        }
         
         return true
     }
