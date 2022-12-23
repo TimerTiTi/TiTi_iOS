@@ -18,7 +18,7 @@ final class SignupLoginVC: UIViewController {
     @IBOutlet weak var signupLoginButton: UIButton!
     @IBOutlet weak var emailStackView: UIStackView!
     
-    private let network: TestServerAuth = NetworkController(network: Network())
+    private let network: TestServerAuthFetchable = NetworkController(network: Network())
     private var login: Bool = false
     
     override func viewDidLoad() {

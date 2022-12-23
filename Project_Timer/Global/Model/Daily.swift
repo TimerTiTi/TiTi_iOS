@@ -38,6 +38,13 @@ struct Daily: Codable, CustomStringConvertible {
     var description: String {
         return "\(self.day.YYYYMMDDstyleString) : \(self.tasks)"
     }
+    
+    enum Status: String {
+        case uploaded
+        case created
+        case edited
+    }
+    
     static let fileName: String = "daily.json"
     private(set) var day: Date = Date() // 기록 날짜값
     private(set) var tasks: [String: Int] = [:] // 과목명-누적시간 값
@@ -47,6 +54,8 @@ struct Daily: Codable, CustomStringConvertible {
         return self.tasks.values.reduce(0, +)
     }
     private(set) var taskHistorys: [String: [TaskHistory]]? = [:]
+    private(set) var id: Int? // server pk
+    private(set) var status: String? // server 반영여부
     
     init() {}
     init(newDate: Date) {
