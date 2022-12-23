@@ -20,6 +20,7 @@ final class SettingTiTiLabVC: UIViewController {
         loader.startAnimating()
         return loader
     }()
+    @IBOutlet weak var syncLabel: UILabel!
     @IBOutlet weak var signupSyncLabel: UILabel!
     @IBOutlet weak var loginTextLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
@@ -30,6 +31,7 @@ final class SettingTiTiLabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TiTi Lab".localized()
+        self.syncLabel.text = "Synchronization".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
