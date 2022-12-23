@@ -256,3 +256,5 @@
 "The last synchronization time of the current device and the latest synchronization time reflected in the server." = "The last synchronization time of the current device and the latest synchronization time reflected in the server.";
 
 "Synchronization backs up your modified data and allows you to receive data backed up from other devices." = "Synchronization backs up your modified data and allows you to receive data backed up from other devices.";
+
+"Synchronization" = "Synchronization";

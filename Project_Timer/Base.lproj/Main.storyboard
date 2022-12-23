@@ -1868,8 +1868,8 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login (Beta Test)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQL-yS-2Z3">
-                                <rect key="frame" x="16" y="548" width="95" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Synchronization" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQL-yS-2Z3">
+                                <rect key="frame" x="16" y="548" width="91" height="16"/>
                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1960,6 +1960,7 @@
                         <outlet property="loginTextLabel" destination="hgp-wS-nj4" id="dAI-GE-wv3"/>
                         <outlet property="signupSyncLabel" destination="UNN-gk-Kfr" id="HVx-Qu-YD2"/>
                         <outlet property="surveys" destination="8FC-t3-ioZ" id="S3C-UQ-K7H"/>
+                        <outlet property="syncLabel" destination="HQL-yS-2Z3" id="EFc-6N-3h9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gya-2J-f5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2171,7 +2172,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titi_appicon_mac" translatesAutoresizingMaskIntoConstraints="NO" id="925-iQ-7f8">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titi_appicon_mac 90" translatesAutoresizingMaskIntoConstraints="NO" id="925-iQ-7f8">
                                                                 <rect key="frame" x="14" y="14" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="925-iQ-7f8" secondAttribute="height" multiplier="1:1" id="CQm-Br-JH7"/>
@@ -2185,7 +2186,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="system_backg"/>
+                                                        <color key="backgroundColor" name="system_backgroup2"/>
                                                         <constraints>
                                                             <constraint firstItem="J4M-Hf-USr" firstAttribute="centerY" secondItem="d6i-hG-nSZ" secondAttribute="centerY" id="0GH-cf-mki"/>
                                                             <constraint firstAttribute="trailing" secondItem="J4M-Hf-USr" secondAttribute="trailing" constant="16" id="2Xe-3d-7X0"/>
@@ -2203,7 +2204,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="16"/>
+                                                                <real key="value" value="12"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
@@ -2593,13 +2594,57 @@
                                                     <outlet property="usernameLabel" destination="LgE-yv-VAu" id="Xmm-FI-gY2"/>
                                                 </connections>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xo-EI-QTB">
+                                                <rect key="frame" x="16" y="226" width="358" height="38"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LRH-eA-AXW">
+                                                        <rect key="frame" x="12" y="10.666666666666664" width="32" height="17"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="LRH-eA-AXW" secondAttribute="height" multiplier="61:42" id="Keb-nP-Dm5"/>
+                                                            <constraint firstAttribute="height" constant="22" id="pHv-BS-bWn"/>
+                                                        </constraints>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hC3-Nq-QzJ">
+                                                        <rect key="frame" x="49" y="10" width="47" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Dailys" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfD-mm-87F">
+                                                        <rect key="frame" x="285" y="10" width="57" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" name="system_backgroup2"/>
+                                                <constraints>
+                                                    <constraint firstItem="hC3-Nq-QzJ" firstAttribute="centerY" secondItem="4xo-EI-QTB" secondAttribute="centerY" id="64r-XU-HTY"/>
+                                                    <constraint firstItem="LRH-eA-AXW" firstAttribute="leading" secondItem="4xo-EI-QTB" secondAttribute="leading" constant="12" id="89D-AH-yA8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XfD-mm-87F" secondAttribute="trailing" constant="16" id="CRU-kj-geC"/>
+                                                    <constraint firstItem="LRH-eA-AXW" firstAttribute="centerY" secondItem="4xo-EI-QTB" secondAttribute="centerY" id="PxM-fa-NG2"/>
+                                                    <constraint firstItem="XfD-mm-87F" firstAttribute="centerY" secondItem="4xo-EI-QTB" secondAttribute="centerY" id="Q2h-h7-dRC"/>
+                                                    <constraint firstItem="hC3-Nq-QzJ" firstAttribute="top" secondItem="4xo-EI-QTB" secondAttribute="top" constant="10" id="WPK-bi-8M3"/>
+                                                    <constraint firstItem="hC3-Nq-QzJ" firstAttribute="leading" secondItem="LRH-eA-AXW" secondAttribute="trailing" constant="5" id="wof-LM-MBc"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="12"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" name="system_backgroup"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="800" id="2NS-cR-mg7"/>
+                                            <constraint firstItem="4xo-EI-QTB" firstAttribute="centerX" secondItem="bTe-ke-GOP" secondAttribute="centerX" id="4wK-cA-T4Y"/>
+                                            <constraint firstItem="4xo-EI-QTB" firstAttribute="leading" secondItem="bTe-ke-GOP" secondAttribute="leading" constant="16" id="Zs2-DY-Dzp"/>
                                             <constraint firstItem="Vbb-9K-bi7" firstAttribute="top" secondItem="bTe-ke-GOP" secondAttribute="top" constant="8" id="cKh-0t-9SL"/>
                                             <constraint firstItem="Vbb-9K-bi7" firstAttribute="centerX" secondItem="bTe-ke-GOP" secondAttribute="centerX" id="i1j-2a-jZ2"/>
                                             <constraint firstItem="Vbb-9K-bi7" firstAttribute="leading" secondItem="bTe-ke-GOP" secondAttribute="leading" constant="16" id="tdy-pB-zWS"/>
+                                            <constraint firstItem="4xo-EI-QTB" firstAttribute="top" secondItem="Vbb-9K-bi7" secondAttribute="bottom" constant="16" id="xOW-SF-C9g"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2622,10 +2667,19 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sync Now"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Sync Now">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="18" name="AppleSDGothicNeo-SemiBold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="8"/>
+                                        <real key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
@@ -4667,6 +4721,7 @@
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
+        <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="email" width="256" height="256"/>
         <image name="exclamationmark.circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
@@ -4681,6 +4736,7 @@
         <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <image name="titi_appicon_mac" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="titi_appicon_mac 90" width="30" height="30"/>
         <namedColor name="Background">
             <color red="0.6470588235294118" green="0.75294117647058822" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
