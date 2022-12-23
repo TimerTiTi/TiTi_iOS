@@ -136,6 +136,7 @@
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EC2955E5430044C079 /* SyncDailysVM.swift */; };
 		878BF7EF2955E73C0044C079 /* UserDailysInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EE2955E73C0044C079 /* UserDailysInfo.swift */; };
+		878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7F02955F4600044C079 /* JSONDecoder+Extension.swift */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
@@ -340,6 +341,7 @@
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878BF7EC2955E5430044C079 /* SyncDailysVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVM.swift; sourceTree = "<group>"; };
 		878BF7EE2955E73C0044C079 /* UserDailysInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDailysInfo.swift; sourceTree = "<group>"; };
+		878BF7F02955F4600044C079 /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
 		878D3C1E266494380093A2BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
@@ -1008,6 +1010,7 @@
 			isa = PBXGroup;
 			children = (
 				87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */,
+				878BF7F02955F4600044C079 /* JSONDecoder+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1265,6 +1268,7 @@
 				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
+				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
