@@ -88,7 +88,13 @@ extension SignupLoginVC {
     }
     
     private func saveUserInfo(username: String, password: String, token: String) {
-        // MARK: Token 저장로직 필요, Noti Signup 필요
+        // MARK: Token 저장, Noti logined
+        KeyChain.shared.save(key: .username, value: username)
+        KeyChain.shared.save(key: .password, value: password)
+        KeyChain.shared.save(key: .token, value: token)
+        UserDefaultsManager.set(to: true, forKey: .loginInTestServerV1)
+        NotificationCenter.default.post(name: KeyChain.logined, object: nil)
+        
         self.showAlertWithOKAfterHandler(title: "SUCCESS", text: "") { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }

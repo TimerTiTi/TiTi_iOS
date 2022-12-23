@@ -30,11 +30,13 @@ final class SettingTiTiLabVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TiTi Lab".localized()
-        self.loginTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
+        // login
+        self.checkLogined()
+        self.configureObservation()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -45,8 +47,14 @@ final class SettingTiTiLabVC: UIViewController {
     }
     
     @IBAction func signupSync(_ sender: Any) {
-        // MARK: login 여부에 따라 분기로직 필요
-        self.showBetaLoginSignupVC(login: false)
+        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
+        if logined {
+            // sync
+            guard let token = KeyChain.shared.get(key: .token) else { return }
+            print(token)
+        } else {
+            self.showBetaLoginSignupVC(login: false)
+        }
     }
     
     @IBAction func login(_ sender: Any) {
@@ -56,6 +64,32 @@ final class SettingTiTiLabVC: UIViewController {
 
 // MARK: TestServer Login
 extension SettingTiTiLabVC {
+    private func checkLogined() {
+        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
+        if logined {
+            self.configureLogined()
+        } else {
+            self.configureLogouted()
+        }
+    }
+    private func configureObservation() {
+        NotificationCenter.default.addObserver(forName: KeyChain.logined, object: nil, queue: .main) { [weak self] _ in
+            self?.configureLogined()
+        }
+    }
+    
+    private func configureLogined() {
+        self.signupSyncLabel.text = "Sync Dailys"
+        self.loginTextLabel.text = "Synclonize Historys [Test Server]".localized()
+        self.loginButton.isHidden = true
+    }
+    
+    private func configureLogouted() {
+        self.signupSyncLabel.text = "Signup"
+        self.loginTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
+        self.loginButton.isHidden = false
+    }
+    
     private func showBetaLoginSignupVC(login: Bool) {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupLoginVC.identifier)  as? SignupLoginVC else { return }
         if login {
