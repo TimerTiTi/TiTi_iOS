@@ -48,3 +48,8 @@ protocol TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void)
     func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void)
 }
+
+protocol TestServerRecordTimesFetchable {
+    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void)
+    func getRecordTimes(completion: @escaping (NetworkStatus, RecordTimes?) -> Void)
+}
