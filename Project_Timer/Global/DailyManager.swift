@@ -45,4 +45,10 @@ final class DailyManager {
         }
         self.saveDailys()
     }
+    
+    func changeDailys(to serverDailys: [Daily]) {
+        self.dailys = serverDailys
+        self.dailys.sort(by: { $0.day < $1.day })
+        self.saveDailys()
+    }
 }
