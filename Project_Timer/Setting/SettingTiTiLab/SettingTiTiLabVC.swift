@@ -49,9 +49,7 @@ final class SettingTiTiLabVC: UIViewController {
     @IBAction func signupSync(_ sender: Any) {
         let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
         if logined {
-            // sync
-            guard let token = KeyChain.shared.get(key: .token) else { return }
-            print(token)
+            self.showSyncHistorysVC()
         } else {
             self.showBetaLoginSignupVC(login: false)
         }
@@ -91,10 +89,15 @@ extension SettingTiTiLabVC {
     }
     
     private func showBetaLoginSignupVC(login: Bool) {
-        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupLoginVC.identifier)  as? SignupLoginVC else { return }
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupLoginVC.identifier) as? SignupLoginVC else { return }
         if login {
             vc.configure(login: true)
         }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func showSyncHistorysVC() {
+        guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SyncDailysVC.identifier) else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
