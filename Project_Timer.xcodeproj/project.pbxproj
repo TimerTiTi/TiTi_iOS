@@ -106,6 +106,7 @@
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
+		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
 		8760FCB729541B88000BCCD1 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
@@ -316,6 +317,7 @@
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		875EDA332957E0360037A7EB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
+		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVC.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
@@ -676,6 +678,7 @@
 				04E0DFCC28A94460004DABBE /* PaddingLabel.swift */,
 				8721C6DA296943C500410D57 /* RightButton.swift */,
 				8721C6DC296944EE00410D57 /* LeftButton.swift */,
+				875EDA352957F9510037A7EB /* LoadingIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1365,6 +1368,7 @@
 				8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */,
 				870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
+				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */,
 				87BF666A28F80E9400CD6F19 /* NormalTimeLabelView.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingViewController.swift in Sources */,
