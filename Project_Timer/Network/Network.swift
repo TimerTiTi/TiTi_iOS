@@ -11,7 +11,7 @@ import Alamofire
 
 struct Network: NetworkFetchable {
     func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void) {
-        Session.default.request(url, method: method)
+        Session.default.request(url, method: method, interceptor: NetworkInterceptor())
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
@@ -20,7 +20,7 @@ struct Network: NetworkFetchable {
     }
     
     func request<T: Encodable>(url: String, method: HTTPMethod, body: T, completion: @escaping (NetworkResult) -> Void) {
-        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted)
+        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor())
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
