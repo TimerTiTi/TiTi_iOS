@@ -15,11 +15,7 @@ final class SyncDailysVM {
     private let networkController: DailysSyncable
     private var targetDailys: [Daily]
     @Published private(set) var userDailysInfo: UserDailysInfo?
-    @Published private(set) var error: (title: String, text: String)? {
-        didSet {
-            print(error)
-        }
-    }
+    @Published private(set) var error: (title: String, text: String)?
     @Published private(set) var loading: Bool = false
     
     init(networkController: DailysSyncable, targetDailys: [Daily]) {
@@ -27,8 +23,6 @@ final class SyncDailysVM {
         self.targetDailys = targetDailys
         
         self.getUserDailysInfo(isUploaded: false)
-        // test
-//        self.getDailys()
     }
 }
 

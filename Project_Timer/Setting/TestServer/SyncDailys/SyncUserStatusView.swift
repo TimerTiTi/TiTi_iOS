@@ -30,4 +30,16 @@ final class SyncUserStatusView: UIView {
         guard let username = KeyChain.shared.get(key: .username) else { return }
         self.usernameLabel.text = username
     }
+    
+    private func showDeviceDate() {
+        guard let deviceDate = UserDefaultsManager.get(forKey: .lastUploadedDateV1) as? Date else { return }
+        self.deviceDateLabel.text = deviceDate.serverDateString
+    }
+}
+
+extension SyncUserStatusView {
+    func showServerDate(to date: Date) {
+        self.showDeviceDate()
+        self.serverDateLabel.text = date.serverDateString
+    }
 }
