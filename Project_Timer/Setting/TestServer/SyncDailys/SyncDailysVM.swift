@@ -17,6 +17,8 @@ final class SyncDailysVM {
     @Published private(set) var userDailysInfo: UserDailysInfo?
     @Published private(set) var error: (title: String, text: String)?
     @Published private(set) var loading: Bool = false
+    @Published private(set) var saveDailysSuccess: Bool = false
+    private(set) var loadingText: SyncDailysVC.LoadingStatus?
     
     init(networkController: DailysSyncable, targetDailys: [Daily]) {
         self.networkController = networkController
@@ -29,7 +31,7 @@ final class SyncDailysVM {
 extension SyncDailysVM {
     func checkSyncDailys() {
         guard self.targetDailys.isEmpty == false else {
-            // warning
+            self.getDailys()
             return
         }
         
@@ -39,6 +41,8 @@ extension SyncDailysVM {
 
 extension SyncDailysVM {
     private func getUserDailysInfo(isUploaded: Bool) {
+        self.loadingText = .getUserInfo
+        self.loading = true
         self.networkController.getUserDailysInfo { [weak self] status, userDailysInfo in
             switch status {
             case .SUCCESS:
@@ -60,10 +64,12 @@ extension SyncDailysVM {
     }
     
     private func uploadDailys() {
+        self.loadingText = .uploadDailys
         self.loading = true
         self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] status in
             switch status {
             case .SUCCESS:
+                self?.loading = false
                 self?.getDailys()
             default:
                 self?.loading = false
@@ -73,6 +79,8 @@ extension SyncDailysVM {
     }
     
     private func getDailys() {
+        self.loadingText = .getDailys
+        self.loading = true
         self.networkController.getDailys { [weak self] status, dailys in
             switch status {
             case .SUCCESS:
@@ -83,7 +91,8 @@ extension SyncDailysVM {
                 }
                 
                 self?.store(dailys)
-                dump(dailys)
+                self?.loading = false
+                self?.getUserDailysInfo(isUploaded: true)
             case .DECODEERROR:
                 self?.loading = false
                 self?.error = ("Decode Error", "Decode Dailys Error")
@@ -99,8 +108,7 @@ extension SyncDailysVM {
     private func store(_ dailys: [Daily]) {
         // dailys 저장
         RecordController.shared.dailys.changeDailys(to: dailys)
-        // userDailysInfo fetch
-        self.getUserDailysInfo(isUploaded: true)
+        self.saveDailysSuccess = true
     }
     
     private func saveLastUploadedDate(to date: Date) {
