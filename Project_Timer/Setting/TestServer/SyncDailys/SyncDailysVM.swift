@@ -28,7 +28,7 @@ final class SyncDailysVM {
         
         self.getUserDailysInfo(isUploaded: false)
         // test
-        self.getDailys()
+//        self.getDailys()
     }
 }
 
