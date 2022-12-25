@@ -90,6 +90,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    var serverDateString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "yyyy.MM.dd a hh:mm:ss"
+        return dateFormatter.string(from: self)
+    }
+    
     static func interval(from: Date, to: Date) -> Int {
         let timeComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: from, to: to)
         return (timeComponents.hour ?? 0)*3600 + (timeComponents.minute ?? 0)*60 + (timeComponents.second ?? 0)
