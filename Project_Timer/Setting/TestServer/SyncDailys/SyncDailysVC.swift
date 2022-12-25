@@ -24,7 +24,9 @@ final class SyncDailysVC: UIViewController {
         // combine 구현
     }
     
-    // sync 버튼 연결 구현
+    @IBAction func syncNow(_ sender: Any) {
+        self.viewModel?.checkSyncDailys()
+    }
 }
 
 extension SyncDailysVC {

@@ -13,9 +13,13 @@ typealias DailysSyncable = (TestServerUserDailysInfoFetchable & TestServerDailyF
 
 final class SyncDailysVM {
     private let networkController: DailysSyncable
-    private let targetDailys: [Daily]
+    private var targetDailys: [Daily]
     @Published private(set) var userDailysInfo: UserDailysInfo?
-    @Published private(set) var error: (title: String, text: String)?
+    @Published private(set) var error: (title: String, text: String)? {
+        didSet {
+            print(error)
+        }
+    }
     @Published private(set) var loading: Bool = false
     
     init(networkController: DailysSyncable, targetDailys: [Daily]) {
@@ -23,21 +27,19 @@ final class SyncDailysVM {
         self.targetDailys = targetDailys
         
         self.getUserDailysInfo(isUploaded: false)
+        // test
+        self.getDailys()
     }
 }
 
 extension SyncDailysVM {
-    func uploadDailys() {
-        self.loading = true
-        self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] status in
-            switch status {
-            case .SUCCESS:
-                self?.getDailys()
-            default:
-                self?.loading = false
-                self?.error = ("Network Error", "status: \(status.rawValue)")
-            }
+    func checkSyncDailys() {
+        guard self.targetDailys.isEmpty == false else {
+            // warning
+            return
         }
+        
+        self.uploadDailys()
     }
 }
 
@@ -63,6 +65,19 @@ extension SyncDailysVM {
         }
     }
     
+    private func uploadDailys() {
+        self.loading = true
+        self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] status in
+            switch status {
+            case .SUCCESS:
+                self?.getDailys()
+            default:
+                self?.loading = false
+                self?.error = ("Network Error", "status: \(status.rawValue)")
+            }
+        }
+    }
+    
     private func getDailys() {
         self.networkController.getDailys { [weak self] status, dailys in
             switch status {
@@ -74,6 +89,7 @@ extension SyncDailysVM {
                 }
                 
                 self?.store(dailys)
+                dump(dailys)
             case .DECODEERROR:
                 self?.loading = false
                 self?.error = ("Decode Error", "Decode Dailys Error")

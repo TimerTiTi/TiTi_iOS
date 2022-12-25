@@ -168,7 +168,12 @@ extension NetworkController: TestServerAuthFetchable {
 
 extension NetworkController: TestServerUserDailysInfoFetchable {
     func getUserDailysInfo(completion: @escaping (NetworkStatus, UserDailysInfo?) -> Void) {
-        //
+        guard let testDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
+            completion(.FAIL, nil)
+            return
+        }
+        let testInfo = UserDailysInfo(updatedAt: testDate, dailysCount: 278)
+        completion(.SUCCESS, testInfo)
     }
 }
 
