@@ -26,7 +26,6 @@ final class SyncDailysVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LoadingIndicator.showLoading(text: LoadingStatus.getUserInfo.rawValue)
         self.configureViewModel()
         self.bindAll()
     }
@@ -39,6 +38,8 @@ final class SyncDailysVC: UIViewController {
 extension SyncDailysVC {
     private func bindAll() {
         self.bindUserDailysInfo()
+        self.bindSaveDailysSuccess()
+        self.bindLoading()
         self.bindError()
     }
     
@@ -51,6 +52,32 @@ extension SyncDailysVC {
                 self?.syncUserStatusView.showServerDate(to: userInfo.updatedAt)
                 self?.serverDailysCountLabel.text = "\(userInfo.dailysCount) Dailys"
                 LoadingIndicator.hideLoading()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindSaveDailysSuccess() {
+        self.viewModel?.$saveDailysSuccess
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] success in
+                if success {
+                    let _ = self?.syncDeviceStatusView.configureDailys()
+                }
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindLoading() {
+        self.viewModel?.$loading
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] loading in
+                switch loading {
+                case true:
+                    let loadingText = self?.viewModel?.loadingText?.rawValue
+                    LoadingIndicator.showLoading(text: loadingText)
+                case false:
+                    LoadingIndicator.hideLoading()
+                }
             })
             .store(in: &self.cancellables)
     }
