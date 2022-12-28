@@ -1,5 +1,5 @@
 //
-//  UserDailysInfo.swift
+//  SyncLog.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/12/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserDailysInfo: Decodable {
+struct SyncLog: Decodable {
     let updatedAt: Date
     let dailysCount: Int
 }
