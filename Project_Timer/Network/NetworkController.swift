@@ -197,11 +197,8 @@ extension NetworkController: TestServerSyncLogFetchable {
         self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { [weak self] result in
             switch result.status {
             case .SUCCESS:
-                guard let data = result.data,
-                      let syncLog = self?.decoded(SyncLog.self, from: data) else {
-                    completion(.DECODEERROR, nil)
-                    return
-                }
+                guard let data = result.data else { return }
+                let syncLog = self?.decoded(SyncLog.self, from: data)
                 completion(.SUCCESS, syncLog)
             default:
                 completion(result.status, nil)

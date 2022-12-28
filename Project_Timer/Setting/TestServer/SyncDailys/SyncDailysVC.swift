@@ -15,6 +15,8 @@ final class SyncDailysVC: UIViewController {
         case getSyncLog = "Get SyncLog..."
         case uploadDailys = "Upload Dailys..."
         case getDailys = "Get Dailys..."
+        case uploadRecordTime = "Upload RecordTime..."
+        case getRecordTime = "Get RecordTime..."
     }
     
     @IBOutlet weak var syncUserStatusView: SyncUserStatusView!
