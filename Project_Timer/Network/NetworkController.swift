@@ -128,7 +128,7 @@ extension NetworkController: SurveysFetchable {
 // MARK: TestServer
 extension NetworkController: TestServerAuthFetchable {
     func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, body: userInfo) { result in
+        self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, param: nil, body: userInfo) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
@@ -147,7 +147,7 @@ extension NetworkController: TestServerAuthFetchable {
     }
 
     func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.authLogin, method: .post, body: userInfo) { result in
+        self.network.request(url: NetworkURL.TestServer.authLogin, method: .post, param: nil, body: userInfo) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
@@ -168,8 +168,8 @@ extension NetworkController: TestServerAuthFetchable {
 
 extension NetworkController: TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void) {
-        // MARK: gmt 값 설정 로직 추가 필요
-        self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, body: dailys) { result in
+        let param = ["gmt": TimeZone.current.secondsFromGMT()]
+        self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, param: param, body: dailys) { result in
             completion(result.status)
         }
     }
@@ -209,7 +209,7 @@ extension NetworkController: TestServerSyncLogFetchable {
 
 extension NetworkController: TestServerRecordTimesFetchable {
     func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.recordTime, method: .post, body: recordTimes) { result in
+        self.network.request(url: NetworkURL.TestServer.recordTime, method: .post, param: nil, body: recordTimes) { result in
             completion(result.status)
         }
     }
