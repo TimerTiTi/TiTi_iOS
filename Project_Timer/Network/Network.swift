@@ -19,7 +19,16 @@ struct Network: NetworkFetchable {
             .resume()
     }
     
-    func request<T: Encodable>(url: String, method: HTTPMethod, body: T, completion: @escaping (NetworkResult) -> Void) {
+    func request<T: Encodable>(url: String, method: HTTPMethod, param: [String: Any]?, body: T, completion: @escaping (NetworkResult) -> Void) {
+        var url = url
+        if let param = param {
+            var components = URLComponents(string: url)
+            components?.queryItems = param.map({ key, value in URLQueryItem(name: key, value: "\(value)")})
+            if let urlWithQuery = components?.url?.absoluteString {
+                url = urlWithQuery
+            }
+        }
+        
         Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor())
             .validate()
             .response { response in
