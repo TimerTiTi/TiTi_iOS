@@ -9,12 +9,12 @@
 import Foundation
 import Combine
 
-typealias DailysSyncable = (TestServerUserDailysInfoFetchable & TestServerDailyFetchable & TestServerRecordTimesFetchable)
+typealias DailysSyncable = (TestServerSyncLogFetchable & TestServerDailyFetchable & TestServerRecordTimesFetchable)
 
 final class SyncDailysVM {
     private let networkController: DailysSyncable
     private var targetDailys: [Daily]
-    @Published private(set) var userDailysInfo: UserDailysInfo?
+    @Published private(set) var syncLog: SyncLog?
     @Published private(set) var error: (title: String, text: String)?
     @Published private(set) var loading: Bool = false
     @Published private(set) var saveDailysSuccess: Bool = false
@@ -41,20 +41,20 @@ extension SyncDailysVM {
 
 extension SyncDailysVM {
     private func getUserDailysInfo(isUploaded: Bool) {
-        self.loadingText = .getUserInfo
+        self.loadingText = .getSyncLog
         self.loading = true
-        self.networkController.getUserDailysInfo { [weak self] status, userDailysInfo in
+        self.networkController.getSyncLog { [weak self] status, syncLog in
             switch status {
             case .SUCCESS:
-                guard let userDailysInfo = userDailysInfo else {
+                guard let syncLog = syncLog else {
                     self?.error = ("Network Error", "get userDailysInfo Error")
                     return
                 }
                 if (isUploaded) {
-                    self?.saveLastUploadedDate(to: userDailysInfo.updatedAt)
+                    self?.saveLastUploadedDate(to: syncLog.updatedAt)
                 }
                 self?.loading = false
-                self?.userDailysInfo = userDailysInfo
+                self?.syncLog = syncLog
             case .DECODEERROR:
                 self?.error = ("Decode Error", "Decode UserDailysInfo Error")
             default:

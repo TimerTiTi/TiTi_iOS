@@ -12,7 +12,7 @@ import Combine
 final class SyncDailysVC: UIViewController {
     static let identifier = "SyncDailysVC"
     enum LoadingStatus: String {
-        case getUserInfo = "Get UserInfo..."
+        case getSyncLog = "Get SyncLog..."
         case uploadDailys = "Upload Dailys..."
         case getDailys = "Get Dailys..."
     }
@@ -37,14 +37,14 @@ final class SyncDailysVC: UIViewController {
 
 extension SyncDailysVC {
     private func bindAll() {
-        self.bindUserDailysInfo()
+        self.bindSyncLog()
         self.bindSaveDailysSuccess()
         self.bindLoading()
         self.bindError()
     }
     
-    private func bindUserDailysInfo() {
-        self.viewModel?.$userDailysInfo
+    private func bindSyncLog() {
+        self.viewModel?.$syncLog
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] userInfo in
                 guard let userInfo = userInfo else { return }

@@ -166,30 +166,20 @@ extension NetworkController: TestServerAuthFetchable {
     }
 }
 
-extension NetworkController: TestServerUserDailysInfoFetchable {
-    func getUserDailysInfo(completion: @escaping (NetworkStatus, UserDailysInfo?) -> Void) {
-        guard let testDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
-            completion(.FAIL, nil)
-            return
-        }
-        let testInfo = UserDailysInfo(updatedAt: testDate, dailysCount: 278)
-        completion(.SUCCESS, testInfo)
-    }
-}
-
 extension NetworkController: TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void) {
+        // MARK: gmt 값 설정 로직 추가 필요
         self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, body: dailys) { result in
             completion(result.status)
         }
     }
     
     func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { result in
+        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { [weak self] result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dailys = self.decoded([Daily].self, from: data) else {
+                      let dailys = self?.decoded([Daily].self, from: data) else {
                     completion(.DECODEERROR, [])
                     return
                 }
@@ -201,12 +191,45 @@ extension NetworkController: TestServerDailyFetchable {
     }
 }
 
+
+extension NetworkController: TestServerSyncLogFetchable {
+    func getSyncLog(completion: @escaping (NetworkStatus, SyncLog?) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { [weak self] result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let syncLog = self?.decoded(SyncLog.self, from: data) else {
+                    completion(.DECODEERROR, nil)
+                    return
+                }
+                completion(.SUCCESS, syncLog)
+            default:
+                completion(result.status, nil)
+            }
+        }
+    }
+}
+
 extension NetworkController: TestServerRecordTimesFetchable {
     func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void) {
-        //
+        self.network.request(url: NetworkURL.TestServer.recordTime, method: .post, body: recordTimes) { result in
+            completion(result.status)
+        }
     }
     
     func getRecordTimes(completion: @escaping (NetworkStatus, RecordTimes?) -> Void) {
-        //
+        self.network.request(url: NetworkURL.TestServer.recordTime, method: .get) { [weak self] result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let recordTime = self?.decoded(RecordTimes.self, from: data) else {
+                    completion(.DECODEERROR, nil)
+                    return
+                }
+                completion(.SUCCESS, recordTime)
+            default:
+                completion(result.status, nil)
+            }
+        }
     }
 }
