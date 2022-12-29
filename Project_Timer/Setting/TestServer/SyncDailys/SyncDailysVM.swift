@@ -32,6 +32,7 @@ extension SyncDailysVM {
     /// 동기화 버튼 클릭시 동기화 가능상태 확인 후 uploadDailys -> getDailys -> checkRecordTimes -> (uploadRecordTime or getRecordTime) -> getSyncLog 진행
     func checkSyncDailys() {
         guard self.targetDailys.isEmpty == false else {
+            // TODO: server date 값과 device date 값이 같은 경우 불필요 로직 필요
             self.getDailys()
             return
         }
@@ -146,6 +147,7 @@ extension SyncDailysVM {
                 
                 if (afterUploaded) {
                     self?.saveLastUploadedDate(to: syncLog.updatedAt)
+                    self?.targetDailys = []
                     self?.saveDailysSuccess = true
                 }
                 self?.syncLog = syncLog
@@ -164,11 +166,16 @@ extension SyncDailysVM {
         // dailys 저장
         RecordController.shared.dailys.changeDailys(to: dailys)
         // MARK: daily 반영 로직 구현
-        
+        if let daily = dailys.last {
+            RecordController.shared.daily = daily
+            RecordController.shared.daily.save()
+        }
     }
     
     private func saveRecordTimes(_ recordtimes: RecordTimes) {
-        
+        // TODO: 상단 날짜가 이상한점 확인 필요
+        RecordController.shared.recordTimes = recordtimes
+        RecordController.shared.recordTimes.save()
     }
     
     private func saveLastUploadedDate(to date: Date) {
