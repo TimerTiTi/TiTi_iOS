@@ -79,7 +79,15 @@ struct Daily: Codable, CustomStringConvertible {
             self.updateMaxTime()
             self.updateTimeline()
         }
+        // backend 와 연동 후 uploaded 상태인 경우 edited 로 변경
+        if status == "uploaded" {
+            self.setEdited()
+        }
         self.save()
+    }
+    
+    mutating func setEdited() {
+        self.status = "edited"
     }
     
     private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
