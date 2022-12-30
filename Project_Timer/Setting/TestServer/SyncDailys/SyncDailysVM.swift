@@ -165,8 +165,8 @@ extension SyncDailysVM {
     private func saveDailys(_ dailys: [Daily]) {
         // dailys 저장
         RecordController.shared.dailys.changeDailys(to: dailys)
-        // MARK: daily 반영 로직 구현
-        if let daily = dailys.last {
+        
+        if let daily = RecordController.shared.dailys.dailys.last {
             RecordController.shared.daily = daily
             RecordController.shared.daily.save()
         }
@@ -192,13 +192,10 @@ extension SyncDailysVM {
             .sorted(by: { $0.endDate < $1.endDate })
             .last?.startDate else { return }
         let localStartAt = RecordController.shared.recordTimes.recordStartAt
-        print(dailyStartAt, localStartAt)
         
-        if (dailyStartAt == localStartAt) {
-            // update RecordTime
+        if (dailyStartAt.YYYYMMDDHMSstyleString == localStartAt.YYYYMMDDHMSstyleString) {
             self.uploadRecordTime()
         } else {
-            // get RecordTime
             self.getRecordtime()
         }
     }
