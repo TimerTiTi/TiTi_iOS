@@ -40,4 +40,14 @@ extension Int {
         let m = (self / 60) - (h * 60)
         return String(format: "%d:%02d", h, m)
     }
+    
+    func endTimeFromNow() -> String {
+        let now = Date()
+        let future = now.addingTimeInterval(TimeInterval(self))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "hh:mm a"
+        let today = dateFormatter.string(from: future)
+        return today
+    }
 }

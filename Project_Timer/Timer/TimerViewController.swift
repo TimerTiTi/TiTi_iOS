@@ -132,7 +132,7 @@ class TimerViewController: UIViewController {
     }
     // MARK: 차기 업데이트시 viewModel?.timerReset 으로 수정 예정
     @IBAction func reset(_ sender: Any) {
-        self.showSettingTimerView()
+        self.showSettingTimerTime()
     }
     
     @IBAction func colorSelect(_ sender: Any) {
@@ -853,12 +853,34 @@ extension TimerViewController {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             RecordController.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
             self?.newRecord()
+        }))
+        
+        present(alert, animated: true)
+    }
+    
+    private func showSettingTimerTime() {
+        guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
+        let timerTime = RecordController.shared.recordTimes.settedTimerTime
+        let info = TargetTimeSettingInfo(title: "Setting Timer Time".localized(),
+                                         subTitle: "End Time".localized() + ": " + timerTime.endTimeFromNow(),
+                                         targetTime: timerTime)
+        targetTimeSettingVC.configure(info: info) {
+            guard let updatedTimerTime = targetTimeSettingVC.settedTargetTime else { return }
+            targetTimeSettingVC.updateSubTitle(to: "End Time".localized() + ": " + updatedTimerTime.endTimeFromNow())
+        }
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+            guard let timerTime = targetTimeSettingVC.settedTargetTime else { return }
+            self?.updateTimerTime(to: timerTime)
         }))
         
         present(alert, animated: true)
