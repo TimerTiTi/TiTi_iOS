@@ -1,5 +1,5 @@
 //
-//  TaskTargetTimeSettingVC.swift
+//  TargetTimeSettingPopupVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/10/24.
@@ -8,21 +8,27 @@
 
 import UIKit
 
+struct TargetTimeSettingInfo {
+    let title: String
+    let subTitle: String
+    let targetTime: Int
+    let index: Int
+}
+
 protocol TaskTargetTimeUpdateable: AnyObject {
     func updateTargetTime(index: Int, to: Int)
 }
 
-final class TaskTargetTimeSettingVC: UIViewController {
-    static let identifier = "TaskTargetTimeSettingVC"
+final class TargetTimeSettingPopupVC: UIViewController {
+    static let identifier = "TargetTimeSettingPopupVC"
     
-    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var hourButton: UIButton!
     @IBOutlet weak var minuteButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
     
-    private var task: Task!
-    private var index: Int!
+    private var info: TargetTimeSettingInfo!
     private var settedTargetTime: Int!
     private var hour: Int!
     private var minute: Int!
@@ -37,8 +43,15 @@ final class TaskTargetTimeSettingVC: UIViewController {
     }
     
     func configure(task: Task, index: Int, delegate: TaskTargetTimeUpdateable) {
-        self.task = task
-        self.index = index
+        self.info = TargetTimeSettingInfo(title: task.taskName,
+                                          subTitle: "Setting Target Time".localized(),
+                                          targetTime: task.taskTargetTime,
+                                          index: index)
+        self.delegate = delegate
+    }
+    
+    func configure(info: TargetTimeSettingInfo, delegate: TaskTargetTimeUpdateable) {
+        self.info = info
         self.delegate = delegate
     }
     
@@ -64,14 +77,14 @@ final class TaskTargetTimeSettingVC: UIViewController {
     }
 }
 
-extension TaskTargetTimeSettingVC {
+extension TargetTimeSettingPopupVC {
     private func configureLocalized() {
         self.subTitleLabel.text = "Setting Target Time".localized()
     }
     
     private func configureTask() {
-        self.taskNameLabel.text = task.taskName
-        self.settedTargetTime = task.taskTargetTime
+        self.titleLabel.text = self.info.title
+        self.settedTargetTime = self.info.targetTime
         self.hour = settedTargetTime/3600
         self.second = settedTargetTime%60
         self.minute = settedTargetTime/60 - 60*hour
@@ -80,7 +93,7 @@ extension TaskTargetTimeSettingVC {
     private func updateSettedTargetTime() {
         self.settedTargetTime = self.hour*3600 + self.minute*60 + self.second
         self.updateTargetTime()
-        self.delegate?.updateTargetTime(index: self.index, to: self.settedTargetTime)
+        self.delegate?.updateTargetTime(index: self.info.index, to: self.settedTargetTime)
     }
     
     private func updateTargetTime() {
@@ -101,7 +114,7 @@ extension TaskTargetTimeSettingVC {
 }
 
 // MARK: PickerView
-extension TaskTargetTimeSettingVC: UIPopoverPresentationControllerDelegate {
+extension TargetTimeSettingPopupVC: UIPopoverPresentationControllerDelegate {
     func popoverVC(on sourceView: UIView, type: TimeSelectorPopupVC.type, handler: @escaping SelectTimeHandler) {
         guard let pickerVC = storyboard?.instantiateViewController(withIdentifier: TimeSelectorPopupVC.identifier) as? TimeSelectorPopupVC else { return }
         
