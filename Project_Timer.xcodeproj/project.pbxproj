@@ -64,7 +64,6 @@
 		872C0EE3284AF26A00E8E3F2 /* UpdateHistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE2284AF26A00E8E3F2 /* UpdateHistoryVM.swift */; };
 		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
 		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
-		872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872DE54225DCE82700097560 /* SetTimerViewController2.swift */; };
 		873977EB288D3FAA0025EE73 /* DailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* DailysVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -187,8 +186,6 @@
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
 		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
-		9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */; };
-		932EE05A2490A78400B00774 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932EE0592490A78400B00774 /* SetViewController.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
@@ -259,7 +256,6 @@
 		872C0EE2284AF26A00E8E3F2 /* UpdateHistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryVM.swift; sourceTree = "<group>"; };
 		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
-		872DE54225DCE82700097560 /* SetTimerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController2.swift; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* DailysVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVM.swift; sourceTree = "<group>"; };
 		873C197528D041DE00E02ADC /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
@@ -381,8 +377,6 @@
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
 		87F10939284C589A002E31EA /* FunctionInfoListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoListVM.swift; sourceTree = "<group>"; };
-		9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimerViewController.swift; sourceTree = "<group>"; };
-		932EE0592490A78400B00774 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -735,8 +729,6 @@
 			children = (
 				87459703263FEF6B00172C0F /* TimerViewController.swift */,
 				87035DF1282201A500055378 /* TimerVM.swift */,
-				932EE0592490A78400B00774 /* SetViewController.swift */,
-				9316ECD4253F40A00082CAE8 /* SetTimerViewController.swift */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -746,7 +738,6 @@
 			children = (
 				874964F42649590700113E25 /* StopwatchViewController.swift */,
 				87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */,
-				872DE54225DCE82700097560 /* SetTimerViewController2.swift */,
 			);
 			path = Stopwatch;
 			sourceTree = "<group>";
@@ -1210,7 +1201,6 @@
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
-				872DE54325DCE82700097560 /* SetTimerViewController2.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
@@ -1225,7 +1215,6 @@
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
-				932EE05A2490A78400B00774 /* SetViewController.swift in Sources */,
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
@@ -1245,7 +1234,6 @@
 				87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */,
 				8788997C2894F00000B7F378 /* WeeksVM.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
-				9316ECD5253F40A00082CAE8 /* SetTimerViewController.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
