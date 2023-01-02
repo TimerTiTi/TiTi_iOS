@@ -141,7 +141,7 @@ class TimerViewController: UIViewController {
     
     @IBAction func showRecordDateAlert(_ sender: Any) {
         self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
-            self?.showSettingView()
+            self?.showSettingTargetTime()
         }
     }
 }
@@ -369,16 +369,6 @@ extension TimerViewController {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
         setVC.delegate = self
         present(setVC, animated: true, completion: nil)
-    }
-    private func showSettingView() {
-        guard let setVC = storyboard?.instantiateViewController(withIdentifier: SetViewController.identifier) as? SetViewController else { return }
-        setVC.delegate = self
-        present(setVC, animated: true, completion: nil)
-    }
-    private func showSettingTimerView() {
-        guard let setTimerVC = storyboard?.instantiateViewController(withIdentifier: SetTimerViewController.identifier) as? SetTimerViewController else { return }
-        setTimerVC.delegate = self
-        present(setTimerVC, animated: true, completion: nil)
     }
     
     private func startOrStopTimer() {
