@@ -171,7 +171,7 @@ extension taskSelectViewController {
     }
     
     private func showAlertEditTargetTime(index: Int, time: Int) {
-        guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TaskTargetTimeSettingVC.identifier) as? TaskTargetTimeSettingVC else { return }
+        guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         guard let task = self.viewModel?.tasks[safe: index] else { return }
         targetTimeSettingVC.configure(task: task, index: index, delegate: self)
         
