@@ -14,6 +14,8 @@ struct TargetTimeSettingInfo {
     let targetTime: Int
 }
 
+typealias TargetTimeSelectHandler = () -> Void
+
 final class TargetTimeSettingPopupVC: UIViewController {
     static let identifier = "TargetTimeSettingPopupVC"
     
@@ -27,6 +29,7 @@ final class TargetTimeSettingPopupVC: UIViewController {
     private var hour: Int!
     private var minute: Int!
     private var second: Int!
+    private var handler: TargetTimeSelectHandler?
     
     private(set) var settedTargetTime: Int!
     
@@ -42,8 +45,13 @@ final class TargetTimeSettingPopupVC: UIViewController {
                                           targetTime: task.taskTargetTime)
     }
     
-    func configure(info: TargetTimeSettingInfo) {
+    func configure(info: TargetTimeSettingInfo, handler: TargetTimeSelectHandler? = nil) {
         self.info = info
+        self.handler = handler
+    }
+    
+    func updateSubTitle(to subTitle: String) {
+        self.subTitleLabel.text = subTitle
     }
     
     @IBAction func showMenus(_ sender: UIButton) {
@@ -81,6 +89,7 @@ extension TargetTimeSettingPopupVC {
     private func updateSettedTargetTime() {
         self.settedTargetTime = self.hour*3600 + self.minute*60 + self.second
         self.updateTargetTime()
+        self.handler?()
     }
     
     private func updateTargetTime() {
