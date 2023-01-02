@@ -12,11 +12,6 @@ struct TargetTimeSettingInfo {
     let title: String
     let subTitle: String
     let targetTime: Int
-    let index: Int
-}
-
-protocol TaskTargetTimeUpdateable: AnyObject {
-    func updateTargetTime(index: Int, to: Int)
 }
 
 final class TargetTimeSettingPopupVC: UIViewController {
@@ -29,30 +24,26 @@ final class TargetTimeSettingPopupVC: UIViewController {
     @IBOutlet weak var secondButton: UIButton!
     
     private var info: TargetTimeSettingInfo!
-    private var settedTargetTime: Int!
     private var hour: Int!
     private var minute: Int!
     private var second: Int!
-    private weak var delegate: TaskTargetTimeUpdateable?
+    
+    private(set) var settedTargetTime: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureLocalized()
-        self.configureTask()
+        self.configureTitles()
         self.updateTargetTime()
     }
     
-    func configure(task: Task, index: Int, delegate: TaskTargetTimeUpdateable) {
+    func configure(task: Task) {
         self.info = TargetTimeSettingInfo(title: task.taskName,
                                           subTitle: "Setting Target Time".localized(),
-                                          targetTime: task.taskTargetTime,
-                                          index: index)
-        self.delegate = delegate
+                                          targetTime: task.taskTargetTime)
     }
     
-    func configure(info: TargetTimeSettingInfo, delegate: TaskTargetTimeUpdateable) {
+    func configure(info: TargetTimeSettingInfo) {
         self.info = info
-        self.delegate = delegate
     }
     
     @IBAction func showMenus(_ sender: UIButton) {
@@ -78,12 +69,9 @@ final class TargetTimeSettingPopupVC: UIViewController {
 }
 
 extension TargetTimeSettingPopupVC {
-    private func configureLocalized() {
-        self.subTitleLabel.text = "Setting Target Time".localized()
-    }
-    
-    private func configureTask() {
+    private func configureTitles() {
         self.titleLabel.text = self.info.title
+        self.subTitleLabel.text = self.info.subTitle
         self.settedTargetTime = self.info.targetTime
         self.hour = settedTargetTime/3600
         self.second = settedTargetTime%60
@@ -93,7 +81,6 @@ extension TargetTimeSettingPopupVC {
     private func updateSettedTargetTime() {
         self.settedTargetTime = self.hour*3600 + self.minute*60 + self.second
         self.updateTargetTime()
-        self.delegate?.updateTargetTime(index: self.info.index, to: self.settedTargetTime)
     }
     
     private func updateTargetTime() {
