@@ -128,7 +128,7 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func setting(_ sender: Any) {
-        self.showSettingView()
+        self.showSettingTargetTime()
     }
     // MARK: 차기 업데이트시 viewModel?.timerReset 으로 수정 예정
     @IBAction func reset(_ sender: Any) {
@@ -839,5 +839,28 @@ extension TimerViewController: ColorUpdateable {
         self.viewModel?.updateTextColor(isWhite: isWhite)
         self.view.layoutSubviews()
         self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+    }
+}
+
+// MARK: popupVC
+extension TimerViewController {
+    private func showSettingTargetTime() {
+        guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
+        let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),
+                                         subTitle: "\(Date().YYYYMMDDstyleString) " + "setting TargetTime".localized(),
+                                         targetTime: RecordController.shared.recordTimes.settedGoalTime)
+        targetTimeSettingVC.configure(info: info)
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+            guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
+            RecordController.shared.recordTimes.updateGoalTime(to: targetTime)
+            UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
+            self?.newRecord()
+        }))
+        
+        present(alert, animated: true)
     }
 }

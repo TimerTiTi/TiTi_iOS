@@ -173,11 +173,15 @@ extension taskSelectViewController {
     private func showAlertEditTargetTime(index: Int, time: Int) {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         guard let task = self.viewModel?.tasks[safe: index] else { return }
-        targetTimeSettingVC.configure(task: task, index: index, delegate: self)
+        targetTimeSettingVC.configure(task: task)
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
+            self?.viewModel?.updateTaskTime(at: index, to: targetTime)
+            self?.tasksTableView.reloadData()
+        }))
         present(alert, animated: true)
     }
 }
@@ -236,12 +240,5 @@ extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return TaskCell.height
-    }
-}
-
-extension taskSelectViewController: TaskTargetTimeUpdateable {
-    func updateTargetTime(index: Int, to time: Int) {
-        self.viewModel?.updateTaskTime(at: index, to: time)
-        self.tasksTableView.reloadData()
     }
 }
