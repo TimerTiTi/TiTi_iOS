@@ -10,7 +10,7 @@
 		<false/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>3.39.216.155</key>
+			<key>$(TestServerURL)</key>
 			<dict/>
 			<key>NSIncludesSubdomains</key>
 			<true/>
