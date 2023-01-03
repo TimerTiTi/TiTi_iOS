@@ -275,13 +275,13 @@
 		8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		8721C6DA296943C500410D57 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
 		8721C6DC296944EE00410D57 /* LeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftButton.swift; sourceTree = "<group>"; };
+		872B7552296A625B00D24394 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
 		872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVC.swift; sourceTree = "<group>"; };
 		872C0EE2284AF26A00E8E3F2 /* UpdateHistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryVM.swift; sourceTree = "<group>"; };
 		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
-		872FA4D32962D32400EDA3D3 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* DailysVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVM.swift; sourceTree = "<group>"; };
 		873C197528D041DE00E02ADC /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
@@ -1083,7 +1083,7 @@
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
-				872FA4D32962D32400EDA3D3 /* env.xcconfig */,
+				872B7552296A625B00D24394 /* env.xcconfig */,
 			);
 			path = Project_Timer;
 			sourceTree = "<group>";
@@ -1586,7 +1586,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 872FA4D32962D32400EDA3D3 /* env.xcconfig */;
+			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
@@ -1612,7 +1612,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 872FA4D32962D32400EDA3D3 /* env.xcconfig */;
+			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
