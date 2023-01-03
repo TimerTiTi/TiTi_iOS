@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 final class NetworkInterceptor: RequestInterceptor {
+    static let retryLimit = 3
     /// network request 전에 token 설정
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         guard let token = KeyChain.shared.get(key: .token) else {
@@ -28,7 +29,43 @@ final class NetworkInterceptor: RequestInterceptor {
     }
     
     /// token 만료인 경우 login 하여 token 발급 후 재시도
-//    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-//        //
-//    }
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        guard request.retryCount < Self.retryLimit else {
+            completion(.doNotRetry)
+            return
+        }
+        guard let response = request.task?.response as? HTTPURLResponse,
+              response.statusCode == 401 else {
+            completion(.doNotRetryWithError(error))
+            return
+        }
+        print("***token 만료, retry 로직 진행")
+        // login -> get new token
+        self.loginForToken { token in
+            guard let token = token else {
+                completion(.doNotRetryWithError(error))
+                return
+            }
+            
+            KeyChain.shared.save(key: .token, value: token)
+            print("***token 재발급 완료")
+            completion(.retry)
+        }
+    }
+}
+
+extension NetworkInterceptor {
+    private func loginForToken(completion: @escaping (String?) -> Void) {
+        guard let username = KeyChain.shared.get(key: .username),
+              let password = KeyChain.shared.get(key: .password) else { return }
+        let loginInfo = TestUserLoginInfo(username: username, password: password)
+        let network: TestServerAuthFetchable = NetworkController(network: Network())
+        network.login(userInfo: loginInfo) { status, token in
+            guard status == .SUCCESS, let token = token else {
+                completion(nil)
+                return
+            }
+            completion(token)
+        }
+    }
 }
