@@ -15,10 +15,12 @@ final class SyncDeviceStatusView: UIView {
     @IBOutlet weak var editedDailysLabel: UILabel!
     @IBOutlet weak var useage1Label: UILabel!
     @IBOutlet weak var useage2Label: UILabel!
+    @IBOutlet weak var deviceIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.configureLocalized()
+        self.deviceIcon.image = UIImage(named: "macbookAndIphone")?.withRenderingMode(.alwaysTemplate)
     }
     
     private func configureLocalized() {
