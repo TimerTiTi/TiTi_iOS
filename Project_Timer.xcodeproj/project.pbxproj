@@ -107,7 +107,6 @@
 		875C98CD2871C0DC008F7ADD /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */; };
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
-		8760FCB729541B88000BCCD1 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
@@ -436,7 +435,6 @@
 			files = (
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
-				8760FCB729541B88000BCCD1 /* SwiftKeychainWrapper in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
@@ -1122,7 +1120,6 @@
 				8773AF4E27DCB59400739A09 /* FirebaseDatabase */,
 				8773AF5127DCB5D100739A09 /* FSCalendar */,
 				87910827283876DD005D7B10 /* Alamofire */,
-				8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -1706,11 +1703,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8760FCB629541B88000BCCD1 /* SwiftKeychainWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
-		};
 		8773AF4C27DCB59400739A09 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
