@@ -158,6 +158,12 @@ extension NetworkController: TestServerAuthFetchable {
                     return
                 }
                 completion(.SUCCESS, token)
+            case.FAIL:
+                if KeyChain.shared.deleteAll() {
+                    UserDefaultsManager.set(to: false, forKey: .loginInTestServerV1)
+                    NotificationCenter.default.post(name: KeyChain.logouted, object: nil)
+                }
+                completion(.FAIL, nil)
             default:
                 completion(result.status, nil)
                 return

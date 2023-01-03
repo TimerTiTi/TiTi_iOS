@@ -13,12 +13,12 @@ final class NetworkInterceptor: RequestInterceptor {
     static let retryLimit = 3
     /// network request 전에 token 설정
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        guard let token = KeyChain.shared.get(key: .token) else {
+        guard urlRequest.url?.absoluteString.hasPrefix(NetworkURL.TestServer.base) == true else {
             completion(.success(urlRequest))
             return
         }
         
-        guard urlRequest.url?.absoluteString.hasPrefix(NetworkURL.TestServer.base) == true else {
+        guard let token = KeyChain.shared.get(key: .token) else {
             completion(.success(urlRequest))
             return
         }
@@ -47,9 +47,13 @@ final class NetworkInterceptor: RequestInterceptor {
                 return
             }
             
-            KeyChain.shared.save(key: .token, value: token)
-            print("***token 재발급 완료")
-            completion(.retry)
+            if KeyChain.shared.update(key: .token, value: token) {
+                print("***token 재발급 완료")
+                completion(.retry)
+            } else {
+                print("***token 재발급 실패")
+                completion(.doNotRetryWithError(error))
+            }
         }
     }
 }
