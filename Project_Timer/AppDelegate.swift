@@ -42,7 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /// logout 상태의 경우 KeyChain 초기화
         let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
         if logined == false {
-            KeyChain.shared.deleteAll()
+            guard KeyChain.shared.deleteAll() else {
+                print("delete keyChain Items fail")
+                return true
+            }
         }
         
         return true

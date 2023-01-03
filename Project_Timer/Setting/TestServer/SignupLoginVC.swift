@@ -89,9 +89,13 @@ extension SignupLoginVC {
     
     private func saveUserInfo(username: String, password: String, token: String) {
         // MARK: Token 저장, Noti logined
-        KeyChain.shared.save(key: .username, value: username)
-        KeyChain.shared.save(key: .password, value: password)
-        KeyChain.shared.save(key: .token, value: token)
+        guard [KeyChain.shared.save(key: .username, value: username),
+               KeyChain.shared.save(key: .password, value: password),
+               KeyChain.shared.save(key: .token, value: token)].allSatisfy({ $0 }) == true else {
+            self.showAlertWithOK(title: "Keychain save fail", text: "")
+            return
+        }
+        
         UserDefaultsManager.set(to: true, forKey: .loginInTestServerV1)
         NotificationCenter.default.post(name: KeyChain.logined, object: nil)
         
