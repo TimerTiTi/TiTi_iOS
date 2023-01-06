@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct TimeTableBlock : Identifiable {
-    let id : Int
-    let colorIndex : Int
+    let id: Int
+    let colorIndex: Int
     let hour: Int // y
     let startSeconds: Int // x
     let interver: Int // width
@@ -29,7 +29,11 @@ struct TimeTableView: View {
         ZStack(alignment: .topLeading) {
             ForEach(viewModel.blocks) { block in
                 RoundedRectangle(cornerRadius: 2)
-                    .fill(TiTiColor.graphColor(num: block.colorIndex).toColor)
+                    .fill(LinearGradient(
+                        gradient: .init(colors: [TiTiColor.graphColor(num: block.colorIndex).toColor.opacity(0.9), TiTiColor.graphColor(num: block.colorIndex).toColor]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                      ))
                     .frame(width: (CGFloat(block.interver)/CGFloat(3600))*86.8, height: 10.35)
                     .offset(x: 14+(CGFloat(block.startSeconds)/CGFloat(3600))*86.8, y: 0.4+CGFloat((block.hour + 24 - 5)%24)*11.25)
             }
