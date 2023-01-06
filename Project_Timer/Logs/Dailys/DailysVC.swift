@@ -340,6 +340,7 @@ extension DailysVC {
     private func updateGraphsFromDaily() {
         let daily = self.viewModel?.currentDaily
         self.standardDailyGraphView.updateFromDaily(daily)
+        self.timeTableDailyGraphView.updateFromDaily(daily)
         self.timelineDailyGraphView.updateFromDaily(daily)
         self.tasksProgressDailyGraphView.updateFromDaily(daily)
     }
@@ -349,6 +350,11 @@ extension DailysVC {
         self.standardDailyGraphView.reload()
         self.standardDailyGraphView.layoutIfNeeded()
         self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
+        
+//        self.timeTableDailyGraphView.reload()
+//        self.timeTableDailyGraphView.layoutIfNeeded()
+        self.timeTableDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
+        
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
         self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: self.isReverseColor)
