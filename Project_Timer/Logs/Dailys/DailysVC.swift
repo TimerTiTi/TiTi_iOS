@@ -234,6 +234,10 @@ extension DailysVC {
     
     private func configureChecks() {
         guard let checks = UserDefaultsManager.get(forKey: .checks) as? [Bool] else { return }
+        guard checks.count == 4 else {
+            self.isGraphChecked = [checks[0], true, checks[1], checks[2]]
+            return
+        }
         self.isGraphChecked = checks
     }
     
