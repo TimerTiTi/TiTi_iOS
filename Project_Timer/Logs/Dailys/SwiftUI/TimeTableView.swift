@@ -8,51 +8,63 @@
 
 import SwiftUI
 
+struct TimeTableBlock : Identifiable {
+    let id : Int
+    let colorIndex : Int
+    let hour: Int // y
+    let startSeconds: Int // x
+    let interver: Int // width
+}
+
 struct TimeTableView: View {
-    var frameHeight: CGFloat = 274.333
+    var bounds: CGSize = CGSize(width: 105, height: 274.333)
+    @ObservedObject var viewModel: TimeTableVM
     
-    init(frameHeight: CGFloat) {
-        self.frameHeight = frameHeight-4
+    init(frameSize: CGSize, viewModel: TimeTableVM) {
+        self.bounds = CGSize(width: frameSize.width-4, height: frameSize.height-4)
+        self.viewModel = viewModel
     }
+    
     var body: some View {
         ZStack(alignment: .center) {
-            VStack(spacing: 0) {
-                ForEach(5..<29) { time in
-                    Spacer(minLength: 0)
-                    HStack(spacing: 0) {
-                        Text(String(time%24))
-                            .frame(width: 13.5)
-                            .multilineTextAlignment(.center)
-                            .font(.system(size: 8.5))
-                            .foregroundColor(Color("SystemBackground_reverse"))
-                        Spacer()
-                    }
-                    Spacer(minLength: 0)
-                    Divider()
-                        .foregroundColor(.white.opacity(0.5))
-                }
-            }
-            .frame(width: 101, height: 270.333)
-
-            HStack(spacing: 0) {
-                Spacer(minLength: 13)
-                Divider()
-                    .frame(width: 2)
-                ForEach(0..<6) { _ in
-                    Spacer(minLength: 13.5)
-                    Divider()
-                        .frame(width: 1)
-                }
-            }
-            .frame(width: 101, height: 270.333)
+            self.horizontalLines
+            self.verticalLines
         }
         .background(Color("Background_second").edgesIgnoringSafeArea(.all))
         .padding(2)
     }
-}
-
-struct TimeTableView_Previews: PreviewProvider {
-    static var previews: some View {
-        TimeTableView(frameHeight: 274.333)
+    
+    var horizontalLines: some View {
+        VStack(spacing: 0) {
+            ForEach(5..<29) { time in
+                Spacer(minLength: 0)
+                HStack(spacing: 0) {
+                    Text(String(time%24))
+                        .frame(width: 13.5)
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 8.5))
+                        .foregroundColor(Color("SystemBackground_reverse"))
+                    Spacer()
+                }
+                Spacer(minLength: 0)
+                Divider()
+                    .foregroundColor(.white.opacity(0.5))
+            }
+        }
+        .frame(width: bounds.width, height: bounds.height)
+    }
+    
+    var verticalLines: some View {
+        HStack(spacing: 0) {
+            Spacer(minLength: 13)
+            Divider()
+                .frame(width: 2)
+            ForEach(0..<6) { _ in
+                Spacer(minLength: 13.5)
+                Divider()
+                    .frame(width: 1)
+            }
+        }
+        .frame(width: bounds.width, height: bounds.height)
     }
 }
