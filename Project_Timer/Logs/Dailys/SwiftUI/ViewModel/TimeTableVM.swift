@@ -10,6 +10,7 @@ import Foundation
 
 final class TimeTableVM: ObservableObject {
     @Published var blocks: [TimeTableBlock] = []
+    @Published var blockCount: Int = 0
     private var userColorIndex: Int = 1
     private var isReversColor: Bool = false
     private var taskHistorys: [String: [TaskHistory]] = [:]
@@ -22,6 +23,7 @@ final class TimeTableVM: ObservableObject {
     func update(daily: Daily?, tasks: [TaskInfo]) {
         guard let taskHistorys = daily?.taskHistorys else {
             self.blocks = []
+            self.blockCount = 0
             return
         }
         self.taskHistorys = taskHistorys
@@ -42,16 +44,18 @@ extension TimeTableVM {
         var id: Int = 0
         self.taskHistorys.forEach { taskName, historys in
             let taskIndex = tasks.firstIndex(where: { $0.taskName == taskName }) ?? 0
-            var rawIndex = self.isReversColor
-            ? self.userColorIndex+taskIndex
-            : self.userColorIndex-taskIndex
+            let rawIndex = self.isReversColor
+            ? self.userColorIndex-taskIndex
+            : self.userColorIndex+taskIndex
             
             historys.forEach { history in
                 // startDate, endDate 가 동일 시간대인 경우
-                if (history.startDate.hour == history.endDate.hour) {
+                let startHour = history.startDate.hour
+                let endHour = history.endDate.hour < startHour ? history.endDate.hour+24 : history.endDate.hour
+                if (startHour == endHour) {
                     blocks.append(TimeTableBlock(id: id,
                                                  colorIndex: rawIndex.colorIndex,
-                                                 hour: history.startDate.hour,
+                                                 hour: startHour,
                                                  startSeconds: history.startDate.seconds,
                                                  interver: history.interval))
                     id += 1
@@ -61,23 +65,23 @@ extension TimeTableVM {
                 // 시간대가 달라진 경우 둘이상으로 쪼개야 한다.
                 blocks.append(TimeTableBlock(id: id,
                                              colorIndex: rawIndex.colorIndex,
-                                             hour: history.startDate.hour,
+                                             hour: startHour,
                                              startSeconds: history.startDate.seconds,
                                              interver: 3600 - history.startDate.seconds))
                 id += 1
                 
-                for h in history.startDate.hour+1...history.endDate.hour {
+                for h in startHour+1...endHour {
                     if h != history.endDate.hour {
                         blocks.append(TimeTableBlock(id: id,
                                                      colorIndex: rawIndex.colorIndex,
-                                                     hour: h,
+                                                     hour: h%24,
                                                      startSeconds: 0,
                                                      interver: 3600))
                         id += 1
                     } else {
                         blocks.append(TimeTableBlock(id: id,
                                                      colorIndex: rawIndex.colorIndex,
-                                                     hour: h,
+                                                     hour: h%24,
                                                      startSeconds: 0,
                                                      interver: history.endDate.seconds))
                         id += 1
