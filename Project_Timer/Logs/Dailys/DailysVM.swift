@@ -13,15 +13,18 @@ final class DailysVM {
     @Published private(set) var currentDaily: Daily?
     @Published private(set) var tasks: [TaskInfo] = []
     let timelineVM: TimelineVM
+    let timeTableVM: TimeTableVM
     var selectedDate: Date = Date().zeroDate
     
     init() {
         self.timelineVM = TimelineVM()
+        self.timeTableVM = TimeTableVM()
     }
     
     func updateDaily(to daily: Daily?) {
         self.currentDaily = daily
         self.timelineVM.update(daily: daily)
+        self.timeTableVM.update(daily: daily)
         guard let tasks = daily?.tasks else {
             self.tasks = []
             return
@@ -37,5 +40,6 @@ final class DailysVM {
     
     func updateColor() {
         self.timelineVM.updateColor()
+        self.timeTableVM.updateColor()
     }
 }
