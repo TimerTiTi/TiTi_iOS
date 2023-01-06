@@ -291,6 +291,12 @@ extension DailysVC {
         
         self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
         
+        let hostingTimeTableVC = UIHostingController(rootView: TimeTableView(frameHeight: 274.333))
+        addChild(hostingTimeTableVC)
+        hostingTimeTableVC.didMove(toParent: self)
+        
+        self.timeTableDailyGraphView.configureTimetableLayout(hostingTimeTableVC.view)
+        
         let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: timelineVM))
         addChild(hostingTimelineVC)
         hostingTimelineVC.didMove(toParent: self)
