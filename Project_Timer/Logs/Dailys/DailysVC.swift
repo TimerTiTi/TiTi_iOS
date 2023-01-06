@@ -25,10 +25,11 @@ final class DailysVC: UIViewController {
     @IBOutlet weak var graphsPageControl: UIPageControl!
     @IBOutlet weak var editRecordButton: UIButton!
     private var standardDailyGraphView = StandardDailyGraphView()
+    private var timeTableDailyGraphView = TimeTableDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var checkGraphButtons: [CheckGraphButton] = []
-    private var isGraphChecked: [Bool] = [true, true, true] {
+    private var isGraphChecked: [Bool] = [true, true, true, true] {
         didSet {
             UserDefaultsManager.set(to: isGraphChecked, forKey: .checks)
         }
@@ -73,6 +74,7 @@ final class DailysVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.standardDailyGraphView.updateDarkLightMode()
+        self.timeTableDailyGraphView.updateDarkLightMode()
         self.timelineDailyGraphView.updateDarkLightMode()
         self.tasksProgressDailyGraphView.updateDarkLightMode()
         self.updateGraphsFromDaily()
@@ -93,8 +95,8 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
-        let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
-        let graphImages = (0..<3).filter({ self.isGraphChecked[$0] }).map({ UIImage(view: dailyGraphViews[$0]) })
+        let dailyGraphViews = [self.standardDailyGraphView, self.timeTableDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
+        let graphImages = (0..<4).filter({ self.isGraphChecked[$0] }).map({ UIImage(view: dailyGraphViews[$0]) })
         #if targetEnvironment(macCatalyst)
         self.saveGraphImagesForMac(images: graphImages)
         #else
@@ -106,8 +108,8 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {
-        let dailyGraphViews = [self.standardDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
-        let images = (0..<3).filter{ self.isGraphChecked[$0] }.map{ UIImage(view: dailyGraphViews[$0]) }
+        let dailyGraphViews = [self.standardDailyGraphView, self.timeTableDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
+        let images = (0..<4).filter{ self.isGraphChecked[$0] }.map{ UIImage(view: dailyGraphViews[$0]) }
         
         let activityViewController = UIActivityViewController(activityItems: images, applicationActivities: nil)
         
@@ -206,10 +208,17 @@ extension DailysVC {
             self.standardDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
+        self.graphsContentView.addSubview(self.timeTableDailyGraphView)
+        NSLayoutConstraint.activate([
+            self.timeTableDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.timeTableDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
+            self.timeTableDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+        ])
+        
         self.graphsContentView.addSubview(self.timelineDailyGraphView)
         NSLayoutConstraint.activate([
             self.timelineDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
+            self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.timeTableDailyGraphView.trailingAnchor),
             self.timelineDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
@@ -228,7 +237,7 @@ extension DailysVC {
     }
     
     private func configureCheckGraphs() {
-        (0...2).forEach { idx in
+        (0...3).forEach { idx in
             let button = CheckGraphButton()
             button.isSelected = self.isGraphChecked[idx]
             button.addAction(UIAction(handler: { [weak self] _ in
@@ -246,14 +255,20 @@ extension DailysVC {
         
         self.graphsContentView.addSubview(self.checkGraphButtons[1])
         NSLayoutConstraint.activate([
-            self.checkGraphButtons[1].topAnchor.constraint(equalTo: self.timelineDailyGraphView.topAnchor, constant: 25),
-            self.checkGraphButtons[1].leadingAnchor.constraint(equalTo: self.timelineDailyGraphView.leadingAnchor, constant: 25)
+            self.checkGraphButtons[1].topAnchor.constraint(equalTo: self.timeTableDailyGraphView.topAnchor, constant: 73),
+            self.checkGraphButtons[1].leadingAnchor.constraint(equalTo: self.timeTableDailyGraphView.leadingAnchor, constant: 25)
         ])
         
         self.graphsContentView.addSubview(self.checkGraphButtons[2])
         NSLayoutConstraint.activate([
-            self.checkGraphButtons[2].topAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.topAnchor, constant: 25),
-            self.checkGraphButtons[2].leadingAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.leadingAnchor, constant: 25)
+            self.checkGraphButtons[2].topAnchor.constraint(equalTo: self.timelineDailyGraphView.topAnchor, constant: 25),
+            self.checkGraphButtons[2].leadingAnchor.constraint(equalTo: self.timelineDailyGraphView.leadingAnchor, constant: 25)
+        ])
+        
+        self.graphsContentView.addSubview(self.checkGraphButtons[3])
+        NSLayoutConstraint.activate([
+            self.checkGraphButtons[3].topAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.topAnchor, constant: 25),
+            self.checkGraphButtons[3].leadingAnchor.constraint(equalTo: self.tasksProgressDailyGraphView.leadingAnchor, constant: 25)
         ])
     }
     
