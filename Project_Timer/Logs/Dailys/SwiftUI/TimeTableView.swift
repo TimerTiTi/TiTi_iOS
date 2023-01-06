@@ -42,7 +42,7 @@ struct TimeTableView: View {
                     Text(String(time%24))
                         .frame(width: 13.5)
                         .multilineTextAlignment(.center)
-                        .font(.system(size: 8.5))
+                        .font(.system(size: 7))
                         .foregroundColor(Color("SystemBackground_reverse"))
                     Spacer()
                 }
