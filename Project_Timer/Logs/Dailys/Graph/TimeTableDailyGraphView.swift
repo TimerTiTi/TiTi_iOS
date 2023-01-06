@@ -75,6 +75,8 @@ final class TimeTableDailyGraphView: UIView {
         ])
         return view
     }()
+    private var totalTimeView = TimeView(title: "Total", size: .small)
+    private var maxTimeView = TimeView(title: "Max", size: .small)
     private lazy var tasksCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -90,9 +92,6 @@ final class TimeTableDailyGraphView: UIView {
         collectionView.backgroundColor = UIColor(named: "Background_second")
         return collectionView
     }()
-    
-    private var totalTimeView = TimeView(title: "Total", size: .small)
-    private var maxTimeView = TimeView(title: "Max", size: .small)
     private var contentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -108,6 +107,8 @@ final class TimeTableDailyGraphView: UIView {
     convenience init() {
         self.init(frame: CGRect())
         self.commonInit()
+        self.configureProgressView()
+        self.configureTimesView()
     }
     
     private func commonInit() {
@@ -173,14 +174,78 @@ final class TimeTableDailyGraphView: UIView {
         
         self.contentView.configureShadow()
     }
+    
+    private func configureProgressView() {
+        self.timesFrameView.addSubview(self.progressView)
+        NSLayoutConstraint.activate([
+            self.progressView.centerYAnchor.constraint(equalTo: self.timesFrameView.centerYAnchor),
+            self.progressView.leadingAnchor.constraint(equalTo: self.timesFrameView.leadingAnchor, constant: 36),
+            self.progressView.widthAnchor.constraint(equalToConstant: 52),
+            self.progressView.heightAnchor.constraint(equalToConstant: 52)
+        ])
+    }
+    
+    private func configureTimesView() {
+        let stackView = UIStackView(arrangedSubviews: [self.totalTimeView, self.maxTimeView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 0
+        
+        self.timesFrameView.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: self.timesFrameView.centerYAnchor),
+            stackView.trailingAnchor.constraint(equalTo: self.timesFrameView.trailingAnchor, constant: -24)
+        ])
+    }
 }
 
+// MARK: TimeTableDailyGraphView Public Actions
 extension TimeTableDailyGraphView {
+    /// dark, light mode 변경의 경우
     func updateDarkLightMode() {
         self.contentView.configureShadow()
         let borderColor = UIColor(named: "System_border")?.cgColor
         self.timesFrameView.layer.borderColor = borderColor
         self.timeTableFrameView.layer.borderColor = borderColor
         self.tasksCollectionView.layer.borderColor = borderColor
+    }
+    /// daily 변경, 또는 color 변경의 경우
+    func updateFromDaily(_ daily: Daily?) {
+        self.updateDateLabel(daily?.day)
+        self.updateDayOfWeek(daily?.day)
+        self.totalTimeView.updateTime(to: daily?.totalTime)
+        self.maxTimeView.updateTime(to: daily?.maxTime)
+    }
+    /// tasks 가 변경되어 collectionView 를 update 하는 경우
+    func reload() {
+        self.tasksCollectionView.reloadData()
+    }
+    /// 컬렉션뷰 테두리 하이라이트
+    func highlightCollectionView() {
+        self.tasksCollectionView.layer.borderColor = UIColor.red.cgColor
+    }
+    /// 컬렉션뷰 테두리 하이라이트 제거
+    func removeCollectionViewHighlight() {
+        self.tasksCollectionView.layer.borderColor = UIColor(named: "System_border")?.cgColor
+    }
+}
+
+// MARK: TimeTableDailyGraphView Private Actions
+extension TimeTableDailyGraphView {
+    private func updateDateLabel(_ day: Date?) {
+        guard let day = day else {
+            self.dateLabel.text = "0000.00.00"
+            return
+        }
+        
+        self.dateLabel.text = day.YYYYMMDDstyleString
+    }
+    
+    private func updateDayOfWeek(_ day: Date?) {
+        self.daysOfWeekStackView.arrangedSubviews.forEach { $0.backgroundColor = UIColor.clear }
+        guard let day = day else { return }
+        let targetIndex = day.indexDayOfWeek
+        self.daysOfWeekStackView.arrangedSubviews[targetIndex].backgroundColor = UIColor(named: String.userTintColor)?.withAlphaComponent(0.5)
     }
 }
