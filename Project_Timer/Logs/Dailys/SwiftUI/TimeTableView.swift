@@ -30,8 +30,8 @@ struct TimeTableView: View {
             ForEach(viewModel.blocks) { block in
                 RoundedRectangle(cornerRadius: 2)
                     .fill(TiTiColor.graphColor(num: block.colorIndex).toColor)
-                    .frame(width: (CGFloat(block.interver)/CGFloat(3600))*86.5, height: 10.5)
-                    .offset(x: 14+(CGFloat(block.startSeconds)/CGFloat(3600))*86.5, y: 0.3+CGFloat((block.hour + 24 - 5)%24)*11.26)
+                    .frame(width: (CGFloat(block.interver)/CGFloat(3600))*86.8, height: 10.35)
+                    .offset(x: 14+(CGFloat(block.startSeconds)/CGFloat(3600))*86.8, y: 0.4+CGFloat((block.hour + 24 - 5)%24)*11.25)
             }
             self.horizontalLines
             self.verticalLines

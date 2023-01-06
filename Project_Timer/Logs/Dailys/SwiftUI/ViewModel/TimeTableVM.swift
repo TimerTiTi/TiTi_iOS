@@ -10,7 +10,6 @@ import Foundation
 
 final class TimeTableVM: ObservableObject {
     @Published var blocks: [TimeTableBlock] = []
-    @Published var blockCount: Int = 0
     private var userColorIndex: Int = 1
     private var isReversColor: Bool = false
     private var taskHistorys: [String: [TaskHistory]] = [:]
@@ -23,7 +22,6 @@ final class TimeTableVM: ObservableObject {
     func update(daily: Daily?, tasks: [TaskInfo]) {
         guard let taskHistorys = daily?.taskHistorys else {
             self.blocks = []
-            self.blockCount = 0
             return
         }
         self.taskHistorys = taskHistorys
