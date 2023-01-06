@@ -56,6 +56,7 @@
 		87199F582883F2E00017D01A /* TimelineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F572883F2E00017D01A /* TimelineVM.swift */; };
 		87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F5B28840E970017D01A /* TasksCircularProgressView.swift */; };
 		87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F5D28842F0E0017D01A /* CheckGraphButton.swift */; };
+		871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
@@ -247,6 +248,7 @@
 		87199F572883F2E00017D01A /* TimelineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVM.swift; sourceTree = "<group>"; };
 		87199F5B28840E970017D01A /* TasksCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressView.swift; sourceTree = "<group>"; };
 		87199F5D28842F0E0017D01A /* CheckGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckGraphButton.swift; sourceTree = "<group>"; };
+		871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableDailyGraphView.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				87199F432882BC430017D01A /* StandardDailyGraphView.swift */,
+				871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */,
 				87199F452883018C0017D01A /* TimelineDailyGraphView.swift */,
 				87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */,
 				87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */,
@@ -1245,6 +1248,7 @@
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
 				8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
+				871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */,
 				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
