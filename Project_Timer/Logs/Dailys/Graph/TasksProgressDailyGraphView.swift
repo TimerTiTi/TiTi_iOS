@@ -36,7 +36,7 @@ final class TasksProgressDailyGraphView: UIView {
         ])
         self.collectionViewHeightContstraint = collectionView.heightAnchor.constraint(equalToConstant: 160)
         self.collectionViewHeightContstraint?.isActive = true
-        collectionView.tag = 1
+        collectionView.tag = 2
         collectionView.backgroundView?.backgroundColor = UIColor(named: "Background_second")
         return collectionView
     }()

@@ -88,7 +88,7 @@ final class TimeTableDailyGraphView: UIView {
         NSLayoutConstraint.activate([
             collectionView.widthAnchor.constraint(equalToConstant: 215)
         ])
-        collectionView.tag = 0
+        collectionView.tag = 1
         collectionView.backgroundColor = UIColor(named: "Background_second")
         return collectionView
     }()
@@ -109,6 +109,7 @@ final class TimeTableDailyGraphView: UIView {
         self.commonInit()
         self.configureProgressView()
         self.configureTimesView()
+        self.configureCollectionView()
     }
     
     private func commonInit() {
@@ -196,6 +197,32 @@ final class TimeTableDailyGraphView: UIView {
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: self.timesFrameView.centerYAnchor),
             stackView.trailingAnchor.constraint(equalTo: self.timesFrameView.trailingAnchor, constant: -24)
+        ])
+    }
+    
+    private func configureCollectionView() {
+        let standardDailyTaskCellNib = UINib.init(nibName: StandardDailyTaskCell.identifier, bundle: nil)
+        let addNewTaskHistoryCellNib = UINib.init(nibName: AddNewTaskHistoryCell.identifier, bundle: nil)
+        self.tasksCollectionView.register(standardDailyTaskCellNib, forCellWithReuseIdentifier: StandardDailyTaskCell.identifier)
+        self.tasksCollectionView.register(addNewTaskHistoryCellNib, forCellWithReuseIdentifier: AddNewTaskHistoryCell.identifier)
+    }
+}
+
+// MARK: TimeTableDailyGraphView Public Configure Functions
+extension TimeTableDailyGraphView {
+    func configureDelegate(_ delegate: (UICollectionViewDelegate&UICollectionViewDataSource)) {
+        self.tasksCollectionView.delegate = delegate
+        self.tasksCollectionView.dataSource = delegate
+    }
+    
+    func configureTimetableLayout(_ view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        self.timeTableFrameView.addSubview(view)
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: self.timeTableFrameView.topAnchor, constant: 2),
+            view.leadingAnchor.constraint(equalTo: self.timeTableFrameView.leadingAnchor, constant: 2),
+            view.trailingAnchor.constraint(equalTo: self.timeTableFrameView.trailingAnchor, constant: -2),
+            view.bottomAnchor.constraint(equalTo: self.timeTableFrameView.bottomAnchor, constant: -2)
         ])
     }
 }
