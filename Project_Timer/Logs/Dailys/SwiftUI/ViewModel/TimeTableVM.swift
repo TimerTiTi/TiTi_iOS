@@ -9,7 +9,11 @@
 import Foundation
 
 final class TimeTableVM: ObservableObject {
-    @Published var blocks: [TimeTableBlock] = []
+    @Published var blocks: [TimeTableBlock] = [] {
+        didSet {
+            dump(blocks)
+        }
+    }
     private var userColorIndex: Int = 1
     private var isReversColor: Bool = false
     private var taskHistorys: [String: [TaskHistory]] = [:]
@@ -69,7 +73,7 @@ extension TimeTableVM {
                 id += 1
                 
                 for h in startHour+1...endHour {
-                    if h != history.endDate.hour {
+                    if h != endHour {
                         blocks.append(TimeTableBlock(id: id,
                                                      colorIndex: rawIndex.colorIndex,
                                                      hour: h%24,
