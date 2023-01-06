@@ -83,14 +83,14 @@ struct Daily: Codable, CustomStringConvertible {
             return
         }
         
-        self.timeline[startHour] = recordTimes.recordStartTimeline[startHour] + (3600 - self.getSecondsAt(recordTimes.recordStartAt))
+        self.timeline[startHour] = recordTimes.recordStartTimeline[startHour] + (3600 - recordTimes.recordStartAt.seconds)
         self.timeline[startHour] = min(3600, self.timeline[startHour])
         
         for h in startHour+1...nowHour {
             if h != nowHour {
                 self.timeline[h%24] = 3600
             } else {
-                self.timeline[h%24] = self.getSecondsAt(current)
+                self.timeline[h%24] = current.seconds
             }
         }
     }
@@ -112,15 +112,6 @@ struct Daily: Codable, CustomStringConvertible {
     
     mutating func load() {
         self = Storage.retrive(Daily.fileName, from: .documents, as: Daily.self) ?? Daily()
-    }
-    
-    private func getSecondsAt(_ date: Date) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "mm"
-        let M = Int(dateFormatter.string(from: date))! //분
-        dateFormatter.dateFormat = "ss"
-        let S = Int(dateFormatter.string(from: date))! //초
-        return M*60+S
     }
 }
 
@@ -172,12 +163,12 @@ extension Daily {
                 if startHour == endHour {
                     timeline[startHour] += history.interval
                 } else {
-                    timeline[startHour] += (3600 - self.getSecondsAt(history.startDate))
+                    timeline[startHour] += (3600 - history.startDate.seconds)
                     for h in startHour+1...endHour {
                         if h != endHour {
                             timeline[h%24] = 3600
                         } else {
-                            timeline[h%24] += self.getSecondsAt(history.endDate)
+                            timeline[h%24] += history.endDate.seconds
                         }
                     }
                 }

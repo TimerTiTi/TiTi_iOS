@@ -98,4 +98,13 @@ extension Date {
     var truncateSeconds: Date? {
         return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: self))
     }
+    
+    var seconds: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "mm"
+        let M = Int(dateFormatter.string(from: self))! //분
+        dateFormatter.dateFormat = "ss"
+        let S = Int(dateFormatter.string(from: self))! //초
+        return M*60+S
+    }
 }

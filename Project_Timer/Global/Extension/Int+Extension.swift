@@ -50,4 +50,8 @@ extension Int {
         let today = dateFormatter.string(from: future)
         return today
     }
+    
+    var colorIndex: Int {
+        return (self+12)%12 == 0 ? 12 : (self+12)%12
+    }
 }
