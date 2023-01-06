@@ -41,7 +41,8 @@ final class DailysVC: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
-        case tasksProgressDailyGraphView = 1
+        case timeTableDailyGraphView = 1
+        case tasksProgressDailyGraphView = 2
     }
     
     override func viewDidLoad() {
@@ -274,6 +275,7 @@ extension DailysVC {
     
     private func configureCollectionViewDelegate() {
         self.standardDailyGraphView.configureDelegate(self)
+        self.timeTableDailyGraphView.configureDelegate(self)
         self.tasksProgressDailyGraphView.configureDelegate(self)
     }
     
@@ -351,8 +353,8 @@ extension DailysVC {
         self.standardDailyGraphView.layoutIfNeeded()
         self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
         
-//        self.timeTableDailyGraphView.reload()
-//        self.timeTableDailyGraphView.layoutIfNeeded()
+        self.timeTableDailyGraphView.reload()
+        self.timeTableDailyGraphView.layoutIfNeeded()
         self.timeTableDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: self.isReverseColor)
         
         self.tasksProgressDailyGraphView.reload()
@@ -391,7 +393,7 @@ extension DailysVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 return self.viewModel?.tasks.count ?? 0
             case .tasksProgressDailyGraphView:
                 return min(8, self.viewModel?.tasks.count ?? 0)
@@ -402,7 +404,7 @@ extension DailysVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StandardDailyTaskCell.identifier, for: indexPath) as? StandardDailyTaskCell else { return .init() }
                 guard let taskInfo = self.viewModel?.tasks[safe: indexPath.item] else { return cell }
                 cell.configure(index: indexPath.item, taskInfo: taskInfo, isReversColor: self.isReverseColor)
@@ -421,7 +423,7 @@ extension DailysVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 return CGSize(width: collectionView.bounds.width, height: StandardDailyTaskCell.height)
             case .tasksProgressDailyGraphView:
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
