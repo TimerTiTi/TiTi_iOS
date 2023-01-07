@@ -13,7 +13,8 @@ import FSCalendar
 
 final class WeeksVC: UIViewController {
     static let identifier = "WeeksVC"
-    @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
     private var standardWeekGraphView = StandardWeekGraphView()
@@ -33,6 +34,10 @@ final class WeeksVC: UIViewController {
         self.configureViewModel()
         self.configureHostingVC()
         self.bindAll()
+        
+        #if targetEnvironment(macCatalyst)
+        self.configureCalenderHorizontalButtons()
+        #endif
         
         self.viewModel?.selectDate(to: RecordController.shared.daily.day.zeroDate.localDate)
     }
@@ -164,6 +169,33 @@ extension WeeksVC {
         hostingStandardVC.didMove(toParent: self)
         
         self.standardWeekGraphView.configureTimelineLayout(hostingStandardVC.view)
+    }
+    
+    private func configureCalenderHorizontalButtons() {
+        let rightButton = RightButton()
+        rightButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.calendar.collectionView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)+1)
+        }), for: .touchUpInside)
+        
+        let leftButton = LeftButton()
+        leftButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.calendar.collectionView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)-1)
+        }), for: .touchUpInside)
+        
+        self.contentView.addSubview(leftButton)
+        NSLayoutConstraint.activate([
+            leftButton.trailingAnchor.constraint(equalTo: self.calendar.leadingAnchor, constant: -10),
+            leftButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
+        ])
+        self.contentView.addSubview(rightButton)
+        NSLayoutConstraint.activate([
+            rightButton.leadingAnchor.constraint(equalTo: self.calendar.trailingAnchor, constant: 10),
+            rightButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
+        ])
     }
 }
 
