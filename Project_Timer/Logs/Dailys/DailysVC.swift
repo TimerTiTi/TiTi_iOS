@@ -25,6 +25,10 @@ final class DailysVC: UIViewController {
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
     @IBOutlet weak var editRecordButton: UIButton!
+    
+    @IBOutlet var calendarTopConstraint: NSLayoutConstraint!
+    @IBOutlet var graphScrollViewBottomConstraint: NSLayoutConstraint!
+    
     private var standardDailyGraphView = StandardDailyGraphView()
     private var timeTableDailyGraphView = TimeTableDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
@@ -63,6 +67,7 @@ final class DailysVC: UIViewController {
         #if targetEnvironment(macCatalyst)
         self.configureCalenderHorizontalButtons()
         self.configureGraphHorizontalButtons()
+        self.configureBiggerUI()
         #endif
         
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
@@ -303,7 +308,10 @@ extension DailysVC {
         
         self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
-    
+}
+
+// MARK: Configure for Mac
+extension DailysVC {
     private func configureCalenderHorizontalButtons() {
         let rightButton = RightButton()
         rightButton.addAction(UIAction(handler: { [weak self] _ in
@@ -360,6 +368,14 @@ extension DailysVC {
             rightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 0),
             rightButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
         ])
+    }
+    
+    private func configureBiggerUI() {
+        let height: CGFloat = self.contentView.bounds.height
+        let scale: CGFloat = 1.25
+        self.calendarTopConstraint.constant = 8+((scale-1)*height/2)
+        self.graphScrollViewBottomConstraint.constant = 16+((scale-1)*height/2)
+        self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
     }
 }
 

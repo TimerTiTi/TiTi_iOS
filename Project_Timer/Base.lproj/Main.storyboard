@@ -1032,8 +1032,10 @@
                     </view>
                     <connections>
                         <outlet property="calendar" destination="foR-W7-d9w" id="kCX-OR-9hb"/>
+                        <outlet property="calendarTopConstraint" destination="huh-Jo-5qh" id="BBt-r4-rKq"/>
                         <outlet property="contentView" destination="ZHz-m7-whX" id="w1e-yz-Qf8"/>
                         <outlet property="editRecordButton" destination="KnG-DJ-jRv" id="5A4-px-f7e"/>
+                        <outlet property="graphScrollViewBottomConstraint" destination="hfC-Xi-7VT" id="bWM-y4-VXk"/>
                         <outlet property="graphsContentView" destination="0JX-wo-bUz" id="v5S-7c-hwt"/>
                         <outlet property="graphsPageControl" destination="sHk-ia-ZKg" id="Or2-Ro-56l"/>
                         <outlet property="graphsScrollView" destination="MyE-bI-3CB" id="jiu-Ge-HN5"/>
@@ -3373,7 +3375,9 @@
                     </view>
                     <connections>
                         <outlet property="calendar" destination="N12-J8-e5p" id="7Cc-3K-Qh1"/>
+                        <outlet property="calendarTopConstraint" destination="DUH-xM-oL8" id="f6L-6j-Pgj"/>
                         <outlet property="contentView" destination="BLZ-SN-rw6" id="8JC-uB-Kgf"/>
+                        <outlet property="graphScrollViewBottomConstraint" destination="VRf-S6-oAB" id="6tM-BU-zMw"/>
                         <outlet property="graphsContentView" destination="2CG-Fw-gmY" id="HhI-p4-XwR"/>
                         <outlet property="graphsScrollView" destination="gZP-GK-zGo" id="79U-9a-wI7"/>
                     </connections>

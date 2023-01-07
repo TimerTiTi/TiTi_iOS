@@ -15,7 +15,7 @@ final class LeftButton: UIButton {
         self.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         self.tintColor = UIColor.label
         let padding: CGFloat = 12
-        if #available(macCatalyst 15.0, *) {
+        if #available(macCatalyst 15.0, iOS 15.0, *) {
             self.configuration?.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         } else {
             self.contentEdgeInsets = .init(top: padding, left: padding, bottom: padding, right: padding)

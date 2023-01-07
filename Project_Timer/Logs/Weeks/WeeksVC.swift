@@ -17,8 +17,11 @@ final class WeeksVC: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
     @IBOutlet weak var graphsContentView: UIView!
-    private var standardWeekGraphView = StandardWeekGraphView()
     
+    @IBOutlet var calendarTopConstraint: NSLayoutConstraint!
+    @IBOutlet var graphScrollViewBottomConstraint: NSLayoutConstraint!
+    
+    private var standardWeekGraphView = StandardWeekGraphView()
     private var colorIndex: Int = 1
     private var isReverseColor: Bool = false
     private var viewModel: WeeksVM?
@@ -37,6 +40,7 @@ final class WeeksVC: UIViewController {
         
         #if targetEnvironment(macCatalyst)
         self.configureCalenderHorizontalButtons()
+        self.configureBiggerUI()
         #endif
         
         self.viewModel?.selectDate(to: RecordController.shared.daily.day.zeroDate.localDate)
@@ -170,7 +174,10 @@ extension WeeksVC {
         
         self.standardWeekGraphView.configureTimelineLayout(hostingStandardVC.view)
     }
-    
+}
+
+// MARK: Configure for Mac
+extension WeeksVC {
     private func configureCalenderHorizontalButtons() {
         let rightButton = RightButton()
         rightButton.addAction(UIAction(handler: { [weak self] _ in
@@ -196,6 +203,14 @@ extension WeeksVC {
             rightButton.leadingAnchor.constraint(equalTo: self.calendar.trailingAnchor, constant: 10),
             rightButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
         ])
+    }
+    
+    private func configureBiggerUI() {
+        let height: CGFloat = self.contentView.bounds.height
+        let scale: CGFloat = 1.25
+        self.calendarTopConstraint.constant = 8+((scale-1)*height/2)
+        self.graphScrollViewBottomConstraint.constant = 16+((scale-1)*height/2)
+        self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
     }
 }
 
