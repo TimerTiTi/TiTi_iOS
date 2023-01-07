@@ -69,9 +69,7 @@ final class WeeksVC: UIViewController {
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
-        let graphImage = UIImage(view: self.standardWeekGraphView)
-        UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
+        self.saveGraphs()
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {
@@ -85,6 +83,32 @@ final class WeeksVC: UIViewController {
         }
         
         self.present(activityViewController, animated: true)
+    }
+}
+
+// MARK: save images
+extension WeeksVC {
+    private func saveGraphs() {
+        #if targetEnvironment(macCatalyst)
+        guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
+        guard let fileURLs = IOUsecase.saveImagesToMAC(views: [self.standardWeekGraphView], fileName: week) else {
+            self.showAlertWithOK(title: "Save Failed", text: "")
+            return
+        }
+        let controller = UIDocumentPickerViewController(forExporting: fileURLs)
+        controller.delegate = self
+        present(controller, animated: true, completion: nil)
+        #else
+        IOUsecase.saveImagesToIOS(views: [self.standardWeekGraphView])
+        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
+        #endif
+    }
+}
+
+extension WeeksVC: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
+        self.showAlertWithOK(title: "Save Completed".localized(), text: "\(week)")
     }
 }
 
