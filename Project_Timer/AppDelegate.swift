@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if targetEnvironment(macCatalyst)
         UserDefaultsManager.set(to: false, forKey: .keepTheScreenOn)
         UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
-        #else
         #endif
         
         return true

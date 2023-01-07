@@ -58,6 +58,7 @@ class TodolistViewController: UIViewController {
     
     @IBAction func editAction(_ sender: Any) {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
+        self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
     }
 }
 
