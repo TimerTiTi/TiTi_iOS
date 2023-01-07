@@ -1032,6 +1032,7 @@
                     </view>
                     <connections>
                         <outlet property="calendar" destination="foR-W7-d9w" id="kCX-OR-9hb"/>
+                        <outlet property="contentView" destination="ZHz-m7-whX" id="w1e-yz-Qf8"/>
                         <outlet property="editRecordButton" destination="KnG-DJ-jRv" id="5A4-px-f7e"/>
                         <outlet property="graphsContentView" destination="0JX-wo-bUz" id="v5S-7c-hwt"/>
                         <outlet property="graphsPageControl" destination="sHk-ia-ZKg" id="Or2-Ro-56l"/>
