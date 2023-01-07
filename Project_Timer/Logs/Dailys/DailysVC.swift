@@ -19,10 +19,10 @@ protocol ModifyRecordDelegate: AnyObject {
 
 final class DailysVC: UIViewController {
     static let identifier = "DailysVC"
-    @IBOutlet var calendar: FSCalendar!
-    @IBOutlet var contentView: UIView!
-    @IBOutlet var graphsScrollView: UIScrollView!
-    @IBOutlet var graphsContentView: UIView!
+    @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var graphsScrollView: UIScrollView!
+    @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
     @IBOutlet weak var editRecordButton: UIButton!
     private var standardDailyGraphView = StandardDailyGraphView()
@@ -321,12 +321,12 @@ extension DailysVC {
         
         self.contentView.addSubview(leftButton)
         NSLayoutConstraint.activate([
-            leftButton.trailingAnchor.constraint(equalTo: self.calendar.leadingAnchor, constant: -16),
+            leftButton.trailingAnchor.constraint(equalTo: self.calendar.leadingAnchor, constant: -10),
             leftButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
         ])
         self.contentView.addSubview(rightButton)
         NSLayoutConstraint.activate([
-            rightButton.leadingAnchor.constraint(equalTo: self.calendar.trailingAnchor, constant: 16),
+            rightButton.leadingAnchor.constraint(equalTo: self.calendar.trailingAnchor, constant: 10),
             rightButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
         ])
     }
@@ -352,12 +352,12 @@ extension DailysVC {
         
         self.contentView.addSubview(leftButton)
         NSLayoutConstraint.activate([
-            leftButton.trailingAnchor.constraint(equalTo: self.graphsScrollView.leadingAnchor, constant: -16),
+            leftButton.trailingAnchor.constraint(equalTo: self.graphsScrollView.leadingAnchor, constant: 0),
             leftButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
         ])
         self.contentView.addSubview(rightButton)
         NSLayoutConstraint.activate([
-            rightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 16),
+            rightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 0),
             rightButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
         ])
     }
