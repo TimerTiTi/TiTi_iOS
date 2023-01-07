@@ -26,6 +26,7 @@ struct UserDefaultsManager {
         case keepTheScreenOn = "keepTheScreenOn"
         // graph
         case checks = "checks"
+        case lastDailyGraphForm = "lastDailyGraphForm"
         // color
         case startColor = "startColor"
         case reverseColor = "reverseColor"

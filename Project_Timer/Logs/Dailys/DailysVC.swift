@@ -56,6 +56,7 @@ final class DailysVC: UIViewController {
         self.fetchColor()
         self.updateCalendarColor()
         self.configureScrollView()
+        self.configurePage()
         self.configureGraphs()
         self.configureChecks()
         self.configureCheckGraphs()
@@ -199,6 +200,11 @@ extension DailysVC {
     
     private func configureScrollView() {
         self.graphsScrollView.delegate = self
+    }
+    
+    private func configurePage() {
+        let page = UserDefaultsManager.get(forKey: .lastDailyGraphForm) as? Int ?? 0
+        self.graphsScrollView.configureScrollHorizontalPage(frame: self.graphsScrollView.frame, to: page)
     }
     
     private func configureGraphs() {
@@ -466,6 +472,8 @@ extension DailysVC: UIScrollViewDelegate {
         guard scrollView == self.graphsScrollView else { return }
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
         self.graphsPageControl.currentPage = Int(round(value))
+        // 마지막 그래프 인덱스 저장
+        UserDefaultsManager.set(to: Int(round(value)), forKey: .lastDailyGraphForm)
     }
 }
 
