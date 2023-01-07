@@ -77,7 +77,6 @@ extension LogHomeVC {
         self.stackViewTopConstraint.constant = 8+((scale-1)/2*height)
         self.stackViewBottomConstraint.constant = 8+((scale-1)/2*height)
         self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
-        #else
         #endif
     }
 }

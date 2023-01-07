@@ -52,11 +52,8 @@ final class taskSelectViewController: UIViewController {
 extension taskSelectViewController {
     private func configureDevice() {
         #if targetEnvironment(macCatalyst)
-        print("Mac")
         self.closeButton.isHidden = false
         self.collectionViewBottomConstraint.constant = 35
-        #else
-        print("iOS")
         #endif
     }
     
