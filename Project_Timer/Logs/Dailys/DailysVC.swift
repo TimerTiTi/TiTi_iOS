@@ -61,7 +61,8 @@ final class DailysVC: UIViewController {
         self.bindAll()
         
         #if targetEnvironment(macCatalyst)
-        self.configureHorizontalButtons()
+        self.configureCalenderHorizontalButtons()
+        self.configureGraphHorizontalButtons()
         #endif
         
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
@@ -303,9 +304,36 @@ extension DailysVC {
         self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
     }
     
-    private func configureHorizontalButtons() {
-        let graphRightButton = RightButton()
-        graphRightButton.addAction(UIAction(handler: { [weak self] _ in
+    private func configureCalenderHorizontalButtons() {
+        let rightButton = RightButton()
+        rightButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.calendar.collectionView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)+1)
+        }), for: .touchUpInside)
+        
+        let leftButton = LeftButton()
+        leftButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.calendar.collectionView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)-1)
+        }), for: .touchUpInside)
+        
+        self.contentView.addSubview(leftButton)
+        NSLayoutConstraint.activate([
+            leftButton.trailingAnchor.constraint(equalTo: self.calendar.leadingAnchor, constant: -16),
+            leftButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
+        ])
+        self.contentView.addSubview(rightButton)
+        NSLayoutConstraint.activate([
+            rightButton.leadingAnchor.constraint(equalTo: self.calendar.trailingAnchor, constant: 16),
+            rightButton.centerYAnchor.constraint(equalTo: self.calendar.centerYAnchor)
+        ])
+    }
+    
+    private func configureGraphHorizontalButtons() {
+        let rightButton = RightButton()
+        rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let scrollView = self?.graphsScrollView else { return }
             let current = scrollView.contentOffset.x / scrollView.frame.size.width
             if current < 3 {
@@ -313,10 +341,24 @@ extension DailysVC {
             }
         }), for: .touchUpInside)
         
-        self.contentView.addSubview(graphRightButton)
+        let leftButton = LeftButton()
+        leftButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.graphsScrollView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            if current > 0 {
+                scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)-1)
+            }
+        }), for: .touchUpInside)
+        
+        self.contentView.addSubview(leftButton)
         NSLayoutConstraint.activate([
-            graphRightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 16),
-            graphRightButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
+            leftButton.trailingAnchor.constraint(equalTo: self.graphsScrollView.leadingAnchor, constant: -16),
+            leftButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
+        ])
+        self.contentView.addSubview(rightButton)
+        NSLayoutConstraint.activate([
+            rightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 16),
+            rightButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
         ])
     }
 }
