@@ -25,9 +25,10 @@ final class ModifyRecordVM {
     
     @Published private(set) var currentDaily: Daily {
         didSet {
-            self.timelineVM.update(daily: self.currentDaily)
             self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
                 .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+            self.timelineVM.update(daily: self.currentDaily)
+            self.timeTableVM.update(daily: self.currentDaily, tasks: self.tasks)
         }
     }
     @Published private(set) var tasks: [TaskInfo] = []
@@ -44,6 +45,7 @@ final class ModifyRecordVM {
     }
     
     let timelineVM: TimelineVM
+    let timeTableVM: TimeTableVM
     private var cancellables: Set<AnyCancellable> = []
     
     var isReverseColor: Bool
@@ -63,21 +65,25 @@ final class ModifyRecordVM {
     init(daily: Daily, isReverseColor: Bool) {
         self.mode = .modify
         self.timelineVM = TimelineVM()
+        self.timeTableVM = TimeTableVM()
         self.currentDaily = daily
         self.isReverseColor = isReverseColor
-        self.timelineVM.update(daily: self.currentDaily)
         self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+        self.timelineVM.update(daily: self.currentDaily)
+        self.timeTableVM.update(daily: self.currentDaily, tasks: self.tasks)
     }
     
     init(newDate: Date, isReverseColor: Bool) {
         self.mode = .create
         self.timelineVM = TimelineVM()
+        self.timeTableVM = TimeTableVM()
         self.currentDaily = Daily(newDate: newDate)
         self.isReverseColor = isReverseColor
-        self.timelineVM.update(daily: self.currentDaily)
         self.tasks = self.currentDaily.tasks.sorted(by: { $0.value > $1.value })
             .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+        self.timelineVM.update(daily: self.currentDaily)
+        self.timeTableVM.update(daily: self.currentDaily, tasks: self.tasks)
     }
 }
 

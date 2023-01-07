@@ -21,6 +21,7 @@ final class ModifyRecordVC: UIViewController {
     @IBOutlet weak var superContentViewHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     private var standardDailyGraphView = StandardDailyGraphView()
+    private var timeTableDailyGraphView = TimeTableDailyGraphView()
     private var timelineDailyGraphView = TimelineDailyGraphView()
     private var tasksProgressDailyGraphView = TasksProgressDailyGraphView()
     private var taskInteractionFrameView = UIView()                         // 인터렉션 뷰의 프레임 뷰
@@ -33,7 +34,8 @@ final class ModifyRecordVC: UIViewController {
     private var rewardedAd: GADRewardedAd?
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
-        case tasksProgressDailyGraphView = 1
+        case timeTableDailyGraphView = 1
+        case tasksProgressDailyGraphView = 2
     }
     
     override func viewDidLoad() {
@@ -60,6 +62,7 @@ final class ModifyRecordVC: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.standardDailyGraphView.updateDarkLightMode()
+        self.timeTableDailyGraphView.updateDarkLightMode()
         self.timelineDailyGraphView.updateDarkLightMode()
         self.tasksProgressDailyGraphView.updateDarkLightMode()
         self.updateGraphsFromDaily()
@@ -171,10 +174,17 @@ extension ModifyRecordVC {
             self.standardDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
+        self.graphsContentView.addSubview(self.timeTableDailyGraphView)
+        NSLayoutConstraint.activate([
+            self.timeTableDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
+            self.timeTableDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
+            self.timeTableDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
+        ])
+        
         self.graphsContentView.addSubview(self.timelineDailyGraphView)
         NSLayoutConstraint.activate([
             self.timelineDailyGraphView.topAnchor.constraint(equalTo: self.graphsContentView.topAnchor),
-            self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.standardDailyGraphView.trailingAnchor),
+            self.timelineDailyGraphView.leadingAnchor.constraint(equalTo: self.timeTableDailyGraphView.trailingAnchor),
             self.timelineDailyGraphView.bottomAnchor.constraint(equalTo: self.graphsContentView.bottomAnchor)
         ])
         
@@ -189,6 +199,7 @@ extension ModifyRecordVC {
     
     private func configureCollectionViewDelegate() {
         self.standardDailyGraphView.configureDelegate(self)
+        self.timeTableDailyGraphView.configureDelegate(self)
         self.tasksProgressDailyGraphView.configureDelegate(self)
     }
     
@@ -204,6 +215,13 @@ extension ModifyRecordVC {
         hostingStandardVC.didMove(toParent: self)
         
         self.standardDailyGraphView.configureTimelineLayout(hostingStandardVC.view)
+        
+        guard let timeTableVM = self.viewModel?.timeTableVM else { return }
+        let hostingTimeTableVC = UIHostingController(rootView: TimeTableView(frameSize: CGSize(width: 105, height: 274.333), viewModel: timeTableVM))
+        addChild(hostingTimeTableVC)
+        hostingTimeTableVC.didMove(toParent: self)
+        
+        self.timeTableDailyGraphView.configureTimetableLayout(hostingTimeTableVC.view)
         
         let hostingTimelineVC = UIHostingController(rootView: TimelineView(frameHeight: 150, viewModel: timelineVM))
         addChild(hostingTimelineVC)
@@ -252,17 +270,21 @@ extension ModifyRecordVC {
                 guard let self = self else { return }
                 
                 self.standardDailyGraphView.reload()
+                self.timeTableDailyGraphView.reload()
                 
                 switch mode {
                 case .existingTask:
                     self.changeInteractionView(to: self.taskModifyInteractionView)
                     self.standardDailyGraphView.removeCollectionViewHighlight()
+                    self.timeTableDailyGraphView.removeCollectionViewHighlight()
                 case .newTask:
                     self.changeInteractionView(to: self.taskCreateInteractionView)
                     self.standardDailyGraphView.removeCollectionViewHighlight()
+                    self.timeTableDailyGraphView.removeCollectionViewHighlight()
                 case .none:
                     self.changeInteractionView(to: self.taskInteratcionViewPlaceholder)
                     self.standardDailyGraphView.highlightCollectionView()
+                    self.timeTableDailyGraphView.highlightCollectionView()
                 }
             })
             .store(in: &self.cancellables)
@@ -317,6 +339,7 @@ extension ModifyRecordVC {
     private func updateGraphsFromDaily() {
         let daily = self.viewModel?.currentDaily
         self.standardDailyGraphView.updateFromDaily(daily)
+        self.timeTableDailyGraphView.updateFromDaily(daily)
         self.timelineDailyGraphView.updateFromDaily(daily)
         self.tasksProgressDailyGraphView.updateFromDaily(daily)
     }
@@ -328,6 +351,11 @@ extension ModifyRecordVC {
         self.standardDailyGraphView.reload()
         self.standardDailyGraphView.layoutIfNeeded()
         self.standardDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: isReverseColor)
+        
+        self.timeTableDailyGraphView.reload()
+        self.timeTableDailyGraphView.layoutIfNeeded()
+        self.timeTableDailyGraphView.progressView.updateProgress(tasks: tasks, width: .small, isReversColor: isReverseColor)
+        
         self.tasksProgressDailyGraphView.reload()
         self.tasksProgressDailyGraphView.layoutIfNeeded()
         self.tasksProgressDailyGraphView.progressView.updateProgress(tasks: tasks, width: .medium, isReversColor: isReverseColor)
@@ -476,7 +504,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
         if let graph = GraphCollectionView(rawValue: collectionView.tag),
            let viewModel = self.viewModel {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 // 아무 과목도 선택하지 않은 경우 마지막에 기록 추가 셀 보여주기
                 if viewModel.modifyMode == .none {
                     return viewModel.tasks.count + 1
@@ -492,7 +520,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 let isNoneMode = self.viewModel?.modifyMode == ModifyRecordVM.ModifyMode.none
                 let isLastCell = indexPath.row == (self.viewModel?.tasks.count ?? 0)
                 
@@ -532,7 +560,7 @@ extension ModifyRecordVC: UICollectionViewDataSource {
 extension ModifyRecordVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let graph = GraphCollectionView(rawValue: collectionView.tag),
-              graph == .standardDailyGraphView,
+              graph == .standardDailyGraphView || graph == .timeTableDailyGraphView,
               let taskName = self.viewModel?.tasks[safe: indexPath.row]?.taskName else { return }
         // 그래프에서 Task 선택 -> 기존 Task 편집 모드로 전환
         self.viewModel?.changeToExistingTaskMode(task: taskName)
@@ -544,7 +572,7 @@ extension ModifyRecordVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
-            case .standardDailyGraphView:
+            case .standardDailyGraphView, .timeTableDailyGraphView:
                 return CGSize(width: collectionView.bounds.width-4, height: StandardDailyTaskCell.height)
             case .tasksProgressDailyGraphView:
                 return CGSize(width: collectionView.bounds.width, height: ProgressDailyTaskCell.height)
