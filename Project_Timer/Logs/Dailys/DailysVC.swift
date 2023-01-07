@@ -96,16 +96,7 @@ final class DailysVC: UIViewController {
     }
     
     @IBAction func saveGraphsToLibrary(_ sender: Any) {
-        let dailyGraphViews = [self.standardDailyGraphView, self.timeTableDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
-        let graphImages = (0..<4).filter({ self.isGraphChecked[$0] }).map({ UIImage(view: dailyGraphViews[$0]) })
-        #if targetEnvironment(macCatalyst)
-        self.saveGraphImagesForMac(images: graphImages)
-        #else
-        graphImages.forEach { graphImage in
-            UIImageWriteToSavedPhotosAlbum(graphImage, nil, nil, nil)
-        }
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
-        #endif
+        self.saveGraphs()
     }
     
     @IBAction func shareGraphs(_ sender: UIButton) {
@@ -134,26 +125,24 @@ final class DailysVC: UIViewController {
     }
 }
 
-// MARK: Catalyst(Mac) for save images
+// MARK: save images
 extension DailysVC {
-    private func saveGraphImagesForMac(images: [UIImage]) {
+    private func saveGraphs() {
+        let dailyGraphViews = [self.standardDailyGraphView, self.timeTableDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
+        let graphViews = (0..<4).filter({ self.isGraphChecked[$0] }).map({ dailyGraphViews[$0] })
+        #if targetEnvironment(macCatalyst)
         guard let recordDay = self.viewModel?.currentDaily?.day.localDate.YYYYMMDDstyleString else { return }
-        let imageDatas = images.compactMap({ $0.jpegData(compressionQuality: 1)} )
-        let fileManager = FileManager.default.temporaryDirectory
-        var fileURLs: [URL] = []
-        for (idx, imageData) in imageDatas.enumerated() {
-            let fileURL = fileManager.appendingPathComponent("\(recordDay)_\(idx+1).jpg")
-            fileURLs.append(fileURL)
-            do {
-                try imageData.write(to: fileURL)
-            } catch {
-                self.showAlertWithOK(title: "Save Failed", text: "")
-            }
+        guard let fileURLs = IOUsecase.saveImagesToMAC(views: graphViews, fileName: recordDay) else {
+            self.showAlertWithOK(title: "Save Failed", text: "")
+            return
         }
-        
         let controller = UIDocumentPickerViewController(forExporting: fileURLs)
         controller.delegate = self
         present(controller, animated: true, completion: nil)
+        #else
+        IOUsecase.saveImagesToIOS(views: graphViews)
+        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
+        #endif
     }
 }
 

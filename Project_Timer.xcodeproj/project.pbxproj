@@ -61,6 +61,7 @@
 		871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69C2967C9D100AFED1C /* TimeTableVM.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
+		8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6D62969123E00410D57 /* IOUsecase.swift */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
@@ -256,6 +257,7 @@
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8721C6D62969123E00410D57 /* IOUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUsecase.swift; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
 		872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVC.swift; sourceTree = "<group>"; };
@@ -506,6 +508,14 @@
 				871AB69C2967C9D100AFED1C /* TimeTableVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8721C6D52969123100410D57 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+				8721C6D62969123E00410D57 /* IOUsecase.swift */,
+			);
+			path = Usecase;
 			sourceTree = "<group>";
 		};
 		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
@@ -990,6 +1000,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				8721C6D52969123100410D57 /* Usecase */,
 				8791081D2838752D005D7B10 /* Network */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
 				8791C1EF27DCCF26000D6BA9 /* First */,
@@ -1334,6 +1345,7 @@
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
+				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
