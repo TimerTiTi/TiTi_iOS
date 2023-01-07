@@ -15,4 +15,11 @@ extension UIScrollView {
         frame.origin.y = 0
         self.scrollRectToVisible(frame, animated: true)
     }
+    
+    func configureScrollHorizontalPage(frame: CGRect, to page: Int) {
+        var frame: CGRect = frame
+        frame.origin.x = frame.size.width * CGFloat(page)
+        frame.origin.y = 0
+        setContentOffset(CGPoint(x: frame.origin.x, y: frame.origin.y), animated: false)
+    }
 }

@@ -43,6 +43,7 @@ final class ModifyRecordVC: UIViewController {
         self.loadRewardedAd()
         self.configureNavigationBar()
         self.configureScrollView()
+        self.configurePage()
         self.configureTaskInteractionViews()
         self.configureGraphs()
         self.configureCollectionViewDelegate()
@@ -124,6 +125,12 @@ extension ModifyRecordVC {
     
     private func configureScrollView() {
         self.graphsScrollView.delegate = self
+    }
+    
+    private func configurePage() {
+        var page = UserDefaultsManager.get(forKey: .lastDailyGraphForm) as? Int ?? 0
+        page = page < 2 ? page : 0
+        self.graphsScrollView.configureScrollHorizontalPage(frame: self.graphsScrollView.frame, to: page)
     }
     
     private func configureTaskInteractionViews() {
