@@ -9,11 +9,7 @@
 import Foundation
 
 final class TimeTableVM: ObservableObject {
-    @Published var blocks: [TimeTableBlock] = [] {
-        didSet {
-            dump(blocks)
-        }
-    }
+    @Published var blocks: [TimeTableBlock] = []
     private var userColorIndex: Int = 1
     private var isReversColor: Bool = false
     private var taskHistorys: [String: [TaskHistory]] = [:]
