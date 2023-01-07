@@ -20,8 +20,9 @@ protocol ModifyRecordDelegate: AnyObject {
 final class DailysVC: UIViewController {
     static let identifier = "DailysVC"
     @IBOutlet var calendar: FSCalendar!
-    @IBOutlet weak var graphsScrollView: UIScrollView!
-    @IBOutlet weak var graphsContentView: UIView!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet var graphsScrollView: UIScrollView!
+    @IBOutlet var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
     @IBOutlet weak var editRecordButton: UIButton!
     private var standardDailyGraphView = StandardDailyGraphView()
@@ -58,6 +59,10 @@ final class DailysVC: UIViewController {
         self.configureViewModel()
         self.configureHostingVC()
         self.bindAll()
+        
+        #if targetEnvironment(macCatalyst)
+        self.configureHorizontalButtons()
+        #endif
         
         self.viewModel?.updateDaily(to: RecordController.shared.daily)
     }
@@ -296,6 +301,23 @@ extension DailysVC {
         hostingTimelineVC.didMove(toParent: self)
         
         self.timelineDailyGraphView.configureTimelineLayout(hostingTimelineVC.view)
+    }
+    
+    private func configureHorizontalButtons() {
+        let graphRightButton = RightButton()
+        graphRightButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let scrollView = self?.graphsScrollView else { return }
+            let current = scrollView.contentOffset.x / scrollView.frame.size.width
+            if current < 3 {
+                scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)+1)
+            }
+        }), for: .touchUpInside)
+        
+        self.contentView.addSubview(graphRightButton)
+        NSLayoutConstraint.activate([
+            graphRightButton.leadingAnchor.constraint(equalTo: self.graphsScrollView.trailingAnchor, constant: 16),
+            graphRightButton.centerYAnchor.constraint(equalTo: self.graphsScrollView.centerYAnchor)
+        ])
     }
 }
 
