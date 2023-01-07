@@ -3373,6 +3373,7 @@
                     </view>
                     <connections>
                         <outlet property="calendar" destination="N12-J8-e5p" id="7Cc-3K-Qh1"/>
+                        <outlet property="contentView" destination="BLZ-SN-rw6" id="8JC-uB-Kgf"/>
                         <outlet property="graphsContentView" destination="2CG-Fw-gmY" id="HhI-p4-XwR"/>
                         <outlet property="graphsScrollView" destination="gZP-GK-zGo" id="79U-9a-wI7"/>
                     </connections>
