@@ -262,3 +262,7 @@
 "The number of Dailys stored on the server and the number of Dailys on the current device." = "서버 내 저장된 Dailys 개수와 현재 기기의 Dailys 개수입니다.";
 
 "Created and Edited dailys are backed up at the time of synchronized." = "동기화시 Created 와 Edited 정보들이 백업됩니다.";
+
+"First Sync" = "첫 동기화 안내";
+
+"For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app." = "첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다.";

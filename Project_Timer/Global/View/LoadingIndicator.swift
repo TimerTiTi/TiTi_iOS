@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LoadingIndicator {
+struct LoadingIndicator {
     static func showLoading(text: String? = nil) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.windows.last else { return }
