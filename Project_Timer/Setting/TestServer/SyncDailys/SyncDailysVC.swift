@@ -32,8 +32,20 @@ final class SyncDailysVC: UIViewController {
         self.bindAll()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let targetDailys = self.syncDeviceStatusView.configureDailys()
+        self.viewModel?.updateTargetDailys(to: targetDailys)
+    }
+    
     @IBAction func syncNow(_ sender: Any) {
-        self.viewModel?.checkSyncDailys()
+        if UserDefaultsManager.get(forKey: .lastUploadedDateV1) == nil {
+            self.showAlertWithOKAfterHandler(title: "First Sync".localized(), text: "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app.".localized()) { [weak self] in
+                self?.viewModel?.checkSyncDailys()
+            }
+        } else {
+            self.viewModel?.checkSyncDailys()
+        }
     }
 }
 
