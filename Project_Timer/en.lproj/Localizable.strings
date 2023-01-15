@@ -262,3 +262,7 @@
 "The number of Dailys stored on the server and the number of Dailys on the current device." = "The number of Dailys stored on the server and the number of Dailys on the current device.";
 
 "Created and Edited dailys are backed up at the time of synchronized." = "Created and Edited dailys are backed up at the time of synchronized.";
+
+"First Sync" = "First Sync";
+
+"For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app." = "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app.";

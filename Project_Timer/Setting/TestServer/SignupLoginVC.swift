@@ -56,11 +56,13 @@ extension SignupLoginVC {
     }
     
     private func signup(info: TestUserSignupInfo) {
+        LoadingIndicator.showLoading(text: "Waiting for Signup...")
         self.network.signup(userInfo: info) { [weak self] status, token in
+            LoadingIndicator.hideLoading()
             switch status {
             case .SUCCESS:
                 guard let token = token else {
-                    // fail
+                    self?.showAlertWithOK(title: "Network Error", text: "invalid token value")
                     return
                 }
                 self?.saveUserInfo(username: info.username, password: info.password, token: token)
@@ -73,11 +75,13 @@ extension SignupLoginVC {
     }
     
     private func login(info: TestUserLoginInfo) {
+        LoadingIndicator.showLoading(text: "Waiting for Login...")
         self.network.login(userInfo: info) { [weak self] status, token in
+            LoadingIndicator.hideLoading()
             switch status {
             case .SUCCESS:
                 guard let token = token else {
-                    // fail
+                    self?.showAlertWithOK(title: "Network Error", text: "invalid token value")
                     return
                 }
                 self?.saveUserInfo(username: info.username, password: info.password, token: token)

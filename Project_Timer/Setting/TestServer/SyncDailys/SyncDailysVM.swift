@@ -39,6 +39,10 @@ extension SyncDailysVM {
         
         self.uploadDailys()
     }
+    
+    func updateTargetDailys(to dailys: [Daily]) {
+        self.targetDailys = dailys
+    }
 }
 
 // MARK: Upload
