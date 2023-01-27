@@ -85,4 +85,21 @@ final class TodolistVM {
         self.currentTodoGroup = todoGroupName
         self.saveTodolist()
     }
+    
+    func changeTodoGroup(to todoGroupName: String) {
+        self.currentTodoGroup = todoGroupName
+        self.todoGroupIndex = self.todolist?.todoGroups.firstIndex(where: { $0.groupName == self.currentTodoGroup }) ?? 0
+        self.todos = self.todolist?.todoGroups[todoGroupIndex].todos ?? []
+        self.lastId = todos.map(\.id).max() ?? 0
+        self.saveTodolist()
+    }
+    
+    func addNewTodoGroup(_ todoGroup: String) {
+        self.currentTodoGroup = todoGroup
+        self.lastId = 0
+        self.todos = []
+        let group = TodoGroup(groupName: todoGroup, todos: [])
+        self.todolist?.addGroup(todoGroup: group)
+        Storage.store(self.todolist, to: .documents, as: self.fileName)
+    }
 }
