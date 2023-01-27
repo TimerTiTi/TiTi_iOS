@@ -19,6 +19,7 @@ class TodolistViewController: UIViewController {
     @IBOutlet weak var todos: UITableView!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var todayLabel: UILabel!
+    @IBOutlet weak var todoGroupButton: UIButton!
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
@@ -59,6 +60,10 @@ class TodolistViewController: UIViewController {
     @IBAction func editAction(_ sender: Any) {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
         self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
+    }
+    
+    @IBAction func selectTodoGroup(_ sender: Any) {
+        
     }
 }
 
@@ -153,6 +158,22 @@ extension TodolistViewController {
         self.inputBottom.constant = adjustmentHeight
         self.view.layoutIfNeeded()
         print("--> keyboard End Frame: \(keyboardFrame)")
+    }
+}
+
+extension TodolistViewController {
+    private func changeTodoGroupTitle(to title: String) {
+        UIView.animate(withDuration: 0.3) {
+            self.todoGroupButton.alpha = 0
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.todoGroupButton.alpha = 0
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.todoGroupButton.setTitle(title, for: .normal)
+                self.todoGroupButton.alpha = 1
+            }
+        }
     }
 }
 
