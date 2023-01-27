@@ -9,44 +9,66 @@
 import Foundation
 
 final class TodolistVM {
-    private let fileName = "todos.json"
+    private let fileName = "todolist.json"
     private var lastId: Int = 0
+    private(set) var todolist: Todolist?
+    private(set) var currentTodoGroup: String = "Untitled"
+    private var todoGroupIndex: Int = 0
     private(set) var todos: [Todo] = []
     
     init() {
-        self.loadTodos()
+        self.loadTodolist()
     }
     
-    private func loadTodos() {
-        self.todos = Storage.retrive(self.fileName, from: .documents, as: [Todo].self) ?? []
+    private func loadTodolist() {
+        self.todolist = Storage.retrive(self.fileName, from: .documents, as: Todolist.self) ?? nil
+        
+        guard self.todolist != nil else {
+            self.createTodolist()
+            return
+        }
+        
+        self.currentTodoGroup = self.todolist?.currentGroupName ?? "Untitled"
+        self.todoGroupIndex = self.todolist?.todoGroups.firstIndex(where: { $0.groupName == self.currentTodoGroup }) ?? 0
+        self.todos = self.todolist?.todoGroups[todoGroupIndex].todos ?? []
         self.lastId = todos.map(\.id).max() ?? 0
     }
     
-    private func saveTodos() {
-        Storage.store(self.todos, to: .documents, as: self.fileName)
+    private func createTodolist() {
+        self.todos = Storage.retrive("todos.json", from: .documents, as: [Todo].self) ?? []
+        self.lastId = todos.map(\.id).max() ?? 0
+        self.currentTodoGroup = "Untitled"
+        self.todolist = Todolist(currentGroupName: "Untitled", todoGroups: [TodoGroup(groupName: "Untitled", todos: self.todos)])
+        self.saveTodolist()
+    }
+    
+    private func saveTodolist() {
+        let todoGroup = TodoGroup(groupName: self.currentTodoGroup, todos: self.todos)
+        self.todolist?.updateGroup(at: self.todoGroupIndex, to: todoGroup)
+        Storage.store(self.todolist, to: .documents, as: self.fileName)
     }
     
     func addNewTodo(text: String) {
         self.lastId += 1
         let newTodo = Todo(id: self.lastId, isDone: false, text: text)
         self.todos.append(newTodo)
-        self.saveTodos()
+        self.saveTodolist()
     }
     
     func deleteTodo(at index: Int) {
         let targetTodo = self.todos[index]
         self.todos.removeAll(where: { $0.id == targetTodo.id })
-        self.saveTodos()
+        self.saveTodolist()
     }
     
     func updateDone(at index: Int, to isDone: Bool) {
         self.todos[index].updateDone(to: isDone)
-        self.saveTodos()
+        self.saveTodolist()
     }
     
     func updateText(at index: Int, to text: String) {
         self.todos[index].updateText(to: text)
-        self.saveTodos()
+        self.saveTodolist()
     }
     
     func moveTodo(fromIndex: Int, toIndex: Int) {
@@ -54,6 +76,6 @@ final class TodolistVM {
         let targetTodo = todos.remove(at: fromIndex)
         todos.insert(targetTodo, at: toIndex)
         self.todos = todos
-        self.saveTodos()
+        self.saveTodolist()
     }
 }
