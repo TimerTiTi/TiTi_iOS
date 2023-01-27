@@ -205,6 +205,7 @@
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
 		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
+		87F771BD29840E7F00BF1907 /* TodoGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BC29840E7F00BF1907 /* TodoGroup.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
@@ -415,6 +416,7 @@
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
 		87F10939284C589A002E31EA /* FunctionInfoListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoListVM.swift; sourceTree = "<group>"; };
+		87F771BC29840E7F00BF1907 /* TodoGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoGroup.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				87A7F5D3267270F800F69EBA /* Todo.swift */,
+				87F771BC29840E7F00BF1907 /* TodoGroup.swift */,
 				8772E91526705EE100A191BF /* TodolistViewController.swift */,
 				878431AC27F6F461000A98B3 /* TodolistVM.swift */,
 				8769349627E1BBAF00D33F51 /* TodoCell.swift */,
@@ -1387,6 +1390,7 @@
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
+				87F771BD29840E7F00BF1907 /* TodoGroup.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,

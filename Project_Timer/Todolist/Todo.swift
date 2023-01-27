@@ -6,7 +6,7 @@
 //  Copyright © 2021 FDEE. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct Todo: Codable, Equatable {
     let id: Int
