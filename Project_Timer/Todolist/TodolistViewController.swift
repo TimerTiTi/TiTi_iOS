@@ -18,8 +18,8 @@ class TodolistViewController: UIViewController {
     @IBOutlet weak var inputBottom: NSLayoutConstraint!
     @IBOutlet weak var todos: UITableView!
     @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var todoGroupButton: UIButton!
+    @IBOutlet weak var selectTodoGroupButton: UIButton!
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
@@ -27,6 +27,7 @@ class TodolistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.selectTodoGroupButton.setImage(UIImage(named: "bars-3")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.configureViewModel()
         self.configureTableView()
         self.configureRadius()
@@ -38,7 +39,6 @@ class TodolistViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
         self.configurePointColor()
-        self.configureTodayLabel()
     }
     
     override func viewWillLayoutSubviews() {
@@ -100,16 +100,14 @@ extension TodolistViewController {
         self.todos.reloadData()
     }
     
-    private func configureTodayLabel() {
-        var daily = Daily()
-        daily.load()
-        self.todayLabel.text = daily.day.MDstyleString
-    }
-    
     private func reloadAfterAnimation() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(400)) { [weak self] in
             self?.todos.reloadData()
         }
+    }
+    
+    @objc func long() {
+        print("Long press")
     }
     
     @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {

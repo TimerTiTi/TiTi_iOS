@@ -1364,7 +1364,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JjE-as-Jcv">
                                         <rect key="frame" x="10" y="10" width="354" height="614"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwJ-bE-dkx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwJ-bE-dkx">
                                                 <rect key="frame" x="147" y="10" width="60" height="30"/>
                                                 <color key="backgroundColor" name="systemBackground"/>
                                                 <constraints>
@@ -1384,9 +1384,6 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="selectTodoGroup:" destination="uzd-s8-c8h" eventType="touchUpInside" id="05b-wA-laD"/>
-                                                </connections>
                                             </button>
                                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BMZ-ev-eLR" userLabel="bar">
                                                 <rect key="frame" x="147" y="34" width="60" height="1"/>
@@ -1493,19 +1490,28 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </tableView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coF-lb-OMR">
-                                                <rect key="frame" x="305" y="16.666666666666671" width="34" height="16.666666666666671"/>
-                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="15"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="new-Sd-1gx">
+                                                <rect key="frame" x="314" y="10" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="9VE-kU-uMJ"/>
+                                                    <constraint firstAttribute="width" constant="30" id="LQ9-rX-bO0"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="bars-3">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectTodoGroup:" destination="uzd-s8-c8h" eventType="touchUpInside" id="64B-ck-bH2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="Background_second"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Eoi-Fr-q6h" secondAttribute="bottom" constant="15" id="3pv-0J-I6f"/>
-                                            <constraint firstItem="coF-lb-OMR" firstAttribute="centerY" secondItem="mwJ-bE-dkx" secondAttribute="centerY" id="4NE-05-fk8"/>
                                             <constraint firstItem="Eoi-Fr-q6h" firstAttribute="top" secondItem="mwJ-bE-dkx" secondAttribute="bottom" constant="5" id="8ee-WP-uD5"/>
                                             <constraint firstItem="mwJ-bE-dkx" firstAttribute="top" secondItem="JjE-as-Jcv" secondAttribute="top" constant="10" id="Aa1-rv-gom"/>
+                                            <constraint firstItem="new-Sd-1gx" firstAttribute="centerY" secondItem="mwJ-bE-dkx" secondAttribute="centerY" id="BHV-c3-x4w"/>
                                             <constraint firstItem="Eoi-Fr-q6h" firstAttribute="centerX" secondItem="JjE-as-Jcv" secondAttribute="centerX" id="HXL-we-yaR"/>
                                             <constraint firstAttribute="trailing" secondItem="Eoi-Fr-q6h" secondAttribute="trailing" id="Lwo-Yd-fLM"/>
                                             <constraint firstItem="BU2-4f-D6e" firstAttribute="centerY" secondItem="mwJ-bE-dkx" secondAttribute="centerY" id="Sf5-Vb-9sk"/>
@@ -1514,8 +1520,8 @@
                                             <constraint firstItem="BU2-4f-D6e" firstAttribute="leading" secondItem="JjE-as-Jcv" secondAttribute="leading" constant="15" id="kgc-Ca-egr"/>
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="centerX" secondItem="mwJ-bE-dkx" secondAttribute="centerX" id="l1b-ev-TqQ"/>
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="top" secondItem="mwJ-bE-dkx" secondAttribute="bottom" constant="-6" id="ldP-G9-e1Z"/>
-                                            <constraint firstAttribute="trailing" secondItem="coF-lb-OMR" secondAttribute="trailing" constant="15" id="s2Q-If-1Ad"/>
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="width" secondItem="mwJ-bE-dkx" secondAttribute="width" id="vOt-W2-I0x"/>
+                                            <constraint firstAttribute="trailing" secondItem="new-Sd-1gx" secondAttribute="trailing" constant="10" id="zi5-iE-jVH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1585,7 +1591,7 @@
                         <outlet property="input" destination="zH5-Ty-dKJ" id="kq2-xF-ZSh"/>
                         <outlet property="inputBottom" destination="tt9-13-e3w" id="mcm-nM-xfH"/>
                         <outlet property="inputFraim" destination="31q-eP-gIb" id="cvA-Da-OFv"/>
-                        <outlet property="todayLabel" destination="coF-lb-OMR" id="26Z-QY-l3S"/>
+                        <outlet property="selectTodoGroupButton" destination="new-Sd-1gx" id="ZOy-v3-m3W"/>
                         <outlet property="todoGroupButton" destination="mwJ-bE-dkx" id="QfC-4g-OT8"/>
                         <outlet property="todos" destination="Eoi-Fr-q6h" id="i3g-q7-2PP"/>
                     </connections>
@@ -4790,6 +4796,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bars-3" width="24" height="24"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="checklist" catalog="system" width="128" height="107"/>
