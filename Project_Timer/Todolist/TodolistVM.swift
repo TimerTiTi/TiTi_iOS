@@ -29,6 +29,7 @@ final class TodolistVM {
         }
         
         self.currentTodoGroup = self.todolist?.currentGroupName ?? "Untitled"
+        print(currentTodoGroup)
         self.todoGroupIndex = self.todolist?.todoGroups.firstIndex(where: { $0.groupName == self.currentTodoGroup }) ?? 0
         self.todos = self.todolist?.todoGroups[todoGroupIndex].todos ?? []
         self.lastId = todos.map(\.id).max() ?? 0
@@ -45,6 +46,7 @@ final class TodolistVM {
     private func saveTodolist() {
         let todoGroup = TodoGroup(groupName: self.currentTodoGroup, todos: self.todos)
         self.todolist?.updateGroup(at: self.todoGroupIndex, to: todoGroup)
+        self.todolist?.updateCurrentGroupName(to: self.currentTodoGroup)
         Storage.store(self.todolist, to: .documents, as: self.fileName)
     }
     
@@ -76,6 +78,11 @@ final class TodolistVM {
         let targetTodo = todos.remove(at: fromIndex)
         todos.insert(targetTodo, at: toIndex)
         self.todos = todos
+        self.saveTodolist()
+    }
+    
+    func updateTodoGroupName(to todoGroupName: String) {
+        self.currentTodoGroup = todoGroupName
         self.saveTodolist()
     }
 }
