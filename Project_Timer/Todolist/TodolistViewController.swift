@@ -60,10 +60,6 @@ class TodolistViewController: UIViewController {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
         self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
     }
-    
-    @IBAction func selectTodoGroup(_ sender: Any) {
-        
-    }
 }
 
 extension TodolistViewController {
@@ -80,6 +76,24 @@ extension TodolistViewController {
     
     private func configureSelectTodoGroupButton() {
         self.selectTodoGroupButton.setImage(UIImage(named: "bars-3")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.selectTodoGroupButton.menu = self.getMenu()
+        self.selectTodoGroupButton.showsMenuAsPrimaryAction = true
+    }
+    
+    private func getMenu() -> UIMenu {
+        guard let todolist = self.viewModel?.todolist else { return UIMenu() }
+        let todoGroupNames = todolist.todoGroups.map({ $0.groupName })
+        var actions = todoGroupNames.map { groupName in
+            UIAction(title: groupName, image: nil) { [weak self] _ in
+                self?.viewModel?.changeTodoGroup(to: groupName)
+                self?.changeTodoGroupTitle(to: groupName)
+                self?.todos.reloadData()
+            }
+        }
+        actions.append(UIAction(title: "Add New Group", image: nil, attributes: .destructive) { [weak self] _ in
+            self?.addNewGroup()
+        })
+        return UIMenu(title: "Todo Groups", image: nil, children: actions)
     }
     
     private func configureTableView() {
@@ -129,6 +143,27 @@ extension TodolistViewController {
             guard let newText: String = alert.textFields?.first?.text else { return }
             self?.viewModel?.updateTodoGroupName(to: newText)
             self?.changeTodoGroupTitle(to: newText)
+        })
+        
+        alert.addAction(cancle)
+        alert.addAction(ok)
+        present(alert,animated: true,completion: nil)
+    }
+    
+    private func addNewGroup() {
+        let alert = UIAlertController(title: "Add New Todo Group".localized(), message: "", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "New Todo Group Name".localized()
+            textField.textAlignment = .center
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.text = ""
+        }
+        let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] action in
+            guard let newText: String = alert.textFields?.first?.text else { return }
+            self?.viewModel?.addNewTodoGroup(newText)
+            self?.changeTodoGroupTitle(to: newText)
+            self?.todos.reloadData()
         })
         
         alert.addAction(cancle)
@@ -187,6 +222,7 @@ extension TodolistViewController {
 extension TodolistViewController {
     private func changeTodoGroupTitle(to title: String) {
         self.todoGroupButton.setTitle(title, for: .normal)
+        self.selectTodoGroupButton.menu = self.getMenu()
     }
 }
 
