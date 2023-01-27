@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Combine
 
 class TodolistViewController: UIViewController {
     @IBOutlet weak var fraim: UIView!
@@ -23,12 +22,12 @@ class TodolistViewController: UIViewController {
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
-    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectTodoGroupButton.setImage(UIImage(named: "bars-3")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.configureViewModel()
+        self.configureTodoGroupButton()
+        self.configureSelectTodoGroupButton()
         self.configureTableView()
         self.configureRadius()
         self.configureKeyboard()
@@ -72,6 +71,17 @@ extension TodolistViewController {
         self.viewModel = TodolistVM()
     }
     
+    private func configureTodoGroupButton() {
+        guard let todoGroupName = self.viewModel?.currentTodoGroup else { return }
+        self.todoGroupButton.setTitle(todoGroupName, for: .normal)
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(changeGroupName))
+        self.todoGroupButton.addGestureRecognizer(longPress)
+    }
+    
+    private func configureSelectTodoGroupButton() {
+        self.selectTodoGroupButton.setImage(UIImage(named: "bars-3")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    }
+    
     private func configureTableView() {
         self.todos.dataSource = self
         self.todos.delegate = self
@@ -106,8 +116,24 @@ extension TodolistViewController {
         }
     }
     
-    @objc func long() {
-        print("Long press")
+    @objc func changeGroupName() {
+        let alert = UIAlertController(title: "Modify Todo Group's Name".localized(), message: "", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "New Todo Group Name".localized()
+            textField.textAlignment = .center
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.text = self.viewModel?.currentTodoGroup ?? "Untitled"
+        }
+        let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "UPDATE", style: .default, handler: { [weak self] action in
+            guard let newText: String = alert.textFields?.first?.text else { return }
+            self?.viewModel?.updateTodoGroupName(to: newText)
+            self?.changeTodoGroupTitle(to: newText)
+        })
+        
+        alert.addAction(cancle)
+        alert.addAction(ok)
+        present(alert,animated: true,completion: nil)
     }
     
     @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
@@ -160,17 +186,7 @@ extension TodolistViewController {
 
 extension TodolistViewController {
     private func changeTodoGroupTitle(to title: String) {
-        UIView.animate(withDuration: 0.3) {
-            self.todoGroupButton.alpha = 0
-        }
-        UIView.animate(withDuration: 0.3) {
-            self.todoGroupButton.alpha = 0
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.todoGroupButton.setTitle(title, for: .normal)
-                self.todoGroupButton.alpha = 1
-            }
-        }
+        self.todoGroupButton.setTitle(title, for: .normal)
     }
 }
 
