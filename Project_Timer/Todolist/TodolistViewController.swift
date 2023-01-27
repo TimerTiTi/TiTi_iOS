@@ -157,7 +157,6 @@ extension TodolistViewController {
         //구한 Height 만큼 변화시킨다
         self.inputBottom.constant = adjustmentHeight
         self.view.layoutIfNeeded()
-        print("--> keyboard End Frame: \(keyboardFrame)")
     }
 }
 
@@ -179,7 +178,6 @@ extension TodolistViewController {
 
 extension TodolistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("todos: \(self.viewModel?.todos ?? [])")
         return self.viewModel?.todos.count ?? 0
     }
     
@@ -190,11 +188,9 @@ extension TodolistViewController: UITableViewDataSource {
         
         cell.configure(todo: todo, color: self.color)
         cell.doneButtonTapHandler = { [weak self] isDone in
-            print("done: [\(indexPath.row)]: \(todo)")
             self?.viewModel?.updateDone(at: indexPath.row, to: isDone)
         }
         cell.deleteButtonTapHandler = { [weak self] in
-            print("delete: [\(indexPath.row)]: \(todo)")
             self?.viewModel?.deleteTodo(at: indexPath.row)
             self?.todos.deleteRows(at: [indexPath], with: .automatic)
             self?.reloadAfterAnimation()
@@ -207,7 +203,6 @@ extension TodolistViewController: UITableViewDataSource {
 extension TodolistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
-            print("delete: [\(indexPath.row)]")
             self?.viewModel?.deleteTodo(at: indexPath.row)
             self?.todos.deleteRows(at: [indexPath], with: .automatic)
             self?.reloadAfterAnimation()
