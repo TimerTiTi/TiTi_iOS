@@ -267,8 +267,10 @@
 
 "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app." = "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app.";
 
-"Modify Todo Group's Name" = "Modify Todo Group's Name";
+"Modify Group's Name" = "Modify Group's Name";
 
-"New Todo Group Name" = "New Todo Group Name";
+"New Group Name" = "New Group Name";
 
-"Add New Todo Group" = "Add New Todo Group";
+"Create Group" = "Create Group";
+
+"Delete Group" = "Delete Group";
