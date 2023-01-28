@@ -7,47 +7,48 @@
 //
 
 import Foundation
+import Combine
 
 final class TodolistVM {
+    private let defaultGroup: String = "Untitled"
     private let fileName = "todolist.json"
-    private var lastId: Int = 0
-    private(set) var todolist: Todolist?
-    private(set) var currentTodoGroup: String = "Untitled"
-    private var todoGroupIndex: Int = 0
+    @Published private(set) var currentGroupName: String = ""
+    private(set) var groups: [TodoGroup] = []
     private(set) var todos: [Todo] = []
+    private(set) var groupIndex: Int = 0
+    
+    private var lastId: Int = 0
     
     init() {
         self.loadTodolist()
     }
     
     private func loadTodolist() {
-        self.todolist = Storage.retrive(self.fileName, from: .documents, as: Todolist.self) ?? nil
-        
-        guard self.todolist != nil else {
+        guard let todolist = Storage.retrive(self.fileName, from: .documents, as: Todolist.self) else {
             self.createTodolist()
             return
         }
         
-        self.currentTodoGroup = self.todolist?.currentGroupName ?? "Untitled"
-        print(currentTodoGroup)
-        self.todoGroupIndex = self.todolist?.todoGroups.firstIndex(where: { $0.groupName == self.currentTodoGroup }) ?? 0
-        self.todos = self.todolist?.todoGroups[todoGroupIndex].todos ?? []
+        self.groups = todolist.todoGroups
+        self.groupIndex = todolist.todoGroups.firstIndex(where: { $0.groupName == todolist.currentGroupName }) ?? 0
+        self.todos = todolist.todoGroups[self.groupIndex].todos
         self.lastId = todos.map(\.id).max() ?? 0
+        self.currentGroupName = todolist.currentGroupName
     }
     
     private func createTodolist() {
         self.todos = Storage.retrive("todos.json", from: .documents, as: [Todo].self) ?? []
         self.lastId = todos.map(\.id).max() ?? 0
-        self.currentTodoGroup = "Untitled"
-        self.todolist = Todolist(currentGroupName: "Untitled", todoGroups: [TodoGroup(groupName: "Untitled", todos: self.todos)])
+        self.currentGroupName = self.defaultGroup
         self.saveTodolist()
     }
     
     private func saveTodolist() {
-        let todoGroup = TodoGroup(groupName: self.currentTodoGroup, todos: self.todos)
-        self.todolist?.updateGroup(at: self.todoGroupIndex, to: todoGroup)
-        self.todolist?.updateCurrentGroupName(to: self.currentTodoGroup)
-        Storage.store(self.todolist, to: .documents, as: self.fileName)
+        // currentGroupName, todos -> todoGroup 생성, todolist 생성 후 저장
+        let currentGroup = TodoGroup(groupName: self.currentGroupName, todos: self.todos)
+        self.groups[self.groupIndex] = currentGroup
+        let todolist = Todolist(currentGroupName: self.currentGroupName, todoGroups: self.groups)
+        Storage.store(todolist, to: .documents, as: self.fileName)
     }
     
     func addNewTodo(text: String) {
@@ -81,41 +82,50 @@ final class TodolistVM {
         self.saveTodolist()
     }
     
-    func updateTodoGroupName(to todoGroupName: String) -> Bool {
-        guard let todolist = self.todolist else { return false }
+    func updateTodoGroupName(to groupName: String) -> Bool {
+        let groups = self.groups.map(\.groupName)
+        guard groups.contains(groupName) == false else { return false }
         
-        let groups = todolist.todoGroups.map(\.groupName)
-        guard groups.contains(todoGroupName) == false else { return false }
-        
-        self.currentTodoGroup = todoGroupName
+        self.currentGroupName = groupName
         self.saveTodolist()
         return true
     }
     
-    func changeTodoGroup(to todoGroupName: String) {
-        self.currentTodoGroup = todoGroupName
-        self.todoGroupIndex = self.todolist?.todoGroups.firstIndex(where: { $0.groupName == self.currentTodoGroup }) ?? 0
-        self.todos = self.todolist?.todoGroups[todoGroupIndex].todos ?? []
+    func changeTodoGroup(to groupName: String) {
+        self.groupIndex = self.groups.firstIndex(where: { $0.groupName == groupName }) ?? 0
+        self.todos = self.groups[self.groupIndex].todos
         self.lastId = todos.map(\.id).max() ?? 0
-        self.saveTodolist()
+        self.currentGroupName = groupName
     }
     
-    func addNewTodoGroup(_ todoGroup: String) -> Bool {
-        guard let todolist = self.todolist else { return false }
+    func addNewTodoGroup(_ groupName: String) -> Bool {
+        let groups = self.groups.map(\.groupName)
+        guard groups.contains(groupName) == false else { return false }
         
-        let groups = todolist.todoGroups.map(\.groupName)
-        guard groups.contains(todoGroup) == false else { return false }
-        
-        self.currentTodoGroup = todoGroup
-        self.lastId = 0
+        self.groups.append(TodoGroup(groupName: groupName, todos: []))
+        self.groupIndex = self.groups.count-1
         self.todos = []
-        let group = TodoGroup(groupName: todoGroup, todos: [])
-        self.todolist?.addGroup(todoGroup: group)
-        Storage.store(self.todolist, to: .documents, as: self.fileName)
+        self.lastId = 0
+        self.currentGroupName = groupName
         return true
     }
     
-    func deleteTodoGroup() -> String {
-        return currentTodoGroup
+    func deleteTodoGroup() {
+        self.groups = self.groups.filter { $0.groupName != self.currentGroupName }
+        if self.groups.isEmpty {
+            self.groups = [TodoGroup(groupName: self.defaultGroup, todos: [])]
+            self.todos = []
+            self.lastId = 0
+            self.currentGroupName = self.defaultGroup
+            self.saveTodolist()
+        } else {
+            if self.groups.count == self.groupIndex {
+                self.groupIndex -= 1
+            }
+            self.todos = self.groups[self.groupIndex].todos
+            self.lastId = todos.map(\.id).max() ?? 0
+            self.currentGroupName = self.groups[self.groupIndex].groupName
+            self.saveTodolist()
+        }
     }
 }
