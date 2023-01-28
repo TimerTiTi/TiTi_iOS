@@ -16,4 +16,8 @@ struct Todolist: Codable {
 struct TodoGroup: Codable {
     var groupName: String
     var todos: [Todo]
+    
+    mutating func updateGroupName(to groupName: String) {
+        self.groupName = groupName
+    }
 }
