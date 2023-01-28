@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class TodolistViewController: UIViewController {
     @IBOutlet weak var fraim: UIView!
@@ -22,6 +23,7 @@ class TodolistViewController: UIViewController {
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ class TodolistViewController: UIViewController {
         self.configureTableView()
         self.configureRadius()
         self.configureKeyboard()
-        self.todos.reloadData()
+        self.bindAll()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,27 +70,21 @@ extension TodolistViewController {
     }
     
     private func configureTodoGroupButton() {
-        guard let todoGroupName = self.viewModel?.currentTodoGroup else { return }
-        self.todoGroupButton.setTitle(todoGroupName, for: .normal)
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(changeGroupName))
         self.todoGroupButton.addGestureRecognizer(longPress)
     }
     
     private func configureSelectTodoGroupButton() {
         self.selectTodoGroupButton.setImage(UIImage(named: "bars-3")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        self.selectTodoGroupButton.menu = self.getMenu()
         self.selectTodoGroupButton.showsMenuAsPrimaryAction = true
     }
     
-    private func getMenu() -> UIMenu {
-        guard let todolist = self.viewModel?.todolist,
-              let currentGroup = self.viewModel?.currentTodoGroup else { return UIMenu() }
-        let todoGroupNames = todolist.todoGroups.map({ $0.groupName })
-        var menu: [UIMenuElement] = todoGroupNames.map { groupName in
-            UIAction(title: groupName, image: nil, state: groupName == currentGroup ? .on : .off) { [weak self] _ in
+    private func getMenu(_ currentGroupName: String) -> UIMenu {
+        guard let groupNames = self.viewModel?.groups.map(\.groupName) else { return UIMenu() }
+        
+        var menu: [UIMenuElement] = groupNames.map { groupName in
+            UIAction(title: groupName, image: nil, state: groupName == currentGroupName ? .on : .off) { [weak self] _ in
                 self?.viewModel?.changeTodoGroup(to: groupName)
-                self?.changeTodoGroupTitle(to: groupName)
-                self?.todos.reloadData()
             }
         }
         let subMenu = UIMenu(title: "", options: .displayInline, children: [
@@ -143,14 +139,12 @@ extension TodolistViewController {
             textField.placeholder = "New Group Name".localized()
             textField.textAlignment = .center
             textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
-            textField.text = self.viewModel?.currentTodoGroup ?? "Untitled"
+            textField.text = self.viewModel?.currentGroupName ?? "Untitled"
         }
         let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
         let ok = UIAlertAction(title: "UPDATE", style: .destructive, handler: { [weak self] action in
             guard let newText: String = alert.textFields?.first?.text else { return }
-            if self?.viewModel?.updateTodoGroupName(to: newText) == true {
-                self?.changeTodoGroupTitle(to: newText)
-            } else {
+            if self?.viewModel?.updateTodoGroupName(to: newText) == false {
                 // 다른 TodoGroup명 alert
             }
         })
@@ -171,10 +165,7 @@ extension TodolistViewController {
         let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
         let ok = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] action in
             guard let newText: String = alert.textFields?.first?.text else { return }
-            if self?.viewModel?.addNewTodoGroup(newText) == true {
-                self?.changeTodoGroupTitle(to: newText)
-                self?.todos.reloadData()
-            } else {
+            if self?.viewModel?.addNewTodoGroup(newText) == false {
                 // 다른 TodoGroup명 alert
             }
         })
@@ -185,16 +176,14 @@ extension TodolistViewController {
     }
     
     private func deleteGroup() {
-        guard let target = self.viewModel?.currentTodoGroup else { return }
+        guard let target = self.viewModel?.currentGroupName else { return }
         let locale = NSLocale.current.languageCode
         let title = locale == "ko" ? "\(target) 삭제" : "Delete \(target)"
         let subTitle = locale == "ko" ? "\(target) 그룹을 삭제하시겠습니까?" : "Do you want to delete \(target) group?"
         let alert = UIAlertController(title: title, message: subTitle, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
         let delete = UIAlertAction(title: "DELETE", style: .destructive, handler: { [weak self] _ in
-            let newGroup = self?.viewModel?.deleteTodoGroup() ?? "Untitled"
-            self?.changeTodoGroupTitle(to: newGroup)
-            self?.todos.reloadData()
+            self?.viewModel?.deleteTodoGroup()
         })
         
         alert.addAction(cancel)
@@ -251,9 +240,24 @@ extension TodolistViewController {
 }
 
 extension TodolistViewController {
-    private func changeTodoGroupTitle(to title: String) {
-        self.todoGroupButton.setTitle(title, for: .normal)
-        self.selectTodoGroupButton.menu = self.getMenu()
+    private func bindAll() {
+        self.bindGroupName()
+    }
+    
+    private func bindGroupName() {
+        self.viewModel?.$currentGroupName
+            .sink(receiveValue: { [weak self] groupName in
+                self?.changeTodoGroupTitle(to: groupName)
+                self?.todos.reloadData()
+            })
+            .store(in: &self.cancellables)
+    }
+}
+
+extension TodolistViewController {
+    private func changeTodoGroupTitle(to groupName: String) {
+        self.todoGroupButton.setTitle(groupName, for: .normal)
+        self.selectTodoGroupButton.menu = self.getMenu(groupName)
     }
 }
 
