@@ -81,9 +81,15 @@ final class TodolistVM {
         self.saveTodolist()
     }
     
-    func updateTodoGroupName(to todoGroupName: String) {
+    func updateTodoGroupName(to todoGroupName: String) -> Bool {
+        guard let todolist = self.todolist else { return false }
+        
+        let groups = todolist.todoGroups.map(\.groupName)
+        guard groups.contains(todoGroupName) == false else { return false }
+        
         self.currentTodoGroup = todoGroupName
         self.saveTodolist()
+        return true
     }
     
     func changeTodoGroup(to todoGroupName: String) {
@@ -94,12 +100,22 @@ final class TodolistVM {
         self.saveTodolist()
     }
     
-    func addNewTodoGroup(_ todoGroup: String) {
+    func addNewTodoGroup(_ todoGroup: String) -> Bool {
+        guard let todolist = self.todolist else { return false }
+        
+        let groups = todolist.todoGroups.map(\.groupName)
+        guard groups.contains(todoGroup) == false else { return false }
+        
         self.currentTodoGroup = todoGroup
         self.lastId = 0
         self.todos = []
         let group = TodoGroup(groupName: todoGroup, todos: [])
         self.todolist?.addGroup(todoGroup: group)
         Storage.store(self.todolist, to: .documents, as: self.fileName)
+        return true
+    }
+    
+    func deleteTodoGroup() -> String {
+        return currentTodoGroup
     }
 }
