@@ -267,8 +267,10 @@
 
 "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app." = "첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다.";
 
-"Modify Todo Group's Name" = "Todo 그룹명 수정";
+"Modify Group's Name" = "그룹명 수정";
 
-"New Todo Group Name" = "새로운 Todo 그룹명";
+"New Group Name" = "새로운 그룹명";
 
-"Add New Todo Group" = "새로운 Todo 그룹 추가";
+"Create Group" = "그룹 추가";
+
+"Delete Group" = "그룹 삭제";
