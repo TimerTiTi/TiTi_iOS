@@ -39,6 +39,7 @@ final class TodolistVM {
     private func createTodolist() {
         self.todos = Storage.retrive("todos.json", from: .documents, as: [Todo].self) ?? []
         self.lastId = todos.map(\.id).max() ?? 0
+        self.groups = [TodoGroup(groupName: self.defaultGroup, todos: self.todos)]
         self.currentGroupName = self.defaultGroup
         self.saveTodolist()
     }
@@ -86,6 +87,7 @@ final class TodolistVM {
         let groups = self.groups.map(\.groupName)
         guard groups.contains(groupName) == false else { return false }
         
+        self.groups[self.groupIndex].updateGroupName(to: groupName)
         self.currentGroupName = groupName
         self.saveTodolist()
         return true
