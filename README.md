@@ -98,6 +98,17 @@ ver 7.9 기준 Mac 스크린샷 입니다.
 * Color - 그래프 테마색상 12가지 제공 (다크 & 라이트 모드)
 * Todolist - Todo 추가, 수정, 체크, 삭제 기능 제공
 
+## TiTi 기능별 사용법
+아래 Notion 링크들을 통해 TiTi 의 각 기능들의 사용법을 확인할 수 있습니다.
+- **[새로운 기록 설정](https://deeply-eggplant-5ec.notion.site/0667af61d19648afb885bb98e050cf9b)**
+- **[Task](https://deeply-eggplant-5ec.notion.site/Task-258a4735d5324eb29ee0007b0a4f5527)**
+- **[Timer](https://deeply-eggplant-5ec.notion.site/Timer-1db945227c25409d874bf82e30a0523a)**
+- **[Stopwatch](https://deeply-eggplant-5ec.notion.site/Stopwatch-f89204f11e5d468794899d35a18b084f)**
+- **[Todolist](https://deeply-eggplant-5ec.notion.site/Todolist-ff23ffb5e6634955b11e1202b95d17fc)**
+- **[Log](https://deeply-eggplant-5ec.notion.site/Log-813c2ca1f6534c23b75222a61bfe24a4)**
+- **[Daily](https://deeply-eggplant-5ec.notion.site/Daily-d4502965a89e423ab5c78411bee18689)**
+- **[Daily 수정/생성](https://deeply-eggplant-5ec.notion.site/Daily-ddcd6818ad9248dcb840e011084aacff)**
+
 ## 개발자 
 * [DEV_FDEE](https://github.com/FreeDeveloper97)
 * freedeveloper97@gmail.com
