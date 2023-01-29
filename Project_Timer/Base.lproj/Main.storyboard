@@ -1505,10 +1505,26 @@
                                                     <action selector="selectTodoGroup:" destination="uzd-s8-c8h" eventType="touchUpInside" id="64B-ck-bH2"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEx-0M-FTa">
+                                                <rect key="frame" x="276" y="10" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="MM8-ol-0Ly"/>
+                                                    <constraint firstAttribute="width" constant="30" id="ou0-Xt-d0E"/>
+                                                </constraints>
+                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="questionmark.circle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="showUseageAlert:" destination="uzd-s8-c8h" eventType="touchUpInside" id="zRX-oW-98D"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="Background_second"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Eoi-Fr-q6h" secondAttribute="bottom" constant="15" id="3pv-0J-I6f"/>
+                                            <constraint firstItem="new-Sd-1gx" firstAttribute="leading" secondItem="lEx-0M-FTa" secondAttribute="trailing" constant="8" id="5Ec-dX-bGv"/>
                                             <constraint firstItem="Eoi-Fr-q6h" firstAttribute="top" secondItem="mwJ-bE-dkx" secondAttribute="bottom" constant="5" id="8ee-WP-uD5"/>
                                             <constraint firstItem="mwJ-bE-dkx" firstAttribute="top" secondItem="JjE-as-Jcv" secondAttribute="top" constant="10" id="Aa1-rv-gom"/>
                                             <constraint firstItem="new-Sd-1gx" firstAttribute="centerY" secondItem="mwJ-bE-dkx" secondAttribute="centerY" id="BHV-c3-x4w"/>
@@ -1521,6 +1537,7 @@
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="centerX" secondItem="mwJ-bE-dkx" secondAttribute="centerX" id="l1b-ev-TqQ"/>
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="top" secondItem="mwJ-bE-dkx" secondAttribute="bottom" constant="-2" id="ldP-G9-e1Z"/>
                                             <constraint firstItem="BMZ-ev-eLR" firstAttribute="width" secondItem="mwJ-bE-dkx" secondAttribute="width" id="vOt-W2-I0x"/>
+                                            <constraint firstItem="lEx-0M-FTa" firstAttribute="centerY" secondItem="new-Sd-1gx" secondAttribute="centerY" id="xDx-Bh-AHE"/>
                                             <constraint firstAttribute="trailing" secondItem="new-Sd-1gx" secondAttribute="trailing" constant="10" id="zi5-iE-jVH"/>
                                         </constraints>
                                     </view>
@@ -1594,6 +1611,7 @@
                         <outlet property="selectTodoGroupButton" destination="new-Sd-1gx" id="ZOy-v3-m3W"/>
                         <outlet property="todoGroupButton" destination="mwJ-bE-dkx" id="QfC-4g-OT8"/>
                         <outlet property="todos" destination="Eoi-Fr-q6h" id="i3g-q7-2PP"/>
+                        <outlet property="useageButton" destination="lEx-0M-FTa" id="dBp-WS-bmE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VK-E1-SeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4814,6 +4832,7 @@
         <image name="macbookAndIphone" width="74.792503356933594" height="45.788600921630859"/>
         <image name="photo.on.rectangle" catalog="system" width="128" height="98"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="questionmark.circle" catalog="system" width="128" height="123"/>
         <image name="rainbow" width="33.333332061767578" height="33.333332061767578"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

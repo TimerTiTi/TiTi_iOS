@@ -20,6 +20,7 @@ class TodolistViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var todoGroupButton: UIButton!
     @IBOutlet weak var selectTodoGroupButton: UIButton!
+    @IBOutlet weak var useageButton: UIButton!
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
@@ -27,6 +28,7 @@ class TodolistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.checkUseage()
         self.configureViewModel()
         self.configureTodoGroupButton()
         self.configureSelectTodoGroupButton()
@@ -62,9 +64,39 @@ class TodolistViewController: UIViewController {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
         self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
     }
+    
+    @IBAction func showUseageAlert(_ sender: Any) {
+        let alert = UIAlertController(title: "See how to use the Todolist".localized(), message: "The new TodoGroup feature added.".localized(), preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
+            self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
+            UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
+            self?.useageButton.isHidden = true
+        })
+        let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
+            let url = NSLocale.current.languageCode == "ko"
+            ? "https://deeply-eggplant-5ec.notion.site/Todolist-ff23ffb5e6634955b11e1202b95d17fc"
+            : "https://deeply-eggplant-5ec.notion.site/Todolist-0b68ee031a414cf8896c8f6b9a9b3ebe"
+            if let url = URL(string: url) {
+                UIApplication.shared.open(url, options: [:])
+                UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
+                self?.useageButton.isHidden = true
+            }
+        })
+        
+        alert.addAction(cancle)
+        alert.addAction(ok)
+        present(alert,animated: true,completion: nil)
+    }
 }
 
 extension TodolistViewController {
+    private func checkUseage() {
+        let todolistCheckVer: String = UserDefaultsManager.get(forKey: .todolistCheckVer) as? String ?? "7.11"
+        let currentVer = String.currentVersion
+        if currentVer.compare(todolistCheckVer, options: .numeric) == .orderedDescending {
+            self.useageButton.isHidden = false
+        }
+    }
     private func configureViewModel() {
         self.viewModel = TodolistVM()
     }

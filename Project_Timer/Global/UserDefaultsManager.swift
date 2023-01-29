@@ -39,6 +39,8 @@ struct UserDefaultsManager {
         // login
         case loginInTestServerV1
         case lastUploadedDateV1
+        // useage
+        case todolistCheckVer
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
