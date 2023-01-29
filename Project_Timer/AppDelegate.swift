@@ -58,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch status {
             case .SUCCESS:
                 guard let storeVersion = version else { return }
-                print(String.currentVersion, storeVersion)
                 
                 if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
                     let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
