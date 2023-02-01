@@ -8,10 +8,7 @@
 
 import Foundation
 
-struct RecordTimes: Codable, CustomStringConvertible {
-    var description: String {
-        return "\(self.currentTimes()), \(self.recordTaskFromTime))"
-    }
+struct RecordTimes: Codable {
     static let fileName: String = "recordTimes.json"
     
     private(set) var recordTask: String = "none" // 측정중인 과목명
@@ -121,14 +118,17 @@ struct RecordTimes: Codable, CustomStringConvertible {
         self.save()
     }
     
-    func currentTimes() -> Times { // VC 에서 매초
+    func currentTimes(darkerMode: Bool = false) -> Times { // VC 에서 매초
         guard self.recording else {
             let remainingTaskTime = RecordController.shared.remainingTaskTime
             return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime, remainingTaskTime)
         }
         
         let currentAt = Date()
-        let interval = Date.interval(from: self.recordStartAt, to: currentAt)
+        var interval = Date.interval(from: self.recordStartAt, to: currentAt)
+        if darkerMode {
+            interval = interval - interval%60
+        }
         let currentSum = self.savedSumTime + interval
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
