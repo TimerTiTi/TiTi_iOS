@@ -74,7 +74,7 @@ final class StopwatchVM {
     }
     
     func updateTimes() {
-        self.times = RecordController.shared.recordTimes.currentTimes()
+        self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
         self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         
