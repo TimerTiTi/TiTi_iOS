@@ -32,8 +32,8 @@ struct TimeLabel {
     let secondTens: Int
     let secondUnits: Int
     
-    init(_ sec: Int) {
-        let second = sec % 60
+    init(_ sec: Int, _ darkerMode: Bool) {
+        let second = darkerMode ? 0 : sec % 60
         let hour = sec / 3600
         let minute = (sec / 60) - (hour * 60)
         

@@ -68,6 +68,7 @@ final class StopwatchViewController: UIViewController {
         didSet {
             self.view.alpha = darkerMode ? 0.5 : 1
             self.darkerModeButton.isSelected = darkerMode
+            self.viewModel?.darkerMode = darkerMode
         }
     }
     
