@@ -178,6 +178,7 @@ extension StopwatchViewController {
         self.startStopBTTopConstraint?.isActive = true
         self.colorSelector.transform = CGAffineTransform.identity
         self.colorSelectorBorderView.transform = CGAffineTransform.identity
+        self.darkerModeButton.transform = CGAffineTransform.identity
         self.isBiggerUI = false
     }
     
@@ -199,6 +200,7 @@ extension StopwatchViewController {
         #else
         self.colorSelector.transform = CGAffineTransform(translationX: 0, y: 29)
         self.colorSelectorBorderView.transform = CGAffineTransform(translationX: 0, y: 29)
+        self.darkerModeButton.transform = CGAffineTransform(translationX: 0, y: 29)
         #endif
         self.isBiggerUI = true
     }
