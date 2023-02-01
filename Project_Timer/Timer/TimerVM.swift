@@ -26,6 +26,9 @@ final class TimerVM {
     private(set) var timerRunning = false
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
+    var darkerMode: Bool = false {
+        didSet { self.updateTimes() }
+    }
     
     private var timer = Timer()
     
@@ -77,14 +80,14 @@ final class TimerVM {
     }
     
     func updateTimes() {
-        self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: false)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation, darkerMode: false)
-        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation, darkerMode: false)
+        self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
+        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         
         if RecordController.shared.isTaskGargetOn {
-            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation, darkerMode: false)
+            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         } else {
-            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation, darkerMode: false)
+            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         }
     }
     
