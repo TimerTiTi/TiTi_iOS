@@ -281,10 +281,27 @@
                                     <action selector="colorSelect:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="i7t-UA-xro"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVW-mM-ERE">
+                                <rect key="frame" x="15" y="55.333333333333343" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="0Ex-4X-CWt"/>
+                                    <constraint firstAttribute="width" constant="32" id="fum-XW-Fkb"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="sun.max.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                                </state>
+                                <state key="selected" image="sun.max" catalog="system"/>
+                                <connections>
+                                    <action selector="toggleDarker:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="4nb-ch-hOH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
+                            <constraint firstItem="VVW-mM-ERE" firstAttribute="leading" secondItem="xTH-Uj-aTj" secondAttribute="leading" constant="15" id="38W-vl-r57"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="3MO-dw-92u"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="leading" secondItem="bRB-wj-rJW" secondAttribute="trailing" constant="25" id="3Q9-2p-HSF"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerX" secondItem="bRB-wj-rJW" secondAttribute="centerX" id="3bK-Jr-1hi"/>
@@ -294,6 +311,7 @@
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
                             <constraint firstItem="w3P-YJ-fGK" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="Fe9-h9-xMd"/>
                             <constraint firstItem="roc-hq-Dls" firstAttribute="leading" secondItem="COc-GQ-Is1" secondAttribute="trailing" constant="-5" id="IGn-5f-81s"/>
+                            <constraint firstItem="VVW-mM-ERE" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="JLm-ho-xxi"/>
                             <constraint firstItem="uFb-4K-sju" firstAttribute="centerY" secondItem="w3P-YJ-fGK" secondAttribute="centerY" id="Vhg-Wt-yuL"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="W1k-Ca-43M"/>
@@ -326,6 +344,7 @@
                         <outlet property="TIMEofTimerFrameView" destination="3pb-Gt-3Kk" id="gZb-df-gg5"/>
                         <outlet property="colorSelector" destination="uFb-4K-sju" id="bSU-nX-RUb"/>
                         <outlet property="colorSelectorBorderView" destination="w3P-YJ-fGK" id="dOd-rq-5vZ"/>
+                        <outlet property="darkerModeButton" destination="VVW-mM-ERE" id="1Np-uY-lMv"/>
                         <outlet property="finishTimeLabel" destination="naL-rE-KA8" id="5SU-l1-AYa"/>
                         <outlet property="innerProgress" destination="MKs-1O-JYl" id="0Dl-w7-I5Q"/>
                         <outlet property="outterProgress" destination="ROV-CL-IbC" id="FyQ-L8-2xs"/>

@@ -20,6 +20,7 @@ class TimerViewController: UIViewController {
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var taskButton: UIButton!
+    @IBOutlet weak var darkerModeButton: UIButton!
     
     @IBOutlet weak var innerProgress: CircularProgressView!
     @IBOutlet weak var outterProgress: CircularProgressView!
@@ -65,6 +66,13 @@ class TimerViewController: UIViewController {
     var innerProgressPer: Float = 0.0
     var isLandcape: Bool = false
     private var isScreenDim: Bool = false
+    private var darkerMode: Bool = false {
+        didSet {
+            self.view.alpha = darkerMode ? 0.5 : 1
+            self.darkerModeButton.isSelected = darkerMode
+            self.viewModel?.darkerMode = darkerMode
+        }
+    }
     
     override var prefersStatusBarHidden: Bool {
         return self.isScreenDim
@@ -144,6 +152,10 @@ class TimerViewController: UIViewController {
             self?.showSettingTargetTime()
         }
     }
+    
+    @IBAction func toggleDarker(_ sender: Any) {
+        self.darkerMode.toggle()
+    }
 }
 
 // MARK: - Device UI Configure
@@ -168,6 +180,7 @@ extension TimerViewController {
         self.startStopBTTopConstraint?.isActive = true
         self.colorSelector.transform = CGAffineTransform.identity
         self.colorSelectorBorderView.transform = CGAffineTransform.identity
+        self.darkerModeButton.transform = CGAffineTransform.identity
         self.isBiggerUI = false
     }
     
@@ -189,6 +202,7 @@ extension TimerViewController {
         #else
         self.colorSelector.transform = CGAffineTransform(translationX: 0, y: 29)
         self.colorSelectorBorderView.transform = CGAffineTransform(translationX: 0, y: 29)
+        self.darkerModeButton.transform = CGAffineTransform(translationX: 0, y: 29)
         #endif
         self.isBiggerUI = true
     }
@@ -512,6 +526,7 @@ extension TimerViewController {
             self.colorSelectorBorderView.alpha = 0
             self.tabBarController?.tabBar.isHidden = true
             self.todayLabel.alpha = 0
+            self.darkerModeButton.alpha = 1
         })
     }
     
@@ -535,6 +550,7 @@ extension TimerViewController {
         self.settingBT.tintColor = self.textColor
         self.setTimerBT.tintColor = self.textColor
         self.colorSelector.backgroundColor = self.backgroundColor
+        self.darkerModeButton.alpha = 0
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
@@ -561,6 +577,7 @@ extension TimerViewController {
         self.setTimerBT.isUserInteractionEnabled = true
         self.taskButton.isUserInteractionEnabled = true
         self.colorSelector.isUserInteractionEnabled = true
+        self.darkerMode = false
     }
     
     private func updateProgress(times: Times) {
