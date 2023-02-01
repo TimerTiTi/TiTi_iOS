@@ -25,6 +25,9 @@ final class StopwatchVM {
     private(set) var timerRunning = false
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
+    var darkerMode: Bool = false {
+        didSet { self.updateTimes() }
+    }
     
     private var timer = Timer()
     
@@ -72,13 +75,13 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes()
-        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
+        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         
         if RecordController.shared.isTaskGargetOn {
-            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
+            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         } else {
-            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
+            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
         }
     }
     

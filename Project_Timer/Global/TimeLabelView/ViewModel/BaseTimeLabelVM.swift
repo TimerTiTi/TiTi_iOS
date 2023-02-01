@@ -21,14 +21,14 @@ class BaseTimeLabelVM: ObservableObject  {
     var secondUnitsViewModel: BaseSingleTimeLabelVM
     
     var timeLabel: TimeLabel {
-        return TimeLabel(self.time)
+        return TimeLabel(self.time, false)
     }
     
     init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
         self.fontSize = fontSize
         self.isWhite = isWhite
-        let timeLabel = TimeLabel(time)
+        let timeLabel = TimeLabel(time, false)
         self.hourTensViewModel = BaseSingleTimeLabelVM(timeLabel.hourTens)
         self.hourUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.hourUnits)
         self.minuteTensViewModel = BaseSingleTimeLabelVM(timeLabel.minuteTens)
@@ -37,8 +37,8 @@ class BaseTimeLabelVM: ObservableObject  {
         self.secondUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.secondUnits)
     }
     
-    func updateTime(_ newTime: Int, showsAnimation: Bool) {
-        let newTimeLabel = TimeLabel(newTime)
+    func updateTime(_ newTime: Int, showsAnimation: Bool, darkerMode: Bool) {
+        let newTimeLabel = TimeLabel(newTime, darkerMode)
         hourTensViewModel.update(old: self.timeLabel.hourTens,
                                  new: newTimeLabel.hourTens,
                                  showsAnimation: showsAnimation)
