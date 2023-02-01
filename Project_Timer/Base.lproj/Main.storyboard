@@ -581,17 +581,35 @@
                                     <action selector="colorSelect:" destination="oQm-sw-2wm" eventType="touchUpInside" id="vQE-T4-J8V"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKT-t7-FUd">
+                                <rect key="frame" x="16" y="55.333333333333343" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="UIg-Fa-QKx"/>
+                                    <constraint firstAttribute="width" constant="32" id="oUN-YK-guB"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="sun.max.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                                </state>
+                                <state key="selected" image="sun.max" catalog="system"/>
+                                <connections>
+                                    <action selector="toggleDarker:" destination="oQm-sw-2wm" eventType="touchUpInside" id="v1T-wT-O4x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yCZ-3D-BLQ"/>
                         <color key="backgroundColor" name="Background2"/>
                         <constraints>
                             <constraint firstItem="TUI-kh-tOQ" firstAttribute="centerY" secondItem="nRK-jy-UJa" secondAttribute="centerY" id="0Nb-dg-pOy"/>
+                            <constraint firstItem="WKT-t7-FUd" firstAttribute="leading" secondItem="yCZ-3D-BLQ" secondAttribute="leading" constant="16" id="0zx-HH-g3J"/>
                             <constraint firstItem="Hfx-iS-Kvh" firstAttribute="centerX" secondItem="TUI-kh-tOQ" secondAttribute="centerX" id="30I-r9-rVR"/>
                             <constraint firstItem="diS-gV-uEz" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="3ql-Ls-TWy"/>
                             <constraint firstItem="VkP-ZL-Ulq" firstAttribute="centerY" secondItem="qOs-fm-jq5" secondAttribute="centerY" id="9ZE-1W-mCy"/>
                             <constraint firstItem="nRK-jy-UJa" firstAttribute="top" secondItem="yCZ-3D-BLQ" secondAttribute="top" constant="16" id="DbS-T9-RgM"/>
                             <constraint firstItem="nRK-jy-UJa" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="FaX-mt-MMY"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="FcF-vb-Ssx"/>
+                            <constraint firstItem="WKT-t7-FUd" firstAttribute="centerY" secondItem="nRK-jy-UJa" secondAttribute="centerY" id="JCa-Bo-ADG"/>
                             <constraint firstItem="zHl-6H-tfo" firstAttribute="leading" secondItem="nRK-jy-UJa" secondAttribute="trailing" constant="-5" id="KJK-D6-U80"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="Mv3-R4-L8P"/>
                             <constraint firstItem="qOs-fm-jq5" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="NQX-fB-w0a"/>
@@ -624,6 +642,7 @@
                         <outlet property="TIMEofTargetFrameView" destination="f8e-dU-KXj" id="DRt-cr-SBB"/>
                         <outlet property="colorSelector" destination="Hfx-iS-Kvh" id="xxs-g9-bAs"/>
                         <outlet property="colorSelectorBorderView" destination="TUI-kh-tOQ" id="U3Z-Kt-Bl7"/>
+                        <outlet property="darkerModeButton" destination="WKT-t7-FUd" id="JSp-9i-QlT"/>
                         <outlet property="finishTimeLabel" destination="Mj6-JS-iYc" id="Pjr-5H-7fR"/>
                         <outlet property="innerProgress" destination="2nh-Zz-J1h" id="c0c-de-Jim"/>
                         <outlet property="outterProgress" destination="rzE-75-v4U" id="dlA-LU-99w"/>
@@ -3186,13 +3205,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0Nt-3k-frA">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="146" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A84-cm-R2e">
                                                             <rect key="frame" x="0.0" y="0.0" width="42" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target time of Month's Total Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-LI-E3B">
                                                             <rect key="frame" x="0.0" y="24" width="146" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4837,6 +4856,8 @@
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="stopwatch" catalog="system" width="121" height="128"/>
+        <image name="sun.max" catalog="system" width="128" height="125"/>
+        <image name="sun.max.fill" catalog="system" width="128" height="125"/>
         <image name="timer" catalog="system" width="128" height="123"/>
         <image name="titi_appicon_mac" width="341.33334350585938" height="341.33334350585938"/>
         <image name="titi_appicon_mac 90" width="30" height="30"/>

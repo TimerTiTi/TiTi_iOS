@@ -18,6 +18,7 @@ final class StopwatchViewController: UIViewController {
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var taskButton: UIButton!
+    @IBOutlet weak var darkerModeButton: UIButton!
     
     @IBOutlet weak var innerProgress: CircularProgressView!
     @IBOutlet weak var outterProgress: CircularProgressView!
@@ -140,6 +141,15 @@ final class StopwatchViewController: UIViewController {
     @IBAction func showRecordDateAlert(_ sender: Any) {
         self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
             self?.showSettingTargetTime()
+        }
+    }
+    
+    @IBAction func toggleDarker(_ sender: Any) {
+        self.darkerModeButton.isSelected.toggle()
+        if self.darkerModeButton.isSelected == true {
+            self.view.alpha = 0.5
+        } else {
+            self.view.alpha = 1
         }
     }
 }
