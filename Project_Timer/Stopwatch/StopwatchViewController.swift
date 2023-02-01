@@ -64,6 +64,12 @@ final class StopwatchViewController: UIViewController {
     let progressPeriod: Int = 3600
     var isLandscape: Bool = false
     private var isScreenDim: Bool = false
+    private var darkerMode: Bool = false {
+        didSet {
+            self.view.alpha = darkerMode ? 0.5 : 1
+            self.darkerModeButton.isSelected = darkerMode
+        }
+    }
     
     override var prefersStatusBarHidden: Bool {
         return self.isScreenDim
@@ -145,12 +151,7 @@ final class StopwatchViewController: UIViewController {
     }
     
     @IBAction func toggleDarker(_ sender: Any) {
-        self.darkerModeButton.isSelected.toggle()
-        if self.darkerModeButton.isSelected == true {
-            self.view.alpha = 0.5
-        } else {
-            self.view.alpha = 1
-        }
+        self.darkerMode.toggle()
     }
 }
 
@@ -509,6 +510,7 @@ extension StopwatchViewController {
             self.colorSelectorBorderView.alpha = 0
             self.tabBarController?.tabBar.isHidden = true
             self.todayLabel.alpha = 0
+            self.darkerModeButton.alpha = 1
         })
     }
     
@@ -532,6 +534,7 @@ extension StopwatchViewController {
         self.settingBT.tintColor = self.textColor
         self.resetBT.tintColor = self.textColor
         self.colorSelector.backgroundColor = self.backgroundColor
+        self.darkerModeButton.alpha = 0
         //예상종료시간 보이기, stop 버튼 제자리로 이동
         UIView.animate(withDuration: 0.3, animations: {
             self.settingBT.alpha = 1
@@ -558,6 +561,7 @@ extension StopwatchViewController {
         self.taskButton.isUserInteractionEnabled = true
         self.resetBT.isUserInteractionEnabled = true
         self.colorSelector.isUserInteractionEnabled = true
+        self.darkerMode = false
     }
     
     private func updateProgress(times: Times) {
