@@ -17,9 +17,9 @@ class CountdownTimeLabelViewModel: ObservableObject {
         self.timeLabelVM = BaseTimeLabelVM(time: abs(time), fontSize: fontSize, isWhite: isWhite)
     }
     
-    func updateTime(_ newTime: Int, showsAnimation: Bool) {
+    func updateTime(_ newTime: Int, showsAnimation: Bool, darkerMode: Bool) {
         self.time = newTime
-        self.timeLabelVM.updateTime(abs(newTime), showsAnimation: showsAnimation)
+        self.timeLabelVM.updateTime(abs(newTime), showsAnimation: showsAnimation, darkerMode: darkerMode)
     }
     
     func updateRunning(to isRunning: Bool) {
