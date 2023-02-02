@@ -594,7 +594,8 @@ extension TimerViewController {
             self.targetTimeLabel.text = "Target Time".localized()
         }
         
-        let newProgressPer = Float(timerPeriod - times.timer) / Float(timerPeriod-1)
+        let timer = self.darkerMode ? times.timerForDarker : times.timer
+        let newProgressPer = Float(timerPeriod - timer) / Float(timerPeriod-1)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
