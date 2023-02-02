@@ -11,7 +11,9 @@ import Combine
 import UserNotifications
 
 final class StopwatchVM {
-    @Published private(set) var times: Times
+    @Published private(set) var times: Times {
+        didSet { dump(times) }
+    }
     @Published private(set) var daily: Daily
     @Published private(set) var taskName: String
     @Published private(set) var runningUI = false {
@@ -75,13 +77,13 @@ final class StopwatchVM {
     
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
-        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
-        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
+        self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
+        self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
         
         if RecordController.shared.isTaskGargetOn {
-            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
+            self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
-            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation, darkerMode: self.darkerMode)
+            self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
         }
     }
     
