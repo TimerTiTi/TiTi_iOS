@@ -15,12 +15,12 @@ struct Times {
     let goal: Int
     let remainingTaskTime: Int
     
-    init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int, _ remainingTaskTime: Int) {
-        self.sum = sum
-        self.timer = timer
-        self.stopwatch = stopwatch
-        self.goal = goal
-        self.remainingTaskTime = remainingTaskTime
+    init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int, _ remainingTaskTime: Int, darkerMode: Bool = false) {
+        self.sum = darkerMode ? sum - sum%60 : sum
+        self.timer = darkerMode ? timer - timer%60 : timer
+        self.stopwatch = darkerMode ? stopwatch - stopwatch%60 : stopwatch
+        self.goal = darkerMode ? goal - goal%60 : goal
+        self.remainingTaskTime = darkerMode ? remainingTaskTime - remainingTaskTime%60 : remainingTaskTime
     }
 }
 
@@ -32,8 +32,8 @@ struct TimeLabel {
     let secondTens: Int
     let secondUnits: Int
     
-    init(_ sec: Int, _ darkerMode: Bool) {
-        let second = darkerMode ? 0 : sec % 60
+    init(_ sec: Int) {
+        let second = sec % 60
         let hour = sec / 3600
         let minute = (sec / 60) - (hour * 60)
         

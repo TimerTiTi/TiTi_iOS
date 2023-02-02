@@ -125,17 +125,14 @@ struct RecordTimes: Codable {
         }
         
         let currentAt = Date()
-        var interval = Date.interval(from: self.recordStartAt, to: currentAt)
-        if darkerMode {
-            interval = interval - interval%60
-        }
+        let interval = Date.interval(from: self.recordStartAt, to: currentAt)
         let currentSum = self.savedSumTime + interval
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
         let currentGoal = self.settedGoalTime - currentSum
         let remainingTaskTime = RecordController.shared.remainingTaskTime - interval
         
-        return Times(currentSum, currentTimer, currentStopwatch, currentGoal, remainingTaskTime)
+        return Times(currentSum, currentTimer, currentStopwatch, currentGoal, remainingTaskTime, darkerMode: darkerMode)
     }
     // 기록수정된 Daily 기준 sync
     mutating func sync(_ daily: Daily) {
