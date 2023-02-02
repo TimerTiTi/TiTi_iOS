@@ -14,13 +14,15 @@ struct Times {
     let stopwatch: Int
     let goal: Int
     let remainingTaskTime: Int
+    let timerForDarker: Int
     
     init(_ sum: Int, _ timer: Int, _ stopwatch: Int, _ goal: Int, _ remainingTaskTime: Int, darkerMode: Bool = false) {
         self.sum = darkerMode ? sum - sum%60 : sum
-        self.timer = darkerMode ? timer - timer%60 : timer
+        self.timer = timer
         self.stopwatch = darkerMode ? stopwatch - stopwatch%60 : stopwatch
         self.goal = darkerMode ? goal - goal%60 : goal
         self.remainingTaskTime = darkerMode ? remainingTaskTime - remainingTaskTime%60 : remainingTaskTime
+        self.timerForDarker = darkerMode ? timer - timer%60 : timer
     }
 }
 
