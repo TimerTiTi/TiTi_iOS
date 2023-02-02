@@ -82,7 +82,8 @@ final class TimerVM {
     func updateTimes() {
         self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
-        self.timeOfTimerViewModel.updateTime(self.times.timer, showsAnimation: self.showAnimation)
+        let timer = self.darkerMode ? self.times.timerForDarker : self.times.timer
+        self.timeOfTimerViewModel.updateTime(timer, showsAnimation: self.showAnimation)
         
         if RecordController.shared.isTaskGargetOn {
             self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
