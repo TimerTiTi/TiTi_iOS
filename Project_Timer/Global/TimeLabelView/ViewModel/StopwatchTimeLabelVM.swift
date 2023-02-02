@@ -15,8 +15,8 @@ class StopwatchTimeLabelVM: ObservableObject {
         self.timeLabelVM = BaseTimeLabelVM(time: time, fontSize: fontSize, isWhite: isWhite)
     }
     
-    func updateTime(_ newTime: Int, showsAnimation: Bool, darkerMode: Bool) {
-        self.timeLabelVM.updateTime(newTime, showsAnimation: showsAnimation, darkerMode: darkerMode)
+    func updateTime(_ newTime: Int, showsAnimation: Bool) {
+        self.timeLabelVM.updateTime(newTime, showsAnimation: showsAnimation)
     }
     
     func updateRunning(to isRunning: Bool) {
