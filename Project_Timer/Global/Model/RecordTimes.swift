@@ -146,6 +146,13 @@ struct RecordTimes: Codable, CustomStringConvertible {
         }
         self.savedSumTime = daily.totalTime
         self.savedGoalTime = self.settedGoalTime - self.savedSumTime
+        // recordStartAt 값 업데이트
+        if let dailyStartAt = daily.taskHistorys?.values
+            .flatMap({ $0 })
+            .sorted(by: { $0.endDate < $1.endDate })
+            .last?.startDate {
+            self.recordStartAt = dailyStartAt
+        }
         self.save()
     }
 }
