@@ -210,9 +210,9 @@ extension TimerViewController {
         
         self.startStopBTTopConstraint = self.startStopBT.topAnchor.constraint(equalTo: self.outterProgress.bottomAnchor, constant: 50)
         self.startStopBTTopConstraint?.isActive = true
-        self.colorSelector.transform = CGAffineTransform.identity
-        self.colorSelectorBorderView.transform = CGAffineTransform.identity
-        self.darkerModeButton.transform = CGAffineTransform.identity
+        [self.colorSelector, self.colorSelectorBorderView, self.darkerModeButton, self.useageButton].forEach { target in
+            target?.transform = CGAffineTransform.identity
+        }
         self.isBiggerUI = false
     }
     

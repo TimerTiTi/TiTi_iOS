@@ -298,7 +298,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c18-R0-zLs">
-                                <rect key="frame" x="307" y="56.333333333333343" width="30" height="30"/>
+                                <rect key="frame" x="304" y="56.333333333333343" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="1fo-zI-1R2"/>
                                     <constraint firstAttribute="height" constant="30" id="zgd-5Q-n6u"/>
@@ -316,7 +316,7 @@
                         <viewLayoutGuide key="safeArea" id="xTH-Uj-aTj"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="uFb-4K-sju" firstAttribute="leading" secondItem="c18-R0-zLs" secondAttribute="trailing" constant="8" id="1DG-xV-sne"/>
+                            <constraint firstItem="w3P-YJ-fGK" firstAttribute="leading" secondItem="c18-R0-zLs" secondAttribute="trailing" constant="8" id="1DG-xV-sne"/>
                             <constraint firstItem="VVW-mM-ERE" firstAttribute="leading" secondItem="xTH-Uj-aTj" secondAttribute="leading" constant="15" id="38W-vl-r57"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerY" secondItem="SHK-KN-mKZ" secondAttribute="centerY" id="3MO-dw-92u"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="leading" secondItem="bRB-wj-rJW" secondAttribute="trailing" constant="25" id="3Q9-2p-HSF"/>
