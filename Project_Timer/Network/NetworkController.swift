@@ -36,7 +36,11 @@ extension NetworkController: VersionFetchable {
                     completion(.DECODEERROR, nil)
                     return
                 }
-                completion(.SUCCESS, lastestVersionInfo.version.value)
+                #if targetEnvironment(macCatalyst)
+                completion(.SUCCESS, lastestVersionInfo.macOS.value)
+                #else
+                completion(.SUCCESS, lastestVersionInfo.iOS.value)
+                #endif
             default:
                 completion(result.status, nil)
                 return
