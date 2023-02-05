@@ -10,19 +10,22 @@ import Foundation
 
 /// latestVersionDTO
 struct LastestVersionInfo: Decodable {
-    let version: StringValue
+    let iOS: StringValue
+    let macOS: StringValue
     
     private enum RootKey: String, CodingKey {
         case fields
     }
     private enum FieldKeys: String, CodingKey {
-        case version
+        case iOS
+        case macOS
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.version = try fieldContainer.decode(StringValue.self, forKey: .version)
+        self.iOS = try fieldContainer.decode(StringValue.self, forKey: .iOS)
+        self.macOS = try fieldContainer.decode(StringValue.self, forKey: .macOS)
     }
 }
