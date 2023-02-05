@@ -595,7 +595,7 @@ extension TimerViewController {
         }
         
         let timer = self.darkerMode ? times.timerForDarker : times.timer
-        let newProgressPer = Float(timerPeriod - timer) / Float(timerPeriod-1)
+        let newProgressPer = Float(max(0, timerPeriod - timer)) / Float(timerPeriod-1)
         self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
@@ -606,7 +606,7 @@ extension TimerViewController {
     
     private func updateRunningColor(times: Times) {
         guard self.viewModel?.runningUI == true,
-              times.timer < 60 else { return }
+              times.timer <= 60 else { return }
         self.outterProgress.progressColor = RED!
     }
     
