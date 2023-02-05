@@ -72,12 +72,13 @@ class TimerViewController: UIViewController {
             self.darkerModeButton.isSelected = darkerMode
             self.viewModel?.darkerMode = darkerMode
             self.darkerAnimation = true
+            self.setNeedsStatusBarAppearanceUpdate()
         }
     }
     private var darkerAnimation: Bool = false
     
     override var prefersStatusBarHidden: Bool {
-        return self.isScreenDim
+        return self.darkerMode || self.isScreenDim
     }
     
     override func viewDidLoad() {
