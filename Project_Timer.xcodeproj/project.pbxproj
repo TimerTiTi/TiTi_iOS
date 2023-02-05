@@ -205,6 +205,7 @@
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
 		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
+		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
@@ -416,6 +417,8 @@
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
 		87F10939284C589A002E31EA /* FunctionInfoListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoListVM.swift; sourceTree = "<group>"; };
+		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
+		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1081,6 +1084,7 @@
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
 				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
 				87CA3B532618591100DD9BB5 /* Localizable.strings */,
+				87F50A19298FA3BD00ABF0CF /* newFeatures.strings */,
 				871EDFEE288AF6E900B428A6 /* InfoPlist.strings */,
 				93B08520248DDF2F00E215BD /* AppDelegate.swift */,
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
@@ -1174,6 +1178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */,
 				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
 				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
 				048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */,
@@ -1449,6 +1454,15 @@
 				87CA3B572618591F00DD9BB5 /* ko */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		87F50A19298FA3BD00ABF0CF /* newFeatures.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87F50A18298FA3BD00ABF0CF /* en */,
+				87F50A1A298FA3C100ABF0CF /* ko */,
+			);
+			name = newFeatures.strings;
 			sourceTree = "<group>";
 		};
 		93B08526248DDF2F00E215BD /* Main.storyboard */ = {

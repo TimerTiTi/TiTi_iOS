@@ -1,0 +1,15 @@
+/* 
+  newFeatures.strings
+  Project_Timer
+
+  Created by Kang Minsang on 2023/02/05.
+  Copyright © 2023 FDEE. All rights reserved.
+*/
+"See how to use the *" = "See how to use the *";
+"The new * feature added." = "The new * feature added.";
+
+"Todolist" = "Todolist";
+"TodoGroup" = "TodoGroup";
+
+"Timer" = "Timer";
+"Sleep Mode" = "Sleep Mode";
