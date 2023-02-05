@@ -69,8 +69,10 @@ final class StopwatchViewController: UIViewController {
             self.view.alpha = darkerMode ? 0.5 : 1
             self.darkerModeButton.isSelected = darkerMode
             self.viewModel?.darkerMode = darkerMode
+            self.darkerAnimation = true
         }
     }
+    private var darkerAnimation: Bool = false
     
     override var prefersStatusBarHidden: Bool {
         return self.isScreenDim
@@ -580,13 +582,15 @@ extension StopwatchViewController {
             self.targetTimeLabel.text = "Target Time".localized()
         }
         
+        let duration: TimeInterval = self.darkerAnimation ? 0 : 1.0
         let newProgressPer = Float(times.stopwatch % self.progressPeriod) / Float(self.progressPeriod)
-        self.outterProgress.setProgress(duration: 1.0, value: newProgressPer, from: self.progressPer)
+        self.outterProgress.setProgress(duration: duration, value: newProgressPer, from: self.progressPer)
         self.progressPer = newProgressPer
         
         let newInnerProgressPer = Float(innerSum) / Float(goalPeriod)
-        self.innerProgress.setProgress(duration: 1.0, value: newInnerProgressPer, from: self.innerProgressPer)
+        self.innerProgress.setProgress(duration: duration, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
+        self.darkerAnimation = false
     }
     
     private func showWarningRecordDate() {

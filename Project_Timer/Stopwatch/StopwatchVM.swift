@@ -11,9 +11,7 @@ import Combine
 import UserNotifications
 
 final class StopwatchVM {
-    @Published private(set) var times: Times {
-        didSet { dump(times) }
-    }
+    @Published private(set) var times: Times
     @Published private(set) var daily: Daily
     @Published private(set) var taskName: String
     @Published private(set) var runningUI = false {

@@ -20,6 +20,6 @@ struct BaseSingleTimeLabelView: View {
                 .opacity(viewModel.isNewValueVisible ? 1 : 0)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
-        .aspectRatio(0.55, contentMode: .fit)
+        .aspectRatio(0.56, contentMode: .fit)
     }
 }
