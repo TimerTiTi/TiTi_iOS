@@ -73,13 +73,19 @@ class TimerViewController: UIViewController {
             self.darkerModeButton.isSelected = darkerMode
             self.viewModel?.darkerMode = darkerMode
             self.darkerAnimation = true
-            self.setNeedsStatusBarAppearanceUpdate()
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
         }
     }
     private var darkerAnimation: Bool = false
     
     override var prefersStatusBarHidden: Bool {
-        return self.darkerMode || self.isScreenDim
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return self.darkerMode || self.isScreenDim
+        } else {
+            return self.isScreenDim
+        }
     }
     
     override func viewDidLoad() {
@@ -342,7 +348,6 @@ extension TimerViewController {
             self.useageButton.isHidden = false
         }
     }
-    
     private func configureLocalizable() {
         self.sumTimeLabel.text = "Sum Time".localized()
         self.timerLabel.text = "Timer".localized()
