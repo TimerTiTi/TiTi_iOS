@@ -23,7 +23,7 @@ class TimerTimeLabelVM: ObservableObject {
     
     var timerState: TimerState {
         if timeLabelVM.isRunning {
-            return self.time < 60 ? .lessThan60Sec : .normalRunning
+            return self.time <= 60 ? .lessThan60Sec : .normalRunning
         } else {
             return .stopped
         }
