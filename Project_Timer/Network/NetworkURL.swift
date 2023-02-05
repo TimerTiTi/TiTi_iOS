@@ -54,4 +54,27 @@ enum NetworkURL {
         // dailys
         static let dailysUpload: String = dailys+"/upload"
     }
+    
+    enum Useage {
+        static var todolist: String {
+            switch Language.currentLanguage {
+            case .ko: return "https://deeply-eggplant-5ec.notion.site/Todolist-ff23ffb5e6634955b11e1202b95d17fc"
+            case .en: return "https://deeply-eggplant-5ec.notion.site/Todolist-0b68ee031a414cf8896c8f6b9a9b3ebe"
+            }
+        }
+        
+        static var timer: String {
+            switch Language.currentLanguage {
+            case .ko: return "https://deeply-eggplant-5ec.notion.site/Timer-1db945227c25409d874bf82e30a0523a"
+            case .en: return "https://deeply-eggplant-5ec.notion.site/Timer-5b82d114ed3d4981a5d077daa147f53f"
+            }
+        }
+        
+        static var stopwatch: String {
+            switch Language.currentLanguage {
+            case .ko: return "https://deeply-eggplant-5ec.notion.site/Stopwatch-f89204f11e5d468794899d35a18b084f"
+            case .en: return "https://deeply-eggplant-5ec.notion.site/Stopwatch-0fffbd65974a4fa0a0c19a9f41d41a6f"
+            }
+        }
+    }
 }

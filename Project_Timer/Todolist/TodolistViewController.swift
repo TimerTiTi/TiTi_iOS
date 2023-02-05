@@ -66,16 +66,14 @@ class TodolistViewController: UIViewController {
     }
     
     @IBAction func showUseageAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "See how to use the Todolist".localized(), message: "The new TodoGroup feature added.".localized(), preferredStyle: .alert)
+        let alert = UIAlertController(title: "See how to use the *".localizedForNewFeatures(input: "Todolist"), message: "The new * feature added.".localizedForNewFeatures(input: "TodoGroup"), preferredStyle: .alert)
         let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
             self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
             UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
             self?.useageButton.isHidden = true
         })
         let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
-            let url = NSLocale.current.languageCode == "ko"
-            ? "https://deeply-eggplant-5ec.notion.site/Todolist-ff23ffb5e6634955b11e1202b95d17fc"
-            : "https://deeply-eggplant-5ec.notion.site/Todolist-0b68ee031a414cf8896c8f6b9a9b3ebe"
+            let url = NetworkURL.Useage.todolist
             if let url = URL(string: url) {
                 UIApplication.shared.open(url, options: [:])
                 UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
@@ -97,6 +95,7 @@ extension TodolistViewController {
             self.useageButton.isHidden = false
         }
     }
+    
     private func configureViewModel() {
         self.viewModel = TodolistVM()
     }
