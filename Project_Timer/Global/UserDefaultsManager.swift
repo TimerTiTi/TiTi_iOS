@@ -41,6 +41,8 @@ struct UserDefaultsManager {
         case lastUploadedDateV1
         // useage
         case todolistCheckVer
+        case timerCheckVer
+        case stopwatchCheckVer
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
