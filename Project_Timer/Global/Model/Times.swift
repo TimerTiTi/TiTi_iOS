@@ -22,7 +22,7 @@ struct Times {
         self.stopwatch = darkerMode ? stopwatch - stopwatch%60 : stopwatch
         self.goal = darkerMode ? goal - goal%60 : goal
         self.remainingTaskTime = darkerMode ? remainingTaskTime - remainingTaskTime%60 : remainingTaskTime
-        self.timerForDarker = darkerMode ? timer - timer%60 : timer
+        self.timerForDarker = timer%60 == 0 ? timer : timer - timer%60 + 60
     }
 }
 
