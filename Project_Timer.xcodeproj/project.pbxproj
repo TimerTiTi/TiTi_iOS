@@ -134,6 +134,15 @@
 		878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899842894F09600B7F378 /* WeekTimelineView.swift */; };
 		878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899872894F0B900B7F378 /* WeekTimelineVM.swift */; };
 		8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788AFE428828D3500D26E7D /* DailysVC.swift */; };
+		878B30E52992BB5A00BE7413 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878B30E42992BB5A00BE7413 /* WidgetKit.framework */; };
+		878B30E72992BB5A00BE7413 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878B30E62992BB5A00BE7413 /* SwiftUI.framework */; };
+		878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30E92992BB5A00BE7413 /* widgetBundle.swift */; };
+		878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */; };
+		878B30EE2992BB5A00BE7413 /* widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30ED2992BB5A00BE7413 /* widget.swift */; };
+		878B30F12992BB5B00BE7413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878B30F02992BB5B00BE7413 /* Assets.xcassets */; };
+		878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EF2992BB5A00BE7413 /* widget.intentdefinition */; };
+		878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EF2992BB5A00BE7413 /* widget.intentdefinition */; };
+		878B30F72992BB5B00BE7413 /* widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 878B30E32992BB5A00BE7413 /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EC2955E5430044C079 /* SyncDailysVM.swift */; };
 		878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EE2955E73C0044C079 /* SyncLog.swift */; };
@@ -215,6 +224,30 @@
 		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
 		B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		878B30F52992BB5B00BE7413 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93B08515248DDF2F00E215BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 878B30E22992BB5A00BE7413;
+			remoteInfo = widgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				878B30F72992BB5B00BE7413 /* widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04172E972885453F00F962F2 /* MotionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionDetector.swift; sourceTree = "<group>"; };
@@ -344,6 +377,16 @@
 		878899842894F09600B7F378 /* WeekTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineView.swift; sourceTree = "<group>"; };
 		878899872894F0B900B7F378 /* WeekTimelineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineVM.swift; sourceTree = "<group>"; };
 		8788AFE428828D3500D26E7D /* DailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVC.swift; sourceTree = "<group>"; };
+		878B30E32992BB5A00BE7413 /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		878B30E42992BB5A00BE7413 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		878B30E62992BB5A00BE7413 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		878B30E92992BB5A00BE7413 /* widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetBundle.swift; sourceTree = "<group>"; };
+		878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetLiveActivity.swift; sourceTree = "<group>"; };
+		878B30ED2992BB5A00BE7413 /* widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widget.swift; sourceTree = "<group>"; };
+		878B30EF2992BB5A00BE7413 /* widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = widget.intentdefinition; sourceTree = "<group>"; };
+		878B30F02992BB5B00BE7413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		878B30F22992BB5B00BE7413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		878B30F82992BB5B00BE7413 /* widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetExtension.entitlements; sourceTree = "<group>"; };
 		878B507125B6E31600B9EFD7 /* timer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = timer.mp3; sourceTree = "<group>"; };
 		878BF7EC2955E5430044C079 /* SyncDailysVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVM.swift; sourceTree = "<group>"; };
 		878BF7EE2955E73C0044C079 /* SyncLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLog.swift; sourceTree = "<group>"; };
@@ -434,6 +477,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		878B30E02992BB5A00BE7413 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878B30E72992BB5A00BE7413 /* SwiftUI.framework in Frameworks */,
+				878B30E52992BB5A00BE7413 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B0851A248DDF2F00E215BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -500,6 +552,8 @@
 			isa = PBXGroup;
 			children = (
 				807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */,
+				878B30E42992BB5A00BE7413 /* WidgetKit.framework */,
+				878B30E62992BB5A00BE7413 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -749,6 +803,19 @@
 				878899872894F0B900B7F378 /* WeekTimelineVM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		878B30E82992BB5A00BE7413 /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				878B30E92992BB5A00BE7413 /* widgetBundle.swift */,
+				878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */,
+				878B30ED2992BB5A00BE7413 /* widget.swift */,
+				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
+				878B30F02992BB5B00BE7413 /* Assets.xcassets */,
+				878B30F22992BB5B00BE7413 /* Info.plist */,
+			);
+			path = widget;
 			sourceTree = "<group>";
 		};
 		878B507025B6E2FB00B9EFD7 /* component */ = {
@@ -1052,6 +1119,8 @@
 			isa = PBXGroup;
 			children = (
 				93B0851F248DDF2F00E215BD /* Project_Timer */,
+				878B30F82992BB5B00BE7413 /* widgetExtension.entitlements */,
+				878B30E82992BB5A00BE7413 /* widget */,
 				93B0851E248DDF2F00E215BD /* Products */,
 				D777B167BDE24D9E3DE50CB4 /* Pods */,
 				82C43A3EC63AD976BA01843F /* Frameworks */,
@@ -1062,6 +1131,7 @@
 			isa = PBXGroup;
 			children = (
 				93B0851D248DDF2F00E215BD /* TiTi.app */,
+				878B30E32992BB5A00BE7413 /* widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1107,6 +1177,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		878B30E22992BB5A00BE7413 /* widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 878B30FC2992BB5B00BE7413 /* Build configuration list for PBXNativeTarget "widgetExtension" */;
+			buildPhases = (
+				878B30DF2992BB5A00BE7413 /* Sources */,
+				878B30E02992BB5A00BE7413 /* Frameworks */,
+				878B30E12992BB5A00BE7413 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = widgetExtension;
+			productName = widgetExtension;
+			productReference = 878B30E32992BB5A00BE7413 /* widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		93B0851C248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 93B08531248DDF3000E215BD /* Build configuration list for PBXNativeTarget "Project_Timer" */;
@@ -1116,10 +1203,12 @@
 				93B0851A248DDF2F00E215BD /* Frameworks */,
 				93B0851B248DDF2F00E215BD /* Resources */,
 				D8BC82D384EBC247913C0FEC /* [CP] Embed Pods Frameworks */,
+				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				878B30F62992BB5B00BE7413 /* PBXTargetDependency */,
 			);
 			name = Project_Timer;
 			packageProductDependencies = (
@@ -1138,10 +1227,13 @@
 		93B08515248DDF2F00E215BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = FDEE;
 				TargetAttributes = {
+					878B30E22992BB5A00BE7413 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					93B0851C248DDF2F00E215BD = {
 						CreatedOnToolsVersion = 11.5;
 					};
@@ -1169,11 +1261,20 @@
 			projectRoot = "";
 			targets = (
 				93B0851C248DDF2F00E215BD /* Project_Timer */,
+				878B30E22992BB5A00BE7413 /* widgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		878B30E12992BB5A00BE7413 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878B30F12992BB5B00BE7413 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B0851B248DDF2F00E215BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1246,6 +1347,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		878B30DF2992BB5A00BE7413 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */,
+				878B30EE2992BB5A00BE7413 /* widget.swift in Sources */,
+				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
+				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93B08519248DDF2F00E215BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1385,6 +1497,7 @@
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
+				878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
@@ -1437,6 +1550,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		878B30F62992BB5B00BE7413 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 878B30E22992BB5A00BE7413 /* widgetExtension */;
+			targetProxy = 878B30F52992BB5B00BE7413 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		871EDFEE288AF6E900B428A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1486,6 +1607,70 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		878B30FA2992BB5B00BE7413 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 FDEE. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		878B30FB2992BB5B00BE7413 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 FDEE. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		93B0852F248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1606,6 +1791,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1632,6 +1818,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1657,6 +1844,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		878B30FC2992BB5B00BE7413 /* Build configuration list for PBXNativeTarget "widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				878B30FA2992BB5B00BE7413 /* Debug */,
+				878B30FB2992BB5B00BE7413 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		93B08518248DDF2F00E215BD /* Build configuration list for PBXProject "Project_Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
