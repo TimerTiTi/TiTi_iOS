@@ -10,26 +10,25 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct widgetAttributes: ActivityAttributes {
+struct TiTiLockscreenAttributes: ActivityAttributes {
+    public typealias titiStatus = ContentState
+    
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var value: Int
+        var taskName: String
+        var timer: ClosedRange<Date>
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
+    
+    var isTimer: Bool
+    var colorIndex: Int
 }
 
 struct widgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: widgetAttributes.self) { context in
-            // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello")
-            }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
-
+        ActivityConfiguration(for: TiTiLockscreenAttributes.self) { context in
+            // Create the presentation that appears on the Lock Screen and as a
+            // banner on the Home Screen of devices that don't support the
+            // Dynamic Island.
+            LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
@@ -57,9 +56,28 @@ struct widgetLiveActivity: Widget {
     }
 }
 
+struct LockScreenLiveActivityView: View {
+    let context: ActivityViewContext<TiTiLockscreenAttributes>
+    
+    var body: some View {
+        VStack(spacing: -3) {
+            Spacer(minLength: 14)
+            Text("\(context.state.taskName)")
+            Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
+                .multilineTextAlignment(.center)
+                .monospacedDigit()
+                .font(.system(size: 44, weight: .semibold))
+                .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
+//                .shadow(color: .black, radius: 1)
+            Spacer()
+        }
+        .background(Color(UIColor.systemBackground).opacity(0.6))
+    }
+}
+
 struct widgetLiveActivity_Previews: PreviewProvider {
-    static let attributes = widgetAttributes(name: "Me")
-    static let contentState = widgetAttributes.ContentState(value: 3)
+    static let attributes = TiTiLockscreenAttributes(isTimer: true, colorIndex: 6)
+    static let contentState = TiTiLockscreenAttributes.ContentState(taskName: "TiTi 개발", timer: (Date()...Calendar.current.date(byAdding: .hour, value: 3, to: Date())!))
 
     static var previews: some View {
         attributes
