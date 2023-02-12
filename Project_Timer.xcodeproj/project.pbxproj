@@ -216,6 +216,9 @@
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
+		87FD9FA72998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
+		87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
+		87FD9FAB2998D5E600D9B0FF /* TiTiActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
@@ -463,6 +466,8 @@
 		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
+		87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLockscreenAttributes.swift; sourceTree = "<group>"; };
+		87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiActivity.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -814,6 +819,7 @@
 				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
 				878B30F02992BB5B00BE7413 /* Assets.xcassets */,
 				878B30F22992BB5B00BE7413 /* Info.plist */,
+				87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -907,16 +913,12 @@
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				87BEBEE8281C17000095CD29 /* RecordController.swift */,
 				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
 				87DE1178268ACB040012F043 /* DailyViewModel.swift */,
-				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 				87035DF6282225C800055378 /* Protocols.swift */,
 				87C51509267B38C0003DA21D /* Converter.swift */,
-				04172E972885453F00F962F2 /* MotionDetector.swift */,
-				87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */,
 				87D1250028771AAD00018658 /* Language.swift */,
-				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
+				87FD9FA92998D58900D9B0FF /* sharedClass */,
 				87A48BC527DEF0B200F46D0F /* Extension */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
 				87CEDD3B28F53370007ACF6E /* PopupView */,
@@ -1113,6 +1115,19 @@
 				87D7ED1B2952E3DF00121DE6 /* TestServer */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		87FD9FA92998D58900D9B0FF /* sharedClass */ = {
+			isa = PBXGroup;
+			children = (
+				87BEBEE8281C17000095CD29 /* RecordController.swift */,
+				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
+				04172E972885453F00F962F2 /* MotionDetector.swift */,
+				87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */,
+				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
+				87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */,
+			);
+			path = sharedClass;
 			sourceTree = "<group>";
 		};
 		93B08514248DDF2F00E215BD = {
@@ -1353,6 +1368,7 @@
 			files = (
 				878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				878B30EE2992BB5A00BE7413 /* widget.swift in Sources */,
+				87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 			);
@@ -1402,6 +1418,7 @@
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
+				87FD9FA72998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
@@ -1409,6 +1426,7 @@
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
+				87FD9FAB2998D5E600D9B0FF /* TiTiActivity.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87BFCBCC28EFB10F00FC688E /* TargetTimePickerVM.swift in Sources */,
@@ -1795,7 +1813,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -1804,7 +1822,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.13;
+				MARKETING_VERSION = 7.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;
@@ -1822,7 +1840,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -1831,7 +1849,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.13;
+				MARKETING_VERSION = 7.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
 				PRODUCT_NAME = TiTi;
 				SUPPORTS_MACCATALYST = YES;

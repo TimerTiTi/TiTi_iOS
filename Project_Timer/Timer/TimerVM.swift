@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import UserNotifications
+import ActivityKit
 
 final class TimerVM {
     @Published private(set) var times: Times
@@ -125,6 +126,8 @@ final class TimerVM {
             self.timerStart()
             self.setBadge()
             self.sendNotification()
+            // live activity test
+            self.startLiveActivity()
         }
     }
     
@@ -256,5 +259,29 @@ final class TimerVM {
         self.timeOfSumViewModel.updateIsWhite(to: isWhite)
         self.timeOfTimerViewModel.updateIsWhite(to: isWhite)
         self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
+    }
+}
+
+extension TimerVM {
+    private func startLiveActivity() {
+        if #available(iOS 16.2, *) {
+            if ActivityAuthorizationInfo().areActivitiesEnabled {
+                let future = Calendar.current.date(byAdding: .second, value: self.times.timer, to: Date())!
+                let date = Date.now...future
+                let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: date)
+                let activityAttributes = TiTiLockscreenAttributes(isTimer: true, colorIndex: UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1)
+                
+                let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
+                
+                // Add code to start the Live Activity here.
+                // Start the Live Activity.
+                do {
+                    TiTiActivity.shared.activity = try Activity.request(attributes: activityAttributes, content: activityContent)
+                    print("Requested Lockscreen Live Activity(Timer) \(String(describing: TiTiActivity.shared.activity?.id)).")
+                } catch (let error) {
+                    print("Error requesting Lockscreen Live Activity(Timer) \(error.localizedDescription).")
+                }
+            }
+        }
     }
 }

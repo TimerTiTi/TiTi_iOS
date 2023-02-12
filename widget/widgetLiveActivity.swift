@@ -10,18 +10,6 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct TiTiLockscreenAttributes: ActivityAttributes {
-    public typealias titiStatus = ContentState
-    
-    public struct ContentState: Codable, Hashable {
-        var taskName: String
-        var timer: ClosedRange<Date>
-    }
-    
-    var isTimer: Bool
-    var colorIndex: Int
-}
-
 struct widgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TiTiLockscreenAttributes.self) { context in
