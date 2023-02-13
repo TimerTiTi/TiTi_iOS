@@ -67,16 +67,16 @@ extension ColorSelectorVC {
         switch self.target {
         case .timer:
             self.backgroundColor = TiTiColor.background
-            if let color = UserDefaults.standard.colorForKey(key: .timerBackground) {
+            if let color = UserDefaults.shared.colorForKey(key: .timerBackground) {
                 self.backgroundColor = color
             }
             let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
             self.textTintColor = isWhite ? .white : .black
         case .stopwatcch:
             self.backgroundColor = TiTiColor.background2
-            if let color = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
+            if let color = UserDefaults.shared.colorForKey(key: .stopwatchBackground) {
                 self.backgroundColor = color
-            } else if let color = UserDefaults.standard.colorForKey(key: .color) {
+            } else if let color = UserDefaults.shared.colorForKey(key: .color) {
                 self.backgroundColor = color
             }
             let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
@@ -130,7 +130,7 @@ extension ColorSelectorVC: UIColorPickerViewControllerDelegate {
     private func changeBackgroundColor(to color: UIColor) {
         self.backgroundColor = color
         let key: UserDefaults.Keys = self.target == .timer ? .timerBackground : .stopwatchBackground
-        UserDefaults.standard.setColor(color: color, forKey: key)
+        UserDefaults.shared.setColor(color: color, forKey: key)
         self.updateColor()
     }
 }
