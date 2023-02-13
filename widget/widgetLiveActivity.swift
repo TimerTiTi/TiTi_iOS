@@ -54,7 +54,7 @@ struct widgetLiveActivity: Widget {
         if let color = UserDefaults.shared.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
             return Color(color)
         } else {
-            return Color(UIColor(named: "D1")!)
+            return Color(UIColor(named: context.attributes.isTimer ? "Background" : "Background2")!)
         }
     }
 }
@@ -96,7 +96,7 @@ struct LockScreenLiveActivityView: View {
         if let color = UserDefaults.shared.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
             return Color(color)
         } else {
-            return Color(UIColor(named: "D1")!)
+            return Color(UIColor(named: context.attributes.isTimer ? "Background" : "Background2")!)
         }
     }
 }
