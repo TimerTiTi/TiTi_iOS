@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import UserNotifications
+import ActivityKit
 
 final class StopwatchVM {
     @Published private(set) var times: Times
@@ -111,12 +112,16 @@ final class StopwatchVM {
             self.timerStop()
             self.removeBadge()
             self.removeNotification()
+            async {
+                await self.endLiveActivity()
+            }
         } else {
             self.updateAnimationSetting()
             RecordController.shared.recordTimes.recordStart()
             self.timerStart()
             self.setBadge()
             self.sendNotification()
+            self.startLiveActivity()
         }
     }
     
@@ -223,5 +228,39 @@ final class StopwatchVM {
         self.timeOfSumViewModel.updateIsWhite(to: isWhite)
         self.timeOfStopwatchViewModel.updateIsWhite(to: isWhite)
         self.timeOfTargetViewModel.updateIsWhite(to: isWhite)
+    }
+}
+
+// MARK: Live Activity & Dynamic Island
+extension StopwatchVM {
+    private func startLiveActivity() {
+        if #available(iOS 16.2, *) {
+            if ActivityAuthorizationInfo().areActivitiesEnabled {
+                let past = Calendar.current.date(byAdding: .second, value: -self.times.stopwatch, to: Date())!
+                let future = Calendar.current.date(byAdding: .hour, value: 8, to: Date())!
+                let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: past...future)
+                let activityAttributes = TiTiLockscreenAttributes(isTimer: false, colorIndex: UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1)
+                let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
+                
+                do {
+                    TiTiActivity.shared.activity = try Activity.request(attributes: activityAttributes, content: activityContent)
+                    print("Requested Lockscreen Live Activity(Stopwatch) \(String(describing: TiTiActivity.shared.activity?.id)).")
+                } catch (let error) {
+                    print("Error requesting Lockscreen Live Activity(Stopwatch) \(error.localizedDescription).")
+                }
+            }
+        }
+    }
+    
+    private func endLiveActivity() async {
+        if #available(iOS 16.2, *) {
+            let finalStatus = TiTiLockscreenAttributes.titiStatus(taskName: self.taskName, timer: Date.now...Date.now)
+            let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+
+            for activity in Activity<TiTiLockscreenAttributes>.activities {
+                await TiTiActivity.shared.activity?.end(finalContent, dismissalPolicy: .immediate)
+                print("Ending the Live Activity(Stopwatch): \(activity.id)")
+            }
+        }
     }
 }
