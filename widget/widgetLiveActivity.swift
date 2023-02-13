@@ -42,19 +42,35 @@ struct widgetLiveActivity: Widget {
 
 struct LockScreenLiveActivityView: View {
     let context: ActivityViewContext<TiTiLockscreenAttributes>
+    @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
     var body: some View {
-        VStack(spacing: -3) {
-            Spacer(minLength: 14)
-            Text("\(context.state.taskName)")
-            Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
-                .multilineTextAlignment(.center)
-                .monospacedDigit()
-                .font(.system(size: 44, weight: .semibold))
-                .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
-            Spacer()
+        if isLuminanceReduced {
+            VStack(spacing: -3) {
+                Spacer(minLength: 14)
+                Text("\(context.state.taskName)")
+                    .foregroundColor(.primary.opacity(0.5))
+                Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
+                    .multilineTextAlignment(.center)
+                    .monospacedDigit()
+                    .font(.system(size: 44, weight: .semibold))
+                    .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!).opacity(0.5))
+                Spacer()
+            }
+            .background(Color(UIColor.systemBackground).opacity(0.6))
+        } else {
+            VStack(spacing: -3) {
+                Spacer(minLength: 14)
+                Text("\(context.state.taskName)")
+                Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
+                    .multilineTextAlignment(.center)
+                    .monospacedDigit()
+                    .font(.system(size: 44, weight: .semibold))
+                    .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
+                Spacer()
+            }
+            .background(Color(UIColor.systemBackground).opacity(0.6))
         }
-        .background(Color(UIColor.systemBackground).opacity(0.6))
     }
 }
 
