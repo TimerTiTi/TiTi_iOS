@@ -116,7 +116,6 @@
 		8765234C28C7948700487BFB /* TotalTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234B28C7948700487BFB /* TotalTime.swift */; };
 		8765234F28C7964500487BFB /* TotalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234E28C7964500487BFB /* TotalVM.swift */; };
 		8765235128C79C4400487BFB /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765235028C79C4400487BFB /* TotalView.swift */; };
-		87672DC3299A532A002348BF /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
 		876A85552832135E00978035 /* daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A85542832135E00978035 /* daily.swift */; };
 		8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8771190C28954B4A00F53FAD /* StandardWeekTaskCell.xib */; };
@@ -1816,7 +1815,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -1843,7 +1842,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;

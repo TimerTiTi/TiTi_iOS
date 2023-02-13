@@ -33,14 +33,18 @@ struct widgetLiveActivity: Widget {
                 }
             } compactLeading: {
                 Image("titiIcon")
+                    .renderingMode(.template)
+                    .colorMultiply(color(context: context))
             } compactTrailing: {
                 Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
                     .monospacedDigit()
                     .frame(width: 50)
                     .font(.system(size: 12.7, weight: .semibold))
-                    .foregroundColor(Color(UIColor(named: "tintColor")!))
+                    .foregroundColor(color(context: context))
             } minimal: {
                 Image("titiIcon")
+                    .renderingMode(.template)
+                    .colorMultiply(color(context: context))
             }
             .contentMargins(.all, 8, for: .expanded)
         }
