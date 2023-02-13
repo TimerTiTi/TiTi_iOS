@@ -13,14 +13,11 @@ import SwiftUI
 struct widgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TiTiLockscreenAttributes.self) { context in
-            // Create the presentation that appears on the Lock Screen and as a
-            // banner on the Home Screen of devices that don't support the
-            // Dynamic Island.
+            // Presentation on Lock Screen and as a banner on the Home Screen
             LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
+                // Expanded UI goes here(regions: leading/trailing/center/bottom)
                 DynamicIslandExpandedRegion(.leading) {
                     Text("Leading")
                 }
@@ -29,7 +26,6 @@ struct widgetLiveActivity: Widget {
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     Text("Bottom")
-                    // more content
                 }
             } compactLeading: {
                 Text("L")
