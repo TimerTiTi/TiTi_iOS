@@ -18,5 +18,4 @@ struct TiTiLockscreenAttributes: ActivityAttributes {
     }
     
     var isTimer: Bool
-    var colorIndex: Int
 }

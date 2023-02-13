@@ -29,7 +29,7 @@ struct widgetLiveActivity: Widget {
                         .multilineTextAlignment(.center)
                         .monospacedDigit()
                         .font(.system(size: 44, weight: .semibold))
-                        .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
+                        .foregroundColor(color(context: context))
                 }
             } compactLeading: {
                 Image("titiIcon")
@@ -43,6 +43,14 @@ struct widgetLiveActivity: Widget {
                 Image("titiIcon")
             }
             .contentMargins(.all, 8, for: .expanded)
+        }
+    }
+    
+    func color(context: ActivityViewContext<TiTiLockscreenAttributes>) -> Color {
+        if let color = UserDefaults.shared.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
+            return Color(color)
+        } else {
+            return Color(UIColor(named: "D1")!)
         }
     }
 }
@@ -61,7 +69,7 @@ struct LockScreenLiveActivityView: View {
                     .multilineTextAlignment(.center)
                     .monospacedDigit()
                     .font(.system(size: 44, weight: .semibold))
-                    .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!).opacity(0.5))
+                    .foregroundColor(color(context: context).opacity(0.5))
                 Spacer()
             }
             .background(Color(UIColor.systemBackground).opacity(0.6))
@@ -73,16 +81,24 @@ struct LockScreenLiveActivityView: View {
                     .multilineTextAlignment(.center)
                     .monospacedDigit()
                     .font(.system(size: 44, weight: .semibold))
-                    .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
+                    .foregroundColor(color(context: context))
                 Spacer()
             }
             .background(Color(UIColor.systemBackground).opacity(0.6))
         }
     }
+    
+    func color(context: ActivityViewContext<TiTiLockscreenAttributes>) -> Color {
+        if let color = UserDefaults.shared.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
+            return Color(color)
+        } else {
+            return Color(UIColor(named: "D1")!)
+        }
+    }
 }
 
 struct widgetLiveActivity_Previews: PreviewProvider {
-    static let attributes = TiTiLockscreenAttributes(isTimer: true, colorIndex: 6)
+    static let attributes = TiTiLockscreenAttributes(isTimer: true)
     static let contentState = TiTiLockscreenAttributes.ContentState(taskName: "TiTi 개발", timer: (Date()...Calendar.current.date(byAdding: .hour, value: 3, to: Date())!))
 
     static var previews: some View {

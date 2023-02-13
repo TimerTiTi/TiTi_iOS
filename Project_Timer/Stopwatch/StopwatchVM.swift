@@ -239,7 +239,7 @@ extension StopwatchVM {
                 let past = Calendar.current.date(byAdding: .second, value: -self.times.stopwatch, to: Date())!
                 let future = Calendar.current.date(byAdding: .hour, value: 8, to: Date())!
                 let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: past...future)
-                let activityAttributes = TiTiLockscreenAttributes(isTimer: false, colorIndex: UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1)
+                let activityAttributes = TiTiLockscreenAttributes(isTimer: false)
                 let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
                 
                 do {
