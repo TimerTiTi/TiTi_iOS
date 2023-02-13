@@ -45,6 +45,7 @@
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
 		870AE71E25E52941004DD27E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870AE71D25E52941004DD27E /* ContentView.swift */; };
+		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
 		87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */; };
@@ -1370,6 +1371,7 @@
 				878B30EE2992BB5A00BE7413 /* widget.swift in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
+				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
