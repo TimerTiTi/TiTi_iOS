@@ -16,26 +16,33 @@ struct widgetLiveActivity: Widget {
             // Presentation on Lock Screen and as a banner on the Home Screen
             LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
+            // Create the presentations that appear in the Dynamic Island.
             DynamicIsland {
-                // Expanded UI goes here(regions: leading/trailing/center/bottom)
-                DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                // Create the expanded presentation.
+                DynamicIslandExpandedRegion(.center) {
+                    Text("\(context.state.taskName)")
+                        .lineLimit(1)
                 }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
-                }
+                
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
+                    Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
+                        .multilineTextAlignment(.center)
+                        .monospacedDigit()
+                        .font(.system(size: 44, weight: .semibold))
+                        .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
                 }
             } compactLeading: {
-                Text("L")
+                Image("titiIcon")
             } compactTrailing: {
-                Text("T")
+                Text(timerInterval: context.state.timer, countsDown: context.attributes.isTimer)
+                    .monospacedDigit()
+                    .frame(width: 50)
+                    .font(.system(size: 12.7, weight: .semibold))
+                    .foregroundColor(Color(UIColor(named: "tintColor")!))
             } minimal: {
-                Text("Min")
+                Image("titiIcon")
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
+            .contentMargins(.all, 8, for: .expanded)
         }
     }
 }
