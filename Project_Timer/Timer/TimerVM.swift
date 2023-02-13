@@ -124,7 +124,6 @@ final class TimerVM {
             self.timerStart()
             self.setBadge()
             self.sendNotification()
-            // live activity test
             self.startLiveActivity()
         }
     }
@@ -276,11 +275,8 @@ extension TimerVM {
                 let date = Date.now...future
                 let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: date)
                 let activityAttributes = TiTiLockscreenAttributes(isTimer: true, colorIndex: UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1)
-                
                 let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
                 
-                // Add code to start the Live Activity here.
-                // Start the Live Activity.
                 do {
                     TiTiActivity.shared.activity = try Activity.request(attributes: activityAttributes, content: activityContent)
                     print("Requested Lockscreen Live Activity(Timer) \(String(describing: TiTiActivity.shared.activity?.id)).")
