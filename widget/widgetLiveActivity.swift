@@ -52,7 +52,6 @@ struct LockScreenLiveActivityView: View {
                 .monospacedDigit()
                 .font(.system(size: 44, weight: .semibold))
                 .foregroundColor(Color(UIColor(named: "D\(context.attributes.colorIndex)")!))
-//                .shadow(color: .black, radius: 1)
             Spacer()
         }
         .background(Color(UIColor.systemBackground).opacity(0.6))
