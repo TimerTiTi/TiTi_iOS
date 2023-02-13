@@ -116,9 +116,7 @@ final class TimerVM {
     
     func timerAction() {
         if self.timerRunning {
-            self.timerStop()
-            self.removeBadge()
-            self.removeNotification()
+            self.terminateTimer()
         } else {
             self.updateAnimationSetting()
             RecordController.shared.recordTimes.recordStart()
@@ -172,9 +170,16 @@ final class TimerVM {
         self.updateTimes()
         
         if self.times.timer < 1 {
-            self.timerStop()
-            self.removeBadge()
-            self.removeNotification()
+            self.terminateTimer()
+        }
+    }
+    
+    private func terminateTimer() {
+        self.timerStop()
+        self.removeBadge()
+        self.removeNotification()
+        async {
+            await self.endLiveActivity()
         }
     }
     
@@ -262,6 +267,7 @@ final class TimerVM {
     }
 }
 
+// MARK: Live Activity & Dynamic Island
 extension TimerVM {
     private func startLiveActivity() {
         if #available(iOS 16.2, *) {
@@ -281,6 +287,18 @@ extension TimerVM {
                 } catch (let error) {
                     print("Error requesting Lockscreen Live Activity(Timer) \(error.localizedDescription).")
                 }
+            }
+        }
+    }
+    
+    private func endLiveActivity() async {
+        if #available(iOS 16.2, *) {
+            let finalStatus = TiTiLockscreenAttributes.titiStatus(taskName: self.taskName, timer: Date.now...Date.now)
+            let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
+
+            for activity in Activity<TiTiLockscreenAttributes>.activities {
+                await TiTiActivity.shared.activity?.end(finalContent, dismissalPolicy: .immediate)
+                print("Ending the Live Activity(Timer): \(activity.id)")
             }
         }
     }
