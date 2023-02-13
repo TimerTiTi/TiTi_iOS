@@ -274,7 +274,7 @@ extension TimerVM {
                 let future = Calendar.current.date(byAdding: .second, value: self.times.timer, to: Date())!
                 let date = Date.now...future
                 let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: date)
-                let activityAttributes = TiTiLockscreenAttributes(isTimer: true, colorIndex: UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1)
+                let activityAttributes = TiTiLockscreenAttributes(isTimer: true)
                 let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
                 
                 do {

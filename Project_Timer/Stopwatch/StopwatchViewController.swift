@@ -836,9 +836,9 @@ extension StopwatchViewController: ColorUpdateable {
     }
     
     func fetchColor() {
-        if let color = UserDefaults.standard.colorForKey(key: .stopwatchBackground) {
+        if let color = UserDefaults.shared.colorForKey(key: .stopwatchBackground) {
             self.backgroundColor = color
-        } else if let color = UserDefaults.standard.colorForKey(key: .color) {
+        } else if let color = UserDefaults.shared.colorForKey(key: .color) {
             self.backgroundColor = color
         }
         let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? false
