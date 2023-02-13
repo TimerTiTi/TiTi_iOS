@@ -30,4 +30,15 @@ extension UserDefaults {
         }
         set(colorData, forKey: key.rawValue)
     }
+    
+    static var shared: UserDefaults {
+        let appGroup = "group.com.FDEE.TiTi"
+        return UserDefaults(suiteName: appGroup)!
+    }
+    
+    static func updateShared() {
+        UserDefaults.standard.dictionaryRepresentation().forEach { (key, value) in
+            UserDefaults.shared.set(value, forKey: key)
+        }
+    }
 }
