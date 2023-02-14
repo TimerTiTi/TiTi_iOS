@@ -177,6 +177,7 @@
 		87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8BC3A288D1436007ED793 /* LogVC.swift */; };
 		87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */; };
 		87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */; };
+		87B539AB299BB710001E354C /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B539AA299BB710001E354C /* Versions.swift */; };
 		87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEE8281C17000095CD29 /* RecordController.swift */; };
 		87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */; };
 		87BEBEED281C282D0095CD29 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
@@ -217,8 +218,8 @@
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
-		87FD9FA72998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
-		87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
+		87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */; };
+		87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
@@ -422,6 +423,7 @@
 		87A8BC3A288D1436007ED793 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
 		87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorPopupVC.swift; sourceTree = "<group>"; };
 		87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		87B539AA299BB710001E354C /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
 		87BEBEE8281C17000095CD29 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVM.swift; sourceTree = "<group>"; };
 		87BEBEEC281C282D0095CD29 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
@@ -466,7 +468,7 @@
 		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
-		87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLockscreenAttributes.swift; sourceTree = "<group>"; };
+		87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopwatchAttributes.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -818,7 +820,6 @@
 				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
 				878B30F02992BB5B00BE7413 /* Assets.xcassets */,
 				878B30F22992BB5B00BE7413 /* Info.plist */,
-				87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */,
 			);
 			path = widget;
 			sourceTree = "<group>";
@@ -917,6 +918,7 @@
 				87035DF6282225C800055378 /* Protocols.swift */,
 				87C51509267B38C0003DA21D /* Converter.swift */,
 				87D1250028771AAD00018658 /* Language.swift */,
+				87B539AA299BB710001E354C /* Versions.swift */,
 				87FD9FA92998D58900D9B0FF /* sharedClass */,
 				87A48BC527DEF0B200F46D0F /* Extension */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
@@ -957,7 +959,6 @@
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791082E28387D1F005D7B10 /* String+Extension.swift */,
 				8751C6F928472A8D007FAFC4 /* Collection.swift */,
-				875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */,
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
 				875C98CC2871C0DC008F7ADD /* UITextField+Extension.swift */,
 				04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */,
@@ -978,6 +979,15 @@
 				87A48BC427DEEF5F00F46D0F /* SwiftUI */,
 			);
 			path = LogHome;
+			sourceTree = "<group>";
+		};
+		87B539AC299BC0B6001E354C /* SharedCode */ = {
+			isa = PBXGroup;
+			children = (
+				87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */,
+				875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */,
+			);
+			path = SharedCode;
 			sourceTree = "<group>";
 		};
 		87BF666828F809DE00CD6F19 /* TimeLabelView */ = {
@@ -1152,6 +1162,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87B539AC299BC0B6001E354C /* SharedCode */,
 				8721C6D52969123100410D57 /* Usecase */,
 				8791081D2838752D005D7B10 /* Network */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
@@ -1366,7 +1377,7 @@
 			files = (
 				878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				878B30EE2992BB5A00BE7413 /* widget.swift in Sources */,
-				87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */,
+				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
@@ -1417,7 +1428,7 @@
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
-				87FD9FA72998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */,
+				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
 				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
@@ -1558,6 +1569,7 @@
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistViewController.swift in Sources */,
+				87B539AB299BB710001E354C /* Versions.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
@@ -1811,7 +1823,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -1838,7 +1850,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
