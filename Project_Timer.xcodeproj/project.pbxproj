@@ -219,7 +219,6 @@
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
 		87FD9FA72998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
 		87FD9FA82998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */; };
-		87FD9FAB2998D5E600D9B0FF /* TiTiActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
 		93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08520248DDF2F00E215BD /* AppDelegate.swift */; };
 		93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B08522248DDF2F00E215BD /* SceneDelegate.swift */; };
@@ -468,7 +467,6 @@
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
 		87FD9FA62998D0BD00D9B0FF /* TiTiLockscreenAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLockscreenAttributes.swift; sourceTree = "<group>"; };
-		87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiActivity.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B08520248DDF2F00E215BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1126,7 +1124,6 @@
 				04172E972885453F00F962F2 /* MotionDetector.swift */,
 				87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */,
 				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
-				87FD9FAA2998D5E600D9B0FF /* TiTiActivity.swift */,
 			);
 			path = sharedClass;
 			sourceTree = "<group>";
@@ -1428,7 +1425,6 @@
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
 				870AE71E25E52941004DD27E /* ContentView.swift in Sources */,
-				87FD9FAB2998D5E600D9B0FF /* TiTiActivity.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87BFCBCC28EFB10F00FC688E /* TargetTimePickerVM.swift in Sources */,

@@ -243,8 +243,8 @@ extension StopwatchVM {
                 let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
                 
                 do {
-                    TiTiActivity.shared.activity = try Activity.request(attributes: activityAttributes, content: activityContent)
-                    print("Requested Lockscreen Live Activity(Stopwatch) \(String(describing: TiTiActivity.shared.activity?.id)).")
+                    let activity = try Activity.request(attributes: activityAttributes, content: activityContent)
+                    print("Requested Lockscreen Live Activity(Stopwatch) \(String(describing: activity.id)).")
                 } catch (let error) {
                     print("Error requesting Lockscreen Live Activity(Stopwatch) \(error.localizedDescription).")
                 }
@@ -258,7 +258,7 @@ extension StopwatchVM {
             let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
 
             for activity in Activity<TiTiLockscreenAttributes>.activities {
-                await TiTiActivity.shared.activity?.end(finalContent, dismissalPolicy: .immediate)
+                await activity.end(finalContent, dismissalPolicy: .immediate)
                 print("Ending the Live Activity(Stopwatch): \(activity.id)")
             }
         }
