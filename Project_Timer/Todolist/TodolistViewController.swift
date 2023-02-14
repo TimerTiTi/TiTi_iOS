@@ -69,14 +69,14 @@ class TodolistViewController: UIViewController {
         let alert = UIAlertController(title: "See how to use the *".localizedForNewFeatures(input: "Todolist"), message: "The new * feature added.".localizedForNewFeatures(input: "TodoGroup"), preferredStyle: .alert)
         let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
             self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
-            UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
+            Versions.update(forKey: .todolistCheckVer)
             self?.useageButton.isHidden = true
         })
         let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
             let url = NetworkURL.Useage.todolist
             if let url = URL(string: url) {
                 UIApplication.shared.open(url, options: [:])
-                UserDefaultsManager.set(to: String.currentVersion, forKey: .todolistCheckVer)
+                Versions.update(forKey: .todolistCheckVer)
                 self?.useageButton.isHidden = true
             }
         })
@@ -89,9 +89,7 @@ class TodolistViewController: UIViewController {
 
 extension TodolistViewController {
     private func checkUseage() {
-        let todolistCheckVer: String = UserDefaultsManager.get(forKey: .todolistCheckVer) as? String ?? "7.11"
-        let currentVer = String.currentVersion
-        if currentVer.compare(todolistCheckVer, options: .numeric) == .orderedDescending {
+        if Versions.check(forKey: .todolistCheckVer) {
             self.useageButton.isHidden = false
         }
     }

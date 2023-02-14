@@ -1,5 +1,5 @@
 //
-//  TiTiLockscreenAttributes.swift
+//  TimerStopwatchAttributes.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/02/12.
@@ -9,7 +9,7 @@
 import Foundation
 import ActivityKit
 
-struct TiTiLockscreenAttributes: ActivityAttributes {
+struct TimerStopwatchAttributes: ActivityAttributes {
     public typealias titiStatus = ContentState
     
     public struct ContentState: Codable, Hashable {

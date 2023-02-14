@@ -12,7 +12,7 @@ import SwiftUI
 
 struct widgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: TiTiLockscreenAttributes.self) { context in
+        ActivityConfiguration(for: TimerStopwatchAttributes.self) { context in
             // Presentation on Lock Screen and as a banner on the Home Screen
             LockScreenLiveActivityView(context: context)
         } dynamicIsland: { context in
@@ -50,7 +50,7 @@ struct widgetLiveActivity: Widget {
         }
     }
     
-    func color(context: ActivityViewContext<TiTiLockscreenAttributes>) -> Color {
+    func color(context: ActivityViewContext<TimerStopwatchAttributes>) -> Color {
         if let color = UserDefaults.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
             return Color(color)
         } else {
@@ -60,7 +60,7 @@ struct widgetLiveActivity: Widget {
 }
 
 struct LockScreenLiveActivityView: View {
-    let context: ActivityViewContext<TiTiLockscreenAttributes>
+    let context: ActivityViewContext<TimerStopwatchAttributes>
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
     
     var body: some View {
@@ -93,7 +93,7 @@ struct LockScreenLiveActivityView: View {
         }
     }
     
-    func color(context: ActivityViewContext<TiTiLockscreenAttributes>) -> Color {
+    func color(context: ActivityViewContext<TimerStopwatchAttributes>) -> Color {
         if let color = UserDefaults.colorForKey(key: context.attributes.isTimer ? .timerBackground : .stopwatchBackground) {
             return Color(color)
         } else {
@@ -103,8 +103,8 @@ struct LockScreenLiveActivityView: View {
 }
 
 struct widgetLiveActivity_Previews: PreviewProvider {
-    static let attributes = TiTiLockscreenAttributes(isTimer: true)
-    static let contentState = TiTiLockscreenAttributes.ContentState(taskName: "TiTi 개발", timer: (Date()...Calendar.current.date(byAdding: .hour, value: 3, to: Date())!))
+    static let attributes = TimerStopwatchAttributes(isTimer: true)
+    static let contentState = TimerStopwatchAttributes.ContentState(taskName: "TiTi 개발", timer: (Date()...Calendar.current.date(byAdding: .hour, value: 3, to: Date())!))
 
     static var previews: some View {
         attributes
