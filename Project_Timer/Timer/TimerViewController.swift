@@ -879,7 +879,7 @@ extension TimerViewController: ColorUpdateable {
     }
     
     func fetchColor() {
-        if let color = UserDefaults.shared.colorForKey(key: .timerBackground) {
+        if let color = UserDefaults.colorForKey(key: .timerBackground) {
             self.backgroundColor = color
         }
         let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? false

@@ -10,9 +10,9 @@ import SwiftUI
 
 extension Color {
     public static var stopWatchColor: Color {
-        if let userColor = UserDefaults.shared.colorForKey(key: .stopwatchBackground) {
+        if let userColor = UserDefaults.colorForKey(key: .stopwatchBackground) {
             return Color(userColor)
-        } else if let userColor = UserDefaults.standard.colorForKey(key: .color) {
+        } else if let userColor = UserDefaults.colorForKey(key: .color) {
             return Color(userColor)
         } else {
             return Color(TiTiColor.background2 ?? .clear)
@@ -20,7 +20,7 @@ extension Color {
     }
     
     public static var timerColor: Color {
-        if let userColor = UserDefaults.shared.colorForKey(key: .timerBackground) {
+        if let userColor = UserDefaults.colorForKey(key: .timerBackground) {
             return Color(userColor)
         } else {
             return Color(TiTiColor.background ?? .clear)
