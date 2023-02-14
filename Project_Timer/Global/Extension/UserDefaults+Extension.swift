@@ -15,20 +15,21 @@ extension UserDefaults {
         case color // 레거시 값
     }
     
-    func colorForKey(key: Keys) -> UIColor? {
+    static func colorForKey(key: Keys) -> UIColor? {
         var color: UIColor?
-        if let colorData = data(forKey: key.rawValue) {
+        if let colorData = UserDefaults.shared.data(forKey: key.rawValue) {
             color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as? UIColor
         }
         return color
     }
     
-    func setColor(color: UIColor?, forKey key: Keys) {
+    static func setColor(color: UIColor?, forKey key: Keys) {
         var colorData: NSData?
         if let color = color {
             colorData = NSKeyedArchiver.archivedData(withRootObject: color) as NSData?
         }
-        set(colorData, forKey: key.rawValue)
+        UserDefaults.standard.set(colorData, forKey: key.rawValue)
+        UserDefaults.shared.set(colorData, forKey: key.rawValue)
     }
     
     static var shared: UserDefaults {
