@@ -273,8 +273,8 @@ extension TimerVM {
             if ActivityAuthorizationInfo().areActivitiesEnabled {
                 let future = Calendar.current.date(byAdding: .second, value: self.times.timer, to: Date())!
                 let date = Date.now...future
-                let initialContentState = TiTiLockscreenAttributes.ContentState(taskName: self.taskName, timer: date)
-                let activityAttributes = TiTiLockscreenAttributes(isTimer: true)
+                let initialContentState = TimerStopwatchAttributes.ContentState(taskName: self.taskName, timer: date)
+                let activityAttributes = TimerStopwatchAttributes(isTimer: true)
                 let activityContent = ActivityContent(state: initialContentState, staleDate: Calendar.current.date(byAdding: .minute, value: 30, to: Date())!)
                 
                 do {
@@ -289,10 +289,10 @@ extension TimerVM {
     
     private func endLiveActivity() async {
         if #available(iOS 16.2, *) {
-            let finalStatus = TiTiLockscreenAttributes.titiStatus(taskName: self.taskName, timer: Date.now...Date.now)
+            let finalStatus = TimerStopwatchAttributes.titiStatus(taskName: self.taskName, timer: Date.now...Date.now)
             let finalContent = ActivityContent(state: finalStatus, staleDate: nil)
 
-            for activity in Activity<TiTiLockscreenAttributes>.activities {
+            for activity in Activity<TimerStopwatchAttributes>.activities {
                 await activity.end(finalContent, dismissalPolicy: .immediate)
                 print("Ending the Live Activity(Timer): \(activity.id)")
             }

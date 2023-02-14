@@ -49,7 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         /// UserDefaults.standard -> shared 반영
-        UserDefaults.updateShared()
+        if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
+            UserDefaults.updateShared()
+            Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
+        }
         
         return true
     }

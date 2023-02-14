@@ -12,8 +12,8 @@ import SwiftUI
 @main
 struct widgetBundle: WidgetBundle {
     var body: some Widget {
-        widget()
-        if #available(iOS 16.1, *) {
+//        widget()
+        if #available(iOS 16.2, *) {
             widgetLiveActivity()
         }
     }

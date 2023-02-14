@@ -172,14 +172,14 @@ class TimerViewController: UIViewController {
         let alert = UIAlertController(title: "See how to use the *".localizedForNewFeatures(input: "Timer"), message: "The new * feature added.".localizedForNewFeatures(input: "Sleep Mode"), preferredStyle: .alert)
         let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
             self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
-            UserDefaultsManager.set(to: String.currentVersion, forKey: .timerCheckVer)
+            Versions.update(forKey: .timerCheckVer)
             self?.useageButton.isHidden = true
         })
         let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
             let url = NetworkURL.Useage.timer
             if let url = URL(string: url) {
                 UIApplication.shared.open(url, options: [:])
-                UserDefaultsManager.set(to: String.currentVersion, forKey: .timerCheckVer)
+                Versions.update(forKey: .timerCheckVer)
                 self?.useageButton.isHidden = true
             }
         })
@@ -342,9 +342,7 @@ extension TimerViewController {
 // MARK: - Configure
 extension TimerViewController {
     private func checkUseage() {
-        let todolistCheckVer: String = UserDefaultsManager.get(forKey: .timerCheckVer) as? String ?? "7.12"
-        let currentVer = String.currentVersion
-        if currentVer.compare(todolistCheckVer, options: .numeric) == .orderedDescending {
+        if Versions.check(forKey: .timerCheckVer) {
             self.useageButton.isHidden = false
         }
     }
