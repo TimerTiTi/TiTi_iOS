@@ -37,6 +37,13 @@ final class LogHomeVM {
     let monthVM: MonthVM
     let weekVM: WeekVM
     let dailyVM: DailyVM
+    // MARK: 임시 로직 (
+    private var dayOffset: Int = 0 {
+        didSet {
+            self.loadDaily()
+            self.updateDailys()
+        }
+    }
     
     init() {
         self.totalVM = TotalVM()
@@ -52,7 +59,15 @@ final class LogHomeVM {
     }
     
     func loadDaily() {
-        self.daily = RecordController.shared.daily
+        let dailys = RecordController.shared.dailys
+        let currentDaily = RecordController.shared.daily
+        if let targetIndex = dailys.dates.firstIndex(of: currentDaily.day.zeroDate) {
+            var index = max(0, targetIndex+dayOffset)
+            index = min(dailys.dailys.count-1, index)
+            self.daily = dailys.dailys[index]
+        } else {
+            self.daily = RecordController.shared.daily
+        }
     }
     
     func updateColor() {
@@ -63,6 +78,15 @@ final class LogHomeVM {
         self.weekVM.updateColor()
         self.dailyVM.updateColor()
     }
+    
+    // MARK: 임시 로직 (날짜 이동)
+    func previewDay() {
+        self.dayOffset -= 1
+    }
+    
+    func nextDay() {
+        self.dayOffset += 1
+    }
 }
 
 extension LogHomeVM {
@@ -71,7 +95,8 @@ extension LogHomeVM {
     }
     
     private func updateMonth() {
-        let monthTime = MonthTime(baseDate: Date(), dailys: self.dailys)
+        let baseDate = self.daily.day.zeroDate.localDate
+        let monthTime = MonthTime(baseDate: baseDate, dailys: self.dailys)
         self.monthSmallVM.update(monthTime: monthTime)
         self.monthVM.update(monthTime: monthTime)
     }
@@ -91,7 +116,7 @@ extension LogHomeVM {
 
 extension LogHomeVM {
     private func updateWeekDates() {
-        let baseDate = Date().zeroDate.localDate
+        let baseDate = self.daily.day.zeroDate.localDate
         let indexDayOfWeek = baseDate.indexDayOfWeek
         let mon = Calendar.current.date(byAdding: .day, value: -indexDayOfWeek, to: baseDate) ?? Date()
         self.weekDates = (0...6).compactMap { Calendar.current.date(byAdding: .day, value: $0, to: mon)}

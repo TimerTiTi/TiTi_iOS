@@ -3340,10 +3340,10 @@
                                 <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoT-Cu-LUq" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="980.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1008.6666666666666"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCd-iE-ijn">
-                                                <rect key="frame" x="25.666666666666657" y="8" width="339" height="964.66666666666663"/>
+                                                <rect key="frame" x="25.666666666666657" y="35.999999999999943" width="339" height="964.66666666666652"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4Yg-qI-DeF">
                                                         <rect key="frame" x="0.0" y="0.0" width="339" height="179.33333333333334"/>
@@ -3389,7 +3389,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZq-hJ-9uD">
-                                                                        <rect key="frame" x="63.999999999999993" y="165.99999999999997" width="29.666666666666664" height="13.333333333333343"/>
+                                                                        <rect key="frame" x="63.999999999999993" y="166" width="29.666666666666664" height="13.333333333333343"/>
                                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -3413,7 +3413,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGF-kP-aGb">
-                                                                        <rect key="frame" x="65.333333333333343" y="165.99999999999997" width="27.333333333333329" height="13.333333333333343"/>
+                                                                        <rect key="frame" x="65.333333333333343" y="166" width="27.333333333333329" height="13.333333333333343"/>
                                                                         <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -3487,7 +3487,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9z-gZ-Koq">
-                                                                <rect key="frame" x="157.66666666666669" y="166" width="23.333333333333343" height="13.333333333333343"/>
+                                                                <rect key="frame" x="157.66666666666669" y="165.99999999999989" width="23.333333333333343" height="13.333333333333343"/>
                                                                 <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="12"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -3496,10 +3496,55 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQW-GT-aZn">
+                                                <rect key="frame" x="111" y="4.6666666666666643" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="d5m-9h-9PX"/>
+                                                    <constraint firstAttribute="height" constant="26" id="ouW-bj-faw"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="chevron.left" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="medium"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="previewRecord:" destination="u5i-hn-5ua" eventType="touchUpInside" id="qnC-RZ-44v"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6x-rP-pC9">
+                                                <rect key="frame" x="253" y="4.6666666666666643" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="26" id="fIw-Bi-njZ"/>
+                                                    <constraint firstAttribute="height" constant="26" id="icg-WS-Hvh"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="chevron.right" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="medium"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="nextRecord:" destination="u5i-hn-5ua" eventType="touchUpInside" id="5cu-4Q-VWy"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023.03.01" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgX-Gq-Pen">
+                                                <rect key="frame" x="145" y="8" width="100" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="LKC-U9-Egq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="CCd-iE-ijn" firstAttribute="top" secondItem="YoT-Cu-LUq" secondAttribute="top" constant="8" id="Taj-Ne-0hx"/>
+                                            <constraint firstItem="e6x-rP-pC9" firstAttribute="leading" secondItem="wgX-Gq-Pen" secondAttribute="trailing" constant="8" id="39Y-pP-Ba5"/>
+                                            <constraint firstItem="CCd-iE-ijn" firstAttribute="top" secondItem="YoT-Cu-LUq" secondAttribute="top" constant="36" id="Taj-Ne-0hx"/>
+                                            <constraint firstItem="e6x-rP-pC9" firstAttribute="centerY" secondItem="wgX-Gq-Pen" secondAttribute="centerY" id="Udr-VO-W23"/>
+                                            <constraint firstItem="wgX-Gq-Pen" firstAttribute="leading" secondItem="dQW-GT-aZn" secondAttribute="trailing" constant="8" id="Zj1-Nw-VPg"/>
+                                            <constraint firstItem="wgX-Gq-Pen" firstAttribute="top" secondItem="YoT-Cu-LUq" secondAttribute="top" constant="8" id="aJE-RT-V2E"/>
+                                            <constraint firstItem="wgX-Gq-Pen" firstAttribute="centerX" secondItem="YoT-Cu-LUq" secondAttribute="centerX" id="bxU-Ch-EJd"/>
+                                            <constraint firstItem="dQW-GT-aZn" firstAttribute="centerY" secondItem="wgX-Gq-Pen" secondAttribute="centerY" id="fGG-28-YKV"/>
                                             <constraint firstItem="CCd-iE-ijn" firstAttribute="centerX" secondItem="YoT-Cu-LUq" secondAttribute="centerX" id="g2W-aE-wrN"/>
                                             <constraint firstAttribute="bottom" secondItem="CCd-iE-ijn" secondAttribute="bottom" constant="8" id="pnG-zs-dwA"/>
                                         </constraints>
@@ -3531,6 +3576,7 @@
                         <outlet property="contentView" destination="YoT-Cu-LUq" id="0SD-UH-1KE"/>
                         <outlet property="dailyLayer" destination="eDm-cs-U7k" id="C4x-yc-nTq"/>
                         <outlet property="dailyView" destination="tpI-WH-fc7" id="I7R-58-g2o"/>
+                        <outlet property="dayLabel" destination="wgX-Gq-Pen" id="glr-5k-WoW"/>
                         <outlet property="monthLayer" destination="uEW-LY-A6I" id="BoH-py-e44"/>
                         <outlet property="monthSmallView" destination="Etl-fQ-Qzz" id="hhe-9P-Zib"/>
                         <outlet property="monthView" destination="Eb5-11-NGt" id="Wnr-FZ-yJX"/>
@@ -4893,6 +4939,7 @@
         <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="checklist" catalog="system" width="128" height="107"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="104"/>
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
@@ -4935,7 +4982,7 @@
             <color red="0.53725490196078429" green="0.43529411764705883" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D1">
-            <color red="0.50980392156862742" green="0.59999999999999998" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50999999046325684" green="0.60000002384185791" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D10">
             <color red="0.81960784313725488" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4965,7 +5012,7 @@
             <color red="1" green="0.61176470588235299" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D9">
-            <color red="0.96078431372549022" green="0.59999999999999998" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96100002527236938" green="0.60000002384185791" blue="0.79199999570846558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.91764705882352937" green="0.43137254901960786" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -35,6 +35,8 @@ final class LogHomeVC: UIViewController {
     
     @IBOutlet var stackViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var stackViewBottomConstraint: NSLayoutConstraint!
+    // MARK: 임시
+    @IBOutlet weak var dayLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,15 @@ final class LogHomeVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    // MARK: 임시
+    @IBAction func previewRecord(_ sender: Any) {
+        self.viewModel?.previewDay()
+    }
+    
+    @IBAction func nextRecord(_ sender: Any) {
+        self.viewModel?.nextDay()
     }
 }
 
@@ -226,7 +237,7 @@ extension LogHomeVC {
 
 extension LogHomeVC {
     private func configureTodayDateLabel(daily: Daily) {
-//        self.todayDateLabel.text = daily.day.MDstyleString
+        self.dayLabel.text = daily.day.zeroDate.localDate.YYYYMMDDstyleString
     }
     
     private func configureTimesticksGraph(daily: Daily) {
