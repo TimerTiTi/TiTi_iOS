@@ -417,7 +417,7 @@ extension TimerVC {
 // MARK: - IBAction
 extension TimerVC {
     private func showTaskSelectVC() {
-        guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
+        guard let setVC = storyboard?.instantiateViewController(withIdentifier: TaskSelectVC.identifier) as? TaskSelectVC else { return }
         setVC.delegate = self
         present(setVC, animated: true, completion: nil)
     }

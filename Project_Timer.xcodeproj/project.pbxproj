@@ -98,7 +98,7 @@
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
-		875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* taskSelectViewController.swift */; };
+		875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* TaskSelectVC.swift */; };
 		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
 		875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */; };
 		875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */; };
@@ -347,7 +347,7 @@
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
-		875AA59B26494365005D15D6 /* taskSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskSelectViewController.swift; sourceTree = "<group>"; };
+		875AA59B26494365005D15D6 /* TaskSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVC.swift; sourceTree = "<group>"; };
 		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
 		875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabActionDelegate.swift; sourceTree = "<group>"; };
 		875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsActionDelegate.swift; sourceTree = "<group>"; };
@@ -713,7 +713,7 @@
 		8762717127DF83E400F812ED /* TaskSelect */ = {
 			isa = PBXGroup;
 			children = (
-				875AA59B26494365005D15D6 /* taskSelectViewController.swift */,
+				875AA59B26494365005D15D6 /* TaskSelectVC.swift */,
 				8757AA3A290511AB00D97517 /* TaskSelectVM.swift */,
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				8757AA3E29052DDF00D97517 /* TaskCell.swift */,
@@ -1441,7 +1441,7 @@
 				87BFCBCC28EFB10F00FC688E /* TargetTimePickerVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
 				877E448C267DF8DD00BF104A /* Dummy.swift in Sources */,
-				875AA59C26494365005D15D6 /* taskSelectViewController.swift in Sources */,
+				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
