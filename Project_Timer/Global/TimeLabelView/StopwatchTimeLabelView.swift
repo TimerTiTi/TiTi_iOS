@@ -27,7 +27,7 @@ struct StopwatchTimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if baseViewModel.timeLabel.hourTens > 0 {
+            if baseViewModel.timeLabelData.hourTens > 0 {
                 BaseSingleTimeLabelView(viewModel: baseViewModel.hourTensViewModel)
             }
             BaseSingleTimeLabelView(viewModel: baseViewModel.hourUnitsViewModel)
