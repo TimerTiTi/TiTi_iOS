@@ -18,7 +18,7 @@ final class WeekTimelineVM: ObservableObject {
         self.resetTimes()
     }
     
-    func update(weekData: DailysWeekData) {
+    func update(weekData: WeekDailysData) {
         var weekTimes = self.weekTimes
         for idx in 0...6 {
             let day = weekData.weekDates[idx].MDstyleString

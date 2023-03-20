@@ -1,5 +1,5 @@
 //
-//  DailysWeekData.swift
+//  WeekDailysData.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/30.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DailysWeekData {
+struct WeekDailysData {
     private(set) var weekDates: [Date] = []
     private(set) var weekNum: Int = 0
     private(set) var dailys: [Daily?] = Array(repeating: nil, count: 7)
