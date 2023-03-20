@@ -10,7 +10,7 @@ import Foundation
 
 final class LogWeekVM {
     /* public */
-    @Published private(set) var weekData: DailysWeekData?
+    @Published private(set) var weekData: WeekDailysData?
     @Published private(set) var top5Tasks: [TaskInfo] = []
     let timelineVM: WeekTimelineVM
     var selectedDate: Date = Date().zeroDate
@@ -20,7 +20,7 @@ final class LogWeekVM {
     }
     
     func selectDate(to date: Date) {
-        let weekData = DailysWeekData(selectedDate: date, dailys: RecordController.shared.dailys.dailys)
+        let weekData = WeekDailysData(selectedDate: date, dailys: RecordController.shared.dailys.dailys)
         self.weekData = weekData
         self.timelineVM.update(weekData: weekData)
         self.top5Tasks = weekData.top5Tasks

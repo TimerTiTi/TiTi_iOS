@@ -240,7 +240,7 @@ extension StandardWeekGraphView {
         self.timesFrameView.layer.borderColor = borderColor
     }
     /// weekData 변경, 또는 color 변경의 경우
-    func updateFromWeekData(_ weekData: DailysWeekData) {
+    func updateFromWeekData(_ weekData: WeekDailysData) {
         self.updateMonthLabel(weekData.weekDates.last)
         self.updateWeekNumLabel(weekData.weekNum)
         self.updateWeekTermLabel(weekData.weekDates.first, weekData.weekDates.last)

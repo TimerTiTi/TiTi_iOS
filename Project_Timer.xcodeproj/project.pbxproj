@@ -194,7 +194,7 @@
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
 		87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */; };
-		87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */; };
+		87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
@@ -442,7 +442,7 @@
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
 		87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
-		87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysWeekData.swift; sourceTree = "<group>"; };
+		87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDailysData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
@@ -1051,7 +1051,7 @@
 		87D4C95828950B24008ECAA4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87D4C95928950B4E008ECAA4 /* DailysWeekData.swift */,
+				87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1497,7 +1497,7 @@
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
 				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
-				87D4C95A28950B4E008ECAA4 /* DailysWeekData.swift in Sources */,
+				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
