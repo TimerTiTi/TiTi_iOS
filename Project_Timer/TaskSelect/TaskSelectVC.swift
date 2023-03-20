@@ -1,5 +1,5 @@
 //
-//  taskSelectViewController.swift
+//  TaskSelectVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/04/05.
@@ -9,8 +9,8 @@
 import UIKit
 import Combine
 
-final class taskSelectViewController: UIViewController {
-    static let identifier = "taskSelectViewController"
+final class TaskSelectVC: UIViewController {
+    static let identifier = "TaskSelectVC"
     
     @IBOutlet weak var tasksTableView: UITableView!
     @IBOutlet weak var editButton: UIButton!
@@ -49,7 +49,7 @@ final class taskSelectViewController: UIViewController {
 }
 
 // MARK: Configure
-extension taskSelectViewController {
+extension TaskSelectVC {
     private func configureDevice() {
         #if targetEnvironment(macCatalyst)
         self.closeButton.isHidden = false
@@ -79,7 +79,7 @@ extension taskSelectViewController {
 }
 
 // MARK: Binding
-extension taskSelectViewController {
+extension TaskSelectVC {
     private func bindAll() {
         self.bindTasks()
         self.bindSelectedTask()
@@ -112,7 +112,7 @@ extension taskSelectViewController {
 }
 
 // MARK: Popups
-extension taskSelectViewController {
+extension TaskSelectVC {
     @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             let touchPoint = sender.location(in: self.tasksTableView)
@@ -184,7 +184,7 @@ extension taskSelectViewController {
 }
 
 // MARK: TableView
-extension taskSelectViewController: UITableViewDataSource, UITableViewDelegate {
+extension TaskSelectVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.tasks.count ?? 0
     }
