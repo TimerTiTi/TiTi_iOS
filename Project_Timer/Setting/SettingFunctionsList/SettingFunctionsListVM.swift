@@ -1,5 +1,5 @@
 //
-//  FunctionInfoListVM.swift
+//  SettingFunctionsListVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/05.
@@ -11,7 +11,7 @@ import Combine
 
 typealias FunctionInfoFetchable = (TiTiFunctionsFetchable & YoutubeLinkFetchable)
 
-final class FunctionInfoListVM {
+final class SettingFunctionsListVM {
     private let networkController: FunctionInfoFetchable
     @Published private(set) var infos: [FunctionInfo] = []
     @Published private(set) var warning: (title: String, text: String)?

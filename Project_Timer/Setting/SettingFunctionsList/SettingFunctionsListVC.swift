@@ -23,7 +23,7 @@ final class SettingFunctionsListVC: UIViewController {
     }()
     
     private var cancellables: Set<AnyCancellable> = []
-    private var viewModel: FunctionInfoListVM?
+    private var viewModel: SettingFunctionsListVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ extension SettingFunctionsListVC {
     private func configureViewModel() {
         // MARK: NetworkController 를 생성하는 부분에 대한 고민이 필요
         let networkController = NetworkController(network: Network())
-        self.viewModel = FunctionInfoListVM(networkController: networkController)
+        self.viewModel = SettingFunctionsListVM(networkController: networkController)
     }
     
     private func stopLoader() {
