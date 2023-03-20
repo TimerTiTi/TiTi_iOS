@@ -718,10 +718,10 @@
             </objects>
             <point key="canvasLocation" x="3141.5384615384614" y="2335.3080568720379"/>
         </scene>
-        <!--DailysVC-->
+        <!--Log DailyVC-->
         <scene sceneID="AhO-YQ-wh9">
             <objects>
-                <viewController storyboardIdentifier="DailysVC" id="8q7-4W-HO2" customClass="DailysVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogDailyVC" id="8q7-4W-HO2" customClass="LogDailyVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZe-Jw-PAb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

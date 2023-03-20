@@ -80,11 +80,11 @@ extension LogVC {
     
     private func configureChildViewControllers() {
         guard let logHomeVC = self.storyboard?.instantiateViewController(withIdentifier: LogHomeVC.identifier),
-              let dailysVC = self.storyboard?.instantiateViewController(withIdentifier: DailysVC.identifier) as? DailysVC,
+              let logDailyVC = self.storyboard?.instantiateViewController(withIdentifier: LogDailyVC.identifier) as? LogDailyVC,
               let weeksVC = self.storyboard?.instantiateViewController(withIdentifier: WeeksVC.identifier) else { return }
-        dailysVC.configureDelegate(to: self)
+        logDailyVC.configureDelegate(to: self)
         
-        self.childVCs = [logHomeVC, dailysVC, weeksVC]
+        self.childVCs = [logHomeVC, logDailyVC, weeksVC]
         self.pageViewController.setViewControllers([logHomeVC], direction: .forward, animated: true)
     }
     

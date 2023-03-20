@@ -1,5 +1,5 @@
 //
-//  DailysVC.swift
+//  LogDailyVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/16.
@@ -17,8 +17,8 @@ protocol ModifyRecordDelegate: AnyObject {
     func showCreateRecordVC(date: Date, isReverseColor: Bool)
 }
 
-final class DailysVC: UIViewController {
-    static let identifier = "DailysVC"
+final class LogDailyVC: UIViewController {
+    static let identifier = "LogDailyVC"
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var graphsScrollView: UIScrollView!
@@ -42,7 +42,7 @@ final class DailysVC: UIViewController {
     private weak var delegate: ModifyRecordDelegate?
     private var colorIndex: Int = 1
     private var isReverseColor: Bool = false
-    private var viewModel: DailysVM?
+    private var viewModel: LogDailyVM?
     private var cancellables: Set<AnyCancellable> = []
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
@@ -138,7 +138,7 @@ final class DailysVC: UIViewController {
 }
 
 // MARK: save images
-extension DailysVC {
+extension LogDailyVC {
     private func saveGraphs() {
         let dailyGraphViews = [self.standardDailyGraphView, self.timeTableDailyGraphView, self.timelineDailyGraphView, self.tasksProgressDailyGraphView]
         let graphViews = (0..<4).filter({ self.isGraphChecked[$0] }).map({ dailyGraphViews[$0] })
@@ -158,20 +158,20 @@ extension DailysVC {
     }
 }
 
-extension DailysVC: UIDocumentPickerDelegate {
+extension LogDailyVC: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let recordDay = self.viewModel?.currentDaily?.day.localDate.YYYYMMDDstyleString else { return }
         self.showAlertWithOK(title: "Save Completed".localized(), text: "\(recordDay)")
     }
 }
 
-extension DailysVC {
+extension LogDailyVC {
     func configureDelegate(to delegate: ModifyRecordDelegate) {
         self.delegate = delegate
     }
 }
 
-extension DailysVC {
+extension LogDailyVC {
     private func configureCalender() {
         self.calendar.delegate = self
         self.calendar.dataSource = self
@@ -290,7 +290,7 @@ extension DailysVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = DailysVM()
+        self.viewModel = LogDailyVM()
     }
     
     private func configureHostingVC() {
@@ -317,7 +317,7 @@ extension DailysVC {
 }
 
 // MARK: Configure for Mac
-extension DailysVC {
+extension LogDailyVC {
     private func configureCalenderHorizontalButtons() {
         let rightButton = RightButton()
         rightButton.addAction(UIAction(handler: { [weak self] _ in
@@ -385,7 +385,7 @@ extension DailysVC {
     }
 }
 
-extension DailysVC {
+extension LogDailyVC {
     private func bindAll() {
         self.bindDaily()
         self.bindTasks()
@@ -419,7 +419,7 @@ extension DailysVC {
     }
 }
 
-extension DailysVC {
+extension LogDailyVC {
     private func fetchColor() {
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
@@ -449,7 +449,7 @@ extension DailysVC {
     }
 }
 
-extension DailysVC: FSCalendarDelegate {
+extension LogDailyVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel?.selectedDate = date
         if RecordController.shared.dailys.dates.contains(date),
@@ -461,13 +461,13 @@ extension DailysVC: FSCalendarDelegate {
     }
 }
 
-extension DailysVC: FSCalendarDataSource {
+extension LogDailyVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
     }
 }
 
-extension DailysVC: UIScrollViewDelegate {
+extension LogDailyVC: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.graphsScrollView else { return }
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
@@ -477,7 +477,7 @@ extension DailysVC: UIScrollViewDelegate {
     }
 }
 
-extension DailysVC: UICollectionViewDataSource {
+extension LogDailyVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
@@ -507,7 +507,7 @@ extension DailysVC: UICollectionViewDataSource {
     }
 }
 
-extension DailysVC: UICollectionViewDelegateFlowLayout {
+extension LogDailyVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if let graph = GraphCollectionView(rawValue: collectionView.tag) {
             switch graph {
