@@ -1,5 +1,5 @@
 //
-//  todolistViewController.swift
+//  TodolistVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/06/09.
@@ -9,7 +9,7 @@
 import UIKit
 import Combine
 
-class TodolistViewController: UIViewController {
+final class TodolistVC: UIViewController {
     @IBOutlet weak var fraim: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var inputFraim: UIView!
@@ -87,7 +87,7 @@ class TodolistViewController: UIViewController {
     }
 }
 
-extension TodolistViewController {
+extension TodolistVC {
     private func checkUseage() {
         if Versions.check(forKey: .todolistCheckVer) {
             self.useageButton.isHidden = false
@@ -268,7 +268,7 @@ extension TodolistViewController {
     }
 }
 
-extension TodolistViewController {
+extension TodolistVC {
     private func bindAll() {
         self.bindGroupName()
     }
@@ -283,14 +283,14 @@ extension TodolistViewController {
     }
 }
 
-extension TodolistViewController {
+extension TodolistVC {
     private func changeTodoGroupTitle(to groupName: String) {
         self.todoGroupButton.setTitle(groupName, for: .normal)
         self.selectTodoGroupButton.menu = self.getMenu(groupName)
     }
 }
 
-extension TodolistViewController: UITableViewDataSource {
+extension TodolistVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.viewModel?.todos.count ?? 0
     }
@@ -314,7 +314,7 @@ extension TodolistViewController: UITableViewDataSource {
     }
 }
 
-extension TodolistViewController: UITableViewDelegate {
+extension TodolistVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
             self?.viewModel?.deleteTodo(at: indexPath.row)
