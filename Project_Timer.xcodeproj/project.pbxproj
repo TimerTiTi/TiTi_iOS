@@ -213,7 +213,7 @@
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
-		87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* FunctionInfoListVM.swift */; };
+		87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* SettingFunctionsListVM.swift */; };
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
@@ -462,7 +462,7 @@
 		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
-		87F10939284C589A002E31EA /* FunctionInfoListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoListVM.swift; sourceTree = "<group>"; };
+		87F10939284C589A002E31EA /* SettingFunctionsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVM.swift; sourceTree = "<group>"; };
 		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
@@ -625,7 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */,
-				87F10939284C589A002E31EA /* FunctionInfoListVM.swift */,
+				87F10939284C589A002E31EA /* SettingFunctionsListVM.swift */,
 				87F10937284C589A002E31EA /* FunctionInfoCell.swift */,
 				875C98C2287176E4008F7ADD /* FunctionsActionDelegate.swift */,
 			);
@@ -1461,7 +1461,7 @@
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
 				87BFCBCA28EFAFFC00FC688E /* TargetTimePickerPopupVC.swift in Sources */,
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
-				87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */,
+				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
