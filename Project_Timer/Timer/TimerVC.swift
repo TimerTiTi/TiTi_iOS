@@ -1,5 +1,5 @@
 //
-//  TimerViewController.swift
+//  TimerVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/04/30.
@@ -12,8 +12,8 @@ import AudioToolbox
 import AVFoundation
 import SwiftUI
 
-class TimerViewController: UIViewController {
-    static let identifier = "TimerViewController"
+class TimerVC: UIViewController {
+    static let identifier = "TimerVC"
 
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
@@ -191,7 +191,7 @@ class TimerViewController: UIViewController {
 }
 
 // MARK: - Device UI Configure
-extension TimerViewController {
+extension TimerVC {
     private func configureLayout() {
         self.taskButton.translatesAutoresizingMaskIntoConstraints = false
         self.startStopBT.translatesAutoresizingMaskIntoConstraints = false
@@ -340,7 +340,7 @@ extension TimerViewController {
 }
 
 // MARK: - Configure
-extension TimerViewController {
+extension TimerVC {
     private func checkUseage() {
         if Versions.check(forKey: .timerCheckVer) {
             self.useageButton.isHidden = false
@@ -415,7 +415,7 @@ extension TimerViewController {
 }
 
 // MARK: - IBAction
-extension TimerViewController {
+extension TimerVC {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
         setVC.delegate = self
@@ -432,7 +432,7 @@ extension TimerViewController {
 }
 
 // MARK: - binding
-extension TimerViewController {
+extension TimerVC {
     private func bindAll() {
         self.bindTimes()
         self.bindDaily()
@@ -507,7 +507,7 @@ extension TimerViewController {
 }
 
 // MARK: - logic
-extension TimerViewController {
+extension TimerVC {
     private func updateTask(to task: String) {
         if task == "none" {
             self.taskButton.setTitle("Create a new task".localized(), for: .normal)
@@ -687,7 +687,7 @@ extension TimerViewController {
 }
 
 // MARK: - Rotation
-extension TimerViewController {
+extension TimerVC {
     @objc func deviceRotated(){
         guard UIDevice.current.userInterfaceIdiom == .phone else { return }
         self.blackView.frame = UIScreen.main.bounds
@@ -731,7 +731,7 @@ extension TimerViewController {
 }
 
 // MARK: - Device Motion Detection
-extension TimerViewController {
+extension TimerVC {
     /// viewDidAppear 시점에 noti 수신 설정
     private func configureApplicationActiveStateObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
@@ -818,7 +818,7 @@ extension TimerViewController {
 }
 
 // MARK: Background
-extension TimerViewController {
+extension TimerVC {
     private func enterBackground() {
         guard let running = self.viewModel?.runningUI,
               running == true else { return }
@@ -840,32 +840,32 @@ extension TimerViewController {
     }
 }
 
-extension TimerViewController: NewRecordCreatable {
+extension TimerVC: NewRecordCreatable {
     func newRecord() {
         self.viewModel?.newRecord()
         NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
     }
 }
 
-extension TimerViewController: TaskChangeable {
+extension TimerVC: TaskChangeable {
     func selectTask(to task: String) {
         self.viewModel?.changeTask(to: task)
     }
 }
 // MARK: 추후 Setting 에서 수시로 수정시 사용될 부분
-extension TimerViewController: TimerTimeSettable {
+extension TimerVC: TimerTimeSettable {
     func updateTimerTime(to timer: Int) {
         self.viewModel?.updateTimerTime(to: timer)
     }
 }
 
-extension TimerViewController {
+extension TimerVC {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
 }
 
-extension TimerViewController: ColorUpdateable {
+extension TimerVC: ColorUpdateable {
     private func showColorSelector() {
         guard let colorSelector = storyboard?.instantiateViewController(withIdentifier: ColorSelectorVC.identifier) as? ColorSelectorVC else { return }
         colorSelector.configure(target: .timer, delegate: self)
@@ -891,7 +891,7 @@ extension TimerViewController: ColorUpdateable {
 }
 
 // MARK: popupVC
-extension TimerViewController {
+extension TimerVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),

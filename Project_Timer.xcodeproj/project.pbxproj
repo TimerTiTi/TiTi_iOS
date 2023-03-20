@@ -77,7 +77,7 @@
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
 		873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197928D04B5B00E02ADC /* DayOfWeekText.swift */; };
 		87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87405D6528F5869D00576D2C /* ColorofTextSelectorVC.swift */; };
-		87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerViewController.swift */; };
+		87459704263FEF6B00172C0F /* TimerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459703263FEF6B00172C0F /* TimerVC.swift */; };
 		87459706263FF0D700172C0F /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459705263FF0D700172C0F /* Daily.swift */; };
 		87459708263FF0F000172C0F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */; };
@@ -326,7 +326,7 @@
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
 		873C197928D04B5B00E02ADC /* DayOfWeekText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekText.swift; sourceTree = "<group>"; };
 		87405D6528F5869D00576D2C /* ColorofTextSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorofTextSelectorVC.swift; sourceTree = "<group>"; };
-		87459703263FEF6B00172C0F /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		87459703263FEF6B00172C0F /* TimerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVC.swift; sourceTree = "<group>"; };
 		87459705263FF0D700172C0F /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
 		87459707263FF0F000172C0F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastestVersionInfo.swift; sourceTree = "<group>"; };
@@ -871,7 +871,7 @@
 		8791C1EA27DCCDF4000D6BA9 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
-				87459703263FEF6B00172C0F /* TimerViewController.swift */,
+				87459703263FEF6B00172C0F /* TimerVC.swift */,
 				87035DF1282201A500055378 /* TimerVM.swift */,
 			);
 			path = Timer;
@@ -1494,7 +1494,7 @@
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchViewController.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
-				87459704263FEF6B00172C0F /* TimerViewController.swift in Sources */,
+				87459704263FEF6B00172C0F /* TimerVC.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
