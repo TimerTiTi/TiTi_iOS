@@ -71,7 +71,7 @@
 		872C0EE3284AF26A00E8E3F2 /* UpdateHistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE2284AF26A00E8E3F2 /* UpdateHistoryVM.swift */; };
 		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
 		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
-		873977EB288D3FAA0025EE73 /* DailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* DailysVM.swift */; };
+		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
 		873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197928D04B5B00E02ADC /* DayOfWeekText.swift */; };
@@ -131,7 +131,7 @@
 		878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */; };
 		878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899842894F09600B7F378 /* WeekTimelineView.swift */; };
 		878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899872894F0B900B7F378 /* WeekTimelineVM.swift */; };
-		8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788AFE428828D3500D26E7D /* DailysVC.swift */; };
+		8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788AFE428828D3500D26E7D /* LogDailyVC.swift */; };
 		878B30E52992BB5A00BE7413 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878B30E42992BB5A00BE7413 /* WidgetKit.framework */; };
 		878B30E72992BB5A00BE7413 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878B30E62992BB5A00BE7413 /* SwiftUI.framework */; };
 		878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30E92992BB5A00BE7413 /* widgetBundle.swift */; };
@@ -319,7 +319,7 @@
 		872C0EE2284AF26A00E8E3F2 /* UpdateHistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryVM.swift; sourceTree = "<group>"; };
 		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
-		873977EA288D3FAA0025EE73 /* DailysVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVM.swift; sourceTree = "<group>"; };
+		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
 		873C197528D041DE00E02ADC /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
 		873C197928D04B5B00E02ADC /* DayOfWeekText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekText.swift; sourceTree = "<group>"; };
@@ -376,7 +376,7 @@
 		878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekTaskCell.swift; sourceTree = "<group>"; };
 		878899842894F09600B7F378 /* WeekTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineView.swift; sourceTree = "<group>"; };
 		878899872894F0B900B7F378 /* WeekTimelineVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineVM.swift; sourceTree = "<group>"; };
-		8788AFE428828D3500D26E7D /* DailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysVC.swift; sourceTree = "<group>"; };
+		8788AFE428828D3500D26E7D /* LogDailyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVC.swift; sourceTree = "<group>"; };
 		878B30E32992BB5A00BE7413 /* widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = widgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		878B30E42992BB5A00BE7413 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		878B30E62992BB5A00BE7413 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -892,7 +892,7 @@
 			children = (
 				87A8BC3A288D1436007ED793 /* LogVC.swift */,
 				87A8BC3C288D1448007ED793 /* LogHome */,
-				87C9F423288BD2D600B9E04A /* Dailys */,
+				87C9F423288BD2D600B9E04A /* LogDaily */,
 				878899782894EFC500B7F378 /* Weeks */,
 				87C2F97928A6BF7F00F44D98 /* ModifyRecord */,
 			);
@@ -1012,16 +1012,16 @@
 			path = ModifyRecord;
 			sourceTree = "<group>";
 		};
-		87C9F423288BD2D600B9E04A /* Dailys */ = {
+		87C9F423288BD2D600B9E04A /* LogDaily */ = {
 			isa = PBXGroup;
 			children = (
-				8788AFE428828D3500D26E7D /* DailysVC.swift */,
-				873977EA288D3FAA0025EE73 /* DailysVM.swift */,
+				8788AFE428828D3500D26E7D /* LogDailyVC.swift */,
+				873977EA288D3FAA0025EE73 /* LogDailyVM.swift */,
 				87199F422882BC0C0017D01A /* Graph */,
 				87199F492883C68D0017D01A /* Cell */,
 				8762717227DF843B00F812ED /* SwiftUI */,
 			);
-			path = Dailys;
+			path = LogDaily;
 			sourceTree = "<group>";
 		};
 		87CEDD3B28F53370007ACF6E /* PopupView */ = {
@@ -1519,7 +1519,7 @@
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
-				8788AFE528828D3500D26E7D /* DailysVC.swift in Sources */,
+				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
 				878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
@@ -1549,7 +1549,7 @@
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
-				873977EB288D3FAA0025EE73 /* DailysVM.swift in Sources */,
+				873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */,

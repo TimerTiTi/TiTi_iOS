@@ -1,5 +1,5 @@
 //
-//  DailysVM.swift
+//  LogDailyVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DailysVM {
+final class LogDailyVM {
     /* public */
     @Published private(set) var currentDaily: Daily?
     @Published private(set) var tasks: [TaskInfo] = []
