@@ -1,5 +1,5 @@
 //
-//  StopwatchViewController.swift
+//  StopwatchVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2021/04/30.
@@ -10,8 +10,8 @@ import UIKit
 import Combine
 import SwiftUI
 
-final class StopwatchViewController: UIViewController {
-    static let identifier = "StopwatchViewController"
+final class StopwatchVC: UIViewController {
+    static let identifier = "StopwatchVC"
 
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
@@ -189,7 +189,7 @@ final class StopwatchViewController: UIViewController {
 }
 
 // MARK: - Device UI Configure
-extension StopwatchViewController {
+extension StopwatchVC {
     private func configureLayout() {
         self.taskButton.translatesAutoresizingMaskIntoConstraints = false
         self.startStopBT.translatesAutoresizingMaskIntoConstraints = false
@@ -338,7 +338,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - Configure
-extension StopwatchViewController {
+extension StopwatchVC {
     private func checkUseage() {
         if Versions.check(forKey: .stopwatchCheckVer) {
             self.useageButton.isHidden = false
@@ -413,7 +413,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - IBAction
-extension StopwatchViewController {
+extension StopwatchVC {
     private func showTaskSelectVC() {
         guard let setVC = storyboard?.instantiateViewController(withIdentifier: taskSelectViewController.identifier) as? taskSelectViewController else { return }
         setVC.delegate = self
@@ -430,7 +430,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - binding
-extension StopwatchViewController {
+extension StopwatchVC {
     private func bindAll() {
         self.bindTimes()
         self.bindDaily()
@@ -494,7 +494,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - logic
-extension StopwatchViewController {
+extension StopwatchVC {
     private func updateTask(to task: String) {
         if task == "none" {
             self.taskButton.setTitle("Create a new task".localized(), for: .normal)
@@ -657,7 +657,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - Rotation
-extension StopwatchViewController {
+extension StopwatchVC {
     @objc func deviceRotated() {
         guard UIDevice.current.userInterfaceIdiom == .phone else { return }
         self.blackView.frame = UIScreen.main.bounds
@@ -693,7 +693,7 @@ extension StopwatchViewController {
 }
 
 // MARK: - Device Motion Detection
-extension StopwatchViewController {
+extension StopwatchVC {
     /// viewDidAppear 시점에 noti 수신 설정
     private func configureApplicationActiveStateObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(stopMotionDetection), name: UIApplication.willResignActiveNotification, object: nil)
@@ -780,7 +780,7 @@ extension StopwatchViewController {
 }
 
 // MARK: Background
-extension StopwatchViewController {
+extension StopwatchVC {
     private func enterBackground() {
         guard let running = self.viewModel?.runningUI,
               running == true else { return }
@@ -802,7 +802,7 @@ extension StopwatchViewController {
     }
 }
 
-extension StopwatchViewController: NewRecordCreatable {
+extension StopwatchVC: NewRecordCreatable {
     func newRecord() {
         self.fetchColor()
         self.viewModel?.newRecord()
@@ -810,19 +810,19 @@ extension StopwatchViewController: NewRecordCreatable {
     }
 }
 
-extension StopwatchViewController: TaskChangeable {
+extension StopwatchVC: TaskChangeable {
     func selectTask(to task: String) {
         self.viewModel?.changeTask(to: task)
     }
 }
 
-extension StopwatchViewController {
+extension StopwatchVC {
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
 }
 
-extension StopwatchViewController: ColorUpdateable {
+extension StopwatchVC: ColorUpdateable {
     private func showColorSelector() {
         guard let colorSelector = storyboard?.instantiateViewController(withIdentifier: ColorSelectorVC.identifier) as? ColorSelectorVC else { return }
         colorSelector.configure(target: .stopwatcch, delegate: self)
@@ -850,7 +850,7 @@ extension StopwatchViewController: ColorUpdateable {
 }
 
 // MARK: popupVC
-extension StopwatchViewController {
+extension StopwatchVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),
