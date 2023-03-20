@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModifyFinishButton: UIButton {
+final class ModifyFinishButton: UIButton {
     override var isEnabled: Bool {
         didSet {
             if isEnabled {

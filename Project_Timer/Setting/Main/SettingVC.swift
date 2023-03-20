@@ -1,5 +1,5 @@
 //
-//  SettingViewController.swift
+//  SettingVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/05/28.
@@ -10,8 +10,8 @@ import UIKit
 import Combine
 import MessageUI
 
-final class SettingViewController: UIViewController {
-    static let identifier = "SettingViewController"
+final class SettingVC: UIViewController {
+    static let identifier = "SettingVC"
     
     @IBOutlet weak var settings: UICollectionView!
     
@@ -52,7 +52,7 @@ final class SettingViewController: UIViewController {
     }
 }
 
-extension SettingViewController {
+extension SettingVC {
     private func configureCollectionView() {
         self.extendedLayoutIncludesOpaqueBars = true
         self.settings.dataSource = self
@@ -77,7 +77,7 @@ extension SettingViewController {
     }
 }
 
-extension SettingViewController: UICollectionViewDelegate {
+extension SettingVC: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.viewModel?.sectionTitles.count ?? 0
     }
@@ -100,7 +100,7 @@ extension SettingViewController: UICollectionViewDelegate {
     }
 }
 
-extension SettingViewController: UICollectionViewDataSource {
+extension SettingVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.cells[safe: section]?.count ?? 0
     }
@@ -134,7 +134,7 @@ extension SettingViewController: UICollectionViewDataSource {
     }
 }
 
-extension SettingViewController: UICollectionViewDelegateFlowLayout {
+extension SettingVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.settings.bounds.width
         guard let info = self.viewModel?.cells[indexPath.section][indexPath.item] else { return CGSize(width: width, height: 43)}
@@ -144,7 +144,7 @@ extension SettingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension SettingViewController: SettingActionDelegate {
+extension SettingVC: SettingActionDelegate {
     func pushVC(nextVCIdentifier: String) {
         if nextVCIdentifier == "showBackup" {
             // test code
@@ -177,7 +177,7 @@ extension SettingViewController: SettingActionDelegate {
     }
 }
 
-extension SettingViewController: MFMailComposeViewControllerDelegate {
+extension SettingVC: MFMailComposeViewControllerDelegate {
     func showEmailPopup() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
