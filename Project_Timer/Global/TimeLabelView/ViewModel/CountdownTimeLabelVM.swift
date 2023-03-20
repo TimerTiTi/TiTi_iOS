@@ -1,5 +1,5 @@
 //
-//  CountdownTimeLabelViewModel.swift
+//  CountdownTimeLabelVM.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/07/08.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class CountdownTimeLabelViewModel: ObservableObject {
+class CountdownTimeLabelVM: ObservableObject {
     @Published var timeLabelVM: BaseTimeLabelVM
     @Published var time: Int
     
