@@ -4002,10 +4002,10 @@
             </objects>
             <point key="canvasLocation" x="6518" y="2335"/>
         </scene>
-        <!--WeeksVC-->
+        <!--Log WeekVC-->
         <scene sceneID="6Sx-CB-NoO">
             <objects>
-                <viewController storyboardIdentifier="WeeksVC" id="Sww-dN-ycf" customClass="WeeksVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogWeekVC" id="Sww-dN-ycf" customClass="LogWeekVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GMh-es-mNb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

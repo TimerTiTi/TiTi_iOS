@@ -1,5 +1,5 @@
 //
-//  WeeksVC.swift
+//  LogWeekVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/30.
@@ -11,8 +11,8 @@ import Combine
 import SwiftUI
 import FSCalendar
 
-final class WeeksVC: UIViewController {
-    static let identifier = "WeeksVC"
+final class LogWeekVC: UIViewController {
+    static let identifier = "LogWeekVC"
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var graphsScrollView: UIScrollView!
@@ -24,7 +24,7 @@ final class WeeksVC: UIViewController {
     private var standardWeekGraphView = StandardWeekGraphView()
     private var colorIndex: Int = 1
     private var isReverseColor: Bool = false
-    private var viewModel: WeeksVM?
+    private var viewModel: LogWeekVM?
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
@@ -96,7 +96,7 @@ final class WeeksVC: UIViewController {
 }
 
 // MARK: save images
-extension WeeksVC {
+extension LogWeekVC {
     private func saveGraphs() {
         #if targetEnvironment(macCatalyst)
         guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
@@ -114,14 +114,14 @@ extension WeeksVC {
     }
 }
 
-extension WeeksVC: UIDocumentPickerDelegate {
+extension LogWeekVC: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
         self.showAlertWithOK(title: "Save Completed".localized(), text: "\(week)")
     }
 }
 
-extension WeeksVC {
+extension LogWeekVC {
     private func configureCalender() {
         self.calendar.delegate = self
         self.calendar.dataSource = self
@@ -163,7 +163,7 @@ extension WeeksVC {
     }
     
     private func configureViewModel() {
-        self.viewModel = WeeksVM()
+        self.viewModel = LogWeekVM()
     }
     
     private func configureHostingVC() {
@@ -177,7 +177,7 @@ extension WeeksVC {
 }
 
 // MARK: Configure for Mac
-extension WeeksVC {
+extension LogWeekVC {
     private func configureCalenderHorizontalButtons() {
         let rightButton = RightButton()
         rightButton.addAction(UIAction(handler: { [weak self] _ in
@@ -214,7 +214,7 @@ extension WeeksVC {
     }
 }
 
-extension WeeksVC {
+extension LogWeekVC {
     private func bindAll() {
         self.bindWeekData()
         self.bindTasks()
@@ -241,7 +241,7 @@ extension WeeksVC {
     }
 }
 
-extension WeeksVC {
+extension LogWeekVC {
     private func fetchColor() {
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
@@ -261,20 +261,20 @@ extension WeeksVC {
 }
 
 
-extension WeeksVC: FSCalendarDelegate {
+extension LogWeekVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel?.selectedDate = date
         self.viewModel?.selectDate(to: date.zeroDate.localDate)
     }
 }
 
-extension WeeksVC: FSCalendarDataSource {
+extension LogWeekVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
     }
 }
 
-extension WeeksVC: UICollectionViewDataSource {
+extension LogWeekVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel?.top5Tasks.count ?? 0
     }
