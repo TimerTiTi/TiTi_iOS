@@ -24,19 +24,6 @@ struct Dummy {
         return timeline
     }
     
-    static func get7Dailys() -> [daily] {
-        var DailyDatas: [daily] = []
-        DailyDatas.append(daily(day: "6/14", studyTime: Converter.translate2(input: "3:37:20")))
-        DailyDatas.append(daily(day: "6/15", studyTime: Converter.translate2(input: "2:58:23")))
-        DailyDatas.append(daily(day: "6/16", studyTime: Converter.translate2(input: "6:02:07")))
-        DailyDatas.append(daily(day: "6/17", studyTime: Converter.translate2(input: "4:03:39")))
-        DailyDatas.append(daily(day: "6/18", studyTime: Converter.translate2(input: "3:35:15")))
-        DailyDatas.append(daily(day: "6/19", studyTime: Converter.translate2(input: "5:10:12")))
-        DailyDatas.append(daily(day: "6/20", studyTime: Converter.translate2(input: "5:19:19")))
-        
-        return DailyDatas
-    }
-    
     static func getDumyDaily() -> Daily {
 //        let daily = Daily(day: Date(), tasks: [
 //            "SwiftUI 스터디" : 3612,
