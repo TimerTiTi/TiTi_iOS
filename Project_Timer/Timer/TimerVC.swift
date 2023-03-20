@@ -12,9 +12,7 @@ import AudioToolbox
 import AVFoundation
 import SwiftUI
 
-class TimerVC: UIViewController {
-    static let identifier = "TimerVC"
-
+final class TimerVC: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var warningRecordDate: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
