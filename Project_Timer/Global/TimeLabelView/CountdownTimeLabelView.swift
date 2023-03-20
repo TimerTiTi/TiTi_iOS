@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct CountdownTimeLabelView: View {
-    @ObservedObject var viewModel: CountdownTimeLabelViewModel
+    @ObservedObject var viewModel: CountdownTimeLabelVM
     @ObservedObject var baseViewModel: BaseTimeLabelVM
     
-    init(viewModel: CountdownTimeLabelViewModel) {
+    init(viewModel: CountdownTimeLabelVM) {
         self.viewModel = viewModel
         self.baseViewModel = viewModel.timeLabelVM
     }

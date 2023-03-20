@@ -35,7 +35,7 @@ final class TimerVM {
     
     let timeOfSumViewModel: NormalTimeLabelVM
     let timeOfTimerViewModel: TimerTimeLabelVM
-    let timeOfTargetViewModel: CountdownTimeLabelViewModel
+    let timeOfTargetViewModel: CountdownTimeLabelVM
     
     init() {
         let currentTimes = RecordController.shared.recordTimes.currentTimes()
@@ -45,7 +45,7 @@ final class TimerVM {
         self.taskName = RecordController.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfTimerViewModel = TimerTimeLabelVM(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
-        self.timeOfTargetViewModel = CountdownTimeLabelViewModel(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
+        self.timeOfTargetViewModel = CountdownTimeLabelVM(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.soundAlert = false
         self.updateAnimationSetting()

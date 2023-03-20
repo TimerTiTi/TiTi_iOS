@@ -16,7 +16,7 @@
 		04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C5F2864AC3C00CA4C69 /* BaseTimeLabelVM.swift */; };
 		04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04504C632864C7F400CA4C69 /* BaseTimeLabelView.swift */; };
 		04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */; };
-		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */; };
+		04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04573A9A2877FDDA008F8D44 /* CountdownTimeLabelVM.swift */; };
 		048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */; };
 		048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */; };
 		048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */; };
@@ -263,7 +263,7 @@
 		04504C5F2864AC3C00CA4C69 /* BaseTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeLabelVM.swift; sourceTree = "<group>"; };
 		04504C632864C7F400CA4C69 /* BaseTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTimeLabelView.swift; sourceTree = "<group>"; };
 		04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelView.swift; sourceTree = "<group>"; };
-		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelViewModel.swift; sourceTree = "<group>"; };
+		04573A9A2877FDDA008F8D44 /* CountdownTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimeLabelVM.swift; sourceTree = "<group>"; };
 		048D8AC428AA1B7700A2456D /* AddHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryCell.swift; sourceTree = "<group>"; };
 		048D8AC528AA1B7700A2456D /* AddHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddHistoryCell.xib; sourceTree = "<group>"; };
 		048D8ACA28AA49F800A2456D /* PopupEditHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupEditHistoryVC.swift; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 				04F0D2B8286607A7007ED596 /* BaseSingleTimeLabelVM.swift */,
 				04504C5F2864AC3C00CA4C69 /* BaseTimeLabelVM.swift */,
 				87BF666B28F80EA500CD6F19 /* NormalTimeLabelVM.swift */,
-				04573A9A2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift */,
+				04573A9A2877FDDA008F8D44 /* CountdownTimeLabelVM.swift */,
 				0437062C2869EC2200A5D3AA /* TimerTimeLabelVM.swift */,
 				043706322869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift */,
 			);
@@ -1429,7 +1429,7 @@
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
-				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelViewModel.swift in Sources */,
+				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
 				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
