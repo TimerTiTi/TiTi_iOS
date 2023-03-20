@@ -125,8 +125,8 @@
 		87789E44288BC1FC00759C01 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87789E43288BC1FC00759C01 /* TimeView.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
-		8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* WeeksVC.swift */; };
-		8788997C2894F00000B7F378 /* WeeksVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* WeeksVM.swift */; };
+		8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* LogWeekVC.swift */; };
+		8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* LogWeekVM.swift */; };
 		8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */; };
 		878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */; };
 		878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899842894F09600B7F378 /* WeekTimelineView.swift */; };
@@ -370,8 +370,8 @@
 		87789E43288BC1FC00759C01 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
-		878899792894EFEE00B7F378 /* WeeksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksVC.swift; sourceTree = "<group>"; };
-		8788997B2894F00000B7F378 /* WeeksVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksVM.swift; sourceTree = "<group>"; };
+		878899792894EFEE00B7F378 /* LogWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVC.swift; sourceTree = "<group>"; };
+		8788997B2894F00000B7F378 /* LogWeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVM.swift; sourceTree = "<group>"; };
 		8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekGraphView.swift; sourceTree = "<group>"; };
 		878899812894F05F00B7F378 /* StandardWeekTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekTaskCell.swift; sourceTree = "<group>"; };
 		878899842894F09600B7F378 /* WeekTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimelineView.swift; sourceTree = "<group>"; };
@@ -753,17 +753,17 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
-		878899782894EFC500B7F378 /* Weeks */ = {
+		878899782894EFC500B7F378 /* LogWeek */ = {
 			isa = PBXGroup;
 			children = (
-				878899792894EFEE00B7F378 /* WeeksVC.swift */,
-				8788997B2894F00000B7F378 /* WeeksVM.swift */,
+				878899792894EFEE00B7F378 /* LogWeekVC.swift */,
+				8788997B2894F00000B7F378 /* LogWeekVM.swift */,
 				87D4C95828950B24008ECAA4 /* Model */,
 				8788997D2894F01E00B7F378 /* Graph */,
 				878899802894F04B00B7F378 /* Cell */,
 				878899832894F07200B7F378 /* SwiftUI */,
 			);
-			path = Weeks;
+			path = LogWeek;
 			sourceTree = "<group>";
 		};
 		8788997D2894F01E00B7F378 /* Graph */ = {
@@ -893,7 +893,7 @@
 				87A8BC3A288D1436007ED793 /* LogVC.swift */,
 				87A8BC3C288D1448007ED793 /* LogHome */,
 				87C9F423288BD2D600B9E04A /* LogDaily */,
-				878899782894EFC500B7F378 /* Weeks */,
+				878899782894EFC500B7F378 /* LogWeek */,
 				87C2F97928A6BF7F00F44D98 /* ModifyRecord */,
 			);
 			path = Logs;
@@ -1462,7 +1462,7 @@
 				87BFCBCA28EFAFFC00FC688E /* TargetTimePickerPopupVC.swift in Sources */,
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
 				87F1093B284C589A002E31EA /* FunctionInfoListVM.swift in Sources */,
-				8788997C2894F00000B7F378 /* WeeksVM.swift in Sources */,
+				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
@@ -1506,7 +1506,7 @@
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
-				8788997A2894EFEE00B7F378 /* WeeksVC.swift in Sources */,
+				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
 				870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,

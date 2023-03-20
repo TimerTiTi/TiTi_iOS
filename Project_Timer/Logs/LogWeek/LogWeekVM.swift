@@ -1,5 +1,5 @@
 //
-//  WeeksVM.swift
+//  LogWeekVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/30.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class WeeksVM {
+final class LogWeekVM {
     /* public */
     @Published private(set) var weekData: DailysWeekData?
     @Published private(set) var top5Tasks: [TaskInfo] = []
