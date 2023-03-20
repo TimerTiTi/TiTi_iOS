@@ -20,42 +20,42 @@ class BaseTimeLabelVM: ObservableObject  {
     var secondTensViewModel: BaseSingleTimeLabelVM
     var secondUnitsViewModel: BaseSingleTimeLabelVM
     
-    var timeLabel: TimeLabel {
-        return TimeLabel(self.time)
+    var timeLabelData: TimeLabelData {
+        return TimeLabelData(self.time)
     }
     
     init(time: Int, fontSize: CGFloat, isWhite: Bool) {
         self.time = time
         self.fontSize = fontSize
         self.isWhite = isWhite
-        let timeLabel = TimeLabel(time)
-        self.hourTensViewModel = BaseSingleTimeLabelVM(timeLabel.hourTens)
-        self.hourUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.hourUnits)
-        self.minuteTensViewModel = BaseSingleTimeLabelVM(timeLabel.minuteTens)
-        self.minuteUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.minuteUnits)
-        self.secondTensViewModel = BaseSingleTimeLabelVM(timeLabel.secondTens)
-        self.secondUnitsViewModel = BaseSingleTimeLabelVM(timeLabel.secondUnits)
+        let timeLabelData = TimeLabelData(time)
+        self.hourTensViewModel = BaseSingleTimeLabelVM(timeLabelData.hourTens)
+        self.hourUnitsViewModel = BaseSingleTimeLabelVM(timeLabelData.hourUnits)
+        self.minuteTensViewModel = BaseSingleTimeLabelVM(timeLabelData.minuteTens)
+        self.minuteUnitsViewModel = BaseSingleTimeLabelVM(timeLabelData.minuteUnits)
+        self.secondTensViewModel = BaseSingleTimeLabelVM(timeLabelData.secondTens)
+        self.secondUnitsViewModel = BaseSingleTimeLabelVM(timeLabelData.secondUnits)
     }
     
     func updateTime(_ newTime: Int, showsAnimation: Bool) {
-        let newTimeLabel = TimeLabel(newTime)
-        hourTensViewModel.update(old: self.timeLabel.hourTens,
-                                 new: newTimeLabel.hourTens,
+        let newTimeLabelData = TimeLabelData(newTime)
+        hourTensViewModel.update(old: self.timeLabelData.hourTens,
+                                 new: newTimeLabelData.hourTens,
                                  showsAnimation: showsAnimation)
-        hourUnitsViewModel.update(old: self.timeLabel.hourUnits,
-                                  new: newTimeLabel.hourUnits,
+        hourUnitsViewModel.update(old: self.timeLabelData.hourUnits,
+                                  new: newTimeLabelData.hourUnits,
                                   showsAnimation: showsAnimation)
-        minuteTensViewModel.update(old: self.timeLabel.minuteTens,
-                                   new: newTimeLabel.minuteTens,
+        minuteTensViewModel.update(old: self.timeLabelData.minuteTens,
+                                   new: newTimeLabelData.minuteTens,
                                    showsAnimation: showsAnimation)
-        minuteUnitsViewModel.update(old: self.timeLabel.minuteUnits,
-                                    new: newTimeLabel.minuteUnits,
+        minuteUnitsViewModel.update(old: self.timeLabelData.minuteUnits,
+                                    new: newTimeLabelData.minuteUnits,
                                     showsAnimation: showsAnimation)
-        secondTensViewModel.update(old: self.timeLabel.secondTens,
-                                   new: newTimeLabel.secondTens,
+        secondTensViewModel.update(old: self.timeLabelData.secondTens,
+                                   new: newTimeLabelData.secondTens,
                                    showsAnimation: showsAnimation)
-        secondUnitsViewModel.update(old: self.timeLabel.secondUnits,
-                                    new: newTimeLabel.secondUnits,
+        secondUnitsViewModel.update(old: self.timeLabelData.secondUnits,
+                                    new: newTimeLabelData.secondUnits,
                                     showsAnimation: showsAnimation)
         self.time = newTime
     }

@@ -13,7 +13,7 @@ struct BaseTimeLabelView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            if viewModel.timeLabel.hourTens > 0 {
+            if viewModel.timeLabelData.hourTens > 0 {
                 BaseSingleTimeLabelView(viewModel: viewModel.hourTensViewModel)
             }
             BaseSingleTimeLabelView(viewModel: viewModel.hourUnitsViewModel)

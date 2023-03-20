@@ -161,6 +161,7 @@
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849B29C83D5100D65F48 /* RoundedShape.swift */; };
+		879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849E29C8400700D65F48 /* TimeLabelData.swift */; };
 		87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* RecordTimes.swift */; };
 		87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */; };
 		87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A48BC627DEF0C200F46D0F /* Date+Extension.swift */; };
@@ -405,6 +406,7 @@
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879E849B29C83D5100D65F48 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		879E849E29C8400700D65F48 /* TimeLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelData.swift; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* RecordTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimes.swift; sourceTree = "<group>"; };
 		87A4704926493D6E007B89D6 /* StaticCircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticCircularProgressView.swift; sourceTree = "<group>"; };
 		87A48BC627DEF0C200F46D0F /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -659,8 +661,8 @@
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87459705263FF0D700172C0F /* Daily.swift */,
 				87459707263FF0F000172C0F /* Storage.swift */,
+				87459705263FF0D700172C0F /* Daily.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
@@ -917,6 +919,14 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		879E849D29C83FF000D65F48 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				879E849E29C8400700D65F48 /* TimeLabelData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		87A48BC427DEEF5F00F46D0F /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +995,7 @@
 				04573A982877FD78008F8D44 /* CountdownTimeLabelView.swift */,
 				043706262869D58C00A5D3AA /* TimerTimeLabelView.swift */,
 				043706302869FB0E00A5D3AA /* StopwatchTimeLabelView.swift */,
+				879E849D29C83FF000D65F48 /* Model */,
 				04504C5E2864AC2300CA4C69 /* ViewModel */,
 			);
 			path = TimeLabelView;
@@ -1535,6 +1546,7 @@
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
+				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
 				873977EB288D3FAA0025EE73 /* DailysVM.swift in Sources */,
