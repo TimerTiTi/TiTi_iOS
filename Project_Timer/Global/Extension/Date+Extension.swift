@@ -79,8 +79,7 @@ extension Date {
     }
     /// 해당날짜가 속한 달의 몇번째 주차인지를 나타내는 값
     var weekOfMonth: Int {
-        var calendar = Calendar(identifier: .gregorian)
-//        calendar.locale = Locale(identifier: "ko")
+        let calendar = Calendar(identifier: .gregorian)
         return(calendar.component(.weekOfMonth, from: self))
     }
     
