@@ -79,7 +79,7 @@ final class StopwatchVM {
         self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
         
-        if RecordsManager.shared.isTaskGargetOn {
+        if RecordsManager.shared.isTaskTargetOn {
             self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
             self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)

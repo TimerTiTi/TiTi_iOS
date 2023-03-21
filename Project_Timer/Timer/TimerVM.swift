@@ -86,7 +86,7 @@ final class TimerVM {
         let timer = self.darkerMode ? self.times.timerForDarker : self.times.timer
         self.timeOfTimerViewModel.updateTime(timer, showsAnimation: self.showAnimation)
         
-        if RecordsManager.shared.isTaskGargetOn {
+        if RecordsManager.shared.isTaskTargetOn {
             self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
             self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)

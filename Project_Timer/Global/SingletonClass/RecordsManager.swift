@@ -22,7 +22,7 @@ final class RecordsManager {
             return daily.tasks[taskName] ?? 0
         } else { return 0 }
     }
-    var isTaskGargetOn: Bool {
+    var isTaskTargetOn: Bool {
         return self.currentTask?.isTaskTargetTimeOn ?? false
     }
     var remainingTaskTime: Int {
