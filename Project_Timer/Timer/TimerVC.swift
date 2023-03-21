@@ -516,8 +516,8 @@ extension TimerVC {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(TiTiColor.lightpink, for: .normal)
-        self.taskButton.layer.borderColor = TiTiColor.lightpink?.cgColor
+        self.taskButton.setTitleColor(TiTiColor.noTaskWarningRed, for: .normal)
+        self.taskButton.layer.borderColor = TiTiColor.noTaskWarningRed?.cgColor
     }
     
     private func setTaskWhiteColor() {
