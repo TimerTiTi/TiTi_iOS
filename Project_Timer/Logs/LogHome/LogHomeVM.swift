@@ -15,8 +15,8 @@ final class LogHomeVM {
             self.updateDaily()
         }
     }
-    @Published private(set) var subjectTimes: [Int] = []
-    @Published private(set) var subjectNameTimes: [(name: String, time: String)] = []
+    private var subjectTimes: [Int] = []
+    private var subjectNameTimes: [(name: String, time: String)] = []
     private var dailys: [Daily] = [] {
         didSet {
             self.updateTotal()
