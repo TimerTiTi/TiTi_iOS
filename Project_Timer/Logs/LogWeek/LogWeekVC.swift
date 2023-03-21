@@ -179,14 +179,14 @@ extension LogWeekVC {
 // MARK: Configure for Mac
 extension LogWeekVC {
     private func configureCalenderHorizontalButtons() {
-        let rightButton = RightButton()
+        let rightButton = ChangeNextGraphButton()
         rightButton.addAction(UIAction(handler: { [weak self] _ in
             guard let scrollView = self?.calendar.collectionView else { return }
             let current = scrollView.contentOffset.x / scrollView.frame.size.width
             scrollView.scrollHorizontalToPage(frame: scrollView.frame, to: Int(current)+1)
         }), for: .touchUpInside)
         
-        let leftButton = LeftButton()
+        let leftButton = ChangePrevGraphButton()
         leftButton.addAction(UIAction(handler: { [weak self] _ in
             guard let scrollView = self?.calendar.collectionView else { return }
             let current = scrollView.contentOffset.x / scrollView.frame.size.width
