@@ -1,5 +1,5 @@
 //
-//  SurveyListVM.swift
+//  SettingTiTiLabVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/05.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class SurveyListVM {
+final class SettingTiTiLabVM {
     let networkController: SurveysFetchable
     @Published private(set) var infos: [SurveyInfo] = []
     @Published private(set) var warning: (title: String, text: String)?

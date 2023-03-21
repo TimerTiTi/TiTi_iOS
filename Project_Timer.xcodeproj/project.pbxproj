@@ -211,7 +211,7 @@
 		87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */; };
 		87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
-		87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SurveyListVM.swift */; };
+		87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */; };
 		87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10938284C589A002E31EA /* FunctionInfo.swift */; };
 		87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10939284C589A002E31EA /* SettingFunctionsListVM.swift */; };
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
@@ -459,7 +459,7 @@
 		87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressDTO.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
-		87F10935284C47A1002E31EA /* SurveyListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyListVM.swift; sourceTree = "<group>"; };
+		87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVM.swift; sourceTree = "<group>"; };
 		87F10937284C589A002E31EA /* FunctionInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfoCell.swift; sourceTree = "<group>"; };
 		87F10938284C589A002E31EA /* FunctionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionInfo.swift; sourceTree = "<group>"; };
 		87F10939284C589A002E31EA /* SettingFunctionsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVM.swift; sourceTree = "<group>"; };
@@ -636,7 +636,7 @@
 			isa = PBXGroup;
 			children = (
 				872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */,
-				87F10935284C47A1002E31EA /* SurveyListVM.swift */,
+				87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */,
 				87F10931284C4367002E31EA /* SurveyCell.swift */,
 				87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */,
 				875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */,
@@ -1411,7 +1411,7 @@
 				87BEBEE9281C17000095CD29 /* RecordController.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
-				87F10936284C47A1002E31EA /* SurveyListVM.swift in Sources */,
+				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
