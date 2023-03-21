@@ -153,7 +153,6 @@
 		879108252838761B005D7B10 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879108242838761B005D7B10 /* NetworkStatus.swift */; };
 		87910828283876DD005D7B10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 87910827283876DD005D7B10 /* Alamofire */; };
 		8791082A283877A4005D7B10 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910829283877A4005D7B10 /* Network.swift */; };
-		8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082C28387BA6005D7B10 /* AppstoreVersion.swift */; };
 		8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082E28387D1F005D7B10 /* String+Extension.swift */; };
 		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
 		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
@@ -396,7 +395,6 @@
 		87910822283875CF005D7B10 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
 		879108242838761B005D7B10 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		87910829283877A4005D7B10 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		8791082C28387BA6005D7B10 /* AppstoreVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppstoreVersion.swift; sourceTree = "<group>"; };
 		8791082E28387D1F005D7B10 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -693,7 +691,6 @@
 			isa = PBXGroup;
 			children = (
 				875C98BD287172A5008F7ADD /* StringValue.swift */,
-				8791082C28387BA6005D7B10 /* AppstoreVersion.swift */,
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
@@ -1514,7 +1511,6 @@
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
 				878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */,
-				8791082D28387BA6005D7B10 /* AppstoreVersion.swift in Sources */,
 				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
