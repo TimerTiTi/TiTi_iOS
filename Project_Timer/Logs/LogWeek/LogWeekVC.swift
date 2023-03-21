@@ -270,7 +270,7 @@ extension LogWeekVC: FSCalendarDelegate {
 
 extension LogWeekVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return RecordsManager.shared.dailys.dates.contains(date) ? 1 : 0
+        return RecordsManager.shared.dailyManager.dates.contains(date) ? 1 : 0
     }
 }
 

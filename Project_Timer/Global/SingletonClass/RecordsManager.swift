@@ -12,7 +12,7 @@ final class RecordsManager {
     static let shared = RecordsManager()
     var recordTimes = RecordTimes()
     var daily = Daily()
-    var dailys = DailyViewModel()
+    var dailyManager = DailyManager()
     var tasks: [Task] = []
     var currentTask: Task?
     var showWarningOfRecordDate: Bool = false
@@ -33,7 +33,7 @@ final class RecordsManager {
         self.recordTimes.load()
         self.loadTasks()
         self.daily.load()
-        self.dailys.loadDailys()
+        self.dailyManager.loadDailys()
         self.configureWarningOfRecordDate()
         NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .current) { [weak self] _ in
             self?.showWarningOfRecordDate = false
@@ -70,6 +70,6 @@ final class RecordsManager {
             self.daily.save()
             self.recordTimes.sync(newDaily)
         }
-        self.dailys.modifyDaily(newDaily)
+        self.dailyManager.modifyDaily(newDaily)
     }
 }

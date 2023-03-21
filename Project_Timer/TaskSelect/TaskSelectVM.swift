@@ -83,7 +83,7 @@ final class TaskSelectVM {
             tasks.removeValue(forKey: before)
             tasks[after] = beforeTime
             RecordsManager.shared.daily.updateTasks(to: tasks)
-            RecordsManager.shared.dailys.modifyDaily(RecordsManager.shared.daily)
+            RecordsManager.shared.dailyManager.modifyDaily(RecordsManager.shared.daily)
         }
         
         if currentTask == before {
