@@ -10,13 +10,9 @@ import UIKit
 
 enum TiTiColor {
     static let shadow = UIColor(named: "shadow")
-    static let background = UIColor(named: "Background")
-    static let background2 = UIColor(named: "Background2")
-    static let blue = UIColor(named: "Blue")
-    static let button = UIColor(named: "Button")
-    static let click = UIColor(named: "Click")
-    static let text = UIColor(named: "Text")
-    static let innerColor = UIColor(named: "innerColor")
+    static let timerBackground = UIColor(named: "timerBackground")
+    static let stopwatchBackground = UIColor(named: "stopwatchBackground")
+    static let warningRed = UIColor(named: "warningRed")
     static let darkRed = UIColor(named: "darkRed")
     static let dock = UIColor(named: "dock")
     static let startButton = UIColor(named: "startButtonColor")

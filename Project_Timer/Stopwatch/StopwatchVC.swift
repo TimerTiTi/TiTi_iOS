@@ -49,12 +49,9 @@ final class StopwatchVC: UIViewController {
         return view
     }()
     
-    private var backgroundColor = TiTiColor.background2
+    private var backgroundColor = TiTiColor.stopwatchBackground
     private var textColor = UIColor.white
     private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
-    let RED = TiTiColor.text
-    let INNER = TiTiColor.innerColor
-    let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: StopwatchVM?
     
@@ -544,7 +541,7 @@ extension StopwatchVC {
             self.settingBT.alpha = 0
             self.resetBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = self.RED!
+            self.startStopBTLabel.textColor = TiTiColor.warningRed
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
             self.colorSelectorBorderView.alpha = 0
@@ -565,7 +562,7 @@ extension StopwatchVC {
         self.view.backgroundColor = self.backgroundColor
         self.outterProgress.progressColor = self.textColor
         self.innerProgress.progressColor = self.secondTextColor
-        self.startStopBT.backgroundColor = self.startButtonColor!
+        self.startStopBT.backgroundColor = TiTiColor.startButton
         self.taskButton.setTitleColor(self.textColor, for: .normal)
         self.sumTimeLabel.textColor = self.textColor
         self.stopWatchLabel.textColor = self.textColor
@@ -581,7 +578,7 @@ extension StopwatchVC {
             self.resetBT.alpha = 1
             self.taskButton.layer.borderColor = self.textColor.cgColor
             self.startStopBTLabel.textColor = self.textColor
-            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
+            self.startStopBT.layer.borderColor = TiTiColor.startButton?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelectorBorderView.alpha = 1
             self.tabBarController?.tabBar.isHidden = false
@@ -631,7 +628,7 @@ extension StopwatchVC {
     private func showWarningRecordDate() {
         UIView.animate(withDuration: 0.15) {
             self.warningRecordDate.alpha = 1
-            self.todayLabel.textColor = self.RED!
+            self.todayLabel.textColor = TiTiColor.warningRed
         }
     }
     

@@ -51,12 +51,9 @@ final class TimerVC: UIViewController {
         return view
     }()
     
-    private var backgroundColor = TiTiColor.background
+    private var backgroundColor = TiTiColor.timerBackground
     private var textColor = UIColor.white
     private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
-    let RED = TiTiColor.text
-    let INNER = TiTiColor.innerColor
-    let startButtonColor = TiTiColor.startButton
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: TimerVM?
     
@@ -557,7 +554,7 @@ extension TimerVC {
             self.settingBT.alpha = 0
             self.setTimerBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = self.RED!
+            self.startStopBTLabel.textColor = TiTiColor.warningRed
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
             self.colorSelectorBorderView.alpha = 0
@@ -578,7 +575,7 @@ extension TimerVC {
         self.view.backgroundColor = self.backgroundColor
         self.outterProgress.progressColor = self.textColor
         self.innerProgress.progressColor = self.secondTextColor
-        self.startStopBT.backgroundColor = self.startButtonColor!
+        self.startStopBT.backgroundColor = TiTiColor.startButton
         self.taskButton.setTitleColor(self.textColor, for: .normal)
         self.sumTimeLabel.textColor = self.textColor
         self.timerLabel.textColor = self.textColor
@@ -594,7 +591,7 @@ extension TimerVC {
             self.setTimerBT.alpha = 1
             self.taskButton.layer.borderColor = self.textColor.cgColor
             self.startStopBTLabel.textColor = self.textColor
-            self.startStopBT.layer.borderColor = self.startButtonColor?.cgColor
+            self.startStopBT.layer.borderColor = TiTiColor.startButton?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelectorBorderView.alpha = 1
             self.tabBarController?.tabBar.isHidden = false
@@ -645,7 +642,7 @@ extension TimerVC {
     private func updateRunningColor(times: Times) {
         guard self.viewModel?.runningUI == true,
               times.timer <= 60 else { return }
-        self.outterProgress.progressColor = RED!
+        self.outterProgress.progressColor = TiTiColor.warningRed!
     }
     
     private func playSound() {
@@ -661,7 +658,7 @@ extension TimerVC {
     private func showWarningRecordDate() {
         UIView.animate(withDuration: 0.15) {
             self.warningRecordDate.alpha = 1
-            self.todayLabel.textColor = self.RED!
+            self.todayLabel.textColor = TiTiColor.warningRed
         }
     }
     
