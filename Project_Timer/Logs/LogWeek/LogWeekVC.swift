@@ -101,7 +101,7 @@ extension LogWeekVC {
         #if targetEnvironment(macCatalyst)
         guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
         guard let fileURLs = IOUsecase.saveImagesToMAC(views: [self.standardWeekGraphView], fileName: week) else {
-            self.showAlertWithOK(title: "Save Failed", text: "")
+            self.showAlertWithOK(title: "Save Failed", warningRed: "")
             return
         }
         let controller = UIDocumentPickerViewController(forExporting: fileURLs)

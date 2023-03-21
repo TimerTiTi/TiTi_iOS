@@ -15,7 +15,7 @@ extension Color {
         } else if let userColor = UserDefaults.colorForKey(key: .color) {
             return Color(userColor)
         } else {
-            return Color(TiTiColor.background2 ?? .clear)
+            return Color(TiTiColor.stopwatchBackground ?? .clear)
         }
     }
     
@@ -23,7 +23,7 @@ extension Color {
         if let userColor = UserDefaults.colorForKey(key: .timerBackground) {
             return Color(userColor)
         } else {
-            return Color(TiTiColor.background ?? .clear)
+            return Color(TiTiColor.timerBackground ?? .clear)
         }
     }
 }

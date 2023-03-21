@@ -26,7 +26,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="Blue"/>
+                        <color key="backgroundColor" name="LaunchScreenBackground"/>
                         <constraints>
                             <constraint firstItem="QAg-oH-WDa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8Ua-WQ-rkc"/>
                             <constraint firstItem="QAg-oH-WDa" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Iw2-kE-nuA"/>
@@ -40,7 +40,7 @@
     </scenes>
     <resources>
         <image name="titilogo" width="512" height="512"/>
-        <namedColor name="Blue">
+        <namedColor name="LaunchScreenBackground">
             <color red="0.66666666666666663" green="0.74901960784313726" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
