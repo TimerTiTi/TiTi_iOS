@@ -26,7 +26,7 @@ final class SettingTiTiLabVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     private var cancellables: Set<AnyCancellable> = []
-    private var viewModel: SurveyListVM?
+    private var viewModel: SettingTiTiLabVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +122,7 @@ extension SettingTiTiLabVC {
     private func configureViewModel() {
         // MARK: NetworkController 생성 관련 로직고민이 필요
         let networkController = NetworkController(network: Network())
-        self.viewModel = SurveyListVM(networkController: networkController)
+        self.viewModel = SettingTiTiLabVM(networkController: networkController)
     }
     
     private func stopLoader() {
