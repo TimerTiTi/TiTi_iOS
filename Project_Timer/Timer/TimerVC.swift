@@ -443,7 +443,7 @@ extension TimerVC {
         self.viewModel?.$times
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] times in
-                self?.updateEndTime(goalTime: RecordsManager.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
+                self?.updateEndTime(goalTime: RecordsManager.shared.isTaskTargetOn ? times.remainingTaskTime : times.goal)
                 self?.updateProgress(times: times)
                 self?.updateRunningColor(times: times)
             })
@@ -621,7 +621,7 @@ extension TimerVC {
         let timerPeriod = self.viewModel?.settedTimerTime ?? 2400
         let goalPeriod: Int
         let innerSum: Int
-        if RecordsManager.shared.isTaskGargetOn {
+        if RecordsManager.shared.isTaskTargetOn {
             goalPeriod = RecordsManager.shared.currentTask?.taskTargetTime ?? 3600
             innerSum = goalPeriod - times.remainingTaskTime
             self.targetTimeLabel.text = "Task Target Time".localized()
