@@ -171,7 +171,7 @@ final class StopwatchVM {
         RecordsManager.shared.daily.update(at: endAt)
         self.updateDaily()
         RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
-        RecordsManager.shared.dailys.addDaily(self.daily)
+        RecordsManager.shared.dailyManager.addDaily(self.daily)
         self.updateTimes()
     }
     

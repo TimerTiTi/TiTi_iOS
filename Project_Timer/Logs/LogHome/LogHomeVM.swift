@@ -48,7 +48,7 @@ final class LogHomeVM {
     }
     
     func updateDailys() {
-        self.dailys = RecordsManager.shared.dailys.dailys
+        self.dailys = RecordsManager.shared.dailyManager.dailys
     }
     
     func loadDaily() {

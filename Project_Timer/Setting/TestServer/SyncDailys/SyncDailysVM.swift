@@ -168,9 +168,9 @@ extension SyncDailysVM {
 extension SyncDailysVM {
     private func saveDailys(_ dailys: [Daily]) {
         // dailys 저장
-        RecordsManager.shared.dailys.changeDailys(to: dailys)
+        RecordsManager.shared.dailyManager.changeDailys(to: dailys)
         
-        if let daily = RecordsManager.shared.dailys.dailys.last {
+        if let daily = RecordsManager.shared.dailyManager.dailys.last {
             RecordsManager.shared.daily = daily
             RecordsManager.shared.daily.save()
         }
@@ -190,7 +190,7 @@ extension SyncDailysVM {
 // MARK: Check
 extension SyncDailysVM {
     private func checkRecordTimes() {
-        guard let lastDaily = RecordsManager.shared.dailys.dailys.last,
+        guard let lastDaily = RecordsManager.shared.dailyManager.dailys.last,
               let dailyStartAt = lastDaily.taskHistorys?.values
             .flatMap({ $0 })
             .sorted(by: { $0.endDate < $1.endDate })

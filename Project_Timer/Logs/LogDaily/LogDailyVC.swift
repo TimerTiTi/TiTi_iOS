@@ -452,9 +452,9 @@ extension LogDailyVC {
 extension LogDailyVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel?.selectedDate = date
-        if RecordsManager.shared.dailys.dates.contains(date),
-           let targetIndex = RecordsManager.shared.dailys.dates.firstIndex(of: date) {
-            self.viewModel?.updateDaily(to: RecordsManager.shared.dailys.dailys[targetIndex])
+        if RecordsManager.shared.dailyManager.dates.contains(date),
+           let targetIndex = RecordsManager.shared.dailyManager.dates.firstIndex(of: date) {
+            self.viewModel?.updateDaily(to: RecordsManager.shared.dailyManager.dailys[targetIndex])
         } else {
             self.viewModel?.updateDaily(to: nil)
         }
@@ -463,7 +463,7 @@ extension LogDailyVC: FSCalendarDelegate {
 
 extension LogDailyVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return RecordsManager.shared.dailys.dates.contains(date) ? 1 : 0
+        return RecordsManager.shared.dailyManager.dates.contains(date) ? 1 : 0
     }
 }
 

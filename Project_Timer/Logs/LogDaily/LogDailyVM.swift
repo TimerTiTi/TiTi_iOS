@@ -35,7 +35,7 @@ final class LogDailyVM {
     }
     
     func updateCurrentDaily() {
-        let newDaily = RecordsManager.shared.dailys.dailys.first(where: { $0.day.zeroDate == self.selectedDate })
+        let newDaily = RecordsManager.shared.dailyManager.dailys.first(where: { $0.day.zeroDate == self.selectedDate })
         self.updateDaily(to: newDaily)
     }
     
