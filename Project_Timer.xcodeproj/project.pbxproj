@@ -900,7 +900,6 @@
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
 				87035DF6282225C800055378 /* Protocols.swift */,
 				87C51509267B38C0003DA21D /* Converter.swift */,
 				87D1250028771AAD00018658 /* Language.swift */,
@@ -938,7 +937,7 @@
 				87DC6A4628D00DF400455A06 /* WeekView.swift */,
 				873C197528D041DE00E02ADC /* DailyView.swift */,
 				87D5E65128C7475A00D53F8D /* Model */,
-				87D5E64E28C745EB00D53F8D /* viewModel */,
+				87D5E64E28C745EB00D53F8D /* ViewModel */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1053,7 +1052,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		87D5E64E28C745EB00D53F8D /* viewModel */ = {
+		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				8765234E28C7964500487BFB /* TotalVM.swift */,
@@ -1063,7 +1062,7 @@
 				87DC6A4828D0104300455A06 /* WeekVM.swift */,
 				873C197728D044CC00E02ADC /* DailyVM.swift */,
 			);
-			path = viewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		87D5E65128C7475A00D53F8D /* Model */ = {
@@ -1123,6 +1122,7 @@
 		87FD9FA92998D58900D9B0FF /* SingletonClass */ = {
 			isa = PBXGroup;
 			children = (
+				8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */,
 				87BEBEE8281C17000095CD29 /* RecordsManager.swift */,
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 				04172E972885453F00F962F2 /* MotionDetector.swift */,
