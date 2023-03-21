@@ -20,7 +20,7 @@ final class LogWeekVM {
     }
     
     func selectDate(to date: Date) {
-        let weekData = WeekDailysData(selectedDate: date, dailys: RecordController.shared.dailys.dailys)
+        let weekData = WeekDailysData(selectedDate: date, dailys: RecordsManager.shared.dailys.dailys)
         self.weekData = weekData
         self.timelineVM.update(weekData: weekData)
         self.top5Tasks = weekData.top5Tasks

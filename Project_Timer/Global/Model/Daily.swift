@@ -64,7 +64,7 @@ struct Daily: Codable, CustomStringConvertible {
     
     // 10간격, 또는 종료시 update 반영
     mutating func update(at current: Date) {
-        let recordTimes = RecordController.shared.recordTimes
+        let recordTimes = RecordsManager.shared.recordTimes
         // 기존 과거형식의 기록, 또는 기록중인 상태의 경우 -> 기존 update 로직을 통해 Daily 값을 update 한다
         if self.taskHistorys == nil {
             let interval = Date.interval(from: recordTimes.recordStartAt, to: current)

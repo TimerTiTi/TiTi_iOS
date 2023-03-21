@@ -443,7 +443,7 @@ extension TimerVC {
         self.viewModel?.$times
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] times in
-                self?.updateEndTime(goalTime: RecordController.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
+                self?.updateEndTime(goalTime: RecordsManager.shared.isTaskGargetOn ? times.remainingTaskTime : times.goal)
                 self?.updateProgress(times: times)
                 self?.updateRunningColor(times: times)
             })
@@ -621,8 +621,8 @@ extension TimerVC {
         let timerPeriod = self.viewModel?.settedTimerTime ?? 2400
         let goalPeriod: Int
         let innerSum: Int
-        if RecordController.shared.isTaskGargetOn {
-            goalPeriod = RecordController.shared.currentTask?.taskTargetTime ?? 3600
+        if RecordsManager.shared.isTaskGargetOn {
+            goalPeriod = RecordsManager.shared.currentTask?.taskTargetTime ?? 3600
             innerSum = goalPeriod - times.remainingTaskTime
             self.targetTimeLabel.text = "Task Target Time".localized()
         } else {
@@ -894,7 +894,7 @@ extension TimerVC {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),
                                          subTitle: "\(Date().YYYYMMDDstyleString) " + "setting TargetTime".localized(),
-                                         targetTime: RecordController.shared.recordTimes.settedGoalTime)
+                                         targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
@@ -902,7 +902,7 @@ extension TimerVC {
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
         alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
-            RecordController.shared.recordTimes.updateGoalTime(to: targetTime)
+            RecordsManager.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
             self?.newRecord()
         }))
@@ -912,7 +912,7 @@ extension TimerVC {
     
     private func showSettingTimerTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
-        let timerTime = RecordController.shared.recordTimes.settedTimerTime
+        let timerTime = RecordsManager.shared.recordTimes.settedTimerTime
         let info = TargetTimeSettingInfo(title: "Setting Timer Time".localized(),
                                          subTitle: "End Time".localized() + ": " + timerTime.endTimeFromNow(),
                                          targetTime: timerTime)

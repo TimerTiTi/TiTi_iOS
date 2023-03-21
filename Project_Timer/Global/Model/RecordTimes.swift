@@ -34,8 +34,8 @@ struct RecordTimes: Codable {
         self.recordTask = taskName
         self.recordTaskFromTime = fromTime
         self.savedStopwatchTime = fromTime
-        if let task = RecordController.shared.tasks.first(where: { $0.taskName == taskName }) {
-            RecordController.shared.currentTask = task
+        if let task = RecordsManager.shared.tasks.first(where: { $0.taskName == taskName }) {
+            RecordsManager.shared.currentTask = task
         }
         self.save()
     }
@@ -48,7 +48,7 @@ struct RecordTimes: Codable {
     mutating func recordStart() {
         self.recordStartAt = Date()
         self.recording = true
-        self.recordStartTimeline = RecordController.shared.daily.timeline
+        self.recordStartTimeline = RecordsManager.shared.daily.timeline
         self.save()
     }
     // 기록 종료시 설정
@@ -120,7 +120,7 @@ struct RecordTimes: Codable {
     
     func currentTimes(darkerMode: Bool = false) -> Times { // VC 에서 매초
         guard self.recording else {
-            let remainingTaskTime = RecordController.shared.remainingTaskTime
+            let remainingTaskTime = RecordsManager.shared.remainingTaskTime
             return Times(self.savedSumTime, self.savedTimerTime, self.savedStopwatchTime, self.savedGoalTime, remainingTaskTime)
         }
         
@@ -130,7 +130,7 @@ struct RecordTimes: Codable {
         let currentTimer = self.savedTimerTime - interval
         let currentStopwatch = self.savedStopwatchTime + interval
         let currentGoal = self.settedGoalTime - currentSum
-        let remainingTaskTime = RecordController.shared.remainingTaskTime - interval
+        let remainingTaskTime = RecordsManager.shared.remainingTaskTime - interval
         
         return Times(currentSum, currentTimer, currentStopwatch, currentGoal, remainingTaskTime, darkerMode: darkerMode)
     }

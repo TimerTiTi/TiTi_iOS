@@ -64,7 +64,7 @@ extension SyncDailysVM {
     
     /// uploadRecordTime -> getSyncLog 진행
     private func uploadRecordTime() {
-        let recordTimes = RecordController.shared.recordTimes
+        let recordTimes = RecordsManager.shared.recordTimes
         self.loadingText = .uploadRecordTime
         self.loading = true
         self.networkController.uploadRecordTimes(recordTimes: recordTimes) { [weak self] status in
@@ -168,18 +168,18 @@ extension SyncDailysVM {
 extension SyncDailysVM {
     private func saveDailys(_ dailys: [Daily]) {
         // dailys 저장
-        RecordController.shared.dailys.changeDailys(to: dailys)
+        RecordsManager.shared.dailys.changeDailys(to: dailys)
         
-        if let daily = RecordController.shared.dailys.dailys.last {
-            RecordController.shared.daily = daily
-            RecordController.shared.daily.save()
+        if let daily = RecordsManager.shared.dailys.dailys.last {
+            RecordsManager.shared.daily = daily
+            RecordsManager.shared.daily.save()
         }
     }
     
     private func saveRecordTimes(_ recordtimes: RecordTimes) {
         // TODO: 상단 날짜가 이상한점 확인 필요
-        RecordController.shared.recordTimes = recordtimes
-        RecordController.shared.recordTimes.save()
+        RecordsManager.shared.recordTimes = recordtimes
+        RecordsManager.shared.recordTimes.save()
     }
     
     private func saveLastUploadedDate(to date: Date) {
@@ -190,12 +190,12 @@ extension SyncDailysVM {
 // MARK: Check
 extension SyncDailysVM {
     private func checkRecordTimes() {
-        guard let lastDaily = RecordController.shared.dailys.dailys.last,
+        guard let lastDaily = RecordsManager.shared.dailys.dailys.last,
               let dailyStartAt = lastDaily.taskHistorys?.values
             .flatMap({ $0 })
             .sorted(by: { $0.endDate < $1.endDate })
             .last?.startDate else { return }
-        let localStartAt = RecordController.shared.recordTimes.recordStartAt
+        let localStartAt = RecordsManager.shared.recordTimes.recordStartAt
         
         if (dailyStartAt.YYYYMMDDHMSstyleString == localStartAt.YYYYMMDDHMSstyleString) {
             self.uploadRecordTime()

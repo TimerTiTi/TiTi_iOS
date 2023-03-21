@@ -29,7 +29,7 @@ final class SyncDeviceStatusView: UIView {
     }
     
     func configureDailys() -> [Daily] {
-        let dailys = RecordController.shared.dailys.dailys
+        let dailys = RecordsManager.shared.dailys.dailys
         // device dailys
         self.deviceTotalDailysLabel.text = "\(dailys.count) Dailys"
         var targetDailys: [Daily] = []

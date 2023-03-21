@@ -43,7 +43,7 @@ final class LogWeekVC: UIViewController {
         self.configureBiggerUI()
         #endif
         
-        self.viewModel?.selectDate(to: RecordController.shared.daily.day.zeroDate.localDate)
+        self.viewModel?.selectDate(to: RecordsManager.shared.daily.day.zeroDate.localDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -270,7 +270,7 @@ extension LogWeekVC: FSCalendarDelegate {
 
 extension LogWeekVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
+        return RecordsManager.shared.dailys.dates.contains(date) ? 1 : 0
     }
 }
 

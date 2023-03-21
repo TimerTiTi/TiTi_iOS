@@ -34,7 +34,7 @@ final class TargetTimePickerVM {
         UserDefaultsManager.set(to: selectedHour, forKey: self.key)
         
         if self.key == .goalTimeOfDaily {
-            RecordController.shared.recordTimes.updateGoalTime(to: selectedHour)
+            RecordsManager.shared.recordTimes.updateGoalTime(to: selectedHour)
         }
     }
 }

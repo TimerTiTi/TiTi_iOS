@@ -169,7 +169,7 @@ extension ModifyRecordVM {
     /// 편집 내용 로컬에 저장, dailys.json 파일 업데이트
     func save() {
         self.currentDaily.setEdited()
-        RecordController.shared.modifyRecord(with: self.currentDaily)
+        RecordsManager.shared.modifyRecord(with: self.currentDaily)
     }
     
     /// 동일한 과목명이 이미 존재하는지 검증

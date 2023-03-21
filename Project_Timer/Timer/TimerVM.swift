@@ -38,11 +38,11 @@ final class TimerVM {
     let timeOfTargetViewModel: CountdownTimeLabelVM
     
     init() {
-        let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        let currentTimes = RecordsManager.shared.recordTimes.currentTimes()
         let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
         self.times = currentTimes
-        self.daily = RecordController.shared.daily
-        self.taskName = RecordController.shared.recordTimes.recordTask
+        self.daily = RecordsManager.shared.daily
+        self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfTimerViewModel = TimerTimeLabelVM(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
         self.timeOfTargetViewModel = CountdownTimeLabelVM(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
@@ -50,7 +50,7 @@ final class TimerVM {
         self.soundAlert = false
         self.updateAnimationSetting()
         
-        if RecordController.shared.recordTimes.recording {
+        if RecordsManager.shared.recordTimes.recording {
             print("automatic start")
             self.timerStart()
         } else {
@@ -69,24 +69,24 @@ final class TimerVM {
     }
     
     private func checkRecordDate() {
-        self.warningNewDate = RecordController.shared.showWarningOfRecordDate
+        self.warningNewDate = RecordsManager.shared.showWarningOfRecordDate
     }
     
     var settedTimerTime: Int {
-        return RecordController.shared.recordTimes.settedTimerTime
+        return RecordsManager.shared.recordTimes.settedTimerTime
     }
     
     var settedGoalTime: Int {
-        return RecordController.shared.recordTimes.settedGoalTime
+        return RecordsManager.shared.recordTimes.settedGoalTime
     }
     
     func updateTimes() {
-        self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
+        self.times = RecordsManager.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
         let timer = self.darkerMode ? self.times.timerForDarker : self.times.timer
         self.timeOfTimerViewModel.updateTime(timer, showsAnimation: self.showAnimation)
         
-        if RecordController.shared.isTaskGargetOn {
+        if RecordsManager.shared.isTaskGargetOn {
             self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
             self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
@@ -94,23 +94,23 @@ final class TimerVM {
     }
     
     func updateDaily() {
-        self.daily = RecordController.shared.daily
+        self.daily = RecordsManager.shared.daily
     }
     
     func updateTask() {
-        self.taskName = RecordController.shared.recordTimes.recordTask
+        self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.updateTimes()
     }
     
     func updateModeNum() {
         UserDefaultsManager.set(to: 1, forKey: .VCNum)
-        RecordController.shared.recordTimes.updateMode(to: 1)
+        RecordsManager.shared.recordTimes.updateMode(to: 1)
     }
     
     func changeTask(to taskName: String) {
-        let currentTaskSumTime = RecordController.shared.daily.tasks[taskName] ?? 0
+        let currentTaskSumTime = RecordsManager.shared.daily.tasks[taskName] ?? 0
         self.taskName = taskName
-        RecordController.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
+        RecordsManager.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
     }
     
@@ -119,7 +119,7 @@ final class TimerVM {
             self.terminateTimer()
         } else {
             self.updateAnimationSetting()
-            RecordController.shared.recordTimes.recordStart()
+            RecordsManager.shared.recordTimes.recordStart()
             self.checkTimerReset()
             self.timerStart()
             self.setBadge()
@@ -130,18 +130,18 @@ final class TimerVM {
     
     func timerReset() {
         self.updateAnimationSetting()
-        RecordController.shared.recordTimes.resetTimer()
+        RecordsManager.shared.recordTimes.resetTimer()
         self.updateTimes()
     }
     
     func updateTimerTime(to timer: Int) {
-        RecordController.shared.recordTimes.updateTimerTime(to: timer)
+        RecordsManager.shared.recordTimes.updateTimerTime(to: timer)
         self.updateTimes()
     }
     
     func newRecord() {
-        RecordController.shared.daily.reset()
-        RecordController.shared.recordTimes.reset()
+        RecordsManager.shared.daily.reset()
+        RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
     }
@@ -197,10 +197,10 @@ final class TimerVM {
         self.runningUI = false
         self.soundAlert = true
         let endAt = Date()
-        RecordController.shared.daily.update(at: endAt)
+        RecordsManager.shared.daily.update(at: endAt)
         self.updateDaily()
-        RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
-        RecordController.shared.dailys.addDaily(self.daily)
+        RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
+        RecordsManager.shared.dailys.addDaily(self.daily)
         self.updateTimes()
     }
     
