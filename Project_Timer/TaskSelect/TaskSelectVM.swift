@@ -12,7 +12,7 @@ import Combine
 final class TaskSelectVM {
     @Published private(set) var tasks: [Task] = [] {
         didSet {
-            RecordController.shared.tasks = self.tasks
+            RecordsManager.shared.tasks = self.tasks
             self.saveTasks()
         }
     }
@@ -23,7 +23,7 @@ final class TaskSelectVM {
     }
     
     private func loadTasks() {
-        self.tasks = RecordController.shared.tasks
+        self.tasks = RecordsManager.shared.tasks
     }
     
     private func saveTasks() {
@@ -54,7 +54,7 @@ final class TaskSelectVM {
         guard self.tasks[safe: index] != nil else { return }
         self.tasks[index].update(taskTime: time)
         
-        if let currentTask = RecordController.shared.currentTask, currentTask == self.tasks[index] {
+        if let currentTask = RecordsManager.shared.currentTask, currentTask == self.tasks[index] {
             self.selectedTask = currentTask.taskName
         }
     }
@@ -63,7 +63,7 @@ final class TaskSelectVM {
         guard self.tasks[safe: index] != nil else { return }
         self.tasks[index].update(isOn: isOn)
         
-        if let currentTask = RecordController.shared.currentTask, currentTask == self.tasks[index] {
+        if let currentTask = RecordsManager.shared.currentTask, currentTask == self.tasks[index] {
             self.selectedTask = currentTask.taskName
         }
     }
@@ -76,14 +76,14 @@ final class TaskSelectVM {
     }
     
     private func resetTaskname(before: String, after: String) {
-        let currentTask = RecordController.shared.recordTimes.recordTask
-        var tasks = RecordController.shared.daily.tasks
+        let currentTask = RecordsManager.shared.recordTimes.recordTask
+        var tasks = RecordsManager.shared.daily.tasks
         
         if let beforeTime = tasks[before] {
             tasks.removeValue(forKey: before)
             tasks[after] = beforeTime
-            RecordController.shared.daily.updateTasks(to: tasks)
-            RecordController.shared.dailys.modifyDaily(RecordController.shared.daily)
+            RecordsManager.shared.daily.updateTasks(to: tasks)
+            RecordsManager.shared.dailys.modifyDaily(RecordsManager.shared.daily)
         }
         
         if currentTask == before {

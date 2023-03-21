@@ -1,5 +1,5 @@
 //
-//  RecordController.swift
+//  RecordsManager.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/04/29.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class RecordController {
-    static let shared = RecordController()
+final class RecordsManager {
+    static let shared = RecordsManager()
     var recordTimes = RecordTimes()
     var daily = Daily()
     var dailys = DailyViewModel()

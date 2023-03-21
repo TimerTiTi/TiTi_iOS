@@ -71,7 +71,7 @@ final class LogDailyVC: UIViewController {
         self.configureBiggerUI()
         #endif
         
-        self.viewModel?.updateDaily(to: RecordController.shared.daily)
+        self.viewModel?.updateDaily(to: RecordsManager.shared.daily)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -452,9 +452,9 @@ extension LogDailyVC {
 extension LogDailyVC: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.viewModel?.selectedDate = date
-        if RecordController.shared.dailys.dates.contains(date),
-           let targetIndex = RecordController.shared.dailys.dates.firstIndex(of: date) {
-            self.viewModel?.updateDaily(to: RecordController.shared.dailys.dailys[targetIndex])
+        if RecordsManager.shared.dailys.dates.contains(date),
+           let targetIndex = RecordsManager.shared.dailys.dates.firstIndex(of: date) {
+            self.viewModel?.updateDaily(to: RecordsManager.shared.dailys.dailys[targetIndex])
         } else {
             self.viewModel?.updateDaily(to: nil)
         }
@@ -463,7 +463,7 @@ extension LogDailyVC: FSCalendarDelegate {
 
 extension LogDailyVC: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        return RecordController.shared.dailys.dates.contains(date) ? 1 : 0
+        return RecordsManager.shared.dailys.dates.contains(date) ? 1 : 0
     }
 }
 

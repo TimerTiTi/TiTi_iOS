@@ -48,11 +48,11 @@ final class LogHomeVM {
     }
     
     func updateDailys() {
-        self.dailys = RecordController.shared.dailys.dailys
+        self.dailys = RecordsManager.shared.dailys.dailys
     }
     
     func loadDaily() {
-        self.daily = RecordController.shared.daily
+        self.daily = RecordsManager.shared.daily
     }
     
     func updateColor() {

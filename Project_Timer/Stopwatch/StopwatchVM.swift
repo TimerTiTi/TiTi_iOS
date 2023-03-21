@@ -37,18 +37,18 @@ final class StopwatchVM {
     let timeOfTargetViewModel: CountdownTimeLabelVM
     
     init() {
-        let currentTimes = RecordController.shared.recordTimes.currentTimes()
+        let currentTimes = RecordsManager.shared.recordTimes.currentTimes()
         let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
         self.times = currentTimes
-        self.daily = RecordController.shared.daily
-        self.taskName = RecordController.shared.recordTimes.recordTask
+        self.daily = RecordsManager.shared.daily
+        self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfStopwatchViewModel = StopwatchTimeLabelVM(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
         self.timeOfTargetViewModel = CountdownTimeLabelVM(time: currentTimes.goal, fontSize: 32, isWhite: isWhite)
         self.requestNotificationAuthorization()
         self.updateAnimationSetting()
         
-        if RecordController.shared.recordTimes.recording {
+        if RecordsManager.shared.recordTimes.recording {
             print("automatic start")
             self.timerStart()
         } else {
@@ -67,19 +67,19 @@ final class StopwatchVM {
     }
     
     private func checkRecordDate() {
-        self.warningNewDate = RecordController.shared.showWarningOfRecordDate
+        self.warningNewDate = RecordsManager.shared.showWarningOfRecordDate
     }
     
     var settedGoalTime: Int {
-        return RecordController.shared.recordTimes.settedGoalTime
+        return RecordsManager.shared.recordTimes.settedGoalTime
     }
     
     func updateTimes() {
-        self.times = RecordController.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
+        self.times = RecordsManager.shared.recordTimes.currentTimes(darkerMode: self.darkerMode)
         self.timeOfStopwatchViewModel.updateTime(self.times.stopwatch, showsAnimation: self.showAnimation)
         self.timeOfSumViewModel.updateTime(self.times.sum, showsAnimation: self.showAnimation)
         
-        if RecordController.shared.isTaskGargetOn {
+        if RecordsManager.shared.isTaskGargetOn {
             self.timeOfTargetViewModel.updateTime(self.times.remainingTaskTime, showsAnimation: self.showAnimation)
         } else {
             self.timeOfTargetViewModel.updateTime(self.times.goal, showsAnimation: self.showAnimation)
@@ -87,23 +87,23 @@ final class StopwatchVM {
     }
     
     func updateDaily() {
-        self.daily = RecordController.shared.daily
+        self.daily = RecordsManager.shared.daily
     }
     
     func updateTask() {
-        self.taskName = RecordController.shared.recordTimes.recordTask
+        self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.updateTimes()
     }
     
     func updateModeNum() {
         UserDefaultsManager.set(to: 2, forKey: .VCNum)
-        RecordController.shared.recordTimes.updateMode(to: 2)
+        RecordsManager.shared.recordTimes.updateMode(to: 2)
     }
     
     func changeTask(to taskName: String) {
-        let currentTaskSumTime = RecordController.shared.daily.tasks[taskName] ?? 0
+        let currentTaskSumTime = RecordsManager.shared.daily.tasks[taskName] ?? 0
         self.taskName = taskName
-        RecordController.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
+        RecordsManager.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
     }
     
@@ -117,7 +117,7 @@ final class StopwatchVM {
             }
         } else {
             self.updateAnimationSetting()
-            RecordController.shared.recordTimes.recordStart()
+            RecordsManager.shared.recordTimes.recordStart()
             self.timerStart()
             self.setBadge()
             self.sendNotification()
@@ -127,13 +127,13 @@ final class StopwatchVM {
     
     func stopwatchReset() {
         self.updateAnimationSetting()
-        RecordController.shared.recordTimes.resetStopwatch()
+        RecordsManager.shared.recordTimes.resetStopwatch()
         self.updateTimes()
     }
     
     func newRecord() {
-        RecordController.shared.daily.reset()
-        RecordController.shared.recordTimes.reset()
+        RecordsManager.shared.daily.reset()
+        RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
     }
@@ -168,10 +168,10 @@ final class StopwatchVM {
         self.timerRunning = false
         self.runningUI = false
         let endAt = Date()
-        RecordController.shared.daily.update(at: endAt)
+        RecordsManager.shared.daily.update(at: endAt)
         self.updateDaily()
-        RecordController.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
-        RecordController.shared.dailys.addDaily(self.daily)
+        RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
+        RecordsManager.shared.dailys.addDaily(self.daily)
         self.updateTimes()
     }
     
