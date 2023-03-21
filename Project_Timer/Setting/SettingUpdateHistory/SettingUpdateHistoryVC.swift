@@ -22,7 +22,7 @@ final class SettingUpdateHistoryVC: UIViewController {
     }()
     
     private var cancellables: Set<AnyCancellable> = []
-    private var viewModel: UpdateHistoryVM?
+    private var viewModel: SettingUpdateHistoryVM?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,7 @@ extension SettingUpdateHistoryVC {
     private func configureViewModel() {
         // MARK: NetworkController 주입 고민이 필요
         let networkController = NetworkController(network: Network())
-        self.viewModel = UpdateHistoryVM(networkController: networkController)
+        self.viewModel = SettingUpdateHistoryVM(networkController: networkController)
     }
     
     private func stopLoader() {

@@ -1,5 +1,5 @@
 //
-//  UpdateHistoryVM.swift
+//  SettingUpdateHistoryVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/06/04.
@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class UpdateHistoryVM {
+final class SettingUpdateHistoryVM {
     let networkController: UpdateHistoryFetchable
     @Published private(set) var infos: [UpdateInfo] = []
     @Published private(set) var warning: (title: String, text: String)?
