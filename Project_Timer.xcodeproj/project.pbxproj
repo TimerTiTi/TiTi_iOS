@@ -186,7 +186,6 @@
 		87BFCBCA28EFAFFC00FC688E /* TargetTimePickerPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BFCBC928EFAFFC00FC688E /* TargetTimePickerPopupVC.swift */; };
 		87BFCBCC28EFB10F00FC688E /* TargetTimePickerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BFCBCB28EFB10F00FC688E /* TargetTimePickerVM.swift */; };
 		87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */; };
-		87C5150A267B38C0003DA21D /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C51509267B38C0003DA21D /* Converter.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */; };
 		87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */; };
@@ -430,7 +429,6 @@
 		87BFCBC928EFAFFC00FC688E /* TargetTimePickerPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePickerPopupVC.swift; sourceTree = "<group>"; };
 		87BFCBCB28EFB10F00FC688E /* TargetTimePickerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimePickerVM.swift; sourceTree = "<group>"; };
 		87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyRecordVC.swift; sourceTree = "<group>"; };
-		87C51509267B38C0003DA21D /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		87CA3B522618591100DD9BB5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CA3B552618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -901,7 +899,6 @@
 			isa = PBXGroup;
 			children = (
 				87035DF6282225C800055378 /* Protocols.swift */,
-				87C51509267B38C0003DA21D /* Converter.swift */,
 				87D1250028771AAD00018658 /* Language.swift */,
 				87B539AA299BB710001E354C /* Versions.swift */,
 				87FD9FA92998D58900D9B0FF /* SingletonClass */,
@@ -1489,7 +1486,6 @@
 				87459704263FEF6B00172C0F /* TimerVC.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
-				87C5150A267B38C0003DA21D /* Converter.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
 				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
