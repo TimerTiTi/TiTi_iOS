@@ -63,8 +63,8 @@
 		871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871EDFEE288AF6E900B428A6 /* InfoPlist.strings */; };
 		8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6D62969123E00410D57 /* IOUsecase.swift */; };
 		8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */; };
-		8721C6DB296943C500410D57 /* RightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DA296943C500410D57 /* RightButton.swift */; };
-		8721C6DD296944EE00410D57 /* LeftButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DC296944EE00410D57 /* LeftButton.swift */; };
+		8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */; };
+		8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
@@ -306,8 +306,8 @@
 		871EDFEF288AF6EE00B428A6 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8721C6D62969123E00410D57 /* IOUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOUsecase.swift; sourceTree = "<group>"; };
 		8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
-		8721C6DA296943C500410D57 /* RightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightButton.swift; sourceTree = "<group>"; };
-		8721C6DC296944EE00410D57 /* LeftButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftButton.swift; sourceTree = "<group>"; };
+		8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNextGraphButton.swift; sourceTree = "<group>"; };
+		8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePrevGraphButton.swift; sourceTree = "<group>"; };
 		872B7552296A625B00D24394 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
@@ -727,8 +727,8 @@
 				87199F5B28840E970017D01A /* TasksCircularProgressView.swift */,
 				87199F5D28842F0E0017D01A /* CheckGraphButton.swift */,
 				04E0DFCC28A94460004DABBE /* PaddingLabel.swift */,
-				8721C6DA296943C500410D57 /* RightButton.swift */,
-				8721C6DC296944EE00410D57 /* LeftButton.swift */,
+				8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */,
+				8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */,
 				875EDA352957F9510037A7EB /* LoadingIndicator.swift */,
 			);
 			path = View;
@@ -1374,7 +1374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */,
-				8721C6DD296944EE00410D57 /* LeftButton.swift in Sources */,
+				8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */,
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,
@@ -1544,7 +1544,7 @@
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
 				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
-				8721C6DB296943C500410D57 /* RightButton.swift in Sources */,
+				8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,

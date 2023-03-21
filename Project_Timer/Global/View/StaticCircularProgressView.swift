@@ -8,8 +8,7 @@
 
 import UIKit
 
-class StaticCircularProgressView: UIView {
-
+final class StaticCircularProgressView: UIView {
     fileprivate var progressLayer = CAShapeLayer()
     fileprivate var trackLayer = CAShapeLayer()
     
@@ -58,8 +57,6 @@ class StaticCircularProgressView: UIView {
         progressLayer.strokeColor = progressColor.cgColor
         progressLayer.lineWidth = 25.0
         progressLayer.strokeEnd = 0.0
-//        progressLayer.lineCap = .round
-        
         
         layer.addSublayer(progressLayer)
          
@@ -70,20 +67,7 @@ class StaticCircularProgressView: UIView {
         animation.duration = duration
         animation.fromValue = from
         animation.toValue = value
-//        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTiming)
         progressLayer.strokeEnd = CGFloat(value)
         progressLayer.add(animation, forKey: "animateprogress")
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

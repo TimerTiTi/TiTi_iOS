@@ -1,5 +1,5 @@
 //
-//  RightButton.swift
+//  ChangePrevGraphButton.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/01/07.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-final class RightButton: UIButton {
+final class ChangePrevGraphButton: UIButton {
     convenience init() {
         self.init(frame: CGRect())
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        self.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         self.tintColor = UIColor.label
         let padding: CGFloat = 12
         if #available(macCatalyst 15.0, iOS 15.0, *) {

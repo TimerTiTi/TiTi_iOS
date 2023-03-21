@@ -26,6 +26,4 @@ extension Color {
             return Color(TiTiColor.background ?? .clear)
         }
     }
-    
-    
 }
