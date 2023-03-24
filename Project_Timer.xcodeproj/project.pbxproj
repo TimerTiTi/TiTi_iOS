@@ -657,6 +657,7 @@
 				87459705263FF0D700172C0F /* Daily.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
+				8757AA3C290511FF00D97517 /* Task.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 			);
 			path = Model;
@@ -703,7 +704,6 @@
 			children = (
 				875AA59B26494365005D15D6 /* TaskSelectVC.swift */,
 				8757AA3A290511AB00D97517 /* TaskSelectVM.swift */,
-				8757AA3C290511FF00D97517 /* Task.swift */,
 				8757AA3E29052DDF00D97517 /* TaskCell.swift */,
 			);
 			path = TaskSelect;
