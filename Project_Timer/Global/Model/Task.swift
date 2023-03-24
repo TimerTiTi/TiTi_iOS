@@ -9,7 +9,6 @@
 import Foundation
 
 struct Task: Codable, Equatable {
-    static let fileName = "tasks.json"
     var taskName: String
     var taskTargetTime: Int
     var isTaskTargetTimeOn: Bool

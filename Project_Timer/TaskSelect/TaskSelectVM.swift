@@ -10,71 +10,54 @@ import Foundation
 import Combine
 
 final class TaskSelectVM {
-    @Published private(set) var tasks: [Task] = [] {
-        didSet {
-            RecordsManager.shared.taskManager.tasks = self.tasks
-            self.saveTasks()
-        }
-    }
+    let manager: TaskManager
+    @Published private(set) var tasks: [Task] = []
     @Published private(set) var selectedTask: String?
-    
     init() {
-        self.loadTasks()
-    }
-    
-    private func loadTasks() {
-        self.tasks = RecordsManager.shared.taskManager.tasks
-    }
-    
-    private func saveTasks() {
-        Storage.store(self.tasks, to: .documents, as: Task.fileName)
+        self.manager = RecordsManager.shared.taskManager
+        self.tasks = manager.tasks
     }
     
     func addNewTask(taskName: String) {
-        let newTask = Task(taskName)
-        self.tasks.append(newTask)
+        manager.addNewTask(taskName: taskName)
+        self.tasks = manager.tasks
     }
     
     func deleteTask(at index: Int) {
-        guard let targetTask = self.tasks[safe: index] else { return }
-        self.tasks.removeAll(where: { $0.taskName == targetTask.taskName })
-    }
-    
-    func isSameNameExist(name: String) -> Bool {
-        return self.tasks.map(\.taskName).contains(name)
+        manager.deleteTask(at: index)
+        self.tasks = manager.tasks
     }
     
     func updateTaskName(at index: Int, to text: String) {
-        guard self.tasks[safe: index] != nil else { return }
-        self.resetTaskname(before: self.tasks[index].taskName, after: text)
-        self.tasks[index].update(taskName: text)
+        guard manager.tasks[safe: index] != nil else { return }
+        self.resetTaskname(before: manager.tasks[index].taskName, after: text)
+        manager.updateTaskName(at: index, to: text)
+        self.tasks = manager.tasks
+    }
+    
+    func isSameNameExist(name: String) -> Bool {
+        return manager.tasks.map(\.taskName).contains(name)
     }
     
     func updateTaskTime(at index: Int, to time: Int) {
-        guard self.tasks[safe: index] != nil else { return }
-        self.tasks[index].update(taskTime: time)
-        
-        if let currentTask = RecordsManager.shared.currentTask, currentTask == self.tasks[index] {
-            self.selectedTask = currentTask.taskName
-        }
+        manager.updateTaskTime(at: index, to: time)
+        self.tasks = manager.tasks
+        self.updateSelectedTask(index: index)
     }
     
     func updateTaskOn(at index: Int, to isOn: Bool) {
-        guard self.tasks[safe: index] != nil else { return }
-        self.tasks[index].update(isOn: isOn)
-        
-        if let currentTask = RecordsManager.shared.currentTask, currentTask == self.tasks[index] {
-            self.selectedTask = currentTask.taskName
-        }
+        manager.updateTaskOn(at: index, to: isOn)
+        self.tasks = manager.tasks
+        self.updateSelectedTask(index: index)
     }
     
     func moveTask(fromIndex: Int, toIndex: Int) {
-        var tasks = self.tasks
-        let targetTask = tasks.remove(at: fromIndex)
-        tasks.insert(targetTask, at: toIndex)
-        self.tasks = tasks
+        manager.moveTask(fromIndex: fromIndex, toIndex: toIndex)
+        self.tasks = manager.tasks
     }
-    
+}
+
+extension TaskSelectVM {
     private func resetTaskname(before: String, after: String) {
         let currentTask = RecordsManager.shared.recordTimes.recordTask
         var tasks = RecordsManager.shared.currentDaily.tasks
@@ -88,6 +71,13 @@ final class TaskSelectVM {
         
         if currentTask == before {
             self.selectedTask = after
+        }
+    }
+    
+    private func updateSelectedTask(index: Int) {
+        if let currentTask = RecordsManager.shared.currentTask,
+            currentTask == self.tasks[index] {
+            self.selectedTask = currentTask.taskName
         }
     }
 }
