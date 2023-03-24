@@ -171,8 +171,8 @@ extension SyncDailysVM {
         RecordsManager.shared.dailyManager.changeDailys(to: dailys)
         
         if let daily = RecordsManager.shared.dailyManager.dailys.last {
-            RecordsManager.shared.daily = daily
-            RecordsManager.shared.daily.save()
+            RecordsManager.shared.currentDaily = daily
+            RecordsManager.shared.currentDaily.save()
         }
     }
     

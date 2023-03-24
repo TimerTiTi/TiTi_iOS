@@ -40,7 +40,7 @@ final class StopwatchVM {
         let currentTimes = RecordsManager.shared.recordTimes.currentTimes()
         let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
         self.times = currentTimes
-        self.daily = RecordsManager.shared.daily
+        self.daily = RecordsManager.shared.currentDaily
         self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfStopwatchViewModel = StopwatchTimeLabelVM(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
@@ -87,7 +87,7 @@ final class StopwatchVM {
     }
     
     func updateDaily() {
-        self.daily = RecordsManager.shared.daily
+        self.daily = RecordsManager.shared.currentDaily
     }
     
     func updateTask() {
@@ -101,7 +101,7 @@ final class StopwatchVM {
     }
     
     func changeTask(to taskName: String) {
-        let currentTaskSumTime = RecordsManager.shared.daily.tasks[taskName] ?? 0
+        let currentTaskSumTime = RecordsManager.shared.currentDaily.tasks[taskName] ?? 0
         self.taskName = taskName
         RecordsManager.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
@@ -132,7 +132,7 @@ final class StopwatchVM {
     }
     
     func newRecord() {
-        RecordsManager.shared.daily.reset()
+        RecordsManager.shared.currentDaily.reset()
         RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
@@ -168,7 +168,7 @@ final class StopwatchVM {
         self.timerRunning = false
         self.runningUI = false
         let endAt = Date()
-        RecordsManager.shared.daily.update(at: endAt)
+        RecordsManager.shared.currentDaily.update(at: endAt)
         self.updateDaily()
         RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
         RecordsManager.shared.dailyManager.addDaily(self.daily)

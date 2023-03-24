@@ -12,7 +12,7 @@ import Combine
 final class TaskSelectVM {
     @Published private(set) var tasks: [Task] = [] {
         didSet {
-            RecordsManager.shared.tasks = self.tasks
+            RecordsManager.shared.taskManager.tasks = self.tasks
             self.saveTasks()
         }
     }
@@ -23,7 +23,7 @@ final class TaskSelectVM {
     }
     
     private func loadTasks() {
-        self.tasks = RecordsManager.shared.tasks
+        self.tasks = RecordsManager.shared.taskManager.tasks
     }
     
     private func saveTasks() {
@@ -77,13 +77,13 @@ final class TaskSelectVM {
     
     private func resetTaskname(before: String, after: String) {
         let currentTask = RecordsManager.shared.recordTimes.recordTask
-        var tasks = RecordsManager.shared.daily.tasks
+        var tasks = RecordsManager.shared.currentDaily.tasks
         
         if let beforeTime = tasks[before] {
             tasks.removeValue(forKey: before)
             tasks[after] = beforeTime
-            RecordsManager.shared.daily.updateTasks(to: tasks)
-            RecordsManager.shared.dailyManager.modifyDaily(RecordsManager.shared.daily)
+            RecordsManager.shared.currentDaily.updateTasks(to: tasks)
+            RecordsManager.shared.dailyManager.modifyDaily(RecordsManager.shared.currentDaily)
         }
         
         if currentTask == before {

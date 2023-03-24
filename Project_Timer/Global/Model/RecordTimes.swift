@@ -34,7 +34,7 @@ struct RecordTimes: Codable {
         self.recordTask = taskName
         self.recordTaskFromTime = fromTime
         self.savedStopwatchTime = fromTime
-        if let task = RecordsManager.shared.tasks.first(where: { $0.taskName == taskName }) {
+        if let task = RecordsManager.shared.taskManager.tasks.first(where: { $0.taskName == taskName }) {
             RecordsManager.shared.currentTask = task
         }
         self.save()
@@ -48,7 +48,7 @@ struct RecordTimes: Codable {
     mutating func recordStart() {
         self.recordStartAt = Date()
         self.recording = true
-        self.recordStartTimeline = RecordsManager.shared.daily.timeline
+        self.recordStartTimeline = RecordsManager.shared.currentDaily.timeline
         self.save()
     }
     // 기록 종료시 설정

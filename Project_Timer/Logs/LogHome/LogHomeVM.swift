@@ -52,7 +52,7 @@ final class LogHomeVM {
     }
     
     func loadDaily() {
-        self.daily = RecordsManager.shared.daily
+        self.daily = RecordsManager.shared.currentDaily
     }
     
     func updateColor() {
