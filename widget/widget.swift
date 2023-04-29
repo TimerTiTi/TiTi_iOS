@@ -45,7 +45,7 @@ struct widgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        MonthWidgetMiddleView()
     }
 }
 
@@ -61,9 +61,26 @@ struct widget: Widget {
     }
 }
 
+struct MonthWidgetMiddleView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
 struct widget_Previews: PreviewProvider {
     static var previews: some View {
-        widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewDevice("iPad (9th generation)")
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewDevice("iPhone 13 Pro")
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewDevice("iPad Pro (12.9-inch) (6th generation)")
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+        }
     }
 }
