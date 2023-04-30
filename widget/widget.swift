@@ -64,25 +64,9 @@ struct widget: Widget {
 struct MonthWidgetMiddleView: View {
     var body: some View {
         HStack {
-            VStack(alignment: .center) {
-                Text("4월")
-                    .font(Font.system(size: 16, weight: .bold))
-                Spacer()
-                VStack(alignment: .leading) {
-                    ForEach(0..<5) { index in
-                        TaskRowView(index: index)
-                            .frame(height: 10)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            }
-            .frame(width: 80)
+            MonthWidgetLeftView()
             Spacer(minLength: 10)
-            VStack {
-                Text("Right")
-            }
-            .frame(maxWidth: .infinity)
+            MonthWidgetRightView()
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
@@ -130,5 +114,48 @@ struct widget_Previews: PreviewProvider {
                 .previewDevice("iPad Pro (12.9-inch) (6th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
+    }
+}
+
+struct MonthWidgetLeftView: View {
+    var body: some View {
+        VStack(alignment: .center) {
+            Text("4월")
+                .font(Font.system(size: 16, weight: .bold))
+            Spacer()
+            VStack(alignment: .leading) {
+                ForEach(0..<5) { index in
+                    TaskRowView(index: index)
+                        .frame(height: 10)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            Spacer()
+        }
+        .frame(width: 80)
+    }
+}
+
+struct MonthWidgetRightView: View {
+    let day: [String] = ["일", "월", "화", "수", "목", "금", "토"]
+    var body: some View {
+        VStack(alignment: .center, spacing: 0) {
+            HStack(spacing: 0) {
+                ForEach(day, id: \.self) { d in
+                    Text(d)
+                        .font(Font.system(size: 10, weight: .regular))
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .frame(height: 12)
+            }
+            Spacer()
+                .frame(height: 2)
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(Color(UIColor.placeholderText))
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
     }
 }
