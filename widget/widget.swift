@@ -63,7 +63,51 @@ struct widget: Widget {
 
 struct MonthWidgetMiddleView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack(alignment: .center) {
+                Text("4월")
+                    .font(Font.system(size: 16, weight: .bold))
+                Spacer()
+                VStack(alignment: .leading) {
+                    ForEach(0..<5) { index in
+                        TaskRowView(index: index)
+                            .frame(height: 10)
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                Spacer()
+            }
+            .frame(width: 80)
+            Spacer(minLength: 10)
+            VStack {
+                Text("Right")
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .padding(.all)
+        .background(Color(UIColor.systemBackground))
+    }
+}
+
+struct TaskRowView: View {
+    let index: Int
+    var body: some View {
+        HStack() {
+            RoundedRectangle(cornerRadius: 1)
+                .fill(Color(UIColor(named: "D1")!))
+                .frame(width: 3)
+            Spacer()
+                .frame(width: 3)
+            Text("TiTi 개발")
+                .font(Font.system(size: 9, weight: .semibold))
+                .padding(.horizontal, 1.0)
+                .background(Color(UIColor(named: "D1")!).opacity(0.5))
+                .cornerRadius(1)
+            Spacer()
+            Text("\(23)")
+                .font(Font.system(size: 8, weight: .bold))
+                .foregroundColor(Color(UIColor(named: "D1")!))
+        }
     }
 }
 
@@ -72,6 +116,10 @@ struct widget_Previews: PreviewProvider {
         Group {
             widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewDevice("iPad (9th generation)")
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+            
+            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .previewDevice("iPad Pro (11-inch) (4th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
