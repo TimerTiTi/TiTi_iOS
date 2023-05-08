@@ -70,10 +70,11 @@ struct MonthWidget_Previews: PreviewProvider {
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-                .previewDevice("iPad Pro (11-inch) (4th generation)")
+                .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
             MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+                .redacted(reason: .placeholder)
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
