@@ -1,6 +1,6 @@
 //
-//  widget.swift
-//  widget
+//  MonthWidget.swift
+//  MonthWidget
 //
 //  Created by Kang Minsang on 2023/02/08.
 //  Copyright © 2023 FDEE. All rights reserved.
@@ -41,42 +41,43 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
 }
 
-struct widgetEntryView : View {
+struct MonthWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text("Hello World")
+        MonthWidgetView()
     }
 }
 
-struct widget: Widget {
-    let kind: String = "widget"
+struct MonthWidget: Widget {
+    let kind: String = "MonthWidget"
 
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            widgetEntryView(entry: entry)
+            MonthWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Month widget".localized())
+        .description("상위 5가지 Task 내용과 날짜별 기록시간을 보여줍니다.")
+        .supportedFamilies([.systemMedium])
     }
 }
 
-struct widget_Previews: PreviewProvider {
+struct MonthWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewDevice("iPad (9th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewDevice("iPad Pro (11-inch) (4th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            widgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
                 .previewDevice("iPad Pro (12.9-inch) (6th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }

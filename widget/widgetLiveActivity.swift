@@ -1,6 +1,6 @@
 //
 //  widgetLiveActivity.swift
-//  widget
+//  MonthWidget
 //
 //  Created by Kang Minsang on 2023/02/08.
 //  Copyright © 2023 FDEE. All rights reserved.
