@@ -108,6 +108,7 @@
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
+		87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
 		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
 		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
@@ -357,6 +358,7 @@
 		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVC.swift; sourceTree = "<group>"; };
+		87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetEntry.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
 		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
 		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
@@ -709,6 +711,16 @@
 			path = Decodable;
 			sourceTree = "<group>";
 		};
+		87617E602A0CDEDA00E312EA /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
+				87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */,
+				878B30ED2992BB5A00BE7413 /* MonthWidget.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
 		8762717127DF83E400F812ED /* TaskSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,10 +818,9 @@
 			children = (
 				87DD96182A09053A00CA0249 /* Global */,
 				87DD960D2A09016F00CA0249 /* Views */,
+				87617E602A0CDEDA00E312EA /* Widget */,
 				878B30E92992BB5A00BE7413 /* widgetBundle.swift */,
 				878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */,
-				878B30ED2992BB5A00BE7413 /* MonthWidget.swift */,
-				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
 				878B30F02992BB5B00BE7413 /* Assets.xcassets */,
 				878B30F22992BB5B00BE7413 /* Info.plist */,
 				87DD96152A09048800CA0249 /* Localizable.strings */,
@@ -1156,8 +1167,8 @@
 		93B08514248DDF2F00E215BD = {
 			isa = PBXGroup;
 			children = (
-				93B0851F248DDF2F00E215BD /* Project_Timer */,
 				878B30F82992BB5B00BE7413 /* widgetExtension.entitlements */,
+				93B0851F248DDF2F00E215BD /* Project_Timer */,
 				878B30E82992BB5A00BE7413 /* widget */,
 				93B0851E248DDF2F00E215BD /* Products */,
 				D777B167BDE24D9E3DE50CB4 /* Pods */,
@@ -1395,6 +1406,7 @@
 				878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */,
 				87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */,
+				87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
