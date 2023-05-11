@@ -15,7 +15,7 @@ struct MonthWidget: Widget {
     let kind: String = "MonthWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: MonthWidgetProvider()) { entry in
             MonthWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Month widget".localized())
@@ -24,37 +24,10 @@ struct MonthWidget: Widget {
     }
 }
 
-// MARK: Timeline 및 Entry 반환 부분
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> MonthWidgetEntry {
-        MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent())
-    }
-
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MonthWidgetEntry) -> ()) {
-        let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
-        completion(entry)
-    }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [MonthWidgetEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = MonthWidgetEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
-}
-
-// MARK: Widget 반환 부분
+// MARK: Entry를 받아 상황에 맞는 SwiftUI 뷰를 반환하는 부분
 struct MonthWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
-    var entry: Provider.Entry
+    var entry: MonthWidgetProvider.Entry
     
     @ViewBuilder
     var body: some View {
