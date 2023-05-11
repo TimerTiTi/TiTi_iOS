@@ -9,6 +9,7 @@
 import SwiftUI
 import WidgetKit
 
+// MARK: MonthWidget SwiftUI 뷰
 struct MonthWidgetView: View {
     var body: some View {
         HStack {
@@ -165,9 +166,7 @@ struct ExtraView: View {
 
 struct MonthWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            MonthWidgetView()
-                .previewLayout(.fixed(width: 338, height: 158))
-        }
+        MonthWidgetView()
+            .previewLayout(.fixed(width: 338, height: 158))
     }
 }
