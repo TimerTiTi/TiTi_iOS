@@ -21,17 +21,15 @@ struct MonthWidgetProvider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<MonthWidgetEntry>) -> ()) {
-        var entries: [MonthWidgetEntry] = []
-
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = MonthWidgetEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        // MARK: 현재상태의 Entry만으로 Timeline을 만드는 경우
+        let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
+        let entries = [entry]
+        
+        // MARK: 5분이 지나면 tineline의 entries 가 모두 표시가 되기 전에 새로운 entry를 생성
+        let term = Calendar.current.date(byAdding: .minute, value: 5, to: Date()) ?? Date()
+        let timeline = Timeline(entries: entries, policy: .after(term))
+        
         completion(timeline)
     }
 }
