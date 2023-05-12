@@ -45,6 +45,16 @@
 					<key>INEnumValueName</key>
 					<string>D2</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>D3</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>zOeMeM</string>
+					<key>INEnumValueIndex</key>
+					<integer>3</integer>
+					<key>INEnumValueName</key>
+					<string>D3</string>
+				</dict>
 			</array>
 		</dict>
 	</array>

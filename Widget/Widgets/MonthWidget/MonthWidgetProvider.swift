@@ -12,18 +12,20 @@ import WidgetKit
 // MARK: Timeline 및 Entry 반환 부분
 struct MonthWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonthWidgetEntry {
-        MonthWidgetEntry(date: Date(), configuration: SelectColorIntent())
+        MonthWidgetEntry(data: MonthWidgetData(color: .D1))
     }
 
     func getSnapshot(for configuration: SelectColorIntent, in context: Context, completion: @escaping (MonthWidgetEntry) -> ()) {
-        let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
+        let entry = MonthWidgetEntry(data: MonthWidgetData(color: .D1))
         completion(entry)
     }
 
     func getTimeline(for configuration: SelectColorIntent, in context: Context, completion: @escaping (Timeline<MonthWidgetEntry>) -> ()) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         // MARK: 현재상태의 Entry만으로 Timeline을 만드는 경우
-        let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
+        let selectedIntent = color(for: configuration)
+        let widgetData = MonthWidgetData(color: selectedIntent)
+        let entry = MonthWidgetEntry(data: widgetData)
         let entries = [entry]
         
         // MARK: 5분이 지나면 tineline의 entries 가 모두 표시가 되기 전에 새로운 entry를 생성
@@ -31,5 +33,17 @@ struct MonthWidgetProvider: IntentTimelineProvider {
         let timeline = Timeline(entries: entries, policy: .after(term))
         
         completion(timeline)
+    }
+}
+
+extension MonthWidgetProvider {
+    func color(for configuration: SelectColorIntent) -> MonthWidgetData.Color {
+        switch configuration.Color {
+        case .d1: return .D1
+        case .d2: return .D2
+        case .d3: return .D3
+        default:
+            return .D1
+        }
     }
 }
