@@ -2,26 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSSupportsLiveActivities</key>
-	<true/>
-	<key>TestServerURL</key>
-	<string>$(TestServerURL)</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<false/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>$(TestServerURL)</key>
-			<dict/>
-			<key>NSIncludesSubdomains</key>
-			<true/>
-			<key>NSExceptionAllowsInsecureHTTPLoads</key>
-			<true/>
-		</dict>
-	</dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>TiTi requires access to the photo library to save images.</string>
 	<key>ADMOB_AD_ID</key>
 	<string>$(ADMOB_AD_ID)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -52,10 +32,32 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>$(TestServerURL)</key>
+			<dict/>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+			<key>NSIncludesSubdomains</key>
+			<true/>
+		</dict>
+	</dict>
 	<key>NSMotionUsageDescription</key>
 	<string>NSMotionUsageDescription</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>NSPhotoLibraryAddUsageDescription</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>TiTi requires access to the photo library to save images.</string>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>SelectColorIntent</string>
+	</array>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -207,6 +209,8 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
+	<key>TestServerURL</key>
+	<string>$(TestServerURL)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_00G.otf</string>

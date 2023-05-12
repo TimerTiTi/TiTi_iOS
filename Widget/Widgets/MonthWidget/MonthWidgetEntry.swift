@@ -12,5 +12,5 @@ import WidgetKit
 // MARK: MonthWidget 표시를 위한 데이터 부분
 struct MonthWidgetEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let configuration: SelectColorIntent
 }
