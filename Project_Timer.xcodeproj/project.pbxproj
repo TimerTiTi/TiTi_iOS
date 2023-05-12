@@ -44,6 +44,8 @@
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
+		870E116F2A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
+		870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -140,8 +142,6 @@
 		878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */; };
 		878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30ED2992BB5A00BE7413 /* MonthWidget.swift */; };
 		878B30F12992BB5B00BE7413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878B30F02992BB5B00BE7413 /* Assets.xcassets */; };
-		878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EF2992BB5A00BE7413 /* widget.intentdefinition */; };
-		878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EF2992BB5A00BE7413 /* widget.intentdefinition */; };
 		878B30F72992BB5B00BE7413 /* widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 878B30E32992BB5A00BE7413 /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
 		878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EC2955E5430044C079 /* SyncDailysVM.swift */; };
@@ -294,6 +294,7 @@
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
+		870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectColor.intentdefinition; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
@@ -388,7 +389,6 @@
 		878B30E92992BB5A00BE7413 /* widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetBundle.swift; sourceTree = "<group>"; };
 		878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetLiveActivity.swift; sourceTree = "<group>"; };
 		878B30ED2992BB5A00BE7413 /* MonthWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidget.swift; sourceTree = "<group>"; };
-		878B30EF2992BB5A00BE7413 /* widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = widget.intentdefinition; sourceTree = "<group>"; };
 		878B30F02992BB5B00BE7413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		878B30F22992BB5B00BE7413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		878B30F82992BB5B00BE7413 /* widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetExtension.entitlements; sourceTree = "<group>"; };
@@ -728,7 +728,7 @@
 				87617E662A0CE58400E312EA /* MonthWidgetProvider.swift */,
 				87DD960E2A09019300CA0249 /* MonthWidgetView.swift */,
 				878B30ED2992BB5A00BE7413 /* MonthWidget.swift */,
-				878B30EF2992BB5A00BE7413 /* widget.intentdefinition */,
+				870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */,
 			);
 			path = MonthWidget;
 			sourceTree = "<group>";
@@ -1406,10 +1406,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				87DD961A2A09054A00CA0249 /* String+Extension.swift in Sources */,
-				878B30F32992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */,
 				87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */,
 				87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */,
+				870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
@@ -1476,6 +1476,7 @@
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
+				870E116F2A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
@@ -1558,7 +1559,6 @@
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
-				878B30F42992BB5B00BE7413 /* widget.intentdefinition in Sources */,
 				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,

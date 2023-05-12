@@ -15,7 +15,7 @@ struct MonthWidget: Widget {
     let kind: String = "MonthWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: MonthWidgetProvider()) { entry in
+        IntentConfiguration(kind: kind, intent: SelectColorIntent.self, provider: MonthWidgetProvider()) { entry in
             MonthWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Month widget".localized())
@@ -39,20 +39,20 @@ struct MonthWidgetEntryView: View {
 struct MonthWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: SelectColorIntent()))
                 .previewDevice("iPad (9th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: SelectColorIntent()))
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: SelectColorIntent()))
                 .redacted(reason: .placeholder)
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent()))
+            MonthWidgetEntryView(entry: MonthWidgetEntry(date: Date(), configuration: SelectColorIntent()))
                 .previewDevice("iPad Pro (12.9-inch) (6th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }

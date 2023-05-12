@@ -12,15 +12,15 @@ import WidgetKit
 // MARK: Timeline 및 Entry 반환 부분
 struct MonthWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonthWidgetEntry {
-        MonthWidgetEntry(date: Date(), configuration: ConfigurationIntent())
+        MonthWidgetEntry(date: Date(), configuration: SelectColorIntent())
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (MonthWidgetEntry) -> ()) {
+    func getSnapshot(for configuration: SelectColorIntent, in context: Context, completion: @escaping (MonthWidgetEntry) -> ()) {
         let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<MonthWidgetEntry>) -> ()) {
+    func getTimeline(for configuration: SelectColorIntent, in context: Context, completion: @escaping (Timeline<MonthWidgetEntry>) -> ()) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         // MARK: 현재상태의 Entry만으로 Timeline을 만드는 경우
         let entry = MonthWidgetEntry(date: Date(), configuration: configuration)
