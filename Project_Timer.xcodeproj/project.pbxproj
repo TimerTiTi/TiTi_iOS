@@ -46,6 +46,8 @@
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
 		870E116F2A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
 		870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
+		870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
+		870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -295,6 +297,7 @@
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
 		870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectColor.intentdefinition; sourceTree = "<group>"; };
+		870E11742A0E226D00CFA77C /* MonthWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetData.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
@@ -576,6 +579,14 @@
 			path = SettingColor;
 			sourceTree = "<group>";
 		};
+		870E11732A0E225600CFA77C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				870E11742A0E226D00CFA77C /* MonthWidgetData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		87199F422882BC0C0017D01A /* Graph */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,6 +839,7 @@
 		878B30E82992BB5A00BE7413 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				870E11732A0E225600CFA77C /* Data */,
 				87DD96182A09053A00CA0249 /* Global */,
 				87617E602A0CDEDA00E312EA /* Widgets */,
 				878B30E92992BB5A00BE7413 /* widgetBundle.swift */,
@@ -1413,6 +1425,7 @@
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
+				870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 				87617E682A0CE58900E312EA /* MonthWidgetProvider.swift in Sources */,
 			);
@@ -1451,6 +1464,7 @@
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
+				870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
