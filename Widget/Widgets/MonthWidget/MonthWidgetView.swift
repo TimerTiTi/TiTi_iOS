@@ -115,8 +115,8 @@ struct MonthWidgetRightView: View {
                 .frame(height: 2)
             VStack(alignment: .center, spacing: 1) {
                 HStack(spacing: 0) {
-                    ForEach(1..<8) { day in
-                        if day < 2 {
+                    ForEach(0..<7) { day in
+                        if day < 1 {
                             Spacer()
                                 .frame(maxWidth: .infinity, alignment: .center)
                         } else {
@@ -127,29 +127,29 @@ struct MonthWidgetRightView: View {
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
-                    ForEach(8..<15) { day in
+                    ForEach(7..<14) { day in
                         MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
-                    ForEach(15..<22) { day in
+                    ForEach(14..<21) { day in
                         MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
-                    ForEach(22..<29) { day in
+                    ForEach(21..<28) { day in
                         MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
-                    ForEach(29..<36) { day in
-                        if day < 33 {
+                    ForEach(28..<35) { day in
+                        if day < 32 {
                             MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                                 .frame(maxWidth: .infinity, alignment: .center)
                         } else {
