@@ -38,12 +38,7 @@ struct MonthWidgetProvider: IntentTimelineProvider {
 
 extension MonthWidgetProvider {
     func color(for configuration: SelectColorIntent) -> MonthWidgetData.Color {
-        switch configuration.Color {
-        case .d1: return .D1
-        case .d2: return .D2
-        case .d3: return .D3
-        default:
-            return .D1
-        }
+        let selectedColor = configuration.Color.rawValue
+        return MonthWidgetData.Color(rawValue: selectedColor)!
     }
 }
