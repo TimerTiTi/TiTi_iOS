@@ -48,6 +48,7 @@
 		870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
 		870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
 		870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
+		870E11792A0F724100CFA77C /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* MonthWidgetView.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -161,7 +162,6 @@
 		8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */; };
 		8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
 		8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */; };
-		879346032A0CE89F002CEC9C /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* MonthWidgetView.swift */; };
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849B29C83D5100D65F48 /* RoundedShape.swift */; };
@@ -839,8 +839,8 @@
 		878B30E82992BB5A00BE7413 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				870E11732A0E225600CFA77C /* Data */,
 				87DD96182A09053A00CA0249 /* Global */,
+				870E11732A0E225600CFA77C /* Data */,
 				87617E602A0CDEDA00E312EA /* Widgets */,
 				878B30E92992BB5A00BE7413 /* widgetBundle.swift */,
 				878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */,
@@ -1544,7 +1544,6 @@
 				87459704263FEF6B00172C0F /* TimerVC.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
-				879346032A0CE89F002CEC9C /* MonthWidgetView.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
@@ -1557,6 +1556,7 @@
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
+				870E11792A0F724100CFA77C /* MonthWidgetView.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,

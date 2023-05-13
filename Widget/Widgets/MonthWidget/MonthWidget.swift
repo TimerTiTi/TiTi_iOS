@@ -47,6 +47,7 @@ struct MonthWidget_Previews: PreviewProvider {
             MonthWidgetEntryView(entry: MonthWidgetEntry(data: MonthWidgetData(color: .D1)))
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
+//                .environment(\.sizeCategory, .large)
             
             MonthWidgetEntryView(entry: MonthWidgetEntry(data: MonthWidgetData(color: .D1)))
                 .redacted(reason: .placeholder)

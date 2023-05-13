@@ -17,4 +17,15 @@ struct MonthWidgetData {
     
     let color: Color
     let url: URL = URL(string: "/Log")!
+    let now: Date
+    
+    init(color: Color) {
+        self.color = color
+        self.now = Date()
+    }
+    
+    init(color: Color, now: Date) {
+        self.color = color
+        self.now = now
+    }
 }
