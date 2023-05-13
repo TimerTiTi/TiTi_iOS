@@ -16,4 +16,5 @@ struct MonthWidgetData {
     }
     
     let color: Color
+    let url: URL = URL(string: "/Log")!
 }

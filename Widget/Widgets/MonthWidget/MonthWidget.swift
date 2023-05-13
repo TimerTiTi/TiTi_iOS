@@ -33,6 +33,7 @@ struct MonthWidgetEntryView: View {
     var body: some View {
         // MARK: 만약 동일한 위젯을 사이즈별로 제공하고 싶은 경우: switch family 로 분기처리 하면 된다.
         MonthWidgetView(entry.data)
+            .widgetURL(entry.data.url)
     }
 }
 

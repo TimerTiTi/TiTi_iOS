@@ -19,10 +19,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         
         let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        self.window?.rootViewController = rootViewController
+        
+        // MARK: loading 화면 설정
         if VCNum == 2 {
             rootViewController.selectedIndex = 1
         }
-        self.window?.rootViewController = rootViewController
+        
+        if let url = connectionOptions.urlContexts.first?.url {
+            self.moveTo(url: url)
+        }
         
         NotificationCenter.default.addObserver(forName: .showTabbarController, object: nil, queue: .main) { [weak self] _ in
             self?.showTabbarController()
@@ -44,6 +50,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } completion: { _ in
             snapshot.removeFromSuperview()
         }
+    }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        
+        self.moveTo(url: url)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -72,6 +84,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+    }
+    
+    func moveTo(url: URL) {
+        guard let rootViewController = self.window?.rootViewController as? UITabBarController else { return }
+        
+        switch url.absoluteString {
+        case "/Log":
+            rootViewController.selectedIndex = 3
+        default:
+            return
+        }
     }
 }
 
