@@ -21,7 +21,7 @@ struct MonthWidgetView: View {
         HStack {
             leftView
             Spacer(minLength: 10)
-            MonthWidgetRightView(now: self.now, color: "D\(data.color.rawValue)")
+            MonthWidgetRightView(now: self.now, color: "D\(data.color.rawValue)", isKorean: isKorean)
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
@@ -29,7 +29,7 @@ struct MonthWidgetView: View {
     
     var leftView: some View {
         VStack(alignment: .center) {
-            Text("5월")
+            Text(month)
                 .font(Font.system(size: 16, weight: .bold))
             Spacer()
             VStack(alignment: .leading) {
@@ -78,12 +78,24 @@ struct MonthWidgetView: View {
         let newColorNum = (data.color.rawValue + index)%12
         return newColorNum != 0 ? "D\(newColorNum)" : "D12"
     }
+    
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        dateFormatter.locale = Locale(identifier: isKorean ? "ko_KR" : "en_US")
+        return dateFormatter.string(from: data.now)
+    }
+    
+    var isKorean: Bool {
+        let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
+        return languageCode == "ko"
+    }
 }
 
 struct MonthWidgetRightView: View {
     let now: Int
     let color: String
-    let weekDays: [String] = ["일", "월", "화", "수", "목", "금", "토"]
+    let isKorean: Bool
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
@@ -154,6 +166,14 @@ struct MonthWidgetRightView: View {
     
     var randomTime: Int {
         return Int.random(in: 1...6)
+    }
+    
+    var weekDays: [String] {
+        if isKorean {
+            return ["일", "월", "화", "수", "목", "금", "토"]
+        } else {
+            return ["S", "M", "T", "W", "T", "F", "S"]
+        }
     }
 }
 
