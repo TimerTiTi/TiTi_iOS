@@ -48,7 +48,8 @@
 		870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
 		870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
 		870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
-		870E11792A0F724100CFA77C /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* MonthWidgetView.swift */; };
+		870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */; };
+		870E117C2A0F7EF000CFA77C /* MonthWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -298,6 +299,7 @@
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
 		870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectColor.intentdefinition; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* MonthWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetData.swift; sourceTree = "<group>"; };
+		870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetCellData.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				870E11742A0E226D00CFA77C /* MonthWidgetData.swift */,
+				870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1421,6 +1424,7 @@
 				878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */,
 				87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */,
 				87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */,
+				870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */,
 				870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
@@ -1443,6 +1447,7 @@
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
+				870E117C2A0F7EF000CFA77C /* MonthWidgetCellData.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
@@ -1556,7 +1561,6 @@
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
-				870E11792A0F724100CFA77C /* MonthWidgetView.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
