@@ -21,7 +21,7 @@ struct MonthWidgetView: View {
         HStack {
             leftView
             Spacer(minLength: 10)
-            MonthWidgetRightView(now: self.now, color: data.color.rawValue)
+            MonthWidgetRightView(now: self.now, color: "D\(data.color.rawValue)")
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
@@ -33,8 +33,8 @@ struct MonthWidgetView: View {
                 .font(Font.system(size: 16, weight: .bold))
             Spacer()
             VStack(alignment: .leading) {
-                ForEach(0..<5) { index in
-                    TaskRowView(index: index, color: data.color.rawValue)
+                ForEach(randomTaskDatas, id: \.self) { data in
+                    TaskRowView(data: data)
                         .frame(height: 10)
                 }
             }
@@ -48,6 +48,35 @@ struct MonthWidgetView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
         return Int(dateFormatter.string(from: self.data.now)) ?? 0
+    }
+    
+    var randomTaskDatas: [MonthWidgetTaskData] {
+        var datas: [MonthWidgetTaskData] = []
+        let tasks: [(String, Int)] = randomTasks
+        for i in 0..<5 {
+            datas.append(MonthWidgetTaskData(taskName: tasks[i].0, taskTime: tasks[i].1, color: color(i)))
+        }
+        
+        return datas
+    }
+    
+    var randomTasks: [(String, Int)] {
+        let task1 = "TiTi 개발"
+        let task2 = "졸업프로젝트 개발"
+        let task3 = "코딩테스트"
+        let task4 = "TiTi 회의"
+        let task5 = "독서"
+        
+        return [(task1, randomInt), (task2, randomInt), (task3, randomInt), (task4, randomInt), (task5, randomInt)].sorted { $0.1 > $1.1 }
+    }
+    
+    var randomInt: Int {
+        return Int.random(in: 1...30)
+    }
+    
+    func color(_ index: Int) -> String {
+        let newColorNum = (data.color.rawValue + index)%12
+        return newColorNum != 0 ? "D\(newColorNum)" : "D12"
     }
 }
 
@@ -129,25 +158,24 @@ struct MonthWidgetRightView: View {
 }
 
 struct TaskRowView: View {
-    let index: Int
-    let color: String
+    let data: MonthWidgetTaskData
     
     var body: some View {
         HStack() {
             RoundedRectangle(cornerRadius: 1)
-                .fill(Color(UIColor(named: color)!))
+                .fill(Color(UIColor(named: data.color)!))
                 .frame(width: 3)
             Spacer()
                 .frame(width: 3)
-            Text("TiTi 개발")
+            Text(data.taskName)
                 .font(Font.system(size: 9, weight: .semibold))
                 .padding(.horizontal, 1.0)
-                .background(Color(UIColor(named: color)!).opacity(0.5))
+                .background(Color(UIColor(named: data.color)!).opacity(0.5))
                 .cornerRadius(1)
             Spacer()
-            Text("\(23)")
+            Text("\(data.taskTime)")
                 .font(Font.system(size: 8, weight: .bold))
-                .foregroundColor(Color(UIColor(named: color)!))
+                .foregroundColor(Color(UIColor(named: data.color)!))
         }
     }
 }
