@@ -9,8 +9,8 @@
 import Foundation
 
 struct MonthWidgetData {
-    enum Color: String {
-        case D1
+    enum Color: Int {
+        case D1 = 1
         case D2
         case D3
     }
