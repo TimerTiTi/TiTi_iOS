@@ -21,7 +21,7 @@ struct MonthWidgetView: View {
         HStack {
             leftView
             Spacer(minLength: 10)
-            MonthWidgetRightView(color: data.color.rawValue)
+            MonthWidgetRightView(now: self.now, color: data.color.rawValue)
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
@@ -29,7 +29,7 @@ struct MonthWidgetView: View {
     
     var leftView: some View {
         VStack(alignment: .center) {
-            Text("4월")
+            Text("5월")
                 .font(Font.system(size: 16, weight: .bold))
             Spacer()
             VStack(alignment: .leading) {
@@ -43,16 +43,23 @@ struct MonthWidgetView: View {
         }
         .frame(width: 80)
     }
+    
+    var now: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return Int(dateFormatter.string(from: self.data.now)) ?? 0
+    }
 }
 
 struct MonthWidgetRightView: View {
-    let day: [String] = ["일", "월", "화", "수", "목", "금", "토"]
+    let now: Int
     let color: String
+    let weekDays: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
             HStack(spacing: 0) {
-                ForEach(day, id: \.self) { d in
+                ForEach(weekDays, id: \.self) { d in
                     Text(d)
                         .font(Font.system(size: 10, weight: .regular))
                         .foregroundColor(Color(UIColor.secondaryLabel))
@@ -68,11 +75,11 @@ struct MonthWidgetRightView: View {
             VStack(alignment: .center, spacing: 1) {
                 HStack(spacing: 0) {
                     ForEach(1..<8) { day in
-                        if day < 7 {
+                        if day < 2 {
                             Spacer()
                                 .frame(maxWidth: .infinity, alignment: .center)
                         } else {
-                            MonthWidgetDayCell(day: day, color: color)
+                            MonthWidgetDayCell(now: now, day: day, color: color)
                                 .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
@@ -80,32 +87,37 @@ struct MonthWidgetRightView: View {
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(8..<15) { day in
-                        MonthWidgetDayCell(day: day, color: color)
+                        MonthWidgetDayCell(now: now, day: day, color: color)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(15..<22) { day in
-                        MonthWidgetDayCell(day: day, color: color)
+                        MonthWidgetDayCell(now: now, day: day, color: color)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(22..<29) { day in
-                        MonthWidgetDayCell(day: day, color: color)
+                        MonthWidgetDayCell(now: now, day: day, color: color)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(29..<36) { day in
-                        MonthWidgetDayCell(day: day, color: color)
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        if day < 33 {
+                            MonthWidgetDayCell(now: now, day: day, color: color)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        } else {
+                            Spacer()
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        }
+                        
                     }
                 }
-                ExtraView(color: color)
             }
         }
         .frame(maxWidth: .infinity)
@@ -137,13 +149,15 @@ struct TaskRowView: View {
 }
 
 struct MonthWidgetDayCell: View {
+    let now: Int
     let day: Int
     let color: String
     
     var body: some View {
         HStack(alignment: .top, spacing: 1) {
-            Text("\(day - 6)")
-                .font(Font.system(size: 7, weight: .regular))
+            Text("\(day-1)")
+                .font(Font.system(size: 7, weight: isToday ? .heavy : .regular))
+                .foregroundColor(isToday ? .red : .primary)
                 .frame(width: 10, alignment: .trailing)
             ZStack {
                 Circle()
@@ -155,30 +169,15 @@ struct MonthWidgetDayCell: View {
             }
         }
     }
-}
-
-struct ExtraView: View {
-    let color: String
     
-    var body: some View {
-        Spacer(minLength: 0)
-        HStack(spacing: 0) {
-            ForEach(36..<43) { day in
-                if day > 36 {
-                    Spacer()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                } else {
-                    MonthWidgetDayCell(day: day, color: color)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-            }
-        }
+    var isToday: Bool {
+        return self.now == self.day-1
     }
 }
 
 struct MonthWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthWidgetView(MonthWidgetData(color: .D3))
+        MonthWidgetView(MonthWidgetData(color: .D2))
             .previewLayout(.fixed(width: 338, height: 158))
     }
 }
