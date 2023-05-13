@@ -79,7 +79,7 @@ struct MonthWidgetRightView: View {
                             Spacer()
                                 .frame(maxWidth: .infinity, alignment: .center)
                         } else {
-                            MonthWidgetDayCell(now: now, day: day, color: color)
+                            MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                                 .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
@@ -87,21 +87,21 @@ struct MonthWidgetRightView: View {
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(8..<15) { day in
-                        MonthWidgetDayCell(now: now, day: day, color: color)
+                        MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(15..<22) { day in
-                        MonthWidgetDayCell(now: now, day: day, color: color)
+                        MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
                 Spacer(minLength: 0)
                 HStack(spacing: 0) {
                     ForEach(22..<29) { day in
-                        MonthWidgetDayCell(now: now, day: day, color: color)
+                        MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
@@ -109,7 +109,7 @@ struct MonthWidgetRightView: View {
                 HStack(spacing: 0) {
                     ForEach(29..<36) { day in
                         if day < 33 {
-                            MonthWidgetDayCell(now: now, day: day, color: color)
+                            MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                                 .frame(maxWidth: .infinity, alignment: .center)
                         } else {
                             Spacer()
@@ -121,6 +121,10 @@ struct MonthWidgetRightView: View {
             }
         }
         .frame(maxWidth: .infinity)
+    }
+    
+    var randomTime: Int {
+        return Int.random(in: 1...6)
     }
 }
 
@@ -149,29 +153,50 @@ struct TaskRowView: View {
 }
 
 struct MonthWidgetDayCell: View {
-    let now: Int
-    let day: Int
-    let color: String
+    let data: MonthWidgetCellData
     
     var body: some View {
         HStack(alignment: .top, spacing: 1) {
-            Text("\(day-1)")
+            Text("\(data.day)")
                 .font(Font.system(size: 7, weight: isToday ? .heavy : .regular))
-                .foregroundColor(isToday ? .red : .primary)
+                .foregroundColor(isToday ? Color.red : Color(UIColor(named: "dayColor")!))
                 .frame(width: 10, alignment: .trailing)
             ZStack {
                 Circle()
-                    .fill(Color(UIColor(named: color)!))
+                    .fill(Color(UIColor(named: data.color)!).opacity(opacity(isBeforeToday ? data.time : 0)))
                     .frame(width: 16, height: 16)
-                Text("6")
+                
+                Text("\(isBeforeToday ? data.time : 0)")
                     .font(Font.system(size: 9.5, weight: .bold))
-                    .foregroundColor(Color(UIColor.systemBackground))
+                    .foregroundColor(isBeforeToday ? Color(UIColor.black) : Color(UIColor.placeholderText))
             }
         }
     }
     
     var isToday: Bool {
-        return self.now == self.day-1
+        return data.day == data.now
+    }
+    
+    var isBeforeToday: Bool {
+        return data.day < data.now
+    }
+    
+    func opacity(_ time: Int) -> Double {
+        if time == 0 {
+            return 0
+        } else if time < 2 {
+            return 0.3
+        } else if time < 3 {
+            return 0.5
+        } else if time < 4 {
+            return 0.6
+        } else if time < 5 {
+            return 0.7
+        } else if time < 6 {
+            return 0.8
+        } else {
+            return 1
+        }
     }
 }
 
