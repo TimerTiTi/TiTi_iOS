@@ -13,6 +13,15 @@ struct MonthWidgetData {
         case D1 = 1
         case D2
         case D3
+        case D4
+        case D5
+        case D6
+        case D7
+        case D8
+        case D9
+        case D10
+        case D11
+        case D12
     }
     
     let color: Color
