@@ -30,6 +30,11 @@ extension Date {
         let previousMonthDay = Calendar.current.date(byAdding: .month, value: -1, to: self)!
         return previousMonthDay.startDayOfMonth
     }
+    
+    /// 다음날
+    var nextDay: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self)!
+    }
 
     /// 달의 날짜수
     var numberOfDaysInMonth: Int {

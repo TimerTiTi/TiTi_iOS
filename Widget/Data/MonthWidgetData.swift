@@ -30,11 +30,11 @@ struct MonthWidgetData {
     
     init(color: Color) {
         self.color = color
-        self.now = Date()
+        self.now = Calendar.current.date(byAdding: .month, value: 2, to: Date())!
     }
     
     init(color: Color, now: Date) {
         self.color = color
-        self.now = now
+        self.now = Calendar.current.date(byAdding: .month, value: 2, to: now)!
     }
 }
