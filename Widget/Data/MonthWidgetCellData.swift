@@ -9,8 +9,8 @@
 import Foundation
 
 struct MonthWidgetCellData {
-    let day: Int
-    let now: Int
+    let day: Date
+    let now: Date
     let time: Int
     let color: String
 }

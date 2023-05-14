@@ -19,22 +19,37 @@ struct MonthWidgetView: View {
     
     var body: some View {
         HStack {
-            leftView
+            MonthWidgetTasksView(data: data, isKorean: isKorean)
             Spacer(minLength: 10)
-            MonthWidgetRightView(now: self.now, color: "D\(data.color.rawValue)", isKorean: isKorean)
+            MonthWidgetCalendarView(now: data.now, color: "D\(data.color.rawValue)", isKorean: isKorean)
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
     }
     
-    var leftView: some View {
+    var isKorean: Bool {
+        if #available(iOS 16.0, *){
+            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
+            return languageCode == "ko"
+        } else {
+            let languageCode = Locale.current.languageCode ?? "en"
+            return languageCode == "ko"
+        }
+    }
+}
+
+struct MonthWidgetTasksView: View {
+    let data: MonthWidgetData
+    let isKorean: Bool
+    
+    var body: some View {
         VStack(alignment: .center) {
             Text(month)
                 .font(Font.system(size: 16, weight: .bold))
             Spacer()
             VStack(alignment: .leading) {
                 ForEach(randomTaskDatas, id: \.self) { data in
-                    TaskRowView(data: data)
+                    MonthWidgetTaskRowView(data: data)
                         .frame(height: 10)
                 }
             }
@@ -44,10 +59,11 @@ struct MonthWidgetView: View {
         .frame(width: 80)
     }
     
-    var now: Int {
+    var month: String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d"
-        return Int(dateFormatter.string(from: self.data.now)) ?? 0
+        dateFormatter.dateFormat = "MMM"
+        dateFormatter.locale = Locale(identifier: isKorean ? "ko_KR" : "en_US")
+        return dateFormatter.string(from: data.now)
     }
     
     var randomTaskDatas: [MonthWidgetTaskData] {
@@ -78,82 +94,32 @@ struct MonthWidgetView: View {
         let newColorNum = (data.color.rawValue + index)%12
         return newColorNum != 0 ? "D\(newColorNum)" : "D12"
     }
-    
-    var month: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM"
-        dateFormatter.locale = Locale(identifier: isKorean ? "ko_KR" : "en_US")
-        return dateFormatter.string(from: data.now)
-    }
-    
-    var isKorean: Bool {
-        if #available(iOS 16.0, *){
-            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
-            return languageCode == "ko"
-        } else {
-            let languageCode = Locale.current.languageCode ?? "en"
-            return languageCode == "ko"
-        }
-    }
 }
 
-struct MonthWidgetRightView: View {
-    let now: Int
+struct MonthWidgetCalendarView: View {
+    let now: Date
     let color: String
     let isKorean: Bool
+    let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 7)
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
-            CalendarHeaderView(isKorean: isKorean)
+            MonthWidgetCalendarHeaderView(isKorean: isKorean)
+            
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(Color(UIColor.placeholderText))
             Spacer()
                 .frame(height: 2)
-            VStack(alignment: .center, spacing: 1) {
-                HStack(spacing: 0) {
-                    ForEach(0..<7) { day in
-                        if day < 1 {
-                            Spacer()
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        } else {
-                            MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        }
-                    }
-                }
-                Spacer(minLength: 0)
-                HStack(spacing: 0) {
-                    ForEach(7..<14) { day in
+            
+            LazyVGrid(columns: columns, spacing: calendarSpacing()) {
+                ForEach(calanderDates, id: \.self) { day in
+                    if day.monthInt != now.monthInt {
+                        Spacer()
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    } else {
                         MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
                             .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                }
-                Spacer(minLength: 0)
-                HStack(spacing: 0) {
-                    ForEach(14..<21) { day in
-                        MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                }
-                Spacer(minLength: 0)
-                HStack(spacing: 0) {
-                    ForEach(21..<28) { day in
-                        MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                }
-                Spacer(minLength: 0)
-                HStack(spacing: 0) {
-                    ForEach(28..<35) { day in
-                        if day < 32 {
-                            MonthWidgetDayCell(data: MonthWidgetCellData(day: day, now: now, time: randomTime, color: color))
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        } else {
-                            Spacer()
-                                .frame(maxWidth: .infinity, alignment: .center)
-                        }
-                        
                     }
                 }
             }
@@ -161,12 +127,27 @@ struct MonthWidgetRightView: View {
         .frame(maxWidth: .infinity)
     }
     
+    var calanderDates: [Date] {
+        var dates: [Date] = []
+        var date = now.startMondayForCalendar
+        
+        while date <= now.lastDayOfMonth {
+            dates.append(date)
+            date = date.nextDay
+        }
+        return dates
+    }
+    
+    func calendarSpacing() -> CGFloat {
+        return calanderDates.count > 7*5 ? 2 : 5
+    }
+    
     var randomTime: Int {
         return Int.random(in: 1...6)
     }
 }
 
-struct CalendarHeaderView: View {
+struct MonthWidgetCalendarHeaderView: View {
     let isKorean: Bool
 
     var body: some View {
@@ -190,7 +171,7 @@ struct CalendarHeaderView: View {
     }
 }
 
-struct TaskRowView: View {
+struct MonthWidgetTaskRowView: View {
     let data: MonthWidgetTaskData
     
     var body: some View {
@@ -218,7 +199,7 @@ struct MonthWidgetDayCell: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 1) {
-            Text("\(data.day)")
+            Text("\(data.day.dayInt)")
                 .font(Font.system(size: 7, weight: isToday ? .heavy : .regular))
                 .foregroundColor(isToday ? Color.red : Color(UIColor(named: "dayColor")!))
                 .frame(width: 10, alignment: .trailing)
@@ -235,11 +216,11 @@ struct MonthWidgetDayCell: View {
     }
     
     var isToday: Bool {
-        return data.day == data.now
+        return data.day.dayInt == data.now.dayInt
     }
     
     var isBeforeToday: Bool {
-        return data.day < data.now
+        return data.day.nextDay < data.now
     }
     
     func opacity(_ time: Int) -> Double {
@@ -264,6 +245,7 @@ struct MonthWidgetDayCell: View {
 struct MonthWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         MonthWidgetView(MonthWidgetData(color: .D2))
+            .previewDevice("iPad (9th generation)")
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
