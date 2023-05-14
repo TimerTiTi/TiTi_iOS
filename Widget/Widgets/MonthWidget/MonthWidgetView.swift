@@ -87,8 +87,13 @@ struct MonthWidgetView: View {
     }
     
     var isKorean: Bool {
-        let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
-        return languageCode == "ko"
+        if #available(iOS 16.0, *){
+            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
+            return languageCode == "ko"
+        } else {
+            let languageCode = Locale.current.languageCode ?? "en"
+            return languageCode == "ko"
+        }
     }
 }
 
@@ -99,15 +104,7 @@ struct MonthWidgetRightView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
-            HStack(spacing: 0) {
-                ForEach(weekDays, id: \.self) { d in
-                    Text(d)
-                        .font(Font.system(size: 10, weight: .regular))
-                        .foregroundColor(Color(UIColor.secondaryLabel))
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .frame(height: 12)
-            }
+            CalendarHeaderView(isKorean: isKorean)
             Rectangle()
                 .frame(height: 1)
                 .foregroundColor(Color(UIColor.placeholderText))
@@ -167,12 +164,28 @@ struct MonthWidgetRightView: View {
     var randomTime: Int {
         return Int.random(in: 1...6)
     }
+}
+
+struct CalendarHeaderView: View {
+    let isKorean: Bool
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(weekDays, id: \.self) { day in
+                Text(day)
+                    .font(Font.system(size: 10, weight: .regular))
+                    .foregroundColor(Color(UIColor.secondaryLabel))
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+            .frame(height: 12)
+        }
+    }
     
     var weekDays: [String] {
         if isKorean {
-            return ["일", "월", "화", "수", "목", "금", "토"]
+            return ["월", "화", "수", "목", "금", "토", "일"]
         } else {
-            return ["S", "M", "T", "W", "T", "F", "S"]
+            return ["M", "T", "W", "T", "F", "S", "S"]
         }
     }
 }
@@ -192,7 +205,7 @@ struct TaskRowView: View {
                 .padding(.horizontal, 1.0)
                 .background(Color(UIColor(named: data.color)!).opacity(0.5))
                 .cornerRadius(1)
-            Spacer()
+            Spacer(minLength: 2)
             Text("\(data.taskTime)")
                 .font(Font.system(size: 8, weight: .bold))
                 .foregroundColor(Color(UIColor(named: data.color)!))
@@ -251,6 +264,6 @@ struct MonthWidgetDayCell: View {
 struct MonthWidgetView_Previews: PreviewProvider {
     static var previews: some View {
         MonthWidgetView(MonthWidgetData(color: .D2))
-            .previewLayout(.fixed(width: 338, height: 158))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
