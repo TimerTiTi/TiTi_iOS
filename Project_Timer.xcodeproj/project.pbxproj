@@ -44,8 +44,6 @@
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
-		870E116F2A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
-		870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */; };
 		870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
 		870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
 		870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */; };
@@ -201,6 +199,8 @@
 		87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */; };
 		87D4DE112A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */; };
+		87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
+		87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
@@ -299,7 +299,6 @@
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
-		870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SelectColor.intentdefinition; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* MonthWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetData.swift; sourceTree = "<group>"; };
 		870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetCellData.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
@@ -454,6 +453,9 @@
 		87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
 		87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDailysData.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetTaskData.swift; sourceTree = "<group>"; };
+		87D4DE152A0F95BE00993C5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/SelectColor.intentdefinition; sourceTree = "<group>"; };
+		87D4DE182A0F95C800993C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectColor.strings; sourceTree = "<group>"; };
+		87D4DE1A2A0F95CA00993C5C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SelectColor.strings; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
@@ -746,7 +748,7 @@
 				87617E662A0CE58400E312EA /* MonthWidgetProvider.swift */,
 				87DD960E2A09019300CA0249 /* MonthWidgetView.swift */,
 				878B30ED2992BB5A00BE7413 /* MonthWidget.swift */,
-				870E116E2A0DF3AB00CFA77C /* SelectColor.intentdefinition */,
+				87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */,
 			);
 			path = MonthWidget;
 			sourceTree = "<group>";
@@ -1429,7 +1431,7 @@
 				87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */,
 				87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */,
 				870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */,
-				870E11702A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */,
+				87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
@@ -1500,7 +1502,7 @@
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
-				870E116F2A0DF3AB00CFA77C /* SelectColor.intentdefinition in Sources */,
+				87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
@@ -1658,6 +1660,16 @@
 				87CA3B572618591F00DD9BB5 /* ko */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				87D4DE152A0F95BE00993C5C /* Base */,
+				87D4DE182A0F95C800993C5C /* en */,
+				87D4DE1A2A0F95CA00993C5C /* ko */,
+			);
+			name = SelectColor.intentdefinition;
 			sourceTree = "<group>";
 		};
 		87DD96152A09048800CA0249 /* Localizable.strings */ = {
