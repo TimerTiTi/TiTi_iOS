@@ -201,6 +201,7 @@
 		87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */; };
 		87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
 		87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
+		87D4DE252A1128CE00993C5C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE242A1128CE00993C5C /* Date+Extension.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
@@ -456,6 +457,7 @@
 		87D4DE152A0F95BE00993C5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/SelectColor.intentdefinition; sourceTree = "<group>"; };
 		87D4DE182A0F95C800993C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectColor.strings; sourceTree = "<group>"; };
 		87D4DE1A2A0F95CA00993C5C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SelectColor.strings; sourceTree = "<group>"; };
+		87D4DE242A1128CE00993C5C /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
@@ -1156,6 +1158,7 @@
 			isa = PBXGroup;
 			children = (
 				87DD96192A09054A00CA0249 /* String+Extension.swift */,
+				87D4DE242A1128CE00993C5C /* Date+Extension.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1437,6 +1440,7 @@
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
 				870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
+				87D4DE252A1128CE00993C5C /* Date+Extension.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 				87617E682A0CE58900E312EA /* MonthWidgetProvider.swift in Sources */,
 			);
