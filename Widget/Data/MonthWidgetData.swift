@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct MonthWidgetData {
-    enum Color: Int {
+struct MonthWidgetData: Codable {
+    static let fileName = "MonthWidgetData.json"
+    enum Color: Int, Codable {
         case D1 = 1
         case D2
         case D3
@@ -23,18 +24,11 @@ struct MonthWidgetData {
         case D11
         case D12
     }
+    var url: URL = URL(string: "/Log")!
+    var now: Date = Date()
     
-    let color: Color
-    let url: URL = URL(string: "/Log")!
-    let now: Date
-    
-    init(color: Color) {
-        self.color = color
-        self.now = Date()
-    }
-    
-    init(color: Color, now: Date) {
-        self.color = color
-        self.now = now
-    }
+    let color: Color // 위젯 컬러
+    let isRightDirection: Bool // 컬러 방향
+    let tasksData: [MonthWidgetTaskData] // 상위 5가지 Task 데이터
+    let cellsData: [MonthWidgetCellData] // 기록한 날짜, 누적시간 데이터
 }

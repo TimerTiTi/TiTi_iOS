@@ -18,9 +18,4 @@ struct MonthWidgetEntry: TimelineEntry {
         self.date = Date()
         self.data = data
     }
-    
-    init(date: Date, data: MonthWidgetData) {
-        self.date = date
-        self.data = data
-    }
 }

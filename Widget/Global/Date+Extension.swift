@@ -31,6 +31,11 @@ extension Date {
         return previousMonthDay.startDayOfMonth
     }
     
+    /// 캘린더기준 오늘날
+    var today: Date {
+        return Calendar.current.dateInterval(of: .day, for: self)!.start
+    }
+    
     /// 다음날
     var nextDay: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: self)!
@@ -70,5 +75,10 @@ extension Date {
     var startMondayForCalendar: Date {
         let indexOfStartDay = startDayOfMonth.indexFromMondayZero
         return Calendar.current.date(byAdding: .day, value: -indexOfStartDay, to: startDayOfMonth)!
+    }
+    
+    /// +, - 된 날짜
+    func nextDay(offset: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: offset, to: self)!
     }
 }

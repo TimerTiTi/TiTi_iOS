@@ -209,6 +209,7 @@
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
+		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
@@ -465,6 +466,7 @@
 		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
+		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
@@ -593,8 +595,9 @@
 			isa = PBXGroup;
 			children = (
 				870E11742A0E226D00CFA77C /* MonthWidgetData.swift */,
-				870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */,
 				87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */,
+				870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */,
+				87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1438,6 +1441,7 @@
 				87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */,
+				87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
 				870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,

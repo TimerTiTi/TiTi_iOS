@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct MonthWidgetTaskData: Hashable {
+struct MonthWidgetTaskData: Hashable, Codable {
     let taskName: String
     let taskTime: Int
-    let color: String
 }
