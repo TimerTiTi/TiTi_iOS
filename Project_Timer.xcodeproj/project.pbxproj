@@ -208,6 +208,7 @@
 		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */; };
+		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
@@ -689,7 +690,6 @@
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87459707263FF0F000172C0F /* Storage.swift */,
 				87459705263FF0D700172C0F /* Daily.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
@@ -1027,6 +1027,7 @@
 			children = (
 				87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */,
 				875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */,
+				87459707263FF0F000172C0F /* Storage.swift */,
 			);
 			path = SharedCode;
 			sourceTree = "<group>";
@@ -1443,6 +1444,7 @@
 				87D4DE252A1128CE00993C5C /* Date+Extension.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 				87617E682A0CE58900E312EA /* MonthWidgetProvider.swift in Sources */,
+				87DA716D2A12258D006294DE /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,9 @@
 //
 
 import Foundation
- 
+
+// MARK: Singleton 클래스, Widget과 공동접근 가능
 public class Storage {
-    
     private init() { }
     
     // TODO: directory 설명
@@ -17,16 +17,17 @@ public class Storage {
     enum Directory {
         case documents
         case caches
+        case sharedContainer
         
         var url: URL {
-            let path: FileManager.SearchPathDirectory
             switch self {
             case .documents:
-                path = .documentDirectory
+                return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             case .caches:
-                path = .cachesDirectory
+                return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+            case .sharedContainer:
+                return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.FDEE.TiTi")!
             }
-            return FileManager.default.urls(for: path, in: .userDomainMask).first!
         }
     }
     
