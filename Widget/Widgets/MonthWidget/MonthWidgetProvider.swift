@@ -12,19 +12,19 @@ import WidgetKit
 // MARK: Timeline 및 Entry 반환 부분
 struct MonthWidgetProvider: IntentTimelineProvider {
     func placeholder(in context: Context) -> MonthWidgetEntry {
-        MonthWidgetEntry(data: MonthWidgetData(color: .D1))
+        MonthWidgetEntry(data: MonthWidgetData.snapshot)
     }
 
     func getSnapshot(for configuration: SelectColorIntent, in context: Context, completion: @escaping (MonthWidgetEntry) -> ()) {
-        let entry = MonthWidgetEntry(data: MonthWidgetData(color: .D1))
+        let entry = MonthWidgetEntry(data: MonthWidgetData.snapshot)
         completion(entry)
     }
 
     func getTimeline(for configuration: SelectColorIntent, in context: Context, completion: @escaping (Timeline<MonthWidgetEntry>) -> ()) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         // MARK: 현재상태의 Entry만으로 Timeline을 만드는 경우
-        let selectedIntent = color(for: configuration)
-        let widgetData = MonthWidgetData(color: selectedIntent)
+//        let selectedIntent = color(for: configuration)
+        let widgetData = Storage.retrive(MonthWidgetData.fileName, from: .sharedContainer, as: MonthWidgetData.self) ?? MonthWidgetData.snapshot
         let entry = MonthWidgetEntry(data: widgetData)
         let entries = [entry]
         

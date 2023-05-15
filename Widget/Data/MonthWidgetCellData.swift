@@ -8,9 +8,7 @@
 
 import Foundation
 
-struct MonthWidgetCellData {
-    let day: Date
-    let now: Date
-    let time: Int
-    let color: String
+struct MonthWidgetCellData: Codable {
+    let recordDay: Date
+    let totalTime: Int
 }
