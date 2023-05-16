@@ -122,8 +122,7 @@ struct MonthWidgetCalendarView: View {
                         Spacer()
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
-                        // MARK: data.cellsData 내용과 day 비교로직 구현 필요
-                        MonthWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: nil)
+                        MonthWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: getMonthWidgetCellData(day))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
@@ -145,6 +144,14 @@ struct MonthWidgetCalendarView: View {
     
     func calendarSpacing() -> CGFloat {
         return calanderDates.count > 7*5 ? 2 : 5
+    }
+    
+    func getMonthWidgetCellData(_ day: Date) -> MonthWidgetCellData? {
+        if let target = self.data.cellsData.first(where: { $0.recordDay == day }) {
+            return target
+        } else {
+            return nil
+        }
     }
 }
 

@@ -8,3 +8,8 @@
 
 "Month widget" = "Month 위젯";
 "Widget shows the top 5 tasks and the recording time by date." = "상위 5가지 Task와 날짜별 기록시간을 보여줍니다.";
+"sampleTask1" = "국어";
+"sampleTask2" = "수학";
+"sampleTask3" = "영어";
+"sampleTask4" = "한국사";
+"sampleTask5" = "탐구";
