@@ -39,6 +39,8 @@ struct UserDefaultsManager {
         // login
         case loginInTestServerV1
         case lastUploadedDateV1
+        // widget color
+        case monthWidgetColor
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
