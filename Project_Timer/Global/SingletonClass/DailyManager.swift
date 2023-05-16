@@ -21,11 +21,17 @@ final class DailyManager {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
         self.dates = self.dailys.map({ $0.day.zeroDate })
         print("load dailys!")
+        
+        // 위젯용 데이터 저장
+        self.saveMonthWidgetData()
     }
     
     func saveDailys() {
         Storage.store(dailys, to: .documents, as: Self.dailysFileName)
         print("store dailys!")
+        
+        // 위젯용 데이터 저장
+        self.saveMonthWidgetData()
     }
     
     func addDaily(_ daily: Daily) {
@@ -49,5 +55,13 @@ final class DailyManager {
         self.dailys = serverDailys
         self.dailys.sort(by: { $0.day < $1.day })
         self.saveDailys()
+    }
+}
+
+extension DailyManager {
+    func saveMonthWidgetData() {
+        let monthWidgetData = MonthWidgetData(dailys: self.dailys)
+        Storage.store(monthWidgetData, to: .sharedContainer, as: MonthWidgetData.fileName)
+        print("save MonthWidgetData!")
     }
 }
