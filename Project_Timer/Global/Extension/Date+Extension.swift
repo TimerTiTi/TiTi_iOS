@@ -77,6 +77,10 @@ extension Date {
         let transedDate: Date = dateFormatter.date(from: dateFormatter.string(from: self))!
         return transedDate
     }
+    /// 캘린더기준 오늘날
+    var calendarDay: Date {
+        return Calendar.current.dateInterval(of: .day, for: self)!.start
+    }
     /// 해당날짜가 속한 달의 몇번째 주차인지를 나타내는 값
     var weekOfMonth: Int {
         let calendar = Calendar(identifier: .gregorian)

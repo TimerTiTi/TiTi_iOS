@@ -68,10 +68,10 @@ struct MonthWidgetTasksView: View {
     
     func color(_ index: Int) -> String {
         if data.isRightDirection {
-            let newColorNum = (data.color.rawValue+index)%12
+            let newColorNum = (data.color+index)%12
             return newColorNum != 0 ? "D\(newColorNum)" : "D12"
         } else {
-            let newColorNum = (data.color.rawValue-index+12)%12
+            let newColorNum = (data.color-index+12)%12
             return newColorNum != 0 ? "D\(newColorNum)" : "D12"
         }
     }
@@ -123,7 +123,7 @@ struct MonthWidgetCalendarView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
                         // MARK: data.cellsData 내용과 day 비교로직 구현 필요
-                        MonthWidgetDayCell(now: data.now, day: day, color: "D\(data.color.rawValue)", data: nil)
+                        MonthWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: nil)
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }

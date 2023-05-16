@@ -24,6 +24,6 @@ extension MonthWidgetData {
             sampleCellDatas.append(MonthWidgetCellData(recordDay: firstDay.nextDay(offset: i), totalTime: Int.random(in: 0...6*3600)))
         }
         
-        return MonthWidgetData(color: .D1, isRightDirection: true, tasksData: sampleTasks, cellsData: sampleCellDatas)
+        return MonthWidgetData(color: 1, isRightDirection: true, tasksData: sampleTasks, cellsData: sampleCellDatas)
     }
 }
