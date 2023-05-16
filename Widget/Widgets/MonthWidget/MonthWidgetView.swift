@@ -94,7 +94,7 @@ struct MonthWidgetTaskRowView: View {
                 .background(Color(UIColor(named: color)!).opacity(0.5))
                 .cornerRadius(1)
             Spacer(minLength: 2)
-            Text("\(data.taskTime)")
+            Text("\((data.taskTime/3600))")
                 .font(Font.system(size: 8, weight: .bold))
                 .foregroundColor(Color(UIColor(named: color)!))
         }
