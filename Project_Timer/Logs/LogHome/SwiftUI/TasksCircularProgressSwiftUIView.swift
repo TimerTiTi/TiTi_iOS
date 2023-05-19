@@ -56,7 +56,6 @@ struct TasksCircularProgressSwiftUIView: View {
 
 extension TasksCircularProgressSwiftUIView {
     private func getProgress(index: Int, value: Float, isBlock: Bool) -> some View {
-        print(value, isBlock)
         return Circle()
             .trim(from: 0, to: CGFloat(value))
             .stroke(self.getProgressColor(index: index/2, isBlock: isBlock), style: StrokeStyle(lineWidth: lineWidth, lineCap: .butt))

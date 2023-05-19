@@ -67,11 +67,11 @@ struct MonthWidgetTasksView: View {
     }
     
     func color(_ index: Int) -> String {
-        if data.isRightDirection {
-            let newColorNum = (data.color+index)%12
+        if data.isReverseColor {
+            let newColorNum = (data.color-index+12)%12
             return newColorNum != 0 ? "D\(newColorNum)" : "D12"
         } else {
-            let newColorNum = (data.color-index+12)%12
+            let newColorNum = (data.color+index)%12
             return newColorNum != 0 ? "D\(newColorNum)" : "D12"
         }
     }

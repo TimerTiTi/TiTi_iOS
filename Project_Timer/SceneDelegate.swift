@@ -56,6 +56,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let url = URLContexts.first?.url else { return }
         
         self.moveTo(url: url)
+        // MARK: 위젯 데이터 업데이트
+        RecordsManager.shared.dailyManager.saveMonthWidgetData()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
