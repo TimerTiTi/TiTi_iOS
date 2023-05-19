@@ -30,6 +30,8 @@ final class SettingColorVC: UIViewController {
         let isReverseColor = sender.selectedSegmentIndex == 1
         UserDefaultsManager.set(to: isReverseColor, forKey: .reverseColor)
         self.updateColor()
+        // MARK: 위젯 컬러 반영
+        RecordsManager.shared.dailyManager.saveMonthWidgetData()
     }
     
     @IBAction func selectColor(_ sender: UIButton) {

@@ -10,8 +10,8 @@ import Foundation
 
 extension MonthWidgetData {
     init(dailys: [Daily]) {
-        self.color = UserDefaultsManager.get(forKey: .monthWidgetColor) as? Int ?? 1
-        self.isRightDirection = UserDefaultsManager.get(forKey: .monthWidgetColorRightDirection) as? Bool ?? true
+        self.color = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
+        self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
         
         let monthDailys = dailys.filter { $0.day.YYMMstyleInt == Date().YYMMstyleInt }.sorted { $0.day < $1.day }
         var tasks: [String: Int] = [:]

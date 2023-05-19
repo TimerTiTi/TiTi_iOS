@@ -20,7 +20,6 @@ struct TasksCircularProgressDTO {
         self.tasks = tasks.sorted(by: { $0.taskTime < $1.taskTime })
         self.totalValue = Float(tasks.reduce(0, { $0 + $1.taskTime })) + (blockValue * Float(tasks.count))
         self.configureTasksAndBlocks()
-        print(progressValue)
     }
     
     mutating private func configureTasksAndBlocks() {
