@@ -56,6 +56,9 @@ extension SettingNotificationVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingListCell.identifier, for: indexPath) as? SettingListCell else { return .init() }
+        guard let info = self.viewModel.cells[safe: indexPath.item] else { return cell }
+        
+        cell.configure(info: info)
         return cell
     }
 }

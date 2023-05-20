@@ -12,10 +12,8 @@ struct SettingListCellInfo {
     let title: String
     var subTitle: String?
     var rightTitle: String?
-    var touchable: Bool = true
     var switchable: Bool = false
     var toggleKey: UserDefaultsManager.Keys? = nil
-//    var action: SettingListCellAction? = nil
     var cellHeight: Int {
         return self.subTitle != nil ? 64 : 55
     }
@@ -25,6 +23,5 @@ struct SettingListCellInfo {
         self.subTitle = subTitle
         self.toggleKey = toggleKey
         self.switchable = true
-        self.touchable = false
     }
 }
