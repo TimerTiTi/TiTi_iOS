@@ -103,7 +103,7 @@
 
 "Do you want to start the New record?" = "Do you want to start the New record?";
 
-"Introducing app" = "Introducing app";
+"Service" = "Service";
 
 "Notification" = "Notification";
 
@@ -237,7 +237,7 @@
 
 "Setting Target Time" = "Setting Target Time";
 
-"Get stored JSON files" = "Get JSON files";
+"Get JSON files" = "Get JSON files";
 
 "Activate Big UI for iPad" = "Activate Big UI for iPad";
 
@@ -280,3 +280,9 @@
 "The new TodoGroup feature added." = "The new TodoGroup feature added.";
 
 "You can see anytime in Setting -> TiTi Functions" = "You can see anytime in Setting -> TiTi Functions";
+
+"Setting" = "Setting";
+
+"Control" = "Control";
+
+"Backup" = "Backup";

@@ -18,7 +18,7 @@ final class SettingVC: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SettingVM?
     private var lastSection: Int {
-        if let sectionsCount = self.viewModel?.sectionTitles.count {
+        if let sectionsCount = self.viewModel?.sections.count {
             return sectionsCount-1
         } else {
             return 0
@@ -79,7 +79,7 @@ extension SettingVC {
 
 extension SettingVC: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.viewModel?.sectionTitles.count ?? 0
+        return self.viewModel?.sections.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -123,7 +123,7 @@ extension SettingVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SettingHeaderView.identifier, for: indexPath) as? SettingHeaderView else { return UICollectionReusableView() }
-            guard let headerTitle = self.viewModel?.sectionTitles[safe: indexPath.section] else { return header }
+            guard let headerTitle = self.viewModel?.sections[safe: indexPath.section] else { return header }
             
             header.configure(title: headerTitle)
             return header
