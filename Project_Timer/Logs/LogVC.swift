@@ -12,6 +12,7 @@ final class LogVC: UIViewController {
     static let changePageIndex = Notification.Name("changePageIndex")
     @IBOutlet weak var pageSegmentedControl: UISegmentedControl!
     @IBOutlet weak var frameView: UIView!
+    @IBOutlet weak var settingButton: UIButton!
     private lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         return pageViewController
@@ -20,6 +21,7 @@ final class LogVC: UIViewController {
     private var currentPage: Int = 0 {
         didSet {
             self.pageSegmentedControl.selectedSegmentIndex = self.currentPage
+            self.checkSettingButton()
         }
     }
     
@@ -50,6 +52,10 @@ final class LogVC: UIViewController {
     
     @IBAction func changePage(_ sender: UISegmentedControl) {
         self.changeVC(oldValue: self.currentPage, newValue: sender.selectedSegmentIndex)
+    }
+    
+    @IBAction func showSettingBottomSheet(_ sender: Any) {
+        
     }
 }
 
@@ -92,6 +98,14 @@ extension LogVC {
         self.currentPage = newValue
         let direction: UIPageViewController.NavigationDirection = oldValue <= newValue ? .forward : .reverse
         self.pageViewController.setViewControllers([self.childVCs[self.currentPage]], direction: direction, animated: true)
+    }
+    
+    private func checkSettingButton() {
+        if self.currentPage == 0 {
+            self.settingButton.fadeIn()
+        } else {
+            self.settingButton.fadeOut()
+        }
     }
 }
 

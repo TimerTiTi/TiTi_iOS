@@ -1715,14 +1715,25 @@
                                 <rect key="frame" x="0.0" y="130" width="390" height="680"/>
                                 <color key="backgroundColor" name="system_backg"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiq-1x-HSn">
+                                <rect key="frame" x="347" y="93.333333333333329" width="27" height="26.666666666666671"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="gearshape" catalog="system"/>
+                                <connections>
+                                    <action selector="showSettingBottomSheet:" destination="AEA-qf-y0K" eventType="touchUpInside" id="b08-ug-ije"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VoZ-gf-MpS"/>
                         <color key="backgroundColor" name="system_backg"/>
                         <constraints>
                             <constraint firstItem="VoZ-gf-MpS" firstAttribute="bottom" secondItem="9Hd-a4-Qq6" secondAttribute="bottom" id="3RO-Ph-1df"/>
+                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="trailing" secondItem="xiq-1x-HSn" secondAttribute="trailing" constant="16" id="5oG-pV-lGN"/>
                             <constraint firstItem="Hcb-4h-eDe" firstAttribute="top" secondItem="VoZ-gf-MpS" secondAttribute="top" id="Gih-XI-zqo"/>
                             <constraint firstItem="9Hd-a4-Qq6" firstAttribute="leading" secondItem="VoZ-gf-MpS" secondAttribute="leading" id="O0I-Pi-XTd"/>
                             <constraint firstItem="VoZ-gf-MpS" firstAttribute="trailing" secondItem="9Hd-a4-Qq6" secondAttribute="trailing" id="VvG-mA-G6v"/>
+                            <constraint firstItem="xiq-1x-HSn" firstAttribute="centerY" secondItem="Hcb-4h-eDe" secondAttribute="centerY" id="e2R-IL-c0g"/>
                             <constraint firstItem="9Hd-a4-Qq6" firstAttribute="top" secondItem="Hcb-4h-eDe" secondAttribute="bottom" constant="8" id="l2z-rM-5xu"/>
                             <constraint firstItem="Hcb-4h-eDe" firstAttribute="centerX" secondItem="VoZ-gf-MpS" secondAttribute="centerX" id="tiX-vO-zCz"/>
                         </constraints>
@@ -1731,6 +1742,7 @@
                     <connections>
                         <outlet property="frameView" destination="9Hd-a4-Qq6" id="fup-Ew-MHD"/>
                         <outlet property="pageSegmentedControl" destination="Hcb-4h-eDe" id="XZi-jm-SUj"/>
+                        <outlet property="settingButton" destination="xiq-1x-HSn" id="8pi-15-ZmD"/>
                         <segue destination="RCx-ia-dL6" kind="show" id="MRQ-4r-Bz7"/>
                     </connections>
                 </viewController>

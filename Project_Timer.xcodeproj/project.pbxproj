@@ -834,6 +834,13 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		877911BE2A18AFF200F0A713 /* LogSetting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LogSetting;
+			sourceTree = "<group>";
+		};
 		878899782894EFC500B7F378 /* LogWeek */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,6 +982,7 @@
 			children = (
 				87A8BC3A288D1436007ED793 /* LogVC.swift */,
 				87A8BC3C288D1448007ED793 /* LogHome */,
+				877911BE2A18AFF200F0A713 /* LogSetting */,
 				87C9F423288BD2D600B9E04A /* LogDaily */,
 				878899782894EFC500B7F378 /* LogWeek */,
 				87C2F97928A6BF7F00F44D98 /* ModifyRecord */,

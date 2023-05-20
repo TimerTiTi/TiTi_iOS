@@ -63,4 +63,19 @@ extension UIView {
         self.layer.shadowOffset = CGSize.zero
         self.layer.shadowRadius = radius
     }
+    
+    func fadeOut() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.alpha = 0
+        }) { _ in
+            self.isHidden = true
+        }
+    }
+    
+    func fadeIn() {
+        self.isHidden = false
+        UIView.animate(withDuration: 0.3) {
+            self.alpha = 1
+        }
+    }
 }
