@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: https://velog.io/@dd3557/iOS-14-Auto-Layout을-이용하여-페이스북의-Bottom-Sheet을-만들어보자-Part-1
-class BottomSheetViewController: UIViewController {
+final class BottomSheetViewController: UIViewController {
     enum BottomSheetViewState {
         case expanded
         case normal
@@ -17,6 +17,7 @@ class BottomSheetViewController: UIViewController {
     private lazy var dimmedView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.darkGray.withAlphaComponent(self.dimmedAlpha)
+        view.alpha = 0
         return view
     }()
     private lazy var bottomSheetView: UIView = {
@@ -26,6 +27,13 @@ class BottomSheetViewController: UIViewController {
         view.layer.cornerCurve = .continuous
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.clipsToBounds = true
+        return view
+    }()
+    private let dragIndicatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .label
+        view.layer.cornerRadius = 1.5
+        view.alpha = 0
         return view
     }()
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
@@ -69,6 +77,7 @@ class BottomSheetViewController: UIViewController {
         
         if isPannedable {
             self.configureViewPannedGesture()
+            self.dragIndicatorView.alpha = 1
         }
     }
     
@@ -113,13 +122,12 @@ extension BottomSheetViewController {
     private func configureUI() {
         view.addSubview(dimmedView)
         view.addSubview(bottomSheetView)
-        dimmedView.alpha = 0.0
+        view.addSubview(dragIndicatorView)
         
         addChild(contentViewController)
         bottomSheetView.addSubview(contentViewController.view)
         contentViewController.didMove(toParent: self)
         bottomSheetView.clipsToBounds = true
-        dimmedView.alpha = 0.0
     }
     
     private func configureLayout() {
@@ -147,6 +155,14 @@ extension BottomSheetViewController {
             contentViewController.view.leadingAnchor.constraint(equalTo: bottomSheetView.leadingAnchor),
             contentViewController.view.trailingAnchor.constraint(equalTo: bottomSheetView.trailingAnchor),
             contentViewController.view.bottomAnchor.constraint(equalTo: bottomSheetView.bottomAnchor)
+        ])
+        
+        dragIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dragIndicatorView.widthAnchor.constraint(equalToConstant: 60),
+            dragIndicatorView.heightAnchor.constraint(equalToConstant: dragIndicatorView.layer.cornerRadius * 2),
+            dragIndicatorView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            dragIndicatorView.bottomAnchor.constraint(equalTo: bottomSheetView.topAnchor, constant: 12)
         ])
     }
     
