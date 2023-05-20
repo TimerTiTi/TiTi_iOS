@@ -35,9 +35,9 @@ class BottomSheetViewController: UIViewController {
     // bottomSheetView의 상단 CornerRadius 값
     var cornerRedius: CGFloat = 16
     // dimmedView의 alpha값
-    var dimmedAlpha: CGFloat = 0.2
-    // Bottom Sheet과 safe Area Top 사이의 최소값을 지정하기 위한 프로퍼티, 기본값은 30으로 지정
-    var bottomSheetPanMinTopConstant: CGFloat = 30.0
+    var dimmedAlpha: CGFloat = 0.4
+    // Bottom Sheet과 safe Area Top 사이의 최소값을 지정하기 위한 프로퍼티
+    var bottomSheetPanMinTopConstant: CGFloat = 40
     // pannedGesture 활성화 여부
     var isPannedable: Bool = false
     // 드래그 하기 전에 Bottom Sheet의 top Constraint value를 저장하기 위한 프로퍼티
@@ -45,7 +45,7 @@ class BottomSheetViewController: UIViewController {
     
     private let contentViewController: UIViewController
     
-    init(contentViewController: UIViewController, defaultHeight: CGFloat, cornerRadius: CGFloat = 16, dimmedAlpha: CGFloat = 0.2, isPannedable: Bool = false) {
+    init(contentViewController: UIViewController, defaultHeight: CGFloat, cornerRadius: CGFloat = 16, dimmedAlpha: CGFloat = 0.3, isPannedable: Bool = false) {
         self.contentViewController = contentViewController
         self.defaultHeight = defaultHeight
         self.cornerRedius = cornerRadius
@@ -78,13 +78,27 @@ class BottomSheetViewController: UIViewController {
         self.showBottomSheet()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { [weak self] _ in
+            self?.showBottomSheet()
+        }
+    }
+    
     private func showBottomSheet(atState: BottomSheetViewState = .normal) {
         if atState == .normal {
             let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
             let bottomPadding: CGFloat = view.safeAreaInsets.bottom
-            bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
+            let constraintValue = (safeAreaHeight + bottomPadding) - defaultHeight
+            
+            if constraintValue > 0 {
+                self.bottomSheetViewTopConstraint.constant = constraintValue
+            } else {
+                self.bottomSheetViewTopConstraint.constant = self.bottomSheetPanMinTopConstant
+            }
+            
         } else {
-            bottomSheetViewTopConstraint.constant = self.bottomSheetPanMinTopConstant
+            self.bottomSheetViewTopConstraint.constant = self.bottomSheetPanMinTopConstant
         }
         
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
