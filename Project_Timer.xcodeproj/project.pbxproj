@@ -645,14 +645,14 @@
 			path = Usecase;
 			sourceTree = "<group>";
 		};
-		872C0ED9284ADD6800E8E3F2 /* SettingUpdateHistory */ = {
+		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
 			isa = PBXGroup;
 			children = (
 				872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */,
 				872C0EE2284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift */,
 				872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */,
 			);
-			path = SettingUpdateHistory;
+			path = UpdateHistory;
 			sourceTree = "<group>";
 		};
 		872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */ = {
@@ -674,6 +674,7 @@
 				87F10931284C4367002E31EA /* SurveyCell.swift */,
 				87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */,
 				875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */,
+				87D7ED1B2952E3DF00121DE6 /* TestServer */,
 			);
 			path = SettingTiTiLab;
 			sourceTree = "<group>";
@@ -803,6 +804,22 @@
 				04B5293A28B4E40500906C86 /* PopupEditTaskNameVC.swift */,
 			);
 			path = Popup;
+			sourceTree = "<group>";
+		};
+		877911AE2A18861D00F0A713 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
+				872C0EDF284AE56700E8E3F2 /* SettingTiTiLab */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		877911AF2A18865100F0A713 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		878899782894EFC500B7F378 /* LogWeek */ = {
@@ -1190,12 +1207,11 @@
 			isa = PBXGroup;
 			children = (
 				872C0EE4284AF2D000E8E3F2 /* Main */,
-				872C0EDC284AE51300E8E3F2 /* SettingFunctionsList */,
-				872C0EDF284AE56700E8E3F2 /* SettingTiTiLab */,
+				877911AE2A18861D00F0A713 /* Service */,
+				877911AF2A18865100F0A713 /* Setting */,
+				872C0ED9284ADD6800E8E3F2 /* UpdateHistory */,
 				870474F428F148A800CC03A8 /* SettingColor */,
 				87D3E49C28E49D3A00ACD5EC /* SettingRecord */,
-				872C0ED9284ADD6800E8E3F2 /* SettingUpdateHistory */,
-				87D7ED1B2952E3DF00121DE6 /* TestServer */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
