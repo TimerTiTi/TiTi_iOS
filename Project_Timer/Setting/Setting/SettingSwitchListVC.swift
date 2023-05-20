@@ -37,6 +37,13 @@ final class SettingSwitchListVC: UIViewController {
         self.configureUI()
         self.configureSettings()
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate { [weak self] _ in
+            self?.settings.collectionViewLayout.invalidateLayout()
+        }
+    }
 }
 
 extension SettingSwitchListVC {
