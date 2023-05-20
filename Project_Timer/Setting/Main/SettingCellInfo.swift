@@ -58,6 +58,11 @@ class SettingCellInfo {
         self.title = title
         self.touchable = false
     }
+    /// without storyboard
+    init(title: String, vc: SettingAction) {
+        self.title = title
+        self.action = vc
+    }
     
     func fetchVersion() {
         NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
@@ -71,6 +76,9 @@ enum SettingAction: String {
     case pushVC
     case goSafari
     case deeplink
+    case notification
+    case ui
+    case control
 }
 
 protocol SettingActionDelegate: AnyObject {

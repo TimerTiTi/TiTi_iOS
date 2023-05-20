@@ -96,6 +96,12 @@ extension SettingVC: UICollectionViewDelegate {
         case .deeplink:
             guard let link = cellInfo.url else { return }
             self.deeplink(link: link)
+        case .notification:
+            self.navigationController?.pushViewController(SettingNotificationVC(), animated: true)
+        case .ui:
+            self.navigationController?.pushViewController(SettingUIVC(), animated: true)
+        case .control:
+            self.navigationController?.pushViewController(SettingControlVC(), animated: true)
         }
     }
 }

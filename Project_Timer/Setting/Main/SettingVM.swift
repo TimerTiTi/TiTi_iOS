@@ -40,9 +40,9 @@ final class SettingVM {
         ])
         // Setting
         cells.append([
-            SettingCellInfo(title: "Notification".localized(), nextVCIdentifier: "SettingNotificationVC"),
-            SettingCellInfo(title: "UI", nextVCIdentifier: "SettingUIVC"),
-            SettingCellInfo(title: "Control".localized(), nextVCIdentifier: "SettingControlVC"),
+            SettingCellInfo(title: "Notification".localized(), vc: .notification),
+            SettingCellInfo(title: "UI", vc: .ui),
+            SettingCellInfo(title: "Control".localized(), vc: .control),
         ])
         #if targetEnvironment(macCatalyst)
         cells.last?.remove(at: 2) // Control 제거
