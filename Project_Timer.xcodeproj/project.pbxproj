@@ -129,6 +129,9 @@
 		8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 8773AF5127DCB5D100739A09 /* FSCalendar */; };
 		87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */; };
 		87789E44288BC1FC00759C01 /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87789E43288BC1FC00759C01 /* TimeView.swift */; };
+		877911B22A188A3200F0A713 /* SettingNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877911B12A188A3200F0A713 /* SettingNotificationVC.swift */; };
+		877911B42A188D1400F0A713 /* SettingUIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877911B32A188D1400F0A713 /* SettingUIVC.swift */; };
+		877911B62A188D4100F0A713 /* SettingControlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877911B52A188D4100F0A713 /* SettingControlVC.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* LogWeekVC.swift */; };
@@ -384,6 +387,9 @@
 		8772E91526705EE100A191BF /* TodolistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVC.swift; sourceTree = "<group>"; };
 		87789E41288BBD0900759C01 /* DayOfWeekLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfWeekLabel.swift; sourceTree = "<group>"; };
 		87789E43288BC1FC00759C01 /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
+		877911B12A188A3200F0A713 /* SettingNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationVC.swift; sourceTree = "<group>"; };
+		877911B32A188D1400F0A713 /* SettingUIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIVC.swift; sourceTree = "<group>"; };
+		877911B52A188D4100F0A713 /* SettingControlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingControlVC.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		878899792894EFEE00B7F378 /* LogWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVC.swift; sourceTree = "<group>"; };
@@ -818,6 +824,9 @@
 		877911AF2A18865100F0A713 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				877911B12A188A3200F0A713 /* SettingNotificationVC.swift */,
+				877911B32A188D1400F0A713 /* SettingUIVC.swift */,
+				877911B52A188D4100F0A713 /* SettingControlVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1491,6 +1500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				877911B22A188A3200F0A713 /* SettingNotificationVC.swift in Sources */,
 				87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */,
 				8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */,
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
@@ -1525,6 +1535,7 @@
 				870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
+				877911B42A188D1400F0A713 /* SettingUIVC.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
@@ -1654,6 +1665,7 @@
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
+				877911B62A188D4100F0A713 /* SettingControlVC.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
