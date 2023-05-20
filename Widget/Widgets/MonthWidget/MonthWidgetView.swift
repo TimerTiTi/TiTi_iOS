@@ -190,7 +190,7 @@ struct MonthWidgetDayCell: View {
             Text("\(day.dayInt)")
                 .font(Font.system(size: 7, weight: isToday ? .heavy : .regular))
                 .foregroundColor(isToday ? Color.red : Color(UIColor(named: "dayColor")!))
-                .frame(width: 10, alignment: .trailing)
+                .frame(width: 11, alignment: .trailing)
             ZStack {
                 Circle()
                     .fill(Color(UIColor(named: color)!).opacity(opacity(isRecorded ? data!.totalTime : 0)))
