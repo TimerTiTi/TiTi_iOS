@@ -168,6 +168,7 @@
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
+		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
 		879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849B29C83D5100D65F48 /* RoundedShape.swift */; };
 		879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849E29C8400700D65F48 /* TimeLabelData.swift */; };
 		87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* RecordTimes.swift */; };
@@ -429,6 +430,7 @@
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
+		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		879E849B29C83D5100D65F48 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		879E849E29C8400700D65F48 /* TimeLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelData.swift; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* RecordTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimes.swift; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 				8762717327DF88E700F812ED /* View */,
 				87379F982615979D00A9445E /* Model */,
 				04FA75D4286F25FC00BAE2B2 /* Constant */,
+				879D20752A190FFC00D8A420 /* ViewController */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1008,6 +1011,14 @@
 				879D20732A190DE900D8A420 /* LogSettingVC.swift */,
 			);
 			path = LogSetting;
+			sourceTree = "<group>";
+		};
+		879D20752A190FFC00D8A420 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				879D20762A19101C00D8A420 /* BottomSheetViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		879E849D29C83FF000D65F48 /* Model */ = {
@@ -1519,6 +1530,7 @@
 				879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */,
 				8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */,
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
+				879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */,
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,

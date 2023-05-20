@@ -55,7 +55,9 @@ final class LogVC: UIViewController {
     }
     
     @IBAction func showSettingBottomSheet(_ sender: Any) {
-        
+        let bottomSheetVC = BottomSheetViewController(contentViewController: LogSettingVC())
+        bottomSheetVC.modalPresentationStyle = .overFullScreen
+        self.present(bottomSheetVC, animated: false, completion: nil)
     }
 }
 
