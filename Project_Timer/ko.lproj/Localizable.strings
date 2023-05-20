@@ -103,7 +103,7 @@
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
 
-"Introducing app" = "앱 소개";
+"Service" = "서비스";
 
 "Notification" = "알림";
 
@@ -237,7 +237,7 @@
 
 "Setting Target Time" = "목표시간 설정";
 
-"Get stored JSON files" = "저장된 JSON 파일";
+"Get JSON files" = "JSON 파일 추출";
 
 "Activate Big UI for iPad" = "아이패드용 Big UI 활성화";
 
@@ -284,3 +284,9 @@
 "See how to use the Timer" = "Timer 사용법 보기";
 
 "The new Sleep Mode feature added." = "새로운 Sleep Mode 기능이 추가되었어요";
+
+"Setting" = "설정";
+
+"Control" = "컨트롤";
+
+"Backup" = "백업";
