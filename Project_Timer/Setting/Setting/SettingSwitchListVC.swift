@@ -1,5 +1,5 @@
 //
-//  SettingNotificationVC.swift
+//  SettingSwitchListVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/20.
@@ -8,8 +8,9 @@
 
 import UIKit
 
-final class SettingNotificationVC: UIViewController {
-    static let identifier = "SettingNotificationVC"
+final class SettingSwitchListVC: UIViewController {
+    static let identifier = "SettingSwitchListVC"
+    
     private var settings: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1
@@ -17,11 +18,20 @@ final class SettingNotificationVC: UIViewController {
         layout.sectionInset = UIEdgeInsets.zero
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
-    private let viewModel = SettingNotificationVM()
+    private let viewModel: SettingSwitchListVM
+    
+    init(dataSource: SettingSwitchListVM.DataSource) {
+        self.viewModel = SettingSwitchListVM(isIpad: UIDevice.current.userInterfaceIdiom == .pad, dataSource: dataSource)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Notification".localized()
+        self.title = self.viewModel.title
         self.view.backgroundColor = .systemGroupedBackground
         
         self.configureUI()
@@ -29,9 +39,10 @@ final class SettingNotificationVC: UIViewController {
     }
 }
 
-extension SettingNotificationVC {
+extension SettingSwitchListVC {
     private func configureUI() {
         self.settings.translatesAutoresizingMaskIntoConstraints = false
+        self.settings.backgroundColor = .clear
         self.view.addSubview(self.settings)
         
         NSLayoutConstraint.activate([
@@ -49,7 +60,7 @@ extension SettingNotificationVC {
     }
 }
 
-extension SettingNotificationVC: UICollectionViewDataSource {
+extension SettingSwitchListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.viewModel.cells.count
     }
@@ -63,7 +74,7 @@ extension SettingNotificationVC: UICollectionViewDataSource {
     }
 }
 
-extension SettingNotificationVC: UICollectionViewDelegateFlowLayout {
+extension SettingSwitchListVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height: CGFloat = CGFloat(self.viewModel.cells[safe: indexPath.item]?.cellHeight ?? 55)
         
