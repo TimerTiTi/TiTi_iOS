@@ -14,75 +14,89 @@ class BottomSheetViewController: UIViewController {
         case expanded
         case normal
     }
-    private let dimmedView: UIView = {
+    private lazy var dimmedView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.darkGray.withAlphaComponent(0.2)
+        view.backgroundColor = UIColor.darkGray.withAlphaComponent(self.dimmedAlpha)
         return view
     }()
-    private let bottomSheetView: UIView = {
+    private lazy var bottomSheetView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        
-        // 좌측 상단과 좌측 하단의 cornerRadius를 10으로 설정한다.
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = self.cornerRedius
+        view.layer.cornerCurve = .continuous
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.clipsToBounds = true
         return view
     }()
-    
-    // 2
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
     
-    // 1 - 열린 BottomSheet의 기본 높이를 지정하기 위한 프로퍼티
-    var defaultHeight: CGFloat = 300
-    
-    // Bottom Sheet과 safe Area Top 사이의 최소값을 지정하기 위한 프로퍼티
-    // 기본값은 30으로 지정
+    // 열린 BottomSheet의 기본 높이를 지정하기 위한 프로퍼티
+    var defaultHeight: CGFloat = 500
+    // bottomSheetView의 상단 CornerRadius 값
+    var cornerRedius: CGFloat = 16
+    // dimmedView의 alpha값
+    var dimmedAlpha: CGFloat = 0.2
+    // Bottom Sheet과 safe Area Top 사이의 최소값을 지정하기 위한 프로퍼티, 기본값은 30으로 지정
     var bottomSheetPanMinTopConstant: CGFloat = 30.0
-    
+    // pannedGesture 활성화 여부
+    var isPannedable: Bool = false
     // 드래그 하기 전에 Bottom Sheet의 top Constraint value를 저장하기 위한 프로퍼티
     private lazy var bottomSheetPanStartingTopConstant: CGFloat = bottomSheetPanMinTopConstant
     
     private let contentViewController: UIViewController
     
-    // 이니셜라이저 구현
-    init(contentViewController: UIViewController) {
+    init(contentViewController: UIViewController, defaultHeight: CGFloat, cornerRadius: CGFloat = 16, dimmedAlpha: CGFloat = 0.2, isPannedable: Bool = false) {
         self.contentViewController = contentViewController
+        self.defaultHeight = defaultHeight
+        self.cornerRedius = cornerRadius
+        self.dimmedAlpha = dimmedAlpha
+        self.isPannedable = isPannedable
+        
         super.init(nibName: nil, bundle: nil)
+        self.modalPresentationStyle = .overFullScreen
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // 2
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
-        // 1
-        let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
-        dimmedView.addGestureRecognizer(dimmedTap)
-        dimmedView.isUserInteractionEnabled = true
+        self.configureUI()
+        self.configureLayout()
+        self.configureDimmedTapGesture()
         
-        // Pan Gesture Recognizer를 view controller의 view에 추가하기 위한 코드
-        let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
-        
-        // 기본적으로 iOS는 터치가 드래그하였을 때 딜레이가 발생함
-        // 우리는 드래그 제스쳐가 바로 발생하길 원하기 때문에 딜레이가 없도록 아래와 같이 설정
-        viewPan.delaysTouchesBegan = false
-        viewPan.delaysTouchesEnded = false
-        view.addGestureRecognizer(viewPan)
+        if isPannedable {
+            self.configureViewPannedGesture()
+        }
     }
     
-    // 2
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showBottomSheet()
+        
+        self.showBottomSheet()
     }
     
-    // 3
-    private func setupUI() {
+    private func showBottomSheet(atState: BottomSheetViewState = .normal) {
+        if atState == .normal {
+            let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
+            let bottomPadding: CGFloat = view.safeAreaInsets.bottom
+            bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
+        } else {
+            bottomSheetViewTopConstraint.constant = self.bottomSheetPanMinTopConstant
+        }
+        
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            self.dimmedView.alpha = self.dimAlphaWithBottomSheetTopConstraint(value: self.bottomSheetViewTopConstraint.constant)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+}
+
+// MARK: Configure
+extension BottomSheetViewController {
+    private func configureUI() {
         view.addSubview(dimmedView)
         view.addSubview(bottomSheetView)
         dimmedView.alpha = 0.0
@@ -92,12 +106,9 @@ class BottomSheetViewController: UIViewController {
         contentViewController.didMove(toParent: self)
         bottomSheetView.clipsToBounds = true
         dimmedView.alpha = 0.0
-        
-        setupLayout()
     }
     
-    // 4
-    private func setupLayout() {
+    private func configureLayout() {
         dimmedView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dimmedView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -125,42 +136,28 @@ class BottomSheetViewController: UIViewController {
         ])
     }
     
-    // 4
-    private func showBottomSheet(atState: BottomSheetViewState = .normal) {
-        if atState == .normal {
-            let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.height
-            let bottomPadding: CGFloat = view.safeAreaInsets.bottom
-            bottomSheetViewTopConstraint.constant = (safeAreaHeight + bottomPadding) - defaultHeight
-        } else {
-            bottomSheetViewTopConstraint.constant = bottomSheetPanMinTopConstant
-        }
+    private func configureDimmedTapGesture() {
+        let dimmedTap = UITapGestureRecognizer(target: self, action: #selector(dimmedViewTapped(_:)))
+        dimmedView.addGestureRecognizer(dimmedTap)
+        dimmedView.isUserInteractionEnabled = true
+    }
+    
+    private func configureViewPannedGesture() {
+        // Pan Gesture Recognizer를 view controller의 view에 추가하기 위한 코드
+        let viewPan = UIPanGestureRecognizer(target: self, action: #selector(viewPanned(_:)))
         
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            // ------------ 수정된 코드
-            self.dimmedView.alpha = self.dimAlphaWithBottomSheetTopConstraint(value: self.bottomSheetViewTopConstraint.constant)
-            // ------------
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        // 기본적으로 iOS는 터치가 드래그하였을 때 딜레이가 발생함
+        // 우리는 드래그 제스쳐가 바로 발생하길 원하기 때문에 딜레이가 없도록 아래와 같이 설정
+        viewPan.delaysTouchesBegan = false
+        viewPan.delaysTouchesEnded = false
+        view.addGestureRecognizer(viewPan)
     }
-    
-    // 2
-    private func hideBottomSheetAndGoBack() {
-        let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
-        let bottomPadding = view.safeAreaInsets.bottom
-        bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-            self.dimmedView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }) { _ in
-            if self.presentingViewController != nil {
-                self.dismiss(animated: false, completion: nil)
-            }
-        }
-    }
-    
-    // 3
+}
+
+// MARK: Gesture
+extension BottomSheetViewController {
     @objc private func dimmedViewTapped(_ tapRecognizer: UITapGestureRecognizer) {
-        hideBottomSheetAndGoBack()
+        self.hideBottomSheetAndGoBack()
     }
     
     // 해당 메소드는 사용자가 view를 드래그하면 실행됨
@@ -176,16 +173,14 @@ class BottomSheetViewController: UIViewController {
             if bottomSheetPanStartingTopConstant + translation.y > bottomSheetPanMinTopConstant {
                 bottomSheetViewTopConstraint.constant = bottomSheetPanStartingTopConstant + translation.y
             }
-            // --------------- 추가된 코드
+            
             dimmedView.alpha = dimAlphaWithBottomSheetTopConstraint(value: bottomSheetViewTopConstraint.constant)
-            // ---------------
         case .ended:
-                    // ----------- 추가된 코드
             if velocity.y > 1500 {
                 hideBottomSheetAndGoBack()
                 return
             }
-            // -----------
+            
             let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
             let bottomPadding = view.safeAreaInsets.bottom
             let defaultPadding = safeAreaHeight+bottomPadding - defaultHeight
@@ -205,16 +200,32 @@ class BottomSheetViewController: UIViewController {
             break
         }
     }
+}
+
+extension BottomSheetViewController {
+    private func hideBottomSheetAndGoBack() {
+        let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
+        let bottomPadding = view.safeAreaInsets.bottom
+        bottomSheetViewTopConstraint.constant = safeAreaHeight + bottomPadding
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+            self.dimmedView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.presentingViewController != nil {
+                self.dismiss(animated: false, completion: nil)
+            }
+        }
+    }
     
     //주어진 CGFloat 배열의 값 중 number로 주어진 값과 가까운 값을 찾아내는 메소드
-    func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
+    private func nearest(to number: CGFloat, inValues values: [CGFloat]) -> CGFloat {
         guard let nearestVal = values.min(by: { abs(number - $0) < abs(number - $1) })
         else { return number }
         return nearestVal
     }
     
     private func dimAlphaWithBottomSheetTopConstraint(value: CGFloat) -> CGFloat {
-        let fullDimAlpha: CGFloat = 0.7
+        let fullDimAlpha: CGFloat = self.dimmedAlpha
         
         let safeAreaHeight = view.safeAreaLayoutGuide.layoutFrame.height
         let bottomPadding = view.safeAreaInsets.bottom
