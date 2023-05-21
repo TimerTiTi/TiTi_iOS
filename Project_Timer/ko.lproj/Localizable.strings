@@ -219,10 +219,6 @@
 
 "Setting Graph's theme color" = "그래프 테마 컬러 설정";
 
-"Color ordering" = "컬러 순서";
-
-"Setting the order of graph's color" = "그래프 색상표시 순서 설정";
-
 "Custom Color" = "커스텀 컬러";
 
 "Background" = "배경";
@@ -294,3 +290,7 @@
 "Color" = "컬러";
 
 "Select the color of the graph" = "그래프의 컬러를 선택합니다";
+
+"Color direction" = "컬러 방향";
+
+"Setting the direction of the color combination" = "컬러 조합의 방향을 설정합니다";

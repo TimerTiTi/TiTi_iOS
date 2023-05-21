@@ -221,10 +221,6 @@
 
 "Setting Graph's theme color" = "Setting Graph's theme color";
 
-"Color ordering" = "Color ordering";
-
-"Setting the order of graph's color" = "Setting the order of graph's color";
-
 "Custom Color" = "Custom Color";
 
 "Background" = "Background";
@@ -290,3 +286,7 @@
 "Color" = "Color";
 
 "Select the color of the graph" = "Select the color of the graph";
+
+"Color direction" = "Color direction";
+
+"Setting the direction of the color combination" = "Setting the direction of the color combination";

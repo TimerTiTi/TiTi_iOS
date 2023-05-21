@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol LogUpdateable: AnyObject {
-    func update()
-}
-
 final class ThemeColorSelectorView: UIView {
     private weak var delegate: LogUpdateable?
     private var titleLabel: UILabel = {
