@@ -55,8 +55,9 @@ final class LogVC: UIViewController {
     }
     
     @IBAction func showSettingBottomSheet(_ sender: Any) {
+        guard let logVC = self.childVCs[0] as? LogHomeVC else { return }
         let height: CGFloat = self.view.bounds.width <= 375 ? 425 : 500
-        let bottomSheetVC = BottomSheetViewController(contentViewController: LogSettingVC(), defaultHeight: height, cornerRadius: 25, isPannedable: true)
+        let bottomSheetVC = BottomSheetViewController(contentViewController: LogSettingVC(delegate: logVC), defaultHeight: height, cornerRadius: 25, isPannedable: true)
         self.present(bottomSheetVC, animated: false, completion: nil)
     }
 }
