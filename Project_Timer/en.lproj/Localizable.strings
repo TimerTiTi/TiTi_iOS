@@ -207,15 +207,7 @@
 
 "Past format record can't editting, Please wait for update" = "Past format record can't editting, Please wait for update";
 
-"Target Times" = "Target Times";
-
-"Target times for graph in Log Home" = "Target times for graph in Log Home";
-
-"Target time of Month's Total Time" = "Target time of Month's Total Time";
-
-"Target time of Week's Total Time" = "Target time of Week's Total Time";
-
-"Target time of daily's Total Time" = "Target time of daily's Total Time";
+"Target time" = "Target time";
 
 "Theme color" = "Theme color";
 
@@ -285,8 +277,10 @@
 
 "Color" = "Color";
 
-"Select the color of the graph" = "Select the color of the graph";
+"Setting the color of the graph" = "Select the color of the graph";
 
 "Color direction" = "Color direction";
 
 "Setting the direction of the color combination" = "Setting the direction of the color combination";
+
+"Setting the target time of Circular Progress Bar" = "Setting the target time of Circular Progress Bar";

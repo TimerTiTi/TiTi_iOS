@@ -14,6 +14,7 @@ final class LogSettingVC: UIViewController {
     
     private var themeColorSelector: ThemeColorSelectorView!
     private var themeColorDirection: ThemeColorDirectionView!
+    private var logTargetTimeView: LogTargetTimeView!
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439+32)
@@ -25,6 +26,7 @@ final class LogSettingVC: UIViewController {
         
         self.themeColorSelector = ThemeColorSelectorView(delegate: self)
         self.themeColorDirection = ThemeColorDirectionView(delegate: self)
+        self.logTargetTimeView = LogTargetTimeView()
     }
     
     required init?(coder: NSCoder) {
@@ -54,6 +56,13 @@ extension LogSettingVC {
             self.themeColorDirection.widthAnchor.constraint(equalToConstant: self.frameWidth),
             self.themeColorDirection.topAnchor.constraint(equalTo: self.themeColorSelector.bottomAnchor, constant: 32),
             self.themeColorDirection.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        
+        self.view.addSubview(self.logTargetTimeView)
+        NSLayoutConstraint.activate([
+            self.logTargetTimeView.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            self.logTargetTimeView.topAnchor.constraint(equalTo: self.themeColorDirection.bottomAnchor, constant: 32),
+            self.logTargetTimeView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
 }

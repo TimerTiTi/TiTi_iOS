@@ -205,15 +205,7 @@
 
 "Past format record can't editting, Please wait for update" = "기록수정이 불가한 과거형식의 기록입니다. 업데이트를 기다려주세요";
 
-"Target Times" = "목표 시간";
-
-"Target times for graph in Log Home" = "Log Home 내 그래프 표시를 위한 목표시간을 설정합니다";
-
-"Target time of Month's Total Time" = "Month 목표 누적시간";
-
-"Target time of Week's Total Time" = "Week 목표 누적시간";
-
-"Target time of daily's Total Time" = "daily 목표 누적시간";
+"Target time" = "목표 시간";
 
 "Theme color" = "테마 컬러";
 
@@ -289,8 +281,10 @@
 
 "Color" = "컬러";
 
-"Select the color of the graph" = "그래프의 컬러를 선택합니다";
+"Setting the color of the graph" = "그래프의 컬러를 설정합니다";
 
 "Color direction" = "컬러 방향";
 
 "Setting the direction of the color combination" = "컬러 조합의 방향을 설정합니다";
+
+"Setting the target time of Circular Progress Bar" = "원형 프로그래스바의 목표시간을 설정합니다";
