@@ -180,3 +180,10 @@ extension LogHomeVC {
             .store(in: &self.cancellables)
     }
 }
+
+extension LogHomeVC: LogUpdateable {
+    func update() {
+        self.viewModel?.loadDaily()
+        self.viewModel?.updateDailys()
+    }
+}

@@ -169,6 +169,8 @@
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
 		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
+		879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */; };
+		879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D207A2A19B91C00D8A420 /* ColorButton.swift */; };
 		879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849B29C83D5100D65F48 /* RoundedShape.swift */; };
 		879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849E29C8400700D65F48 /* TimeLabelData.swift */; };
 		87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A4704726493D4D007B89D6 /* RecordTimes.swift */; };
@@ -431,6 +433,8 @@
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
 		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorSelectorView.swift; sourceTree = "<group>"; };
+		879D207A2A19B91C00D8A420 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		879E849B29C83D5100D65F48 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		879E849E29C8400700D65F48 /* TimeLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelData.swift; sourceTree = "<group>"; };
 		87A4704726493D4D007B89D6 /* RecordTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimes.swift; sourceTree = "<group>"; };
@@ -1009,6 +1013,8 @@
 			isa = PBXGroup;
 			children = (
 				879D20732A190DE900D8A420 /* LogSettingVC.swift */,
+				879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */,
+				879D207A2A19B91C00D8A420 /* ColorButton.swift */,
 			);
 			path = LogSetting;
 			sourceTree = "<group>";
@@ -1553,6 +1559,7 @@
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
 				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
 				87DA71772A13AA16006294DE /* MonthWidgetData+init.swift in Sources */,
+				879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */,
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
@@ -1594,6 +1601,7 @@
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
+				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
