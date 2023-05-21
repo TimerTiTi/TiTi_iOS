@@ -15,6 +15,8 @@ final class LogSettingVC: UIViewController {
     private var themeColorSelector: ThemeColorSelectorView!
     private var themeColorDirection: ThemeColorDirectionView!
     private var logTargetTimeView: LogTargetTimeView!
+    private let monthTargetButton = TargetTimeButton(key: .goalTimeOfMonth)
+    private let weekTargetButton = TargetTimeButton(key: .goalTimeOfWeek)
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439+32)
@@ -37,6 +39,7 @@ final class LogSettingVC: UIViewController {
         super.viewDidLoad()
         
         self.configureUI()
+        self.configureTargetButtons()
     }
 }
 
@@ -64,6 +67,30 @@ extension LogSettingVC {
             self.logTargetTimeView.topAnchor.constraint(equalTo: self.themeColorDirection.bottomAnchor, constant: 32),
             self.logTargetTimeView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        
+        self.view.addSubview(self.monthTargetButton)
+        NSLayoutConstraint.activate([
+            self.monthTargetButton.widthAnchor.constraint(equalToConstant: self.frameWidth - 32),
+            self.monthTargetButton.topAnchor.constraint(equalTo: self.logTargetTimeView.bottomAnchor, constant: 16),
+            self.monthTargetButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        
+        self.view.addSubview(self.weekTargetButton)
+        NSLayoutConstraint.activate([
+            self.weekTargetButton.widthAnchor.constraint(equalToConstant: self.frameWidth - 32),
+            self.weekTargetButton.topAnchor.constraint(equalTo: self.monthTargetButton.bottomAnchor, constant: 8),
+            self.weekTargetButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+    }
+    
+    private func configureTargetButtons() {
+        self.monthTargetButton.addAction(UIAction(handler: { [weak self] _ in
+            print("select")
+        }), for: .touchUpInside)
+        
+        self.weekTargetButton.addAction(UIAction(handler: { [weak self] _ in
+            print("select")
+        }), for: .touchUpInside)
     }
 }
 
