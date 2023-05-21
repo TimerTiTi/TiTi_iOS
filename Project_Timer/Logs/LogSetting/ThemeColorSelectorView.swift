@@ -53,7 +53,7 @@ final class ThemeColorSelectorView: UIView {
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.text = "Color".localized()
-        self.subTitleLabel.text = "Select the color of the graph".localized()
+        self.subTitleLabel.text = "Setting the color of the graph".localized()
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
