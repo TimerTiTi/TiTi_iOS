@@ -10,16 +10,21 @@ import UIKit
 
 final class LogSettingVC: UIViewController {
     static let identifier = "LogSettingVC"
+    private weak var delegate: LogUpdateable?
     
-    private let themeColorSelector: ThemeColorSelectorView
+    private var themeColorSelector: ThemeColorSelectorView!
+    private var themeColorDirection: ThemeColorDirectionView!
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439+32)
     }
     
     init(delegate: LogUpdateable) {
-        self.themeColorSelector = ThemeColorSelectorView(delegate: delegate)
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
+        
+        self.themeColorSelector = ThemeColorSelectorView(delegate: self)
+        self.themeColorDirection = ThemeColorDirectionView(delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -43,5 +48,19 @@ extension LogSettingVC {
             self.themeColorSelector.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.themeColorSelector.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        
+        self.view.addSubview(self.themeColorDirection)
+        NSLayoutConstraint.activate([
+            self.themeColorDirection.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            self.themeColorDirection.topAnchor.constraint(equalTo: self.themeColorSelector.bottomAnchor, constant: 32),
+            self.themeColorDirection.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+    }
+}
+
+extension LogSettingVC: LogUpdateable {
+    func update() {
+        self.themeColorDirection.updateColor()
+        self.delegate?.update()
     }
 }
