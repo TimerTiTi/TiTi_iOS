@@ -9,11 +9,17 @@
 import SwiftUI
 
 enum TiTiFont {
+    static func HGGGothicssiP40g(size: CGFloat) -> Font {
+        return Font.custom("HGGGothicssiP40g", size: size)
+    }
     static func HGGGothicssiP60g(size: CGFloat) -> Font {
         return Font.custom("HGGGothicssiP60g", size: size)
     }
     static func HGGGothicssiP80g(size: CGFloat) -> Font {
         return Font.custom("HGGGothicssiP80g", size: size)
+    }
+    static func HGGGothicssiP40g(size: CGFloat) -> UIFont? {
+        return UIFont(name: "HGGGothicssiP40g", size: size)
     }
     static func HGGGothicssiP60g(size: CGFloat) -> UIFont? {
         return UIFont(name: "HGGGothicssiP60g", size: size)
