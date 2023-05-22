@@ -225,7 +225,7 @@
 
 "Setting Target Time" = "목표시간 설정";
 
-"Get JSON files" = "JSON 파일 추출";
+"Get Backup files" = "백업 파일 추출";
 
 "Activate Big UI for iPad" = "아이패드용 Big UI 활성화";
 
@@ -275,7 +275,7 @@
 
 "Setting" = "설정";
 
-"Control" = "컨트롤";
+"Control" = "제어";
 
 "Backup" = "백업";
 
@@ -292,3 +292,9 @@
 "Input Month's Target time (Hour)" = "Month의 목표시간을 입력해주세요 (시간 단위)";
 
 "Input Week's Target time (Hour)" = "Week의 목표시간을 입력해주세요 (시간 단위)";
+
+"Every little feedback helps a lot :)" = "작은 피드백 하나하나가 큰 도움이 됩니다 :)";
+
+"Email Failed" = "이메일 설정 실패";
+
+"Please check the setting of iPhone's Email, and try again." = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요.";

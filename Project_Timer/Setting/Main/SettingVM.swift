@@ -11,6 +11,7 @@ import Combine
 
 final class SettingVM {
     @Published private(set) var cells: [[SettingCellInfo]] = []
+    @Published private(set) var lastestVersionFetched: Bool = false
     private(set) var sections: [String] = []
     private let isIpad: Bool
     
@@ -30,7 +31,6 @@ final class SettingVM {
     
     private func configureCells() {
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
-        versionCell.fetchVersion()
         
         var cells: [[SettingCellInfo]] = []
         // Service
@@ -54,7 +54,7 @@ final class SettingVM {
         ])
         // Backup
         cells.append([
-            SettingCellInfo(title: "Get JSON files".localized(), nextVCIdentifier: "showBackup")
+            SettingCellInfo(title: "Get Backup files".localized(), nextVCIdentifier: "showBackup")
         ])
         // Developer
         cells.append([
@@ -62,5 +62,11 @@ final class SettingVM {
         ])
         
         self.cells = cells
+        
+        NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
+            guard status == .SUCCESS, let version = version else { return }
+            versionCell.updateSubTitle(to: "Latest version".localized()+": \(version)")
+            self?.lastestVersionFetched = true
+        }
     }
 }
