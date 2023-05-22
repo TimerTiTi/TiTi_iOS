@@ -1,5 +1,5 @@
 //
-//  MonthWidgetData+Init.swift
+//  CalendarWidgetData+Init.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension MonthWidgetData {
+extension CalendarWidgetData {
     init(dailys: [Daily]) {
         self.color = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         self.isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
@@ -26,8 +26,8 @@ extension MonthWidgetData {
         }
         
         self.tasksData = Array(tasks.sorted { $0.value > $1.value }
-            .map { MonthWidgetTaskData(taskName: $0.key, taskTime: $0.value)}
+            .map { CalendarWidgetTaskData(taskName: $0.key, taskTime: $0.value)}
             .prefix(5))
-        self.cellsData = monthDailys.map { MonthWidgetCellData(recordDay: $0.day.calendarDay, totalTime: $0.totalTime)}
+        self.cellsData = monthDailys.map { CalendarWidgetCellData(recordDay: $0.day.calendarDay, totalTime: $0.totalTime)}
     }
 }

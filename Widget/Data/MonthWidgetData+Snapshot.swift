@@ -8,22 +8,22 @@
 
 import Foundation
 
-extension MonthWidgetData {
+extension CalendarWidgetData {
     // MARK: Snapshot 제공을 위한 sample 데이터 반환
-    static var snapshot: MonthWidgetData {
-        let sampleTasks: [MonthWidgetTaskData] = [
-            MonthWidgetTaskData(taskName: "sampleTask1".localized(), taskTime: 30*3600),
-            MonthWidgetTaskData(taskName: "sampleTask2".localized(), taskTime: 25*3600),
-            MonthWidgetTaskData(taskName: "sampleTask3".localized(), taskTime: 20*3600),
-            MonthWidgetTaskData(taskName: "sampleTask4".localized(), taskTime: 15*3600),
-            MonthWidgetTaskData(taskName: "sampleTask5".localized(), taskTime: 10*3600)
+    static var snapshot: CalendarWidgetData {
+        let sampleTasks: [CalendarWidgetTaskData] = [
+            CalendarWidgetTaskData(taskName: "sampleTask1".localized(), taskTime: 30*3600),
+            CalendarWidgetTaskData(taskName: "sampleTask2".localized(), taskTime: 25*3600),
+            CalendarWidgetTaskData(taskName: "sampleTask3".localized(), taskTime: 20*3600),
+            CalendarWidgetTaskData(taskName: "sampleTask4".localized(), taskTime: 15*3600),
+            CalendarWidgetTaskData(taskName: "sampleTask5".localized(), taskTime: 10*3600)
         ]
         let firstDay = Date().startDayOfMonth
-        var sampleCellDatas: [MonthWidgetCellData] = []
+        var sampleCellDatas: [CalendarWidgetCellData] = []
         for i in 0...18 {
-            sampleCellDatas.append(MonthWidgetCellData(recordDay: firstDay.nextDay(offset: i), totalTime: Int.random(in: 0...6*3600)))
+            sampleCellDatas.append(CalendarWidgetCellData(recordDay: firstDay.nextDay(offset: i), totalTime: Int.random(in: 0...6*3600)))
         }
         
-        return MonthWidgetData(color: 1, isReverseColor: true, tasksData: sampleTasks, cellsData: sampleCellDatas)
+        return CalendarWidgetData(color: 1, isReverseColor: true, tasksData: sampleTasks, cellsData: sampleCellDatas)
     }
 }
