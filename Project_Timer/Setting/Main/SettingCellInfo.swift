@@ -64,11 +64,8 @@ class SettingCellInfo {
         self.action = vc
     }
     
-    func fetchVersion() {
-        NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
-            guard status == .SUCCESS, let version = version else { return }
-            self?.subTitle = "Latest version".localized()+": \(version)"
-        }
+    func updateSubTitle(to subTitle: String) {
+        self.subTitle = subTitle
     }
 }
 

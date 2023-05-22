@@ -225,7 +225,7 @@
 
 "Setting Target Time" = "Setting Target Time";
 
-"Get JSON files" = "Get JSON files";
+"Get Backup files" = "Get Backup files";
 
 "Activate Big UI for iPad" = "Activate Big UI for iPad";
 
@@ -288,3 +288,9 @@
 "Input Month's Target time (Hour)" = "Input Month's Target time (Hour)";
 
 "Input Week's Target time (Hour)" = "Input Week's Target time (Hour)";
+
+"Every little feedback helps a lot :)" = "Every little feedback helps a lot :)";
+
+"Email Failed" = "Email Failed";
+
+"Please check the setting of iPhone's Email, and try again." = "Please check the setting of iPhone's Email, and try again.";

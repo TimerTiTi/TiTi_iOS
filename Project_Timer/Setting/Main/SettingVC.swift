@@ -65,10 +65,20 @@ extension SettingVC {
     
     private func bindAll() {
         self.bindCells()
+        self.bindLastestVersionFetched()
     }
     
     private func bindCells() {
         self.viewModel?.$cells
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.settings.reloadData()
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindLastestVersionFetched() {
+        self.viewModel?.$lastestVersionFetched
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.settings.reloadData()
@@ -189,11 +199,11 @@ extension SettingVC: MFMailComposeViewControllerDelegate {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["freedeveloper97@gmail.com"])
-            mail.setMessageBody("<p>작은 피드백 하나하나가 큰 도움이 됩니다 :)</p>", isHTML: true)
+            mail.setMessageBody("<p>\("Every little feedback helps a lot :)".localized())</p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
-            let sendMailErrorAlert = UIAlertController(title: "이메일 실패", message: "아이폰 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+            let sendMailErrorAlert = UIAlertController(title: "Email Failed".localized(), message: "Please check the setting of iPhone's Email, and try again.".localized(), preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "OK", style: .default)
             sendMailErrorAlert.addAction(confirmAction)
             self.present(sendMailErrorAlert, animated: true, completion: nil)
