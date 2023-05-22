@@ -9,7 +9,8 @@
 import UIKit
 
 final class TargetTimeButton: UIButton {
-    private var key: UserDefaultsManager.Keys = .goalTimeOfMonth
+    private(set) var key: UserDefaultsManager.Keys = .goalTimeOfMonth
+    private(set) var settedHour: Int = 0
     private var hourLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +37,7 @@ final class TargetTimeButton: UIButton {
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 50)
+            self.heightAnchor.constraint(equalToConstant: 45)
         ])
         
         switch key {
@@ -58,16 +59,15 @@ final class TargetTimeButton: UIButton {
     }
     
     func updateTime() {
-        var settedHour: Int
         switch self.key {
         case .goalTimeOfMonth:
-            settedHour = UserDefaultsManager.get(forKey: .goalTimeOfMonth) as? Int ?? 360000
+            self.settedHour = UserDefaultsManager.get(forKey: .goalTimeOfMonth) as? Int ?? 100*3600
         case .goalTimeOfWeek:
-            settedHour = UserDefaultsManager.get(forKey: .goalTimeOfWeek) as? Int ?? 90000
+            self.settedHour = UserDefaultsManager.get(forKey: .goalTimeOfWeek) as? Int ?? 30*3600
         default:
             return
         }
         
-        self.hourLabel.text = "\(settedHour/3600) H"
+        self.hourLabel.text = "\(self.settedHour/3600) H"
     }
 }

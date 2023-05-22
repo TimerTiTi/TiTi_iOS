@@ -85,11 +85,21 @@ extension LogSettingVC {
     
     private func configureTargetButtons() {
         self.monthTargetButton.addAction(UIAction(handler: { [weak self] _ in
-            print("select")
+            guard let monthTargetButton = self?.monthTargetButton else { return }
+            
+            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Month's Target time (Hour)".localized(), placeHolder: "\(monthTargetButton.settedHour/3600)") { [weak self] hour in
+                UserDefaultsManager.set(to: hour*3600, forKey: monthTargetButton.key)
+                self?.update()
+            }
         }), for: .touchUpInside)
         
         self.weekTargetButton.addAction(UIAction(handler: { [weak self] _ in
-            print("select")
+            guard let weekTargetButton = self?.weekTargetButton else { return }
+            
+            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Week's Target time (Hour)".localized(), placeHolder: "\(weekTargetButton.settedHour/3600)") { [weak self] hour in
+                UserDefaultsManager.set(to: hour*3600, forKey: weekTargetButton.key)
+                self?.update()
+            }
         }), for: .touchUpInside)
     }
 }
@@ -97,6 +107,33 @@ extension LogSettingVC {
 extension LogSettingVC: LogUpdateable {
     func update() {
         self.themeColorDirection.updateColor()
+        self.monthTargetButton.updateTime()
+        self.weekTargetButton.updateTime()
         self.delegate?.update()
+    }
+}
+
+// alert 내에서 textField를 통해 int값을 입력, 0이 아닌경우에만 활성화, 취소, 확인 버튼 추가
+extension LogSettingVC {
+    private func showAlertWithTextField(title: String, text: String, placeHolder: String, handler: @escaping ((Int) -> Void)) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 14)
+            textField.textColor = .label
+            textField.placeholder = placeHolder
+            textField.textAlignment = .center
+            textField.keyboardType = .numberPad
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        let update = UIAlertAction(title: "Done", style: .destructive) { _ in
+            guard let text = alert.textFields?.first?.text,
+                  let hour = Int(text) else { return }
+            handler(hour)
+        }
+        alert.addAction(cancel)
+        alert.addAction(update)
+        
+        self.present(alert, animated: true)
     }
 }
