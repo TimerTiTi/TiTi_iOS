@@ -44,10 +44,10 @@
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
-		870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
-		870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* MonthWidgetData.swift */; };
-		870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */; };
-		870E117C2A0F7EF000CFA77C /* MonthWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */; };
+		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
+		870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
+		870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
+		870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -112,8 +112,8 @@
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
-		87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */; };
-		87617E682A0CE58900E312EA /* MonthWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E662A0CE58400E312EA /* MonthWidgetProvider.swift */; };
+		87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */; };
+		87617E682A0CE58900E312EA /* CalendarWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E662A0CE58400E312EA /* CalendarWidgetProvider.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
 		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
 		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
@@ -146,7 +146,7 @@
 		878B30E72992BB5A00BE7413 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878B30E62992BB5A00BE7413 /* SwiftUI.framework */; };
 		878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30E92992BB5A00BE7413 /* widgetBundle.swift */; };
 		878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */; };
-		878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30ED2992BB5A00BE7413 /* MonthWidget.swift */; };
+		878B30EE2992BB5A00BE7413 /* CalendarWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878B30ED2992BB5A00BE7413 /* CalendarWidget.swift */; };
 		878B30F12992BB5B00BE7413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 878B30F02992BB5B00BE7413 /* Assets.xcassets */; };
 		878B30F72992BB5B00BE7413 /* widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 878B30E32992BB5A00BE7413 /* widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 878B507125B6E31600B9EFD7 /* timer.mp3 */; };
@@ -209,8 +209,8 @@
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
 		87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */; };
 		87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */; };
-		87D4DE112A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */; };
-		87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */; };
+		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
+		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
 		87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
 		87D4DE252A1128CE00993C5C /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE242A1128CE00993C5C /* Date+Extension.swift */; };
@@ -222,11 +222,11 @@
 		87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
-		87DA71772A13AA16006294DE /* MonthWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* MonthWidgetData+init.swift */; };
+		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
 		87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4628D00DF400455A06 /* WeekView.swift */; };
 		87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4828D0104300455A06 /* WeekVM.swift */; };
 		87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DC6A4A28D010A400455A06 /* WeekTime.swift */; };
-		87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* MonthWidgetView.swift */; };
+		87DD96102A09032000CA0249 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */; };
 		87DD96132A09048800CA0249 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87DD96152A09048800CA0249 /* Localizable.strings */; };
 		87DD961A2A09054A00CA0249 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD96192A09054A00CA0249 /* String+Extension.swift */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
@@ -315,8 +315,8 @@
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
-		870E11742A0E226D00CFA77C /* MonthWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetData.swift; sourceTree = "<group>"; };
-		870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetCellData.swift; sourceTree = "<group>"; };
+		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
+		870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetCellData.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
@@ -382,8 +382,8 @@
 		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVC.swift; sourceTree = "<group>"; };
-		87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetEntry.swift; sourceTree = "<group>"; };
-		87617E662A0CE58400E312EA /* MonthWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetProvider.swift; sourceTree = "<group>"; };
+		87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEntry.swift; sourceTree = "<group>"; };
+		87617E662A0CE58400E312EA /* CalendarWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetProvider.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
 		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
 		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
@@ -414,7 +414,7 @@
 		878B30E62992BB5A00BE7413 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		878B30E92992BB5A00BE7413 /* widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetBundle.swift; sourceTree = "<group>"; };
 		878B30EB2992BB5A00BE7413 /* widgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = widgetLiveActivity.swift; sourceTree = "<group>"; };
-		878B30ED2992BB5A00BE7413 /* MonthWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidget.swift; sourceTree = "<group>"; };
+		878B30ED2992BB5A00BE7413 /* CalendarWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidget.swift; sourceTree = "<group>"; };
 		878B30F02992BB5B00BE7413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		878B30F22992BB5B00BE7413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		878B30F82992BB5B00BE7413 /* widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = widgetExtension.entitlements; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
 		87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
 		87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDailysData.swift; sourceTree = "<group>"; };
-		87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetTaskData.swift; sourceTree = "<group>"; };
+		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D4DE152A0F95BE00993C5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/SelectColor.intentdefinition; sourceTree = "<group>"; };
 		87D4DE182A0F95C800993C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectColor.strings; sourceTree = "<group>"; };
 		87D4DE1A2A0F95CA00993C5C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SelectColor.strings; sourceTree = "<group>"; };
@@ -492,11 +492,11 @@
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
-		87DA71762A13AA16006294DE /* MonthWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+init.swift"; sourceTree = "<group>"; };
+		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
 		87DC6A4628D00DF400455A06 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		87DC6A4828D0104300455A06 /* WeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekVM.swift; sourceTree = "<group>"; };
 		87DC6A4A28D010A400455A06 /* WeekTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTime.swift; sourceTree = "<group>"; };
-		87DD960E2A09019300CA0249 /* MonthWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthWidgetView.swift; sourceTree = "<group>"; };
+		87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetView.swift; sourceTree = "<group>"; };
 		87DD96142A09048800CA0249 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87DD96162A09048D00CA0249 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87DD96192A09054A00CA0249 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -620,9 +620,9 @@
 		870E11732A0E225600CFA77C /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				870E11742A0E226D00CFA77C /* MonthWidgetData.swift */,
-				87D4DE102A0F83A500993C5C /* MonthWidgetTaskData.swift */,
-				870E117A2A0F7DEE00CFA77C /* MonthWidgetCellData.swift */,
+				870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */,
+				87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */,
+				870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */,
 				87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */,
 			);
 			path = Data;
@@ -776,10 +776,10 @@
 		87617E642A0CE52F00E312EA /* MonthWidget */ = {
 			isa = PBXGroup;
 			children = (
-				87617E612A0CDF1700E312EA /* MonthWidgetEntry.swift */,
-				87617E662A0CE58400E312EA /* MonthWidgetProvider.swift */,
-				87DD960E2A09019300CA0249 /* MonthWidgetView.swift */,
-				878B30ED2992BB5A00BE7413 /* MonthWidget.swift */,
+				87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */,
+				87617E662A0CE58400E312EA /* CalendarWidgetProvider.swift */,
+				87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */,
+				878B30ED2992BB5A00BE7413 /* CalendarWidget.swift */,
 				87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */,
 			);
 			path = MonthWidget;
@@ -1241,7 +1241,7 @@
 		87DA71752A13A9FE006294DE /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				87DA71762A13AA16006294DE /* MonthWidgetData+init.swift */,
+				87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1521,20 +1521,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				87DD961A2A09054A00CA0249 /* String+Extension.swift in Sources */,
-				878B30EE2992BB5A00BE7413 /* MonthWidget.swift in Sources */,
-				87DD96102A09032000CA0249 /* MonthWidgetView.swift in Sources */,
-				87617E632A0CDFC800E312EA /* MonthWidgetEntry.swift in Sources */,
-				870E117B2A0F7DEE00CFA77C /* MonthWidgetCellData.swift in Sources */,
+				878B30EE2992BB5A00BE7413 /* CalendarWidget.swift in Sources */,
+				87DD96102A09032000CA0249 /* CalendarWidgetView.swift in Sources */,
+				87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */,
+				870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
-				87D4DE122A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */,
+				87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
 				87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */,
-				870E11762A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
+				870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				87D4DE252A1128CE00993C5C /* Date+Extension.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
-				87617E682A0CE58900E312EA /* MonthWidgetProvider.swift in Sources */,
+				87617E682A0CE58900E312EA /* CalendarWidgetProvider.swift in Sources */,
 				87DA716D2A12258D006294DE /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1554,7 +1554,7 @@
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
-				870E117C2A0F7EF000CFA77C /* MonthWidgetCellData.swift in Sources */,
+				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
@@ -1570,7 +1570,7 @@
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
 				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
-				87DA71772A13AA16006294DE /* MonthWidgetData+init.swift in Sources */,
+				87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */,
 				879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */,
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */,
@@ -1579,7 +1579,7 @@
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
-				870E11752A0E226D00CFA77C /* MonthWidgetData.swift in Sources */,
+				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
@@ -1662,7 +1662,7 @@
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
-				87D4DE112A0F83A500993C5C /* MonthWidgetTaskData.swift in Sources */,
+				87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerVC.swift in Sources */,
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,

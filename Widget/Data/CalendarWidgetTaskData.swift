@@ -1,5 +1,5 @@
 //
-//  MonthWidgetTaskData.swift
+//  CalendarWidgetTaskData.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MonthWidgetTaskData: Hashable, Codable {
+struct CalendarWidgetTaskData: Hashable, Codable {
     let taskName: String
     let taskTime: Int
 }

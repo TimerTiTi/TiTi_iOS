@@ -57,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.moveTo(url: url)
         // MARK: 위젯 데이터 업데이트
-        RecordsManager.shared.dailyManager.saveMonthWidgetData()
+        RecordsManager.shared.dailyManager.saveCalendarWidgetData()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

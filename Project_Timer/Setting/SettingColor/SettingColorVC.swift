@@ -31,7 +31,7 @@ final class SettingColorVC: UIViewController {
         UserDefaultsManager.set(to: isReverseColor, forKey: .reverseColor)
         self.updateColor()
         // MARK: 위젯 컬러 반영
-        RecordsManager.shared.dailyManager.saveMonthWidgetData()
+        RecordsManager.shared.dailyManager.saveCalendarWidgetData()
     }
     
     @IBAction func selectColor(_ sender: UIButton) {

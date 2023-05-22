@@ -1,5 +1,5 @@
 //
-//  MonthWidgetCellData.swift
+//  CalendarWidgetCellData.swift
 //  widgetExtension
 //
 //  Created by Kang Minsang on 2023/05/13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MonthWidgetCellData: Codable {
+struct CalendarWidgetCellData: Codable {
     let recordDay: Date
     let totalTime: Int
 }

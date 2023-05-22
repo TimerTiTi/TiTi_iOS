@@ -1,5 +1,5 @@
 //
-//  MonthWidgetEntry.swift
+//  CalendarWidgetEntry.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/11.
@@ -9,12 +9,12 @@
 import Foundation
 import WidgetKit
 
-// MARK: MonthWidget 표시를 위한 데이터 부분
-struct MonthWidgetEntry: TimelineEntry {
+// MARK: CalendarWidget 표시를 위한 데이터 부분
+struct CalendarWidgetEntry: TimelineEntry {
     let date: Date
-    let data: MonthWidgetData
+    let data: CalendarWidgetData
     
-    init(data: MonthWidgetData) {
+    init(data: CalendarWidgetData) {
         self.date = Date()
         self.data = data
     }

@@ -1,5 +1,5 @@
 //
-//  MonthWidgetView.swift
+//  CalendarWidgetView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/08.
@@ -9,19 +9,19 @@
 import SwiftUI
 import WidgetKit
 
-// MARK: MonthWidget SwiftUI 뷰
-struct MonthWidgetView: View {
-    var data: MonthWidgetData
+// MARK: CalendarWidget SwiftUI 뷰
+struct CalendarWidgetView: View {
+    var data: CalendarWidgetData
     
-    init(_ data: MonthWidgetData) {
+    init(_ data: CalendarWidgetData) {
         self.data = data
     }
     
     var body: some View {
         HStack {
-            MonthWidgetTasksView(data: data, isKorean: isKorean)
+            CalendarWidgetTasksView(data: data, isKorean: isKorean)
             Spacer(minLength: 10)
-            MonthWidgetCalendarView(data: data, isKorean: isKorean)
+            CalendarWidgetCalendarView(data: data, isKorean: isKorean)
         }
         .padding(.all)
         .background(Color(UIColor.systemBackground))
@@ -38,8 +38,8 @@ struct MonthWidgetView: View {
     }
 }
 
-struct MonthWidgetTasksView: View {
-    let data: MonthWidgetData
+struct CalendarWidgetTasksView: View {
+    let data: CalendarWidgetData
     let isKorean: Bool
     
     var body: some View {
@@ -49,7 +49,7 @@ struct MonthWidgetTasksView: View {
             Spacer()
             VStack(alignment: .leading) {
                 ForEach(0..<data.tasksData.count, id: \.self) { index in
-                    MonthWidgetTaskRowView(data: data.tasksData[index], color: color(index))
+                    CalendarWidgetTaskRowView(data: data.tasksData[index], color: color(index))
                         .frame(height: 10)
                 }
             }
@@ -77,8 +77,8 @@ struct MonthWidgetTasksView: View {
     }
 }
 
-struct MonthWidgetTaskRowView: View {
-    let data: MonthWidgetTaskData
+struct CalendarWidgetTaskRowView: View {
+    let data: CalendarWidgetTaskData
     let color: String
     
     var body: some View {
@@ -101,14 +101,14 @@ struct MonthWidgetTaskRowView: View {
     }
 }
 
-struct MonthWidgetCalendarView: View {
-    let data: MonthWidgetData
+struct CalendarWidgetCalendarView: View {
+    let data: CalendarWidgetData
     let isKorean: Bool
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 7)
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
-            MonthWidgetCalendarHeaderView(isKorean: isKorean)
+            CalendarWidgetHeaderView(isKorean: isKorean)
             
             Rectangle()
                 .frame(height: 1)
@@ -122,7 +122,7 @@ struct MonthWidgetCalendarView: View {
                         Spacer()
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
-                        MonthWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: getMonthWidgetCellData(day))
+                        CalendarWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: getCalendarWidgetCellData(day))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
@@ -146,7 +146,7 @@ struct MonthWidgetCalendarView: View {
         return calanderDates.count > 7*5 ? 2 : 5
     }
     
-    func getMonthWidgetCellData(_ day: Date) -> MonthWidgetCellData? {
+    func getCalendarWidgetCellData(_ day: Date) -> CalendarWidgetCellData? {
         if let target = self.data.cellsData.first(where: { $0.recordDay == day }) {
             return target
         } else {
@@ -155,7 +155,7 @@ struct MonthWidgetCalendarView: View {
     }
 }
 
-struct MonthWidgetCalendarHeaderView: View {
+struct CalendarWidgetHeaderView: View {
     let isKorean: Bool
 
     var body: some View {
@@ -179,11 +179,11 @@ struct MonthWidgetCalendarHeaderView: View {
     }
 }
 
-struct MonthWidgetDayCell: View {
+struct CalendarWidgetDayCell: View {
     let now: Date
     let day: Date
     let color: String
-    let data: MonthWidgetCellData?
+    let data: CalendarWidgetCellData?
     
     var body: some View {
         HStack(alignment: .top, spacing: 1) {
@@ -230,9 +230,9 @@ struct MonthWidgetDayCell: View {
     }
 }
 
-struct MonthWidgetView_Previews: PreviewProvider {
+struct CalendarWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthWidgetView(MonthWidgetData.snapshot)
+        CalendarWidgetView(CalendarWidgetData.snapshot)
             .previewDevice("iPad (9th generation)")
             .previewContext(WidgetPreviewContext(family: .systemMedium))
     }

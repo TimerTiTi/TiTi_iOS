@@ -24,7 +24,7 @@ final class DailyManager {
         print("load dailys!")
         
         // 위젯용 데이터 저장
-        self.saveMonthWidgetData()
+        self.saveCalendarWidgetData()
     }
     
     func saveDailys() {
@@ -32,7 +32,7 @@ final class DailyManager {
         print("store dailys!")
         
         // 위젯용 데이터 저장
-        self.saveMonthWidgetData()
+        self.saveCalendarWidgetData()
     }
     
     func addDaily(_ daily: Daily) {
@@ -60,10 +60,10 @@ final class DailyManager {
 }
 
 extension DailyManager {
-    func saveMonthWidgetData() {
-        let monthWidgetData = MonthWidgetData(dailys: self.dailys)
-        Storage.store(monthWidgetData, to: .sharedContainer, as: MonthWidgetData.fileName)
-        print("save MonthWidgetData!")
+    func saveCalendarWidgetData() {
+        let monthWidgetData = CalendarWidgetData(dailys: self.dailys)
+        Storage.store(monthWidgetData, to: .sharedContainer, as: CalendarWidgetData.fileName)
+        print("save CalendarWidgetData!")
         WidgetCenter.shared.reloadAllTimelines()
         print("update Widgets")
     }

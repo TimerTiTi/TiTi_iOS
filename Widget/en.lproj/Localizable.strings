@@ -6,7 +6,7 @@
   Copyright © 2023 FDEE. All rights reserved.
 */
 
-"Month widget" = "Month widget";
+"Calendar widget" = "Calendar widget";
 "Widget shows the top 5 tasks and the recording time by date." = "Widget shows the top 5 tasks and the recording time by date.";
 "sampleTask1" = "Work";
 "sampleTask2" = "Reading";
