@@ -18,8 +18,8 @@ struct CalendarWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectColorIntent.self, provider: CalendarWidgetProvider()) { entry in
             CalendarWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Calendar widget".localized())
-        .description("Widget shows the top 5 tasks and the recording time by date.".localized())
+        .configurationDisplayName("Calendar widget".localizedForWidget())
+        .description("Widget shows the top 5 tasks and the recording time by date.".localizedForWidget())
         .supportedFamilies([.systemMedium])
     }
 }
