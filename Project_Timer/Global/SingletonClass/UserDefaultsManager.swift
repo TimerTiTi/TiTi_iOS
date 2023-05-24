@@ -42,6 +42,7 @@ struct UserDefaultsManager {
         // widget color
         case calendarWidgetColor
         case calendarWidgetColorIsReverse
+        case calendarWidgetTargetTime
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {

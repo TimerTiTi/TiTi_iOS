@@ -12,6 +12,7 @@ extension CalendarWidgetData {
     init(dailys: [Daily]) {
         self.color = UserDefaultsManager.get(forKey: .calendarWidgetColor) as? Int ?? 1
         self.isReverseColor = UserDefaultsManager.get(forKey: .calendarWidgetColorIsReverse) as? Bool ?? false
+        self.targetTime = UserDefaultsManager.get(forKey: .calendarWidgetTargetTime) as? Int ?? 6*3600
         
         let monthDailys = dailys.filter { $0.day.YYMMstyleInt == Date().YYMMstyleInt }.sorted { $0.day < $1.day }
         var tasks: [String: Int] = [:]

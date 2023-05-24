@@ -46,7 +46,6 @@ final class SettingCalendarWidgetVC: UIViewController {
         scrollView.layer.cornerRadius = 25
         scrollView.layer.cornerCurve = .continuous
         scrollView.clipsToBounds = true
-        scrollView.showsVerticalScrollIndicator = false
         NSLayoutConstraint.activate([
             scrollView.widthAnchor.constraint(equalToConstant: self.frameWidth)
         ])
@@ -61,6 +60,7 @@ final class SettingCalendarWidgetVC: UIViewController {
     private var colorSelector: ThemeColorSelectorView!
     private var colorDirection: ThemeColorDirectionView!
     private var targetTimeView: TargetTimeView!
+    private let dailyTargetButton = TargetTimeButton(key: .calendarWidgetTargetTime)
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439)
@@ -82,6 +82,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         super.viewDidLoad()
         self.configureUI()
         self.configureWidget()
+        self.configureTargetButton()
     }
 }
 
@@ -130,8 +131,7 @@ extension SettingCalendarWidgetVC {
             self.contentView.leadingAnchor.constraint(equalTo: self.contentScrollView.leadingAnchor),
             self.contentView.trailingAnchor.constraint(equalTo: self.contentScrollView.trailingAnchor),
             self.contentView.bottomAnchor.constraint(equalTo: self.contentScrollView.bottomAnchor),
-            self.contentView.widthAnchor.constraint(equalTo: self.contentScrollView.widthAnchor, multiplier: 1),
-            self.contentView.heightAnchor.constraint(equalToConstant: 1000)
+            self.contentView.widthAnchor.constraint(equalTo: self.contentScrollView.widthAnchor, multiplier: 1)
         ])
         
         self.contentView.addSubview(self.colorSelector)
@@ -154,6 +154,14 @@ extension SettingCalendarWidgetVC {
             self.targetTimeView.widthAnchor.constraint(equalToConstant: self.frameWidth),
             self.targetTimeView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
+        
+        self.contentView.addSubview(self.dailyTargetButton)
+        NSLayoutConstraint.activate([
+            self.dailyTargetButton.topAnchor.constraint(equalTo: self.targetTimeView.bottomAnchor, constant: 16),
+            self.dailyTargetButton.widthAnchor.constraint(equalToConstant: self.frameWidth - 32),
+            self.dailyTargetButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.dailyTargetButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
+        ])
     }
     
     private func configureWidget() {
@@ -175,6 +183,17 @@ extension SettingCalendarWidgetVC {
         hostingVC.view.layer.cornerCurve = .continuous
         hostingVC.view.clipsToBounds = true
     }
+    
+    private func configureTargetButton() {
+        self.dailyTargetButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let dailyTargetButton = self?.dailyTargetButton else { return }
+            
+            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Daily's Target time (Hour)".localized(), placeHolder: "\(dailyTargetButton.settedHour/3600)") { [weak self] hour in
+                UserDefaultsManager.set(to: hour*3600, forKey: dailyTargetButton.key)
+                self?.update()
+            }
+        }), for: .touchUpInside)
+    }
 }
 
 extension SettingCalendarWidgetVC: Updateable {
@@ -182,5 +201,30 @@ extension SettingCalendarWidgetVC: Updateable {
         RecordsManager.shared.dailyManager.saveCalendarWidgetData()
         self.configureWidget()
         self.colorDirection.updateColor()
+        self.dailyTargetButton.updateTime()
+    }
+}
+
+extension SettingCalendarWidgetVC {
+    private func showAlertWithTextField(title: String, text: String, placeHolder: String, handler: @escaping ((Int) -> Void)) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.font = TiTiFont.HGGGothicssiP60g(size: 14)
+            textField.textColor = .label
+            textField.placeholder = placeHolder
+            textField.textAlignment = .center
+            textField.keyboardType = .numberPad
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        let update = UIAlertAction(title: "Done", style: .destructive) { _ in
+            guard let text = alert.textFields?.first?.text,
+                  let hour = Int(text) else { return }
+            handler(hour)
+        }
+        alert.addAction(cancel)
+        alert.addAction(update)
+        
+        self.present(alert, animated: true)
     }
 }

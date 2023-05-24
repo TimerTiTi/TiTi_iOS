@@ -45,6 +45,8 @@ final class TargetTimeButton: UIButton {
             self.setTitle("Month", for: .normal)
         case .goalTimeOfWeek:
             self.setTitle("Week", for: .normal)
+        case .calendarWidgetTargetTime:
+            self.setTitle("Daily", for: .normal)
         default:
             return
         }
@@ -64,6 +66,8 @@ final class TargetTimeButton: UIButton {
             self.settedHour = UserDefaultsManager.get(forKey: .goalTimeOfMonth) as? Int ?? 100*3600
         case .goalTimeOfWeek:
             self.settedHour = UserDefaultsManager.get(forKey: .goalTimeOfWeek) as? Int ?? 30*3600
+        case .calendarWidgetTargetTime:
+            self.settedHour = UserDefaultsManager.get(forKey: .calendarWidgetTargetTime) as? Int ?? 6*3600
         default:
             return
         }
