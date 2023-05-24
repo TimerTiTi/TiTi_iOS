@@ -24,6 +24,6 @@ extension CalendarWidgetData {
             sampleCellDatas.append(CalendarWidgetCellData(recordDay: firstDay.nextDay(offset: i), totalTime: Int.random(in: 0...6*3600)))
         }
         
-        return CalendarWidgetData(color: 1, isReverseColor: true, tasksData: sampleTasks, cellsData: sampleCellDatas)
+        return CalendarWidgetData(color: 1, isReverseColor: true, targetTime: 6*3600, tasksData: sampleTasks, cellsData: sampleCellDatas)
     }
 }
