@@ -110,6 +110,7 @@
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
+		8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
 		87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */; };
@@ -380,6 +381,7 @@
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875EDA332957E0360037A7EB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
 		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCalendarWidgetVC.swift; sourceTree = "<group>"; };
 		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDailysVC.swift; sourceTree = "<group>"; };
 		87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetEntry.swift; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 				877911B92A1891B100F0A713 /* SettingSwitchListVM.swift */,
 				877911B72A18903000F0A713 /* SettingListCell.swift */,
 				877911BB2A18922400F0A713 /* SettingListCellInfo.swift */,
+				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1588,6 +1591,7 @@
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */,
+				8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,

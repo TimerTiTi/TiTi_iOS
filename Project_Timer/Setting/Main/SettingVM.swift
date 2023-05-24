@@ -43,6 +43,7 @@ final class SettingVM {
             SettingCellInfo(title: "Notification".localized(), vc: .notification),
             SettingCellInfo(title: "UI", vc: .ui),
             SettingCellInfo(title: "Control".localized(), vc: .control),
+            SettingCellInfo(title: "Widget".localized(), vc: .widget)
         ])
         #if targetEnvironment(macCatalyst)
         cells.last?.remove(at: 2) // Control 제거
