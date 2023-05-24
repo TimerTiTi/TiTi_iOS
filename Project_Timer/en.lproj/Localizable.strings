@@ -277,7 +277,9 @@
 
 "Color" = "Color";
 
-"Setting the color of the graph" = "Select the color of the graph";
+"Setting the color of the graph" = "Setting the color of the graph";
+
+"Setting the color of the widget" = "Setting the color of the widget";
 
 "Color direction" = "Color direction";
 

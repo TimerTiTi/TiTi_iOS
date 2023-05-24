@@ -59,6 +59,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         return view
     }()
     private var colorSelector: ThemeColorSelectorView!
+    private var colorDirection: ThemeColorDirectionView!
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439)
@@ -68,6 +69,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.colorSelector = ThemeColorSelectorView(delegate: self, key: .calendarWidgetColor)
+        self.colorDirection = ThemeColorDirectionView(delegate: self, colorKey: .calendarWidgetColor, directionKey: .calendarWidgetColorIsReverse)
     }
     
     required init?(coder: NSCoder) {
@@ -136,6 +138,13 @@ extension SettingCalendarWidgetVC {
             self.colorSelector.widthAnchor.constraint(equalToConstant: self.frameWidth),
             self.colorSelector.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
+        
+        self.contentView.addSubview(self.colorDirection)
+        NSLayoutConstraint.activate([
+            self.colorDirection.topAnchor.constraint(equalTo: self.colorSelector.bottomAnchor, constant: 48),
+            self.colorDirection.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            self.colorDirection.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
     }
     
     private func configureWidget() {
@@ -163,5 +172,6 @@ extension SettingCalendarWidgetVC: Updateable {
     func update() {
         RecordsManager.shared.dailyManager.saveCalendarWidgetData()
         self.configureWidget()
+        self.colorDirection.updateColor()
     }
 }

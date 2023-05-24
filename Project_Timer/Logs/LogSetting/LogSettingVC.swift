@@ -27,7 +27,7 @@ final class LogSettingVC: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         self.themeColorSelector = ThemeColorSelectorView(delegate: self, key: .startColor)
-        self.themeColorDirection = ThemeColorDirectionView(delegate: self)
+        self.themeColorDirection = ThemeColorDirectionView(delegate: self, colorKey: .startColor, directionKey: .reverseColor)
         self.logTargetTimeView = LogTargetTimeView()
     }
     
