@@ -9,7 +9,7 @@
 import UIKit
 
 final class ThemeColorDirectionView: UIView {
-    private weak var delegate: LogUpdateable?
+    private weak var delegate: Updateable?
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +50,7 @@ final class ThemeColorDirectionView: UIView {
         return view
     }()
     
-    convenience init(delegate: LogUpdateable) {
+    convenience init(delegate: Updateable) {
         self.init(frame: CGRect())
         self.delegate = delegate
         self.configure()
@@ -69,7 +69,7 @@ final class ThemeColorDirectionView: UIView {
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
-            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor),
             self.titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         ])
         

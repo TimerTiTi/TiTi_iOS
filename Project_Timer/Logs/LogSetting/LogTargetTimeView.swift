@@ -46,7 +46,7 @@ final class LogTargetTimeView: UIView {
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
-            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor),
             self.titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.titleStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
