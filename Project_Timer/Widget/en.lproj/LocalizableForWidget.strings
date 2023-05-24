@@ -8,6 +8,7 @@
 
 "Calendar widget" = "Calendar widget";
 "Widget shows the top 5 tasks and the recording time by date." = "Widget shows the top 5 tasks and the recording time by date.";
+"There's no record this month!" = "There's no record this month!";
 "sampleTask1" = "Work";
 "sampleTask2" = "Reading";
 "sampleTask3" = "Coding";

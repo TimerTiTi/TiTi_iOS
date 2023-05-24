@@ -111,10 +111,10 @@
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
 		8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */; };
-		8760FB0A2A1DB5F80068CEF5 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */; };
 		8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB0B2A1DBB490068CEF5 /* Widget+Extentions.swift */; };
 		8760FB0D2A1DBBAB0068CEF5 /* LocalizableForWidget.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87DD96152A09048800CA0249 /* LocalizableForWidget.strings */; };
 		8760FB0E2A1DBBB00068CEF5 /* Widget+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB0B2A1DBB490068CEF5 /* Widget+Extentions.swift */; };
+		8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */; };
 		8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCB829541BE3000BCCD1 /* KeyChain.swift */; };
 		8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FCBA29553F06000BCCD1 /* SyncDailysVC.swift */; };
 		87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87617E612A0CDF1700E312EA /* CalendarWidgetEntry.swift */; };
@@ -1600,7 +1600,6 @@
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
 				870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */,
-				8760FB0A2A1DB5F80068CEF5 /* CalendarWidgetView.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
@@ -1743,6 +1742,7 @@
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
 				87B539AB299BB710001E354C /* Versions.swift in Sources */,
+				8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
@@ -2015,7 +2015,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2042,7 +2042,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;

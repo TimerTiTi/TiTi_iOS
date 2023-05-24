@@ -49,13 +49,19 @@ struct CalendarWidgetTasksView: View {
             Text(month)
                 .font(Font.system(size: 16, weight: .bold))
             Spacer()
-            VStack(alignment: .leading) {
-                ForEach(0..<data.tasksData.count, id: \.self) { index in
-                    CalendarWidgetTaskRowView(data: data.tasksData[index], color: color(index))
-                        .frame(height: 10)
+            if data.tasksData.count != 0 {
+                VStack(alignment: .leading) {
+                    ForEach(0..<data.tasksData.count, id: \.self) { index in
+                        CalendarWidgetTaskRowView(data: data.tasksData[index], color: color(index))
+                            .frame(height: 10)
+                    }
                 }
+                .frame(maxWidth: .infinity)
+            } else {
+                CalendarWidgetNoDataInfoView(color: "D\(data.color)")
+                    .frame(maxWidth: .infinity)
             }
-            .frame(maxWidth: .infinity)
+            
             Spacer()
         }
         .frame(width: 80)
@@ -103,6 +109,20 @@ struct CalendarWidgetTaskRowView: View {
     }
 }
 
+struct CalendarWidgetNoDataInfoView: View {
+    let color: String
+    var body: some View {
+        VStack(alignment: .center, spacing: 5) {
+            Text("There's no record this month!".localizedForWidget())
+                .multilineTextAlignment(.center)
+                .font(Font.system(size: 8.8, weight: .semibold))
+                .foregroundColor(Color(UIColor(named: color)!))
+            Text("🥺")
+                .font(Font.system(size: 30))
+        }
+    }
+}
+
 struct CalendarWidgetCalendarView: View {
     let data: CalendarWidgetData
     let isKorean: Bool
@@ -124,7 +144,7 @@ struct CalendarWidgetCalendarView: View {
                         Spacer()
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
-                        CalendarWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", data: getCalendarWidgetCellData(day))
+                        CalendarWidgetDayCell(now: data.now, day: day, color: "D\(data.color)", targetTime: data.targetTime, data: getCalendarWidgetCellData(day))
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
@@ -185,6 +205,7 @@ struct CalendarWidgetDayCell: View {
     let now: Date
     let day: Date
     let color: String
+    let targetTime: Int
     let data: CalendarWidgetCellData?
     
     var body: some View {
@@ -216,15 +237,15 @@ struct CalendarWidgetDayCell: View {
     func opacity(_ time: Int) -> Double {
         if time == 0 {
             return 0
-        } else if time < 2*3600 {
+        } else if time < Int(Double(targetTime)*Double(2)/Double(6)) {
             return 0.3
-        } else if time < 3*3600 {
+        } else if time < Int(Double(targetTime)*Double(3)/Double(6)) {
             return 0.5
-        } else if time < 4*3600 {
+        } else if time < Int(Double(targetTime)*Double(4)/Double(6)) {
             return 0.6
-        } else if time < 5*3600 {
+        } else if time < Int(Double(targetTime)*Double(5)/Double(6)) {
             return 0.7
-        } else if time < 6*3600 {
+        } else if time < Int(Double(targetTime)*Double(6)/Double(6)) {
             return 0.8
         } else {
             return 1
