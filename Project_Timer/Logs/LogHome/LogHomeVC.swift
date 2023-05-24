@@ -181,7 +181,7 @@ extension LogHomeVC {
     }
 }
 
-extension LogHomeVC: LogUpdateable {
+extension LogHomeVC: Updateable {
     func update() {
         self.viewModel?.loadDaily()
         self.viewModel?.updateDailys()

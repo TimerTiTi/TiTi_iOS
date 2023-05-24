@@ -43,12 +43,12 @@ final class SettingCalendarWidgetVC: UIViewController {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .clear
-        scrollView.layer.cornerRadius = 14
+        scrollView.layer.cornerRadius = 25
         scrollView.layer.cornerCurve = .continuous
         scrollView.clipsToBounds = true
         scrollView.showsVerticalScrollIndicator = false
         NSLayoutConstraint.activate([
-            scrollView.widthAnchor.constraint(equalToConstant: self.frameWidth - 32)
+            scrollView.widthAnchor.constraint(equalToConstant: self.frameWidth)
         ])
         return scrollView
     }()
@@ -58,9 +58,20 @@ final class SettingCalendarWidgetVC: UIViewController {
         view.backgroundColor = .clear
         return view
     }()
+    private var colorSelector: ThemeColorSelectorView!
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439)
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.colorSelector = ThemeColorSelectorView(delegate: self, key: .calendarWidgetColor)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -104,9 +115,9 @@ extension SettingCalendarWidgetVC {
         
         self.bottomSettingView.addSubview(self.contentScrollView)
         NSLayoutConstraint.activate([
-            self.contentScrollView.topAnchor.constraint(equalTo: self.bottomSettingView.topAnchor, constant: 16),
+            self.contentScrollView.topAnchor.constraint(equalTo: self.bottomSettingView.topAnchor),
             self.contentScrollView.centerXAnchor.constraint(equalTo: self.bottomSettingView.centerXAnchor),
-            self.contentScrollView.bottomAnchor.constraint(equalTo: self.bottomSettingView.bottomAnchor, constant: -16)
+            self.contentScrollView.bottomAnchor.constraint(equalTo: self.bottomSettingView.bottomAnchor)
         ])
         
         self.contentScrollView.addSubview(self.contentView)
@@ -117,6 +128,13 @@ extension SettingCalendarWidgetVC {
             self.contentView.bottomAnchor.constraint(equalTo: self.contentScrollView.bottomAnchor),
             self.contentView.widthAnchor.constraint(equalTo: self.contentScrollView.widthAnchor, multiplier: 1),
             self.contentView.heightAnchor.constraint(equalToConstant: 1000)
+        ])
+        
+        self.contentView.addSubview(self.colorSelector)
+        NSLayoutConstraint.activate([
+            self.colorSelector.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
+            self.colorSelector.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            self.colorSelector.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
     }
     
@@ -138,5 +156,12 @@ extension SettingCalendarWidgetVC {
         hostingVC.view.layer.cornerRadius = 29
         hostingVC.view.layer.cornerCurve = .continuous
         hostingVC.view.clipsToBounds = true
+    }
+}
+
+extension SettingCalendarWidgetVC: Updateable {
+    func update() {
+        RecordsManager.shared.dailyManager.saveCalendarWidgetData()
+        self.configureWidget()
     }
 }

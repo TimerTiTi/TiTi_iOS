@@ -9,7 +9,7 @@
 import UIKit
 
 final class ThemeColorSelectorView: UIView {
-    private weak var delegate: LogUpdateable?
+    private weak var delegate: Updateable?
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,10 +43,12 @@ final class ThemeColorSelectorView: UIView {
         return stackView
     }()
     private var colorSpacing: CGFloat = 5
+    private var key: UserDefaultsManager.Keys = .startColor
     
-    convenience init(delegate: LogUpdateable) {
+    convenience init(delegate: Updateable, key: UserDefaultsManager.Keys) {
         self.init(frame: CGRect())
         self.delegate = delegate
+        self.key = key
         self.configure()
     }
     
@@ -57,7 +59,7 @@ final class ThemeColorSelectorView: UIView {
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
-            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.titleStackView.topAnchor.constraint(equalTo: self.topAnchor),
             self.titleStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         ])
         
@@ -92,7 +94,7 @@ final class ThemeColorSelectorView: UIView {
     }
     
     private func updateColor(to color: Int) {
-        UserDefaultsManager.set(to: color, forKey: .startColor)
+        UserDefaultsManager.set(to: color, forKey: self.key)
         self.delegate?.update()
     }
 }

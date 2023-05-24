@@ -10,7 +10,7 @@ import UIKit
 
 final class LogSettingVC: UIViewController {
     static let identifier = "LogSettingVC"
-    private weak var delegate: LogUpdateable?
+    private weak var delegate: Updateable?
     
     private var themeColorSelector: ThemeColorSelectorView!
     private var themeColorDirection: ThemeColorDirectionView!
@@ -22,11 +22,11 @@ final class LogSettingVC: UIViewController {
         return min(windowWidth, 439)
     }
     
-    init(delegate: LogUpdateable) {
+    init(delegate: Updateable) {
         self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
         
-        self.themeColorSelector = ThemeColorSelectorView(delegate: self)
+        self.themeColorSelector = ThemeColorSelectorView(delegate: self, key: .startColor)
         self.themeColorDirection = ThemeColorDirectionView(delegate: self)
         self.logTargetTimeView = LogTargetTimeView()
     }
@@ -50,21 +50,21 @@ extension LogSettingVC {
         self.view.addSubview(self.themeColorSelector)
         NSLayoutConstraint.activate([
             self.themeColorSelector.widthAnchor.constraint(equalToConstant: self.frameWidth),
-            self.themeColorSelector.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.themeColorSelector.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 16),
             self.themeColorSelector.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
         self.view.addSubview(self.themeColorDirection)
         NSLayoutConstraint.activate([
             self.themeColorDirection.widthAnchor.constraint(equalToConstant: self.frameWidth),
-            self.themeColorDirection.topAnchor.constraint(equalTo: self.themeColorSelector.bottomAnchor, constant: 32),
+            self.themeColorDirection.topAnchor.constraint(equalTo: self.themeColorSelector.bottomAnchor, constant: 48),
             self.themeColorDirection.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
         self.view.addSubview(self.logTargetTimeView)
         NSLayoutConstraint.activate([
             self.logTargetTimeView.widthAnchor.constraint(equalToConstant: self.frameWidth),
-            self.logTargetTimeView.topAnchor.constraint(equalTo: self.themeColorDirection.bottomAnchor, constant: 32),
+            self.logTargetTimeView.topAnchor.constraint(equalTo: self.themeColorDirection.bottomAnchor, constant: 48),
             self.logTargetTimeView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
@@ -104,7 +104,7 @@ extension LogSettingVC {
     }
 }
 
-extension LogSettingVC: LogUpdateable {
+extension LogSettingVC: Updateable {
     func update() {
         self.themeColorDirection.updateColor()
         self.monthTargetButton.updateTime()

@@ -1,5 +1,5 @@
 //
-//  LogUpdateable.swift
+//  Updateable.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/21.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol LogUpdateable: AnyObject {
+protocol Updateable: AnyObject {
     func update()
 }
