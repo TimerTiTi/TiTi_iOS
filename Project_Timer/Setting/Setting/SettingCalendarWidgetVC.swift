@@ -31,6 +31,14 @@ final class SettingCalendarWidgetVC: UIViewController {
         ])
         return view
     }()
+    private var bottomSettingView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .secondarySystemGroupedBackground
+        view.layer.cornerRadius = 25
+        view.layer.cornerCurve = .continuous
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +63,14 @@ extension SettingCalendarWidgetVC {
         NSLayoutConstraint.activate([
             self.widgetFrameView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 16),
             self.widgetFrameView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        
+        self.view.addSubview(self.bottomSettingView)
+        NSLayoutConstraint.activate([
+            self.bottomSettingView.topAnchor.constraint(equalTo: self.widgetFrameView.bottomAnchor, constant: 16),
+            self.bottomSettingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.bottomSettingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.bottomSettingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
