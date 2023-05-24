@@ -12,9 +12,11 @@ import WidgetKit
 // MARK: CalendarWidget SwiftUI 뷰
 struct CalendarWidgetView: View {
     var data: CalendarWidgetData
+    let backgroundColor: Color
     
-    init(_ data: CalendarWidgetData) {
+    init(_ data: CalendarWidgetData, backgroundColor: Color = Color(UIColor.systemBackground)) {
         self.data = data
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
@@ -24,7 +26,7 @@ struct CalendarWidgetView: View {
             CalendarWidgetCalendarView(data: data, isKorean: isKorean)
         }
         .padding(.all)
-        .background(Color(UIColor.systemBackground))
+        .background(backgroundColor)
     }
     
     var isKorean: Bool {
@@ -230,10 +232,10 @@ struct CalendarWidgetDayCell: View {
     }
 }
 
-struct CalendarWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalendarWidgetView(CalendarWidgetData.snapshot)
-            .previewDevice("iPad (9th generation)")
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
-}
+//struct CalendarWidgetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CalendarWidgetView(CalendarWidgetData.snapshot)
+//            .previewDevice("iPad (9th generation)")
+//            .previewContext(WidgetPreviewContext(family: .systemMedium))
+//    }
+//}

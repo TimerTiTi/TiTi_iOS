@@ -1,5 +1,5 @@
 //
-//  CalendarWidgetData+Init.swift
+//  CalendarWidgetData+init.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/16.

@@ -1,12 +1,18 @@
 //
-//  Date+Extension.swift
-//  widgetExtension
+//  Widget+Extentions.swift
+//  Project_Timer
 //
-//  Created by Kang Minsang on 2023/05/14.
+//  Created by Kang Minsang on 2023/05/24.
 //  Copyright © 2023 FDEE. All rights reserved.
 //
 
 import Foundation
+
+extension String {
+    func localizedForWidget(bundle: Bundle = .main, tableName: String = "LocalizableForWidget") -> String {
+        return NSLocalizedString(self, tableName: tableName, value: "\(self)", comment: "")
+    }
+}
 
 // MARK: properties based https://github.com/simonberner/calendar-widget project
 extension Date {
@@ -54,11 +60,6 @@ extension Date {
     /// 달
     var monthInt: Int {
         Calendar.current.component(.month, from: self)
-    }
-
-    /// 달
-    var monthFullName: String {
-        self.formatted(.dateTime.month(.wide))
     }
     
     /// 날짜 인덱스 (일: 1 ~ 토: 7)
