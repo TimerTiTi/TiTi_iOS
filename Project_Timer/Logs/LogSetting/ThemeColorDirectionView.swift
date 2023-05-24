@@ -49,17 +49,21 @@ final class ThemeColorDirectionView: UIView {
         view.backgroundColor = UIColor(named: String.userTintColor)
         return view
     }()
+    private var colorKey: UserDefaultsManager.Keys = .startColor
+    private var directionKey: UserDefaultsManager.Keys = .reverseColor
     
-    convenience init(delegate: Updateable) {
+    convenience init(delegate: Updateable, colorKey: UserDefaultsManager.Keys, directionKey: UserDefaultsManager.Keys) {
         self.init(frame: CGRect())
         self.delegate = delegate
+        self.colorKey = colorKey
+        self.directionKey = directionKey
         self.configure()
         self.configureDirectionSelector()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.updateColorView()
+        self.updateColor()
     }
     
     private func configure() {
@@ -92,25 +96,14 @@ final class ThemeColorDirectionView: UIView {
     
     private func configureDirectionSelector() {
         self.colorDirectionSelector.addTarget(self, action: #selector(update(_:)), for: .allEvents)
-        let isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
+        let isReverseColor = UserDefaultsManager.get(forKey: self.directionKey) as? Bool ?? false
         self.colorDirectionSelector.selectedSegmentIndex = isReverseColor ? 1 : 0
     }
     
     @objc func update(_ sender: UISegmentedControl) {
         let isReverseColor = sender.selectedSegmentIndex == 1
-        UserDefaultsManager.set(to: isReverseColor, forKey: .reverseColor)
+        UserDefaultsManager.set(to: isReverseColor, forKey: self.directionKey)
         self.delegate?.update()
-    }
-    
-    private func updateColorView() {
-        let isReverseColor = self.colorDirectionSelector.selectedSegmentIndex == 1
-        let colorNum = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
-        var nextColorNum: Int = isReverseColor ? (colorNum+12-1)%12 : (colorNum+1)%12
-        if nextColorNum == 0 { nextColorNum = 12 }
-        
-        let color1 = UIColor(named: "D\(colorNum)") ?? .blue
-        let color2 = UIColor(named: "D\(nextColorNum)") ?? .blue
-        self.setGradient(view: self.colorView, color1: color1, color2: color2)
     }
     
     private func setGradient(view: UIView, color1: UIColor, color2: UIColor) {
@@ -126,7 +119,15 @@ final class ThemeColorDirectionView: UIView {
 
 extension ThemeColorDirectionView {
     func updateColor() {
-        self.colorDirectionSelector.selectedSegmentTintColor = UIColor(named: String.userTintColor)
-        self.updateColorView()
+        let isReverseColor = self.colorDirectionSelector.selectedSegmentIndex == 1
+        let colorNum = UserDefaultsManager.get(forKey: self.colorKey) as? Int ?? 1
+        var nextColorNum: Int = isReverseColor ? (colorNum+12-1)%12 : (colorNum+1)%12
+        if nextColorNum == 0 { nextColorNum = 12 }
+        
+        let color1 = UIColor(named: "D\(colorNum)") ?? .blue
+        let color2 = UIColor(named: "D\(nextColorNum)") ?? .blue
+        
+        self.colorDirectionSelector.selectedSegmentTintColor = color1
+        self.setGradient(view: self.colorView, color1: color1, color2: color2)
     }
 }

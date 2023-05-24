@@ -11,7 +11,7 @@ import Foundation
 extension CalendarWidgetData {
     init(dailys: [Daily]) {
         self.color = UserDefaultsManager.get(forKey: .calendarWidgetColor) as? Int ?? 1
-        self.isReverseColor = UserDefaultsManager.get(forKey: .calendarWidgetColorRightDirection) as? Bool ?? false
+        self.isReverseColor = UserDefaultsManager.get(forKey: .calendarWidgetColorIsReverse) as? Bool ?? false
         
         let monthDailys = dailys.filter { $0.day.YYMMstyleInt == Date().YYMMstyleInt }.sorted { $0.day < $1.day }
         var tasks: [String: Int] = [:]

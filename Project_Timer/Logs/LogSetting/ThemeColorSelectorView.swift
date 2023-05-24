@@ -50,6 +50,10 @@ final class ThemeColorSelectorView: UIView {
         self.delegate = delegate
         self.key = key
         self.configure()
+        
+        if key == .calendarWidgetColor {
+            self.subTitleLabel.text = "Setting the color of the widget".localized()
+        }
     }
     
     private func configure() {

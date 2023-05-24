@@ -41,7 +41,7 @@ struct UserDefaultsManager {
         case lastUploadedDateV1
         // widget color
         case calendarWidgetColor
-        case calendarWidgetColorRightDirection
+        case calendarWidgetColorIsReverse
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
