@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: https://velog.io/@dd3557/iOS-14-Auto-Layout을-이용하여-페이스북의-Bottom-Sheet을-만들어보자-Part-1
+// MARK: https://velog.io/@minsang/iOS-Bottom-Sheet
 final class BottomSheetViewController: UIViewController {
     enum BottomSheetViewState {
         case expanded
@@ -36,9 +36,10 @@ final class BottomSheetViewController: UIViewController {
         view.alpha = 0
         return view
     }()
+    // view의 상단과 bottomSheetView간의 거리를 조절하기 위한 프로퍼티
     private var bottomSheetViewTopConstraint: NSLayoutConstraint!
     
-    // 열린 BottomSheet의 기본 높이를 지정하기 위한 프로퍼티
+    // BottomSheet의 기본 높이를 지정하기 위한 프로퍼티
     var defaultHeight: CGFloat = 500
     // bottomSheetView의 상단 CornerRadius 값
     var cornerRedius: CGFloat = 16
@@ -261,7 +262,7 @@ extension BottomSheetViewController {
         let bottomPadding = view.safeAreaInsets.bottom
         
             // bottom sheet의 top constraint 값이 fullDimPosition과 같으면
-            // dimmer view의 alpha 값이 0.7이 되도록 합니다
+            // dimmer view의 alpha 값이 dimmedAlpha가 되도록 합니다
         let fullDimPosition = (safeAreaHeight + bottomPadding - defaultHeight) / 2
 
             // bottom sheet의 top constraint 값이 noDimPosition과 같으면
@@ -280,7 +281,7 @@ extension BottomSheetViewController {
             return 0.0
         }
         
-            // 그 외의 경우 top constraint 값에 따라 0.0과 0.7 사이의 alpha 값이 Return되도록 합니다
+            // 그 외의 경우 top constraint 값에 따라 0.0과 dimmedAlpha 사이의 alpha 값이 Return되도록 합니다
         return fullDimAlpha * (1 - ((value - fullDimPosition) / (noDimPosition - fullDimPosition)))
     }
 }
