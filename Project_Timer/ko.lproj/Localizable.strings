@@ -302,3 +302,5 @@
 "Please check the setting of iPhone's Email, and try again." = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요.";
 
 "Widget" = "위젯";
+
+"Setting the target time for color density display based on total time by date" = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다";

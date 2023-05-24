@@ -14,7 +14,7 @@ final class LogSettingVC: UIViewController {
     
     private var themeColorSelector: ThemeColorSelectorView!
     private var themeColorDirection: ThemeColorDirectionView!
-    private var logTargetTimeView: LogTargetTimeView!
+    private var logTargetTimeView: TargetTimeView!
     private let monthTargetButton = TargetTimeButton(key: .goalTimeOfMonth)
     private let weekTargetButton = TargetTimeButton(key: .goalTimeOfWeek)
     private var frameWidth: CGFloat {
@@ -28,7 +28,7 @@ final class LogSettingVC: UIViewController {
         
         self.themeColorSelector = ThemeColorSelectorView(delegate: self, key: .startColor)
         self.themeColorDirection = ThemeColorDirectionView(delegate: self, colorKey: .startColor, directionKey: .reverseColor)
-        self.logTargetTimeView = LogTargetTimeView()
+        self.logTargetTimeView = TargetTimeView(text: "Setting the target time of Circular Progress Bar".localized())
     }
     
     required init?(coder: NSCoder) {

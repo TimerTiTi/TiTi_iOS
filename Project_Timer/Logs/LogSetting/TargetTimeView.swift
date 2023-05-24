@@ -1,5 +1,5 @@
 //
-//  LogTargetTimeView.swift
+//  TargetTimeView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/05/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LogTargetTimeView: UIView {
+final class TargetTimeView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +23,7 @@ final class LogTargetTimeView: UIView {
         label.font = TiTiFont.HGGGothicssiP60g(size: 11)
         label.textColor = .lightGray
         label.textAlignment = .left
+        label.numberOfLines = 0
         return label
     }()
     private lazy var titleStackView: UIStackView = {
@@ -34,15 +35,15 @@ final class LogTargetTimeView: UIView {
         return stackView
     }()
     
-    convenience init() {
+    convenience init(text: String) {
         self.init(frame: CGRect())
-        self.configure()
+        self.configure(text: text)
     }
     
-    private func configure() {
+    private func configure(text: String) {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.text = "Target time".localized()
-        self.subTitleLabel.text = "Setting the target time of Circular Progress Bar".localized()
+        self.subTitleLabel.text = text
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
