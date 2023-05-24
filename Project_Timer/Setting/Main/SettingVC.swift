@@ -112,6 +112,9 @@ extension SettingVC: UICollectionViewDelegate {
             self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .ui), animated: true)
         case .control:
             self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .control), animated: true)
+        case .widget:
+            // MARK: 위젯 추가제작시 Widget 선택창 구현 필요
+            self.navigationController?.pushViewController(SettingCalendarWidgetVC(), animated: true)
         }
     }
 }

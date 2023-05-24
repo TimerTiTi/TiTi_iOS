@@ -76,6 +76,7 @@ enum SettingAction: String {
     case notification
     case ui
     case control
+    case widget
 }
 
 protocol SettingActionDelegate: AnyObject {
