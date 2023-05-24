@@ -768,6 +768,14 @@
 			path = Decodable;
 			sourceTree = "<group>";
 		};
+		8760FB0F2A1DCA690068CEF5 /* CalendarWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
+			);
+			path = CalendarWidget;
+			sourceTree = "<group>";
+		};
 		87617E602A0CDEDA00E312EA /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,7 +857,7 @@
 				877911B92A1891B100F0A713 /* SettingSwitchListVM.swift */,
 				877911B72A18903000F0A713 /* SettingListCell.swift */,
 				877911BB2A18922400F0A713 /* SettingListCellInfo.swift */,
-				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
+				8760FB0F2A1DCA690068CEF5 /* CalendarWidget */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
