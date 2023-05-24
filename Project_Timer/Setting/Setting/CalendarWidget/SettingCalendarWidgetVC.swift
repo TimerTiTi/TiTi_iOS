@@ -60,6 +60,7 @@ final class SettingCalendarWidgetVC: UIViewController {
     }()
     private var colorSelector: ThemeColorSelectorView!
     private var colorDirection: ThemeColorDirectionView!
+    private var targetTimeView: TargetTimeView!
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
         return min(windowWidth, 439)
@@ -70,6 +71,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         
         self.colorSelector = ThemeColorSelectorView(delegate: self, key: .calendarWidgetColor)
         self.colorDirection = ThemeColorDirectionView(delegate: self, colorKey: .calendarWidgetColor, directionKey: .calendarWidgetColorIsReverse)
+        self.targetTimeView = TargetTimeView(text: "Setting the target time for color density display based on total time by date".localized())
     }
     
     required init?(coder: NSCoder) {
@@ -144,6 +146,13 @@ extension SettingCalendarWidgetVC {
             self.colorDirection.topAnchor.constraint(equalTo: self.colorSelector.bottomAnchor, constant: 48),
             self.colorDirection.widthAnchor.constraint(equalToConstant: self.frameWidth),
             self.colorDirection.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
+        self.contentView.addSubview(self.targetTimeView)
+        NSLayoutConstraint.activate([
+            self.targetTimeView.topAnchor.constraint(equalTo: self.colorDirection.bottomAnchor, constant: 48),
+            self.targetTimeView.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            self.targetTimeView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
     }
     

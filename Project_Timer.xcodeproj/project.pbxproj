@@ -178,7 +178,7 @@
 		879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D207A2A19B91C00D8A420 /* ColorButton.swift */; };
 		879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D207C2A19D3BA00D8A420 /* ThemeColorDirectionView.swift */; };
 		879D207F2A19D40400D8A420 /* Updateable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D207E2A19D40400D8A420 /* Updateable.swift */; };
-		879D20812A19E44B00D8A420 /* LogTargetTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20802A19E44B00D8A420 /* LogTargetTimeView.swift */; };
+		879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20802A19E44B00D8A420 /* TargetTimeView.swift */; };
 		879D20832A19F13400D8A420 /* TargetTimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20822A19F13400D8A420 /* TargetTimeButton.swift */; };
 		879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849B29C83D5100D65F48 /* RoundedShape.swift */; };
 		879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E849E29C8400700D65F48 /* TimeLabelData.swift */; };
@@ -446,7 +446,7 @@
 		879D207A2A19B91C00D8A420 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		879D207C2A19D3BA00D8A420 /* ThemeColorDirectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorDirectionView.swift; sourceTree = "<group>"; };
 		879D207E2A19D40400D8A420 /* Updateable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updateable.swift; sourceTree = "<group>"; };
-		879D20802A19E44B00D8A420 /* LogTargetTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTargetTimeView.swift; sourceTree = "<group>"; };
+		879D20802A19E44B00D8A420 /* TargetTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimeView.swift; sourceTree = "<group>"; };
 		879D20822A19F13400D8A420 /* TargetTimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimeButton.swift; sourceTree = "<group>"; };
 		879E849B29C83D5100D65F48 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		879E849E29C8400700D65F48 /* TimeLabelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabelData.swift; sourceTree = "<group>"; };
@@ -1034,7 +1034,7 @@
 				879D207E2A19D40400D8A420 /* Updateable.swift */,
 				879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */,
 				879D207C2A19D3BA00D8A420 /* ThemeColorDirectionView.swift */,
-				879D20802A19E44B00D8A420 /* LogTargetTimeView.swift */,
+				879D20802A19E44B00D8A420 /* TargetTimeView.swift */,
 				879D207A2A19B91C00D8A420 /* ColorButton.swift */,
 				879D20822A19F13400D8A420 /* TargetTimeButton.swift */,
 			);
@@ -1630,7 +1630,7 @@
 				87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
-				879D20812A19E44B00D8A420 /* LogTargetTimeView.swift in Sources */,
+				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
