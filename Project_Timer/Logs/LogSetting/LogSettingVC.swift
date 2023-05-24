@@ -19,7 +19,7 @@ final class LogSettingVC: UIViewController {
     private let weekTargetButton = TargetTimeButton(key: .goalTimeOfWeek)
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
-        return min(windowWidth, 439+32)
+        return min(windowWidth, 439)
     }
     
     init(delegate: LogUpdateable) {

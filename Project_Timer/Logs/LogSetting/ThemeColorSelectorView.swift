@@ -74,9 +74,9 @@ final class ThemeColorSelectorView: UIView {
     private func configureColorButtons() {
         // MARK: Button Size
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
-        let width: CGFloat = min(windowWidth, 439+32) - (16*2)
+        let width: CGFloat = min(windowWidth, 439) - (16*2)
         let margins: CGFloat = self.colorSpacing*(12-1)
-        let buttonSize: CGFloat = min(CGFloat(width - margins)/CGFloat(12), 32)
+        let buttonSize: CGFloat = CGFloat(width - margins)/CGFloat(12)
         
         for i in 1...12 {
             let colorButton = ColorButton(num: i)

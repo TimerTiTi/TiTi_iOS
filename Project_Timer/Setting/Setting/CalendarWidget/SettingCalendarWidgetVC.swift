@@ -39,6 +39,29 @@ final class SettingCalendarWidgetVC: UIViewController {
         view.layer.cornerCurve = .continuous
         return view
     }()
+    private lazy var contentScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .clear
+        scrollView.layer.cornerRadius = 14
+        scrollView.layer.cornerCurve = .continuous
+        scrollView.clipsToBounds = true
+        scrollView.showsVerticalScrollIndicator = false
+        NSLayoutConstraint.activate([
+            scrollView.widthAnchor.constraint(equalToConstant: self.frameWidth - 32)
+        ])
+        return scrollView
+    }()
+    private var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        return view
+    }()
+    private var frameWidth: CGFloat {
+        let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
+        return min(windowWidth, 439)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +82,12 @@ extension SettingCalendarWidgetVC {
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
         
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            self.descriptionLabel.textAlignment = .left
+        } else {
+            self.descriptionLabel.textAlignment = .center
+        }
+        
         self.view.addSubview(self.widgetFrameView)
         NSLayoutConstraint.activate([
             self.widgetFrameView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 16),
@@ -71,6 +100,23 @@ extension SettingCalendarWidgetVC {
             self.bottomSettingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.bottomSettingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.bottomSettingView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+        self.bottomSettingView.addSubview(self.contentScrollView)
+        NSLayoutConstraint.activate([
+            self.contentScrollView.topAnchor.constraint(equalTo: self.bottomSettingView.topAnchor, constant: 16),
+            self.contentScrollView.centerXAnchor.constraint(equalTo: self.bottomSettingView.centerXAnchor),
+            self.contentScrollView.bottomAnchor.constraint(equalTo: self.bottomSettingView.bottomAnchor, constant: -16)
+        ])
+        
+        self.contentScrollView.addSubview(self.contentView)
+        NSLayoutConstraint.activate([
+            self.contentView.topAnchor.constraint(equalTo: self.contentScrollView.topAnchor),
+            self.contentView.leadingAnchor.constraint(equalTo: self.contentScrollView.leadingAnchor),
+            self.contentView.trailingAnchor.constraint(equalTo: self.contentScrollView.trailingAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: self.contentScrollView.bottomAnchor),
+            self.contentView.widthAnchor.constraint(equalTo: self.contentScrollView.widthAnchor, multiplier: 1),
+            self.contentView.heightAnchor.constraint(equalToConstant: 1000)
         ])
     }
     
