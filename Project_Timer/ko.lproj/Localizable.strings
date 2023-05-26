@@ -306,3 +306,7 @@
 "Widget" = "위젯";
 
 "Setting the target time for color density display based on total time by date" = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다";
+
+"About Widget" = "위젯 설명";
+
+"How to add Widget" = "위젯 추가 방법";

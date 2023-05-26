@@ -90,9 +90,16 @@ final class SettingCalendarWidgetVC: UIViewController {
 
 extension SettingCalendarWidgetVC {
     private func configureNavigationBar() {
-        self.informationButton.addAction(UIAction(handler: { [weak self] _ in
-            print("touch")
-        }), for: .touchUpInside)
+        self.informationButton.showsMenuAsPrimaryAction = true
+        self.informationButton.menu = UIMenu(title: "Calendar widget".localizedForWidget(), image: nil, children: [
+            UIAction(title: "About Widget".localized(), image: nil) { [weak self] _ in
+                self?.showHowToUseWidgetVC(url: NetworkURL.WidgetInfo.calendarWidget)
+            },
+            UIAction(title: "How to add Widget".localized(), image: nil) { [weak self] _ in
+                self?.showHowToAddWidgetVC()
+            }]
+        )
+        
         let rightItem = UIBarButtonItem(customView: self.informationButton)
         self.navigationItem.setRightBarButton(rightItem, animated: true)
     }
@@ -236,5 +243,13 @@ extension SettingCalendarWidgetVC {
         alert.addAction(update)
         
         self.present(alert, animated: true)
+    }
+    
+    private func showHowToUseWidgetVC(url: String) {
+        
+    }
+    
+    private func showHowToAddWidgetVC() {
+        
     }
 }
