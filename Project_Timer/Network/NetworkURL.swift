@@ -77,4 +77,13 @@ enum NetworkURL {
             }
         }
     }
+    
+    enum WidgetInfo {
+        static var calendarWidget: String {
+            switch Language.currentLanguage {
+            case .ko: return ""
+            case .en: return ""
+            }
+        }
+    }
 }
