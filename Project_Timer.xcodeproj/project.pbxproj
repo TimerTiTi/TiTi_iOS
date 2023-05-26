@@ -143,6 +143,7 @@
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
+		878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */; };
 		8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* LogWeekVC.swift */; };
 		8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* LogWeekVM.swift */; };
 		8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */; };
@@ -413,6 +414,7 @@
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetVC.swift; sourceTree = "<group>"; };
 		878899792894EFEE00B7F378 /* LogWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVC.swift; sourceTree = "<group>"; };
 		8788997B2894F00000B7F378 /* LogWeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVM.swift; sourceTree = "<group>"; };
 		8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekGraphView.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
 				875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */,
 				875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */,
+				878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */,
 				878813E22A2084F5000ED2C1 /* CloseButton.swift */,
 			);
 			path = CalendarWidget;
@@ -1715,6 +1718,7 @@
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
+				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
 				87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
