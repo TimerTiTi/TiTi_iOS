@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol Closeable: AnyObject {
+    func close()
+}
 // MARK: https://velog.io/@minsang/iOS-Bottom-Sheet
 final class BottomSheetViewController: UIViewController {
     enum BottomSheetViewState {
@@ -283,5 +286,11 @@ extension BottomSheetViewController {
         
             // 그 외의 경우 top constraint 값에 따라 0.0과 dimmedAlpha 사이의 alpha 값이 Return되도록 합니다
         return fullDimAlpha * (1 - ((value - fullDimPosition) / (noDimPosition - fullDimPosition)))
+    }
+}
+
+extension BottomSheetViewController: Closeable {
+    func close() {
+        self.hideBottomSheetAndGoBack()
     }
 }

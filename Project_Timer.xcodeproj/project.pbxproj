@@ -102,6 +102,7 @@
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
 		875A5F792A207BA600679A72 /* NavigationBarInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */; };
+		875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */; };
 		875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* TaskSelectVC.swift */; };
 		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
 		875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */; };
@@ -141,6 +142,7 @@
 		877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877911BB2A18922400F0A713 /* SettingListCellInfo.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
+		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
 		8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* LogWeekVC.swift */; };
 		8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* LogWeekVM.swift */; };
 		8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */; };
@@ -376,6 +378,7 @@
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
 		875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarInformationButton.swift; sourceTree = "<group>"; };
+		875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseWidgetVC.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* TaskSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVC.swift; sourceTree = "<group>"; };
 		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
 		875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabActionDelegate.swift; sourceTree = "<group>"; };
@@ -409,6 +412,7 @@
 		877911BB2A18922400F0A713 /* SettingListCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListCellInfo.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
+		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		878899792894EFEE00B7F378 /* LogWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVC.swift; sourceTree = "<group>"; };
 		8788997B2894F00000B7F378 /* LogWeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVM.swift; sourceTree = "<group>"; };
 		8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekGraphView.swift; sourceTree = "<group>"; };
@@ -775,6 +779,8 @@
 			children = (
 				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
 				875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */,
+				875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */,
+				878813E22A2084F5000ED2C1 /* CloseButton.swift */,
 			);
 			path = CalendarWidget;
 			sourceTree = "<group>";
@@ -1559,6 +1565,7 @@
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
+				875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
@@ -1657,6 +1664,7 @@
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
 				8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */,
 				879D20832A19F13400D8A420 /* TargetTimeButton.swift in Sources */,
+				878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */,
 				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,

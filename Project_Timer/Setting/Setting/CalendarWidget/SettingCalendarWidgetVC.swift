@@ -246,7 +246,11 @@ extension SettingCalendarWidgetVC {
     }
     
     private func showHowToUseWidgetVC(url: String) {
+        let contentViewController = HowToUseWidgetVC(url: url)
+        let bottomSheetViewController = BottomSheetViewController(contentViewController: contentViewController, defaultHeight: 1500, cornerRadius: 25, isPannedable: false)
+        contentViewController.configureDelegate(to: bottomSheetViewController)
         
+        self.present(bottomSheetViewController, animated: true)
     }
     
     private func showHowToAddWidgetVC() {
