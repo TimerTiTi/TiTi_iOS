@@ -28,9 +28,6 @@ final class HowToAddWidgetVC: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.backgroundColor = .clear
         scrollView.clipsToBounds = true
-        NSLayoutConstraint.activate([
-            scrollView.widthAnchor.constraint(equalToConstant: self.frameWidth - 16)
-        ])
         return scrollView
     }()
     private var contentView: UIView = {
@@ -41,7 +38,7 @@ final class HowToAddWidgetVC: UIViewController {
     }()
     private var frameWidth: CGFloat {
         let windowWidth: CGFloat = min(SceneDelegate.sharedWindow?.bounds.width ?? 390, SceneDelegate.sharedWindow?.bounds.height ?? 844)
-        return min(windowWidth, 439)
+        return min(windowWidth, 439) - 16
     }
     private var languageCode: String {
         return Language.currentLanguage == .ko ? "kor" : "eng"
@@ -76,7 +73,8 @@ extension HowToAddWidgetVC {
         self.view.addSubview(self.contentScrollView)
         NSLayoutConstraint.activate([
             self.contentScrollView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
-            self.contentScrollView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.contentScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.contentScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.contentScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
@@ -95,40 +93,40 @@ extension HowToAddWidgetVC {
         self.contentView.addSubview(content1)
         NSLayoutConstraint.activate([
             content1.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            content1.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            content1.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            content1.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            content1.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         let content2 = HowToAddWidgetContentView(step: 2, description: "howToAddWidget_description_\(2)".localized(), imageName: "howToAdd_\(2)_\(languageCode)")
         self.contentView.addSubview(content2)
         NSLayoutConstraint.activate([
             content2.topAnchor.constraint(equalTo: content1.bottomAnchor, constant: 32),
-            content2.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            content2.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            content2.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            content2.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         let content3 = HowToAddWidgetContentView(step: 3, description: "howToAddWidget_description_\(3)".localized(), imageName: "howToAdd_\(3)_\(languageCode)")
         self.contentView.addSubview(content3)
         NSLayoutConstraint.activate([
             content3.topAnchor.constraint(equalTo: content2.bottomAnchor, constant: 32),
-            content3.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            content3.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            content3.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            content3.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         let content4 = HowToAddWidgetContentView(step: 4, description: "howToAddWidget_description_\(4)".localized(), imageName: "howToAdd_\(4)_\(languageCode)")
         self.contentView.addSubview(content4)
         NSLayoutConstraint.activate([
             content4.topAnchor.constraint(equalTo: content3.bottomAnchor, constant: 32),
-            content4.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            content4.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
+            content4.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            content4.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
         let content5 = HowToAddWidgetContentView(step: 5, description: "howToAddWidget_description_\(5)".localized(), imageName: "howToAdd_\(5)_\(languageCode)")
         self.contentView.addSubview(content5)
         NSLayoutConstraint.activate([
             content5.topAnchor.constraint(equalTo: content4.bottomAnchor, constant: 32),
-            content5.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            content5.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            content5.widthAnchor.constraint(equalToConstant: self.frameWidth),
+            content5.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             content5.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -32)
         ])
     }
