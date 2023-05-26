@@ -310,3 +310,9 @@
 "About Widget" = "위젯 설명";
 
 "How to add Widget" = "위젯 추가 방법";
+
+"howToAddWidget_description_1" = "앱들이 흔들릴 때까지 홈 스크린의 빈 영역을 길게 눌러요";
+"howToAddWidget_description_2" = "상단 모서리에 있는 ( + ) 버튼을 터치해요";
+"howToAddWidget_description_3" = "\"TiTi\"를 검색한 후 터치해요";
+"howToAddWidget_description_4" = "위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요";
+"howToAddWidget_description_5" = "그러면 위젯을 사용할 수 있어요!";
