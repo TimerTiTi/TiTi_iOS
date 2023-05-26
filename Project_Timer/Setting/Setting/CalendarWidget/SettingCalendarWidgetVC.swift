@@ -222,6 +222,7 @@ extension SettingCalendarWidgetVC: Updateable {
     }
 }
 
+// MARK: Present
 extension SettingCalendarWidgetVC {
     private func showAlertWithTextField(title: String, text: String, placeHolder: String, handler: @escaping ((Int) -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
@@ -254,6 +255,10 @@ extension SettingCalendarWidgetVC {
     }
     
     private func showHowToAddWidgetVC() {
+        let contentViewController = HowToAddWidgetVC()
+        let bottomSheetViewController = BottomSheetViewController(contentViewController: contentViewController, defaultHeight: 1500, cornerRadius: 25, isPannedable: false)
+        contentViewController.configureDelegate(to: bottomSheetViewController)
         
+        self.present(bottomSheetViewController, animated: true)
     }
 }
