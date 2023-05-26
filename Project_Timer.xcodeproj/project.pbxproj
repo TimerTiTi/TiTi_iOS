@@ -144,6 +144,7 @@
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
 		878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */; };
+		878813E72A20D60D000ED2C1 /* HowToAddWidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */; };
 		8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878899792894EFEE00B7F378 /* LogWeekVC.swift */; };
 		8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997B2894F00000B7F378 /* LogWeekVM.swift */; };
 		8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */; };
@@ -415,6 +416,7 @@
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetVC.swift; sourceTree = "<group>"; };
+		878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetContentView.swift; sourceTree = "<group>"; };
 		878899792894EFEE00B7F378 /* LogWeekVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVC.swift; sourceTree = "<group>"; };
 		8788997B2894F00000B7F378 /* LogWeekVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogWeekVM.swift; sourceTree = "<group>"; };
 		8788997E2894F03300B7F378 /* StandardWeekGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardWeekGraphView.swift; sourceTree = "<group>"; };
@@ -784,6 +786,7 @@
 				875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */,
 				878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */,
 				878813E22A2084F5000ED2C1 /* CloseButton.swift */,
+				878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */,
 			);
 			path = CalendarWidget;
 			sourceTree = "<group>";
@@ -1586,6 +1589,7 @@
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
+				878813E72A20D60D000ED2C1 /* HowToAddWidgetContentView.swift in Sources */,
 				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
 				87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */,
 				879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */,

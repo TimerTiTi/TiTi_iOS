@@ -306,3 +306,9 @@
 "About Widget" = "About Widget";
 
 "How to add Widget" = "How to add Widget";
+
+"howToAddWidget_description_1" = "Touch and hold an empty area on your Home Screen until the apps jiggle.";
+"howToAddWidget_description_2" = "Tap the ( + ) button in the upper corner.";
+"howToAddWidget_description_3" = "Search for \"TiTi\" and Tap.";
+"howToAddWidget_description_4" = "Select a Widget and size, then Tap \"Add Widget\".";
+"howToAddWidget_description_5" = "Now you can use Widget!";
