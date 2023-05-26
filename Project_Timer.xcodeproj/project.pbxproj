@@ -101,6 +101,7 @@
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
+		875A5F792A207BA600679A72 /* NavigationBarInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */; };
 		875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* TaskSelectVC.swift */; };
 		875C98BE287172A5008F7ADD /* StringValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98BD287172A5008F7ADD /* StringValue.swift */; };
 		875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */; };
@@ -374,6 +375,7 @@
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
+		875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarInformationButton.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* TaskSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVC.swift; sourceTree = "<group>"; };
 		875C98BD287172A5008F7ADD /* StringValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValue.swift; sourceTree = "<group>"; };
 		875C98C0287175F7008F7ADD /* TiTiLabActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabActionDelegate.swift; sourceTree = "<group>"; };
@@ -772,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */,
+				875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */,
 			);
 			path = CalendarWidget;
 			sourceTree = "<group>";
@@ -1551,6 +1554,7 @@
 				879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */,
 				8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */,
 				872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */,
+				875A5F792A207BA600679A72 /* NavigationBarInformationButton.swift in Sources */,
 				879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */,
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
 				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,

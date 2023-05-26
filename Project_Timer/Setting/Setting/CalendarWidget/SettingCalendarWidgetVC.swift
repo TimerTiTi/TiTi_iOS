@@ -10,6 +10,7 @@ import UIKit
 import SwiftUI
 
 final class SettingCalendarWidgetVC: UIViewController {
+    private let informationButton = NavigationBarInformationButton()
     private var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -80,6 +81,7 @@ final class SettingCalendarWidgetVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureNavigationBar()
         self.configureUI()
         self.configureWidget()
         self.configureTargetButton()
@@ -87,6 +89,14 @@ final class SettingCalendarWidgetVC: UIViewController {
 }
 
 extension SettingCalendarWidgetVC {
+    private func configureNavigationBar() {
+        self.informationButton.addAction(UIAction(handler: { [weak self] _ in
+            print("touch")
+        }), for: .touchUpInside)
+        let rightItem = UIBarButtonItem(customView: self.informationButton)
+        self.navigationItem.setRightBarButton(rightItem, animated: true)
+    }
+    
     private func configureUI() {
         self.title = "Calendar widget".localizedForWidget()
         self.view.backgroundColor = .systemGroupedBackground
