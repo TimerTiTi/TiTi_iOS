@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 final class HowToUseWidgetVC: UIViewController {
     private weak var delegate: Closeable?
@@ -23,10 +24,13 @@ final class HowToUseWidgetVC: UIViewController {
         button.tintColor = .black
         return button
     }()
+    private let webView: WKWebView
     private let url: String
     
     init(url: String) {
         self.url = url
+        let webConfiguration = WKWebViewConfiguration()
+        self.webView = WKWebView(frame: .zero, configuration: webConfiguration)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,7 +41,9 @@ final class HowToUseWidgetVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.configureWebView()
         self.configureCloseButton()
+        self.loadWebView()
     }
     
     func configureDelegate(to delegate: Closeable) {
@@ -61,9 +67,31 @@ extension HowToUseWidgetVC {
         ])
     }
     
+    private func configureWebView() {
+        self.webView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.webView)
+        NSLayoutConstraint.activate([
+            self.webView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
+            self.webView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.webView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            self.webView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -16)
+        ])
+        
+        self.webView.isOpaque = false
+        self.webView.backgroundColor = .white
+    }
+    
     private func configureCloseButton() {
         self.closeButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.webView.stopLoading()
             self?.delegate?.close()
         }), for: .touchUpInside)
+    }
+    
+    private func loadWebView() {
+        if let url = URL(string: "https://www.naver.com") {
+            let request = URLRequest(url: url)
+            self.webView.load(request)
+        }
     }
 }

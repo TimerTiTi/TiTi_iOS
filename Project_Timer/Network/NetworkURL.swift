@@ -81,8 +81,8 @@ enum NetworkURL {
     enum WidgetInfo {
         static var calendarWidget: String {
             switch Language.currentLanguage {
-            case .ko: return ""
-            case .en: return ""
+            case .ko: return "https://timertiti.notion.site/772f0dd247be4a628dcd09779186e252"
+            case .en: return "https://timertiti.notion.site/Calendar-Widget-b5b33a9af1714058a6a41d612652c0de"
             }
         }
     }
