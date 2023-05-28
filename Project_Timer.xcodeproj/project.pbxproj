@@ -221,8 +221,6 @@
 		87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
-		87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
-		87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
@@ -496,9 +494,6 @@
 		87D3E49D28E49D7700ACD5EC /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
 		87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDailysData.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
-		87D4DE152A0F95BE00993C5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/SelectColor.intentdefinition; sourceTree = "<group>"; };
-		87D4DE182A0F95C800993C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectColor.strings; sourceTree = "<group>"; };
-		87D4DE1A2A0F95CA00993C5C /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/SelectColor.strings; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
@@ -806,7 +801,6 @@
 				87617E662A0CE58400E312EA /* CalendarWidgetProvider.swift */,
 				87DD960E2A09019300CA0249 /* CalendarWidgetView.swift */,
 				878B30ED2992BB5A00BE7413 /* CalendarWidget.swift */,
-				87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */,
 			);
 			path = CalendarWidget;
 			sourceTree = "<group>";
@@ -1543,7 +1537,6 @@
 				87DD96102A09032000CA0249 /* CalendarWidgetView.swift in Sources */,
 				87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */,
 				870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */,
-				87D4DE142A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
 				87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */,
@@ -1630,7 +1623,6 @@
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
-				87D4DE132A0F95BE00993C5C /* SelectColor.intentdefinition in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
@@ -1796,16 +1788,6 @@
 				87CA3B572618591F00DD9BB5 /* ko */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		87D4DE162A0F95BE00993C5C /* SelectColor.intentdefinition */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87D4DE152A0F95BE00993C5C /* Base */,
-				87D4DE182A0F95C800993C5C /* en */,
-				87D4DE1A2A0F95CA00993C5C /* ko */,
-			);
-			name = SelectColor.intentdefinition;
 			sourceTree = "<group>";
 		};
 		87DD96152A09048800CA0249 /* LocalizableForWidget.strings */ = {

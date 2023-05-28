@@ -10,17 +10,17 @@ import Foundation
 import WidgetKit
 
 // MARK: Timeline 및 Entry 반환 부분
-struct CalendarWidgetProvider: IntentTimelineProvider {
+struct CalendarWidgetProvider: TimelineProvider {
     func placeholder(in context: Context) -> CalendarWidgetEntry {
         CalendarWidgetEntry(data: CalendarWidgetData.snapshot)
     }
 
-    func getSnapshot(for configuration: SelectColorIntent, in context: Context, completion: @escaping (CalendarWidgetEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (CalendarWidgetEntry) -> ()) {
         let entry = CalendarWidgetEntry(data: CalendarWidgetData.snapshot)
         completion(entry)
     }
 
-    func getTimeline(for configuration: SelectColorIntent, in context: Context, completion: @escaping (Timeline<CalendarWidgetEntry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<CalendarWidgetEntry>) -> ()) {
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let widgetData = Storage.retrive(CalendarWidgetData.fileName, from: .sharedContainer, as: CalendarWidgetData.self) ?? CalendarWidgetData.snapshot
         let entry = CalendarWidgetEntry(data: widgetData)
