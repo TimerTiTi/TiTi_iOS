@@ -15,7 +15,7 @@ struct CalendarWidget: Widget {
     let kind: String = "TiTi.CalendarWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectColorIntent.self, provider: CalendarWidgetProvider()) { entry in
+        StaticConfiguration(kind: kind, provider: CalendarWidgetProvider()) { entry in
             CalendarWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Calendar widget".localizedForWidget())
