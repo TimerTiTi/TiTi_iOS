@@ -8,11 +8,10 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
 
 // MARK: Widget 내용 및 설정 부분
 struct CalendarWidget: Widget {
-    let kind: String = "TiTi.CalendarWidget"
+    let kind: String = "CalendarWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: CalendarWidgetProvider()) { entry in
@@ -40,21 +39,21 @@ struct CalendarWidgetEntryView: View {
 struct CalendarWidget_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CalendarWidgetEntryView(entry: CalendarWidgetEntry(data: CalendarWidgetData.snapshot))
+            CalendarWidgetEntryView(entry: CalendarWidgetEntry(date: Date(), relevance: nil, data: CalendarWidgetData.snapshot))
                 .previewDevice("iPad (9th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            CalendarWidgetEntryView(entry: CalendarWidgetEntry(data: CalendarWidgetData.snapshot))
+            CalendarWidgetEntryView(entry: CalendarWidgetEntry(date: Date(), relevance: nil, data: CalendarWidgetData.snapshot))
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
 //                .environment(\.sizeCategory, .large)
             
-            CalendarWidgetEntryView(entry: CalendarWidgetEntry(data: CalendarWidgetData.snapshot))
+            CalendarWidgetEntryView(entry: CalendarWidgetEntry(date: Date(), relevance: nil, data: CalendarWidgetData.snapshot))
                 .redacted(reason: .placeholder)
                 .previewDevice("iPhone 13 Pro")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
             
-            CalendarWidgetEntryView(entry: CalendarWidgetEntry(data: CalendarWidgetData.snapshot))
+            CalendarWidgetEntryView(entry: CalendarWidgetEntry(date: Date(), relevance: nil, data: CalendarWidgetData.snapshot))
                 .previewDevice("iPad Pro (12.9-inch) (6th generation)")
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }

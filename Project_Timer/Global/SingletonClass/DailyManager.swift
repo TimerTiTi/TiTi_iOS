@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import WidgetKit
 
 final class DailyManager {
     static let dailysFileName: String = "dailys.json"
@@ -64,7 +63,5 @@ extension DailyManager {
         let monthWidgetData = CalendarWidgetData(dailys: self.dailys)
         Storage.store(monthWidgetData, to: .sharedContainer, as: CalendarWidgetData.fileName)
         print("save CalendarWidgetData!")
-        WidgetCenter.shared.reloadAllTimelines()
-        print("update Widgets")
     }
 }
