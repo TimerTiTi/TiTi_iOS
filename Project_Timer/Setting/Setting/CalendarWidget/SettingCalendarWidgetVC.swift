@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import WidgetKit
 
 final class SettingCalendarWidgetVC: UIViewController {
     private let informationButton = NavigationBarInformationButton()
@@ -219,6 +220,8 @@ extension SettingCalendarWidgetVC: Updateable {
         self.configureWidget()
         self.colorDirection.updateColor()
         self.dailyTargetButton.updateTime()
+        
+        WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
     }
 }
 

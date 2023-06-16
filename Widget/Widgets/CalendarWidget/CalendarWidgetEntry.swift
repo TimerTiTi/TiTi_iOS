@@ -11,11 +11,7 @@ import WidgetKit
 
 // MARK: CalendarWidget 표시를 위한 데이터 부분
 struct CalendarWidgetEntry: TimelineEntry {
-    let date: Date
+    var date: Date
+    let relevance: TimelineEntryRelevance?
     let data: CalendarWidgetData
-    
-    init(data: CalendarWidgetData) {
-        self.date = Date()
-        self.data = data
-    }
 }

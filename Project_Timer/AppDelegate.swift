@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAnalytics
 import GoogleMobileAds
+import WidgetKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.updateShared()
             Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
         }
+        
+        WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
         
         return true
     }
