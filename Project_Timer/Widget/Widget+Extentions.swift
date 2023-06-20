@@ -10,7 +10,7 @@ import Foundation
 
 extension String {
     func localizedForWidget(bundle: Bundle = .main, tableName: String = "LocalizableForWidget") -> String {
-        return NSLocalizedString(self, tableName: tableName, value: "\(self)", comment: "")
+        return NSLocalizedString(self, tableName: tableName, bundle: Bundle.localizedBundle, value: self, comment: "")
     }
 }
 

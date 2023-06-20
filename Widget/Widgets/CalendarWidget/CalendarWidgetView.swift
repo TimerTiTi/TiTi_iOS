@@ -30,13 +30,7 @@ struct CalendarWidgetView: View {
     }
     
     var isKorean: Bool {
-        if #available(iOS 16.0, *){
-            let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
-            return languageCode == "ko"
-        } else {
-            let languageCode = Locale.current.languageCode ?? "en"
-            return languageCode == "ko"
-        }
+        return Language.currentLanguage == .ko
     }
 }
 
