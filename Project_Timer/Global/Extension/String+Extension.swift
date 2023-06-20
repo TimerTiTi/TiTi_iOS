@@ -16,12 +16,12 @@ extension String {
     }
     /// 디바이스 언어별로 번역기능을 위한 함수, Localizable 파일 내 String 값에 해당되는 언어값 반환
     func localized(bundle: Bundle = .main, tableName: String = "Localizable") -> String {
-        return NSLocalizedString(self, tableName: tableName, value: "\(self)", comment: "")
+        return NSLocalizedString(self, tableName: tableName, bundle: Bundle.localizedBundle, value: self, comment: "")
     }
     
     func localizedForNewFeatures(input: String) -> String {
-        let localilzedString = NSLocalizedString(self, tableName: "newFeatures" , value: "\(self)", comment: "")
-        let localizedInput = NSLocalizedString(input, tableName: "newFeatures" , value: "\(input)", comment: "")
+        let localilzedString = NSLocalizedString(self, tableName: "newFeatures" , bundle: Bundle.localizedBundle, value: self, comment: "")
+        let localizedInput = NSLocalizedString(input, tableName: "newFeatures" , bundle: Bundle.localizedBundle, value: "\(input)", comment: "")
         return localilzedString.replacingOccurrences(of: "*", with: localizedInput)
     }
     
