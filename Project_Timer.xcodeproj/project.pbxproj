@@ -93,6 +93,7 @@
 		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */; };
+		874F9C2D2ABFF73400675A86 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */; };
 		8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */; };
 		8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F328472066007FAFC4 /* SettingCell.swift */; };
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
@@ -370,6 +371,7 @@
 		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectView.swift; sourceTree = "<group>"; };
+		874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimeSettingPopupVC.swift; sourceTree = "<group>"; };
 		8751C6F328472066007FAFC4 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
@@ -757,6 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */,
+				874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */,
 			);
 			path = LoginSignup;
 			sourceTree = "<group>";
@@ -1675,6 +1678,7 @@
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
+				874F9C2D2ABFF73400675A86 /* AppleLoginButton.swift in Sources */,
 				8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */,
 				879D20832A19F13400D8A420 /* TargetTimeButton.swift in Sources */,
 				878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */,
