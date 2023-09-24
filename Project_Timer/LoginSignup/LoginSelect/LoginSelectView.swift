@@ -9,20 +9,36 @@
 import SwiftUI
 
 struct LoginSelectView: View {
+    @State private var navigationPath: [LoginSignupRoute] = []
+    
     var body: some View {
-        NavigationStack {
-            VStack(alignment: .center) {
-                Spacer()
+        NavigationStack(path: $navigationPath) {
+            ZStack {
+                TiTiColor.loginBackground?.toColor
+                    .ignoresSafeArea()
                 
-                ContentView()
-                
-                Spacer()
+                VStack(alignment: .center) {
+                    Spacer()
+                    
+                    ContentView(navigationPath: $navigationPath)
+                    
+                    Spacer()
+                }
             }
-            .background(TiTiColor.loginBackground?.toColor)
+        }
+        .navigationDestination(for: LoginSignupRoute.self) { destination in
+            switch destination {
+            case .nickname:
+                SignupNicknameView(navigationPath: $navigationPath)
+            case .login:
+                LoginView(navigationPath: $navigationPath)
+            }
         }
     }
     
     struct ContentView: View {
+        @Binding var navigationPath: [LoginSignupRoute]
+        
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
                 Image(uiImage: UIImage(named: "loginLogo")!)
@@ -42,7 +58,7 @@ struct LoginSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                ButtonsView()
+                ButtonsView(navigationPath: $navigationPath)
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 48)
@@ -50,6 +66,9 @@ struct LoginSelectView: View {
     }
     
     struct ButtonsView: View {
+        @Environment(\.dismiss) private var dismiss
+        @Binding var navigationPath: [LoginSignupRoute]
+        
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
                 AppleLoginButton {
@@ -59,10 +78,10 @@ struct LoginSelectView: View {
                     print("Google")
                 }
                 EmailLoginButton {
-                    print("Email")
+                    navigationPath.append(.login)
                 }
                 Button {
-                    print("without login")
+                    dismiss()
                 } label: {
                     Text("로그인없이 서비스 이용하기")
                         .font(.custom("HGGGothicssiP60g", size: 13))
@@ -73,9 +92,10 @@ struct LoginSelectView: View {
             }
         }
     }
-
 }
 
-#Preview {
-    LoginSelectView()
+struct LoginSelectView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginSelectView()
+    }
 }
