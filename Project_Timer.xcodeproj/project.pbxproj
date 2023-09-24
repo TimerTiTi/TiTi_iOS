@@ -95,6 +95,7 @@
 		874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */; };
 		874F9C2D2ABFF73400675A86 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */; };
 		874F9C2F2ABFF7CF00675A86 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */; };
+		874F9C312ABFF81300675A86 /* EmailLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C302ABFF81300675A86 /* EmailLoginButton.swift */; };
 		8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */; };
 		8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F328472066007FAFC4 /* SettingCell.swift */; };
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
@@ -374,6 +375,7 @@
 		874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectView.swift; sourceTree = "<group>"; };
 		874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
+		874F9C302ABFF81300675A86 /* EmailLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginButton.swift; sourceTree = "<group>"; };
 		8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimeSettingPopupVC.swift; sourceTree = "<group>"; };
 		8751C6F328472066007FAFC4 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 				874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */,
 				874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */,
 				874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */,
+				874F9C302ABFF81300675A86 /* EmailLoginButton.swift */,
 			);
 			path = LoginSignup;
 			sourceTree = "<group>";
@@ -1635,6 +1638,7 @@
 				048D8ACD28AA608900A2456D /* PopupSelectDateVC.swift in Sources */,
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
+				874F9C312ABFF81300675A86 /* EmailLoginButton.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				877911B82A18903000F0A713 /* SettingListCell.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
