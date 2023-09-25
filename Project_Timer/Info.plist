@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MODE</key>
+	<string>$(MODE)</string>
 	<key>ADMOB_AD_ID</key>
 	<string>$(ADMOB_AD_ID)</string>
 	<key>CFBundleDevelopmentRegion</key>
@@ -209,8 +211,8 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>TestServerURL</key>
-	<string>$(TestServerURL)</string>
+	<key>ServerURL</key>
+	<string>$(ServerURL)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_00G.otf</string>
