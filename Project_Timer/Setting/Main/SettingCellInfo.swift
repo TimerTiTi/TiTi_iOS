@@ -19,49 +19,30 @@ class SettingCellInfo {
     var switchable: Bool = false
     var toggleKey: UserDefaultsManager.Keys? = nil
     var action: SettingAction? = nil
-    var nextVCIdentifier: String? = nil
-    var url: String? = nil
-    var iconName: String = "none"
+    var destination: Destination? = nil
     
-    /// title  + pushVC
-    init(title: String, nextVCIdentifier: String) {
+    /// title (subTitle, rightTitle)
+    init(title: String, subTitle: String? = nil, rightTitle: String? = nil) {
         self.title = title
-        self.nextVCIdentifier = nextVCIdentifier
-        self.action = .pushVC
+        self.subTitle = subTitle
+        self.rightTitle = rightTitle
+        self.touchable = false
     }
-    /// title + subtitle + switch
-    init(title: String, subTitle: String, toggleKey: UserDefaultsManager.Keys) {
+    /// title (subTitle, rightTitle) + destination
+    init(title: String, subTitle: String? = nil, rightTitle: String? = nil, action: SettingAction, destination: Destination) {
+        self.title = title
+        self.subTitle = subTitle
+        self.rightTitle = rightTitle
+        self.action = action
+        self.destination = destination
+    }
+    /// title (subTitle) + switch
+    init(title: String, subTitle: String? = nil, toggleKey: UserDefaultsManager.Keys) {
         self.title = title
         self.subTitle = subTitle
         self.toggleKey = toggleKey
         self.switchable = true
         self.touchable = false
-    }
-    /// title + subtitle + righttitle + pushVC
-    init(title: String, subTitle: String, rightTitle: String, nextVCIdentifier: String) {
-        self.title = title
-        self.subTitle = subTitle
-        self.rightTitle = rightTitle
-        self.nextVCIdentifier = nextVCIdentifier
-        self.action = .pushVC
-    }
-    /// title + subtitle + righttitle + url
-    init(title: String, subTitle: String, rightTitle: String, link: String) {
-        self.title = title
-        self.subTitle = subTitle
-        self.rightTitle = rightTitle
-        self.url = link
-        self.action = .deeplink
-    }
-    /// title
-    init(title: String) {
-        self.title = title
-        self.touchable = false
-    }
-    /// without storyboard
-    init(title: String, vc: SettingAction) {
-        self.title = title
-        self.action = vc
     }
     
     func updateSubTitle(to subTitle: String) {
@@ -69,19 +50,34 @@ class SettingCellInfo {
     }
 }
 
+/// Cell 클릭 이벤트
 enum SettingAction: String {
     case pushVC
-    case goSafari
-    case deeplink
+    case modalFullscreen
+    case activityVC
+    case otherApp
+}
+
+/// push
+enum Destination {
+    case storyboardName(identifier: String)
+    case website(url: String)
+    case deeplink(url: String)
+    // class 분기처리
     case notification
     case ui
     case control
     case widget
+    case loginSelect
+    // other app 분기처리
+    case backup
+    case mail
 }
 
 protocol SettingActionDelegate: AnyObject {
-    func pushVC(nextVCIdentifier: String)
-    func goSafari(url: String)
-    func deeplink(link: String)
-    func showEmailPopup()
+    func pushVC(identifier: String)
+    func pushVC(destination: Destination)
+    func modalVC(fullscreen: Bool, destination: Destination)
+    func systemVC(destination: Destination)
+    func showOtherApp(destination: Destination)
 }

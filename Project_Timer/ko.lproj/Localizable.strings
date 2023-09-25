@@ -316,3 +316,7 @@
 "howToAddWidget_description_3" = "\"TiTi\"를 검색한 후 터치해요";
 "howToAddWidget_description_4" = "위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요";
 "howToAddWidget_description_5" = "그러면 위젯을 사용할 수 있어요!";
+
+"Profile" = "프로필";
+"Login" = "로그인하기";
+"Try Synchronization" = "동기화 기능을 사용해보세요";

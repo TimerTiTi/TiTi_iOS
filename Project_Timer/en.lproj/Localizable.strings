@@ -312,3 +312,7 @@
 "howToAddWidget_description_3" = "Search for \"TiTi\" and Tap.";
 "howToAddWidget_description_4" = "Select a Widget and size, then Tap \"Add Widget\".";
 "howToAddWidget_description_5" = "Now you can use Widget!";
+
+"Profile" = "Profile";
+"Login" = "Login";
+"Try Synchronization" = "Try Synchronization";

@@ -25,15 +25,15 @@ final class SettingDevInfoCell: UICollectionViewCell {
     }
     
     @IBAction func showEmail(_ sender: Any) {
-        self.delegate?.showEmailPopup()
+        self.delegate?.systemVC(destination: .mail)
     }
     
     @IBAction func showInstagram(_ sender: Any) {
-        self.delegate?.goSafari(url: NetworkURL.instagramToFDEE)
+        self.delegate?.showOtherApp(destination: .website(url: NetworkURL.instagramToTiTi))
     }
     
     @IBAction func showGithub(_ sender: Any) {
-        self.delegate?.goSafari(url: NetworkURL.github)
+        self.delegate?.showOtherApp(destination: .website(url: NetworkURL.github))
     }
 }
 
