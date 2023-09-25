@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct LoginSelectView: View {
+    @EnvironmentObject var listener: LoginSignupEventListener
     @State private var navigationPath: [LoginSignupRoute] = []
     
     var body: some View {
@@ -47,12 +48,14 @@ struct LoginSelectView: View {
                     .frame(height: 8)
                 
                 Text("TimerTiTi")
+                    .foregroundStyle(.black)
                     .font(.custom("HGGGothicssiP80g", size: 15))
                 
                 Spacer()
                     .frame(height: 58)
                 
                 Text("#타이머티티")
+                    .foregroundStyle(.black)
                     .font(.custom("HGGGothicssiP80g", size: 33))
                 
                 Spacer()
@@ -66,7 +69,7 @@ struct LoginSelectView: View {
     }
     
     struct ButtonsView: View {
-        @Environment(\.dismiss) private var dismiss
+        @EnvironmentObject var listener: LoginSignupEventListener
         @Binding var navigationPath: [LoginSignupRoute]
         
         var body: some View {
@@ -81,7 +84,7 @@ struct LoginSelectView: View {
                     navigationPath.append(.login)
                 }
                 Button {
-                    dismiss()
+                    listener.dismiss = true
                 } label: {
                     Text("로그인없이 서비스 이용하기")
                         .font(.custom("HGGGothicssiP60g", size: 13))

@@ -248,6 +248,7 @@
 		87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */; };
 		87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */; };
 		87EFD6812AC115DB00C422B1 /* LoginSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */; };
+		87EFD6832AC12C3800C422B1 /* LoginSignupEventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6822AC12C3800C422B1 /* LoginSignupEventListener.swift */; };
 		87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */; };
@@ -529,6 +530,7 @@
 		87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressSwiftUIView.swift; sourceTree = "<group>"; };
 		87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressDTO.swift; sourceTree = "<group>"; };
 		87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupVC.swift; sourceTree = "<group>"; };
+		87EFD6822AC12C3800C422B1 /* LoginSignupEventListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupEventListener.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVM.swift; sourceTree = "<group>"; };
@@ -770,11 +772,12 @@
 		874F9C292ABFF4F400675A86 /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
+				87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */,
+				87EFD6822AC12C3800C422B1 /* LoginSignupEventListener.swift */,
 				87B7A53B2AC02202002AFDFE /* LoginSignupRoute.swift */,
 				874F9C342ABFFDE900675A86 /* LoginSelect */,
 				874F9C322ABFFDDF00675A86 /* LoginView.swift */,
 				87B7A5392AC0219B002AFDFE /* SignupNicknameView.swift */,
-				87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */,
 			);
 			path = LoginSignup;
 			sourceTree = "<group>";
@@ -1687,6 +1690,7 @@
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
+				87EFD6832AC12C3800C422B1 /* LoginSignupEventListener.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
