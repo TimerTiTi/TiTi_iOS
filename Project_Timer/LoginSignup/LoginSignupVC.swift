@@ -7,25 +7,44 @@
 //
 
 import UIKit
+import Combine
+import SwiftUI
 
 final class LoginSignupVC: UIViewController {
+    private let listener = LoginSignupEventListener()
+    private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
-        // Do any additional setup after loading the view.
         
-        let button = UIButton(configuration: .filled())
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("close", for: .normal)
-        button.addAction(UIAction(handler: { [weak self] _ in
-            self?.dismiss(animated: true)
-        }), for: .touchUpInside)
+        self.configureHostingVC()
+        self.bindListener()
+    }
+    
+    private func configureHostingVC() {
+        let hostingVC = UIHostingController(rootView: LoginSelectView().environmentObject(listener))
+        self.addChild(hostingVC)
+        hostingVC.didMove(toParent: self)
         
-        self.view.addSubview(button)
+        hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(hostingVC.view)
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            hostingVC.view.topAnchor.constraint(equalTo: self.view.topAnchor),
+            hostingVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            hostingVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            hostingVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+    
+    private func bindListener() {
+        self.listener.$dismiss
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] dismiss in
+                if dismiss {
+                    self?.dismiss(animated: true)
+                }
+            }
+            .store(in: &self.cancellables)
     }
 }
