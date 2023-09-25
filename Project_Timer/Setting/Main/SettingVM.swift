@@ -22,6 +22,7 @@ final class SettingVM {
     }
     
     private func configureSections() {
+        self.sections.append("Profile".localized())
         self.sections.append("Service".localized())
         self.sections.append("Setting".localized())
         self.sections.append("Version & Update history".localized())
@@ -30,20 +31,24 @@ final class SettingVM {
     }
     
     private func configureCells() {
-        let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, link: NetworkURL.appstore)
+        let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, action: .otherApp, destination: .deeplink(url: NetworkURL.appstore))
         
         var cells: [[SettingCellInfo]] = []
+        // Profile
+        cells.append([
+            SettingCellInfo(title: "Login".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .loginSelect)
+        ])
         // Service
         cells.append([
-            SettingCellInfo(title: "TiTi Functions".localized(), nextVCIdentifier: SettingFunctionsListVC.identifier),
-            SettingCellInfo(title: "TiTi Lab".localized(), nextVCIdentifier: SettingTiTiLabVC.identifier)
+            SettingCellInfo(title: "TiTi Functions".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingFunctionsListVC.identifier)),
+            SettingCellInfo(title: "TiTi Lab".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingTiTiLabVC.identifier))
         ])
         // Setting
         cells.append([
-            SettingCellInfo(title: "Notification".localized(), vc: .notification),
-            SettingCellInfo(title: "UI", vc: .ui),
-            SettingCellInfo(title: "Control".localized(), vc: .control),
-            SettingCellInfo(title: "Widget".localized(), vc: .widget)
+            SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
+            SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
+            SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
+            SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
         ])
         #if targetEnvironment(macCatalyst)
         cells.last?.remove(at: 2) // Control 제거
@@ -51,11 +56,11 @@ final class SettingVM {
         // Version & Update history
         cells.append([
             versionCell,
-            SettingCellInfo(title: "Update history".localized(), nextVCIdentifier: SettingUpdateHistoryVC.identifier)
+            SettingCellInfo(title: "Update history".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingUpdateHistoryVC.identifier))
         ])
         // Backup
         cells.append([
-            SettingCellInfo(title: "Get Backup files".localized(), nextVCIdentifier: "showBackup")
+            SettingCellInfo(title: "Get Backup files".localized(), action: .activityVC, destination: .backup)
         ])
         // Developer
         cells.append([

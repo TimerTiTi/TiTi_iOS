@@ -94,27 +94,26 @@ extension SettingVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellInfo = self.viewModel?.cells[indexPath.section][indexPath.item],
-              let action = cellInfo.action else { return }
+              let action = cellInfo.action,
+              let destination = cellInfo.destination else { return }
         
         switch action {
         case .pushVC:
-            guard let nextVCIndentifier = cellInfo.nextVCIdentifier else { return }
-            self.pushVC(nextVCIdentifier: nextVCIndentifier)
-        case .goSafari:
-            guard let url = cellInfo.url else { return }
-            self.goSafari(url: url)
-        case .deeplink:
-            guard let link = cellInfo.url else { return }
-            self.deeplink(link: link)
-        case .notification:
-            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .notification), animated: true)
-        case .ui:
-            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .ui), animated: true)
-        case .control:
-            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .control), animated: true)
-        case .widget:
-            // MARK: 위젯 추가제작시 Widget 선택창 구현 필요
-            self.navigationController?.pushViewController(SettingCalendarWidgetVC(), animated: true)
+            switch destination {
+            case .storyboardName(let identifier):
+                self.pushVC(identifier: identifier)
+            default:
+                self.pushVC(destination: destination)
+            }
+            
+        case .modalFullscreen:
+            self.modalVC(fullscreen: true, destination: destination)
+            
+        case .activityVC:
+            self.systemVC(destination: destination)
+            
+        case .otherApp:
+            self.showOtherApp(destination: destination)
         }
     }
 }
@@ -164,8 +163,43 @@ extension SettingVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension SettingVC: SettingActionDelegate {
-    func pushVC(nextVCIdentifier: String) {
-        if nextVCIdentifier == "showBackup" {
+    func pushVC(identifier: String) {
+        guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: identifier) else { return }
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func pushVC(destination: Destination) {
+        switch destination {
+        case .notification:
+            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .notification), animated: true)
+        case .ui:
+            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .ui), animated: true)
+        case .control:
+            self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .control), animated: true)
+        case .widget:
+            // MARK: 위젯 추가제작시 Widget 선택창 구현 필요
+            self.navigationController?.pushViewController(SettingCalendarWidgetVC(), animated: true)
+        default:
+            break
+        }
+    }
+    
+    func modalVC(fullscreen: Bool, destination: Destination) {
+        switch destination {
+        case .loginSelect:
+            let vc = LoginSignupVC()
+            if fullscreen {
+                vc.modalPresentationStyle = .fullScreen
+            }
+            self.present(vc, animated: true)
+        default:
+            break
+        }
+    }
+    
+    func systemVC(destination: Destination) {
+        switch destination {
+        case .backup:
             // test code
             let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let activityViewController = UIActivityViewController(activityItems: [path], applicationActivities: nil)
@@ -176,43 +210,43 @@ extension SettingVC: SettingActionDelegate {
             }
 
             self.present(activityViewController, animated: true)
-        } else {
-            guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: nextVCIdentifier) else { return }
-            self.navigationController?.pushViewController(nextVC, animated: true)
+        case .mail:
+            if MFMailComposeViewController.canSendMail() {
+                let mail = MFMailComposeViewController()
+                mail.mailComposeDelegate = self
+                mail.setToRecipients(["freedeveloper97@gmail.com"])
+                mail.setMessageBody("<p>\("Every little feedback helps a lot :)".localized())</p>", isHTML: true)
+                
+                present(mail, animated: true)
+            } else {
+                let sendMailErrorAlert = UIAlertController(title: "Email Failed".localized(), message: "Please check the setting of iPhone's Email, and try again.".localized(), preferredStyle: .alert)
+                let confirmAction = UIAlertAction(title: "OK", style: .default)
+                sendMailErrorAlert.addAction(confirmAction)
+                self.present(sendMailErrorAlert, animated: true, completion: nil)
+            }
+        default:
+            break
         }
     }
     
-    func goSafari(url: String) {
-        if let url = URL(string: url) {
-            UIApplication.shared.open(url, options: [:])
-        }
-    }
-    
-    func deeplink(link: String) {
-        if let url = URL(string: link),
-           UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url, options: [:])
+    func showOtherApp(destination: Destination) {
+        switch destination {
+        case .website(let url):
+            if let url = URL(string: url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        case .deeplink(let url):
+            if let url = URL(string: url),
+               UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:])
+            }
+        default:
+            break
         }
     }
 }
 
 extension SettingVC: MFMailComposeViewControllerDelegate {
-    func showEmailPopup() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients(["freedeveloper97@gmail.com"])
-            mail.setMessageBody("<p>\("Every little feedback helps a lot :)".localized())</p>", isHTML: true)
-            
-            present(mail, animated: true)
-        } else {
-            let sendMailErrorAlert = UIAlertController(title: "Email Failed".localized(), message: "Please check the setting of iPhone's Email, and try again.".localized(), preferredStyle: .alert)
-            let confirmAction = UIAlertAction(title: "OK", style: .default)
-            sendMailErrorAlert.addAction(confirmAction)
-            self.present(sendMailErrorAlert, animated: true, completion: nil)
-        }
-    }
-    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
