@@ -22,7 +22,11 @@ final class SettingVM {
     }
     
     private func configureSections() {
-        self.sections.append("Profile".localized())
+        // MARK: Dev
+        if Infos.isDevMode {
+            self.sections.append("Profile".localized())
+        }
+        
         self.sections.append("Service".localized())
         self.sections.append("Setting".localized())
         self.sections.append("Version & Update history".localized())
@@ -34,10 +38,14 @@ final class SettingVM {
         let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, action: .otherApp, destination: .deeplink(url: NetworkURL.appstore))
         
         var cells: [[SettingCellInfo]] = []
-        // Profile
-        cells.append([
-            SettingCellInfo(title: "Login".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .loginSelect)
-        ])
+        // MARK: Dev
+        if Infos.isDevMode {
+            // Profile
+            cells.append([
+                SettingCellInfo(title: "Login".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .loginSelect)
+            ])
+        }
+        
         // Service
         cells.append([
             SettingCellInfo(title: "TiTi Functions".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingFunctionsListVC.identifier)),
