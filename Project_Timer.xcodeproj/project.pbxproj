@@ -354,7 +354,7 @@
 		8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNextGraphButton.swift; sourceTree = "<group>"; };
 		8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePrevGraphButton.swift; sourceTree = "<group>"; };
-		872B7552296A625B00D24394 /* env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = env.xcconfig; sourceTree = "<group>"; };
+		872B7552296A625B00D24394 /* production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = production.xcconfig; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
 		872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVC.swift; sourceTree = "<group>"; };
@@ -416,6 +416,7 @@
 		8765234E28C7964500487BFB /* TotalVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalVM.swift; sourceTree = "<group>"; };
 		8765235028C79C4400487BFB /* TotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		8769349627E1BBAF00D33F51 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
+		876E27712AC1C9D30054250D /* development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = development.xcconfig; sourceTree = "<group>"; };
 		877036C929CD7B3B0078A30C /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		8771190C28954B4A00F53FAD /* StandardWeekTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StandardWeekTaskCell.xib; sourceTree = "<group>"; };
 		8772E91526705EE100A191BF /* TodolistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVC.swift; sourceTree = "<group>"; };
@@ -552,6 +553,7 @@
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
 		A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
+		F426A4BDC73F07A7F14D3249 /* Pods-Project_Timer.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.develop.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.develop.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1384,7 +1386,8 @@
 				93B08522248DDF2F00E215BD /* SceneDelegate.swift */,
 				878D3C1E266494380093A2BE /* GoogleService-Info.plist */,
 				93B0852E248DDF3000E215BD /* Info.plist */,
-				872B7552296A625B00D24394 /* env.xcconfig */,
+				876E27712AC1C9D30054250D /* development.xcconfig */,
+				872B7552296A625B00D24394 /* production.xcconfig */,
 			);
 			path = Project_Timer;
 			sourceTree = "<group>";
@@ -1394,6 +1397,7 @@
 			children = (
 				A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */,
 				EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */,
+				F426A4BDC73F07A7F14D3249 /* Pods-Project_Timer.develop.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1883,6 +1887,126 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		876E27722AC1CA100054250D /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Develop;
+		};
+		876E27732AC1CA100054250D /* Develop */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 876E27712AC1C9D30054250D /* development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
+				INFOPLIST_FILE = Project_Timer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 7.15.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Develop;
+		};
+		876E27742AC1CA100054250D /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 FDEE. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.dev.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Develop;
+		};
 		878B30FA2992BB5B00BE7413 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2065,7 +2189,7 @@
 		};
 		93B08532248DDF3000E215BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
+			baseConfigurationReference = 872B7552296A625B00D24394 /* production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2081,8 +2205,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.15.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
-				PRODUCT_NAME = TiTi;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -2092,7 +2216,7 @@
 		};
 		93B08533248DDF3000E215BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 872B7552296A625B00D24394 /* env.xcconfig */;
+			baseConfigurationReference = 872B7552296A625B00D24394 /* production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2108,8 +2232,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 7.15.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi;
-				PRODUCT_NAME = TiTi;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
+				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -2124,6 +2248,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				878B30FA2992BB5B00BE7413 /* Debug */,
+				876E27742AC1CA100054250D /* Develop */,
 				878B30FB2992BB5B00BE7413 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2133,6 +2258,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93B0852F248DDF3000E215BD /* Debug */,
+				876E27722AC1CA100054250D /* Develop */,
 				93B08530248DDF3000E215BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2142,6 +2268,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				93B08532248DDF3000E215BD /* Debug */,
+				876E27732AC1CA100054250D /* Develop */,
 				93B08533248DDF3000E215BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
