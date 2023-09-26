@@ -40,15 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
         #endif
         
-        /// logout 상태의 경우 KeyChain 초기화
-        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
-        if logined == false {
-            guard KeyChain.shared.deleteAll() else {
-                print("delete keyChain Items fail")
-                return true
-            }
-        }
-        
         /// UserDefaults.standard -> shared 반영
         if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
             UserDefaults.updateShared()
@@ -56,6 +47,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
+        
+        /// logout 상태의 경우 KeyChain 초기화
+        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
+        if logined == false {
+            print("not logined")
+            guard KeyChain.shared.deleteAll() else {
+                print("delete keyChain Items fail")
+                return true
+            }
+        }
         
         return true
     }
