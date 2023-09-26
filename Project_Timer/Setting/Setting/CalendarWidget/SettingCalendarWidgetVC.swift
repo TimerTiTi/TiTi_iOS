@@ -185,7 +185,7 @@ extension SettingCalendarWidgetVC {
     private func configureWidget() {
         self.widgetFrameView.subviews.forEach { $0.removeFromSuperview() }
         guard let calendarWidgetData = Storage.retrive(CalendarWidgetData.fileName, from: .sharedContainer, as: CalendarWidgetData.self) else { return }
-        let hostingVC = UIHostingController(rootView: CalendarWidgetView(calendarWidgetData, backgroundColor: Color(UIColor.secondarySystemGroupedBackground)))
+        let hostingVC = UIHostingController(rootView: CalendarWidgetView(calendarWidgetData, isApp: true))
         self.addChild(hostingVC)
         hostingVC.didMove(toParent: self)
         
