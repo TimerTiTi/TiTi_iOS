@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if logined == false {
             print("not logined")
             guard KeyChain.shared.deleteAll() else {
-                print("delete keyChain Items fail")
+                
                 return true
             }
         }

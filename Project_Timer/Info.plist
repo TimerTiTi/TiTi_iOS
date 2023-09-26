@@ -254,6 +254,8 @@
     <string>$(MODE)</string>
     <key>ServerURL</key>
     <string>$(ServerURL)</string>
+    <key>APP_BUNDLE_ID</key>
+    <string>$(APP_BUNDLE_ID)</string>
     <key>UIAppFonts</key>
     <array>
         <string>HGGGOTHICSSI_PRO_00G.otf</string>
