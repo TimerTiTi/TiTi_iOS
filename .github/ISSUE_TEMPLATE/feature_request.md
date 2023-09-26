@@ -3,7 +3,7 @@ name: Feature request
 about: feature template
 title: xx 기능 추가(개발) (xh)
 labels: feature
-assignees: FreeDeveloper97
+assignees: ''
 
 ---
 
@@ -15,6 +15,5 @@ assignees: FreeDeveloper97
 abc
 
 ### Acceptance Criteria | 허용 기준
-| Given   | When  | Then  |
-|:--------|:------|:------|
-| (조건,상황) | (행동)  | (결과)  |
+Given(조건, 상황) | When(행동) | Then(결과)
+- [ ] abc
