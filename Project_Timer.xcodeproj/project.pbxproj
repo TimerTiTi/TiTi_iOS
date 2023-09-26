@@ -184,6 +184,7 @@
 		8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */; };
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
+		879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
 		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
 		879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */; };
@@ -469,6 +470,7 @@
 		8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
+		879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
 		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorSelectorView.swift; sourceTree = "<group>"; };
@@ -1328,6 +1330,7 @@
 				87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */,
 				8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */,
 				87199F522883D0F70017D01A /* UIColor+Extension.swift */,
+				879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1651,6 +1654,7 @@
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
+				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
