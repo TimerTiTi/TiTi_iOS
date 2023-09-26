@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>MODE</key>
-	<string>$(MODE)</string>
-	<key>ADMOB_AD_ID</key>
-	<string>$(ADMOB_AD_ID)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -36,17 +32,16 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>$(TestServerURL)</key>
-			<dict/>
-			<key>NSExceptionAllowsInsecureHTTPLoads</key>
-			<true/>
-			<key>NSIncludesSubdomains</key>
-			<true/>
-		</dict>
+            <key>$(ServerURL)</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
 	</dict>
 	<key>NSMotionUsageDescription</key>
 	<string>NSMotionUsageDescription</string>
@@ -211,17 +206,6 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>ServerURL</key>
-	<string>$(ServerURL)</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>HGGGOTHICSSI_PRO_00G.otf</string>
-		<string>HGGGOTHICSSI_PRO_20G.otf</string>
-		<string>HGGGOTHICSSI_PRO_40G.otf</string>
-		<string>HGGGOTHICSSI_PRO_60G.otf</string>
-		<string>HGGGOTHICSSI_PRO_80G.otf</string>
-		<string>HGGGOTHICSSI_PRO_99G.otf</string>
-	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -264,5 +248,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>ADMOB_AD_ID</key>
+    <string>$(ADMOB_AD_ID)</string>
+    <key>MODE</key>
+    <string>$(MODE)</string>
+    <key>ServerURL</key>
+    <string>$(ServerURL)</string>
+    <key>UIAppFonts</key>
+    <array>
+        <string>HGGGOTHICSSI_PRO_00G.otf</string>
+        <string>HGGGOTHICSSI_PRO_20G.otf</string>
+        <string>HGGGOTHICSSI_PRO_40G.otf</string>
+        <string>HGGGOTHICSSI_PRO_60G.otf</string>
+        <string>HGGGOTHICSSI_PRO_80G.otf</string>
+        <string>HGGGOTHICSSI_PRO_99G.otf</string>
+    </array>
 </dict>
 </plist>
