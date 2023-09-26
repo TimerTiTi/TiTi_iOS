@@ -11,6 +11,7 @@ import Foundation
 enum Infos: String {
     case MODE
     case ServerURL
+    case APP_BUNDLE_ID
     
     var value: String {
         return Bundle.main.infoDictionary?[self.rawValue] as? String ?? ""
