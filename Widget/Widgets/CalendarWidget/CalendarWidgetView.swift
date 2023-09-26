@@ -12,21 +12,26 @@ import WidgetKit
 // MARK: CalendarWidget SwiftUI 뷰
 struct CalendarWidgetView: View {
     var data: CalendarWidgetData
-    let backgroundColor: Color
+    let isApp: Bool
     
-    init(_ data: CalendarWidgetData, backgroundColor: Color = Color(UIColor.systemBackground)) {
+    init(_ data: CalendarWidgetData, isApp: Bool = false) {
         self.data = data
-        self.backgroundColor = backgroundColor
+        self.isApp = isApp
     }
     
     var body: some View {
-        HStack {
-            CalendarWidgetTasksView(data: data, isKorean: isKorean)
-            Spacer(minLength: 10)
-            CalendarWidgetCalendarView(data: data, isKorean: isKorean)
+        ZStack {
+            HStack {
+                CalendarWidgetTasksView(data: data, isKorean: isKorean)
+                Spacer(minLength: 10)
+                CalendarWidgetCalendarView(data: data, isKorean: isKorean)
+            }
+            .padding(.all)
         }
-        .padding(.all)
-        .background(backgroundColor)
+        .widgetBackground(backgroundView: UIColor.systemBackground.toColor)
+        .if(isApp) { view in
+            view.background(UIColor.secondarySystemGroupedBackground.toColor)
+        }
     }
     
     var isKorean: Bool {

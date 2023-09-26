@@ -20,6 +20,7 @@ struct CalendarWidget: Widget {
         .configurationDisplayName("Calendar widget".localizedForWidget())
         .description("Widget shows the top 5 tasks and the recording time by date.".localizedForWidget())
         .supportedFamilies([.systemMedium])
+        .contentMarginsDisabled()
     }
 }
 
