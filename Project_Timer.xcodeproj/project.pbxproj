@@ -187,6 +187,8 @@
 		879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */; };
 		879BE3202AC402A8007AAC46 /* SignupLoginForTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */; };
 		879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupLoginVM.swift */; };
+		879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3232AC42758007AAC46 /* TiTiImage.swift */; };
+		879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
 		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
 		879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */; };
@@ -475,6 +477,8 @@
 		879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
 		879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginForTestVC.swift; sourceTree = "<group>"; };
 		879BE3212AC40444007AAC46 /* SignupLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVM.swift; sourceTree = "<group>"; };
+		879BE3232AC42758007AAC46 /* TiTiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiImage.swift; sourceTree = "<group>"; };
+		879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextfield.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
 		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorSelectorView.swift; sourceTree = "<group>"; };
@@ -636,6 +640,7 @@
 			children = (
 				04FA75D5286F263300BAE2B2 /* TiTiColor.swift */,
 				04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */,
+				879BE3232AC42758007AAC46 /* TiTiImage.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1295,6 +1300,7 @@
 				879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */,
 				879053FD29558ED2008B9258 /* SyncDailys */,
 				879BE3212AC40444007AAC46 /* SignupLoginVM.swift */,
+				879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */,
 			);
 			path = TestServer;
 			sourceTree = "<group>";
@@ -1663,6 +1669,7 @@
 				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
+				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
 				874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
@@ -1671,6 +1678,7 @@
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
+				879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,

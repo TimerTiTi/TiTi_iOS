@@ -42,7 +42,7 @@ struct LoginSelectView: View {
         
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
-                Image(uiImage: UIImage(named: "loginLogo")!)
+                Image(uiImage: TiTiImage.loginLogo)
                 
                 Spacer()
                     .frame(height: 8)

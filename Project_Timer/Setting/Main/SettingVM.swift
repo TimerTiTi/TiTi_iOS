@@ -42,7 +42,7 @@ final class SettingVM {
         if Infos.isDevMode {
             // Profile
             cells.append([
-                SettingCellInfo(title: "Login".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .loginSelect)
+                SettingCellInfo(title: "Log in in Setting".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .loginSelect)
             ])
         }
         
