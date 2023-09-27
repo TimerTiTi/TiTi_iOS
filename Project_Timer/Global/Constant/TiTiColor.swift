@@ -23,5 +23,5 @@ enum TiTiColor {
     static let systemBackground = UIColor(named: "system_backg")
     
     /* 회원 정보 관리 */
-    static let loginBackground = UIColor(named: "loginBackground")
+    static let loginBackground = UIColor(named: "loginBackgroundColor")
 }

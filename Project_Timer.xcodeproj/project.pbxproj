@@ -185,6 +185,8 @@
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */; };
+		879BE3202AC402A8007AAC46 /* SignupLoginForTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */; };
+		879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupLoginVM.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
 		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
 		879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */; };
@@ -471,6 +473,8 @@
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
+		879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginForTestVC.swift; sourceTree = "<group>"; };
+		879BE3212AC40444007AAC46 /* SignupLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVM.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
 		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorSelectorView.swift; sourceTree = "<group>"; };
@@ -1288,7 +1292,9 @@
 			isa = PBXGroup;
 			children = (
 				87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */,
+				879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */,
 				879053FD29558ED2008B9258 /* SyncDailys */,
+				879BE3212AC40444007AAC46 /* SignupLoginVM.swift */,
 			);
 			path = TestServer;
 			sourceTree = "<group>";
@@ -1695,6 +1701,7 @@
 				8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
+				879BE3202AC402A8007AAC46 /* SignupLoginForTestVC.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
@@ -1819,6 +1826,7 @@
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
+				879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,

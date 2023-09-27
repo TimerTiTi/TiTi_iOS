@@ -29,16 +29,6 @@ final class SignupLoginVC: UIViewController {
         }
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        self.adjustUI(type: size.deviceDetailType)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.adjustUI(type: self.view.bounds.size.deviceDetailType)
-    }
-    
     @IBAction func signupLogin(_ sender: Any) {
         guard let username = userNameTextField.text,
               let password = passwordTextField.text else { return }
@@ -51,12 +41,6 @@ final class SignupLoginVC: UIViewController {
             self.signup(info: userInfo)
         }
         
-    }
-}
-
-extension SignupLoginVC {
-    private func adjustUI(type: CGSize.DeviceDetailType) {
-        print(type)
     }
 }
 
