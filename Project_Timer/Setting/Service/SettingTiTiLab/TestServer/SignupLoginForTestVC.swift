@@ -58,14 +58,22 @@ class SignupLoginForTestVC: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view.backgroundColor = TiTiColor.loginBackground
         self.configureUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.largeTitleDisplayMode = .never
-//        self.navigationController?.title = "TestServer"
+        self.title = "TestServer"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.configureNavigationStyle()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.disableNavigationStyle()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -81,6 +89,8 @@ class SignupLoginForTestVC: UIViewController {
 
 extension SignupLoginForTestVC {
     private func configureUI() {
+        self.view.backgroundColor = TiTiColor.loginBackground
+        
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: 300)

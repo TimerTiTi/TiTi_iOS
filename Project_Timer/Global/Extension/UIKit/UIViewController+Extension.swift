@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIViewController {
+    // MARK: Gesture
     func appTapGestureForDismissingKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
             action: #selector(UIViewController.dismissKeyboard))
@@ -19,6 +20,7 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: Alert
     func showAlertWithOK(title: String, text: String) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default)
@@ -50,5 +52,23 @@ extension UIViewController {
     
     func showTaskWarningAlert() {
         self.showAlertWithOK(title: "Create a new task".localized(), text: "before start recording, Create a new Task, and select that".localized())
+    }
+    
+    // MARK: NavigationBar
+    func configureNavigationStyle(color: UIColor = .white) {
+        self.navigationController?.navigationBar.tintColor = color
+        self.navigationItem.largeTitleDisplayMode = .never
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    func disableNavigationStyle() {
+        self.navigationController?.navigationBar.tintColor = .tintColor
+        self.navigationItem.largeTitleDisplayMode = .automatic
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
