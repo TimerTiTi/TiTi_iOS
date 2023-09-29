@@ -68,22 +68,22 @@ class SignupLoginForTestVC: WhiteNavigationVC {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        self.adjustUI(type: size.deviceDetailType)
+        self.adjustUI(size: size)
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.adjustUI(type: self.view.bounds.size.deviceDetailType)
+        self.adjustUI(size: self.view.bounds.size)
     }
 }
 
 extension SignupLoginForTestVC {
-    private func configureUI() {
+    private func configureUI(width: CGFloat = 300) {
         self.view.backgroundColor = TiTiColor.loginBackground
         
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: 300)
+        self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: width)
         self.contentViewWidth?.isActive = true
         
         contentView.addSubview(self.logoImage)
@@ -128,7 +128,14 @@ extension SignupLoginForTestVC {
         ])
     }
     
-    private func adjustUI(type: CGSize.DeviceDetailType) {
-        print(type, type.rawValue)
+    private func adjustUI(size: CGSize) {
+        switch size.deviceDetailType {
+        case .iPhoneMini:
+            self.contentViewWidth?.constant = 300
+        case .iPhonePro, .iPhoneMax:
+            self.contentViewWidth?.constant = size.minLength - 96
+        default:
+            self.contentViewWidth?.constant = 400
+        }
     }
 }
