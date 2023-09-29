@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupLoginForTestVC: UIViewController {
+class SignupLoginForTestVC: WhiteNavigationVC {
     private var viewModel: SignupLoginVM
     
     // MARK: CustomView
@@ -64,18 +64,6 @@ class SignupLoginForTestVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TestServer"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.configureNavigationStyle()
-        self.configurePortraitOrientationForIphone()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.disableNavigationStyle()
-        self.disablePortraitOrientationForIphone()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

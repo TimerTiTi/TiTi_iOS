@@ -53,34 +53,4 @@ extension UIViewController {
     func showTaskWarningAlert() {
         self.showAlertWithOK(title: "Create a new task".localized(), text: "before start recording, Create a new Task, and select that".localized())
     }
-    
-    // MARK: NavigationBar
-    func configureNavigationStyle(color: UIColor = .white) {
-        self.navigationController?.navigationBar.tintColor = color
-        self.navigationItem.largeTitleDisplayMode = .never
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
-        self.navigationController?.navigationBar.topItem?.title = ""
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    func disableNavigationStyle() {
-        self.navigationController?.navigationBar.tintColor = .tintColor
-        self.navigationItem.largeTitleDisplayMode = .automatic
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    func configurePortraitOrientationForIphone() {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            AppDelegate.shared.shouldSupportPortraitOrientation = true
-        }
-    }
-    
-    func disablePortraitOrientationForIphone() {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            AppDelegate.shared.shouldSupportPortraitOrientation = false
-        }
-    }
 }

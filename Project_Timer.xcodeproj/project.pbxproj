@@ -189,6 +189,8 @@
 		879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupLoginVM.swift */; };
 		879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3232AC42758007AAC46 /* TiTiImage.swift */; };
 		879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */; };
+		879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */; };
+		879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
 		879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20762A19101C00D8A420 /* BottomSheetViewController.swift */; };
 		879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */; };
@@ -479,6 +481,8 @@
 		879BE3212AC40444007AAC46 /* SignupLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVM.swift; sourceTree = "<group>"; };
 		879BE3232AC42758007AAC46 /* TiTiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiImage.swift; sourceTree = "<group>"; };
 		879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextfield.swift; sourceTree = "<group>"; };
+		879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitVC.swift; sourceTree = "<group>"; };
+		879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNavigationVC.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
 		879D20762A19101C00D8A420 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		879D20782A19B3D300D8A420 /* ThemeColorSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorSelectorView.swift; sourceTree = "<group>"; };
@@ -1117,6 +1121,8 @@
 			isa = PBXGroup;
 			children = (
 				879D20762A19101C00D8A420 /* BottomSheetViewController.swift */,
+				879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */,
+				879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1695,6 +1701,7 @@
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				87B7A53C2AC02202002AFDFE /* LoginSignupRoute.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
+				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
@@ -1787,6 +1794,7 @@
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
+				879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
 				87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
 				87459704263FEF6B00172C0F /* TimerVC.swift in Sources */,
