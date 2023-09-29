@@ -69,11 +69,13 @@ class SignupLoginForTestVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationStyle()
+        self.configurePortraitOrientationForIphone()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.disableNavigationStyle()
+        self.disablePortraitOrientationForIphone()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -71,4 +71,16 @@ extension UIViewController {
         
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    func configurePortraitOrientationForIphone() {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            AppDelegate.shared.shouldSupportPortraitOrientation = true
+        }
+    }
+    
+    func disablePortraitOrientationForIphone() {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            AppDelegate.shared.shouldSupportPortraitOrientation = false
+        }
+    }
 }
