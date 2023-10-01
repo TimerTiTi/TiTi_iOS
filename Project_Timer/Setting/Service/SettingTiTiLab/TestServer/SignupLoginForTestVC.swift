@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Combine
 
 class SignupLoginForTestVC: WhiteNavigationVC {
     private var viewModel: SignupLoginVM
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: CustomView
     private var logoImage: UIImageView = {
@@ -59,6 +61,8 @@ class SignupLoginForTestVC: WhiteNavigationVC {
     override func loadView() {
         super.loadView()
         self.configureUI()
+        self.configureActions()
+        self.bindAll()
     }
     
     override func viewDidLoad() {
@@ -137,5 +141,65 @@ extension SignupLoginForTestVC {
         default:
             self.contentViewWidth?.constant = 400
         }
+    }
+    
+    private func configureActions() {
+        // MARK: Signup & Login Action
+        self.actionButton.addAction(UIAction(handler: { [weak self] _ in
+            guard let username = self?.nicknameTextField.textField.text,
+                  let password = self?.passwordTextField.textField.text else { return }
+            
+            if self?.viewModel.isLogin == true {
+                self?.viewModel.login(info: TestUserLoginInfo(username: username, password: password))
+            } else {
+                guard let email = self?.emailTextField.textField.text else { return }
+                self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
+            }
+        }), for: .touchUpInside)
+        
+    }
+}
+
+extension SignupLoginForTestVC {
+    private func bindAll() {
+        self.bindLoadingText()
+        self.bindAlert()
+        self.bindLoginSuccess()
+    }
+    
+    private func bindLoadingText() {
+        self.viewModel.$loadingText
+            .receive(on: DispatchQueue.main)
+            .sink { text in
+                guard let text = text else {
+                    LoadingIndicator.hideLoading()
+                    return
+                }
+                LoadingIndicator.showLoading(text: text)
+            }
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindAlert() {
+        self.viewModel.$alert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] alertInfo in
+                guard let alertInfo = alertInfo else { return }
+                self?.showAlertWithOK(title: alertInfo.title, text: alertInfo.text)
+            }
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindLoginSuccess() {
+        self.viewModel.$loginSuccess
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] loginSuccess in
+                if loginSuccess {
+                    self?.showAlertWithOKAfterHandler(title: "SUCCESS", text: "") { [weak self] in
+                        self?.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+            .store(in: &self.cancellables)
     }
 }
