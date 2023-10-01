@@ -20,6 +20,8 @@ class LoginInputTextfield: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = .systemFont(ofSize: 16, weight: .bold)
         textField.textColor = .black
+        textField.placeholder = "placeholder"
+        textField.setPlaceholderColor(TiTiColor.placeholderGray!)
         return textField
     }()
     

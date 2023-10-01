@@ -118,6 +118,7 @@
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
+		875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE242AC9116B00B28723 /* UITextField+Extension.swift */; };
 		8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */; };
 		8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB0B2A1DBB490068CEF5 /* Widget+Extentions.swift */; };
 		8760FB0D2A1DBBAB0068CEF5 /* LocalizableForWidget.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87DD96152A09048800CA0249 /* LocalizableForWidget.strings */; };
@@ -414,6 +415,7 @@
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875EDA332957E0360037A7EB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
 		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		875FBE242AC9116B00B28723 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCalendarWidgetVC.swift; sourceTree = "<group>"; };
 		8760FB0B2A1DBB490068CEF5 /* Widget+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Widget+Extentions.swift"; sourceTree = "<group>"; };
 		8760FCB829541BE3000BCCD1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
@@ -1349,6 +1351,7 @@
 				8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */,
 				87199F522883D0F70017D01A /* UIColor+Extension.swift */,
 				879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */,
+				875FBE242AC9116B00B28723 /* UITextField+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1670,6 +1673,7 @@
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
+				875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
