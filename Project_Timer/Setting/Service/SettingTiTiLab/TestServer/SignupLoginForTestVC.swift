@@ -14,6 +14,11 @@ class SignupLoginForTestVC: WhiteNavigationVC {
     private var cancellables: Set<AnyCancellable> = []
     
     // MARK: CustomView
+    private let contentView: UIView = {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        return contentView
+    }()
     private var logoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,10 +47,18 @@ class SignupLoginForTestVC: WhiteNavigationVC {
         button.layer.cornerRadius = 12
         button.layer.cornerCurve = .continuous
         NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: 58)
+            button.heightAnchor.constraint(equalToConstant: LoginInputTextfield.height)
         ])
         return button
     }()
+    private lazy var textFieldsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.nicknameTextField, self.emailTextField, self.passwordTextField, self.actionButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        return stackView
+    }()
+    private var textFieldOrigin: CGPoint = .zero
     // MARK: constraint
     private var contentViewWidth: NSLayoutConstraint?
     
@@ -61,6 +74,7 @@ class SignupLoginForTestVC: WhiteNavigationVC {
     override func loadView() {
         super.loadView()
         self.configureTextFields()
+        self.configureNotifications()
         self.configureUI()
         self.configureActions()
         self.bindAll()
@@ -71,10 +85,10 @@ class SignupLoginForTestVC: WhiteNavigationVC {
         self.title = "TestServer"
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        self.adjustUI(size: size)
-    }
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        super.viewWillTransition(to: size, with: coordinator)
+//        self.adjustUI(size: size)
+//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -92,12 +106,15 @@ extension SignupLoginForTestVC {
         self.emailTextField.textField.keyboardType = .emailAddress
     }
     
+    private func configureNotifications() {
+        // keyboardWillShow observer 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
     private func configureUI(width: CGFloat = 300) {
         self.addDismissingKeyboard()
         self.view.backgroundColor = TiTiColor.loginBackground
         
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: width)
         self.contentViewWidth?.isActive = true
         
@@ -113,26 +130,21 @@ extension SignupLoginForTestVC {
             self.logoTitle.centerXAnchor.constraint(equalTo: self.logoImage.centerXAnchor)
         ])
         
-        let stackView = UIStackView(arrangedSubviews: [self.nicknameTextField, self.emailTextField, self.passwordTextField, self.actionButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        
-        contentView.addSubview(stackView)
+        contentView.addSubview(self.textFieldsStackView)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.logoTitle.bottomAnchor, constant: 68),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            self.textFieldsStackView.topAnchor.constraint(equalTo: self.logoTitle.bottomAnchor, constant: 68),
+            self.textFieldsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            self.textFieldsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
         
         if self.viewModel.isLogin {
             self.emailTextField.isHidden = true
             NSLayoutConstraint.activate([
-                stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -74)
+                self.textFieldsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -74)
             ])
         } else {
             NSLayoutConstraint.activate([
-                stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                self.textFieldsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             ])
         }
         
@@ -167,7 +179,24 @@ extension SignupLoginForTestVC {
                 self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
             }
         }), for: .touchUpInside)
-        
+    }
+}
+
+extension SignupLoginForTestVC {
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardRectangle = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            print(keyboardRectangle.height)
+            // keyboard 높이에 따라 bounds.origin 값 조정
+            let keyboardY = self.view.bounds.height - keyboardRectangle.height
+            let textFieldOrigin = self.textFieldOrigin
+            let targetY = textFieldOrigin.y + LoginInputTextfield.height + 16
+            
+            if keyboardY <= targetY {
+                UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut, .overrideInheritedCurve]) { [weak self] in
+                    self?.view.bounds.origin.y = targetY - keyboardY
+                }
+            }
+        }
     }
 }
 
@@ -216,6 +245,7 @@ extension SignupLoginForTestVC {
 }
 
 extension SignupLoginForTestVC: UITextFieldDelegate {
+    /// return 키 설정
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.nicknameTextField.textField {
             if self.viewModel.isLogin {
@@ -230,5 +260,33 @@ extension SignupLoginForTestVC: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    /// textField 활성화시 origin 값 설정 -> 이후 keyboardWillShow 메소드 내에서 bounds.origin 값 조정
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.textFieldOrigin = self.textFieldOrigin(textField)
+    }
+    
+    /// textField 비활성화시 bounds.origin 리셋
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut,.overrideInheritedCurve]) { [weak self] in
+            self?.view.bounds.origin.y = 0
+        }
+    }
+    
+    private func textFieldOrigin(_ textField: UITextField) -> CGPoint {
+        var textFieldOrigin: CGPoint = .zero
+        if textField == self.nicknameTextField.textField {
+            textFieldOrigin = self.nicknameTextField.origin
+        } else if textField == self.emailTextField.textField {
+            textFieldOrigin = self.emailTextField.origin
+        } else {
+            textFieldOrigin = self.passwordTextField.origin
+        }
+        
+        let stackViewOrigin = self.textFieldsStackView.frame.origin
+        let contentViewOrigin = self.contentView.frame.origin
+        
+        return textFieldOrigin + stackViewOrigin + contentViewOrigin
     }
 }

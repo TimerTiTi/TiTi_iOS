@@ -9,6 +9,8 @@
 import UIKit
 
 class LoginInputTextfield: UIView {
+    static let height: CGFloat = CGFloat(58)
+    
     enum type: String {
         case nickname = "nickname"
         case email = "email"
@@ -24,6 +26,9 @@ class LoginInputTextfield: UIView {
         textField.setPlaceholderColor(TiTiColor.placeholderGray!)
         return textField
     }()
+    var origin: CGPoint {
+        return self.frame.origin + self.textField.frame.origin
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +51,7 @@ class LoginInputTextfield: UIView {
         self.layer.cornerRadius = 12
         self.layer.cornerCurve = .continuous
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 58)
+            self.heightAnchor.constraint(equalToConstant: Self.height)
         ])
         
         self.addSubview(self.textField)
