@@ -60,6 +60,7 @@ class SignupLoginForTestVC: WhiteNavigationVC {
     
     override func loadView() {
         super.loadView()
+        self.configureTextFields()
         self.configureUI()
         self.configureActions()
         self.bindAll()
@@ -82,7 +83,17 @@ class SignupLoginForTestVC: WhiteNavigationVC {
 }
 
 extension SignupLoginForTestVC {
+    private func configureTextFields() {
+        self.nicknameTextField.textField.delegate = self
+        self.emailTextField.textField.delegate = self
+        self.passwordTextField.textField.delegate = self
+        
+        self.passwordTextField.textField.isSecureTextEntry = true
+        self.emailTextField.textField.keyboardType = .emailAddress
+    }
+    
     private func configureUI(width: CGFloat = 300) {
+        self.addDismissingKeyboard()
         self.view.backgroundColor = TiTiColor.loginBackground
         
         let contentView = UIView()
@@ -201,5 +212,23 @@ extension SignupLoginForTestVC {
                 }
             }
             .store(in: &self.cancellables)
+    }
+}
+
+extension SignupLoginForTestVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.nicknameTextField.textField {
+            if self.viewModel.isLogin {
+                self.passwordTextField.textField.becomeFirstResponder()
+            } else {
+                self.emailTextField.textField.becomeFirstResponder()
+            }
+        } else if textField == self.emailTextField.textField {
+            self.passwordTextField.textField.becomeFirstResponder()
+        } else if textField == self.passwordTextField.textField {
+            self.dismissKeyboard()
+        }
+        
+        return true
     }
 }

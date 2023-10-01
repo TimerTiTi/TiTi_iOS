@@ -23,7 +23,7 @@ final class SignupLoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.appTapGestureForDismissingKeyboard()
+        self.addDismissingKeyboard()
         if self.login {
             self.configureLogin()
         }
