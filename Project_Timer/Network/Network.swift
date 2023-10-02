@@ -11,7 +11,7 @@ import Alamofire
 
 struct Network: NetworkFetchable {
     func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void) {
-        Session.default.request(url, method: method, interceptor: NetworkInterceptor())
+        Session.default.request(url, method: method, interceptor: NetworkInterceptor()) { $0.timeoutInterval = 10 }
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
@@ -29,7 +29,7 @@ struct Network: NetworkFetchable {
             }
         }
         
-        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor())
+        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor()) { $0.timeoutInterval = 10 }
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
@@ -41,15 +41,23 @@ struct Network: NetworkFetchable {
 extension Network {
     private func configureNetworkResult(response: AFDataResponse<Data?>) -> NetworkResult {
         guard let statusCode = response.response?.statusCode else {
-            print("Network Fail: No Status Code, \(String(describing: response.error))")
-            return NetworkResult(data: nil, status: .FAIL)
+            print("[Network] Fail: No Status Code, \(String(describing: response.error))")
+            return NetworkResult(status: response.error?.isRequestRetryError == true ? .TIMEOUT : .CLIENTERROR, data: nil)
         }
+        
+        let status = NetworkStatus.status(statusCode)
         
         guard let data = response.data else {
-            print("Network Fail \(statusCode): No Data, \(String(describing: response.data))")
-            return NetworkResult(data: nil, status: NetworkStatus.status(statusCode))
+            print("[Network] Warning(\(statusCode)): No Data")
+            return NetworkResult(status: status, data: nil)
         }
         
-        return NetworkResult(data: data, status: NetworkStatus.status(statusCode))
+        if Infos.isDevMode {
+            print("[Network] url: \(String(describing: response.request?.url))")
+            print("[Network] statusCode: \(statusCode)")
+            print("[Network] data: \(String(data: data, encoding: .utf8)!)")
+        }
+        
+        return NetworkResult(status: status, data: data)
     }
 }
