@@ -14,6 +14,7 @@ final class SignupLoginVM {
     let network: TestServerAuthFetchable
     @Published var loadingText: String?
     @Published var alert: (title: String, text: String)?
+    @Published var postable: Bool = false
     @Published var loginSuccess: Bool = false
     
     init(isLogin: Bool, network: TestServerAuthFetchable) {
@@ -54,6 +55,14 @@ final class SignupLoginVM {
             default:
                 self?.alert = (title: "FAIL", text: "\(status.rawValue)")
             }
+        }
+    }
+    
+    func check(nickname: String?, email: String?, password: String?) {
+        if self.isLogin {
+            self.postable = [nickname, password].allSatisfy({ $0 != nil && $0 != "" })
+        } else {
+            self.postable = [nickname, email, password].allSatisfy({ $0 != nil && $0 != "" })
         }
     }
     

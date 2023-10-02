@@ -30,7 +30,6 @@ final class SettingTiTiLabVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "TiTi Lab".localized()
         self.syncLabel.text = "Synchronization".localized()
         self.configureLoader()
         self.configureCollectionView()
@@ -39,6 +38,11 @@ final class SettingTiTiLabVC: UIViewController {
         // login
         self.checkLogined()
         self.configureObservation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.title = "TiTi Lab".localized()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

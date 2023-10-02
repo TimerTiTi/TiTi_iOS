@@ -24,6 +24,8 @@ class LoginInputTextfield: UIView {
         textField.textColor = .black
         textField.placeholder = "placeholder"
         textField.setPlaceholderColor(TiTiColor.placeholderGray!)
+        textField.enablesReturnKeyAutomatically = true
+        textField.returnKeyType = .done
         return textField
     }()
     var origin: CGPoint {

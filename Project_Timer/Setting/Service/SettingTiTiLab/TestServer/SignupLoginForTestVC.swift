@@ -46,6 +46,7 @@ class SignupLoginForTestVC: WhiteNavigationVC {
         button.backgroundColor = .white
         button.layer.cornerRadius = 12
         button.layer.cornerCurve = .continuous
+        button.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
             button.heightAnchor.constraint(equalToConstant: LoginInputTextfield.height)
         ])
@@ -84,11 +85,6 @@ class SignupLoginForTestVC: WhiteNavigationVC {
         super.viewDidLoad()
         self.title = "TestServer"
     }
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        super.viewWillTransition(to: size, with: coordinator)
-//        self.adjustUI(size: size)
-//    }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -204,6 +200,7 @@ extension SignupLoginForTestVC {
     private func bindAll() {
         self.bindLoadingText()
         self.bindAlert()
+        self.bindPostable()
         self.bindLoginSuccess()
     }
     
@@ -216,6 +213,23 @@ extension SignupLoginForTestVC {
                     return
                 }
                 LoadingIndicator.showLoading(text: text)
+            }
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindPostable() {
+        self.viewModel.$postable
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] postable in
+                if postable {
+                    self?.actionButton.backgroundColor = .tintColor
+                    self?.actionButton.setTitleColor(.white, for: .normal)
+                    self?.actionButton.isUserInteractionEnabled = true
+                } else {
+                    self?.actionButton.isUserInteractionEnabled = false
+                    self?.actionButton.backgroundColor = .white
+                    self?.actionButton.setTitleColor(.gray, for: .normal)
+                }
             }
             .store(in: &self.cancellables)
     }
@@ -272,6 +286,13 @@ extension SignupLoginForTestVC: UITextFieldDelegate {
         UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut,.overrideInheritedCurve]) { [weak self] in
             self?.view.bounds.origin.y = 0
         }
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let nickname = self.nicknameTextField.textField.text
+        let email = self.emailTextField.textField.text
+        let password = self.passwordTextField.textField.text
+        self.viewModel.check(nickname: nickname, email: email, password: password)
     }
     
     private func textFieldOrigin(_ textField: UITextField) -> CGPoint {

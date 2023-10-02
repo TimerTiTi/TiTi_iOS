@@ -24,7 +24,7 @@ class WhiteNavigationVC: PortraitVC {
         self.navigationController?.navigationBar.tintColor = color
         self.navigationItem.largeTitleDisplayMode = .never
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 15), .foregroundColor: UIColor.black]
         self.navigationController?.navigationBar.topItem?.title = ""
         
         self.tabBarController?.tabBar.isHidden = true
