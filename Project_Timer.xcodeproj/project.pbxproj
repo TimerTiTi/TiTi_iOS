@@ -49,6 +49,8 @@
 		870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
 		870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
 		870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
+		87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC72ACAF2E8008D4072 /* NetworkError.swift */; };
+		87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC92ACAF89B008D4072 /* NetworkResult.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
 		87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F432882BC430017D01A /* StandardDailyGraphView.swift */; };
 		87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87199F452883018C0017D01A /* TimelineDailyGraphView.swift */; };
@@ -345,6 +347,8 @@
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
 		870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetCellData.swift; sourceTree = "<group>"; };
+		87163DC72ACAF2E8008D4072 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		87163DC92ACAF89B008D4072 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F452883018C0017D01A /* TimelineDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineDailyGraphView.swift; sourceTree = "<group>"; };
 		87199F47288303B60017D01A /* TasksProgressDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksProgressDailyGraphView.swift; sourceTree = "<group>"; };
@@ -1025,9 +1029,11 @@
 				8791081E28387537005D7B10 /* NetworkURL.swift */,
 				87910820283875C0005D7B10 /* NetworkController.swift */,
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
-				879108242838761B005D7B10 /* NetworkStatus.swift */,
 				875EDA332957E0360037A7EB /* NetworkInterceptor.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
+				879108242838761B005D7B10 /* NetworkStatus.swift */,
+				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
+				87163DC72ACAF2E8008D4072 /* NetworkError.swift */,
 				87D7ED182952BA7200121DE6 /* Extension */,
 				8791082B28387B9B005D7B10 /* DTO */,
 			);
@@ -1662,6 +1668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				877911B22A188A3200F0A713 /* SettingSwitchListVC.swift in Sources */,
+				87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */,
 				87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */,
 				879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */,
 				8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */,
@@ -1681,6 +1688,7 @@
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
+				87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */,
 				874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,

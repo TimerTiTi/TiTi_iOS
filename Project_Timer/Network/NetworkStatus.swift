@@ -8,35 +8,28 @@
 
 import Foundation
 
-struct NetworkResult {
-    let status: NetworkStatus
-    let data: Data?
-}
-
-enum NetworkStatus: String {
-    case SUCCESS // 200~204
-    case NOTMODIFIED // 304
-    case CLIENTERROR // 400
-    case AUTHENTICATION // 401
-    case NOTFOUND // 404
-    case CONFLICT // 409
-    case SERVERERROR // 500
-    case DECODEERROR // -1
+enum NetworkStatus {
+    case SUCCESS // 200~204, 304
+    case FAIL // -1
     case TIMEOUT // -2
+    case SERVER(Int)
     
     static func status(_ statusCode: Int) -> NetworkStatus {
         switch statusCode {
-        case 200: return .SUCCESS
-        case 201: return .SUCCESS
-        case 204: return .SUCCESS
+        case (200...209): return .SUCCESS
         case 304: return .SUCCESS
-        case 401: return .AUTHENTICATION
-        case 404: return .NOTFOUND
-        case 409: return .CONFLICT
-        case 500: return .SERVERERROR
-        case -1: return .DECODEERROR
-        case -2: return .TIMEOUT
-        default: return .CLIENTERROR
+        default: return .SERVER(statusCode)
         }
     }
 }
+
+
+
+//case SUCCESS // 200~204, 304
+//case CLIENTERROR // 400
+//case AUTHENTICATION // 401
+//case NOTFOUND // 404
+//case CONFLICT // 409
+//case SERVERERROR // 500
+//case DECODEERROR // -1
+//case TIMEOUT // -2
