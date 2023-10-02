@@ -9,19 +9,20 @@
 import Foundation
 
 struct NetworkResult {
-    let data: Data?
     let status: NetworkStatus
+    let data: Data?
 }
 
 enum NetworkStatus: String {
     case SUCCESS // 200~204
     case NOTMODIFIED // 304
-    case FAIL // 400
+    case CLIENTERROR // 400
     case AUTHENTICATION // 401
     case NOTFOUND // 404
     case CONFLICT // 409
     case SERVERERROR // 500
     case DECODEERROR // -1
+    case TIMEOUT // -2
     
     static func status(_ statusCode: Int) -> NetworkStatus {
         switch statusCode {
@@ -34,7 +35,8 @@ enum NetworkStatus: String {
         case 409: return .CONFLICT
         case 500: return .SERVERERROR
         case -1: return .DECODEERROR
-        default: return .FAIL
+        case -2: return .TIMEOUT
+        default: return .CLIENTERROR
         }
     }
 }
