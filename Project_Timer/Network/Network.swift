@@ -42,7 +42,7 @@ extension Network {
     private func configureNetworkResult(response: AFDataResponse<Data?>) -> NetworkResult {
         guard let statusCode = response.response?.statusCode else {
             print("[Network] Fail: No Status Code, \(String(describing: response.error))")
-            return NetworkResult(status: response.error?.isRequestRetryError == true ? .TIMEOUT : .CLIENTERROR, data: nil)
+            return NetworkResult(status: response.error?.isRequestRetryError == true ? .TIMEOUT : .FAIL, data: nil)
         }
         
         let status = NetworkStatus.status(statusCode)
