@@ -318,5 +318,11 @@
 "howToAddWidget_description_5" = "그러면 위젯을 사용할 수 있어요!";
 
 "Profile" = "프로필";
-"Login" = "로그인하기";
+"Log in in Setting" = "로그인하기";
 "Try Synchronization" = "동기화 기능을 사용해보세요";
+
+"nickname" = "닉네임";
+"email" = "이메일";
+"password" = "비밀번호";
+"Sign up" = "회원가입";
+"Log in" = "로그인";

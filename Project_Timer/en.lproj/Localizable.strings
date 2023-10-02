@@ -314,5 +314,11 @@
 "howToAddWidget_description_5" = "Now you can use Widget!";
 
 "Profile" = "Profile";
-"Login" = "Login";
+"Log in in Setting" = "Log in";
 "Try Synchronization" = "Try Synchronization";
+
+"nickname" = "nickname";
+"email" = "email";
+"password" = "password";
+"Sign up" = "Sign up";
+"Log in" = "Log in";

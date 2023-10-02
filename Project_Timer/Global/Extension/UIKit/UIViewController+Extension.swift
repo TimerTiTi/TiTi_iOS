@@ -9,7 +9,8 @@
 import UIKit
 
 extension UIViewController {
-    func appTapGestureForDismissingKeyboard() {
+    // MARK: Gesture
+    func addDismissingKeyboard() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
             action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -19,6 +20,7 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: Alert
     func showAlertWithOK(title: String, text: String) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default)
