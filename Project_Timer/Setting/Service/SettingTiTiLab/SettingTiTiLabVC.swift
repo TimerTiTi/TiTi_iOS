@@ -95,20 +95,10 @@ extension SettingTiTiLabVC {
     }
     
     private func showBetaLoginSignupVC(login: Bool) {
-        // MARK: Dev
-        if Infos.isDevMode {
-            // code로 만든 vc 표시
-            let network = NetworkController(network: Network())
-            let viewModel = SignupLoginVM(isLogin: login, network: network)
-            let vc = SignupLoginForTestVC(viewModel: viewModel)
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SignupLoginVC.identifier) as? SignupLoginVC else { return }
-            if login {
-                vc.configure(login: true)
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let network = NetworkController(network: Network())
+        let viewModel = SignupLoginVM(isLogin: login, network: network)
+        let vc = SignupLoginVC(viewModel: viewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func showSyncHistorysVC() {

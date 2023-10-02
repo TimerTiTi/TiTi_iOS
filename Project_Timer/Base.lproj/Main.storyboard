@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1063,7 +1063,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="qS4-TX-vp4"/>
                                             </scrollView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="sHk-ia-ZKg">
-                                                <rect key="frame" x="128.33333333333337" y="653" width="133.66666666666663" height="26"/>
+                                                <rect key="frame" x="128.33333333333331" y="653.33333333333337" width="133.33333333333331" height="25.666666666666629"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                             </pageControl>
@@ -2106,167 +2106,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gya-2J-f5E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7280" y="2335"/>
-        </scene>
-        <!--Signup LoginVC-->
-        <scene sceneID="Pb4-Aa-Ii6">
-            <objects>
-                <viewController storyboardIdentifier="SignupLoginVC" id="Oh0-MG-ZKg" customClass="SignupLoginVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2gu-YY-20b">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="titi_appicon_mac" translatesAutoresizingMaskIntoConstraints="NO" id="Zre-en-EaK">
-                                <rect key="frame" x="115" y="92" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="EbS-0x-2P5"/>
-                                    <constraint firstAttribute="width" secondItem="Zre-en-EaK" secondAttribute="height" multiplier="1:1" id="XzJ-cq-IgM"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TiTi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdq-Fu-98H">
-                                <rect key="frame" x="181.33333333333334" y="252" width="27.666666666666657" height="22"/>
-                                <fontDescription key="fontDescription" name="HGGGothicssiP80g" family="HGGGothicssi_Pro" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pj-Op-RY7">
-                                <rect key="frame" x="24" y="324" width="342" height="253"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="APu-ei-yDC">
-                                        <rect key="frame" x="24" y="32" width="294" height="189"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="C83-XF-J9e">
-                                                <rect key="frame" x="0.0" y="0.0" width="294" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWA-vu-YFH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70.333333333333329" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="70.333333333333329" id="oc8-vm-1Oo"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vz8-hy-dTp">
-                                                        <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="abv-IE-ekF">
-                                                <rect key="frame" x="0.0" y="48" width="294" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ryf-nH-mCl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70.333333333333329" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="70.333333333333329" id="VHr-Wi-2DC"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-bm-bp8">
-                                                        <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="S1F-cO-vXH">
-                                                <rect key="frame" x="0.0" y="96" width="294" height="34"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiL-6O-G4c">
-                                                        <rect key="frame" x="0.0" y="0.0" width="70.333333333333329" height="34"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="70.333333333333329" id="NNO-II-IR2"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pgK-Sr-Hfk">
-                                                        <rect key="frame" x="86.333333333333357" y="0.0" width="207.66666666666663" height="34"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                                    </textField>
-                                                </subviews>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78l-8w-YYt">
-                                                <rect key="frame" x="0.0" y="144" width="294" height="45"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="OHP-XA-dgV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="20"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Signup">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="signupLogin:" destination="Oh0-MG-ZKg" eventType="touchUpInside" id="8S6-vq-s7R"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="APu-ei-yDC" firstAttribute="centerX" secondItem="7pj-Op-RY7" secondAttribute="centerX" id="78j-Fh-zMp"/>
-                                    <constraint firstItem="APu-ei-yDC" firstAttribute="leading" secondItem="7pj-Op-RY7" secondAttribute="leading" constant="24" id="G74-hV-RhB"/>
-                                    <constraint firstItem="APu-ei-yDC" firstAttribute="top" secondItem="7pj-Op-RY7" secondAttribute="top" constant="32" id="jV0-rg-Ptj"/>
-                                    <constraint firstAttribute="bottom" secondItem="APu-ei-yDC" secondAttribute="bottom" constant="32" id="mF2-m7-IzH"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="22"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup [Test Server]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ib-Df-ZcF">
-                                <rect key="frame" x="129" y="299" width="132.33333333333337" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="u6z-cj-lxD"/>
-                        <color key="backgroundColor" name="Blue"/>
-                        <constraints>
-                            <constraint firstItem="7pj-Op-RY7" firstAttribute="centerX" secondItem="u6z-cj-lxD" secondAttribute="centerX" id="068-Zc-jKu"/>
-                            <constraint firstItem="7pj-Op-RY7" firstAttribute="leading" secondItem="u6z-cj-lxD" secondAttribute="leading" constant="24" id="46R-TX-3Q2"/>
-                            <constraint firstItem="7pj-Op-RY7" firstAttribute="top" secondItem="Mdq-Fu-98H" secondAttribute="bottom" constant="50" id="9Lp-5v-kpr"/>
-                            <constraint firstItem="Mdq-Fu-98H" firstAttribute="top" secondItem="Zre-en-EaK" secondAttribute="bottom" id="E3Y-5q-olr"/>
-                            <constraint firstItem="Zre-en-EaK" firstAttribute="centerX" secondItem="u6z-cj-lxD" secondAttribute="centerX" id="FgA-1g-IuQ"/>
-                            <constraint firstItem="Mdq-Fu-98H" firstAttribute="centerX" secondItem="Zre-en-EaK" secondAttribute="centerX" id="Ykh-nb-Kq7"/>
-                            <constraint firstItem="7pj-Op-RY7" firstAttribute="top" secondItem="8Ib-Df-ZcF" secondAttribute="bottom" constant="8" id="nyu-Hf-W2K"/>
-                            <constraint firstItem="8Ib-Df-ZcF" firstAttribute="centerX" secondItem="7pj-Op-RY7" secondAttribute="centerX" id="q7D-x2-aMl"/>
-                            <constraint firstItem="Zre-en-EaK" firstAttribute="top" secondItem="2gu-YY-20b" secondAttribute="top" constant="92" id="yuK-pL-yI4"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="emailStackView" destination="S1F-cO-vXH" id="qAw-qT-QDE"/>
-                        <outlet property="emailTextField" destination="pgK-Sr-Hfk" id="bBO-mB-qDy"/>
-                        <outlet property="passwordTextField" destination="vbQ-bm-bp8" id="dXF-kZ-L1O"/>
-                        <outlet property="signupLoginButton" destination="78l-8w-YYt" id="Sip-Rd-0Yd"/>
-                        <outlet property="signupLoginStatusLabel" destination="8Ib-Df-ZcF" id="fYE-RO-5pV"/>
-                        <outlet property="userNameTextField" destination="Vz8-hy-dTp" id="ZJt-mh-YBj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UEd-MF-JRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7280" y="3101.6587677725115"/>
         </scene>
         <!--Sync Dailys-->
         <scene sceneID="bUX-EY-toS">
@@ -4901,7 +4740,7 @@
     </scenes>
     <resources>
         <image name="bars-3" width="24" height="24"/>
-        <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
+        <image name="calendar.badge.plus" catalog="system" width="128" height="109"/>
         <image name="chart.bar" catalog="system" width="128" height="89"/>
         <image name="checklist" catalog="system" width="128" height="107"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
@@ -4921,12 +4760,11 @@
         <image name="questionmark.circle" catalog="system" width="128" height="123"/>
         <image name="rainbow" width="33.333332061767578" height="33.333332061767578"/>
         <image name="square" catalog="system" width="128" height="114"/>
-        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
         <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="sun.max" catalog="system" width="128" height="125"/>
         <image name="sun.max.fill" catalog="system" width="128" height="125"/>
         <image name="timer" catalog="system" width="128" height="123"/>
-        <image name="titi_appicon_mac" width="341.33334350585938" height="341.33334350585938"/>
         <image name="titi_appicon_mac 90" width="30" height="30"/>
         <namedColor name="Background">
             <color red="0.6470000147819519" green="0.75300002098083496" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4947,13 +4785,13 @@
             <color red="0.53725490196078429" green="0.43529411764705883" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D1">
-            <color red="0.50980392156862742" green="0.59999999999999998" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50999999046325684" green="0.60000002384185791" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D10">
             <color red="0.81960784313725488" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D12">
-            <color red="0.5725490196078431" green="0.54117647058823526" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.57300001382827759" green="0.54100000858306885" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D2">
             <color red="0.60392156862745094" green="0.75294117647058822" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -5001,7 +4839,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

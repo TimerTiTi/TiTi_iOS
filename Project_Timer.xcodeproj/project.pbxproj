@@ -187,7 +187,7 @@
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */; };
-		879BE3202AC402A8007AAC46 /* SignupLoginForTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */; };
+		879BE3202AC402A8007AAC46 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */; };
 		879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupLoginVM.swift */; };
 		879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3232AC42758007AAC46 /* TiTiImage.swift */; };
 		879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */; };
@@ -244,7 +244,6 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
-		87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
@@ -481,7 +480,7 @@
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
-		879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginForTestVC.swift; sourceTree = "<group>"; };
+		879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
 		879BE3212AC40444007AAC46 /* SignupLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVM.swift; sourceTree = "<group>"; };
 		879BE3232AC42758007AAC46 /* TiTiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiImage.swift; sourceTree = "<group>"; };
 		879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextfield.swift; sourceTree = "<group>"; };
@@ -540,7 +539,6 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
-		87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
 		87DB923D2AC2D06C00FE6453 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -1306,9 +1304,8 @@
 		87D7ED1B2952E3DF00121DE6 /* TestServer */ = {
 			isa = PBXGroup;
 			children = (
-				87D7ED1C2952E3F600121DE6 /* SignupLoginVC.swift */,
-				879BE31F2AC402A8007AAC46 /* SignupLoginForTestVC.swift */,
 				879053FD29558ED2008B9258 /* SyncDailys */,
+				879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */,
 				879BE3212AC40444007AAC46 /* SignupLoginVM.swift */,
 				879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */,
 			);
@@ -1724,7 +1721,7 @@
 				8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
-				879BE3202AC402A8007AAC46 /* SignupLoginForTestVC.swift in Sources */,
+				879BE3202AC402A8007AAC46 /* SignupLoginVC.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
@@ -1837,7 +1834,6 @@
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
-				87D7ED1D2952E3F600121DE6 /* SignupLoginVC.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
