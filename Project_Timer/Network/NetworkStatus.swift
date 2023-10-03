@@ -22,14 +22,3 @@ enum NetworkStatus {
         }
     }
 }
-
-
-
-//case SUCCESS // 200~204, 304
-//case CLIENTERROR // 400
-//case AUTHENTICATION // 401
-//case NOTFOUND // 404
-//case CONFLICT // 409
-//case SERVERERROR // 500
-//case DECODEERROR // -1
-//case TIMEOUT // -2
