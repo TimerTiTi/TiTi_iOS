@@ -47,4 +47,48 @@ enum NetworkError: Error {
             return .FAIL
         }
     }
+    
+    /// 범용적으로 표시될 수 있는 alert title 값, CLIENTERROR의 경우 VM에서 처리
+    var title: String {
+        switch self {
+        case .FAIL:
+            return "Network Error".localized()
+        case .TIMEOUT:
+            return "Network Timeout".localized()
+        case .DECODEERROR:
+            return "Network Fetch Error".localized()
+        case .AUTHENTICATION(_):
+            return "Authentication Error".localized()
+        case .NOTFOUND(_):
+            return "Network Fetch Error".localized()
+        case .CONFLICT(_):
+            return "Signup Error".localized()
+        case .SERVERERROR(_):
+            return "Server Error".localized()
+        default:
+            return "Network Error".localized()
+        }
+    }
+    
+    /// 범용적으로 표시될 수 있는 alert message 값, CLIENTERROR의 경우 VM에서 처리
+    var message: String {
+        switch self {
+        case .FAIL:
+            return "Please check the network and try again".localized()
+        case .TIMEOUT:
+            return "Please check the network and try again".localized()
+        case .DECODEERROR:
+            return "Please update to the latest version".localized()
+        case .AUTHENTICATION(_):
+            return "Please log in again".localized()
+        case .NOTFOUND(_):
+            return "Please update to the latest version".localized()
+        case .CONFLICT(_):
+            return "Please enter other information".localized()
+        case .SERVERERROR(_):
+            return "The server encountered an error. Please try again in a few minutes".localized()
+        default:
+            return "Please check the network and try again".localized()
+        }
+    }
 }
