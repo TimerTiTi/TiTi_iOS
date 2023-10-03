@@ -51,13 +51,21 @@ extension SyncDailysVM {
     private func uploadDailys() {
         self.loadingText = .uploadDailys
         self.loading = true
-        self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] status in
+        self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] result in
             self?.loading = false
-            switch status {
-            case .SUCCESS:
+            switch result {
+            case .success(_):
                 self?.getDailys()
-            default:
-                self?.error = ("Network Error", "UPLOAD SyncLog status: \(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[upload Dailys ERROR] \(message)")
+                    }
+                    self?.error = (title: "Upload Fail".localized(), text: "Please update to the latest version".localized())
+                default:
+                    self?.error = error.alertMessage
+                }
             }
         }
     }
@@ -67,13 +75,21 @@ extension SyncDailysVM {
         let recordTimes = RecordsManager.shared.recordTimes
         self.loadingText = .uploadRecordTime
         self.loading = true
-        self.networkController.uploadRecordTimes(recordTimes: recordTimes) { [weak self] status in
+        self.networkController.uploadRecordTimes(recordTimes: recordTimes) { [weak self] result in
             self?.loading = false
-            switch status {
-            case .SUCCESS:
+            switch result {
+            case .success(_):
                 self?.getSyncLog(afterUploaded: true)
-            default:
-                self?.error = ("Network Error", "UPLOAD RecordTime status: \(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[upload Recordtime ERROR] \(message)")
+                    }
+                    self?.error = (title: "Upload Fail".localized(), text: "Please update to the latest version".localized())
+                default:
+                    self?.error = error.alertMessage
+                }
             }
         }
     }
@@ -85,24 +101,23 @@ extension SyncDailysVM {
     private func getDailys() {
         self.loadingText = .getDailys
         self.loading = true
-        self.networkController.getDailys { [weak self] status, dailys in
-            switch status {
-            case .SUCCESS:
-                guard dailys.isEmpty == false else {
-                    self?.loading = false
-                    self?.error = ("Empty Dailys", "Check the Server's Dailys count")
-                    return
-                }
-                
+        self.networkController.getDailys { [weak self] result in
+            switch result {
+            case .success(let dailys):
                 self?.saveDailys(dailys)
                 self?.loading = false
                 self?.checkRecordTimes()
-            case .DECODEERROR:
+            case .failure(let error):
                 self?.loading = false
-                self?.error = ("Decode Error", "Decode Dailys")
-            default:
-                self?.loading = false
-                self?.error = ("Network Error", "GET Dailys status: \(status.rawValue)")
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[get Dailys ERROR] \(message)")
+                    }
+                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                default:
+                    self?.error = error.alertMessage
+                }
             }
         }
     }
@@ -111,24 +126,22 @@ extension SyncDailysVM {
     private func getRecordtime() {
         self.loadingText = .getRecordTime
         self.loading = true
-        self.networkController.getRecordTimes { [weak self] status, recordTimes in
-            switch status {
-            case .SUCCESS:
-                guard let recordTimes = recordTimes else {
-                    self?.loading = false
-                    self?.error = ("Network Error", "GET Recordtime")
-                    return
-                }
-                
+        self.networkController.getRecordTimes { [weak self] result in
+            switch result {
+            case .success(let recordTimes):
                 self?.saveRecordTimes(recordTimes)
                 self?.loading = false
                 self?.getSyncLog(afterUploaded: true)
-            case .DECODEERROR:
-                self?.loading = false
-                self?.error = ("Decode Error", "Decode RecordTimes")
-            default:
-                self?.loading = false
-                self?.error = ("Network Error", "GET RecordTimes status: \(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[get RecordTimes ERROR] \(message)")
+                    }
+                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                default:
+                    self?.error = error.alertMessage
+                }
             }
         }
     }
@@ -137,28 +150,26 @@ extension SyncDailysVM {
     private func getSyncLog(afterUploaded: Bool) {
         self.loadingText = .getSyncLog
         self.loading = true
-        self.networkController.getSyncLog { [weak self] status, syncLog in
+        self.networkController.getSyncLog { [weak self] result in
             self?.loading = false
-            switch status {
-            case .SUCCESS:
-                guard let syncLog = syncLog else {
-                    if (afterUploaded) {
-                        self?.error = ("Network Error", "GET SyncLog")
-                    }
-                    // server 상에 아직 정보가 없는 경우 nil 상태
-                    return
-                }
-                
+            switch result {
+            case .success(let syncLog):
                 if (afterUploaded) {
                     self?.saveLastUploadedDate(to: syncLog.updatedAt)
                     self?.targetDailys = []
                     self?.saveDailysSuccess = true
                 }
                 self?.syncLog = syncLog
-            case .DECODEERROR:
-                self?.error = ("Decode Error", "Decode SyncLog")
-            default:
-                self?.error = ("Network Error", "GET SyncLog status: \(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[get SyncLog ERROR] \(message)")
+                    }
+                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                default:
+                    self?.error = error.alertMessage
+                }
             }
         }
     }

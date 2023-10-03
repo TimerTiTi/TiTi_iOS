@@ -20,16 +20,14 @@ final class SettingUpdateHistoryVM {
     }
     
     private func configureInfos() {
-        self.networkController.getUpdateHistorys { [weak self] status, infos in
-            switch status {
-            case .SUCCESS:
-                self?.infos = infos.sorted(by: {
+        self.networkController.getUpdateHistorys { [weak self] result in
+            switch result {
+            case .success(let updateInfo):
+                self?.infos = updateInfo.sorted(by: {
                     $0.version.value.compare($1.version.value, options: .numeric) == .orderedDescending
                 })
-            case .DECODEERROR:
-                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
-            default:
-                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
+            case .failure(let error):
+                self?.warning = error.alertMessage
             }
         }
     }

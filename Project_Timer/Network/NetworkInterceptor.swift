@@ -64,12 +64,15 @@ extension NetworkInterceptor {
               let password = KeyChain.shared.get(key: .password) else { return }
         let loginInfo = TestUserLoginInfo(username: username, password: password)
         let network: TestServerAuthFetchable = NetworkController(network: Network())
-        network.login(userInfo: loginInfo) { status, token in
-            guard status == .SUCCESS, let token = token else {
+        network.login(userInfo: loginInfo) { result in
+            switch result {
+            case .success(let token):
+                completion(token)
+            case .failure(let error):
+                let message = error.alertMessage
+                print("title: \(error.title)/nmessage: \(error.message)")
                 completion(nil)
-                return
             }
-            completion(token)
         }
     }
 }

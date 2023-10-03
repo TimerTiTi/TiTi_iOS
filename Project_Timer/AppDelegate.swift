@@ -71,11 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// 최신버전 체크로직
     private func checkVersion() {
         guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
-        NetworkController(network: Network()).getAppstoreVersion { status, version in
-            switch status {
-            case .SUCCESS:
-                guard let storeVersion = version else { return }
-                
+        NetworkController(network: Network()).getAppstoreVersion { result in
+            switch result {
+            case .success(let storeVersion):
                 if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
                     let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
                     let alert = UIAlertController(title: "Update new version".localized(), message: message, preferredStyle: .alert)
@@ -91,8 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     alert.addAction(update)
                     SceneDelegate.sharedWindow?.rootViewController?.present(alert, animated: true)
                 }
-            default:
-                return
+            case .failure(let error):
+                print(error.alertMessage)
             }
         }
     }

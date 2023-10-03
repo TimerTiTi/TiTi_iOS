@@ -334,6 +334,10 @@
 "Signup Error" = "회원가입 불가";
 "Server Error" = "서버 오류";
 "Login Error" = "로그인 불가";
+"Upload Fail" = "업로드 실패";
+"Download Fail" = "다운로드 실패";
+"Signup Success" = "회원가입 성공";
+"Login Success" = "로그인 성공";
 
 "Please check the network and try again" = "네트워크를 확인 후 다시 시도해주세요";
 "Please update to the latest version" = "최신 버전으로 업데이트를 해주세요";
