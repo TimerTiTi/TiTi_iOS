@@ -13,16 +13,6 @@ final class NetworkController {
     init(network: NetworkFetchable) {
         self.network = network
     }
-    
-    private func decoded<T: Decodable>(_ type: T.Type, from data: Data) -> T? {
-        do {
-            let decoded = try JSONDecoder.dateFormatted.decode(type, from: data)
-            return decoded
-        } catch {
-            print("Decode \(T.self) failed. \(error)")
-            return nil
-        }
-    }
 }
 
 extension NetworkController: VersionFetchable {
@@ -42,87 +32,78 @@ extension NetworkController: VersionFetchable {
                 #endif
             default:
                 completion(.failure(NetworkError.error(result)))
-                return
             }
         }
     }
 }
 
 extension NetworkController: TiTiFunctionsFetchable {
-    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void) {
+    func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let functionInfos: FunctionInfos = try? JSONDecoder().decode(FunctionInfos.self, from: data) else {
-                    print("Decode Error: FunctionInfos")
-                    completion(.DECODEERROR, [])
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, functionInfos.functionInfos)
+                completion(.success(functionInfos.functionInfos))
             default:
-                completion(result.status, [])
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 }
 
 extension NetworkController: UpdateHistoryFetchable {
-    func getUpdateHistorys(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void) {
+    func getUpdateHistorys(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let updateInfos: UpdateInfos = try? JSONDecoder().decode(UpdateInfos.self, from: data) else {
-                    print("Decode Error: UpdateInfos")
-                    completion(.DECODEERROR, [])
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, updateInfos.updateInfos)
+                completion(.success(updateInfos.updateInfos))
             default:
-                completion(result.status, [])
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 }
 
 extension NetworkController: YoutubeLinkFetchable {
-    func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void) {
+    func getYoutubeLink(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let youtubeLinkInfo: YoutubeLinkInfo = try? JSONDecoder().decode(YoutubeLinkInfo.self, from: data) else {
-                    print("Decode Error: YoutubeLinkInfoDTO")
-                    completion(.DECODEERROR, nil)
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, youtubeLinkInfo)
+                completion(.success(youtubeLinkInfo))
             default:
-                completion(result.status, nil)
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 }
 
 extension NetworkController: SurveysFetchable {
-    func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void) {
+    func getSurveys(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.surveys, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let surveys: SurveyInfos = try? JSONDecoder().decode(SurveyInfos.self, from: data) else {
-                    print("Decode Error: SurveyInfos")
-                    completion(.DECODEERROR, [])
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, surveys.surveyInfos ?? [])
+                completion(.success(surveys.surveyInfos ?? []))
             default:
-                completion(result.status, [])
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
@@ -130,71 +111,70 @@ extension NetworkController: SurveysFetchable {
 
 // MARK: TestServer
 extension NetworkController: TestServerAuthFetchable {
-    func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
+    func signup(userInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, param: nil, body: userInfo) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                       let token = dto["token"] as? String else {
-                    print("Decode Error: signup")
-                    completion(.DECODEERROR, nil)
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, token)
+                completion(.success(token))
             default:
-                completion(result.status, nil)
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 
-    func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void) {
+    func login(userInfo: TestUserLoginInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.TestServer.authLogin, method: .post, param: nil, body: userInfo) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                       let token = dto["token"] as? String else {
-                    print("Decode Error: signup")
-                    completion(.DECODEERROR, nil)
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, token)
-            case.CLIENTERROR:
+                completion(.success(token))
+            default:
                 if KeyChain.shared.deleteAll() {
                     UserDefaultsManager.set(to: false, forKey: .loginInTestServerV1)
                     NotificationCenter.default.post(name: KeyChain.logouted, object: nil)
                 }
-                completion(.CLIENTERROR, nil)
-            default:
-                completion(result.status, nil)
-                return
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 }
 
 extension NetworkController: TestServerDailyFetchable {
-    func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void) {
+    func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         let param = ["gmt": TimeZone.current.secondsFromGMT()]
         self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, param: param, body: dailys) { result in
-            completion(result.status)
+            switch result.status {
+            case .SUCCESS:
+                completion(.success(true))
+            default:
+                completion(.failure(NetworkError.error(result)))
+            }
         }
     }
     
-    func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { [weak self] result in
+    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dailys = self?.decoded([Daily].self, from: data) else {
-                    completion(.DECODEERROR, [])
+                      let dailys = try? JSONDecoder.dateFormatted.decode([Daily].self, from: data) else {
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, dailys)
+                completion(.success(dailys))
             default:
-                completion(result.status, [])
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
@@ -202,39 +182,47 @@ extension NetworkController: TestServerDailyFetchable {
 
 
 extension NetworkController: TestServerSyncLogFetchable {
-    func getSyncLog(completion: @escaping (NetworkStatus, SyncLog?) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { [weak self] result in
+    func getSyncLog(completion: @escaping (Result<SyncLog, NetworkError>) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { result in
             switch result.status {
             case .SUCCESS:
-                guard let data = result.data else { return }
-                let syncLog = self?.decoded(SyncLog.self, from: data)
-                completion(.SUCCESS, syncLog)
+                guard let data = result.data,
+                      let syncLog = try? JSONDecoder.dateFormatted.decode(SyncLog.self, from: data) else {
+                    completion(.failure(.DECODEERROR))
+                    return
+                }
+                completion(.success(syncLog))
             default:
-                completion(result.status, nil)
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
 }
 
 extension NetworkController: TestServerRecordTimesFetchable {
-    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void) {
+    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.TestServer.recordTime, method: .post, param: nil, body: recordTimes) { result in
-            completion(result.status)
+            switch result.status {
+            case .SUCCESS:
+                completion(.success(true))
+            default:
+                completion(.failure(NetworkError.error(result)))
+            }
         }
     }
     
-    func getRecordTimes(completion: @escaping (NetworkStatus, RecordTimes?) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.recordTime, method: .get) { [weak self] result in
+    func getRecordTimes(completion: @escaping (Result<RecordTimes, NetworkError>) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.recordTime, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let recordTime = self?.decoded(RecordTimes.self, from: data) else {
-                    completion(.DECODEERROR, nil)
+                      let recordTime = try? JSONDecoder.dateFormatted.decode(RecordTimes.self, from: data) else {
+                    completion(.failure(.DECODEERROR))
                     return
                 }
-                completion(.SUCCESS, recordTime)
+                completion(.success(recordTime))
             default:
-                completion(result.status, nil)
+                completion(.failure(NetworkError.error(result)))
             }
         }
     }
