@@ -100,6 +100,7 @@ extension SyncDailysVC {
         self.viewModel?.$error
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
+                LoadingIndicator.hideLoading()
                 guard let error = error else { return }
                 self?.showAlertWithOK(title: error.title, text: error.text)
             })

@@ -33,7 +33,7 @@ final class SignupLoginVM {
                 switch error {
                     // signup 관련 error message 추가
                 case .CLIENTERROR(_):
-                    self?.alert = (title: "Signup Error".localized(), text: "Please enter at least 5 chars and correct email value".localized())
+                    self?.alert = (title: "Signup Error".localized(), text: "Please check your nickname or email (at least 5 characters)".localized())
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -52,7 +52,7 @@ final class SignupLoginVM {
                 switch error {
                     // login 관련 error message 추가
                 case .CLIENTERROR(_):
-                    self?.alert = (title: "Login Error".localized(), text: "Please enter your nickname and password correctly".localized())
+                    self?.alert = (title: "Login Fail".localized(), text: "Please enter your nickname and password correctly".localized())
                 default:
                     self?.alert = error.alertMessage
                 }

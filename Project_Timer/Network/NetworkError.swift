@@ -78,15 +78,15 @@ enum NetworkError: Error {
         case .TIMEOUT:
             return "Please check the network and try again".localized()
         case .DECODEERROR:
-            return "Please update to the latest version".localized()
+            return "Please update to the latest version of the app".localized()
         case .AUTHENTICATION(_):
             return "Please log in again".localized()
         case .NOTFOUND(_):
-            return "Please update to the latest version".localized()
+            return "Please update to the latest version of the app".localized()
         case .CONFLICT(_):
             return "Please enter your nickname or email in a different value".localized()
         case .SERVERERROR(_):
-            return "The server encountered an error. Please try again in a few minutes".localized()
+            return "The server something went wrong. Please try again in a few minutes".localized()
         default:
             return "Please check the network and try again".localized()
         }

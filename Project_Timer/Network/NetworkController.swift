@@ -182,16 +182,19 @@ extension NetworkController: TestServerDailyFetchable {
 
 
 extension NetworkController: TestServerSyncLogFetchable {
-    func getSyncLog(completion: @escaping (Result<SyncLog, NetworkError>) -> Void) {
+    func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { result in
             switch result.status {
             case .SUCCESS:
-                guard let data = result.data,
-                      let syncLog = try? JSONDecoder.dateFormatted.decode(SyncLog.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
+                if let data = result.data {
+                    guard let syncLog = try? JSONDecoder.dateFormatted.decode(SyncLog.self, from: data) else {
+                        completion(.failure(.DECODEERROR))
+                        return
+                    }
+                    completion(.success(syncLog))
+                } else {
+                    completion(.success(nil))
                 }
-                completion(.success(syncLog))
             default:
                 completion(.failure(NetworkError.error(result)))
             }

@@ -46,7 +46,7 @@ protocol TestServerDailyFetchable {
 }
 
 protocol TestServerSyncLogFetchable {
-    func getSyncLog(completion: @escaping (Result<SyncLog, NetworkError>) -> Void)
+    func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void)
 }
 
 protocol TestServerRecordTimesFetchable {

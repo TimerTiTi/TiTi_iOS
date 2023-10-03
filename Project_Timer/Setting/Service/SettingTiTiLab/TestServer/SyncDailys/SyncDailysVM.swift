@@ -62,7 +62,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Dailys ERROR] \(message)")
                     }
-                    self?.error = (title: "Upload Fail".localized(), text: "Please update to the latest version".localized())
+                    self?.error = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
                     self?.error = error.alertMessage
                 }
@@ -86,7 +86,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Recordtime ERROR] \(message)")
                     }
-                    self?.error = (title: "Upload Fail".localized(), text: "Please update to the latest version".localized())
+                    self?.error = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
                     self?.error = error.alertMessage
                 }
@@ -114,7 +114,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get Dailys ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
                     self?.error = error.alertMessage
                 }
@@ -138,7 +138,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get RecordTimes ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
                     self?.error = error.alertMessage
                 }
@@ -154,7 +154,7 @@ extension SyncDailysVM {
             self?.loading = false
             switch result {
             case .success(let syncLog):
-                if (afterUploaded) {
+                if let syncLog = syncLog, afterUploaded {
                     self?.saveLastUploadedDate(to: syncLog.updatedAt)
                     self?.targetDailys = []
                     self?.saveDailysSuccess = true
@@ -166,7 +166,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get SyncLog ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Fail".localized(), text: "Please update to the latest version".localized())
+                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
                     self?.error = error.alertMessage
                 }
