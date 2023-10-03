@@ -52,6 +52,12 @@ extension Network {
             return NetworkResult(status: status, data: nil)
         }
         
+        // server로부터 받은 data가 'null' 값인 경우 추가처리
+        if String(data: data, encoding: .utf8) == "null" {
+            print("[Network] Warning(\(statusCode)): null")
+            return NetworkResult(status: status, data: nil)
+        }
+        
         if Infos.isDevMode {
             print("[Network] url: \(String(describing: response.request?.url))")
             print("[Network] statusCode: \(statusCode)")
