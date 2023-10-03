@@ -24,36 +24,38 @@ final class SignupLoginVM {
     
     func signup(info: TestUserSignupInfo) {
         self.loadingText = "Waiting for Signup..."
-        self.network.signup(userInfo: info) { [weak self] status, token in
+        self.network.signup(userInfo: info) { [weak self] result in
             self?.loadingText = nil
-            switch status {
-            case .SUCCESS:
-                guard let token = token else {
-                    self?.alert = (title: "Network Error", text: "invalid token value")
-                    return
-                }
+            switch result {
+            case .success(let token):
                 self?.saveUserInfo(username: info.username, password: info.password, token: token)
-            case .CONFLICT:
-                self?.alert = (title: "CONFLICT", text: "need another infos")
-            default:
-                self?.alert = (title: "FAIL", text: "\(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                    // signup 관련 error message 추가
+                case .CLIENTERROR(_):
+                    self?.alert = (title: "Signup Error".localized(), text: "Please enter at least 5 chars and correct email value".localized())
+                default:
+                    self?.alert = error.alertMessage
+                }
             }
         }
     }
     
     func login(info: TestUserLoginInfo) {
         self.loadingText = "Waiting for Login..."
-        self.network.login(userInfo: info) { [weak self] status, token in
+        self.network.login(userInfo: info) { [weak self] result in
             self?.loadingText = nil
-            switch status {
-            case .SUCCESS:
-                guard let token = token else {
-                    self?.alert = (title: "Network Error", text: "invalid token value")
-                    return
-                }
+            switch result {
+            case .success(let token):
                 self?.saveUserInfo(username: info.username, password: info.password, token: token)
-            default:
-                self?.alert = (title: "FAIL", text: "\(status.rawValue)")
+            case .failure(let error):
+                switch error {
+                    // login 관련 error message 추가
+                case .CLIENTERROR(_):
+                    self?.alert = (title: "Login Error".localized(), text: "Please enter your nickname and password correctly".localized())
+                default:
+                    self?.alert = error.alertMessage
+                }
             }
         }
     }

@@ -77,10 +77,14 @@ final class SettingVM {
         
         self.cells = cells
         
-        NetworkController(network: Network()).getAppstoreVersion { [weak self] status, version in
-            guard status == .SUCCESS, let version = version else { return }
-            versionCell.updateSubTitle(to: "Latest version".localized()+": \(version)")
-            self?.lastestVersionFetched = true
+        NetworkController(network: Network()).getAppstoreVersion { [weak self] result in
+            switch result {
+            case .success(let version):
+                versionCell.updateSubTitle(to: "Latest version".localized()+": \(version)")
+                self?.lastestVersionFetched = true
+            case .failure(let error):
+                print(error.alertMessage)
+            }
         }
     }
 }

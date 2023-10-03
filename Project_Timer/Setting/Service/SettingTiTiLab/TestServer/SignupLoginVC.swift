@@ -247,10 +247,11 @@ extension SignupLoginVC {
         self.viewModel.$loginSuccess
             .receive(on: DispatchQueue.main)
             .sink { [weak self] loginSuccess in
-                if loginSuccess {
-                    self?.showAlertWithOKAfterHandler(title: "SUCCESS", text: "") { [weak self] in
-                        self?.navigationController?.popViewController(animated: true)
-                    }
+                guard loginSuccess else { return }
+                
+                let title: String = self?.viewModel.isLogin == true ? "Login Success".localized() : "Signup Success".localized()
+                self?.showAlertWithOKAfterHandler(title: title, text: "") { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
                 }
             }
             .store(in: &self.cancellables)

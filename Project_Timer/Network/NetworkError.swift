@@ -91,4 +91,9 @@ enum NetworkError: Error {
             return "Please check the network and try again".localized()
         }
     }
+    
+    /// 범용적으로 표시되는 alert문구의 조합을 반환
+    var alertMessage: (title: String, text: String) {
+        return (title: self.title, text: self.message)
+    }
 }

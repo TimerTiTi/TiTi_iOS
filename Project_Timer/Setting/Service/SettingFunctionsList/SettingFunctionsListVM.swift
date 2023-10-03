@@ -24,31 +24,23 @@ final class SettingFunctionsListVM {
     }
     
     private func configureInfos() {
-        self.networkController.getTiTiFunctions { [weak self] status, infos in
-            switch status {
-            case .SUCCESS:
-                self?.infos = infos
-            case .DECODEERROR:
-                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
-            default:
-                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
+        self.networkController.getTiTiFunctions { [weak self] result in
+            switch result {
+            case .success(let functionInfos):
+                self?.infos = functionInfos
+            case .failure(let error):
+                self?.warning = error.alertMessage
             }
         }
     }
     
     private func configureYoutubeLink() {
-        self.networkController.getYoutubeLink { [weak self] status, info in
-            switch status {
-            case .SUCCESS:
-                guard let info = info else {
-                    self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
-                    return
-                }
-                self?.youtubeLink = info.url.value
-            case .DECODEERROR:
-                self?.warning = (title: "네트워크 에러", text: "최신 버전으로 업데이트 해주세요")
-            default:
-                self?.warning = (title: "네트워크 에러", text: "네트워크를 확인 후 다시 시도해주세요")
+        self.networkController.getYoutubeLink { [weak self] result in
+            switch result {
+            case .success(let youtubeLinkInfo):
+                self?.youtubeLink = youtubeLinkInfo.url.value
+            case .failure(let error):
+                self?.warning = error.alertMessage
             }
         }
     }

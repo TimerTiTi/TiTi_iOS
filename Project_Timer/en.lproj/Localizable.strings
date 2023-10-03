@@ -330,6 +330,10 @@
 "Signup Error" = "Signup Error";
 "Server Error" = "Server Error";
 "Login Error" = "Login Error";
+"Upload Fail" = "Upload Fail";
+"Download Fail" = "Download Fail";
+"Signup Success" = "Signup Success";
+"Login Success" = "Login Success";
 
 "Please check the network and try again" = "Please check the network and try again";
 "Please update to the latest version" = "Please update to the latest version";
