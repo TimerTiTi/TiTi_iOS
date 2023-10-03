@@ -84,7 +84,7 @@ enum NetworkError: Error {
         case .NOTFOUND(_):
             return "Please update to the latest version".localized()
         case .CONFLICT(_):
-            return "Please enter other information".localized()
+            return "Please enter your nickname or email in a different value".localized()
         case .SERVERERROR(_):
             return "The server encountered an error. Please try again in a few minutes".localized()
         default:
