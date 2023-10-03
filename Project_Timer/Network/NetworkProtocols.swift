@@ -15,41 +15,41 @@ protocol NetworkFetchable {
 }
 
 protocol VersionFetchable {
-    func getAppstoreVersion(completion: @escaping (NetworkStatus, String?) -> Void)
+    func getAppstoreVersion(completion: @escaping (Result<String, NetworkError>) -> Void)
 }
 
 protocol TiTiFunctionsFetchable {
-    func getTiTiFunctions(completion: @escaping (NetworkStatus, [FunctionInfo]) -> Void)
+    func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
 }
 
 protocol UpdateHistoryFetchable {
-    func getUpdateHistorys(completion: @escaping (NetworkStatus, [UpdateInfo]) -> Void)
+    func getUpdateHistorys(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void)
 }
 
 protocol YoutubeLinkFetchable {
-    func getYoutubeLink(completion: @escaping (NetworkStatus, YoutubeLinkInfo?) -> Void)
+    func getYoutubeLink(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void)
 }
 
 protocol SurveysFetchable {
-    func getSurveys(completion: @escaping (NetworkStatus, [SurveyInfo]) -> Void)
+    func getSurveys(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void)
 }
 
 // MARK: TestServer
 protocol TestServerAuthFetchable {
-    func signup(userInfo: TestUserSignupInfo, completion: @escaping (NetworkStatus, String?) -> Void)
-    func login(userInfo: TestUserLoginInfo, completion: @escaping (NetworkStatus, String?) -> Void)
+    func signup(userInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
+    func login(userInfo: TestUserLoginInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
 }
 
 protocol TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (NetworkStatus) -> Void)
-    func getDailys(completion: @escaping (NetworkStatus, [Daily]) -> Void)
+    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void)
 }
 
 protocol TestServerSyncLogFetchable {
-    func getSyncLog(completion: @escaping (NetworkStatus, SyncLog?) -> Void)
+    func getSyncLog(completion: @escaping (Result<SyncLog, NetworkError>) -> Void)
 }
 
 protocol TestServerRecordTimesFetchable {
-    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (NetworkStatus) -> Void)
-    func getRecordTimes(completion: @escaping (NetworkStatus, RecordTimes?) -> Void)
+    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void)
+    func getRecordTimes(completion: @escaping (Result<RecordTimes, NetworkError>) -> Void)
 }

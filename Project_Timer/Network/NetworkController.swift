@@ -26,23 +26,22 @@ final class NetworkController {
 }
 
 extension NetworkController: VersionFetchable {
-    func getAppstoreVersion(completion: @escaping (NetworkStatus, String?) -> Void) {
+    func getAppstoreVersion(completion: @escaping (Result<String, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.lastestVersion, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
                       let lastestVersionInfo: LastestVersionInfo = try? JSONDecoder().decode(LastestVersionInfo.self, from: data) else {
-                    print("Decode Error: LastestVersionInfo")
-                    completion(.DECODEERROR, nil)
+                    completion(.failure(.DECODEERROR))
                     return
                 }
                 #if targetEnvironment(macCatalyst)
-                completion(.SUCCESS, lastestVersionInfo.macOS.value)
+                completion(.success(lastestVersionInfo.macOS.value))
                 #else
-                completion(.SUCCESS, lastestVersionInfo.iOS.value)
+                completion(.success(lastestVersionInfo.iOS.value))
                 #endif
             default:
-                completion(result.status, nil)
+                completion(.failure(NetworkError.error(result)))
                 return
             }
         }

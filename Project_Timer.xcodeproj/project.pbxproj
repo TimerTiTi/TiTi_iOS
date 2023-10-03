@@ -1027,8 +1027,8 @@
 			isa = PBXGroup;
 			children = (
 				8791081E28387537005D7B10 /* NetworkURL.swift */,
-				87910820283875C0005D7B10 /* NetworkController.swift */,
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
+				87910820283875C0005D7B10 /* NetworkController.swift */,
 				875EDA332957E0360037A7EB /* NetworkInterceptor.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
 				879108242838761B005D7B10 /* NetworkStatus.swift */,
