@@ -282,7 +282,7 @@
 		93B08528248DDF2F00E215BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B08526248DDF2F00E215BD /* Main.storyboard */; };
 		93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */; };
 		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
-		B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */; };
+		FB30B41465C8662D9EA7C346 /* libPods-Project_Timer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D12066B1C8AA189F4F224BB2 /* libPods-Project_Timer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -341,7 +341,6 @@
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
 		04FA75D7286F2AB900BAE2B2 /* TiTiFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiFont.swift; sourceTree = "<group>"; };
-		807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCell.swift; sourceTree = "<group>"; };
 		870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCellInfo.swift; sourceTree = "<group>"; };
 		870055C228EE974600F8BCA9 /* SettingRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVM.swift; sourceTree = "<group>"; };
@@ -584,6 +583,7 @@
 		93B0852E248DDF3000E215BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
 		A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
+		D12066B1C8AA189F4F224BB2 /* libPods-Project_Timer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Project_Timer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
 		F426A4BDC73F07A7F14D3249 /* Pods-Project_Timer.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.develop.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.develop.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -606,7 +606,7 @@
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
-				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
+				FB30B41465C8662D9EA7C346 /* libPods-Project_Timer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,9 +664,9 @@
 		82C43A3EC63AD976BA01843F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */,
 				878B30E42992BB5A00BE7413 /* WidgetKit.framework */,
 				878B30E62992BB5A00BE7413 /* SwiftUI.framework */,
+				D12066B1C8AA189F4F224BB2 /* libPods-Project_Timer.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1509,7 +1509,6 @@
 				93B08519248DDF2F00E215BD /* Sources */,
 				93B0851A248DDF2F00E215BD /* Frameworks */,
 				93B0851B248DDF2F00E215BD /* Resources */,
-				D8BC82D384EBC247913C0FEC /* [CP] Embed Pods Frameworks */,
 				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -1614,23 +1613,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D8BC82D384EBC247913C0FEC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EC16A477924DCEC2DA0A756B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

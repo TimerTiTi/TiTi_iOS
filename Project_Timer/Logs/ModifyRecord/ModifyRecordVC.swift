@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 import Combine
-import GoogleMobileAds
+//import GoogleMobileAds
 
 final class ModifyRecordVC: UIViewController {
     static let identifier = "ModifyRecordVC"
@@ -31,7 +31,7 @@ final class ModifyRecordVC: UIViewController {
     private var taskInteractionFrameViewHeight: NSLayoutConstraint?
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
-    private var rewardedAd: GADRewardedAd?
+//    private var rewardedAd: GADRewardedAd?
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
         case timeTableDailyGraphView = 1
@@ -40,7 +40,7 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadRewardedAd()
+//        self.loadRewardedAd()
         self.configureNavigationBar()
         self.configureScrollView()
         self.configurePage()
@@ -739,12 +739,13 @@ extension ModifyRecordVC {
             self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
                 self?.viewModel?.reset()
             }
-        } else {
-            self.showOKCancelAlert(title: "Inform".localized(),
-                                   message: "You have to watch the ad to save edited record. Would you like to watch?".localized()) { [weak self] in
-                self?.showRewardedAd()
-            }
-        }
+        } 
+//        else {
+//            self.showOKCancelAlert(title: "Inform".localized(),
+//                                   message: "You have to watch the ad to save edited record. Would you like to watch?".localized()) { [weak self] in
+//                self?.showRewardedAd()
+//            }
+//        }
     }
     
     @objc private func backButtonTapped() {
@@ -766,56 +767,56 @@ extension ModifyRecordVC {
     }
 }
 
-// MARK: 애드몹
-extension ModifyRecordVC: GADFullScreenContentDelegate {
-    /// 광고 로드
-    private func loadRewardedAd() {
-        guard let adID = Bundle.main.object(forInfoDictionaryKey: "ADMOB_AD_ID") as? String else { return }
-        
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: adID,
-                           request: request) { [weak self] ad, error in
-            if let error = error {
-                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
-                return
-            }
-            
-            self?.rewardedAd = ad
-            self?.rewardedAd?.fullScreenContentDelegate = self
-            print("Rewarded ad loaded.")
-        }
-    }
-    
-    private func showRewardedAd() {
-        if let ad = rewardedAd {
-            ad.present(fromRootViewController: self) {
-                let reward = ad.adReward
-                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-                self.viewModel?.save()
-            }
-        } else {
-            print("Ad wasn't ready")
-        }
-    }
-    
-    /// 델리게이트에게 전면 광고 표시 실패를 알림
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
-        print("Ad did fail to present full screen content.")
-    }
-    
-    /// 델리게이트에게 전면 광고 표시 성공을 알림
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad will present full screen content.")
-    }
-    
-    /// 델리게이트에게 전면 광고가 dismiss 되었음을 알림
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-        print("Ad did dismiss full screen content.")
-        
-        self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
-            self?.viewModel?.reset()
-        }
-        // 다음 광고 미리 로드
-        self.loadRewardedAd()
-    }
-}
+//// MARK: 애드몹
+//extension ModifyRecordVC: GADFullScreenContentDelegate {
+//    /// 광고 로드
+//    private func loadRewardedAd() {
+//        guard let adID = Bundle.main.object(forInfoDictionaryKey: "ADMOB_AD_ID") as? String else { return }
+//        
+//        let request = GADRequest()
+//        GADRewardedAd.load(withAdUnitID: adID,
+//                           request: request) { [weak self] ad, error in
+//            if let error = error {
+//                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+//                return
+//            }
+//            
+//            self?.rewardedAd = ad
+//            self?.rewardedAd?.fullScreenContentDelegate = self
+//            print("Rewarded ad loaded.")
+//        }
+//    }
+//    
+//    private func showRewardedAd() {
+//        if let ad = rewardedAd {
+//            ad.present(fromRootViewController: self) {
+//                let reward = ad.adReward
+//                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+//                self.viewModel?.save()
+//            }
+//        } else {
+//            print("Ad wasn't ready")
+//        }
+//    }
+//    
+//    /// 델리게이트에게 전면 광고 표시 실패를 알림
+//    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+//        print("Ad did fail to present full screen content.")
+//    }
+//    
+//    /// 델리게이트에게 전면 광고 표시 성공을 알림
+//    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Ad will present full screen content.")
+//    }
+//    
+//    /// 델리게이트에게 전면 광고가 dismiss 되었음을 알림
+//    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+//        print("Ad did dismiss full screen content.")
+//        
+//        self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
+//            self?.viewModel?.reset()
+//        }
+//        // 다음 광고 미리 로드
+//        self.loadRewardedAd()
+//    }
+//}

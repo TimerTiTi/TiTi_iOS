@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 import UserNotifications
-import ActivityKit
+//import ActivityKit
 
 final class TimerVM {
     @Published private(set) var times: Times
@@ -124,7 +124,10 @@ final class TimerVM {
             self.timerStart()
             self.setBadge()
             self.sendNotification()
+            #if targetEnvironment(macCatalyst)
+            #else
             self.startLiveActivity()
+            #endif
         }
     }
     
@@ -177,9 +180,12 @@ final class TimerVM {
         self.timerStop()
         self.removeBadge()
         self.removeNotification()
+        #if targetEnvironment(macCatalyst)
+        #else
         async {
             await self.endLiveActivity()
         }
+        #endif
     }
     
     private func setBadge() {
@@ -268,6 +274,8 @@ final class TimerVM {
 
 // MARK: Live Activity & Dynamic Island
 extension TimerVM {
+    #if targetEnvironment(macCatalyst)
+    #else
     private func startLiveActivity() {
         if #available(iOS 16.2, *) {
             if ActivityAuthorizationInfo().areActivitiesEnabled {
@@ -298,4 +306,5 @@ extension TimerVM {
             }
         }
     }
+    #endif
 }

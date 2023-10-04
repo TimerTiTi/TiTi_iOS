@@ -59,7 +59,7 @@ final class SettingVM {
             SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
         ])
         #if targetEnvironment(macCatalyst)
-        cells.last?.remove(at: 2) // Control 제거
+        cells[cells.count-1].remove(at: 2) // Control 제거
         #endif
         // Version & Update history
         cells.append([

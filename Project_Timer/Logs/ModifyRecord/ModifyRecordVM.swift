@@ -59,7 +59,7 @@ final class ModifyRecordVM {
             return (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
         }
     }
-    var isRemoveAd: Bool = false
+    var isRemoveAd: Bool = true
     var isDeleteAnimation: Bool = false
     
     init(daily: Daily, isReverseColor: Bool) {

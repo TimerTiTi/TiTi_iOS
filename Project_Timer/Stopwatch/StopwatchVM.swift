@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 import UserNotifications
-import ActivityKit
+//import ActivityKit
 
 final class StopwatchVM {
     @Published private(set) var times: Times
@@ -112,16 +112,22 @@ final class StopwatchVM {
             self.timerStop()
             self.removeBadge()
             self.removeNotification()
+            #if targetEnvironment(macCatalyst)
+            #else
             async {
                 await self.endLiveActivity()
             }
+            #endif
         } else {
             self.updateAnimationSetting()
             RecordsManager.shared.recordTimes.recordStart()
             self.timerStart()
             self.setBadge()
             self.sendNotification()
+            #if targetEnvironment(macCatalyst)
+            #else
             self.startLiveActivity()
+            #endif
         }
     }
     
@@ -233,6 +239,8 @@ final class StopwatchVM {
 
 // MARK: Live Activity & Dynamic Island
 extension StopwatchVM {
+    #if targetEnvironment(macCatalyst)
+    #else
     private func startLiveActivity() {
         if #available(iOS 16.2, *) {
             if ActivityAuthorizationInfo().areActivitiesEnabled {
@@ -263,4 +271,5 @@ extension StopwatchVM {
             }
         }
     }
+    #endif
 }
