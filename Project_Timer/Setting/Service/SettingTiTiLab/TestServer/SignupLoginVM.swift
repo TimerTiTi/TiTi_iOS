@@ -53,6 +53,9 @@ final class SignupLoginVM {
                     // login 관련 error message 추가
                 case .CLIENTERROR(_):
                     self?.alert = (title: "Login Fail".localized(), text: "Please enter your nickname and password correctly".localized())
+                    // TestServer 에러핸들링 이슈로 404코드 추가
+                case .NOTFOUND(_):
+                    self?.alert = (title: "Login Fail".localized(), text: "Please enter your nickname and password correctly".localized())
                 default:
                     self?.alert = error.alertMessage
                 }
