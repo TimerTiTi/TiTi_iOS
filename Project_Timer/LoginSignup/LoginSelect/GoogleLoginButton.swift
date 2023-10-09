@@ -27,7 +27,7 @@ struct GoogleLoginButton: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 22, height: 23)
-                    Text("Google로 로그인")
+                    Text("Sign in with \("Google")")
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }
@@ -40,4 +40,10 @@ struct GoogleLoginButton: View {
     GoogleLoginButton {
         print("Google")
     }
+}
+#Preview {
+    GoogleLoginButton {
+        print("Google")
+    }
+    .environment(\.locale, .init(identifier: "en"))
 }

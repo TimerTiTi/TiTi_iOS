@@ -54,14 +54,14 @@ struct LoginSelectView: View {
                 Spacer()
                     .frame(height: 8)
                 
-                Text("TimerTiTi")
+                Text(verbatim: "TimerTiTi")
                     .foregroundStyle(.black)
                     .font(.custom("HGGGothicssiP80g", size: 15))
                 
                 Spacer()
                     .frame(height: 58)
                 
-                Text("#타이머티티")
+                Text("#\("TimerTiTi".localized())")
                     .foregroundStyle(.black)
                     .font(.custom("HGGGothicssiP80g", size: 33))
                 
@@ -105,7 +105,7 @@ struct LoginSelectView: View {
                 Button {
                     listener.dismiss = true
                 } label: {
-                    Text("로그인없이 서비스 이용하기")
+                    Text("Using without Sign in")
                         .font(.custom("HGGGothicssiP60g", size: 13))
                         .underline()
                         .foregroundColor(.black.opacity(0.5))
