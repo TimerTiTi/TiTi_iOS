@@ -11,20 +11,26 @@ import SwiftUI
 struct LoginSelectView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
     @State private var navigationPath: [LoginSignupRoute] = []
+    @State private var superViewSize: CGSize = .zero
     
     var body: some View {
         NavigationStack(path: $navigationPath) {
-            ZStack {
-                TiTiColor.loginBackground?.toColor
-                    .ignoresSafeArea()
-                
-                VStack(alignment: .center) {
-                    Spacer()
+            GeometryReader { geometry in
+                ZStack {
+                    TiTiColor.loginBackground?.toColor
+                        .ignoresSafeArea()
                     
-                    ContentView(navigationPath: $navigationPath)
-                    
-                    Spacer()
+                    VStack(alignment: .center) {
+                        Spacer()
+                        
+                        ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                        
+                        Spacer()
+                    }
                 }
+                .onChange(of: geometry.size, perform: { value in
+                    self.superViewSize = value
+                })
             }
         }
         .navigationDestination(for: LoginSignupRoute.self) { destination in
@@ -39,6 +45,7 @@ struct LoginSelectView: View {
     
     struct ContentView: View {
         @Binding var navigationPath: [LoginSignupRoute]
+        @Binding var superViewSize: CGSize
         
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
@@ -63,8 +70,20 @@ struct LoginSelectView: View {
                 
                 ButtonsView(navigationPath: $navigationPath)
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 48)
+            .frame(width: self.width)
+        }
+        
+        // 화면크기에 따른 width 크기조정
+        var width: CGFloat {
+            let size = superViewSize
+            switch size.deviceDetailType {
+            case .iPhoneMini:
+                return 300
+            case .iPhonePro, .iPhoneMax:
+                return size.minLength - 96
+            default:
+                return 400
+            }
         }
     }
     

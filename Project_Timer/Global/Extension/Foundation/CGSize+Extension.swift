@@ -44,7 +44,7 @@ extension CGSize {
         let width = minLength
         
         // iPad
-        if width >= DeviceDetailType.iPadMini.rawValue {
+        if width > DeviceDetailType.iPhoneMax.rawValue {
             if width >= DeviceDetailType.iPad12.rawValue {
                 return .iPad12
             } else if width >= DeviceDetailType.iPad11.rawValue {
