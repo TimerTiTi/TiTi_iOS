@@ -313,16 +313,23 @@
 "howToAddWidget_description_4" = "Select a Widget and size, then Tap \"Add Widget\".";
 "howToAddWidget_description_5" = "Now you can use Widget!";
 
+// Setting
 "Profile" = "Profile";
 "Log in in Setting" = "Log in";
 "Try Synchronization" = "Try Synchronization";
 
+// LoginSelectView
+"TimerTiTi" = "TimerTiTi";
+"Using without Sign in" = "Using without Sign in";
 "nickname" = "nickname";
 "email" = "email";
 "password" = "password";
 "Sign up" = "Sign up";
 "Log in" = "Log in";
+"Sign in with %@" = "Sign in with %@";
+"Sign in with Email" = "Sign in with Email";
 
+// Network Alert Title
 "Network Error" = "Network Error";
 "Network Timeout" = "Network Timeout";
 "Network Fetch Error" = "Network Fetch Error";
@@ -335,6 +342,7 @@
 "Signup Success" = "Signup Success";
 "Login Success" = "Login Success";
 
+// Network Alert Message
 "Please check the network and try again" = "Please check the network and try again";
 "Please update to the latest version of the app" = "Please update to the latest version of the app";
 "Please log in again" = "Please log in again";
@@ -342,3 +350,4 @@
 "The server something went wrong. Please try again in a few minutes" = "The server something went wrong. Please try again in a few minutes";
 "Please check your nickname or email (at least 5 characters)" = "Please check your nickname or email (at least 5 characters)";
 "Please enter your nickname and password correctly" = "Please enter your nickname and password correctly";
+

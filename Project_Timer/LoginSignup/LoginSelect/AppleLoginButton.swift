@@ -25,7 +25,7 @@ struct AppleLoginButton: View {
                 HStack(spacing: 12) {
                     Text("")
                         .font(.system(size: 30))
-                    Text("Apple로 로그인")
+                    Text("Sign in with \("Apple")")
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }
@@ -38,4 +38,10 @@ struct AppleLoginButton: View {
     AppleLoginButton {
         print("Apple")
     }
+}
+#Preview {
+    AppleLoginButton {
+        print("Apple")
+    }
+    .environment(\.locale, .init(identifier: "en"))
 }
