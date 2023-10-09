@@ -32,13 +32,13 @@ struct LoginSelectView: View {
                     self.superViewSize = value
                 })
             }
-        }
-        .navigationDestination(for: LoginSignupRoute.self) { destination in
-            switch destination {
-            case .nickname:
-                SignupNicknameView(navigationPath: $navigationPath)
-            case .login:
-                LoginView(navigationPath: $navigationPath)
+            .navigationDestination(for: LoginSignupRoute.self) { destination in
+                switch destination {
+                case .nickname:
+                    SignupNicknameView(navigationPath: $navigationPath)
+                case .login:
+                    LoginView(navigationPath: $navigationPath)
+                }
             }
         }
     }
