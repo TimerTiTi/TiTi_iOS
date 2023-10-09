@@ -56,19 +56,22 @@ struct LoginSelectView: View {
                 
                 Text(verbatim: "TimerTiTi")
                     .foregroundStyle(.black)
-                    .font(.custom("HGGGothicssiP80g", size: 15))
+                    .font(TiTiFont.HGGGothicssiP80g(size: 15))
                 
                 Spacer()
                     .frame(height: 58)
                 
                 Text("#\("TimerTiTi".localized())")
                     .foregroundStyle(.black)
-                    .font(.custom("HGGGothicssiP80g", size: 33))
+                    .font(TiTiFont.HGGGothicssiP80g(size: 33))
                 
                 Spacer()
                     .frame(height: 58)
                 
                 ButtonsView(navigationPath: $navigationPath)
+                
+                Spacer()
+                    .frame(height: 16)
             }
             .frame(width: self.width)
         }
@@ -106,7 +109,7 @@ struct LoginSelectView: View {
                     listener.dismiss = true
                 } label: {
                     Text("Using without Sign in")
-                        .font(.custom("HGGGothicssiP60g", size: 13))
+                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
                         .underline()
                         .foregroundColor(.black.opacity(0.5))
                         .padding(.all, 8)

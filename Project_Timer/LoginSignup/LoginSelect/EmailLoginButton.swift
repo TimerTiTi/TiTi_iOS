@@ -24,7 +24,7 @@ struct EmailLoginButton: View {
                 
                 HStack(spacing: 12) {
                     Text("✉️")
-                        .font(.system(size: 30))
+                        .font(.system(size: 25))
                     Text("Sign in with Email")
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
