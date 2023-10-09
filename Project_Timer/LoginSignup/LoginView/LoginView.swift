@@ -1,5 +1,5 @@
 //
-//  LoginSelectView.swift
+//  LoginView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct LoginSelectView: View {
+struct LoginView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
-    @State private var navigationPath: [LoginSignupRoute] = []
+    @Binding var navigationPath: [LoginSignupRoute]
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {
@@ -37,7 +37,7 @@ struct LoginSelectView: View {
                 case .nickname:
                     SignupNicknameView(navigationPath: $navigationPath)
                 case .login:
-                    LoginView(navigationPath: $navigationPath).environmentObject(listener)
+                    LoginView(navigationPath: $navigationPath)
                 }
             }
         }
@@ -68,7 +68,7 @@ struct LoginSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                ButtonsView(navigationPath: $navigationPath)
+                TextFieldsView(navigationPath: $navigationPath)
                 
                 Spacer()
                     .frame(height: 16)
@@ -90,37 +90,43 @@ struct LoginSelectView: View {
         }
     }
     
-    struct ButtonsView: View {
+    struct TextFieldsView: View {
         @EnvironmentObject var listener: LoginSignupEventListener
         @Binding var navigationPath: [LoginSignupRoute]
+        @State var email: String = ""
+        @State var password: String = ""
+        @State var postable: Bool = false
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                AppleLoginButton {
-                    print("Apple")
-                }
-                GoogleLoginButton {
-                    print("Google")
-                }
-                EmailLoginButton {
-                    navigationPath.append(.login)
-                }
+                LoginTextFieldView(type: .email, text: $email)
+                
+                LoginTextFieldView(type: .password, text: $password)
+                
                 Button {
-                    listener.dismiss = true
+                    print("login")
                 } label: {
-                    Text("Using without Sign in")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
-                        .underline()
-                        .foregroundColor(.black.opacity(0.5))
-                        .padding(.all, 8)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundStyle(.white)
+                            .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 58)
+                        
+                        Text("Log in")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundStyle(.gray)
+                    }
                 }
             }
         }
     }
 }
 
-struct LoginSelectView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
+    @State static private var navigationPath: [LoginSignupRoute] = []
+    
     static var previews: some View {
-        LoginSelectView()
+        LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
     }
 }
