@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SignupNicknameView: View {
+    @EnvironmentObject var listener: LoginSignupEventListener
     @Binding var navigationPath: [LoginSignupRoute]
     
     var body: some View {
