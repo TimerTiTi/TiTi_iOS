@@ -34,6 +34,7 @@ struct LoginTextFieldView: View {
                             .font(.system(size: 16, weight: .bold))
                             .foregroundStyle(TiTiColor.placeholderGray.toColor)
                     }
+                    .keyboardType(self.type == .email ? .emailAddress : .alphabet)
                     .padding(.horizontal, 16)
             } else {
                 SecureField("", text: $text)
@@ -44,6 +45,7 @@ struct LoginTextFieldView: View {
                             .font(.system(size: 16, weight: .bold))
                             .foregroundStyle(TiTiColor.placeholderGray.toColor)
                     }
+                    .keyboardType(.alphabet)
                     .padding(.horizontal, 16)
             }
         }

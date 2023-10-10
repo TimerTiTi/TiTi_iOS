@@ -10,7 +10,7 @@ import UIKit
 import Combine
 import SwiftUI
 
-final class LoginSignupVC: UIViewController {
+final class LoginSignupVC: PortraitVC {
     private let listener = LoginSignupEventListener()
     private var cancellables: Set<AnyCancellable> = []
 
@@ -44,6 +44,14 @@ final class LoginSignupVC: UIViewController {
                 if dismiss {
                     self?.dismiss(animated: true)
                 }
+            }
+            .store(in: &self.cancellables)
+        
+        self.listener.$loginSuccess
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] success in
+                guard success else { return }
+                self?.dismiss(animated: true)
             }
             .store(in: &self.cancellables)
     }
