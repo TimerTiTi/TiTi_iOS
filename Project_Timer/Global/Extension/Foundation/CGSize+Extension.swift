@@ -13,7 +13,7 @@ extension CGSize {
         case iPad12 = 1024
         case iPad11 = 834
         case iPadMini = 744
-        case iPhoneMax = 428
+        case iPhoneMax = 430
         case iPhonePro = 390
         case iPhoneMini = 375
     }
@@ -32,7 +32,7 @@ extension CGSize {
     var deviceType: DeviceType {
         let width = minLength
         
-        if width >= DeviceDetailType.iPadMini.rawValue {
+        if width > DeviceDetailType.iPhoneMax.rawValue {
             return .iPad
         } else {
             return .iPhone
@@ -55,7 +55,7 @@ extension CGSize {
         }
         // iPhone
         else {
-            if width >= DeviceDetailType.iPhoneMax.rawValue {
+            if width >= 428 { // 428 ~ 430 이내만 iPhoneMax UI 표시
                 return .iPhoneMax
             } else if width >= DeviceDetailType.iPhonePro.rawValue {
                 return .iPhonePro

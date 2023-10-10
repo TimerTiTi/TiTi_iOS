@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginSelectView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
-    @State private var navigationPath: [LoginSignupRoute] = []
+    @State private var navigationPath = NavigationPath()
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {
@@ -32,9 +32,9 @@ struct LoginSelectView: View {
                     self.superViewSize = value
                 })
             }
-            .navigationDestination(for: LoginSignupRoute.self) { destination in
+            .navigationDestination(for: LoginSelectRoute.self) { destination in
                 switch destination {
-                case .nickname:
+                case .signupNickname:
                     SignupNicknameView(navigationPath: $navigationPath)
                 case .login:
                     LoginView(navigationPath: $navigationPath).environmentObject(listener)
@@ -44,7 +44,7 @@ struct LoginSelectView: View {
     }
     
     struct ContentView: View {
-        @Binding var navigationPath: [LoginSignupRoute]
+        @Binding var navigationPath: NavigationPath
         @Binding var superViewSize: CGSize
         
         var body: some View {
@@ -92,7 +92,7 @@ struct LoginSelectView: View {
     
     struct ButtonsView: View {
         @EnvironmentObject var listener: LoginSignupEventListener
-        @Binding var navigationPath: [LoginSignupRoute]
+        @Binding var navigationPath: NavigationPath
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
@@ -103,7 +103,7 @@ struct LoginSelectView: View {
                     print("Google")
                 }
                 EmailLoginButton {
-                    navigationPath.append(.login)
+                    navigationPath.append(LoginSelectRoute.login)
                 }
                 Button {
                     listener.dismiss = true
@@ -121,6 +121,6 @@ struct LoginSelectView: View {
 
 struct LoginSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSelectView()
+        LoginSelectView().environmentObject(LoginSignupEventListener())
     }
 }

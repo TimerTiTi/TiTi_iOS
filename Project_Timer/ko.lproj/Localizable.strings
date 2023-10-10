@@ -333,6 +333,9 @@
 "Sign in with %@" = "%@로 로그인";
 "Sign in with Email" = "이메일로 로그인";
 
+// LoginView
+"OR" = "또는";
+
 // Network Alert Title
 "Network Error" = "네트워크 오류";
 "Network Timeout" = "네트워크 시간초과";

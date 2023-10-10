@@ -329,6 +329,9 @@
 "Sign in with %@" = "Sign in with %@";
 "Sign in with Email" = "Sign in with Email";
 
+// LoginView
+"OR" = "OR";
+
 // Network Alert Title
 "Network Error" = "Network Error";
 "Network Timeout" = "Network Timeout";

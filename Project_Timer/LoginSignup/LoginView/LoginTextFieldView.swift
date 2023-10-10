@@ -25,15 +25,27 @@ struct LoginTextFieldView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 58)
             
-            TextField("", text: $text)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundStyle(.black)
-                .placeholder(when: text.isEmpty) {
-                    Text(placeholder)
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(TiTiColor.placeholderGray.toColor)
-                }
-                .padding(.horizontal, 16)
+            if self.type != .password {
+                TextField("", text: $text)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.black)
+                    .placeholder(when: text.isEmpty) {
+                        Text(placeholder)
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(TiTiColor.placeholderGray.toColor)
+                    }
+                    .padding(.horizontal, 16)
+            } else {
+                SecureField("", text: $text)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.black)
+                    .placeholder(when: text.isEmpty) {
+                        Text(placeholder)
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(TiTiColor.placeholderGray.toColor)
+                    }
+                    .padding(.horizontal, 16)
+            }
         }
     }
     

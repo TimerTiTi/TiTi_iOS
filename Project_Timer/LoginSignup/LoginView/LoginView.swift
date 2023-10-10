@@ -10,41 +10,41 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
-    @Binding var navigationPath: [LoginSignupRoute]
+    @Binding var navigationPath: NavigationPath
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
-            GeometryReader { geometry in
-                ZStack {
-                    TiTiColor.loginBackground?.toColor
-                        .ignoresSafeArea()
+        GeometryReader { geometry in
+            ZStack {
+                TiTiColor.loginBackground?.toColor
+                    .ignoresSafeArea()
+                
+                VStack(alignment: .center) {
+                    Spacer()
                     
-                    VStack(alignment: .center) {
-                        Spacer()
-                        
-                        ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
-                        
-                        Spacer()
-                    }
+                    ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                    
+                    Spacer()
                 }
-                .onChange(of: geometry.size, perform: { value in
-                    self.superViewSize = value
-                })
             }
-            .navigationDestination(for: LoginSignupRoute.self) { destination in
+            .onChange(of: geometry.size, perform: { value in
+                self.superViewSize = value
+            })
+            .navigationDestination(for: LoginRoute.self) { destination in
                 switch destination {
-                case .nickname:
-                    SignupNicknameView(navigationPath: $navigationPath)
-                case .login:
-                    LoginView(navigationPath: $navigationPath)
+                case .findEmail:
+                    Text("findEmail")
+                case .findPassword:
+                    Text("findPassword")
+                case .signup:
+                    Text("signup")
                 }
             }
         }
     }
     
     struct ContentView: View {
-        @Binding var navigationPath: [LoginSignupRoute]
+        @Binding var navigationPath: NavigationPath
         @Binding var superViewSize: CGSize
         
         var body: some View {
@@ -71,7 +71,12 @@ struct LoginView: View {
                 TextFieldsView(navigationPath: $navigationPath)
                 
                 Spacer()
-                    .frame(height: 16)
+                    .frame(height: 24)
+
+                FooterView(navigationPath: $navigationPath)
+                
+                Spacer()
+                    .frame(height: 30)
             }
             .frame(width: self.width)
         }
@@ -92,7 +97,7 @@ struct LoginView: View {
     
     struct TextFieldsView: View {
         @EnvironmentObject var listener: LoginSignupEventListener
-        @Binding var navigationPath: [LoginSignupRoute]
+        @Binding var navigationPath: NavigationPath
         @State var email: String = ""
         @State var password: String = ""
         @State var postable: Bool = false
@@ -121,10 +126,85 @@ struct LoginView: View {
             }
         }
     }
+    
+    struct FooterView: View {
+        @Binding var navigationPath: NavigationPath
+        
+        var body: some View {
+            VStack(alignment: .center, spacing: 0) {
+                HStack {
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundStyle(.black.opacity(0.5))
+                    Text("OR")
+                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .foregroundStyle(.black.opacity(0.5))
+                    Rectangle()
+                        .frame(height: 1)
+                        .foregroundStyle(.black.opacity(0.5))
+                }
+                
+                Spacer()
+                    .frame(height: 16)
+                
+                ButtonsView(navigationPath: $navigationPath)
+            }
+        }
+    }
+    
+    struct ButtonsView: View {
+        @Binding var navigationPath: NavigationPath
+
+        var body: some View {
+            HStack(spacing: 0) {
+                Button {
+                    navigationPath.append(LoginRoute.findEmail)
+                } label: {
+                    Text("이메일 찾기")
+                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .foregroundStyle(.black.opacity(0.5))
+                        .underline()
+                        .padding(.vertical, 8)
+                }
+
+                Spacer()
+                Rectangle()
+                    .frame(width: 1, height: 14)
+                    .foregroundStyle(.black.opacity(0.5))
+                Spacer()
+
+                Button {
+                    navigationPath.append(LoginRoute.findPassword)
+                } label: {
+                    Text("비밀번호 찾기")
+                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .foregroundStyle(.black.opacity(0.5))
+                        .underline()
+                        .padding(.vertical, 8)
+                }
+
+                Spacer()
+                Rectangle()
+                    .frame(width: 1, height: 14)
+                    .foregroundStyle(.black.opacity(0.5))
+                Spacer()
+
+                Button {
+                    navigationPath.append(LoginRoute.signup)
+                } label: {
+                    Text("회원가입")
+                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .foregroundStyle(.black.opacity(0.5))
+                        .underline()
+                        .padding(.vertical, 8)
+                }
+            }
+        }
+    }
 }
 
 struct LoginView_Previews: PreviewProvider {
-    @State static private var navigationPath: [LoginSignupRoute] = []
+    @State static private var navigationPath = NavigationPath()
     
     static var previews: some View {
         LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
