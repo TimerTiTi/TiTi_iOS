@@ -41,6 +41,9 @@ struct LoginView: View {
                     Text("signup")
                 }
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
     
@@ -99,6 +102,7 @@ struct LoginView: View {
     struct TextFieldsView: View {
         @EnvironmentObject var listener: LoginSignupEventListener
         @Binding var navigationPath: NavigationPath
+        @FocusState private var focus: LoginTextFieldView.type?
         @State var email: String = ""
         @State var password: String = ""
         @State var postable: Bool = false
@@ -106,12 +110,12 @@ struct LoginView: View {
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                LoginTextFieldView(type: .email, text: $email)
+                LoginTextFieldView(type: .email, text: $email, focus: $focus)
                     .onReceive(Just(email), perform: { _ in
                         check()
                     })
                 
-                LoginTextFieldView(type: .password, text: $password)
+                LoginTextFieldView(type: .password, text: $password, focus: $focus)
                     .onReceive(Just(password), perform: { _ in
                         check()
                     })
@@ -232,4 +236,10 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
     }
+}
+
+extension View {
+  func hideKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
 }
