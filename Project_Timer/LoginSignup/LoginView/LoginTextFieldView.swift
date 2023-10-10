@@ -9,13 +9,14 @@
 import SwiftUI
 
 struct LoginTextFieldView: View {
-    enum type {
+    enum type: Equatable {
         case email
         case password
     }
     
     let type: type
     @Binding var text: String
+    @FocusState.Binding var focus: type?
     
     var body: some View {
         ZStack {
@@ -29,23 +30,35 @@ struct LoginTextFieldView: View {
                 TextField("", text: $text)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
-                    .placeholder(when: text.isEmpty) {
+                    .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
                             .foregroundStyle(TiTiColor.placeholderGray.toColor)
                     }
                     .keyboardType(self.type == .email ? .emailAddress : .alphabet)
+                    .focused($focus, equals: self.type) // textField 활성화값 반영
+                    .submitLabel(.done) // 키보드 done 버튼 활성화
+                    .onSubmit { // 키보드 done 버튼 액션
+                        if self.type == .email {
+                            focus = .password
+                        }
+                    }
                     .padding(.horizontal, 16)
             } else {
                 SecureField("", text: $text)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
-                    .placeholder(when: text.isEmpty) {
+                    .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
                             .foregroundStyle(TiTiColor.placeholderGray.toColor)
                     }
                     .keyboardType(.alphabet)
+                    .focused($focus, equals: self.type) // textField 활성화값 반영
+                    .submitLabel(.done) // 키보드 done 버튼 활성화
+                    .onSubmit { // 키보드 done 버튼 액션
+                        focus = nil
+                    }
                     .padding(.horizontal, 16)
             }
         }
@@ -63,8 +76,9 @@ struct LoginTextFieldView: View {
 
 struct LoginTextFieldView_Previews: PreviewProvider {
     @State static private var text: String = ""
+    @FocusState static private var focus: LoginTextFieldView.type?
     
     static var previews: some View {
-        LoginTextFieldView(type: .email, text: $text)
+        LoginTextFieldView(type: .email, text: $text, focus: $focus)
     }
 }
