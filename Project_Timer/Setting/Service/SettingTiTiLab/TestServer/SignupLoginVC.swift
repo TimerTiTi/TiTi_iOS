@@ -40,7 +40,7 @@ class SignupLoginVC: WhiteNavigationVC {
     lazy private var actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.viewModel.isLogin ? "Log in".localized() : "Sign up".localized(), for: .normal)
+        button.setTitle(self.viewModel.isLogin ? "Sign in".localized() : "Sign up".localized(), for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.backgroundColor = .white
@@ -249,7 +249,7 @@ extension SignupLoginVC {
             .sink { [weak self] loginSuccess in
                 guard loginSuccess else { return }
                 
-                let title: String = self?.viewModel.isLogin == true ? "Login Success".localized() : "Signup Success".localized()
+                let title: String = self?.viewModel.isLogin == true ? "Signin Success".localized() : "Signup Success".localized()
                 self?.showAlertWithOKAfterHandler(title: title, text: "") { [weak self] in
                     self?.navigationController?.popViewController(animated: true)
                 }

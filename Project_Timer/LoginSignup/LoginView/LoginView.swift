@@ -130,14 +130,14 @@ struct LoginView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
                         
-                        Text("Log in")
+                        Text("Sign in")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(postable ? Color.white : Color.gray)
                     }
                 }
                 .allowsHitTesting(postable)
             }
-            .alert("Login Success", isPresented: $loginSuccess) {
+            .alert("Signin Success", isPresented: $loginSuccess) {
                 Button {
                     listener.loginSuccess = true
                 } label: {
@@ -187,7 +187,7 @@ struct LoginView: View {
                 Button {
                     navigationPath.append(LoginRoute.findEmail)
                 } label: {
-                    Text("이메일 찾기")
+                    Text("Find email")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
@@ -203,7 +203,7 @@ struct LoginView: View {
                 Button {
                     navigationPath.append(LoginRoute.findPassword)
                 } label: {
-                    Text("비밀번호 찾기")
+                    Text("Find password")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
@@ -219,7 +219,7 @@ struct LoginView: View {
                 Button {
                     navigationPath.append(LoginRoute.signup)
                 } label: {
-                    Text("회원가입")
+                    Text("Sign up")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
@@ -235,6 +235,9 @@ struct LoginView_Previews: PreviewProvider {
     
     static var previews: some View {
         LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+        
+        LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+            .environment(\.locale, .init(identifier: "en"))
     }
 }
 
