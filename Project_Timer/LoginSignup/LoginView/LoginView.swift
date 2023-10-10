@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LoginView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
@@ -101,29 +102,51 @@ struct LoginView: View {
         @State var email: String = ""
         @State var password: String = ""
         @State var postable: Bool = false
+        @State var loginSuccess: Bool = false
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
                 LoginTextFieldView(type: .email, text: $email)
+                    .onReceive(Just(email), perform: { _ in
+                        check()
+                    })
                 
                 LoginTextFieldView(type: .password, text: $password)
+                    .onReceive(Just(password), perform: { _ in
+                        check()
+                    })
                 
                 Button {
-                    print("login")
+                    loginSuccess = true
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(postable ? Color.accentColor : Color.white)
                             .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
                         
                         Text("Log in")
                             .font(.system(size: 20, weight: .bold))
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(postable ? Color.white : Color.gray)
                     }
                 }
+                .allowsHitTesting(postable)
             }
+            .alert("Login Success", isPresented: $loginSuccess) {
+                Button {
+                    listener.loginSuccess = true
+                } label: {
+                    Text("OK")
+                }
+            }
+        }
+        
+        // 정규식 체크
+        func check() {
+            let emailValid = PredicateChecker.isValidEmail(email)
+            let passwordValid = PredicateChecker.isValidPassword(password)
+            self.postable = emailValid && passwordValid
         }
     }
     

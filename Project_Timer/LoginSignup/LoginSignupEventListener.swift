@@ -11,4 +11,6 @@ import Combine
 
 class LoginSignupEventListener: ObservableObject {
     @Published var dismiss: Bool = false
+    @Published var loginSuccess: Bool = false
+    @Published var signupSuccess: Bool = false
 }
