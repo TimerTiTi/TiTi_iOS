@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct LoginView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
@@ -112,12 +111,12 @@ struct LoginView: View {
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
                 LoginTextFieldView(type: .email, text: $email, focus: $focus)
-                    .onReceive(Just(email), perform: { _ in
+                    .onChange(of: email, perform: { _ in
                         check()
                     })
                 
                 LoginTextFieldView(type: .password, text: $password, focus: $focus)
-                    .onReceive(Just(password), perform: { _ in
+                    .onChange(of: password, perform: { _ in
                         check()
                     })
                 
