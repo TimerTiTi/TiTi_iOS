@@ -13,11 +13,16 @@ struct LoginSelectView: View {
     @State private var navigationPath = NavigationPath()
     @State private var superViewSize: CGSize = .zero
     
+    init() {
+        //Use this if NavigationBarTitle is with displayMode = .inline
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
     var body: some View {
         NavigationStack(path: $navigationPath) {
             GeometryReader { geometry in
                 ZStack {
-                    TiTiColor.loginBackground?.toColor
+                    TiTiColor.loginBackground.toColor
                         .ignoresSafeArea()
                     
                     VStack(alignment: .center) {
@@ -40,7 +45,10 @@ struct LoginSelectView: View {
                     LoginView(navigationPath: $navigationPath).environmentObject(listener)
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("")
         }
+        .accentColor(.white)
     }
     
     struct ContentView: View {

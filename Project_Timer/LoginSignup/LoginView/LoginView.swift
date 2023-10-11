@@ -17,7 +17,7 @@ struct LoginView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TiTiColor.loginBackground?.toColor
+                TiTiColor.loginBackground.toColor
                     .ignoresSafeArea()
                 
                 VStack(alignment: .center) {
@@ -45,6 +45,7 @@ struct LoginView: View {
                 hideKeyboard()
             }
         }
+        .navigationTitle("")
     }
     
     struct ContentView: View {
@@ -125,7 +126,7 @@ struct LoginView: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .foregroundStyle(postable ? Color.accentColor : Color.white)
+                            .foregroundStyle(postable ? UIColor.tintColor.toColor : Color.white)
                             .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
