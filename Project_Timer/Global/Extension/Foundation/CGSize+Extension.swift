@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension CGSize {
     enum DeviceDetailType: CGFloat {
@@ -18,9 +19,13 @@ extension CGSize {
         case iPhoneMini = 375
     }
     
-    enum DeviceType {
-        case iPad
-        case iPhone
+    enum DeviceLandspace: CGFloat {
+        case iPad12 = 1366
+        case iPad11 = 1194
+        case iPadMini = 1133
+        case iPhoneMax = 932
+        case iPhonePro = 844
+        case iPhoneMini = 667
     }
     
     /// 가로, 세로 중 작은값
@@ -28,36 +33,37 @@ extension CGSize {
         return min(self.width, self.height)
     }
     
-    /// minLength 값을 기준으로 디바이스 형태 분기 값
-    var deviceType: DeviceType {
-        let width = minLength
-        
-        if width > DeviceDetailType.iPhoneMax.rawValue {
-            return .iPad
-        } else {
-            return .iPhone
-        }
-    }
-    
     /// minLength 값을 기준으로 디바이스 상세 형태 분기 값
     var deviceDetailType: DeviceDetailType {
-        let width = minLength
+        let min = minLength
+        let max = max(self.width, self.height)
         
         // iPad
-        if width > DeviceDetailType.iPhoneMax.rawValue {
-            if width >= DeviceDetailType.iPad12.rawValue {
-                return .iPad12
-            } else if width >= DeviceDetailType.iPad11.rawValue {
-                return .iPad11
-            } else {
-                return .iPadMini
+        if min > DeviceDetailType.iPhoneMax.rawValue {
+            switch UIDevice.current.orientation {
+            case .landscapeLeft, .landscapeRight:
+                if max >= DeviceLandspace.iPad12.rawValue {
+                    return .iPad12
+                } else if max >= DeviceLandspace.iPad11.rawValue {
+                    return .iPad11
+                } else {
+                    return .iPadMini
+                }
+            default:
+                if min >= DeviceDetailType.iPad12.rawValue {
+                    return .iPad12
+                } else if min >= DeviceDetailType.iPad11.rawValue {
+                    return .iPad11
+                } else {
+                    return .iPadMini
+                }
             }
         }
         // iPhone
         else {
-            if width >= 428 { // 428 ~ 430 이내만 iPhoneMax UI 표시
+            if min >= 428 { // 428 ~ 430 이내만 iPhoneMax UI 표시
                 return .iPhoneMax
-            } else if width >= DeviceDetailType.iPhonePro.rawValue {
+            } else if min >= DeviceDetailType.iPhonePro.rawValue {
                 return .iPhonePro
             } else {
                 return .iPhoneMini

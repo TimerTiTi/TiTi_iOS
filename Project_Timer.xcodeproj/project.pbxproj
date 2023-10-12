@@ -51,6 +51,7 @@
 		870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
 		870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
 		870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
+		870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E85002AD67E46000511BD /* KeyboardResponder.swift */; };
 		87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC72ACAF2E8008D4072 /* NetworkError.swift */; };
 		87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC92ACAF89B008D4072 /* NetworkResult.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
@@ -352,6 +353,7 @@
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
 		870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetCellData.swift; sourceTree = "<group>"; };
+		870E85002AD67E46000511BD /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		87163DC72ACAF2E8008D4072 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		87163DC92ACAF89B008D4072 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
@@ -1414,6 +1416,7 @@
 				87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */,
 				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
 				870C70722AD51BEB00024CAC /* PredicateChecker.swift */,
+				870E85002AD67E46000511BD /* KeyboardResponder.swift */,
 			);
 			path = SingletonClass;
 			sourceTree = "<group>";
@@ -1780,6 +1783,7 @@
 				87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */,
 				87BE88E72AD425BE0010A84A /* LoginTextFieldView.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
+				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,

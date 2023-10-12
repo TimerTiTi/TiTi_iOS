@@ -77,9 +77,6 @@ struct LoginSelectView: View {
                     .frame(height: 58)
                 
                 ButtonsView(navigationPath: $navigationPath)
-                
-                Spacer()
-                    .frame(height: 16)
             }
             .frame(width: self.width)
         }
