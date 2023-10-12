@@ -30,6 +30,7 @@ struct LoginTextFieldView: View {
                 TextField("", text: $text)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
+                    .accentColor(.black)
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
@@ -48,6 +49,7 @@ struct LoginTextFieldView: View {
                 SecureField("", text: $text)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
+                    .accentColor(.black)
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))

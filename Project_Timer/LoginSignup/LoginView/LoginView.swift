@@ -52,7 +52,7 @@ struct LoginView: View {
     }
     
     func keyboardOffset(_ keyboardShow: Bool) -> CGFloat {
-        if keyboardShow == false {
+        if keyboardShow == false || keyboard.keyboardHeight < 260 {
             return 0
         } else {
             switch superViewSize.deviceDetailType {
@@ -165,7 +165,7 @@ struct LoginView: View {
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
-                            .foregroundStyle(postable ? UIColor.tintColor.toColor : Color.white)
+                            .foregroundStyle(postable ? Color.blue : Color.white)
                             .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
