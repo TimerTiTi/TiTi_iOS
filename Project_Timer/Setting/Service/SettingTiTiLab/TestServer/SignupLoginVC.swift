@@ -182,6 +182,7 @@ extension SignupLoginVC {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardRectangle = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             // keyboard 높이에 따라 bounds.origin 값 조정
+            print(keyboardRectangle.height)
             let keyboardY = self.view.bounds.height - keyboardRectangle.height
             let textFieldOrigin = self.textFieldOrigin
             let targetY = textFieldOrigin.y + LoginInputTextfield.height + 16
