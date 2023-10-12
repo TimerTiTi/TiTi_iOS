@@ -12,6 +12,7 @@ struct LoginView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
     @Binding var navigationPath: NavigationPath
     @State private var superViewSize: CGSize = .zero
+    @ObservedObject private var keyboard = KeyboardResponder()
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,6 +27,8 @@ struct LoginView: View {
                     
                     Spacer()
                 }
+                .offset(y: keyboardOffset(keyboard.keyboardShow))
+                .animation(.easeIn(duration: keyboard.keyboardShow || keyboard.keyboardHide ? 0.2 : 0))
             }
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value
@@ -45,6 +48,43 @@ struct LoginView: View {
             }
         }
         .navigationTitle("")
+        .ignoresSafeArea(.keyboard)
+    }
+    
+    func keyboardOffset(_ keyboardShow: Bool) -> CGFloat {
+        if keyboardShow == false {
+            return 0
+        } else {
+            switch superViewSize.deviceDetailType {
+            case .iPhoneMini:
+                return -100
+            case .iPhonePro:
+                return -84
+            case .iPhoneMax:
+                return -54
+            case .iPadMini:
+                switch UIDevice.current.orientation {
+                case .landscapeLeft, .landscapeRight:
+                    return -225
+                default:
+                    return 0
+                }
+            case .iPad11:
+                switch UIDevice.current.orientation {
+                case .landscapeLeft, .landscapeRight:
+                    return -180
+                default:
+                    return 0
+                }
+            case .iPad12:
+                switch UIDevice.current.orientation {
+                case .landscapeLeft, .landscapeRight:
+                    return -155
+                default:
+                    return 0
+                }
+            }
+        }
     }
     
     struct ContentView: View {
@@ -80,7 +120,7 @@ struct LoginView: View {
                 FooterView(navigationPath: $navigationPath)
                 
                 Spacer()
-                    .frame(height: 30)
+                    .frame(height: 14)
             }
             .frame(width: self.width)
         }
