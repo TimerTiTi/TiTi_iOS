@@ -40,7 +40,7 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    Text("signup")
+                    SignupEmailView(navigationPath: $navigationPath).environmentObject(listener)
                 }
             }
             .onTapGesture {
