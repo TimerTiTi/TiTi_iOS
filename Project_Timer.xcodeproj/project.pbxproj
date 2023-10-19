@@ -42,6 +42,7 @@
 		870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */; };
 		870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C228EE974600F8BCA9 /* SettingRecordVM.swift */; };
 		8701B0BF2A41AA0F00201CB2 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
+		87024B102AE154630095CCB4 /* SignupEmailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87024B0F2AE154630095CCB4 /* SignupEmailRoute.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
@@ -348,6 +349,7 @@
 		870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCell.swift; sourceTree = "<group>"; };
 		870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCellInfo.swift; sourceTree = "<group>"; };
 		870055C228EE974600F8BCA9 /* SettingRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVM.swift; sourceTree = "<group>"; };
+		87024B0F2AE154630095CCB4 /* SignupEmailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailRoute.swift; sourceTree = "<group>"; };
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
@@ -1407,6 +1409,7 @@
 		87E5C70B2AE0266200BE46B0 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
+				87024B0F2AE154630095CCB4 /* SignupEmailRoute.swift */,
 				87E5C70C2AE0268C00BE46B0 /* SignupEmailView.swift */,
 				87E5C70E2AE0C0E500BE46B0 /* SignupTextFieldView.swift */,
 				87B7A5392AC0219B002AFDFE /* SignupNicknameView.swift */,
@@ -1899,6 +1902,7 @@
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
+				87024B102AE154630095CCB4 /* SignupEmailRoute.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */,
@@ -2080,7 +2084,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2319,7 +2323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2346,7 +2350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;

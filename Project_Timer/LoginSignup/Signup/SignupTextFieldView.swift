@@ -93,7 +93,7 @@ struct SignupTextFieldView: View {
         case .email:
             return "email".localized()
         case .authCode:
-            return "authCode".localized()
+            return "verification code".localized()
         case .password:
             return "new password".localized()
         case .password2:

@@ -335,6 +335,15 @@
 "Find email" = "Find email";
 "Find password" = "Find password";
 
+// SignupEmail
+"verification code" = "verification code";
+"Enter your email address" = "Enter your email address";
+"Please enter your email address for verification" = "Please enter your email address for verification";
+"The format is incorrect. Please enter in the correct format" = "The format is incorrect. Please enter in the correct format";
+"The verification code is not valid. Please try again" = "The verification code is not valid. Please try again";
+"resend" = "resend";
+"Next" = "Next";
+
 // Network Alert Title
 "Network Error" = "Network Error";
 "Network Timeout" = "Network Timeout";

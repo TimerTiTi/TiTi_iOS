@@ -30,6 +30,12 @@ struct SignupEmailView: View {
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value
             })
+            .navigationDestination(for: SignupEmailRoute.self) { destination in
+                switch destination {
+                case .signupPassword:
+                    Text("Signup Password")
+                }
+            }
         }
         .onTapGesture {
             hideKeyboard()
@@ -56,9 +62,9 @@ struct SignupEmailView: View {
                                 .frame(height: 29)
                             
                             VStack(alignment: .leading, spacing: 16) {
-                                Text("이메일을 입력해 주세요")
+                                Text("Enter your email address")
                                     .font(TiTiFont.HGGGothicssiP80g(size: 22))
-                                Text("인증받기 위한 이메일을 입력해 주세요")
+                                Text("Please enter your email address for verification")
                                     .font(TiTiFont.HGGGothicssiP60g(size: 14))
                                     .foregroundStyle(UIColor.secondaryLabel.toColor)
                             }
@@ -85,7 +91,7 @@ struct SignupEmailView: View {
                             Spacer()
                                 .frame(height: 2)
                             
-                            Text("잘못된 형식입니다. 올바른 형식으로 입력해 주세요")
+                            Text("The format is incorrect. Please enter in the correct format")
                                 .font(TiTiFont.HGGGothicssiP40g(size: 12))
                                 .foregroundStyle(TiTiColor.wrongTextField.toColor)
                                 .opacity(wrongEmail == true ? 1.0 : 0)
@@ -108,9 +114,10 @@ struct SignupEmailView: View {
                                         .font(TiTiFont.HGGGothicssiP40g(size: 18))
                                     
                                     Button {
-                                        print("재전송")
+                                        // MARK: ViewModel 내에서 네트워킹이 필요한 부분
+                                        print("resend")
                                     } label: {
-                                        Text("재전송")
+                                        Text("resend")
                                             .font(TiTiFont.HGGGothicssiP40g(size: 18))
                                     }
                                 }
@@ -125,14 +132,16 @@ struct SignupEmailView: View {
                                 Spacer()
                                     .frame(height: 2)
                                 
-                                Text("인증코드가 올바르지 않습니다. 다시 입력해 주세요")
+                                Text("The verification code is not valid. Please try again")
                                     .font(TiTiFont.HGGGothicssiP40g(size: 12))
                                     .foregroundStyle(TiTiColor.wrongTextField.toColor)
                                     .opacity(wrongAuthCode == true ? 1.0 : 0)
                             }
                         }
                         .onAppear {
-                            focus = .email
+                            if wrongAuthCode == nil {
+                                focus = .email
+                            }
                         }
                         
                         .onChange(of: focus) { newValue in
@@ -230,7 +239,7 @@ struct SignupEmailView: View {
             self.wrongAuthCode = !authCodeValid
             
             if authCodeValid {
-                print("next step")
+                environment.navigationPath.append(SignupEmailRoute.signupPassword)
             } else {
                 focus = .authCode
             }

@@ -339,6 +339,15 @@
 "Find email" = "이메일 찾기";
 "Find password" = "비밀번호 찾기";
 
+// SignupEmail
+"verification code" = "인증코드";
+"Enter your email address" = "이메일을 입력해 주세요";
+"Please enter your email address for verification" = "인증받기 위한 이메일을 입력해 주세요";
+"The format is incorrect. Please enter in the correct format" = "잘못된 형식입니다. 올바른 형식으로 입력해 주세요";
+"The verification code is not valid. Please try again" = "인증코드가 올바르지 않습니다. 다시 입력해 주세요";
+"resend" = "재전송";
+"Next" = "다음";
+
 // Network Alert Title
 "Network Error" = "네트워크 오류";
 "Network Timeout" = "네트워크 시간초과";
