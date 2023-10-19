@@ -48,7 +48,7 @@ struct LoginSelectView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("")
         }
-        .accentColor(.white)
+        .accentColor(UIColor.label.toColor)
     }
     
     struct ContentView: View {

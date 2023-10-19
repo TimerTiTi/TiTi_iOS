@@ -30,6 +30,12 @@ struct LoginView: View {
                 .offset(y: keyboardOffset(keyboard.keyboardShow))
                 .animation(.easeIn(duration: keyboard.keyboardShow || keyboard.keyboardHide ? 0.2 : 0))
             }
+            .onAppear {
+                keyboard.addObserver()
+            }
+            .onDisappear {
+                keyboard.removeObserver()
+            }
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value
             })

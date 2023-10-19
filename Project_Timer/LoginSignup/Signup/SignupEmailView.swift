@@ -12,6 +12,7 @@ struct SignupEmailView: View {
     @EnvironmentObject var listener: LoginSignupEventListener
     @Binding var navigationPath: NavigationPath
     @State private var superViewSize: CGSize = .zero
+    @ObservedObject private var keyboard = KeyboardResponder()
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,10 +21,20 @@ struct SignupEmailView: View {
                     .ignoresSafeArea()
                 
                 ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                    .onAppear {
+                        keyboard.addObserver()
+                    }
+                    .onDisappear {
+                        keyboard.removeObserver()
+                    }
+                    .padding(.bottom, keyboard.keyboardHeight)
             }
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value
             })
+        }
+        .onTapGesture {
+            hideKeyboard()
         }
         .navigationTitle("")
         .ignoresSafeArea(.keyboard)
@@ -39,88 +50,98 @@ struct SignupEmailView: View {
         @State var wrongAuthCode: Bool?
         
         var body: some View {
-            VStack(alignment: .leading, spacing: 0) {
-                Spacer()
-                    .frame(height: 29)
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("이메일을 입력해 주세요")
-                        .font(TiTiFont.HGGGothicssiP80g(size: 22))
-                    Text("인증받기 위한 이메일을 입력해 주세요")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 14))
-                        .foregroundStyle(UIColor.secondaryLabel.toColor)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                
-                Spacer()
-                    .frame(height: 72)
-                
-                SignupTextFieldView(type: .email, text: $email, focus: $focus) {
-                    emailCheck()
-                }
-                .onChange(of: email) { newValue in
-                    wrongEmail = nil
-                }
-                
-                Spacer()
-                    .frame(height: 12)
-                
-                Rectangle()
-                    .frame(height: 2)
-                    .foregroundStyle(emailTintColor)
-                
-                Spacer()
-                    .frame(height: 2)
-                
-                Text("잘못된 형식입니다. 올바른 형식으로 입력해 주세요")
-                    .font(TiTiFont.HGGGothicssiP40g(size: 12))
-                    .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                    .opacity(wrongEmail == true ? 1.0 : 0)
-                
-                if wrongEmail == false {
-                    Spacer()
-                        .frame(height: 35)
-                    
-                    HStack(alignment: .center, spacing: 16) {
-                        SignupTextFieldView(type: .authCode, text: $authCode, focus: $focus) {
-                            authCodeCheck()
-                        }
-                        .onChange(of: authCode) { newValue in
-                            wrongAuthCode = nil
-                        }
-                        .frame(maxWidth: .infinity)
+            ScrollViewReader { scrollViewProxy in
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Spacer()
+                            .frame(height: 29)
                         
-                        Text("4 : 59")
-                            .font(TiTiFont.HGGGothicssiP40g(size: 18))
-                        
-                        Button {
-                            print("재전송")
-                        } label: {
-                            Text("재전송")
-                                .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("이메일을 입력해 주세요")
+                                .font(TiTiFont.HGGGothicssiP80g(size: 22))
+                            Text("인증받기 위한 이메일을 입력해 주세요")
+                                .font(TiTiFont.HGGGothicssiP60g(size: 14))
+                                .foregroundStyle(UIColor.secondaryLabel.toColor)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        Spacer()
+                            .frame(height: 72)
+                        
+                        SignupTextFieldView(type: .email, text: $email, focus: $focus) {
+                            emailCheck()
+                        }
+                        .id(SignupTextFieldView.type.email)
+                        .onChange(of: email) { newValue in
+                            wrongEmail = nil
+                        }
+                        
+                        Spacer()
+                            .frame(height: 12)
+                        
+                        Rectangle()
+                            .frame(height: 2)
+                            .foregroundStyle(emailTintColor)
+                        
+                        Spacer()
+                            .frame(height: 2)
+                        
+                        Text("잘못된 형식입니다. 올바른 형식으로 입력해 주세요")
+                            .font(TiTiFont.HGGGothicssiP40g(size: 12))
+                            .foregroundStyle(TiTiColor.wrongTextField.toColor)
+                            .opacity(wrongEmail == true ? 1.0 : 0)
+                        
+                        if wrongEmail == false {
+                            Spacer()
+                                .frame(height: 35)
+                            
+                            HStack(alignment: .center, spacing: 16) {
+                                SignupTextFieldView(type: .authCode, text: $authCode, focus: $focus) {
+                                    authCodeCheck()
+                                }
+                                .id(SignupTextFieldView.type.authCode)
+                                .onChange(of: authCode) { newValue in
+                                    wrongAuthCode = nil
+                                }
+                                .frame(maxWidth: .infinity)
+                                
+                                Text("4 : 59")
+                                    .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                                
+                                Button {
+                                    print("재전송")
+                                } label: {
+                                    Text("재전송")
+                                        .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                                }
+                            }
+                            
+                            Spacer()
+                                .frame(height: 12)
+                            
+                            Rectangle()
+                                .frame(height: 2)
+                                .foregroundStyle(authCodeTintColor)
+                            
+                            Spacer()
+                                .frame(height: 2)
+                            
+                            Text("인증코드가 올바르지 않습니다. 다시 입력해 주세요")
+                                .font(TiTiFont.HGGGothicssiP40g(size: 12))
+                                .foregroundStyle(TiTiColor.wrongTextField.toColor)
+                                .opacity(wrongAuthCode == true ? 1.0 : 0)
+                        }
+                        
+                       Spacer()
                     }
-                    
-                    Spacer()
-                        .frame(height: 12)
-                    
-                    Rectangle()
-                        .frame(height: 2)
-                        .foregroundStyle(authCodeTintColor)
-                    
-                    Spacer()
-                        .frame(height: 2)
-                    
-                    Text("인증코드가 올바르지 않습니다. 다시 입력해 주세요")
-                        .font(TiTiFont.HGGGothicssiP40g(size: 12))
-                        .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                        .opacity(wrongAuthCode == true ? 1.0 : 0)
+                    .onAppear {
+                        focus = .email
+                    }
+                    .onChange(of: focus) { newValue in
+                        scrollViewProxy.scrollTo(newValue, anchor: .top)
+                    }
                 }
-                
-               Spacer()
-            }
-            .onAppear {
-                focus = .email
+                .scrollIndicators(.hidden)
             }
             .frame(width: abs(self.width), alignment: .leading)
         }

@@ -14,10 +14,17 @@ final class KeyboardResponder: ObservableObject {
     @Published private(set) var keyboardShow: Bool = false
     @Published private(set) var keyboardHide: Bool = false
 
-    init(center: NotificationCenter = .default) {
-        notificationCenter = center
+    init() {
+        notificationCenter = .default
+    }
+    
+    func addObserver() {
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyBoardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeObserver() {
+        notificationCenter.removeObserver(self)
     }
 
     deinit {
