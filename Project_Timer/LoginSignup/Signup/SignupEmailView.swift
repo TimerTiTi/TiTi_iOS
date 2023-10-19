@@ -132,7 +132,31 @@ struct SignupEmailView: View {
                                 .opacity(wrongAuthCode == true ? 1.0 : 0)
                         }
                         
-                       Spacer()
+                        Spacer()
+                        
+                        #if targetEnvironment(macCatalyst)
+                        Button {
+                            switch focus {
+                            case .email:
+                                emailCheck()
+                            case .authCode:
+                                authCodeCheck()
+                            default:
+                                return
+                            }
+                        } label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .foregroundColor(.blue)
+                                    .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
+                                    .frame(height: 60)
+                                
+                                Text("Next")
+                                    .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                            }
+                        }
+                        .opacity(focus != nil ? 1.0 : 0)
+                        #endif
                     }
                     .onAppear {
                         focus = .email
