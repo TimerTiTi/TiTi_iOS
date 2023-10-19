@@ -31,6 +31,7 @@ struct LoginTextFieldView: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
                     .accentColor(.black)
+                    .autocorrectionDisabled(true)
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
@@ -50,6 +51,7 @@ struct LoginTextFieldView: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.black)
                     .accentColor(.black)
+                    .autocorrectionDisabled(true)
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))

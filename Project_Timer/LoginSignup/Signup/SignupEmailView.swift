@@ -34,7 +34,9 @@ struct SignupEmailView: View {
         @Binding var superViewSize: CGSize
         @FocusState var focus: SignupTextFieldView.type?
         @State var email: String = ""
-        @State var wrongEmail: Bool = false
+        @State var authCode: String = ""
+        @State var wrongEmail: Bool?
+        @State var wrongAuthCode: Bool?
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -42,9 +44,9 @@ struct SignupEmailView: View {
                     .frame(height: 29)
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("이메일을 입력해주세요")
+                    Text("이메일을 입력해 주세요")
                         .font(TiTiFont.HGGGothicssiP80g(size: 22))
-                    Text("인증받기 위한 이메일을 입력해주세요")
+                    Text("인증받기 위한 이메일을 입력해 주세요")
                         .font(TiTiFont.HGGGothicssiP60g(size: 14))
                         .foregroundStyle(UIColor.secondaryLabel.toColor)
                 }
@@ -57,7 +59,7 @@ struct SignupEmailView: View {
                     emailCheck()
                 }
                 .onChange(of: email) { newValue in
-                    wrongEmail = false
+                    wrongEmail = nil
                 }
                 
                 Spacer()
@@ -73,9 +75,49 @@ struct SignupEmailView: View {
                 Text("잘못된 형식입니다. 올바른 형식으로 입력해 주세요")
                     .font(TiTiFont.HGGGothicssiP40g(size: 12))
                     .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                    .opacity(wrongEmail ? 1.0 : 0)
+                    .opacity(wrongEmail == true ? 1.0 : 0)
                 
-                Spacer()
+                if wrongEmail == false {
+                    Spacer()
+                        .frame(height: 35)
+                    
+                    HStack(alignment: .center, spacing: 16) {
+                        SignupTextFieldView(type: .authCode, text: $authCode, focus: $focus) {
+                            authCodeCheck()
+                        }
+                        .onChange(of: authCode) { newValue in
+                            wrongAuthCode = nil
+                        }
+                        .frame(maxWidth: .infinity)
+                        
+                        Text("4 : 59")
+                            .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                        
+                        Button {
+                            print("재전송")
+                        } label: {
+                            Text("재전송")
+                                .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                        }
+                    }
+                    
+                    Spacer()
+                        .frame(height: 12)
+                    
+                    Rectangle()
+                        .frame(height: 2)
+                        .foregroundStyle(authCodeTintColor)
+                    
+                    Spacer()
+                        .frame(height: 2)
+                    
+                    Text("인증코드가 올바르지 않습니다. 다시 입력해 주세요")
+                        .font(TiTiFont.HGGGothicssiP40g(size: 12))
+                        .foregroundStyle(TiTiColor.wrongTextField.toColor)
+                        .opacity(wrongAuthCode == true ? 1.0 : 0)
+                }
+                
+               Spacer()
             }
             .onAppear {
                 focus = .email
@@ -94,27 +136,48 @@ struct SignupEmailView: View {
             }
         }
         
-        // 정규식 체크
-        func emailCheck() {
-            let emailValid = PredicateChecker.isValidEmail(email)
-            self.wrongEmail = !emailValid
-            
-            if emailValid {
-                // next step
-                print("next step")
-                focus = nil
-            } else {
-                focus = .email
-            }
-        }
-        
+        // emailTextField underline 컬러
         var emailTintColor: Color {
-            if wrongEmail {
+            if wrongEmail == true {
                 return TiTiColor.wrongTextField.toColor
             } else if focus == .email {
                 return Color.blue
             } else {
                 return UIColor.placeholderText.toColor
+            }
+        }
+        
+        var authCodeTintColor: Color {
+            if wrongAuthCode == true {
+                return TiTiColor.wrongTextField.toColor
+            } else if focus == .authCode {
+                return Color.blue
+            } else {
+                return UIColor.placeholderText.toColor
+            }
+        }
+        
+        // 이메일 done 액션
+        func emailCheck() {
+            let emailValid = PredicateChecker.isValidEmail(email)
+            self.wrongEmail = !emailValid
+            
+            if emailValid {
+                focus = .authCode
+            } else {
+                focus = .email
+            }
+        }
+        
+        // 인증코드 done 액션
+        func authCodeCheck() {
+            let authCodeValid = authCode.count > 7
+            self.wrongAuthCode = !authCodeValid
+            
+            if authCodeValid {
+                print("next step")
+            } else {
+                focus = .authCode
             }
         }
     }
