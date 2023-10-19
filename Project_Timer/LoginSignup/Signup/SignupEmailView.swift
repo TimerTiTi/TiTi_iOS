@@ -134,12 +134,13 @@ struct SignupEmailView: View {
                         .onAppear {
                             focus = .email
                         }
-                        #if targetEnvironment(macCatalyst)
-                        #else
+                        
                         .onChange(of: focus) { newValue in
+                            #if targetEnvironment(macCatalyst)
+                            #else
                             scrollViewProxy.scrollTo(newValue, anchor: .top)
+                            #endif
                         }
-                        #endif
                     }
                     .scrollIndicators(.hidden)
                 }
@@ -176,7 +177,7 @@ struct SignupEmailView: View {
                 }
                 #endif
             }
-            .frame(width: abs(self.width), height: superViewSize.height, alignment: .leading)
+            .frame(width: abs(self.width), alignment: .leading)
         }
         
         // 화면크기에 따른 width 크기조정
