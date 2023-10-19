@@ -9,18 +9,13 @@
 import SwiftUI
 
 struct SignupNicknameView: View {
-    @EnvironmentObject var listener: LoginSignupEventListener
-    @Binding var navigationPath: NavigationPath
-    
     var body: some View {
         Text("SignupNicknameView")
     }
 }
 
 struct SignupNicknameView_Previews: PreviewProvider {
-    @State static private var navigationPath = NavigationPath()
-    
     static var previews: some View {
-        SignupNicknameView(navigationPath: $navigationPath)
+        SignupNicknameView()
     }
 }

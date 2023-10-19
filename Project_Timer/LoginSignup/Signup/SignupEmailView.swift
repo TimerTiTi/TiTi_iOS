@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct SignupEmailView: View {
-    @EnvironmentObject var listener: LoginSignupEventListener
-    @Binding var navigationPath: NavigationPath
     @State private var superViewSize: CGSize = .zero
     @ObservedObject private var keyboard = KeyboardResponder()
     
@@ -20,7 +18,7 @@ struct SignupEmailView: View {
                 TiTiColor.firstBackground.toColor
                     .ignoresSafeArea()
                 
-                ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                ContentView(superViewSize: $superViewSize)
                     .onAppear {
                         keyboard.addObserver()
                     }
@@ -41,7 +39,7 @@ struct SignupEmailView: View {
     }
     
     struct ContentView: View {
-        @Binding var navigationPath: NavigationPath
+        @EnvironmentObject var environment: LoginSignupEnvironment
         @Binding var superViewSize: CGSize
         @FocusState var focus: SignupTextFieldView.type?
         @State var email: String = ""
@@ -232,9 +230,9 @@ struct SignupEmailView_Previews: PreviewProvider {
     @State static private var navigationPath = NavigationPath()
     
     static var previews: some View {
-        SignupEmailView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+        SignupEmailView().environmentObject(LoginSignupEnvironment())
         
-        SignupEmailView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+        SignupEmailView().environmentObject(LoginSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

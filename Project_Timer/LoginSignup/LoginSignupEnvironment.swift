@@ -1,5 +1,5 @@
 //
-//  LoginSignupEventListener.swift
+//  LoginSignupEnvironment.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/25.
@@ -8,9 +8,11 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
-class LoginSignupEventListener: ObservableObject {
+class LoginSignupEnvironment: ObservableObject {
     @Published var dismiss: Bool = false
     @Published var loginSuccess: Bool = false
     @Published var signupSuccess: Bool = false
+    @Published var navigationPath = NavigationPath()
 }
