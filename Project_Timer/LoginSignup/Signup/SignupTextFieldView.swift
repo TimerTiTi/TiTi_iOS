@@ -28,6 +28,7 @@ struct SignupTextFieldView: View {
                 .font(TiTiFont.HGGGothicssiP60g(size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
+                .autocorrectionDisabled(true)
                 .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                     Text(placeholder)
                         .font(TiTiFont.HGGGothicssiP60g(size: 20))
@@ -58,6 +59,7 @@ struct SignupTextFieldView: View {
                 .font(TiTiFont.HGGGothicssiP60g(size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
+                .autocorrectionDisabled(true)
                 .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                     Text(placeholder)
                         .font(TiTiFont.HGGGothicssiP60g(size: 20))
