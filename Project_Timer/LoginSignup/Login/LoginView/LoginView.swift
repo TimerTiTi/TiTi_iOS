@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var listener: LoginSignupEventListener
-    @Binding var navigationPath: NavigationPath
     @State private var superViewSize: CGSize = .zero
     @ObservedObject private var keyboard = KeyboardResponder()
     
@@ -23,7 +21,7 @@ struct LoginView: View {
                 VStack(alignment: .center) {
                     Spacer()
                     
-                    ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                    ContentView(superViewSize: $superViewSize)
                     
                     Spacer()
                 }
@@ -46,7 +44,7 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    SignupEmailView(navigationPath: $navigationPath).environmentObject(listener)
+                    SignupEmailView()
                 }
             }
             .onTapGesture {
@@ -94,7 +92,6 @@ struct LoginView: View {
     }
     
     struct ContentView: View {
-        @Binding var navigationPath: NavigationPath
         @Binding var superViewSize: CGSize
         
         var body: some View {
@@ -118,12 +115,12 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                TextFieldsView(navigationPath: $navigationPath)
+                TextFieldsView()
                 
                 Spacer()
                     .frame(height: 24)
 
-                FooterView(navigationPath: $navigationPath)
+                FooterView()
                 
                 Spacer()
                     .frame(height: 14)
@@ -146,8 +143,7 @@ struct LoginView: View {
     }
     
     struct TextFieldsView: View {
-        @EnvironmentObject var listener: LoginSignupEventListener
-        @Binding var navigationPath: NavigationPath
+        @EnvironmentObject var environment: LoginSignupEnvironment
         @FocusState private var focus: LoginTextFieldView.type?
         @State var email: String = ""
         @State var password: String = ""
@@ -185,7 +181,7 @@ struct LoginView: View {
             }
             .alert("Signin Success", isPresented: $loginSuccess) {
                 Button {
-                    listener.loginSuccess = true
+                    environment.loginSuccess = true
                 } label: {
                     Text("OK")
                 }
@@ -201,8 +197,6 @@ struct LoginView: View {
     }
     
     struct FooterView: View {
-        @Binding var navigationPath: NavigationPath
-        
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
                 HStack {
@@ -220,18 +214,18 @@ struct LoginView: View {
                 Spacer()
                     .frame(height: 16)
                 
-                ButtonsView(navigationPath: $navigationPath)
+                ButtonsView()
             }
         }
     }
     
     struct ButtonsView: View {
-        @Binding var navigationPath: NavigationPath
+        @EnvironmentObject var environment: LoginSignupEnvironment
 
         var body: some View {
             HStack(spacing: 0) {
                 Button {
-                    navigationPath.append(LoginRoute.findEmail)
+                    environment.navigationPath.append(LoginRoute.findEmail)
                 } label: {
                     Text("Find email")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -247,7 +241,7 @@ struct LoginView: View {
                 Spacer()
 
                 Button {
-                    navigationPath.append(LoginRoute.findPassword)
+                    environment.navigationPath.append(LoginRoute.findPassword)
                 } label: {
                     Text("Find password")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -263,7 +257,7 @@ struct LoginView: View {
                 Spacer()
 
                 Button {
-                    navigationPath.append(LoginRoute.signup)
+                    environment.navigationPath.append(LoginRoute.signup)
                 } label: {
                     Text("Sign up")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -277,12 +271,10 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
-    @State static private var navigationPath = NavigationPath()
-    
     static var previews: some View {
-        LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+        LoginView().environmentObject(LoginSignupEnvironment())
         
-        LoginView(navigationPath: $navigationPath).environmentObject(LoginSignupEventListener())
+        LoginView().environmentObject(LoginSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

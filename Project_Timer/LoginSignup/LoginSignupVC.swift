@@ -11,7 +11,7 @@ import Combine
 import SwiftUI
 
 final class LoginSignupVC: PortraitVC {
-    private let listener = LoginSignupEventListener()
+    private let environment = LoginSignupEnvironment()
     private var cancellables: Set<AnyCancellable> = []
 
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ final class LoginSignupVC: PortraitVC {
     }
     
     private func configureHostingVC() {
-        let hostingVC = UIHostingController(rootView: LoginSelectView().environmentObject(listener))
+        let hostingVC = UIHostingController(rootView: LoginSelectView().environmentObject(environment))
         self.addChild(hostingVC)
         hostingVC.didMove(toParent: self)
         
@@ -38,7 +38,7 @@ final class LoginSignupVC: PortraitVC {
     }
     
     private func bindListener() {
-        self.listener.$dismiss
+        self.environment.$dismiss
             .receive(on: DispatchQueue.main)
             .sink { [weak self] dismiss in
                 if dismiss {
@@ -47,7 +47,7 @@ final class LoginSignupVC: PortraitVC {
             }
             .store(in: &self.cancellables)
         
-        self.listener.$loginSuccess
+        self.environment.$loginSuccess
             .receive(on: DispatchQueue.main)
             .sink { [weak self] success in
                 guard success else { return }

@@ -9,8 +9,7 @@
 import SwiftUI
 
 struct LoginSelectView: View {
-    @EnvironmentObject var listener: LoginSignupEventListener
-    @State private var navigationPath = NavigationPath()
+    @EnvironmentObject var environment: LoginSignupEnvironment
     @State private var superViewSize: CGSize = .zero
     
     init() {
@@ -19,7 +18,7 @@ struct LoginSelectView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
+        NavigationStack(path: $environment.navigationPath) {
             GeometryReader { geometry in
                 ZStack {
                     TiTiColor.loginBackground.toColor
@@ -28,7 +27,7 @@ struct LoginSelectView: View {
                     VStack(alignment: .center) {
                         Spacer()
                         
-                        ContentView(navigationPath: $navigationPath, superViewSize: $superViewSize)
+                        ContentView(superViewSize: $superViewSize)
                         
                         Spacer()
                     }
@@ -40,9 +39,9 @@ struct LoginSelectView: View {
             .navigationDestination(for: LoginSelectRoute.self) { destination in
                 switch destination {
                 case .signupNickname:
-                    SignupNicknameView(navigationPath: $navigationPath)
+                    SignupNicknameView()
                 case .login:
-                    LoginView(navigationPath: $navigationPath).environmentObject(listener)
+                    LoginView()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -52,7 +51,6 @@ struct LoginSelectView: View {
     }
     
     struct ContentView: View {
-        @Binding var navigationPath: NavigationPath
         @Binding var superViewSize: CGSize
         
         var body: some View {
@@ -76,7 +74,7 @@ struct LoginSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                ButtonsView(navigationPath: $navigationPath)
+                ButtonsView()
             }
             .frame(width: self.width)
         }
@@ -96,8 +94,7 @@ struct LoginSelectView: View {
     }
     
     struct ButtonsView: View {
-        @EnvironmentObject var listener: LoginSignupEventListener
-        @Binding var navigationPath: NavigationPath
+        @EnvironmentObject var environment: LoginSignupEnvironment
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
@@ -108,10 +105,10 @@ struct LoginSelectView: View {
                     print("Google")
                 }
                 EmailLoginButton {
-                    navigationPath.append(LoginSelectRoute.login)
+                    environment.navigationPath.append(LoginSelectRoute.login)
                 }
                 Button {
-                    listener.dismiss = true
+                    environment.dismiss = true
                 } label: {
                     Text("Using without Sign in")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -126,6 +123,6 @@ struct LoginSelectView: View {
 
 struct LoginSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSelectView().environmentObject(LoginSignupEventListener())
+        LoginSelectView().environmentObject(LoginSignupEnvironment())
     }
 }
