@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var superViewSize: CGSize = .zero
     @ObservedObject private var keyboard = KeyboardResponder()
+    @StateObject private var signupInfo = SignupInfo()
+    @State private var superViewSize: CGSize = .zero
     
     var body: some View {
         GeometryReader { geometry in
@@ -44,7 +45,7 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    SignupEmailView()
+                    SignupEmailView().environmentObject(signupInfo)
                 }
             }
             .onTapGesture {
