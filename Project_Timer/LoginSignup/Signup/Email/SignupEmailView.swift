@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct SignupEmailView: View {
-    @State private var superViewSize: CGSize = .zero
+    @EnvironmentObject var signupInfo: SignupInfo
     @ObservedObject private var keyboard = KeyboardResponder()
+    @State private var superViewSize: CGSize = .zero
     
     var body: some View {
         GeometryReader { geometry in
@@ -46,9 +47,9 @@ struct SignupEmailView: View {
     
     struct ContentView: View {
         @EnvironmentObject var environment: LoginSignupEnvironment
+        @EnvironmentObject var signupInfo: SignupInfo
         @Binding var superViewSize: CGSize
         @FocusState var focus: SignupTextFieldView.type?
-        @State var email: String = ""
         @State var authCode: String = ""
         @State var wrongEmail: Bool?
         @State var wrongAuthCode: Bool?
@@ -73,11 +74,11 @@ struct SignupEmailView: View {
                             Spacer()
                                 .frame(height: 72)
                             
-                            SignupTextFieldView(type: .email, text: $email, focus: $focus) {
+                            SignupTextFieldView(type: .email, text: $signupInfo.email, focus: $focus) {
                                 emailCheck()
                             }
                             .id(SignupTextFieldView.type.email)
-                            .onChange(of: email) { newValue in
+                            .onChange(of: signupInfo.email) { newValue in
                                 wrongEmail = nil
                             }
                             
@@ -223,7 +224,7 @@ struct SignupEmailView: View {
         
         // 이메일 done 액션
         func emailCheck() {
-            let emailValid = PredicateChecker.isValidEmail(email)
+            let emailValid = PredicateChecker.isValidEmail(signupInfo.email)
             self.wrongEmail = !emailValid
             
             if emailValid {
@@ -239,6 +240,7 @@ struct SignupEmailView: View {
             self.wrongAuthCode = !authCodeValid
             
             if authCodeValid {
+                signupInfo.setVerificationKey(to: "1234ABCD")
                 environment.navigationPath.append(SignupEmailRoute.signupPassword)
             } else {
                 focus = .authCode

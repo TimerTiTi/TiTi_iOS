@@ -25,9 +25,9 @@ class SignupInfo: ObservableObject {
     let vender: SignupInfo.vender?
     let id: String?
     
-    @Published var email: String?
-    @Published var password: String?
-    @Published var nickname: String?
+    @Published var email: String = ""
+    @Published var password: String = ""
+    @Published var nickname: String = ""
     @Published var marketingObservable: Bool = false
     private(set) var verificationKey: String?
     
