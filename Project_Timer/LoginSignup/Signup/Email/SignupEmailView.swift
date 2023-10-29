@@ -11,7 +11,7 @@ import SwiftUI
 struct SignupEmailView: View {
     @EnvironmentObject var signupInfo: SignupInfo
     @ObservedObject private var keyboard = KeyboardResponder()
-    @State private var superViewSize: CGSize = .zero
+    @StateObject private var model = SignupEmailModel()
     
     var body: some View {
         GeometryReader { geometry in
@@ -19,7 +19,7 @@ struct SignupEmailView: View {
                 TiTiColor.firstBackground.toColor
                     .ignoresSafeArea()
                 
-                ContentView(superViewSize: $superViewSize)
+                ContentView(model: model)
                     .onAppear {
                         keyboard.addObserver()
                     }
@@ -29,7 +29,7 @@ struct SignupEmailView: View {
                     .padding(.bottom, keyboard.keyboardHeight)
             }
             .onChange(of: geometry.size, perform: { value in
-                self.superViewSize = value
+                model.updateContentWidth(size: value)
             })
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
@@ -48,11 +48,8 @@ struct SignupEmailView: View {
     struct ContentView: View {
         @EnvironmentObject var environment: LoginSignupEnvironment
         @EnvironmentObject var signupInfo: SignupInfo
-        @Binding var superViewSize: CGSize
+        @ObservedObject var model: SignupEmailModel
         @FocusState var focus: SignupTextFieldView.type?
-        @State var authCode: String = ""
-        @State var wrongEmail: Bool?
-        @State var wrongAuthCode: Bool?
         
         var body: some View {
             ZStack {
@@ -79,7 +76,7 @@ struct SignupEmailView: View {
                             }
                             .id(SignupTextFieldView.type.email)
                             .onChange(of: signupInfo.email) { newValue in
-                                wrongEmail = nil
+                                model.wrongEmail = nil
                             }
                             
                             Spacer()
@@ -95,19 +92,19 @@ struct SignupEmailView: View {
                             Text("The format is incorrect. Please enter in the correct format")
                                 .font(TiTiFont.HGGGothicssiP40g(size: 12))
                                 .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                                .opacity(wrongEmail == true ? 1.0 : 0)
+                                .opacity(model.wrongEmail == true ? 1.0 : 0)
                             
-                            if wrongEmail == false {
+                            if model.wrongEmail == false {
                                 Spacer()
                                     .frame(height: 35)
                                 
                                 HStack(alignment: .center, spacing: 16) {
-                                    SignupTextFieldView(type: .authCode, text: $authCode, focus: $focus) {
+                                    SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
                                         authCodeCheck()
                                     }
                                     .id(SignupTextFieldView.type.authCode)
-                                    .onChange(of: authCode) { newValue in
-                                        wrongAuthCode = nil
+                                    .onChange(of: model.authCode) { newValue in
+                                        model.wrongAuthCode = nil
                                     }
                                     .frame(maxWidth: .infinity)
                                     
@@ -136,11 +133,11 @@ struct SignupEmailView: View {
                                 Text("The verification code is not valid. Please try again")
                                     .font(TiTiFont.HGGGothicssiP40g(size: 12))
                                     .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                                    .opacity(wrongAuthCode == true ? 1.0 : 0)
+                                    .opacity(model.wrongAuthCode == true ? 1.0 : 0)
                             }
                         }
                         .onAppear {
-                            if wrongAuthCode == nil {
+                            if model.wrongAuthCode == nil {
                                 focus = .email
                             }
                         }
@@ -187,23 +184,12 @@ struct SignupEmailView: View {
                 }
                 #endif
             }
-            .frame(width: abs(self.width), alignment: .leading)
-        }
-        
-        // 화면크기에 따른 width 크기조정
-        var width: CGFloat {
-            let size = superViewSize
-            switch size.deviceDetailType {
-            case .iPhoneMini, .iPhonePro, .iPhoneMax:
-                return size.minLength - 48
-            default:
-                return 400
-            }
+            .frame(width: abs(model.contentWidth), alignment: .leading)
         }
         
         // emailTextField underline 컬러
         var emailTintColor: Color {
-            if wrongEmail == true {
+            if model.wrongEmail == true {
                 return TiTiColor.wrongTextField.toColor
             } else if focus == .email {
                 return Color.blue
@@ -213,7 +199,7 @@ struct SignupEmailView: View {
         }
         
         var authCodeTintColor: Color {
-            if wrongAuthCode == true {
+            if model.wrongAuthCode == true {
                 return TiTiColor.wrongTextField.toColor
             } else if focus == .authCode {
                 return Color.blue
@@ -225,7 +211,7 @@ struct SignupEmailView: View {
         // 이메일 done 액션
         func emailCheck() {
             let emailValid = PredicateChecker.isValidEmail(signupInfo.email)
-            self.wrongEmail = !emailValid
+            model.wrongEmail = !emailValid
             
             if emailValid {
                 focus = .authCode
@@ -236,8 +222,8 @@ struct SignupEmailView: View {
         
         // 인증코드 done 액션
         func authCodeCheck() {
-            let authCodeValid = authCode.count > 7
-            self.wrongAuthCode = !authCodeValid
+            let authCodeValid = model.authCode.count > 7
+            model.wrongAuthCode = !authCodeValid
             
             if authCodeValid {
                 signupInfo.setVerificationKey(to: "1234ABCD")
