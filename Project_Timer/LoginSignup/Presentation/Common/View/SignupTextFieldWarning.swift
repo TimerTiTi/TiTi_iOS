@@ -19,7 +19,7 @@ struct SignupTextFieldWarning: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             Spacer()
                 .frame(height: 2)
             

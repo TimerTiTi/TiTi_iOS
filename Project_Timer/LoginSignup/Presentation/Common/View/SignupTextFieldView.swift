@@ -23,8 +23,9 @@ struct SignupTextFieldView: View {
     let submitAction: () -> Void
     
     var body: some View {
-        if self.type != .password {
-            TextField("", text: $text)
+        if self.type == .password || self.type == .password2 {
+            
+            SecureField("", text: $text)
                 .font(TiTiFont.HGGGothicssiP60g(size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
@@ -55,7 +56,7 @@ struct SignupTextFieldView: View {
                     }
                 }
         } else {
-            SecureField("", text: $text)
+            TextField("", text: $text)
                 .font(TiTiFont.HGGGothicssiP60g(size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
@@ -97,7 +98,7 @@ struct SignupTextFieldView: View {
         case .password:
             return "new password".localized()
         case .password2:
-            return "retype password".localized()
+            return "confirm new password".localized()
         case .nickname:
             return "nickname".localized()
         }

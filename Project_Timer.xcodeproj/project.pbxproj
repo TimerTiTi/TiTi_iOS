@@ -57,6 +57,9 @@
 		870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
 		870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */; };
 		870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E85002AD67E46000511BD /* KeyboardResponder.swift */; };
+		870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E22AEFF7FC00854DDB /* SignupPasswordView.swift */; };
+		870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E42AEFFA9300854DDB /* SignupPasswordModel.swift */; };
+		870F90E72AEFFF1A00854DDB /* SignupPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E62AEFFF1A00854DDB /* SignupPasswordRoute.swift */; };
 		87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC72ACAF2E8008D4072 /* NetworkError.swift */; };
 		87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC92ACAF89B008D4072 /* NetworkResult.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
@@ -368,6 +371,9 @@
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
 		870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetCellData.swift; sourceTree = "<group>"; };
 		870E85002AD67E46000511BD /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		870F90E22AEFF7FC00854DDB /* SignupPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordView.swift; sourceTree = "<group>"; };
+		870F90E42AEFFA9300854DDB /* SignupPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordModel.swift; sourceTree = "<group>"; };
+		870F90E62AEFFF1A00854DDB /* SignupPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordRoute.swift; sourceTree = "<group>"; };
 		87163DC72ACAF2E8008D4072 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		87163DC92ACAF89B008D4072 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
@@ -708,6 +714,16 @@
 				87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		870F90E12AEFF7DE00854DDB /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				870F90E62AEFFF1A00854DDB /* SignupPasswordRoute.swift */,
+				870F90E22AEFF7FC00854DDB /* SignupPasswordView.swift */,
+				870F90E42AEFFA9300854DDB /* SignupPasswordModel.swift */,
+			);
+			path = Password;
 			sourceTree = "<group>";
 		};
 		87199F422882BC0C0017D01A /* Graph */ = {
@@ -1479,6 +1495,7 @@
 			isa = PBXGroup;
 			children = (
 				878DA1F32AEE610F00C60CBF /* Email */,
+				870F90E12AEFF7DE00854DDB /* Password */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -1841,6 +1858,7 @@
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
 				870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */,
 				8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */,
+				870F90E72AEFFF1A00854DDB /* SignupPasswordRoute.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */,
@@ -1856,8 +1874,10 @@
 				87DB923E2AC2D06C00FE6453 /* View+Extension.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
 				874F9C312ABFF81300675A86 /* EmailLoginButton.swift in Sources */,
+				870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				877911B82A18903000F0A713 /* SettingListCell.swift in Sources */,
+				870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87BFCBCC28EFB10F00FC688E /* TargetTimePickerVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,

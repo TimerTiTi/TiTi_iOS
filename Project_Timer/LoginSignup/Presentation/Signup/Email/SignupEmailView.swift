@@ -37,12 +37,9 @@ struct SignupEmailView: View {
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
                 case .signupPassword:
+                    let prevInfos = model.infos
                     let emailInfo = model.emailInfo
-                    VStack {
-                        Text("Signup Password")
-                        Text(emailInfo.email)
-                        Text(emailInfo.verificationKey)
-                    }
+                    SignupPasswordView(model: SignupPasswordModel(infos: (prevInfos: prevInfos, emailInfo: emailInfo)))
                 }
             }
         }
@@ -62,8 +59,8 @@ struct SignupEmailView: View {
                             SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
                             
                             SignupTextFieldView(type: .email, text: $model.email, focus: $focus) {
-                                model.emailCheck()
-                                focusCheckAfterEmail()
+                                model.checkEmail()
+                                checkFocusAfterEmail()
                             }
                             .id(SignupTextFieldView.type.email)
                             .onChange(of: model.email) { newValue in
@@ -74,7 +71,7 @@ struct SignupEmailView: View {
                             SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
                             
                             if model.wrongEmail == false {
-                                NextContentView(model: model, focus: $focus, focusCheckAfterAuthCode: focusCheckAfterAuthCode)
+                                NextContentView(model: model, focus: $focus, focusCheckAfterAuthCode: checkFocusAfterAuthCode)
                             }
                         }
                         .onAppear {
@@ -105,11 +102,11 @@ struct SignupEmailView: View {
                     SignupNextButtonForMac(visible: focus != nil) {
                         switch focus {
                         case .email:
-                            model.emailCheck()
-                            focusCheckAfterEmail()
+                            model.checkEmail()
+                            checkFocusAfterEmail()
                         case .authCode:
-                            model.authCodeCheck()
-                            focusCheckAfterAuthCode()
+                            model.checkAuthCode()
+                            checkFocusAfterAuthCode()
                         default:
                             return
                         }
@@ -123,13 +120,13 @@ struct SignupEmailView: View {
             .frame(width: model.contentWidth, alignment: .leading)
         }
         
-        func focusCheckAfterEmail() {
+        func checkFocusAfterEmail() {
             if model.wrongEmail == true {
                 focus = .email
             } 
         }
         
-        func focusCheckAfterAuthCode() {
+        func checkFocusAfterAuthCode() {
             if model.wrongAuthCode == true {
                 focus = .authCode
             }
@@ -148,7 +145,7 @@ struct SignupEmailView: View {
                 
                 HStack(alignment: .center, spacing: 16) {
                     SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
-                        model.authCodeCheck()
+                        model.checkAuthCode()
                         focusCheckAfterAuthCode()
                     }
                     .id(SignupTextFieldView.type.authCode)
@@ -185,9 +182,9 @@ struct SignupEmailView: View {
 
 struct SignupEmailView_Previews: PreviewProvider {
     static var previews: some View {
-        SignupEmailView(model: SignupEmailModel(type: .normal, venderInfo: nil)).environmentObject(LoginSignupEnvironment())
+        SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil))).environmentObject(LoginSignupEnvironment())
         
-        SignupEmailView(model: SignupEmailModel(type: .normal, venderInfo: nil)).environmentObject(LoginSignupEnvironment())
+        SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil))).environmentObject(LoginSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }
