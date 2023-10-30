@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject private var keyboard = KeyboardResponder()
     @StateObject private var signupInfo = SignupInfo()
+    @ObservedObject private var keyboard = KeyboardResponder()
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {

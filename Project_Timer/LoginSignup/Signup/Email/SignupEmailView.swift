@@ -9,9 +9,8 @@
 import SwiftUI
 
 struct SignupEmailView: View {
-    @EnvironmentObject var signupInfo: SignupInfo
-    @ObservedObject private var keyboard = KeyboardResponder()
     @StateObject private var model = SignupEmailModel()
+    @ObservedObject private var keyboard = KeyboardResponder()
     
     var body: some View {
         GeometryReader { geometry in
@@ -72,7 +71,8 @@ struct SignupEmailView: View {
                                 .frame(height: 72)
                             
                             SignupTextFieldView(type: .email, text: $signupInfo.email, focus: $focus) {
-                                emailCheck()
+                                model.emailCheck(signupInfo.email)
+                                focusCheckAfterEmail()
                             }
                             .id(SignupTextFieldView.type.email)
                             .onChange(of: signupInfo.email) { newValue in
@@ -84,7 +84,7 @@ struct SignupEmailView: View {
                             
                             Rectangle()
                                 .frame(height: 2)
-                                .foregroundStyle(emailTintColor)
+                                .foregroundStyle(model.emailTintColor)
                             
                             Spacer()
                                 .frame(height: 2)
@@ -100,7 +100,8 @@ struct SignupEmailView: View {
                                 
                                 HStack(alignment: .center, spacing: 16) {
                                     SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
-                                        authCodeCheck()
+                                        model.authCodeCheck()
+                                        focusCheckAfterAuthCode()
                                     }
                                     .id(SignupTextFieldView.type.authCode)
                                     .onChange(of: model.authCode) { newValue in
@@ -125,7 +126,7 @@ struct SignupEmailView: View {
                                 
                                 Rectangle()
                                     .frame(height: 2)
-                                    .foregroundStyle(authCodeTintColor)
+                                    .foregroundStyle(model.authCodeTintColor)
                                 
                                 Spacer()
                                     .frame(height: 2)
@@ -143,6 +144,7 @@ struct SignupEmailView: View {
                         }
                         
                         .onChange(of: focus) { newValue in
+                            model.updateFocus(to: focus)
                             #if targetEnvironment(macCatalyst)
                             #else
                             scrollViewProxy.scrollTo(newValue, anchor: .top)
@@ -184,48 +186,19 @@ struct SignupEmailView: View {
                 }
                 #endif
             }
-            .frame(width: abs(model.contentWidth), alignment: .leading)
+            .frame(width: model.contentWidth, alignment: .leading)
         }
         
-        // emailTextField underline 컬러
-        var emailTintColor: Color {
-            if model.wrongEmail == true {
-                return TiTiColor.wrongTextField.toColor
-            } else if focus == .email {
-                return Color.blue
-            } else {
-                return UIColor.placeholderText.toColor
-            }
-        }
-        
-        var authCodeTintColor: Color {
-            if model.wrongAuthCode == true {
-                return TiTiColor.wrongTextField.toColor
-            } else if focus == .authCode {
-                return Color.blue
-            } else {
-                return UIColor.placeholderText.toColor
-            }
-        }
-        
-        // 이메일 done 액션
-        func emailCheck() {
-            let emailValid = PredicateChecker.isValidEmail(signupInfo.email)
-            model.wrongEmail = !emailValid
-            
-            if emailValid {
+        func focusCheckAfterEmail() {
+            if model.wrongEmail == false {
                 focus = .authCode
             } else {
                 focus = .email
             }
         }
         
-        // 인증코드 done 액션
-        func authCodeCheck() {
-            let authCodeValid = model.authCode.count > 7
-            model.wrongAuthCode = !authCodeValid
-            
-            if authCodeValid {
+        func focusCheckAfterAuthCode() {
+            if model.wrongAuthCode == false {
                 signupInfo.setVerificationKey(to: "1234ABCD")
                 environment.navigationPath.append(SignupEmailRoute.signupPassword)
             } else {
