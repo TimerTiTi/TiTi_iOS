@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
+/// LoginSignupVC로 통신 역할
 class LoginSignupEnvironment: ObservableObject {
     @Published var dismiss: Bool = false
     @Published var loginSuccess: Bool = false
