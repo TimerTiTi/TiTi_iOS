@@ -12,11 +12,26 @@ import SwiftUI
 
 // MARK: State
 class SignupEmailModel: ObservableObject {
+    let type: SignupInfo.type
+    let venderInfo: SignupVenderInfo?
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
     @Published var authCode: String = ""
     @Published var wrongEmail: Bool?
     @Published var wrongAuthCode: Bool?
+    @Published var getVerificationSuccess: Bool = false
+    
+    @Published var email: String = ""
+    private var verificationKey = ""
+    
+    init(type: SignupInfo.type, venderInfo: SignupVenderInfo?) {
+        self.type = type
+        self.venderInfo = venderInfo
+        
+        if let email = venderInfo?.email {
+            self.email = email
+        }
+    }
     
     // emailTextField underline 컬러
     var emailTintColor: Color {
@@ -39,6 +54,11 @@ class SignupEmailModel: ObservableObject {
             return UIColor.placeholderText.toColor
         }
     }
+    
+    // emailInfo 생성 후 반환
+    var emailInfo: SignupEmailInfo {
+        return SignupEmailInfo(email: email, verificationKey: verificationKey)
+    }
 }
 
 // MARK: Action
@@ -59,7 +79,7 @@ extension SignupEmailModel {
     }
     
     // 이메일 done 액션
-    func emailCheck(_ email: String) {
+    func emailCheck() {
         let emailValid = PredicateChecker.isValidEmail(email)
         wrongEmail = !emailValid
     }
@@ -68,5 +88,11 @@ extension SignupEmailModel {
     func authCodeCheck() {
         let authCodeValid = authCode.count > 7
         wrongAuthCode = !authCodeValid
+        
+        if authCodeValid {
+            // verificationKey 수신 필요
+            verificationKey = "abcd1234"
+            getVerificationSuccess = true
+        }
     }
 }
