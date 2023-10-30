@@ -10,10 +10,11 @@ import Foundation
 import Combine
 import SwiftUI
 
+typealias SignupSelectInfos = (type: SignupInfo.type, venderInfo: SignupVenderInfo?)
+
 // MARK: State
 class SignupEmailModel: ObservableObject {
-    let type: SignupInfo.type
-    let venderInfo: SignupVenderInfo?
+    let infos: SignupSelectInfos
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
     @Published var authCode: String = ""
@@ -24,11 +25,10 @@ class SignupEmailModel: ObservableObject {
     @Published var email: String = ""
     private var verificationKey = ""
     
-    init(type: SignupInfo.type, venderInfo: SignupVenderInfo?) {
-        self.type = type
-        self.venderInfo = venderInfo
+    init(infos: SignupSelectInfos) {
+        self.infos = infos
         
-        if let email = venderInfo?.email {
+        if let email = infos.venderInfo?.email {
             self.email = email
         }
     }
@@ -79,13 +79,13 @@ extension SignupEmailModel {
     }
     
     // 이메일 done 액션
-    func emailCheck() {
+    func checkEmail() {
         let emailValid = PredicateChecker.isValidEmail(email)
         wrongEmail = !emailValid
     }
     
     // 인증코드 done 액션
-    func authCodeCheck() {
+    func checkAuthCode() {
         let authCodeValid = authCode.count > 7
         wrongAuthCode = !authCodeValid
         

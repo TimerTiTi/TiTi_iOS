@@ -13,7 +13,7 @@ struct SignupTextFieldUnderlineView: View {
     var color: Color
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 0) {
             Spacer()
                 .frame(height: 12)
             

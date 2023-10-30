@@ -44,7 +44,7 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    SignupEmailView(model: SignupEmailModel(type: .vender, venderInfo: nil))
+                    SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil)))
                 }
             }
         }
