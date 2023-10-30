@@ -9,8 +9,12 @@
 import SwiftUI
 
 struct SignupEmailView: View {
-    @StateObject private var model = SignupEmailModel()
     @ObservedObject private var keyboard = KeyboardResponder()
+    @StateObject private var model: SignupEmailModel
+    
+    init(model: SignupEmailModel) {
+        _model = StateObject(wrappedValue: model)
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -33,7 +37,12 @@ struct SignupEmailView: View {
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
                 case .signupPassword:
-                    Text("Signup Password")
+                    let emailInfo = model.emailInfo
+                    VStack {
+                        Text("Signup Password")
+                        Text(emailInfo.email)
+                        Text(emailInfo.verificationKey)
+                    }
                 }
             }
         }
@@ -42,7 +51,6 @@ struct SignupEmailView: View {
     
     struct ContentView: View {
         @EnvironmentObject var environment: LoginSignupEnvironment
-        @EnvironmentObject var signupInfo: SignupInfo
         @ObservedObject var model: SignupEmailModel
         @FocusState var focus: SignupTextFieldView.type?
         
@@ -53,12 +61,12 @@ struct SignupEmailView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
                             
-                            SignupTextFieldView(type: .email, text: $signupInfo.email, focus: $focus) {
-                                model.emailCheck(signupInfo.email)
+                            SignupTextFieldView(type: .email, text: $model.email, focus: $focus) {
+                                model.emailCheck()
                                 focusCheckAfterEmail()
                             }
                             .id(SignupTextFieldView.type.email)
-                            .onChange(of: signupInfo.email) { newValue in
+                            .onChange(of: model.email) { newValue in
                                 model.wrongEmail = nil
                             }
                             
@@ -66,36 +74,7 @@ struct SignupEmailView: View {
                             SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
                             
                             if model.wrongEmail == false {
-                                Spacer()
-                                    .frame(height: 35)
-                                
-                                HStack(alignment: .center, spacing: 16) {
-                                    SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
-                                        model.authCodeCheck()
-                                        focusCheckAfterAuthCode()
-                                    }
-                                    .id(SignupTextFieldView.type.authCode)
-                                    .onChange(of: model.authCode) { newValue in
-                                        model.wrongAuthCode = nil
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                    
-                                    // MARK: Timer 구현 필요
-                                    Text("4 : 59")
-                                        .font(TiTiFont.HGGGothicssiP40g(size: 18))
-                                    
-                                    // MARK: 재전송 구현 필요
-                                    Button {
-                                        // MARK: ViewModel 내에서 네트워킹이 필요한 부분
-                                        print("resend")
-                                    } label: {
-                                        Text("resend")
-                                            .font(TiTiFont.HGGGothicssiP40g(size: 18))
-                                    }
-                                }
-                                
-                                SignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.wrongAuthCode == true)
+                                NextContentView(model: model, focus: $focus, focusCheckAfterAuthCode: focusCheckAfterAuthCode)
                             }
                         }
                         .onAppear {
@@ -103,13 +82,16 @@ struct SignupEmailView: View {
                                 focus = .email
                             }
                         }
-                        
                         .onChange(of: focus) { newValue in
                             model.updateFocus(to: focus)
                             #if targetEnvironment(macCatalyst)
                             #else
                             scrollViewProxy.scrollTo(newValue, anchor: .top)
                             #endif
+                        }
+                        .onReceive(model.$getVerificationSuccess) { success in
+                            guard success else { return }
+                            environment.navigationPath.append(SignupEmailRoute.signupPassword)
                         }
                     }
                     .scrollIndicators(.hidden)
@@ -123,9 +105,11 @@ struct SignupEmailView: View {
                     SignupNextButtonForMac(visible: focus != nil) {
                         switch focus {
                         case .email:
-                            emailCheck()
+                            model.emailCheck()
+                            focusCheckAfterEmail()
                         case .authCode:
-                            authCodeCheck()
+                            model.authCodeCheck()
+                            focusCheckAfterAuthCode()
                         default:
                             return
                         }
@@ -140,31 +124,70 @@ struct SignupEmailView: View {
         }
         
         func focusCheckAfterEmail() {
-            if model.wrongEmail == false {
-                focus = .authCode
-            } else {
+            if model.wrongEmail == true {
                 focus = .email
-            }
+            } 
         }
         
         func focusCheckAfterAuthCode() {
-            if model.wrongAuthCode == false {
-                signupInfo.setVerificationKey(to: "1234ABCD")
-                environment.navigationPath.append(SignupEmailRoute.signupPassword)
-            } else {
+            if model.wrongAuthCode == true {
                 focus = .authCode
+            }
+        }
+    }
+    
+    struct NextContentView: View {
+        @ObservedObject var model: SignupEmailModel
+        @FocusState.Binding var focus: SignupTextFieldView.type?
+        var focusCheckAfterAuthCode: () -> Void
+        
+        var body: some View {
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(height: 35)
+                
+                HStack(alignment: .center, spacing: 16) {
+                    SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
+                        model.authCodeCheck()
+                        focusCheckAfterAuthCode()
+                    }
+                    .id(SignupTextFieldView.type.authCode)
+                    .onChange(of: model.authCode) { newValue in
+                        model.wrongAuthCode = nil
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    // MARK: Timer 구현 필요
+                    Text("4 : 59")
+                        .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                    
+                    // MARK: 재전송 구현 필요
+                    Button {
+                        // MARK: ViewModel 내에서 네트워킹이 필요한 부분
+                        print("resend")
+                    } label: {
+                        Text("resend")
+                            .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                    }
+                }
+                .onAppear {
+                    if model.wrongAuthCode != false {
+                        focus = .authCode
+                    }
+                }
+                
+                SignupTextFieldUnderlineView(color: model.authCodeTintColor)
+                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.wrongAuthCode == true)
             }
         }
     }
 }
 
 struct SignupEmailView_Previews: PreviewProvider {
-    @State static private var navigationPath = NavigationPath()
-    
     static var previews: some View {
-        SignupEmailView().environmentObject(LoginSignupEnvironment())
+        SignupEmailView(model: SignupEmailModel(type: .normal, venderInfo: nil)).environmentObject(LoginSignupEnvironment())
         
-        SignupEmailView().environmentObject(LoginSignupEnvironment())
+        SignupEmailView(model: SignupEmailModel(type: .normal, venderInfo: nil)).environmentObject(LoginSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

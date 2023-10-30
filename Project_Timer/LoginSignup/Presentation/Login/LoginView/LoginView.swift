@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var signupInfo = SignupInfo()
     @ObservedObject private var keyboard = KeyboardResponder()
     @State private var superViewSize: CGSize = .zero
     
@@ -45,7 +44,7 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    SignupEmailView().environmentObject(signupInfo)
+                    SignupEmailView(model: SignupEmailModel(type: .vender, venderInfo: nil))
                 }
             }
         }
