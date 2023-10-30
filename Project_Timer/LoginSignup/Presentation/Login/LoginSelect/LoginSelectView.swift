@@ -39,7 +39,7 @@ struct LoginSelectView: View {
             .navigationDestination(for: LoginSelectRoute.self) { destination in
                 switch destination {
                 case .signupNickname:
-                    SignupNicknameView()
+                    Text("Nickname")
                 case .login:
                     LoginView()
                 }

@@ -37,11 +37,7 @@ struct SignupEmailView: View {
                 }
             }
         }
-        .onTapGesture {
-            hideKeyboard()
-        }
-        .navigationTitle("")
-        .ignoresSafeArea(.keyboard)
+        .configureForTextFieldRootView()
     }
     
     struct ContentView: View {
@@ -55,20 +51,7 @@ struct SignupEmailView: View {
                 ScrollViewReader { scrollViewProxy in
                     ScrollView {
                         VStack(alignment: .leading, spacing: 0) {
-                            Spacer()
-                                .frame(height: 29)
-                            
-                            VStack(alignment: .leading, spacing: 16) {
-                                Text("Enter your email address")
-                                    .font(TiTiFont.HGGGothicssiP80g(size: 22))
-                                Text("Please enter your email address for verification")
-                                    .font(TiTiFont.HGGGothicssiP60g(size: 14))
-                                    .foregroundStyle(UIColor.secondaryLabel.toColor)
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                            Spacer()
-                                .frame(height: 72)
+                            SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
                             
                             SignupTextFieldView(type: .email, text: $signupInfo.email, focus: $focus) {
                                 model.emailCheck(signupInfo.email)
@@ -79,20 +62,8 @@ struct SignupEmailView: View {
                                 model.wrongEmail = nil
                             }
                             
-                            Spacer()
-                                .frame(height: 12)
-                            
-                            Rectangle()
-                                .frame(height: 2)
-                                .foregroundStyle(model.emailTintColor)
-                            
-                            Spacer()
-                                .frame(height: 2)
-                            
-                            Text("The format is incorrect. Please enter in the correct format")
-                                .font(TiTiFont.HGGGothicssiP40g(size: 12))
-                                .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                                .opacity(model.wrongEmail == true ? 1.0 : 0)
+                            SignupTextFieldUnderlineView(color: model.emailTintColor)
+                            SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
                             
                             if model.wrongEmail == false {
                                 Spacer()
@@ -109,9 +80,11 @@ struct SignupEmailView: View {
                                     }
                                     .frame(maxWidth: .infinity)
                                     
+                                    // MARK: Timer 구현 필요
                                     Text("4 : 59")
                                         .font(TiTiFont.HGGGothicssiP40g(size: 18))
                                     
+                                    // MARK: 재전송 구현 필요
                                     Button {
                                         // MARK: ViewModel 내에서 네트워킹이 필요한 부분
                                         print("resend")
@@ -121,20 +94,8 @@ struct SignupEmailView: View {
                                     }
                                 }
                                 
-                                Spacer()
-                                    .frame(height: 12)
-                                
-                                Rectangle()
-                                    .frame(height: 2)
-                                    .foregroundStyle(model.authCodeTintColor)
-                                
-                                Spacer()
-                                    .frame(height: 2)
-                                
-                                Text("The verification code is not valid. Please try again")
-                                    .font(TiTiFont.HGGGothicssiP40g(size: 12))
-                                    .foregroundStyle(TiTiColor.wrongTextField.toColor)
-                                    .opacity(model.wrongAuthCode == true ? 1.0 : 0)
+                                SignupTextFieldUnderlineView(color: model.authCodeTintColor)
+                                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.wrongAuthCode == true)
                             }
                         }
                         .onAppear {
@@ -159,7 +120,7 @@ struct SignupEmailView: View {
                     Spacer()
                         .frame(maxHeight: .infinity)
                     
-                    Button {
+                    SignupNextButtonForMac(visible: focus != nil) {
                         switch focus {
                         case .email:
                             emailCheck()
@@ -168,18 +129,7 @@ struct SignupEmailView: View {
                         default:
                             return
                         }
-                    } label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .foregroundColor(.blue)
-                                .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
-                                .frame(height: 60)
-                            
-                            Text("Next")
-                                .font(TiTiFont.HGGGothicssiP60g(size: 20))
-                        }
                     }
-                    .opacity(focus != nil ? 1.0 : 0)
                     
                     Spacer()
                         .frame(height: 45)

@@ -48,12 +48,8 @@ struct LoginView: View {
                     SignupEmailView().environmentObject(signupInfo)
                 }
             }
-            .onTapGesture {
-                hideKeyboard()
-            }
         }
-        .navigationTitle("")
-        .ignoresSafeArea(.keyboard)
+        .configureForTextFieldRootView()
     }
     
     func keyboardOffset(_ keyboardShow: Bool) -> CGFloat {
