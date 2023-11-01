@@ -60,7 +60,7 @@ struct SignupPasswordView: View {
                                     .id(SignupTextFieldView.type.password)
                                 
                                 if model.stage == .password2 {
-                                    NextContentView(focus: $focus, model: model, scrollViewProxy: scrollViewProxy)
+                                    NextContentView(model: model, focus: $focus)
                                 }
                             }
                             .onAppear {
@@ -94,19 +94,11 @@ struct SignupPasswordView: View {
                 }
             }
         }
-        
-        func scroll(_ scrollViewProxy: ScrollViewProxy, to: any Hashable) {
-            #if targetEnvironment(macCatalyst)
-            #else
-            scrollViewProxy.scrollTo(to, anchor: .bottom)
-            #endif
-        }
     }
     
     struct NextContentView: View {
-        @FocusState.Binding var focus: SignupTextFieldView.type?
         @ObservedObject var model: SignupPasswordModel
-        let scrollViewProxy: ScrollViewProxy
+        @FocusState.Binding var focus: SignupTextFieldView.type?
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
