@@ -23,7 +23,7 @@ struct SignupEmailView: View {
                     .ignoresSafeArea()
                 
                 ContentView(model: model)
-                    .padding(.bottom, keyboard.keyboardHeight)
+                    .padding(.bottom, keyboard.keyboardHeight+16)
             }
             .onChange(of: geometry.size, perform: { value in
                 model.updateContentWidth(size: value)
@@ -49,39 +49,49 @@ struct SignupEmailView: View {
             ZStack {
                 ScrollViewReader { scrollViewProxy in
                     ScrollView {
-                        VStack(alignment: .leading, spacing: 0) {
-                            SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
-                            
-                            SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
-                                model.checkEmail()
-                                checkFocusAfterEmail()
+                        HStack {
+                            Spacer()
+                            VStack(alignment: .leading, spacing: 0) {
+                                SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
+                                
+                                SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
+                                    model.checkEmail()
+                                }
+                                .onChange(of: model.email) { newValue in
+                                    model.validEmail = nil
+                                }
+                                SignupTextFieldUnderlineView(color: model.emailTintColor)
+                                SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.validEmail == false)
+                                    .id(SignupTextFieldView.type.email)
+                                
+                                if model.stage == .verificationCode {
+                                    NextContentView(model: model, focus: $focus)
+                                }
                             }
-                            .onChange(of: model.email) { newValue in
-                                model.wrongEmail = nil
+                            .onAppear {
+                                if model.stage == .email {
+                                    focus = .email
+                                }
                             }
-                            SignupTextFieldUnderlineView(color: model.emailTintColor)
-                                .id(SignupTextFieldView.type.email)
-                            SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
-                            
-                            if model.wrongEmail == false {
-                                NextContentView(model: model, focus: $focus, focusCheckAfterAuthCode: checkFocusAfterAuthCode)
+                            .onChange(of: focus) { newValue in // @FocusState 변화 -> stage 반영
+                                model.updateFocus(to: newValue)
+                                scroll(scrollViewProxy, to: newValue)
                             }
-                        }
-                        .onAppear {
-                            if model.wrongAuthCode == nil {
-                                focus = .email
+                            .onReceive(model.$stage, perform: { stage in // stage 변화 -> @FocusState 반영
+                                switch stage {
+                                case .email:
+                                    focus = .email
+                                case .verificationCode:
+                                    focus = .verificationCode
+                                }
+                                scroll(scrollViewProxy, to: focus)
+                            })
+                            .onReceive(model.$getVerificationSuccess) { success in
+                                guard success else { return }
+                                environment.navigationPath.append(SignupEmailRoute.signupPassword)
                             }
-                        }
-                        .onChange(of: focus) { newValue in
-                            model.updateFocus(to: focus)
-                            #if targetEnvironment(macCatalyst)
-                            #else
-                            scrollViewProxy.scrollTo(newValue, anchor: .top)
-                            #endif
-                        }
-                        .onReceive(model.$getVerificationSuccess) { success in
-                            guard success else { return }
-                            environment.navigationPath.append(SignupEmailRoute.signupPassword)
+                            .frame(width: model.contentWidth)
+                            Spacer()
                         }
                     }
                     .scrollIndicators(.hidden)
@@ -108,20 +118,8 @@ struct SignupEmailView: View {
                     Spacer()
                         .frame(height: 45)
                 }
+                .frame(width: model.contentWidth, alignment: .leading)
                 #endif
-            }
-            .frame(width: model.contentWidth, alignment: .leading)
-        }
-        
-        func checkFocusAfterEmail() {
-            if model.wrongEmail == true {
-                focus = .email
-            } 
-        }
-        
-        func checkFocusAfterAuthCode() {
-            if model.wrongAuthCode == true {
-                focus = .authCode
             }
         }
     }
@@ -129,7 +127,6 @@ struct SignupEmailView: View {
     struct NextContentView: View {
         @ObservedObject var model: SignupEmailModel
         @FocusState.Binding var focus: SignupTextFieldView.type?
-        var focusCheckAfterAuthCode: () -> Void
         
         var body: some View {
             VStack(spacing: 0) {
@@ -137,19 +134,13 @@ struct SignupEmailView: View {
                     .frame(height: 35)
                 
                 HStack(alignment: .center, spacing: 16) {
-                    SignupTextFieldView(type: .authCode, keyboardType: .alphabet, text: $model.authCode, focus: $focus) {
-                        model.checkAuthCode()
-                        focusCheckAfterAuthCode()
-                    }
-                    .onChange(of: model.authCode) { newValue in
-                        model.wrongAuthCode = nil
+                    SignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.verificationCode, focus: $focus) {
+                        model.checkVerificationCode()
                     }
                     .frame(maxWidth: .infinity)
-                    
                     // MARK: Timer 구현 필요
                     Text("4 : 59")
                         .font(TiTiFont.HGGGothicssiP40g(size: 18))
-                    
                     // MARK: 재전송 구현 필요
                     Button {
                         // MARK: ViewModel 내에서 네트워킹이 필요한 부분
@@ -159,15 +150,10 @@ struct SignupEmailView: View {
                             .font(TiTiFont.HGGGothicssiP40g(size: 18))
                     }
                 }
-                .onAppear {
-                    if model.wrongAuthCode != false {
-                        focus = .authCode
-                    }
-                }
                 
                 SignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                    .id(SignupTextFieldView.type.authCode)
-                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.wrongAuthCode == true)
+                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
+                    .id(SignupTextFieldView.type.verificationCode)
             }
         }
     }

@@ -14,20 +14,26 @@ typealias SignupSelectInfos = (type: SignupInfo.type, venderInfo: SignupVenderIn
 
 // MARK: State
 class SignupEmailModel: ObservableObject {
+    enum Stage {
+        case email
+        case verificationCode
+    }
+    
     let infos: SignupSelectInfos
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
-    @Published var authCode: String = ""
-    @Published var wrongEmail: Bool?
-    @Published var wrongAuthCode: Bool?
+    @Published var validEmail: Bool?
+    @Published var validVerificationCode: Bool?
     @Published var getVerificationSuccess: Bool = false
+    @Published var stage: Stage = .email
     
     @Published var email: String = ""
+    @Published var verificationCode: String = ""
     private var verificationKey = ""
     
     init(infos: SignupSelectInfos) {
         self.infos = infos
-        
+        // vender email 정보를 기본값으로 설정
         if let email = infos.venderInfo?.email {
             self.email = email
         }
@@ -35,23 +41,19 @@ class SignupEmailModel: ObservableObject {
     
     // emailTextField underline 컬러
     var emailTintColor: Color {
-        if wrongEmail == true {
+        if validEmail == false {
             return TiTiColor.wrongTextField.toColor
-        } else if focus == .email {
-            return Color.blue
         } else {
-            return UIColor.placeholderText.toColor
+            return focus == .email ? Color.blue : UIColor.placeholderText.toColor
         }
     }
     
-    // authCodeTextField underline 컬러
+    // verificationCodeTextField underline 컬러
     var authCodeTintColor: Color {
-        if wrongAuthCode == true {
+        if validVerificationCode == false && verificationCode.isEmpty {
             return TiTiColor.wrongTextField.toColor
-        } else if focus == .authCode {
-            return Color.blue
         } else {
-            return UIColor.placeholderText.toColor
+            return focus == .verificationCode ? Color.blue : UIColor.placeholderText.toColor
         }
     }
     
@@ -73,26 +75,50 @@ extension SignupEmailModel {
         }
     }
     
-    // focusState 값변화 수신
+    // @FocusState 값변화 -> stage 반영
     func updateFocus(to focus: SignupTextFieldView.type?) {
         self.focus = focus
+        switch focus {
+        case .email:
+            resetEmail()
+        case .verificationCode:
+            resetVerificationCode()
+        default:
+            return
+        }
     }
     
-    // 이메일 done 액션
+    // email done 액션
     func checkEmail() {
-        let emailValid = PredicateChecker.isValidEmail(email)
-        wrongEmail = !emailValid
+        validEmail = PredicateChecker.isValidEmail(email)
+        // stage 변화 -> @FocusState 반영
+        if validEmail == true {
+            resetVerificationCode()
+        } else {
+            resetEmail()
+        }
     }
     
     // 인증코드 done 액션
-    func checkAuthCode() {
-        let authCodeValid = authCode.count > 7
-        wrongAuthCode = !authCodeValid
-        
-        if authCodeValid {
+    func checkVerificationCode() {
+        validVerificationCode = verificationCode.count > 7
+        // stage 변화 -> @StateFocus 반영
+        if validVerificationCode == true {
             // verificationKey 수신 필요
             verificationKey = "abcd1234"
             getVerificationSuccess = true
+        } else {
+            resetVerificationCode()
         }
+    }
+    
+    private func resetEmail() {
+        validVerificationCode = nil
+        stage = .email
+    }
+    
+    private func resetVerificationCode() {
+        verificationCode = ""
+        stage = .verificationCode
     }
 }

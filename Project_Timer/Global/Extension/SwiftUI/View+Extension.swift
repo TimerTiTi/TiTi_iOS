@@ -49,3 +49,13 @@ extension View {
         }
     }
 }
+
+// MARK: Functions
+extension View {
+    func scroll(_ scrollViewProxy: ScrollViewProxy, to: any Hashable) {
+        #if targetEnvironment(macCatalyst)
+        #else
+        scrollViewProxy.scrollTo(to, anchor: .bottom)
+        #endif
+    }
+}

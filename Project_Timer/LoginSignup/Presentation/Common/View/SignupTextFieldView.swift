@@ -11,7 +11,7 @@ import SwiftUI
 struct SignupTextFieldView: View {
     enum type: Equatable {
         case email
-        case authCode
+        case verificationCode
         case password
         case password2
         case nickname
@@ -50,7 +50,7 @@ struct SignupTextFieldView: View {
         switch self.type {
         case .email:
             return "email".localized()
-        case .authCode:
+        case .verificationCode:
             return "verification code".localized()
         case .nickname:
             return "nickname".localized()

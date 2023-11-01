@@ -12,6 +12,7 @@ import Combine
 
 typealias SignupEmailInfos = (prevInfos: SignupSelectInfos, emailInfo: SignupEmailInfo)
 
+// MARK: State
 class SignupPasswordModel: ObservableObject {
     enum Stage {
         case password
@@ -81,6 +82,7 @@ extension SignupPasswordModel {
         }
     }
     
+    // password done 액션
     func checkPassword() {
         validPassword = PredicateChecker.isValidPassword(password)
         // stage 변화 -> @StateFocus 반영
@@ -91,6 +93,7 @@ extension SignupPasswordModel {
         }
     }
     
+    // password2 done 액션
     func checkPassword2() {
         let passwordValid = PredicateChecker.isValidPassword(password2)
         let samePassword = password == password2
