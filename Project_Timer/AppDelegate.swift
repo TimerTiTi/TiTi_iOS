@@ -22,14 +22,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var shouldSupportPortraitOrientation = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        /// 애드몹 이니셜라이즈
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        if Infos.isDevMode == false {
+            /// 애드몹 이니셜라이즈
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+            
+            /// 앱 실행시 Analytics 에 정보 전달부분
+            FirebaseApp.configure()
+            Analytics.logEvent("launch", parameters: [
+                AnalyticsParameterItemID: "ver \(String.currentVersion)",
+            ])
+        }
         
-        /// 앱 실행시 Analytics 에 정보 전달부분
-        FirebaseApp.configure()
-        Analytics.logEvent("launch", parameters: [
-            AnalyticsParameterItemID: "ver \(String.currentVersion)",
-        ])
         /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
         UNUserNotificationCenter.current().delegate = self
         NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in

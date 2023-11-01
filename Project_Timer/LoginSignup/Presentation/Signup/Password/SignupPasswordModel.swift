@@ -13,12 +13,17 @@ import Combine
 typealias SignupEmailInfos = (prevInfos: SignupSelectInfos, emailInfo: SignupEmailInfo)
 
 class SignupPasswordModel: ObservableObject {
+    enum Stage {
+        case password
+        case password2
+    }
+    
     let infos: SignupEmailInfos
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
-    @Published var wrongPassword: Bool?
-    @Published var wrongPassword2: Bool?
-    @Published var passwordSuccess: Bool = false
+    @Published var validPassword: Bool?
+    @Published var validPassword2: Bool?
+    @Published var stage: Stage = .password
     
     @Published var password: String = ""
     @Published var password2: String = ""
@@ -29,7 +34,7 @@ class SignupPasswordModel: ObservableObject {
     
     // passwordTextField underline 컬러
     var passwordTintColor: Color {
-        if wrongPassword == true {
+        if validPassword == false {
             return TiTiColor.wrongTextField.toColor
         } else {
             return focus == .password ? Color.blue : UIColor.placeholderText.toColor
@@ -37,7 +42,7 @@ class SignupPasswordModel: ObservableObject {
     }
     
     var password2TintColor: Color {
-        if wrongPassword2 == true {
+        if validPassword2 == false {
             return TiTiColor.wrongTextField.toColor
         } else {
             return focus == .password2 ? Color.blue : UIColor.placeholderText.toColor
@@ -65,17 +70,38 @@ extension SignupPasswordModel {
     // focusState 값변화 수신
     func updateFocus(to focus: SignupTextFieldView.type?) {
         self.focus = focus
+        switch focus {
+        case .password:
+            validPassword2 = nil
+            password = ""
+            stage = .password
+        case .password2:
+            password2 = ""
+            stage = .password2
+        default:
+            return
+        }
     }
     
     func checkPassword() {
-        let passwordValid = PredicateChecker.isValidPassword(password)
-        wrongPassword = !passwordValid
+        validPassword = PredicateChecker.isValidPassword(password)
+        if validPassword == true {
+            validPassword2 = nil
+            password2 = ""
+            stage = .password2
+        } else {
+            password = ""
+            stage = .password
+        }
     }
     
     func checkPassword2() {
         let passwordValid = PredicateChecker.isValidPassword(password2)
         let samePassword = password == password2
-        wrongPassword2 = !(passwordValid && samePassword)
-        passwordSuccess = passwordValid && samePassword
+        validPassword2 = (passwordValid && samePassword)
+        if validPassword2 == false {
+            password2 = ""
+            stage = .password2
+        }
     }
 }

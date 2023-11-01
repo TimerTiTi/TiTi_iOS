@@ -231,6 +231,9 @@
 		87A7624726493BB500174401 /* LogHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogHomeVC.swift */; };
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
 		87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8BC3A288D1436007ED793 /* LogVC.swift */; };
+		87A8CD252AF0C37200D4C1D7 /* SignupSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */; };
+		87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */; };
+		87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */; };
 		87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */; };
 		87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */; };
 		87B539AB299BB710001E354C /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B539AA299BB710001E354C /* Versions.swift */; };
@@ -542,6 +545,9 @@
 		87A7624626493BB500174401 /* LogHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVC.swift; sourceTree = "<group>"; };
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		87A8BC3A288D1436007ED793 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
+		87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSecureFieldView.swift; sourceTree = "<group>"; };
+		87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayShowButtonForSecureFieldView.swift; sourceTree = "<group>"; };
+		87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRemoveButtonForTextFieldView.swift; sourceTree = "<group>"; };
 		87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorPopupVC.swift; sourceTree = "<group>"; };
 		87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		87B539AA299BB710001E354C /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
@@ -1086,6 +1092,7 @@
 			children = (
 				8706C32B2AEF864000F7C842 /* SignupTitleView.swift */,
 				87E5C70E2AE0C0E500BE46B0 /* SignupTextFieldView.swift */,
+				87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */,
 				8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */,
 				8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */,
@@ -1106,6 +1113,8 @@
 			isa = PBXGroup;
 			children = (
 				878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */,
+				87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */,
+				87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -1899,6 +1908,7 @@
 				87BE88E72AD425BE0010A84A /* LoginTextFieldView.swift in Sources */,
 				87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
+				87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */,
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */,
@@ -1907,6 +1917,7 @@
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
+				87A8CD252AF0C37200D4C1D7 /* SignupSecureFieldView.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
 				87EFD6832AC12C3800C422B1 /* LoginSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
@@ -1920,6 +1931,7 @@
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
+				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
