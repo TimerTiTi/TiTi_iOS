@@ -58,7 +58,7 @@ struct SignupEmailView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
                             
-                            SignupTextFieldView(type: .email, text: $model.email, focus: $focus) {
+                            SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
                                 model.checkEmail()
                                 checkFocusAfterEmail()
                             }
@@ -66,7 +66,6 @@ struct SignupEmailView: View {
                             .onChange(of: model.email) { newValue in
                                 model.wrongEmail = nil
                             }
-                            
                             SignupTextFieldUnderlineView(color: model.emailTintColor)
                             SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
                             
@@ -144,7 +143,7 @@ struct SignupEmailView: View {
                     .frame(height: 35)
                 
                 HStack(alignment: .center, spacing: 16) {
-                    SignupTextFieldView(type: .authCode, text: $model.authCode, focus: $focus) {
+                    SignupTextFieldView(type: .authCode, keyboardType: .alphabet, text: $model.authCode, focus: $focus) {
                         model.checkAuthCode()
                         focusCheckAfterAuthCode()
                     }

@@ -49,59 +49,52 @@ struct SignupPasswordView: View {
                         VStack(alignment: .leading, spacing: 0) {
                             SignupTitleView(title: "비밀번호를 입력해주세요", subTitle: "8자리 이상 비밀번호를 입력해주세요")
                             
-                            SignupTextFieldView(type: .password, text: $model.password, focus: $focus) {
+                            SignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
                                 model.checkPassword()
                             }
                             .id(SignupTextFieldView.type.password)
-                            .onChange(of: model.password, perform: { value in
-                                model.wrongPassword = nil
-                            })
                             SignupTextFieldUnderlineView(color: model.passwordTintColor)
-                            SignupTextFieldWarning(warning: "영문, 숫자, 또는 10가지 특수문자 내에서 입력해 주세요", visible: model.wrongPassword == true)
+                            SignupTextFieldWarning(warning: "영문, 숫자, 또는 10가지 특수문자 내에서 입력해 주세요", visible: model.validPassword == false)
                             
-                            if model.wrongPassword == false {
-                                NextContentView(focus: $focus, model: model, checkFocusAfterPassword2: checkFocusAfterPassword2)
+                            if model.stage == .password2 {
+                                NextContentView(focus: $focus, model: model)
                             }
                         }
                         .onAppear {
-                            if model.wrongPassword == nil {
+                            if model.stage == .password {
                                 focus = .password
                             }
                         }
                         .onChange(of: focus) { newValue in
-                            model.updateFocus(to: focus)
+                            model.updateFocus(to: newValue)
                             #if targetEnvironment(macCatalyst)
                             #else
                             scrollViewProxy.scrollTo(newValue, anchor: .top)
                             #endif
                         }
-                        .onReceive(model.$passwordSuccess) { success in
-                            guard success else { return }
-                            environment.navigationPath.append(SignupPasswordRoute.signupNickname)
+                        .onReceive(model.$stage) { status in
+                            switch status {
+                            case .password:
+                                focus = .password
+                            case .password2:
+                                focus = .password2
+                            }
+                        }
+                        .onReceive(model.$validPassword2) { valid in
+                            if valid == true {
+                                environment.navigationPath.append(SignupPasswordRoute.signupNickname)
+                            }
                         }
                     }
                 }
             }
-            .frame(width: 393-48)
-        }
-        
-        func checkFocusAfterPassword() {
-            if model.wrongPassword == true {
-                focus = .password
-            }
-        }
-        
-        func checkFocusAfterPassword2() {
-            if model.passwordSuccess == false {
-                focus = .password2
-            }
+            .frame(width: model.contentWidth)
         }
     }
     
     struct NextContentView: View {
         @FocusState.Binding var focus: SignupTextFieldView.type?
         @ObservedObject var model: SignupPasswordModel
-        var checkFocusAfterPassword2: () -> Void
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -113,21 +106,12 @@ struct SignupPasswordView: View {
                 Spacer()
                     .frame(height: 16)
                 
-                SignupTextFieldView(type: .password2, text: $model.password2, focus: $focus) {
+                SignupSecureFieldView(type: .password2, keyboardType: .alphabet, text: $model.password2, focus: $focus) {
                     model.checkPassword2()
-                    checkFocusAfterPassword2()
                 }
                 .id(SignupTextFieldView.type.password2)
-                .onChange(of: model.password2, perform: { value in
-                    model.wrongPassword2 = nil
-                })
                 SignupTextFieldUnderlineView(color: model.password2TintColor)
-                SignupTextFieldWarning(warning: "동일하지 않습니다. 다시 입력해 주세요", visible: model.wrongPassword2 == true)
-            }
-            .onAppear {
-                if model.wrongPassword2 != false {
-                    focus = .password2
-                }
+                SignupTextFieldWarning(warning: "동일하지 않습니다. 다시 입력해 주세요", visible: model.validPassword2 == false)
             }
         }
     }
