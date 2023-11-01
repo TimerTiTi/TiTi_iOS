@@ -18,26 +18,56 @@ struct SignupSecureFieldView: View {
     @State private var isSecure: Bool = true
     
     var body: some View {
-        SecureField("", text: $text)
-            .font(TiTiFont.HGGGothicssiP60g(size: 20))
-            .foregroundStyle(.primary)
-            .accentColor(.blue)
-            .autocorrectionDisabled(true)
-            .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
-                Text(placeholder)
-                    .font(TiTiFont.HGGGothicssiP60g(size: 20))
-                    .foregroundStyle(UIColor.placeholderText.toColor)
+        ZStack {
+            TextField("", text: $text)
+                .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                .foregroundStyle(.primary)
+                .accentColor(.blue)
+                .autocorrectionDisabled(true)
+                .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
+                    Text(placeholder)
+                        .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                        .foregroundStyle(UIColor.placeholderText.toColor)
+                }
+                .keyboardType(keyboardType)
+                .focused($focus, equals: self.type) // textField 활성화값 반영
+                .submitLabel(.done) // 키보드 done 버튼 활성화
+                .onSubmit { // 키보드 done 버튼 액션
+                    submitAction()
+                }
+                .frame(height: 22)
+                .overlayShowButtonForSecureFieldView(isVisible: (focus == self.type && !text.isEmpty), isSecure: isSecure, action: {
+                    isSecure.toggle()
+                })
+                .opacity(isSecure ? 0 : 1)
+            
+            SecureField("", text: $text)
+                .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                .foregroundStyle(.primary)
+                .accentColor(.blue)
+                .autocorrectionDisabled(true)
+                .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
+                    Text(placeholder)
+                        .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                        .foregroundStyle(UIColor.placeholderText.toColor)
+                }
+                .keyboardType(keyboardType)
+                .focused($focus, equals: self.type) // textField 활성화값 반영
+                .submitLabel(.done) // 키보드 done 버튼 활성화
+                .onSubmit { // 키보드 done 버튼 액션
+                    submitAction()
+                }
+                .frame(height: 22)
+                .overlayShowButtonForSecureFieldView(isVisible: (focus == self.type && !text.isEmpty), isSecure: isSecure, action: {
+                    isSecure.toggle()
+                })
+                .opacity(isSecure ? 1 : 0)
+        }
+        .onChange(of: focus) { newValue in
+            if newValue == nil {
+                isSecure = true
             }
-            .keyboardType(keyboardType)
-            .focused($focus, equals: self.type) // textField 활성화값 반영
-            .submitLabel(.done) // 키보드 done 버튼 활성화
-            .onSubmit { // 키보드 done 버튼 액션
-                submitAction()
-            }
-            .frame(height: 22)
-            .overlayShowButtonForSecureFieldView(isVisible: (focus == self.type && !text.isEmpty), isSecure: isSecure, action: {
-                isSecure.toggle()
-            })
+        }
     }
     
     var placeholder: String {
