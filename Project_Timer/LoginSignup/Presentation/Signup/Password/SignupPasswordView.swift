@@ -68,11 +68,11 @@ struct SignupPasswordView: View {
                                     focus = .password
                                 }
                             }
-                            .onChange(of: focus) { newValue in
+                            .onChange(of: focus) { newValue in // @FocusState 변화 -> stage 반영
                                 model.updateFocus(to: newValue)
                                 scroll(scrollViewProxy, to: newValue)
                             }
-                            .onReceive(model.$stage) { status in
+                            .onReceive(model.$stage) { status in // stage 변화 -> @FocusState 반영
                                 switch status {
                                 case .password:
                                     focus = .password
