@@ -9,13 +9,16 @@
 import SwiftUI
 
 final class KeyboardResponder: ObservableObject {
+    static let shared = KeyboardResponder()
+    
     private var notificationCenter: NotificationCenter
     @Published private(set) var keyboardHeight: CGFloat = 0
     @Published private(set) var keyboardShow: Bool = false
     @Published private(set) var keyboardHide: Bool = false
 
-    init() {
+    private init() {
         notificationCenter = .default
+        addObserver()
     }
     
     func addObserver() {
@@ -28,7 +31,7 @@ final class KeyboardResponder: ObservableObject {
     }
 
     deinit {
-        notificationCenter.removeObserver(self)
+        removeObserver()
     }
 
     @objc func keyBoardWillShow(notification: Notification) {

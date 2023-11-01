@@ -28,5 +28,6 @@ struct SignupTextFieldWarning: View {
                 .foregroundStyle(TiTiColor.wrongTextField.toColor)
                 .opacity(visible ? 1.0 : 0)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

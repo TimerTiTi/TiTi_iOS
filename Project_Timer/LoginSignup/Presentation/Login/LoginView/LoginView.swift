@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject private var keyboard = KeyboardResponder()
+    @ObservedObject private var keyboard = KeyboardResponder.shared
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {
@@ -27,12 +27,6 @@ struct LoginView: View {
                 }
                 .offset(y: keyboardOffset(keyboard.keyboardShow))
                 .animation(.easeIn(duration: keyboard.keyboardShow || keyboard.keyboardHide ? 0.2 : 0))
-            }
-            .onAppear {
-                keyboard.addObserver()
-            }
-            .onDisappear {
-                keyboard.removeObserver()
             }
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value

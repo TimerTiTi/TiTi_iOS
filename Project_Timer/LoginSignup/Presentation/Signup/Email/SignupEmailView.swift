@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SignupEmailView: View {
-    @ObservedObject private var keyboard = KeyboardResponder()
+    @ObservedObject private var keyboard = KeyboardResponder.shared
     @StateObject private var model: SignupEmailModel
     
     init(model: SignupEmailModel) {
@@ -23,12 +23,6 @@ struct SignupEmailView: View {
                     .ignoresSafeArea()
                 
                 ContentView(model: model)
-                    .onAppear {
-                        keyboard.addObserver()
-                    }
-                    .onDisappear {
-                        keyboard.removeObserver()
-                    }
                     .padding(.bottom, keyboard.keyboardHeight)
             }
             .onChange(of: geometry.size, perform: { value in
@@ -62,11 +56,11 @@ struct SignupEmailView: View {
                                 model.checkEmail()
                                 checkFocusAfterEmail()
                             }
-                            .id(SignupTextFieldView.type.email)
                             .onChange(of: model.email) { newValue in
                                 model.wrongEmail = nil
                             }
                             SignupTextFieldUnderlineView(color: model.emailTintColor)
+                                .id(SignupTextFieldView.type.email)
                             SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.wrongEmail == true)
                             
                             if model.wrongEmail == false {
@@ -147,7 +141,6 @@ struct SignupEmailView: View {
                         model.checkAuthCode()
                         focusCheckAfterAuthCode()
                     }
-                    .id(SignupTextFieldView.type.authCode)
                     .onChange(of: model.authCode) { newValue in
                         model.wrongAuthCode = nil
                     }
@@ -173,6 +166,7 @@ struct SignupEmailView: View {
                 }
                 
                 SignupTextFieldUnderlineView(color: model.authCodeTintColor)
+                    .id(SignupTextFieldView.type.authCode)
                 SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.wrongAuthCode == true)
             }
         }
