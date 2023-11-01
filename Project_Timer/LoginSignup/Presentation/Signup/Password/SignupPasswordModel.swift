@@ -41,6 +41,7 @@ class SignupPasswordModel: ObservableObject {
         }
     }
     
+    // passwordTextField2 underline 컬러
     var password2TintColor: Color {
         if validPassword2 == false && password2.isEmpty {
             return TiTiColor.wrongTextField.toColor
@@ -67,17 +68,14 @@ extension SignupPasswordModel {
         }
     }
     
-    // focusState 값변화 수신
+    // @FocusState 값변화 -> stage 반영
     func updateFocus(to focus: SignupTextFieldView.type?) {
         self.focus = focus
         switch focus {
         case .password:
-            validPassword2 = nil
-            password = ""
-            stage = .password
+            resetPassword()
         case .password2:
-            password2 = ""
-            stage = .password2
+            resetPassword2()
         default:
             return
         }
@@ -85,13 +83,11 @@ extension SignupPasswordModel {
     
     func checkPassword() {
         validPassword = PredicateChecker.isValidPassword(password)
+        // stage 변화 -> @StateFocus 반영
         if validPassword == true {
-            validPassword2 = nil
-            password2 = ""
-            stage = .password2
+            resetPassword2()
         } else {
-            password = ""
-            stage = .password
+            resetPassword()
         }
     }
     
@@ -99,9 +95,20 @@ extension SignupPasswordModel {
         let passwordValid = PredicateChecker.isValidPassword(password2)
         let samePassword = password == password2
         validPassword2 = (passwordValid && samePassword)
+        // stage 변화 -> @StateFocus 반영
         if validPassword2 == false {
-            password2 = ""
-            stage = .password2
+            resetPassword2()
         }
+    }
+    
+    private func resetPassword() {
+        validPassword2 = nil
+        password = ""
+        stage = .password
+    }
+    
+    private func resetPassword2() {
+        password2 = ""
+        stage = .password2
     }
 }
