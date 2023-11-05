@@ -783,6 +783,7 @@ extension ModifyRecordVC: GADFullScreenContentDelegate {
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
             print("Rewarded ad loaded.")
+            self?.viewModel?.isRemoveAd = true
         }
     }
     
