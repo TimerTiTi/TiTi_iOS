@@ -35,6 +35,11 @@ struct SignupEmailView: View {
                     SignupPasswordView(
                         model: SignupPasswordModel(infos: infos)
                     )
+                case .signupNickname:
+                    let infos = model.infosForNickname
+                    SignupNicknameView(
+                        model: SignupNicknameModel(infos: infos)
+                    )
                 }
             }
         }
@@ -89,7 +94,14 @@ struct SignupEmailView: View {
                             })
                             .onReceive(model.$getVerificationSuccess) { success in
                                 guard success else { return }
-                                environment.navigationPath.append(SignupEmailRoute.signupPassword)
+                                // MARK: infos.type에 따른 분기처리
+                                switch model.infos.type {
+                                case .normal:
+                                    environment.navigationPath.append(SignupEmailRoute.signupPassword)
+                                case .vender, .venderWithEmail:
+                                    environment.navigationPath.append(SignupEmailRoute.signupNickname)
+                                }
+                               
                             }
                             .frame(width: model.contentWidth)
                             Spacer()

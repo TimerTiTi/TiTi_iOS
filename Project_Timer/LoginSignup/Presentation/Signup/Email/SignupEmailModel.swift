@@ -65,6 +65,18 @@ class SignupEmailModel: ObservableObject {
                 verificationKey: self.verificationCode)
         )
     }
+    
+    // SignupInfosForNickname 생성 후 반환
+    var infosForNickname: SignupInfosForNickname {
+        return SignupInfosForNickname(
+            type: self.infos.type,
+            venderInfo: self.infos.venderInfo,
+            emailInfo: SignupEmailInfo(
+                email: self.email,
+                verificationKey: self.verificationCode),
+            passwordInfo: nil
+        )
+    }
 }
 
 // MARK: Action
