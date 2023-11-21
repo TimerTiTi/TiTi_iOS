@@ -191,6 +191,7 @@
 		878DA1FD2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */; };
 		878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */; };
 		878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8202B0C62E1001E924E /* SignupNicknameView.swift */; };
+		878DA8232B0C6B1E001E924E /* LoginSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */; };
 		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
 		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
@@ -508,6 +509,7 @@
 		878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureForTextFieldRootView.swift; sourceTree = "<group>"; };
 		878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameModel.swift; sourceTree = "<group>"; };
 		878DA8202B0C62E1001E924E /* SignupNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameView.swift; sourceTree = "<group>"; };
+		878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectModel.swift; sourceTree = "<group>"; };
 		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 			children = (
 				87B7A53B2AC02202002AFDFE /* LoginSelectRoute.swift */,
 				874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */,
+				878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */,
 				874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */,
 				874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */,
 				874F9C302ABFF81300675A86 /* EmailLoginButton.swift */,
@@ -1951,6 +1954,7 @@
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
+				878DA8232B0C6B1E001E924E /* LoginSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,

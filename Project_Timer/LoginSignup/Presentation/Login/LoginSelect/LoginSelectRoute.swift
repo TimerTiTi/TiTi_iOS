@@ -9,6 +9,6 @@
 import Foundation
 
 enum LoginSelectRoute {
-    case signupNickname
+    case signupEmail
     case login
 }
