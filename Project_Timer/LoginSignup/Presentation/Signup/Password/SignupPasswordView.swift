@@ -53,7 +53,7 @@ struct SignupPasswordView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                SignupTitleView(title: "비밀번호를 입력해주세요", subTitle: "8자리 이상 비밀번호를 입력해주세요")
+                                SignupTitleView(title: "비밀번호를 입력해 주세요", subTitle: "8자리 이상 비밀번호를 입력해 주세요")
                                 
                                 SignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
                                     model.checkPassword()
