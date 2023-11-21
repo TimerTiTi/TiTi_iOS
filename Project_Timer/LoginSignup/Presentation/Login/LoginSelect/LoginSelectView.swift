@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LoginSelectView: View {
     @EnvironmentObject var environment: LoginSignupEnvironment
-    @State private var superViewSize: CGSize = .zero
+    @StateObject private var model = LoginSelectModel()
     
     init() {
         //Use this if NavigationBarTitle is with displayMode = .inline
@@ -27,19 +27,22 @@ struct LoginSelectView: View {
                     VStack(alignment: .center) {
                         Spacer()
                         
-                        ContentView(superViewSize: $superViewSize)
+                        ContentView(model: model)
                         
                         Spacer()
                     }
                 }
                 .onChange(of: geometry.size, perform: { value in
-                    self.superViewSize = value
+                    model.updateContentWidth(size: value)
                 })
             }
             .navigationDestination(for: LoginSelectRoute.self) { destination in
                 switch destination {
-                case .signupNickname:
-                    Text("Nickname")
+                case .signupEmail:
+                    let infos = model.signupInfosForEmail
+                    SignupEmailView(
+                        model: SignupEmailModel(infos: infos)
+                    )
                 case .login:
                     LoginView()
                 }
@@ -51,7 +54,7 @@ struct LoginSelectView: View {
     }
     
     struct ContentView: View {
-        @Binding var superViewSize: CGSize
+        @ObservedObject var model: LoginSelectModel
         
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
@@ -74,35 +77,23 @@ struct LoginSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                ButtonsView()
+                ButtonsView(model: model)
             }
-            .frame(width: self.width)
-        }
-        
-        // 화면크기에 따른 width 크기조정
-        var width: CGFloat {
-            let size = superViewSize
-            switch size.deviceDetailType {
-            case .iPhoneMini:
-                return 300
-            case .iPhonePro, .iPhoneMax:
-                return size.minLength - 96
-            default:
-                return 400
-            }
+            .frame(width: model.contentWidth)
         }
     }
     
     struct ButtonsView: View {
         @EnvironmentObject var environment: LoginSignupEnvironment
+        @ObservedObject var model: LoginSelectModel
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
                 AppleLoginButton {
-                    print("Apple")
+                    model.appleLogin()
                 }
                 GoogleLoginButton {
-                    print("Google")
+                    model.googleLogin()
                 }
                 EmailLoginButton {
                     environment.navigationPath.append(LoginSelectRoute.login)
@@ -115,6 +106,10 @@ struct LoginSelectView: View {
                         .underline()
                         .foregroundColor(.black.opacity(0.5))
                         .padding(.all, 8)
+                }
+                .onReceive(model.$venderInfo) { venderInfo in
+                    guard venderInfo != nil else { return }
+                    environment.navigationPath.append(LoginSelectRoute.signupEmail)
                 }
             }
         }
