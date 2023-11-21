@@ -9,37 +9,54 @@
 import Foundation
 import Combine
 
+// MARK: Info
+/// 회원가입 type
+enum SignupType {
+    case normal
+    case vender
+    case venderWithEmail
+}
+
+/// vender 정보
+struct SignupVenderInfo {
+    enum vender {
+        case apple
+        case google
+    }
+    let vender: vender
+    let id: String
+    let email: String?
+}
+
+/// email 정보
 struct SignupEmailInfo {
     let email: String
     let verificationKey: String
 }
 
+/// password 정보
 struct SignupPasswordInfo {
     let password: String
 }
 
-struct SignupVenderInfo {
-    let vender: SignupInfo.vender
-    let id: String
-    let email: String?
-}
-
+/// nickname 정보
 struct SignupNicknameInfo {
     let nickname: String
 }
 
+/// marketing 정보
 struct SignupTermsInfo {
     let marketingObservable: Bool
 }
 
-struct SignupInfo {
-    enum type {
-        case normal
-        case vender
-        case venderWithEmail
-    }
-    enum vender {
-        case apple
-        case google
-    }
+// MARK: Infos
+struct SignupInfosForEmail {
+    let type: SignupType
+    let venderInfo: SignupVenderInfo?
+}
+
+struct SignupInfosForPassword {
+    let type: SignupType
+    let venderInfo: SignupVenderInfo?
+    let emailInfo: SignupEmailInfo
 }

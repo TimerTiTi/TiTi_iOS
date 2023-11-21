@@ -38,7 +38,10 @@ struct LoginView: View {
                 case .findPassword:
                     Text("findPassword")
                 case .signup:
-                    SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil)))
+                    let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
+                    SignupEmailView(
+                        model: SignupEmailModel(infos: infos)
+                    )
                 }
             }
         }

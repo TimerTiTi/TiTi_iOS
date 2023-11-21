@@ -31,9 +31,10 @@ struct SignupEmailView: View {
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
                 case .signupPassword:
-                    let prevInfos = model.infos
-                    let emailInfo = model.emailInfo
-                    SignupPasswordView(model: SignupPasswordModel(infos: (prevInfos: prevInfos, emailInfo: emailInfo)))
+                    let infos = model.infosForPassword
+                    SignupPasswordView(
+                        model: SignupPasswordModel(infos: infos)
+                    )
                 }
             }
         }
@@ -160,10 +161,16 @@ struct SignupEmailView: View {
 }
 
 struct SignupEmailView_Previews: PreviewProvider {
+    static let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
+    
     static var previews: some View {
-        SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil))).environmentObject(LoginSignupEnvironment())
+        SignupEmailView(
+            model: SignupEmailModel(infos: infos)
+        ).environmentObject(LoginSignupEnvironment())
         
-        SignupEmailView(model: SignupEmailModel(infos: (type: .normal, venderInfo: nil))).environmentObject(LoginSignupEnvironment())
+        SignupEmailView(
+            model: SignupEmailModel(infos: infos)
+        ).environmentObject(LoginSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }
