@@ -10,4 +10,5 @@ import Foundation
 
 enum SignupEmailRoute {
     case signupPassword
+    case signupNickname
 }
