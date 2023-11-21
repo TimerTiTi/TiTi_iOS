@@ -67,3 +67,11 @@ struct SignupInfosForNickname {
     let emailInfo: SignupEmailInfo
     let passwordInfo: SignupPasswordInfo?
 }
+
+struct SignupInfosForTermOfUse {
+    let type: SignupType
+    let venderInfo: SignupVenderInfo?
+    let emailInfo: SignupEmailInfo
+    let passwordInfo: SignupPasswordInfo?
+    let nicknameInfo: SignupNicknameInfo
+}

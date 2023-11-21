@@ -31,6 +31,7 @@ struct SignupNicknameView: View {
             .navigationDestination(for: SignupNicknameRoute.self) { destination in
                 switch destination {
                 case .signupTermOfUse:
+                    let infos = model.signupInfosForTermOfUse
                     Text("SignupTermOfUse")
                 }
             }
