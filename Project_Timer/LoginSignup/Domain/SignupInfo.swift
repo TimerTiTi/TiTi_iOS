@@ -60,3 +60,10 @@ struct SignupInfosForPassword {
     let venderInfo: SignupVenderInfo?
     let emailInfo: SignupEmailInfo
 }
+
+struct SignupInfosForNickname {
+    let type: SignupType
+    let venderInfo: SignupVenderInfo?
+    let emailInfo: SignupEmailInfo
+    let passwordInfo: SignupPasswordInfo
+}

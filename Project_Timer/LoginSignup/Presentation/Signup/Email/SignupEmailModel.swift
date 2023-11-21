@@ -63,7 +63,7 @@ class SignupEmailModel: ObservableObject {
             emailInfo: SignupEmailInfo(
                 email: self.email,
                 verificationKey: self.verificationCode)
-            )
+        )
     }
 }
 
