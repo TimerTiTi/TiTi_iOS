@@ -30,6 +30,17 @@ class SignupNicknameModel: ObservableObject {
             return focus == .nickname ? Color.blue : UIColor.placeholderText.toColor
         }
     }
+    
+    // signupInfosForTermOfUse 반환
+    var signupInfosForTermOfUse: SignupInfosForTermOfUse {
+        return SignupInfosForTermOfUse(
+            type: self.infos.type,
+            venderInfo: self.infos.venderInfo,
+            emailInfo: self.infos.emailInfo,
+            passwordInfo: self.infos.passwordInfo,
+            nicknameInfo: SignupNicknameInfo(nickname: self.nickname)
+        )
+    }
 }
 
 extension SignupNicknameModel {
