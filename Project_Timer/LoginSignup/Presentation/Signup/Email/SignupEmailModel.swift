@@ -10,8 +10,6 @@ import Foundation
 import Combine
 import SwiftUI
 
-typealias SignupSelectInfos = (type: SignupInfo.type, venderInfo: SignupVenderInfo?)
-
 // MARK: State
 class SignupEmailModel: ObservableObject {
     enum Stage {
@@ -19,7 +17,7 @@ class SignupEmailModel: ObservableObject {
         case verificationCode
     }
     
-    let infos: SignupSelectInfos
+    let infos: SignupInfosForEmail
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
     @Published var validEmail: Bool?
@@ -31,7 +29,7 @@ class SignupEmailModel: ObservableObject {
     @Published var verificationCode: String = ""
     private var verificationKey = ""
     
-    init(infos: SignupSelectInfos) {
+    init(infos: SignupInfosForEmail) {
         self.infos = infos
         // vender email 정보를 기본값으로 설정
         if let email = infos.venderInfo?.email {
@@ -57,9 +55,15 @@ class SignupEmailModel: ObservableObject {
         }
     }
     
-    // emailInfo 생성 후 반환
-    var emailInfo: SignupEmailInfo {
-        return SignupEmailInfo(email: email, verificationKey: verificationKey)
+    // SignupInfosForPassword 생성 후 반환
+    var infosForPassword: SignupInfosForPassword {
+        return SignupInfosForPassword(
+            type: self.infos.type,
+            venderInfo: self.infos.venderInfo,
+            emailInfo: SignupEmailInfo(
+                email: self.email,
+                verificationKey: self.verificationCode)
+            )
     }
 }
 

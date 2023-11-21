@@ -122,10 +122,16 @@ struct SignupPasswordView: View {
 }
 
 struct SignupPasswordView_Previews: PreviewProvider {
-    static let prevInfos: SignupSelectInfos = (type: .normal, venderInfo: nil)
-    static let emailInfo: SignupEmailInfo = SignupEmailInfo(email: "freedeveloper97@gmail.com", verificationKey: "abcd1234")
+    static let infos = SignupInfosForPassword(type: .normal, venderInfo: nil, emailInfo: SignupEmailInfo(email: "freedeveloper97@gmail.com", verificationKey: "abcd1234"))
     
     static var previews: some View {
-        SignupPasswordView(model: SignupPasswordModel(infos: (prevInfos: prevInfos, emailInfo: emailInfo))).environmentObject(LoginSignupEnvironment())
+        SignupPasswordView(
+            model: SignupPasswordModel(infos: infos)
+        ).environmentObject(LoginSignupEnvironment())
+        
+        SignupPasswordView(
+            model: SignupPasswordModel(infos: infos)
+        ).environmentObject(LoginSignupEnvironment())
+            .environment(\.locale, .init(identifier: "en"))
     }
 }

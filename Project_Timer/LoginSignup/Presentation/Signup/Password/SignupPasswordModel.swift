@@ -10,8 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-typealias SignupEmailInfos = (prevInfos: SignupSelectInfos, emailInfo: SignupEmailInfo)
-
 // MARK: State
 class SignupPasswordModel: ObservableObject {
     enum Stage {
@@ -19,7 +17,7 @@ class SignupPasswordModel: ObservableObject {
         case password2
     }
     
-    let infos: SignupEmailInfos
+    let infos: SignupInfosForPassword
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: SignupTextFieldView.type?
     @Published var validPassword: Bool?
@@ -29,7 +27,7 @@ class SignupPasswordModel: ObservableObject {
     @Published var password: String = ""
     @Published var password2: String = ""
     
-    init(infos: SignupEmailInfos) {
+    init(infos: SignupInfosForPassword) {
         self.infos = infos
     }
     
@@ -49,11 +47,6 @@ class SignupPasswordModel: ObservableObject {
         } else {
             return focus == .password2 ? Color.blue : UIColor.placeholderText.toColor
         }
-    }
-    
-    // passwordInfo 생성 후 반환
-    var passwordInfo: SignupPasswordInfo {
-        return SignupPasswordInfo(password: password)
     }
 }
 
