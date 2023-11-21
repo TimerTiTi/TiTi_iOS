@@ -31,7 +31,10 @@ struct SignupPasswordView: View {
             .navigationDestination(for: SignupPasswordRoute.self) { destination in
                 switch destination {
                 case .signupNickname:
-                    Text("SignupNickName")
+                    let infos = self.model.infosForNickname
+                    SignupNicknameView(
+                        model: SignupNicknameModel(infos: infos)
+                    )
                 }
             }
         }

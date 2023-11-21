@@ -48,6 +48,17 @@ class SignupPasswordModel: ObservableObject {
             return focus == .password2 ? Color.blue : UIColor.placeholderText.toColor
         }
     }
+    
+    // SignupInfosForNickname 생성 후 반환
+    var infosForNickname: SignupInfosForNickname {
+        return SignupInfosForNickname(
+            type: self.infos.type,
+            venderInfo: self.infos.venderInfo,
+            emailInfo: self.infos.emailInfo,
+            passwordInfo: SignupPasswordInfo(
+                password: self.password)
+        )
+    }
 }
 
 // MARK: Action

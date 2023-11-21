@@ -189,6 +189,8 @@
 		878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1F52AEE617900C60CBF /* SignupInfo.swift */; };
 		878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1F72AEE68DA00C60CBF /* SignupEmailModel.swift */; };
 		878DA1FD2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */; };
+		878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */; };
+		878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8202B0C62E1001E924E /* SignupNicknameView.swift */; };
 		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
 		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
@@ -504,6 +506,8 @@
 		878DA1F52AEE617900C60CBF /* SignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInfo.swift; sourceTree = "<group>"; };
 		878DA1F72AEE68DA00C60CBF /* SignupEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailModel.swift; sourceTree = "<group>"; };
 		878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureForTextFieldRootView.swift; sourceTree = "<group>"; };
+		878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameModel.swift; sourceTree = "<group>"; };
+		878DA8202B0C62E1001E924E /* SignupNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameView.swift; sourceTree = "<group>"; };
 		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
@@ -1119,6 +1123,15 @@
 			path = Modifier;
 			sourceTree = "<group>";
 		};
+		878DA81D2B0C6271001E924E /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				878DA8202B0C62E1001E924E /* SignupNicknameView.swift */,
+				878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
 		879053FD29558ED2008B9258 /* SyncDailys */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,6 +1518,7 @@
 			children = (
 				878DA1F32AEE610F00C60CBF /* Email */,
 				870F90E12AEFF7DE00854DDB /* Password */,
+				878DA81D2B0C6271001E924E /* Nickname */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -1968,7 +1982,9 @@
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
+				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
+				878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */,
 				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,
