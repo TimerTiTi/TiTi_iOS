@@ -49,6 +49,15 @@ struct LoginSelectView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("")
+            .alert(model.errorMessage.title, isPresented: $model.showAleret) {
+                Button(role: .none) {
+                    print("close alert")
+                } label: {
+                    Text("OK")
+                }
+            } message: {
+                Text(model.errorMessage.text)
+            }
         }
         .accentColor(UIColor.label.toColor)
     }
@@ -89,8 +98,8 @@ struct LoginSelectView: View {
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                AppleLoginButton {
-                    model.appleLogin()
+                AppleLoginButton { result in
+                    model.appleLogin(result)
                 }
                 GoogleLoginButton {
                     model.googleLogin()

@@ -11,6 +11,8 @@ import Foundation
 class LoginSelectModel: ObservableObject {
     @Published var contentWidth: CGFloat = .zero
     @Published var venderInfo: SignupVenderInfo?
+    @Published var showAleret: Bool = false
+    @Published var errorMessage: (title: String, text: String) = ("", "")
     private(set) var vender: SignupVenderInfo.vender?
 }
 
@@ -28,14 +30,21 @@ extension LoginSelectModel {
         }
     }
     
-    func appleLogin() {
+    func appleLogin(_ result: Result<String, AppleSigninError>) {
         self.vender = .apple
-        // MARK: login 작업 필요
-        self.venderInfo = SignupVenderInfo(
-            vender: .apple,
-            id: "abcd1234",
-            email: "freedeveloper97@gmail.com"
-        )
+        switch result {
+        case .success(let authorizationCode):
+            // MARK: server 전송 필요
+            print(authorizationCode)
+            self.venderInfo = SignupVenderInfo(
+                vender: .apple,
+                id: "abcd1234",
+                email: "freedeveloper97@gmail.com"
+            )
+        case .failure(_):
+            self.errorMessage = (title: "Apple Login Fail", text: "Please terminate the app and try again.")
+            self.showAleret = true
+        }
     }
 
     func googleLogin() {
