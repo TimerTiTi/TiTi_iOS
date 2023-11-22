@@ -30,17 +30,20 @@ extension LoginSelectModel {
         }
     }
     
-    func appleLogin(_ result: Result<String, AppleSigninError>) {
+    func appleLogin(_ result: Result<(String, String?), AppleSigninError>) {
         self.vender = .apple
         switch result {
-        case .success(let authorizationCode):
+        case .success(let infos):
+            let authorizationCode = infos.0
+            let email = infos.1
             // MARK: server 전송 필요
             print(authorizationCode)
             self.venderInfo = SignupVenderInfo(
                 vender: .apple,
                 id: "abcd1234",
-                email: "freedeveloper97@gmail.com"
+                email: email ?? ""
             )
+            print(email)
         case .failure(_):
             self.errorMessage = (title: "Apple Login Fail", text: "Please terminate the app and try again.")
             self.showAleret = true
