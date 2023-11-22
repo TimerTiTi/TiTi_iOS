@@ -98,8 +98,8 @@ struct LoginSelectView: View {
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                AppleLoginButton { result in
-                    model.appleLogin(result)
+                AppleLoginButton {
+                    model.performAppleSignIn()
                 }
                 GoogleLoginButton {
                     model.googleLogin()
