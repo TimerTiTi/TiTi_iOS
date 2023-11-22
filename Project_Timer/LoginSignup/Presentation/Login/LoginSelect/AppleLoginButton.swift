@@ -7,41 +7,62 @@
 //
 
 import SwiftUI
+import AuthenticationServices
+
+enum AppleSigninError: Error {
+    case failure(String)
+    case noAuthorizationCode
+    case passwordCredential
+}
 
 struct AppleLoginButton: View {
-    var action: () -> Void
+    var completion: (Result<String, AppleSigninError>) -> Void
     
     var body: some View {
-        Button {
-            action()
-        } label: {
-            ZStack{
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.white)
-                    .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 58)
-                
-                HStack(spacing: 12) {
-                    Text("")
-                        .font(.system(size: 30))
-                    Text("Sign in with \("Apple")")
-                        .font(.system(size: 20, weight: .bold, design: .default))
+        SignInWithAppleButton(.signIn) { request in
+            request.requestedScopes = [.fullName, .email]
+        } onCompletion: { result in
+            switch result {
+            case let .success(authorization):
+                switch authorization.credential {
+                case let appleIDCredential as ASAuthorizationAppleIDCredential:
+                    if let authorizationCode = appleIDCredential.authorizationCode {
+                        completion(.success(String(data: authorizationCode, encoding: .utf8)!))
+                    } else {
+                        completion(.failure(.noAuthorizationCode))
+                    }
+                case _ as ASPasswordCredential:
+                    completion(.failure(.passwordCredential))
+                default:
+                    completion(.failure(.failure("failure")))
                 }
+            case let .failure(error):
+                completion(.failure(.failure("\(error.localizedDescription)")))
             }
         }
-        .foregroundColor(.black)
-    }
-}
+        .signInWithAppleButtonStyle(.white)
+        .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
+        .frame(maxWidth: .infinity)
+        .frame(height: 58)
 
-#Preview {
-    AppleLoginButton {
-        print("Apple")
+//        Button {
+//            action()
+//        } label: {
+//            ZStack{
+//                RoundedRectangle(cornerRadius: 12)
+//                    .foregroundColor(.white)
+//                    .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
+//                    .frame(maxWidth: .infinity)
+//                    .frame(height: 58)
+//                
+//                HStack(spacing: 12) {
+//                    Text("")
+//                        .font(.system(size: 30))
+//                    Text("Sign in with \("Apple")")
+//                        .font(.system(size: 20, weight: .bold, design: .default))
+//                }
+//            }
+//        }
+//        .foregroundColor(.black)
     }
-}
-#Preview {
-    AppleLoginButton {
-        print("Apple")
-    }
-    .environment(\.locale, .init(identifier: "en"))
 }
