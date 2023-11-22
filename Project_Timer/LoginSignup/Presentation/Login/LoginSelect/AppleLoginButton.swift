@@ -16,7 +16,7 @@ enum AppleSigninError: Error {
 }
 
 struct AppleLoginButton: View {
-    var completion: (Result<String, AppleSigninError>) -> Void
+    var completion: (Result<(String, String?), AppleSigninError>) -> Void
     
     var body: some View {
         SignInWithAppleButton(.signIn) { request in
@@ -27,7 +27,7 @@ struct AppleLoginButton: View {
                 switch authorization.credential {
                 case let appleIDCredential as ASAuthorizationAppleIDCredential:
                     if let authorizationCode = appleIDCredential.authorizationCode {
-                        completion(.success(String(data: authorizationCode, encoding: .utf8)!))
+                        completion(.success((String(data: authorizationCode, encoding: .utf8)!, appleIDCredential.email)))
                     } else {
                         completion(.failure(.noAuthorizationCode))
                     }
@@ -41,9 +41,12 @@ struct AppleLoginButton: View {
             }
         }
         .signInWithAppleButtonStyle(.white)
+        .font(.system(size: 20, weight: .bold, design: .default))
+        .cornerRadius(12)
         .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
         .frame(maxWidth: .infinity)
         .frame(height: 58)
+        
 
 //        Button {
 //            action()
