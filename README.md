@@ -1,118 +1,103 @@
-# Timer TiTi 타이머 티티 - 공부를 위한 타이머
-## [Appstore link](https://apps.apple.com/kr/app/titi-공부를-위한-타이머/id1519159240)
+# TimerTiTi - 공부를 위한 타이머
 
-## 나만의 아름다운 공부!
-* 아주 간편하게 하루의 공부시간을 측정합니다
-* 하루동안의 공부내용, 시간, 시간대별 집중도까지 다양하게 보여 드립니다
-* 원하는 색으로 설정하여 그래프를 이쁘게 보여 드립니다
-* Todolist를 통해 중요한 내용을 남길 수 있습니다
+- 소개: Timer와 Stopwatch를 통해 공부를 간단하게 기록하여 다양한 아름다운 그래프로 볼 수 있는 앱 입니다. </br>
+- 성과: MAU 5천명 & 누적 다운로드 약 5만건 & 평점 4.6 달성 </br>
+- 다운로드: [📱 Appstore link](https://apps.apple.com/kr/app/titi-공부를-위한-타이머/id1519159240)
 
-## TiTi 개발 리스트
-아래 Notion 링크를 통해 현재 TiTi의 개발 진행, 또는 예정 사항들을 확인하실 수 있습니다!
-### [TiTi Notion](https://deeply-eggplant-5ec.notion.site/TiTi-Development-List-b089afc1a4eb4cdb8c06840ca9cb1273)
+<img src="https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/c97f8baf-82fe-460f-a04c-9ef9937a2c01">
 
-## TiTi 인스타그램 계정
-아래 Instagram 링크를 통해 TiTi 의 새로운 소식들을 확인하실 수 있습니다!
-또한 앱의 피드백을 받을 수 있습니다. 🙂
-### [TiTi Instagram](https://www.instagram.com/study_withtiti/)
+- iPhone 및 App이 종료되어도 Timer & Stopwatch가 동작됩니다.
+- 다양한 Color 조합을 통한 아름다운 Total & Month & Week & Daily 그래프를 제공합니다.
+- TimeTable 그래프를 제공합니다.
+- 기록수정 기능을 제공합니다.
+- iPad & mac 과 동기화 기능을 제공합니다 (test 기능)
 
-## TiTi 사용방법영상
-아래의 Youtube 링크를 통해 TiTi의 사용방법 영상을 확인하실 수 있습니다! 🙃
-### [TiTi 사용법 (ver 6.2 기준)](https://youtu.be/VGbJT5zm9wE)
-
-
-## TiTi 스크린샷
-ver 7.6 기준 iOS 스크린샷 입니다.
+## ScreenShot
 <p align="center" width="100%">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112150-590a7c57-fefd-4406-bb3a-850c84d53747.png">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112162-91ca1aea-6108-4b96-ae2a-897969a0cc67.png">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/194910270-d70c08f4-b40f-401e-9919-bfcc2e0d3231.png">
+<img width="32.9%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/d738ab39-d399-4d97-a0fd-611431cca937">
+<img width="32.9%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/7cbb3dce-3e4b-474d-a4e5-e7cfe576118f">
+<img width="32.9%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/6f1abdd1-d9c3-469e-aaba-79d474d45876">
 </p>
 <p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/MTsReqR.png">
-<img width="32.9%%" src = "https://i.imgur.com/V37KdKD.png">
-<img width="32.9%%" src = "https://user-images.githubusercontent.com/65349445/178112203-7ad6408f-6035-45e0-9661-e117adc69636.png">
+<img width="32.9%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/d5a2e8f7-867b-4ee2-9981-462d069b46fe">
+<img width="32.9%%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/2e473ce6-cc6f-4d2d-8da2-b8d7dacb6243">
+<img width="32.9%%" src = "https://github.com/TimerTiTi/TiTi_iOS/assets/65349445/d559e87f-0113-442b-8b7b-93f54c2f05b0">
 </p>
-<p align="center" width="100%">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112247-5b24b55c-17ad-4812-b2d5-4c8f800a67d2.png">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112250-7a6b9aa9-3bb0-4dd1-acf2-38e9d79c3720.png">
-<img width="32.9%" src = "https://user-images.githubusercontent.com/65349445/178112252-c6381c9e-b93b-483a-b02d-0217affacf1c.png">
-</p>
-
-ver 7.9 기준 iPadOS 스크린샷 입니다.
-<p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/xXUbpFv.png">
-<img width="32.9%" src = "https://i.imgur.com/7X9Tp16.png">
-<img width="32.9%" src = "https://i.imgur.com/RSq665n.png">
-</p>
-<p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/reeYRKh.png">
-<img width="32.9%%" src = "https://i.imgur.com/iqhOfVn.png">
-<img width="32.9%%" src = "https://i.imgur.com/FH4SGKR.png">
-</p>
-<p align="center" width="100%">
-<img width="32.9%" src = "https://i.imgur.com/8828P7V.png">
-<img width="32.9%" src = "https://i.imgur.com/Pul0KEd.png">
-<img width="32.9%" src = "https://i.imgur.com/5bDip9S.png">
-</p>
-
-ver 7.9 기준 Mac 스크린샷 입니다.
 <p align="center" width="100%">
 <img width="49.6%" src = "https://i.imgur.com/SFMBxOK.png">
-<img width="49.6%" src = "https://i.imgur.com/KkNtsEk.png">
+<img width="49.6%" src = "https://i.imgur.com/UGqXXR5.png">
 </p>
 <p align="center" width="100%">
 <img width="49.6%" src = "https://i.imgur.com/1WloSJL.png">
 <img width="49.6%" src = "https://i.imgur.com/Te7qsyJ.png">
 </p>
-<p align="center" width="100%">
-<img width="49.6%" src = "https://i.imgur.com/mAiZ2li.png">
-<img width="49.6%" src = "https://i.imgur.com/UGqXXR5.png">
-</p>
 
-## TiTi만의 특징
-* 공부용 타이머는 최대한 쉽게! 직관적인 UI를 느껴보세요!
-* Timer 모드, Stopwatch 모드를 선택할 수 있습니다.
-* 목표시간을 설정하여 남은 목표시간을 확인할 수 있습니다.
-* 시간대별, 요일별 누적 공부시간을 직관적으로 확인할 수 있습니다.
-* 총 누적시간, 월별 누적시간, 주간 누적시간을 직관적으로 확인해보세요!
-* iPhone 과 더불어 iPad, Mac용 TiTi까지 만나보세요!
+## Frameworks & Librarys
+- Platform: **`iOS`**, **`iPadOS`**, **`macOS`**
+- Project: **`Swift`**, **`Xcode`**, **`SPM`**, **`CocoaPods`**, **`Mac Catalyst`**
+- Frameworks: **`UIKit`**, **`SwiftUI`**, **`Combine`**, **`ActivityKit`**, **`WidgetKit`**, </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**`UserNotifications`**, **`CoreMotion`**, **`MessageUI`**, **`WebKit`**
+- Librarys: **`Alamofire`**, **`GoogleMobileAds`**, **`FSCalendar`**, **`Firebase(RestAPI)`**
+- UI: **`Storyboard`**, **`NSLayoutConstraint`**, **`UIHostingController`**
+- Design Pattern: **`MVVM`**
 
-## TiTi의 기능들
-* 기록 측정 - Timer 모드 (앱 종료시에도 기록 진행)
-* 기록 측정 - Stopwatch 모드 (앱 종료시에도 기록 진행)
-* 기록 설정 - 목표시간, 타이머시간 설정
-* 기록 설정 - Log 창 표시를 위한 Month, Week, Daily 목표시간 설정
-* Log Daily - 24시간 시간대별 누적시간 그래프 제공
-* Log Daily - 기록명 별 누적시간 그래프 제공
-* Log Week - 주간 요일별 누적시간 및 상위 5가지 기록명 별 누적시간 그래프 제공
-* Log Home - Total 총 누적시간 및 상위 5가지 기록명 별 누적시간 그래프 제공
-* Log Home - 현재 Month 누적시간 그래프 제공
-* Log Home - 현재 Month 상위 5가지 기록명 별 누적시간 그래프 제공
-* Log Home - 현재 Week 누적시간 그래프 제공
-* Notification - 타이머 종료 5분전, 종료 알림
-* Notification - 스탑워치 1시간단위 경과 알림
-* Control - 화면 항상 켜짐 기능
-* Control - 뒤집어서 기록 시작 기능
-* Color - Stopwatch 배경색 컬러 커스터마이징 제공
-* Color - 그래프 테마색상 12가지 제공 (다크 & 라이트 모드)
-* Todolist - Todo 추가, 수정, 체크, 삭제 기능 제공
+## Trouble Shooting
+3년간 개발하며 다양한 개발 및 개선들이 있었습니다.
+더 많은 개선사항들: [Pull requests](https://github.com/TimerTiTi/TiTi_iOS/pulls?q=is%3Apr+is%3Aclosed)
+- [SwiftUI만을 이용한 Login & Signup 프로세스 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/116) (23.10)
+- [keyboard 표시에 가려지지 않는 TextField(SwiftUI) 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/112) (23.10)
+- [keyboard 표시에 가려지지 않는 UITextField(UIKit) 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/102) (23.10)
+- [window 사이즈 변화에 따른 Content Size 조절 구현 (iPhone & iPad 용 레이아웃 대응)](https://github.com/TimerTiTi/TiTi_iOS/pull/102) (23.10)
+- [Develop & Release용 Scheme 및 xcconfig 분리](https://github.com/TimerTiTi/TiTi_iOS/pull/96) (23.09)
+- [iOS용 BottomSheetViewController 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/81) (23.05)
+- [WidgetKit 및 App Group을 활용한 widget 및 App과 데이터공유 구현](https://github.com/TimerTiTi/TiTi_iOS/pull/77) (23.04)
+- [ActivityKit을 사용한 Live Activities 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/68) (23.02)
+- [TestServer 구현&배포, 기록동기화 기능 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/62) (23.01)
+- [TimeTable 그래프 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/60) (23.01)
+- [Task별 목표시간 설정 가능하도록 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/50) (22.10)
+- [GoogleAdmob 반영](https://github.com/TimerTiTi/TiTi_iOS/pull/37) (22.08)
+- [기록 수정 기능 구현](https://github.com/TimerTiTi/TiTi_iOS/pull/36) (22.08)
+- [기록 수정 가능하도록 데이터구조 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/33) (22.08)
+- [그래프 Storyboard -> NSLayoutConstraint 기반 CustomView 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/27) (22.07)
+- [Firestore(Firebase) RestAPI 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/18) (22.07)
+- [FileManager 기반 앱이 종료되어도 동작되는 Timer & Stopwatch 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/5) (22.05)
+- [UserDefaults -> FileManager(JSON file) 기반 개선](https://github.com/TimerTiTi/TiTi_iOS/commit/497c91322e607eacab761669adf07a266eb0005e) (22.05)
+- [CocoaPods 제거 및 SPM 변경](https://github.com/TimerTiTi/TiTi_iOS/commit/e12f317d97b7e283b94ab2eee5f4913d10445d7b) (22.03)
+- [Combine 기반 MVVM 리펙토링](https://github.com/TimerTiTi/TiTi_iOS/commit/613de9a8cbb2ce29a9ec001c9714dd938e7eb826) (22.03)
+- [FileManager 기반 기록저장 기능 구현](https://github.com/TimerTiTi/TiTi_iOS/commit/f44f145b6c3ae60f21bff989f2babba149097b1c) (21.06)
+- [NSLocaliedString을 사용한 Localizing 개선](https://github.com/TimerTiTi/TiTi_iOS/commit/4fecfc8fd0e725874bc4dec496b5fd18e2cc1e38) (21.04)
 
-## TiTi 기능별 사용법
-아래 Notion 링크들을 통해 TiTi 의 각 기능들의 사용법을 확인할 수 있습니다.
-- **[새로운 기록 설정](https://deeply-eggplant-5ec.notion.site/0667af61d19648afb885bb98e050cf9b)**
-- **[Task](https://deeply-eggplant-5ec.notion.site/Task-258a4735d5324eb29ee0007b0a4f5527)**
-- **[Timer](https://deeply-eggplant-5ec.notion.site/Timer-1db945227c25409d874bf82e30a0523a)**
-- **[Stopwatch](https://deeply-eggplant-5ec.notion.site/Stopwatch-f89204f11e5d468794899d35a18b084f)**
-- **[Todolist](https://deeply-eggplant-5ec.notion.site/Todolist-ff23ffb5e6634955b11e1202b95d17fc)**
-- **[Log](https://deeply-eggplant-5ec.notion.site/Log-813c2ca1f6534c23b75222a61bfe24a4)**
-- **[Daily](https://deeply-eggplant-5ec.notion.site/Daily-d4502965a89e423ab5c78411bee18689)**
-- **[Daily 수정/생성](https://deeply-eggplant-5ec.notion.site/Daily-ddcd6818ad9248dcb840e011084aacff)**
+## Functions
+- [새로운 기록 설정](https://timertiti.notion.site/2501881bb0ef49c29a1c2cee29b7f48e?pvs=4) / [Setting New Record](https://timertiti.notion.site/Setting-New-Record-046c838df3764f6db1793eed9843c505?pvs=4)
+- [Task](https://timertiti.notion.site/Task-5fbd947fe3994ce09dd3d87051861005?pvs=4) / [Task](https://timertiti.notion.site/Task-18957164379247e289ae5a30e0c5a4c7?pvs=4)
+- [Timer](https://timertiti.notion.site/Timer-0083c63a3a464fc69b6c255930690ae8?pvs=4) / [Timer](https://timertiti.notion.site/Timer-1a0bf7bdad094887abf2c7fab235d9dd?pvs=4)
+- [Stopwatch](https://timertiti.notion.site/Stopwatch-41984a8ab11444cba79fb94984f799bb?pvs=4) / [Stopwatch](https://timertiti.notion.site/Stopwatch-4dcfdb80c03545aa889d629797430697?pvs=4)
+- [Todolist](https://timertiti.notion.site/Todolist-8a05badd721449c6be439e11abc4a48c?pvs=4) / [Todolist](https://timertiti.notion.site/Todolist-ae8b0eafb9e14a5f8431f0c6eff47577?pvs=4)
+- [Log](https://timertiti.notion.site/Log-362d4cffb3e74f1686dd4e603fba8496?pvs=4) / [Log](https://timertiti.notion.site/Log-f7966cf145de45da893d17b08002321d?pvs=4)
+- [Daily](https://timertiti.notion.site/Daily-d60dc90f3c104744a74985ea221e5691?pvs=4) / [Daily](https://timertiti.notion.site/Daily-03203a2bc91243498b56f2f8c203bb61?pvs=4)
+- [Daily 수정/생성](https://timertiti.notion.site/Daily-f3b7898bcda541dda3ac526ea6a56313?pvs=4) / [Edit/Create Daily](https://timertiti.notion.site/Edit-Create-Daily-a4dabd4e45694ccd93d44c8f30e552a7?pvs=4)
 
-## 개발자 
-* [DEV_FDEE](https://github.com/FreeDeveloper97)
-* freedeveloper97@gmail.com
-* [instagram](https://www.instagram.com/dev_fdee/?hl=ko)
+기능 요약
+- Timer & Stopwatch 모드 (앱 종료시에도 기록 진행)
+- Task & Daily별 목표시간 설정
+- Total & Month & Week & Daily 그래프
+- 24시간대별 막대그래프 & TimeTable 그래프
+- 기록수정 기능
+- Notification (타이머 종료 5분전, 종료, 스탑워치 1시간경과)
+- 제어: Device 뒤집어서 기록 시작 기능
+- 제어: 화면 항상 켜짐 기능
+- Todolist 기능
+- Dark & Light 모드 제공
+- 기록동기화 기능 (test 기능)
+
+## Contact
+- [Instagram](https://www.instagram.com/study_withtiti/): 신기능 개발 및 다양한 소식
+- [Email](mailto:freedeveloper97@gmail.com): 문의 및 건의사항, 피드백 전달
+
+## SideProject
+- [서비스 소개](https://timertiti.notion.site/2fe685084fe44bd989a5dbf1b097219e?pvs=4)
+- [사이드 프로젝트 문서화](https://timertiti.notion.site/TiTi-4a1419a374564b4aa6866f08f7f82192?pvs=4)
+
+---
 
 ### Copyright © 2021 FDEE.
-관심있는 Backend, 또는 Android 개발자 분은 연락 주시면 매우 감사합니다 :)
