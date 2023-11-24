@@ -256,6 +256,12 @@
     <string>$(ServerURL)</string>
     <key>APP_BUNDLE_ID</key>
     <string>$(APP_BUNDLE_ID)</string>
+    <key>OAuth_ClientID</key>
+    <string>$(OAuth_ClientID)</string>
+    <key>REVERSED_IOS_CLEINT_ID</key>
+    <string>$(REVERSED_IOS_CLEINT_ID)</string>
+    <key>OAuth_Server_ClientID</key>
+    <string>$(OAuth_Server_ClientID)</string>
     <key>UIAppFonts</key>
     <array>
         <string>HGGGOTHICSSI_PRO_00G.otf</string>
