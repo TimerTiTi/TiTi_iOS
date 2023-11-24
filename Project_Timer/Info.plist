@@ -248,6 +248,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>GIDClientID</key>
+    <string>$(OAuth_ClientID)</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>$(REVERSED_IOS_CLEINT_ID)</string>
+        </array>
+      </dict>
+    </array>
     <key>ADMOB_AD_ID</key>
     <string>$(ADMOB_AD_ID)</string>
     <key>MODE</key>
