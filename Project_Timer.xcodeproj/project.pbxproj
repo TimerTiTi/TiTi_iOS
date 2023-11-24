@@ -149,6 +149,8 @@
 		8765234F28C7964500487BFB /* TotalVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234E28C7964500487BFB /* TotalVM.swift */; };
 		8765235128C79C4400487BFB /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765235028C79C4400487BFB /* TotalView.swift */; };
 		8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8769349627E1BBAF00D33F51 /* TodoCell.swift */; };
+		876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 876C3B0A2B1045C5002A5132 /* GoogleSignIn */; };
+		876C3B0D2B1045C5002A5132 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 876C3B0C2B1045C5002A5132 /* GoogleSignInSwift */; };
 		876E27762AC1CD2A0054250D /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876E27752AC1CD2A0054250D /* Infos.swift */; };
 		877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877036C929CD7B3B0078A30C /* TaskManager.swift */; };
 		8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8771190C28954B4A00F53FAD /* StandardWeekTaskCell.xib */; };
@@ -646,9 +648,11 @@
 			files = (
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
+				876C3B0D2B1045C5002A5132 /* GoogleSignInSwift in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
+				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1667,6 +1671,8 @@
 				8773AF4E27DCB59400739A09 /* FirebaseDatabase */,
 				8773AF5127DCB5D100739A09 /* FSCalendar */,
 				87910827283876DD005D7B10 /* Alamofire */,
+				876C3B0A2B1045C5002A5132 /* GoogleSignIn */,
+				876C3B0C2B1045C5002A5132 /* GoogleSignInSwift */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2589,6 +2595,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		876C3B0A2B1045C5002A5132 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		876C3B0C2B1045C5002A5132 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		8773AF4C27DCB59400739A09 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
