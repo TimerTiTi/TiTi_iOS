@@ -13,7 +13,7 @@ import GoogleMobileAds
 import WidgetKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
     static var shared: AppDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate
@@ -22,57 +22,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var shouldSupportPortraitOrientation = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.checkLatestVersion()
+        
         if Infos.isDevMode == false {
-            /// 애드몹 이니셜라이즈
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-            
-            /// 앱 실행시 Analytics 에 정보 전달부분
-            FirebaseApp.configure()
-            Analytics.logEvent("launch", parameters: [
-                AnalyticsParameterItemID: "ver \(String.currentVersion)",
-            ])
+            self.configureGoogleAdmob()
         }
         
-        /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
-        UNUserNotificationCenter.current().delegate = self
-        NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
-            UIApplication.shared.applicationIconBadgeNumber = 1
-        }
-        NotificationCenter.default.addObserver(forName: .removeBadge, object: nil, queue: .current) { _ in
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        }
-        /// 앱 실행시 최신버전 체크로직 실행
-        self.checkVersion()
+        self.configureNotificationCenterAddObserver()
+        self.configureMacCatalyst()
+        self.configureSharedUserDefaults()
+        self.configureWidget()
         
-        /// Mac 의 경우 Control 옵션 비활성화
-        #if targetEnvironment(macCatalyst)
-        UserDefaultsManager.set(to: false, forKey: .keepTheScreenOn)
-        UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
-        #endif
-        
-        /// UserDefaults.standard -> shared 반영
-        if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
-            UserDefaults.updateShared()
-            Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
-        }
-        
-        WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
-        
-        /// logout 상태의 경우 KeyChain 초기화
-        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
-        if logined == false {
-            print("not logined")
-            guard KeyChain.shared.deleteAll() else {
-                
-                return true
-            }
-        }
+        self.checkLogined()
         
         return true
     }
     
-    /// 최신버전 체크로직
-    private func checkVersion() {
+    // MARK: UISceneSession Lifecycle
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        // Called when a new scene session is being created.
+        // Use this method to select a configuration to create the new scene with.
+        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+        // Called when the user discards a scene session.
+        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+    
+    // MARK: Contigure Rotation
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if shouldSupportPortraitOrientation {
+            return .portrait
+        } else {
+            return .all
+        }
+    }
+}
+
+/// Foreground 모드에서 notification 알림을 설정하기 위한 부분
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+}
+
+// MARK: Configure
+extension AppDelegate {
+    private func checkLatestVersion() {
+        /// 최신버전 체크로직
         guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
         NetworkController(network: Network()).getAppstoreVersion { result in
             switch result {
@@ -98,46 +110,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // MARK: Contigure Rotation
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        if shouldSupportPortraitOrientation {
-            return .portrait
-        } else {
-            return .all
+    private func configureGoogleAdmob() {
+        /// 애드몹 이니셜라이즈
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        /// 앱 실행시 Analytics 에 정보 전달부분
+        FirebaseApp.configure()
+        Analytics.logEvent("launch", parameters: [
+            AnalyticsParameterItemID: "ver \(String.currentVersion)",
+        ])
+    }
+    
+    private func configureNotificationCenterAddObserver() {
+        /// Foreground 에서 알림설정을 활성화 하기 위한 delegate 연결 부분
+        UNUserNotificationCenter.current().delegate = self
+        NotificationCenter.default.addObserver(forName: .setBadge, object: nil, queue: .current) { _ in
+            UIApplication.shared.applicationIconBadgeNumber = 1
+        }
+        NotificationCenter.default.addObserver(forName: .removeBadge, object: nil, queue: .current) { _ in
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
-
-    // MARK: UISceneSession Lifecycle
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    
+    private func configureMacCatalyst() {
+        /// Mac 의 경우 Control 옵션 비활성화
+        #if targetEnvironment(macCatalyst)
+        UserDefaultsManager.set(to: false, forKey: .keepTheScreenOn)
+        UserDefaultsManager.set(to: false, forKey: .flipToStartRecording)
+        #endif
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-    
-}
-
-/// Foreground 모드에서 notification 알림을 설정하기 위한 부분
-extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        completionHandler()
+    private func configureSharedUserDefaults() {
+        /// UserDefaults.standard -> shared 반영
+        if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
+            UserDefaults.updateShared()
+            Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
+        }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.alert, .badge, .sound])
+    private func configureWidget() {
+        WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
+    }
+    
+    private func checkLogined() {
+        /// logout 상태의 경우 KeyChain 초기화
+        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
+        if logined == false {
+            print("not logined")
+            guard KeyChain.shared.deleteAll() else {
+                print("ERROR: KeyChain.shared.deleteAll")
+                return
+            }
+        }
     }
 }
