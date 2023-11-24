@@ -250,6 +250,8 @@
 	</array>
     <key>GIDClientID</key>
     <string>$(OAuth_ClientID)</string>
+    <key>GIDServerClientID</key>
+    <string>$(OAuth_Server_ClientID)</string>
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
