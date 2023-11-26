@@ -8,6 +8,7 @@
 
 import Foundation
 import AuthenticationServices
+import GoogleSignIn
 
 class LoginSelectModel: ObservableObject & NSObject {
     @Published var contentWidth: CGFloat = .zero
@@ -30,16 +31,6 @@ extension LoginSelectModel {
         default:
             contentWidth = 400
         }
-    }
-
-    func googleLogin() {
-        self.vender = .google
-        // MARK: login 작업 필요
-        self.venderInfo = SignupVenderInfo(
-            vender: .google,
-            id: "abcd1234",
-            email: "freedeveloper97@gmail.com"
-        )
     }
     
     var signupInfosForEmail: SignupInfosForEmail {
@@ -66,7 +57,7 @@ extension LoginSelectModel {
     }
 }
 
-// MARK: AppleLogin
+// MARK: AppleSignIn
 extension LoginSelectModel: ASAuthorizationControllerDelegate {
     func performAppleSignIn() {
         let provider = ASAuthorizationAppleIDProvider()
@@ -96,5 +87,20 @@ extension LoginSelectModel: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         self.errorMessage = (title: "Apple Login Fail", text: "Please terminate the app and try again.")
         self.showAleret = true
+    }
+}
+
+// MARK: GoogleSignIn
+extension LoginSelectModel {
+    func performGoogleSignIn(rootVC: UIViewController?) {
+        guard let rootVC = rootVC else { return }
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
+            guard let result = signInResult else {
+                // Inspect error
+                print("error")
+                return
+            }
+            // If sign in succeeded, display the app's main content View.
+        }
     }
 }

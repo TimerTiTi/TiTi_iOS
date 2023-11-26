@@ -102,7 +102,7 @@ struct LoginSelectView: View {
                     model.performAppleSignIn()
                 }
                 GoogleLoginButton {
-                    model.googleLogin()
+                    model.performGoogleSignIn(rootVC: environment.rootVC)
                 }
                 EmailLoginButton {
                     environment.navigationPath.append(LoginSelectRoute.login)

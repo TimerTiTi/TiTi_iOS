@@ -11,9 +11,14 @@ import Combine
 import SwiftUI
 
 final class LoginSignupVC: PortraitVC {
-    private let environment = LoginSignupEnvironment()
+    private var environment: LoginSignupEnvironment?
     private var cancellables: Set<AnyCancellable> = []
-
+    
+    override func loadView() {
+        super.loadView()
+        self.environment = LoginSignupEnvironment(rootVC: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -23,6 +28,7 @@ final class LoginSignupVC: PortraitVC {
     }
     
     private func configureHostingVC() {
+        guard let environment = self.environment else { return }
         let hostingVC = UIHostingController(rootView: LoginSelectView().environmentObject(environment))
         self.addChild(hostingVC)
         hostingVC.didMove(toParent: self)
@@ -38,7 +44,7 @@ final class LoginSignupVC: PortraitVC {
     }
     
     private func bindListener() {
-        self.environment.$dismiss
+        self.environment?.$dismiss
             .receive(on: DispatchQueue.main)
             .sink { [weak self] dismiss in
                 if dismiss {
@@ -47,7 +53,7 @@ final class LoginSignupVC: PortraitVC {
             }
             .store(in: &self.cancellables)
         
-        self.environment.$loginSuccess
+        self.environment?.$loginSuccess
             .receive(on: DispatchQueue.main)
             .sink { [weak self] success in
                 guard success else { return }
