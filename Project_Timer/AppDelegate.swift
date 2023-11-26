@@ -132,6 +132,7 @@ extension AppDelegate {
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
                 // MARK: SignOut 구현
+                GIDSignIn.sharedInstance.signOut()
                 print("Show the app's signed-out state")
             } else {
                 // MARK: SignIn 관련 로직 필요한지 확인 필요

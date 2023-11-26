@@ -47,7 +47,6 @@ extension LoginSelectModel {
         // MARK: 회원가입 & 로그인 분기처리 필요
         let id = "abcd1234"
         let email = email ?? ""
-        print(authorizationCode, email)
         
         self.venderInfo = SignupVenderInfo(
             vender: vender,
@@ -79,14 +78,15 @@ extension LoginSelectModel: ASAuthorizationControllerDelegate {
                 )
             }
         } else {
-            self.errorMessage = (title: "Apple Login Fail", text: "Please terminate the app and try again.")
+            self.errorMessage = (title: "Apple SignIn Fail", text: "Please terminate the app and try again.")
             self.showAleret = true
         }
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.errorMessage = (title: "Apple Login Fail", text: "Please terminate the app and try again.")
+        self.errorMessage = (title: "Apple SignIn Fail", text: "Please terminate the app and try again.")
         self.showAleret = true
+        print(error.localizedDescription)
     }
 }
 
@@ -95,12 +95,21 @@ extension LoginSelectModel {
     func performGoogleSignIn(rootVC: UIViewController?) {
         guard let rootVC = rootVC else { return }
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
-            guard let result = signInResult else {
-                // Inspect error
-                print("error")
+            guard let result = signInResult, error == nil else {
+                self.errorMessage = (title: "Google SignIn Fail", text: "Please terminate the app and try again.")
+                self.showAleret = true
+                print(error?.localizedDescription)
                 return
             }
-            // If sign in succeeded, display the app's main content View.
+            
+            let email = result.user.profile?.email ?? ""
+            if let authorizationCode = signInResult?.serverAuthCode {
+                self.postLogin(
+                    vender: .google,
+                    authorizationCode: authorizationCode,
+                    email: email
+                )
+            }
         }
     }
 }
