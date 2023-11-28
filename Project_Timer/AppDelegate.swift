@@ -35,7 +35,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureSharedUserDefaults()
         self.configureWidget()
         
-        self.checkLogined()
+        self.checkSignined()
         
         return true
     }
@@ -183,11 +183,11 @@ extension AppDelegate {
         WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
     }
     
-    private func checkLogined() {
-        /// logout 상태의 경우 KeyChain 초기화
-        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
-        if logined == false {
-            print("not logined")
+    private func checkSignined() {
+        /// signout 상태의 경우 KeyChain 초기화
+        let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
+        if signined == false {
+            print("not signined")
             guard KeyChain.shared.deleteAll() else {
                 print("ERROR: KeyChain.shared.deleteAll")
                 return

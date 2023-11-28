@@ -1,5 +1,5 @@
 //
-//  AppleLoginButton.swift
+//  EmailSigninButton.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct AppleLoginButton: View {
+struct EmailSigninButton: View {
     var action: () -> Void
     
     var body: some View {
@@ -23,13 +23,24 @@ struct AppleLoginButton: View {
                     .frame(height: 58)
                 
                 HStack(spacing: 12) {
-                    Text("")
-                        .font(.system(size: 30))
-                    Text("Sign in with \("Apple")")
+                    Text("✉️")
+                        .font(.system(size: 25))
+                    Text("Sign in with Email")
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }
         }
         .foregroundColor(.black)
     }
+}
+#Preview {
+    EmailSigninButton {
+        print("Email")
+    }
+}
+#Preview {
+    EmailSigninButton {
+        print("Email")
+    }
+    .environment(\.locale, .init(identifier: "en"))
 }

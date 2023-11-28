@@ -1,5 +1,5 @@
 //
-//  SignupLoginVC.swift
+//  SignupSigninVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/27.
@@ -9,8 +9,8 @@
 import UIKit
 import Combine
 
-class SignupLoginVC: WhiteNavigationVC {
-    private var viewModel: SignupLoginVM
+class SignupSigninVC: WhiteNavigationVC {
+    private var viewModel: SignupSigninVM
     private var cancellables: Set<AnyCancellable> = []
     
     // MARK: CustomView
@@ -23,7 +23,7 @@ class SignupLoginVC: WhiteNavigationVC {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.image = TiTiImage.loginLogo
+        imageView.image = TiTiImage.signinLogo
         return imageView
     }()
     private var logoTitle: UILabel = {
@@ -34,13 +34,13 @@ class SignupLoginVC: WhiteNavigationVC {
         label.text = "TimerTiTi"
         return label
     }()
-    private let nicknameTextField = LoginInputTextfield(type: .nickname)
-    private let emailTextField = LoginInputTextfield(type: .email)
-    private let passwordTextField = LoginInputTextfield(type: .password)
+    private let nicknameTextField = SigninInputTextfield(type: .nickname)
+    private let emailTextField = SigninInputTextfield(type: .email)
+    private let passwordTextField = SigninInputTextfield(type: .password)
     lazy private var actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.viewModel.isLogin ? "Sign in".localized() : "Sign up".localized(), for: .normal)
+        button.setTitle(self.viewModel.isSignin ? "Sign in".localized() : "Sign up".localized(), for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.backgroundColor = .white
@@ -48,7 +48,7 @@ class SignupLoginVC: WhiteNavigationVC {
         button.layer.cornerCurve = .continuous
         button.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
-            button.heightAnchor.constraint(equalToConstant: LoginInputTextfield.height)
+            button.heightAnchor.constraint(equalToConstant: SigninInputTextfield.height)
         ])
         return button
     }()
@@ -63,7 +63,7 @@ class SignupLoginVC: WhiteNavigationVC {
     // MARK: constraint
     private var contentViewWidth: NSLayoutConstraint?
     
-    init(viewModel: SignupLoginVM) {
+    init(viewModel: SignupSigninVM) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -92,7 +92,7 @@ class SignupLoginVC: WhiteNavigationVC {
     }
 }
 
-extension SignupLoginVC {
+extension SignupSigninVC {
     private func configureTextFields() {
         self.nicknameTextField.textField.delegate = self
         self.emailTextField.textField.delegate = self
@@ -109,7 +109,7 @@ extension SignupLoginVC {
     
     private func configureUI(width: CGFloat = 300) {
         self.addDismissingKeyboard()
-        self.view.backgroundColor = TiTiColor.loginBackground
+        self.view.backgroundColor = TiTiColor.signinBackground
         
         self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: width)
         self.contentViewWidth?.isActive = true
@@ -133,7 +133,7 @@ extension SignupLoginVC {
             self.textFieldsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
         
-        if self.viewModel.isLogin {
+        if self.viewModel.isSignin {
             self.emailTextField.isHidden = true
             NSLayoutConstraint.activate([
                 self.textFieldsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -74)
@@ -163,13 +163,13 @@ extension SignupLoginVC {
     }
     
     private func configureActions() {
-        // MARK: Signup & Login Action
+        // MARK: Signup & Signin Action
         self.actionButton.addAction(UIAction(handler: { [weak self] _ in
             guard let username = self?.nicknameTextField.textField.text,
                   let password = self?.passwordTextField.textField.text else { return }
             
-            if self?.viewModel.isLogin == true {
-                self?.viewModel.login(info: TestUserLoginInfo(username: username, password: password))
+            if self?.viewModel.isSignin == true {
+                self?.viewModel.signin(info: TestUserSigninInfo(username: username, password: password))
             } else {
                 guard let email = self?.emailTextField.textField.text else { return }
                 self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
@@ -178,14 +178,14 @@ extension SignupLoginVC {
     }
 }
 
-extension SignupLoginVC {
+extension SignupSigninVC {
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardRectangle = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             // keyboard 높이에 따라 bounds.origin 값 조정
             print(keyboardRectangle.height)
             let keyboardY = self.view.bounds.height - keyboardRectangle.height
             let textFieldOrigin = self.textFieldOrigin
-            let targetY = textFieldOrigin.y + LoginInputTextfield.height + 16
+            let targetY = textFieldOrigin.y + SigninInputTextfield.height + 16
             
             if keyboardY <= targetY {
                 UIView.animate(withDuration: 0.2, delay: 0, options: [.curveEaseInOut, .overrideInheritedCurve]) { [weak self] in
@@ -196,12 +196,12 @@ extension SignupLoginVC {
     }
 }
 
-extension SignupLoginVC {
+extension SignupSigninVC {
     private func bindAll() {
         self.bindLoadingText()
         self.bindAlert()
         self.bindPostable()
-        self.bindLoginSuccess()
+        self.bindSigninSuccess()
     }
     
     private func bindLoadingText() {
@@ -244,13 +244,13 @@ extension SignupLoginVC {
             .store(in: &self.cancellables)
     }
     
-    private func bindLoginSuccess() {
-        self.viewModel.$loginSuccess
+    private func bindSigninSuccess() {
+        self.viewModel.$signinSuccess
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] loginSuccess in
-                guard loginSuccess else { return }
+            .sink { [weak self] signinSuccess in
+                guard signinSuccess else { return }
                 
-                let title: String = self?.viewModel.isLogin == true ? "Signin Success".localized() : "Signup Success".localized()
+                let title: String = self?.viewModel.isSignin == true ? "Signin Success".localized() : "Signup Success".localized()
                 self?.showAlertWithOKAfterHandler(title: title, text: "") { [weak self] in
                     self?.navigationController?.popViewController(animated: true)
                 }
@@ -259,11 +259,11 @@ extension SignupLoginVC {
     }
 }
 
-extension SignupLoginVC: UITextFieldDelegate {
+extension SignupSigninVC: UITextFieldDelegate {
     /// return 키 설정
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == self.nicknameTextField.textField {
-            if self.viewModel.isLogin {
+            if self.viewModel.isSignin {
                 self.passwordTextField.textField.becomeFirstResponder()
             } else {
                 self.emailTextField.textField.becomeFirstResponder()

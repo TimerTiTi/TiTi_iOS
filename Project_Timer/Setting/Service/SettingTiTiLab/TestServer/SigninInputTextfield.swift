@@ -1,5 +1,5 @@
 //
-//  LoginInputTextfield.swift
+//  SigninInputTextfield.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/27.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginInputTextfield: UIView {
+class SigninInputTextfield: UIView {
     static let height: CGFloat = CGFloat(58)
     
     enum type: String {
@@ -40,7 +40,7 @@ class LoginInputTextfield: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(type: LoginInputTextfield.type) {
+    convenience init(type: SigninInputTextfield.type) {
         self.init(frame: .zero)
         self.textField.placeholder = type.rawValue.localized()
         

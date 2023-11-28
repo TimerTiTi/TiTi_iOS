@@ -1,5 +1,5 @@
 //
-//  LoginTextFieldView.swift
+//  SignupTextFieldView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/09.

@@ -68,7 +68,7 @@ enum Destination {
     case ui
     case control
     case widget
-    case loginSelect
+    case signinSelect
     // other app 분기처리
     case backup
     case mail

@@ -1,5 +1,5 @@
 //
-//  LoginTextFieldView.swift
+//  SigninTextFieldView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/09.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LoginTextFieldView: View {
+struct SigninTextFieldView: View {
     enum type: Equatable {
         case email
         case password
@@ -78,11 +78,11 @@ struct LoginTextFieldView: View {
     }
 }
 
-struct LoginTextFieldView_Previews: PreviewProvider {
+struct SigninTextFieldView_Previews: PreviewProvider {
     @State static private var text: String = ""
-    @FocusState static private var focus: LoginTextFieldView.type?
+    @FocusState static private var focus: SigninTextFieldView.type?
     
     static var previews: some View {
-        LoginTextFieldView(type: .email, text: $text, focus: $focus)
+        SigninTextFieldView(type: .email, text: $text, focus: $focus)
     }
 }

@@ -186,8 +186,8 @@ extension SettingVC: SettingActionDelegate {
     
     func modalVC(fullscreen: Bool, destination: Destination) {
         switch destination {
-        case .loginSelect:
-            let vc = LoginSignupVC()
+        case .signinSelect:
+            let vc = SigninSignupVC()
             if fullscreen {
                 vc.modalPresentationStyle = .fullScreen
             }

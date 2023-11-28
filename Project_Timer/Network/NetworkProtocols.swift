@@ -37,7 +37,7 @@ protocol SurveysFetchable {
 // MARK: TestServer
 protocol TestServerAuthFetchable {
     func signup(userInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
-    func login(userInfo: TestUserLoginInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
+    func signin(userInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
 }
 
 protocol TestServerDailyFetchable {

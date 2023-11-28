@@ -1,5 +1,5 @@
 //
-//  LoginSignupEnvironment.swift
+//  SigninSignupEnvironment.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/25.
@@ -10,11 +10,11 @@ import SwiftUI
 import UIKit
 import Combine
 
-/// LoginSignupVC로 통신 역할
-class LoginSignupEnvironment: ObservableObject {
+/// SigninSignupVC로 통신 역할
+class SigninSignupEnvironment: ObservableObject {
     weak var rootVC: UIViewController?
     @Published var dismiss: Bool = false
-    @Published var loginSuccess: Bool = false
+    @Published var signinSuccess: Bool = false
     @Published var signupSuccess: Bool = false
     @Published var navigationPath = NavigationPath()
     

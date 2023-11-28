@@ -10,8 +10,8 @@ import Foundation
 
 final class KeyChain {
     static let shared = KeyChain()
-    static let logined = Notification.Name("logined")
-    static let logouted = Notification.Name("logouted")
+    static let signined = Notification.Name("signined")
+    static let signouted = Notification.Name("signouted")
     private let service = Infos.APP_BUNDLE_ID.value
     private init() {}
     

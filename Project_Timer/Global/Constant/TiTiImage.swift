@@ -9,5 +9,5 @@
 import UIKit
 
 enum TiTiImage {
-    static let loginLogo = UIImage(named: "loginLogo")!
+    static let signinLogo = UIImage(named: "signinLogo")!
 }

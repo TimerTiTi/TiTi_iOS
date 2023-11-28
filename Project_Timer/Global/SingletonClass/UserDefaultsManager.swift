@@ -36,8 +36,8 @@ struct UserDefaultsManager {
         case goalTimeOfMonth
         case goalTimeOfWeek
         case goalTimeOfDaily
-        // login
-        case loginInTestServerV1
+        // signin
+        case signinInTestServerV1 = "loginInTestServerV1"
         case lastUploadedDateV1
         // widget color
         case calendarWidgetColor

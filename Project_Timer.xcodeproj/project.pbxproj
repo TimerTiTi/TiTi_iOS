@@ -50,7 +50,7 @@
 		8706C32E2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */; };
 		8706C3302AEF881500F7C842 /* SignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */; };
 		8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */; };
-		870C70712AD4ECB700024CAC /* LoginRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* LoginRoute.swift */; };
+		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
 		870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -105,11 +105,11 @@
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
-		874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */; };
-		874F9C2D2ABFF73400675A86 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */; };
-		874F9C2F2ABFF7CF00675A86 /* GoogleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */; };
-		874F9C312ABFF81300675A86 /* EmailLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C302ABFF81300675A86 /* EmailLoginButton.swift */; };
-		874F9C332ABFFDDF00675A86 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C322ABFFDDF00675A86 /* LoginView.swift */; };
+		874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */; };
+		874F9C2D2ABFF73400675A86 /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */; };
+		874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */; };
+		874F9C312ABFF81300675A86 /* EmailSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C302ABFF81300675A86 /* EmailSigninButton.swift */; };
+		874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C322ABFFDDF00675A86 /* SigninView.swift */; };
 		8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */; };
 		8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F328472066007FAFC4 /* SettingCell.swift */; };
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
@@ -193,7 +193,7 @@
 		878DA1FD2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */; };
 		878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */; };
 		878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8202B0C62E1001E924E /* SignupNicknameView.swift */; };
-		878DA8232B0C6B1E001E924E /* LoginSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */; };
+		878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8222B0C6B1E001E924E /* SigninSelectModel.swift */; };
 		878DA8252B0C78D8001E924E /* SignupNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8242B0C78D8001E924E /* SignupNicknameRoute.swift */; };
 		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
@@ -209,10 +209,10 @@
 		879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */; };
 		879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879A2BA7284746A500B69DA7 /* SettingFooterView.swift */; };
 		879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */; };
-		879BE3202AC402A8007AAC46 /* SignupLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */; };
-		879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupLoginVM.swift */; };
+		879BE3202AC402A8007AAC46 /* SignupSigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE31F2AC402A8007AAC46 /* SignupSigninVC.swift */; };
+		879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3212AC40444007AAC46 /* SignupSigninVM.swift */; };
 		879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3232AC42758007AAC46 /* TiTiImage.swift */; };
-		879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */; };
+		879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE3252AC42919007AAC46 /* SigninInputTextfield.swift */; };
 		879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */; };
 		879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */; };
 		879D20742A190DE900D8A420 /* LogSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879D20732A190DE900D8A420 /* LogSettingVC.swift */; };
@@ -243,8 +243,8 @@
 		87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */; };
 		87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */; };
 		87B539AB299BB710001E354C /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B539AA299BB710001E354C /* Versions.swift */; };
-		87B7A53C2AC02202002AFDFE /* LoginSelectRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B7A53B2AC02202002AFDFE /* LoginSelectRoute.swift */; };
-		87BE88E72AD425BE0010A84A /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE88E62AD425BE0010A84A /* LoginTextFieldView.swift */; };
+		87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B7A53B2AC02202002AFDFE /* SigninSelectRoute.swift */; };
+		87BE88E72AD425BE0010A84A /* SigninTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BE88E62AD425BE0010A84A /* SigninTextFieldView.swift */; };
 		87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEE8281C17000095CD29 /* RecordsManager.swift */; };
 		87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */; };
 		87BEBEED281C282D0095CD29 /* Times.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BEBEEC281C282D0095CD29 /* Times.swift */; };
@@ -267,7 +267,7 @@
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
-		87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */; };
+		87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
@@ -286,8 +286,8 @@
 		87E6004B28426EBF008D17B9 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingVC.swift */; };
 		87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */; };
 		87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */; };
-		87EFD6812AC115DB00C422B1 /* LoginSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */; };
-		87EFD6832AC12C3800C422B1 /* LoginSignupEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6822AC12C3800C422B1 /* LoginSignupEnvironment.swift */; };
+		87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */; };
+		87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */; };
 		87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */; };
 		87F10932284C4367002E31EA /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10931284C4367002E31EA /* SurveyCell.swift */; };
 		87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */; };
@@ -375,7 +375,7 @@
 		8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldUnderlineView.swift; sourceTree = "<group>"; };
 		8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldWarning.swift; sourceTree = "<group>"; };
 		8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNextButtonForMac.swift; sourceTree = "<group>"; };
-		870C70702AD4ECB700024CAC /* LoginRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRoute.swift; sourceTree = "<group>"; };
+		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
 		870E117A2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetCellData.swift; sourceTree = "<group>"; };
@@ -431,11 +431,11 @@
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
-		874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectView.swift; sourceTree = "<group>"; };
-		874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
-		874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLoginButton.swift; sourceTree = "<group>"; };
-		874F9C302ABFF81300675A86 /* EmailLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginButton.swift; sourceTree = "<group>"; };
-		874F9C322ABFFDDF00675A86 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectView.swift; sourceTree = "<group>"; };
+		874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
+		874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSigninButton.swift; sourceTree = "<group>"; };
+		874F9C302ABFF81300675A86 /* EmailSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSigninButton.swift; sourceTree = "<group>"; };
+		874F9C322ABFFDDF00675A86 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
 		8750082C2905998200E27B4A /* TargetTimeSettingPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTimeSettingPopupVC.swift; sourceTree = "<group>"; };
 		8751C6F328472066007FAFC4 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
@@ -514,7 +514,7 @@
 		878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureForTextFieldRootView.swift; sourceTree = "<group>"; };
 		878DA81E2B0C62A9001E924E /* SignupNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameModel.swift; sourceTree = "<group>"; };
 		878DA8202B0C62E1001E924E /* SignupNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameView.swift; sourceTree = "<group>"; };
-		878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectModel.swift; sourceTree = "<group>"; };
+		878DA8222B0C6B1E001E924E /* SigninSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectModel.swift; sourceTree = "<group>"; };
 		878DA8242B0C78D8001E924E /* SignupNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameRoute.swift; sourceTree = "<group>"; };
 		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
@@ -529,10 +529,10 @@
 		879A2BA5284741A500B69DA7 /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		879A2BA7284746A500B69DA7 /* SettingFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFooterView.swift; sourceTree = "<group>"; };
 		879BE31D2AC317DB007AAC46 /* CGSize+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extension.swift"; sourceTree = "<group>"; };
-		879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVC.swift; sourceTree = "<group>"; };
-		879BE3212AC40444007AAC46 /* SignupLoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupLoginVM.swift; sourceTree = "<group>"; };
+		879BE31F2AC402A8007AAC46 /* SignupSigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSigninVC.swift; sourceTree = "<group>"; };
+		879BE3212AC40444007AAC46 /* SignupSigninVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSigninVM.swift; sourceTree = "<group>"; };
 		879BE3232AC42758007AAC46 /* TiTiImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiImage.swift; sourceTree = "<group>"; };
-		879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextfield.swift; sourceTree = "<group>"; };
+		879BE3252AC42919007AAC46 /* SigninInputTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninInputTextfield.swift; sourceTree = "<group>"; };
 		879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitVC.swift; sourceTree = "<group>"; };
 		879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteNavigationVC.swift; sourceTree = "<group>"; };
 		879D20732A190DE900D8A420 /* LogSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSettingVC.swift; sourceTree = "<group>"; };
@@ -563,8 +563,8 @@
 		87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorPopupVC.swift; sourceTree = "<group>"; };
 		87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		87B539AA299BB710001E354C /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
-		87B7A53B2AC02202002AFDFE /* LoginSelectRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSelectRoute.swift; sourceTree = "<group>"; };
-		87BE88E62AD425BE0010A84A /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
+		87B7A53B2AC02202002AFDFE /* SigninSelectRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectRoute.swift; sourceTree = "<group>"; };
+		87BE88E62AD425BE0010A84A /* SigninTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninTextFieldView.swift; sourceTree = "<group>"; };
 		87BEBEE8281C17000095CD29 /* RecordsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsManager.swift; sourceTree = "<group>"; };
 		87BEBEEA281C19CA0095CD29 /* StopwatchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVM.swift; sourceTree = "<group>"; };
 		87BEBEEC281C282D0095CD29 /* Times.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Times.swift; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
-		87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserLoginInfo.swift; sourceTree = "<group>"; };
+		87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
@@ -606,8 +606,8 @@
 		87E6004A28426EBF008D17B9 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressSwiftUIView.swift; sourceTree = "<group>"; };
 		87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressDTO.swift; sourceTree = "<group>"; };
-		87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupVC.swift; sourceTree = "<group>"; };
-		87EFD6822AC12C3800C422B1 /* LoginSignupEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupEnvironment.swift; sourceTree = "<group>"; };
+		87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSignupVC.swift; sourceTree = "<group>"; };
+		87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSignupEnvironment.swift; sourceTree = "<group>"; };
 		87F1092F284C4337002E31EA /* TiTiLabHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiLabHeaderView.swift; sourceTree = "<group>"; };
 		87F10931284C4367002E31EA /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		87F10935284C47A1002E31EA /* SettingTiTiLabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTiTiLabVM.swift; sourceTree = "<group>"; };
@@ -872,12 +872,12 @@
 		874F9C342ABFFDE900675A86 /* LoginSelect */ = {
 			isa = PBXGroup;
 			children = (
-				87B7A53B2AC02202002AFDFE /* LoginSelectRoute.swift */,
-				874F9C2A2ABFF51700675A86 /* LoginSelectView.swift */,
-				878DA8222B0C6B1E001E924E /* LoginSelectModel.swift */,
-				874F9C2C2ABFF73400675A86 /* AppleLoginButton.swift */,
-				874F9C2E2ABFF7CF00675A86 /* GoogleLoginButton.swift */,
-				874F9C302ABFF81300675A86 /* EmailLoginButton.swift */,
+				87B7A53B2AC02202002AFDFE /* SigninSelectRoute.swift */,
+				874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */,
+				878DA8222B0C6B1E001E924E /* SigninSelectModel.swift */,
+				874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */,
+				874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */,
+				874F9C302ABFF81300675A86 /* EmailSigninButton.swift */,
 			);
 			path = LoginSelect;
 			sourceTree = "<group>";
@@ -1085,7 +1085,7 @@
 		878DA1F42AEE615800C60CBF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				87EFD6822AC12C3800C422B1 /* LoginSignupEnvironment.swift */,
+				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
 				878DA1F52AEE617900C60CBF /* SignupInfo.swift */,
 			);
 			path = Domain;
@@ -1094,7 +1094,7 @@
 		878DA1F92AEF7A9100C60CBF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				87EFD6802AC115DB00C422B1 /* LoginSignupVC.swift */,
+				87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */,
 				878DA1FB2AEF7CA500C60CBF /* Common */,
 				87E5C70A2AE0263500BE46B0 /* Login */,
 				87E5C70B2AE0266200BE46B0 /* Signup */,
@@ -1328,9 +1328,9 @@
 		87BE88E52AD425A80010A84A /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				870C70702AD4ECB700024CAC /* LoginRoute.swift */,
-				874F9C322ABFFDDF00675A86 /* LoginView.swift */,
-				87BE88E62AD425BE0010A84A /* LoginTextFieldView.swift */,
+				870C70702AD4ECB700024CAC /* SigninRoute.swift */,
+				874F9C322ABFFDDF00675A86 /* SigninView.swift */,
+				87BE88E62AD425BE0010A84A /* SigninTextFieldView.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -1434,7 +1434,7 @@
 			isa = PBXGroup;
 			children = (
 				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
-				87D7ED162952B69200121DE6 /* TestUserLoginInfo.swift */,
+				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 			);
 			path = TestServer;
@@ -1453,9 +1453,9 @@
 			isa = PBXGroup;
 			children = (
 				879053FD29558ED2008B9258 /* SyncDailys */,
-				879BE31F2AC402A8007AAC46 /* SignupLoginVC.swift */,
-				879BE3212AC40444007AAC46 /* SignupLoginVM.swift */,
-				879BE3252AC42919007AAC46 /* LoginInputTextfield.swift */,
+				879BE31F2AC402A8007AAC46 /* SignupSigninVC.swift */,
+				879BE3212AC40444007AAC46 /* SignupSigninVM.swift */,
+				879BE3252AC42919007AAC46 /* SigninInputTextfield.swift */,
 			);
 			path = TestServer;
 			sourceTree = "<group>";
@@ -1858,14 +1858,14 @@
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
 				87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */,
-				874F9C2B2ABFF51700675A86 /* LoginSelectView.swift in Sources */,
+				874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
-				879BE3262AC42919007AAC46 /* LoginInputTextfield.swift in Sources */,
+				879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
@@ -1881,7 +1881,7 @@
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
-				87B7A53C2AC02202002AFDFE /* LoginSelectRoute.swift in Sources */,
+				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
@@ -1902,7 +1902,7 @@
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */,
-				879BE3202AC402A8007AAC46 /* SignupLoginVC.swift in Sources */,
+				879BE3202AC402A8007AAC46 /* SignupSigninVC.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
@@ -1913,7 +1913,7 @@
 				87035DF7282225C800055378 /* Protocols.swift in Sources */,
 				87DB923E2AC2D06C00FE6453 /* View+Extension.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
-				874F9C312ABFF81300675A86 /* EmailLoginButton.swift in Sources */,
+				874F9C312ABFF81300675A86 /* EmailSigninButton.swift in Sources */,
 				878DA8252B0C78D8001E924E /* SignupNicknameRoute.swift in Sources */,
 				870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
@@ -1937,13 +1937,13 @@
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
 				87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */,
-				87BE88E72AD425BE0010A84A /* LoginTextFieldView.swift in Sources */,
+				87BE88E72AD425BE0010A84A /* SigninTextFieldView.swift in Sources */,
 				87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */,
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
-				87D7ED172952B69200121DE6 /* TestUserLoginInfo.swift in Sources */,
+				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
 				8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
@@ -1951,7 +1951,7 @@
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				87A8CD252AF0C37200D4C1D7 /* SignupSecureFieldView.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
-				87EFD6832AC12C3800C422B1 /* LoginSignupEnvironment.swift in Sources */,
+				87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
@@ -1959,7 +1959,7 @@
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
 				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
-				87EFD6812AC115DB00C422B1 /* LoginSignupVC.swift in Sources */,
+				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
 				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
@@ -1969,12 +1969,12 @@
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
-				878DA8232B0C6B1E001E924E /* LoginSelectModel.swift in Sources */,
+				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
-				874F9C2D2ABFF73400675A86 /* AppleLoginButton.swift in Sources */,
+				874F9C2D2ABFF73400675A86 /* AppleSigninButton.swift in Sources */,
 				8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */,
 				879D20832A19F13400D8A420 /* TargetTimeButton.swift in Sources */,
 				878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */,
@@ -2043,7 +2043,7 @@
 				87024B102AE154630095CCB4 /* SignupEmailRoute.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
-				879BE3222AC40444007AAC46 /* SignupLoginVM.swift in Sources */,
+				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
@@ -2069,18 +2069,18 @@
 				8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
 				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
-				870C70712AD4ECB700024CAC /* LoginRoute.swift in Sources */,
+				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
-				874F9C2F2ABFF7CF00675A86 /* GoogleLoginButton.swift in Sources */,
+				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
 				87B539AB299BB710001E354C /* Versions.swift in Sources */,
 				8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
-				874F9C332ABFFDDF00675A86 /* LoginView.swift in Sources */,
+				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
 			);
@@ -2223,7 +2223,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2232,7 +2232,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.4;
+				MARKETING_VERSION = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2462,7 +2462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2471,7 +2471,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.4;
+				MARKETING_VERSION = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2489,7 +2489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2498,7 +2498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.4;
+				MARKETING_VERSION = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;

@@ -42,7 +42,7 @@ struct SignupPasswordView: View {
     }
     
     struct ContentView: View {
-        @EnvironmentObject var environment: LoginSignupEnvironment
+        @EnvironmentObject var environment: SigninSignupEnvironment
         @ObservedObject var model: SignupPasswordModel
         @FocusState private var focus: SignupTextFieldView.type?
         
@@ -130,11 +130,11 @@ struct SignupPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         SignupPasswordView(
             model: SignupPasswordModel(infos: infos)
-        ).environmentObject(LoginSignupEnvironment())
+        ).environmentObject(SigninSignupEnvironment())
         
         SignupPasswordView(
             model: SignupPasswordModel(infos: infos)
-        ).environmentObject(LoginSignupEnvironment())
+        ).environmentObject(SigninSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

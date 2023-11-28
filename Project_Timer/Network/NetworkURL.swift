@@ -56,7 +56,7 @@ enum NetworkURL {
         static let recordTime: String = base+"/recordTime"
         // auth
         static let authSignup: String = auth+"/signup"
-        static let authLogin: String = auth+"/login"
+        static let authSignin: String = auth+"/login"
         // dailys
         static let dailysUpload: String = dailys+"/upload"
     }

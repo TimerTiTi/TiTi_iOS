@@ -1,5 +1,5 @@
 //
-//  SignupLoginVM.swift
+//  SignupSigninVM.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/27.
@@ -9,16 +9,16 @@
 import Foundation
 import Combine
 
-final class SignupLoginVM {
-    let isLogin: Bool
+final class SignupSigninVM {
+    let isSignin: Bool
     let network: TestServerAuthFetchable
     @Published var loadingText: String?
     @Published var alert: (title: String, text: String)?
     @Published var postable: Bool = false
-    @Published var loginSuccess: Bool = false
+    @Published var signinSuccess: Bool = false
     
-    init(isLogin: Bool, network: TestServerAuthFetchable) {
-        self.isLogin = isLogin
+    init(isSignin: Bool, network: TestServerAuthFetchable) {
+        self.isSignin = isSignin
         self.network = network
     }
     
@@ -41,16 +41,16 @@ final class SignupLoginVM {
         }
     }
     
-    func login(info: TestUserLoginInfo) {
-        self.loadingText = "Waiting for Login..."
-        self.network.login(userInfo: info) { [weak self] result in
+    func signin(info: TestUserSigninInfo) {
+        self.loadingText = "Waiting for Signin..."
+        self.network.signin(userInfo: info) { [weak self] result in
             self?.loadingText = nil
             switch result {
             case .success(let token):
                 self?.saveUserInfo(username: info.username, password: info.password, token: token)
             case .failure(let error):
                 switch error {
-                    // login 관련 error message 추가
+                    // signin 관련 error message 추가
                 case .CLIENTERROR(_):
                     self?.alert = (title: "Signin Fail".localized(), text: "Please enter your nickname and password correctly".localized())
                     // TestServer 에러핸들링 이슈로 404코드 추가
@@ -64,7 +64,7 @@ final class SignupLoginVM {
     }
     
     func check(nickname: String?, email: String?, password: String?) {
-        if self.isLogin {
+        if self.isSignin {
             self.postable = [nickname, password].allSatisfy({ $0 != nil && $0 != "" })
         } else {
             self.postable = [nickname, email, password].allSatisfy({ $0 != nil && $0 != "" })
@@ -72,7 +72,7 @@ final class SignupLoginVM {
     }
     
     private func saveUserInfo(username: String, password: String, token: String) {
-        // MARK: Token 저장, Noti logined
+        // MARK: Token 저장, Noti signined
         guard [KeyChain.shared.save(key: .username, value: username),
                KeyChain.shared.save(key: .password, value: password),
                KeyChain.shared.save(key: .token, value: token)].allSatisfy({ $0 }) == true else {
@@ -80,9 +80,9 @@ final class SignupLoginVM {
             return
         }
         
-        UserDefaultsManager.set(to: true, forKey: .loginInTestServerV1)
-        NotificationCenter.default.post(name: KeyChain.logined, object: nil)
+        UserDefaultsManager.set(to: true, forKey: .signinInTestServerV1)
+        NotificationCenter.default.post(name: KeyChain.signined, object: nil)
         
-        self.loginSuccess = true
+        self.signinSuccess = true
     }
 }

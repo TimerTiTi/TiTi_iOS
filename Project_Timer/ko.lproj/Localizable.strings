@@ -235,8 +235,6 @@
 
 "Setting Timer Time" = "타이머 시간 설정";
 
-"Login for synclonize Dailys [Test Server]" = "Dailys 기록 연동을 위한 로그인 [Test Server]";
-
 "for Synclonize Dailys [Test Server]" = "Dailys 기록 동기화 [Test Server]";
 
 "Synclonize Historys [Test Server]" = "동기화 기록 [Test Server]";
@@ -322,7 +320,7 @@
 "Sign in in Setting" = "로그인하기";
 "Try Synchronization" = "동기화 기능을 사용해보세요";
 
-// LoginSelectView
+// SigninSelectView
 "TimerTiTi" = "타이머티티";
 "Using without Sign in" = "로그인없이 서비스 이용하기";
 "nickname" = "닉네임";
@@ -333,7 +331,7 @@
 "Sign in with %@" = "%@로 로그인";
 "Sign in with Email" = "이메일로 로그인";
 
-// LoginView
+// SigninView
 "Sign in" = "로그인";
 "OR" = "또는";
 "Find email" = "이메일 찾기";

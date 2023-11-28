@@ -1,5 +1,5 @@
 //
-//  GoogleLoginButton.swift
+//  GoogleSigninButton.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GoogleLoginButton: View {
+struct GoogleSigninButton: View {
     var action: () -> Void
     
     var body: some View {
@@ -37,12 +37,12 @@ struct GoogleLoginButton: View {
 }
 
 #Preview {
-    GoogleLoginButton {
+    GoogleSigninButton {
         print("Google")
     }
 }
 #Preview {
-    GoogleLoginButton {
+    GoogleSigninButton {
         print("Google")
     }
     .environment(\.locale, .init(identifier: "en"))
