@@ -28,7 +28,7 @@ final class NetworkInterceptor: RequestInterceptor {
         completion(.success(urlRequest))
     }
     
-    /// token 만료인 경우 login 하여 token 발급 후 재시도
+    /// token 만료인 경우 signin 하여 token 발급 후 재시도
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         guard request.retryCount < Self.retryLimit else {
             completion(.doNotRetry)
@@ -40,8 +40,8 @@ final class NetworkInterceptor: RequestInterceptor {
             return
         }
         print("***token 만료, retry 로직 진행")
-        // login -> get new token
-        self.loginForToken { token in
+        // signin -> get new token
+        self.signinForToken { token in
             guard let token = token else {
                 completion(.doNotRetryWithError(error))
                 return
@@ -59,12 +59,12 @@ final class NetworkInterceptor: RequestInterceptor {
 }
 
 extension NetworkInterceptor {
-    private func loginForToken(completion: @escaping (String?) -> Void) {
+    private func signinForToken(completion: @escaping (String?) -> Void) {
         guard let username = KeyChain.shared.get(key: .username),
               let password = KeyChain.shared.get(key: .password) else { return }
-        let loginInfo = TestUserLoginInfo(username: username, password: password)
+        let signinInfo = TestUserSigninInfo(username: username, password: password)
         let network: TestServerAuthFetchable = NetworkController(network: Network())
-        network.login(userInfo: loginInfo) { result in
+        network.signin(userInfo: signinInfo) { result in
             switch result {
             case .success(let token):
                 completion(token)

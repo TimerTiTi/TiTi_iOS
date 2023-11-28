@@ -1,5 +1,5 @@
 //
-//  LoginSelectView.swift
+//  SigninSelectView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-struct LoginSelectView: View {
-    @EnvironmentObject var environment: LoginSignupEnvironment
-    @StateObject private var model = LoginSelectModel()
+struct SigninSelectView: View {
+    @EnvironmentObject var environment: SigninSignupEnvironment
+    @StateObject private var model = SigninSelectModel()
     
     init() {
         //Use this if NavigationBarTitle is with displayMode = .inline
@@ -21,7 +21,7 @@ struct LoginSelectView: View {
         NavigationStack(path: $environment.navigationPath) {
             GeometryReader { geometry in
                 ZStack {
-                    TiTiColor.loginBackground.toColor
+                    TiTiColor.signinBackground.toColor
                         .ignoresSafeArea()
                     
                     VStack(alignment: .center) {
@@ -36,15 +36,15 @@ struct LoginSelectView: View {
                     model.updateContentWidth(size: value)
                 })
             }
-            .navigationDestination(for: LoginSelectRoute.self) { destination in
+            .navigationDestination(for: SigninSelectRoute.self) { destination in
                 switch destination {
                 case .signupEmail:
                     let infos = model.signupInfosForEmail
                     SignupEmailView(
                         model: SignupEmailModel(infos: infos)
                     )
-                case .login:
-                    LoginView()
+                case .signin:
+                    SigninView()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -63,11 +63,11 @@ struct LoginSelectView: View {
     }
     
     struct ContentView: View {
-        @ObservedObject var model: LoginSelectModel
+        @ObservedObject var model: SigninSelectModel
         
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
-                Image(uiImage: TiTiImage.loginLogo)
+                Image(uiImage: TiTiImage.signinLogo)
                 
                 Spacer()
                     .frame(height: 8)
@@ -93,19 +93,19 @@ struct LoginSelectView: View {
     }
     
     struct ButtonsView: View {
-        @EnvironmentObject var environment: LoginSignupEnvironment
-        @ObservedObject var model: LoginSelectModel
+        @EnvironmentObject var environment: SigninSignupEnvironment
+        @ObservedObject var model: SigninSelectModel
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                AppleLoginButton {
+                AppleSigninButton {
                     model.performAppleSignIn()
                 }
-                GoogleLoginButton {
+                GoogleSigninButton {
                     model.performGoogleSignIn(rootVC: environment.rootVC)
                 }
-                EmailLoginButton {
-                    environment.navigationPath.append(LoginSelectRoute.login)
+                EmailSigninButton {
+                    environment.navigationPath.append(SigninSelectRoute.signin)
                 }
                 Button {
                     environment.dismiss = true
@@ -118,15 +118,15 @@ struct LoginSelectView: View {
                 }
                 .onReceive(model.$venderInfo) { venderInfo in
                     guard venderInfo != nil else { return }
-                    environment.navigationPath.append(LoginSelectRoute.signupEmail)
+                    environment.navigationPath.append(SigninSelectRoute.signupEmail)
                 }
             }
         }
     }
 }
 
-struct LoginSelectView_Previews: PreviewProvider {
+struct SigninSelectView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginSelectView().environmentObject(LoginSignupEnvironment())
+        SigninSelectView().environmentObject(SigninSignupEnvironment())
     }
 }

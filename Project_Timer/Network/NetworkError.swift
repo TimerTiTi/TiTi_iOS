@@ -80,7 +80,7 @@ enum NetworkError: Error {
         case .DECODEERROR:
             return "Please update to the latest version of the app".localized()
         case .AUTHENTICATION(_):
-            return "Please log in again".localized()
+            return "Please Sign in again".localized()
         case .NOTFOUND(_):
             return "Please update to the latest version of the app".localized()
         case .CONFLICT(_):

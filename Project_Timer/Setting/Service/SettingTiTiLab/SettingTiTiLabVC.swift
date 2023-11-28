@@ -22,8 +22,8 @@ final class SettingTiTiLabVC: UIViewController {
     }()
     @IBOutlet weak var syncLabel: UILabel!
     @IBOutlet weak var signupSyncLabel: UILabel!
-    @IBOutlet weak var loginTextLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signinTextLabel: UILabel!
+    @IBOutlet weak var signinButton: UIButton!
     
     private var cancellables: Set<AnyCancellable> = []
     private var viewModel: SettingTiTiLabVM?
@@ -35,8 +35,8 @@ final class SettingTiTiLabVC: UIViewController {
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
-        // login
-        self.checkLogined()
+        // signin
+        self.checkSignined()
         self.configureObservation()
     }
     
@@ -53,51 +53,51 @@ final class SettingTiTiLabVC: UIViewController {
     }
     
     @IBAction func signupSync(_ sender: Any) {
-        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
-        if logined {
+        let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
+        if signined {
             self.showSyncHistorysVC()
         } else {
-            self.showBetaLoginSignupVC(login: false)
+            self.showBetaSigninSignupVC(signin: false)
         }
     }
     
-    @IBAction func login(_ sender: Any) {
-        self.showBetaLoginSignupVC(login: true)
+    @IBAction func signin(_ sender: Any) {
+        self.showBetaSigninSignupVC(signin: true)
     }
 }
 
-// MARK: TestServer Login
+// MARK: TestServer Signin
 extension SettingTiTiLabVC {
-    private func checkLogined() {
-        let logined = UserDefaultsManager.get(forKey: .loginInTestServerV1) as? Bool ?? false
-        if logined {
-            self.configureLogined()
+    private func checkSignined() {
+        let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
+        if signined {
+            self.configureSignined()
         } else {
-            self.configureLogouted()
+            self.configureSignouted()
         }
     }
     private func configureObservation() {
-        NotificationCenter.default.addObserver(forName: KeyChain.logined, object: nil, queue: .main) { [weak self] _ in
-            self?.configureLogined()
+        NotificationCenter.default.addObserver(forName: KeyChain.signined, object: nil, queue: .main) { [weak self] _ in
+            self?.configureSignined()
         }
     }
     
-    private func configureLogined() {
+    private func configureSignined() {
         self.signupSyncLabel.text = "Sync Dailys"
-        self.loginTextLabel.text = "Synclonize Historys [Test Server]".localized()
-        self.loginButton.isHidden = true
+        self.signinTextLabel.text = "Synclonize Historys [Test Server]".localized()
+        self.signinButton.isHidden = true
     }
     
-    private func configureLogouted() {
+    private func configureSignouted() {
         self.signupSyncLabel.text = "Signup"
-        self.loginTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
-        self.loginButton.isHidden = false
+        self.signinTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
+        self.signinButton.isHidden = false
     }
     
-    private func showBetaLoginSignupVC(login: Bool) {
+    private func showBetaSigninSignupVC(signin: Bool) {
         let network = NetworkController(network: Network())
-        let viewModel = SignupLoginVM(isLogin: login, network: network)
-        let vc = SignupLoginVC(viewModel: viewModel)
+        let viewModel = SignupSigninVM(isSignin: signin, network: network)
+        let vc = SignupSigninVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

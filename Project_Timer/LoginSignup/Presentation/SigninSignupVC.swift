@@ -1,5 +1,5 @@
 //
-//  LoginSignupVC.swift
+//  SigninSignupVC.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/25.
@@ -10,13 +10,13 @@ import UIKit
 import Combine
 import SwiftUI
 
-final class LoginSignupVC: PortraitVC {
-    private var environment: LoginSignupEnvironment?
+final class SigninSignupVC: PortraitVC {
+    private var environment: SigninSignupEnvironment?
     private var cancellables: Set<AnyCancellable> = []
     
     override func loadView() {
         super.loadView()
-        self.environment = LoginSignupEnvironment(rootVC: self)
+        self.environment = SigninSignupEnvironment(rootVC: self)
     }
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ final class LoginSignupVC: PortraitVC {
     
     private func configureHostingVC() {
         guard let environment = self.environment else { return }
-        let hostingVC = UIHostingController(rootView: LoginSelectView().environmentObject(environment))
+        let hostingVC = UIHostingController(rootView: SigninSelectView().environmentObject(environment))
         self.addChild(hostingVC)
         hostingVC.didMove(toParent: self)
         
@@ -53,7 +53,7 @@ final class LoginSignupVC: PortraitVC {
             }
             .store(in: &self.cancellables)
         
-        self.environment?.$loginSuccess
+        self.environment?.$signinSuccess
             .receive(on: DispatchQueue.main)
             .sink { [weak self] success in
                 guard success else { return }

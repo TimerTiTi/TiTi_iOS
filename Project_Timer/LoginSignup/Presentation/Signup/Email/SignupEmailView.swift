@@ -47,7 +47,7 @@ struct SignupEmailView: View {
     }
     
     struct ContentView: View {
-        @EnvironmentObject var environment: LoginSignupEnvironment
+        @EnvironmentObject var environment: SigninSignupEnvironment
         @ObservedObject var model: SignupEmailModel
         @FocusState var focus: SignupTextFieldView.type?
         
@@ -178,11 +178,11 @@ struct SignupEmailView_Previews: PreviewProvider {
     static var previews: some View {
         SignupEmailView(
             model: SignupEmailModel(infos: infos)
-        ).environmentObject(LoginSignupEnvironment())
+        ).environmentObject(SigninSignupEnvironment())
         
         SignupEmailView(
             model: SignupEmailModel(infos: infos)
-        ).environmentObject(LoginSignupEnvironment())
+        ).environmentObject(SigninSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

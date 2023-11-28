@@ -128,8 +128,8 @@ extension NetworkController: TestServerAuthFetchable {
         }
     }
 
-    func login(userInfo: TestUserLoginInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.authLogin, method: .post, param: nil, body: userInfo) { result in
+    func signin(userInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        self.network.request(url: NetworkURL.TestServer.authSignin, method: .post, param: nil, body: userInfo) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
@@ -141,8 +141,8 @@ extension NetworkController: TestServerAuthFetchable {
                 completion(.success(token))
             default:
                 if KeyChain.shared.deleteAll() {
-                    UserDefaultsManager.set(to: false, forKey: .loginInTestServerV1)
-                    NotificationCenter.default.post(name: KeyChain.logouted, object: nil)
+                    UserDefaultsManager.set(to: false, forKey: .signinInTestServerV1)
+                    NotificationCenter.default.post(name: KeyChain.signouted, object: nil)
                 }
                 completion(.failure(NetworkError.error(result)))
             }

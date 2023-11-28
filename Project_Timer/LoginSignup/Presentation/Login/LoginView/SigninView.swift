@@ -1,5 +1,5 @@
 //
-//  LoginView.swift
+//  SigninView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct SigninView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
     @State private var superViewSize: CGSize = .zero
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TiTiColor.loginBackground.toColor
+                TiTiColor.signinBackground.toColor
                     .ignoresSafeArea()
                 
                 VStack(alignment: .center) {
@@ -31,7 +31,7 @@ struct LoginView: View {
             .onChange(of: geometry.size, perform: { value in
                 self.superViewSize = value
             })
-            .navigationDestination(for: LoginRoute.self) { destination in
+            .navigationDestination(for: SigninRoute.self) { destination in
                 switch destination {
                 case .findEmail:
                     Text("findEmail")
@@ -89,7 +89,7 @@ struct LoginView: View {
         
         var body: some View {
             VStack(alignment: .center, spacing: 0) {
-                Image(uiImage: TiTiImage.loginLogo)
+                Image(uiImage: TiTiImage.signinLogo)
                 
                 Spacer()
                     .frame(height: 8)
@@ -136,27 +136,27 @@ struct LoginView: View {
     }
     
     struct TextFieldsView: View {
-        @EnvironmentObject var environment: LoginSignupEnvironment
-        @FocusState private var focus: LoginTextFieldView.type?
+        @EnvironmentObject var environment: SigninSignupEnvironment
+        @FocusState private var focus: SigninTextFieldView.type?
         @State var email: String = ""
         @State var password: String = ""
         @State var postable: Bool = false
-        @State var loginSuccess: Bool = false
+        @State var signinSuccess: Bool = false
         
         var body: some View {
             VStack(alignment: .center, spacing: 24) {
-                LoginTextFieldView(type: .email, text: $email, focus: $focus)
+                SigninTextFieldView(type: .email, text: $email, focus: $focus)
                     .onChange(of: email, perform: { _ in
                         check()
                     })
                 
-                LoginTextFieldView(type: .password, text: $password, focus: $focus)
+                SigninTextFieldView(type: .password, text: $password, focus: $focus)
                     .onChange(of: password, perform: { _ in
                         check()
                     })
                 
                 Button {
-                    loginSuccess = true
+                    signinSuccess = true
                 } label: {
                     ZStack {
                         RoundedRectangle(cornerRadius: 12)
@@ -172,9 +172,9 @@ struct LoginView: View {
                 }
                 .allowsHitTesting(postable)
             }
-            .alert("Signin Success", isPresented: $loginSuccess) {
+            .alert("Signin Success", isPresented: $signinSuccess) {
                 Button {
-                    environment.loginSuccess = true
+                    environment.signinSuccess = true
                 } label: {
                     Text("OK")
                 }
@@ -213,12 +213,12 @@ struct LoginView: View {
     }
     
     struct ButtonsView: View {
-        @EnvironmentObject var environment: LoginSignupEnvironment
+        @EnvironmentObject var environment: SigninSignupEnvironment
 
         var body: some View {
             HStack(spacing: 0) {
                 Button {
-                    environment.navigationPath.append(LoginRoute.findEmail)
+                    environment.navigationPath.append(SigninRoute.findEmail)
                 } label: {
                     Text("Find email")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -234,7 +234,7 @@ struct LoginView: View {
                 Spacer()
 
                 Button {
-                    environment.navigationPath.append(LoginRoute.findPassword)
+                    environment.navigationPath.append(SigninRoute.findPassword)
                 } label: {
                     Text("Find password")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -250,7 +250,7 @@ struct LoginView: View {
                 Spacer()
 
                 Button {
-                    environment.navigationPath.append(LoginRoute.signup)
+                    environment.navigationPath.append(SigninRoute.signup)
                 } label: {
                     Text("Sign up")
                         .font(TiTiFont.HGGGothicssiP60g(size: 13))
@@ -263,11 +263,11 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct SigninView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().environmentObject(LoginSignupEnvironment())
+        SigninView().environmentObject(SigninSignupEnvironment())
         
-        LoginView().environmentObject(LoginSignupEnvironment())
+        SigninView().environmentObject(SigninSignupEnvironment())
             .environment(\.locale, .init(identifier: "en"))
     }
 }

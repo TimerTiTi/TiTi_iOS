@@ -1,5 +1,5 @@
 //
-//  LoginSelectModel.swift
+//  SigninSelectModel.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/11/21.
@@ -10,7 +10,7 @@ import Foundation
 import AuthenticationServices
 import GoogleSignIn
 
-class LoginSelectModel: ObservableObject & NSObject {
+class SigninSelectModel: ObservableObject & NSObject {
     @Published var contentWidth: CGFloat = .zero
     @Published var venderInfo: SignupVenderInfo?
     @Published var showAleret: Bool = false
@@ -20,7 +20,7 @@ class LoginSelectModel: ObservableObject & NSObject {
 }
 
 // MARK: Action
-extension LoginSelectModel {
+extension SigninSelectModel {
     // 화면크기에 따른 width 크기조정
     func updateContentWidth(size: CGSize) {
         switch size.deviceDetailType {
@@ -41,8 +41,8 @@ extension LoginSelectModel {
     }
 }
 
-extension LoginSelectModel {
-    private func postLogin(vender: SignupVenderInfo.vender, authorizationCode: String, email: String?) {
+extension SigninSelectModel {
+    private func postSignin(vender: SignupVenderInfo.vender, authorizationCode: String, email: String?) {
         // MARK: server 전송 및 수신 필요
         // MARK: 회원가입 & 로그인 분기처리 필요
         let id = "abcd1234"
@@ -57,7 +57,7 @@ extension LoginSelectModel {
 }
 
 // MARK: AppleSignIn
-extension LoginSelectModel: ASAuthorizationControllerDelegate {
+extension SigninSelectModel: ASAuthorizationControllerDelegate {
     func performAppleSignIn() {
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
@@ -71,7 +71,7 @@ extension LoginSelectModel: ASAuthorizationControllerDelegate {
                                  didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             if let authorizationCode = appleIDCredential.authorizationCode {
-                self.postLogin(
+                self.postSignin(
                     vender: .apple,
                     authorizationCode: String(data: authorizationCode, encoding: .utf8)!,
                     email: appleIDCredential.email
@@ -91,7 +91,7 @@ extension LoginSelectModel: ASAuthorizationControllerDelegate {
 }
 
 // MARK: GoogleSignIn
-extension LoginSelectModel {
+extension SigninSelectModel {
     func performGoogleSignIn(rootVC: UIViewController?) {
         guard let rootVC = rootVC else { return }
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
@@ -104,7 +104,7 @@ extension LoginSelectModel {
             
             let email = result.user.profile?.email ?? ""
             if let authorizationCode = signInResult?.serverAuthCode {
-                self.postLogin(
+                self.postSignin(
                     vender: .google,
                     authorizationCode: authorizationCode,
                     email: email

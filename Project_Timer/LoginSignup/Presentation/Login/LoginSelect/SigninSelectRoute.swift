@@ -1,5 +1,5 @@
 //
-//  LoginSelectRoute.swift
+//  SigninSelectRoute.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/09/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum LoginSelectRoute {
+enum SigninSelectRoute {
     case signupEmail
-    case login
+    case signin
 }
