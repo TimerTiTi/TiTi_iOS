@@ -46,6 +46,7 @@
 더 많은 개선사항들: [Pull requests](https://github.com/TimerTiTi/TiTi_iOS/pulls?q=is%3Apr+is%3Aclosed)
 - [SwiftUI만을 이용한 Login & Signup 프로세스 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/116) (23.10)
 - [keyboard 표시에 가려지지 않는 TextField(SwiftUI) 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/112) (23.10)
+- [Result 기반 Network Error 개선](https://github.com/TimerTiTi/TiTi_iOS/pull/104) (23.10)
 - [keyboard 표시에 가려지지 않는 UITextField(UIKit) 개발](https://github.com/TimerTiTi/TiTi_iOS/pull/102) (23.10)
 - [window 사이즈 변화에 따른 Content Size 조절 구현 (iPhone & iPad 용 레이아웃 대응)](https://github.com/TimerTiTi/TiTi_iOS/pull/102) (23.10)
 - [Develop & Release용 Scheme 및 xcconfig 분리](https://github.com/TimerTiTi/TiTi_iOS/pull/96) (23.09)
