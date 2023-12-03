@@ -135,6 +135,9 @@
 		875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */; };
 		875FAE2A2B1C6829008F19D2 /* AppLatestVersionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE292B1C6829008F19D2 /* AppLatestVersionDTO.swift */; };
 		875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */; };
+		875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */; };
+		875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */; };
+		875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */; };
 		875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE242AC9116B00B28723 /* UITextField+Extension.swift */; };
 		875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE262AC91ED800B28723 /* CGPoint+Extension.swift */; };
 		8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */; };
@@ -465,6 +468,9 @@
 		875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionInfo.swift; sourceTree = "<group>"; };
 		875FAE292B1C6829008F19D2 /* AppLatestVersionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionDTO.swift; sourceTree = "<group>"; };
 		875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepository.swift; sourceTree = "<group>"; };
+		875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepositoryInterface.swift; sourceTree = "<group>"; };
+		875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCase.swift; sourceTree = "<group>"; };
+		875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCaseInterface.swift; sourceTree = "<group>"; };
 		875FBE242AC9116B00B28723 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		875FBE262AC91ED800B28723 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		8760FB082A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCalendarWidgetVC.swift; sourceTree = "<group>"; };
@@ -935,6 +941,30 @@
 				875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		875FAE2D2B1C7058008F19D2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		875FAE322B1C7173008F19D2 /* Present */ = {
+			isa = PBXGroup;
+			children = (
+				875FAE332B1C717E008F19D2 /* Interface */,
+			);
+			path = Present;
+			sourceTree = "<group>";
+		};
+		875FAE332B1C717E008F19D2 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */,
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 		8760FB0F2A1DCA690068CEF5 /* CalendarWidget */ = {
@@ -1583,9 +1613,9 @@
 		87F778DC2B196E8F00909511 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				875FAE232B1C6710008F19D2 /* API */,
-				875FAE222B1C653A008F19D2 /* DTO */,
 				87F778E12B196F7400909511 /* Repository */,
+				875FAE222B1C653A008F19D2 /* DTO */,
+				875FAE232B1C6710008F19D2 /* API */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1595,6 +1625,7 @@
 			children = (
 				875FAE262B1C678E008F19D2 /* Entity */,
 				87F778E02B196EDF00909511 /* UseCase */,
+				875FAE2D2B1C7058008F19D2 /* Interface */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1602,6 +1633,7 @@
 		87F778E02B196EDF00909511 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1654,6 +1686,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				875FAE322B1C7173008F19D2 /* Present */,
 				87F778DD2B196E9400909511 /* Domain */,
 				87F778DC2B196E8F00909511 /* Data */,
 				874F9C292ABFF4F400675A86 /* LoginSignup */,
@@ -1952,6 +1985,7 @@
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
+				875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
@@ -2117,6 +2151,7 @@
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
+				875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				0437062D2869EC2200A5D3AA /* TimerTimeLabelVM.swift in Sources */,
 				878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */,
@@ -2132,6 +2167,7 @@
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
 				873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
+				875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */,
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
