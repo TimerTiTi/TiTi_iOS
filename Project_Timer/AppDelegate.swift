@@ -102,7 +102,23 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate {
     private func checkLatestVersion() {
         /// 최신버전 체크로직
-//        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
+        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
+        let getLatestVersionUseCase = GetLatestVersionUseCase()
+        getLatestVersionUseCase.getLatestVersion { result in
+            switch result {
+            case .success(let latestVersionInfo):
+                if latestVersionInfo.forced == true {
+                    print("forced")
+                    // MARK: 강제 업데이트 필요 Alert 표시
+                } else if UserDefaultsManager.get(forKey: .updatePushable) as? Bool == true {
+                    // MARK: 업데이트 Alert 표시
+                    print("show")
+                }
+                
+            case .failure(let networkError):
+                print(networkError.alertMessage)
+            }
+        }
 //        NetworkController(network: Network()).getAppstoreVersion { result in
 //            switch result {
 //            case .success(let storeVersion):

@@ -15,7 +15,7 @@ final class AppVersionAPI {
         #if targetEnvironment(macCatalyst)
         return base + "/version/macos"
         #else
-        return base + "version/ios"
+        return base + "/version/ios"
         #endif
     }
     
