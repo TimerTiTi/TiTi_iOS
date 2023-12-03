@@ -22,7 +22,13 @@ enum NetworkURL {
         static let domain: String = "https://firestore.googleapis.com/v1/projects/\(projectId)/databases/(default)/documents"
         static let links: String = domain + "/links"
         static let youtubeLink: String = links + "/youtube"
-        static let lastestVersion: String = domain + "/version/lastestVersion"
+        static var latestVersion: String {
+            #if targetEnvironment(macCatalyst)
+            return domain + "/version/macos"
+            #else
+            return domain + "version/ios"
+            #endif
+        }
         
         static var surveys: String {
             switch Language.currentLanguage {
