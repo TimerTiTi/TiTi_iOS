@@ -1,0 +1,34 @@
+//
+//  AppLatestVersionRepository.swift
+//  Project_Timer
+//
+//  Created by Kang Minsang on 2023/12/03.
+//  Copyright © 2023 FDEE. All rights reserved.
+//
+
+import Foundation
+
+final class AppLatestVersionRepository {
+    private let api = AppVersionAPI()
+    
+    func getLatestVersion(completion: @escaping (Result<AppLatestVersionInfo, NetworkError>) -> Void) {
+        api.getAppLatestVersion { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONDecoder().decode(AppLatestVersionDTO.self, from: data) else {
+                    print("decode fail")
+                    print(String(data: result.data!, encoding: .utf8))
+                    completion(.failure(.DECODEERROR))
+                    return
+                }
+                
+                let info = dto.toDomain()
+                completion(.success(info))
+                
+            default:
+                completion(.failure(NetworkError.error(result)))
+            }
+        }
+    }
+}

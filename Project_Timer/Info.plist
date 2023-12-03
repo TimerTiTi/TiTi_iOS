@@ -267,6 +267,8 @@
     <string>$(MODE)</string>
     <key>ServerURL</key>
     <string>$(ServerURL)</string>
+    <key>FirestoreURL</key>
+    <string>$(FirestoreURL)</string>
     <key>APP_BUNDLE_ID</key>
     <string>$(APP_BUNDLE_ID)</string>
     <key>OAuth_ClientID</key>

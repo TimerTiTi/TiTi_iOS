@@ -18,8 +18,7 @@ enum NetworkURL {
     static let github: String = "https://github.com/TimerTiTi"
     
     enum Firestore {
-        static let projectId: String = "titi-b8650"
-        static let domain: String = "https://firestore.googleapis.com/v1/projects/\(projectId)/databases/(default)/documents"
+        static let domain: String = Infos.FirestoreURL.value
         static let links: String = domain + "/links"
         static let youtubeLink: String = links + "/youtube"
         static var latestVersion: String {
