@@ -10,7 +10,7 @@ import Foundation
 
 struct AppLatestVersionDTO: Decodable {
     let latestVersion: StringValue
-    let forced: Bool
+    let forced: BooleanValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -26,7 +26,7 @@ struct AppLatestVersionDTO: Decodable {
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
         self.latestVersion = try fieldContainer.decode(StringValue.self, forKey: .latestVersion)
-        self.forced = try fieldContainer.decode(Bool.self, forKey: .forced)
+        self.forced = try fieldContainer.decode(BooleanValue.self, forKey: .forced)
     }
 }
 
@@ -34,7 +34,7 @@ extension AppLatestVersionDTO {
     func toDomain() -> AppLatestVersionInfo {
         return .init(
             latestVersion: self.latestVersion.value,
-            forced: self.forced
+            forced: self.forced.value
         )
     }
 }
