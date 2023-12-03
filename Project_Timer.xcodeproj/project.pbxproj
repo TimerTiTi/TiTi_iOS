@@ -2344,7 +2344,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 8.0;
+				MARKETING_VERSION = 7.15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2583,7 +2583,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 8.0;
+				MARKETING_VERSION = 7.15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2610,7 +2610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 8.0;
+				MARKETING_VERSION = 7.15.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
