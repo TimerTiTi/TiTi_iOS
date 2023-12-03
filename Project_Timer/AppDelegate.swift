@@ -102,45 +102,54 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate {
     private func checkLatestVersion() {
         /// 최신버전 체크로직
-        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
         let getLatestVersionUseCase = GetLatestVersionUseCase()
+        
         getLatestVersionUseCase.getLatestVersion { result in
             switch result {
             case .success(let latestVersionInfo):
+                let storeVersion = latestVersionInfo.latestVersion
+                guard storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending else { return }
+                
                 if latestVersionInfo.forced == true {
-                    print("forced")
                     // MARK: 강제 업데이트 필요 Alert 표시
-                } else if UserDefaultsManager.get(forKey: .updatePushable) as? Bool == true {
+                    let title: String = "업데이트가 필요해요"
+                    let text: String = "최신버전으로 업데이트 해주세요"
+                    let ok = UIAlertAction(title: "확인", style: .default) { _ in
+                        if let url = URL(string: NetworkURL.appstore),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:])
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                exit(0)
+                            }
+                        }
+                    }
+                    self.showAlert(title: title, text: text, actions: [ok])
+                } else if UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true {
                     // MARK: 업데이트 Alert 표시
-                    print("show")
+                    let title: String = "Update new version".localized()
+                    let text: String = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
+                    let pass = UIAlertAction(title: "Not now", style: .default)
+                    let update = UIAlertAction(title: "UPDATE", style: .default) { _ in
+                        if let url = URL(string: NetworkURL.appstore),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url, options: [:])
+                        }
+                    }
+                    self.showAlert(title: title, text: text, actions: [pass, update])
                 }
                 
             case .failure(let networkError):
                 print(networkError.alertMessage)
             }
         }
-//        NetworkController(network: Network()).getAppstoreVersion { result in
-//            switch result {
-//            case .success(let storeVersion):
-//                if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
-//                    let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
-//                    let alert = UIAlertController(title: "Update new version".localized(), message: message, preferredStyle: .alert)
-//                    let ok = UIAlertAction(title: "Not now", style: .default)
-//                    let update = UIAlertAction(title: "UPDATE", style: .default, handler: { _ in
-//                        if let url = URL(string: NetworkURL.appstore),
-//                           UIApplication.shared.canOpenURL(url) {
-//                            UIApplication.shared.open(url, options: [:])
-//                        }
-//                    })
-//                    
-//                    alert.addAction(ok)
-//                    alert.addAction(update)
-//                    SceneDelegate.sharedWindow?.rootViewController?.present(alert, animated: true)
-//                }
-//            case .failure(let error):
-//                print(error.alertMessage)
-//            }
-//        }
+    }
+    
+    private func showAlert(title: String, text: String?, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        actions.forEach { action in
+            alert.addAction(action)
+        }
+        SceneDelegate.sharedWindow?.rootViewController?.present(alert, animated: true)
     }
     
     private func checkGoogleSignOut() {
