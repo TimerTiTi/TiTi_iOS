@@ -11,6 +11,7 @@ import Foundation
 enum Infos: String {
     case MODE
     case ServerURL
+    case FirestoreURL
     case APP_BUNDLE_ID
     
     var value: String {
