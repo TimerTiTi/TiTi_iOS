@@ -102,29 +102,29 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate {
     private func checkLatestVersion() {
         /// 최신버전 체크로직
-        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
-        NetworkController(network: Network()).getAppstoreVersion { result in
-            switch result {
-            case .success(let storeVersion):
-                if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
-                    let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
-                    let alert = UIAlertController(title: "Update new version".localized(), message: message, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Not now", style: .default)
-                    let update = UIAlertAction(title: "UPDATE", style: .default, handler: { _ in
-                        if let url = URL(string: NetworkURL.appstore),
-                           UIApplication.shared.canOpenURL(url) {
-                            UIApplication.shared.open(url, options: [:])
-                        }
-                    })
-                    
-                    alert.addAction(ok)
-                    alert.addAction(update)
-                    SceneDelegate.sharedWindow?.rootViewController?.present(alert, animated: true)
-                }
-            case .failure(let error):
-                print(error.alertMessage)
-            }
-        }
+//        guard UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true else { return }
+//        NetworkController(network: Network()).getAppstoreVersion { result in
+//            switch result {
+//            case .success(let storeVersion):
+//                if storeVersion.compare(String.currentVersion, options: .numeric) == .orderedDescending {
+//                    let message = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
+//                    let alert = UIAlertController(title: "Update new version".localized(), message: message, preferredStyle: .alert)
+//                    let ok = UIAlertAction(title: "Not now", style: .default)
+//                    let update = UIAlertAction(title: "UPDATE", style: .default, handler: { _ in
+//                        if let url = URL(string: NetworkURL.appstore),
+//                           UIApplication.shared.canOpenURL(url) {
+//                            UIApplication.shared.open(url, options: [:])
+//                        }
+//                    })
+//                    
+//                    alert.addAction(ok)
+//                    alert.addAction(update)
+//                    SceneDelegate.sharedWindow?.rootViewController?.present(alert, animated: true)
+//                }
+//            case .failure(let error):
+//                print(error.alertMessage)
+//            }
+//        }
     }
     
     private func checkGoogleSignOut() {

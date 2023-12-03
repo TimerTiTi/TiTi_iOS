@@ -15,28 +15,6 @@ final class NetworkController {
     }
 }
 
-extension NetworkController: VersionFetchable {
-    func getAppstoreVersion(completion: @escaping (Result<String, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.Firestore.lastestVersion, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let lastestVersionInfo: LastestVersionInfo = try? JSONDecoder().decode(LastestVersionInfo.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                #if targetEnvironment(macCatalyst)
-                completion(.success(lastestVersionInfo.macOS.value))
-                #else
-                completion(.success(lastestVersionInfo.iOS.value))
-                #endif
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-}
-
 extension NetworkController: TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
