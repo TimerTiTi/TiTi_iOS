@@ -23,7 +23,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var shouldSupportPortraitOrientation = false
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.checkLatestVersion()
+        self.checkLatestVersion(isLaunch: true)
         self.checkGoogleSignOut()
         
         if Infos.isDevMode == false {
@@ -100,7 +100,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 // MARK: Configure
 extension AppDelegate {
-    private func checkLatestVersion() {
+    private func checkLatestVersion(isLaunch: Bool) {
         /// 최신버전 체크로직
         let getLatestVersionUseCase = GetLatestVersionUseCase()
         
@@ -124,7 +124,7 @@ extension AppDelegate {
                         }
                     }
                     self.showAlert(title: title, text: text, actions: [ok])
-                } else if UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true {
+                } else if isLaunch == true && UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true {
                     // MARK: 업데이트 Alert 표시
                     let title: String = "Update new version".localized()
                     let text: String = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
@@ -185,6 +185,9 @@ extension AppDelegate {
         }
         NotificationCenter.default.addObserver(forName: .removeBadge, object: nil, queue: .current) { _ in
             UIApplication.shared.applicationIconBadgeNumber = 0
+        }
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .current) { [weak self] _ in
+            self?.checkLatestVersion(isLaunch: false)
         }
     }
     
