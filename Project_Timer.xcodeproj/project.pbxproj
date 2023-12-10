@@ -41,7 +41,6 @@
 		870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */; };
 		870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */; };
 		870055C328EE974600F8BCA9 /* SettingRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C228EE974600F8BCA9 /* SettingRecordVM.swift */; };
-		8701B0BF2A41AA0F00201CB2 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87024B102AE154630095CCB4 /* SignupEmailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87024B0F2AE154630095CCB4 /* SignupEmailRoute.swift */; };
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
@@ -89,6 +88,7 @@
 		872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE2284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift */; };
 		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
 		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
+		87306D4F2B260609001B7C14 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -851,6 +851,22 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		87306D492B26041A001B7C14 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				87306D4A2B26041F001B7C14 /* Localize */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		87306D4A2B26041F001B7C14 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				87D1250028771AAD00018658 /* Language.swift */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,7 +1309,6 @@
 			isa = PBXGroup;
 			children = (
 				87035DF6282225C800055378 /* Protocols.swift */,
-				87D1250028771AAD00018658 /* Language.swift */,
 				87B539AA299BB710001E354C /* Versions.swift */,
 				876E27752AC1CD2A0054250D /* Infos.swift */,
 				87FD9FA92998D58900D9B0FF /* SingletonClass */,
@@ -1689,6 +1704,7 @@
 		93B0851F248DDF2F00E215BD /* Project_Timer */ = {
 			isa = PBXGroup;
 			children = (
+				87306D492B26041A001B7C14 /* Core */,
 				875FAE322B1C7173008F19D2 /* Present */,
 				87F778DD2B196E9400909511 /* Domain */,
 				87F778DC2B196E8F00909511 /* Data */,
@@ -1923,7 +1939,7 @@
 				870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
-				8701B0BF2A41AA0F00201CB2 /* Language.swift in Sources */,
+				87306D4F2B260609001B7C14 /* Language.swift in Sources */,
 				87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */,
 				878B30EC2992BB5A00BE7413 /* widgetLiveActivity.swift in Sources */,
 				8760FB0E2A1DBBB00068CEF5 /* Widget+Extentions.swift in Sources */,
