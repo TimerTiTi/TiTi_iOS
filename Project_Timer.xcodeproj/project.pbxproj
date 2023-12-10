@@ -92,6 +92,8 @@
 		87306D512B26086D001B7C14 /* TLRko.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D502B26086D001B7C14 /* TLRko.swift */; };
 		87306D532B260969001B7C14 /* TLRen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D522B260969001B7C14 /* TLRen.swift */; };
 		87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D542B2609CE001B7C14 /* TLRzh.swift */; };
+		87306D572B260AB8001B7C14 /* TLRkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D562B260AB8001B7C14 /* TLRkey.swift */; };
+		87306D592B260E09001B7C14 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D582B260E09001B7C14 /* Localized.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -427,6 +429,8 @@
 		87306D502B26086D001B7C14 /* TLRko.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRko.swift; sourceTree = "<group>"; };
 		87306D522B260969001B7C14 /* TLRen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRen.swift; sourceTree = "<group>"; };
 		87306D542B2609CE001B7C14 /* TLRzh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRzh.swift; sourceTree = "<group>"; };
+		87306D562B260AB8001B7C14 /* TLRkey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRkey.swift; sourceTree = "<group>"; };
+		87306D582B260E09001B7C14 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
@@ -869,9 +873,11 @@
 			isa = PBXGroup;
 			children = (
 				87D1250028771AAD00018658 /* Language.swift */,
+				87306D562B260AB8001B7C14 /* TLRkey.swift */,
 				87306D502B26086D001B7C14 /* TLRko.swift */,
 				87306D522B260969001B7C14 /* TLRen.swift */,
 				87306D542B2609CE001B7C14 /* TLRzh.swift */,
+				87306D582B260E09001B7C14 /* Localized.swift */,
 			);
 			path = Localize;
 			sourceTree = "<group>";
@@ -2004,6 +2010,7 @@
 				878DA1FD2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift in Sources */,
 				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
 				87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */,
+				87306D592B260E09001B7C14 /* Localized.swift in Sources */,
 				879D207B2A19B91C00D8A420 /* ColorButton.swift in Sources */,
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				875FAE372B1C74AD008F19D2 /* BooleanValue.swift in Sources */,
@@ -2138,6 +2145,7 @@
 				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
 				878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */,
+				87306D572B260AB8001B7C14 /* TLRkey.swift in Sources */,
 				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,

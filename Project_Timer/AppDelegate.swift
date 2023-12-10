@@ -112,9 +112,9 @@ extension AppDelegate {
                 
                 if latestVersionInfo.forced == true {
                     // MARK: 강제 업데이트 필요 Alert 표시
-                    let title: String = "업데이트가 필요해요"
-                    let text: String = "최신버전으로 업데이트 해주세요"
-                    let ok = UIAlertAction(title: "확인", style: .default) { _ in
+                    let title = Localized.string(.Update_Popup_HardUpdateTitle)
+                    let text = Localized.string(.Update_Popup_HardUpdateDesc)
+                    let ok = UIAlertAction(title: Localized.string(.ok), style: .default) { _ in
                         if let url = URL(string: NetworkURL.appstore),
                            UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:])
@@ -126,10 +126,11 @@ extension AppDelegate {
                     self.showAlert(title: title, text: text, actions: [ok])
                 } else if isLaunch == true && UserDefaultsManager.get(forKey: .updatePushable) as? Bool ?? true {
                     // MARK: 업데이트 Alert 표시
-                    let title: String = "Update new version".localized()
-                    let text: String = "Please download the ".localized() + storeVersion + " version of the App Store :)".localized()
-                    let pass = UIAlertAction(title: "Not now", style: .default)
-                    let update = UIAlertAction(title: "UPDATE", style: .default) { _ in
+                    let title = Localized.string(.Update_Pupup_SoftUpdateTitle)
+                    let text = Localized.string(.Update_Popup_SoftUpdateDesc, op: storeVersion)
+                    
+                    let pass = UIAlertAction(title: Localized.string(.Update_Popup_NotNow), style: .default)
+                    let update = UIAlertAction(title: Localized.string(.Update_Popup_Update), style: .default) { _ in
                         if let url = URL(string: NetworkURL.appstore),
                            UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:])
