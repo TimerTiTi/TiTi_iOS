@@ -13,13 +13,14 @@ enum Language: String {
     case en // 영어
     case zh // 중국어 간체
     
+    /// iOS system 언어값
     static var system: Language {
         if #available(iOS 16.0, *) {
             guard let locale = Locale.preferredLanguages.first,
                   let languageCode = Locale(identifier: locale).language.languageCode?.identifier else {
                 return .en
             }
-            print(languageCode)
+            
             return Language(rawValue: languageCode) ?? .en
         } else {
             guard let locale = Locale.preferredLanguages.first,
@@ -32,6 +33,7 @@ enum Language: String {
     }
 }
 
+// MARK: localizable.string 기반
 extension Bundle {
     static var koBundle: Bundle {
         guard let koPath = Bundle.main.path(forResource: "ko", ofType: "lproj"),

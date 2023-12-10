@@ -89,6 +89,9 @@
 		872C0EE6284AF31000E8E3F2 /* UpdateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */; };
 		872C0EE8284AF5F600E8E3F2 /* UpdateInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */; };
 		87306D4F2B260609001B7C14 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
+		87306D512B26086D001B7C14 /* TLRko.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D502B26086D001B7C14 /* TLRko.swift */; };
+		87306D532B260969001B7C14 /* TLRen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D522B260969001B7C14 /* TLRen.swift */; };
+		87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D542B2609CE001B7C14 /* TLRzh.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -421,6 +424,9 @@
 		872C0EE2284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVM.swift; sourceTree = "<group>"; };
 		872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfo.swift; sourceTree = "<group>"; };
 		872C0EE7284AF5F600E8E3F2 /* UpdateInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateInfoCell.swift; sourceTree = "<group>"; };
+		87306D502B26086D001B7C14 /* TLRko.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRko.swift; sourceTree = "<group>"; };
+		87306D522B260969001B7C14 /* TLRen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRen.swift; sourceTree = "<group>"; };
+		87306D542B2609CE001B7C14 /* TLRzh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLRzh.swift; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
@@ -863,6 +869,9 @@
 			isa = PBXGroup;
 			children = (
 				87D1250028771AAD00018658 /* Language.swift */,
+				87306D502B26086D001B7C14 /* TLRko.swift */,
+				87306D522B260969001B7C14 /* TLRen.swift */,
+				87306D542B2609CE001B7C14 /* TLRzh.swift */,
 			);
 			path = Localize;
 			sourceTree = "<group>";
@@ -2068,6 +2077,7 @@
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
 				8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */,
+				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
@@ -2110,6 +2120,7 @@
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				87F771BF2984101700BF1907 /* Todolist.swift in Sources */,
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
+				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* TiTiFont.swift in Sources */,
@@ -2201,6 +2212,7 @@
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
 				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
+				87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */,
 				875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
