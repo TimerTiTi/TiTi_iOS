@@ -9,16 +9,17 @@
 import Foundation
 
 enum Language: String {
-    case ko
-    case en
+    case ko // 한국어
+    case en // 영어
+    case zh // 중국어 간체
     
-    static var currentLanguage: Language {
+    static var system: Language {
         if #available(iOS 16.0, *) {
             guard let locale = Locale.preferredLanguages.first,
                   let languageCode = Locale(identifier: locale).language.languageCode?.identifier else {
                 return .en
             }
-            
+            print(languageCode)
             return Language(rawValue: languageCode) ?? .en
         } else {
             guard let locale = Locale.preferredLanguages.first,
@@ -28,7 +29,6 @@ enum Language: String {
             
             return Language(rawValue: languageCode) ?? .en
         }
-        
     }
 }
 
@@ -54,10 +54,10 @@ extension Bundle {
     }
     
     static var localizedBundle: Bundle {
-        switch Language.currentLanguage {
+        switch Language.system {
         case .ko:
             return Bundle.koBundle
-        case .en:
+        default:
             return Bundle.enBundle
         }
     }

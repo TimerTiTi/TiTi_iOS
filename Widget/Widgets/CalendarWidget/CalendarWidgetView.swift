@@ -35,7 +35,7 @@ struct CalendarWidgetView: View {
     }
     
     var isKorean: Bool {
-        return Language.currentLanguage == .ko
+        return Language.system == .ko
     }
 }
 

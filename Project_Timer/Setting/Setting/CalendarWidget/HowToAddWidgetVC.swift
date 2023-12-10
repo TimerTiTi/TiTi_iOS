@@ -41,7 +41,7 @@ final class HowToAddWidgetVC: UIViewController {
         return min(windowWidth, 439) - 16
     }
     private var languageCode: String {
-        return Language.currentLanguage == .ko ? "kor" : "eng"
+        return Language.system == .ko ? "kor" : "eng"
     }
     
     override func viewDidLoad() {
