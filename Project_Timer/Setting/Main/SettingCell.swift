@@ -39,6 +39,7 @@ final class SettingCell: UICollectionViewCell {
             self.toggleSwitch.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
             self.toggleSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
         ])
+        configureLocalized()
     }
     
     override func prepareForReuse() {
@@ -78,5 +79,11 @@ final class SettingCell: UICollectionViewCell {
         self.toggleSwitch.isHidden = false
         let value = UserDefaultsManager.get(forKey: key) as? Bool ?? true
         self.toggleSwitch.setOn(value, animated: false)
+    }
+    
+    private func configureLocalized() {
+        self.titleLabel.font = Typographys.uifont(.semibold, size: 17)
+        self.subTitleLabel.font = Typographys.uifont(.semibold, size: 11)
+        self.rightLabel.font = Typographys.uifont(.normal, size: 16)
     }
 }
