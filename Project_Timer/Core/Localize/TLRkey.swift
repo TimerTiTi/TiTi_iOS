@@ -21,7 +21,30 @@ enum TLRkey: String {
     case Update_Popup_Update
     /// 나중에
     case Update_Popup_NotNow
-    
     /// 확인
     case ok
+    
+    /// 로그인하기
+    case Settings_Button_SingInOption
+    /// 동기화 기능을 사용해보세요
+    case Settings_Button_SingInOptionDesc
+    
+    /// {}로 로그인
+    case SignIn_Button_SocialSignIn
+    /// 로그인없이 서비스 이용하기
+    case SignIn_Button_WithoutSocialSingIn
+    /// 이메일
+    case SignIn_Hint_Email
+    /// 비밀번호
+    case SignIn_Hint_Password
+    /// 로그인
+    case SignIn_Button_TiTiSingIn
+    /// 또는
+    case SignIn_Text_OR
+    /// 이메일 찾기
+    case SignIn_Button_FindEmail
+    /// 비밀번호 찾기
+    case SignIn_Button_FindPassword
+    /// 회원가입
+    case SignUp_Button_SignUp
 }

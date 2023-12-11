@@ -42,7 +42,7 @@ final class SettingVM {
         if Infos.isDevMode {
             // Profile
             cells.append([
-                SettingCellInfo(title: "Sign in in Setting".localized(), subTitle: "Try Synchronization".localized(), action: .modalFullscreen, destination: .signinSelect)
+                SettingCellInfo(title: Localized.string(.Settings_Button_SingInOption), subTitle: Localized.string(.Settings_Button_SingInOptionDesc), action: .modalFullscreen, destination: .signinSelect)
             ])
         }
         

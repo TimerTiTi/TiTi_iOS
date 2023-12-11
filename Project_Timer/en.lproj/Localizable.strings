@@ -93,12 +93,6 @@
 
 "Timer start" = "Timer start";
 
-"Please download the " = "Please download the ";
-
-" version of the App Store" = " version of the App Store";
-
-"Update new version" = "Update new version";
-
 "Check the date of recording" = "Check the date of recording";
 
 "Do you want to start the New record?" = "Do you want to start the New record?";
@@ -313,8 +307,6 @@
 
 // Setting
 "Profile" = "Profile";
-"Sign in in Setting" = "Sign in";
-"Try Synchronization" = "Try Synchronization";
 
 // SigninSelectView
 "TimerTiTi" = "TimerTiTi";
