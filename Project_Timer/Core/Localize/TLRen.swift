@@ -45,6 +45,14 @@ struct TLRen {
         case .SignUp_Error_WrongCode: value = "Invalid Verification Code. Please check again"
         case .SignUp_Error_TooManySend: value = "Too many attempts. The request is limited for 60 minutes"
         case .SignUp_Error_TooManyConfirm: value = "Too many attempts. The request is limited for 10 minutes"
+            
+        case .SignUp_Text_InputPasswordTitle: value = "Please create a new password"
+        case .SignUp_Text_InputPasswordDesc: value = "Password should be 8 or more characters\ninclude both English and Numbers"
+        case .SignUp_Hint_Password: value = "Password"
+        case .SignUp_Text_ConfirmPasswordDesc: value = "Please enter it again"
+        case .SignUp_Hint_ConfirmPassword: value = "Confirm your password"
+        case .SignUp_Error_PasswordFormat: value = "Password should be 8 ~ 20 characters include both English and Numbers.\nSpecial characters are imited to !@#$%^&*() only"
+        case .SignUp_Error_PasswordMismatch: value = "The confirm password does not match"
         }
         
         if let op = op, value.contains("{}") {

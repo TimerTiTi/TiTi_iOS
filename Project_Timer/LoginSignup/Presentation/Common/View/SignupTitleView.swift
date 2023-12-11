@@ -29,11 +29,10 @@ struct SignupTitleView: View {
                 Text(subTitle)
                     .font(Typographys.font(.semibold_4, size: 14))
                     .foregroundStyle(UIColor.secondaryLabel.toColor)
+                Spacer()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Spacer()
-                .frame(height: 72)
+            .frame(height: 127)
         }
     }
 }

@@ -72,4 +72,19 @@ enum TLRkey: String {
     case SignUp_Error_TooManySend
     /// 인증코드 확인 시도가 너무 많습니다. 10분간 요청이 제한돼요
     case SignUp_Error_TooManyConfirm
+    
+    /// 비밀번호를 입력해 주세요
+    case SignUp_Text_InputPasswordTitle
+    /// 8자리 이상 비밀번호를 입력해 주세요 (영어, 숫자 포함)
+    case SignUp_Text_InputPasswordDesc
+    /// 비밀번호
+    case SignUp_Hint_Password
+    /// 다시 한번 입력해 주세요
+    case SignUp_Text_ConfirmPasswordDesc
+    /// 비밀번호 재입력
+    case SignUp_Hint_ConfirmPassword
+    /// "영문, 숫자를 포함하여 8자 이상 20자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
+    case SignUp_Error_PasswordFormat
+    /// 동일하지 않습니다. 다시 입력해 주세요
+    case SignUp_Error_PasswordMismatch
 }

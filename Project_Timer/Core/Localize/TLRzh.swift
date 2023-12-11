@@ -45,6 +45,14 @@ struct TLRzh {
         case .SignUp_Error_WrongCode: value = "验证码错误。 请再次检查"
         case .SignUp_Error_TooManySend: value = "太多的尝试。 请求被限制为60分钟"
         case .SignUp_Error_TooManyConfirm: value = "太多的尝试。 请求限制为10分钟"
+            
+        case .SignUp_Text_InputPasswordTitle: value = "请创建新密码"
+        case .SignUp_Text_InputPasswordDesc: value = "密码必须是8个或更多字符（包括英文和数字）"
+        case .SignUp_Hint_Password: value = "密码"
+        case .SignUp_Text_ConfirmPasswordDesc: value = "请再次输入"
+        case .SignUp_Hint_ConfirmPassword: value = "确认您的密码"
+        case .SignUp_Error_PasswordFormat: value = "密码应为8~20个字符，包括英语和数字。\n特殊字符被模仿 !@#$%^&*() 仅限"
+        case .SignUp_Error_PasswordMismatch: value = "不一样。 请重新输入"
         }
         
         if let op = op, value.contains("{}") {

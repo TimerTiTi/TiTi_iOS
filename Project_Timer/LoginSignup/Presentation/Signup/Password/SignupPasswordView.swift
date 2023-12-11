@@ -53,13 +53,13 @@ struct SignupPasswordView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                SignupTitleView(title: "비밀번호를 입력해 주세요", subTitle: "8자리 이상 비밀번호를 입력해 주세요")
+                                SignupTitleView(title: Localized.string(.SignUp_Text_InputPasswordTitle), subTitle: Localized.string(.SignUp_Text_InputPasswordDesc))
                                 
                                 SignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
                                     model.checkPassword()
                                 }
                                 SignupTextFieldUnderlineView(color: model.passwordTintColor)
-                                SignupTextFieldWarning(warning: "영문, 숫자, 또는 10가지 특수문자 내에서 입력해 주세요", visible: model.validPassword == false && model.password.isEmpty)
+                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: model.validPassword == false && model.password.isEmpty)
                                     .id(SignupTextFieldView.type.password)
                                 
                                 if model.stage == .password2 {
@@ -107,8 +107,8 @@ struct SignupPasswordView: View {
             VStack(alignment: .leading, spacing: 0) {
                 Spacer()
                     .frame(height: 35)
-                Text("다시 한번 입력해 주세요")
-                    .font(Fonts.HGGGothicssiP60g(size: 14))
+                Text(Localized.string(.SignUp_Text_ConfirmPasswordDesc))
+                    .font(Typographys.font(.semibold_4, size: 14))
                     .foregroundStyle(Color.primary)
                 Spacer()
                     .frame(height: 16)
@@ -117,7 +117,7 @@ struct SignupPasswordView: View {
                     model.checkPassword2()
                 }
                 SignupTextFieldUnderlineView(color: model.password2TintColor)
-                SignupTextFieldWarning(warning: "동일하지 않습니다. 다시 입력해 주세요", visible: model.validPassword2 == false && model.password2.isEmpty)
+                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordMismatch), visible: model.validPassword2 == false && model.password2.isEmpty)
                     .id(SignupTextFieldView.type.password2)
             }
         }
@@ -131,10 +131,5 @@ struct SignupPasswordView_Previews: PreviewProvider {
         SignupPasswordView(
             model: SignupPasswordModel(infos: infos)
         ).environmentObject(SigninSignupEnvironment())
-        
-        SignupPasswordView(
-            model: SignupPasswordModel(infos: infos)
-        ).environmentObject(SigninSignupEnvironment())
-            .environment(\.locale, .init(identifier: "en"))
     }
 }

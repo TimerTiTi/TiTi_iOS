@@ -20,13 +20,13 @@ struct SignupSecureFieldView: View {
     var body: some View {
         ZStack {
             TextField("", text: $text)
-                .font(Fonts.HGGGothicssiP60g(size: 20))
+                .font(Typographys.font(.semibold_4, size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
                 .autocorrectionDisabled(true)
                 .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                     Text(placeholder)
-                        .font(Fonts.HGGGothicssiP60g(size: 20))
+                        .font(Typographys.font(.semibold_4, size: 20))
                         .foregroundStyle(UIColor.placeholderText.toColor)
                 }
                 .keyboardType(keyboardType)
@@ -42,13 +42,13 @@ struct SignupSecureFieldView: View {
                 .opacity(isSecure ? 0 : 1)
             
             SecureField("", text: $text)
-                .font(Fonts.HGGGothicssiP60g(size: 20))
+                .font(Typographys.font(.semibold_4, size: 20))
                 .foregroundStyle(.primary)
                 .accentColor(.blue)
                 .autocorrectionDisabled(true)
                 .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                     Text(placeholder)
-                        .font(Fonts.HGGGothicssiP60g(size: 20))
+                        .font(Typographys.font(.semibold_4, size: 20))
                         .foregroundStyle(UIColor.placeholderText.toColor)
                 }
                 .keyboardType(keyboardType)
@@ -73,9 +73,9 @@ struct SignupSecureFieldView: View {
     var placeholder: String {
         switch self.type {
         case .password:
-            return "new password".localized()
+            return Localized.string(.SignUp_Hint_Password)
         case .password2:
-            return "confirm new password".localized()
+            return Localized.string(.SignUp_Hint_ConfirmPassword)
         default:
             return "placeholder"
         }
