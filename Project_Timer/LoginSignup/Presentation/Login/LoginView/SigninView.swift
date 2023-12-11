@@ -176,7 +176,7 @@ struct SigninView: View {
                 Button {
                     environment.signinSuccess = true
                 } label: {
-                    Text("OK")
+                    Text(Localized.string(.ok))
                 }
             }
         }
@@ -252,7 +252,7 @@ struct SigninView: View {
                 Button {
                     environment.navigationPath.append(SigninRoute.signup)
                 } label: {
-                    Text(Localized.string(.SignUp_Button_SignUp))
+                    Text(Localized.string(.SignIn_Button_SignUp))
                         .font(Typographys.font(.semibold_4, size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()

@@ -48,7 +48,13 @@ enum TLRkey: String {
     /// 비밀번호 찾기
     case SignIn_Button_FindPassword
     /// 회원가입
-    case SignUp_Button_SignUp
+    case SignIn_Button_SignUp
+    /// 로그인을 실패했어요
+    case SignIn_Error_SocialSignInFail
+    /// {} 로그인을 확인해주세요
+    case SignIn_Error_SocialSignInFailDomain
+    /// 이메일과 비밀번호를 확인해주세요
+    case SignIn_Error_EmailSingInFail
     
     /// 이메일을 입력해 주세요
     case SignUp_Text_InputEmailTitle
