@@ -71,9 +71,9 @@ struct SigninTextFieldView: View {
     var placeholder: String {
         switch self.type {
         case .email:
-            return "email".localized()
+            return Localized.string(.SignIn_Hint_Email)
         case .password:
-            return "password".localized()
+            return Localized.string(.SignIn_Hint_Password)
         }
     }
 }
