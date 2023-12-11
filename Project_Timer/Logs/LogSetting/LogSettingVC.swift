@@ -118,7 +118,7 @@ extension LogSettingVC {
     private func showAlertWithTextField(title: String, text: String, placeHolder: String, handler: @escaping ((Int) -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.font = TiTiFont.HGGGothicssiP60g(size: 14)
+            textField.font = Fonts.HGGGothicssiP60g(size: 14)
             textField.textColor = .label
             textField.placeholder = placeHolder
             textField.textAlignment = .center

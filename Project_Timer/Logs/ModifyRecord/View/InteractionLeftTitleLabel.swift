@@ -12,7 +12,7 @@ import UIKit
 final class InteractionLeftTitleLabel: UILabel {
     convenience init(title: String) {
         self.init(frame: CGRect())
-        self.font = TiTiFont.HGGGothicssiP60g(size: 16)
+        self.font = Fonts.HGGGothicssiP60g(size: 16)
         self.textColor = UIColor.label
         self.text = title
         

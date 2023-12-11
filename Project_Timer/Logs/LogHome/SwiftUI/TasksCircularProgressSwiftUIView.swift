@@ -38,7 +38,7 @@ struct TasksCircularProgressSwiftUIView: View {
                             lineWidth: lineWidth)
                     .frame(width: circleSize, height: circleSize, alignment: .center)
                 Text("\(totalHours)")
-                    .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
+                    .font(Fonts.HGGGothicssiP60g(size: fontSize))
                     .foregroundColor(.primary)
             }
         } else {
@@ -47,7 +47,7 @@ struct TasksCircularProgressSwiftUIView: View {
                     self.getProgress(index: index, value: tasksAndBlocks[index], isBlock: index%2 == 0)
                 }
                 Text("\(totalHours)")
-                    .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
+                    .font(Fonts.HGGGothicssiP60g(size: fontSize))
                     .foregroundColor(.primary)
             }
         }

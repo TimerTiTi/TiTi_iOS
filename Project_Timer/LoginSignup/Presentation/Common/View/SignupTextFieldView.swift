@@ -25,13 +25,13 @@ struct SignupTextFieldView: View {
     
     var body: some View {
         TextField("", text: $text)
-            .font(TiTiFont.HGGGothicssiP60g(size: 20))
+            .font(Fonts.HGGGothicssiP60g(size: 20))
             .foregroundStyle(.primary)
             .accentColor(.blue)
             .autocorrectionDisabled(true)
             .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                 Text(placeholder)
-                    .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                    .font(Fonts.HGGGothicssiP60g(size: 20))
                     .foregroundStyle(UIColor.placeholderText.toColor)
             }
             .keyboardType(keyboardType)

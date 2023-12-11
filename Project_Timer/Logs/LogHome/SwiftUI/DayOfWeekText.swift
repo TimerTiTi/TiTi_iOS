@@ -22,7 +22,7 @@ struct DayOfWeekText: View {
     
     var body: some View {
         Text(self.days[dayIndex])
-            .font(TiTiFont.HGGGothicssiP60g(size: 13))
+            .font(Fonts.HGGGothicssiP60g(size: 13))
             .foregroundColor(.primary)
             .frame(width: 25, height: 15)
             .background(backgroundColor)

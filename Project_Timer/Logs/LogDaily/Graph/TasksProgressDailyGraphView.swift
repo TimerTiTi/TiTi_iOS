@@ -15,7 +15,7 @@ final class TasksProgressDailyGraphView: UIView {
     private var dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 25)
+        label.font = Fonts.HGGGothicssiP80g(size: 25)
         label.textColor = UIColor.label
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 27.5)

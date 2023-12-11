@@ -37,19 +37,19 @@ struct WeekView: View {
 extension WeekView {
     var MonthTextView: some View {
         Text(self.monthText)
-            .font(TiTiFont.HGGGothicssiP80g(size: 25))
+            .font(Fonts.HGGGothicssiP80g(size: 25))
             .foregroundColor(.primary)
     }
     
     var WeekTextView: some View {
         Text(self.weekText)
-            .font(TiTiFont.HGGGothicssiP80g(size: 25))
+            .font(Fonts.HGGGothicssiP80g(size: 25))
             .foregroundColor(.primary)
     }
     
     var WeekTermTextView: some View {
         Text(self.weekTerm)
-            .font(TiTiFont.HGGGothicssiP60g(size: 14))
+            .font(Fonts.HGGGothicssiP60g(size: 14))
             .foregroundColor(.primary)
             .padding(.bottom, 3)
     }
@@ -81,17 +81,17 @@ extension WeekView {
     var TimeView: some View {
         VStack(alignment: .center, spacing: 0) {
             Text("Total")
-                .font(TiTiFont.HGGGothicssiP60g(size: 12))
+                .font(Fonts.HGGGothicssiP60g(size: 12))
                 .foregroundColor(.primary)
             Text(self.totalTime)
-                .font(TiTiFont.HGGGothicssiP80g(size: 22))
+                .font(Fonts.HGGGothicssiP80g(size: 22))
                 .foregroundColor(TiTiColor.graphColor(num: viewModel.color2Index).toColor)
                 .padding(.bottom, 4)
             Text("Average")
-                .font(TiTiFont.HGGGothicssiP60g(size: 12))
+                .font(Fonts.HGGGothicssiP60g(size: 12))
                 .foregroundColor(.primary)
             Text(self.averageTime)
-                .font(TiTiFont.HGGGothicssiP80g(size: 22))
+                .font(Fonts.HGGGothicssiP80g(size: 22))
                 .foregroundColor(TiTiColor.graphColor(num: viewModel.color2Index).toColor)
                 .padding(.bottom, 16)
         }

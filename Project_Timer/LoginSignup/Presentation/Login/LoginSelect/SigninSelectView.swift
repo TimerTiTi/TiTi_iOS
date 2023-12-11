@@ -74,14 +74,14 @@ struct SigninSelectView: View {
                 
                 Text(verbatim: "TimerTiTi")
                     .foregroundStyle(.black)
-                    .font(TiTiFont.HGGGothicssiP80g(size: 15))
+                    .font(Fonts.HGGGothicssiP80g(size: 15))
                 
                 Spacer()
                     .frame(height: 58)
                 
                 Text("#\("TimerTiTi".localized())")
                     .foregroundStyle(.black)
-                    .font(TiTiFont.HGGGothicssiP80g(size: 33))
+                    .font(Fonts.HGGGothicssiP80g(size: 33))
                 
                 Spacer()
                     .frame(height: 58)
@@ -111,7 +111,7 @@ struct SigninSelectView: View {
                     environment.dismiss = true
                 } label: {
                     Text("Using without Sign in")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .font(Fonts.HGGGothicssiP60g(size: 13))
                         .underline()
                         .foregroundColor(.black.opacity(0.5))
                         .padding(.all, 8)

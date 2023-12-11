@@ -34,7 +34,7 @@ struct WeekSmallView: View {
                     .rotationEffect(.degrees(-90))
                 
                 Text("\(weekHours)")
-                    .font(TiTiFont.HGGGothicssiP60g(size: fontSize))
+                    .font(Fonts.HGGGothicssiP60g(size: fontSize))
                     .foregroundColor(.primary)
             }
         }

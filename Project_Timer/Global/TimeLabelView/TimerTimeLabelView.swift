@@ -41,7 +41,7 @@ struct TimerTimeLabelView: View {
                 }
             }
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: baseViewModel.fontSize))
+        .font(Fonts.HGGGothicssiP60g(size: baseViewModel.fontSize))
         .foregroundColor(self.color)
     }
 }

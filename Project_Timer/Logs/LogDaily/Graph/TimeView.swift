@@ -45,10 +45,10 @@ final class TimeView: UIView {
     private func configureTitleLabelSize(_ size: Size) {
         switch size {
         case .small:
-            self.titleLabel.font = TiTiFont.HGGGothicssiP60g(size: 12)
+            self.titleLabel.font = Fonts.HGGGothicssiP60g(size: 12)
             self.titleLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
         case .large:
-            self.titleLabel.font = TiTiFont.HGGGothicssiP60g(size: 20)
+            self.titleLabel.font = Fonts.HGGGothicssiP60g(size: 20)
             self.titleLabel.heightAnchor.constraint(equalToConstant: 22).isActive = true
         }
     }
@@ -56,10 +56,10 @@ final class TimeView: UIView {
     private func configureTimeLabelSize(_ size: Size) {
         switch size {
         case .small:
-            self.timeLabel.font = TiTiFont.HGGGothicssiP80g(size: 22)
+            self.timeLabel.font = Fonts.HGGGothicssiP80g(size: 22)
             self.timeLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
         case .large:
-            self.timeLabel.font = TiTiFont.HGGGothicssiP80g(size: 35)
+            self.timeLabel.font = Fonts.HGGGothicssiP80g(size: 35)
             self.timeLabel.heightAnchor.constraint(equalToConstant: 38.5).isActive = true
         }
     }

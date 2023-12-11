@@ -30,6 +30,6 @@ final class ModifyFinishButton: UIButton {
         self.cornerRadius = 6
         self.setTitleColor(UIColor.label, for: .normal)
         self.setTitleColor(UIColor.systemGray2, for: .disabled)
-        self.titleLabel?.font = TiTiFont.HGGGothicssiP60g(size: 18)
+        self.titleLabel?.font = Fonts.HGGGothicssiP60g(size: 18)
     }
 }

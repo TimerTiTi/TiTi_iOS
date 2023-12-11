@@ -135,7 +135,7 @@ extension TaskSelectVC {
             alert.addTextField { (inputNewNickName) in
                 inputNewNickName.placeholder = "New task".localized()
                 inputNewNickName.textAlignment = .center
-                inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
+                inputNewNickName.font = Fonts.HGGGothicssiP60g(size: 17)
                 inputNewNickName.text = beforeTaskName
             }
             alert.addAction(cancle)
@@ -159,7 +159,7 @@ extension TaskSelectVC {
         alert.addTextField { (inputNewNickName) in
             inputNewNickName.placeholder = "New task".localized()
             inputNewNickName.textAlignment = .center
-            inputNewNickName.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            inputNewNickName.font = Fonts.HGGGothicssiP60g(size: 17)
         }
         alert.addAction(cancle)
         alert.addAction(ok)

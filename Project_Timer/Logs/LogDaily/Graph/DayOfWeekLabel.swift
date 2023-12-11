@@ -18,7 +18,7 @@ final class DayOfWeekLabel: UILabel {
     convenience init(day: String, size: Size) {
         self.init(frame: CGRect())
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.font = TiTiFont.HGGGothicssiP60g(size: 13)
+        self.font = Fonts.HGGGothicssiP60g(size: 13)
         self.textColor = UIColor.label
         self.textAlignment = .center
         
