@@ -33,6 +33,18 @@ struct TLRen {
         case .SignIn_Button_FindEmail: value = "Forgot Email?"
         case .SignIn_Button_FindPassword: value = "Forgot Password?"
         case .SignUp_Button_SignUp: value = "Sign Up"
+            
+        case .SignUp_Text_InputEmailTitle: value = "Please enter your Email"
+        case .SignUp_Text_InputEmailDesc: value = "We need your email for verification"
+        case .SignUp_Hint_Email: value = "Email"
+        case .SignUp_Error_WrongEmailFormat: value = "Invalid Format. Please enter in the correct format"
+        case .SignUp_Toast_SendCodeComplete: value = "Verification Code has been sent. Please check your email"
+        case .SignUp_Hint_VerificationCode: value = "Verification Code"
+        case .SignUp_Button_Resend: value = "Resend"
+        case .SignUp_Error_DuplicateEmail: value = "This Email is already in use. Please enter another one"
+        case .SignUp_Error_WrongCode: value = "Invalid Verification Code. Please check again"
+        case .SignUp_Error_TooManySend: value = "Too many attempts. The request is limited for 60 minutes"
+        case .SignUp_Error_TooManyConfirm: value = "Too many attempts. The request is limited for 10 minutes"
         }
         
         if let op = op, value.contains("{}") {
