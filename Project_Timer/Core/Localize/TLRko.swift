@@ -32,7 +32,10 @@ struct TLRko {
         case .SignIn_Text_OR: value = "또는"
         case .SignIn_Button_FindEmail: value = "이메일 찾기"
         case .SignIn_Button_FindPassword: value = "비밀번호 찾기"
-        case .SignUp_Button_SignUp: value = "회원가입"
+        case .SignIn_Button_SignUp: value = "회원가입"
+        case .SignIn_Error_SocialSignInFail: value = "로그인을 실패했어요"
+        case .SignIn_Error_SocialSignInFailDomain: value = "{} 로그인을 확인해주세요"
+        case .SignIn_Error_EmailSingInFail: value = "이메일과 비밀번호를 확인해주세요"
             
         case .SignUp_Text_InputEmailTitle: value = "이메일을 입력해 주세요"
         case .SignUp_Text_InputEmailDesc: value = "이메일 인증으로 본인을 확인해 주세요"

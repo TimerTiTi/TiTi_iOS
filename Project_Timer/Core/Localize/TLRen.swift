@@ -32,7 +32,10 @@ struct TLRen {
         case .SignIn_Text_OR: value = "OR"
         case .SignIn_Button_FindEmail: value = "Forgot Email?"
         case .SignIn_Button_FindPassword: value = "Forgot Password?"
-        case .SignUp_Button_SignUp: value = "Sign Up"
+        case .SignIn_Button_SignUp: value = "Sign Up"
+        case .SignIn_Error_SocialSignInFail: value = "Sign in failed"
+        case .SignIn_Error_SocialSignInFailDomain: value = "Please check your {} Sign In"
+        case .SignIn_Error_EmailSingInFail: value = "Please check you email and password"
             
         case .SignUp_Text_InputEmailTitle: value = "Please enter your Email"
         case .SignUp_Text_InputEmailDesc: value = "We need your email for verification"

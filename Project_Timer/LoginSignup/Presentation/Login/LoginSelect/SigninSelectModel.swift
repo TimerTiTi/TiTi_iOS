@@ -78,13 +78,13 @@ extension SigninSelectModel: ASAuthorizationControllerDelegate {
                 )
             }
         } else {
-            self.errorMessage = (title: "Apple SignIn Fail", text: "Please terminate the app and try again.")
+            self.errorMessage = (title: Localized.string(.SignIn_Error_SocialSignInFail), text: Localized.string(.SignIn_Error_SocialSignInFailDomain, op: "Apple"))
             self.showAleret = true
         }
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        self.errorMessage = (title: "Apple SignIn Fail", text: "Please terminate the app and try again.")
+        self.errorMessage = (title: Localized.string(.SignIn_Error_SocialSignInFail), text: Localized.string(.SignIn_Error_SocialSignInFailDomain, op: "Apple"))
         self.showAleret = true
         print(error.localizedDescription)
     }
@@ -96,7 +96,7 @@ extension SigninSelectModel {
         guard let rootVC = rootVC else { return }
         GIDSignIn.sharedInstance.signIn(withPresenting: rootVC) { signInResult, error in
             guard let result = signInResult, error == nil else {
-                self.errorMessage = (title: "Google SignIn Fail", text: "Please terminate the app and try again.")
+                self.errorMessage = (title: Localized.string(.SignIn_Error_SocialSignInFail), text: Localized.string(.SignIn_Error_SocialSignInFailDomain, op: "Google"))
                 self.showAleret = true
                 print(error?.localizedDescription)
                 return

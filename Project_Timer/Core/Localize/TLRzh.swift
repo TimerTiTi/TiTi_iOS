@@ -32,7 +32,10 @@ struct TLRzh {
         case .SignIn_Text_OR: value = "或者"
         case .SignIn_Button_FindEmail: value = "忘记电子邮件？"
         case .SignIn_Button_FindPassword: value = "忘记密码?"
-        case .SignUp_Button_SignUp: value = "注册会员"
+        case .SignIn_Button_SignUp: value = "注册会员"
+        case .SignIn_Error_SocialSignInFail: value = "登录失败"
+        case .SignIn_Error_SocialSignInFailDomain: value = "请检查您的 {} 登录"
+        case .SignIn_Error_EmailSingInFail: value = "请检查您的电子邮件和密码"
             
         case .SignUp_Text_InputEmailTitle: value = "请输入您的电子邮件地址"
         case .SignUp_Text_InputEmailDesc: value = "我们需要您的电子邮件进行验证"
