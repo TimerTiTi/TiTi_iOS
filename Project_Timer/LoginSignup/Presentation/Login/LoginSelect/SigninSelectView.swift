@@ -35,6 +35,12 @@ struct SigninSelectView: View {
                 .onChange(of: geometry.size, perform: { value in
                     model.updateContentWidth(size: value)
                 })
+                .onAppear {
+                    for family in UIFont.familyNames.sorted() {
+                        let names = UIFont.fontNames(forFamilyName: family)
+                        print("Family: \(family) Font names: \(names)")
+                    }
+                }
             }
             .navigationDestination(for: SigninSelectRoute.self) { destination in
                 switch destination {

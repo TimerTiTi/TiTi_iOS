@@ -122,6 +122,7 @@
 		87306D842B26CC8E001B7C14 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		87306D852B26CC90001B7C14 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		87306D862B26CC93001B7C14 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
+		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -2048,6 +2049,7 @@
 				870E11762A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				878B30EA2992BB5A00BE7413 /* widgetBundle.swift in Sources */,
 				87617E682A0CE58900E312EA /* CalendarWidgetProvider.swift in Sources */,
+				87306D872B26D00A001B7C14 /* Fonts.swift in Sources */,
 				87DA716D2A12258D006294DE /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
