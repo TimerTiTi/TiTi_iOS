@@ -79,7 +79,7 @@ struct SigninSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                Text(Localized.string(.SignIn_Text_TimerTiTi))
+                Text("#\(Localized.string(.SignIn_Text_TimerTiTi))")
                     .foregroundStyle(.black)
                     .font(Typographys.font(.bold_5, size: 33))
                 

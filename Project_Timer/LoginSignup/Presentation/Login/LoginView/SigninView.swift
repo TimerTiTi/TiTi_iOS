@@ -101,9 +101,9 @@ struct SigninView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                Text("#\("TimerTiTi".localized())")
+                Text("#\(Localized.string(.SignIn_Text_TimerTiTi))")
                     .foregroundStyle(.black)
-                    .font(Fonts.HGGGothicssiP80g(size: 33))
+                    .font(Typographys.font(.bold_5, size: 33))
                 
                 Spacer()
                     .frame(height: 58)
@@ -165,7 +165,7 @@ struct SigninView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 58)
                         
-                        Text("Sign in")
+                        Text(Localized.string(.SignIn_Button_TiTiSingIn))
                             .font(.system(size: 20, weight: .bold))
                             .foregroundStyle(postable ? Color.white : Color.gray)
                     }
@@ -196,8 +196,8 @@ struct SigninView: View {
                     Rectangle()
                         .frame(height: 1)
                         .foregroundStyle(.black.opacity(0.5))
-                    Text("OR")
-                        .font(Fonts.HGGGothicssiP60g(size: 13))
+                    Text(Localized.string(.SignIn_Text_OR))
+                        .font(Typographys.font(.semibold_4, size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                     Rectangle()
                         .frame(height: 1)
@@ -220,8 +220,8 @@ struct SigninView: View {
                 Button {
                     environment.navigationPath.append(SigninRoute.findEmail)
                 } label: {
-                    Text("Find email")
-                        .font(Fonts.HGGGothicssiP60g(size: 13))
+                    Text(Localized.string(.SignIn_Button_FindEmail))
+                        .font(Typographys.font(.semibold_4, size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)
@@ -236,8 +236,8 @@ struct SigninView: View {
                 Button {
                     environment.navigationPath.append(SigninRoute.findPassword)
                 } label: {
-                    Text("Find password")
-                        .font(Fonts.HGGGothicssiP60g(size: 13))
+                    Text(Localized.string(.SignIn_Button_FindPassword))
+                        .font(Typographys.font(.semibold_4, size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)
@@ -252,8 +252,8 @@ struct SigninView: View {
                 Button {
                     environment.navigationPath.append(SigninRoute.signup)
                 } label: {
-                    Text("Sign up")
-                        .font(Fonts.HGGGothicssiP60g(size: 13))
+                    Text(Localized.string(.SignUp_Button_SignUp))
+                        .font(Typographys.font(.semibold_4, size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)
@@ -266,9 +266,6 @@ struct SigninView: View {
 struct SigninView_Previews: PreviewProvider {
     static var previews: some View {
         SigninView().environmentObject(SigninSignupEnvironment())
-        
-        SigninView().environmentObject(SigninSignupEnvironment())
-            .environment(\.locale, .init(identifier: "en"))
     }
 }
 
