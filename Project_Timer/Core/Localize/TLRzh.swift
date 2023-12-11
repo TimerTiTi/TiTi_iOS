@@ -53,6 +53,11 @@ struct TLRzh {
         case .SignUp_Hint_ConfirmPassword: value = "确认您的密码"
         case .SignUp_Error_PasswordFormat: value = "密码应为8~20个字符，包括英语和数字。\n特殊字符被模仿 !@#$%^&*() 仅限"
         case .SignUp_Error_PasswordMismatch: value = "不一样。 请重新输入"
+            
+        case .SignUp_Text_InputNicknameTitle: value = "请创建您的昵称"
+        case .SignUp_Text_InputNicknameDesc: value = "昵称应为12个字符或更少"
+        case .SignUp_Hint_Nickname: value = "昵称"
+        case .SignUp_Error_WrongNicknameFormat: value = "昵称应该是2~12个字符。\n特殊字符被模仿 !@#$%^&*() 仅限"
         }
         
         if let op = op, value.contains("{}") {

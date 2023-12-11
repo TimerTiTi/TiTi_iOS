@@ -53,6 +53,11 @@ struct TLRen {
         case .SignUp_Hint_ConfirmPassword: value = "Confirm your password"
         case .SignUp_Error_PasswordFormat: value = "Password should be 8 ~ 20 characters include both English and Numbers.\nSpecial characters are imited to !@#$%^&*() only"
         case .SignUp_Error_PasswordMismatch: value = "The confirm password does not match"
+            
+        case .SignUp_Text_InputNicknameTitle: value = "Please create your Nickname"
+        case .SignUp_Text_InputNicknameDesc: value = "Nickname should be 12 characters or less"
+        case .SignUp_Hint_Nickname: value = "Nickname"
+        case .SignUp_Error_WrongNicknameFormat: value = "Nickname should be 2 ~ 12 characters.\nSpecial characters are imited to !@#$%^&*() only"
         }
         
         if let op = op, value.contains("{}") {

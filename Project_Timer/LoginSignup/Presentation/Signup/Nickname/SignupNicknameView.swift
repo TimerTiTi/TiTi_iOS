@@ -51,7 +51,7 @@ struct SignupNicknameView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                SignupTitleView(title: "닉네임을 입력해 주세요", subTitle: "12자리 이내 입력해 주세요")
+                                SignupTitleView(title: Localized.string(.SignUp_Text_InputNicknameTitle), subTitle: Localized.string(.SignUp_Text_InputNicknameDesc))
                                 
                                 SignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
                                     model.checkNickname()
@@ -60,7 +60,7 @@ struct SignupNicknameView: View {
                                     model.validNickname = nil
                                 }
                                 SignupTextFieldUnderlineView(color: model.nicknameTintColor)
-                                SignupTextFieldWarning(warning: "영문, 숫자, 또는 10가지 특수문자 내에서 입력해 주세요", visible: model.validNickname == false)
+                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongNicknameFormat), visible: model.validNickname == false)
                                     .id(SignupTextFieldView.type.nickname)
                             }
                             .onAppear { // @FocusState 변화 반영
