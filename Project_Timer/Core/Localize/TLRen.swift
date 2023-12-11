@@ -18,8 +18,20 @@ struct TLRen {
         case .Update_Popup_SoftUpdateDesc: value = "Try {} version"
         case .Update_Popup_Update: value = "Update"
         case .Update_Popup_NotNow: value = "Not Now"
-            
         case .ok: value = "ok"
+            
+        case .Settings_Button_SingInOption: value = "Sign in"
+        case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"
+            
+        case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
+        case .SignIn_Button_WithoutSocialSingIn: value = "Using without Sign in"
+        case .SignIn_Hint_Email: value = "Email"
+        case .SignIn_Hint_Password: value = "Password"
+        case .SignIn_Button_TiTiSingIn: value = "Sign In"
+        case .SignIn_Text_OR: value = "OR"
+        case .SignIn_Button_FindEmail: value = "Forgot Email?"
+        case .SignIn_Button_FindPassword: value = "Forgot Password?"
+        case .SignUp_Button_SignUp: value = "Sign Up"
         }
         
         if let op = op, value.contains("{}") {

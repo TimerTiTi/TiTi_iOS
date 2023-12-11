@@ -18,8 +18,20 @@ struct TLRzh {
         case .Update_Popup_SoftUpdateDesc: value = "{} 请使用版本"
         case .Update_Popup_Update: value = "更新"
         case .Update_Popup_NotNow: value = "不是现在"
-            
         case .ok: value = "确认"
+            
+        case .Settings_Button_SingInOption: value = "登录"
+        case .Settings_Button_SingInOptionDesc: value = "尝试同步"
+            
+        case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
+        case .SignIn_Button_WithoutSocialSingIn: value = "无需登录即可使用"
+        case .SignIn_Hint_Email: value = "电子邮件"
+        case .SignIn_Hint_Password: value = "密码 "
+        case .SignIn_Button_TiTiSingIn: value = "登录"
+        case .SignIn_Text_OR: value = "或者"
+        case .SignIn_Button_FindEmail: value = "忘记电子邮件？"
+        case .SignIn_Button_FindPassword: value = "忘记密码?"
+        case .SignUp_Button_SignUp: value = "注册会员"
         }
         
         if let op = op, value.contains("{}") {

@@ -93,12 +93,6 @@
 
 "Timer start" = "타이머 동작";
 
-"Please download the " = "앱스토어의 ";
-
-" version of the App Store :)" = " 버전을 사용해보세요 :)";
-
-"Update new version" = "새로운 버전으로 업데이트";
-
 "Check the date of recording" = "기록중인 날짜를 확인해주세요";
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
@@ -317,8 +311,6 @@
 
 // Setting
 "Profile" = "프로필";
-"Sign in in Setting" = "로그인하기";
-"Try Synchronization" = "동기화 기능을 사용해보세요";
 
 // SigninSelectView
 "TimerTiTi" = "타이머티티";

@@ -18,8 +18,20 @@ struct TLRko {
         case .Update_Popup_SoftUpdateDesc: value = "{} 버전을 사용해보세요 :)"
         case .Update_Popup_Update: value = "업데이트"
         case .Update_Popup_NotNow: value = "나중에"
-            
         case .ok: value = "확인"
+            
+        case .Settings_Button_SingInOption: value = "로그인하기"
+        case .Settings_Button_SingInOptionDesc: value = "동기화 기능을 사용해보세요"
+            
+        case .SignIn_Button_SocialSignIn: value = "{}로 로그인"
+        case .SignIn_Button_WithoutSocialSingIn: value = "로그인없이 서비스 이용하기"
+        case .SignIn_Hint_Email: value = "이메일"
+        case .SignIn_Hint_Password: value = "비밀번호"
+        case .SignIn_Button_TiTiSingIn: value = "로그인"
+        case .SignIn_Text_OR: value = "또는"
+        case .SignIn_Button_FindEmail: value = "이메일 찾기"
+        case .SignIn_Button_FindPassword: value = "비밀번호 찾기"
+        case .SignUp_Button_SignUp: value = "회원가입"
         }
         
         if let op = op, value.contains("{}") {
