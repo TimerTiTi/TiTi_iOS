@@ -33,6 +33,18 @@ struct TLRko {
         case .SignIn_Button_FindEmail: value = "이메일 찾기"
         case .SignIn_Button_FindPassword: value = "비밀번호 찾기"
         case .SignUp_Button_SignUp: value = "회원가입"
+            
+        case .SignUp_Text_InputEmailTitle: value = "이메일을 입력해 주세요"
+        case .SignUp_Text_InputEmailDesc: value = "이메일 인증으로 본인을 확인해 주세요"
+        case .SignUp_Hint_Email: value = "이메일"
+        case .SignUp_Error_WrongEmailFormat: value = "잘못된 형식입니다. 올바른 형식으로 입력해 주세요"
+        case .SignUp_Toast_SendCodeComplete: value = "인증코드가 발송되었습니다. 이메일을 확인해 주세요"
+        case .SignUp_Hint_VerificationCode: value = "인증코드"
+        case .SignUp_Button_Resend: value = "재전송"
+        case .SignUp_Error_DuplicateEmail: value = "이미 사용 중인 이메일입니다. 다른 이메일을 입력해 주세요"
+        case .SignUp_Error_WrongCode: value = "인증코드가 올바르지 않습니다. 다시 확인해 주세요"
+        case .SignUp_Error_TooManySend: value = "인증코드 전송 시도가 너무 많습니다. 60분간 요청이 제한돼요"
+        case .SignUp_Error_TooManyConfirm: value = "인증코드 확인 시도가 너무 많습니다. 10분간 요청이 제한돼요"
         }
         
         if let op = op, value.contains("{}") {

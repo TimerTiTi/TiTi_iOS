@@ -58,7 +58,7 @@ struct SignupEmailView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                SignupTitleView(title: "Enter your email address", subTitle: "Please enter your email address for verification")
+                                SignupTitleView(title: Localized.string(.SignUp_Text_InputEmailTitle), subTitle: Localized.string(.SignUp_Text_InputEmailDesc))
                                 
                                 SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
                                     model.checkEmail()
@@ -67,7 +67,7 @@ struct SignupEmailView: View {
                                     model.validEmail = nil
                                 }
                                 SignupTextFieldUnderlineView(color: model.emailTintColor)
-                                SignupTextFieldWarning(warning: "The format is incorrect. Please enter in the correct format", visible: model.validEmail == false)
+                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.validEmail == false)
                                     .id(SignupTextFieldView.type.email)
                                 
                                 if model.stage == .verificationCode {
@@ -159,13 +159,13 @@ struct SignupEmailView: View {
                         // MARK: ViewModel 내에서 네트워킹이 필요한 부분
                         print("resend")
                     } label: {
-                        Text("resend")
-                            .font(Fonts.HGGGothicssiP40g(size: 18))
+                        Text(Localized.string(.SignUp_Button_Resend))
+                            .font(Typographys.font(.normal_3, size: 18))
                     }
                 }
                 
                 SignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                SignupTextFieldWarning(warning: "The verification code is not valid. Please try again", visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
+                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
                     .id(SignupTextFieldView.type.verificationCode)
             }
         }
@@ -179,10 +179,5 @@ struct SignupEmailView_Previews: PreviewProvider {
         SignupEmailView(
             model: SignupEmailModel(infos: infos)
         ).environmentObject(SigninSignupEnvironment())
-        
-        SignupEmailView(
-            model: SignupEmailModel(infos: infos)
-        ).environmentObject(SigninSignupEnvironment())
-            .environment(\.locale, .init(identifier: "en"))
     }
 }

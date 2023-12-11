@@ -25,13 +25,13 @@ struct SignupTextFieldView: View {
     
     var body: some View {
         TextField("", text: $text)
-            .font(Fonts.HGGGothicssiP60g(size: 20))
+            .font(Typographys.font(.semibold_4, size: 20))
             .foregroundStyle(.primary)
             .accentColor(.blue)
             .autocorrectionDisabled(true)
             .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                 Text(placeholder)
-                    .font(Fonts.HGGGothicssiP60g(size: 20))
+                    .font(Typographys.font(.semibold_4, size: 20))
                     .foregroundStyle(UIColor.placeholderText.toColor)
             }
             .keyboardType(keyboardType)
@@ -49,9 +49,9 @@ struct SignupTextFieldView: View {
     var placeholder: String {
         switch self.type {
         case .email:
-            return "email".localized()
+            return Localized.string(.SignUp_Hint_Email)
         case .verificationCode:
-            return "verification code".localized()
+            return Localized.string(.SignUp_Hint_VerificationCode)
         case .nickname:
             return "nickname".localized()
         default:

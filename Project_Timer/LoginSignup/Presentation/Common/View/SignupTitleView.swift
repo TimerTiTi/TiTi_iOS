@@ -25,9 +25,9 @@ struct SignupTitleView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 Text(title)
-                    .font(Fonts.HGGGothicssiP80g(size: 22))
+                    .font(Typographys.font(.bold_5, size: 22))
                 Text(subTitle)
-                    .font(Fonts.HGGGothicssiP60g(size: 14))
+                    .font(Typographys.font(.semibold_4, size: 14))
                     .foregroundStyle(UIColor.secondaryLabel.toColor)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
