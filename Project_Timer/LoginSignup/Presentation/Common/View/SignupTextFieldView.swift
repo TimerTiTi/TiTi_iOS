@@ -53,7 +53,7 @@ struct SignupTextFieldView: View {
         case .verificationCode:
             return Localized.string(.SignUp_Hint_VerificationCode)
         case .nickname:
-            return "nickname".localized()
+            return Localized.string(.SignUp_Hint_Nickname)
         default:
             return "placeholder"
         }

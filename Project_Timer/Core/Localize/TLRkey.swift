@@ -87,4 +87,13 @@ enum TLRkey: String {
     case SignUp_Error_PasswordFormat
     /// 동일하지 않습니다. 다시 입력해 주세요
     case SignUp_Error_PasswordMismatch
+    
+    /// 닉네임을 입력해 주세요
+    case SignUp_Text_InputNicknameTitle
+    /// 12자 이내로 닉네임을 입력해 주세요
+    case SignUp_Text_InputNicknameDesc
+    /// 닉네임
+    case SignUp_Hint_Nickname
+    /// "2자 이상 12자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
+    case SignUp_Error_WrongNicknameFormat
 }

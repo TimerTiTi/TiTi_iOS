@@ -53,6 +53,11 @@ struct TLRko {
         case .SignUp_Hint_ConfirmPassword: value = "비밀번호 재입력"
         case .SignUp_Error_PasswordFormat: value = "영문, 숫자를 포함하여 8자 이상 20자 이내로 입력해 주세요.\n특수문자는 !@#$%^&*()만 가능합니다"
         case .SignUp_Error_PasswordMismatch: value = "동일하지 않습니다. 다시 입력해 주세요"
+            
+        case .SignUp_Text_InputNicknameTitle: value = "닉네임을 입력해 주세요"
+        case .SignUp_Text_InputNicknameDesc: value = "12자 이내로 닉네임을 입력해 주세요"
+        case .SignUp_Hint_Nickname: value = "닉네임"
+        case .SignUp_Error_WrongNicknameFormat: value = "2자 이상 12자 이내로 입력해 주세요.\n특수문자는 !@#$%^&*()만 가능합니다"
         }
         
         if let op = op, value.contains("{}") {
