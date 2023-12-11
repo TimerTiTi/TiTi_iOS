@@ -27,7 +27,7 @@ struct GoogleSigninButton: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 22, height: 23)
-                    Text("Sign in with \("Google")")
+                    Text(Localized.string(.SignIn_Button_SocialSignIn, op: "Google"))
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }

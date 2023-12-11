@@ -82,8 +82,8 @@ final class SettingCell: UICollectionViewCell {
     }
     
     private func configureLocalized() {
-        self.titleLabel.font = Typographys.uifont(.semibold, size: 17)
-        self.subTitleLabel.font = Typographys.uifont(.semibold, size: 11)
-        self.rightLabel.font = Typographys.uifont(.normal, size: 16)
+        self.titleLabel.font = Typographys.uifont(.semibold_4, size: 17)
+        self.subTitleLabel.font = Typographys.uifont(.semibold_4, size: 11)
+        self.rightLabel.font = Typographys.uifont(.normal_3, size: 16)
     }
 }

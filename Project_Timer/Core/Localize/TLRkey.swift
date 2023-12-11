@@ -29,6 +29,8 @@ enum TLRkey: String {
     /// 동기화 기능을 사용해보세요
     case Settings_Button_SingInOptionDesc
     
+    /// 타이머티티
+    case SignIn_Text_TimerTiTi
     /// {}로 로그인
     case SignIn_Button_SocialSignIn
     /// 로그인없이 서비스 이용하기

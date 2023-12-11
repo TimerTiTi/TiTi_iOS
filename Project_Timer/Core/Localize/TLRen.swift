@@ -23,6 +23,7 @@ struct TLRen {
         case .Settings_Button_SingInOption: value = "Sign in"
         case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"
             
+        case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
         case .SignIn_Button_WithoutSocialSingIn: value = "Using without Sign in"
         case .SignIn_Hint_Email: value = "Email"
