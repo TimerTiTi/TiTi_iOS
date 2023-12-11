@@ -12,12 +12,12 @@ import UIKit
 
 struct Typographys {
     enum Key {
-        case extraLight
-        case light
-        case normal
-        case semibold
-        case bold
-        case heavy
+        case extraLight_1
+        case light_2
+        case normal_3
+        case semibold_4
+        case bold_5
+        case heavy_6
     }
     
     static func font(_ key: Key, size: CGFloat) -> Font {
@@ -47,17 +47,17 @@ extension Typographys {
     // MARK: ko, en
     static func HGGGOTHICSSIP(_ key: Key, _ size: CGFloat) -> Font {
         switch key {
-        case .extraLight:
+        case .extraLight_1:
             return Fonts.HGGGothicssiP00g(size: size)
-        case .light:
+        case .light_2:
             return Fonts.HGGGothicssiP20g(size: size)
-        case .normal:
+        case .normal_3:
             return Fonts.HGGGothicssiP40g(size: size)
-        case .semibold:
+        case .semibold_4:
             return Fonts.HGGGothicssiP60g(size: size)
-        case .bold:
+        case .bold_5:
             return Fonts.HGGGothicssiP80g(size: size)
-        case .heavy:
+        case .heavy_6:
             return Fonts.HGGGothicssiP99g(size: size)
         }
     }
@@ -65,17 +65,17 @@ extension Typographys {
     // MARK: zh
     static func MiSans(_ key: Key, _ size: CGFloat) -> Font {
         switch key {
-        case .extraLight:
+        case .extraLight_1:
             return Fonts.MiSansExtraLight(size: size)
-        case .light:
+        case .light_2:
             return Fonts.MiSansLight(size: size)
-        case .normal:
+        case .normal_3:
             return Fonts.MiSansNormal(size: size)
-        case .semibold:
+        case .semibold_4:
             return Fonts.MiSansMedium(size: size)
-        case .bold:
+        case .bold_5:
             return Fonts.MiSansSemibold(size: size)
-        case .heavy:
+        case .heavy_6:
             return Fonts.MiSansBold(size: size)
         }
     }
@@ -85,17 +85,17 @@ extension Typographys {
     // MARK: ko, en
     static func HGGGOTHICSSIP_uifont(_ key: Key, _ size: CGFloat) -> UIFont? {
         switch key {
-        case .extraLight:
+        case .extraLight_1:
             return Fonts.HGGGothicssiP00g(size: size)
-        case .light:
+        case .light_2:
             return Fonts.HGGGothicssiP20g(size: size)
-        case .normal:
+        case .normal_3:
             return Fonts.HGGGothicssiP40g(size: size)
-        case .semibold:
+        case .semibold_4:
             return Fonts.HGGGothicssiP60g(size: size)
-        case .bold:
+        case .bold_5:
             return Fonts.HGGGothicssiP80g(size: size)
-        case .heavy:
+        case .heavy_6:
             return Fonts.HGGGothicssiP99g(size: size)
         }
     }
@@ -103,17 +103,17 @@ extension Typographys {
     // MARK: zh
     static func MiSans_uifont(_ key: Key, _ size: CGFloat) -> UIFont? {
         switch key {
-        case .extraLight:
+        case .extraLight_1:
             return Fonts.MiSansExtraLight(size: size)
-        case .light:
+        case .light_2:
             return Fonts.MiSansLight(size: size)
-        case .normal:
+        case .normal_3:
             return Fonts.MiSansNormal(size: size)
-        case .semibold:
+        case .semibold_4:
             return Fonts.MiSansMedium(size: size)
-        case .bold:
+        case .bold_5:
             return Fonts.MiSansSemibold(size: size)
-        case .heavy:
+        case .heavy_6:
             return Fonts.MiSansBold(size: size)
         }
     }

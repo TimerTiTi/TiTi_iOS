@@ -35,12 +35,6 @@ struct SigninSelectView: View {
                 .onChange(of: geometry.size, perform: { value in
                     model.updateContentWidth(size: value)
                 })
-                .onAppear {
-                    for family in UIFont.familyNames.sorted() {
-                        let names = UIFont.fontNames(forFamilyName: family)
-                        print("Family: \(family) Font names: \(names)")
-                    }
-                }
             }
             .navigationDestination(for: SigninSelectRoute.self) { destination in
                 switch destination {
@@ -85,9 +79,9 @@ struct SigninSelectView: View {
                 Spacer()
                     .frame(height: 58)
                 
-                Text("#\("TimerTiTi".localized())")
+                Text(Localized.string(.SignIn_Text_TimerTiTi))
                     .foregroundStyle(.black)
-                    .font(Fonts.HGGGothicssiP80g(size: 33))
+                    .font(Typographys.font(.bold_5, size: 33))
                 
                 Spacer()
                     .frame(height: 58)
@@ -116,8 +110,8 @@ struct SigninSelectView: View {
                 Button {
                     environment.dismiss = true
                 } label: {
-                    Text("Using without Sign in")
-                        .font(Fonts.HGGGothicssiP60g(size: 13))
+                    Text(Localized.string(.SignIn_Button_WithoutSocialSingIn))
+                        .font(Typographys.font(.semibold_4, size: 13))
                         .underline()
                         .foregroundColor(.black.opacity(0.5))
                         .padding(.all, 8)
@@ -134,5 +128,6 @@ struct SigninSelectView: View {
 struct SigninSelectView_Previews: PreviewProvider {
     static var previews: some View {
         SigninSelectView().environmentObject(SigninSignupEnvironment())
+            .environment(\.locale, .init(identifier: "en"))
     }
 }

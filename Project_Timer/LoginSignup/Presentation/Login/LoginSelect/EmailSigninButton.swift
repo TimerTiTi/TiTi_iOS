@@ -25,7 +25,7 @@ struct EmailSigninButton: View {
                 HStack(spacing: 12) {
                     Text("✉️")
                         .font(.system(size: 25))
-                    Text("Sign in with Email")
+                    Text(Localized.string(.SignIn_Button_SocialSignIn, op: Localized.string(.SignIn_Hint_Email)))
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }

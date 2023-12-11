@@ -23,6 +23,7 @@ struct TLRzh {
         case .Settings_Button_SingInOption: value = "登录"
         case .Settings_Button_SingInOptionDesc: value = "尝试同步"
             
+        case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
         case .SignIn_Button_WithoutSocialSingIn: value = "无需登录即可使用"
         case .SignIn_Hint_Email: value = "电子邮件"

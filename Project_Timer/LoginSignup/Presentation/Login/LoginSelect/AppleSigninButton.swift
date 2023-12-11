@@ -25,7 +25,7 @@ struct AppleSigninButton: View {
                 HStack(spacing: 12) {
                     Text("")
                         .font(.system(size: 30))
-                    Text("Sign in with \("Apple")")
+                    Text(Localized.string(.SignIn_Button_SocialSignIn, op: "Apple"))
                         .font(.system(size: 20, weight: .bold, design: .default))
                 }
             }
