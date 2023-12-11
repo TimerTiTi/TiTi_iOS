@@ -96,14 +96,14 @@ struct SigninView: View {
                 
                 Text(verbatim: "TimerTiTi")
                     .foregroundStyle(.black)
-                    .font(TiTiFont.HGGGothicssiP80g(size: 15))
+                    .font(Fonts.HGGGothicssiP80g(size: 15))
                 
                 Spacer()
                     .frame(height: 58)
                 
                 Text("#\("TimerTiTi".localized())")
                     .foregroundStyle(.black)
-                    .font(TiTiFont.HGGGothicssiP80g(size: 33))
+                    .font(Fonts.HGGGothicssiP80g(size: 33))
                 
                 Spacer()
                     .frame(height: 58)
@@ -197,7 +197,7 @@ struct SigninView: View {
                         .frame(height: 1)
                         .foregroundStyle(.black.opacity(0.5))
                     Text("OR")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .font(Fonts.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                     Rectangle()
                         .frame(height: 1)
@@ -221,7 +221,7 @@ struct SigninView: View {
                     environment.navigationPath.append(SigninRoute.findEmail)
                 } label: {
                     Text("Find email")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .font(Fonts.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)
@@ -237,7 +237,7 @@ struct SigninView: View {
                     environment.navigationPath.append(SigninRoute.findPassword)
                 } label: {
                     Text("Find password")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .font(Fonts.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)
@@ -253,7 +253,7 @@ struct SigninView: View {
                     environment.navigationPath.append(SigninRoute.signup)
                 } label: {
                     Text("Sign up")
-                        .font(TiTiFont.HGGGothicssiP60g(size: 13))
+                        .font(Fonts.HGGGothicssiP60g(size: 13))
                         .foregroundStyle(.black.opacity(0.5))
                         .underline()
                         .padding(.vertical, 8)

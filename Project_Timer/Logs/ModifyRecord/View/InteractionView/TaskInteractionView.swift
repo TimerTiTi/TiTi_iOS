@@ -30,7 +30,7 @@ class TaskInteractionView: UIView {
     private var taskNameLabel: PaddingLabel = {
         let label = PaddingLabel(vertical: 0, horizontal: 7)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 16)
+        label.font = Fonts.HGGGothicssiP60g(size: 16)
         label.textColor = UIColor.label
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 25)
@@ -55,7 +55,7 @@ class TaskInteractionView: UIView {
     private var totalTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 19)
+        label.font = Fonts.HGGGothicssiP80g(size: 19)
         label.textColor = UIColor(named: String.userTintColor)
         label.textAlignment = .center
         label.text = "00:00:00"

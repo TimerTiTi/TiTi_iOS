@@ -38,7 +38,7 @@ struct StopwatchTimeLabelView: View {
             BaseSingleTimeLabelView(viewModel: baseViewModel.secondTensViewModel)
             BaseSingleTimeLabelView(viewModel: baseViewModel.secondUnitsViewModel)
         }
-        .font(TiTiFont.HGGGothicssiP60g(size: baseViewModel.fontSize))
+        .font(Fonts.HGGGothicssiP60g(size: baseViewModel.fontSize))
         .foregroundColor(self.color)
     }
 }

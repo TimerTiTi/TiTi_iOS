@@ -30,7 +30,7 @@ class SignupSigninVC: WhiteNavigationVC {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = TiTiFont.HGGGothicssiP80g(size: 15)
+        label.font = Fonts.HGGGothicssiP80g(size: 15)
         label.text = "TimerTiTi"
         return label
     }()

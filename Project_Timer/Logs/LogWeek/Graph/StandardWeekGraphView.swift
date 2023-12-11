@@ -15,7 +15,7 @@ final class StandardWeekGraphView: UIView {
     private var monthLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 25)
+        label.font = Fonts.HGGGothicssiP80g(size: 25)
         label.textColor = UIColor.label
         label.textAlignment = .left
         label.text = "0000.00"
@@ -27,7 +27,7 @@ final class StandardWeekGraphView: UIView {
     private var weekNumLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 25)
+        label.font = Fonts.HGGGothicssiP80g(size: 25)
         label.textColor = UIColor.label
         label.textAlignment = .left
         label.text = "WEEK 5"
@@ -39,7 +39,7 @@ final class StandardWeekGraphView: UIView {
     private var weekTermLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 14)
+        label.font = Fonts.HGGGothicssiP60g(size: 14)
         label.textColor = UIColor.label
         label.textAlignment = .left
         label.text = "00.00 ~ 00.00"

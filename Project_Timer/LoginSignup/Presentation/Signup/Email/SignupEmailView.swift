@@ -153,14 +153,14 @@ struct SignupEmailView: View {
                     .frame(maxWidth: .infinity)
                     // MARK: Timer 구현 필요
                     Text("4 : 59")
-                        .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                        .font(Fonts.HGGGothicssiP40g(size: 18))
                     // MARK: 재전송 구현 필요
                     Button {
                         // MARK: ViewModel 내에서 네트워킹이 필요한 부분
                         print("resend")
                     } label: {
                         Text("resend")
-                            .font(TiTiFont.HGGGothicssiP40g(size: 18))
+                            .font(Fonts.HGGGothicssiP40g(size: 18))
                     }
                 }
                 

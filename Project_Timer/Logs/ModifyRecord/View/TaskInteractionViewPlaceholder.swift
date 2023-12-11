@@ -15,7 +15,7 @@ final class TaskInteractionViewPlaceholder: UIView {
         label.text = "Select a task, Edit the record\nand press the SAVE button".localized()
         label.numberOfLines = 2
         label.textAlignment = .center
-        label.font = TiTiFont.HGGGothicssiP60g(size: 17)
+        label.font = Fonts.HGGGothicssiP60g(size: 17)
         label.textColor = UIColor.label
         return label
     }()

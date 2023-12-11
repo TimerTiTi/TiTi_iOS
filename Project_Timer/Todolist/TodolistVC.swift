@@ -167,7 +167,7 @@ extension TodolistVC {
         alert.addTextField { textField in
             textField.placeholder = "New Group Name".localized()
             textField.textAlignment = .center
-            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.font = Fonts.HGGGothicssiP60g(size: 17)
             textField.text = self.viewModel?.currentGroupName ?? "Untitled"
         }
         let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
@@ -188,7 +188,7 @@ extension TodolistVC {
         alert.addTextField { textField in
             textField.placeholder = "New Group Name".localized()
             textField.textAlignment = .center
-            textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+            textField.font = Fonts.HGGGothicssiP60g(size: 17)
             textField.text = ""
         }
         let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
@@ -230,7 +230,7 @@ extension TodolistVC {
             alert.addTextField { textField in
                 textField.placeholder = "New Todo's content".localized()
                 textField.textAlignment = .center
-                textField.font = TiTiFont.HGGGothicssiP60g(size: 17)
+                textField.font = Fonts.HGGGothicssiP60g(size: 17)
                 textField.text = originText
             }
             let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)

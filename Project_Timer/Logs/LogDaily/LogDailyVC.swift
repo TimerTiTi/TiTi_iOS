@@ -176,9 +176,9 @@ extension LogDailyVC {
         self.calendar.delegate = self
         self.calendar.dataSource = self
         self.calendar.appearance.headerDateFormat = "yyyy.MM"
-        self.calendar.appearance.headerTitleFont = TiTiFont.HGGGothicssiP80g(size: 25)
-        self.calendar.appearance.weekdayFont = TiTiFont.HGGGothicssiP80g(size: 13)
-        self.calendar.appearance.titleFont = TiTiFont.HGGGothicssiP60g(size: 18)
+        self.calendar.appearance.headerTitleFont = Fonts.HGGGothicssiP80g(size: 25)
+        self.calendar.appearance.weekdayFont = Fonts.HGGGothicssiP80g(size: 13)
+        self.calendar.appearance.titleFont = Fonts.HGGGothicssiP60g(size: 18)
         self.calendar.clipsToBounds = true
         self.calendar.layer.cornerCurve = .continuous
         self.calendar.layer.borderWidth = 2

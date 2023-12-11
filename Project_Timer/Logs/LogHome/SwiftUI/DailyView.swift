@@ -33,7 +33,7 @@ struct DailyView: View {
 extension DailyView {
     var DateTextView: some View {
         Text(self.dateText)
-            .font(TiTiFont.HGGGothicssiP80g(size: 24))
+            .font(Fonts.HGGGothicssiP80g(size: 24))
     }
     
     var DaysOfWeekView: some View {

@@ -13,7 +13,7 @@ final class HowToAddWidgetVC: UIViewController {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 17)
+        label.font = Fonts.HGGGothicssiP80g(size: 17)
         label.textColor = .black
         label.text = "How to add Widget".localized()
         return label

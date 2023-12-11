@@ -108,7 +108,7 @@ struct SignupPasswordView: View {
                 Spacer()
                     .frame(height: 35)
                 Text("다시 한번 입력해 주세요")
-                    .font(TiTiFont.HGGGothicssiP60g(size: 14))
+                    .font(Fonts.HGGGothicssiP60g(size: 14))
                     .foregroundStyle(Color.primary)
                 Spacer()
                     .frame(height: 16)

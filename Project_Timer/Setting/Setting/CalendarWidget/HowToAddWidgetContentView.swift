@@ -12,7 +12,7 @@ final class HowToAddWidgetContentView: UIView {
     private var stepLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP80g(size: 20)
+        label.font = Fonts.HGGGothicssiP80g(size: 20)
         label.textColor = .lightGray
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -21,7 +21,7 @@ final class HowToAddWidgetContentView: UIView {
     private var descriptionlabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 17)
+        label.font = Fonts.HGGGothicssiP60g(size: 17)
         label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 0

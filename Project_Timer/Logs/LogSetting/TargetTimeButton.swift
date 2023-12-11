@@ -14,7 +14,7 @@ final class TargetTimeButton: UIButton {
     private var hourLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = TiTiFont.HGGGothicssiP60g(size: 14)
+        label.font = Fonts.HGGGothicssiP60g(size: 14)
         label.textColor = .label
         label.textAlignment = .right
         return label
@@ -31,7 +31,7 @@ final class TargetTimeButton: UIButton {
         self.layer.cornerRadius = 8
         self.layer.cornerCurve = .continuous
         self.backgroundColor = .systemGroupedBackground
-        self.titleLabel?.font = TiTiFont.HGGGothicssiP60g(size: 17)
+        self.titleLabel?.font = Fonts.HGGGothicssiP60g(size: 17)
         self.setTitleColor(.label, for: .normal)
         self.contentHorizontalAlignment = .left
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)

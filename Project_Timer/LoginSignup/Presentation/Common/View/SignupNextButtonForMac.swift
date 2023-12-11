@@ -24,7 +24,7 @@ struct SignupNextButtonForMac: View {
                     .frame(height: 60)
                 
                 Text("Next")
-                    .font(TiTiFont.HGGGothicssiP60g(size: 20))
+                    .font(Fonts.HGGGothicssiP60g(size: 20))
                     .foregroundStyle(Color.white)
             }
         }
