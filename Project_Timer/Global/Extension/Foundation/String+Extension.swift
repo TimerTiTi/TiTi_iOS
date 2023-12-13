@@ -31,3 +31,27 @@ extension String {
         return dateFormatter.date(from: self)
     }
 }
+
+import NaturalLanguage
+
+extension String {
+    func language() -> String? {
+        let words = self.components(separatedBy: " ")
+        let recognizer = NLLanguageRecognizer()
+        var languages: [String?] = []
+        for word in words {
+            recognizer.processString(word)
+            if let languageCode = recognizer.dominantLanguage?.rawValue{
+                languages.append(Locale(identifier: "en").localizedString(forIdentifier: languageCode))
+            }
+        }
+        
+        if languages.contains("Chinese, Simplified") {
+            return "Chinese, Simplified"
+        } else {
+            recognizer.processString(self)
+            guard let languageCode = recognizer.dominantLanguage?.rawValue else { return nil }
+            return Locale(identifier: "en").localizedString(forIdentifier: languageCode)
+        }
+    }
+}

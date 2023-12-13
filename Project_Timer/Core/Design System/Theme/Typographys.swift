@@ -31,6 +31,15 @@ struct Typographys {
         }
     }
     
+    static func autoFont(_ string: String, _ key: Key, size: CGFloat) -> Font {
+        print(string, string.language())
+        if ["Chinese, Simplified"].contains(string.language()) {
+            return MiSans(key, size)
+        } else {
+            return HGGGOTHICSSIP(key, size)
+        }
+    }
+    
     static func uifont(_ key: Key, size: CGFloat) -> UIFont? {
         // MARK: 추후 UserDefaults 값 추가확인 필요
         let language = Language.system
@@ -72,9 +81,9 @@ extension Typographys {
         case .normal_3:
             return Fonts.MiSansNormal(size: size)
         case .semibold_4:
-            return Fonts.MiSansMedium(size: size)
+            return Fonts.MiSansRegular(size: size)
         case .bold_5:
-            return Fonts.MiSansSemibold(size: size)
+            return Fonts.MiSansDemibold(size: size)
         case .heavy_6:
             return Fonts.MiSansBold(size: size)
         }

@@ -31,6 +31,11 @@ enum Language: String {
             return Language(rawValue: languageCode) ?? .en
         }
     }
+    
+    /// UserDefault 선택값
+    static var current: Language {
+        return Language.system
+    }
 }
 
 // MARK: localizable.string 기반

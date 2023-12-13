@@ -24,7 +24,7 @@ struct TTSettingSelectableCell: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text(title)
-                            .font(Typographys.font(.semibold_4, size: 17))
+                            .font(Typographys.autoFont(title, .semibold_4, size: 17))
                             .foregroundStyle(Color.primary)
                         if subTitle != nil {
                             Text(subTitle ?? "")
@@ -42,12 +42,11 @@ struct TTSettingSelectableCell: View {
             }
             .frame(height: subTitle != nil ? 64 : 55)
         }
-
     }
 }
 
 #Preview {
-    TTSettingSelectableCell(title: "System 언어", subTitle: "한국어", isSelected: true) {
+    TTSettingSelectableCell(title: "简体中文", subTitle: "한국어", isSelected: true) {
         print("tap")
     }
 }
