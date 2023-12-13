@@ -313,6 +313,8 @@
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
 		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
+		87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */; };
+		87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
@@ -662,6 +664,8 @@
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
 		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
+		87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageListView.swift; sourceTree = "<group>"; };
+		87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVM.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
 		87DB923D2AC2D06C00FE6453 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -1627,6 +1631,8 @@
 			isa = PBXGroup;
 			children = (
 				87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */,
+				87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */,
+				87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */,
 			);
 			path = Language;
 			sourceTree = "<group>";
@@ -2210,6 +2216,7 @@
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
 				87BFCBCA28EFAFFC00FC688E /* TargetTimePickerPopupVC.swift in Sources */,
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
+				87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */,
 				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
 				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
@@ -2221,6 +2228,7 @@
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
+				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
