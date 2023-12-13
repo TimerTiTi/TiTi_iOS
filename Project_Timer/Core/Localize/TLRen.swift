@@ -22,6 +22,11 @@ struct TLRen {
             
         case .Settings_Button_SingInOption: value = "Sign in"
         case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"
+        case .Settings_Button_LanguageOption: value = "Language"
+        case .Settings_Button_SystemLanguage: value = "System Language"
+        case .Settings_Button_Korean: value = "Korean"
+        case .Settings_Button_English: value = "English"
+        case .Settings_Button_Chinese: value = "Chinese, Simplified"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"

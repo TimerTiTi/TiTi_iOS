@@ -311,6 +311,7 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
+		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
@@ -658,6 +659,7 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
+		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
 		87DB923D2AC2D06C00FE6453 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -1167,6 +1169,7 @@
 				877911B72A18903000F0A713 /* SettingListCell.swift */,
 				877911BB2A18922400F0A713 /* SettingListCellInfo.swift */,
 				8760FB0F2A1DCA690068CEF5 /* CalendarWidget */,
+				87D83E832B285D1C003C40AE /* Language */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1615,6 +1618,14 @@
 				879BE3252AC42919007AAC46 /* SigninInputTextfield.swift */,
 			);
 			path = TestServer;
+			sourceTree = "<group>";
+		};
+		87D83E832B285D1C003C40AE /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 		87DA71742A13A9EF006294DE /* Widget */ = {
@@ -2119,6 +2130,7 @@
 				8706C32C2AEF864000F7C842 /* SignupTitleView.swift in Sources */,
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
+				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,

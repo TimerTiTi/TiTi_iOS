@@ -22,6 +22,11 @@ struct TLRko {
             
         case .Settings_Button_SingInOption: value = "로그인하기"
         case .Settings_Button_SingInOptionDesc: value = "동기화 기능을 사용해보세요"
+        case .Settings_Button_LanguageOption: value = "언어"
+        case .Settings_Button_SystemLanguage: value = "System 언어"
+        case .Settings_Button_Korean: value = "한국어"
+        case .Settings_Button_English: value = "영어"
+        case .Settings_Button_Chinese: value = "중국어(간체)"
             
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"

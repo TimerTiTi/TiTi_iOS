@@ -67,6 +67,7 @@ enum Destination {
     case notification
     case ui
     case control
+    case language
     case widget
     case signinSelect
     // other app 분기처리

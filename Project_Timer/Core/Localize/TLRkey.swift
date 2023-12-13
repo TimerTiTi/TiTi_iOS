@@ -28,6 +28,16 @@ enum TLRkey: String {
     case Settings_Button_SingInOption
     /// 동기화 기능을 사용해보세요
     case Settings_Button_SingInOptionDesc
+    /// 언어
+    case Settings_Button_LanguageOption
+    /// System 언어
+    case Settings_Button_SystemLanguage
+    /// 한국어
+    case Settings_Button_Korean
+    /// 영어
+    case Settings_Button_English
+    /// 중국어(간체)
+    case Settings_Button_Chinese
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi
