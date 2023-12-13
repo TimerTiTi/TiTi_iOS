@@ -315,6 +315,7 @@
 		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
 		87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */; };
 		87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */; };
+		87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
@@ -2066,6 +2067,7 @@
 				87DB923F2AC2D12A00FE6453 /* View+Extension.swift in Sources */,
 				87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */,
 				87DB92402AC2D9A800FE6453 /* UIColor+Extension.swift in Sources */,
+				87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */,
 				870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */,
@@ -2493,7 +2495,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2732,7 +2734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2759,7 +2761,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;

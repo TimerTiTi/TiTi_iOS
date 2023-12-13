@@ -43,6 +43,8 @@ struct UserDefaultsManager {
         case calendarWidgetColor
         case calendarWidgetColorIsReverse
         case calendarWidgetTargetTime
+        // language
+        case languageCode
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
@@ -52,5 +54,9 @@ struct UserDefaultsManager {
     
     static func get(forKey: Self.Keys) -> Any? {
         return UserDefaults.standard.object(forKey: forKey.rawValue)
+    }
+    
+    static func delete(forKey: Self.Keys) {
+        UserDefaults.standard.removeObject(forKey: forKey.rawValue)
     }
 }

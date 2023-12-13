@@ -25,19 +25,19 @@ struct SettingLanguageListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 1) {
-                TTSettingSelectableCell(title: Localized.string(.Settings_Button_SystemLanguage), subTitle: currentLanguage, isSelected: isSelected(.system)) {
+                TTSettingSelectableCell(title: Localized.string(.Language_Button_SystemLanguage), subTitle: currentLanguage, isSelected: isSelected(.system)) {
                     viewModel.selected = .system
                 }
                 
-                TTSettingSelectableCell(title: "한국어", subTitle: Localized.string(.Settings_Button_Korean), isSelected: isSelected(.ko)) {
+                TTSettingSelectableCell(title: "한국어", subTitle: Localized.string(.Language_Button_Korean), isSelected: isSelected(.ko)) {
                     viewModel.selected = .ko
                 }
                 
-                TTSettingSelectableCell(title: "English", subTitle: Localized.string(.Settings_Button_English), isSelected: isSelected(.en)) {
+                TTSettingSelectableCell(title: "English", subTitle: Localized.string(.Language_Button_English), isSelected: isSelected(.en)) {
                     viewModel.selected = .en
                 }
                 
-                TTSettingSelectableCell(title: "简体中文", subTitle: Localized.string(.Settings_Button_Chinese), isSelected: isSelected(.zh)) {
+                TTSettingSelectableCell(title: "简体中文", subTitle: Localized.string(.Language_Button_Chinese), isSelected: isSelected(.zh)) {
                     viewModel.selected = .zh
                 }
             }
@@ -45,10 +45,10 @@ struct SettingLanguageListView: View {
     }
     
     var currentLanguage: String {
-        switch Language.current {
-        case .ko: return Localized.string(.Settings_Button_Korean)
-        case .en: return Localized.string(.Settings_Button_English)
-        case .zh: return Localized.string(.Settings_Button_Chinese)
+        switch Language.system {
+        case .ko: return Localized.string(.Language_Button_Korean)
+        case .en: return Localized.string(.Language_Button_English)
+        case .zh: return Localized.string(.Language_Button_Chinese)
         }
     }
     
