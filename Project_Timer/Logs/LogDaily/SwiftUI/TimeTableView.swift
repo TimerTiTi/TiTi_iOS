@@ -30,7 +30,7 @@ struct TimeTableView: View {
             ForEach(viewModel.blocks) { block in
                 RoundedRectangle(cornerRadius: 2)
                     .fill(LinearGradient(
-                        gradient: .init(colors: [TiTiColor.graphColor(num: block.colorIndex).toColor.opacity(0.9), TiTiColor.graphColor(num: block.colorIndex).toColor]),
+                        gradient: .init(colors: [Colors.graphColor(num: block.colorIndex).toColor.opacity(0.9), Colors.graphColor(num: block.colorIndex).toColor]),
                         startPoint: .top,
                         endPoint: .bottom
                       ))

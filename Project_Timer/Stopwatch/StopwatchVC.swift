@@ -49,7 +49,7 @@ final class StopwatchVC: UIViewController {
         return view
     }()
     
-    private var backgroundColor = TiTiColor.stopwatchBackground
+    private var backgroundColor = Colors.stopwatchBackground
     private var textColor = UIColor.white
     private var secondTextColor = UIColor.black.withAlphaComponent(0.7)
     private var cancellables: Set<AnyCancellable> = []
@@ -102,7 +102,7 @@ final class StopwatchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: Colors.tabbarNonSelect!)
         self.viewModel?.updateTask()
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
@@ -124,7 +124,7 @@ final class StopwatchVC: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: Colors.tabbarNonSelect!)
         guard UIDevice.current.userInterfaceIdiom == .pad,
               self.lastViewSize != self.view.bounds.size,
               UserDefaultsManager.get(forKey: .bigUI) as? Bool ?? true else { return }
@@ -503,8 +503,8 @@ extension StopwatchVC {
     }
     
     private func setTaskWarningColor() {
-        self.taskButton.setTitleColor(TiTiColor.noTaskWarningRed, for: .normal)
-        self.taskButton.layer.borderColor = TiTiColor.noTaskWarningRed?.cgColor
+        self.taskButton.setTitleColor(Colors.noTaskWarningRed, for: .normal)
+        self.taskButton.layer.borderColor = Colors.noTaskWarningRed?.cgColor
     }
     
     private func setTaskWhiteColor() {
@@ -541,7 +541,7 @@ extension StopwatchVC {
             self.settingBT.alpha = 0
             self.resetBT.alpha = 0
             self.taskButton.layer.borderColor = UIColor.clear.cgColor
-            self.startStopBTLabel.textColor = TiTiColor.warningRed
+            self.startStopBTLabel.textColor = Colors.warningRed
             self.startStopBT.layer.borderColor = UIColor.clear.cgColor
             self.startStopBTLabel.text = "◼︎"
             self.colorSelectorBorderView.alpha = 0
@@ -562,7 +562,7 @@ extension StopwatchVC {
         self.view.backgroundColor = self.backgroundColor
         self.outterProgress.progressColor = self.textColor
         self.innerProgress.progressColor = self.secondTextColor
-        self.startStopBT.backgroundColor = TiTiColor.startButton
+        self.startStopBT.backgroundColor = Colors.startButton
         self.taskButton.setTitleColor(self.textColor, for: .normal)
         self.sumTimeLabel.textColor = self.textColor
         self.stopWatchLabel.textColor = self.textColor
@@ -578,7 +578,7 @@ extension StopwatchVC {
             self.resetBT.alpha = 1
             self.taskButton.layer.borderColor = self.textColor.cgColor
             self.startStopBTLabel.textColor = self.textColor
-            self.startStopBT.layer.borderColor = TiTiColor.startButton?.cgColor
+            self.startStopBT.layer.borderColor = Colors.startButton?.cgColor
             self.startStopBTLabel.text = "▶︎"
             self.colorSelectorBorderView.alpha = 1
             self.tabBarController?.tabBar.isHidden = false
@@ -628,7 +628,7 @@ extension StopwatchVC {
     private func showWarningRecordDate() {
         UIView.animate(withDuration: 0.15) {
             self.warningRecordDate.alpha = 1
-            self.todayLabel.textColor = TiTiColor.warningRed
+            self.todayLabel.textColor = Colors.warningRed
         }
     }
     
@@ -840,7 +840,7 @@ extension StopwatchVC: ColorUpdateable {
         self.setStopColor()
         self.viewModel?.updateTextColor(isWhite: isWhite)
         self.view.layoutSubviews()
-        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: TiTiColor.tabbarNonSelect!)
+        self.tabBarController?.updateTabbarColor(backgroundColor: .clear, tintColor: self.textColor, normalColor: Colors.tabbarNonSelect!)
     }
 }
 

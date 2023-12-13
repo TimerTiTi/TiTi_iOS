@@ -109,7 +109,7 @@ extension SignupSigninVC {
     
     private func configureUI(width: CGFloat = 300) {
         self.addDismissingKeyboard()
-        self.view.backgroundColor = TiTiColor.signinBackground
+        self.view.backgroundColor = Colors.signinBackground
         
         self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: width)
         self.contentViewWidth?.isActive = true

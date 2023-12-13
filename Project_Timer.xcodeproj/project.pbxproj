@@ -36,7 +36,7 @@
 		04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E0DFCC28A94460004DABBE /* PaddingLabel.swift */; };
 		04F0D2B9286607A7007ED596 /* BaseSingleTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0D2B8286607A7007ED596 /* BaseSingleTimeLabelVM.swift */; };
 		04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */; };
-		04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* TiTiColor.swift */; };
+		04FA75D6286F263300BAE2B2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D5286F263300BAE2B2 /* Colors.swift */; };
 		04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
 		870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */; };
 		870055C128EE966100F8BCA9 /* SettingRecordCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870055C028EE966100F8BCA9 /* SettingRecordCellInfo.swift */; };
@@ -312,6 +312,7 @@
 		87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
+		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
 		87DA716D2A12258D006294DE /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87DA71732A124261006294DE /* MonthWidgetData+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */; };
 		87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */; };
@@ -404,7 +405,7 @@
 		04E0DFCC28A94460004DABBE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		04F0D2B8286607A7007ED596 /* BaseSingleTimeLabelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSingleTimeLabelVM.swift; sourceTree = "<group>"; };
 		04FA75D2286EE4D900BAE2B2 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
-		04FA75D5286F263300BAE2B2 /* TiTiColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiTiColor.swift; sourceTree = "<group>"; };
+		04FA75D5286F263300BAE2B2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		04FA75D7286F2AB900BAE2B2 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		807037BD783B14503F430DB8 /* Pods_Project_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Project_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		870055BE28EE958F00F8BCA9 /* SettingRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordCell.swift; sourceTree = "<group>"; };
@@ -660,6 +661,7 @@
 		87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninInfo.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
+		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
 		87DA71762A13AA16006294DE /* CalendarWidgetData+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarWidgetData+init.swift"; sourceTree = "<group>"; };
 		87DB923D2AC2D06C00FE6453 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -919,6 +921,7 @@
 		87306D5A2B26CB33001B7C14 /* Design System */ = {
 			isa = PBXGroup;
 			children = (
+				87D83E862B29604C003C40AE /* Component */,
 				87306D5F2B26CBB3001B7C14 /* Icon */,
 				87306D5B2B26CB4D001B7C14 /* Theme */,
 				87306D622B26CC13001B7C14 /* Resource */,
@@ -930,7 +933,7 @@
 			isa = PBXGroup;
 			children = (
 				87306D5C2B26CB5C001B7C14 /* Typographys.swift */,
-				04FA75D5286F263300BAE2B2 /* TiTiColor.swift */,
+				04FA75D5286F263300BAE2B2 /* Colors.swift */,
 				04FA75D7286F2AB900BAE2B2 /* Fonts.swift */,
 			);
 			path = Theme;
@@ -1628,6 +1631,14 @@
 			path = Language;
 			sourceTree = "<group>";
 		};
+		87D83E862B29604C003C40AE /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		87DA71742A13A9EF006294DE /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -2213,6 +2224,7 @@
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
+				87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
@@ -2314,7 +2326,7 @@
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
 				87A7624726493BB500174401 /* LogHomeVC.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */,
-				04FA75D6286F263300BAE2B2 /* TiTiColor.swift in Sources */,
+				04FA75D6286F263300BAE2B2 /* Colors.swift in Sources */,
 				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
 				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,

@@ -15,7 +15,7 @@ struct SigninView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TiTiColor.signinBackground.toColor
+                Colors.signinBackground.toColor
                     .ignoresSafeArea()
                 
                 VStack(alignment: .center) {

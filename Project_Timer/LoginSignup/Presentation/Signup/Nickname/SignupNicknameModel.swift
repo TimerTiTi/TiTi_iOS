@@ -25,7 +25,7 @@ class SignupNicknameModel: ObservableObject {
     // nicknameTextField underline 컬러
     var nicknameTintColor: Color {
         if validNickname == false {
-            return TiTiColor.wrongTextField.toColor
+            return Colors.wrongTextField.toColor
         } else {
             return focus == .nickname ? Color.blue : UIColor.placeholderText.toColor
         }

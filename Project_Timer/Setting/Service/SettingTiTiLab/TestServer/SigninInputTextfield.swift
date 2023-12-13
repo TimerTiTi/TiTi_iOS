@@ -23,7 +23,7 @@ class SigninInputTextfield: UIView {
         textField.font = .systemFont(ofSize: 16, weight: .bold)
         textField.textColor = .black
         textField.placeholder = "placeholder"
-        textField.setPlaceholderColor(TiTiColor.placeholderGray)
+        textField.setPlaceholderColor(Colors.placeholderGray)
         textField.enablesReturnKeyAutomatically = true
         textField.returnKeyType = .done
         return textField

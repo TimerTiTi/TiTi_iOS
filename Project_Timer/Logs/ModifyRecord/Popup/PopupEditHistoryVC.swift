@@ -76,7 +76,7 @@ extension PopupEditHistoryVC {
     }
     
     private func configureColor() {
-        let color = TiTiColor.graphColor(num: self.colorIndex)
+        let color = Colors.graphColor(num: self.colorIndex)
         self.startTimeButton.backgroundColor = color.withAlphaComponent(0.5)
         self.startTimeButton.borderColor = color
         self.endTimeButton.backgroundColor = color.withAlphaComponent(0.5)

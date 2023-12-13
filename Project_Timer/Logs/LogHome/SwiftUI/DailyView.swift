@@ -60,7 +60,7 @@ extension DailyView {
                 VStack(alignment: .center, spacing: 2) {
                     Spacer(minLength: 0)
                     RoundedShape()
-                        .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
+                        .fill(LinearGradient(gradient: .init(colors: [Colors.graphColor(num: viewModel.color1Index).toColor, Colors.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
                         .frame(height: self.getHeight(time: time.sumTime))
                     Text("\(time.id)")
                         .font(.system(size: 8))
@@ -80,7 +80,7 @@ extension DailyView {
     }
     
     private func timeColor(time: Int) -> Color {
-        let color = TiTiColor.graphColor(num: viewModel.color2Index)
+        let color = Colors.graphColor(num: viewModel.color2Index)
         if time == 0 {
             return UIColor(named: "Empty")?.toColor ?? .clear
         } else if time >= 3000 {

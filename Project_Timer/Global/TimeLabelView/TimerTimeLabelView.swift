@@ -22,7 +22,7 @@ struct TimerTimeLabelView: View {
         case .normalRunning:
             return Color.timerColor
         case .lessThan60Sec:
-            return Color(TiTiColor.warningRed ?? .clear)
+            return Color(Colors.warningRed ?? .clear)
         case .stopped:
             return baseViewModel.isWhite ? .white : .black.opacity(0.55)
         }
