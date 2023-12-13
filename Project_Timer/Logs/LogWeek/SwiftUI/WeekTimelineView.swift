@@ -28,7 +28,7 @@ struct WeekTimelineView: View {
                         .font(.system(size: 9))
                         .padding(.bottom, -6)
                     RoundedShape(radius: 6)
-                        .fill(LinearGradient(gradient: .init(colors: [TiTiColor.graphColor(num: viewModel.color1Index).toColor, TiTiColor.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
+                        .fill(LinearGradient(gradient: .init(colors: [Colors.graphColor(num: viewModel.color1Index).toColor, Colors.graphColor(num: viewModel.color2Index).toColor]), startPoint: .top, endPoint: .bottom))
                         .frame(height: self.getHeight(value: weekTime.sumTime))
                         .padding(.bottom, -4)
                     Text(weekTime.day)

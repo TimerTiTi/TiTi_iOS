@@ -19,7 +19,7 @@ struct SignupEmailView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TiTiColor.firstBackground.toColor
+                Colors.firstBackground.toColor
                     .ignoresSafeArea()
                 
                 ContentView(model: model)

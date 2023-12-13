@@ -34,7 +34,7 @@ struct TasksCircularProgressSwiftUIView: View {
         if self.tasksAndBlocks.isEmpty {
             ZStack {
                 Circle()
-                    .stroke(TiTiColor.graphColor(num: colorIndex).toColor.opacity(0.5),
+                    .stroke(Colors.graphColor(num: colorIndex).toColor.opacity(0.5),
                             lineWidth: lineWidth)
                     .frame(width: circleSize, height: circleSize, alignment: .center)
                 Text("\(totalHours)")
@@ -75,7 +75,7 @@ extension TasksCircularProgressSwiftUIView {
             } else {
                 progressColorIndex = (colorIndex + (tasksAndBlocks.count/2-1) - index + 12)%12
             }
-            return TiTiColor.graphColor(num: progressColorIndex == 0 ? 12 : progressColorIndex).toColor
+            return Colors.graphColor(num: progressColorIndex == 0 ? 12 : progressColorIndex).toColor
         }
     }
 }

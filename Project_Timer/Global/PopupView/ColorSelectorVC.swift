@@ -66,14 +66,14 @@ extension ColorSelectorVC {
         
         switch self.target {
         case .timer:
-            self.backgroundColor = TiTiColor.timerBackground
+            self.backgroundColor = Colors.timerBackground
             if let color = UserDefaults.colorForKey(key: .timerBackground) {
                 self.backgroundColor = color
             }
             let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
             self.textTintColor = isWhite ? .white : .black
         case .stopwatcch:
-            self.backgroundColor = TiTiColor.stopwatchBackground
+            self.backgroundColor = Colors.stopwatchBackground
             if let color = UserDefaults.colorForKey(key: .stopwatchBackground) {
                 self.backgroundColor = color
             } else if let color = UserDefaults.colorForKey(key: .color) {

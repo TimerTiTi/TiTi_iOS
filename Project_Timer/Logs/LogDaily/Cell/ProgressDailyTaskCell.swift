@@ -35,7 +35,7 @@ final class ProgressDailyTaskCell: UICollectionViewCell {
         } else {
             colorIndex = (startColorIndex + index + 12)%12 == 0 ? 12 : (startColorIndex + index + 12)%12
         }
-        let color = TiTiColor.graphColor(num: colorIndex)
+        let color = Colors.graphColor(num: colorIndex)
         self.tasksBackgroundView.backgroundColor = color
         self.taskTimeLabel.textColor = color
     }

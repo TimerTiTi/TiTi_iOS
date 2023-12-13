@@ -22,13 +22,13 @@ struct WeekSmallView: View {
         VStack {
             ZStack {
                 Circle()
-                    .stroke(TiTiColor.graphColor(num: viewModel.colorIndex).toColor.opacity(0.5),
+                    .stroke(Colors.graphColor(num: viewModel.colorIndex).toColor.opacity(0.5),
                             lineWidth: lineWidth)
                     .frame(width: circleSize, height: circleSize, alignment: .center)
                 
                 Circle()
                     .trim(from: 0, to: progress)
-                    .stroke(TiTiColor.graphColor(num: viewModel.colorIndex).toColor.opacity(1.0),
+                    .stroke(Colors.graphColor(num: viewModel.colorIndex).toColor.opacity(1.0),
                             style: StrokeStyle(lineWidth: lineWidth, lineCap: .round))
                     .frame(width: circleSize, height: circleSize, alignment: .center)
                     .rotationEffect(.degrees(-90))

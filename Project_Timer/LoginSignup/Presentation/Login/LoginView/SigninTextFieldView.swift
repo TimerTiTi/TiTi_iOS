@@ -35,7 +35,7 @@ struct SigninTextFieldView: View {
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(TiTiColor.placeholderGray.toColor)
+                            .foregroundStyle(Colors.placeholderGray.toColor)
                     }
                     .keyboardType(self.type == .email ? .emailAddress : .alphabet)
                     .focused($focus, equals: self.type) // textField 활성화값 반영
@@ -55,7 +55,7 @@ struct SigninTextFieldView: View {
                     .placeholder(when: text.isEmpty) { // placeholder 텍스트 설정
                         Text(placeholder)
                             .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(TiTiColor.placeholderGray.toColor)
+                            .foregroundStyle(Colors.placeholderGray.toColor)
                     }
                     .keyboardType(.alphabet)
                     .focused($focus, equals: self.type) // textField 활성화값 반영

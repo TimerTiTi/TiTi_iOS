@@ -61,7 +61,7 @@ extension HistoryCell {
 
 extension HistoryCell {
     private func configureColor(colorIndex: Int) {
-        let color = TiTiColor.graphColor(num: colorIndex)
+        let color = Colors.graphColor(num: colorIndex)
         self.startTimeLabel.backgroundColor = color.withAlphaComponent(0.5)
         self.endTimeLabel.backgroundColor = color.withAlphaComponent(0.5)
         self.underLine.backgroundColor = color

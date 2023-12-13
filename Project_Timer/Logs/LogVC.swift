@@ -38,7 +38,7 @@ final class LogVC: UIViewController {
         #else
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         #endif
-        self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
+        self.tabBarController?.updateTabbarColor(backgroundColor: Colors.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     override func viewWillLayoutSubviews() {
@@ -47,7 +47,7 @@ final class LogVC: UIViewController {
         #else
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         #endif
-        self.tabBarController?.updateTabbarColor(backgroundColor: TiTiColor.tabbarBackground, tintColor: .label, normalColor: .lightGray)
+        self.tabBarController?.updateTabbarColor(backgroundColor: Colors.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
     
     @IBAction func changePage(_ sender: UISegmentedControl) {

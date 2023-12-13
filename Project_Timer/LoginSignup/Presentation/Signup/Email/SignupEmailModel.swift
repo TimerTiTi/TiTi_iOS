@@ -40,7 +40,7 @@ class SignupEmailModel: ObservableObject {
     // emailTextField underline 컬러
     var emailTintColor: Color {
         if validEmail == false {
-            return TiTiColor.wrongTextField.toColor
+            return Colors.wrongTextField.toColor
         } else {
             return focus == .email ? Color.blue : UIColor.placeholderText.toColor
         }
@@ -49,7 +49,7 @@ class SignupEmailModel: ObservableObject {
     // verificationCodeTextField underline 컬러
     var authCodeTintColor: Color {
         if validVerificationCode == false && verificationCode.isEmpty {
-            return TiTiColor.wrongTextField.toColor
+            return Colors.wrongTextField.toColor
         } else {
             return focus == .verificationCode ? Color.blue : UIColor.placeholderText.toColor
         }

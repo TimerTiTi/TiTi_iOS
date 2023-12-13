@@ -1,5 +1,5 @@
 //
-//  TiTiColor.swift
+//  Colors.swift
 //  Project_Timer
 //
 //  Created by 최수정 on 2022/07/01.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum TiTiColor {
+enum Colors {
     static let shadow = UIColor(named: "shadow")
     static let timerBackground = UIColor(named: "timerBackground")
     static let stopwatchBackground = UIColor(named: "stopwatchBackground")

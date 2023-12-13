@@ -91,7 +91,7 @@ final class StandardWeekGraphView: UIView {
             collectionView.widthAnchor.constraint(equalToConstant: 223)
         ])
         collectionView.tag = 0
-        collectionView.backgroundColor = TiTiColor.systemBackground
+        collectionView.backgroundColor = Colors.systemBackground
         return collectionView
     }()
     private var timesFrameView: UIView = {
@@ -123,7 +123,7 @@ final class StandardWeekGraphView: UIView {
     
     private func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = TiTiColor.systemBackground
+        self.backgroundColor = Colors.systemBackground
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 365),
             self.heightAnchor.constraint(equalToConstant: 365)

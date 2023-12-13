@@ -21,7 +21,7 @@ struct SigninSelectView: View {
         NavigationStack(path: $environment.navigationPath) {
             GeometryReader { geometry in
                 ZStack {
-                    TiTiColor.signinBackground.toColor
+                    Colors.signinBackground.toColor
                         .ignoresSafeArea()
                     
                     VStack(alignment: .center) {

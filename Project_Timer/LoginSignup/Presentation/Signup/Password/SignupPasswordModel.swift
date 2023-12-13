@@ -34,7 +34,7 @@ class SignupPasswordModel: ObservableObject {
     // passwordTextField underline 컬러
     var passwordTintColor: Color {
         if validPassword == false && password.isEmpty {
-            return TiTiColor.wrongTextField.toColor
+            return Colors.wrongTextField.toColor
         } else {
             return focus == .password ? Color.blue : UIColor.placeholderText.toColor
         }
@@ -43,7 +43,7 @@ class SignupPasswordModel: ObservableObject {
     // passwordTextField2 underline 컬러
     var password2TintColor: Color {
         if validPassword2 == false && password2.isEmpty {
-            return TiTiColor.wrongTextField.toColor
+            return Colors.wrongTextField.toColor
         } else {
             return focus == .password2 ? Color.blue : UIColor.placeholderText.toColor
         }

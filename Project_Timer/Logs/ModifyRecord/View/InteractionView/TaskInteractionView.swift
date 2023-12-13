@@ -219,7 +219,7 @@ extension TaskInteractionView {
     }
     
     private func configureColor(colorIndex: Int) {
-        let color = TiTiColor.graphColor(num: colorIndex)
+        let color = Colors.graphColor(num: colorIndex)
         self.taskNameLabel.backgroundColor = color.withAlphaComponent(0.5)
         self.totalTimeLabel.textColor = color
         self.finishButton.backgroundColor = color

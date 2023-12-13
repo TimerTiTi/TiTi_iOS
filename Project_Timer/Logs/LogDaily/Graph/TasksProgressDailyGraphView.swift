@@ -62,7 +62,7 @@ final class TasksProgressDailyGraphView: UIView {
     
     private func commonInit() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = TiTiColor.systemBackground
+        self.backgroundColor = Colors.systemBackground
         NSLayoutConstraint.activate([
             self.widthAnchor.constraint(equalToConstant: 365),
             self.heightAnchor.constraint(equalToConstant: 365)
