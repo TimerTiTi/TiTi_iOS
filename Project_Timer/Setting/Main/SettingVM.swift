@@ -52,12 +52,22 @@ final class SettingVM {
             SettingCellInfo(title: "TiTi Lab".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingTiTiLabVC.identifier))
         ])
         // Setting
-        cells.append([
-            SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
-            SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
-            SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
-            SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
-        ])
+        if Infos.isDevMode {
+            cells.append([
+                SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
+                SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
+                SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
+                SettingCellInfo(title: Localized.string(.Settings_Button_LanguageOption), action: .pushVC, destination: .language),
+                SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
+            ])
+        } else {
+            cells.append([
+                SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
+                SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
+                SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
+                SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
+            ])
+        }
         #if targetEnvironment(macCatalyst)
         cells.last?.remove(at: 2) // Control 제거
         #endif

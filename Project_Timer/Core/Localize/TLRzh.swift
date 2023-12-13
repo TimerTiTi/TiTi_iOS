@@ -22,6 +22,11 @@ struct TLRzh {
             
         case .Settings_Button_SingInOption: value = "登录"
         case .Settings_Button_SingInOptionDesc: value = "尝试同步"
+        case .Settings_Button_LanguageOption: value = "语言"
+        case .Settings_Button_SystemLanguage: value = "System 语言"
+        case .Settings_Button_Korean: value = "韩语"
+        case .Settings_Button_English: value = "英语"
+        case .Settings_Button_Chinese: value = "简体中文"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
