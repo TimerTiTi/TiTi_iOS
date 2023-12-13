@@ -33,8 +33,19 @@ enum Language: String {
     }
     
     /// UserDefault 선택값
+    static var setted: Language? {
+        guard let languageCode = UserDefaultsManager.get(forKey: .languageCode) as? String else { return nil }
+        
+        return Language(rawValue: languageCode)
+    }
+    
+    /// 언어값
     static var current: Language {
-        return Language.system
+        if let setted = setted {
+            return setted
+        } else {
+            return .system
+        }
     }
 }
 

@@ -11,8 +11,7 @@ import Foundation
 // MARK: TLR 기반 lozalized string
 struct Localized {
     static func string(_ key: TLRkey, op: String? = nil) -> String {
-        // MARK: 추후 UserDefaults 값 추가확인 필요
-        let language = Language.system
+        let language = Language.current
         
         switch language {
         case .ko: return TLRko.value(key: key, op: op)

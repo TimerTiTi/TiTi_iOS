@@ -21,8 +21,7 @@ struct Typographys {
     }
     
     static func font(_ key: Key, size: CGFloat) -> Font {
-        // MARK: 추후 UserDefaults 값 추가확인 필요
-        let language = Language.system
+        let language = Language.current
         
         switch language {
         case .ko: return HGGGOTHICSSIP(key, size)
@@ -32,7 +31,6 @@ struct Typographys {
     }
     
     static func autoFont(_ string: String, _ key: Key, size: CGFloat) -> Font {
-        print(string, string.language())
         if ["Chinese, Simplified"].contains(string.language()) {
             return MiSans(key, size)
         } else {
@@ -41,8 +39,7 @@ struct Typographys {
     }
     
     static func uifont(_ key: Key, size: CGFloat) -> UIFont? {
-        // MARK: 추후 UserDefaults 값 추가확인 필요
-        let language = Language.system
+        let language = Language.current
         
         switch language {
         case .ko: return HGGGOTHICSSIP_uifont(key, size)

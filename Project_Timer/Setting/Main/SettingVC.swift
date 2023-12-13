@@ -177,7 +177,7 @@ extension SettingVC: SettingActionDelegate {
         case .control:
             self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .control), animated: true)
         case .language:
-            self.navigationController?.pushViewController(UIViewController(), animated: true)
+            self.navigationController?.pushViewController(SettingLanguageVC(), animated: true)
         case .widget:
             // MARK: 위젯 추가제작시 Widget 선택창 구현 필요
             self.navigationController?.pushViewController(SettingCalendarWidgetVC(), animated: true)

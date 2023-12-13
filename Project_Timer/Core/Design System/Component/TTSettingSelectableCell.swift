@@ -19,7 +19,7 @@ struct TTSettingSelectableCell: View {
             action()
         } label: {
             ZStack {
-                UIColor.secondarySystemBackground.toColor
+                UIColor.secondarySystemGroupedBackground.toColor
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {

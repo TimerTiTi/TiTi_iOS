@@ -30,14 +30,19 @@ enum TLRkey: String {
     case Settings_Button_SingInOptionDesc
     /// 언어
     case Settings_Button_LanguageOption
+    
     /// System 언어
-    case Settings_Button_SystemLanguage
+    case Language_Button_SystemLanguage
     /// 한국어
-    case Settings_Button_Korean
+    case Language_Button_Korean
     /// 영어
-    case Settings_Button_English
+    case Language_Button_English
     /// 중국어(간체)
-    case Settings_Button_Chinese
+    case Language_Button_Chinese
+    /// 언어가 변경되었어요
+    case Language_Popup_LanguageChangeTitle
+    ///앱을 다시 실행해주세요
+    case Language_Popup_LanguageChangeDesc
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi
