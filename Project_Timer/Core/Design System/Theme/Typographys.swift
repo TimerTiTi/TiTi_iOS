@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 struct Typographys {
-    enum Key {
+    enum Weight {
         case extraLight_1
         case light_2
         case normal_3
@@ -20,39 +20,42 @@ struct Typographys {
         case heavy_6
     }
     
-    static func font(_ key: Key, size: CGFloat) -> Font {
+    /// language 에 따른 font 반환
+    static func font(_ weight: Weight, size: CGFloat) -> Font {
         let language = Language.current
         
         switch language {
-        case .ko: return HGGGOTHICSSIP(key, size)
-        case .en: return HGGGOTHICSSIP(key, size)
-        case .zh: return MiSans(key, size)
+        case .ko: return HGGGOTHICSSIP(weight, size)
+        case .en: return HGGGOTHICSSIP(weight, size)
+        case .zh: return MiSans(weight, size)
         }
     }
     
-    static func autoFont(_ string: String, _ key: Key, size: CGFloat) -> Font {
+    /// 문장 languageCode에 따른 font 반환
+    static func autoFont(_ string: String, _ weight: Weight, size: CGFloat) -> Font {
         if ["Chinese, Simplified"].contains(string.language()) {
-            return MiSans(key, size)
+            return MiSans(weight, size)
         } else {
-            return HGGGOTHICSSIP(key, size)
+            return HGGGOTHICSSIP(weight, size)
         }
     }
     
-    static func uifont(_ key: Key, size: CGFloat) -> UIFont? {
+    /// UIKit 표시용 language에 따른 font 반환
+    static func uifont(_ weight: Weight, size: CGFloat) -> UIFont? {
         let language = Language.current
         
         switch language {
-        case .ko: return HGGGOTHICSSIP_uifont(key, size)
-        case .en: return HGGGOTHICSSIP_uifont(key, size)
-        case .zh: return MiSans_uifont(key, size)
+        case .ko: return HGGGOTHICSSIP_uifont(weight, size)
+        case .en: return HGGGOTHICSSIP_uifont(weight, size)
+        case .zh: return MiSans_uifont(weight, size)
         }
     }
 }
 
 extension Typographys {
     // MARK: ko, en
-    static func HGGGOTHICSSIP(_ key: Key, _ size: CGFloat) -> Font {
-        switch key {
+    static func HGGGOTHICSSIP(_ weight: Weight, _ size: CGFloat) -> Font {
+        switch weight {
         case .extraLight_1:
             return Fonts.HGGGothicssiP00g(size: size)
         case .light_2:
@@ -69,8 +72,8 @@ extension Typographys {
     }
     
     // MARK: zh
-    static func MiSans(_ key: Key, _ size: CGFloat) -> Font {
-        switch key {
+    static func MiSans(_ weight: Weight, _ size: CGFloat) -> Font {
+        switch weight {
         case .extraLight_1:
             return Fonts.MiSansExtraLight(size: size)
         case .light_2:
@@ -89,8 +92,8 @@ extension Typographys {
 
 extension Typographys {
     // MARK: ko, en
-    static func HGGGOTHICSSIP_uifont(_ key: Key, _ size: CGFloat) -> UIFont? {
-        switch key {
+    static func HGGGOTHICSSIP_uifont(_ weight: Weight, _ size: CGFloat) -> UIFont? {
+        switch weight {
         case .extraLight_1:
             return Fonts.HGGGothicssiP00g(size: size)
         case .light_2:
@@ -107,8 +110,8 @@ extension Typographys {
     }
     
     // MARK: zh
-    static func MiSans_uifont(_ key: Key, _ size: CGFloat) -> UIFont? {
-        switch key {
+    static func MiSans_uifont(_ weight: Weight, _ size: CGFloat) -> UIFont? {
+        switch weight {
         case .extraLight_1:
             return Fonts.MiSansExtraLight(size: size)
         case .light_2:
