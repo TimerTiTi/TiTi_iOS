@@ -93,24 +93,27 @@ struct Daily: Codable {
         self.status = "edited"
     }
     
-    private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current: Date) {
-        let startHour = recordTimes.recordStartAt.hour
-        let nowHour = current.hour < startHour ? current.hour+24 : current.hour
+    private mutating func updateTimeline(recordTimes: RecordTimes, interval: Int, current endDate: Date) {
+        let startDate = recordTimes.recordStartAt
+        
+        let startHour = startDate.hour
+        let endHour = startHour + (interval + startDate.seconds)/3600
+        
         // 동일 시간대: interval 만큼 증가
-        if startHour == nowHour {
-            self.timeline[nowHour] = recordTimes.recordStartTimeline[nowHour] + interval
+        if startHour == endHour {
+            self.timeline[endHour] = min(3600, recordTimes.recordStartTimeline[endHour] + interval)
             self.save()
             return
         }
         
-        self.timeline[startHour] = recordTimes.recordStartTimeline[startHour] + (3600 - recordTimes.recordStartAt.seconds)
+        self.timeline[startHour] = min(3600, recordTimes.recordStartTimeline[startHour] + (3600 - recordTimes.recordStartAt.seconds))
         self.timeline[startHour] = min(3600, self.timeline[startHour])
         
-        for h in startHour+1...nowHour {
-            if h != nowHour {
+        for h in startHour+1...endHour {
+            if h != endHour {
                 self.timeline[h%24] = 3600
             } else {
-                self.timeline[h%24] = current.seconds
+                self.timeline[h%24] = min(3600, endDate.seconds)
             }
         }
     }
@@ -173,24 +176,24 @@ extension Daily {
     
     private mutating func updateTimeline() {
         guard let taskHistorys = self.taskHistorys else { return }
+        
         var timeline = Array(repeating: 0, count: 24)
         taskHistorys.forEach { _, historys in
             historys.forEach { history in
                 let startHour = history.startDate.hour
-                var endHour = history.endDate.hour
-                endHour = endHour < startHour ? endHour+24 : endHour
+                let endHour = startHour + (history.interval + history.startDate.seconds)/3600
                 
+                // MARK: 동시간대의 기록
                 if startHour == endHour {
-                    timeline[startHour] += history.interval
-                } else {
-                    timeline[startHour] += (3600 - history.startDate.seconds)
-                    for h in startHour+1...endHour {
-                        if h != endHour {
-                            timeline[h%24] = 3600
-                        } else {
-                            timeline[h%24] += history.endDate.seconds
-                        }
+                    timeline[startHour%24] += history.interval
+                } 
+                // MARK: 시간대가 다른 경우: hour%24 위치에 block 추가
+                else {
+                    timeline[startHour%24] += (3600 - history.startDate.seconds)
+                    for h in startHour+1..<endHour {
+                        timeline[h%24] = 3600
                     }
+                    timeline[endHour%24] += history.endDate.seconds
                 }
             }
         }
@@ -232,7 +235,7 @@ extension Daily {
 extension Daily {
     static var testInfo: Daily {
         let startDate = Date().zeroDate
-        let endDate = Calendar.current.date(byAdding: .hour, value: 25, to: startDate)!
+        let endDate = Calendar.current.date(byAdding: .hour, value: 23, to: startDate)!
         let taskHistorys: [String: [TaskHistory]] = [
             "Task1": [
                 TaskHistory(startDate: startDate, endDate: Calendar.current.date(byAdding: .second, value: 4000, to: startDate)!)

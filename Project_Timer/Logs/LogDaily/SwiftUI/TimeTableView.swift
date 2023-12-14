@@ -79,8 +79,7 @@ struct TimeTableView: View {
     }
 }
 
-#Preview {
-    let vm = TimeTableVM(isPreview: true)
-    print(Daily.testInfo)
-    return TimeTableView(frameSize: CGSize(width: 105, height: 274.333), viewModel: vm)
-}
+//#Preview {
+//    let vm = TimeTableVM(isPreview: true)
+//    return TimeTableView(frameSize: CGSize(width: 105, height: 274.333), viewModel: vm)
+//}
