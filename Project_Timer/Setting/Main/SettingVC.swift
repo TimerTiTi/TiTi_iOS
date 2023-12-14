@@ -78,7 +78,7 @@ extension SettingVC {
     }
     
     private func bindLastestVersionFetched() {
-        self.viewModel?.$lastestVersionFetched
+        self.viewModel?.$latestVersionFetched
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.settings.reloadData()
