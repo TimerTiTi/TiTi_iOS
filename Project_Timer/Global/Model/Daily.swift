@@ -34,11 +34,7 @@ struct TaskHistory: Codable, Equatable {
     }
 }
 
-struct Daily: Codable, CustomStringConvertible {
-    var description: String {
-        return "\(self.day.YYYYMMDDstyleString) : \(self.tasks)"
-    }
-    
+struct Daily: Codable {
     enum Status: String {
         case uploaded
         case created
@@ -60,6 +56,13 @@ struct Daily: Codable, CustomStringConvertible {
     init() {}
     init(newDate: Date) {
         self.day = newDate
+    }
+    init(day: Date,taskHistorys: [String: [TaskHistory]]) {
+        self.day = day
+        self.taskHistorys = taskHistorys
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
     }
     
     // 10간격, 또는 종료시 update 반영
@@ -222,5 +225,22 @@ extension Daily {
         self.updateTasks()
         self.updateMaxTime()
         self.updateTimeline()
+    }
+}
+
+// MARK: text용
+extension Daily {
+    static var testInfo: Daily {
+        let startDate = Date().zeroDate
+        let endDate = Calendar.current.date(byAdding: .hour, value: 25, to: startDate)!
+        let taskHistorys: [String: [TaskHistory]] = [
+            "Task1": [
+                TaskHistory(startDate: startDate, endDate: Calendar.current.date(byAdding: .second, value: 4000, to: startDate)!)
+            ],
+            "TaskName": [
+                TaskHistory(startDate: Calendar.current.date(byAdding: .hour, value: 1, to: startDate)!, endDate: endDate)
+            ]
+        ]
+        return .init(day: Date(), taskHistorys: taskHistorys)
     }
 }
