@@ -53,12 +53,11 @@ extension TimeTableVM {
             : self.userColorIndex+taskIndex
             
             historys.forEach { history in
-                // startDate, endDate 가 동일 시간대인 경우
                 let startHour = history.startDate.hour
                 let endHour = startHour + (history.interval + history.startDate.seconds)/3600
                 
                 // MARK: 동시간대의 기록
-                if (startHour == endHour) {
+                if startHour == endHour {
                     blocks.append(TimeTableBlock(id: id,
                                                  colorIndex: rawIndex.colorIndex,
                                                  hour: startHour%24,
