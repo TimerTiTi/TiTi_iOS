@@ -20,7 +20,6 @@ final class TodolistVC: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var todoGroupButton: UIButton!
     @IBOutlet weak var selectTodoGroupButton: UIButton!
-    @IBOutlet weak var useageButton: UIButton!
     
     private var color: UIColor?
     private var viewModel: TodolistVM?
@@ -28,7 +27,6 @@ final class TodolistVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.checkUseage()
         self.configureViewModel()
         self.configureTodoGroupButton()
         self.configureSelectTodoGroupButton()
@@ -64,36 +62,9 @@ final class TodolistVC: UIViewController {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
         self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
     }
-    
-    @IBAction func showUseageAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "See how to use the *".localizedForNewFeatures(input: "Todolist"), message: "The new * feature added.".localizedForNewFeatures(input: "TodoGroup"), preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
-            self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
-            Versions.update(forKey: .todolistCheckVer)
-            self?.useageButton.isHidden = true
-        })
-        let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
-            let url = NetworkURL.Useage.todolist
-            if let url = URL(string: url) {
-                UIApplication.shared.open(url, options: [:])
-                Versions.update(forKey: .todolistCheckVer)
-                self?.useageButton.isHidden = true
-            }
-        })
-        
-        alert.addAction(cancle)
-        alert.addAction(ok)
-        present(alert,animated: true,completion: nil)
-    }
 }
 
 extension TodolistVC {
-    private func checkUseage() {
-        if Versions.check(forKey: .todolistCheckVer) {
-            self.useageButton.isHidden = false
-        }
-    }
-    
     private func configureViewModel() {
         self.viewModel = TodolistVM()
     }
