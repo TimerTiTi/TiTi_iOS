@@ -11,11 +11,13 @@ import Combine
 
 final class SettingVM {
     @Published private(set) var cells: [[SettingCellInfo]] = []
-    @Published private(set) var lastestVersionFetched: Bool = false
+    @Published private(set) var latestVersionFetched: Bool = false
+    private let getLatestVersionUseCase: GetLatestVersionUseCaseInterface
     private(set) var sections: [String] = []
     private let isIpad: Bool
     
-    init(isIpad: Bool) {
+    init(getLatestVersionUseCase: GetLatestVersionUseCaseInterface = GetLatestVersionUseCase(), isIpad: Bool) {
+        self.getLatestVersionUseCase = getLatestVersionUseCase
         self.isIpad = isIpad
         self.configureSections()
         self.configureCells()
@@ -87,14 +89,14 @@ final class SettingVM {
         
         self.cells = cells
         
-//        NetworkController(network: Network()).getAppstoreVersion { [weak self] result in
-//            switch result {
-//            case .success(let version):
-//                versionCell.updateSubTitle(to: "Latest version".localized()+": \(version)")
-//                self?.lastestVersionFetched = true
-//            case .failure(let error):
-//                print(error.alertMessage)
-//            }
-//        }
+        self.getLatestVersionUseCase.getLatestVersion { [weak self] result in
+            switch result {
+            case .success(let latestVersionInfo):
+                versionCell.updateSubTitle(to: "Latest version".localized()+": \(latestVersionInfo.latestVersion)")
+                self?.latestVersionFetched = true
+            case .failure(let error):
+                print(error.alertMessage)
+            }
+        }
     }
 }
