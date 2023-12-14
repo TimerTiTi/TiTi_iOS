@@ -15,8 +15,14 @@ final class TimeTableVM: ObservableObject {
     private var taskHistorys: [String: [TaskHistory]] = [:]
     private var tasks: [TaskInfo] = []
     
-    init() {
+    init(isPreview: Bool = false) {
         self.updateColor()
+        if isPreview {
+            let daily = Daily.testInfo
+            let tasks = daily.tasks.sorted(by: { $0.value > $1.value })
+                .map { TaskInfo(taskName: $0.key, taskTime: $0.value) }
+            self.update(daily: Daily.testInfo, tasks: tasks)
+        }
     }
     
     func update(daily: Daily?, tasks: [TaskInfo]) {
@@ -49,46 +55,47 @@ extension TimeTableVM {
             historys.forEach { history in
                 // startDate, endDate 가 동일 시간대인 경우
                 let startHour = history.startDate.hour
-                let endHour = history.endDate.hour < startHour ? history.endDate.hour+24 : history.endDate.hour
+                let endHour = startHour + (history.interval + history.startDate.seconds)/3600
+                
+                // MARK: 동시간대의 기록
                 if (startHour == endHour) {
                     blocks.append(TimeTableBlock(id: id,
                                                  colorIndex: rawIndex.colorIndex,
-                                                 hour: startHour,
+                                                 hour: startHour%24,
                                                  startSeconds: history.startDate.seconds,
-                                                 interver: history.interval))
+                                                 interver: min(3600, history.interval)))
                     id += 1
                     return
                 }
                 
-                // 시간대가 달라진 경우 둘이상으로 쪼개야 한다.
+                // MARK: 시간대가 다른 경우: hour%24 위치에 block 추가
                 blocks.append(TimeTableBlock(id: id,
                                              colorIndex: rawIndex.colorIndex,
-                                             hour: startHour,
+                                             hour: startHour%24,
                                              startSeconds: history.startDate.seconds,
-                                             interver: 3600 - history.startDate.seconds))
+                                             interver: min(3600, 3600 - history.startDate.seconds)))
                 id += 1
                 
-                for h in startHour+1...endHour {
-                    if h != endHour {
-                        blocks.append(TimeTableBlock(id: id,
-                                                     colorIndex: rawIndex.colorIndex,
-                                                     hour: h%24,
-                                                     startSeconds: 0,
-                                                     interver: 3600))
-                        id += 1
-                    } else {
-                        blocks.append(TimeTableBlock(id: id,
-                                                     colorIndex: rawIndex.colorIndex,
-                                                     hour: h%24,
-                                                     startSeconds: 0,
-                                                     interver: history.endDate.seconds))
-                        id += 1
-                    }
+                for h in startHour+1..<endHour {
+                    blocks.append(TimeTableBlock(id: id,
+                                                 colorIndex: rawIndex.colorIndex,
+                                                 hour: h%24,
+                                                 startSeconds: 0,
+                                                 interver: 3600))
+                    id += 1
                 }
                 
+                blocks.append(TimeTableBlock(id: id,
+                                             colorIndex: rawIndex.colorIndex,
+                                             hour: endHour%24,
+                                             startSeconds: 0,
+                                             interver: min(3600, history.endDate.seconds)))
+                id += 1
             }
         }
         
         self.blocks = blocks
+            .sorted(by: { $0.id > $1.id })
+            .sorted(by: { $0.interver > $1.interver })
     }
 }
