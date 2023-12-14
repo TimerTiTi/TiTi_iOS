@@ -19,7 +19,6 @@ final class TimerVC: UIViewController {
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var taskButton: UIButton!
     @IBOutlet weak var darkerModeButton: UIButton!
-    @IBOutlet weak var useageButton: UIButton!
     
     @IBOutlet weak var innerProgress: CircularProgressView!
     @IBOutlet weak var outterProgress: CircularProgressView!
@@ -86,7 +85,6 @@ final class TimerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureLayout()
-        self.checkUseage()
         self.configureLocalizable()
         self.configureRendering()
         self.configureShadow()
@@ -162,27 +160,6 @@ final class TimerVC: UIViewController {
     @IBAction func toggleDarker(_ sender: Any) {
         self.darkerMode.toggle()
     }
-    
-    @IBAction func showUseageAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "See how to use the *".localizedForNewFeatures(input: "Timer"), message: "The new * feature added.".localizedForNewFeatures(input: "Sleep Mode"), preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "Pass", style: .default, handler: { [weak self] _ in
-            self?.showAlertWithOK(title: "You can see anytime in Setting -> TiTi Functions".localized(), text: "")
-            Versions.update(forKey: .timerCheckVer)
-            self?.useageButton.isHidden = true
-        })
-        let ok = UIAlertAction(title: "Show", style: .destructive, handler: { [weak self] _ in
-            let url = NetworkURL.Useage.timer
-            if let url = URL(string: url) {
-                UIApplication.shared.open(url, options: [:])
-                Versions.update(forKey: .timerCheckVer)
-                self?.useageButton.isHidden = true
-            }
-        })
-        
-        alert.addAction(cancle)
-        alert.addAction(ok)
-        present(alert,animated: true,completion: nil)
-    }
 }
 
 // MARK: - Device UI Configure
@@ -205,7 +182,7 @@ extension TimerVC {
         
         self.startStopBTTopConstraint = self.startStopBT.topAnchor.constraint(equalTo: self.outterProgress.bottomAnchor, constant: 50)
         self.startStopBTTopConstraint?.isActive = true
-        [self.colorSelector, self.colorSelectorBorderView, self.darkerModeButton, self.useageButton].forEach { target in
+        [self.colorSelector, self.colorSelectorBorderView, self.darkerModeButton].forEach { target in
             target?.transform = CGAffineTransform.identity
         }
         self.isBiggerUI = false
@@ -227,7 +204,7 @@ extension TimerVC {
         self.startStopBTBottomConstraint?.isActive = true
         #if targetEnvironment(macCatalyst)
         #else
-        [self.colorSelector, self.colorSelectorBorderView, self.darkerModeButton, self.useageButton].forEach { target in
+        [self.colorSelector, self.colorSelectorBorderView, self.darkerModeButton].forEach { target in
             target?.transform = CGAffineTransform(translationX: 0, y: 29)
         }
         #endif
@@ -336,11 +313,6 @@ extension TimerVC {
 
 // MARK: - Configure
 extension TimerVC {
-    private func checkUseage() {
-        if Versions.check(forKey: .timerCheckVer) {
-            self.useageButton.isHidden = false
-        }
-    }
     private func configureLocalizable() {
         self.sumTimeLabel.text = "Sum Time".localized()
         self.timerLabel.text = "Timer".localized()
@@ -471,12 +443,10 @@ extension TimerVC {
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                     self?.disableIdleTimer()
-                    self?.useageButton.alpha = 0
                 } else {
                     self?.setStopColor()
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
-                    self?.useageButton.alpha = 1
                 }
             })
             .store(in: &self.cancellables)
