@@ -63,8 +63,8 @@ extension NetworkInterceptor {
         guard let username = KeyChain.shared.get(key: .username),
               let password = KeyChain.shared.get(key: .password) else { return }
         let signinInfo = TestUserSigninInfo(username: username, password: password)
-        let network: TestServerAuthFetchable = NetworkController(network: Network())
-        network.signin(userInfo: signinInfo) { result in
+        let authUseCase = AuthUseCase()
+        authUseCase.signin(signinInfo: signinInfo) { result in
             switch result {
             case .success(let token):
                 completion(token)
