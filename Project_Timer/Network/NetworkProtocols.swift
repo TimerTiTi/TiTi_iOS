@@ -14,10 +14,6 @@ protocol NetworkFetchable {
     func request<T: Encodable>(url: String, method: HTTPMethod, param: [String: Any]?, body: T?, completion: @escaping (NetworkResult) -> Void)
 }
 
-protocol VersionFetchable {
-    func getAppstoreVersion(completion: @escaping (Result<String, NetworkError>) -> Void)
-}
-
 protocol TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
 }
@@ -35,10 +31,6 @@ protocol SurveysFetchable {
 }
 
 // MARK: TestServer
-protocol TestServerAuthFetchable {
-    func signup(userInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
-    func signin(userInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
-}
 
 protocol TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void)

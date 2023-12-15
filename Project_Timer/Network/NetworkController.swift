@@ -87,47 +87,6 @@ extension NetworkController: SurveysFetchable {
     }
 }
 
-// MARK: TestServer
-extension NetworkController: TestServerAuthFetchable {
-    func signup(userInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.authSignup, method: .post, param: nil, body: userInfo) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                      let token = dto["token"] as? String else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(token))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-
-    func signin(userInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.authSignin, method: .post, param: nil, body: userInfo) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let dto = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                      let token = dto["token"] as? String else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(token))
-            default:
-                if KeyChain.shared.deleteAll() {
-                    UserDefaultsManager.set(to: false, forKey: .signinInTestServerV1)
-                    NotificationCenter.default.post(name: KeyChain.signouted, object: nil)
-                }
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-}
-
 extension NetworkController: TestServerDailyFetchable {
     func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         let param = ["gmt": TimeZone.current.secondsFromGMT()]

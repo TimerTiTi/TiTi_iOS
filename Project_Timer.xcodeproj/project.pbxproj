@@ -1757,8 +1757,8 @@
 			isa = PBXGroup;
 			children = (
 				87F778E12B196F7400909511 /* Repository */,
-				875FAE222B1C653A008F19D2 /* DTO */,
 				875FAE232B1C6710008F19D2 /* API */,
+				875FAE222B1C653A008F19D2 /* DTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
