@@ -14,18 +14,25 @@ class NetworkURL {
     private(set) var serverURL: String?
     
     private init() {
+        self.updateServerURL() {}
+    }
+    
+    func updateServerURL(completion: @escaping () -> Void) {
         let getServerURLUseCase = GetServerURLUseCase()
         getServerURLUseCase.getServerURL { [weak self] result in
             switch result {
             case .success(let url):
                 guard url != "nil" else {
                     self?.serverURL = nil
+                    completion()
                     return
                 }
-                print(url)
+                
                 self?.serverURL = url
+                completion()
             case .failure(_):
                 self?.serverURL = nil
+                completion()
             }
         }
     }

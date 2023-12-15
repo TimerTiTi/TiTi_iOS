@@ -117,4 +117,9 @@ enum TLRkey: String {
     case SignUp_Hint_Nickname
     /// "2자 이상 12자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
     case SignUp_Error_WrongNicknameFormat
+    
+    /// 서버를 일시적으로 사용할 수 없어요
+    case Server_Popup_ServerCantUseTitle
+    /// 잠시 후 이용해 주세요
+    case Server_Popup_ServerCantUseDesc
 }

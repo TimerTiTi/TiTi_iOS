@@ -10,42 +10,32 @@ import Foundation
 import Combine
 
 final class SignupSigninVM {
-    private let getServerURLUseCase: GetServerURLUseCaseInterface
+    private let authUseCase: AuthUseCaseInterface
     let isSignin: Bool
-    let network: TestServerAuthFetchable
     @Published var loadingText: String?
     @Published var alert: (title: String, text: String)?
     @Published var postable: Bool = false
     @Published var signinSuccess: Bool = false
-    @Published var serverURL: String?
     
-    init(getServerURLUseCase: GetServerURLUseCaseInterface = GetServerURLUseCase(),
-        isSignin: Bool, network: TestServerAuthFetchable) {
-        self.getServerURLUseCase = getServerURLUseCase
+    init(authUseCase: AuthUseCaseInterface = AuthUseCase(),
+        isSignin: Bool) {
+        self.authUseCase = authUseCase
         self.isSignin = isSignin
-        self.network = network
         
-        self.getServerURL()
+        self.checkServerURL()
     }
     
-    private func getServerURL() {
-        self.getServerURLUseCase.getServerURL { [weak self] result in
-            switch result {
-            case .success(let serverURL):
-                guard serverURL != "nil" else {
-                    self?.serverURL = nil
-                    return
-                }
-                self?.serverURL = serverURL
-            case .failure(let networkError):
-                self?.alert = networkError.alertMessage
+    private func checkServerURL() {
+        NetworkURL.shared.updateServerURL { [weak self] in
+            if NetworkURL.shared.serverURL == nil {
+                self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
             }
         }
     }
     
     func signup(info: TestUserSignupInfo) {
         self.loadingText = "Waiting for Signup..."
-        self.network.signup(userInfo: info) { [weak self] result in
+        self.authUseCase.signup(signupInfo: info) { [weak self] result in
             self?.loadingText = nil
             switch result {
             case .success(let token):
@@ -64,7 +54,7 @@ final class SignupSigninVM {
     
     func signin(info: TestUserSigninInfo) {
         self.loadingText = "Waiting for Signin..."
-        self.network.signin(userInfo: info) { [weak self] result in
+        self.authUseCase.signin(signinInfo: info) { [weak self] result in
             self?.loadingText = nil
             switch result {
             case .success(let token):
