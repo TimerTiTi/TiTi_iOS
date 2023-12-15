@@ -56,6 +56,7 @@
 		870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */; };
 		8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */; };
 		8708005C2B2C4D2D00830B39 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005B2B2C4D2D00830B39 /* AuthAPI.swift */; };
+		8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthDTO.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -436,6 +437,7 @@
 		870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCase.swift; sourceTree = "<group>"; };
 		870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708005B2B2C4D2D00830B39 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		8708005E2B2C5F5F00830B39 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -805,6 +807,15 @@
 			path = SettingColor;
 			sourceTree = "<group>";
 		};
+		8708005D2B2C5DF400830B39 /* firebaseValue */ = {
+			isa = PBXGroup;
+			children = (
+				875C98BD287172A5008F7ADD /* StringValue.swift */,
+				875FAE362B1C74AD008F19D2 /* BooleanValue.swift */,
+			);
+			path = firebaseValue;
+			sourceTree = "<group>";
+		};
 		870E11732A0E225600CFA77C /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,25 +1046,21 @@
 			path = InteractionView;
 			sourceTree = "<group>";
 		};
-		875C98BC28717279008F7ADD /* Decodable */ = {
-			isa = PBXGroup;
-			children = (
-				875C98BD287172A5008F7ADD /* StringValue.swift */,
-				87F10938284C589A002E31EA /* FunctionInfo.swift */,
-				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
-				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
-				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
-				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
-				875FAE362B1C74AD008F19D2 /* BooleanValue.swift */,
-			);
-			path = Decodable;
-			sourceTree = "<group>";
-		};
 		875FAE222B1C653A008F19D2 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				8708005D2B2C5DF400830B39 /* firebaseValue */,
 				875FAE292B1C6829008F19D2 /* AppLatestVersionDTO.swift */,
 				870800512B2C3A0800830B39 /* ServerURLDTO.swift */,
+				8708005E2B2C5F5F00830B39 /* AuthDTO.swift */,
+				87F10938284C589A002E31EA /* FunctionInfo.swift */,
+				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
+				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
+				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
+				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
+				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
+				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
+				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1356,18 +1363,8 @@
 				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
 				87163DC72ACAF2E8008D4072 /* NetworkError.swift */,
 				87D7ED182952BA7200121DE6 /* Extension */,
-				8791082B28387B9B005D7B10 /* DTO */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		8791082B28387B9B005D7B10 /* DTO */ = {
-			isa = PBXGroup;
-			children = (
-				87D7ED132952B3B000121DE6 /* TestServer */,
-				875C98BC28717279008F7ADD /* Decodable */,
-			);
-			path = DTO;
 			sourceTree = "<group>";
 		};
 		8791C1EA27DCCDF4000D6BA9 /* Timer */ = {
@@ -1615,16 +1612,6 @@
 				87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		87D7ED132952B3B000121DE6 /* TestServer */ = {
-			isa = PBXGroup;
-			children = (
-				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
-				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
-				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
-			);
-			path = TestServer;
 			sourceTree = "<group>";
 		};
 		87D7ED182952BA7200121DE6 /* Extension */ = {
@@ -2381,6 +2368,7 @@
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
+				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
 				875FAE2A2B1C6829008F19D2 /* AppLatestVersionDTO.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
 			);
