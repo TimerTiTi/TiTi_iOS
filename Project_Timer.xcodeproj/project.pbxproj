@@ -49,6 +49,7 @@
 		8706C32E2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */; };
 		8706C3302AEF881500F7C842 /* SignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */; };
 		8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */; };
+		870800502B2C38F900830B39 /* ServerURLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708004F2B2C38F900830B39 /* ServerURLAPI.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -422,6 +423,7 @@
 		8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldUnderlineView.swift; sourceTree = "<group>"; };
 		8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldWarning.swift; sourceTree = "<group>"; };
 		8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNextButtonForMac.swift; sourceTree = "<group>"; };
+		8708004F2B2C38F900830B39 /* ServerURLAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLAPI.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1047,6 +1049,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE242B1C6721008F19D2 /* AppVersionAPI.swift */,
+				8708004F2B2C38F900830B39 /* ServerURLAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2201,6 +2204,7 @@
 				87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */,
+				870800502B2C38F900830B39 /* ServerURLAPI.swift in Sources */,
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
