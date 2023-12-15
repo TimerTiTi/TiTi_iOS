@@ -50,6 +50,9 @@
 		8706C3302AEF881500F7C842 /* SignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */; };
 		8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */; };
 		870800502B2C38F900830B39 /* ServerURLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708004F2B2C38F900830B39 /* ServerURLAPI.swift */; };
+		870800522B2C3A0800830B39 /* ServerURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800512B2C3A0800830B39 /* ServerURLDTO.swift */; };
+		870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800532B2C3A5400830B39 /* ServerURLRepository.swift */; };
+		870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -424,6 +427,9 @@
 		8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldWarning.swift; sourceTree = "<group>"; };
 		8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNextButtonForMac.swift; sourceTree = "<group>"; };
 		8708004F2B2C38F900830B39 /* ServerURLAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLAPI.swift; sourceTree = "<group>"; };
+		870800512B2C3A0800830B39 /* ServerURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLDTO.swift; sourceTree = "<group>"; };
+		870800532B2C3A5400830B39 /* ServerURLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepository.swift; sourceTree = "<group>"; };
+		870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepositoryInterface.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1041,6 +1047,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE292B1C6829008F19D2 /* AppLatestVersionDTO.swift */,
+				870800512B2C3A0800830B39 /* ServerURLDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1066,6 +1073,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
+				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1769,6 +1777,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
+				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2145,6 +2154,7 @@
 				875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
+				870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
@@ -2252,6 +2262,7 @@
 				8706C32E2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
+				870800522B2C3A0800830B39 /* ServerURLDTO.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				87F771BF2984101700BF1907 /* Todolist.swift in Sources */,
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
@@ -2269,6 +2280,7 @@
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
+				870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
 				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
