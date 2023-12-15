@@ -9,20 +9,20 @@
 import Foundation
 
 struct ServerURLDTO: Decodable {
-    let url: StringValue
+    let base: StringValue
     
     private enum RootKey: String, CodingKey {
         case fields
     }
     
     private enum FieldKeys: String, CodingKey {
-        case url
+        case base
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.url = try fieldContainer.decode(StringValue.self, forKey: .url)
+        self.base = try fieldContainer.decode(StringValue.self, forKey: .base)
     }
 }

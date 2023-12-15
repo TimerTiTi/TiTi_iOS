@@ -21,7 +21,7 @@ final class ServerURLRepository: ServerURLRepositoryInterface {
                     return
                 }
                 
-                let url = dto.url.value
+                let url = dto.base.value
                 completion(.success(url))
                 
             default:

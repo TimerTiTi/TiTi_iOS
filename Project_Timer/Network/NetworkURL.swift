@@ -30,21 +30,21 @@ enum NetworkURL {
         }
         
         static var surveys: String {
-            switch Language.system {
+            switch Language.current {
             case .ko: return domain + "/surveys"
             default: return domain + "/surveys_eng"
             }
         }
         
         static var titifuncs: String {
-            switch Language.system {
+            switch Language.current {
             case .ko: return domain + "/titifuncs"
             default: return domain + "/titifuncs_eng"
             }
         }
         
         static var updates: String {
-            switch Language.system {
+            switch Language.current {
             case .ko: return domain + "/updates?pageSize=100"
             default: return domain + "/updates_eng?pageSize=100"
             }
@@ -68,7 +68,7 @@ enum NetworkURL {
     
     enum WidgetInfo {
         static var calendarWidget: String {
-            switch Language.system {
+            switch Language.current {
             case .ko: return "https://titicalendarwidgetkor.simple.ink/"
             default: return "https://titicalendarwidgeteng.simple.ink/"
             }
