@@ -8,32 +8,6 @@
 
 import Foundation
 
-struct TaskHistory: Codable, Equatable {
-    var startDate: Date
-    var endDate: Date
-    var interval: Int {
-        return Date.interval(from: startDate, to: endDate)
-    }
-    
-    mutating func updateStartDate(to date: Date) {
-        self.startDate = date
-    }
-    
-    mutating func updateEndDate(to date: Date) {
-        // endDate 값이 startDate 값보다 작은경우는 +1day 처리 후 저장
-        if (date.compare(self.startDate) == .orderedAscending) {
-            self.endDate = Calendar.current.date(byAdding: .day, value: 1, to: date)!
-        } else {
-            self.endDate = date
-        }
-    }
-    
-    static func ==(lhs: Self, rhs: Self) -> Bool {
-        return lhs.startDate.YYYYMMDDHMSstyleString == rhs.startDate.YYYYMMDDHMSstyleString
-            && lhs.endDate.YYYYMMDDHMSstyleString == rhs.endDate.YYYYMMDDHMSstyleString
-    }
-}
-
 struct Daily: Codable {
     enum Status: String {
         case uploaded
@@ -63,6 +37,16 @@ struct Daily: Codable {
         self.updateTasks()
         self.updateMaxTime()
         self.updateTimeline()
+    }
+    init(id: Int?, status: String?, day: Date, timeline: [Int],
+         maxTime: Int, tasks: [String: Int], taskHistorys: [String: [TaskHistory]]?) {
+        self.id = id
+        self.status = status
+        self.day = day
+        self.timeline = timeline
+        self.maxTime = maxTime
+        self.tasks = tasks
+        self.taskHistorys = taskHistorys
     }
     
     // 10간격, 또는 종료시 update 반영
