@@ -9,7 +9,27 @@
 import Foundation
 import SwiftUI
 
-enum NetworkURL {
+class NetworkURL {
+    static let shared = NetworkURL()
+    private(set) var serverURL: String?
+    
+    private init() {
+        let getServerURLUseCase = GetServerURLUseCase()
+        getServerURLUseCase.getServerURL { [weak self] result in
+            switch result {
+            case .success(let url):
+                guard url != "nil" else {
+                    self?.serverURL = nil
+                    return
+                }
+                print(url)
+                self?.serverURL = url
+            case .failure(_):
+                self?.serverURL = nil
+            }
+        }
+    }
+    
     static let appstoreVersion: String = "https://itunes.apple.com/lookup?id=1519159240&country=kr"
     static let appstore: String = "itms-apps://itunes.apple.com/app/id1519159240"
     static let developmentList: String = "https://deeply-eggplant-5ec.notion.site/TiTi-Development-List-b089afc1a4eb4cdb8c06840ca9cb1273"
