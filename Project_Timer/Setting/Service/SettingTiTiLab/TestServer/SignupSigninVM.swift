@@ -10,16 +10,37 @@ import Foundation
 import Combine
 
 final class SignupSigninVM {
+    private let getServerURLUseCase: GetServerURLUseCaseInterface
     let isSignin: Bool
     let network: TestServerAuthFetchable
     @Published var loadingText: String?
     @Published var alert: (title: String, text: String)?
     @Published var postable: Bool = false
     @Published var signinSuccess: Bool = false
+    @Published var serverURL: String?
     
-    init(isSignin: Bool, network: TestServerAuthFetchable) {
+    init(getServerURLUseCase: GetServerURLUseCaseInterface = GetServerURLUseCase(),
+        isSignin: Bool, network: TestServerAuthFetchable) {
+        self.getServerURLUseCase = getServerURLUseCase
         self.isSignin = isSignin
         self.network = network
+        
+        self.getServerURL()
+    }
+    
+    private func getServerURL() {
+        self.getServerURLUseCase.getServerURL { [weak self] result in
+            switch result {
+            case .success(let serverURL):
+                guard serverURL != "nil" else {
+                    self?.serverURL = nil
+                    return
+                }
+                self?.serverURL = serverURL
+            case .failure(let networkError):
+                self?.alert = networkError.alertMessage
+            }
+        }
     }
     
     func signup(info: TestUserSignupInfo) {
