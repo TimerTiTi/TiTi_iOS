@@ -25,7 +25,7 @@ final class AppLatestVersionRepository: AppLatestVersionRepositoryInterface {
                 completion(.success(info))
                 
             default:
-                completion(.failure(NetworkError.error(result)))
+                completion(.failure(.error(result)))
             }
         }
     }

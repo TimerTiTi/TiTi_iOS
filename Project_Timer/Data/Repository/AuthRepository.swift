@@ -25,7 +25,7 @@ final class AuthRepository: AuthRepositoryInterface {
                 completion(.success(info))
                 
             default:
-                completion(.failure(NetworkError.error(result)))
+                completion(.failure(.error(result)))
             }
         }
     }
@@ -44,7 +44,7 @@ final class AuthRepository: AuthRepositoryInterface {
                 completion(.success(info))
                 
             default:
-                completion(.failure(NetworkError.error(result)))
+                completion(.failure(.error(result)))
             }
         }
     }

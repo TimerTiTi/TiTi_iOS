@@ -25,7 +25,7 @@ final class ServerURLRepository: ServerURLRepositoryInterface {
                 completion(.success(url))
                 
             default:
-                completion(.failure(NetworkError.error(result)))
+                completion(.failure(.error(result)))
             }
         }
     }
