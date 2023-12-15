@@ -57,6 +57,9 @@
 		8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */; };
 		8708005C2B2C4D2D00830B39 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005B2B2C4D2D00830B39 /* AuthAPI.swift */; };
 		8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthDTO.swift */; };
+		870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800602B2C5FDA00830B39 /* AuthRepository.swift */; };
+		870800632B2C604100830B39 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800622B2C604100830B39 /* AuthInfo.swift */; };
+		870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800642B2C623600830B39 /* AuthRepositoryInterface.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -438,6 +441,9 @@
 		870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708005B2B2C4D2D00830B39 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		8708005E2B2C5F5F00830B39 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
+		870800602B2C5FDA00830B39 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		870800622B2C604100830B39 /* AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
+		870800642B2C623600830B39 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1058,8 +1064,6 @@
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
 				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
-				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
-				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 			);
 			path = DTO;
@@ -1079,6 +1083,9 @@
 			isa = PBXGroup;
 			children = (
 				875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */,
+				870800622B2C604100830B39 /* AuthInfo.swift */,
+				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
+				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1088,6 +1095,7 @@
 			children = (
 				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
 				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
+				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1774,6 +1782,7 @@
 			children = (
 				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
+				870800602B2C5FDA00830B39 /* AuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2153,6 +2162,7 @@
 				870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
+				870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
 				8706C32C2AEF864000F7C842 /* SignupTitleView.swift in Sources */,
@@ -2167,6 +2177,7 @@
 				8760FB092A1DAFA70068CEF5 /* SettingCalendarWidgetVC.swift in Sources */,
 				870F90E72AEFFF1A00854DDB /* SignupPasswordRoute.swift in Sources */,
 				8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */,
+				870800632B2C604100830B39 /* AuthInfo.swift in Sources */,
 				875C98C1287175F7008F7ADD /* TiTiLabActionDelegate.swift in Sources */,
 				878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */,
 				879BE3202AC402A8007AAC46 /* SignupSigninVC.swift in Sources */,
@@ -2217,6 +2228,7 @@
 				8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */,
 				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
+				870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,

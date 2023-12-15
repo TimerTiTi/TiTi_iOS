@@ -14,3 +14,13 @@ struct AuthDTO: Decodable {
     var email: String
     var token: String
 }
+
+extension AuthDTO {
+    func toDomain() -> AuthInfo {
+        return .init(
+            id: self.id,
+            username: self.username,
+            email: self.email,
+            token: self.token)
+    }
+}

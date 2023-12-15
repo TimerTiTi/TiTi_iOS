@@ -19,14 +19,14 @@ final class AuthAPI {
         return base + "/auth/login"
     }
     
-    func signup(completion: @escaping (NetworkResult) -> Void) {
-        self.network.request(url: signupURL, method: .get) { result in
+    func signup(signupInfo: TestUserSignupInfo, completion: @escaping (NetworkResult) -> Void) {
+        self.network.request(url: signupURL, method: .post, param: nil, body: signupInfo) { result in
             completion(result)
         }
     }
     
-    func signin(completion: @escaping (NetworkResult) -> Void) {
-        self.network.request(url: signinURL, method: .get) { result in
+    func signin(signinInfo: TestUserSigninInfo, completion: @escaping (NetworkResult) -> Void) {
+        self.network.request(url: signinURL, method: .post, param: nil, body: signinInfo) { result in
             completion(result)
         }
     }
