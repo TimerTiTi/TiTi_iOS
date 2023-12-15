@@ -68,6 +68,9 @@ struct TLRzh {
         case .SignUp_Text_InputNicknameDesc: value = "昵称应为12个字符或更少"
         case .SignUp_Hint_Nickname: value = "昵称"
         case .SignUp_Error_WrongNicknameFormat: value = "昵称应该是2~12个字符。\n特殊字符被模仿 !@#$%^&*() 仅限"
+            
+        case .Server_Popup_ServerCantUseTitle: value = "暂时无法使用服务器"
+        case .Server_Popup_ServerCantUseDesc: value = "请稍后使用 :)"
         }
         
         if let op = op, value.contains("{}") {

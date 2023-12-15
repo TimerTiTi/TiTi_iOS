@@ -69,6 +69,9 @@ struct TLRko {
         case .SignUp_Text_InputNicknameDesc: value = "12자 이내로 닉네임을 입력해 주세요"
         case .SignUp_Hint_Nickname: value = "닉네임"
         case .SignUp_Error_WrongNicknameFormat: value = "2자 이상 12자 이내로 입력해 주세요.\n특수문자는 !@#$%^&*()만 가능합니다"
+            
+        case .Server_Popup_ServerCantUseTitle: value = "서버를 일시적으로 사용할 수 없어요"
+        case .Server_Popup_ServerCantUseDesc: value = "잠시 후 이용해 주세요 :)"
         }
         
         if let op = op, value.contains("{}") {

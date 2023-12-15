@@ -95,8 +95,7 @@ extension SettingTiTiLabVC {
     }
     
     private func showBetaSigninSignupVC(signin: Bool) {
-        let network = NetworkController(network: Network())
-        let viewModel = SignupSigninVM(isSignin: signin, network: network)
+        let viewModel = SignupSigninVM(isSignin: signin)
         let vc = SignupSigninVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }

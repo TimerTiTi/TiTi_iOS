@@ -69,6 +69,9 @@ struct TLRen {
         case .SignUp_Text_InputNicknameDesc: value = "Nickname should be 12 characters or less"
         case .SignUp_Hint_Nickname: value = "Nickname"
         case .SignUp_Error_WrongNicknameFormat: value = "Nickname should be 2 ~ 12 characters.\nSpecial characters are imited to !@#$%^&*() only"
+            
+        case .Server_Popup_ServerCantUseTitle: value = "The server is temporarily unavailable"
+        case .Server_Popup_ServerCantUseDesc: value = "Please try it later :)"
         }
         
         if let op = op, value.contains("{}") {
