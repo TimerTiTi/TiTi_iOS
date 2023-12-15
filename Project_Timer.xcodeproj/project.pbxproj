@@ -53,6 +53,8 @@
 		870800522B2C3A0800830B39 /* ServerURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800512B2C3A0800830B39 /* ServerURLDTO.swift */; };
 		870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800532B2C3A5400830B39 /* ServerURLRepository.swift */; };
 		870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */; };
+		870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */; };
+		8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -430,6 +432,8 @@
 		870800512B2C3A0800830B39 /* ServerURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLDTO.swift; sourceTree = "<group>"; };
 		870800532B2C3A5400830B39 /* ServerURLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepository.swift; sourceTree = "<group>"; };
 		870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepositoryInterface.swift; sourceTree = "<group>"; };
+		870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCase.swift; sourceTree = "<group>"; };
+		870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCaseInterface.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1090,6 +1094,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */,
+				870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1769,6 +1774,7 @@
 			isa = PBXGroup;
 			children = (
 				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */,
+				870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2291,6 +2297,7 @@
 				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
+				8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
@@ -2315,6 +2322,7 @@
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
+				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
 				87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
