@@ -23,8 +23,8 @@ struct SignupNextButtonForMac: View {
                     .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
                     .frame(height: 60)
                 
-                Text("Next")
-                    .font(Fonts.HGGGothicssiP60g(size: 20))
+                Text(Localized.string(.next))
+                    .font(Typographys.font(.semibold_4, size: 20))
                     .foregroundStyle(Color.white)
             }
         }

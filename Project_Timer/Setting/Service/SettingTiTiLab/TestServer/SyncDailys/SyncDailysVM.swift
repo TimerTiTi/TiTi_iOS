@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-typealias DailysSyncable = (TestServerSyncLogFetchable & TestServerDailyFetchable & TestServerRecordTimesFetchable)
+typealias DailysSyncable = (TestServerSyncLogFetchable & TestServerRecordTimesFetchable)
 
 final class SyncDailysVM {
     private let networkController: DailysSyncable

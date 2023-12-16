@@ -9,6 +9,11 @@
 import Foundation
 
 enum TLRkey: String {
+    /// 확인
+    case ok
+    /// 다음
+    case next
+    
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
     /// 최신버전으로 업데이트 해주세요
@@ -21,8 +26,6 @@ enum TLRkey: String {
     case Update_Popup_Update
     /// 나중에
     case Update_Popup_NotNow
-    /// 확인
-    case ok
     
     /// 로그인하기
     case Settings_Button_SingInOption

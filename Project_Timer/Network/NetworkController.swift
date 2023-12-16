@@ -87,37 +87,6 @@ extension NetworkController: SurveysFetchable {
     }
 }
 
-extension NetworkController: TestServerDailyFetchable {
-    func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
-        let param = ["gmt": TimeZone.current.secondsFromGMT()]
-        self.network.request(url: NetworkURL.TestServer.dailysUpload, method: .post, param: param, body: dailys) { result in
-            switch result.status {
-            case .SUCCESS:
-                completion(.success(true))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-    
-    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.dailys, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let dailys = try? JSONDecoder.dateFormatted.decode([Daily].self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(dailys))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-}
-
-
 extension NetworkController: TestServerSyncLogFetchable {
     func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { result in

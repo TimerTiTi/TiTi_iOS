@@ -12,13 +12,15 @@ struct TLRen {
     static func value(key: TLRkey, op: String? = nil) -> String {
         var value: String = ""
         switch key {
+        case .ok: value = "ok"
+        case .next: value = "Next"
+            
         case .Update_Popup_HardUpdateTitle: value = "You have to update the app"
         case .Update_Popup_HardUpdateDesc: value = "Please update the latest version"
         case .Update_Pupup_SoftUpdateTitle: value = "New Version"
         case .Update_Popup_SoftUpdateDesc: value = "Try {} version"
         case .Update_Popup_Update: value = "Update"
         case .Update_Popup_NotNow: value = "Not Now"
-        case .ok: value = "ok"
             
         case .Settings_Button_SingInOption: value = "Sign in"
         case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"

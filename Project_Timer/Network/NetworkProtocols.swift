@@ -31,12 +31,6 @@ protocol SurveysFetchable {
 }
 
 // MARK: TestServer
-
-protocol TestServerDailyFetchable {
-    func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void)
-    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void)
-}
-
 protocol TestServerSyncLogFetchable {
     func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void)
 }
