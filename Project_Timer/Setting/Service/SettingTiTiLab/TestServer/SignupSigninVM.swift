@@ -17,7 +17,7 @@ final class SignupSigninVM {
     @Published var postable: Bool = false
     @Published var signinSuccess: Bool = false
     
-    init(authUseCase: AuthUseCaseInterface = AuthUseCase(),
+    init(authUseCase: AuthUseCaseInterface,
         isSignin: Bool) {
         self.authUseCase = authUseCase
         self.isSignin = isSignin

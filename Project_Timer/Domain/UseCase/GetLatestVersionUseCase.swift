@@ -11,7 +11,7 @@ import Foundation
 final class GetLatestVersionUseCase: GetLatestVersionUseCaseInterface {
     let repository: AppLatestVersionRepositoryInterface
     
-    init(repository: AppLatestVersionRepositoryInterface = AppLatestVersionRepository()) {
+    init(repository: AppLatestVersionRepositoryInterface) {
         self.repository = repository
     }
     

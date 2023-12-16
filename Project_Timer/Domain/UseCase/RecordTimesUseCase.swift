@@ -11,7 +11,7 @@ import Foundation
 final class RecordTimesUseCase: RecordTimesUseCaseInterface {
     let repository: RecordTimesRepositoryInterface
     
-    init(repository: RecordTimesRepositoryInterface = RecordTimesRepository()) {
+    init(repository: RecordTimesRepositoryInterface) {
         self.repository = repository
     }
     

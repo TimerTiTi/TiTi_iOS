@@ -102,7 +102,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate {
     private func checkLatestVersion(isLaunch: Bool) {
         /// 최신버전 체크로직
-        let getLatestVersionUseCase = GetLatestVersionUseCase()
+        let getLatestVersionUseCase = GetLatestVersionUseCase(repository: AppLatestVersionRepository())
         
         getLatestVersionUseCase.getLatestVersion { result in
             switch result {
