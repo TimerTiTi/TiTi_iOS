@@ -13,24 +13,43 @@ typealias DailysSyncable = (TestServerSyncLogFetchable & TestServerDailyFetchabl
 
 final class SyncDailysVM {
     private let networkController: DailysSyncable
+    private let dailysUseCase: DailysUseCaseInterface
     private var targetDailys: [Daily]
     @Published private(set) var syncLog: SyncLog?
-    @Published private(set) var error: (title: String, text: String)?
+    @Published private(set) var alert: (title: String, text: String)?
     @Published private(set) var loading: Bool = false
     @Published private(set) var saveDailysSuccess: Bool = false
     private(set) var loadingText: SyncDailysVC.LoadingStatus?
     
-    init(networkController: DailysSyncable, targetDailys: [Daily]) {
+    init(dailysUseCase: DailysUseCaseInterface = DailysUseCase(),
+        networkController: DailysSyncable, targetDailys: [Daily]) {
+        self.dailysUseCase = dailysUseCase
         self.networkController = networkController
         self.targetDailys = targetDailys
-        // fetch 서버 syncLog
-        self.getSyncLog(afterUploaded: false)
+        
+        self.checkServerURL()
+    }
+    
+    private func checkServerURL() {
+        NetworkURL.shared.updateServerURL { [weak self] in
+            if NetworkURL.shared.serverURL == nil {
+                self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
+            } else {
+                // fetch 서버 syncLog
+                self?.getSyncLog(afterUploaded: false)
+            }
+        }
     }
 }
 
 extension SyncDailysVM {
     /// 동기화 버튼 클릭시 동기화 가능상태 확인 후 uploadDailys -> getDailys -> checkRecordTimes -> (uploadRecordTime or getRecordTime) -> getSyncLog 진행
     func checkSyncDailys() {
+        guard NetworkURL.shared.serverURL != nil else {
+            self.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
+            return
+        }
+        
         guard self.targetDailys.isEmpty == false else {
             // TODO: server date 값과 device date 값이 같은 경우 불필요 로직 필요
             self.getDailys()
@@ -51,7 +70,7 @@ extension SyncDailysVM {
     private func uploadDailys() {
         self.loadingText = .uploadDailys
         self.loading = true
-        self.networkController.uploadDailys(dailys: self.targetDailys) { [weak self] result in
+        self.dailysUseCase.uploadDailys(dailys: self.targetDailys) { [weak self] result in
             self?.loading = false
             switch result {
             case .success(_):
@@ -62,9 +81,9 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Dailys ERROR] \(message)")
                     }
-                    self?.error = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
-                    self?.error = error.alertMessage
+                    self?.alert = error.alertMessage
                 }
             }
         }
@@ -86,9 +105,9 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Recordtime ERROR] \(message)")
                     }
-                    self?.error = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
-                    self?.error = error.alertMessage
+                    self?.alert = error.alertMessage
                 }
             }
         }
@@ -101,7 +120,7 @@ extension SyncDailysVM {
     private func getDailys() {
         self.loadingText = .getDailys
         self.loading = true
-        self.networkController.getDailys { [weak self] result in
+        self.dailysUseCase.getDailysFromServer { [weak self] result in
             switch result {
             case .success(let dailys):
                 self?.saveDailys(dailys)
@@ -114,9 +133,9 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get Dailys ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
-                    self?.error = error.alertMessage
+                    self?.alert = error.alertMessage
                 }
             }
         }
@@ -138,9 +157,9 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get RecordTimes ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
-                    self?.error = error.alertMessage
+                    self?.alert = error.alertMessage
                 }
             }
         }
@@ -166,9 +185,9 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get SyncLog ERROR] \(message)")
                     }
-                    self?.error = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
                 default:
-                    self?.error = error.alertMessage
+                    self?.alert = error.alertMessage
                 }
             }
         }

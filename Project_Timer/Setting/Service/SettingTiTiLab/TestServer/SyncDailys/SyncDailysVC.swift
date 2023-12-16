@@ -97,7 +97,7 @@ extension SyncDailysVC {
     }
     
     private func bindError() {
-        self.viewModel?.$error
+        self.viewModel?.$alert
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] error in
                 LoadingIndicator.hideLoading()
