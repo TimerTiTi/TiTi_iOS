@@ -34,8 +34,3 @@ protocol SurveysFetchable {
 protocol TestServerSyncLogFetchable {
     func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void)
 }
-
-protocol TestServerRecordTimesFetchable {
-    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void)
-    func getRecordTimes(completion: @escaping (Result<RecordTimes, NetworkError>) -> Void)
-}
