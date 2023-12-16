@@ -42,7 +42,7 @@ struct SignupNicknameView: View {
     struct ContentView: View {
         @EnvironmentObject var environment: SigninSignupEnvironment
         @ObservedObject var model: SignupNicknameModel
-        @FocusState private var focus: SignupTextFieldView.type?
+        @FocusState private var focus: TTSignupTextFieldView.type?
         
         var body: some View {
             ZStack {
@@ -51,17 +51,17 @@ struct SignupNicknameView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                SignupTitleView(title: Localized.string(.SignUp_Text_InputNicknameTitle), subTitle: Localized.string(.SignUp_Text_InputNicknameDesc))
+                                TTSignupTitleView(title: Localized.string(.SignUp_Text_InputNicknameTitle), subTitle: Localized.string(.SignUp_Text_InputNicknameDesc))
                                 
-                                SignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
+                                TTSignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
                                     model.checkNickname()
                                 }
                                 .onChange(of: model.nickname) { newValue in
                                     model.validNickname = nil
                                 }
-                                SignupTextFieldUnderlineView(color: model.nicknameTintColor)
-                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongNicknameFormat), visible: model.validNickname == false)
-                                    .id(SignupTextFieldView.type.nickname)
+                                TTSignupTextFieldUnderlineView(color: model.nicknameTintColor)
+                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongNicknameFormat), visible: model.validNickname == false)
+                                    .id(TTSignupTextFieldView.type.nickname)
                             }
                             .onAppear { // @FocusState 변화 반영
                                 if model.validNickname == nil && model.nickname.isEmpty {

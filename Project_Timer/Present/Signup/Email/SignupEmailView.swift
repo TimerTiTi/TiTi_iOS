@@ -49,7 +49,7 @@ struct SignupEmailView: View {
     struct ContentView: View {
         @EnvironmentObject var environment: SigninSignupEnvironment
         @ObservedObject var model: SignupEmailModel
-        @FocusState var focus: SignupTextFieldView.type?
+        @FocusState var focus: TTSignupTextFieldView.type?
         
         var body: some View {
             ZStack {
@@ -58,17 +58,17 @@ struct SignupEmailView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                SignupTitleView(title: Localized.string(.SignUp_Text_InputEmailTitle), subTitle: Localized.string(.SignUp_Text_InputEmailDesc))
+                                TTSignupTitleView(title: Localized.string(.SignUp_Text_InputEmailTitle), subTitle: Localized.string(.SignUp_Text_InputEmailDesc))
                                 
-                                SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
+                                TTSignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
                                     model.checkEmail()
                                 }
                                 .onChange(of: model.email) { newValue in
                                     model.validEmail = nil
                                 }
-                                SignupTextFieldUnderlineView(color: model.emailTintColor)
-                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.validEmail == false)
-                                    .id(SignupTextFieldView.type.email)
+                                TTSignupTextFieldUnderlineView(color: model.emailTintColor)
+                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.validEmail == false)
+                                    .id(TTSignupTextFieldView.type.email)
                                 
                                 if model.stage == .verificationCode {
                                     NextContentView(model: model, focus: $focus)
@@ -115,7 +115,7 @@ struct SignupEmailView: View {
                     Spacer()
                         .frame(maxHeight: .infinity)
                     
-                    SignupNextButtonForMac(visible: focus != nil) {
+                    TTSignupNextButtonForMac(visible: focus != nil) {
                         switch focus {
                         case .email:
                             model.checkEmail()
@@ -139,7 +139,7 @@ struct SignupEmailView: View {
     
     struct NextContentView: View {
         @ObservedObject var model: SignupEmailModel
-        @FocusState.Binding var focus: SignupTextFieldView.type?
+        @FocusState.Binding var focus: TTSignupTextFieldView.type?
         
         var body: some View {
             VStack(spacing: 0) {
@@ -147,7 +147,7 @@ struct SignupEmailView: View {
                     .frame(height: 35)
                 
                 HStack(alignment: .center, spacing: 16) {
-                    SignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.verificationCode, focus: $focus) {
+                    TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.verificationCode, focus: $focus) {
                         model.checkVerificationCode()
                     }
                     .frame(maxWidth: .infinity)
@@ -164,9 +164,9 @@ struct SignupEmailView: View {
                     }
                 }
                 
-                SignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
-                    .id(SignupTextFieldView.type.verificationCode)
+                TTSignupTextFieldUnderlineView(color: model.authCodeTintColor)
+                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
+                    .id(TTSignupTextFieldView.type.verificationCode)
             }
         }
     }

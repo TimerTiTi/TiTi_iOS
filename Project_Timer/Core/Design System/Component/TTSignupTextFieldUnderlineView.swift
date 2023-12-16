@@ -1,5 +1,5 @@
 //
-//  SignupTextFieldUnderlineView.swift
+//  TTSignupTextFieldUnderlineView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/30.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SignupTextFieldUnderlineView: View {
+struct TTSignupTextFieldUnderlineView: View {
     var color: Color
     
     var body: some View {

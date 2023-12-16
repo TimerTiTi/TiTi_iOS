@@ -1,5 +1,5 @@
 //
-//  SignupTextFieldView.swift
+//  TTSignupTextFieldView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/09.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct SignupTextFieldView: View {
+struct TTSignupTextFieldView: View {
     enum type: Equatable {
         case email
         case verificationCode
@@ -62,10 +62,10 @@ struct SignupTextFieldView: View {
 
 struct SignupFieldView_Previews: PreviewProvider {
     @State static private var text: String = ""
-    @FocusState static private var focus: SignupTextFieldView.type?
+    @FocusState static private var focus: TTSignupTextFieldView.type?
     
     static var previews: some View {
-        SignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $text, focus: $focus) {
+        TTSignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $text, focus: $focus) {
             print("submit")
         }
     }

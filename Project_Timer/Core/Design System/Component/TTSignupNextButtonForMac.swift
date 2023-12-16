@@ -1,5 +1,5 @@
 //
-//  SignupNextButtonForMac.swift
+//  TTSignupNextButtonForMac.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/30.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SignupNextButtonForMac: View {
+struct TTSignupNextButtonForMac: View {
     var visible: Bool
     var action: () -> Void
     
