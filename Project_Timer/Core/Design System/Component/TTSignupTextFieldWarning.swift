@@ -1,5 +1,5 @@
 //
-//  SignupTextFieldWarning.swift
+//  TTSignupTextFieldWarning.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/30.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SignupTextFieldWarning: View {
+struct TTSignupTextFieldWarning: View {
     var warning: String
     var visible: Bool
     

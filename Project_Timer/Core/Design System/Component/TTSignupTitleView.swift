@@ -1,5 +1,5 @@
 //
-//  SignupTitleView.swift
+//  TTSignupTitleView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/30.
@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct SignupTitleView: View {
+struct TTSignupTitleView: View {
     let title: String
     let subTitle: String
     

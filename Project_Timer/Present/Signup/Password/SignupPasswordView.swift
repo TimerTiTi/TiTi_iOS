@@ -44,7 +44,7 @@ struct SignupPasswordView: View {
     struct ContentView: View {
         @EnvironmentObject var environment: SigninSignupEnvironment
         @ObservedObject var model: SignupPasswordModel
-        @FocusState private var focus: SignupTextFieldView.type?
+        @FocusState private var focus: TTSignupTextFieldView.type?
         
         var body: some View {
             ZStack {
@@ -53,14 +53,14 @@ struct SignupPasswordView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                SignupTitleView(title: Localized.string(.SignUp_Text_InputPasswordTitle), subTitle: Localized.string(.SignUp_Text_InputPasswordDesc))
+                                TTSignupTitleView(title: Localized.string(.SignUp_Text_InputPasswordTitle), subTitle: Localized.string(.SignUp_Text_InputPasswordDesc))
                                 
-                                SignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
+                                TTSignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
                                     model.checkPassword()
                                 }
-                                SignupTextFieldUnderlineView(color: model.passwordTintColor)
-                                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: model.validPassword == false && model.password.isEmpty)
-                                    .id(SignupTextFieldView.type.password)
+                                TTSignupTextFieldUnderlineView(color: model.passwordTintColor)
+                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: model.validPassword == false && model.password.isEmpty)
+                                    .id(TTSignupTextFieldView.type.password)
                                 
                                 if model.stage == .password2 {
                                     NextContentView(model: model, focus: $focus)
@@ -101,7 +101,7 @@ struct SignupPasswordView: View {
     
     struct NextContentView: View {
         @ObservedObject var model: SignupPasswordModel
-        @FocusState.Binding var focus: SignupTextFieldView.type?
+        @FocusState.Binding var focus: TTSignupTextFieldView.type?
         
         var body: some View {
             VStack(alignment: .leading, spacing: 0) {
@@ -113,12 +113,12 @@ struct SignupPasswordView: View {
                 Spacer()
                     .frame(height: 16)
                 
-                SignupSecureFieldView(type: .password2, keyboardType: .alphabet, text: $model.password2, focus: $focus) {
+                TTSignupSecureFieldView(type: .password2, keyboardType: .alphabet, text: $model.password2, focus: $focus) {
                     model.checkPassword2()
                 }
-                SignupTextFieldUnderlineView(color: model.password2TintColor)
-                SignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordMismatch), visible: model.validPassword2 == false && model.password2.isEmpty)
-                    .id(SignupTextFieldView.type.password2)
+                TTSignupTextFieldUnderlineView(color: model.password2TintColor)
+                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordMismatch), visible: model.validPassword2 == false && model.password2.isEmpty)
+                    .id(TTSignupTextFieldView.type.password2)
             }
         }
     }

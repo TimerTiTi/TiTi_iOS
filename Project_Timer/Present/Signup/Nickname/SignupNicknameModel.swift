@@ -13,7 +13,7 @@ import SwiftUI
 class SignupNicknameModel: ObservableObject {
     let infos: SignupInfosForNickname
     @Published var contentWidth: CGFloat = .zero
-    @Published var focus: SignupTextFieldView.type?
+    @Published var focus: TTSignupTextFieldView.type?
     @Published var validNickname: Bool?
     
     @Published var nickname: String = ""
@@ -55,7 +55,7 @@ extension SignupNicknameModel {
     }
     
     // @FocusState 값변화 반영
-    func updateFocus(to focus: SignupTextFieldView.type?) {
+    func updateFocus(to focus: TTSignupTextFieldView.type?) {
         self.focus = focus
     }
     

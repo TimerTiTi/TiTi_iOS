@@ -1,5 +1,5 @@
 //
-//  SignupSecureFieldView.swift
+//  TTSignupSecureFieldView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/10/31.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct SignupSecureFieldView: View {
-    let type: SignupTextFieldView.type
+struct TTSignupSecureFieldView: View {
+    let type: TTSignupTextFieldView.type
     let keyboardType: UIKeyboardType
     @Binding var text: String
-    @FocusState.Binding var focus: SignupTextFieldView.type?
+    @FocusState.Binding var focus: TTSignupTextFieldView.type?
     let submitAction: () -> Void
     
     @State private var isSecure: Bool = true
@@ -84,10 +84,10 @@ struct SignupSecureFieldView: View {
 
 struct SignupSecureFieldView_Previews: PreviewProvider {
     @State static private var text: String = ""
-    @FocusState static private var focus: SignupTextFieldView.type?
+    @FocusState static private var focus: TTSignupTextFieldView.type?
     
     static var previews: some View {
-        SignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $text, focus: $focus) {
+        TTSignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $text, focus: $focus) {
             print("submit")
         }
     }

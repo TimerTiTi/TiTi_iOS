@@ -19,7 +19,7 @@ class SignupEmailModel: ObservableObject {
     
     let infos: SignupInfosForEmail
     @Published var contentWidth: CGFloat = .zero
-    @Published var focus: SignupTextFieldView.type?
+    @Published var focus: TTSignupTextFieldView.type?
     @Published var validEmail: Bool?
     @Published var validVerificationCode: Bool?
     @Published var getVerificationSuccess: Bool = false
@@ -92,7 +92,7 @@ extension SignupEmailModel {
     }
     
     // @FocusState 값변화 -> stage 반영
-    func updateFocus(to focus: SignupTextFieldView.type?) {
+    func updateFocus(to focus: TTSignupTextFieldView.type?) {
         self.focus = focus
         switch focus {
         case .email:

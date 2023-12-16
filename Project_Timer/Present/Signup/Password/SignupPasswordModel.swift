@@ -19,7 +19,7 @@ class SignupPasswordModel: ObservableObject {
     
     let infos: SignupInfosForPassword
     @Published var contentWidth: CGFloat = .zero
-    @Published var focus: SignupTextFieldView.type?
+    @Published var focus: TTSignupTextFieldView.type?
     @Published var validPassword: Bool?
     @Published var validPassword2: Bool?
     @Published var stage: Stage = .password
@@ -74,7 +74,7 @@ extension SignupPasswordModel {
     }
     
     // @FocusState 값변화 -> stage 반영
-    func updateFocus(to focus: SignupTextFieldView.type?) {
+    func updateFocus(to focus: TTSignupTextFieldView.type?) {
         self.focus = focus
         switch focus {
         case .password:

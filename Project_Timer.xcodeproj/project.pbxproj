@@ -45,10 +45,10 @@
 		87035DF2282201A500055378 /* TimerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF1282201A500055378 /* TimerVM.swift */; };
 		87035DF7282225C800055378 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87035DF6282225C800055378 /* Protocols.swift */; };
 		870474F628F148C700CC03A8 /* SettingColorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870474F528F148C700CC03A8 /* SettingColorVC.swift */; };
-		8706C32C2AEF864000F7C842 /* SignupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32B2AEF864000F7C842 /* SignupTitleView.swift */; };
-		8706C32E2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */; };
-		8706C3302AEF881500F7C842 /* SignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */; };
-		8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */; };
+		8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */; };
+		8706C32E2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */; };
+		8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */; };
+		8706C3322AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */; };
 		870800502B2C38F900830B39 /* ServerURLAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708004F2B2C38F900830B39 /* ServerURLAPI.swift */; };
 		870800522B2C3A0800830B39 /* ServerURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800512B2C3A0800830B39 /* ServerURLDTO.swift */; };
 		870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800532B2C3A5400830B39 /* ServerURLRepository.swift */; };
@@ -273,7 +273,6 @@
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
 		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
 		87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910822283875CF005D7B10 /* NetworkProtocols.swift */; };
-		879108252838761B005D7B10 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879108242838761B005D7B10 /* NetworkStatus.swift */; };
 		87910828283876DD005D7B10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 87910827283876DD005D7B10 /* Alamofire */; };
 		8791082A283877A4005D7B10 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910829283877A4005D7B10 /* Network.swift */; };
 		8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082E28387D1F005D7B10 /* String+Extension.swift */; };
@@ -311,7 +310,7 @@
 		87A7624726493BB500174401 /* LogHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7624626493BB500174401 /* LogHomeVC.swift */; };
 		87A7F5D4267270F800F69EBA /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A7F5D3267270F800F69EBA /* Todo.swift */; };
 		87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8BC3A288D1436007ED793 /* LogVC.swift */; };
-		87A8CD252AF0C37200D4C1D7 /* SignupSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */; };
+		87A8CD252AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */; };
 		87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */; };
 		87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */; };
 		87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */; };
@@ -361,7 +360,7 @@
 		87DD96132A09048800CA0249 /* LocalizableForWidget.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87DD96152A09048800CA0249 /* LocalizableForWidget.strings */; };
 		87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE1176268AC9AD0012F043 /* DailyManager.swift */; };
 		87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C70C2AE0268C00BE46B0 /* SignupEmailView.swift */; };
-		87E5C70F2AE0C0E500BE46B0 /* SignupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C70E2AE0C0E500BE46B0 /* SignupTextFieldView.swift */; };
+		87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingVC.swift */; };
 		87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */; };
 		87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */; };
@@ -450,10 +449,10 @@
 		87035DF1282201A500055378 /* TimerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerVM.swift; sourceTree = "<group>"; };
 		87035DF6282225C800055378 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		870474F528F148C700CC03A8 /* SettingColorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingColorVC.swift; sourceTree = "<group>"; };
-		8706C32B2AEF864000F7C842 /* SignupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTitleView.swift; sourceTree = "<group>"; };
-		8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldUnderlineView.swift; sourceTree = "<group>"; };
-		8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldWarning.swift; sourceTree = "<group>"; };
-		8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNextButtonForMac.swift; sourceTree = "<group>"; };
+		8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTitleView.swift; sourceTree = "<group>"; };
+		8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldUnderlineView.swift; sourceTree = "<group>"; };
+		8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldWarning.swift; sourceTree = "<group>"; };
+		8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupNextButtonForMac.swift; sourceTree = "<group>"; };
 		8708004F2B2C38F900830B39 /* ServerURLAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLAPI.swift; sourceTree = "<group>"; };
 		870800512B2C3A0800830B39 /* ServerURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLDTO.swift; sourceTree = "<group>"; };
 		870800532B2C3A5400830B39 /* ServerURLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepository.swift; sourceTree = "<group>"; };
@@ -656,7 +655,6 @@
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		87910822283875CF005D7B10 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
-		879108242838761B005D7B10 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		87910829283877A4005D7B10 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8791082E28387D1F005D7B10 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -693,7 +691,7 @@
 		87A7624626493BB500174401 /* LogHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeVC.swift; sourceTree = "<group>"; };
 		87A7F5D3267270F800F69EBA /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		87A8BC3A288D1436007ED793 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
-		87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupSecureFieldView.swift; sourceTree = "<group>"; };
+		87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupSecureFieldView.swift; sourceTree = "<group>"; };
 		87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayShowButtonForSecureFieldView.swift; sourceTree = "<group>"; };
 		87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRemoveButtonForTextFieldView.swift; sourceTree = "<group>"; };
 		87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorPopupVC.swift; sourceTree = "<group>"; };
@@ -742,7 +740,7 @@
 		87DD96162A09048D00CA0249 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LocalizableForWidget.strings; sourceTree = "<group>"; };
 		87DE1176268AC9AD0012F043 /* DailyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyManager.swift; sourceTree = "<group>"; };
 		87E5C70C2AE0268C00BE46B0 /* SignupEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailView.swift; sourceTree = "<group>"; };
-		87E5C70E2AE0C0E500BE46B0 /* SignupTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldView.swift; sourceTree = "<group>"; };
+		87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldView.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressSwiftUIView.swift; sourceTree = "<group>"; };
 		87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressDTO.swift; sourceTree = "<group>"; };
@@ -864,6 +862,34 @@
 			path = firebaseValue;
 			sourceTree = "<group>";
 		};
+		870800902B2D693800830B39 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */,
+				874F9C342ABFFDE900675A86 /* LoginSelect */,
+				87BE88E52AD425A80010A84A /* LoginView */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		870800912B2D69BF00830B39 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				870800922B2D69EA00830B39 /* ViewModifier */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		870800922B2D69EA00830B39 /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */,
+				87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */,
+				87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
 		870E11732A0E225600CFA77C /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -979,6 +1005,7 @@
 			children = (
 				87306D5A2B26CB33001B7C14 /* Design System */,
 				87306D4A2B26041F001B7C14 /* Localize */,
+				870800912B2D69BF00830B39 /* Extension */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1060,15 +1087,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		874F9C292ABFF4F400675A86 /* LoginSignup */ = {
-			isa = PBXGroup;
-			children = (
-				878DA1F92AEF7A9100C60CBF /* Presentation */,
-				878DA1F42AEE615800C60CBF /* Domain */,
-			);
-			path = LoginSignup;
-			sourceTree = "<group>";
-		};
 		874F9C342ABFFDE900675A86 /* LoginSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,6 +1145,8 @@
 		875FAE262B1C678E008F19D2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				87163DC72ACAF2E8008D4072 /* NetworkError.swift */,
+				878DA1F52AEE617900C60CBF /* SignupInfo.swift */,
 				875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */,
 				870800622B2C604100830B39 /* AuthInfo.swift */,
 				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
@@ -1155,6 +1175,9 @@
 		875FAE322B1C7173008F19D2 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
+				870800902B2D693800830B39 /* Signin */,
+				87E5C70B2AE0266200BE46B0 /* Signup */,
 				875FAE332B1C717E008F19D2 /* Interface */,
 			);
 			path = Present;
@@ -1342,58 +1365,6 @@
 			path = Email;
 			sourceTree = "<group>";
 		};
-		878DA1F42AEE615800C60CBF /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
-				878DA1F52AEE617900C60CBF /* SignupInfo.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		878DA1F92AEF7A9100C60CBF /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */,
-				878DA1FB2AEF7CA500C60CBF /* Common */,
-				87E5C70A2AE0263500BE46B0 /* Login */,
-				87E5C70B2AE0266200BE46B0 /* Signup */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		878DA1FA2AEF7C3F00C60CBF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8706C32B2AEF864000F7C842 /* SignupTitleView.swift */,
-				87E5C70E2AE0C0E500BE46B0 /* SignupTextFieldView.swift */,
-				87A8CD242AF0C37200D4C1D7 /* SignupSecureFieldView.swift */,
-				8706C32D2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift */,
-				8706C32F2AEF881500F7C842 /* SignupTextFieldWarning.swift */,
-				8706C3312AEF8A0300F7C842 /* SignupNextButtonForMac.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		878DA1FB2AEF7CA500C60CBF /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				878DA1FA2AEF7C3F00C60CBF /* View */,
-				878DA1FE2AEF7F7C00C60CBF /* Modifier */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		878DA1FE2AEF7F7C00C60CBF /* Modifier */ = {
-			isa = PBXGroup;
-			children = (
-				878DA1FC2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift */,
-				87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */,
-				87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */,
-			);
-			path = Modifier;
-			sourceTree = "<group>";
-		};
 		878DA81D2B0C6271001E924E /* Nickname */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,15 +1389,13 @@
 		8791081D2838752D005D7B10 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				87910829283877A4005D7B10 /* Network.swift */,
+				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
+				875EDA332957E0360037A7EB /* NetworkInterceptor.swift */,
+				87D7ED182952BA7200121DE6 /* Extension */,
 				8791081E28387537005D7B10 /* NetworkURL.swift */,
 				87910822283875CF005D7B10 /* NetworkProtocols.swift */,
 				87910820283875C0005D7B10 /* NetworkController.swift */,
-				875EDA332957E0360037A7EB /* NetworkInterceptor.swift */,
-				87910829283877A4005D7B10 /* Network.swift */,
-				879108242838761B005D7B10 /* NetworkStatus.swift */,
-				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
-				87163DC72ACAF2E8008D4072 /* NetworkError.swift */,
-				87D7ED182952BA7200121DE6 /* Extension */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1712,6 +1681,12 @@
 			isa = PBXGroup;
 			children = (
 				87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */,
+				8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */,
+				87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */,
+				87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */,
+				8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */,
+				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
+				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1772,15 +1747,6 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
-		87E5C70A2AE0263500BE46B0 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				874F9C342ABFFDE900675A86 /* LoginSelect */,
-				87BE88E52AD425A80010A84A /* LoginView */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		87E5C70B2AE0266200BE46B0 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1810,6 +1776,7 @@
 				87F778E12B196F7400909511 /* Repository */,
 				875FAE232B1C6710008F19D2 /* API */,
 				875FAE222B1C653A008F19D2 /* DTO */,
+				8791081D2838752D005D7B10 /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1894,10 +1861,8 @@
 				875FAE322B1C7173008F19D2 /* Present */,
 				87F778DD2B196E9400909511 /* Domain */,
 				87F778DC2B196E8F00909511 /* Data */,
-				874F9C292ABFF4F400675A86 /* LoginSignup */,
 				87DA71742A13A9EF006294DE /* Widget */,
 				8721C6D52969123100410D57 /* Usecase */,
-				8791081D2838752D005D7B10 /* Network */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
 				8791C1EA27DCCDF4000D6BA9 /* Timer */,
 				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
@@ -2235,7 +2200,7 @@
 				870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
-				8706C32C2AEF864000F7C842 /* SignupTitleView.swift in Sources */,
+				8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */,
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
@@ -2286,7 +2251,7 @@
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
-				87E5C70F2AE0C0E500BE46B0 /* SignupTextFieldView.swift in Sources */,
+				87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				8791082A283877A4005D7B10 /* Network.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
@@ -2300,7 +2265,7 @@
 				870800872B2D599800830B39 /* SyncLogRepository.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
-				8706C3322AEF8A0300F7C842 /* SignupNextButtonForMac.swift in Sources */,
+				8706C3322AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift in Sources */,
 				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
 				8708008F2B2D646C00830B39 /* SyncLogUseCaseInterface.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
@@ -2308,7 +2273,7 @@
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
-				87A8CD252AF0C37200D4C1D7 /* SignupSecureFieldView.swift in Sources */,
+				87A8CD252AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
 				87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
@@ -2322,7 +2287,6 @@
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
 				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
-				879108252838761B005D7B10 /* NetworkStatus.swift in Sources */,
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
@@ -2344,7 +2308,7 @@
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */,
 				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,
-				8706C32E2AEF878D00F7C842 /* SignupTextFieldUnderlineView.swift in Sources */,
+				8706C32E2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
 				870800522B2C3A0800830B39 /* ServerURLDTO.swift in Sources */,
@@ -2432,7 +2396,7 @@
 				04F0D2B9286607A7007ED596 /* BaseSingleTimeLabelVM.swift in Sources */,
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
-				8706C3302AEF881500F7C842 /* SignupTextFieldWarning.swift in Sources */,
+				8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,

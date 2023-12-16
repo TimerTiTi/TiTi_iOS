@@ -1,12 +1,17 @@
 //
-//  NetworkStatus.swift
+//  NetworkResult.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/05/21.
-//  Copyright © 2022 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2023/10/02.
+//  Copyright © 2023 FDEE. All rights reserved.
 //
 
 import Foundation
+
+struct NetworkResult {
+    let status: NetworkStatus
+    let data: Data?
+}
 
 enum NetworkStatus {
     case SUCCESS // 200~204, 304
