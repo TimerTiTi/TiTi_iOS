@@ -11,18 +11,21 @@ import Foundation
 final class SyncLogRepository: SyncLogRepositoryInterface {
     private let api = SyncLogAPI()
     
-    func get(completion: @escaping (Result<SyncLog, NetworkError>) -> Void) {
+    func get(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
         api.get { result in
             switch result.status {
             case .SUCCESS:
-                guard let data = result.data,
-                      let dto = try? JSONDecoder.dateFormatted.decode(SyncLogDTO.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
+                if let data = result.data {
+                    guard let dto = try? JSONDecoder.dateFormatted.decode(SyncLogDTO.self, from: data) else {
+                        completion(.failure(.DECODEERROR))
+                        return
+                    }
+                    
+                    let info = dto.toDomain()
+                    completion(.success(info))
+                } else {
+                    completion(.success(nil))
                 }
-                
-                let info = dto.toDomain()
-                completion(.success(info))
             default:
                 completion(.failure(.error(result)))
             }

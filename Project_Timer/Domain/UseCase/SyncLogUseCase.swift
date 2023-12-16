@@ -15,7 +15,7 @@ final class SyncLogUseCase: SyncLogUseCaseInterface {
         self.repository = repository
     }
     
-    func getSyncLog(completion: @escaping (Result<SyncLog, NetworkError>) -> Void) {
+    func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
         self.repository.get() { result in
             completion(result)
         }

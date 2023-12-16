@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SyncLogRepositoryInterface {
-    func get(completion: @escaping (Result<SyncLog, NetworkError>) -> Void)
+    func get(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void)
 }

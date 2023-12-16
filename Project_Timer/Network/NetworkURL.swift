@@ -78,21 +78,6 @@ class NetworkURL {
         }
     }
     
-    enum TestServer {
-        static let base: String = Infos.ServerURL.value
-        static let auth: String = base+"/auth"
-        static let dailys: String = base+"/dailys"
-        static let timelines: String = base+"/timelines"
-        static let tasks: String = base+"/tasks"
-        static let syncLog: String = base+"/syncLog"
-        static let recordTime: String = base+"/recordTime"
-        // auth
-        static let authSignup: String = auth+"/signup"
-        static let authSignin: String = auth+"/login"
-        // dailys
-        static let dailysUpload: String = dailys+"/upload"
-    }
-    
     enum WidgetInfo {
         static var calendarWidget: String {
             switch Language.current {

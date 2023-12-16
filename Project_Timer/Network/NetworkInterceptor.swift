@@ -13,7 +13,7 @@ final class NetworkInterceptor: RequestInterceptor {
     static let retryLimit = 3
     /// network request 전에 token 설정
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        guard urlRequest.url?.absoluteString.hasPrefix(NetworkURL.TestServer.base) == true else {
+        guard urlRequest.url?.absoluteString.hasPrefix(NetworkURL.shared.serverURL ?? "nil") == true else {
             completion(.success(urlRequest))
             return
         }
