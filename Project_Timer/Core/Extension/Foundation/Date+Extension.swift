@@ -87,6 +87,12 @@ extension Date {
         return(calendar.component(.weekOfMonth, from: self))
     }
     
+    var YYYYMMDDHMString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
+        return dateFormatter.string(from: self)
+    }
+    
     var YYYYMMDDHMSstyleString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"

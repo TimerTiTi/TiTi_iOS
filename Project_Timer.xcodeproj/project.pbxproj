@@ -240,6 +240,8 @@
 		877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877911BB2A18922400F0A713 /* SettingListCellInfo.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyInfo.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
+		87862E822B2D8C22004ED313 /* TTNoniticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E812B2D8C22004ED313 /* TTNoniticationView.swift */; };
+		87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E832B2D989A004ED313 /* NotificationInfo.swift */; };
 		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
 		878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */; };
 		878813E72A20D60D000ED2C1 /* HowToAddWidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */; };
@@ -620,6 +622,8 @@
 		877911BB2A18922400F0A713 /* SettingListCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListCellInfo.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyInfo.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
+		87862E812B2D8C22004ED313 /* TTNoniticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNoniticationView.swift; sourceTree = "<group>"; };
+		87862E832B2D989A004ED313 /* NotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInfo.swift; sourceTree = "<group>"; };
 		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetVC.swift; sourceTree = "<group>"; };
 		878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetContentView.swift; sourceTree = "<group>"; };
@@ -1144,6 +1148,7 @@
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
+				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1667,6 +1672,7 @@
 				8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */,
 				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
+				87862E812B2D8C22004ED313 /* TTNoniticationView.swift */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
 				87CEDD3B28F53370007ACF6E /* PopupView */,
 				8762717327DF88E700F812ED /* View */,
@@ -2128,6 +2134,7 @@
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
+				87862E822B2D8C22004ED313 /* TTNoniticationView.swift in Sources */,
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */,
@@ -2340,6 +2347,7 @@
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
+				87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */,
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,

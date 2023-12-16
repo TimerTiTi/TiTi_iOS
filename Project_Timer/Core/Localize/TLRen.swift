@@ -14,6 +14,7 @@ struct TLRen {
         switch key {
         case .ok: value = "ok"
         case .next: value = "Next"
+        case .close: value = "Close"
             
         case .Update_Popup_HardUpdateTitle: value = "You have to update the app"
         case .Update_Popup_HardUpdateDesc: value = "Please update the latest version"
@@ -74,6 +75,9 @@ struct TLRen {
             
         case .Server_Popup_ServerCantUseTitle: value = "The server is temporarily unavailable"
         case .Server_Popup_ServerCantUseDesc: value = "Please try it later :)"
+            
+        case .Notification_Text_BaseOnUTC: value = "Base on UTC"
+        case .Notification_Button_PassToday: value = "Dismiss for Today"
         }
         
         if let op = op, value.contains("{}") {
