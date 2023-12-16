@@ -107,32 +107,3 @@ extension NetworkController: TestServerSyncLogFetchable {
         }
     }
 }
-
-extension NetworkController: TestServerRecordTimesFetchable {
-    func uploadRecordTimes(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.recordTime, method: .post, param: nil, body: recordTimes) { result in
-            switch result.status {
-            case .SUCCESS:
-                completion(.success(true))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-    
-    func getRecordTimes(completion: @escaping (Result<RecordTimes, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.recordTime, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let recordTime = try? JSONDecoder.dateFormatted.decode(RecordTimes.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(recordTime))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-}

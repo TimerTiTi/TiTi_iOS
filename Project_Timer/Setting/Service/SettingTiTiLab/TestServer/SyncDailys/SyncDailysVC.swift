@@ -111,6 +111,6 @@ extension SyncDailysVC {
 extension SyncDailysVC {
     private func configureViewModel() {
         let targetDailys = self.syncDeviceStatusView.configureDailys()
-        self.viewModel = SyncDailysVM(networkController: NetworkController(network: Network()), targetDailys: targetDailys)
+        self.viewModel = SyncDailysVM(dailysUseCase: DailysUseCase(), recordTimesUseCase: RecordTimesUseCase(), networkController: NetworkController(network: Network()), targetDailys: targetDailys)
     }
 }
