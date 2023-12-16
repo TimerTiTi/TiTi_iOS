@@ -19,7 +19,7 @@ final class AppVersionAPI {
         #endif
     }
     
-    func getAppLatestVersion(completion: @escaping (NetworkResult) -> Void) {
+    func get(completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: latestVersionURL, method: .get) { result in
             completion(result)
         }

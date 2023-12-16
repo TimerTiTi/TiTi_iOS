@@ -15,7 +15,7 @@ final class ServerURLAPI {
         return base + "/server/url"
     }
     
-    func getServerURL(completion: @escaping (NetworkResult) -> Void) {
+    func get(completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: url, method: .get) { result in
             completion(result)
         }

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DailysUseCaseInterface {
-    var repository: DailyRepositoryInterface { get }
+    var repository: DailysRepositoryInterface { get }
     func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void)
-    func getDailysFromServer(completion: @escaping (Result<[Daily], NetworkError>) -> Void)
+    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void)
 }

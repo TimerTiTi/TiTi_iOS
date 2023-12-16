@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AppLatestVersionRepositoryInterface {
-    func getLatestVersion(completion: @escaping (Result<AppLatestVersionInfo, NetworkError>) -> Void)
+    func get(completion: @escaping (Result<AppLatestVersionInfo, NetworkError>) -> Void)
 }

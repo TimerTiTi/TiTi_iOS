@@ -16,7 +16,7 @@ final class GetLatestVersionUseCase: GetLatestVersionUseCaseInterface {
     }
     
     func getLatestVersion(completion: @escaping (Result<AppLatestVersionInfo, NetworkError>) -> Void) {
-        self.repository.getLatestVersion { result in
+        self.repository.get { result in
             completion(result)
         }
     }

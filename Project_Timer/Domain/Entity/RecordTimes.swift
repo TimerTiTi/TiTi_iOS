@@ -28,6 +28,22 @@ struct RecordTimes: Codable {
     
     private(set) var recordStartTimeline = Array(repeating: 0, count: 24) // 기록시작시 timeline 값    ->
     
+    init() {}
+    init(recordTask: String, recordTaskFromTime: Int, recordStartAt: Date, recording: Bool, settedGoalTime: Int, settedTimerTime: Int, recordingMode: Int, savedSumTime: Int, savedTimerTime: Int, savedStopwatchTime: Int, savedGoalTime: Int, recordStartTimeline: [Int]) {
+        self.recordTask = recordTask
+        self.recordTaskFromTime = recordTaskFromTime
+        self.recordStartAt = recordStartAt
+        self.recording = recording
+        self.settedGoalTime = settedGoalTime
+        self.settedTimerTime = settedTimerTime
+        self.recordingMode = recordingMode
+        self.savedSumTime = savedSumTime
+        self.savedTimerTime = savedTimerTime
+        self.savedStopwatchTime = savedStopwatchTime
+        self.savedGoalTime = savedGoalTime
+        self.recordStartTimeline = recordStartTimeline
+    }
+    
     // task 를 변경할 경우 반영 (기록하기 전 반영)
     mutating func updateTask(to taskName: String, fromTime: Int) {
         print("fromTime: \(fromTime)")

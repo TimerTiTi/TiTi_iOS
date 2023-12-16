@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ServerURLRepositoryInterface {
-    func getServerURL(completion: @escaping (Result<String, NetworkError>) -> Void)
+    func get(completion: @escaping (Result<String, NetworkError>) -> Void)
 }

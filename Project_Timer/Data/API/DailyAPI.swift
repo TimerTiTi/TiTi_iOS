@@ -19,14 +19,14 @@ final class DailyAPI {
         return base + "/dailys"
     }
     
-    func uploadDailys(dailys: [Daily], completion: @escaping (NetworkResult) -> Void) {
+    func upload(dailys: [Daily], completion: @escaping (NetworkResult) -> Void) {
         let param = ["gmt": TimeZone.current.secondsFromGMT()]
         self.network.request(url: uploadDailysURL, method: .post, param: param, body: dailys) { result in
             completion(result)
         }
     }
     
-    func getDailys(completion: @escaping (NetworkResult) -> Void) {
+    func get(completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: getDailysURL, method: .get) { result in
             completion(result)
         }

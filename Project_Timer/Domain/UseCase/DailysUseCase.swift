@@ -9,20 +9,20 @@
 import Foundation
 
 final class DailysUseCase: DailysUseCaseInterface {
-    let repository: DailyRepositoryInterface
+    let repository: DailysRepositoryInterface
     
-    init(repository: DailyRepositoryInterface = DailyRepository()) {
+    init(repository: DailysRepositoryInterface = DailysRepository()) {
         self.repository = repository
     }
     
     func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
-        self.repository.uploadDailys(dailys: dailys) { result in
+        self.repository.upload(dailys: dailys) { result in
             completion(result)
         }
     }
     
-    func getDailysFromServer(completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
-        self.repository.getDailys(fromServer: true) { result in
+    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
+        self.repository.get() { result in
             completion(result)
         }
     }
