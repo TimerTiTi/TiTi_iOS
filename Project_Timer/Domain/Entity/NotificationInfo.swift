@@ -11,12 +11,13 @@ import Foundation
 struct NotificationInfo {
     var title: String
     var text: String
-    var notis: [NotificationDateInfo]
+    var notis: [NotificationDetailInfo]
 }
 
-struct NotificationDateInfo: Hashable {
+struct NotificationDetailInfo: Hashable {
     var title: String
-    var date: Date
+    var text: String
+    var isDate: Bool
 }
 
 extension NotificationInfo {
@@ -36,11 +37,13 @@ extension NotificationInfo {
             notis: [
                 .init(
                     title: "중단 일시",
-                    date: Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+                    text: "2023.12.26 10:00",
+                    isDate: true
                 ),
                 .init(
-                    title: "중단 일시",
-                    date: Calendar.current.date(byAdding: .day, value: 7, to: Date())!
+                    title: "중단 기능",
+                    text: "기록동기화(Sync Dailys)",
+                    isDate: false
                 )
             ]
         )
