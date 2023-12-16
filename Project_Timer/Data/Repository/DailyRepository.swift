@@ -22,20 +22,22 @@ final class DailyRepository: DailyRepositoryInterface {
         }
     }
     
-    func getDailys(completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
-        api.getDailys { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let dtos = try? JSONDecoder.dateFormatted.decode([DailyDTO].self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
+    func getDailys(fromServer: Bool, completion: @escaping (Result<[Daily], NetworkError>) -> Void) {
+        if fromServer {
+            api.getDailys { result in
+                switch result.status {
+                case .SUCCESS:
+                    guard let data = result.data,
+                          let dtos = try? JSONDecoder.dateFormatted.decode([DailyDTO].self, from: data) else {
+                        completion(.failure(.DECODEERROR))
+                        return
+                    }
+                    
+                    let dailys = dtos.map { $0.toDomain() }
+                    completion(.success(dailys))
+                default:
+                    completion(.failure(.error(result)))
                 }
-                
-                let dailys = dtos.map { $0.toDomain() }
-                completion(.success(dailys))
-            default:
-                completion(.failure(.error(result)))
             }
         }
     }

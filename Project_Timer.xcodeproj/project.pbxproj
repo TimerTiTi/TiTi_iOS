@@ -67,6 +67,8 @@
 		8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyDTO.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
 		870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */; };
+		870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800742B2D3C9A00830B39 /* DailysUseCase.swift */; };
+		870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -458,6 +460,8 @@
 		8708006E2B2CA92C00830B39 /* DailyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDTO.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
 		870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepositoryInterface.swift; sourceTree = "<group>"; };
+		870800742B2D3C9A00830B39 /* DailysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCase.swift; sourceTree = "<group>"; };
+		870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCaseInterface.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1132,6 +1136,7 @@
 				875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */,
 				870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */,
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
+				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1793,6 +1798,7 @@
 				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */,
 				870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
+				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2161,6 +2167,7 @@
 				879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
+				870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
@@ -2185,6 +2192,7 @@
 				870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
+				870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */,
 				870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
