@@ -62,7 +62,7 @@
 		870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800642B2C623600830B39 /* AuthRepositoryInterface.swift */; };
 		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
 		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
-		8708006B2B2CA57C00830B39 /* DailyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailyAPI.swift */; };
+		8708006B2B2CA57C00830B39 /* DailysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailysAPI.swift */; };
 		8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository.swift */; };
 		8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyDTO.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
@@ -466,7 +466,7 @@
 		870800642B2C623600830B39 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
 		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
-		8708006A2B2CA57C00830B39 /* DailyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAPI.swift; sourceTree = "<group>"; };
+		8708006A2B2CA57C00830B39 /* DailysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysAPI.swift; sourceTree = "<group>"; };
 		8708006C2B2CA7AB00830B39 /* DailysRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository.swift; sourceTree = "<group>"; };
 		8708006E2B2CA92C00830B39 /* DailyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDTO.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
@@ -1121,7 +1121,7 @@
 				875FAE242B1C6721008F19D2 /* AppVersionAPI.swift */,
 				8708004F2B2C38F900830B39 /* ServerURLAPI.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthAPI.swift */,
-				8708006A2B2CA57C00830B39 /* DailyAPI.swift */,
+				8708006A2B2CA57C00830B39 /* DailysAPI.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesAPI.swift */,
 				870800842B2D593400830B39 /* SyncLogAPI.swift */,
 			);
@@ -2343,7 +2343,7 @@
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
-				8708006B2B2CA57C00830B39 /* DailyAPI.swift in Sources */,
+				8708006B2B2CA57C00830B39 /* DailysAPI.swift in Sources */,
 				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
 				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
