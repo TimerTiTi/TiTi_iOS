@@ -14,6 +14,7 @@ struct TLRko {
         switch key {
         case .ok: value = "확인"
         case .next: value = "다음"
+        case .close: value = "닫기"
             
         case .Update_Popup_HardUpdateTitle: value = "업데이트가 필요해요"
         case .Update_Popup_HardUpdateDesc: value = "최신버전으로 업데이트 해주세요"
@@ -74,6 +75,9 @@ struct TLRko {
             
         case .Server_Popup_ServerCantUseTitle: value = "서버를 일시적으로 사용할 수 없어요"
         case .Server_Popup_ServerCantUseDesc: value = "잠시 후 이용해 주세요 :)"
+            
+        case .Notification_Text_BaseOnUTC: value = "UTC 기준"
+        case .Notification_Button_PassToday: value = "오늘 그만보기"
         }
         
         if let op = op, value.contains("{}") {

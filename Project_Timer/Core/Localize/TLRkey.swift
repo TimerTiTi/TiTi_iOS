@@ -13,6 +13,8 @@ enum TLRkey: String {
     case ok
     /// 다음
     case next
+    /// 닫기
+    case close
     
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
@@ -125,4 +127,9 @@ enum TLRkey: String {
     case Server_Popup_ServerCantUseTitle
     /// 잠시 후 이용해 주세요
     case Server_Popup_ServerCantUseDesc
+    
+    /// UTC 기준
+    case Notification_Text_BaseOnUTC
+    /// 오늘 그만보기
+    case Notification_Button_PassToday
 }
