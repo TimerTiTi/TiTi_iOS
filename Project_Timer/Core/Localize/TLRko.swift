@@ -12,13 +12,15 @@ struct TLRko {
     static func value(key: TLRkey, op: String? = nil) -> String {
         var value: String = ""
         switch key {
+        case .ok: value = "확인"
+        case .next: value = "다음"
+            
         case .Update_Popup_HardUpdateTitle: value = "업데이트가 필요해요"
         case .Update_Popup_HardUpdateDesc: value = "최신버전으로 업데이트 해주세요"
         case .Update_Pupup_SoftUpdateTitle: value = "새로운 업데이트 알림"
         case .Update_Popup_SoftUpdateDesc: value = "{} 버전을 사용해보세요 :)"
         case .Update_Popup_Update: value = "업데이트"
         case .Update_Popup_NotNow: value = "나중에"
-        case .ok: value = "확인"
             
         case .Settings_Button_SingInOption: value = "로그인하기"
         case .Settings_Button_SingInOptionDesc: value = "동기화 기능을 사용해보세요"
