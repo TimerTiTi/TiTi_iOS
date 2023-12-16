@@ -9,12 +9,10 @@
 import Foundation
 import Combine
 
-typealias DailysSyncable = (TestServerSyncLogFetchable)
-
 final class SyncDailysVM {
-    private let networkController: DailysSyncable
     private let dailysUseCase: DailysUseCaseInterface
     private let recordTimesUseCase: RecordTimesUseCaseInterface
+    private let syncLogUseCase: SyncLogUseCaseInterface
     private var targetDailys: [Daily]
     @Published private(set) var syncLog: SyncLog?
     @Published private(set) var alert: (title: String, text: String)?
@@ -24,10 +22,11 @@ final class SyncDailysVM {
     
     init(dailysUseCase: DailysUseCaseInterface,
          recordTimesUseCase: RecordTimesUseCaseInterface,
-        networkController: DailysSyncable, targetDailys: [Daily]) {
+         syncLogUseCase: SyncLogUseCaseInterface,
+        targetDailys: [Daily]) {
         self.dailysUseCase = dailysUseCase
         self.recordTimesUseCase = recordTimesUseCase
-        self.networkController = networkController
+        self.syncLogUseCase = syncLogUseCase
         self.targetDailys = targetDailys
         
         self.checkServerURL()
@@ -172,7 +171,7 @@ extension SyncDailysVM {
     private func getSyncLog(afterUploaded: Bool) {
         self.loadingText = .getSyncLog
         self.loading = true
-        self.networkController.getSyncLog { [weak self] result in
+        self.syncLogUseCase.getSyncLog { [weak self] result in
             self?.loading = false
             switch result {
             case .success(let syncLog):

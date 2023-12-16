@@ -29,8 +29,3 @@ protocol YoutubeLinkFetchable {
 protocol SurveysFetchable {
     func getSurveys(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void)
 }
-
-// MARK: TestServer
-protocol TestServerSyncLogFetchable {
-    func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void)
-}
