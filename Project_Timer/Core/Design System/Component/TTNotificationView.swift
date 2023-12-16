@@ -16,7 +16,7 @@ struct TTNotificationView: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.4)
+//            Color.black.opacity(0.4)
             
             VStack(spacing: 0) {
                 TitleView(title: info.title, padding: padding)

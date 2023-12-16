@@ -242,6 +242,8 @@
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
 		87862E822B2D8C22004ED313 /* TTNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E812B2D8C22004ED313 /* TTNotificationView.swift */; };
 		87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E832B2D989A004ED313 /* NotificationInfo.swift */; };
+		87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E862B2D9FA1004ED313 /* NotificationVC.swift */; };
+		87862E892B2DBBDA004ED313 /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E882B2DBBDA004ED313 /* PopupVC.swift */; };
 		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
 		878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */; };
 		878813E72A20D60D000ED2C1 /* HowToAddWidgetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */; };
@@ -624,6 +626,8 @@
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
 		87862E812B2D8C22004ED313 /* TTNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNotificationView.swift; sourceTree = "<group>"; };
 		87862E832B2D989A004ED313 /* NotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInfo.swift; sourceTree = "<group>"; };
+		87862E862B2D9FA1004ED313 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		87862E882B2DBBDA004ED313 /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetVC.swift; sourceTree = "<group>"; };
 		878813E62A20D60D000ED2C1 /* HowToAddWidgetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetContentView.swift; sourceTree = "<group>"; };
@@ -1178,6 +1182,7 @@
 				8791C1EC27DCCE08000D6BA9 /* Todolist */,
 				8791C1ED27DCCE10000D6BA9 /* Logs */,
 				87E6004928426EA3008D17B9 /* Setting */,
+				87862E852B2D9F8D004ED313 /* Notification */,
 				875FAE332B1C717E008F19D2 /* Interface */,
 			);
 			path = Present;
@@ -1293,6 +1298,14 @@
 				87D83E832B285D1C003C40AE /* Language */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		87862E852B2D9F8D004ED313 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				87862E862B2D9FA1004ED313 /* NotificationVC.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		878899782894EFC500B7F378 /* LogWeek */ = {
@@ -1475,6 +1488,7 @@
 				879D20762A19101C00D8A420 /* BottomSheetViewController.swift */,
 				879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */,
 				879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */,
+				87862E882B2DBBDA004ED313 /* PopupVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2303,6 +2317,7 @@
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
 				870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */,
+				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
@@ -2407,6 +2422,7 @@
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
 				87B539AB299BB710001E354C /* Versions.swift in Sources */,
+				87862E892B2DBBDA004ED313 /* PopupVC.swift in Sources */,
 				8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
