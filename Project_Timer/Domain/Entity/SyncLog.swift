@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SyncLog: Decodable {
+struct SyncLog {
     let updatedAt: Date
     let dailysCount: Int
 }

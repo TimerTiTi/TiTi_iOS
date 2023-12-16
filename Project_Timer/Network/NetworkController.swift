@@ -89,21 +89,21 @@ extension NetworkController: SurveysFetchable {
 
 extension NetworkController: TestServerSyncLogFetchable {
     func getSyncLog(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                if let data = result.data {
-                    guard let syncLog = try? JSONDecoder.dateFormatted.decode(SyncLog.self, from: data) else {
-                        completion(.failure(.DECODEERROR))
-                        return
-                    }
-                    completion(.success(syncLog))
-                } else {
-                    completion(.success(nil))
-                }
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
+//        self.network.request(url: NetworkURL.TestServer.syncLog, method: .get) { result in
+//            switch result.status {
+//            case .SUCCESS:
+//                if let data = result.data {
+//                    guard let syncLog = try? JSONDecoder.dateFormatted.decode(SyncLog.self, from: data) else {
+//                        completion(.failure(.DECODEERROR))
+//                        return
+//                    }
+//                    completion(.success(syncLog))
+//                } else {
+//                    completion(.success(nil))
+//                }
+//            default:
+//                completion(.failure(NetworkError.error(result)))
+//            }
+//        }
     }
 }
