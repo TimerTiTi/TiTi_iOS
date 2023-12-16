@@ -11,7 +11,7 @@ import Foundation
 final class GetServerURLUseCase: GetServerURLUseCaseInterface {
     let repository: ServerURLRepositoryInterface
     
-    init(repository: ServerURLRepositoryInterface = ServerURLRepository()) {
+    init(repository: ServerURLRepositoryInterface) {
         self.repository = repository
     }
     

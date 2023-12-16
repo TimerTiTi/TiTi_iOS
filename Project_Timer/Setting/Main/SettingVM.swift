@@ -10,13 +10,13 @@ import Foundation
 import Combine
 
 final class SettingVM {
+    private let getLatestVersionUseCase: GetLatestVersionUseCaseInterface
     @Published private(set) var cells: [[SettingCellInfo]] = []
     @Published private(set) var latestVersionFetched: Bool = false
-    private let getLatestVersionUseCase: GetLatestVersionUseCaseInterface
     private(set) var sections: [String] = []
     private let isIpad: Bool
     
-    init(getLatestVersionUseCase: GetLatestVersionUseCaseInterface = GetLatestVersionUseCase(), isIpad: Bool) {
+    init(getLatestVersionUseCase: GetLatestVersionUseCaseInterface, isIpad: Bool) {
         self.getLatestVersionUseCase = getLatestVersionUseCase
         self.isIpad = isIpad
         self.configureSections()

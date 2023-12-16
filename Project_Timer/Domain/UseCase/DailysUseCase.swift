@@ -11,7 +11,7 @@ import Foundation
 final class DailysUseCase: DailysUseCaseInterface {
     let repository: DailysRepositoryInterface
     
-    init(repository: DailysRepositoryInterface = DailysRepository()) {
+    init(repository: DailysRepositoryInterface) {
         self.repository = repository
     }
     

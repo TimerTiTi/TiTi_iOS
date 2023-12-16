@@ -11,7 +11,7 @@ import Foundation
 final class AuthUseCase: AuthUseCaseInterface {
     let repository: AuthRepositoryInterface
     
-    init(repository: AuthRepositoryInterface = AuthRepository()) {
+    init(repository: AuthRepositoryInterface) {
         self.repository = repository
     }
     
