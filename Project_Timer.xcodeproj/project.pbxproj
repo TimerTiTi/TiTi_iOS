@@ -63,12 +63,18 @@
 		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
 		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
 		8708006B2B2CA57C00830B39 /* DailyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailyAPI.swift */; };
-		8708006D2B2CA7AB00830B39 /* DailyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailyRepository.swift */; };
+		8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository.swift */; };
 		8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyDTO.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
 		870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */; };
 		870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800742B2D3C9A00830B39 /* DailysUseCase.swift */; };
 		870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */; };
+		870800792B2D4DE500830B39 /* RecordTimesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800782B2D4DE500830B39 /* RecordTimesAPI.swift */; };
+		8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */; };
+		8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */; };
+		8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */; };
+		870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */; };
+		870800832B2D551700830B39 /* RecordTimesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800822B2D551700830B39 /* RecordTimesDTO.swift */; };
 		870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70702AD4ECB700024CAC /* SigninRoute.swift */; };
 		870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870C70722AD51BEB00024CAC /* PredicateChecker.swift */; };
 		870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */; };
@@ -456,12 +462,18 @@
 		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708006A2B2CA57C00830B39 /* DailyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAPI.swift; sourceTree = "<group>"; };
-		8708006C2B2CA7AB00830B39 /* DailyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepository.swift; sourceTree = "<group>"; };
+		8708006C2B2CA7AB00830B39 /* DailysRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository.swift; sourceTree = "<group>"; };
 		8708006E2B2CA92C00830B39 /* DailyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDTO.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
 		870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepositoryInterface.swift; sourceTree = "<group>"; };
 		870800742B2D3C9A00830B39 /* DailysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCase.swift; sourceTree = "<group>"; };
 		870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCaseInterface.swift; sourceTree = "<group>"; };
+		870800782B2D4DE500830B39 /* RecordTimesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesAPI.swift; sourceTree = "<group>"; };
+		8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepository.swift; sourceTree = "<group>"; };
+		8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepositoryInterface.swift; sourceTree = "<group>"; };
+		8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCase.swift; sourceTree = "<group>"; };
+		870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCaseInterface.swift; sourceTree = "<group>"; };
+		870800822B2D551700830B39 /* RecordTimesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesDTO.swift; sourceTree = "<group>"; };
 		870C70702AD4ECB700024CAC /* SigninRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninRoute.swift; sourceTree = "<group>"; };
 		870C70722AD51BEB00024CAC /* PredicateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredicateChecker.swift; sourceTree = "<group>"; };
 		870E11742A0E226D00CFA77C /* CalendarWidgetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetData.swift; sourceTree = "<group>"; };
@@ -1029,7 +1041,6 @@
 		87379F982615979D00A9445E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
@@ -1083,6 +1094,7 @@
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
 				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
+				870800822B2D551700830B39 /* RecordTimesDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1094,6 +1106,7 @@
 				8708004F2B2C38F900830B39 /* ServerURLAPI.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthAPI.swift */,
 				8708006A2B2CA57C00830B39 /* DailyAPI.swift */,
+				870800782B2D4DE500830B39 /* RecordTimesAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1107,6 +1120,7 @@
 				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
 				87459705263FF0D700172C0F /* Daily.swift */,
 				870800702B2CAD9900830B39 /* TaskHistory.swift */,
+				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1118,6 +1132,7 @@
 				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
 				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
+				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1137,6 +1152,7 @@
 				870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */,
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
 				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
+				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1799,6 +1815,7 @@
 				870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
 				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
+				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1809,7 +1826,8 @@
 				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository.swift */,
-				8708006C2B2CA7AB00830B39 /* DailyRepository.swift */,
+				8708006C2B2CA7AB00830B39 /* DailysRepository.swift */,
+				8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2142,6 +2160,7 @@
 				875A5F792A207BA600679A72 /* NavigationBarInformationButton.swift in Sources */,
 				879D20772A19101C00D8A420 /* BottomSheetViewController.swift in Sources */,
 				048D8AD028AABC9E00A2456D /* AddNewTaskHistoryCell.swift in Sources */,
+				870800792B2D4DE500830B39 /* RecordTimesAPI.swift in Sources */,
 				043706312869FB0E00A5D3AA /* StopwatchTimeLabelView.swift in Sources */,
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */,
@@ -2160,7 +2179,7 @@
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
-				8708006D2B2CA7AB00830B39 /* DailyRepository.swift in Sources */,
+				8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
@@ -2213,6 +2232,7 @@
 				878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */,
 				879BE3202AC402A8007AAC46 /* SignupSigninVC.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
+				870800832B2D551700830B39 /* RecordTimesDTO.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
@@ -2240,6 +2260,7 @@
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
+				8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */,
 				870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
@@ -2335,6 +2356,7 @@
 				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
+				870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */,
 				8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
@@ -2363,6 +2385,7 @@
 				870055BF28EE958F00F8BCA9 /* SettingRecordCell.swift in Sources */,
 				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
+				8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */,
 				87D3E49E28E49D7700ACD5EC /* SettingRecordVC.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
@@ -2416,6 +2439,7 @@
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
+				8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */,
 				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
 				875FAE2A2B1C6829008F19D2 /* AppLatestVersionDTO.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,

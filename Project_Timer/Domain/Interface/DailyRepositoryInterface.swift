@@ -1,5 +1,5 @@
 //
-//  DailyRepositoryInterface.swift
+//  DailysRepositoryInterface.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DailyRepositoryInterface {
-    func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void)
-    func getDailys(fromServer: Bool, completion: @escaping (Result<[Daily], NetworkError>) -> Void)
+protocol DailysRepositoryInterface {
+    func upload(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void)
+    func get(completion: @escaping (Result<[Daily], NetworkError>) -> Void)
 }

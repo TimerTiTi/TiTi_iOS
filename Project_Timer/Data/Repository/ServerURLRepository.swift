@@ -11,8 +11,8 @@ import Foundation
 final class ServerURLRepository: ServerURLRepositoryInterface {
     private let api = ServerURLAPI()
     
-    func getServerURL(completion: @escaping (Result<String, NetworkError>) -> Void) {
-        api.getServerURL { result in
+    func get(completion: @escaping (Result<String, NetworkError>) -> Void) {
+        api.get { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,

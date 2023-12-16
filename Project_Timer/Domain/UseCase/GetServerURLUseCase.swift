@@ -16,7 +16,7 @@ final class GetServerURLUseCase: GetServerURLUseCaseInterface {
     }
     
     func getServerURL(completion: @escaping (Result<String, NetworkError>) -> Void) {
-        self.repository.getServerURL { result in
+        self.repository.get { result in
             completion(result)
         }
     }

@@ -120,7 +120,7 @@ extension SyncDailysVM {
     private func getDailys() {
         self.loadingText = .getDailys
         self.loading = true
-        self.dailysUseCase.getDailysFromServer { [weak self] result in
+        self.dailysUseCase.getDailys { [weak self] result in
             switch result {
             case .success(let dailys):
                 self?.saveDailys(dailys)
