@@ -875,6 +875,9 @@
 		870800912B2D69BF00830B39 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				87DB923C2AC2D00500FE6453 /* Foundation */,
+				87DB923B2AC2CFFE00FE6453 /* UIKit */,
+				87DB923A2AC2CFBD00FE6453 /* SwiftUI */,
 				870800922B2D69EA00830B39 /* ViewModifier */,
 			);
 			path = Extension;
@@ -944,14 +947,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		8721C6D52969123100410D57 /* Usecase */ = {
-			isa = PBXGroup;
-			children = (
-				8721C6D62969123E00410D57 /* IOUsecase.swift */,
-			);
-			path = Usecase;
-			sourceTree = "<group>";
-		};
 		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1000,7 @@
 			children = (
 				87306D5A2B26CB33001B7C14 /* Design System */,
 				87306D4A2B26041F001B7C14 /* Localize */,
+				8791C1F027DCD03E000D6BA9 /* Global */,
 				870800912B2D69BF00830B39 /* Extension */,
 			);
 			path = Core;
@@ -1077,16 +1073,6 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		87379F982615979D00A9445E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				87BEBEEC281C282D0095CD29 /* Times.swift */,
-				8757AA3C290511FF00D97517 /* Task.swift */,
-				87199F502883D0B00017D01A /* TaskInfo.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		874F9C342ABFFDE900675A86 /* LoginSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1155,6 +1141,9 @@
 				870800702B2CAD9900830B39 /* TaskHistory.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
+				87BEBEEC281C282D0095CD29 /* Times.swift */,
+				8757AA3C290511FF00D97517 /* Task.swift */,
+				87199F502883D0B00017D01A /* TaskInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1178,6 +1167,12 @@
 				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
 				870800902B2D693800830B39 /* Signin */,
 				87E5C70B2AE0266200BE46B0 /* Signup */,
+				8791C1EA27DCCDF4000D6BA9 /* Timer */,
+				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
+				8762717127DF83E400F812ED /* TaskSelect */,
+				8791C1EC27DCCE08000D6BA9 /* Todolist */,
+				8791C1ED27DCCE10000D6BA9 /* Logs */,
+				87E6004928426EA3008D17B9 /* Setting */,
 				875FAE332B1C717E008F19D2 /* Interface */,
 			);
 			path = Present;
@@ -1450,11 +1445,6 @@
 				87B539AA299BB710001E354C /* Versions.swift */,
 				876E27752AC1CD2A0054250D /* Infos.swift */,
 				87FD9FA92998D58900D9B0FF /* SingletonClass */,
-				87A48BC527DEF0B200F46D0F /* Extension */,
-				87BF666828F809DE00CD6F19 /* TimeLabelView */,
-				87CEDD3B28F53370007ACF6E /* PopupView */,
-				8762717327DF88E700F812ED /* View */,
-				87379F982615979D00A9445E /* Model */,
 				879D20752A190FFC00D8A420 /* ViewController */,
 			);
 			path = Global;
@@ -1509,16 +1499,6 @@
 				87D5E64E28C745EB00D53F8D /* ViewModel */,
 			);
 			path = SwiftUI;
-			sourceTree = "<group>";
-		};
-		87A48BC527DEF0B200F46D0F /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				87DB923C2AC2D00500FE6453 /* Foundation */,
-				87DB923B2AC2CFFE00FE6453 /* UIKit */,
-				87DB923A2AC2CFBD00FE6453 /* SwiftUI */,
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		87A8BC3C288D1448007ED793 /* LogHome */ = {
@@ -1687,6 +1667,9 @@
 				8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */,
 				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
+				87BF666828F809DE00CD6F19 /* TimeLabelView */,
+				87CEDD3B28F53370007ACF6E /* PopupView */,
+				8762717327DF88E700F812ED /* View */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1862,14 +1845,7 @@
 				87F778DD2B196E9400909511 /* Domain */,
 				87F778DC2B196E8F00909511 /* Data */,
 				87DA71742A13A9EF006294DE /* Widget */,
-				8721C6D52969123100410D57 /* Usecase */,
-				8791C1F027DCD03E000D6BA9 /* Global */,
-				8791C1EA27DCCDF4000D6BA9 /* Timer */,
-				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
-				8762717127DF83E400F812ED /* TaskSelect */,
-				8791C1EC27DCCE08000D6BA9 /* Todolist */,
-				8791C1ED27DCCE10000D6BA9 /* Logs */,
-				87E6004928426EA3008D17B9 /* Setting */,
+				8721C6D62969123E00410D57 /* IOUsecase.swift */,
 				93B08529248DDF3000E215BD /* Assets.xcassets */,
 				93B08526248DDF2F00E215BD /* Main.storyboard */,
 				93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */,
