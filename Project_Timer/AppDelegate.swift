@@ -36,6 +36,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.configureWidget()
         
         self.checkSignined()
+        self.checkNotification()
         
         return true
     }
@@ -221,6 +222,15 @@ extension AppDelegate {
                 print("ERROR: KeyChain.shared.deleteAll")
                 return
             }
+        }
+    }
+    
+    private func checkNotification() {
+        // MARK: noti 수신 구현
+        let noti = NotificationInfo.testInfo
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            let notificationVC = NotificationVC(noti: noti)
+            SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
         }
     }
 }
