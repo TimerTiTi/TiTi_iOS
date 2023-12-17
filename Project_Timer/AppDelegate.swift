@@ -237,7 +237,12 @@ extension AppDelegate {
                     SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
                 }
             case .failure(let networkError):
-                print(networkError.alertMessage)
+                switch networkError {
+                case .NOTFOUND(_):
+                    return
+                default:
+                    print(networkError.alertMessage)
+                }
             }
         }
     }

@@ -21,8 +21,13 @@ final class NotificationRepository: NotificationRepositoryInterface {
                         completion(.failure(.DECODEERROR))
                         return
                     }
-                    dump(dto)
-                    let info = NotificationInfo.testInfo
+                    
+                    guard dto.visible.value else {
+                        completion(.success(nil))
+                        return
+                    }
+                    
+                    let info = dto.toDomain()
                     completion(.success(info))
                 } else {
                     completion(.success(nil))

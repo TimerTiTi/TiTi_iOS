@@ -10,7 +10,7 @@ import Foundation
 
 /// Network 수신 DTO
 struct UpdateInfos: Decodable {
-    let updateInfos: [UpdateInfo]
+    var updateInfos: [UpdateInfo]
     
     enum CodingKeys: String, CodingKey {
         case updateInfos = "documents"
@@ -18,10 +18,10 @@ struct UpdateInfos: Decodable {
 }
 
 /// updateInfos 내 DTO
-struct UpdateInfo: Decodable {
-    let version: StringValue
-    let date: StringValue
-    let text: StringValue
+struct UpdateInfo: Decodable, FirestoreValue {
+    var version: StringValue
+    var date: StringValue
+    var text: StringValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -36,8 +36,8 @@ struct UpdateInfo: Decodable {
         
         self.version = try fieldContainer.decode(StringValue.self, forKey: .version)
         self.date = try fieldContainer.decode(StringValue.self, forKey: .date)
-        let tempText = try fieldContainer.decode(StringValue.self, forKey: .text)
-        let textValue = tempText.value.replacingOccurrences(of: "\\n", with: "\n")
-        self.text = StringValue(value: textValue)
+        self.text = try fieldContainer.decode(StringValue.self, forKey: .text)
+        
+        self.text = transString(self.text)
     }
 }

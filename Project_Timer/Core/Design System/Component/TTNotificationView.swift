@@ -15,30 +15,26 @@ struct TTNotificationView: View {
     let padding: CGFloat = 24
     
     var body: some View {
-        ZStack {
-//            Color.black.opacity(0.4)
-            
+        VStack(spacing: 0) {
+            TitleView(title: info.title, padding: padding)
             VStack(spacing: 0) {
-                TitleView(title: info.title, padding: padding)
-                VStack(spacing: 0) {
-                    TextView(text: info.text)
-                    ForEach(info.notis, id: \.self) { noti in
-                        NotiView(noti: noti)
-                    }
-                    Spacer().frame(height: 32)
-                    CloseButton() {
-                        closeAction()
-                    }
-                    PassTodayButton() {
-                        passAction()
-                    }
+                TextView(text: info.text)
+                ForEach(info.notis, id: \.self) { noti in
+                    NotiView(noti: noti)
                 }
-                .padding(.horizontal, padding)
-                
+                Spacer().frame(height: 32)
+                CloseButton() {
+                    closeAction()
+                }
+                PassTodayButton() {
+                    passAction()
+                }
             }
-            .background(Color.white)
-            .frame(width: 342)
+            .padding(.horizontal, padding)
+            
         }
+        .background(Color.white)
+        .frame(width: 342)
     }
     
     struct TitleView: View {
@@ -81,19 +77,11 @@ struct TTNotificationView: View {
                     .foregroundStyle(Color.blue)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text(text)
+                Text(noti.text)
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(Color.black)
                 
                 Spacer().frame(height: 8)
-            }
-        }
-        
-        var text: String {
-            if noti.isDate {
-                return "\(noti.text) (\(Localized.string(.Notification_Text_BaseOnUTC)))"
-            } else {
-                return noti.text
             }
         }
     }
