@@ -226,11 +226,19 @@ extension AppDelegate {
     }
     
     private func checkNotification() {
-        // MARK: noti 수신 구현
-        let noti = NotificationInfo.testInfo
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let notificationVC = NotificationVC(noti: noti)
-            SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
+        let getNotficationUseCase = GetNotificationUseCase(repository: NotificationRepository())
+        
+        getNotficationUseCase.getNoti { result in
+            switch result {
+            case .success(let noti):
+                guard let noti = noti else { return }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    let notificationVC = NotificationVC(noti: noti)
+                    SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
+                }
+            case .failure(let networkError):
+                print(networkError.alertMessage)
+            }
         }
     }
 }
