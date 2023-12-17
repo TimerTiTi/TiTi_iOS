@@ -155,6 +155,12 @@
 		87306D852B26CC90001B7C14 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		87306D862B26CC93001B7C14 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
+		873731D12B2E92BD00D7BD9F /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D02B2E92BD00D7BD9F /* NotificationAPI.swift */; };
+		873731D32B2E931800D7BD9F /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D22B2E931800D7BD9F /* NotificationRepository.swift */; };
+		873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationDTO.swift */; };
+		873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */; };
+		873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */; };
+		873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -546,6 +552,12 @@
 		87306D6C2B26CC7B001B7C14 /* MiSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Medium.ttf"; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
+		873731D02B2E92BD00D7BD9F /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
+		873731D22B2E931800D7BD9F /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
+		873731D42B2E938400D7BD9F /* NotificationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDTO.swift; sourceTree = "<group>"; };
+		873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryInterface.swift; sourceTree = "<group>"; };
+		873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCase.swift; sourceTree = "<group>"; };
+		873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCaseInterface.swift; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
 		873C197528D041DE00E02ADC /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
@@ -1119,6 +1131,7 @@
 				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
 				870800822B2D551700830B39 /* RecordTimesDTO.swift */,
 				870800882B2D59EB00830B39 /* SyncLogDTO.swift */,
+				873731D42B2E938400D7BD9F /* NotificationDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1132,6 +1145,7 @@
 				8708006A2B2CA57C00830B39 /* DailysAPI.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesAPI.swift */,
 				870800842B2D593400830B39 /* SyncLogAPI.swift */,
+				873731D02B2E92BD00D7BD9F /* NotificationAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1166,6 +1180,7 @@
 				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
+				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1197,6 +1212,7 @@
 				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 				8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */,
+				873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1803,6 +1819,7 @@
 				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
+				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1816,6 +1833,7 @@
 				8708006C2B2CA7AB00830B39 /* DailysRepository.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository.swift */,
+				873731D22B2E931800D7BD9F /* NotificationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2161,6 +2179,8 @@
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
+				873731D12B2E92BD00D7BD9F /* NotificationAPI.swift in Sources */,
+				873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */,
 				8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
@@ -2200,6 +2220,7 @@
 				8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */,
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
+				873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */,
@@ -2275,6 +2296,7 @@
 				87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
+				873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */,
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
 				87BFCBCA28EFAFFC00FC688E /* TargetTimePickerPopupVC.swift in Sources */,
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
@@ -2384,6 +2406,7 @@
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
+				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
 				875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */,
@@ -2414,6 +2437,7 @@
 				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */,
+				873731D32B2E931800D7BD9F /* NotificationRepository.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyInfo.swift in Sources */,
 				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
