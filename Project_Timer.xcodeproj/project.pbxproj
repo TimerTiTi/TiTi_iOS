@@ -161,6 +161,7 @@
 		873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */; };
 		873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */; };
 		873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */; };
+		873731DD2B2E9AA900D7BD9F /* StringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* StringArrayValue.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
 		873C197628D041DE00E02ADC /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197528D041DE00E02ADC /* DailyView.swift */; };
 		873C197828D044CC00E02ADC /* DailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C197728D044CC00E02ADC /* DailyVM.swift */; };
@@ -558,6 +559,7 @@
 		873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryInterface.swift; sourceTree = "<group>"; };
 		873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCase.swift; sourceTree = "<group>"; };
 		873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCaseInterface.swift; sourceTree = "<group>"; };
+		873731DC2B2E9AA900D7BD9F /* StringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringArrayValue.swift; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
 		873C197528D041DE00E02ADC /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		873C197728D044CC00E02ADC /* DailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyVM.swift; sourceTree = "<group>"; };
@@ -878,6 +880,7 @@
 			children = (
 				875C98BD287172A5008F7ADD /* StringValue.swift */,
 				875FAE362B1C74AD008F19D2 /* BooleanValue.swift */,
+				873731DC2B2E9AA900D7BD9F /* StringArrayValue.swift */,
 			);
 			path = firebaseValue;
 			sourceTree = "<group>";
@@ -2205,6 +2208,7 @@
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
+				873731DD2B2E9AA900D7BD9F /* StringArrayValue.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */,
