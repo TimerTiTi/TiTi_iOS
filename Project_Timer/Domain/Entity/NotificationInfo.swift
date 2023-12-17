@@ -17,7 +17,6 @@ struct NotificationInfo {
 struct NotificationDetailInfo: Hashable {
     var title: String
     var text: String
-    var isDate: Bool
 }
 
 extension NotificationInfo {
@@ -37,13 +36,11 @@ extension NotificationInfo {
             notis: [
                 .init(
                     title: "중단 일시",
-                    text: "2023.12.26 10:00",
-                    isDate: true
+                    text: "2023.12.26 10:00 (UTC 기준)"
                 ),
                 .init(
                     title: "중단 기능",
-                    text: "기록동기화(Sync Dailys)",
-                    isDate: false
+                    text: "기록동기화(Sync Dailys)"
                 )
             ]
         )
