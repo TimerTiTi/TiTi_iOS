@@ -11,9 +11,11 @@ import SwiftUI
 
 final class NotificationVC: PopupVC {
     let noti: NotificationInfo
+    let notificationUseCase: NotificationUseCaseInterface
     
-    init(noti: NotificationInfo) {
+    init(noti: NotificationInfo, notificationUseCase: NotificationUseCaseInterface) {
         self.noti = noti
+        self.notificationUseCase = notificationUseCase
         super.init()
     }
     
@@ -32,7 +34,7 @@ extension NotificationVC {
         let hostingVC = UIHostingController(rootView: TTNotificationView(info: noti, closeAction: { [weak self] in
             self?.dismiss(animated: true)
         }, passAction: { [weak self] in
-            print("pass today")
+            self?.notificationUseCase.setPassDay()
             self?.dismiss(animated: true)
         }))
         self.addChild(hostingVC)

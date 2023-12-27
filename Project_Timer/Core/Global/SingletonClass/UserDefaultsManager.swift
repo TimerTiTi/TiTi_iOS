@@ -45,6 +45,8 @@ struct UserDefaultsManager {
         case calendarWidgetTargetTime
         // language
         case languageCode
+        // Notification
+        case notificationPassDay
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
