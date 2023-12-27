@@ -386,6 +386,8 @@
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
+		87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */; };
+		87FB8D1D2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */; };
 		87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */; };
 		87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */; };
 		93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A892B024C14D4700F89180 /* CircularProgressView.swift */; };
@@ -779,6 +781,8 @@
 		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
+		87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCase.swift; sourceTree = "<group>"; };
+		87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCaseInterface.swift; sourceTree = "<group>"; };
 		87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopwatchAttributes.swift; sourceTree = "<group>"; };
 		93A892B024C14D4700F89180 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		93B0851D248DDF2F00E215BD /* TiTi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiTi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1219,6 +1223,7 @@
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 				8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */,
 				873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */,
+				87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1826,6 +1831,7 @@
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
 				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */,
+				87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2207,6 +2213,7 @@
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				875FAE372B1C74AD008F19D2 /* BooleanValue.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */,
+				87FB8D1D2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
@@ -2373,6 +2380,7 @@
 				870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */,
 				8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
+				87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */,
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
@@ -2612,7 +2620,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.5;
+				MARKETING_VERSION = 7.15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2851,7 +2859,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.5;
+				MARKETING_VERSION = 7.15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -2878,7 +2886,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.15.5;
+				MARKETING_VERSION = 7.15.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				SUPPORTS_MACCATALYST = YES;

@@ -227,13 +227,16 @@ extension AppDelegate {
     
     private func checkNotification() {
         let getNotficationUseCase = GetNotificationUseCase(repository: NotificationRepository())
+        let notificationUseCase = NotificationUseCase()
         
         getNotficationUseCase.getNoti { result in
             switch result {
             case .success(let noti):
                 guard let noti = noti else { return }
+                guard notificationUseCase.isShowNotification() else { return }
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let notificationVC = NotificationVC(noti: noti)
+                    let notificationVC = NotificationVC(noti: noti, notificationUseCase: notificationUseCase)
                     SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
                 }
             case .failure(let networkError):
