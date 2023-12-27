@@ -32,16 +32,21 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-            <key>$(ServerURL)</key>
-            <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-            </dict>
-        </dict>
+			<key>$(ServerURL)</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+			<key>$(ServerURL2)</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
 	<key>NSMotionUsageDescription</key>
 	<string>NSMotionUsageDescription</string>
@@ -248,53 +253,53 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>GIDClientID</key>
-    <string>$(OAuth_ClientID)</string>
-    <key>GIDServerClientID</key>
-    <string>$(OAuth_Server_ClientID)</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>$(REVERSED_IOS_CLEINT_ID)</string>
-        </array>
-      </dict>
-    </array>
-    <key>ADMOB_AD_ID</key>
-    <string>$(ADMOB_AD_ID)</string>
-    <key>MODE</key>
-    <string>$(MODE)</string>
-    <key>ServerURL</key>
-    <string>$(ServerURL)</string>
-    <key>FirestoreURL</key>
-    <string>$(FirestoreURL)</string>
-    <key>APP_BUNDLE_ID</key>
-    <string>$(APP_BUNDLE_ID)</string>
-    <key>OAuth_ClientID</key>
-    <string>$(OAuth_ClientID)</string>
-    <key>REVERSED_IOS_CLEINT_ID</key>
-    <string>$(REVERSED_IOS_CLEINT_ID)</string>
-    <key>OAuth_Server_ClientID</key>
-    <string>$(OAuth_Server_ClientID)</string>
-    <key>UIAppFonts</key>
-    <array>
-        <string>HGGGOTHICSSI_PRO_00G.otf</string>
-        <string>HGGGOTHICSSI_PRO_20G.otf</string>
-        <string>HGGGOTHICSSI_PRO_40G.otf</string>
-        <string>HGGGOTHICSSI_PRO_60G.otf</string>
-        <string>HGGGOTHICSSI_PRO_80G.otf</string>
-        <string>HGGGOTHICSSI_PRO_99G.otf</string>
-        <string>MiSans-Thin.ttf</string>
-        <string>MiSans-ExtraLight.ttf</string>
-        <string>MiSans-Light.ttf</string>
-        <string>MiSans-Normal.ttf</string>
-        <string>MiSans-Regular.ttf</string>
-        <string>MiSans-Medium.ttf</string>
-        <string>MiSans-Demibold.ttf</string>
-        <string>MiSans-Semibold.ttf</string>
-        <string>MiSans-Bold.ttf</string>
-        <string>MiSans-Heavy.ttf</string>
-    </array>
+	<key>GIDClientID</key>
+	<string>$(OAuth_ClientID)</string>
+	<key>GIDServerClientID</key>
+	<string>$(OAuth_Server_ClientID)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(REVERSED_IOS_CLEINT_ID)</string>
+			</array>
+		</dict>
+	</array>
+	<key>ADMOB_AD_ID</key>
+	<string>$(ADMOB_AD_ID)</string>
+	<key>MODE</key>
+	<string>$(MODE)</string>
+	<key>ServerURL</key>
+	<string>$(ServerURL)</string>
+	<key>FirestoreURL</key>
+	<string>$(FirestoreURL)</string>
+	<key>APP_BUNDLE_ID</key>
+	<string>$(APP_BUNDLE_ID)</string>
+	<key>OAuth_ClientID</key>
+	<string>$(OAuth_ClientID)</string>
+	<key>REVERSED_IOS_CLEINT_ID</key>
+	<string>$(REVERSED_IOS_CLEINT_ID)</string>
+	<key>OAuth_Server_ClientID</key>
+	<string>$(OAuth_Server_ClientID)</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HGGGOTHICSSI_PRO_00G.otf</string>
+		<string>HGGGOTHICSSI_PRO_20G.otf</string>
+		<string>HGGGOTHICSSI_PRO_40G.otf</string>
+		<string>HGGGOTHICSSI_PRO_60G.otf</string>
+		<string>HGGGOTHICSSI_PRO_80G.otf</string>
+		<string>HGGGOTHICSSI_PRO_99G.otf</string>
+		<string>MiSans-Thin.ttf</string>
+		<string>MiSans-ExtraLight.ttf</string>
+		<string>MiSans-Light.ttf</string>
+		<string>MiSans-Normal.ttf</string>
+		<string>MiSans-Regular.ttf</string>
+		<string>MiSans-Medium.ttf</string>
+		<string>MiSans-Demibold.ttf</string>
+		<string>MiSans-Semibold.ttf</string>
+		<string>MiSans-Bold.ttf</string>
+		<string>MiSans-Heavy.ttf</string>
+	</array>
 </dict>
 </plist>
