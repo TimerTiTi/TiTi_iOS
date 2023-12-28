@@ -10,9 +10,11 @@ import Foundation
 
 final class NotificationUseCase: NotificationUseCaseInterface {
     func isShowNotification() -> Bool {
+        let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
+        guard signined else { return false }
+        
         let today = Date().YYYYMMDDstyleString
         if let passDay = UserDefaultsManager.get(forKey: .notificationPassDay) as? String {
-            print(today, passDay)
             return today != passDay
         } else {
             return true
