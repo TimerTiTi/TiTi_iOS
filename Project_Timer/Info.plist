@@ -284,22 +284,14 @@
 	<string>$(OAuth_Server_ClientID)</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>HGGGOTHICSSI_PRO_00G.otf</string>
-		<string>HGGGOTHICSSI_PRO_20G.otf</string>
 		<string>HGGGOTHICSSI_PRO_40G.otf</string>
 		<string>HGGGOTHICSSI_PRO_60G.otf</string>
 		<string>HGGGOTHICSSI_PRO_80G.otf</string>
 		<string>HGGGOTHICSSI_PRO_99G.otf</string>
-		<string>MiSans-Thin.ttf</string>
-		<string>MiSans-ExtraLight.ttf</string>
-		<string>MiSans-Light.ttf</string>
 		<string>MiSans-Normal.ttf</string>
 		<string>MiSans-Regular.ttf</string>
-		<string>MiSans-Medium.ttf</string>
 		<string>MiSans-Demibold.ttf</string>
-		<string>MiSans-Semibold.ttf</string>
 		<string>MiSans-Bold.ttf</string>
-		<string>MiSans-Heavy.ttf</string>
 	</array>
 </dict>
 </plist>

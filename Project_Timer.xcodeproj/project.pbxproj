@@ -128,32 +128,10 @@
 		87306D592B260E09001B7C14 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D582B260E09001B7C14 /* Localized.swift */; };
 		87306D5D2B26CB5C001B7C14 /* Typographys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D5C2B26CB5C001B7C14 /* Typographys.swift */; };
 		87306D612B26CBBC001B7C14 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D602B26CBBC001B7C14 /* Icons.swift */; };
-		87306D6D2B26CC7B001B7C14 /* MiSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D632B26CC79001B7C14 /* MiSans-Light.ttf */; };
-		87306D6E2B26CC7B001B7C14 /* MiSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D632B26CC79001B7C14 /* MiSans-Light.ttf */; };
-		87306D6F2B26CC7B001B7C14 /* MiSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D642B26CC79001B7C14 /* MiSans-Semibold.ttf */; };
-		87306D702B26CC7B001B7C14 /* MiSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D642B26CC79001B7C14 /* MiSans-Semibold.ttf */; };
 		87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */; };
-		87306D722B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */; };
-		87306D732B26CC7B001B7C14 /* MiSans-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D662B26CC7A001B7C14 /* MiSans-Heavy.ttf */; };
-		87306D742B26CC7B001B7C14 /* MiSans-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D662B26CC7A001B7C14 /* MiSans-Heavy.ttf */; };
-		87306D752B26CC7B001B7C14 /* MiSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D672B26CC7A001B7C14 /* MiSans-Thin.ttf */; };
-		87306D762B26CC7B001B7C14 /* MiSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D672B26CC7A001B7C14 /* MiSans-Thin.ttf */; };
 		87306D772B26CC7B001B7C14 /* MiSans-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D682B26CC7A001B7C14 /* MiSans-Normal.ttf */; };
-		87306D782B26CC7B001B7C14 /* MiSans-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D682B26CC7A001B7C14 /* MiSans-Normal.ttf */; };
 		87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
-		87306D7A2B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
-		87306D7B2B26CC7B001B7C14 /* MiSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6A2B26CC7A001B7C14 /* MiSans-ExtraLight.ttf */; };
-		87306D7C2B26CC7B001B7C14 /* MiSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6A2B26CC7A001B7C14 /* MiSans-ExtraLight.ttf */; };
 		87306D7D2B26CC7B001B7C14 /* MiSans-Demibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6B2B26CC7B001B7C14 /* MiSans-Demibold.ttf */; };
-		87306D7E2B26CC7B001B7C14 /* MiSans-Demibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6B2B26CC7B001B7C14 /* MiSans-Demibold.ttf */; };
-		87306D7F2B26CC7B001B7C14 /* MiSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6C2B26CC7B001B7C14 /* MiSans-Medium.ttf */; };
-		87306D802B26CC7B001B7C14 /* MiSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D6C2B26CC7B001B7C14 /* MiSans-Medium.ttf */; };
-		87306D812B26CC87001B7C14 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
-		87306D822B26CC89001B7C14 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
-		87306D832B26CC8C001B7C14 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
-		87306D842B26CC8E001B7C14 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
-		87306D852B26CC90001B7C14 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
-		87306D862B26CC93001B7C14 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
 		873731D12B2E92BD00D7BD9F /* NotificationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D02B2E92BD00D7BD9F /* NotificationAPI.swift */; };
 		873731D32B2E931800D7BD9F /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D22B2E931800D7BD9F /* NotificationRepository.swift */; };
@@ -173,11 +151,9 @@
 		87459708263FF0F000172C0F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */; };
 		874964F52649590700113E25 /* StopwatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874964F42649590700113E25 /* StopwatchVC.swift */; };
-		874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
-		874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
 		874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */; };
 		874F9C2D2ABFF73400675A86 /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */; };
@@ -544,16 +520,10 @@
 		87306D582B260E09001B7C14 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		87306D5C2B26CB5C001B7C14 /* Typographys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typographys.swift; sourceTree = "<group>"; };
 		87306D602B26CBBC001B7C14 /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
-		87306D632B26CC79001B7C14 /* MiSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Light.ttf"; sourceTree = "<group>"; };
-		87306D642B26CC79001B7C14 /* MiSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Semibold.ttf"; sourceTree = "<group>"; };
 		87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Regular.ttf"; sourceTree = "<group>"; };
-		87306D662B26CC7A001B7C14 /* MiSans-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Heavy.ttf"; sourceTree = "<group>"; };
-		87306D672B26CC7A001B7C14 /* MiSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Thin.ttf"; sourceTree = "<group>"; };
 		87306D682B26CC7A001B7C14 /* MiSans-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Normal.ttf"; sourceTree = "<group>"; };
 		87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Bold.ttf"; sourceTree = "<group>"; };
-		87306D6A2B26CC7A001B7C14 /* MiSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		87306D6B2B26CC7B001B7C14 /* MiSans-Demibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Demibold.ttf"; sourceTree = "<group>"; };
-		87306D6C2B26CC7B001B7C14 /* MiSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Medium.ttf"; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
 		873731D02B2E92BD00D7BD9F /* NotificationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAPI.swift; sourceTree = "<group>"; };
@@ -574,11 +544,9 @@
 		87459707263FF0F000172C0F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastestVersionInfo.swift; sourceTree = "<group>"; };
 		874964F42649590700113E25 /* StopwatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVC.swift; sourceTree = "<group>"; };
-		874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_00G.otf; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
-		874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_20G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
 		874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectView.swift; sourceTree = "<group>"; };
 		874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
@@ -1082,22 +1050,14 @@
 		87306D622B26CC13001B7C14 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				874B9D1325CAB232006FCD04 /* HGGGOTHICSSI_PRO_00G.otf */,
-				874B9D1725CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf */,
 				874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */,
 				874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */,
 				874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */,
 				874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */,
-				87306D672B26CC7A001B7C14 /* MiSans-Thin.ttf */,
-				87306D6A2B26CC7A001B7C14 /* MiSans-ExtraLight.ttf */,
-				87306D632B26CC79001B7C14 /* MiSans-Light.ttf */,
 				87306D682B26CC7A001B7C14 /* MiSans-Normal.ttf */,
 				87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */,
-				87306D6C2B26CC7B001B7C14 /* MiSans-Medium.ttf */,
 				87306D6B2B26CC7B001B7C14 /* MiSans-Demibold.ttf */,
-				87306D642B26CC79001B7C14 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
-				87306D662B26CC7A001B7C14 /* MiSans-Heavy.ttf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 			);
 			path = Resource;
@@ -2025,24 +1985,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87306D822B26CC89001B7C14 /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
 				878B30F12992BB5B00BE7413 /* Assets.xcassets in Resources */,
-				87306D722B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */,
-				87306D802B26CC7B001B7C14 /* MiSans-Medium.ttf in Resources */,
-				87306D812B26CC87001B7C14 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
-				87306D852B26CC90001B7C14 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				87DD96132A09048800CA0249 /* LocalizableForWidget.strings in Resources */,
-				87306D762B26CC7B001B7C14 /* MiSans-Thin.ttf in Resources */,
-				87306D702B26CC7B001B7C14 /* MiSans-Semibold.ttf in Resources */,
-				87306D6E2B26CC7B001B7C14 /* MiSans-Light.ttf in Resources */,
-				87306D862B26CC93001B7C14 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
-				87306D832B26CC8C001B7C14 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
-				87306D782B26CC7B001B7C14 /* MiSans-Normal.ttf in Resources */,
-				87306D742B26CC7B001B7C14 /* MiSans-Heavy.ttf in Resources */,
-				87306D7E2B26CC7B001B7C14 /* MiSans-Demibold.ttf in Resources */,
-				87306D7A2B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */,
-				87306D842B26CC8E001B7C14 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
-				87306D7C2B26CC7B001B7C14 /* MiSans-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2053,9 +1997,7 @@
 				87306D772B26CC7B001B7C14 /* MiSans-Normal.ttf in Resources */,
 				87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */,
 				8760FB0D2A1DBBAB0068CEF5 /* LocalizableForWidget.strings in Resources */,
-				87306D752B26CC7B001B7C14 /* MiSans-Thin.ttf in Resources */,
 				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
-				874B9D1925CAB233006FCD04 /* HGGGOTHICSSI_PRO_00G.otf in Resources */,
 				048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */,
 				048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
@@ -2069,18 +2011,12 @@
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				87306D7D2B26CC7B001B7C14 /* MiSans-Demibold.ttf in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
-				87306D7F2B26CC7B001B7C14 /* MiSans-Medium.ttf in Resources */,
-				87306D7B2B26CC7B001B7C14 /* MiSans-ExtraLight.ttf in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
-				87306D6F2B26CC7B001B7C14 /* MiSans-Semibold.ttf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
 				874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
 				87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */,
-				87306D6D2B26CC7B001B7C14 /* MiSans-Light.ttf in Resources */,
-				87306D732B26CC7B001B7C14 /* MiSans-Heavy.ttf in Resources */,
-				874B9D1D25CAB233006FCD04 /* HGGGOTHICSSI_PRO_20G.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2611,7 +2547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2850,7 +2786,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2877,7 +2813,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;

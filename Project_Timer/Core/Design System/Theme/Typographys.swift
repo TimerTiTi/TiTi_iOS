@@ -12,8 +12,6 @@ import UIKit
 
 struct Typographys {
     enum Weight {
-        case extraLight_1
-        case light_2
         case normal_3
         case semibold_4
         case bold_5
@@ -56,10 +54,6 @@ extension Typographys {
     // MARK: ko, en
     static func HGGGOTHICSSIP(_ weight: Weight, _ size: CGFloat) -> Font {
         switch weight {
-        case .extraLight_1:
-            return Fonts.HGGGothicssiP00g(size: size)
-        case .light_2:
-            return Fonts.HGGGothicssiP20g(size: size)
         case .normal_3:
             return Fonts.HGGGothicssiP40g(size: size)
         case .semibold_4:
@@ -74,10 +68,6 @@ extension Typographys {
     // MARK: zh
     static func MiSans(_ weight: Weight, _ size: CGFloat) -> Font {
         switch weight {
-        case .extraLight_1:
-            return Fonts.MiSansExtraLight(size: size)
-        case .light_2:
-            return Fonts.MiSansLight(size: size)
         case .normal_3:
             return Fonts.MiSansNormal(size: size)
         case .semibold_4:
@@ -94,10 +84,6 @@ extension Typographys {
     // MARK: ko, en
     static func HGGGOTHICSSIP_uifont(_ weight: Weight, _ size: CGFloat) -> UIFont? {
         switch weight {
-        case .extraLight_1:
-            return Fonts.HGGGothicssiP00g(size: size)
-        case .light_2:
-            return Fonts.HGGGothicssiP20g(size: size)
         case .normal_3:
             return Fonts.HGGGothicssiP40g(size: size)
         case .semibold_4:
@@ -112,16 +98,12 @@ extension Typographys {
     // MARK: zh
     static func MiSans_uifont(_ weight: Weight, _ size: CGFloat) -> UIFont? {
         switch weight {
-        case .extraLight_1:
-            return Fonts.MiSansExtraLight(size: size)
-        case .light_2:
-            return Fonts.MiSansLight(size: size)
         case .normal_3:
             return Fonts.MiSansNormal(size: size)
         case .semibold_4:
-            return Fonts.MiSansMedium(size: size)
+            return Fonts.MiSansRegular(size: size)
         case .bold_5:
-            return Fonts.MiSansSemibold(size: size)
+            return Fonts.MiSansDemibold(size: size)
         case .heavy_6:
             return Fonts.MiSansBold(size: size)
         }
