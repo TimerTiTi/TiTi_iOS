@@ -37,6 +37,10 @@ enum TLRkey: String {
     case Settings_Button_SingInOptionDesc
     /// 서비스
     case Settings_Text_ServiceSection
+    /// TiTi 기능들
+    case Settings_Button_Functions
+    /// TiTi 연구소
+    case Settings_Button_TiTiLab
     /// 설정
     case Settings_Text_SettingSection
     /// 언어
@@ -45,6 +49,10 @@ enum TLRkey: String {
     case Settings_Button_Widget
     /// 버전 및 업데이트 내역
     case Settings_Text_VersionSection
+    /// 버전 정보
+    case Settings_Button_VersionInfoTitle
+    /// 최신 버전
+    case Settings_Button_VersionInfoDesc
     /// 백업
     case Settings_Text_BackupSection
     /// 개발팀

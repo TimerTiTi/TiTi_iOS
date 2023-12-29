@@ -99,10 +99,6 @@
 
 "Notification" = "알림";
 
-"TiTi Functions" = "TiTi 기능들";
-
-"TiTi Lab" = "TiTi 연구소";
-
 "Update" = "업데이트";
 
 "5 minutes before end" = "종료 5분전 알림";
@@ -112,10 +108,6 @@
 "Every 1 hour passed" = "1시간단위 경과시 알림";
 
 "Pop-up alert for New version" = "최신버전 업데이트 알림";
-
-"Version Info" = "버전 정보";
-
-"Latest version" = "최신 버전";
 
 "Update history" = "업데이트 내역";
 

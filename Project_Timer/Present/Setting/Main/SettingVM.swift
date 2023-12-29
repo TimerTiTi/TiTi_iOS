@@ -37,7 +37,7 @@ final class SettingVM {
     }
     
     private func configureCells() {
-        let versionCell = SettingCellInfo(title: "Version Info".localized(), subTitle: "Latest version".localized()+":", rightTitle: String.currentVersion, action: .otherApp, destination: .deeplink(url: NetworkURL.appstore))
+        let versionCell = SettingCellInfo(title: Localized.string(.Settings_Button_VersionInfoTitle), subTitle: Localized.string(.Settings_Button_VersionInfoDesc)+":", rightTitle: String.currentVersion, action: .otherApp, destination: .deeplink(url: NetworkURL.appstore))
         
         var cells: [[SettingCellInfo]] = []
         // MARK: Dev
@@ -50,8 +50,8 @@ final class SettingVM {
         
         // Service
         cells.append([
-            SettingCellInfo(title: "TiTi Functions".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingFunctionsListVC.identifier)),
-            SettingCellInfo(title: "TiTi Lab".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingTiTiLabVC.identifier))
+            SettingCellInfo(title: Localized.string(.Settings_Button_Functions), action: .pushVC, destination: .storyboardName(identifier: SettingFunctionsListVC.identifier)),
+            SettingCellInfo(title: Localized.string(.Settings_Button_TiTiLab), action: .pushVC, destination: .storyboardName(identifier: SettingTiTiLabVC.identifier))
         ])
         
         // Setting
@@ -88,7 +88,7 @@ final class SettingVM {
         self.getLatestVersionUseCase.getLatestVersion { [weak self] result in
             switch result {
             case .success(let latestVersionInfo):
-                versionCell.updateSubTitle(to: "Latest version".localized()+": \(latestVersionInfo.latestVersion)")
+                versionCell.updateSubTitle(to: Localized.string(.Settings_Button_VersionInfoDesc)+": \(latestVersionInfo.latestVersion)")
                 self?.latestVersionFetched = true
             case .failure(let error):
                 print(error.alertMessage)
