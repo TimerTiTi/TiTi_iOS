@@ -176,7 +176,7 @@ struct SigninView: View {
                 Button {
                     environment.signinSuccess = true
                 } label: {
-                    Text(Localized.string(.ok))
+                    Text(Localized.string(.Common_Text_OK))
                 }
             }
         }

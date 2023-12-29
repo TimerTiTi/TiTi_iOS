@@ -23,7 +23,7 @@ struct TTSignupNextButtonForMac: View {
                     .shadow(color: .gray.opacity(0.1), radius: 4, x: 1, y: 2)
                     .frame(height: 60)
                 
-                Text(Localized.string(.next))
+                Text(Localized.string(.Common_Text_Next))
                     .font(Typographys.font(.semibold_4, size: 20))
                     .foregroundStyle(Color.white)
             }

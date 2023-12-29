@@ -53,7 +53,7 @@ struct SigninSelectView: View {
                 Button(role: .none) {
                     print("close alert")
                 } label: {
-                    Text(Localized.string(.ok))
+                    Text(Localized.string(.Common_Text_OK))
                 }
             } message: {
                 Text(model.errorMessage.text)

@@ -100,7 +100,7 @@ struct TTNotificationView: View {
                         .frame(height: 42)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                     
-                    Text(Localized.string(.close))
+                    Text(Localized.string(.Common_Text_Close))
                         .font(Typographys.font(.bold_5, size: 16))
                         .foregroundStyle(Color.white)
                 }
