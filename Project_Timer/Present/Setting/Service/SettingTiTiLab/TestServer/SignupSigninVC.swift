@@ -250,7 +250,7 @@ extension SignupSigninVC {
             .sink { [weak self] signinSuccess in
                 guard signinSuccess else { return }
                 
-                let title: String = self?.viewModel.isSignin == true ? "Signin Success".localized() : "Signup Success".localized()
+                let title: String = self?.viewModel.isSignin == true ? Localized.string(.SignIn_Popup_SigninSuccess) : Localized.string(.SignUp_Popup_SignupSuccess)
                 self?.showAlertWithOKAfterHandler(title: title, text: "") { [weak self] in
                     self?.navigationController?.popViewController(animated: true)
                 }

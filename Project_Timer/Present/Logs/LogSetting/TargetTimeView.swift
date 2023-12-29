@@ -12,7 +12,7 @@ final class TargetTimeView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 17)
+        label.font = Typographys.uifont(.semibold_4, size: 17)
         label.textColor = .label
         label.textAlignment = .left
         return label
@@ -20,7 +20,7 @@ final class TargetTimeView: UIView {
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 11)
+        label.font = Typographys.uifont(.semibold_4, size: 11)
         label.textColor = .lightGray
         label.textAlignment = .left
         label.numberOfLines = 0

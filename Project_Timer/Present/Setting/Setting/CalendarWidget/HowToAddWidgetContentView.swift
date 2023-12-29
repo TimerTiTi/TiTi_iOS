@@ -21,7 +21,7 @@ final class HowToAddWidgetContentView: UIView {
     private var descriptionlabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 17)
+        label.font = Typographys.uifont(.semibold_4, size: 17)
         label.textColor = .black
         label.textAlignment = .left
         label.numberOfLines = 0

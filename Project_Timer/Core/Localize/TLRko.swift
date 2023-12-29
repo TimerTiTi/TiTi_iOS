@@ -26,6 +26,7 @@ struct TLRko {
         case .Settings_Button_SingInOption: value = "로그인하기"
         case .Settings_Button_SingInOptionDesc: value = "동기화 기능을 사용해보세요"
         case .Settings_Button_LanguageOption: value = "언어"
+        case .Settings_Button_Widget: value = "위젯"
             
         case .Language_Button_SystemLanguage: value = "System 언어"
         case .Language_Button_Korean: value = "한국어"
@@ -47,6 +48,12 @@ struct TLRko {
         case .SignIn_Error_SocialSignInFail: value = "로그인을 실패했어요"
         case .SignIn_Error_SocialSignInFailDomain: value = "{} 로그인을 확인해주세요"
         case .SignIn_Error_EmailSingInFail: value = "이메일과 비밀번호를 확인해주세요"
+            
+        case .SignIn_Error_AuthenticationError: value = "인증정보 오류"
+        case .SignIn_Error_SigninFail: value = "로그인 실패"
+        case .SignIn_Popup_SigninSuccess: value = "로그인 성공"
+        case .SignIn_Error_SigninAgain: value = "다시 로그인해주세요"
+        case .SignIn_Error_CheckNicknameOrPassword: value = "닉네임과 패스워드를 정확히 입력해주세요"
             
         case .SignUp_Text_InputEmailTitle: value = "이메일을 입력해 주세요"
         case .SignUp_Text_InputEmailDesc: value = "이메일 인증으로 본인을 확인해 주세요"
@@ -73,10 +80,34 @@ struct TLRko {
         case .SignUp_Hint_Nickname: value = "닉네임"
         case .SignUp_Error_WrongNicknameFormat: value = "2자 이상 12자 이내로 입력해 주세요.\n특수문자는 !@#$%^&*()만 가능합니다"
             
+        case .SignUp_Error_SignupError: value = "회원가입 불가"
+        case .SignUp_Popup_SignupSuccess: value = "회원가입 성공"
+        case .SignUp_Error_EnterDifferentValue: value = "닉네임, 또는 이메일을 다른값으로 입력해주세요"
+        case .SignUp_Error_CheckNicknameOrEmail: value = "닉네임 또는 이메일을 확인해주세요 (5자리 이상)"
+            
         case .Server_Popup_ServerCantUseTitle: value = "서버를 일시적으로 사용할 수 없어요"
         case .Server_Popup_ServerCantUseDesc: value = "잠시 후 이용해 주세요 :)"
+        case .Server_Error_NetworkError: value = "네트워크 오류"
+        case .Server_Error_NetworkTimeout: value = "네트워크 시간초과"
+        case .Server_Error_NetworkFetchError: value = "네트워크 수신불가"
+        case .Server_Error_ServerError: value = "서버 오류"
+        case .Server_Error_CheckNetwork: value = "네트워크를 확인 후 다시 시도해주세요"
+        case .Server_Error_DecodeError: value = "최신 버전의 앱으로 업데이트를 해주세요"
+        case .Server_Error_ServerErrorTryAgain: value = "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
             
         case .Notification_Button_PassToday: value = "오늘 그만보기"
+            
+        case .Sync_Error_UploadError: value = "업로드 오류"
+        case .Sync_Error_DownloadError: value = "다운로드 오류"
+            
+        case .WidgetSetting_Text_DailyTargetTimeDesc: value = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다"
+        case .WidgetSetting_Text_Description: value = "위젯 설명"
+        case .WidgetSetting_Button_AddMethod: value = "위젯 추가 방법"
+        case .WidgetSetting_Text_WidgetDesc1: value = "앱들이 흔들릴 때까지 홈 스크린의 빈 영역을 길게 눌러요"
+        case .WidgetSetting_Text_WidgetDesc2: value = "상단 모서리에 있는 ( + ) 버튼을 터치해요"
+        case .WidgetSetting_Text_WidgetDesc3: value = "\"TiTi\"를 검색한 후 터치해요"
+        case .WidgetSetting_Text_WidgetDesc4: value = "위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요"
+        case .WidgetSetting_Text_WidgetDesc5: value = "그러면 위젯을 사용할 수 있어요!"
         }
         
         if let op = op, value.contains("{}") {

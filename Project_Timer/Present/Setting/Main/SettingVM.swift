@@ -53,35 +53,31 @@ final class SettingVM {
             SettingCellInfo(title: "TiTi Functions".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingFunctionsListVC.identifier)),
             SettingCellInfo(title: "TiTi Lab".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingTiTiLabVC.identifier))
         ])
+        
         // Setting
-        if Infos.isDevMode {
-            cells.append([
-                SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
-                SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
-                SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
-                SettingCellInfo(title: Localized.string(.Settings_Button_LanguageOption), action: .pushVC, destination: .language),
-                SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
-            ])
-        } else {
-            cells.append([
-                SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
-                SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
-                SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
-                SettingCellInfo(title: "Widget".localized(), action: .pushVC, destination: .widget)
-            ])
-        }
+        cells.append([
+            SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
+            SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
+            SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
+            SettingCellInfo(title: Localized.string(.Settings_Button_LanguageOption), action: .pushVC, destination: .language),
+            SettingCellInfo(title: Localized.string(.Settings_Button_Widget), action: .pushVC, destination: .widget)
+        ])
+        
         #if targetEnvironment(macCatalyst)
         cells.last?.remove(at: 2) // Control 제거
         #endif
+        
         // Version & Update history
         cells.append([
             versionCell,
             SettingCellInfo(title: "Update history".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingUpdateHistoryVC.identifier))
         ])
+        
         // Backup
         cells.append([
             SettingCellInfo(title: "Get Backup files".localized(), action: .activityVC, destination: .backup)
         ])
+        
         // Developer
         cells.append([
             SettingCellInfo(title: "FDEE")

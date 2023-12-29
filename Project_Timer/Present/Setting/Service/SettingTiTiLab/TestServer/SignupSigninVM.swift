@@ -44,7 +44,7 @@ final class SignupSigninVM {
                 switch error {
                     // signup 관련 error message 추가
                 case .CLIENTERROR(_):
-                    self?.alert = (title: "Signup Error".localized(), text: "Please check your nickname or email (at least 5 characters)".localized())
+                    self?.alert = (title: Localized.string(.SignUp_Error_SignupError), text: Localized.string(.SignUp_Error_CheckNicknameOrEmail))
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -63,10 +63,10 @@ final class SignupSigninVM {
                 switch error {
                     // signin 관련 error message 추가
                 case .CLIENTERROR(_):
-                    self?.alert = (title: "Signin Fail".localized(), text: "Please enter your nickname and password correctly".localized())
+                    self?.alert = (title: Localized.string(.SignIn_Error_SigninFail), text: Localized.string(.SignIn_Error_CheckNicknameOrPassword))
                     // TestServer 에러핸들링 이슈로 404코드 추가
                 case .NOTFOUND(_):
-                    self?.alert = (title: "Signin Fail".localized(), text: "Please enter your nickname and password correctly".localized())
+                    self?.alert = (title: Localized.string(.SignIn_Error_SigninFail), text: Localized.string(.SignIn_Error_CheckNicknameOrPassword))
                 default:
                     self?.alert = error.alertMessage
                 }

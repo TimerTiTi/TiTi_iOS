@@ -15,7 +15,7 @@ final class HowToAddWidgetVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Fonts.HGGGothicssiP80g(size: 17)
         label.textColor = .black
-        label.text = "How to add Widget".localized()
+        label.text = Localized.string(.WidgetSetting_Button_AddMethod)
         return label
     }()
     private var closeButton : CloseButton = {
@@ -41,7 +41,7 @@ final class HowToAddWidgetVC: UIViewController {
         return min(windowWidth, 439) - 16
     }
     private var languageCode: String {
-        return Language.system == .ko ? "kor" : "eng"
+        return Language.current == .ko ? "kor" : "eng"
     }
     
     override func viewDidLoad() {
@@ -89,7 +89,7 @@ extension HowToAddWidgetVC {
         
         // MARK: Content
         
-        let content1 = HowToAddWidgetContentView(step: 1, description: "howToAddWidget_description_\(1)".localized(), imageName: "howToAdd_\(1)_\(languageCode)")
+        let content1 = HowToAddWidgetContentView(step: 1, description: Localized.string(.WidgetSetting_Text_WidgetDesc1), imageName: "howToAdd_\(1)_\(languageCode)")
         self.contentView.addSubview(content1)
         NSLayoutConstraint.activate([
             content1.topAnchor.constraint(equalTo: self.contentView.topAnchor),
@@ -97,7 +97,7 @@ extension HowToAddWidgetVC {
             content1.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
-        let content2 = HowToAddWidgetContentView(step: 2, description: "howToAddWidget_description_\(2)".localized(), imageName: "howToAdd_\(2)_\(languageCode)")
+        let content2 = HowToAddWidgetContentView(step: 2, description: Localized.string(.WidgetSetting_Text_WidgetDesc2), imageName: "howToAdd_\(2)_\(languageCode)")
         self.contentView.addSubview(content2)
         NSLayoutConstraint.activate([
             content2.topAnchor.constraint(equalTo: content1.bottomAnchor, constant: 32),
@@ -105,7 +105,7 @@ extension HowToAddWidgetVC {
             content2.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
-        let content3 = HowToAddWidgetContentView(step: 3, description: "howToAddWidget_description_\(3)".localized(), imageName: "howToAdd_\(3)_\(languageCode)")
+        let content3 = HowToAddWidgetContentView(step: 3, description: Localized.string(.WidgetSetting_Text_WidgetDesc3), imageName: "howToAdd_\(3)_\(languageCode)")
         self.contentView.addSubview(content3)
         NSLayoutConstraint.activate([
             content3.topAnchor.constraint(equalTo: content2.bottomAnchor, constant: 32),
@@ -113,7 +113,7 @@ extension HowToAddWidgetVC {
             content3.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
-        let content4 = HowToAddWidgetContentView(step: 4, description: "howToAddWidget_description_\(4)".localized(), imageName: "howToAdd_\(4)_\(languageCode)")
+        let content4 = HowToAddWidgetContentView(step: 4, description: Localized.string(.WidgetSetting_Text_WidgetDesc4), imageName: "howToAdd_\(4)_\(languageCode)")
         self.contentView.addSubview(content4)
         NSLayoutConstraint.activate([
             content4.topAnchor.constraint(equalTo: content3.bottomAnchor, constant: 32),
@@ -121,7 +121,7 @@ extension HowToAddWidgetVC {
             content4.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
         
-        let content5 = HowToAddWidgetContentView(step: 5, description: "howToAddWidget_description_\(5)".localized(), imageName: "howToAdd_\(5)_\(languageCode)")
+        let content5 = HowToAddWidgetContentView(step: 5, description: Localized.string(.WidgetSetting_Text_WidgetDesc5), imageName: "howToAdd_\(5)_\(languageCode)")
         self.contentView.addSubview(content5)
         NSLayoutConstraint.activate([
             content5.topAnchor.constraint(equalTo: content4.bottomAnchor, constant: 32),

@@ -295,41 +295,7 @@
 
 "Please check the setting of iPhone's Email, and try again." = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요.";
 
-"Widget" = "위젯";
 
-"Setting the target time for color density display based on total time by date" = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다";
-
-"About Widget" = "위젯 설명";
-
-"How to add Widget" = "위젯 추가 방법";
-
-"howToAddWidget_description_1" = "앱들이 흔들릴 때까지 홈 스크린의 빈 영역을 길게 눌러요";
-"howToAddWidget_description_2" = "상단 모서리에 있는 ( + ) 버튼을 터치해요";
-"howToAddWidget_description_3" = "\"TiTi\"를 검색한 후 터치해요";
-"howToAddWidget_description_4" = "위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요";
-"howToAddWidget_description_5" = "그러면 위젯을 사용할 수 있어요!";
 
 // Setting
 "Profile" = "프로필";
-
-// Network Alert Title
-"Network Error" = "네트워크 오류";
-"Network Timeout" = "네트워크 시간초과";
-"Network Fetch Error" = "네트워크 수신불가";
-"Authentication Error" = "인증정보 오류";
-"Signup Error" = "회원가입 불가";
-"Server Error" = "서버 오류";
-"Signin Fail" = "로그인 실패";
-"Upload Error" = "업로드 오류";
-"Download Error" = "다운로드 오류";
-"Signup Success" = "회원가입 성공";
-"Signin Success" = "로그인 성공";
-
-// Network Alert Message
-"Please check the network and try again" = "네트워크를 확인 후 다시 시도해주세요";
-"Please update to the latest version of the app" = "최신 버전의 앱으로 업데이트를 해주세요";
-"Please Sign in again" = "다시 로그인해주세요";
-"Please enter your nickname or email in a different value" = "닉네임, 또는 이메일을 다른값으로 입력해주세요";
-"The server something went wrong. Please try again in a few minutes" = "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요";
-"Please check your nickname or email (at least 5 characters)" = "닉네임 또는 이메일을 확인해주세요 (5자리 이상)";
-"Please enter your nickname and password correctly" = "닉네임과 패스워드를 정확히 입력해주세요";
