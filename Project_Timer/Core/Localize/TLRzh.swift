@@ -23,10 +23,16 @@ struct TLRzh {
         case .Update_Popup_Update: value = "更新"
         case .Update_Popup_NotNow: value = "不是现在"
             
+        case .Settings_Text_ProfileSection: value = "档案"
         case .Settings_Button_SingInOption: value = "登录"
         case .Settings_Button_SingInOptionDesc: value = "尝试同步"
+        case .Settings_Text_ServiceSection: value = "服务"
+        case .Settings_Text_SettingSection: value = "设置"
         case .Settings_Button_LanguageOption: value = "语言"
         case .Settings_Button_Widget: value = "小部件"
+        case .Settings_Text_VersionSection: value = "版本和更新历史"
+        case .Settings_Text_BackupSection: value = "备份"
+        case .Settings_Text_DeveloperSection: value = "开发团队"
             
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"

@@ -33,13 +33,8 @@ final class SettingCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.addSubview(self.toggleSwitch)
-        
-        NSLayoutConstraint.activate([
-            self.toggleSwitch.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            self.toggleSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
-        ])
-        configureLocalized()
+        self.configureUI()
+        self.configureLocalized()
     }
     
     override func prepareForReuse() {
@@ -47,14 +42,13 @@ final class SettingCell: UICollectionViewCell {
         self.toggleSwitch.isHidden = true
     }
     
-    func configure(with info: SettingCellInfo) {
-        self.info = info
-        self.configureUI(with: info)
+    private func configureUI() {
+        self.contentView.addSubview(self.toggleSwitch)
         
-        if let key = info.toggleKey, info.switchable {
-            self.configureSwitchColor()
-            self.configureSwitch(key: key)
-        }
+        NSLayoutConstraint.activate([
+            self.toggleSwitch.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            self.toggleSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+        ])
     }
     
     private func configureUI(with info: SettingCellInfo) {
@@ -85,5 +79,18 @@ final class SettingCell: UICollectionViewCell {
         self.titleLabel.font = Typographys.uifont(.semibold_4, size: 17)
         self.subTitleLabel.font = Typographys.uifont(.semibold_4, size: 11)
         self.rightLabel.font = Typographys.uifont(.normal_3, size: 16)
+    }
+}
+
+// MARK: Input
+extension SettingCell {
+    func configure(with info: SettingCellInfo) {
+        self.info = info
+        self.configureUI(with: info)
+        
+        if let key = info.toggleKey, info.switchable {
+            self.configureSwitchColor()
+            self.configureSwitch(key: key)
+        }
     }
 }

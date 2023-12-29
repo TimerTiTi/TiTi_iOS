@@ -29,14 +29,26 @@ enum TLRkey: String {
     /// 나중에
     case Update_Popup_NotNow
     
+    /// 프로필
+    case Settings_Text_ProfileSection
     /// 로그인하기
     case Settings_Button_SingInOption
     /// 동기화 기능을 사용해보세요
     case Settings_Button_SingInOptionDesc
+    /// 서비스
+    case Settings_Text_ServiceSection
+    /// 설정
+    case Settings_Text_SettingSection
     /// 언어
     case Settings_Button_LanguageOption
     /// 위젯
     case Settings_Button_Widget
+    /// 버전 및 업데이트 내역
+    case Settings_Text_VersionSection
+    /// 백업
+    case Settings_Text_BackupSection
+    /// 개발팀
+    case Settings_Text_DeveloperSection
     
     /// System 언어
     case Language_Button_SystemLanguage

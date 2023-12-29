@@ -97,13 +97,7 @@
 
 "Do you want to start the New record?" = "Do you want to start the New record?";
 
-"Service" = "Service";
-
 "Notification" = "Notification";
-
-"Version & Update history" = "Version & Update history";
-
-"Developer" = "Developer";
 
 "TiTi Functions" = "TiTi Functions";
 
@@ -261,11 +255,7 @@
 
 "You can see anytime in Setting -> TiTi Functions" = "You can see anytime in Setting -> TiTi Functions";
 
-"Setting" = "Setting";
-
 "Control" = "Control";
-
-"Backup" = "Backup";
 
 "Color" = "Color";
 
@@ -290,8 +280,3 @@
 "Email Failed" = "Email Failed";
 
 "Please check the setting of iPhone's Email, and try again." = "Please check the setting of iPhone's Email, and try again.";
-
-
-
-// Setting
-"Profile" = "Profile";
