@@ -23,10 +23,16 @@ struct TLRen {
         case .Update_Popup_Update: value = "Update"
         case .Update_Popup_NotNow: value = "Not Now"
             
+        case .Settings_Text_ProfileSection: value = "Profile"
         case .Settings_Button_SingInOption: value = "Sign in"
         case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"
+        case .Settings_Text_ServiceSection: value = "Service"
+        case .Settings_Text_SettingSection: value = "Setting"
         case .Settings_Button_LanguageOption: value = "Language"
         case .Settings_Button_Widget: value = "Widget"
+        case .Settings_Text_VersionSection: value = "Version & Update history"
+        case .Settings_Text_BackupSection: value = "Backup"
+        case .Settings_Text_DeveloperSection: value = "Developer Team"
             
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"

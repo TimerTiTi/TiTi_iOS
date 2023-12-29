@@ -23,10 +23,16 @@ struct TLRko {
         case .Update_Popup_Update: value = "업데이트"
         case .Update_Popup_NotNow: value = "나중에"
             
+        case .Settings_Text_ProfileSection: value = "프로필"
         case .Settings_Button_SingInOption: value = "로그인하기"
         case .Settings_Button_SingInOptionDesc: value = "동기화 기능을 사용해보세요"
+        case .Settings_Text_ServiceSection: value = "서비스"
+        case .Settings_Text_SettingSection: value = "설정"
         case .Settings_Button_LanguageOption: value = "언어"
         case .Settings_Button_Widget: value = "위젯"
+        case .Settings_Text_VersionSection: value = "버전 및 업데이트 내역"
+        case .Settings_Text_BackupSection: value = "백업"
+        case .Settings_Text_DeveloperSection: value = "개발팀"
             
         case .Language_Button_SystemLanguage: value = "System 언어"
         case .Language_Button_Korean: value = "한국어"

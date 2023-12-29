@@ -13,6 +13,11 @@ final class SettingHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.titleLabel.font = Typographys.uifont(.semibold_4, size: 14)
+    }
+    
     func configure(title: String) {
         self.titleLabel.text = title
     }

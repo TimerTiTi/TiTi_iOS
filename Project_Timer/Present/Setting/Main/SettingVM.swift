@@ -26,14 +26,14 @@ final class SettingVM {
     private func configureSections() {
         // MARK: Dev
         if Infos.isDevMode {
-            self.sections.append("Profile".localized())
+            self.sections.append(Localized.string(.Settings_Text_ProfileSection))
         }
         
-        self.sections.append("Service".localized())
-        self.sections.append("Setting".localized())
-        self.sections.append("Version & Update history".localized())
-        self.sections.append("Backup".localized())
-        self.sections.append("Developer".localized())
+        self.sections.append(Localized.string(.Settings_Text_ServiceSection))
+        self.sections.append(Localized.string(.Settings_Text_SettingSection))
+        self.sections.append(Localized.string(.Settings_Text_VersionSection))
+        self.sections.append(Localized.string(.Settings_Text_BackupSection))
+        self.sections.append(Localized.string(.Settings_Text_DeveloperSection))
     }
     
     private func configureCells() {

@@ -97,13 +97,7 @@
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
 
-"Service" = "서비스";
-
 "Notification" = "알림";
-
-"Version & Update history" = "버전 및 업데이트 내역";
-
-"Developer" = "개발자";
 
 "TiTi Functions" = "TiTi 기능들";
 
@@ -265,11 +259,7 @@
 
 "The new Sleep Mode feature added." = "새로운 Sleep Mode 기능이 추가되었어요";
 
-"Setting" = "설정";
-
 "Control" = "제어";
-
-"Backup" = "백업";
 
 "Color" = "컬러";
 
@@ -294,8 +284,3 @@
 "Email Failed" = "이메일 설정 실패";
 
 "Please check the setting of iPhone's Email, and try again." = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요.";
-
-
-
-// Setting
-"Profile" = "프로필";
