@@ -12,9 +12,9 @@ struct TLRzh {
     static func value(key: TLRkey, op: String? = nil) -> String {
         var value: String = ""
         switch key {
-        case .ok: value = "确认"
-        case .next: value = "下一页"
-        case .close: value = "关闭"
+        case .Common_Text_OK: value = "确认"
+        case .Common_Text_Next: value = "下一页"
+        case .Common_Text_Close: value = "关闭"
             
         case .Update_Popup_HardUpdateTitle: value = "需要更新"
         case .Update_Popup_HardUpdateDesc: value = "请更新到最新版本"
@@ -75,7 +75,6 @@ struct TLRzh {
         case .Server_Popup_ServerCantUseTitle: value = "暂时无法使用服务器"
         case .Server_Popup_ServerCantUseDesc: value = "请稍后使用 :)"
             
-        case .Notification_Text_BaseOnUTC: value = "基于UTC"
         case .Notification_Button_PassToday: value = "今日不再显示"
         }
         

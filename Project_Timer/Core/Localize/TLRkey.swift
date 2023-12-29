@@ -10,11 +10,11 @@ import Foundation
 
 enum TLRkey: String {
     /// 확인
-    case ok
+    case Common_Text_OK
     /// 다음
-    case next
+    case Common_Text_Next
     /// 닫기
-    case close
+    case Common_Text_Close
     
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
@@ -128,8 +128,6 @@ enum TLRkey: String {
     /// 잠시 후 이용해 주세요
     case Server_Popup_ServerCantUseDesc
     
-    /// UTC 기준
-    case Notification_Text_BaseOnUTC
     /// 오늘 그만보기
     case Notification_Button_PassToday
 }

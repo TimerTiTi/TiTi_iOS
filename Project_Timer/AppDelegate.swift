@@ -115,7 +115,7 @@ extension AppDelegate {
                     // MARK: 강제 업데이트 필요 Alert 표시
                     let title = Localized.string(.Update_Popup_HardUpdateTitle)
                     let text = Localized.string(.Update_Popup_HardUpdateDesc)
-                    let ok = UIAlertAction(title: Localized.string(.ok), style: .default) { _ in
+                    let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default) { _ in
                         if let url = URL(string: NetworkURL.appstore),
                            UIApplication.shared.canOpenURL(url) {
                             UIApplication.shared.open(url, options: [:])
