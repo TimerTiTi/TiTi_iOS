@@ -56,9 +56,9 @@ final class SettingVM {
         
         // Setting
         cells.append([
-            SettingCellInfo(title: "Notification".localized(), action: .pushVC, destination: .notification),
-            SettingCellInfo(title: "UI", action: .pushVC, destination: .ui),
-            SettingCellInfo(title: "Control".localized(), action: .pushVC, destination: .control),
+            SettingCellInfo(title: Localized.string(.Settings_Button_Notification), action: .pushVC, destination: .notification),
+            SettingCellInfo(title: Localized.string(.Settings_Button_UI), action: .pushVC, destination: .ui),
+            SettingCellInfo(title: Localized.string(.Settings_Button_Control), action: .pushVC, destination: .control),
             SettingCellInfo(title: Localized.string(.Settings_Button_LanguageOption), action: .pushVC, destination: .language),
             SettingCellInfo(title: Localized.string(.Settings_Button_Widget), action: .pushVC, destination: .widget)
         ])
@@ -70,12 +70,12 @@ final class SettingVM {
         // Version & Update history
         cells.append([
             versionCell,
-            SettingCellInfo(title: "Update history".localized(), action: .pushVC, destination: .storyboardName(identifier: SettingUpdateHistoryVC.identifier))
+            SettingCellInfo(title: Localized.string(.Settings_Button_UpdateHistory), action: .pushVC, destination: .storyboardName(identifier: SettingUpdateHistoryVC.identifier))
         ])
         
         // Backup
         cells.append([
-            SettingCellInfo(title: "Get Backup files".localized(), action: .activityVC, destination: .backup)
+            SettingCellInfo(title: Localized.string(.Settings_Button_GetBackup), action: .activityVC, destination: .backup)
         ])
         
         // Developer

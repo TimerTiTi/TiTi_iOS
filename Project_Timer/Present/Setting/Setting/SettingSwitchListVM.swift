@@ -20,7 +20,7 @@ final class SettingSwitchListVM {
     init(isIpad: Bool, dataSource: DataSource) {
         switch dataSource {
         case .notification:
-            self.title = "Notification".localized()
+            self.title = Localized.string(.Settings_Button_Notification)
             self.cells = [
                 SettingListCellInfo(title: "Timer".localized(), subTitle: "5 minutes before end".localized(), toggleKey: .timer5minPushable),
                 SettingListCellInfo(title: "Timer".localized(), subTitle: "Ended".localized(), toggleKey: .timerPushable),
@@ -28,7 +28,7 @@ final class SettingSwitchListVM {
                 SettingListCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable)
             ]
         case .ui:
-            self.title = "UI"
+            self.title = Localized.string(.Settings_Button_UI)
             self.cells = [
                 SettingListCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation)
             ]
@@ -36,7 +36,7 @@ final class SettingSwitchListVM {
                 self.cells.append(SettingListCellInfo(title: "Big UI", subTitle: "Activate Big UI for iPad".localized(), toggleKey: .bigUI))
             }
         case .control:
-            self.title = "Control".localized()
+            self.title = Localized.string(.Settings_Button_Control)
             self.cells = [
                 SettingListCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
                 SettingListCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will start automatically when flip the device".localized(), toggleKey: .flipToStartRecording)

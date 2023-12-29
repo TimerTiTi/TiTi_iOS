@@ -97,8 +97,6 @@
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
 
-"Notification" = "알림";
-
 "Update" = "업데이트";
 
 "5 minutes before end" = "종료 5분전 알림";
@@ -108,8 +106,6 @@
 "Every 1 hour passed" = "1시간단위 경과시 알림";
 
 "Pop-up alert for New version" = "최신버전 업데이트 알림";
-
-"Update history" = "업데이트 내역";
 
 "TiTi Development" = "TiTi 개발현황";
 
@@ -205,8 +201,6 @@
 
 "Setting Target Time" = "목표시간 설정";
 
-"Get Backup files" = "백업 파일 추출";
-
 "Activate Big UI for iPad" = "아이패드용 Big UI 활성화";
 
 "Setting New Record" = "새로운 기록 설정";
@@ -250,8 +244,6 @@
 "See how to use the Timer" = "Timer 사용법 보기";
 
 "The new Sleep Mode feature added." = "새로운 Sleep Mode 기능이 추가되었어요";
-
-"Control" = "제어";
 
 "Color" = "컬러";
 
