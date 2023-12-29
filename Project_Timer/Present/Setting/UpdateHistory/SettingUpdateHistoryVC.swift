@@ -26,7 +26,7 @@ final class SettingUpdateHistoryVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Update history".localized()
+        self.title = Localized.string(.Settings_Button_UpdateHistory)
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()

@@ -43,6 +43,12 @@ enum TLRkey: String {
     case Settings_Button_TiTiLab
     /// 설정
     case Settings_Text_SettingSection
+    /// 알림
+    case Settings_Button_Notification
+    /// UI
+    case Settings_Button_UI
+    /// 제어
+    case Settings_Button_Control
     /// 언어
     case Settings_Button_LanguageOption
     /// 위젯
@@ -53,8 +59,12 @@ enum TLRkey: String {
     case Settings_Button_VersionInfoTitle
     /// 최신 버전
     case Settings_Button_VersionInfoDesc
+    /// 업데이트 내역
+    case Settings_Button_UpdateHistory
     /// 백업
     case Settings_Text_BackupSection
+    /// 백업 파일 추출
+    case Settings_Button_GetBackup
     /// 개발팀
     case Settings_Text_DeveloperSection
     
