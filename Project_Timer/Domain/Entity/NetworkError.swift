@@ -52,21 +52,21 @@ enum NetworkError: Error {
     var title: String {
         switch self {
         case .FAIL:
-            return "Network Error".localized()
+            return Localized.string(.Server_Error_NetworkError)
         case .TIMEOUT:
-            return "Network Timeout".localized()
+            return Localized.string(.Server_Error_NetworkTimeout)
         case .DECODEERROR:
-            return "Network Fetch Error".localized()
+            return Localized.string(.Server_Error_NetworkFetchError)
         case .AUTHENTICATION(_):
-            return "Authentication Error".localized()
+            return Localized.string(.SignIn_Error_AuthenticationError)
         case .NOTFOUND(_):
-            return "Network Fetch Error".localized()
+            return Localized.string(.Server_Error_NetworkFetchError)
         case .CONFLICT(_):
-            return "Signup Error".localized()
+            return Localized.string(.SignUp_Error_SignupError)
         case .SERVERERROR(_):
-            return "Server Error".localized()
+            return Localized.string(.Server_Error_ServerError)
         default:
-            return "Network Error".localized()
+            return Localized.string(.Server_Error_NetworkError)
         }
     }
     
@@ -74,21 +74,21 @@ enum NetworkError: Error {
     var message: String {
         switch self {
         case .FAIL:
-            return "Please check the network and try again".localized()
+            return Localized.string(.Server_Error_CheckNetwork)
         case .TIMEOUT:
-            return "Please check the network and try again".localized()
+            return Localized.string(.Server_Error_CheckNetwork)
         case .DECODEERROR:
-            return "Please update to the latest version of the app".localized()
+            return Localized.string(.Server_Error_DecodeError)
         case .AUTHENTICATION(_):
-            return "Please Sign in again".localized()
+            return Localized.string(.SignIn_Error_SigninAgain)
         case .NOTFOUND(_):
-            return "Please update to the latest version of the app".localized()
+            return Localized.string(.Server_Error_DecodeError)
         case .CONFLICT(_):
-            return "Please enter your nickname or email in a different value".localized()
+            return Localized.string(.SignUp_Error_EnterDifferentValue)
         case .SERVERERROR(_):
-            return "The server something went wrong. Please try again in a few minutes".localized()
+            return Localized.string(.Server_Error_ServerErrorTryAgain)
         default:
-            return "Please check the network and try again".localized()
+            return Localized.string(.Server_Error_CheckNetwork)
         }
     }
     

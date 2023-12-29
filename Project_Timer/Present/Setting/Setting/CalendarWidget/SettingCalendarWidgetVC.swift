@@ -73,7 +73,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         
         self.colorSelector = ThemeColorSelectorView(delegate: self, key: .calendarWidgetColor)
         self.colorDirection = ThemeColorDirectionView(delegate: self, colorKey: .calendarWidgetColor, directionKey: .calendarWidgetColorIsReverse)
-        self.targetTimeView = TargetTimeView(text: "Setting the target time for color density display based on total time by date".localized())
+        self.targetTimeView = TargetTimeView(text: Localized.string(.WidgetSetting_Text_DailyTargetTimeDesc))
     }
     
     required init?(coder: NSCoder) {
@@ -93,10 +93,10 @@ extension SettingCalendarWidgetVC {
     private func configureNavigationBar() {
         self.informationButton.showsMenuAsPrimaryAction = true
         self.informationButton.menu = UIMenu(title: "Calendar widget".localizedForWidget(), image: nil, children: [
-            UIAction(title: "About Widget".localized(), image: nil) { [weak self] _ in
+            UIAction(title: Localized.string(.WidgetSetting_Text_Description), image: nil) { [weak self] _ in
                 self?.showHowToUseWidgetVC(url: NetworkURL.WidgetInfo.calendarWidget)
             },
-            UIAction(title: "How to add Widget".localized(), image: nil) { [weak self] _ in
+            UIAction(title: Localized.string(.WidgetSetting_Button_AddMethod), image: nil) { [weak self] _ in
                 self?.showHowToAddWidgetVC()
             }]
         )

@@ -26,6 +26,7 @@ struct TLRen {
         case .Settings_Button_SingInOption: value = "Sign in"
         case .Settings_Button_SingInOptionDesc: value = "Try Synchronization"
         case .Settings_Button_LanguageOption: value = "Language"
+        case .Settings_Button_Widget: value = "Widget"
             
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"
@@ -47,6 +48,12 @@ struct TLRen {
         case .SignIn_Error_SocialSignInFail: value = "Sign in failed"
         case .SignIn_Error_SocialSignInFailDomain: value = "Please check your {} Sign In"
         case .SignIn_Error_EmailSingInFail: value = "Please check you email and password"
+            
+        case .SignIn_Error_AuthenticationError: value = "Authentication Error"
+        case .SignIn_Error_SigninFail: value = "Signin Fail"
+        case .SignIn_Popup_SigninSuccess: value = "Signin Success"
+        case .SignIn_Error_SigninAgain: value = "Please Sign in again"
+        case .SignIn_Error_CheckNicknameOrPassword: value = "Please enter your nickname and password correctly"
             
         case .SignUp_Text_InputEmailTitle: value = "Please enter your Email"
         case .SignUp_Text_InputEmailDesc: value = "We need your email for verification"
@@ -73,10 +80,34 @@ struct TLRen {
         case .SignUp_Hint_Nickname: value = "Nickname"
         case .SignUp_Error_WrongNicknameFormat: value = "Nickname should be 2 ~ 12 characters.\nSpecial characters are imited to !@#$%^&*() only"
             
+        case .SignUp_Error_SignupError: value = "Signup Error"
+        case .SignUp_Popup_SignupSuccess: value = "Signup Success"
+        case .SignUp_Error_EnterDifferentValue: value = "Please enter your nickname or email in a different value"
+        case .SignUp_Error_CheckNicknameOrEmail: value = "Please check your nickname or email (at least 5 characters)"
+            
         case .Server_Popup_ServerCantUseTitle: value = "The server is temporarily unavailable"
         case .Server_Popup_ServerCantUseDesc: value = "Please try it later :)"
+        case .Server_Error_NetworkError: value = "Network Error"
+        case .Server_Error_NetworkTimeout: value = "Network Timeout"
+        case .Server_Error_NetworkFetchError: value = "Network Fetch Error"
+        case .Server_Error_ServerError: value = "Server Error"
+        case .Server_Error_CheckNetwork: value = "Please check the network and try again"
+        case .Server_Error_DecodeError: value = "Please update to the latest version of the app"
+        case .Server_Error_ServerErrorTryAgain: value = "The server something went wrong. Please try again in a few minutes"
             
         case .Notification_Button_PassToday: value = "Dismiss for Today"
+            
+        case .Sync_Error_UploadError: value = "Upload Error"
+        case .Sync_Error_DownloadError: value = "Download Error"
+            
+        case .WidgetSetting_Text_DailyTargetTimeDesc: value = "Setting the target time for color density display based on total time by date"
+        case .WidgetSetting_Text_Description: value = "About Widget"
+        case .WidgetSetting_Button_AddMethod: value = "How to add Widget"
+        case .WidgetSetting_Text_WidgetDesc1: value = "Touch and hold an empty area on your Home Screen until the apps jiggle."
+        case .WidgetSetting_Text_WidgetDesc2: value = "Tap the ( + ) button in the upper corner."
+        case .WidgetSetting_Text_WidgetDesc3: value = "Search for \"TiTi\" and Tap."
+        case .WidgetSetting_Text_WidgetDesc4: value = "Select a Widget and size, then Tap \"Add Widget\"."
+        case .WidgetSetting_Text_WidgetDesc5: value = "Now you can use Widget!"
         }
         
         if let op = op, value.contains("{}") {

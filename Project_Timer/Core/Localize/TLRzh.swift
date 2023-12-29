@@ -26,6 +26,8 @@ struct TLRzh {
         case .Settings_Button_SingInOption: value = "登录"
         case .Settings_Button_SingInOptionDesc: value = "尝试同步"
         case .Settings_Button_LanguageOption: value = "语言"
+        case .Settings_Button_Widget: value = "小部件"
+            
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"
         case .Language_Button_English: value = "英语"
@@ -46,6 +48,12 @@ struct TLRzh {
         case .SignIn_Error_SocialSignInFail: value = "登录失败"
         case .SignIn_Error_SocialSignInFailDomain: value = "请检查您的 {} 登录"
         case .SignIn_Error_EmailSingInFail: value = "请检查您的电子邮件和密码"
+            
+        case .SignIn_Error_AuthenticationError: value = "验证错误"
+        case .SignIn_Error_SigninFail: value = "登录失败"
+        case .SignIn_Popup_SigninSuccess: value = "登录成功"
+        case .SignIn_Error_SigninAgain: value = "请重新登录"
+        case .SignIn_Error_CheckNicknameOrPassword: value = "请正确输入您的昵称和密码"
             
         case .SignUp_Text_InputEmailTitle: value = "请输入您的电子邮件地址"
         case .SignUp_Text_InputEmailDesc: value = "我们需要您的电子邮件进行验证"
@@ -72,10 +80,34 @@ struct TLRzh {
         case .SignUp_Hint_Nickname: value = "昵称"
         case .SignUp_Error_WrongNicknameFormat: value = "昵称应该是2~12个字符。\n特殊字符被模仿 !@#$%^&*() 仅限"
             
+        case .SignUp_Error_SignupError: value = "注册错误"
+        case .SignUp_Popup_SignupSuccess: value = "注册成功"
+        case .SignUp_Error_EnterDifferentValue: value = "请输入您的昵称或电子邮件为不同的值"
+        case .SignUp_Error_CheckNicknameOrEmail: value = "请检查您的昵称或电子邮件（至少5个字符）"
+            
         case .Server_Popup_ServerCantUseTitle: value = "暂时无法使用服务器"
         case .Server_Popup_ServerCantUseDesc: value = "请稍后使用 :)"
+        case .Server_Error_NetworkError: value = "网络错误"
+        case .Server_Error_NetworkTimeout: value = "网络超时"
+        case .Server_Error_NetworkFetchError: value = "网络获取错误"
+        case .Server_Error_ServerError: value = "服务器错误"
+        case .Server_Error_CheckNetwork: value = "请检查网络并重试"
+        case .Server_Error_DecodeError: value = "请更新到最新版本的应用程序"
+        case .Server_Error_ServerErrorTryAgain: value = "服务器出错啦! 请稍后再试。"
             
         case .Notification_Button_PassToday: value = "今日不再显示"
+            
+        case .Sync_Error_UploadError: value = "上传错误"
+        case .Sync_Error_DownloadError: value = "下载错误"
+            
+        case .WidgetSetting_Text_DailyTargetTimeDesc: value = "根据日期的总时间设置颜色密度显示的目标时间"
+        case .WidgetSetting_Text_Description: value = "关于小部件"
+        case .WidgetSetting_Button_AddMethod: value = "如何添加小部件"
+        case .WidgetSetting_Text_WidgetDesc1: value = "触摸并按住主屏幕上的空区域,直到应用程序抖动。"
+        case .WidgetSetting_Text_WidgetDesc2: value = "点击上角的 ( + ) 按钮。"
+        case .WidgetSetting_Text_WidgetDesc3: value = "搜索\"TiTi\"后点击。"
+        case .WidgetSetting_Text_WidgetDesc4: value = "选择一个小部件和大小，然后轻按\"添加小部件\"。"
+        case .WidgetSetting_Text_WidgetDesc5: value = "现在你可以使用小部件了！"
         }
         
         if let op = op, value.contains("{}") {

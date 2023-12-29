@@ -16,7 +16,7 @@ final class HowToUseWidgetVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Fonts.HGGGothicssiP80g(size: 17)
         label.textColor = .black
-        label.text = "About Widget".localized()
+        label.text = Localized.string(.WidgetSetting_Text_Description)
         return label
     }()
     private var closeButton : CloseButton = {

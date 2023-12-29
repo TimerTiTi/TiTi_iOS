@@ -35,6 +35,8 @@ enum TLRkey: String {
     case Settings_Button_SingInOptionDesc
     /// 언어
     case Settings_Button_LanguageOption
+    /// 위젯
+    case Settings_Button_Widget
     
     /// System 언어
     case Language_Button_SystemLanguage
@@ -75,6 +77,17 @@ enum TLRkey: String {
     case SignIn_Error_SocialSignInFailDomain
     /// 이메일과 비밀번호를 확인해주세요
     case SignIn_Error_EmailSingInFail
+    
+    /// 인증정보 오류
+    case SignIn_Error_AuthenticationError
+    /// 로그인 실패
+    case SignIn_Error_SigninFail
+    /// 로그인 성공
+    case SignIn_Popup_SigninSuccess
+    /// 다시 로그인해주세요
+    case SignIn_Error_SigninAgain
+    /// 닉네임과 패스워드를 정확히 입력해주세요
+    case SignIn_Error_CheckNicknameOrPassword
     
     /// 이메일을 입력해 주세요
     case SignUp_Text_InputEmailTitle
@@ -123,11 +136,56 @@ enum TLRkey: String {
     /// "2자 이상 12자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
     case SignUp_Error_WrongNicknameFormat
     
+    /// 회원가입 불가
+    case SignUp_Error_SignupError
+    /// 회원가입 성공
+    case SignUp_Popup_SignupSuccess
+    /// 닉네임, 또는 이메일을 다른값으로 입력해주세요
+    case SignUp_Error_EnterDifferentValue
+    /// 닉네임 또는 이메일을 확인해주세요 (5자리 이상)
+    case SignUp_Error_CheckNicknameOrEmail
+    
     /// 서버를 일시적으로 사용할 수 없어요
     case Server_Popup_ServerCantUseTitle
     /// 잠시 후 이용해 주세요
     case Server_Popup_ServerCantUseDesc
+    /// 네트워크 오류
+    case Server_Error_NetworkError
+    /// 네트워크 시간초과
+    case Server_Error_NetworkTimeout
+    /// 네트워크 수신불가
+    case Server_Error_NetworkFetchError
+    /// 서버 오류
+    case Server_Error_ServerError
+    /// 네트워크를 확인 후 다시 시도해주세요
+    case Server_Error_CheckNetwork
+    /// 최신 버전의 앱으로 업데이트를 해주세요
+    case Server_Error_DecodeError
+    /// 서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요
+    case Server_Error_ServerErrorTryAgain
     
     /// 오늘 그만보기
     case Notification_Button_PassToday
+    
+    /// 업로드 오류
+    case Sync_Error_UploadError
+    /// 다운로드 오류
+    case Sync_Error_DownloadError
+    
+    /// 날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다
+    case WidgetSetting_Text_DailyTargetTimeDesc
+    /// 위젯 설명
+    case WidgetSetting_Text_Description
+    /// 위젯 추가 방법
+    case WidgetSetting_Button_AddMethod
+    /// 앱들이 흔들릴 때까지 홈 스크린의 빈 영역을 길게 눌러요
+    case WidgetSetting_Text_WidgetDesc1
+    /// 상단 모서리에 있는 ( + ) 버튼을 터치해요
+    case WidgetSetting_Text_WidgetDesc2
+    /// \"TiTi\"를 검색한 후 터치해요
+    case WidgetSetting_Text_WidgetDesc3
+    /// 위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요
+    case WidgetSetting_Text_WidgetDesc4
+    /// 그러면 위젯을 사용할 수 있어요!
+    case WidgetSetting_Text_WidgetDesc5
 }
