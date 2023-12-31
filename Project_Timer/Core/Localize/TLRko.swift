@@ -15,6 +15,8 @@ struct TLRko {
         case .Common_Text_OK: value = "확인"
         case .Common_Text_Next: value = "다음"
         case .Common_Text_Close: value = "닫기"
+        case .Common_Button_Timer: value = "타이머"
+        case .Common_Button_Stopwatch: value = "스톱워치"
             
         case .Update_Popup_HardUpdateTitle: value = "업데이트가 필요해요"
         case .Update_Popup_HardUpdateDesc: value = "최신버전으로 업데이트 해주세요"
@@ -42,6 +44,12 @@ struct TLRko {
         case .Settings_Text_BackupSection: value = "백업"
         case .Settings_Button_GetBackup: value = "백업 파일 추출"
         case .Settings_Text_DeveloperSection: value = "개발팀"
+            
+        case .SwitchSetting_Button_Update: value = "업데이트"
+        case .SwitchSetting_Button_5minNotiDesc: value = "종료 5분전 알림"
+        case .SwitchSetting_Button_EndNotiDesc: value = "종료 알림"
+        case .SwitchSetting_Button_1HourPassNotiDesc: value = "1시간단위 경과시 알림"
+        case .SwitchSetting_Button_NewVerNotiDesc: value = "최신버전 업데이트 알림"
             
         case .Language_Button_SystemLanguage: value = "System 언어"
         case .Language_Button_Korean: value = "한국어"

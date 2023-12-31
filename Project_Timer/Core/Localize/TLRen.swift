@@ -15,6 +15,8 @@ struct TLRen {
         case .Common_Text_OK: value = "ok"
         case .Common_Text_Next: value = "Next"
         case .Common_Text_Close: value = "Close"
+        case .Common_Button_Timer: value = "Timer"
+        case .Common_Button_Stopwatch: value = "Stopwatch"
             
         case .Update_Popup_HardUpdateTitle: value = "You have to update the app"
         case .Update_Popup_HardUpdateDesc: value = "Please update the latest version"
@@ -42,6 +44,12 @@ struct TLRen {
         case .Settings_Text_BackupSection: value = "Backup"
         case .Settings_Button_GetBackup: value = "Get Backup files"
         case .Settings_Text_DeveloperSection: value = "Developer Team"
+            
+        case .SwitchSetting_Button_Update: value = "Update"
+        case .SwitchSetting_Button_5minNotiDesc: value = "5 minutes before end"
+        case .SwitchSetting_Button_EndNotiDesc: value = "Ended"
+        case .SwitchSetting_Button_1HourPassNotiDesc: value = "Every 1 hour passed"
+        case .SwitchSetting_Button_NewVerNotiDesc: value = "Pop-up alert for New version"
             
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"

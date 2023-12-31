@@ -15,6 +15,10 @@ enum TLRkey: String {
     case Common_Text_Next
     /// 닫기
     case Common_Text_Close
+    /// 타이머
+    case Common_Button_Timer
+    /// 스톱워치
+    case Common_Button_Stopwatch
     
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
@@ -67,6 +71,17 @@ enum TLRkey: String {
     case Settings_Button_GetBackup
     /// 개발팀
     case Settings_Text_DeveloperSection
+    
+    /// 업데이트
+    case SwitchSetting_Button_Update
+    /// 종료 5분전 알림
+    case SwitchSetting_Button_5minNotiDesc
+    /// 종료 알림
+    case SwitchSetting_Button_EndNotiDesc
+    /// 1시간단위 경과시 알림
+    case SwitchSetting_Button_1HourPassNotiDesc
+    /// 최신버전 업데이트 알림
+    case SwitchSetting_Button_NewVerNotiDesc
     
     /// System 언어
     case Language_Button_SystemLanguage
