@@ -13,7 +13,7 @@ final class SettingFunctionsListVC: UIViewController {
     static let identifier = "SettingFunctionsListVC"
 
     @IBOutlet weak var functionList: UICollectionView!
-    @IBOutlet weak var youtubeBT: UIButton!
+    
     private let loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView(style: .medium)
         loader.translatesAutoresizingMaskIntoConstraints = false
@@ -28,12 +28,10 @@ final class SettingFunctionsListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Localized.string(.Settings_Button_Functions)
-        self.youtubeBT.setTitle("How to use TiTi Move to YouTube".localized(), for: .normal)
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
         self.bindAll()
-        self.youtubeBT.configureShadow(opacity: 0.25, radius: 5)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

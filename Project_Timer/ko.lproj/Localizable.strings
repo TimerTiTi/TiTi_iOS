@@ -97,16 +97,6 @@
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
 
-"Update" = "업데이트";
-
-"5 minutes before end" = "종료 5분전 알림";
-
-"Ended" = "종료 알림";
-
-"Every 1 hour passed" = "1시간단위 경과시 알림";
-
-"Pop-up alert for New version" = "최신버전 업데이트 알림";
-
 "TiTi Development" = "TiTi 개발현황";
 
 "Development list" = "개발진행리스트";
@@ -122,8 +112,6 @@
 "It greatly helps to develop and improve new features.\nNew surveys are added in real time." = "새로운 기능 개발 및 개선에 큰 도움이 됩니다.\n실시간으로 새로운 설문조사들이 추가됩니다.";
 
 "No surveys in progress." = "현재 진행중인 설문조사가 없습니다.";
-
-"How to use TiTi Move to YouTube" = "TiTi 사용법 Youtube 이동";
 
 "Times Display" = "시간 표시";
 

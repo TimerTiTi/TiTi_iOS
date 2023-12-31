@@ -15,6 +15,8 @@ struct TLRzh {
         case .Common_Text_OK: value = "确认"
         case .Common_Text_Next: value = "下一页"
         case .Common_Text_Close: value = "关闭"
+        case .Common_Button_Timer: value = "计时器"
+        case .Common_Button_Stopwatch: value = "秒表"
             
         case .Update_Popup_HardUpdateTitle: value = "需要更新"
         case .Update_Popup_HardUpdateDesc: value = "请更新到最新版本"
@@ -42,6 +44,12 @@ struct TLRzh {
         case .Settings_Text_BackupSection: value = "备份"
         case .Settings_Button_GetBackup: value = "获取备份文件"
         case .Settings_Text_DeveloperSection: value = "开发团队"
+            
+        case .SwitchSetting_Button_Update: value = "更新"
+        case .SwitchSetting_Button_5minNotiDesc: value = "结束前5分钟提醒"
+        case .SwitchSetting_Button_EndNotiDesc: value = "结束"
+        case .SwitchSetting_Button_1HourPassNotiDesc: value = "每隔1小时提醒"
+        case .SwitchSetting_Button_NewVerNotiDesc: value = "新版本弹出警报"
             
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"

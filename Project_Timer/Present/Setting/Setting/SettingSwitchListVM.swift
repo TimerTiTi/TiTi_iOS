@@ -22,10 +22,10 @@ final class SettingSwitchListVM {
         case .notification:
             self.title = Localized.string(.Settings_Button_Notification)
             self.cells = [
-                SettingListCellInfo(title: "Timer".localized(), subTitle: "5 minutes before end".localized(), toggleKey: .timer5minPushable),
-                SettingListCellInfo(title: "Timer".localized(), subTitle: "Ended".localized(), toggleKey: .timerPushable),
-                SettingListCellInfo(title: "Stopwatch".localized(), subTitle: "Every 1 hour passed".localized(), toggleKey: .stopwatchPushable),
-                SettingListCellInfo(title: "Update".localized(), subTitle: "Pop-up alert for New version".localized(), toggleKey: .updatePushable)
+                SettingListCellInfo(title: Localized.string(.Common_Button_Timer), subTitle: Localized.string(.SwitchSetting_Button_5minNotiDesc), toggleKey: .timer5minPushable),
+                SettingListCellInfo(title: Localized.string(.Common_Button_Timer), subTitle: Localized.string(.SwitchSetting_Button_EndNotiDesc), toggleKey: .timerPushable),
+                SettingListCellInfo(title: Localized.string(.Common_Button_Stopwatch), subTitle: Localized.string(.SwitchSetting_Button_1HourPassNotiDesc), toggleKey: .stopwatchPushable),
+                SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_Update), subTitle: Localized.string(.SwitchSetting_Button_NewVerNotiDesc), toggleKey: .updatePushable)
             ]
         case .ui:
             self.title = Localized.string(.Settings_Button_UI)
