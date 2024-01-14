@@ -30,7 +30,7 @@ final class SettingSwitchListVM {
         case .ui:
             self.title = Localized.string(.Settings_Button_UI)
             self.cells = [
-                SettingListCellInfo(title: "Times Display".localized(), subTitle: "Smoothly display time changes".localized(), toggleKey: .timelabelsAnimation)
+                SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_TimeAnimationTitle), subTitle: Localized.string(.SwitchSetting_Button_TimeAnimationDesc), toggleKey: .timelabelsAnimation)
             ]
             if isIpad {
                 self.cells.append(SettingListCellInfo(title: "Big UI", subTitle: "Activate Big UI for iPad".localized(), toggleKey: .bigUI))

@@ -82,6 +82,10 @@ enum TLRkey: String {
     case SwitchSetting_Button_1HourPassNotiDesc
     /// 최신버전 업데이트 알림
     case SwitchSetting_Button_NewVerNotiDesc
+    /// 시간 변화 애니메이션
+    case SwitchSetting_Button_TimeAnimationTitle
+    /// 시간 변화를 부드럽게 표시해요
+    case SwitchSetting_Button_TimeAnimationDesc
     
     /// System 언어
     case Language_Button_SystemLanguage

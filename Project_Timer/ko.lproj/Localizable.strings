@@ -113,10 +113,6 @@
 
 "No surveys in progress." = "현재 진행중인 설문조사가 없습니다.";
 
-"Times Display" = "시간 표시";
-
-"Smoothly display time changes" = "시간변화를 부드럽게 표시합니다";
-
 "Flip to start recording" = "뒤집어서 기록 시작";
 
 "Record will start automatically when flip the device" = "기기를 뒤집으면 자동으로 기록이 시작됩니다";

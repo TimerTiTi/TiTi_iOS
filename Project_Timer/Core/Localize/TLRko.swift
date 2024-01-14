@@ -50,6 +50,8 @@ struct TLRko {
         case .SwitchSetting_Button_EndNotiDesc: value = "종료 알림"
         case .SwitchSetting_Button_1HourPassNotiDesc: value = "1시간단위 경과시 알림"
         case .SwitchSetting_Button_NewVerNotiDesc: value = "최신버전 업데이트 알림"
+        case .SwitchSetting_Button_TimeAnimationTitle: value = "시간 변화 애니메이션"
+        case .SwitchSetting_Button_TimeAnimationDesc: value = "시간 변화를 부드럽게 표시해요"
             
         case .Language_Button_SystemLanguage: value = "System 언어"
         case .Language_Button_Korean: value = "한국어"
