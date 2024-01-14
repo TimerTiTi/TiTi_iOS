@@ -50,6 +50,8 @@ struct TLRen {
         case .SwitchSetting_Button_EndNotiDesc: value = "Ended"
         case .SwitchSetting_Button_1HourPassNotiDesc: value = "Every 1 hour passed"
         case .SwitchSetting_Button_NewVerNotiDesc: value = "Pop-up alert for New version"
+        case .SwitchSetting_Button_TimeAnimationTitle: value = "Time change animation"
+        case .SwitchSetting_Button_TimeAnimationDesc: value = "Smoothly Display time changes"
             
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"

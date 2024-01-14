@@ -25,7 +25,7 @@ struct TLRzh {
         case .Update_Popup_Update: value = "更新"
         case .Update_Popup_NotNow: value = "不是现在"
             
-        case .Settings_Text_ProfileSection: value = "档案"
+        case .Settings_Text_ProfileSection: value = "個人資料"
         case .Settings_Button_SingInOption: value = "登录"
         case .Settings_Button_SingInOptionDesc: value = "尝试同步"
         case .Settings_Text_ServiceSection: value = "服务"
@@ -40,7 +40,7 @@ struct TLRzh {
         case .Settings_Text_VersionSection: value = "版本和更新历史"
         case .Settings_Button_VersionInfoTitle: value = "版本信息"
         case .Settings_Button_VersionInfoDesc: value = "最新版本"
-        case .Settings_Button_UpdateHistory: value = "更新历史"
+        case .Settings_Button_UpdateHistory: value = "更新细目"
         case .Settings_Text_BackupSection: value = "备份"
         case .Settings_Button_GetBackup: value = "获取备份文件"
         case .Settings_Text_DeveloperSection: value = "开发团队"
@@ -50,6 +50,8 @@ struct TLRzh {
         case .SwitchSetting_Button_EndNotiDesc: value = "结束"
         case .SwitchSetting_Button_1HourPassNotiDesc: value = "每隔1小时提醒"
         case .SwitchSetting_Button_NewVerNotiDesc: value = "新版本弹出警报"
+        case .SwitchSetting_Button_TimeAnimationTitle: value = "时间变化动画"
+        case .SwitchSetting_Button_TimeAnimationDesc: value = "平滑显示时间变化"
             
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"

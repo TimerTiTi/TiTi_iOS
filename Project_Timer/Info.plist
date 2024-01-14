@@ -272,6 +272,8 @@
 	<string>$(MODE)</string>
 	<key>ServerURL</key>
 	<string>$(ServerURL)</string>
+    <key>ServerURL2</key>
+    <string>$(ServerURL2)</string>
 	<key>FirestoreURL</key>
 	<string>$(FirestoreURL)</string>
 	<key>APP_BUNDLE_ID</key>
