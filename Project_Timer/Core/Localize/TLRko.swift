@@ -52,6 +52,12 @@ struct TLRko {
         case .SwitchSetting_Button_NewVerNotiDesc: value = "최신버전 업데이트 알림"
         case .SwitchSetting_Button_TimeAnimationTitle: value = "시간 변화 애니메이션"
         case .SwitchSetting_Button_TimeAnimationDesc: value = "시간 변화를 부드럽게 표시해요"
+        case .SwitchSetting_Button_BigUITitle: value = "Big UI"
+        case .SwitchSetting_Button_BigUIDesc: value = "아이패드용 Big UI 활성화"
+        case .SwitchSetting_Button_KeepScreenOnTitle: value = "항상 화면 켜짐 유지"
+        case .SwitchSetting_Button_KeepScreenOnDesc: value = "기록중에는 화면이 항상 켜진 상태로 유지됩니다"
+        case .SwitchSetting_Button_FlipStartTitle: value = "뒤집어서 기록 시작"
+        case .SwitchSetting_Button_FlipStartDesc: value = "기기를 뒤집으면 자동으로 기록이 시작됩니다"
             
         case .Language_Button_SystemLanguage: value = "System 언어"
         case .Language_Button_Korean: value = "한국어"

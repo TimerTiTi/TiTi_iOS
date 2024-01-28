@@ -86,6 +86,18 @@ enum TLRkey: String {
     case SwitchSetting_Button_TimeAnimationTitle
     /// 시간 변화를 부드럽게 표시해요
     case SwitchSetting_Button_TimeAnimationDesc
+    /// Big UI
+    case SwitchSetting_Button_BigUITitle
+    /// 아이패드용 Big UI 활성화
+    case SwitchSetting_Button_BigUIDesc
+    /// 항상 화면 켜짐 유지
+    case SwitchSetting_Button_KeepScreenOnTitle
+    /// 기록중에는 화면이 항상 켜진 상태로 유지됩니다
+    case SwitchSetting_Button_KeepScreenOnDesc
+    /// 뒤집어서 기록 시작
+    case SwitchSetting_Button_FlipStartTitle
+    /// 기기를 뒤집으면 자동으로 기록이 시작됩니다
+    case SwitchSetting_Button_FlipStartDesc
     
     /// System 언어
     case Language_Button_SystemLanguage

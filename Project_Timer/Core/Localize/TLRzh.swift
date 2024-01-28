@@ -52,6 +52,12 @@ struct TLRzh {
         case .SwitchSetting_Button_NewVerNotiDesc: value = "新版本弹出警报"
         case .SwitchSetting_Button_TimeAnimationTitle: value = "时间变化动画"
         case .SwitchSetting_Button_TimeAnimationDesc: value = "平滑显示时间变化"
+        case .SwitchSetting_Button_BigUITitle: value = "大型用户界面"
+        case .SwitchSetting_Button_BigUIDesc: value = "为 iPad 使用 Big UI"
+        case .SwitchSetting_Button_KeepScreenOnTitle: value = "始终保持屏幕打开"
+        case .SwitchSetting_Button_KeepScreenOnDesc: value = "在录制过程中保持屏幕打开"
+        case .SwitchSetting_Button_FlipStartTitle: value = "翻转开始录制"
+        case .SwitchSetting_Button_FlipStartDesc: value = "翻转机器后自动开始记录"
             
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"
