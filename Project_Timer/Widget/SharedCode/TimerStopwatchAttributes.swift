@@ -6,6 +6,8 @@
 //  Copyright © 2023 FDEE. All rights reserved.
 //
 
+#if targetEnvironment(macCatalyst)
+#else
 import Foundation
 import ActivityKit
 
@@ -19,3 +21,4 @@ struct TimerStopwatchAttributes: ActivityAttributes {
     
     var isTimer: Bool
 }
+#endif

@@ -9,9 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseAnalytics
-import GoogleMobileAds
 import WidgetKit
 import GoogleSignIn
+#if targetEnvironment(macCatalyst)
+#else
+import GoogleMobileAds
+#endif
 
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +31,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if Infos.isDevMode == false {
             self.configureGoogleAdmob()
+            self.configureFirebase()
         }
         
         self.configureNotificationCenterAddObserver()
@@ -170,8 +174,13 @@ extension AppDelegate {
     
     private func configureGoogleAdmob() {
         /// 애드몹 이니셜라이즈
+        #if targetEnvironment(macCatalyst)
+        #else
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        
+        #endif
+    }
+    
+    private func configureFirebase() {
         /// 앱 실행시 Analytics 에 정보 전달부분
         FirebaseApp.configure()
         Analytics.logEvent("launch", parameters: [
