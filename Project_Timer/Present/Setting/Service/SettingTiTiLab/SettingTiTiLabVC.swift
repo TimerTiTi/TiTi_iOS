@@ -30,7 +30,7 @@ final class SettingTiTiLabVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.syncLabel.text = "Synchronization".localized()
+        self.configureLocalized()
         self.configureLoader()
         self.configureCollectionView()
         self.configureViewModel()
@@ -68,6 +68,15 @@ final class SettingTiTiLabVC: UIViewController {
 
 // MARK: TestServer Signin
 extension SettingTiTiLabVC {
+    private func configureLocalized() {
+        self.syncLabel.font = Typographys.uifont(.semibold_4, size: 14)
+        self.syncLabel.text = Localized.string(.TiTiLab_Text_Sync)
+        self.signupSyncLabel.font = Typographys.uifont(.semibold_4, size: 17)
+        self.signinTextLabel.font = Typographys.uifont(.semibold_4, size: 11)
+        self.signinTextLabel.text = Localized.string(.TiTiLab_Button_SignUpDesc)
+        self.signinButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 17)
+    }
+    
     private func checkSignined() {
         let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
         if signined {
@@ -84,13 +93,12 @@ extension SettingTiTiLabVC {
     
     private func configureSignined() {
         self.signupSyncLabel.text = "Sync Dailys"
-        self.signinTextLabel.text = "Synclonize Historys [Test Server]".localized()
         self.signinButton.isHidden = true
     }
     
     private func configureSignouted() {
-        self.signupSyncLabel.text = "Signup"
-        self.signinTextLabel.text = "for Synclonize Dailys [Test Server]".localized()
+        self.signupSyncLabel.text = Localized.string(.TiTiLab_Button_SignUpTitle)
+        self.signinButton.setTitle(Localized.string(.TiTiLab_Button_SignIn), for: .normal)
         self.signinButton.isHidden = false
     }
     

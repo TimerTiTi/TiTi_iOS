@@ -97,21 +97,7 @@
 
 "Do you want to start the New record?" = "새로운 날짜의 기록을 시작하시겠습니까?";
 
-"TiTi Development" = "TiTi 개발현황";
-
-"Development list" = "개발진행리스트";
-
-"Real-time development progress can be checked.\nYou can also check the next features in advance." = "실시간 개발 진행상황을 확인할 수 있습니다.\n또한 차기 기능들을 미리 확인할 수 있습니다.";
-
-"Check out the news on TiTi's official Instagram account." = "TiTi 공식 인스타그램 계정을 통해 다양한 소식을 확인해보세요.";
-
 "Participation in Develop" = "TiTi 개발에 참여";
-
-"Survey" = "설문조사";
-
-"It greatly helps to develop and improve new features.\nNew surveys are added in real time." = "새로운 기능 개발 및 개선에 큰 도움이 됩니다.\n실시간으로 새로운 설문조사들이 추가됩니다.";
-
-"No surveys in progress." = "현재 진행중인 설문조사가 없습니다.";
 
 "Recording started" = "기록이 시작되었습니다";
 
@@ -183,15 +169,11 @@
 
 "Setting Timer Time" = "타이머 시간 설정";
 
-"for Synclonize Dailys [Test Server]" = "Dailys 기록 동기화 [Test Server]";
-
 "Synclonize Historys [Test Server]" = "동기화 기록 [Test Server]";
 
 "The last synchronization time of the current device and the latest synchronization time reflected in the server." = "현재 기기의 마지막 동기화 시간과 서버 내 반영된 최신 동기화 시간입니다.";
 
 "Synchronization backs up your modified data and allows you to receive data backed up from other devices." = "동기화를 통해 수정된 데이터가 백업되며 다른 기기에서 백업한 데이터를 받을 수 있습니다.";
-
-"Synchronization" = "동기화";
 
 "The number of Dailys stored on the server and the number of Dailys on the current device." = "서버 내 저장된 Dailys 개수와 현재 기기의 Dailys 개수입니다.";
 

@@ -59,6 +59,17 @@ struct TLRzh {
         case .SwitchSetting_Button_FlipStartTitle: value = "翻转开始录制"
         case .SwitchSetting_Button_FlipStartDesc: value = "翻转机器后自动开始记录"
             
+        case .TiTiLab_Text_DevelopNews: value = "开发新闻"
+        case .TiTiLab_Button_InstagramDesc: value = "通过Instagram查看各种开发消息"
+        case .TiTiLab_Text_PartInDev: value = "参与TiTi开发"
+        case .TiTiLab_Text_SurveyTitle: value = "调查问卷"
+        case .TiTiLab_Text_SurveyDesc: value = "实时显示新的调查。\n参与新功能的开发和改进。"
+        case .TiTiLab_Text_NoServey: value = "目前没有正在进行的问卷调查。"
+        case .TiTiLab_Text_Sync: value = "同步"
+        case .TiTiLab_Button_SignUpTitle: value = "注册会员"
+        case .TiTiLab_Button_SignUpDesc: value = "Dailys 记录同步 (beta)"
+        case .TiTiLab_Button_SignIn: value = "登录"
+            
         case .Language_Button_SystemLanguage: value = "System 语言"
         case .Language_Button_Korean: value = "韩语"
         case .Language_Button_English: value = "英语"

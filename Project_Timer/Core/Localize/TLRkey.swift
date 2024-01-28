@@ -72,6 +72,27 @@ enum TLRkey: String {
     /// 개발팀
     case Settings_Text_DeveloperSection
     
+    /// 개발 소식
+    case TiTiLab_Text_DevelopNews
+    /// 인스타그램을 통해 다양한 개발 소식을 확인해보세요
+    case TiTiLab_Button_InstagramDesc
+    /// 개발 참여
+    case TiTiLab_Text_PartInDev
+    /// 설문조사
+    case TiTiLab_Text_SurveyTitle
+    /// 실시간으로 새로운 설문조사들이 표시됩니다....
+    case TiTiLab_Text_SurveyDesc
+    /// 현재 진행중인 설문조사가 없습니다.
+    case TiTiLab_Text_NoServey
+    /// 동기화
+    case TiTiLab_Text_Sync
+    /// 회원가입
+    case TiTiLab_Button_SignUpTitle
+    /// Dailys 기록 동기화 (beta)
+    case TiTiLab_Button_SignUpDesc
+    /// 로그인
+    case TiTiLab_Button_SignIn
+    
     /// 업데이트
     case SwitchSetting_Button_Update
     /// 종료 5분전 알림

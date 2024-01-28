@@ -45,6 +45,17 @@ struct TLRko {
         case .Settings_Button_GetBackup: value = "백업 파일 추출"
         case .Settings_Text_DeveloperSection: value = "개발팀"
             
+        case .TiTiLab_Text_DevelopNews: value = "개발 소식"
+        case .TiTiLab_Button_InstagramDesc: value = "인스타그램을 통해 다양한 개발 소식을 확인해보세요"
+        case .TiTiLab_Text_PartInDev: value = "개발 참여"
+        case .TiTiLab_Text_SurveyTitle: value = "설문조사"
+        case .TiTiLab_Text_SurveyDesc: value = "실시간으로 새로운 설문조사들이 표시됩니다.\n새로운 기능 개발 및 개선에 참여해보세요"
+        case .TiTiLab_Text_NoServey: value = "현재 진행중인 설문조사가 없습니다."
+        case .TiTiLab_Text_Sync: value = "동기화"
+        case .TiTiLab_Button_SignUpTitle: value = "회원가입"
+        case .TiTiLab_Button_SignUpDesc: value = "Dailys 기록 동기화 (beta)"
+        case .TiTiLab_Button_SignIn: value = "로그인"
+            
         case .SwitchSetting_Button_Update: value = "업데이트"
         case .SwitchSetting_Button_5minNotiDesc: value = "종료 5분전 알림"
         case .SwitchSetting_Button_EndNotiDesc: value = "종료 알림"
