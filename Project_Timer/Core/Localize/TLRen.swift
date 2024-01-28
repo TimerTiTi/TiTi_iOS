@@ -52,6 +52,12 @@ struct TLRen {
         case .SwitchSetting_Button_NewVerNotiDesc: value = "Pop-up alert for New version"
         case .SwitchSetting_Button_TimeAnimationTitle: value = "Time change animation"
         case .SwitchSetting_Button_TimeAnimationDesc: value = "Smoothly Display time changes"
+        case .SwitchSetting_Button_BigUITitle: value = "Big UI"
+        case .SwitchSetting_Button_BigUIDesc: value = "Activate Big UI for iPad"
+        case .SwitchSetting_Button_KeepScreenOnTitle: value = "Keep screen on"
+        case .SwitchSetting_Button_KeepScreenOnDesc: value = "Keep the screen on during recording"
+        case .SwitchSetting_Button_FlipStartTitle: value = "Flip to start recording"
+        case .SwitchSetting_Button_FlipStartDesc: value = "Record will start automatically when flip the device"
             
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"

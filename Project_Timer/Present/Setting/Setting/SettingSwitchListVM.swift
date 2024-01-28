@@ -33,13 +33,13 @@ final class SettingSwitchListVM {
                 SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_TimeAnimationTitle), subTitle: Localized.string(.SwitchSetting_Button_TimeAnimationDesc), toggleKey: .timelabelsAnimation)
             ]
             if isIpad {
-                self.cells.append(SettingListCellInfo(title: "Big UI", subTitle: "Activate Big UI for iPad".localized(), toggleKey: .bigUI))
+                self.cells.append(SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_BigUITitle), subTitle: Localized.string(.SwitchSetting_Button_BigUIDesc), toggleKey: .bigUI))
             }
         case .control:
             self.title = Localized.string(.Settings_Button_Control)
             self.cells = [
-                SettingListCellInfo(title: "Keep screen on".localized(), subTitle: "Keep the screen on during recording".localized(), toggleKey: .keepTheScreenOn),
-                SettingListCellInfo(title: "Flip to start recording".localized(), subTitle: "Record will start automatically when flip the device".localized(), toggleKey: .flipToStartRecording)
+                SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_KeepScreenOnTitle), subTitle: Localized.string(.SwitchSetting_Button_KeepScreenOnDesc), toggleKey: .keepTheScreenOn),
+                SettingListCellInfo(title: Localized.string(.SwitchSetting_Button_FlipStartTitle), subTitle: Localized.string(.SwitchSetting_Button_FlipStartDesc), toggleKey: .flipToStartRecording)
             ]
         }
         
