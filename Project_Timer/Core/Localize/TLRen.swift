@@ -59,6 +59,17 @@ struct TLRen {
         case .SwitchSetting_Button_FlipStartTitle: value = "Flip to start recording"
         case .SwitchSetting_Button_FlipStartDesc: value = "Record will start automatically when flip the device"
             
+        case .TiTiLab_Text_DevelopNews: value = "Develop News"
+        case .TiTiLab_Button_InstagramDesc: value = "Check out various Development news on Instagram"
+        case .TiTiLab_Text_PartInDev: value = "Participation in Develop"
+        case .TiTiLab_Text_SurveyTitle: value = "Survey"
+        case .TiTiLab_Text_SurveyDesc: value = "New surveys will be displayed in real time.\nParticipate in the development and improvement of new features"
+        case .TiTiLab_Text_NoServey: value = "No surveys in progress."
+        case .TiTiLab_Text_Sync: value = "Synchronization"
+        case .TiTiLab_Button_SignUpTitle: value = "Sign Up"
+        case .TiTiLab_Button_SignUpDesc: value = "for Synclonize Dailys (beta)"
+        case .TiTiLab_Button_SignIn: value = "Sign In"
+            
         case .Language_Button_SystemLanguage: value = "System Language"
         case .Language_Button_Korean: value = "Korean"
         case .Language_Button_English: value = "English"

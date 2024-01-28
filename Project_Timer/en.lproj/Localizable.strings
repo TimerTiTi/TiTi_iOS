@@ -97,22 +97,6 @@
 
 "Do you want to start the New record?" = "Do you want to start the New record?";
 
-"TiTi Development" = "TiTi Development";
-
-"Development list" = "Development list";
-
-"Real-time development progress can be checked.\nYou can also check the next features in advance." = "Real-time development progress can be checked.\nYou can also check the next features in advance.";
-
-"Check out the news on TiTi's official Instagram account." = "Check out the news on TiTi's official Instagram account.";
-
-"Participation in Develop" = "Participation in Develop";
-
-"Survey" = "Survey";
-
-"It greatly helps to develop and improve new features.\nNew surveys are added in real time." = "It greatly helps to develop and improve new features.\nNew surveys are added in real time.";
-
-"No surveys in progress." = "No surveys in progress.";
-
 "Recording started" = "Recording started";
 
 "Unable to Modify Records" = "Unable to Modify Records";
@@ -183,15 +167,11 @@
 
 "Setting Timer Time" = "Setting Timer Time";
 
-"for Synclonize Dailys [Test Server]" = "for Synclonize Dailys [Test Server]";
-
 "Synclonize Historys [Test Server]" = "Synclonize Historys [Test Server]";
 
 "The last synchronization time of the current device and the latest synchronization time reflected in the server." = "The last synchronization time of the current device and the latest synchronization time reflected in the server.";
 
 "Synchronization backs up your modified data and allows you to receive data backed up from other devices." = "Synchronization backs up your modified data and allows you to receive data backed up from other devices.";
-
-"Synchronization" = "Synchronization";
 
 "The number of Dailys stored on the server and the number of Dailys on the current device." = "The number of Dailys stored on the server and the number of Dailys on the current device.";
 

@@ -13,8 +13,6 @@ final class TiTiLabHeaderView: UICollectionReusableView {
     static let identifier = "TiTiLabHeaderView"
     /* private */
     @IBOutlet weak var developmentStatusLabel: UILabel!
-    @IBOutlet weak var developmentListLabel: UILabel!
-    @IBOutlet weak var developmentListTextLabel: UILabel!
     @IBOutlet weak var instagramTextLabel: UILabel!
     
     @IBOutlet weak var participationDevelopLabel: UILabel!
@@ -31,10 +29,6 @@ final class TiTiLabHeaderView: UICollectionReusableView {
     func configure(delegate: TiTiLabActionDelegate) {
         self.delegate = delegate
     }
-        
-    @IBAction func showDevelopmentList(_ sender: Any) {
-        self.delegate?.showWebview(url: NetworkURL.developmentList)
-    }
     
     @IBAction func goInstaToTiTi(_ sender: Any) {
         self.delegate?.showWebview(url: NetworkURL.instagramToTiTi)
@@ -43,13 +37,15 @@ final class TiTiLabHeaderView: UICollectionReusableView {
 
 extension TiTiLabHeaderView {
     private func configureLocalized() {
-        self.developmentStatusLabel.text = "TiTi Development".localized()
-        self.developmentListLabel.text = "Development list".localized()
-        self.developmentListTextLabel.text = "Real-time development progress can be checked.\nYou can also check the next features in advance.".localized()
-        self.instagramTextLabel.text = "Check out the news on TiTi's official Instagram account.".localized()
-        
-        self.participationDevelopLabel.text = "Participation in Develop".localized()
-        self.surveyLabel.text = "Survey".localized()
-        self.surveyTextLabel.text = "It greatly helps to develop and improve new features.\nNew surveys are added in real time.".localized()
+        self.developmentStatusLabel.font = Typographys.uifont(.semibold_4, size: 14)
+        self.developmentStatusLabel.text = Localized.string(.TiTiLab_Text_DevelopNews)
+        self.instagramTextLabel.font = Typographys.uifont(.semibold_4, size: 11)
+        self.instagramTextLabel.text = Localized.string(.TiTiLab_Button_InstagramDesc)
+        self.participationDevelopLabel.font = Typographys.uifont(.semibold_4, size: 14)
+        self.participationDevelopLabel.text = Localized.string(.TiTiLab_Text_PartInDev)
+        self.surveyLabel.font = Typographys.uifont(.semibold_4, size: 17)
+        self.surveyLabel.text = Localized.string(.TiTiLab_Text_SurveyTitle)
+        self.surveyTextLabel.font = Typographys.uifont(.semibold_4, size: 11)
+        self.surveyTextLabel.text = Localized.string(.TiTiLab_Text_SurveyDesc)
     }
 }
