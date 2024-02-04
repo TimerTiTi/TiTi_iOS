@@ -22,12 +22,14 @@ final class SyncDailysVC: UIViewController {
     @IBOutlet weak var syncUserStatusView: SyncUserStatusView!
     @IBOutlet weak var serverDailysCountLabel: UILabel!
     @IBOutlet weak var syncDeviceStatusView: SyncDeviceStatusView!
+    @IBOutlet weak var syncButton: UIButton!
     
     private var viewModel: SyncDailysVM?
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLocalized()
         self.configureViewModel()
         self.bindAll()
     }
@@ -50,6 +52,10 @@ final class SyncDailysVC: UIViewController {
 }
 
 extension SyncDailysVC {
+    private func configureLocalized() {
+        self.syncButton.setTitle(Localized.string(.SyncDaily_Button_SyncNow), for: .normal)
+    }
+    
     private func bindAll() {
         self.bindSyncLog()
         self.bindSaveDailysSuccess()
