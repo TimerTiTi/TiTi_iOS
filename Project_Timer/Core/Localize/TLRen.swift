@@ -13,10 +13,16 @@ struct TLRen {
         var value: String = ""
         switch key {
         case .Common_Text_OK: value = "ok"
+        case .Common_Text_Cencel: value = "cancel"
+        case .Common_Text_Done: value = "done"
         case .Common_Text_Next: value = "Next"
         case .Common_Text_Close: value = "Close"
         case .Common_Button_Timer: value = "Timer"
         case .Common_Button_Stopwatch: value = "Stopwatch"
+        case .Common_Text_TargetTime: value = "Target time"
+        case .Common_Popup_SetMonthTargetTime: value = "Input Month's Target time (Hour)"
+        case .Common_Popup_SetWeekTargetTime: value = "Input Week's Target time (Hour)"
+        case .Common_Popup_SetDailyTargetTime: value = "Input Daily's Target time (Hour)"
             
         case .Update_Popup_HardUpdateTitle: value = "You have to update the app"
         case .Update_Popup_HardUpdateDesc: value = "Please update the latest version"
@@ -61,6 +67,8 @@ struct TLRen {
         case .SyncDaily_Text_InfoSync3: value = "The number of Dailys stored on the server and the number of Dailys on the current device."
         case .SyncDaily_Text_InfoSync4: value = "Created and Edited dailys are backed up at the time of synchronized."
         case .SyncDaily_Button_SyncNow: value = "Sync Now"
+        case .SyncDaily_Popup_InfoFirstSyncTitle: value = "First Sync"
+        case .SyncDaily_Popup_InfoFirstSyncDesc: value = "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app."
             
         case .SwitchSetting_Button_Update: value = "Update"
         case .SwitchSetting_Button_5minNotiDesc: value = "5 minutes before end"
@@ -82,6 +90,12 @@ struct TLRen {
         case .Language_Button_Chinese: value = "Chinese, Simplified"
         case .Language_Popup_LanguageChangeTitle: value = "Language has been changed"
         case .Language_Popup_LanguageChangeDesc: value = "Please restart the app"
+            
+        case .ColorSelector_Text_Color: value = "Color"
+        case .ColorSelector_Text_SetGraphColor: value = "Setting the color of the graph"
+        case .ColorSelector_Text_SetWidgetColor: value = "Setting the color of the widget"
+        case .ColorSelector_Text_ColorDirectionTitle: value = "Color direction"
+        case .ColorSelector_Text_ColorDirectionDesc: value = "Setting the direction of the color combination"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
@@ -156,6 +170,15 @@ struct TLRen {
         case .WidgetSetting_Text_WidgetDesc3: value = "Search for \"TiTi\" and Tap."
         case .WidgetSetting_Text_WidgetDesc4: value = "Select a Widget and size, then Tap \"Add Widget\"."
         case .WidgetSetting_Text_WidgetDesc5: value = "Now you can use Widget!"
+            
+        case .Widget_Text_CalendarWidget: value = "Calendar widget"
+        case .Widget_Text_CalendarWidgetDesc: value = "Widget shows the top 5 tasks and the recording time by date."
+        case .Widget_Text_InfoNoRecords: value = "There's no record this month!"
+        case .Widget_Text_SampleTask1: value = "Work"
+        case .Widget_Text_SampleTask2: value = "Reading"
+        case .Widget_Text_SampleTask3: value = "Coding"
+        case .Widget_Text_SampleTask4: value = "Study"
+        case .Widget_Text_SampleTask5: value = "Workout"
         }
         
         if let op = op, value.contains("{}") {

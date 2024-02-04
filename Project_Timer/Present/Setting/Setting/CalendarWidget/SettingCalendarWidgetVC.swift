@@ -16,7 +16,7 @@ final class SettingCalendarWidgetVC: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.text = "Widget shows the top 5 tasks and the recording time by date.".localizedForWidget()
+        label.text = Localized.string(.Widget_Text_CalendarWidgetDesc)
         label.textColor = .lightGray
         label.numberOfLines = 0
         return label
@@ -92,7 +92,7 @@ final class SettingCalendarWidgetVC: UIViewController {
 extension SettingCalendarWidgetVC {
     private func configureNavigationBar() {
         self.informationButton.showsMenuAsPrimaryAction = true
-        self.informationButton.menu = UIMenu(title: "Calendar widget".localizedForWidget(), image: nil, children: [
+        self.informationButton.menu = UIMenu(title: Localized.string(.Widget_Text_CalendarWidget), image: nil, children: [
             UIAction(title: Localized.string(.WidgetSetting_Text_Description), image: nil) { [weak self] _ in
                 self?.showHowToUseWidgetVC(url: NetworkURL.WidgetInfo.calendarWidget)
             },
@@ -106,7 +106,7 @@ extension SettingCalendarWidgetVC {
     }
     
     private func configureUI() {
-        self.title = "Calendar widget".localizedForWidget()
+        self.title = Localized.string(.Widget_Text_CalendarWidget)
         self.view.backgroundColor = .systemGroupedBackground
         
         self.view.addSubview(self.descriptionLabel)
@@ -206,7 +206,7 @@ extension SettingCalendarWidgetVC {
         self.dailyTargetButton.addAction(UIAction(handler: { [weak self] _ in
             guard let dailyTargetButton = self?.dailyTargetButton else { return }
             
-            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Daily's Target time (Hour)".localized(), placeHolder: "\(dailyTargetButton.settedHour/3600)") { [weak self] hour in
+            self?.showAlertWithTextField(title: Localized.string(.Common_Text_TargetTime), text: Localized.string(.Common_Popup_SetDailyTargetTime), placeHolder: "\(dailyTargetButton.settedHour/3600)") { [weak self] hour in
                 UserDefaultsManager.set(to: hour*3600, forKey: dailyTargetButton.key)
                 self?.update()
             }
@@ -237,8 +237,8 @@ extension SettingCalendarWidgetVC {
             textField.keyboardType = .numberPad
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        let update = UIAlertAction(title: "Done", style: .destructive) { _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let update = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { _ in
             guard let text = alert.textFields?.first?.text,
                   let hour = Int(text) else { return }
             handler(hour)

@@ -13,10 +13,16 @@ struct TLRko {
         var value: String = ""
         switch key {
         case .Common_Text_OK: value = "확인"
+        case .Common_Text_Cencel: value = "취소"
+        case .Common_Text_Done: value = "완료"
         case .Common_Text_Next: value = "다음"
         case .Common_Text_Close: value = "닫기"
         case .Common_Button_Timer: value = "타이머"
         case .Common_Button_Stopwatch: value = "스톱워치"
+        case .Common_Text_TargetTime: value = "목표 시간"
+        case .Common_Popup_SetMonthTargetTime: value = "Month의 목표 시간을 입력해주세요 (시간 단위)"
+        case .Common_Popup_SetWeekTargetTime: value = "Week의 목표 시간을 입력해주세요 (시간 단위)"
+        case .Common_Popup_SetDailyTargetTime: value = "Daily의 목표 시간을 입력해주세요 (시간 단위)"
             
         case .Update_Popup_HardUpdateTitle: value = "업데이트가 필요해요"
         case .Update_Popup_HardUpdateDesc: value = "최신버전으로 업데이트 해주세요"
@@ -61,6 +67,8 @@ struct TLRko {
         case .SyncDaily_Text_InfoSync3: value = "서버 내 저장된 Dailys 개수와 현재 기기의 Dailys 개수입니다."
         case .SyncDaily_Text_InfoSync4: value = "동기화시 Created 와 Edited 정보들이 백업됩니다."
         case .SyncDaily_Button_SyncNow: value = "동기화"
+        case .SyncDaily_Popup_InfoFirstSyncTitle: value = "첫 동기화 안내"
+        case .SyncDaily_Popup_InfoFirstSyncDesc: value = "첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다."
             
         case .SwitchSetting_Button_Update: value = "업데이트"
         case .SwitchSetting_Button_5minNotiDesc: value = "종료 5분전 알림"
@@ -82,6 +90,12 @@ struct TLRko {
         case .Language_Button_Chinese: value = "중국어(간체)"
         case .Language_Popup_LanguageChangeTitle: value = "언어가 변경되었어요"
         case .Language_Popup_LanguageChangeDesc: value = "앱을 다시 실행해주세요"
+            
+        case .ColorSelector_Text_Color: value = "컬러"
+        case .ColorSelector_Text_SetGraphColor: value = "그래프의 컬러를 설정합니다"
+        case .ColorSelector_Text_SetWidgetColor: value = "위젯의 컬러를 설정합니다"
+        case .ColorSelector_Text_ColorDirectionTitle: value = "컬러 방향"
+        case .ColorSelector_Text_ColorDirectionDesc: value = "컬러 조합의 방향을 설정합니다"
             
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"
@@ -156,6 +170,15 @@ struct TLRko {
         case .WidgetSetting_Text_WidgetDesc3: value = "\"TiTi\"를 검색한 후 터치해요"
         case .WidgetSetting_Text_WidgetDesc4: value = "위젯과 사이즈를 선택하고 \"위젯 추가\"를 터치해요"
         case .WidgetSetting_Text_WidgetDesc5: value = "그러면 위젯을 사용할 수 있어요!"
+            
+        case .Widget_Text_CalendarWidget: value = "캘린더 위젯"
+        case .Widget_Text_CalendarWidgetDesc: value = "상위 5가지 Task와 날짜별 기록시간을 보여줍니다."
+        case .Widget_Text_InfoNoRecords: value = "이번 달 기록이 없어요!"
+        case .Widget_Text_SampleTask1: value = "국어"
+        case .Widget_Text_SampleTask2: value = "수학"
+        case .Widget_Text_SampleTask3: value = "영어"
+        case .Widget_Text_SampleTask4: value = "한국사"
+        case .Widget_Text_SampleTask5: value = "탐구"
         }
         
         if let op = op, value.contains("{}") {

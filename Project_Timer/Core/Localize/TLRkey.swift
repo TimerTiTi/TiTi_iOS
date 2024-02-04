@@ -11,6 +11,10 @@ import Foundation
 enum TLRkey: String {
     /// 확인
     case Common_Text_OK
+    /// 취소
+    case Common_Text_Cencel
+    /// 완료
+    case Common_Text_Done
     /// 다음
     case Common_Text_Next
     /// 닫기
@@ -19,6 +23,14 @@ enum TLRkey: String {
     case Common_Button_Timer
     /// 스톱워치
     case Common_Button_Stopwatch
+    /// 목표 시간
+    case Common_Text_TargetTime
+    /// Month의 목표 시간을 입력해주세요 (시간 단위)
+    case Common_Popup_SetMonthTargetTime
+    /// Week의 목표 시간을 입력해주세요 (시간 단위)
+    case Common_Popup_SetWeekTargetTime
+    /// Daily의 목표 시간을 입력해주세요 (시간 단위)
+    case Common_Popup_SetDailyTargetTime
     
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
@@ -103,6 +115,10 @@ enum TLRkey: String {
     case SyncDaily_Text_InfoSync4
     /// 동기화
     case SyncDaily_Button_SyncNow
+    /// 첫 동기화 안내
+    case SyncDaily_Popup_InfoFirstSyncTitle
+    /// 첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다.
+    case SyncDaily_Popup_InfoFirstSyncDesc
     
     /// 업데이트
     case SwitchSetting_Button_Update
@@ -143,6 +159,17 @@ enum TLRkey: String {
     case Language_Popup_LanguageChangeTitle
     ///앱을 다시 실행해주세요
     case Language_Popup_LanguageChangeDesc
+    
+    /// 컬러
+    case ColorSelector_Text_Color
+    /// 그래프의 컬러를 설정합니다
+    case ColorSelector_Text_SetGraphColor
+    /// 위젯의 컬러를 설정합니다
+    case ColorSelector_Text_SetWidgetColor
+    /// 컬러 방향
+    case ColorSelector_Text_ColorDirectionTitle
+    /// 컬러 조합의 방향을 설정합니다
+    case ColorSelector_Text_ColorDirectionDesc
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi
@@ -281,4 +308,21 @@ enum TLRkey: String {
     case WidgetSetting_Text_WidgetDesc4
     /// 그러면 위젯을 사용할 수 있어요!
     case WidgetSetting_Text_WidgetDesc5
+    
+    /// 캘린더 위젯
+    case Widget_Text_CalendarWidget
+    /// 상위 5가지 Task와 날짜별 기록시간을 보여줍니다.
+    case Widget_Text_CalendarWidgetDesc
+    /// 이번 달 기록이 없어요!
+    case Widget_Text_InfoNoRecords
+    /// 국어
+    case Widget_Text_SampleTask1
+    /// 수학
+    case Widget_Text_SampleTask2
+    /// 영어
+    case Widget_Text_SampleTask3
+    /// 한국사
+    case Widget_Text_SampleTask4
+    /// 탐구
+    case Widget_Text_SampleTask5
 }

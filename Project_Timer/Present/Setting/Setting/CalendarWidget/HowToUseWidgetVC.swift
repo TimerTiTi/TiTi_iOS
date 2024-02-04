@@ -14,7 +14,7 @@ final class HowToUseWidgetVC: UIViewController {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP80g(size: 17)
+        label.font = Typographys.uifont(.bold_5, size: 17)
         label.textColor = .black
         label.text = Localized.string(.WidgetSetting_Text_Description)
         return label

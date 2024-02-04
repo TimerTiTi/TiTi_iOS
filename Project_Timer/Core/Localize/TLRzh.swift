@@ -13,10 +13,16 @@ struct TLRzh {
         var value: String = ""
         switch key {
         case .Common_Text_OK: value = "确认"
+        case .Common_Text_Cencel: value = "取消"
+        case .Common_Text_Done: value = "完成"
         case .Common_Text_Next: value = "下一页"
         case .Common_Text_Close: value = "关闭"
         case .Common_Button_Timer: value = "计时器"
         case .Common_Button_Stopwatch: value = "秒表"
+        case .Common_Text_TargetTime: value = "目标时间"
+        case .Common_Popup_SetMonthTargetTime: value = "请输入Month的目标时间（以小时为单位）"
+        case .Common_Popup_SetWeekTargetTime: value = "请输入 Week 的目标时间( 以小时为单位)"
+        case .Common_Popup_SetDailyTargetTime: value = "请输入 Daily 的目标时间( 以小时为单位)"
             
         case .Update_Popup_HardUpdateTitle: value = "需要更新"
         case .Update_Popup_HardUpdateDesc: value = "请更新到最新版本"
@@ -61,6 +67,8 @@ struct TLRzh {
         case .SyncDaily_Text_InfoSync3: value = "服务器内保存的Dailys数量和当前设备的Dailys数量。"
         case .SyncDaily_Text_InfoSync4: value = "同步时备份Created和Edited信息。"
         case .SyncDaily_Button_SyncNow: value = "同步"
+        case .SyncDaily_Popup_InfoFirstSyncTitle: value = "第一次同步通知"
+        case .SyncDaily_Popup_InfoFirstSyncDesc: value = "首次同步可能需要很长时间才能反映所有Daily信息（10s），请不要关闭应用程序，等待。"
             
         case .SwitchSetting_Button_Update: value = "更新"
         case .SwitchSetting_Button_5minNotiDesc: value = "结束前5分钟提醒"
@@ -82,6 +90,12 @@ struct TLRzh {
         case .Language_Button_Chinese: value = "简体中文"
         case .Language_Popup_LanguageChangeTitle: value = "语言已更改"
         case .Language_Popup_LanguageChangeDesc: value = "请重启APP"
+            
+        case .ColorSelector_Text_Color: value = "颜色"
+        case .ColorSelector_Text_SetGraphColor: value = "设置图表的颜色"
+        case .ColorSelector_Text_SetWidgetColor: value = "配置部件的颜色"
+        case .ColorSelector_Text_ColorDirectionTitle: value = "颜色方向"
+        case .ColorSelector_Text_ColorDirectionDesc: value = "设置颜色组合的方向"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
@@ -156,6 +170,15 @@ struct TLRzh {
         case .WidgetSetting_Text_WidgetDesc3: value = "搜索\"TiTi\"后点击。"
         case .WidgetSetting_Text_WidgetDesc4: value = "选择一个小部件和大小，然后轻按\"添加小部件\"。"
         case .WidgetSetting_Text_WidgetDesc5: value = "现在你可以使用小部件了！"
+            
+        case .Widget_Text_CalendarWidget: value = "日历小部件"
+        case .Widget_Text_CalendarWidgetDesc: value = "小部件显示前5项任务和按日期记录的时间。"
+        case .Widget_Text_InfoNoRecords: value = "这个月没有记录！"
+        case .Widget_Text_SampleTask1: value = "英语"
+        case .Widget_Text_SampleTask2: value = "数学"
+        case .Widget_Text_SampleTask3: value = "物理"
+        case .Widget_Text_SampleTask4: value = "化学"
+        case .Widget_Text_SampleTask5: value = "生物"
         }
         
         if let op = op, value.contains("{}") {

@@ -42,7 +42,7 @@ final class SyncDailysVC: UIViewController {
     
     @IBAction func syncNow(_ sender: Any) {
         if UserDefaultsManager.get(forKey: .lastUploadedDateV1) == nil {
-            self.showAlertWithOKAfterHandler(title: "First Sync".localized(), text: "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app.".localized()) { [weak self] in
+            self.showAlertWithOKAfterHandler(title: Localized.string(.SyncDaily_Popup_InfoFirstSyncTitle), text: Localized.string(.SyncDaily_Popup_InfoFirstSyncDesc)) { [weak self] in
                 self?.viewModel?.checkSyncDailys()
             }
         } else {
