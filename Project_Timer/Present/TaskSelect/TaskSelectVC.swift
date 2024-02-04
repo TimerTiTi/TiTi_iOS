@@ -26,6 +26,8 @@ final class TaskSelectVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.editButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 18)
+        self.editButton.setTitle(self.tasksTableView.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
         self.configureDevice()
         self.configureColor()
         self.configureTableView()
@@ -40,7 +42,7 @@ final class TaskSelectVC: UIViewController {
     
     @IBAction func edit() {
         self.tasksTableView.setEditing(!self.tasksTableView.isEditing, animated: true)
-        self.editButton.setTitle(self.tasksTableView.isEditing ? "Done" : "Edit", for: .normal)
+        self.editButton.setTitle(self.tasksTableView.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
     }
     
     @IBAction func close(_ sender: Any) {
@@ -119,12 +121,12 @@ extension TaskSelectVC {
             guard let indexPath = self.tasksTableView.indexPathForRow(at: touchPoint),
                   let beforeTaskName = self.viewModel?.tasks[safe: indexPath.row]?.taskName else { return }
             
-            let alert = UIAlertController(title: "Modify task's name".localized(), message: "Task name's max length is 20".localized(), preferredStyle: .alert)
-            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-            let ok = UIAlertAction(title: "ENTER", style: .default, handler: { [weak self] action in
+            let alert = UIAlertController(title: Localized.string(.Tasks_Popup_EditTaskName), message: Localized.string(.Tasks_Popup_NewTaskDesc), preferredStyle: .alert)
+            let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+            let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive, handler: { [weak self] action in
                 let newTask: String = alert.textFields?[0].text ?? ""
                 guard self?.viewModel?.isSameNameExist(name: newTask) == false else {
-                    self?.showAlertWithOK(title: "Same task exist".localized(), text: "Try to another task's name".localized())
+                    self?.showAlertWithOK(title: Localized.string(.Tasks_Popup_SameTaskExistTitle), text: Localized.string(.Tasks_Popup_SameTaskExistDesc))
                     return
                 }
                 
@@ -133,9 +135,9 @@ extension TaskSelectVC {
             })
             
             alert.addTextField { (inputNewNickName) in
-                inputNewNickName.placeholder = "New task".localized()
+                inputNewNickName.placeholder = Localized.string(.Tasks_Hint_NewTaskTitle)
                 inputNewNickName.textAlignment = .center
-                inputNewNickName.font = Fonts.HGGGothicssiP60g(size: 17)
+                inputNewNickName.font = Typographys.uifont(.semibold_4, size: 17)
                 inputNewNickName.text = beforeTaskName
             }
             alert.addAction(cancle)
@@ -146,9 +148,9 @@ extension TaskSelectVC {
     }
     
     private func showAlertNewTask() {
-        let alert = UIAlertController(title: "New task".localized(), message: "Task name's max length is 20".localized(), preferredStyle: .alert)
-        let cancle = UIAlertAction(title: "CANCEL", style: .destructive, handler: nil)
-        let ok = UIAlertAction(title: "ENTER", style: .default, handler: { [weak self] action in
+        let alert = UIAlertController(title: Localized.string(.Tasks_Hint_NewTaskTitle), message: Localized.string(.Tasks_Popup_NewTaskDesc), preferredStyle: .alert)
+        let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive, handler: { [weak self] action in
             guard let newTask: String = alert.textFields?[0].text,
                   let count = self?.viewModel?.tasks.count else { return }
             
@@ -157,9 +159,9 @@ extension TaskSelectVC {
         })
         
         alert.addTextField { (inputNewNickName) in
-            inputNewNickName.placeholder = "New task".localized()
+            inputNewNickName.placeholder = Localized.string(.Tasks_Hint_NewTaskTitle)
             inputNewNickName.textAlignment = .center
-            inputNewNickName.font = Fonts.HGGGothicssiP60g(size: 17)
+            inputNewNickName.font = Typographys.uifont(.semibold_4, size: 17)
         }
         alert.addAction(cancle)
         alert.addAction(ok)
@@ -174,7 +176,7 @@ extension TaskSelectVC {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default, handler: { [weak self] _ in
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             self?.viewModel?.updateTaskTime(at: index, to: targetTime)
             self?.tasksTableView.reloadData()
@@ -218,7 +220,7 @@ extension TaskSelectVC: UITableViewDataSource, UITableViewDelegate {
     }
     //제거 액션 설정
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: Localized.string(.Common_Text_Delete)) { [weak self] action, index in
             self?.viewModel?.deleteTask(at: indexPath.row)
             self?.tasksTableView.deleteRows(at: [indexPath], with: .automatic)
         }

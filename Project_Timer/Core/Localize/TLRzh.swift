@@ -14,9 +14,11 @@ struct TLRzh {
         switch key {
         case .Common_Text_OK: value = "确认"
         case .Common_Text_Cencel: value = "取消"
+        case .Common_Text_Edit: value = "编辑"
         case .Common_Text_Done: value = "完成"
         case .Common_Text_Next: value = "下一页"
         case .Common_Text_Close: value = "关闭"
+        case .Common_Text_Delete: value = "删除"
         case .Common_Text_Timer: value = "计时器"
         case .Common_Text_Stopwatch: value = "秒表"
         case .Common_Text_TargetTime: value = "目标时间"
@@ -119,6 +121,14 @@ struct TLRzh {
         case .Timer_Text_Finish: value = "结束"
         case .Timer_Text_TimerEndTime: value = "结束时间"
         case .Timer_Text_SetTimerTimeTitle: value = "定时器时间设置"
+            
+        case .Tasks_Hint_NewTaskTitle: value = "新任务"
+        case .Tasks_Popup_NewTaskDesc: value = "任务名称的最大长度为 20"
+        case .Tasks_Popup_EditTaskName: value = "修改 Task 名称"
+        case .Tasks_Text_SetTaskTargetTime: value = "设定目标时间"
+        case .Tasks_Popup_SameTaskExistTitle: value = "相同的 Task 存在"
+        case .Tasks_Popup_SameTaskExistDesc: value = "请输入其他Task名"
+        case .Tasks_Popup_SetTaskTargetTime: value = "设定目标时间"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"

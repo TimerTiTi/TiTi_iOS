@@ -42,7 +42,7 @@ final class TargetTimeSettingPopupVC: UIViewController {
     
     func configure(task: Task) {
         self.info = TargetTimeSettingInfo(title: task.taskName,
-                                          subTitle: "Setting Target Time".localized(),
+                                          subTitle: Localized.string(.Tasks_Popup_SetTaskTargetTime),
                                           targetTime: task.taskTargetTime)
     }
     
