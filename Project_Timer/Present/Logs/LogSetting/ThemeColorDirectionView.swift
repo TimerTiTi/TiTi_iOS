@@ -13,7 +13,7 @@ final class ThemeColorDirectionView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 17)
+        label.font = Typographys.uifont(.semibold_4, size: 17)
         label.textColor = .label
         label.textAlignment = .left
         return label
@@ -21,7 +21,7 @@ final class ThemeColorDirectionView: UIView {
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 11)
+        label.font = Typographys.uifont(.semibold_4, size: 11)
         label.textColor = .lightGray
         label.textAlignment = .left
         return label
@@ -68,8 +68,8 @@ final class ThemeColorDirectionView: UIView {
     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.text = "Color direction".localized()
-        self.subTitleLabel.text = "Setting the direction of the color combination".localized()
+        self.titleLabel.text = Localized.string(.ColorSelector_Text_ColorDirectionTitle)
+        self.subTitleLabel.text = Localized.string(.ColorSelector_Text_ColorDirectionDesc)
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([

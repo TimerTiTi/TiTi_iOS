@@ -42,7 +42,7 @@ final class TargetTimeView: UIView {
     
     private func configure(text: String) {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.text = "Target time".localized()
+        self.titleLabel.text = Localized.string(.Common_Text_TargetTime)
         self.subTitleLabel.text = text
         
         self.addSubview(self.titleStackView)

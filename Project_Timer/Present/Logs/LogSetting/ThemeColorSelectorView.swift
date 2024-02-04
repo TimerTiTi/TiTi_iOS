@@ -13,7 +13,7 @@ final class ThemeColorSelectorView: UIView {
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 17)
+        label.font = Typographys.uifont(.semibold_4, size: 17)
         label.textColor = .label
         label.textAlignment = .left
         return label
@@ -21,7 +21,7 @@ final class ThemeColorSelectorView: UIView {
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 11)
+        label.font = Typographys.uifont(.semibold_4, size: 11)
         label.textColor = .lightGray
         label.textAlignment = .left
         return label
@@ -52,14 +52,14 @@ final class ThemeColorSelectorView: UIView {
         self.configure()
         
         if key == .calendarWidgetColor {
-            self.subTitleLabel.text = "Setting the color of the widget".localized()
+            self.subTitleLabel.text = Localized.string(.ColorSelector_Text_SetWidgetColor)
         }
     }
     
     private func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.titleLabel.text = "Color".localized()
-        self.subTitleLabel.text = "Setting the color of the graph".localized()
+        self.titleLabel.text = Localized.string(.ColorSelector_Text_Color)
+        self.subTitleLabel.text = Localized.string(.ColorSelector_Text_SetGraphColor)
         
         self.addSubview(self.titleStackView)
         NSLayoutConstraint.activate([
