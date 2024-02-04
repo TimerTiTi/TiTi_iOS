@@ -3966,10 +3966,10 @@
             </objects>
             <point key="canvasLocation" x="2309" y="1582"/>
         </scene>
-        <!--PopupEditHistoryVC-->
+        <!--TargetTimeSettingPopupVC-->
         <scene sceneID="c0E-QK-Byy">
             <objects>
-                <viewController storyboardIdentifier="TargetTimeSettingPopupVC" title="PopupEditHistoryVC" id="ud6-Si-s7U" customClass="TargetTimeSettingPopupVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TargetTimeSettingPopupVC" title="TargetTimeSettingPopupVC" id="ud6-Si-s7U" customClass="TargetTimeSettingPopupVC" customModule="TiTi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eZV-xI-cDZ">
                         <rect key="frame" x="0.0" y="0.0" width="260" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

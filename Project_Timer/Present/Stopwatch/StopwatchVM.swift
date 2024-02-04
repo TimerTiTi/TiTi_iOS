@@ -191,14 +191,14 @@ final class StopwatchVM {
         guard UserDefaultsManager.get(forKey: .stopwatchPushable) as? Bool ?? true else { return }
         for i in 1...24 {
             self.postNoti(interval: Double(i*3600),
-                          body: " \(i)" + "hours passed.".localized(),
+                          body: Localized.string(.System_Noti_StopwatchHourPassed, op: "\(i)"),
                           identifier: "noti\(i)")
         }
     }
     
     private func postNoti(interval: Double, body: String, identifier: String) {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Stopwatch".localized()
+        notificationContent.title = Localized.string(.Common_Text_Stopwatch)
         notificationContent.body = body
         notificationContent.sound = UNNotificationSound.default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
@@ -212,7 +212,7 @@ final class StopwatchVM {
     
     func sendRecordingStartNotification() {
         self.postNoti(interval: 0.1,
-                      body: "Recording started".localized(),
+                      body: Localized.string(.System_Noti_RecordingStart),
                       identifier: "Stopwatch Recording Start")
     }
     

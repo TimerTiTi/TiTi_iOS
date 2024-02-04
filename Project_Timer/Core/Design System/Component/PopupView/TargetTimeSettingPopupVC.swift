@@ -35,6 +35,7 @@ final class TargetTimeSettingPopupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureLocalized()
         self.configureTitles()
         self.updateTargetTime()
     }
@@ -77,6 +78,14 @@ final class TargetTimeSettingPopupVC: UIViewController {
 }
 
 extension TargetTimeSettingPopupVC {
+    private func configureLocalized() {
+        self.titleLabel.font = Typographys.uifont(.bold_5, size: 17)
+        self.subTitleLabel.font = Typographys.uifont(.semibold_4, size: 13)
+        self.hourButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 22)
+        self.minuteButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 22)
+        self.secondButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 22)
+    }
+    
     private func configureTitles() {
         self.titleLabel.text = self.info.title
         self.subTitleLabel.text = self.info.subTitle

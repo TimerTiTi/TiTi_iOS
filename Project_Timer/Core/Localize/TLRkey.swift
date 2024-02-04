@@ -20,9 +20,9 @@ enum TLRkey: String {
     /// 닫기
     case Common_Text_Close
     /// 타이머
-    case Common_Button_Timer
+    case Common_Text_Timer
     /// 스톱워치
-    case Common_Button_Stopwatch
+    case Common_Text_Stopwatch
     /// 목표 시간
     case Common_Text_TargetTime
     /// Month의 목표 시간을 입력해주세요 (시간 단위)
@@ -31,6 +31,15 @@ enum TLRkey: String {
     case Common_Popup_SetWeekTargetTime
     /// Daily의 목표 시간을 입력해주세요 (시간 단위)
     case Common_Popup_SetDailyTargetTime
+    
+    /// {}시간 경과되었습니다.
+    case System_Noti_StopwatchHourPassed
+    /// 타이머가 종료되었습니다!
+    case System_Noti_TimerFinished
+    /// 5분 남았습니다
+    case System_Noti_Timer5Left
+    /// 기록이 시작되었습니다
+    case System_Noti_RecordingStart
     
     /// 업데이트가 필요해요
     case Update_Popup_HardUpdateTitle
@@ -177,6 +186,32 @@ enum TLRkey: String {
     case EmailMessage_Error_CantSendEmailTitle
     /// 아이폰의 이메일 설정을 확인 후 다시 시도해주세요.
     case EmailMessage_Error_CantSendEmailDesc
+    
+    /// 총 남은시간
+    case Recording_Text_TargetTime
+    /// Task 남은시간
+    case Recording_Text_TaskTargetTime
+    /// 누적 시간
+    case Recording_Text_SumTime
+    /// Task를 생성해주세요
+    case Recording_Popup_NoTaskWarningTitle
+    /// 기록을 위해서 Task생성 후 선택해주세요
+    case Recording_Popup_NoTaskWarningDesc
+    /// 기록중인 날짜를 확인해주세요
+    case Recording_Popup_CheckDailyDateTitle
+    /// 새로운 날짜의 기록을 시작하시겠습니까?
+    case Recording_Popup_CheckDailyDateDesc
+    /// 새로운 기록 설정
+    case Recording_Text_SetNewRecordTitle
+    /// 목표시간 설정
+    case Recording_Text_SetDailyTargetTime
+    
+    /// 종료
+    case Timer_Text_Finish
+    /// 종료예정
+    case Timer_Text_TimerEndTime
+    /// 타이머 시간 설정
+    case Timer_Text_SetTimerTimeTitle
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi

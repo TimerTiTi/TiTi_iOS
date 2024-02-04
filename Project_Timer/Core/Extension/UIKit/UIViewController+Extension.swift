@@ -51,6 +51,6 @@ extension UIViewController {
     }
     
     func showTaskWarningAlert() {
-        self.showAlertWithOK(title: "Create a new task".localized(), text: "before start recording, Create a new Task, and select that".localized())
+        self.showAlertWithOK(title: Localized.string(.Recording_Popup_NoTaskWarningTitle), text: Localized.string(.Recording_Popup_NoTaskWarningDesc))
     }
 }

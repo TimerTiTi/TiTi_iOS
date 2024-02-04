@@ -31,7 +31,7 @@ struct TimerTimeLabelView: View {
     var body: some View {
         ZStack {
             if viewModel.finished {
-                Text("FINISH".localized())
+                Text(Localized.string(.Timer_Text_Finish))
             } else {
                 HStack(spacing: 0) {
                     if viewModel.time < 0 {
@@ -41,7 +41,7 @@ struct TimerTimeLabelView: View {
                 }
             }
         }
-        .font(Fonts.HGGGothicssiP60g(size: baseViewModel.fontSize))
+        .font(Typographys.font(.semibold_4, size: baseViewModel.fontSize))
         .foregroundColor(self.color)
     }
 }
