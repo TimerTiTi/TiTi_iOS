@@ -97,6 +97,10 @@ struct TLRko {
         case .ColorSelector_Text_ColorDirectionTitle: value = "컬러 방향"
         case .ColorSelector_Text_ColorDirectionDesc: value = "컬러 조합의 방향을 설정합니다"
             
+        case .EmailMessage_Text_Message: value = "작은 피드백 하나하나가 큰 도움이 됩니다 :)"
+        case .EmailMessage_Error_CantSendEmailTitle: value = "이메일 설정 실패"
+        case .EmailMessage_Error_CantSendEmailDesc: value = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요."
+            
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"
         case .SignIn_Button_WithoutSocialSingIn: value = "로그인없이 서비스 이용하기"
@@ -156,11 +160,10 @@ struct TLRko {
         case .Server_Error_CheckNetwork: value = "네트워크를 확인 후 다시 시도해주세요"
         case .Server_Error_DecodeError: value = "최신 버전의 앱으로 업데이트를 해주세요"
         case .Server_Error_ServerErrorTryAgain: value = "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
+        case .Server_Error_UploadError: value = "업로드 오류"
+        case .Server_Error_DownloadError: value = "다운로드 오류"
             
         case .Notification_Button_PassToday: value = "오늘 그만보기"
-            
-        case .Sync_Error_UploadError: value = "업로드 오류"
-        case .Sync_Error_DownloadError: value = "다운로드 오류"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다"
         case .WidgetSetting_Text_Description: value = "위젯 설명"

@@ -1877,6 +1877,7 @@
                                     <connections>
                                         <outlet property="developmentStatusLabel" destination="hGo-O3-ryt" id="D8V-7L-IgJ"/>
                                         <outlet property="instagramTextLabel" destination="1RL-y6-Iih" id="aCW-2N-LOO"/>
+                                        <outlet property="instagramTitleLabel" destination="6fJ-oS-OyD" id="ha9-97-BbT"/>
                                         <outlet property="participationDevelopLabel" destination="DKV-7e-p6F" id="qt6-Tk-8JA"/>
                                         <outlet property="surveyLabel" destination="n9u-uz-2hh" id="CYf-TD-Gmx"/>
                                         <outlet property="surveyTextLabel" destination="x7m-yU-dfL" id="Zyu-2B-ghS"/>

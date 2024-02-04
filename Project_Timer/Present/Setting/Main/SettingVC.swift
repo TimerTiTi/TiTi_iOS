@@ -218,12 +218,12 @@ extension SettingVC: SettingActionDelegate {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
                 mail.setToRecipients(["freedeveloper97@gmail.com"])
-                mail.setMessageBody("<p>\("Every little feedback helps a lot :)".localized())</p>", isHTML: true)
+                mail.setMessageBody("<p>\(Localized.string(.EmailMessage_Text_Message))</p>", isHTML: true)
                 
                 present(mail, animated: true)
             } else {
-                let sendMailErrorAlert = UIAlertController(title: "Email Failed".localized(), message: "Please check the setting of iPhone's Email, and try again.".localized(), preferredStyle: .alert)
-                let confirmAction = UIAlertAction(title: "OK", style: .default)
+                let sendMailErrorAlert = UIAlertController(title: Localized.string(.EmailMessage_Error_CantSendEmailTitle), message: Localized.string(.EmailMessage_Error_CantSendEmailDesc), preferredStyle: .alert)
+                let confirmAction = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default)
                 sendMailErrorAlert.addAction(confirmAction)
                 self.present(sendMailErrorAlert, animated: true, completion: nil)
             }

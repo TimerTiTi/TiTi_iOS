@@ -97,6 +97,10 @@ struct TLRzh {
         case .ColorSelector_Text_ColorDirectionTitle: value = "颜色方向"
         case .ColorSelector_Text_ColorDirectionDesc: value = "设置颜色组合的方向"
             
+        case .EmailMessage_Text_Message: value = "每一个小小的反馈都有很大的帮助 :)"
+        case .EmailMessage_Error_CantSendEmailTitle: value = "电子邮件设置失败"
+        case .EmailMessage_Error_CantSendEmailDesc: value = "请确认苹果手机的电子邮件设置后再试一次。"
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
         case .SignIn_Button_WithoutSocialSingIn: value = "无需登录即可使用"
@@ -156,11 +160,10 @@ struct TLRzh {
         case .Server_Error_CheckNetwork: value = "请检查网络并重试"
         case .Server_Error_DecodeError: value = "请更新到最新版本的应用程序"
         case .Server_Error_ServerErrorTryAgain: value = "服务器出错啦! 请稍后再试。"
+        case .Server_Error_UploadError: value = "上传错误"
+        case .Server_Error_DownloadError: value = "下载错误"
             
         case .Notification_Button_PassToday: value = "今日不再显示"
-            
-        case .Sync_Error_UploadError: value = "上传错误"
-        case .Sync_Error_DownloadError: value = "下载错误"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "根据日期的总时间设置颜色密度显示的目标时间"
         case .WidgetSetting_Text_Description: value = "关于小部件"

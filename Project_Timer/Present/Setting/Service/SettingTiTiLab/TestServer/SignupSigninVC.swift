@@ -40,7 +40,7 @@ class SignupSigninVC: WhiteNavigationVC {
     lazy private var actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(self.viewModel.isSignin ? "Sign in".localized() : "Sign up".localized(), for: .normal)
+        button.setTitle(self.viewModel.isSignin ? Localized.string(.TiTiLab_Button_SignIn) : Localized.string(.TiTiLab_Button_SignUpTitle), for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.backgroundColor = .white

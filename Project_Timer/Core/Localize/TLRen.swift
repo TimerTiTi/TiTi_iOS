@@ -97,6 +97,10 @@ struct TLRen {
         case .ColorSelector_Text_ColorDirectionTitle: value = "Color direction"
         case .ColorSelector_Text_ColorDirectionDesc: value = "Setting the direction of the color combination"
             
+        case .EmailMessage_Text_Message: value = "Every little feedback helps a lot :)"
+        case .EmailMessage_Error_CantSendEmailTitle: value = "Email Failed"
+        case .EmailMessage_Error_CantSendEmailDesc: value = "Please check the setting of iPhone's Email, and try again."
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
         case .SignIn_Button_WithoutSocialSingIn: value = "Using without Sign in"
@@ -156,11 +160,10 @@ struct TLRen {
         case .Server_Error_CheckNetwork: value = "Please check the network and try again"
         case .Server_Error_DecodeError: value = "Please update to the latest version of the app"
         case .Server_Error_ServerErrorTryAgain: value = "The server something went wrong. Please try again in a few minutes"
+        case .Server_Error_UploadError: value = "Upload Error"
+        case .Server_Error_DownloadError: value = "Download Error"
             
         case .Notification_Button_PassToday: value = "Dismiss for Today"
-            
-        case .Sync_Error_UploadError: value = "Upload Error"
-        case .Sync_Error_DownloadError: value = "Download Error"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "Setting the target time for color density display based on total time by date"
         case .WidgetSetting_Text_Description: value = "About Widget"

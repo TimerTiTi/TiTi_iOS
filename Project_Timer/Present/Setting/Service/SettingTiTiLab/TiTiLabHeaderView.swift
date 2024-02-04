@@ -13,6 +13,7 @@ final class TiTiLabHeaderView: UICollectionReusableView {
     static let identifier = "TiTiLabHeaderView"
     /* private */
     @IBOutlet weak var developmentStatusLabel: UILabel!
+    @IBOutlet weak var instagramTitleLabel: UILabel!
     @IBOutlet weak var instagramTextLabel: UILabel!
     
     @IBOutlet weak var participationDevelopLabel: UILabel!
@@ -39,6 +40,7 @@ extension TiTiLabHeaderView {
     private func configureLocalized() {
         self.developmentStatusLabel.font = Typographys.uifont(.semibold_4, size: 14)
         self.developmentStatusLabel.text = Localized.string(.TiTiLab_Text_DevelopNews)
+        self.instagramTitleLabel.font = Typographys.uifont(.semibold_4, size: 17)
         self.instagramTextLabel.font = Typographys.uifont(.semibold_4, size: 11)
         self.instagramTextLabel.text = Localized.string(.TiTiLab_Button_InstagramDesc)
         self.participationDevelopLabel.font = Typographys.uifont(.semibold_4, size: 14)
