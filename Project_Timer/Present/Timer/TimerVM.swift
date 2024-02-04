@@ -222,18 +222,18 @@ final class TimerVM {
     private func sendNotification() {
         guard UserDefaultsManager.get(forKey: .timerPushable) as? Bool ?? true else { return }
         let remainTimer = self.times.timer
-        self.postNoti(interval: Double(remainTimer), body: "Timer finished!".localized(), identifier: "Timer finished")
+        self.postNoti(interval: Double(remainTimer), body: Localized.string(.System_Noti_TimerFinished), identifier: "Timer finished")
         
         guard UserDefaultsManager.get(forKey: .timer5minPushable) as? Bool ?? true else { return }
         let alarm_5m = remainTimer - 300
         if alarm_5m > 0 {
-            self.postNoti(interval: Double(alarm_5m), body: "5 minutes left".localized(), identifier: "Timer 5 min")
+            self.postNoti(interval: Double(alarm_5m), body: Localized.string(.System_Noti_Timer5Left), identifier: "Timer 5 min")
         }
     }
     
     private func postNoti(interval: Double, body: String, identifier: String) {
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Timer".localized()
+        notificationContent.title = Localized.string(.Common_Text_Timer)
         notificationContent.body = body
         notificationContent.sound = UNNotificationSound.default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
@@ -247,7 +247,7 @@ final class TimerVM {
     
     func sendRecordingStartNotification() {
         self.postNoti(interval: 0.1,
-                      body: "Recording started".localized(),
+                      body: Localized.string(.System_Noti_RecordingStart),
                       identifier: "Timer Recording Start")
     }
     

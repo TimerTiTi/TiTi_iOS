@@ -150,7 +150,7 @@ final class StopwatchVC: UIViewController {
     }
     
     @IBAction func showRecordDateAlert(_ sender: Any) {
-        self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
+        self.showRecordDateWarning(title: Localized.string(.Recording_Popup_CheckDailyDateTitle), text: Localized.string(.Recording_Popup_CheckDailyDateDesc)) { [weak self] in
             self?.showSettingTargetTime()
         }
     }
@@ -312,9 +312,12 @@ extension StopwatchVC {
 // MARK: - Configure
 extension StopwatchVC {
     private func configureLocalizable() {
-        self.sumTimeLabel.text = "Sum Time".localized()
-        self.stopWatchLabel.text = "Stopwatch".localized()
-        self.targetTimeLabel.text = "Target Time".localized()
+        self.sumTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
+        self.sumTimeLabel.text = Localized.string(.Recording_Text_SumTime)
+        self.stopWatchLabel.font = Typographys.uifont(.semibold_4, size: 15)
+        self.stopWatchLabel.text = Localized.string(.Common_Text_Stopwatch)
+        self.targetTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
+        self.targetTimeLabel.text = Localized.string(.Recording_Text_TargetTime)
     }
     private func configureRendering() {
         self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -462,7 +465,7 @@ extension StopwatchVC {
 extension StopwatchVC {
     private func updateTask(to task: String) {
         if task == "none" {
-            self.taskButton.setTitle("Create a new task".localized(), for: .normal)
+            self.taskButton.setTitle(Localized.string(.Recording_Popup_NoTaskWarningTitle), for: .normal)
             self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)
@@ -470,6 +473,8 @@ extension StopwatchVC {
                 self.setTaskWhiteColor()
             }
         }
+        
+        self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
     }
     
     private func setTaskWarningColor() {
@@ -577,11 +582,11 @@ extension StopwatchVC {
         if RecordsManager.shared.isTaskTargetOn {
             goalPeriod = RecordsManager.shared.currentTask?.taskTargetTime ?? 3600
             innerSum = goalPeriod - times.remainingTaskTime
-            self.targetTimeLabel.text = "Task Target Time".localized()
+            self.targetTimeLabel.text = Localized.string(.Recording_Text_TaskTargetTime)
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600
             innerSum = times.sum
-            self.targetTimeLabel.text = "Target Time".localized()
+            self.targetTimeLabel.text = Localized.string(.Recording_Text_TargetTime)
         }
         
         let duration: TimeInterval = self.darkerAnimation ? 0 : 1.0
@@ -794,7 +799,7 @@ extension StopwatchVC: ColorUpdateable {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(colorSelector, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default))
         present(alert, animated: true)
     }
     
@@ -818,15 +823,15 @@ extension StopwatchVC: ColorUpdateable {
 extension StopwatchVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
-        let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),
-                                         subTitle: "\(Date().YYYYMMDDstyleString) " + "setting TargetTime".localized(),
+        let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_SetNewRecordTitle),
+                                         subTitle: "\(Date().YYYYMMDDstyleString) " + Localized.string(.Recording_Text_SetDailyTargetTime),
                                          targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default))
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive, handler: { [weak self] _ in
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             RecordsManager.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)

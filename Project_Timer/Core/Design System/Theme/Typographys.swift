@@ -48,6 +48,14 @@ struct Typographys {
         case .zh: return MiSans_uifont(weight, size)
         }
     }
+    
+    static func autoUIFont(_ string: String, _ weight: Weight, size: CGFloat) -> UIFont? {
+        if ["Chinese, Simplified"].contains(string.language()) {
+            return MiSans_uifont(weight, size)
+        } else {
+            return HGGGOTHICSSIP_uifont(weight, size)
+        }
+    }
 }
 
 extension Typographys {

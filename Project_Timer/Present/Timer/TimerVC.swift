@@ -152,7 +152,7 @@ final class TimerVC: UIViewController {
     }
     
     @IBAction func showRecordDateAlert(_ sender: Any) {
-        self.showRecordDateWarning(title: "Check the date of recording".localized(), text: "Do you want to start the New record?".localized()) { [weak self] in
+        self.showRecordDateWarning(title: Localized.string(.Recording_Popup_CheckDailyDateTitle), text: Localized.string(.Recording_Popup_CheckDailyDateDesc)) { [weak self] in
             self?.showSettingTargetTime()
         }
     }
@@ -314,9 +314,12 @@ extension TimerVC {
 // MARK: - Configure
 extension TimerVC {
     private func configureLocalizable() {
-        self.sumTimeLabel.text = "Sum Time".localized()
-        self.timerLabel.text = "Timer".localized()
-        self.targetTimeLabel.text = "Target Time".localized()
+        self.sumTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
+        self.sumTimeLabel.text = Localized.string(.Recording_Text_SumTime)
+        self.timerLabel.font = Typographys.uifont(.semibold_4, size: 15)
+        self.timerLabel.text = Localized.string(.Common_Text_Timer)
+        self.targetTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
+        self.targetTimeLabel.text = Localized.string(.Recording_Text_TargetTime)
     }
     private func configureRendering() {
         self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -475,7 +478,7 @@ extension TimerVC {
 extension TimerVC {
     private func updateTask(to task: String) {
         if task == "none" {
-            self.taskButton.setTitle("Create a new task".localized(), for: .normal)
+            self.taskButton.setTitle(Localized.string(.Recording_Popup_NoTaskWarningTitle), for: .normal)
             self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)
@@ -483,6 +486,8 @@ extension TimerVC {
                 self.setTaskWhiteColor()
             }
         }
+        
+        self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
     }
     
     private func setTaskWarningColor() {
@@ -591,11 +596,11 @@ extension TimerVC {
         if RecordsManager.shared.isTaskTargetOn {
             goalPeriod = RecordsManager.shared.currentTask?.taskTargetTime ?? 3600
             innerSum = goalPeriod - times.remainingTaskTime
-            self.targetTimeLabel.text = "Task Target Time".localized()
+            self.targetTimeLabel.text = Localized.string(.Recording_Text_TaskTargetTime)
         } else {
             goalPeriod = self.viewModel?.settedGoalTime ?? 21600
             innerSum = times.sum
-            self.targetTimeLabel.text = "Target Time".localized()
+            self.targetTimeLabel.text = Localized.string(.Recording_Text_TargetTime)
         }
         let duration: TimeInterval = self.darkerAnimation ? 0 : 1.0
         let timer = self.darkerMode ? times.timerForDarker : times.timer
@@ -837,7 +842,7 @@ extension TimerVC: ColorUpdateable {
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(colorSelector, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default))
         present(alert, animated: true)
     }
     
@@ -859,15 +864,15 @@ extension TimerVC: ColorUpdateable {
 extension TimerVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
-        let info = TargetTimeSettingInfo(title: "Setting New Record".localized(),
-                                         subTitle: "\(Date().YYYYMMDDstyleString) " + "setting TargetTime".localized(),
+        let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_SetNewRecordTitle),
+                                         subTitle: "\(Date().YYYYMMDDstyleString) " + Localized.string(.Recording_Text_SetDailyTargetTime),
                                          targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default))
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive, handler: { [weak self] _ in
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             RecordsManager.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
@@ -880,18 +885,18 @@ extension TimerVC {
     private func showSettingTimerTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let timerTime = RecordsManager.shared.recordTimes.settedTimerTime
-        let info = TargetTimeSettingInfo(title: "Setting Timer Time".localized(),
-                                         subTitle: "End Time".localized() + ": " + timerTime.endTimeFromNow(),
+        let info = TargetTimeSettingInfo(title: Localized.string(.Timer_Text_SetTimerTimeTitle),
+                                         subTitle: Localized.string(.Timer_Text_TimerEndTime) + ": " + timerTime.endTimeFromNow(),
                                          targetTime: timerTime)
         targetTimeSettingVC.configure(info: info) {
             guard let updatedTimerTime = targetTimeSettingVC.settedTargetTime else { return }
-            targetTimeSettingVC.updateSubTitle(to: "End Time".localized() + ": " + updatedTimerTime.endTimeFromNow())
+            targetTimeSettingVC.updateSubTitle(to: Localized.string(.Timer_Text_TimerEndTime) + ": " + updatedTimerTime.endTimeFromNow())
         }
         
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         alert.setValue(targetTimeSettingVC, forKey: "contentViewController")
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default))
+        alert.addAction(UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default, handler: { [weak self] _ in
             guard let timerTime = targetTimeSettingVC.settedTargetTime else { return }
             self?.updateTimerTime(to: timerTime)
         }))
