@@ -14,9 +14,11 @@ struct TLRko {
         switch key {
         case .Common_Text_OK: value = "확인"
         case .Common_Text_Cencel: value = "취소"
+        case .Common_Text_Edit: value = "편집"
         case .Common_Text_Done: value = "완료"
         case .Common_Text_Next: value = "다음"
         case .Common_Text_Close: value = "닫기"
+        case .Common_Text_Delete: value = "삭제"
         case .Common_Text_Timer: value = "타이머"
         case .Common_Text_Stopwatch: value = "스톱워치"
         case .Common_Text_TargetTime: value = "목표 시간"
@@ -119,6 +121,14 @@ struct TLRko {
         case .Timer_Text_Finish: value = "종료"
         case .Timer_Text_TimerEndTime: value = "종료예정"
         case .Timer_Text_SetTimerTimeTitle: value = "타이머 시간 설정"
+            
+        case .Tasks_Hint_NewTaskTitle: value = "새로운 Task"
+        case .Tasks_Popup_NewTaskDesc: value = "12자리 내의 새로운 Task명을 입력하세요"
+        case .Tasks_Popup_EditTaskName: value = "Task명 수정"
+        case .Tasks_Text_SetTaskTargetTime: value = "목표시간 설정"
+        case .Tasks_Popup_SameTaskExistTitle: value = "동일한 Task 존재"
+        case .Tasks_Popup_SameTaskExistDesc: value = "다른 Task명을 입력해주세요"
+        case .Tasks_Popup_SetTaskTargetTime: value = "목표시간 설정"
             
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"

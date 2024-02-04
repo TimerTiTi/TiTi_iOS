@@ -12,11 +12,13 @@ struct TLRen {
     static func value(key: TLRkey, op: String? = nil) -> String {
         var value: String = ""
         switch key {
-        case .Common_Text_OK: value = "ok"
-        case .Common_Text_Cencel: value = "cancel"
-        case .Common_Text_Done: value = "done"
+        case .Common_Text_OK: value = "Ok"
+        case .Common_Text_Cencel: value = "Cancel"
+        case .Common_Text_Edit: value = "Edit"
+        case .Common_Text_Done: value = "Done"
         case .Common_Text_Next: value = "Next"
         case .Common_Text_Close: value = "Close"
+        case .Common_Text_Delete: value = "Delete"
         case .Common_Text_Timer: value = "Timer"
         case .Common_Text_Stopwatch: value = "Stopwatch"
         case .Common_Text_TargetTime: value = "Target time"
@@ -119,6 +121,14 @@ struct TLRen {
         case .Timer_Text_Finish: value = "FINISH"
         case .Timer_Text_TimerEndTime: value = "End Time"
         case .Timer_Text_SetTimerTimeTitle: value = "Setting Timer Time"
+            
+        case .Tasks_Hint_NewTaskTitle: value = "New task"
+        case .Tasks_Popup_NewTaskDesc: value = "Task name's max length is 20"
+        case .Tasks_Popup_EditTaskName: value = "Modify task's name"
+        case .Tasks_Text_SetTaskTargetTime: value = "Setted Target Time"
+        case .Tasks_Popup_SameTaskExistTitle: value = "Same task exist"
+        case .Tasks_Popup_SameTaskExistDesc: value = "Try to another task's name"
+        case .Tasks_Popup_SetTaskTargetTime: value = "Setting Target Time"
             
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"

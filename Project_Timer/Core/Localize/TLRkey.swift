@@ -13,12 +13,16 @@ enum TLRkey: String {
     case Common_Text_OK
     /// 취소
     case Common_Text_Cencel
+    /// 편집
+    case Common_Text_Edit
     /// 완료
     case Common_Text_Done
     /// 다음
     case Common_Text_Next
     /// 닫기
     case Common_Text_Close
+    /// 삭제
+    case Common_Text_Delete
     /// 타이머
     case Common_Text_Timer
     /// 스톱워치
@@ -212,6 +216,21 @@ enum TLRkey: String {
     case Timer_Text_TimerEndTime
     /// 타이머 시간 설정
     case Timer_Text_SetTimerTimeTitle
+    
+    /// 새로운 Task
+    case Tasks_Hint_NewTaskTitle
+    /// 12자리 내의 새로운 Task명을 입력하세요
+    case Tasks_Popup_NewTaskDesc
+    /// Task명 수정
+    case Tasks_Popup_EditTaskName
+    /// 목표시간 설정
+    case Tasks_Text_SetTaskTargetTime
+    /// 동일한 Task 존재
+    case Tasks_Popup_SameTaskExistTitle
+    /// 다른 Task명을 입력해주세요
+    case Tasks_Popup_SameTaskExistDesc
+    /// 목표시간 설정
+    case Tasks_Popup_SetTaskTargetTime
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi

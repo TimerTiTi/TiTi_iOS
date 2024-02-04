@@ -23,14 +23,14 @@ extension UIViewController {
     // MARK: Alert
     func showAlertWithOK(title: String, text: String) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default)
         alert.addAction(ok)
         self.present(alert, animated: true)
     }
     
     func showAlertWithOKAfterHandler(title: String, text: String, completion: @escaping(() -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default) { _ in
             completion()
         }
         alert.addAction(ok)
@@ -39,10 +39,10 @@ extension UIViewController {
     
     func showRecordDateWarning(title: String, text: String, completion: @escaping(() -> Void)) {
         let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default) { _ in
             NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
         }
-        let ok = UIAlertAction(title: "OK", style: .destructive) { _ in
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive) { _ in
             completion()
         }
         alert.addAction(cancel)

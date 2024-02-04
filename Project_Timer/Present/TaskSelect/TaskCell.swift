@@ -27,6 +27,9 @@ final class TaskCell: UITableViewCell {
         super.awakeFromNib()
         self.taskTargetTimeSwitch.isOn = false
         self.taskTargetTimesStackView.alpha = 0
+        self.taskTargetTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
+        self.taskTargetTime.font = Typographys.uifont(.semibold_4, size: 12)
+        self.editTaskTargetTimeButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 12)
     }
     
     @IBAction func toggleTargetTime(_ sender: UISwitch) {
@@ -47,11 +50,12 @@ final class TaskCell: UITableViewCell {
         self.configureColor(color: color)
         self.taskNameLabel.text = task.taskName
         self.taskTargetTimeSwitch.isOn = task.isTaskTargetTimeOn
-        self.taskTargetTimeLabel.text = "Setted Target Time:".localized()
+        self.taskTargetTimeLabel.text = Localized.string(.Tasks_Text_SetTaskTargetTime)+":"
         self.taskTargetTime.text = task.taskTargetTime.toTimeString
         self.taskNameLabelTopConst.constant = task.isTaskTargetTimeOn ? 8 : 16
         self.taskTargetTimesStackView.alpha = task.isTaskTargetTimeOn ? 1 : 0
         self.editTaskTargetTimeButton.alpha = task.isTaskTargetTimeOn ? 1 : 0
+        self.taskNameLabel.font = Typographys.autoUIFont(task.taskName, .semibold_4, size: 19)
     }
 }
 
