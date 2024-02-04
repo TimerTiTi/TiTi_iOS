@@ -11,10 +11,10 @@ import UIKit
 class SigninInputTextfield: UIView {
     static let height: CGFloat = CGFloat(58)
     
-    enum type: String {
-        case nickname = "nickname"
-        case email = "email"
-        case password = "password"
+    enum type {
+        case nickname
+        case email
+        case password
     }
     
     var textField: UITextField = {
@@ -42,7 +42,12 @@ class SigninInputTextfield: UIView {
     
     convenience init(type: SigninInputTextfield.type) {
         self.init(frame: .zero)
-        self.textField.placeholder = type.rawValue.localized()
+        
+        switch type {
+        case .nickname: self.textField.placeholder = Localized.string(.SignUp_Hint_Nickname)
+        case .email: self.textField.placeholder = Localized.string(.SignIn_Hint_Email)
+        case .password: self.textField.placeholder = Localized.string(.SignIn_Hint_Password)
+        }
         
         self.configureUI()
     }

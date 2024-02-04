@@ -171,6 +171,13 @@ enum TLRkey: String {
     /// 컬러 조합의 방향을 설정합니다
     case ColorSelector_Text_ColorDirectionDesc
     
+    /// 작은 피드백 하나하나가 큰 도움이 됩니다 :)
+    case EmailMessage_Text_Message
+    /// 이메일 설정 실패
+    case EmailMessage_Error_CantSendEmailTitle
+    /// 아이폰의 이메일 설정을 확인 후 다시 시도해주세요.
+    case EmailMessage_Error_CantSendEmailDesc
+    
     /// 타이머티티
     case SignIn_Text_TimerTiTi
     /// {}로 로그인
@@ -283,14 +290,13 @@ enum TLRkey: String {
     case Server_Error_DecodeError
     /// 서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요
     case Server_Error_ServerErrorTryAgain
+    /// 업로드 오류
+    case Server_Error_UploadError
+    /// 다운로드 오류
+    case Server_Error_DownloadError
     
     /// 오늘 그만보기
     case Notification_Button_PassToday
-    
-    /// 업로드 오류
-    case Sync_Error_UploadError
-    /// 다운로드 오류
-    case Sync_Error_DownloadError
     
     /// 날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다
     case WidgetSetting_Text_DailyTargetTimeDesc

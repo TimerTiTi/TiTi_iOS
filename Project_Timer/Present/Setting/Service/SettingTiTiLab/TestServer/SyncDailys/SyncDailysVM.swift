@@ -83,7 +83,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Dailys ERROR] \(message)")
                     }
-                    self?.alert = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: Localized.string(.Server_Error_UploadError), text: Localized.string(.Server_Error_DecodeError))
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -107,7 +107,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[upload Recordtime ERROR] \(message)")
                     }
-                    self?.alert = (title: "Upload Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: Localized.string(.Server_Error_UploadError), text: Localized.string(.Server_Error_DecodeError))
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -135,7 +135,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get Dailys ERROR] \(message)")
                     }
-                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -159,7 +159,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get RecordTimes ERROR] \(message)")
                     }
-                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
                 default:
                     self?.alert = error.alertMessage
                 }
@@ -187,7 +187,7 @@ extension SyncDailysVM {
                     if let message = message {
                         print("[get SyncLog ERROR] \(message)")
                     }
-                    self?.alert = (title: "Download Error".localized(), text: "Please update to the latest version of the app".localized())
+                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
                 default:
                     self?.alert = error.alertMessage
                 }

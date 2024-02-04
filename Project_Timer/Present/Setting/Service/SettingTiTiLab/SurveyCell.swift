@@ -19,6 +19,7 @@ final class SurveyCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.titleLabel.font = Typographys.uifont(.semibold_4, size: 17)
         self.warningLabel.font = Typographys.uifont(.semibold_4, size: 10)
         self.warningLabel.text = Localized.string(.TiTiLab_Text_NoServey)
         self.warningLabel.isHidden = true
