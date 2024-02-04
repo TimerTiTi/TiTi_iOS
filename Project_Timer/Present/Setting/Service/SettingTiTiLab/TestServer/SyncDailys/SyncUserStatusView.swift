@@ -22,8 +22,8 @@ final class SyncUserStatusView: UIView {
     }
     
     private func configureLocalized() {
-        self.useage1Label.text = "The last synchronization time of the current device and the latest synchronization time reflected in the server.".localized()
-        self.useage2Label.text = "Synchronization backs up your modified data and allows you to receive data backed up from other devices.".localized()
+        self.useage1Label.text = Localized.string(.SyncDaily_Text_InfoSync1)
+        self.useage2Label.text = Localized.string(.SyncDaily_Text_InfoSync2)
     }
     
     private func configureUsername() {

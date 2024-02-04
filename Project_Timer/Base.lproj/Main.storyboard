@@ -2591,6 +2591,7 @@
                     </view>
                     <connections>
                         <outlet property="serverDailysCountLabel" destination="XfD-mm-87F" id="8G2-MF-FPo"/>
+                        <outlet property="syncButton" destination="QDj-vJ-NU5" id="KMg-e2-Lao"/>
                         <outlet property="syncDeviceStatusView" destination="vrj-8i-MvM" id="X1m-1D-sfh"/>
                         <outlet property="syncUserStatusView" destination="Vbb-9K-bi7" id="VCB-H6-hIU"/>
                     </connections>
@@ -4178,22 +4179,22 @@
             <color red="0.53725490196078429" green="0.43529411764705883" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D1">
-            <color red="0.50980392156862742" green="0.59999999999999998" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50999999046325684" green="0.60000002384185791" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D10">
-            <color red="0.81999999284744263" green="0.60399997234344482" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.81960784313725488" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D12">
             <color red="0.57300001382827759" green="0.54100000858306885" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D2">
-            <color red="0.60392156862745094" green="0.75294117647058822" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.60399997234344482" green="0.75300002098083496" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D3">
             <color red="0.59215686274509804" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D4">
-            <color red="0.65098039215686276" green="0.87058823529411766" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.65100002288818359" green="0.87099999189376831" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D5">
             <color red="0.98799997568130493" green="0.90200001001358032" blue="0.44699999690055847" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4202,13 +4203,13 @@
             <color red="1" green="0.77300000190734863" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D7">
-            <color red="0.99607843137254903" green="0.66274509803921566" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.99599999189376831" green="0.66299998760223389" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D8">
-            <color red="1" green="0.61176470588235299" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.6119999885559082" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D9">
-            <color red="0.96078431372549022" green="0.59999999999999998" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96100002527236938" green="0.60000002384185791" blue="0.79199999570846558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.91764705882352937" green="0.43137254901960786" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

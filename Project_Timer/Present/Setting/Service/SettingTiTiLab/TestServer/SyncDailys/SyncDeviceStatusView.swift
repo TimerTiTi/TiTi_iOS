@@ -24,8 +24,8 @@ final class SyncDeviceStatusView: UIView {
     }
     
     private func configureLocalized() {
-        self.useage1Label.text = "The number of Dailys stored on the server and the number of Dailys on the current device.".localized()
-        self.useage2Label.text = "Created and Edited dailys are backed up at the time of synchronized.".localized()
+        self.useage1Label.text = Localized.string(.SyncDaily_Text_InfoSync3)
+        self.useage2Label.text = Localized.string(.SyncDaily_Text_InfoSync4)
     }
     
     func configureDailys() -> [Daily] {
