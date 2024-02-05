@@ -130,6 +130,15 @@ struct TLRzh {
         case .Tasks_Popup_SameTaskExistDesc: value = "请输入其他Task名"
         case .Tasks_Popup_SetTaskTargetTime: value = "设定目标时间"
             
+        case .Todos_Popup_EditTodoName: value = "修改内容"
+        case .Todos_Hint_TodoName: value = "新建内容"
+        case .Todos_Popup_EditTodoGroupName: value = "修改组名"
+        case .Todos_Hint_NewTodoGroupName: value = "新建组名"
+        case .Todos_Button_CreateTodoGroup: value = "添加组"
+        case .Todos_Button_DeleteTodoGroup: value = "删除组"
+        case .Todos_Popup_DeleteTodoGroupTitle: value = "删除{}"
+        case .Todos_Popup_DeleteTodoGroupDesc: value = "您是否要删除{}群组？"
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
         case .SignIn_Button_WithoutSocialSingIn: value = "无需登录即可使用"

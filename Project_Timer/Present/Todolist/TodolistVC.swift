@@ -27,6 +27,9 @@ final class TodolistVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.editButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 17)
+        self.editButton.setTitle(self.todos.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
+        self.input.font = Typographys.uifont(.semibold_4, size: 15)
         self.configureViewModel()
         self.configureTodoGroupButton()
         self.configureSelectTodoGroupButton()
@@ -60,7 +63,7 @@ final class TodolistVC: UIViewController {
     
     @IBAction func editAction(_ sender: Any) {
         self.todos.setEditing(!self.todos.isEditing, animated: true)
-        self.editButton.setTitle(self.todos.isEditing ? "Done" : "Edit", for: .normal)
+        self.editButton.setTitle(self.todos.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
     }
 }
 
@@ -88,10 +91,10 @@ extension TodolistVC {
             }
         }
         let subMenu = UIMenu(title: "", options: .displayInline, children: [
-            UIAction(title: "Create Group".localized(), image: UIImage(systemName: "plus"), state: .off) { [weak self] _ in
+            UIAction(title: Localized.string(.Todos_Button_CreateTodoGroup), image: UIImage(systemName: "plus"), state: .off) { [weak self] _ in
                 self?.addNewGroup()
             },
-            UIAction(title: "Delete Group".localized(), image: UIImage(systemName: "trash"), attributes: .destructive, state: .off) { [weak self] _ in
+            UIAction(title: Localized.string(.Todos_Button_DeleteTodoGroup), image: UIImage(systemName: "trash"), attributes: .destructive, state: .off) { [weak self] _ in
                 self?.deleteGroup()
             }
         ])
@@ -134,15 +137,15 @@ extension TodolistVC {
     }
     
     @objc func changeGroupName() {
-        let alert = UIAlertController(title: "Modify Group's Name".localized(), message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: Localized.string(.Todos_Popup_EditTodoGroupName), message: "", preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "New Group Name".localized()
+            textField.placeholder = Localized.string(.Todos_Hint_NewTodoGroupName)
             textField.textAlignment = .center
             textField.font = Fonts.HGGGothicssiP60g(size: 17)
             textField.text = self.viewModel?.currentGroupName ?? "Untitled"
         }
-        let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-        let ok = UIAlertAction(title: "UPDATE", style: .destructive, handler: { [weak self] action in
+        let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive, handler: { [weak self] action in
             guard let newText: String = alert.textFields?.first?.text else { return }
             if self?.viewModel?.updateTodoGroupName(to: newText) == false {
                 // 다른 TodoGroup명 alert
@@ -155,15 +158,15 @@ extension TodolistVC {
     }
     
     private func addNewGroup() {
-        let alert = UIAlertController(title: "Create Group".localized(), message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: Localized.string(.Todos_Button_CreateTodoGroup), message: "", preferredStyle: .alert)
         alert.addTextField { textField in
-            textField.placeholder = "New Group Name".localized()
+            textField.placeholder = Localized.string(.Todos_Hint_NewTodoGroupName)
             textField.textAlignment = .center
-            textField.font = Fonts.HGGGothicssiP60g(size: 17)
+            textField.font = Typographys.uifont(.semibold_4, size: 17)
             textField.text = ""
         }
-        let cancle = UIAlertAction(title: "CANCEL", style: .default, handler: nil)
-        let ok = UIAlertAction(title: "ADD", style: .default, handler: { [weak self] action in
+        let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive, handler: { [weak self] action in
             guard let newText: String = alert.textFields?.first?.text else { return }
             if self?.viewModel?.addNewTodoGroup(newText) == false {
                 // 다른 TodoGroup명 alert
@@ -177,12 +180,11 @@ extension TodolistVC {
     
     private func deleteGroup() {
         guard let target = self.viewModel?.currentGroupName else { return }
-        let locale = NSLocale.current.languageCode
-        let title = locale == "ko" ? "\(target) 삭제" : "Delete \(target)"
-        let subTitle = locale == "ko" ? "\(target) 그룹을 삭제하시겠습니까?" : "Do you want to delete \(target) group?"
+        let title = Localized.string(.Todos_Popup_DeleteTodoGroupTitle, op: target)
+        let subTitle = Localized.string(.Todos_Popup_DeleteTodoGroupDesc, op: target)
         let alert = UIAlertController(title: title, message: subTitle, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-        let delete = UIAlertAction(title: "DELETE", style: .destructive, handler: { [weak self] _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+        let delete = UIAlertAction(title: Localized.string(.Common_Text_Delete), style: .destructive, handler: { [weak self] _ in
             self?.viewModel?.deleteTodoGroup()
         })
         
@@ -197,15 +199,15 @@ extension TodolistVC {
             guard let indexPath = self.todos.indexPathForRow(at: touchPoint),
                   let originText = self.viewModel?.todos[indexPath.row].text else { return }
             
-            let alert = UIAlertController(title: "Modify Todo's content".localized(), message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: Localized.string(.Todos_Popup_EditTodoName), message: "", preferredStyle: .alert)
             alert.addTextField { textField in
-                textField.placeholder = "New Todo's content".localized()
+                textField.placeholder = Localized.string(.Todos_Hint_TodoName)
                 textField.textAlignment = .center
-                textField.font = Fonts.HGGGothicssiP60g(size: 17)
+                textField.font = Typographys.uifont(.semibold_4, size: 17)
                 textField.text = originText
             }
-            let cancle = UIAlertAction(title: "CANCEL", style: .cancel, handler: nil)
-            let ok = UIAlertAction(title: "UPDATE", style: .default, handler: { [weak self] action in
+            let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
+            let ok = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .default, handler: { [weak self] action in
                 guard let newText: String = alert.textFields?.first?.text else { return }
                 
                 self?.viewModel?.updateText(at: indexPath.row, to: newText)
@@ -287,7 +289,7 @@ extension TodolistVC: UITableViewDataSource {
 
 extension TodolistVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] action, index in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: Localized.string(.Common_Text_Delete)) { [weak self] action, index in
             self?.viewModel?.deleteTodo(at: indexPath.row)
             self?.todos.deleteRows(at: [indexPath], with: .automatic)
             self?.reloadAfterAnimation()

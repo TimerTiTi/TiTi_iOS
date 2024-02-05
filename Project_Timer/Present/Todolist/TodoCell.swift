@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoCell: UITableViewCell {
+final class TodoCell: UITableViewCell {
     static let identifier = "TodoCell"
     
     @IBOutlet weak var check: UIButton!
@@ -41,6 +41,7 @@ class TodoCell: UITableViewCell {
         self.check.isSelected = todo.isDone
         self.todoText.text = todo.text
         self.showColorView(todo.isDone)
+        self.todoText.font = Typographys.autoUIFont(todo.text, .semibold_4, size: 15)
     }
     
     private func showColorView(_ show: Bool) {
