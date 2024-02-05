@@ -130,6 +130,15 @@ struct TLRko {
         case .Tasks_Popup_SameTaskExistDesc: value = "다른 Task명을 입력해주세요"
         case .Tasks_Popup_SetTaskTargetTime: value = "목표시간 설정"
             
+        case .Todos_Popup_EditTodoName: value = "내용 수정"
+        case .Todos_Hint_TodoName: value = "새로운 내용"
+        case .Todos_Popup_EditTodoGroupName: value = "그룹명 수정"
+        case .Todos_Hint_NewTodoGroupName: value = "새로운 그룹명"
+        case .Todos_Button_CreateTodoGroup: value = "그룹 추가"
+        case .Todos_Button_DeleteTodoGroup: value = "그룹 삭제"
+        case .Todos_Popup_DeleteTodoGroupTitle: value = "{} 삭제"
+        case .Todos_Popup_DeleteTodoGroupDesc: value = "{} 그룹을 삭제하시겠습니까?"
+            
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"
         case .SignIn_Button_WithoutSocialSingIn: value = "로그인없이 서비스 이용하기"

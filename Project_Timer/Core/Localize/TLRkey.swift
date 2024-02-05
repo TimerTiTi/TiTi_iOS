@@ -232,6 +232,23 @@ enum TLRkey: String {
     /// 목표시간 설정
     case Tasks_Popup_SetTaskTargetTime
     
+    /// 내용 수정
+    case Todos_Popup_EditTodoName
+    /// 새로운 내용
+    case Todos_Hint_TodoName
+    /// 그룹명 수정
+    case Todos_Popup_EditTodoGroupName
+    /// 새로운 그룹명
+    case Todos_Hint_NewTodoGroupName
+    /// 그룹 추가
+    case Todos_Button_CreateTodoGroup
+    /// 그룹 삭제
+    case Todos_Button_DeleteTodoGroup
+    /// {} 삭제
+    case Todos_Popup_DeleteTodoGroupTitle
+    /// {} 그룹을 삭제하시겠습니까?
+    case Todos_Popup_DeleteTodoGroupDesc
+    
     /// 타이머티티
     case SignIn_Text_TimerTiTi
     /// {}로 로그인

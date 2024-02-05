@@ -130,6 +130,15 @@ struct TLRen {
         case .Tasks_Popup_SameTaskExistDesc: value = "Try to another task's name"
         case .Tasks_Popup_SetTaskTargetTime: value = "Setting Target Time"
             
+        case .Todos_Popup_EditTodoName: value = "Modify Todo's content"
+        case .Todos_Hint_TodoName: value = "New Todo's content"
+        case .Todos_Popup_EditTodoGroupName: value = "Modify Group's Name"
+        case .Todos_Hint_NewTodoGroupName: value = "New Group Name"
+        case .Todos_Button_CreateTodoGroup: value = "Create Group"
+        case .Todos_Button_DeleteTodoGroup: value = "Delete Group"
+        case .Todos_Popup_DeleteTodoGroupTitle: value = "Delete {}"
+        case .Todos_Popup_DeleteTodoGroupDesc: value = "Do you want to Delete {} group?"
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
         case .SignIn_Button_WithoutSocialSingIn: value = "Using without Sign in"
