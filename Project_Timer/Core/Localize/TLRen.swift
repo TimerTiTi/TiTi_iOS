@@ -159,6 +159,12 @@ struct TLRen {
         case .EditDaily_Popup_WatchADRequired: value = "You have to watch the ad to save edited record. Would you like to watch?"
         case .EditDaily_Popup_UndableEditDesc: value = "Past format record can't editting, Please wait for update"
             
+        case .LogSetting_Text_DailyTargetTimeDesc: value = "Setting the target time of Circular Progress Bar"
+            
+        case .RecordingColorSelector_Text_CustomColor: value = "Custom Color"
+        case .RecordingColorSelector_Text_BackgroundColor: value = "Background"
+        case .RecordingColorSelector_Text_TextColor: value = "TextColor"
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "Sign in with {}"
         case .SignIn_Button_WithoutSocialSingIn: value = "Using without Sign in"

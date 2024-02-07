@@ -159,6 +159,12 @@ struct TLRzh {
         case .EditDaily_Popup_WatchADRequired: value = "保存需要观看广告。 确定要收看广告吗？"
         case .EditDaily_Popup_UndableEditDesc: value = "记录不能修改的过去格式的记录。 请等待更新。"
             
+        case .LogSetting_Text_DailyTargetTimeDesc: value = "设置圆形程序栏的目标时间"
+            
+        case .RecordingColorSelector_Text_CustomColor: value = "定制颜色"
+        case .RecordingColorSelector_Text_BackgroundColor: value = "后台"
+        case .RecordingColorSelector_Text_TextColor: value = "文本"
+            
         case .SignIn_Text_TimerTiTi: value = "TimerTiTi"
         case .SignIn_Button_SocialSignIn: value = "使用 {} 登录"
         case .SignIn_Button_WithoutSocialSingIn: value = "无需登录即可使用"
