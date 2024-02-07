@@ -288,6 +288,16 @@ enum TLRkey: String {
     /// 기록수정이 불가한 과거형식의 기록입니다. 업데이트를 기다려주세요
     case EditDaily_Popup_UndableEditDesc
     
+    /// 원형 프로그래스바의 목표 시간을 설정합니다
+    case LogSetting_Text_DailyTargetTimeDesc
+    
+    /// 커스텀 컬러
+    case RecordingColorSelector_Text_CustomColor
+    /// 배경
+    case RecordingColorSelector_Text_BackgroundColor
+    /// 텍스트
+    case RecordingColorSelector_Text_TextColor
+    
     /// 타이머티티
     case SignIn_Text_TimerTiTi
     /// {}로 로그인

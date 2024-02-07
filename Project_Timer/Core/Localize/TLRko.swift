@@ -159,6 +159,12 @@ struct TLRko {
         case .EditDaily_Popup_WatchADRequired: value = "저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?"
         case .EditDaily_Popup_UndableEditDesc: value = "기록수정이 불가한 과거형식의 기록입니다. 업데이트를 기다려주세요"
             
+        case .LogSetting_Text_DailyTargetTimeDesc: value = "원형 프로그래스바의 목표 시간을 설정합니다"
+            
+        case .RecordingColorSelector_Text_CustomColor: value = "커스텀 컬러"
+        case .RecordingColorSelector_Text_BackgroundColor: value = "배경"
+        case .RecordingColorSelector_Text_TextColor: value = "텍스트"
+            
         case .SignIn_Text_TimerTiTi: value = "타이머티티"
         case .SignIn_Button_SocialSignIn: value = "{}로 로그인"
         case .SignIn_Button_WithoutSocialSingIn: value = "로그인없이 서비스 이용하기"
