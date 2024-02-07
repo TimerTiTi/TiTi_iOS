@@ -56,9 +56,9 @@ final class ColorSelectorVC: UIViewController {
 
 extension ColorSelectorVC {
     private func configureLocalized() {
-        self.titleLabel.text = "Custom Color".localized()
-        self.backgroundLabel.text = "Background".localized()
-        self.textTintLabel.text = "TextColor".localized()
+        self.titleLabel.text = Localized.string(.RecordingColorSelector_Text_CustomColor)
+        self.backgroundLabel.text = Localized.string(.RecordingColorSelector_Text_BackgroundColor)
+        self.textTintLabel.text = Localized.string(.RecordingColorSelector_Text_TextColor)
     }
     
     private func fetchColor() {

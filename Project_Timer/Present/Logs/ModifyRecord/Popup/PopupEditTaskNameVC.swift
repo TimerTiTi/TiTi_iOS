@@ -41,12 +41,12 @@ final class PopupEditTaskNameVC: UIViewController {
     }
     
     func showErrorMessage() {
-        self.messageLabel.text = "The same task name already exists.".localized()
+        self.messageLabel.text = Localized.string(.EditDaily_Popup_SameTaskExist)
         self.messageLabel.textColor = .red
     }
     
     func showNormalMessage() {
-        self.messageLabel.text = "Please enter a new task.".localized()
+        self.messageLabel.text = Localized.string(.EditDaily_Popup_EditTaskNameDesc)
         self.messageLabel.textColor = .label
     }
 }

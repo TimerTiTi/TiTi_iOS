@@ -153,7 +153,7 @@ extension LogDailyVC {
         present(controller, animated: true, completion: nil)
         #else
         IOUsecase.saveImagesToIOS(views: graphViews)
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
+        self.showAlertWithOK(title: Localized.string(.Common_Popup_SaveCompleted), text: "")
         #endif
     }
 }
@@ -161,7 +161,7 @@ extension LogDailyVC {
 extension LogDailyVC: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let recordDay = self.viewModel?.currentDaily?.day.localDate.YYYYMMDDstyleString else { return }
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "\(recordDay)")
+        self.showAlertWithOK(title: Localized.string(.Common_Popup_SaveCompleted), text: "\(recordDay)")
     }
 }
 

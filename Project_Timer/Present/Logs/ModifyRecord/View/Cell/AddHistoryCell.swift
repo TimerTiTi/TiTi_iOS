@@ -21,7 +21,7 @@ final class AddHistoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.createNewRecord.setTitle("New History".localized(), for: .normal)
+        self.createNewRecord.setTitle(Localized.string(.EditDaily_Button_AppendNewHistory), for: .normal)
     }
     
     @IBAction func addHistoryButtonTapped(_ sender: UIButton) {

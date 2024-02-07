@@ -11,7 +11,7 @@ import UIKit
 final class TaskModifyInteractionView: TaskInteractionView {
     convenience init() {
         self.init(frame: CGRect())
-        self.configureFinishButton(to: "OK")
+        self.configureFinishButton(to: Localized.string(.Common_Text_OK))
         self.updateFinishButtonEnable(to: true)
         self.configureEditTaskButton(to: .edit)
     }
