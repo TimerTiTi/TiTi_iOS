@@ -35,6 +35,12 @@ enum TLRkey: String {
     case Common_Popup_SetWeekTargetTime
     /// Daily의 목표 시간을 입력해주세요 (시간 단위)
     case Common_Popup_SetDailyTargetTime
+    /// 저장 완료
+    case Common_Popup_SaveCompleted
+    /// 경고
+    case Common_Popup_Warning
+    /// 안내
+    case Common_Popup_Inform
     
     /// {}시간 경과되었습니다.
     case System_Noti_StopwatchHourPassed
@@ -248,6 +254,39 @@ enum TLRkey: String {
     case Todos_Popup_DeleteTodoGroupTitle
     /// {} 그룹을 삭제하시겠습니까?
     case Todos_Popup_DeleteTodoGroupDesc
+    
+    /// 기록 수정 불가
+    case EditDaily_Popup_UnableEditTitle
+    /// Task명 수정
+    case EditDaily_Popup_EditTaskName
+    /// Task명 입력
+    case EditDaily_Popup_EnterTaskName
+    /// 변경 사항이 저장되었습니다.
+    case EditDaily_Popup_EditTaskSaved
+    /// 변경 사항이 제거됩니다.
+    case EditDaily_Popup_EditChangeCanceled
+    /// 동일한 Task가 존재합니다.
+    case EditDaily_Popup_SameTaskExist
+    /// 새로운 Task를 입력해주세요
+    case EditDaily_Popup_EditTaskNameDesc
+    /// Task명을 입력해주세요
+    case EditDaily_Text_InfoEnterTaskName
+    /// 시작 시각
+    case EditDaily_Text_StartAt
+    /// 종료 시각
+    case EditDaily_Text_EndAt
+    /// Task를 선택하여 기록수정 후\nSAVE를 눌러주세요
+    case EditDaily_Text_InfoHowToEditDaily
+    /// \"+ 기록 추가\" 를 눌러 기록생성 후\nSAVE를 눌러주세요
+    case EditDaily_Text_InfoHowToCreateDaily
+    /// 기록 추가
+    case EditDaily_Button_CreateNewTaskHistory
+    /// 기록 추가
+    case EditDaily_Button_AppendNewHistory
+    /// 저장하려면 광고를 시청해야 합니다. 광고를 시청하시겠습니까?
+    case EditDaily_Popup_WatchADRequired
+    /// 기록수정이 불가한 과거형식의 기록입니다. 업데이트를 기다려주세요
+    case EditDaily_Popup_UndableEditDesc
     
     /// 타이머티티
     case SignIn_Text_TimerTiTi
