@@ -19,6 +19,7 @@ struct TLRzh {
         case .Common_Text_Next: value = "下一页"
         case .Common_Text_Close: value = "关闭"
         case .Common_Text_Delete: value = "删除"
+        case .Common_Text_Back: value = "返回"
         case .Common_Text_Timer: value = "计时器"
         case .Common_Text_Stopwatch: value = "秒表"
         case .Common_Text_TargetTime: value = "目标时间"

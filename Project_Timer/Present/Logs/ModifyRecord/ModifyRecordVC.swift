@@ -108,7 +108,7 @@ extension ModifyRecordVC {
 
     private func configureBackButton() {
         // TODO: 이미지만 보이고 타이틀 안보임. 해결 필요
-        let backButton = UIBarButtonItem(title: "Back",
+        let backButton = UIBarButtonItem(title: Localized.string(.Common_Text_Back),
                                          style: .done,
                                          target: self,
                                          action: #selector(backButtonTapped))
@@ -334,7 +334,7 @@ extension ModifyRecordVC {
                 guard let alert = alert else { return }
                 switch alert {
                 case .pastRecord:
-                    self?.showAlertWithOK(title: "Unable to Modify Records".localized(), text: "Past format record can't editting, Please wait for update".localized())
+                    self?.showAlertWithOK(title: Localized.string(.EditDaily_Popup_UnableEditTitle), text: Localized.string(.EditDaily_Popup_UndableEditDesc))
                 }
             })
             .store(in: &self.cancellables)
@@ -382,7 +382,7 @@ extension ModifyRecordVC {
             self.taskModifyInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
             self.taskModifyInteractionView.reload(withDelay: isDeleteAnimation)
         case .newTask:
-            let task = viewModel.selectedTask ?? "Enter the new Task's name".localized()
+            let task = viewModel.selectedTask ?? Localized.string(.EditDaily_Text_InfoEnterTaskName)
             self.taskCreateInteractionView.update(colorIndex: colorIndex, task: task, historys: historys)
             self.taskCreateInteractionView.reload()
         case .none:
@@ -406,14 +406,14 @@ extension ModifyRecordVC {
 extension ModifyRecordVC {
     /// 과목명을 편집할 수 있는 Alert 생성
     private func showEditTaskNameAlert(title: String? = nil, handler: ((String) -> Void)? = nil) {
-        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: "PopupEditTaskNameVC") as? PopupEditTaskNameVC else { return }
+        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: PopupEditHistoryVC.identifier) as? PopupEditTaskNameVC else { return }
         
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .alert)
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { [weak editTaskNameVC] _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { [weak editTaskNameVC] _ in
             let text = editTaskNameVC?.textField.text ?? ""
             handler?(text)
         }
@@ -449,8 +449,8 @@ extension ModifyRecordVC {
                                       message: nil,
                                       preferredStyle: .alert)
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { _ in
             handler?(editHistoryViewController.history)
         }
         
@@ -471,7 +471,7 @@ extension ModifyRecordVC {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+        let okAction = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default) { _ in
             handler?()
         }
         alert.addAction(okAction)
@@ -484,8 +484,8 @@ extension ModifyRecordVC {
                                       message: message,
                                       preferredStyle: .alert)
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        let ok = UIAlertAction(title: "OK", style: .default) { _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default) { _ in
             handler?()
         }
         
@@ -601,7 +601,7 @@ extension ModifyRecordVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let lastCellIndex = self.viewModel?.selectedTaskHistorys.count ?? 0
         guard indexPath.row != lastCellIndex, self.viewModel?.modifyMode == .existingTask else { return nil }
-        let deleteAction = UIContextualAction(style: .normal, title: "DELETE") { [weak self] action, view, completionHandler in
+        let deleteAction = UIContextualAction(style: .normal, title: Localized.string(.Common_Text_Delete)) { [weak self] action, view, completionHandler in
             print("DELETE \(indexPath.row)")
             self?.viewModel?.deleteHistory(at: indexPath.row)
             self?.taskModifyInteractionView.deleteRows(at: indexPath)
@@ -646,12 +646,12 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         switch mode {
         case .existingTask:
             FirebaseEvent.shared.postEvent(.editTaskName)
-            self.showEditTaskNameAlert(title: "Modify Task Name".localized()) { [weak self] text in
+            self.showEditTaskNameAlert(title: Localized.string(.EditDaily_Popup_EditTaskName)) { [weak self] text in
                 self?.viewModel?.changeTaskName(to: text)
             }
         case .newTask:
             FirebaseEvent.shared.postEvent(.createTaskName)
-            self.showEditTaskNameAlert(title: "Enter Task Name".localized()) { [weak self] text in
+            self.showEditTaskNameAlert(title: Localized.string(.EditDaily_Popup_EnterTaskName)) { [weak self] text in
                 self?.viewModel?.setNewTaskName(text)
             }
         default:
@@ -736,12 +736,12 @@ extension ModifyRecordVC {
         FirebaseEvent.shared.postEvent(.saveRecord)
         if self.viewModel?.isRemoveAd == true {
             self.viewModel?.save()
-            self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
+            self.showOKAlert(title: Localized.string(.Common_Popup_SaveCompleted), message: Localized.string(.EditDaily_Popup_EditTaskSaved)) { [weak self] in
                 self?.viewModel?.reset()
             }
         } else {
-            self.showOKCancelAlert(title: "Inform".localized(),
-                                   message: "You have to watch the ad to save edited record. Would you like to watch?".localized()) { [weak self] in
+            self.showOKCancelAlert(title: Localized.string(.Common_Popup_Inform),
+                                   message: Localized.string(.EditDaily_Popup_WatchADRequired)) { [weak self] in
                 self?.showRewardedAd()
             }
         }
@@ -759,8 +759,8 @@ extension ModifyRecordVC {
     }
     
     private func confirmCancel() {
-        self.showOKCancelAlert(title: "Warning".localized(),
-                               message: "Changes will be removed.".localized()) { [weak self] in
+        self.showOKCancelAlert(title: Localized.string(.Common_Popup_Warning),
+                               message: Localized.string(.EditDaily_Popup_EditChangeCanceled)) { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
     }
@@ -813,7 +813,7 @@ extension ModifyRecordVC: GADFullScreenContentDelegate {
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         
-        self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
+        self.showOKAlert(title: Localized.string(.Common_Popup_SaveCompleted), message: Localized.string(.EditDaily_Popup_EditTaskSaved)) { [weak self] in
             self?.viewModel?.reset()
         }
         // 다음 광고 미리 로드

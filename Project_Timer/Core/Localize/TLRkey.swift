@@ -23,6 +23,8 @@ enum TLRkey: String {
     case Common_Text_Close
     /// 삭제
     case Common_Text_Delete
+    /// 뒤로
+    case Common_Text_Back
     /// 타이머
     case Common_Text_Timer
     /// 스톱워치
