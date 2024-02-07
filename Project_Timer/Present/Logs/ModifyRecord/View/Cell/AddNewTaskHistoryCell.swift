@@ -21,7 +21,7 @@ final class AddNewTaskHistoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.createNewTask.setTitle("+ " + "New Task".localized(), for: .normal)
+        self.createNewTask.setTitle("+ " + Localized.string(.EditDaily_Button_CreateNewTaskHistory), for: .normal)
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {

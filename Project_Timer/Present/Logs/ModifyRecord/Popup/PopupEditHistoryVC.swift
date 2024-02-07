@@ -71,8 +71,8 @@ extension PopupEditHistoryVC {
     }
     
     private func configureLocalized() {
-        self.startDateLabel.text = "StartAt".localized()
-        self.endDateLabel.text = "EndAt".localized()
+        self.startDateLabel.text = Localized.string(.EditDaily_Text_StartAt)
+        self.endDateLabel.text = Localized.string(.EditDaily_Text_EndAt)
     }
     
     private func configureColor() {

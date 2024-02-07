@@ -12,7 +12,7 @@ final class TaskInteractionViewPlaceholder: UIView {
     private var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Select a task, Edit the record\nand press the SAVE button".localized()
+        label.text = Localized.string(.EditDaily_Text_InfoHowToEditDaily)
         label.numberOfLines = 2
         label.textAlignment = .center
         label.font = Fonts.HGGGothicssiP60g(size: 17)
@@ -35,9 +35,9 @@ final class TaskInteractionViewPlaceholder: UIView {
     func setText(mode: ModifyRecordVM.Mode) {
         switch mode {
         case .modify:
-            self.messageLabel.text = "Select a task, Edit the record\nand press the SAVE button".localized()
+            self.messageLabel.text = Localized.string(.EditDaily_Text_InfoHowToEditDaily)
         case .create:
-            self.messageLabel.text = "Click a \"+ New Task\", Create the record\nand press the SAVE button".localized()
+            self.messageLabel.text = Localized.string(.EditDaily_Text_InfoHowToCreateDaily)
         }
     }
 }

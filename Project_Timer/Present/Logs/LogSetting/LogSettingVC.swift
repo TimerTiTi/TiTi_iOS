@@ -28,7 +28,7 @@ final class LogSettingVC: UIViewController {
         
         self.themeColorSelector = ThemeColorSelectorView(delegate: self, key: .startColor)
         self.themeColorDirection = ThemeColorDirectionView(delegate: self, colorKey: .startColor, directionKey: .reverseColor)
-        self.logTargetTimeView = TargetTimeView(text: "Setting the target time of Circular Progress Bar".localized())
+        self.logTargetTimeView = TargetTimeView(text: Localized.string(.LogSetting_Text_DailyTargetTimeDesc))
     }
     
     required init?(coder: NSCoder) {
@@ -87,7 +87,7 @@ extension LogSettingVC {
         self.monthTargetButton.addAction(UIAction(handler: { [weak self] _ in
             guard let monthTargetButton = self?.monthTargetButton else { return }
             
-            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Month's Target time (Hour)".localized(), placeHolder: "\(monthTargetButton.settedHour/3600)") { [weak self] hour in
+            self?.showAlertWithTextField(title: Localized.string(.Common_Text_TargetTime), text: Localized.string(.Common_Popup_SetMonthTargetTime), placeHolder: "\(monthTargetButton.settedHour/3600)") { [weak self] hour in
                 UserDefaultsManager.set(to: hour*3600, forKey: monthTargetButton.key)
                 self?.update()
             }
@@ -96,7 +96,7 @@ extension LogSettingVC {
         self.weekTargetButton.addAction(UIAction(handler: { [weak self] _ in
             guard let weekTargetButton = self?.weekTargetButton else { return }
             
-            self?.showAlertWithTextField(title: "Target time".localized(), text: "Input Week's Target time (Hour)".localized(), placeHolder: "\(weekTargetButton.settedHour/3600)") { [weak self] hour in
+            self?.showAlertWithTextField(title: Localized.string(.Common_Text_TargetTime), text: Localized.string(.Common_Popup_SetWeekTargetTime), placeHolder: "\(weekTargetButton.settedHour/3600)") { [weak self] hour in
                 UserDefaultsManager.set(to: hour*3600, forKey: weekTargetButton.key)
                 self?.update()
             }
@@ -125,8 +125,8 @@ extension LogSettingVC {
             textField.keyboardType = .numberPad
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .default)
-        let update = UIAlertAction(title: "Done", style: .destructive) { _ in
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let update = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { _ in
             guard let text = alert.textFields?.first?.text,
                   let hour = Int(text) else { return }
             handler(hour)

@@ -109,7 +109,7 @@ extension LogWeekVC {
         present(controller, animated: true, completion: nil)
         #else
         IOUsecase.saveImagesToIOS(views: [self.standardWeekGraphView])
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "")
+        self.showAlertWithOK(title: Localized.string(.Common_Popup_SaveCompleted), text: "")
         #endif
     }
 }
@@ -117,7 +117,7 @@ extension LogWeekVC {
 extension LogWeekVC: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let week = self.viewModel?.selectedDate.localDate.YYYYMMstypeString else { return }
-        self.showAlertWithOK(title: "Save Completed".localized(), text: "\(week)")
+        self.showAlertWithOK(title: Localized.string(.Common_Popup_SaveCompleted), text: "\(week)")
     }
 }
 
