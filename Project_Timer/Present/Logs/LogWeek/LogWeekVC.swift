@@ -127,7 +127,7 @@ extension LogWeekVC {
         self.calendar.dataSource = self
         self.calendar.appearance.headerDateFormat = "yyyy.MM"
         self.calendar.appearance.headerTitleFont = Fonts.HGGGothicssiP80g(size: 25)
-        self.calendar.appearance.weekdayFont = Fonts.HGGGothicssiP80g(size: 13)
+        self.calendar.appearance.weekdayFont = Typographys.uifont(.bold_5, size: 13)
         self.calendar.appearance.titleFont = Fonts.HGGGothicssiP60g(size: 18)
         self.calendar.clipsToBounds = true
         self.calendar.layer.cornerCurve = .continuous
@@ -137,6 +137,7 @@ extension LogWeekVC {
         self.calendar.appearance.todayColor = UIColor.clear
         self.calendar.borderColor = UIColor.lightGray.withAlphaComponent(0.5)
         self.calendar.backgroundColor = UIColor(named: "Background_second")
+        self.calendar.locale = Language.currentLocale
     }
     
     private func updateCalendarColor() {

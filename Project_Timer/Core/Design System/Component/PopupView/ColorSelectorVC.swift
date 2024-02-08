@@ -56,8 +56,11 @@ final class ColorSelectorVC: UIViewController {
 
 extension ColorSelectorVC {
     private func configureLocalized() {
+        self.titleLabel.font = Typographys.uifont(.bold_5, size: 17)
         self.titleLabel.text = Localized.string(.RecordingColorSelector_Text_CustomColor)
+        self.backgroundLabel.font = Typographys.uifont(.semibold_4, size: 13)
         self.backgroundLabel.text = Localized.string(.RecordingColorSelector_Text_BackgroundColor)
+        self.textTintLabel.font = Typographys.uifont(.semibold_4, size: 13)
         self.textTintLabel.text = Localized.string(.RecordingColorSelector_Text_TextColor)
     }
     
