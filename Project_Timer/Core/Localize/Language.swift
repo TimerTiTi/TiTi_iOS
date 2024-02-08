@@ -47,6 +47,10 @@ enum Language: String {
             return .system
         }
     }
+    
+    static var currentLocale: Locale {
+        return .init(identifier: Language.current.rawValue)
+    }
 }
 
 // MARK: localizable.string 기반

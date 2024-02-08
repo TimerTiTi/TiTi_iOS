@@ -15,7 +15,7 @@ final class TaskInteractionViewPlaceholder: UIView {
         label.text = Localized.string(.EditDaily_Text_InfoHowToEditDaily)
         label.numberOfLines = 2
         label.textAlignment = .center
-        label.font = Fonts.HGGGothicssiP60g(size: 17)
+        label.font = Typographys.uifont(.semibold_4, size: 17)
         label.textColor = UIColor.label
         return label
     }()

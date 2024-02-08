@@ -21,6 +21,7 @@ final class AddHistoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.createNewRecord.titleLabel?.font = Typographys.uifont(.semibold_4, size: 12)
         self.createNewRecord.setTitle(Localized.string(.EditDaily_Button_AppendNewHistory), for: .normal)
     }
     

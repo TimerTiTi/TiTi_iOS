@@ -30,7 +30,7 @@ class TaskInteractionView: UIView {
     private var taskNameLabel: PaddingLabel = {
         let label = PaddingLabel(vertical: 0, horizontal: 7)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Fonts.HGGGothicssiP60g(size: 16)
+        label.font = Typographys.uifont(.semibold_4, size: 16)
         label.textColor = UIColor.label
         NSLayoutConstraint.activate([
             label.heightAnchor.constraint(equalToConstant: 25)

@@ -20,6 +20,7 @@ struct TLRko {
         case .Common_Text_Close: value = "닫기"
         case .Common_Text_Delete: value = "삭제"
         case .Common_Text_Back: value = "뒤로"
+        case .Common_Text_Add: value = "추가"
         case .Common_Text_Timer: value = "타이머"
         case .Common_Text_Stopwatch: value = "스톱워치"
         case .Common_Text_TargetTime: value = "목표 시간"

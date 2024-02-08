@@ -318,6 +318,7 @@ extension StopwatchVC {
         self.stopWatchLabel.text = Localized.string(.Common_Text_Stopwatch)
         self.targetTimeLabel.font = Typographys.uifont(.semibold_4, size: 12)
         self.targetTimeLabel.text = Localized.string(.Recording_Text_TargetTime)
+        self.taskButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 18)
     }
     private func configureRendering() {
         self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -473,8 +474,6 @@ extension StopwatchVC {
                 self.setTaskWhiteColor()
             }
         }
-        
-        self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
     }
     
     private func setTaskWarningColor() {

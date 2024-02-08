@@ -21,6 +21,7 @@ final class AddNewTaskHistoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.createNewTask.titleLabel?.font = Typographys.uifont(.semibold_4, size: 11)
         self.createNewTask.setTitle("+ " + Localized.string(.EditDaily_Button_CreateNewTaskHistory), for: .normal)
     }
     

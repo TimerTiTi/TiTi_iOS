@@ -21,6 +21,7 @@ final class PopupSelectDateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.datePicker.date = date
+        self.datePicker.locale = Language.currentLocale
     }
     
     @IBAction func dateValueChanged(_ sender: UIDatePicker) {

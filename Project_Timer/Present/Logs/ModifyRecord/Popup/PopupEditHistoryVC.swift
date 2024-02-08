@@ -71,7 +71,9 @@ extension PopupEditHistoryVC {
     }
     
     private func configureLocalized() {
+        self.startDateLabel.font = Typographys.uifont(.semibold_4, size: 14)
         self.startDateLabel.text = Localized.string(.EditDaily_Text_StartAt)
+        self.endDateLabel.font = Typographys.uifont(.semibold_4, size: 14)
         self.endDateLabel.text = Localized.string(.EditDaily_Text_EndAt)
     }
     

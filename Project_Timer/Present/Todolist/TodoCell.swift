@@ -22,6 +22,7 @@ final class TodoCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.delete.isHidden = true
+        self.todoText.font = Typographys.uifont(.semibold_4, size: 15)
     }
     
     @IBAction func checkTapped(_ sender: Any) {
@@ -41,7 +42,6 @@ final class TodoCell: UITableViewCell {
         self.check.isSelected = todo.isDone
         self.todoText.text = todo.text
         self.showColorView(todo.isDone)
-        self.todoText.font = Typographys.autoUIFont(todo.text, .semibold_4, size: 15)
     }
     
     private func showColorView(_ show: Bool) {
