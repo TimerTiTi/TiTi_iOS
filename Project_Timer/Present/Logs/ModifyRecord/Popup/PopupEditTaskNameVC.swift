@@ -20,8 +20,12 @@ final class PopupEditTaskNameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
         self.titleLabel.text = self.alertTitle
+        self.messageLabel.font = .systemFont(ofSize: 13, weight: .regular)
+        self.textField.font = .systemFont(ofSize: 15, weight: .regular)
         self.textField.text = self.taskName
+        self.textField.placeholder = Localized.string(.Tasks_Hint_NewTaskTitle)
         self.showNormalMessage()
     }
     

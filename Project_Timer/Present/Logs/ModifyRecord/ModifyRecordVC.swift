@@ -108,7 +108,7 @@ extension ModifyRecordVC {
 
     private func configureBackButton() {
         // TODO: 이미지만 보이고 타이틀 안보임. 해결 필요
-        let backButton = UIBarButtonItem(title: Localized.string(.Common_Text_Back),
+        let backButton = UIBarButtonItem(title: "",
                                          style: .done,
                                          target: self,
                                          action: #selector(backButtonTapped))
@@ -406,7 +406,7 @@ extension ModifyRecordVC {
 extension ModifyRecordVC {
     /// 과목명을 편집할 수 있는 Alert 생성
     private func showEditTaskNameAlert(title: String? = nil, handler: ((String) -> Void)? = nil) {
-        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: PopupEditHistoryVC.identifier) as? PopupEditTaskNameVC else { return }
+        guard let editTaskNameVC = storyboard?.instantiateViewController(withIdentifier: PopupEditTaskNameVC.identifier) as? PopupEditTaskNameVC else { return }
         
         let alert = UIAlertController(title: nil,
                                       message: nil,

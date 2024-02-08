@@ -11,7 +11,7 @@ import UIKit
 final class TaskCreateInteractionView: TaskInteractionView {
     convenience init() {
         self.init(frame: CGRect())
-        self.configureFinishButton(to: "ADD")
+        self.configureFinishButton(to: Localized.string(.Common_Text_Add))
         self.updateFinishButtonEnable(to: false)
         self.configureEditTaskButton(to: .plus)
     }

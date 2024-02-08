@@ -20,6 +20,7 @@ struct TLRen {
         case .Common_Text_Close: value = "Close"
         case .Common_Text_Delete: value = "Delete"
         case .Common_Text_Back: value = "Back"
+        case .Common_Text_Add: value = "Add"
         case .Common_Text_Timer: value = "Timer"
         case .Common_Text_Stopwatch: value = "Stopwatch"
         case .Common_Text_TargetTime: value = "Target time"
