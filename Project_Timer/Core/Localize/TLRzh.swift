@@ -114,7 +114,7 @@ struct TLRzh {
         case .EmailMessage_Error_CantSendEmailDesc: value = "请确认苹果手机的电子邮件设置后再试一次。"
             
         case .Recording_Text_TargetTime: value = "目标时间"
-        case .Recording_Text_TaskTargetTime: value = "任务目标时间"
+        case .Recording_Text_TaskTargetTime: value = "Task 目标时间"
         case .Recording_Text_SumTime: value = "总时间"
         case .Recording_Popup_NoTaskWarningTitle: value = "创建新任务"
         case .Recording_Popup_NoTaskWarningDesc: value = "在开始录制之前，创建新任务，然后选择"
