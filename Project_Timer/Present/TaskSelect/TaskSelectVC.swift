@@ -125,6 +125,7 @@ extension TaskSelectVC {
             let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
             let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive, handler: { [weak self] action in
                 let newTask: String = alert.textFields?[0].text ?? ""
+                
                 guard self?.viewModel?.isSameNameExist(name: newTask) == false else {
                     self?.showAlertWithOK(title: Localized.string(.Tasks_Popup_SameTaskExistTitle), text: Localized.string(.Tasks_Popup_SameTaskExistDesc))
                     return
@@ -137,7 +138,7 @@ extension TaskSelectVC {
             alert.addTextField { (inputNewNickName) in
                 inputNewNickName.placeholder = Localized.string(.Tasks_Hint_NewTaskTitle)
                 inputNewNickName.textAlignment = .center
-                inputNewNickName.font = Typographys.uifont(.semibold_4, size: 17)
+                inputNewNickName.font = .systemFont(ofSize: 17, weight: .semibold)
                 inputNewNickName.text = beforeTaskName
             }
             alert.addAction(cancle)
@@ -154,6 +155,11 @@ extension TaskSelectVC {
             guard let newTask: String = alert.textFields?[0].text,
                   let count = self?.viewModel?.tasks.count else { return }
             
+            guard self?.viewModel?.isSameNameExist(name: newTask) == false else {
+                self?.showAlertWithOK(title: Localized.string(.Tasks_Popup_SameTaskExistTitle), text: Localized.string(.Tasks_Popup_SameTaskExistDesc))
+                return
+            }
+            
             self?.viewModel?.addNewTask(taskName: newTask)
             self?.tasksTableView.insertRows(at: [IndexPath.init(row: count, section: 0)], with: .automatic)
         })
@@ -161,7 +167,7 @@ extension TaskSelectVC {
         alert.addTextField { (inputNewNickName) in
             inputNewNickName.placeholder = Localized.string(.Tasks_Hint_NewTaskTitle)
             inputNewNickName.textAlignment = .center
-            inputNewNickName.font = Typographys.uifont(.semibold_4, size: 17)
+            inputNewNickName.font = .systemFont(ofSize: 17, weight: .semibold)
         }
         alert.addAction(cancle)
         alert.addAction(ok)

@@ -56,6 +56,7 @@ final class TaskCell: UITableViewCell {
         self.taskNameLabelTopConst.constant = task.isTaskTargetTimeOn ? 8 : 16
         self.taskTargetTimesStackView.alpha = task.isTaskTargetTimeOn ? 1 : 0
         self.editTaskTargetTimeButton.alpha = task.isTaskTargetTimeOn ? 1 : 0
+        self.taskNameLabel.font = Typographys.autoUIFont(task.taskName, .semibold_4, size: 19)
     }
 }
 

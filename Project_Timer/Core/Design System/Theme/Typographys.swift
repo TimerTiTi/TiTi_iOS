@@ -31,7 +31,7 @@ struct Typographys {
     
     /// 문장 languageCode에 따른 font 반환
     static func autoFont(_ string: String, _ weight: Weight, size: CGFloat) -> Font {
-        if ["Chinese, Simplified"].contains(string.language()) {
+        if string.isChinese() {
             return MiSans(weight, size)
         } else {
             return HGGGOTHICSSIP(weight, size)
@@ -50,7 +50,7 @@ struct Typographys {
     }
     
     static func autoUIFont(_ string: String, _ weight: Weight, size: CGFloat) -> UIFont? {
-        if ["Chinese, Simplified"].contains(string.language()) {
+        if string.isChinese() {
             return MiSans_uifont(weight, size)
         } else {
             return HGGGOTHICSSIP_uifont(weight, size)

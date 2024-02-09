@@ -487,6 +487,8 @@ extension TimerVC {
                 self.setTaskWhiteColor()
             }
         }
+        
+        self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
     }
     
     private func setTaskWarningColor() {
