@@ -41,6 +41,7 @@ final class TodoCell: UITableViewCell {
         self.colorView.backgroundColor = color
         self.check.isSelected = todo.isDone
         self.todoText.text = todo.text
+        self.todoText.font = Typographys.autoUIFont(todo.text, .semibold_4, size: 15)
         self.showColorView(todo.isDone)
     }
     

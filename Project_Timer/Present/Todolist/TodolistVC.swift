@@ -29,7 +29,7 @@ final class TodolistVC: UIViewController {
         super.viewDidLoad()
         self.editButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 17)
         self.editButton.setTitle(self.todos.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
-        self.input.font = Typographys.uifont(.semibold_4, size: 15)
+        self.input.font = .systemFont(ofSize: 15, weight: .semibold)
         self.configureViewModel()
         self.configureTodoGroupButton()
         self.configureSelectTodoGroupButton()
@@ -141,7 +141,7 @@ extension TodolistVC {
         alert.addTextField { textField in
             textField.placeholder = Localized.string(.Todos_Hint_NewTodoGroupName)
             textField.textAlignment = .center
-            textField.font = Fonts.HGGGothicssiP60g(size: 17)
+            textField.font = .systemFont(ofSize: 17, weight: .semibold)
             textField.text = self.viewModel?.currentGroupName ?? "Untitled"
         }
         let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
@@ -162,7 +162,7 @@ extension TodolistVC {
         alert.addTextField { textField in
             textField.placeholder = Localized.string(.Todos_Hint_NewTodoGroupName)
             textField.textAlignment = .center
-            textField.font = Typographys.uifont(.semibold_4, size: 17)
+            textField.font = .systemFont(ofSize: 17, weight: .semibold)
             textField.text = ""
         }
         let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
@@ -203,7 +203,7 @@ extension TodolistVC {
             alert.addTextField { textField in
                 textField.placeholder = Localized.string(.Todos_Hint_TodoName)
                 textField.textAlignment = .center
-                textField.font = Typographys.uifont(.semibold_4, size: 17)
+                textField.font = .systemFont(ofSize: 17, weight: .semibold)
                 textField.text = originText
             }
             let cancle = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default, handler: nil)
