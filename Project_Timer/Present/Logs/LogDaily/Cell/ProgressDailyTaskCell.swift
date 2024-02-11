@@ -23,6 +23,7 @@ final class ProgressDailyTaskCell: UICollectionViewCell {
     
     func configure(index: Int, taskInfo: TaskInfo, isReversColor: Bool) {
         self.taskNameLabel.text = taskInfo.taskName
+        self.taskNameLabel.font = Typographys.autoUIFont(taskInfo.taskName, .semibold_4, size: 10.5)
         self.taskTimeLabel.text = taskInfo.taskTime.toTimeString
         self.updateColor(index: index, isReversColor: isReversColor)
     }

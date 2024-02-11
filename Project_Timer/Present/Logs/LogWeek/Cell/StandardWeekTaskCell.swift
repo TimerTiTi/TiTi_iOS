@@ -20,6 +20,7 @@ final class StandardWeekTaskCell: UICollectionViewCell {
     func configure(index: Int, taskInfo: TaskInfo, isReversColor: Bool) {
         self.topLabel.text = "Top\(index+1)"
         self.taskNameLabel.text = taskInfo.taskName
+        self.taskNameLabel.font = Typographys.autoUIFont(taskInfo.taskName, .semibold_4, size: 12)
         self.taskTimeLabel.text = taskInfo.taskTime.toTimeString
         self.updateColor(index: index, isReversColor: isReversColor)
     }
