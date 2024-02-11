@@ -18,14 +18,14 @@ struct DailyView: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 2) {
-            HStack(alignment: .bottom, spacing: 9) {
+            HStack(alignment: .bottom, spacing: 8) {
                 self.DateTextView
                 self.DaysOfWeekView
             }
             self.TimelineAlphaGraphView
             self.TimelineStickGraphView
         }
-        .padding(.horizontal, 11)
+        .padding(.horizontal, 10)
     }
 }
 
@@ -103,4 +103,10 @@ extension DailyView {
     private func getHeight(time: Int) -> CGFloat {
         return CGFloat(time)/CGFloat(3600)*(self.frameHeight-10)
     }
+}
+
+
+#Preview {
+    let dailyVM = DailyVM()
+    return DailyView(viewModel: dailyVM)
 }
