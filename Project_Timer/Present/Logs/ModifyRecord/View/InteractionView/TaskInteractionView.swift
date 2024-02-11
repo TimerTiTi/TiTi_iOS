@@ -212,6 +212,7 @@ extension TaskInteractionView {
 extension TaskInteractionView {
     private func updateTaskName(to taskName: String) {
         self.taskNameLabel.text = taskName
+        self.taskNameLabel.font = Typographys.autoUIFont(taskName, .semibold_4, size: 16)
     }
     
     private func updateTotalTime(to totalTime: Int) {
