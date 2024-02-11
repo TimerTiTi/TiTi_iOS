@@ -17,8 +17,8 @@ struct CalendarWidget: Widget {
         StaticConfiguration(kind: kind, provider: CalendarWidgetProvider()) { entry in
             CalendarWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Calendar widget".localizedForWidget())
-        .description("Widget shows the top 5 tasks and the recording time by date.".localizedForWidget())
+        .configurationDisplayName(Localized.string(.Widget_Text_CalendarWidget))
+        .description(Localized.string(.Widget_Text_CalendarWidgetDesc))
         .supportedFamilies([.systemMedium])
         .contentMarginsDisabled()
     }

@@ -12,11 +12,11 @@ extension CalendarWidgetData {
     // MARK: Snapshot 제공을 위한 sample 데이터 반환
     static var snapshot: CalendarWidgetData {
         let sampleTasks: [CalendarWidgetTaskData] = [
-            CalendarWidgetTaskData(taskName: "sampleTask1".localizedForWidget(), taskTime: 30*3600),
-            CalendarWidgetTaskData(taskName: "sampleTask2".localizedForWidget(), taskTime: 25*3600),
-            CalendarWidgetTaskData(taskName: "sampleTask3".localizedForWidget(), taskTime: 20*3600),
-            CalendarWidgetTaskData(taskName: "sampleTask4".localizedForWidget(), taskTime: 15*3600),
-            CalendarWidgetTaskData(taskName: "sampleTask5".localizedForWidget(), taskTime: 10*3600)
+            CalendarWidgetTaskData(taskName: Localized.string(.Widget_Text_SampleTask1), taskTime: 30*3600),
+            CalendarWidgetTaskData(taskName: Localized.string(.Widget_Text_SampleTask2), taskTime: 25*3600),
+            CalendarWidgetTaskData(taskName: Localized.string(.Widget_Text_SampleTask3), taskTime: 20*3600),
+            CalendarWidgetTaskData(taskName: Localized.string(.Widget_Text_SampleTask4), taskTime: 15*3600),
+            CalendarWidgetTaskData(taskName: Localized.string(.Widget_Text_SampleTask5), taskTime: 10*3600)
         ]
         let firstDay = Date().startDayOfMonth
         var sampleCellDatas: [CalendarWidgetCellData] = []

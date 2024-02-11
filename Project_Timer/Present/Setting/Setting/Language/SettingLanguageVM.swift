@@ -34,8 +34,10 @@ final class SettingLanguageVM: ObservableObject {
                 switch selected {
                 case .system:
                     UserDefaultsManager.delete(forKey: .languageCode)
+                    UserDefaults.shared.removeObject(forKey: UserDefaultsManager.Keys.languageCode.rawValue)
                 default:
                     UserDefaultsManager.set(to: selected.rawValue, forKey: .languageCode)
+                    UserDefaults.shared.set(selected.rawValue, forKey: UserDefaultsManager.Keys.languageCode.rawValue)
                 }
             }
             .store(in: &cancellables)

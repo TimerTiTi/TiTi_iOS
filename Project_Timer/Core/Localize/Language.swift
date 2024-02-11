@@ -34,7 +34,8 @@ enum Language: String {
     
     /// UserDefault 선택값
     static var setted: Language? {
-        guard let languageCode = UserDefaultsManager.get(forKey: .languageCode) as? String else { return nil }
+        guard let languageCode = UserDefaults.shared.object(forKey: UserDefaultsManager.Keys.languageCode.rawValue) as? String else { return nil }
+//        guard let languageCode = UserDefaultsManager.get(forKey: .languageCode) as? String else { return nil }
         
         return Language(rawValue: languageCode)
     }

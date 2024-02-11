@@ -22,9 +22,9 @@ struct CalendarWidgetView: View {
     var body: some View {
         ZStack {
             HStack {
-                CalendarWidgetTasksView(data: data, isKorean: isKorean)
+                CalendarWidgetTasksView(data: data)
                 Spacer(minLength: 10)
-                CalendarWidgetCalendarView(data: data, isKorean: isKorean)
+                CalendarWidgetCalendarView(data: data)
             }
             .padding(.all)
         }
@@ -33,15 +33,10 @@ struct CalendarWidgetView: View {
             view.background(UIColor.secondarySystemGroupedBackground.toColor)
         }
     }
-    
-    var isKorean: Bool {
-        return Language.system == .ko
-    }
 }
 
 struct CalendarWidgetTasksView: View {
     let data: CalendarWidgetData
-    let isKorean: Bool
     
     var body: some View {
         VStack(alignment: .center) {
@@ -69,7 +64,7 @@ struct CalendarWidgetTasksView: View {
     var month: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM"
-        dateFormatter.locale = Locale(identifier: isKorean ? "ko_KR" : "en_US")
+        dateFormatter.locale = Language.currentLocale
         return dateFormatter.string(from: data.now)
     }
     
@@ -112,7 +107,7 @@ struct CalendarWidgetNoDataInfoView: View {
     let color: String
     var body: some View {
         VStack(alignment: .center, spacing: 5) {
-            Text("There's no record this month!".localizedForWidget())
+            Text(Localized.string(.Widget_Text_InfoNoRecords))
                 .multilineTextAlignment(.center)
                 .font(Font.system(size: 8.8, weight: .semibold))
                 .foregroundColor(Color(UIColor(named: color)!))
@@ -124,12 +119,11 @@ struct CalendarWidgetNoDataInfoView: View {
 
 struct CalendarWidgetCalendarView: View {
     let data: CalendarWidgetData
-    let isKorean: Bool
     let columns = Array(repeating: GridItem(.flexible(), spacing: 0), count: 7)
     
     var body: some View {
         VStack(alignment: .center, spacing: 1) {
-            CalendarWidgetHeaderView(isKorean: isKorean)
+            CalendarWidgetHeaderView()
             
             Rectangle()
                 .frame(height: 1)
@@ -177,8 +171,6 @@ struct CalendarWidgetCalendarView: View {
 }
 
 struct CalendarWidgetHeaderView: View {
-    let isKorean: Bool
-
     var body: some View {
         HStack(spacing: 0) {
             ForEach(weekDays, id: \.self) { day in
@@ -192,10 +184,13 @@ struct CalendarWidgetHeaderView: View {
     }
     
     var weekDays: [String] {
-        if isKorean {
+        switch Language.current {
+        case .ko:
             return ["월", "화", "수", "목", "금", "토", "일"]
-        } else {
+        case .en:
             return ["M", "T", "W", "T", "F", "S", "S"]
+        case .zh:
+            return ["一", "二", "三", "四", "五", "六", "日"]
         }
     }
 }
