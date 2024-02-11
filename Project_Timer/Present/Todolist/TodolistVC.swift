@@ -30,6 +30,7 @@ final class TodolistVC: UIViewController {
         self.editButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 17)
         self.editButton.setTitle(self.todos.isEditing ? Localized.string(.Common_Text_Done) : Localized.string(.Common_Text_Edit), for: .normal)
         self.input.font = .systemFont(ofSize: 15, weight: .semibold)
+        self.todoGroupButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 18)
         self.configureViewModel()
         self.configureTodoGroupButton()
         self.configureSelectTodoGroupButton()
@@ -259,6 +260,7 @@ extension TodolistVC {
 extension TodolistVC {
     private func changeTodoGroupTitle(to groupName: String) {
         self.todoGroupButton.setTitle(groupName, for: .normal)
+        self.todoGroupButton.titleLabel?.font = Typographys.autoUIFont(groupName, .semibold_4, size: 18)
         self.selectTodoGroupButton.menu = self.getMenu(groupName)
     }
 }
