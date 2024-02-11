@@ -224,8 +224,11 @@ extension Daily {
             "Task1": [
                 TaskHistory(startDate: startDate, endDate: Calendar.current.date(byAdding: .second, value: 4000, to: startDate)!)
             ],
-            "TaskName": [
-                TaskHistory(startDate: Calendar.current.date(byAdding: .hour, value: 1, to: startDate)!, endDate: endDate)
+            "테스트": [
+                TaskHistory(startDate: Calendar.current.date(byAdding: .hour, value: 2, to: startDate)!, endDate: Calendar.current.date(byAdding: .hour, value: 3, to: startDate)!)
+            ],
+            "选择 Task 修改记录后\n请按 SAVE": [
+                TaskHistory(startDate: Calendar.current.date(byAdding: .hour, value: 3, to: startDate)!, endDate: endDate)
             ]
         ]
         return .init(day: Date(), taskHistorys: taskHistorys)
