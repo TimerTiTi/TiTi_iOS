@@ -36,35 +36,18 @@ import NaturalLanguage
 
 extension String {
     func isChinese() -> Bool {
-        var chars: [String] = []
-        for word in self {
-            chars.append(String(word))
-        }
         let recognizer = NLLanguageRecognizer()
-        var languages: [String?] = []
-        for char in chars {
-            recognizer.processString(char)
-            if let languageCode = recognizer.dominantLanguage?.rawValue{
-                languages.append(Locale(identifier: "en").localizedString(forIdentifier: languageCode))
-            }
-        }
-//        
-//        let filters = ["Chinese, Simplified", "Chinese"]
-//        for filter in filters {
-//            if languages.contains(filter) {
-//                return filter
-//            }
-//        }
         
-        for language in languages {
-            if language?.contains("Chinese") == true {
-                return true
+        for char in self {
+            recognizer.processString(String(char))
+            if let languageCode = recognizer.dominantLanguage?.rawValue,
+               let language = Locale(identifier: "en").localizedString(forIdentifier: languageCode) {
+                if language.contains("Chinese") == true {
+                    return true
+                }
             }
         }
         
-//        recognizer.processString(self)
-//        guard let languageCode = recognizer.dominantLanguage?.rawValue else { return nil }
-//        return Locale(identifier: "en").localizedString(forIdentifier: languageCode)
         return false
     }
 }
