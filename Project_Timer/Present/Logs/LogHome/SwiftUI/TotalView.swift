@@ -54,3 +54,10 @@ extension TotalView {
             .padding(10)
     }
 }
+
+#Preview {
+    let totalVM = TotalVM()
+    let dailys: [Daily] = [.testInfo]
+    totalVM.update(totalTime: TotalTime(dailys: dailys))
+    return TotalView(viewModel: totalVM)
+}
