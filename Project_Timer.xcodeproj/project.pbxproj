@@ -245,6 +245,11 @@
 		878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EC2955E5430044C079 /* SyncDailysVM.swift */; };
 		878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7EE2955E73C0044C079 /* SyncLog.swift */; };
 		878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878BF7F02955F4600044C079 /* JSONDecoder+Extension.swift */; };
+		878C98BF2B78A40F0081CFAB /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D582B260E09001B7C14 /* Localized.swift */; };
+		878C98C02B78A41A0081CFAB /* TLRkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D562B260AB8001B7C14 /* TLRkey.swift */; };
+		878C98C12B78A41C0081CFAB /* TLRko.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D502B26086D001B7C14 /* TLRko.swift */; };
+		878C98C22B78A41E0081CFAB /* TLRen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D522B260969001B7C14 /* TLRen.swift */; };
+		878C98C32B78A4210081CFAB /* TLRzh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87306D542B2609CE001B7C14 /* TLRzh.swift */; };
 		878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 878D3C1E266494380093A2BE /* GoogleService-Info.plist */; };
 		878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1F52AEE617900C60CBF /* SignupInfo.swift */; };
 		878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA1F72AEE68DA00C60CBF /* SignupEmailModel.swift */; };
@@ -2032,11 +2037,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878C98C12B78A41C0081CFAB /* TLRko.swift in Sources */,
 				878B30EE2992BB5A00BE7413 /* CalendarWidget.swift in Sources */,
+				878C98C32B78A4210081CFAB /* TLRzh.swift in Sources */,
+				878C98C02B78A41A0081CFAB /* TLRkey.swift in Sources */,
 				87DD96102A09032000CA0249 /* CalendarWidgetView.swift in Sources */,
 				87DB923F2AC2D12A00FE6453 /* View+Extension.swift in Sources */,
 				87617E632A0CDFC800E312EA /* CalendarWidgetEntry.swift in Sources */,
 				87DB92402AC2D9A800FE6453 /* UIColor+Extension.swift in Sources */,
+				878C98BF2B78A40F0081CFAB /* Localized.swift in Sources */,
 				87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */,
 				870E117B2A0F7DEE00CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				87FD9FA82998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
@@ -2051,6 +2060,7 @@
 				87617E682A0CE58900E312EA /* CalendarWidgetProvider.swift in Sources */,
 				87306D872B26D00A001B7C14 /* Fonts.swift in Sources */,
 				87DA716D2A12258D006294DE /* Storage.swift in Sources */,
+				878C98C22B78A41E0081CFAB /* TLRen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
