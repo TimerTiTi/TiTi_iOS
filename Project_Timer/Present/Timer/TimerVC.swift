@@ -479,16 +479,17 @@ extension TimerVC {
 extension TimerVC {
     private func updateTask(to task: String) {
         if task == "none" {
-            self.taskButton.setTitle(Localized.string(.Recording_Popup_NoTaskWarningTitle), for: .normal)
+            let task = Localized.string(.Recording_Popup_NoTaskWarningTitle)
+            self.taskButton.setTitle(task, for: .normal)
+            self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
             self.setTaskWarningColor()
         } else {
             self.taskButton.setTitle(task, for: .normal)
+            self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
             if self.viewModel?.runningUI == false {
                 self.setTaskWhiteColor()
             }
         }
-        
-        self.taskButton.titleLabel?.font = Typographys.autoUIFont(task, .semibold_4, size: 18)
     }
     
     private func setTaskWarningColor() {
