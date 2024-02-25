@@ -119,10 +119,10 @@ struct SignupEmailView: View {
                         switch focus {
                         case .email:
                             model.checkEmail()
-                            checkFocusAfterEmail()
-                        case .authCode:
-                            model.checkAuthCode()
-                            checkFocusAfterAuthCode()
+//                            checkFocusAfterEmail()
+                        case .verificationCode:
+                            model.checkVerificationCode()
+//                            checkFocusAfterAuthCode()
                         default:
                             return
                         }

@@ -145,7 +145,7 @@ extension LogDailyVC {
         #if targetEnvironment(macCatalyst)
         guard let recordDay = self.viewModel?.currentDaily?.day.localDate.YYYYMMDDstyleString else { return }
         guard let fileURLs = IOUsecase.saveImagesToMAC(views: graphViews, fileName: recordDay) else {
-            self.showAlertWithOK(title: "Save Failed", warningRed: "")
+            self.showAlertWithOK(title: "Save Failed".localized(), text: "")
             return
         }
         let controller = UIDocumentPickerViewController(forExporting: fileURLs)

@@ -14,7 +14,10 @@ struct widgetBundle: WidgetBundle {
     var body: some Widget {
         CalendarWidget()
         if #available(iOS 16.2, *) {
+            #if targetEnvironment(macCatalyst)
+            #else
             widgetLiveActivity()
+            #endif
         }
     }
 }

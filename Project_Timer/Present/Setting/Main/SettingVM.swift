@@ -64,7 +64,7 @@ final class SettingVM {
         ])
         
         #if targetEnvironment(macCatalyst)
-        cells.last?.remove(at: 2) // Control 제거
+        cells[cells.count-1].remove(at: 2) // Control 제거
         #endif
         
         // Version & Update history

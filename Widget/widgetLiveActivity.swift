@@ -6,6 +6,8 @@
 //  Copyright © 2023 FDEE. All rights reserved.
 //
 
+#if targetEnvironment(macCatalyst)
+#else
 import ActivityKit
 import WidgetKit
 import SwiftUI
@@ -121,3 +123,5 @@ struct widgetLiveActivity_Previews: PreviewProvider {
             .previewDisplayName("Notification")
     }
 }
+
+#endif

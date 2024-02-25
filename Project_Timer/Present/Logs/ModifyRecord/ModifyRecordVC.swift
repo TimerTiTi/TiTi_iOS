@@ -9,12 +9,15 @@
 import UIKit
 import SwiftUI
 import Combine
+#if targetEnvironment(macCatalyst)
+#else
 import GoogleMobileAds
+#endif
 
 final class ModifyRecordVC: UIViewController {
     static let identifier = "ModifyRecordVC"
     
-    @IBOutlet weak var graphsScrollView: UIScrollView!
+    @IBOutlet weak var graphsScrollView: UIScrollView! 
     @IBOutlet weak var graphsContentView: UIView!
     @IBOutlet weak var graphsPageControl: UIPageControl!
     @IBOutlet weak var superContentView: UIView!
@@ -31,7 +34,10 @@ final class ModifyRecordVC: UIViewController {
     private var taskInteractionFrameViewHeight: NSLayoutConstraint?
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
+    #if targetEnvironment(macCatalyst)
+    #else
     private var rewardedAd: GADRewardedAd?
+    #endif
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
         case timeTableDailyGraphView = 1
@@ -40,7 +46,10 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if targetEnvironment(macCatalyst)
+        #else
         self.loadRewardedAd()
+        #endif
         self.configureNavigationBar()
         self.configureScrollView()
         self.configurePage()
@@ -733,6 +742,12 @@ extension ModifyRecordVC: DateValidator {
 // MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
+        #if targetEnvironment(macCatalyst)
+        self.viewModel?.save()
+        self.showOKAlert(title: "Save Completed".localized(), message: "Your changes have been saved.".localized()) { [weak self] in
+            self?.viewModel?.reset()
+        }
+        #else
         FirebaseEvent.shared.postEvent(.saveRecord)
         if self.viewModel?.isRemoveAd == true {
             self.viewModel?.save()
@@ -745,6 +760,7 @@ extension ModifyRecordVC {
                 self?.showRewardedAd()
             }
         }
+        #endif
     }
     
     @objc private func backButtonTapped() {
@@ -766,6 +782,8 @@ extension ModifyRecordVC {
     }
 }
 
+#if targetEnvironment(macCatalyst)
+#else
 // MARK: 애드몹
 extension ModifyRecordVC: GADFullScreenContentDelegate {
     /// 광고 로드
@@ -820,3 +838,4 @@ extension ModifyRecordVC: GADFullScreenContentDelegate {
         self.loadRewardedAd()
     }
 }
+#endif
