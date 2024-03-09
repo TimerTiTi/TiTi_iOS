@@ -57,49 +57,49 @@ class SignupSigninVC: WhiteNavigationVC {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 16
+        stackView.distribution = .equalSpacing
         return stackView
     }()
-    private lazy var signinOptionsStackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 24
-        return stackView
-    }()
-    private lazy var dividerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        stackView.contentMode = .center
-        
-        let leftLine = UIView()
-        leftLine.translatesAutoresizingMaskIntoConstraints = false
-        leftLine.backgroundColor = .black.withAlphaComponent(0.5)
+    private lazy var optionsBottomView: UIView = {
+        let backgroundView = UIView()
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = .clear
         NSLayoutConstraint.activate([
-            leftLine.heightAnchor.constraint(equalToConstant: 1)
+            backgroundView.heightAnchor.constraint(equalToConstant: SigninInputTextfield.height)
         ])
-        stackView.addArrangedSubview(leftLine)
+        
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.addSubview(line)
+        NSLayoutConstraint.activate([
+            line.heightAnchor.constraint(equalToConstant: 1),
+            line.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+            line.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
+        ])
+        
+        let labelBackground = UIView()
+        labelBackground.translatesAutoresizingMaskIntoConstraints = false
+        labelBackground.backgroundColor = Colors.signinBackground
+        backgroundView.addSubview(labelBackground)
         
         let orLabel = UILabel()
         orLabel.translatesAutoresizingMaskIntoConstraints = false
         orLabel.text = "또는" // TODO: TLR 반영
-        orLabel.textColor = .black.withAlphaComponent(0.5)
-        orLabel.textAlignment = .center
+        orLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        orLabel.font = Typographys.uifont(.semibold_4, size: 13)
+        backgroundView.addSubview(orLabel)
         NSLayoutConstraint.activate([
-            orLabel.heightAnchor.constraint(equalToConstant: 14)
+            orLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            orLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            labelBackground.centerXAnchor.constraint(equalTo: orLabel.centerXAnchor),
+            labelBackground.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
+            labelBackground.widthAnchor.constraint(equalTo: orLabel.widthAnchor, multiplier: 1, constant: 16),
+            labelBackground.heightAnchor.constraint(equalTo: orLabel.heightAnchor, multiplier: 1),
+            line.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor)
         ])
-        stackView.addArrangedSubview(orLabel)
         
-        let rightLine = UIView()
-        rightLine.translatesAutoresizingMaskIntoConstraints = false
-        rightLine.backgroundColor = .black.withAlphaComponent(0.5)
-        NSLayoutConstraint.activate([
-            rightLine.heightAnchor.constraint(equalToConstant: 1)
-        ])
-        stackView.addArrangedSubview(rightLine)
-        
-        return stackView
+        return backgroundView
     }()
     private lazy var findNicknameButton: UIButton = {
         let button = UIButton(type: .system)
@@ -181,7 +181,7 @@ class SignupSigninVC: WhiteNavigationVC {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 16
-        stackView.alignment = .fill
+        stackView.distribution = .equalSpacing
         return stackView
     }()
     private var textFieldOrigin: CGPoint = .zero
@@ -268,10 +268,14 @@ extension SignupSigninVC {
         self.textFieldsStackView.addArrangedSubview(self.emailTextField)
         self.textFieldsStackView.addArrangedSubview(self.passwordTextField)
         self.textFieldsStackView.addArrangedSubview(self.actionButton)
-        self.textFieldsStackView.addArrangedSubview(self.signinOptionsStackView)
+        self.textFieldsStackView.addArrangedSubview(self.optionsBottomView)
         
-        self.signinOptionsStackView.addArrangedSubview(self.dividerStackView)
-        self.signinOptionsStackView.addArrangedSubview(self.signinOptionsButtonsStackView)
+        self.optionsBottomView.addSubview(self.signinOptionsButtonsStackView)
+        NSLayoutConstraint.activate([
+            self.signinOptionsButtonsStackView.leadingAnchor.constraint(equalTo: self.optionsBottomView.leadingAnchor),
+            self.signinOptionsButtonsStackView.trailingAnchor.constraint(equalTo: self.optionsBottomView.trailingAnchor),
+            self.signinOptionsButtonsStackView.bottomAnchor.constraint(equalTo: self.optionsBottomView.bottomAnchor)
+        ])
         
         self.signinOptionsButtonsStackView.addArrangedSubview(self.findNicknameButton)
         self.signinOptionsButtonsStackView.addArrangedSubview(self.buttonDevider1)
@@ -281,13 +285,13 @@ extension SignupSigninVC {
         
         if self.viewModel.isSignin {
             self.emailTextField.isHidden = true
-            self.signinOptionsStackView.isHidden = false
+            self.optionsBottomView.isHidden = false
             NSLayoutConstraint.activate([
                 self.textFieldsStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
             ])
         } else {
             self.emailTextField.isHidden = false
-            self.signinOptionsStackView.isHidden = true
+            self.optionsBottomView.isHidden = true
             NSLayoutConstraint.activate([
                 self.textFieldsStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
             ])
