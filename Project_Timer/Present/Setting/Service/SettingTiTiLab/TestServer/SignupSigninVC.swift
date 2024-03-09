@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import MessageUI
 
 class SignupSigninVC: WhiteNavigationVC {
     private var viewModel: SignupSigninVM
@@ -322,6 +323,38 @@ extension SignupSigninVC {
                 self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
             }
         }), for: .touchUpInside)
+        
+        self.findNicknameButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.sendMail(text: "닉네임을 찾기 위한 가입한 이메일 정보가 필요합니다.") // TODO: TLR 기반 수정 필요
+        }), for: .touchUpInside)
+        
+        self.contactButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.sendMail(text: Localized.string(.EmailMessage_Text_Message))
+        }), for: .touchUpInside)
+    }
+}
+
+// MARK: - Email
+
+extension SignupSigninVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    private func sendMail(text: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["freedeveloper97@gmail.com"])
+            mail.setMessageBody("<p>\(text)</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            let sendMailErrorAlert = UIAlertController(title: Localized.string(.EmailMessage_Error_CantSendEmailTitle), message: Localized.string(.EmailMessage_Error_CantSendEmailDesc), preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default)
+            sendMailErrorAlert.addAction(confirmAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
     }
 }
 
