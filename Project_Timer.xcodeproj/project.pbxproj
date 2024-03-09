@@ -164,8 +164,6 @@
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
-		8759238B2B74C57900B2FB10 /* MiSans-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8759238A2B74C57900B2FB10 /* MiSans-Normal.ttf */; };
-		8759238D2B74C58800B2FB10 /* MiSans-Demibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8759238C2B74C58800B2FB10 /* MiSans-Demibold.ttf */; };
 		875A5F792A207BA600679A72 /* NavigationBarInformationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */; };
 		875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */; };
 		875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875AA59B26494365005D15D6 /* TaskSelectVC.swift */; };
@@ -259,6 +257,8 @@
 		878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8222B0C6B1E001E924E /* SigninSelectModel.swift */; };
 		878DA8252B0C78D8001E924E /* SignupNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878DA8242B0C78D8001E924E /* SignupNicknameRoute.swift */; };
 		879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879053FE29558EF4008B9258 /* SyncUserStatusView.swift */; };
+		87906C7F2B9BF749000EC960 /* MiSans-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */; };
+		87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
 		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
 		87910823283875CF005D7B10 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910822283875CF005D7B10 /* NetworkProtocols.swift */; };
@@ -348,6 +348,8 @@
 		87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C70C2AE0268C00BE46B0 /* SignupEmailView.swift */; };
 		87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */; };
 		87E6004B28426EBF008D17B9 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E6004A28426EBF008D17B9 /* SettingVC.swift */; };
+		87EA022F2B9BF927003439F2 /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA022E2B9BF927003439F2 /* UIViewControllerPreview.swift */; };
+		87EA02312B9BF941003439F2 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EA02302B9BF941003439F2 /* UIViewPreview.swift */; };
 		87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */; };
 		87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */; };
 		87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */; };
@@ -555,8 +557,6 @@
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
-		8759238A2B74C57900B2FB10 /* MiSans-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MiSans-Normal.ttf"; path = "../../../../../../Downloads/misans/MiSans-Normal.ttf"; sourceTree = "<group>"; };
-		8759238C2B74C58800B2FB10 /* MiSans-Demibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MiSans-Demibold.ttf"; path = "../../../../../../Downloads/misans/MiSans-Demibold.ttf"; sourceTree = "<group>"; };
 		875A5F782A207BA600679A72 /* NavigationBarInformationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarInformationButton.swift; sourceTree = "<group>"; };
 		875A5F7A2A20836500679A72 /* HowToUseWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseWidgetVC.swift; sourceTree = "<group>"; };
 		875AA59B26494365005D15D6 /* TaskSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVC.swift; sourceTree = "<group>"; };
@@ -640,6 +640,8 @@
 		878DA8222B0C6B1E001E924E /* SigninSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectModel.swift; sourceTree = "<group>"; };
 		878DA8242B0C78D8001E924E /* SignupNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNicknameRoute.swift; sourceTree = "<group>"; };
 		879053FE29558EF4008B9258 /* SyncUserStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncUserStatusView.swift; sourceTree = "<group>"; };
+		87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Normal.ttf"; sourceTree = "<group>"; };
+		87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Semibold.ttf"; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
 		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		87910822283875CF005D7B10 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
@@ -727,6 +729,8 @@
 		87E5C70C2AE0268C00BE46B0 /* SignupEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailView.swift; sourceTree = "<group>"; };
 		87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldView.swift; sourceTree = "<group>"; };
 		87E6004A28426EBF008D17B9 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		87EA022E2B9BF927003439F2 /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
+		87EA02302B9BF941003439F2 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		87ED9ABC28D1661200186677 /* TasksCircularProgressSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressSwiftUIView.swift; sourceTree = "<group>"; };
 		87ED9ABE28D16FC200186677 /* TasksCircularProgressDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCircularProgressDTO.swift; sourceTree = "<group>"; };
 		87EFD6802AC115DB00C422B1 /* SigninSignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSignupVC.swift; sourceTree = "<group>"; };
@@ -1037,9 +1041,9 @@
 				874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */,
 				874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */,
 				874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */,
-				8759238A2B74C57900B2FB10 /* MiSans-Normal.ttf */,
 				87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */,
-				8759238C2B74C58800B2FB10 /* MiSans-Demibold.ttf */,
+				87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */,
+				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 			);
@@ -1429,6 +1433,7 @@
 		8791C1F027DCD03E000D6BA9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				87EA022D2B9BF918003439F2 /* Preview */,
 				87035DF6282225C800055378 /* Protocols.swift */,
 				87B539AA299BB710001E354C /* Versions.swift */,
 				876E27752AC1CD2A0054250D /* Infos.swift */,
@@ -1728,6 +1733,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		87EA022D2B9BF918003439F2 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				87EA022E2B9BF927003439F2 /* UIViewControllerPreview.swift */,
+				87EA02302B9BF941003439F2 /* UIViewPreview.swift */,
+			);
+			path = Preview;
+			sourceTree = "<group>";
+		};
 		87F778DC2B196E8F00909511 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1937,6 +1951,8 @@
 				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -1969,16 +1985,16 @@
 				048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
-				8759238D2B74C58800B2FB10 /* MiSans-Demibold.ttf in Resources */,
 				87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */,
 				871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */,
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
-				8759238B2B74C57900B2FB10 /* MiSans-Normal.ttf in Resources */,
+				87906C7F2B9BF749000EC960 /* MiSans-Normal.ttf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				878D3C1F266494380093A2BE /* GoogleService-Info.plist in Resources */,
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
+				87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
@@ -2093,6 +2109,8 @@
 				870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */,
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				8708008D2B2D63D300830B39 /* SyncLogUseCase.swift in Sources */,
+				87EA022F2B9BF927003439F2 /* UIViewControllerPreview.swift in Sources */,
+				87EA02312B9BF941003439F2 /* UIViewPreview.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
 				870800852B2D593400830B39 /* SyncLogAPI.swift in Sources */,
 				87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */,
@@ -2872,6 +2890,22 @@
 			requirement = {
 				branch = master;
 				kind = branch;
+			};
+		};
+		87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
 			};
 		};
 		87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
