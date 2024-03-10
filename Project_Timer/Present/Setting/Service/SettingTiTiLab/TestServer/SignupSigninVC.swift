@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import MessageUI
 
 class SignupSigninVC: WhiteNavigationVC {
     private var viewModel: SignupSigninVM
@@ -37,7 +38,7 @@ class SignupSigninVC: WhiteNavigationVC {
     private let nicknameTextField = SigninInputTextfield(type: .nickname)
     private let emailTextField = SigninInputTextfield(type: .email)
     private let passwordTextField = SigninInputTextfield(type: .password)
-    lazy private var actionButton: UIButton = {
+    private lazy var actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(self.viewModel.isSignin ? Localized.string(.TiTiLab_Button_SignIn) : Localized.string(.TiTiLab_Button_SignUpTitle), for: .normal)
@@ -53,10 +54,134 @@ class SignupSigninVC: WhiteNavigationVC {
         return button
     }()
     private lazy var textFieldsStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.nicknameTextField, self.emailTextField, self.passwordTextField, self.actionButton])
+        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 16
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    private lazy var optionsBottomView: UIView = {
+        let backgroundView = UIView()
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.backgroundColor = .clear
+        NSLayoutConstraint.activate([
+            backgroundView.heightAnchor.constraint(equalToConstant: SigninInputTextfield.height)
+        ])
+        
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        backgroundView.addSubview(line)
+        NSLayoutConstraint.activate([
+            line.heightAnchor.constraint(equalToConstant: 1),
+            line.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
+            line.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor)
+        ])
+        
+        let labelBackground = UIView()
+        labelBackground.translatesAutoresizingMaskIntoConstraints = false
+        labelBackground.backgroundColor = Colors.signinBackground
+        backgroundView.addSubview(labelBackground)
+        
+        let orLabel = UILabel()
+        orLabel.translatesAutoresizingMaskIntoConstraints = false
+        orLabel.text = Localized.string(.SignIn_Text_OR)
+        orLabel.textColor = UIColor.black.withAlphaComponent(0.5)
+        orLabel.font = Typographys.uifont(.semibold_4, size: 13)
+        backgroundView.addSubview(orLabel)
+        NSLayoutConstraint.activate([
+            orLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor),
+            orLabel.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+            labelBackground.centerXAnchor.constraint(equalTo: orLabel.centerXAnchor),
+            labelBackground.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
+            labelBackground.widthAnchor.constraint(equalTo: orLabel.widthAnchor, multiplier: 1, constant: 16),
+            labelBackground.heightAnchor.constraint(equalTo: orLabel.heightAnchor, multiplier: 1),
+            line.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor)
+        ])
+        
+        return backgroundView
+    }()
+    private lazy var findNicknameButton: UIButton = {
+        let button = UIButton(type: .system)
+        let title = Localized.string(.SignIn_Button_FindNickname)
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.font,
+                                      value: Typographys.uifont(.semibold_4, size: 13)!,
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor.black.withAlphaComponent(0.5),
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(location: 0, length: title.count))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.backgroundColor = .clear
+        
+        return button
+    }()
+    private lazy var findPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        let title = Localized.string(.SignIn_Button_FindPassword)
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.font,
+                                      value: Typographys.uifont(.semibold_4, size: 13)!,
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor.black.withAlphaComponent(0.5),
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(location: 0, length: title.count))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.backgroundColor = .clear
+        
+        return button
+    }()
+    private lazy var contactButton: UIButton = {
+        let button = UIButton(type: .system)
+        let title = Localized.string(.SignIn_Button_Contect)
+        let attributedString = NSMutableAttributedString(string: title)
+        attributedString.addAttribute(.font,
+                                      value: Typographys.uifont(.semibold_4, size: 13)!,
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor.black.withAlphaComponent(0.5),
+                                      range: NSRange(location: 0, length: title.count))
+        attributedString.addAttribute(.underlineStyle,
+                                      value: NSUnderlineStyle.single.rawValue,
+                                      range: NSRange(location: 0, length: title.count))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setAttributedTitle(attributedString, for: .normal)
+        button.backgroundColor = .clear
+        
+        return button
+    }()
+    private lazy var buttonDevider1: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "|"
+        label.textColor = .black.withAlphaComponent(0.5)
+        label.textAlignment = .center
+        label.font = Fonts.HGGGothicssiP60g(size: 13)
+        return label
+    }()
+    private lazy var buttonDevider2: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "|"
+        label.textColor = .black.withAlphaComponent(0.5)
+        label.textAlignment = .center
+        label.font = Fonts.HGGGothicssiP60g(size: 13)
+        return label
+    }()
+    private lazy var signinOptionsButtonsStackView: UIStackView = {
+       let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
         return stackView
     }()
     private var textFieldOrigin: CGPoint = .zero
@@ -111,44 +236,66 @@ extension SignupSigninVC {
         self.addDismissingKeyboard()
         self.view.backgroundColor = Colors.signinBackground
         
-        self.contentViewWidth = contentView.widthAnchor.constraint(equalToConstant: width)
-        self.contentViewWidth?.isActive = true
-        
-        contentView.addSubview(self.logoImage)
+        self.view.addSubview(self.contentView)
         NSLayoutConstraint.activate([
-            self.logoImage.topAnchor.constraint(equalTo: contentView.topAnchor),
-            self.logoImage.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            self.contentView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
+            self.contentView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor)
         ])
         
-        contentView.addSubview(self.logoTitle)
+        self.contentViewWidth = self.contentView.widthAnchor.constraint(equalToConstant: width)
+        self.contentViewWidth?.isActive = true
+        
+        self.contentView.addSubview(self.logoImage)
+        NSLayoutConstraint.activate([
+            self.logoImage.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.logoImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        ])
+        
+        self.contentView.addSubview(self.logoTitle)
         NSLayoutConstraint.activate([
             self.logoTitle.topAnchor.constraint(equalTo: self.logoImage.bottomAnchor, constant: 8),
             self.logoTitle.centerXAnchor.constraint(equalTo: self.logoImage.centerXAnchor)
         ])
         
-        contentView.addSubview(self.textFieldsStackView)
+        self.contentView.addSubview(self.textFieldsStackView)
         NSLayoutConstraint.activate([
             self.textFieldsStackView.topAnchor.constraint(equalTo: self.logoTitle.bottomAnchor, constant: 68),
-            self.textFieldsStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            self.textFieldsStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            self.textFieldsStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.textFieldsStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
         ])
+        
+        self.textFieldsStackView.addArrangedSubview(self.nicknameTextField)
+        self.textFieldsStackView.addArrangedSubview(self.emailTextField)
+        self.textFieldsStackView.addArrangedSubview(self.passwordTextField)
+        self.textFieldsStackView.addArrangedSubview(self.actionButton)
+        self.textFieldsStackView.addArrangedSubview(self.optionsBottomView)
+        
+        self.optionsBottomView.addSubview(self.signinOptionsButtonsStackView)
+        NSLayoutConstraint.activate([
+            self.signinOptionsButtonsStackView.leadingAnchor.constraint(equalTo: self.optionsBottomView.leadingAnchor),
+            self.signinOptionsButtonsStackView.trailingAnchor.constraint(equalTo: self.optionsBottomView.trailingAnchor),
+            self.signinOptionsButtonsStackView.bottomAnchor.constraint(equalTo: self.optionsBottomView.bottomAnchor)
+        ])
+        
+        self.signinOptionsButtonsStackView.addArrangedSubview(self.findNicknameButton)
+        self.signinOptionsButtonsStackView.addArrangedSubview(self.buttonDevider1)
+        self.signinOptionsButtonsStackView.addArrangedSubview(self.findPasswordButton)
+        self.signinOptionsButtonsStackView.addArrangedSubview(self.buttonDevider2)
+        self.signinOptionsButtonsStackView.addArrangedSubview(self.contactButton)
         
         if self.viewModel.isSignin {
             self.emailTextField.isHidden = true
+            self.optionsBottomView.isHidden = false
             NSLayoutConstraint.activate([
-                self.textFieldsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -74)
+                self.textFieldsStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
             ])
         } else {
+            self.emailTextField.isHidden = false
+            self.optionsBottomView.isHidden = true
             NSLayoutConstraint.activate([
-                self.textFieldsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                self.textFieldsStackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
             ])
         }
-        
-        self.view.addSubview(contentView)
-        NSLayoutConstraint.activate([
-            contentView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
-            contentView.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor)
-        ])
     }
     
     private func adjustUI(size: CGSize) {
@@ -175,6 +322,46 @@ extension SignupSigninVC {
                 self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
             }
         }), for: .touchUpInside)
+        
+        self.findNicknameButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.sendMail(text: Localized.string(.EmailMessage_Text_FindNickname))
+        }), for: .touchUpInside)
+        
+        self.contactButton.addAction(UIAction(handler: { [weak self] _ in
+            self?.sendMail(text: Localized.string(.EmailMessage_Text_Message))
+        }), for: .touchUpInside)
+    }
+}
+
+// MARK: - Email
+
+extension SignupSigninVC: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
+    private func sendMail(text: String) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["freedeveloper97@gmail.com"])
+            mail.setMessageBody("<p>\(self.transToHTML(text: text))</p>", isHTML: true)
+            
+            present(mail, animated: true)
+        } else {
+            let sendMailErrorAlert = UIAlertController(title: Localized.string(.EmailMessage_Error_CantSendEmailTitle), message: Localized.string(.EmailMessage_Error_CantSendEmailDesc), preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default)
+            sendMailErrorAlert.addAction(confirmAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
+    }
+    
+    private func transToHTML(text: String) -> String {
+        var htmlBody: String = text
+        if htmlBody.contains("\n") {
+            htmlBody = htmlBody.replacingOccurrences(of: "\n", with: "</p><p>")
+        }
+        return htmlBody
     }
 }
 
@@ -312,3 +499,18 @@ extension SignupSigninVC: UITextFieldDelegate {
         return textFieldOrigin + stackViewOrigin + contentViewOrigin
     }
 }
+
+// MARK: Preview
+
+#if DEBUG
+import SwiftUI
+
+#Preview {
+    UIViewControllerPreview {
+        let authUseCase = AuthUseCase(repository: AuthRepository())
+        let viewModel = SignupSigninVM(authUseCase: authUseCase, isSignin: false)
+        return SignupSigninVC(viewModel: viewModel)
+    }
+}
+
+#endif

@@ -109,9 +109,10 @@ struct TLRko {
         case .ColorSelector_Text_ColorDirectionTitle: value = "컬러 방향"
         case .ColorSelector_Text_ColorDirectionDesc: value = "컬러 조합의 방향을 설정합니다"
             
-        case .EmailMessage_Text_Message: value = "작은 피드백 하나하나가 큰 도움이 됩니다 :)"
         case .EmailMessage_Error_CantSendEmailTitle: value = "이메일 설정 실패"
         case .EmailMessage_Error_CantSendEmailDesc: value = "아이폰의 이메일 설정을 확인 후 다시 시도해주세요."
+        case .EmailMessage_Text_Message: value = "작은 피드백 하나하나가 큰 도움이 됩니다 :)"
+        case .EmailMessage_Text_FindNickname: value = "닉네임을 찾기 위한 가입한 이메일 정보가 필요합니다.\n\n가입한 이메일 :\n\n위 정보를 채워주셔서 전송 부탁드립니다."
             
         case .Recording_Text_TargetTime: value = "총 남은시간"
         case .Recording_Text_TaskTargetTime: value = "Task 남은시간"
@@ -176,6 +177,8 @@ struct TLRko {
         case .SignIn_Text_OR: value = "또는"
         case .SignIn_Button_FindEmail: value = "이메일 찾기"
         case .SignIn_Button_FindPassword: value = "비밀번호 찾기"
+        case .SignIn_Button_FindNickname: value = "닉네임 찾기"
+        case .SignIn_Button_Contect: value = "문의하기"
         case .SignIn_Button_SignUp: value = "회원가입"
         case .SignIn_Error_SocialSignInFail: value = "로그인을 실패했어요"
         case .SignIn_Error_SocialSignInFailDomain: value = "{} 로그인을 확인해주세요"

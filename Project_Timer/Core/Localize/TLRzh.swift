@@ -109,9 +109,10 @@ struct TLRzh {
         case .ColorSelector_Text_ColorDirectionTitle: value = "颜色方向"
         case .ColorSelector_Text_ColorDirectionDesc: value = "设置颜色组合的方向"
             
-        case .EmailMessage_Text_Message: value = "每一个小小的反馈都有很大的帮助 :)"
         case .EmailMessage_Error_CantSendEmailTitle: value = "电子邮件设置失败"
         case .EmailMessage_Error_CantSendEmailDesc: value = "请确认苹果手机的电子邮件设置后再试一次。"
+        case .EmailMessage_Text_Message: value = "每一个小小的反馈都有很大的帮助 :)"
+        case .EmailMessage_Text_FindNickname: value = "我需要您注册的电子邮件信息来查找您的昵称。\n\n注册邮箱: \n\n请填写以上信息并发送给我们"
             
         case .Recording_Text_TargetTime: value = "目标时间"
         case .Recording_Text_TaskTargetTime: value = "Task 目标时间"
@@ -174,8 +175,10 @@ struct TLRzh {
         case .SignIn_Hint_Password: value = "密码 "
         case .SignIn_Button_TiTiSingIn: value = "登录"
         case .SignIn_Text_OR: value = "或者"
-        case .SignIn_Button_FindEmail: value = "忘记电子邮件？"
+        case .SignIn_Button_FindEmail: value = "忘记电子邮件?"
         case .SignIn_Button_FindPassword: value = "忘记密码?"
+        case .SignIn_Button_FindNickname: value = "忘记昵称?"
+        case .SignIn_Button_Contect: value = "联系我们"
         case .SignIn_Button_SignUp: value = "注册会员"
         case .SignIn_Error_SocialSignInFail: value = "登录失败"
         case .SignIn_Error_SocialSignInFailDomain: value = "请检查您的 {} 登录"
