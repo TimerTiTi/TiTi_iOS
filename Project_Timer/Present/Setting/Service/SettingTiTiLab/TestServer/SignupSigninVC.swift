@@ -345,7 +345,7 @@ extension SignupSigninVC: MFMailComposeViewControllerDelegate {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["freedeveloper97@gmail.com"])
-            mail.setMessageBody("<p>\(text)</p>", isHTML: true)
+            mail.setMessageBody("<p>\(self.transToHTML(text: text))</p>", isHTML: true)
             
             present(mail, animated: true)
         } else {
@@ -354,6 +354,14 @@ extension SignupSigninVC: MFMailComposeViewControllerDelegate {
             sendMailErrorAlert.addAction(confirmAction)
             self.present(sendMailErrorAlert, animated: true, completion: nil)
         }
+    }
+    
+    private func transToHTML(text: String) -> String {
+        var htmlBody: String = text
+        if htmlBody.contains("\n") {
+            htmlBody = htmlBody.replacingOccurrences(of: "\n", with: "</p><p>")
+        }
+        return htmlBody
     }
 }
 
