@@ -109,9 +109,10 @@ struct TLRen {
         case .ColorSelector_Text_ColorDirectionTitle: value = "Color direction"
         case .ColorSelector_Text_ColorDirectionDesc: value = "Setting the direction of the color combination"
             
-        case .EmailMessage_Text_Message: value = "Every little feedback helps a lot :)"
         case .EmailMessage_Error_CantSendEmailTitle: value = "Email Failed"
         case .EmailMessage_Error_CantSendEmailDesc: value = "Please check the setting of iPhone's Email, and try again."
+        case .EmailMessage_Text_Message: value = "Every little feedback helps a lot :)"
+        case .EmailMessage_Text_FindNickname: value = "I need your registered email information to find your nickname.\n\nRegistered email: \n\nPlease fill in the above information and send it to us"
             
         case .Recording_Text_TargetTime: value = "Target Time"
         case .Recording_Text_TaskTargetTime: value = "Task Target Time"
@@ -176,6 +177,8 @@ struct TLRen {
         case .SignIn_Text_OR: value = "OR"
         case .SignIn_Button_FindEmail: value = "Forgot Email?"
         case .SignIn_Button_FindPassword: value = "Forgot Password?"
+        case .SignIn_Button_FindNickname: value = "Forgot Nickname?"
+        case .SignIn_Button_Contect: value = "Contect"
         case .SignIn_Button_SignUp: value = "Sign Up"
         case .SignIn_Error_SocialSignInFail: value = "Sign in failed"
         case .SignIn_Error_SocialSignInFailDomain: value = "Please check your {} Sign In"

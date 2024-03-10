@@ -86,7 +86,7 @@ class SignupSigninVC: WhiteNavigationVC {
         
         let orLabel = UILabel()
         orLabel.translatesAutoresizingMaskIntoConstraints = false
-        orLabel.text = "또는" // TODO: TLR 반영
+        orLabel.text = Localized.string(.SignIn_Text_OR)
         orLabel.textColor = UIColor.black.withAlphaComponent(0.5)
         orLabel.font = Typographys.uifont(.semibold_4, size: 13)
         backgroundView.addSubview(orLabel)
@@ -104,7 +104,7 @@ class SignupSigninVC: WhiteNavigationVC {
     }()
     private lazy var findNicknameButton: UIButton = {
         let button = UIButton(type: .system)
-        let title = "닉네임 찾기" // TODO: TLR 반영
+        let title = Localized.string(.SignIn_Button_FindNickname)
         let attributedString = NSMutableAttributedString(string: title)
         attributedString.addAttribute(.font,
                                       value: Typographys.uifont(.semibold_4, size: 13)!,
@@ -123,7 +123,7 @@ class SignupSigninVC: WhiteNavigationVC {
     }()
     private lazy var findPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        let title = "비밀번호 찾기" // TODO: TLR 반영
+        let title = Localized.string(.SignIn_Button_FindPassword)
         let attributedString = NSMutableAttributedString(string: title)
         attributedString.addAttribute(.font,
                                       value: Typographys.uifont(.semibold_4, size: 13)!,
@@ -142,7 +142,7 @@ class SignupSigninVC: WhiteNavigationVC {
     }()
     private lazy var contactButton: UIButton = {
         let button = UIButton(type: .system)
-        let title = "문의하기" // TODO: TLR 반영
+        let title = Localized.string(.SignIn_Button_Contect)
         let attributedString = NSMutableAttributedString(string: title)
         attributedString.addAttribute(.font,
                                       value: Typographys.uifont(.semibold_4, size: 13)!,
@@ -181,7 +181,6 @@ class SignupSigninVC: WhiteNavigationVC {
        let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 16
         stackView.distribution = .equalSpacing
         return stackView
     }()
@@ -325,7 +324,7 @@ extension SignupSigninVC {
         }), for: .touchUpInside)
         
         self.findNicknameButton.addAction(UIAction(handler: { [weak self] _ in
-            self?.sendMail(text: "닉네임을 찾기 위한 가입한 이메일 정보가 필요합니다.") // TODO: TLR 기반 수정 필요
+            self?.sendMail(text: Localized.string(.EmailMessage_Text_FindNickname))
         }), for: .touchUpInside)
         
         self.contactButton.addAction(UIAction(handler: { [weak self] _ in
