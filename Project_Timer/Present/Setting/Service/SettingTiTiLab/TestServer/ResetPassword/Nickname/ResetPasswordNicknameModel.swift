@@ -11,13 +11,35 @@ import SwiftUI
 
 // MARK: State
 final class ResetPasswordNicknameModel: ObservableObject {
+    enum ErrorMessage {
+        case notExist
+        case serverError
+        
+        var message: String {
+            switch self {
+            case .notExist:
+                return "가입되지 않은 닉네임입니다" // TODO: TLR 반영
+            case .serverError:
+                return Localized.string(.Server_Error_CheckNetwork)
+            }
+        }
+    }
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
     @Published var validNickname: Bool?
+    @Published var errorMessage: ErrorMessage?
     
     @Published var nickname: String = ""
     
-    init() { }
+    private let authUseCase: AuthUseCaseInterface
+    
+    init(authUseCase: AuthUseCaseInterface) {
+        self.authUseCase = authUseCase
+    }
+    
+    var nicknameWarningVisible: Bool {
+        return self.validNickname == false
+    }
     
     // nicknameTextField underline 컬러
     var nicknameTintColor: Color {
@@ -54,6 +76,20 @@ extension ResetPasswordNicknameModel {
     
     // nickname done 액션
     func checkNickname() {
-        self.validNickname = PredicateChecker.isValidNickname(nickname)
+        self.authUseCase.checkUsername(username: self.nickname) { [weak self] result in
+            switch result {
+            case .success(let simpleResponse):
+                self?.validNickname = simpleResponse.data
+            case .failure(let error):
+                self?.validNickname = false
+                switch error {
+                case .NOTFOUND(_):
+                    self?.errorMessage = .notExist
+                default:
+                    self?.errorMessage = .serverError
+                    print("Error: \(error.title), \(error.message)")
+                }
+            }
+        }
     }
 }

@@ -57,7 +57,7 @@ struct ResetPasswordNicknameView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 닉네임을 입력해 주세요 (12자리 이내)")
+                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 닉네임을 입력해 주세요 (12자리 이내)") // TODO: TLR 반영
                                 
                                 TTSignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
                                     self.model.checkNickname()
@@ -66,8 +66,8 @@ struct ResetPasswordNicknameView: View {
                                     self.model.validNickname = nil
                                 }
                                 TTSignupTextFieldUnderlineView(color: self.model.nicknameTintColor)
-                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongNicknameFormat), visible: model.validNickname == false)
-                                    .id(TTSignupTextFieldView.type.nickname) // TODO: 오류문구 수정 필요
+                                TTSignupTextFieldWarning(warning: model.errorMessage?.message ?? "", visible: self.model.nicknameWarningVisible)
+                                    .id(TTSignupTextFieldView.type.nickname)
                             }
                             .onAppear { // @FocusState 변화 반영
                                 if self.model.validNickname == nil && self.model.nickname.isEmpty {
@@ -100,11 +100,11 @@ struct ResetPasswordNicknameView: View {
 struct ResetPasswordNicknameView_Previews: PreviewProvider {
     static var previews: some View {
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel())
+            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository())))
         .environmentObject(ResetPasswordEnvironment())
         
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel())
+            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository())))
         .environmentObject(ResetPasswordEnvironment())
         .environment(\.locale, .init(identifier: "en"))
     }
