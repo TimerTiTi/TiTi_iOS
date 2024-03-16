@@ -31,7 +31,7 @@ final class ResetPasswordEmailModel: ObservableObject {
     
     @Published var email: String = ""
     
-    private let authUseCase: AuthUseCaseInterface
+    let authUseCase: AuthUseCaseInterface
     private let infos: ResetPasswordInfosForEmail
     
     init(authUseCase: AuthUseCaseInterface, infos: ResetPasswordInfosForEmail) {

@@ -32,8 +32,13 @@ struct ResetPasswordEmailView: View {
             .navigationDestination(for: ResetPasswordEmailRoute.self) { destination in
                 switch destination {
                 case .resetPassword:
-                    let infos = model.resetPasswordInfosForPassword
-                    Text("resetPassword")
+                    let authUseCase = self.model.authUseCase
+                    let infos = self.model.resetPasswordInfosForPassword
+                    let viewModel = ResetPasswordModel(
+                        authUseCase: authUseCase,
+                        infos: infos
+                    )
+                    ResetPasswordView(model: viewModel)
                 }
             }
         }
