@@ -38,4 +38,37 @@ final class AuthUseCase: AuthUseCaseInterface {
             }
         }
     }
+    
+    func checkUsername(username: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        self.repository.checkUsername(username: username) { result in
+            switch result {
+            case .success(let simpleResponse):
+                completion(.success(simpleResponse))
+            case .failure(let networkError):
+                completion(.failure(networkError))
+            }
+        }
+    }
+    
+    func checkEmail(email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        self.repository.checkEmail(email: email) { result in
+            switch result {
+            case .success(let simpleResponse):
+                completion(.success(simpleResponse))
+            case .failure(let networkError):
+                completion(.failure(networkError))
+            }
+        }
+    }
+    
+    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        self.repository.updatePassword(request: request) { result in
+            switch result {
+            case .success(let simpleResponse):
+                completion(.success(simpleResponse))
+            case .failure(let networkError):
+                completion(.failure(networkError))
+            }
+        }
+    }
 }
