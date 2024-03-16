@@ -34,8 +34,13 @@ struct ResetPasswordNicknameView: View {
             .navigationDestination(for: ResetPasswordNicknameRoute.self) { destination in
                 switch destination {
                 case .resetPasswordEmail:
+                    let authUseCase = self.model.authUseCase
                     let infos = model.resetPasswordInfosForEmail
-                    Text("resetPasswordEmail")
+                    let viewModel = ResetPasswordEmailModel(
+                        authUseCase: authUseCase,
+                        infos: infos
+                    )
+                    ResetPasswordEmailView(model: viewModel)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -57,7 +62,7 @@ struct ResetPasswordNicknameView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 닉네임을 입력해 주세요 (12자리 이내)") // TODO: TLR 반영
+                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 닉네임을 입력해 주세요") // TODO: TLR 반영
                                 
                                 TTSignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
                                     self.model.checkNickname()

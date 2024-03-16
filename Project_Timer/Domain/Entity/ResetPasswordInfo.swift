@@ -11,3 +11,8 @@ import Foundation
 struct ResetPasswordInfosForEmail {
     let nickname: String
 }
+
+struct ResetPasswordInfosForPassword {
+    let nickname: String
+    let email: String
+}

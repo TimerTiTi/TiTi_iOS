@@ -1,5 +1,5 @@
 //
-//  ResetPasswordNicknameModel.swift
+//  ResetPasswordEmailModel.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2024/03/16.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 // MARK: State
-final class ResetPasswordNicknameModel: ObservableObject {
+final class ResetPasswordEmailModel: ObservableObject {
     enum ErrorMessage {
         case notExist
         case serverError
@@ -18,7 +18,7 @@ final class ResetPasswordNicknameModel: ObservableObject {
         var message: String {
             switch self {
             case .notExist:
-                return "가입되지 않은 닉네임입니다" // TODO: TLR 반영
+                return "가입되지 않은 이메일입니다" // TODO: TLR 반영
             case .serverError:
                 return Localized.string(.Server_Error_CheckNetwork)
             }
@@ -26,39 +26,42 @@ final class ResetPasswordNicknameModel: ObservableObject {
     }
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
-    @Published var validNickname: Bool?
+    @Published var validEmail: Bool?
     @Published var errorMessage: ErrorMessage?
     
-    @Published var nickname: String = ""
+    @Published var email: String = ""
     
-    let authUseCase: AuthUseCaseInterface
+    private let authUseCase: AuthUseCaseInterface
+    private let infos: ResetPasswordInfosForEmail
     
-    init(authUseCase: AuthUseCaseInterface) {
+    init(authUseCase: AuthUseCaseInterface, infos: ResetPasswordInfosForEmail) {
         self.authUseCase = authUseCase
+        self.infos = infos
     }
     
-    var nicknameWarningVisible: Bool {
-        return self.validNickname == false
+    var emailWarningVisible: Bool {
+        return self.validEmail == false
     }
     
     // nicknameTextField underline 컬러
-    var nicknameTintColor: Color {
-        if self.validNickname == false {
+    var emailTintColor: Color {
+        if self.validEmail == false {
             return Colors.wrongTextField.toColor
         } else {
-            return self.focus == .nickname ? Color.blue : UIColor.placeholderText.toColor
+            return self.focus == .email ? Color.blue : UIColor.placeholderText.toColor
         }
     }
     
     // resetPasswordInfosForEmail 반환
-    var resetPasswordInfosForEmail: ResetPasswordInfosForEmail {
-        return ResetPasswordInfosForEmail(
-            nickname: self.nickname
+    var resetPasswordInfosForPassword: ResetPasswordInfosForPassword {
+        return ResetPasswordInfosForPassword(
+            nickname: self.infos.nickname,
+            email: self.email
         )
     }
 }
 
-extension ResetPasswordNicknameModel {
+extension ResetPasswordEmailModel {
     // 화면크기에 따른 width 크기조정
     func updateContentWidth(size: CGSize) {
         switch size.deviceDetailType {
@@ -74,14 +77,14 @@ extension ResetPasswordNicknameModel {
         self.focus = focus
     }
     
-    // nickname done 액션
-    func checkNickname() {
-        self.authUseCase.checkUsername(username: self.nickname) { [weak self] result in
+    // email done 액션
+    func checkEmail() {
+        self.authUseCase.checkEmail(email: self.email) { [weak self] result in
             switch result {
             case .success(let simpleResponse):
-                self?.validNickname = simpleResponse.data
+                self?.validEmail = simpleResponse.data
             case .failure(let error):
-                self?.validNickname = false
+                self?.validEmail = false
                 switch error {
                 case .NOTFOUND(_):
                     self?.errorMessage = .notExist
