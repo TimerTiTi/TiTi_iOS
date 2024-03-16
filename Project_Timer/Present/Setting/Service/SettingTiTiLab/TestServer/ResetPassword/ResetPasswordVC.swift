@@ -29,7 +29,9 @@ final class ResetPasswordVC: PortraitVC {
     
     private func configureHostingVC() {
         guard let environment = self.environment else { return }
-        let hostingVC = UIHostingController(rootView: ResetPasswordNicknameView().environmentObject(environment))
+        
+        let resetPasswordNicknameModel = ResetPasswordNicknameModel()
+        let hostingVC = UIHostingController(rootView: ResetPasswordNicknameView(model: resetPasswordNicknameModel).environmentObject(environment))
         self.addChild(hostingVC)
         hostingVC.didMove(toParent: self)
         

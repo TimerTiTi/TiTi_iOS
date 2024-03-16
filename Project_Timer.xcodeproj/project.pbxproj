@@ -324,6 +324,9 @@
 		87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */; };
 		87D4DCC02BA5253600BB5AAB /* ResetPasswordEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */; };
 		87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */; };
+		87D4DCC52BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */; };
+		87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */; };
+		87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -712,6 +715,9 @@
 		87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
 		87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEnvironment.swift; sourceTree = "<group>"; };
 		87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameView.swift; sourceTree = "<group>"; };
+		87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameModel.swift; sourceTree = "<group>"; };
+		87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInfo.swift; sourceTree = "<group>"; };
+		87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameRoute.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -1130,6 +1136,7 @@
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
+				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1594,9 +1601,19 @@
 			children = (
 				87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */,
 				87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */,
-				87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */,
+				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
 			);
 			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		87D4DCC32BA52CBF00BB5AAB /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */,
+				87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */,
+				87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */,
+			);
+			path = Nickname;
 			sourceTree = "<group>";
 		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
@@ -2141,6 +2158,7 @@
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
+				87D4DCC52BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift in Sources */,
 				879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
@@ -2264,6 +2282,7 @@
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
+				87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
@@ -2358,6 +2377,7 @@
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
+				87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */,
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
