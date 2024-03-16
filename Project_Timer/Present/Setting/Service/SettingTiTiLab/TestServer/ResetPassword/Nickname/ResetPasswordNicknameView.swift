@@ -24,8 +24,24 @@ struct ResetPasswordNicknameView: View {
                     Colors.firstBackground.toColor
                         .ignoresSafeArea()
                     
-                    ContentView(model: model)
-                        .padding(.bottom, keyboard.keyboardHeight+16)
+                    VStack {
+                        HStack(alignment: .center) {
+                            Button {
+                                self.environment.dismiss = true
+                            } label: {
+                                Image(systemName: "chevron.left")
+                                    .font(Font.system(size: 20, weight: .medium))
+                                    .foregroundStyle(UIColor.label.toColor)
+                                    .padding(8)
+                            }
+                            Spacer()
+                        }
+                        .frame(height: 40)
+                        
+                        ContentView(model: model)
+                            .padding(.bottom, keyboard.keyboardHeight+16)
+                    }
+                    
                 }
                 .onChange(of: geometry.size) { newValue in
                     model.updateContentWidth(size: newValue)

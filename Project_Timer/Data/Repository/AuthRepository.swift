@@ -67,8 +67,8 @@ final class AuthRepository: AuthRepositoryInterface {
         }
     }
     
-    func checkEmail(email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
-        api.checkEmail(email: email) { result in
+    func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        api.checkEmail(username: username, email: email) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,

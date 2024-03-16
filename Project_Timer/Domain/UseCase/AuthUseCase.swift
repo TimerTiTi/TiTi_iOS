@@ -50,8 +50,8 @@ final class AuthUseCase: AuthUseCaseInterface {
         }
     }
     
-    func checkEmail(email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
-        self.repository.checkEmail(email: email) { result in
+    func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        self.repository.checkEmail(username: username, email: email) { result in
             switch result {
             case .success(let simpleResponse):
                 completion(.success(simpleResponse))

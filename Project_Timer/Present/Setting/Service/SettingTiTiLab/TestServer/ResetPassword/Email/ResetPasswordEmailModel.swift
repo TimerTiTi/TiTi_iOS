@@ -79,7 +79,7 @@ extension ResetPasswordEmailModel {
     
     // email done 액션
     func checkEmail() {
-        self.authUseCase.checkEmail(email: self.email) { [weak self] result in
+        self.authUseCase.checkEmail(username: self.infos.nickname, email: self.email) { [weak self] result in
             switch result {
             case .success(let simpleResponse):
                 self?.validEmail = simpleResponse.data

@@ -47,8 +47,9 @@ final class AuthAPI {
         }
     }
     
-    func checkEmail(email: String, completion: @escaping (NetworkResult) -> Void) {
+    func checkEmail(username: String, email: String, completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: self.checkUsersURL, method: .get, param: [
+            "username": username,
             "email": email
         ]) { result in
             completion(result)

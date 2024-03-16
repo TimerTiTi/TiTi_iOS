@@ -13,6 +13,6 @@ protocol AuthUseCaseInterface {
     func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
     func signin(signinInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void)
     func checkUsername(username: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
-    func checkEmail(email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
+    func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
     func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
 }
