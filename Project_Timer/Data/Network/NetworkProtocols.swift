@@ -9,11 +9,6 @@
 import Foundation
 import Alamofire
 
-protocol NetworkFetchable {
-    func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void)
-    func request<T: Encodable>(url: String, method: HTTPMethod, param: [String: Any]?, body: T?, completion: @escaping (NetworkResult) -> Void)
-}
-
 protocol TiTiFunctionsFetchable {
     func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
 }

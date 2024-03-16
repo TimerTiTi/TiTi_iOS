@@ -327,6 +327,7 @@
 		87D4DCC52BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */; };
 		87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */; };
 		87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */; };
+		87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -718,6 +719,7 @@
 		87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameModel.swift; sourceTree = "<group>"; };
 		87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInfo.swift; sourceTree = "<group>"; };
 		87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameRoute.swift; sourceTree = "<group>"; };
+		87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRequest.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -1616,6 +1618,14 @@
 			path = Nickname;
 			sourceTree = "<group>";
 		};
+		87D4DCCA2BA5476900BB5AAB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,6 +1789,7 @@
 		87F778DC2B196E8F00909511 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				87D4DCCA2BA5476900BB5AAB /* Request */,
 				87F778E12B196F7400909511 /* Repository */,
 				875FAE232B1C6710008F19D2 /* API */,
 				875FAE222B1C653A008F19D2 /* DTO */,
@@ -2382,6 +2393,7 @@
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
 				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
+				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
 				875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */,
