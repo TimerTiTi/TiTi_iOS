@@ -328,6 +328,7 @@
 		87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */; };
 		87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */; };
 		87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */; };
+		87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -720,6 +721,7 @@
 		87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInfo.swift; sourceTree = "<group>"; };
 		87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameRoute.swift; sourceTree = "<group>"; };
 		87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRequest.swift; sourceTree = "<group>"; };
+		87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -1626,6 +1628,14 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		87D4DCCD2BA548E300BB5AAB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1789,6 +1799,7 @@
 		87F778DC2B196E8F00909511 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				87D4DCCD2BA548E300BB5AAB /* Response */,
 				87D4DCCA2BA5476900BB5AAB /* Request */,
 				87F778E12B196F7400909511 /* Repository */,
 				875FAE232B1C6710008F19D2 /* API */,
@@ -2210,6 +2221,7 @@
 				873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
+				87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */,
 				875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
