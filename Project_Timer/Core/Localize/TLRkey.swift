@@ -127,6 +127,8 @@ enum TLRkey: String {
     case TiTiLab_Button_SignUpDesc
     /// 로그인
     case TiTiLab_Button_SignIn
+    /// 로그아웃
+    case TiTiLab_Button_SignOut
     
     /// 현재 기기의 마지막 동기화 시간과 서버 내 반영된 최신 동기화 시간입니다.
     case SyncDaily_Text_InfoSync1

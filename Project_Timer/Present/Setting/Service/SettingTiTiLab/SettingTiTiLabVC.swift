@@ -62,7 +62,12 @@ final class SettingTiTiLabVC: UIViewController {
     }
     
     @IBAction func signin(_ sender: Any) {
-        self.showBetaSigninSignupVC(signin: true)
+        let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
+        if signined {
+            self.signOut()
+        } else {
+            self.showBetaSigninSignupVC(signin: true)
+        }
     }
 }
 
@@ -93,13 +98,12 @@ extension SettingTiTiLabVC {
     
     private func configureSignined() {
         self.signupSyncLabel.text = "Sync Dailys"
-        self.signinButton.isHidden = true
+        self.signinButton.setTitle(Localized.string(.TiTiLab_Button_SignOut), for: .normal)
     }
     
     private func configureSignouted() {
         self.signupSyncLabel.text = Localized.string(.TiTiLab_Button_SignUpTitle)
         self.signinButton.setTitle(Localized.string(.TiTiLab_Button_SignIn), for: .normal)
-        self.signinButton.isHidden = false
     }
     
     private func showBetaSigninSignupVC(signin: Bool) {
@@ -112,6 +116,20 @@ extension SettingTiTiLabVC {
     private func showSyncHistorysVC() {
         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: SyncDailysVC.identifier) else { return }
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    /// 로그아웃
+    private func signOut() {
+        print("Sign Out")
+        guard KeyChain.shared.deleteAll() else {
+            print("ERROR: KeyChain.shared.deleteAll")
+            return
+        }
+        
+        UserDefaultsManager.set(to: false, forKey: .signinInTestServerV1)
+        NotificationCenter.default.post(name: KeyChain.signouted, object: nil)
+        
+        // TODO: SignOut alert 표시
     }
 }
 

@@ -73,6 +73,7 @@ struct TLRzh {
         case .TiTiLab_Button_SignUpTitle: value = "注册会员"
         case .TiTiLab_Button_SignUpDesc: value = "Dailys 记录同步 (beta)"
         case .TiTiLab_Button_SignIn: value = "登录"
+        case .TiTiLab_Button_SignOut: value = "退出登录"
             
         case .SyncDaily_Text_InfoSync1: value = "当前设备的最后同步时间以及服务器上反映的最新同步时间 。"
         case .SyncDaily_Text_InfoSync2: value = "通过同步对修改后的数据进行备份，可接收其他设备备份的数据。"
