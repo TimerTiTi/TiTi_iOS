@@ -73,6 +73,8 @@ struct TLRko {
         case .TiTiLab_Button_SignUpTitle: value = "회원가입"
         case .TiTiLab_Button_SignUpDesc: value = "Dailys 기록 동기화 (beta)"
         case .TiTiLab_Button_SignIn: value = "로그인"
+        case .TiTiLab_Button_SignOut: value = "로그아웃"
+        case .TiTiLab_Popup_SignOutTitle: value = "로그아웃하시겠어요?"
             
         case .SyncDaily_Text_InfoSync1: value = "현재 기기의 마지막 동기화 시간과 서버 내 반영된 최신 동기화 시간입니다."
         case .SyncDaily_Text_InfoSync2: value = "동기화를 통해 수정된 데이터가 백업되며 다른 기기에서 백업한 데이터를 받을 수 있습니다."
