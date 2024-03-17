@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Lottie
 
 struct ResetPasswordCompleteView: View {
     @StateObject private var model: ResetPasswordCompleteModel
@@ -49,6 +50,10 @@ struct ResetPasswordCompleteView: View {
                         )
                     }
                     .frame(width: self.model.contentWidth)
+                    
+                    LottieView(animation: .named("successBlueLottie"))
+                        .looping()
+                        .frame(width: 300, height: 300)
                 }
                 Spacer()
             }

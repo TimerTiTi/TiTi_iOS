@@ -340,6 +340,8 @@
 		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
 		87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */; };
 		87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */; };
+		87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 87D4DCEA2BA6B04B00BB5AAB /* Lottie */; };
+		87D4DCEE2BA6B13100BB5AAB /* successBlueLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -744,6 +746,7 @@
 		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
 		87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTChangeCompleteTitleView.swift; sourceTree = "<group>"; };
 		87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTBottomRoundButtonView.swift; sourceTree = "<group>"; };
+		87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = successBlueLottie.json; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -820,6 +823,7 @@
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
+				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1029,7 @@
 				87306D4A2B26041F001B7C14 /* Localize */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
 				870800912B2D69BF00830B39 /* Extension */,
+				87306D622B26CC13001B7C14 /* Resource */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1048,7 +1053,6 @@
 				87D83E862B29604C003C40AE /* Component */,
 				87306D5F2B26CBB3001B7C14 /* Icon */,
 				87306D5B2B26CB4D001B7C14 /* Theme */,
-				87306D622B26CC13001B7C14 /* Resource */,
 			);
 			path = "Design System";
 			sourceTree = "<group>";
@@ -1084,6 +1088,7 @@
 				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
+				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1691,6 +1696,14 @@
 			path = Complete;
 			sourceTree = "<group>";
 		};
+		87D4DCEC2BA6B11B00BB5AAB /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2024,6 +2037,7 @@
 				87910827283876DD005D7B10 /* Alamofire */,
 				876C3B0A2B1045C5002A5132 /* GoogleSignIn */,
 				876C3B0C2B1045C5002A5132 /* GoogleSignInSwift */,
+				87D4DCEA2BA6B04B00BB5AAB /* Lottie */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2064,8 +2078,7 @@
 				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */,
+				87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -2107,6 +2120,7 @@
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
+				87D4DCEE2BA6B13100BB5AAB /* successBlueLottie.json in Resources */,
 				87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
@@ -3024,28 +3038,20 @@
 				kind = branch;
 			};
 		};
-		87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3080,6 +3086,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		87D4DCEA2BA6B04B00BB5AAB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
