@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ResetPasswordView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
+    @EnvironmentObject var environment: ResetPasswordEnvironment
     @StateObject private var model: ResetPasswordModel
     
     init(model: ResetPasswordModel) {
@@ -31,7 +32,17 @@ struct ResetPasswordView: View {
             .navigationDestination(for: ResetPasswordRoute.self) { destination in
                 switch destination {
                 case .resetPasswordComplete:
-                    Text("변경이 완료되었어요!")
+                    // TODO: TLR 반영
+                    let info = ChangeCompleteInfo(
+                        title: "변경이 완료되었어요!",
+                        subTitle: "비밀번호가 재설정 되었어요!",
+                        buttonTitle: "로그인하러 갈래요!"
+                    )
+                    let viewModel = ResetPasswordCompleteModel(
+                        info: info) {
+                            self.environment.resetSuccess = true
+                        }
+                    ResetPasswordCompleteView(model: viewModel)
                 }
             }
         }

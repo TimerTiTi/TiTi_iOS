@@ -1,0 +1,71 @@
+//
+//  ResetPasswordCompleteView.swift
+//  Project_Timer
+//
+//  Created by Kang Minsang on 2024/03/17.
+//  Copyright © 2024 FDEE. All rights reserved.
+//
+
+import SwiftUI
+
+struct ResetPasswordCompleteView: View {
+    @StateObject private var model: ResetPasswordCompleteModel
+    
+    init(model: ResetPasswordCompleteModel) {
+        _model = StateObject(wrappedValue: model)
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                Colors.firstBackground.toColor
+                    .ignoresSafeArea()
+                
+                ContentView(model: self.model)
+            }
+            .onChange(of: geometry.size, perform: { value in
+                self.model.updateContentWidth(size: value)
+            })
+        }
+        .configureForTextFieldRootView()
+    }
+    
+    struct ContentView: View {
+        @EnvironmentObject var environment: ResetPasswordEnvironment
+        @ObservedObject var model: ResetPasswordCompleteModel
+        
+        var body: some View {
+            HStack {
+                Spacer()
+                ZStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        TTChangeCompleteTitleView(title: self.model.info.title, subTitle: self.model.info.subTitle)
+                        
+                        Spacer()
+                        
+                        Button {
+                            self.model.action()
+                        } label: {
+                            Text("로그인하러 갈래요!") // TODO: TLR 반영
+                        }
+                    }
+                    .frame(width: self.model.contentWidth)
+                }
+                Spacer()
+            }
+        }
+    }
+}
+
+struct ResetPasswordCompleteView_Previews: PreviewProvider {
+    static var previews: some View {
+        ResetPasswordCompleteView(model: ResetPasswordCompleteModel(
+            info: ChangeCompleteInfo(
+                title: "변경이 완료되었어요!",
+                subTitle: "비밀번호가 재설정 되었어요!",
+                buttonTitle: "로그인하러 갈래요!"
+            ), buttonAction: {
+                print("complete")
+            })).environmentObject(ResetPasswordEnvironment())
+    }
+}

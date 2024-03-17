@@ -335,6 +335,10 @@
 		87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */; };
 		87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */; };
 		87D4DCDD2BA5C1E800BB5AAB /* ResetPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */; };
+		87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */; };
+		87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */; };
+		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
+		87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -734,6 +738,10 @@
 		87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
 		87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordRoute.swift; path = ../../../../../../../../../../Downloads/ResetPasswordRoute.swift; sourceTree = "<group>"; };
+		87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteView.swift; sourceTree = "<group>"; };
+		87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteModel.swift; sourceTree = "<group>"; };
+		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
+		87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTChangeCompleteTitleView.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -1153,6 +1161,7 @@
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
+				87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1620,6 +1629,7 @@
 				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
 				87D4DCD02BA5A4A300BB5AAB /* Email */,
 				87D4DCD72BA5C15C00BB5AAB /* Password */,
+				87D4DCDE2BA69F8E00BB5AAB /* Complete */,
 			);
 			path = ResetPassword;
 			sourceTree = "<group>";
@@ -1668,6 +1678,15 @@
 				87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */,
 			);
 			path = Password;
+			sourceTree = "<group>";
+		};
+		87D4DCDE2BA69F8E00BB5AAB /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */,
+				87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */,
+			);
+			path = Complete;
 			sourceTree = "<group>";
 		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
@@ -1737,6 +1756,7 @@
 				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
 				87862E812B2D8C22004ED313 /* TTNotificationView.swift */,
+				87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
 				87CEDD3B28F53370007ACF6E /* PopupView */,
 				8762717327DF88E700F812ED /* View */,
@@ -2174,6 +2194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */,
 				877911B22A188A3200F0A713 /* SettingSwitchListVC.swift in Sources */,
 				870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */,
 				87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */,
@@ -2291,6 +2312,7 @@
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
+				87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
@@ -2406,6 +2428,7 @@
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
+				87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,
@@ -2488,6 +2511,7 @@
 				87862E892B2DBBDA004ED313 /* PopupVC.swift in Sources */,
 				8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
+				87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */,
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
 				87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,

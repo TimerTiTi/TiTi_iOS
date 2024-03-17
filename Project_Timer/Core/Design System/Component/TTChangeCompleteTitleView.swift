@@ -1,15 +1,15 @@
 //
-//  TTSignupTitleView.swift
+//  TTChangeCompleteTitleView.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2023/10/30.
-//  Copyright © 2023 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/03/17.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 import SwiftUI
 
-struct TTSignupTitleView: View {
+struct TTChangeCompleteTitleView: View {
     let title: String
     let subTitle: String
     
@@ -25,14 +25,13 @@ struct TTSignupTitleView: View {
             
             VStack(alignment: .leading, spacing: 16) {
                 Text(title)
-                    .font(Typographys.font(.bold_5, size: 22))
+                    .font(Typographys.font(.bold_5, size: 32))
                 Text(subTitle)
                     .font(Typographys.font(.semibold_4, size: 14))
                     .foregroundStyle(UIColor.secondaryLabel.toColor)
                 Spacer()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .frame(height: 127)
         }
     }
 }
