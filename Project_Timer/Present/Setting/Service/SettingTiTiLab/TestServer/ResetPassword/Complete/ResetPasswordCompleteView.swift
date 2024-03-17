@@ -43,11 +43,10 @@ struct ResetPasswordCompleteView: View {
                         
                         Spacer()
                         
-                        Button {
-                            self.model.action()
-                        } label: {
-                            Text("로그인하러 갈래요!") // TODO: TLR 반영
-                        }
+                        TTBottomRoundButtonView(
+                            title: self.model.info.buttonTitle,
+                            action: self.model.action
+                        )
                     }
                     .frame(width: self.model.contentWidth)
                 }

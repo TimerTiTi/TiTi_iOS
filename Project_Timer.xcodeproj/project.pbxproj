@@ -339,6 +339,7 @@
 		87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */; };
 		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
 		87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */; };
+		87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -742,6 +743,7 @@
 		87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteModel.swift; sourceTree = "<group>"; };
 		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
 		87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTChangeCompleteTitleView.swift; sourceTree = "<group>"; };
+		87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTBottomRoundButtonView.swift; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -1757,6 +1759,7 @@
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
 				87862E812B2D8C22004ED313 /* TTNotificationView.swift */,
 				87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */,
+				87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
 				87CEDD3B28F53370007ACF6E /* PopupView */,
 				8762717327DF88E700F812ED /* View */,
@@ -2504,6 +2507,7 @@
 				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */,
+				87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */,
 				875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
