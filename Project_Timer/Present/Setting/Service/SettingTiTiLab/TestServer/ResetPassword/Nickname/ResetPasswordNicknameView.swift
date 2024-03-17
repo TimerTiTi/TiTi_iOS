@@ -78,7 +78,7 @@ struct ResetPasswordNicknameView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 닉네임을 입력해 주세요") // TODO: TLR 반영
+                                TTSignupTitleView(title: Localized.string(.SignIn_Button_FindPassword), subTitle: Localized.string(.FindAccount_Text_InputNicknameDesc))
                                 
                                 TTSignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
                                     self.model.checkNickname()

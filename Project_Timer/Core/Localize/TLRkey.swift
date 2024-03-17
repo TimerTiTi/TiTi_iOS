@@ -402,6 +402,25 @@ enum TLRkey: String {
     /// 닉네임 또는 이메일을 확인해주세요 (5자리 이상)
     case SignUp_Error_CheckNicknameOrEmail
     
+    /// 기존 계정의 닉네임을 입력해 주세요
+    case FindAccount_Text_InputNicknameDesc
+    /// 가입되지 않은 닉네임입니다
+    case FindAccount_Error_NotRegisteredNickname
+    /// 기존 계정의 이메일을 입력해 주세요
+    case FindAccount_Text_InputEmailDesc
+    /// 가입되지 않은 이메일입니다
+    case FindAccount_Error_NotRegisteredEmail
+    /// 새로운 비밀번호를 입력해 주세요
+    case FindAccount_Text_InputNewPasswordTitle
+    /// 닉네임과 이메일에 해당하는 유저가 존재하지 않습니다. 다시 한 번 확인해 주세요
+    case FindAccount_Error_NotRegisteredNicknameEmail
+    /// 변경이 완료되었어요!
+    case FindAccount_Text_ChangeCompletedTitle
+    /// 비밀번호가 재설정 되었어요!
+    case FindAccount_Text_ChangePasswordCompleted
+    /// 로그인하러 갈래요!
+    case FindAccount_Button_GoToLogin
+    
     /// 서버를 일시적으로 사용할 수 없어요
     case Server_Popup_ServerCantUseTitle
     /// 잠시 후 이용해 주세요

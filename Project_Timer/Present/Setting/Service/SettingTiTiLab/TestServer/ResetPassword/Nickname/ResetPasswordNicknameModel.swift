@@ -18,7 +18,7 @@ final class ResetPasswordNicknameModel: ObservableObject {
         var message: String {
             switch self {
             case .notExist:
-                return "가입되지 않은 닉네임입니다" // TODO: TLR 반영
+                return Localized.string(.FindAccount_Error_NotRegisteredNickname)
             case .serverError:
                 return Localized.string(.Server_Error_CheckNetwork)
             }

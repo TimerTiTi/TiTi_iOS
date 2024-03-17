@@ -220,6 +220,16 @@ struct TLRko {
         case .SignUp_Error_EnterDifferentValue: value = "닉네임, 또는 이메일을 다른값으로 입력해주세요"
         case .SignUp_Error_CheckNicknameOrEmail: value = "닉네임 또는 이메일을 확인해주세요 (5자리 이상)"
             
+        case .FindAccount_Text_InputNicknameDesc: value = "기존 계정의 닉네임을 입력해 주세요"
+        case .FindAccount_Error_NotRegisteredNickname: value = "가입되지 않은 닉네임입니다"
+        case .FindAccount_Text_InputEmailDesc: value = "기존 계정의 이메일을 입력해 주세요"
+        case .FindAccount_Error_NotRegisteredEmail: value = "가입되지 않은 이메일입니다"
+        case .FindAccount_Text_InputNewPasswordTitle: value = "새로운 비밀번호를 입력해 주세요"
+        case .FindAccount_Error_NotRegisteredNicknameEmail: value = "닉네임과 이메일에 해당하는 유저가 존재하지 않습니다.\n다시 한 번 확인해 주세요"
+        case .FindAccount_Text_ChangeCompletedTitle: value = "변경이 완료되었어요!"
+        case .FindAccount_Text_ChangePasswordCompleted: value = "비밀번호가 재설정 되었어요!"
+        case .FindAccount_Button_GoToLogin: value = "로그인하러 갈래요!"
+            
         case .Server_Popup_ServerCantUseTitle: value = "서버를 일시적으로 사용할 수 없어요"
         case .Server_Popup_ServerCantUseDesc: value = "잠시 후 이용해 주세요 :)"
         case .Server_Error_NetworkError: value = "네트워크 오류"

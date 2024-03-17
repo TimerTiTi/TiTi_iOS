@@ -220,6 +220,16 @@ struct TLRen {
         case .SignUp_Error_EnterDifferentValue: value = "Please enter your nickname or email in a different value"
         case .SignUp_Error_CheckNicknameOrEmail: value = "Please check your nickname or email (at least 5 characters)"
             
+        case .FindAccount_Text_InputNicknameDesc: value = "Please enter your nickname for the registered account"
+        case .FindAccount_Error_NotRegisteredNickname: value = "This nickname is not registered"
+        case .FindAccount_Text_InputEmailDesc: value = "Please enter your email for the registered account"
+        case .FindAccount_Error_NotRegisteredEmail: value = "This email is not registered"
+        case .FindAccount_Text_InputNewPasswordTitle: value = "Please enter a new password"
+        case .FindAccount_Error_NotRegisteredNicknameEmail: value = "User corresponding to nickname and email does not exist.\nPlease check again"
+        case .FindAccount_Text_ChangeCompletedTitle: value = "Change completed!"
+        case .FindAccount_Text_ChangePasswordCompleted: value = "Password has been changed!"
+        case .FindAccount_Button_GoToLogin: value = "Go to Signin"
+            
         case .Server_Popup_ServerCantUseTitle: value = "The server is temporarily unavailable"
         case .Server_Popup_ServerCantUseDesc: value = "Please try it later :)"
         case .Server_Error_NetworkError: value = "Network Error"

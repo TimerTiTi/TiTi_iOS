@@ -57,7 +57,7 @@ struct ResetPasswordEmailView: View {
                         HStack {
                             Spacer()
                             VStack {
-                                TTSignupTitleView(title: "비밀번호 찾기", subTitle: "기존 계정의 이메일을 입력해 주세요") // TODO: TLR 반영
+                                TTSignupTitleView(title: Localized.string(.SignIn_Button_FindPassword), subTitle: Localized.string(.FindAccount_Text_InputEmailDesc))
                                 
                                 TTSignupTextFieldView(type: .email, keyboardType: .alphabet, text: $model.email, focus: $focus) {
                                     self.model.checkEmail()

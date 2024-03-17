@@ -32,11 +32,10 @@ struct ResetPasswordView: View {
             .navigationDestination(for: ResetPasswordRoute.self) { destination in
                 switch destination {
                 case .resetPasswordComplete:
-                    // TODO: TLR 반영
                     let info = ChangeCompleteInfo(
-                        title: "변경이 완료되었어요!",
-                        subTitle: "비밀번호가 재설정 되었어요!",
-                        buttonTitle: "로그인하러 갈래요!"
+                        title: Localized.string(.FindAccount_Text_ChangeCompletedTitle),
+                        subTitle: Localized.string(.FindAccount_Text_ChangePasswordCompleted),
+                        buttonTitle: Localized.string(.FindAccount_Button_GoToLogin)
                     )
                     let viewModel = ResetPasswordCompleteModel(
                         info: info) {
@@ -61,7 +60,7 @@ struct ResetPasswordView: View {
                         HStack {
                             Spacer()
                             VStack(alignment: .leading, spacing: 0) {
-                                TTSignupTitleView(title: "새로운 비밀번호를 입력해 주세요", subTitle: Localized.string(.SignUp_Text_InputPasswordDesc)) // TODO: TLR 반영
+                                TTSignupTitleView(title: Localized.string(.FindAccount_Text_InputNewPasswordTitle), subTitle: Localized.string(.SignUp_Text_InputPasswordDesc))
                                 
                                 TTSignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
                                     self.model.checkPassword()

@@ -26,7 +26,7 @@ final class ResetPasswordModel: ObservableObject {
             case .different:
                 return Localized.string(.SignUp_Error_PasswordMismatch)
             case .notExist:
-                return "닉네임과 이메일에 해당하는 유저가 존재하지 않습니다.\n다시 한 번 확인해 주세요" // TODO: TLR 반영
+                return Localized.string(.FindAccount_Error_NotRegisteredNicknameEmail)
             case .serverError:
                 return Localized.string(.Server_Error_CheckNetwork)
             }
