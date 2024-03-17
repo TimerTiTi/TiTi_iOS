@@ -74,6 +74,7 @@ struct TLRen {
         case .TiTiLab_Button_SignUpDesc: value = "for Synclonize Dailys (beta)"
         case .TiTiLab_Button_SignIn: value = "Sign In"
         case .TiTiLab_Button_SignOut: value = "Sign Out"
+        case .TiTiLab_Popup_SignOutTitle: value = "Do you want to Signout?"
             
         case .SyncDaily_Text_InfoSync1: value = "The last synchronization time of the current device and the latest synchronization time reflected in the server."
         case .SyncDaily_Text_InfoSync2: value = "Synchronization backs up your modified data and allows you to receive data backed up from other devices."

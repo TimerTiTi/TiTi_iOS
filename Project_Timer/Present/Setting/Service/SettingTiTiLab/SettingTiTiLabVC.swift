@@ -120,16 +120,17 @@ extension SettingTiTiLabVC {
     
     /// 로그아웃
     private func signOut() {
-        print("Sign Out")
-        guard KeyChain.shared.deleteAll() else {
-            print("ERROR: KeyChain.shared.deleteAll")
-            return
+        self.showAlertWithCancelOKAfterHandler(title: Localized.string(.TiTiLab_Popup_SignOutTitle), text: nil) { [weak self] in
+            print("Sign Out")
+            guard KeyChain.shared.deleteAll() else {
+                print("ERROR: KeyChain.shared.deleteAll")
+                return
+            }
+            
+            UserDefaultsManager.set(to: false, forKey: .signinInTestServerV1)
+            NotificationCenter.default.post(name: KeyChain.signouted, object: nil)
+            self?.configureSignouted()
         }
-        
-        UserDefaultsManager.set(to: false, forKey: .signinInTestServerV1)
-        NotificationCenter.default.post(name: KeyChain.signouted, object: nil)
-        
-        // TODO: SignOut alert 표시
     }
 }
 
