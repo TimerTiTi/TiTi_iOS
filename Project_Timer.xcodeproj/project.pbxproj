@@ -321,6 +321,27 @@
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
 		87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */; };
 		87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */; };
+		87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */; };
+		87D4DCC02BA5253600BB5AAB /* ResetPasswordEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */; };
+		87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */; };
+		87D4DCC52BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */; };
+		87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */; };
+		87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */; };
+		87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */; };
+		87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */; };
+		87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD12BA5A4C400BB5AAB /* ResetPasswordEmailView.swift */; };
+		87D4DCD42BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD32BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift */; };
+		87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */; };
+		87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */; };
+		87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */; };
+		87D4DCDD2BA5C1E800BB5AAB /* ResetPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */; };
+		87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */; };
+		87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */; };
+		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
+		87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */; };
+		87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */; };
+		87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 87D4DCEA2BA6B04B00BB5AAB /* Lottie */; };
+		87D4DCEE2BA6B13100BB5AAB /* successBlueLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */; };
 		87D4DE112A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
@@ -706,6 +727,26 @@
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
 		87D3CF04288BAA1300ED33B7 /* ProgressDailyTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDailyTaskCell.swift; sourceTree = "<group>"; };
 		87D4C95928950B4E008ECAA4 /* WeekDailysData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDailysData.swift; sourceTree = "<group>"; };
+		87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordVC.swift; sourceTree = "<group>"; };
+		87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEnvironment.swift; sourceTree = "<group>"; };
+		87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameView.swift; sourceTree = "<group>"; };
+		87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameModel.swift; sourceTree = "<group>"; };
+		87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordInfo.swift; sourceTree = "<group>"; };
+		87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordNicknameRoute.swift; sourceTree = "<group>"; };
+		87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRequest.swift; sourceTree = "<group>"; };
+		87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleResponse.swift; sourceTree = "<group>"; };
+		87D4DCD12BA5A4C400BB5AAB /* ResetPasswordEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEmailView.swift; sourceTree = "<group>"; };
+		87D4DCD32BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEmailModel.swift; sourceTree = "<group>"; };
+		87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEmailRoute.swift; sourceTree = "<group>"; };
+		87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
+		87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordRoute.swift; path = ../../../../../../../../../../Downloads/ResetPasswordRoute.swift; sourceTree = "<group>"; };
+		87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteView.swift; sourceTree = "<group>"; };
+		87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteModel.swift; sourceTree = "<group>"; };
+		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
+		87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTChangeCompleteTitleView.swift; sourceTree = "<group>"; };
+		87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTBottomRoundButtonView.swift; sourceTree = "<group>"; };
+		87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = successBlueLottie.json; sourceTree = "<group>"; };
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
@@ -782,6 +823,7 @@
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				B644B98BE1AB8C32AF7EB7F4 /* Pods_Project_Timer.framework in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
+				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1029,7 @@
 				87306D4A2B26041F001B7C14 /* Localize */,
 				8791C1F027DCD03E000D6BA9 /* Global */,
 				870800912B2D69BF00830B39 /* Extension */,
+				87306D622B26CC13001B7C14 /* Resource */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1010,7 +1053,6 @@
 				87D83E862B29604C003C40AE /* Component */,
 				87306D5F2B26CBB3001B7C14 /* Icon */,
 				87306D5B2B26CB4D001B7C14 /* Theme */,
-				87306D622B26CC13001B7C14 /* Resource */,
 			);
 			path = "Design System";
 			sourceTree = "<group>";
@@ -1046,6 +1088,7 @@
 				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
+				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1124,6 +1167,8 @@
 				8757AA3C290511FF00D97517 /* Task.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
+				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
+				87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1583,6 +1628,82 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		87D4DCBC2BA51E9A00BB5AAB /* ResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */,
+				87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */,
+				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
+				87D4DCD02BA5A4A300BB5AAB /* Email */,
+				87D4DCD72BA5C15C00BB5AAB /* Password */,
+				87D4DCDE2BA69F8E00BB5AAB /* Complete */,
+			);
+			path = ResetPassword;
+			sourceTree = "<group>";
+		};
+		87D4DCC32BA52CBF00BB5AAB /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCC82BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift */,
+				87D4DCC12BA5298B00BB5AAB /* ResetPasswordNicknameView.swift */,
+				87D4DCC42BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
+		87D4DCCA2BA5476900BB5AAB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		87D4DCCD2BA548E300BB5AAB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		87D4DCD02BA5A4A300BB5AAB /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */,
+				87D4DCD12BA5A4C400BB5AAB /* ResetPasswordEmailView.swift */,
+				87D4DCD32BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		87D4DCD72BA5C15C00BB5AAB /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */,
+				87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */,
+				87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		87D4DCDE2BA69F8E00BB5AAB /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */,
+				87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */,
+			);
+			path = Complete;
+			sourceTree = "<group>";
+		};
+		87D4DCEC2BA6B11B00BB5AAB /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		87D5E64E28C745EB00D53F8D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1621,6 +1742,7 @@
 			isa = PBXGroup;
 			children = (
 				879053FD29558ED2008B9258 /* SyncDailys */,
+				87D4DCBC2BA51E9A00BB5AAB /* ResetPassword */,
 				879BE31F2AC402A8007AAC46 /* SignupSigninVC.swift */,
 				879BE3212AC40444007AAC46 /* SignupSigninVM.swift */,
 				879BE3252AC42919007AAC46 /* SigninInputTextfield.swift */,
@@ -1649,6 +1771,8 @@
 				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
 				87862E812B2D8C22004ED313 /* TTNotificationView.swift */,
+				87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */,
+				87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
 				87CEDD3B28F53370007ACF6E /* PopupView */,
 				8762717327DF88E700F812ED /* View */,
@@ -1745,6 +1869,8 @@
 		87F778DC2B196E8F00909511 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				87D4DCCD2BA548E300BB5AAB /* Response */,
+				87D4DCCA2BA5476900BB5AAB /* Request */,
 				87F778E12B196F7400909511 /* Repository */,
 				875FAE232B1C6710008F19D2 /* API */,
 				875FAE222B1C653A008F19D2 /* DTO */,
@@ -1911,6 +2037,7 @@
 				87910827283876DD005D7B10 /* Alamofire */,
 				876C3B0A2B1045C5002A5132 /* GoogleSignIn */,
 				876C3B0C2B1045C5002A5132 /* GoogleSignInSwift */,
+				87D4DCEA2BA6B04B00BB5AAB /* Lottie */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -1951,8 +2078,7 @@
 				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
-				87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */,
+				87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -1994,6 +2120,7 @@
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
+				87D4DCEE2BA6B13100BB5AAB /* successBlueLottie.json in Resources */,
 				87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */,
 				874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */,
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
@@ -2084,6 +2211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */,
 				877911B22A188A3200F0A713 /* SettingSwitchListVC.swift in Sources */,
 				870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */,
 				87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */,
@@ -2117,6 +2245,7 @@
 				874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
+				87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				873731D12B2E92BD00D7BD9F /* NotificationAPI.swift in Sources */,
 				873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */,
@@ -2124,6 +2253,7 @@
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
+				87D4DCC52BA52CDF00BB5AAB /* ResetPasswordNicknameModel.swift in Sources */,
 				879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
@@ -2164,6 +2294,7 @@
 				873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
+				87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */,
 				875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,
@@ -2190,6 +2321,7 @@
 				870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */,
 				878DA8252B0C78D8001E924E /* SignupNicknameRoute.swift in Sources */,
 				870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */,
+				87D4DCD42BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				877911B82A18903000F0A713 /* SettingListCell.swift in Sources */,
 				870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */,
@@ -2197,6 +2329,7 @@
 				87F1093A284C589A002E31EA /* FunctionInfo.swift in Sources */,
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkInfo.swift in Sources */,
+				87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
@@ -2221,6 +2354,7 @@
 				870800872B2D599800830B39 /* SyncLogRepository.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
+				87D4DCC02BA5253600BB5AAB /* ResetPasswordEnvironment.swift in Sources */,
 				8706C3322AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift in Sources */,
 				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
 				8708008F2B2D646C00830B39 /* SyncLogUseCaseInterface.swift in Sources */,
@@ -2246,10 +2380,12 @@
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
+				87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
+				87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */,
 				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
@@ -2309,6 +2445,7 @@
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */,
 				87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */,
+				87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */,
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,
@@ -2328,10 +2465,12 @@
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				8708006B2B2CA57C00830B39 /* DailysAPI.swift in Sources */,
 				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
+				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
 				8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
+				87D4DCDD2BA5C1E800BB5AAB /* ResetPasswordRoute.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
@@ -2340,9 +2479,12 @@
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
 				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
+				87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */,
+				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
 				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
+				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
 				875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */,
@@ -2356,6 +2498,7 @@
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
 				8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
+				87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				870800892B2D59EB00830B39 /* SyncLogDTO.swift in Sources */,
@@ -2378,6 +2521,7 @@
 				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */,
+				87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */,
 				875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
@@ -2385,7 +2529,9 @@
 				87862E892B2DBBDA004ED313 /* PopupVC.swift in Sources */,
 				8760FB112A1DED3F0068CEF5 /* CalendarWidgetView.swift in Sources */,
 				875C98C92871BFCF008F7ADD /* UserDefaults+Extension.swift in Sources */,
+				87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */,
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
+				87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */,
 				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
@@ -2892,28 +3038,20 @@
 				kind = branch;
 			};
 		};
-		87906C822B9BF7AC000EC960 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
-		87906C832B9BF7F8000EC960 /* XCRemoteSwiftPackageReference "Then" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 		87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2948,6 +3086,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		87D4DCEA2BA6B04B00BB5AAB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

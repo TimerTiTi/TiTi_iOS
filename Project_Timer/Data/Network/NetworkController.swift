@@ -9,8 +9,8 @@
 import Foundation
 
 final class NetworkController {
-    let network: NetworkFetchable
-    init(network: NetworkFetchable) {
+    let network: Network
+    init(network: Network) {
         self.network = network
     }
 }

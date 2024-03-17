@@ -18,15 +18,46 @@ final class AuthAPI {
         let base = NetworkURL.shared.serverURL ?? "nil"
         return base + "/auth/login"
     }
+    private var checkUsersURL: String {
+        let base = NetworkURL.shared.serverURL ?? "nil"
+        return base + "/auth/users"
+    }
+    private var resetPasswordURL: String {
+        let base = NetworkURL.shared.serverURL ?? "nil"
+        return base + "/auth/users/password"
+    }
     
     func signup(signupInfo: TestUserSignupInfo, completion: @escaping (NetworkResult) -> Void) {
-        self.network.request(url: signupURL, method: .post, param: nil, body: signupInfo) { result in
+        self.network.request(url: self.signupURL, method: .post, param: nil, body: signupInfo) { result in
             completion(result)
         }
     }
     
     func signin(signinInfo: TestUserSigninInfo, completion: @escaping (NetworkResult) -> Void) {
-        self.network.request(url: signinURL, method: .post, param: nil, body: signinInfo) { result in
+        self.network.request(url: self.signinURL, method: .post, param: nil, body: signinInfo) { result in
+            completion(result)
+        }
+    }
+    
+    func checkUsername(username: String, completion: @escaping (NetworkResult) -> Void) {
+        self.network.request(url: self.checkUsersURL, method: .get, param: [
+            "username": username
+        ]) { result in
+            completion(result)
+        }
+    }
+    
+    func checkEmail(username: String, email: String, completion: @escaping (NetworkResult) -> Void) {
+        self.network.request(url: self.checkUsersURL, method: .get, param: [
+            "username": username,
+            "email": email
+        ]) { result in
+            completion(result)
+        }
+    }
+    
+    func updatePassword(request: ResetPasswordRequest, completion: @escaping (NetworkResult) -> Void) {
+        self.network.request(url: self.resetPasswordURL, method: .post, body: request) { result in
             completion(result)
         }
     }

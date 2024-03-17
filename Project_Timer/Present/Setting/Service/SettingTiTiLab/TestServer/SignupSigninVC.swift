@@ -327,6 +327,12 @@ extension SignupSigninVC {
             self?.sendMail(text: Localized.string(.EmailMessage_Text_FindNickname))
         }), for: .touchUpInside)
         
+        self.findPasswordButton.addAction(UIAction(handler: { [weak self] _ in
+            let vc = ResetPasswordVC()
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }), for: .touchUpInside)
+        
         self.contactButton.addAction(UIAction(handler: { [weak self] _ in
             self?.sendMail(text: Localized.string(.EmailMessage_Text_Message))
         }), for: .touchUpInside)

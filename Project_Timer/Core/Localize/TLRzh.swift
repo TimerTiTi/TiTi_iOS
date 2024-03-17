@@ -218,7 +218,17 @@ struct TLRzh {
         case .SignUp_Error_SignupError: value = "注册错误"
         case .SignUp_Popup_SignupSuccess: value = "注册成功"
         case .SignUp_Error_EnterDifferentValue: value = "请输入您的昵称或电子邮件为不同的值"
-        case .SignUp_Error_CheckNicknameOrEmail: value = "请检查您的昵称或电子邮件（至少5个字符）"
+        case .SignUp_Error_CheckNicknameOrEmail: value = "请检查您的昵称或电子邮件（至少5个字符)"
+            
+        case .FindAccount_Text_InputNicknameDesc: value = "请输入注册账户的昵称"
+        case .FindAccount_Error_NotRegisteredNickname: value = "此昵称未注册"
+        case .FindAccount_Text_InputEmailDesc: value = "请输入注册账户的电子邮件"
+        case .FindAccount_Error_NotRegisteredEmail: value = "此电子邮件未注册"
+        case .FindAccount_Text_InputNewPasswordTitle: value = "请输入新密码"
+        case .FindAccount_Error_NotRegisteredNicknameEmail: value = "对应于昵称和电子邮件的用户不存在。\n请再次检查"
+        case .FindAccount_Text_ChangeCompletedTitle: value = "变更已完成！"
+        case .FindAccount_Text_ChangePasswordCompleted: value = "密码已更改！"
+        case .FindAccount_Button_GoToLogin: value = "去登录"
             
         case .Server_Popup_ServerCantUseTitle: value = "暂时无法使用服务器"
         case .Server_Popup_ServerCantUseDesc: value = "请稍后使用 :)"

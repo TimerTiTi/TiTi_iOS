@@ -11,4 +11,7 @@ import Foundation
 protocol AuthRepositoryInterface {
     func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void)
     func signin(signinInfo: TestUserSigninInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void)
+    func checkUsername(username: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
+    func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
+    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
 }

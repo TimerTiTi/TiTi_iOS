@@ -48,4 +48,58 @@ final class AuthRepository: AuthRepositoryInterface {
             }
         }
     }
+    
+    func checkUsername(username: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        api.checkUsername(username: username) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONDecoder().decode(SimpleResponse.self, from: data) else {
+                    completion(.failure(.DECODEERROR))
+                    return
+                }
+                
+                completion(.success(dto))
+                
+            default:
+                completion(.failure(.error(result)))
+            }
+        }
+    }
+    
+    func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        api.checkEmail(username: username, email: email) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONDecoder().decode(SimpleResponse.self, from: data) else {
+                    completion(.failure(.DECODEERROR))
+                    return
+                }
+                
+                completion(.success(dto))
+                
+            default:
+                completion(.failure(.error(result)))
+            }
+        }
+    }
+    
+    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+        api.updatePassword(request: request) { result in
+            switch result.status {
+            case .SUCCESS:
+                guard let data = result.data,
+                      let dto = try? JSONDecoder().decode(SimpleResponse.self, from: data) else {
+                    completion(.failure(.DECODEERROR))
+                    return
+                }
+                
+                completion(.success(dto))
+                
+            default:
+                completion(.failure(.error(result)))
+            }
+        }
+    }
 }

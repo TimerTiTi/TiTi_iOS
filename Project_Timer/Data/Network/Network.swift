@@ -9,8 +9,17 @@
 import Foundation
 import Alamofire
 
-struct Network: NetworkFetchable {
-    func request(url: String, method: HTTPMethod, completion: @escaping (NetworkResult) -> Void) {
+struct Network {
+    func request(url: String, method: HTTPMethod, param: [String: Any]? = nil, completion: @escaping (NetworkResult) -> Void) {
+        var url = url
+        if let param = param {
+            var components = URLComponents(string: url)
+            components?.queryItems = param.map({ key, value in URLQueryItem(name: key, value: "\(value)")})
+            if let urlWithQuery = components?.url?.absoluteString {
+                url = urlWithQuery
+            }
+        }
+        
         Session.default.request(url, method: method, interceptor: NetworkInterceptor()) { $0.timeoutInterval = 10 }
             .validate()
             .response { response in
@@ -19,7 +28,7 @@ struct Network: NetworkFetchable {
             .resume()
     }
     
-    func request<T: Encodable>(url: String, method: HTTPMethod, param: [String: Any]?, body: T, completion: @escaping (NetworkResult) -> Void) {
+    func request<T: Encodable>(url: String, method: HTTPMethod, param: [String: Any]? = nil, body: T, completion: @escaping (NetworkResult) -> Void) {
         var url = url
         if let param = param {
             var components = URLComponents(string: url)
