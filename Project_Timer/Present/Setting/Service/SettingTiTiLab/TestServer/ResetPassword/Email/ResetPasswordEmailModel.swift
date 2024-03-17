@@ -45,7 +45,7 @@ final class ResetPasswordEmailModel: ObservableObject {
     
     // nicknameTextField underline 컬러
     var emailTintColor: Color {
-        if self.validEmail == false {
+        if self.emailWarningVisible {
             return Colors.wrongTextField.toColor
         } else {
             return self.focus == .email ? Color.blue : UIColor.placeholderText.toColor

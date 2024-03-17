@@ -56,7 +56,7 @@ struct ResetPasswordView: View {
                                     self.model.checkPassword()
                                 }
                                 TTSignupTextFieldUnderlineView(color: self.model.passwordTintColor)
-                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: self.model.validPassword == false && self.model.password.isEmpty)
+                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: self.model.passwordWarningVisible)
                                     .id(TTSignupTextFieldView.type.password)
                                 
                                 if self.model.stage == .password2 {
@@ -114,7 +114,7 @@ struct ResetPasswordView: View {
                     self.model.checkPassword2()
                 }
                 TTSignupTextFieldUnderlineView(color: self.model.password2TintColor)
-                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordMismatch), visible: self.model.validPassword2 == false && self.model.password2.isEmpty)
+                TTSignupTextFieldWarning(warning: self.model.errorMessage?.message ?? "", visible: self.model.password2WarningVisible)
                     .id(TTSignupTextFieldView.type.password2)
             }
         }

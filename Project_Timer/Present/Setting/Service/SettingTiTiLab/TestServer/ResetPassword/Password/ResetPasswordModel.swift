@@ -16,11 +16,28 @@ final class ResetPasswordModel: ObservableObject {
         case password
         case password2
     }
+    enum ErrorMessage {
+        case different
+        case notExist
+        case serverError
+        
+        var message: String {
+            switch self {
+            case .different:
+                return Localized.string(.SignUp_Error_PasswordMismatch)
+            case .notExist:
+                return "닉네임과 이메일에 해당하는 유저가 존재하지 않습니다.\n다시 한 번 확인해 주세요" // TODO: TLR 반영
+            case .serverError:
+                return Localized.string(.Server_Error_CheckNetwork)
+            }
+        }
+    }
     
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
     @Published var validPassword: Bool?
     @Published var validPassword2: Bool?
+    @Published var errorMessage: ErrorMessage?
     @Published var stage: Stage = .password
     
     @Published var password: String = ""
@@ -34,9 +51,17 @@ final class ResetPasswordModel: ObservableObject {
         self.infos = infos
     }
     
+    var passwordWarningVisible: Bool {
+        return self.validPassword == false && self.password.isEmpty
+    }
+    
+    var password2WarningVisible: Bool {
+        return self.validPassword2 == false && self.password2.isEmpty
+    }
+    
     // passwordTextField underline 컬러
     var passwordTintColor: Color {
-        if self.validPassword == false && self.password.isEmpty {
+        if self.passwordWarningVisible {
             return Colors.wrongTextField.toColor
         } else {
             return self.focus == .password ? Color.blue : UIColor.placeholderText.toColor
@@ -45,7 +70,7 @@ final class ResetPasswordModel: ObservableObject {
     
     // passwordTextField2 underline 컬러
     var password2TintColor: Color {
-        if self.validPassword2 == false && self.password2.isEmpty {
+        if self.password2WarningVisible {
             return Colors.wrongTextField.toColor
         } else {
             return self.focus == .password2 ? Color.blue : UIColor.placeholderText.toColor
@@ -93,10 +118,39 @@ extension ResetPasswordModel {
     func checkPassword2() {
         let passwordValid = PredicateChecker.isValidPassword(self.password2)
         let samePassword = self.password == self.password2
-        self.validPassword2 = (passwordValid && samePassword)
+        let validPassword2 = (passwordValid && samePassword)
+        
         // stage 변화 -> @StateFocus 반영
-        if self.validPassword2 == false {
+        
+        // 비밀번호가 일치하지 않는 경우 -> 해당 오류문구 표시
+        if validPassword2 == false {
+            self.validPassword2 = false
+            self.errorMessage = .different
             self.resetPassword2()
+        } 
+        // 비밀번호가 일치하는 경우 서버 통신
+        else {
+            let request = ResetPasswordRequest(
+                username: self.infos.nickname,
+                email: self.infos.email,
+                newPassword: self.password2
+            )
+            
+            self.authUseCase.updatePassword(request: request) { [weak self] result in
+                switch result {
+                case .success(let simpleResponse):
+                    self?.validPassword2 = simpleResponse.data
+                case .failure(let error):
+                    self?.validPassword2 = false
+                    switch error {
+                    case .NOTFOUND(_):
+                        self?.errorMessage = .notExist
+                    default:
+                        self?.errorMessage = .serverError
+                        print("Error: \(error.title), \(error.message)")
+                    }
+                }
+            }
         }
     }
     

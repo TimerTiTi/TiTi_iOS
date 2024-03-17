@@ -43,7 +43,7 @@ final class ResetPasswordNicknameModel: ObservableObject {
     
     // nicknameTextField underline 컬러
     var nicknameTintColor: Color {
-        if self.validNickname == false {
+        if self.nicknameWarningVisible {
             return Colors.wrongTextField.toColor
         } else {
             return self.focus == .nickname ? Color.blue : UIColor.placeholderText.toColor
