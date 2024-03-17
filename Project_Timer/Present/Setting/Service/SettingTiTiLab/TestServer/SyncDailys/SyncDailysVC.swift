@@ -108,7 +108,11 @@ extension SyncDailysVC {
             .sink(receiveValue: { [weak self] error in
                 LoadingIndicator.hideLoading()
                 guard let error = error else { return }
-                self?.showAlertWithOK(title: error.title, text: error.text)
+                self?.showAlertWithOKAfterHandler(title: error.title, text: error.text, completion: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        LoadingIndicator.hideLoading()
+                    }
+                })
             })
             .store(in: &self.cancellables)
     }
