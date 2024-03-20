@@ -80,7 +80,7 @@ struct ResetPasswordNicknameView: View {
                             VStack {
                                 TTSignupTitleView(title: Localized.string(.SignIn_Button_FindPassword), subTitle: Localized.string(.FindAccount_Text_InputNicknameDesc))
                                 
-                                TTSignupTextFieldView(type: .nickname, keyboardType: .alphabet, text: $model.nickname, focus: $focus) {
+                                TTSignupTextFieldView(type: .nickname, keyboardType: .default, text: $model.nickname, focus: $focus) {
                                     self.model.checkNickname()
                                 }
                                 .onChange(of: self.model.nickname) { newValue in

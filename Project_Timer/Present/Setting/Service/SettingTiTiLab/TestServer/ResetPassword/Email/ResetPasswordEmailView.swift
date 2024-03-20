@@ -59,7 +59,7 @@ struct ResetPasswordEmailView: View {
                             VStack {
                                 TTSignupTitleView(title: Localized.string(.SignIn_Button_FindPassword), subTitle: Localized.string(.FindAccount_Text_InputEmailDesc))
                                 
-                                TTSignupTextFieldView(type: .email, keyboardType: .alphabet, text: $model.email, focus: $focus) {
+                                TTSignupTextFieldView(type: .email, keyboardType: .emailAddress, text: $model.email, focus: $focus) {
                                     self.model.checkEmail()
                                 }
                                 .onChange(of: self.model.email) { newValue in
