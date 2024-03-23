@@ -25,7 +25,7 @@ struct TTSignupTextFieldView: View {
     
     var body: some View {
         TextField("", text: $text)
-            .font(Typographys.font(.semibold_4, size: 20))
+            .font(.system(size: 20, weight: .semibold))
             .foregroundStyle(.primary)
             .accentColor(.blue)
             .autocorrectionDisabled(true)
