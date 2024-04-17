@@ -1,5 +1,5 @@
 //
-//  NotificationAPI.swift
+//  NotificationNetwork.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NotificationAPI {
+final class NotificationNetwork {
     private let network = Network()
     private var url: String {
         let base = Infos.FirestoreURL.value

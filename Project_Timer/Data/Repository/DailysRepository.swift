@@ -9,7 +9,7 @@
 import Foundation
 
 final class DailysRepository: DailysRepositoryInterface {
-    private let api = DailysAPI()
+    private let api = DailysNetwork()
     
     func upload(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         api.upload(dailys: dailys) { result in

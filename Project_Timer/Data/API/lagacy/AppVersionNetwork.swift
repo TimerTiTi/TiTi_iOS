@@ -1,5 +1,5 @@
 //
-//  AppVersionAPI.swift
+//  AppVersionNetwork.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/03.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class AppVersionAPI {
+final class AppVersionNetwork {
     private let network = Network()
     private var latestVersionURL: String {
         let base = Infos.FirestoreURL.value

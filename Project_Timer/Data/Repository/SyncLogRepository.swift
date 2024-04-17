@@ -9,7 +9,7 @@
 import Foundation
 
 final class SyncLogRepository: SyncLogRepositoryInterface {
-    private let api = SyncLogAPI()
+    private let api = SyncLogNetwork()
     
     func get(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
         api.get { result in

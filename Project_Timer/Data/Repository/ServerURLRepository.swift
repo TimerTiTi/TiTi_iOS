@@ -9,7 +9,7 @@
 import Foundation
 
 final class ServerURLRepository: ServerURLRepositoryInterface {
-    private let api = ServerURLAPI()
+    private let api = ServerURLNetwork()
     
     func get(completion: @escaping (Result<String, NetworkError>) -> Void) {
         api.get { result in

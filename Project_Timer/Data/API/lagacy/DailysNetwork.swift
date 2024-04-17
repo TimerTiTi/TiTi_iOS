@@ -1,5 +1,5 @@
 //
-//  DailysAPI.swift
+//  DailysNetwork.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DailysAPI {
+final class DailysNetwork {
     private let network = Network()
     private var uploadDailysURL: String {
         let base = NetworkURL.shared.serverURL ?? "nil"

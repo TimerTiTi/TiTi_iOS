@@ -9,7 +9,7 @@
 import Foundation
 
 final class AppLatestVersionRepository: AppLatestVersionRepositoryInterface {
-    private let api = AppVersionAPI()
+    private let api = AppVersionNetwork()
     
     func get(completion: @escaping (Result<AppLatestVersionInfo, NetworkError>) -> Void) {
         api.get { result in

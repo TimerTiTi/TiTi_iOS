@@ -9,7 +9,7 @@
 import Foundation
 
 final class NotificationRepository: NotificationRepositoryInterface {
-    private let api = NotificationAPI()
+    private let api = NotificationNetwork()
     
     func get(completion: @escaping (Result<NotificationInfo?, NetworkError>) -> Void) {
         api.get { result in

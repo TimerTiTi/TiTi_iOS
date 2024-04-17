@@ -1,18 +1,18 @@
 //
-//  ServerURLAPI.swift
+//  SyncLogNetwork.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2023/12/15.
+//  Created by Kang Minsang on 2023/12/16.
 //  Copyright © 2023 FDEE. All rights reserved.
 //
 
 import Foundation
 
-final class ServerURLAPI {
+final class SyncLogNetwork {
     private let network = Network()
     private var url: String {
-        let base = Infos.FirestoreURL.value
-        return base + "/server/url"
+        let base = NetworkURL.shared.serverURL ?? "nil"
+        return base + "/syncLog"
     }
     
     func get(completion: @escaping (NetworkResult) -> Void) {

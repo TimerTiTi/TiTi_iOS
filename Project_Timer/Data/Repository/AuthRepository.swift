@@ -9,7 +9,7 @@
 import Foundation
 
 final class AuthRepository: AuthRepositoryInterface {
-    private let api = AuthAPI()
+    private let api = AuthNetwork()
     
     func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
         api.signup(signupInfo: signupInfo) { result in

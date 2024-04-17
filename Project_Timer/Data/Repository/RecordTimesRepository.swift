@@ -9,7 +9,7 @@
 import Foundation
 
 final class RecordTimesRepository: RecordTimesRepositoryInterface {
-    private let api = RecordTimesAPI()
+    private let api = RecordTimesNetwork()
     
     func upload(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         api.upload(recordTimes: recordTimes) { result in

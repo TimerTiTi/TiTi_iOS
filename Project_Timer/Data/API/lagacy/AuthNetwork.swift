@@ -1,5 +1,5 @@
 //
-//  AuthAPI.swift
+//  AuthNetwork.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/15.
@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Moya
 
-final class AuthAPI {
+final class AuthNetwork {
     private let network = Network()
     private var signupURL: String {
         let base = NetworkURL.shared.serverURL ?? "nil"
