@@ -203,6 +203,7 @@
 		8761BDC62BCFE64000E9281A /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8761BDC52BCFE64000E9281A /* ReactiveMoya */; };
 		8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8761BDC72BCFE64000E9281A /* RxMoya */; };
 		8761BDCA2BCFEA7A00E9281A /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */; };
+		8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
 		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
 		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
@@ -625,6 +626,7 @@
 		87617E662A0CE58400E312EA /* CalendarWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetProvider.swift; sourceTree = "<group>"; };
 		8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysAPI.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
 		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
 		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
@@ -1166,6 +1168,7 @@
 				8761BDBE2BCFE48D00E9281A /* lagacy */,
 				8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */,
 				8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */,
+				8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2453,6 +2456,7 @@
 				870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */,
 				8761BDC02BCFE52E00E9281A /* FirebaseAPI.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
+				8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */,
 				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
 				048D8ACB28AA49F800A2456D /* PopupEditHistoryVC.swift in Sources */,
 				878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */,
