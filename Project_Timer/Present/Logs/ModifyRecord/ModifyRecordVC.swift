@@ -770,20 +770,20 @@ extension ModifyRecordVC {
 extension ModifyRecordVC: GADFullScreenContentDelegate {
     /// 광고 로드
     private func loadRewardedAd() {
-        guard let adID = Bundle.main.object(forInfoDictionaryKey: "ADMOB_AD_ID") as? String else { return }
+        let adID = Infos.ADMOB_AD_ID.value
         
         let request = GADRequest()
         GADRewardedAd.load(withAdUnitID: adID,
                            request: request) { [weak self] ad, error in
             if let error = error {
                 print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+                self?.viewModel?.isRemoveAd = true
                 return
             }
             
             self?.rewardedAd = ad
             self?.rewardedAd?.fullScreenContentDelegate = self
             print("Rewarded ad loaded.")
-            self?.viewModel?.isRemoveAd = true
         }
     }
     
