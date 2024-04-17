@@ -204,6 +204,7 @@
 		8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8761BDC72BCFE64000E9281A /* RxMoya */; };
 		8761BDCA2BCFEA7A00E9281A /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */; };
 		8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */; };
+		8761BDCE2BCFEFD500E9281A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8761BDCD2BCFEFD500E9281A /* API.swift */; };
 		8765234628C76B6D00487BFB /* WeekSmallTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234528C76B6D00487BFB /* WeekSmallTime.swift */; };
 		8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234728C76FFE00487BFB /* WeekSmallVM.swift */; };
 		8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8765234928C7709700487BFB /* WeekSmallView.swift */; };
@@ -627,6 +628,7 @@
 		8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysAPI.swift; sourceTree = "<group>"; };
+		8761BDCD2BCFEFD500E9281A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		8765234528C76B6D00487BFB /* WeekSmallTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallTime.swift; sourceTree = "<group>"; };
 		8765234728C76FFE00487BFB /* WeekSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallVM.swift; sourceTree = "<group>"; };
 		8765234928C7709700487BFB /* WeekSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekSmallView.swift; sourceTree = "<group>"; };
@@ -1169,6 +1171,7 @@
 				8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */,
 				8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */,
 				8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */,
+				8761BDCD2BCFEFD500E9281A /* API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2392,6 +2395,7 @@
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,
 				87A8CD252AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift in Sources */,
 				872C0EE3284AF26A00E8E3F2 /* SettingUpdateHistoryVM.swift in Sources */,
+				8761BDCE2BCFEFD500E9281A /* API.swift in Sources */,
 				87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,

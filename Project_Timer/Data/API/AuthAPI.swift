@@ -10,11 +10,11 @@ import Foundation
 import Moya
 
 enum AuthAPI {
-    case postSignup
-    case postSignin
-    case getCheckUsername
-    case getCheckEmail
-    case postUpdatePassword
+    case postSignup(TestUserSignupInfo)
+    case postSignin(TestUserSigninInfo)
+    case getCheckUsername(String)
+    case getCheckEmail(String, String)
+    case postUpdatePassword(ResetPasswordRequest)
 }
 
 extension AuthAPI: TargetType {
@@ -45,10 +45,27 @@ extension AuthAPI: TargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .postSignup(let testUserSignupInfo):
+            return .requestJSONEncodable(testUserSignupInfo)
+        case .postSignin(let testUserSignupInfo):
+            return .requestJSONEncodable(testUserSignupInfo)
+        case .getCheckUsername(let username):
+            return .requestParameters(parameters: [
+                "username" : username
+            ], encoding: URLEncoding.queryString)
+        case .getCheckEmail(let username, let email):
+            return .requestParameters(parameters: [
+                "username": username,
+                "email": email
+            ], encoding: URLEncoding.queryString)
+        case .postUpdatePassword(let resetPasswordRequest):
+            return .requestJSONEncodable(resetPasswordRequest)
+        }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return nil
     }
 }
+
