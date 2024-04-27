@@ -318,6 +318,7 @@
 		87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
 		87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */; };
+		87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */; };
 		87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
 		87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */; };
@@ -336,7 +337,6 @@
 		87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */; };
 		87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */; };
 		87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */; };
-		87D4DCDD2BA5C1E800BB5AAB /* ResetPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */; };
 		87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */; };
 		87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */; };
 		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
@@ -733,6 +733,7 @@
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		87CA3B572618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
+		87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRoute.swift; sourceTree = "<group>"; };
 		87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorVC.swift; sourceTree = "<group>"; };
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		87D3CF02288BA6A500ED33B7 /* ProgressDailyTaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressDailyTaskCell.xib; sourceTree = "<group>"; };
@@ -1644,6 +1645,7 @@
 			children = (
 				87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */,
 				87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */,
+				87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */,
 				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
 				87D4DCD02BA5A4A300BB5AAB /* Email */,
 				87D4DCD72BA5C15C00BB5AAB /* Password */,
@@ -2084,7 +2086,7 @@
 			mainGroup = 93B08514248DDF2F00E215BD;
 			packageReferences = (
 				8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar.git" */,
+				8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				87910826283876DD005D7B10 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				87861F18284D917C00227731 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				8760FCB529541B88000BCCD1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
@@ -2411,6 +2413,7 @@
 				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
+				87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
 				879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */,
 				8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */,
@@ -2465,7 +2468,6 @@
 				8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
-				87D4DCDD2BA5C1E800BB5AAB /* ResetPasswordRoute.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* StringValue.swift in Sources */,
@@ -2672,7 +2674,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2911,7 +2913,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -2938,7 +2940,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
@@ -3017,7 +3019,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar.git" */ = {
+		8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
 			requirement = {
@@ -3074,7 +3076,7 @@
 		};
 		8773AF5127DCB5D100739A09 /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar.git" */;
+			package = 8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
 		};
 		87910827283876DD005D7B10 /* Alamofire */ = {
