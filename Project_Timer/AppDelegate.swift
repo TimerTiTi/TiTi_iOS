@@ -160,10 +160,8 @@ extension AppDelegate {
             if error != nil || user == nil {
                 // MARK: SignOut 구현
                 GIDSignIn.sharedInstance.signOut()
-                print("Show the app's signed-out state")
             } else {
                 // MARK: SignIn 관련 로직 필요한지 확인 필요
-                print("Show the app's signed-in state")
             }
         }
     }
@@ -171,6 +169,8 @@ extension AppDelegate {
     private func configureGoogleAdmob() {
         /// 애드몹 이니셜라이즈
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        // MARK: 릴리즈할 때 해당 부분 제거!!!!!!
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4d05e46e5ab0994dee203a9e0477ddaf" ]
         
         /// 앱 실행시 Analytics 에 정보 전달부분
         FirebaseApp.configure()
@@ -217,9 +217,8 @@ extension AppDelegate {
         /// signout 상태의 경우 KeyChain 초기화
         let signined = UserDefaultsManager.get(forKey: .signinInTestServerV1) as? Bool ?? false
         if signined == false {
-            print("not signined")
             guard KeyChain.shared.deleteAll() else {
-                print("ERROR: KeyChain.shared.deleteAll")
+                print("ERROR: KeyChain.shared.deleteAll"); print()
                 return
             }
         }

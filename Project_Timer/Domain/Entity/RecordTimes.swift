@@ -120,7 +120,9 @@ struct RecordTimes: Codable {
     
     func save() {
         Storage.store(self, to: .documents, as: RecordTimes.fileName)
-        print("recordTimes: \(self)")
+        if Infos.isDevMode {
+            print("recordTimes: \(self)")
+        }
         // MARK: network 상에 반영한다면?
     }
     // 새로운 날짜의 기록 시작시 reset

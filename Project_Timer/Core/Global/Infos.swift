@@ -14,6 +14,7 @@ enum Infos: String {
     case ServerURL2
     case FirestoreURL
     case APP_BUNDLE_ID
+    case ADMOB_AD_ID
     
     var value: String {
         return Bundle.main.infoDictionary?[self.rawValue] as? String ?? ""

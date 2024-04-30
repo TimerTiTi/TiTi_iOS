@@ -37,7 +37,10 @@ public class Storage {
     
     static func store<T: Encodable>(_ obj: T, to directory: Directory, as fileName: String) {
         let url = directory.url.appendingPathComponent(fileName, isDirectory: false)
-        print("---> save to here: \(url)")
+        if Infos.isDevMode {
+            print("---> save to here: \(url)")
+        }
+        
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         encoder.dateEncodingStrategy = .iso8601
@@ -51,7 +54,9 @@ public class Storage {
             //파일을 저장
             FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
         } catch let error {
-            print("---> Failed to store msg: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to store msg: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -70,7 +75,9 @@ public class Storage {
             let model = try decoder.decode(type, from: data)
             return model
         } catch let error {
-            print("---> Failed to decode msg: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to decode msg: \(error.localizedDescription)")
+            }
             return retrivePastFormat(data: data, as: type.self)
         }
     }
@@ -82,7 +89,9 @@ public class Storage {
             let model = try decoder.decode(type, from: data)
             return model
         } catch let error {
-            print("---> Failed to Past decode msg: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to Past decode msg: \(error.localizedDescription)")
+            }
             return nil
         }
     }
@@ -94,7 +103,9 @@ public class Storage {
         do {
             try FileManager.default.removeItem(at: url)
         } catch let error {
-            print("---> Failed to remove msg: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to remove msg: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -106,7 +117,9 @@ public class Storage {
                 try FileManager.default.removeItem(at: content)
             }
         } catch {
-            print("---> Failed to clear directory ms: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to clear directory ms: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -121,7 +134,9 @@ public class Storage {
             let model = try decoder.decode(type, from: data)
             return model
         } catch let error {
-            print("---> Failed to decode msg: \(error.localizedDescription)")
+            if Infos.isDevMode {
+                print("---> Failed to decode msg: \(error.localizedDescription)")
+            }
             return nil
         }
     }
