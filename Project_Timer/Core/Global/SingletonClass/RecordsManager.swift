@@ -16,6 +16,8 @@ final class RecordsManager {
     var currentDaily = Daily()
     var currentTask: Task?
     var showWarningOfRecordDate: Bool = false
+    //FIXME: 회의 후 결정 및 변경
+    private let resetHour = 3
     
     var isTaskTargetOn: Bool {
         return self.currentTask?.isTaskTargetTimeOn ?? false
@@ -49,8 +51,9 @@ final class RecordsManager {
     }
     
     private func configureWarningOfRecordDate() {
-        let today = Date().YYYYMMDDstyleString
-        if today != self.currentDaily.day.YYYYMMDDstyleString {
+        let today = Date()
+        if today.YYYYMMDDstyleString != self.currentDaily.day.YYYYMMDDstyleString
+            && today.hour >= resetHour {
             self.showWarningOfRecordDate = true
         }
     }
