@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -235,21 +235,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roc-hq-Dls">
-                                <rect key="frame" x="207" y="56" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="cka-85-mwq"/>
-                                    <constraint firstAttribute="height" constant="32" id="i09-J1-iUL"/>
-                                </constraints>
-                                <color key="tintColor" name="Text"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="exclamationmark.circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="semibold"/>
-                                </state>
-                                <connections>
-                                    <action selector="showRecordDateAlert:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="yYs-A2-aed"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainbow" translatesAutoresizingMaskIntoConstraints="NO" id="w3P-YJ-fGK">
                                 <rect key="frame" x="342" y="56" width="32" height="32"/>
                                 <constraints>
@@ -310,7 +295,6 @@
                             <constraint firstItem="xTH-Uj-aTj" firstAttribute="trailing" secondItem="w3P-YJ-fGK" secondAttribute="trailing" constant="16" id="Ewq-Gj-b93"/>
                             <constraint firstItem="ROV-CL-IbC" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="F6B-5Y-F9k"/>
                             <constraint firstItem="w3P-YJ-fGK" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="Fe9-h9-xMd"/>
-                            <constraint firstItem="roc-hq-Dls" firstAttribute="leading" secondItem="COc-GQ-Is1" secondAttribute="trailing" constant="-5" id="IGn-5f-81s"/>
                             <constraint firstItem="VVW-mM-ERE" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="JLm-ho-xxi"/>
                             <constraint firstItem="uFb-4K-sju" firstAttribute="centerY" secondItem="w3P-YJ-fGK" secondAttribute="centerY" id="Vhg-Wt-yuL"/>
                             <constraint firstItem="9Xz-4v-yI5" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="Vt5-GX-5dg"/>
@@ -319,7 +303,6 @@
                             <constraint firstItem="COc-GQ-Is1" firstAttribute="top" secondItem="xTH-Uj-aTj" secondAttribute="top" constant="16" id="gF0-HB-GTC"/>
                             <constraint firstItem="bRB-wj-rJW" firstAttribute="leading" secondItem="QFf-fg-Akz" secondAttribute="trailing" constant="25" id="i3j-yi-UyY"/>
                             <constraint firstItem="COc-GQ-Is1" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="kcW-dz-GEF"/>
-                            <constraint firstItem="roc-hq-Dls" firstAttribute="centerY" secondItem="COc-GQ-Is1" secondAttribute="centerY" id="otI-eI-V3t"/>
                             <constraint firstItem="NPQ-Xe-8up" firstAttribute="centerX" secondItem="xTH-Uj-aTj" secondAttribute="centerX" id="ozw-CA-NND"/>
                             <constraint firstItem="IQJ-Xa-pVL" firstAttribute="centerY" secondItem="bRB-wj-rJW" secondAttribute="centerY" id="wdS-BZ-UeA"/>
                         </constraints>
@@ -358,7 +341,6 @@
                         <outlet property="timerLabel" destination="Kl4-pY-2wV" id="CVq-J7-f2a"/>
                         <outlet property="todayLabel" destination="COc-GQ-Is1" id="y2U-aB-XyG"/>
                         <outlet property="todayTopConstraint" destination="gF0-HB-GTC" id="eCc-uN-4dQ"/>
-                        <outlet property="warningRecordDate" destination="roc-hq-Dls" id="S1K-mb-S7c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxT-Fd-PUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2849,13 +2831,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="deO-BE-VSG">
                                                     <rect key="frame" x="16" y="14.000000000000004" width="105" height="36.333333333333343"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="타이머" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cv-8K-BTc">
                                                             <rect key="frame" x="0.0" y="0.0" width="46" height="19"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="종료 5분전, 종료시 알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRc-4W-sl7">
                                                             <rect key="frame" x="0.0" y="24" width="105" height="12.333333333333336"/>
                                                             <fontDescription key="fontDescription" name="HGGGothicssiP60g" family="HGGGothicssi_Pro" pointSize="11"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4180,10 +4162,10 @@
             <color red="0.53725490196078429" green="0.43529411764705883" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D1">
-            <color red="0.50980392156862742" green="0.59999999999999998" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.50999999046325684" green="0.60000002384185791" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D10">
-            <color red="0.81999999284744263" green="0.60399997234344482" blue="0.81599998474121094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.81960784313725488" green="0.60392156862745094" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D12">
             <color red="0.5725490196078431" green="0.54117647058823526" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4192,16 +4174,16 @@
             <color red="0.60399997234344482" green="0.75300002098083496" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D3">
-            <color red="0.59200000762939453" green="0.82400000095367432" blue="0.76099997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.59215686274509804" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D4">
-            <color red="0.65100002288818359" green="0.87099999189376831" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.65098039215686276" green="0.87058823529411766" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D5">
             <color red="0.98799997568130493" green="0.90200001001358032" blue="0.44699999690055847" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D6">
-            <color red="1" green="0.77254901960784317" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.77300000190734863" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D7">
             <color red="0.99599999189376831" green="0.66299998760223389" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4210,7 +4192,7 @@
             <color red="1" green="0.61176470588235299" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D9">
-            <color red="0.96100002527236938" green="0.60000002384185791" blue="0.79199999570846558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.96078431372549022" green="0.59999999999999998" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.91764705882352937" green="0.43137254901960786" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

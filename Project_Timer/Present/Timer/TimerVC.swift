@@ -14,7 +14,6 @@ import SwiftUI
 
 final class TimerVC: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
-    @IBOutlet weak var warningRecordDate: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var taskButton: UIButton!
@@ -343,9 +342,6 @@ extension TimerVC {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
-            self?.hideWarningRecordDate()
-        }
     }
     private func configureViewModel() {
         self.viewModel = TimerVM()
@@ -465,11 +461,11 @@ extension TimerVC {
             .store(in: &self.cancellables)
     }
     private func bindWaringNewDate() {
-        self.viewModel?.$warningNewDate
+        self.viewModel?.$updateDate
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] warning in
                 guard warning else { return }
-                self?.showWarningRecordDate()
+                self?.newRecord()
             })
             .store(in: &self.cancellables)
     }
@@ -631,20 +627,7 @@ extension TimerVC {
         let player = AVPlayer(url: url)
         player.play()
     }
-    
-    private func showWarningRecordDate() {
-        UIView.animate(withDuration: 0.15) {
-            self.warningRecordDate.alpha = 1
-            self.todayLabel.textColor = Colors.warningRed
-        }
-    }
-    
-    private func hideWarningRecordDate() {
-        UIView.animate(withDuration: 0.15) {
-            self.warningRecordDate.alpha = 0
-            self.todayLabel.textColor = self.textColor
-        }
-    }
+
     
     private func disableIdleTimer() {
         let keepTheScreenOn = UserDefaultsManager.get(forKey: .keepTheScreenOn) as? Bool ?? true
