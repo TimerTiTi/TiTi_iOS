@@ -150,12 +150,6 @@ final class TimerVC: UIViewController {
         self.showColorSelector()
     }
     
-    @IBAction func showRecordDateAlert(_ sender: Any) {
-        self.showRecordDateWarning(title: Localized.string(.Recording_Popup_CheckDailyDateTitle), text: Localized.string(.Recording_Popup_CheckDailyDateDesc)) { [weak self] in
-            self?.showSettingTargetTime()
-        }
-    }
-    
     @IBAction func toggleDarker(_ sender: Any) {
         self.darkerMode.toggle()
     }
@@ -462,6 +456,7 @@ extension TimerVC {
     }
     private func bindWaringNewDate() {
         self.viewModel?.$updateDate
+            .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] warning in
                 guard warning else { return }
