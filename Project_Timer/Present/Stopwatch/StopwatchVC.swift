@@ -814,7 +814,7 @@ extension StopwatchVC {
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             RecordsManager.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
-            self?.newRecord()
+            self?.viewModel?.updateTimes()
         }))
         
         present(alert, animated: true)
