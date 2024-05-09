@@ -548,22 +548,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-6H-tfo">
-                                <rect key="frame" x="207" y="56" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="J11-uU-Lrm"/>
-                                    <constraint firstAttribute="height" constant="32" id="wkO-KG-mkS"/>
-                                </constraints>
-                                <color key="tintColor" name="Text"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="exclamationmark.circle" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="13" weight="semibold"/>
-                                </state>
-                                <connections>
-                                    <action selector="showRecordDateAlert:" destination="oQm-sw-2wm" eventType="touchUpInside" id="1gV-6A-pln"/>
-                                    <action selector="showRecordDateAlert:" destination="uTZ-Xd-FDk" eventType="touchUpInside" id="r2F-HX-hbA"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hfx-iS-Kvh">
                                 <rect key="frame" x="345" y="59" width="26" height="26"/>
                                 <constraints>
@@ -611,13 +595,11 @@
                             <constraint firstItem="nRK-jy-UJa" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="FaX-mt-MMY"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="FcF-vb-Ssx"/>
                             <constraint firstItem="WKT-t7-FUd" firstAttribute="centerY" secondItem="nRK-jy-UJa" secondAttribute="centerY" id="JCa-Bo-ADG"/>
-                            <constraint firstItem="zHl-6H-tfo" firstAttribute="leading" secondItem="nRK-jy-UJa" secondAttribute="trailing" constant="-5" id="KJK-D6-U80"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="Mv3-R4-L8P"/>
                             <constraint firstItem="qOs-fm-jq5" firstAttribute="centerX" secondItem="yCZ-3D-BLQ" secondAttribute="centerX" id="NQX-fB-w0a"/>
                             <constraint firstItem="yCZ-3D-BLQ" firstAttribute="trailing" secondItem="TUI-kh-tOQ" secondAttribute="trailing" constant="16" id="RE0-Kz-Iry"/>
                             <constraint firstItem="qOs-fm-jq5" firstAttribute="leading" secondItem="diS-gV-uEz" secondAttribute="trailing" constant="25" id="Rvk-cQ-x1q"/>
                             <constraint firstItem="4jf-oH-8Jq" firstAttribute="leading" secondItem="qOs-fm-jq5" secondAttribute="trailing" constant="25" id="Xax-vO-yAl"/>
-                            <constraint firstItem="zHl-6H-tfo" firstAttribute="centerY" secondItem="nRK-jy-UJa" secondAttribute="centerY" id="Y8A-px-rxo"/>
                             <constraint firstItem="rzE-75-v4U" firstAttribute="centerY" secondItem="ujV-QO-P1Y" secondAttribute="centerY" id="ZDw-gQ-0Rw"/>
                             <constraint firstItem="VkP-ZL-Ulq" firstAttribute="centerX" secondItem="qOs-fm-jq5" secondAttribute="centerX" id="g7d-rL-IXZ"/>
                             <constraint firstItem="Hfx-iS-Kvh" firstAttribute="centerY" secondItem="TUI-kh-tOQ" secondAttribute="centerY" id="kfO-sm-iYc"/>
@@ -657,7 +639,6 @@
                         <outlet property="taskButton" destination="gEt-rS-lNf" id="6Zg-9Y-grc"/>
                         <outlet property="todayLabel" destination="nRK-jy-UJa" id="R5X-lK-yO9"/>
                         <outlet property="todayTopConstraint" destination="DbS-T9-RgM" id="ZBF-go-fc9"/>
-                        <outlet property="warningRecordDate" destination="zHl-6H-tfo" id="Tx2-KV-9Fp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzB-XJ-Egh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4127,7 +4108,6 @@
         <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="email" width="256" height="256"/>
-        <image name="exclamationmark.circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="github" width="256" height="256"/>
         <image name="hammer" catalog="system" width="128" height="117"/>
