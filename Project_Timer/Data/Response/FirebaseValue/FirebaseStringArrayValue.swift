@@ -1,5 +1,5 @@
 //
-//  StringArrayValue.swift
+//  FirebaseStringArrayValue.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/17.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct StringArrayValue: Decodable {
+struct FirebaseStringArrayValue: Decodable {
     let arrayValue: StringValues
 }
 
 struct StringValues: Decodable {
-    let values: [StringValue]
+    let values: [FirebaseStringValue]
 }

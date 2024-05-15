@@ -1,5 +1,5 @@
 //
-//  StringValue.swift
+//  FirebaseStringValue.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/07/03.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StringValue: Decodable {
+struct FirebaseStringValue: Decodable {
     let value: String
     
     init(value: String) {

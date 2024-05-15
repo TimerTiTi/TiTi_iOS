@@ -19,9 +19,9 @@ struct UpdateInfos: Decodable {
 
 /// updateInfos 내 DTO
 struct UpdateInfo: Decodable, FirestoreValue {
-    var version: StringValue
-    var date: StringValue
-    var text: StringValue
+    var version: FirebaseStringValue
+    var date: FirebaseStringValue
+    var text: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -34,9 +34,9 @@ struct UpdateInfo: Decodable, FirestoreValue {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.version = try fieldContainer.decode(StringValue.self, forKey: .version)
-        self.date = try fieldContainer.decode(StringValue.self, forKey: .date)
-        self.text = try fieldContainer.decode(StringValue.self, forKey: .text)
+        self.version = try fieldContainer.decode(FirebaseStringValue.self, forKey: .version)
+        self.date = try fieldContainer.decode(FirebaseStringValue.self, forKey: .date)
+        self.text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
         
         self.text = transString(self.text)
     }

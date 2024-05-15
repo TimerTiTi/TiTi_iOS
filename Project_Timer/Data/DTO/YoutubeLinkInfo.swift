@@ -10,7 +10,7 @@ import Foundation
 
 /// youtubeInfo DTO
 struct YoutubeLinkInfo: Decodable {
-    let url: StringValue
+    let url: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -23,6 +23,6 @@ struct YoutubeLinkInfo: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.url = try fieldContainer.decode(StringValue.self, forKey: .url)
+        self.url = try fieldContainer.decode(FirebaseStringValue.self, forKey: .url)
     }
 }

@@ -10,9 +10,9 @@ import Foundation
 import Moya
 
 enum DailysAPI {
-    case postDailys
+    case postDailys([Daily])
     case getDailys
-    case postRecordTime
+    case postRecordTime(RecordTimes)
     case getRecordTime
     case getSyncLog
 }
@@ -43,7 +43,14 @@ extension DailysAPI: TargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .postDailys(let dailys):
+            return .requestJSONEncodable(dailys)
+        case .postRecordTime(let recordTimes):
+            return .requestJSONEncodable(recordTimes)
+        default:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {

@@ -10,8 +10,8 @@ import Foundation
 
 /// latestVersionDTO
 struct LastestVersionInfo: Decodable {
-    let iOS: StringValue
-    let macOS: StringValue
+    let iOS: FirebaseStringValue
+    let macOS: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -25,7 +25,7 @@ struct LastestVersionInfo: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.iOS = try fieldContainer.decode(StringValue.self, forKey: .iOS)
-        self.macOS = try fieldContainer.decode(StringValue.self, forKey: .macOS)
+        self.iOS = try fieldContainer.decode(FirebaseStringValue.self, forKey: .iOS)
+        self.macOS = try fieldContainer.decode(FirebaseStringValue.self, forKey: .macOS)
     }
 }

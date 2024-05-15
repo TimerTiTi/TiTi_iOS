@@ -16,7 +16,7 @@ final class AppLatestVersionRepository: AppLatestVersionRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dto = try? JSONDecoder().decode(AppLatestVersionDTO.self, from: data) else {
+                      let dto = try? JSONDecoder().decode(AppVersionResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }

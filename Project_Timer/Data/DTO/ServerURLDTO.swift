@@ -9,7 +9,7 @@
 import Foundation
 
 struct ServerURLDTO: Decodable {
-    let base: StringValue
+    let base: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -23,6 +23,6 @@ struct ServerURLDTO: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.base = try fieldContainer.decode(StringValue.self, forKey: .base)
+        self.base = try fieldContainer.decode(FirebaseStringValue.self, forKey: .base)
     }
 }

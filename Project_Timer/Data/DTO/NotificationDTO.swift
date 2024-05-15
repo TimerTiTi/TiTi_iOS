@@ -9,11 +9,11 @@
 import Foundation
 
 struct NotificationDTO: Decodable, FirestoreValue {
-    var title: StringValue
-    var text: StringValue
-    var notiTitles: StringArrayValue
-    var notiTexts: StringArrayValue
-    var visible: BooleanValue
+    var title: FirebaseStringValue
+    var text: FirebaseStringValue
+    var notiTitles: FirebaseStringArrayValue
+    var notiTexts: FirebaseStringArrayValue
+    var visible: FirebaseBooleanValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -31,11 +31,11 @@ struct NotificationDTO: Decodable, FirestoreValue {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.title = try fieldContainer.decode(StringValue.self, forKey: .title)
-        self.text = try fieldContainer.decode(StringValue.self, forKey: .text)
-        self.notiTitles = try fieldContainer.decode(StringArrayValue.self, forKey: .notiTitles)
-        self.notiTexts = try fieldContainer.decode(StringArrayValue.self, forKey: .notiTexts)
-        self.visible = try fieldContainer.decode(BooleanValue.self, forKey: .visible)
+        self.title = try fieldContainer.decode(FirebaseStringValue.self, forKey: .title)
+        self.text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
+        self.notiTitles = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .notiTitles)
+        self.notiTexts = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .notiTexts)
+        self.visible = try fieldContainer.decode(FirebaseBooleanValue.self, forKey: .visible)
         
         self.title = transString(self.title)
         self.text = transString(self.text)

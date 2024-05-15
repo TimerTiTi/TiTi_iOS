@@ -1,16 +1,17 @@
 //
-//  AppLatestVersionDTO.swift
+//  AppVersionResponse.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2023/12/03.
-//  Copyright © 2023 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/05/15.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 
-struct AppLatestVersionDTO: Decodable {
-    let latestVersion: StringValue
-    let forced: BooleanValue
+/// TiTi 최신버전 정보
+struct AppVersionResponse: Decodable {
+    let latestVersion: FirebaseStringValue
+    let forced: FirebaseBooleanValue
     
     private enum RootKey: String, CodingKey {
         case fields
@@ -25,12 +26,12 @@ struct AppLatestVersionDTO: Decodable {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.latestVersion = try fieldContainer.decode(StringValue.self, forKey: .latestVersion)
-        self.forced = try fieldContainer.decode(BooleanValue.self, forKey: .forced)
+        self.latestVersion = try fieldContainer.decode(FirebaseStringValue.self, forKey: .latestVersion)
+        self.forced = try fieldContainer.decode(FirebaseBooleanValue.self, forKey: .forced)
     }
 }
 
-extension AppLatestVersionDTO {
+extension AppVersionResponse {
     func toDomain() -> AppLatestVersionInfo {
         return .init(
             latestVersion: self.latestVersion.value,

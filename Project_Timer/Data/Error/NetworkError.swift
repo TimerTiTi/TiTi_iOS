@@ -29,7 +29,7 @@ enum NetworkError: Error {
         }
     }
     
-    private static func serverError(statusCode: Int, data: Data?) -> NetworkError {
+    static func serverError(statusCode: Int, data: Data? = nil) -> NetworkError {
         // MARK: Decoding 로직 필요
         let errorMessage: String? = ""
         switch statusCode {

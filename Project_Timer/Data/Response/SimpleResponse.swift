@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Node.js 에서 받는 간단한 형태
 struct SimpleResponse: Decodable {
     let data: Bool
     let message: String
