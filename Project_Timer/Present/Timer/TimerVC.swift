@@ -316,7 +316,7 @@ extension TimerVC {
         self.taskButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 18)
     }
     private func configureRendering() {
-        self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.settingBT.setImage(.init(named: "calendar")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.setTimerBT.setImage(UIImage.init(systemName: "clock.arrow.circlepath")?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
     private func configureShadow() {
