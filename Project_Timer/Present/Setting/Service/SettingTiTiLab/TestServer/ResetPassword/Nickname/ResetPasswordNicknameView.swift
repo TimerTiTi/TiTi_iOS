@@ -121,11 +121,11 @@ struct ResetPasswordNicknameView: View {
 struct ResetPasswordNicknameView_Previews: PreviewProvider {
     static var previews: some View {
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository())))
+            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy())))
         .environmentObject(ResetPasswordEnvironment())
         
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository())))
+            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy())))
         .environmentObject(ResetPasswordEnvironment())
         .environment(\.locale, .init(identifier: "en"))
     }

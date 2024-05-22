@@ -107,7 +107,7 @@ extension SettingTiTiLabVC {
     }
     
     private func showBetaSigninSignupVC(signin: Bool) {
-        let authUseCase = AuthUseCase(repository: AuthRepository())
+        let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
         let viewModel = SignupSigninVM(authUseCase: authUseCase, isSignin: signin)
         let vc = SignupSigninVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)

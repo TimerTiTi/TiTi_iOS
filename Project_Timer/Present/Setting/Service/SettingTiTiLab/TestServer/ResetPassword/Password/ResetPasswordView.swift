@@ -136,7 +136,7 @@ struct ResetPasswordView_Previews: PreviewProvider {
     
     static var previews: some View {
         ResetPasswordView(
-            model: ResetPasswordModel(authUseCase: AuthUseCase(repository: AuthRepository()), infos: ResetPasswordInfosForPassword(nickname: "minsang", email: "freedeveloper97@gmail.com"))
+            model: ResetPasswordModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy()), infos: ResetPasswordInfosForPassword(nickname: "minsang", email: "freedeveloper97@gmail.com"))
         ).environmentObject(ResetPasswordEnvironment())
     }
 }

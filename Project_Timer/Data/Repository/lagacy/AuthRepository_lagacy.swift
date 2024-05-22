@@ -1,5 +1,5 @@
 //
-//  AuthRepository.swift
+//  AuthRepository_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class AuthRepository: AuthRepositoryInterface {
+final class AuthRepository_lagacy: AuthRepositoryInterface {
     private let api = AuthNetwork()
     
     func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
@@ -16,7 +16,7 @@ final class AuthRepository: AuthRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dto = try? JSONDecoder().decode(AuthDTO.self, from: data) else {
+                      let dto = try? JSONDecoder().decode(AuthResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }
@@ -35,7 +35,7 @@ final class AuthRepository: AuthRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dto = try? JSONDecoder().decode(AuthDTO.self, from: data) else {
+                      let dto = try? JSONDecoder().decode(AuthResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }

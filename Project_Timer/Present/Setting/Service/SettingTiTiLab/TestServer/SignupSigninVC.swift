@@ -513,7 +513,7 @@ import SwiftUI
 
 #Preview {
     UIViewControllerPreview {
-        let authUseCase = AuthUseCase(repository: AuthRepository())
+        let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
         let viewModel = SignupSigninVM(authUseCase: authUseCase, isSignin: false)
         return SignupSigninVC(viewModel: viewModel)
     }

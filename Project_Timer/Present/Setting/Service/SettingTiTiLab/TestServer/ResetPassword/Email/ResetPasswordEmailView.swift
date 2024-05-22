@@ -100,11 +100,11 @@ struct ResetPasswordEmailView: View {
 struct ResetPasswordEmailView_Previews: PreviewProvider {
     static var previews: some View {
         ResetPasswordEmailView(
-            model: ResetPasswordEmailModel(authUseCase: AuthUseCase(repository: AuthRepository()), infos: ResetPasswordInfosForEmail(nickname: "minsang")))
+            model: ResetPasswordEmailModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy()), infos: ResetPasswordInfosForEmail(nickname: "minsang")))
         .environmentObject(ResetPasswordEnvironment())
         
         ResetPasswordEmailView(
-            model: ResetPasswordEmailModel(authUseCase: AuthUseCase(repository: AuthRepository()), infos: ResetPasswordInfosForEmail(nickname: "minsang")))
+            model: ResetPasswordEmailModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy()), infos: ResetPasswordInfosForEmail(nickname: "minsang")))
         .environmentObject(ResetPasswordEnvironment())
         .environment(\.locale, .init(identifier: "en"))
     }

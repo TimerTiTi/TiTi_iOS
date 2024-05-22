@@ -53,8 +53,8 @@
 		870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */; };
 		8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */; };
 		8708005C2B2C4D2D00830B39 /* AuthNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */; };
-		8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthDTO.swift */; };
-		870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800602B2C5FDA00830B39 /* AuthRepository.swift */; };
+		8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthResponse.swift */; };
+		870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */; };
 		870800632B2C604100830B39 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800622B2C604100830B39 /* AuthInfo.swift */; };
 		870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800642B2C623600830B39 /* AuthRepositoryInterface.swift */; };
 		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
@@ -396,6 +396,7 @@
 		87F1093C284C589A002E31EA /* FunctionInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F10937284C589A002E31EA /* FunctionInfoCell.swift */; };
 		87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87F50A19298FA3BD00ABF0CF /* newFeatures.strings */; };
 		87F771BF2984101700BF1907 /* Todolist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F771BE2984101700BF1907 /* Todolist.swift */; };
+		87FB6B8D2BFE0B3F00CD7A9C /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */; };
 		87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */; };
 		87FB8D1D2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */; };
 		87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */; };
@@ -489,8 +490,8 @@
 		870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCase.swift; sourceTree = "<group>"; };
 		870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetwork.swift; sourceTree = "<group>"; };
-		8708005E2B2C5F5F00830B39 /* AuthDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDTO.swift; sourceTree = "<group>"; };
-		870800602B2C5FDA00830B39 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		8708005E2B2C5F5F00830B39 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository_lagacy.swift; sourceTree = "<group>"; };
 		870800622B2C604100830B39 /* AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
 		870800642B2C623600830B39 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
 		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
@@ -815,6 +816,7 @@
 		87F50A18298FA3BD00ABF0CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F50A1A298FA3C100ABF0CF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/newFeatures.strings; sourceTree = "<group>"; };
 		87F771BE2984101700BF1907 /* Todolist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todolist.swift; sourceTree = "<group>"; };
+		87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCase.swift; sourceTree = "<group>"; };
 		87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationUseCaseInterface.swift; sourceTree = "<group>"; };
 		87FD9FA62998D0BD00D9B0FF /* TimerStopwatchAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopwatchAttributes.swift; sourceTree = "<group>"; };
@@ -1153,7 +1155,6 @@
 		875FAE222B1C653A008F19D2 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				8708005E2B2C5F5F00830B39 /* AuthDTO.swift */,
 				8708006E2B2CA92C00830B39 /* DailyDTO.swift */,
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
 				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
@@ -1608,7 +1609,7 @@
 			children = (
 				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
-				870800602B2C5FDA00830B39 /* AuthRepository.swift */,
+				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708006C2B2CA7AB00830B39 /* DailysRepository.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository.swift */,
@@ -1732,6 +1733,7 @@
 				87B90B3E2BF4BC6D00D6886E /* ErrorResponse.swift */,
 				87B90B3B2BF4B13D00D6886E /* AppVersionResponse.swift */,
 				870800512B2C3A0800830B39 /* ServerURLResponse.swift */,
+				8708005E2B2C5F5F00830B39 /* AuthResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1980,6 +1982,7 @@
 			children = (
 				87B90B382BF4AEE000D6886E /* lagacy */,
 				87B90B392BF4AEF600D6886E /* FirebaseRepository.swift */,
+				87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2341,7 +2344,7 @@
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */,
-				870800612B2C5FDA00830B39 /* AuthRepository.swift in Sources */,
+				870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				878BF7F12955F4600044C079 /* JSONDecoder+Extension.swift in Sources */,
 				8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */,
@@ -2543,6 +2546,7 @@
 				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */,
+				87FB6B8D2BFE0B3F00CD7A9C /* AuthRepository.swift in Sources */,
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
@@ -2597,7 +2601,7 @@
 				87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */,
-				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
+				8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,7 +20,7 @@ struct Network {
             }
         }
         
-        Session.default.request(url, method: method, interceptor: NetworkInterceptor()) { $0.timeoutInterval = 10 }
+        Session.default.request(url, method: method, interceptor: NetworkInterceptor.shared) { $0.timeoutInterval = 10 }
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))
@@ -38,7 +38,7 @@ struct Network {
             }
         }
         
-        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor()) { $0.timeoutInterval = 10 }
+        Session.default.request(url, method: method, parameters: body, encoder: JSONParameterEncoder.dateFormatted, interceptor: NetworkInterceptor.shared) { $0.timeoutInterval = 10 }
             .validate()
             .response { response in
                 completion(self.configureNetworkResult(response: response))

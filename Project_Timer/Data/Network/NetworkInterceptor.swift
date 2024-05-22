@@ -11,6 +11,9 @@ import Alamofire
 
 final class NetworkInterceptor: RequestInterceptor {
     static let retryLimit = 3
+    static let shared = NetworkInterceptor()
+    private init() {}
+    
     /// network request 전에 token 설정
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         guard urlRequest.url?.absoluteString.hasPrefix(NetworkURL.shared.serverURL ?? "nil") == true else {
@@ -63,7 +66,7 @@ extension NetworkInterceptor {
         guard let username = KeyChain.shared.get(key: .username),
               let password = KeyChain.shared.get(key: .password) else { return }
         let signinInfo = TestUserSigninInfo(username: username, password: password)
-        let authUseCase = AuthUseCase(repository: AuthRepository())
+        let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
         authUseCase.signin(signinInfo: signinInfo) { result in
             switch result {
             case .success(let token):

@@ -1,5 +1,5 @@
 //
-//  AuthDTO.swift
+//  AuthResponse.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/15.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct AuthDTO: Decodable {
+struct AuthResponse: Decodable {
     var id: Int
     var username: String
     var email: String
     var token: String
 }
 
-extension AuthDTO {
+extension AuthResponse {
     func toDomain() -> AuthInfo {
         return .init(
             id: self.id,

@@ -30,7 +30,7 @@ final class ResetPasswordVC: PortraitVC {
     private func configureHostingVC() {
         guard let environment = self.environment else { return }
         
-        let authRepository = AuthRepository()
+        let authRepository = AuthRepository_lagacy()
         let authUseCase = AuthUseCase(repository: authRepository)
         let resetPasswordNicknameModel = ResetPasswordNicknameModel(authUseCase: authUseCase)
         let hostingVC = UIHostingController(rootView: ResetPasswordNicknameView(model: resetPasswordNicknameModel).environmentObject(environment))
