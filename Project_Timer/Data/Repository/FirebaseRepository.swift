@@ -12,9 +12,9 @@ import RxSwift
 import RxMoya
 
 final class FirebaseRepository {
-    private let api: MoyaProvider<FirebaseAPI>
+    private let api: TTProvider<FirebaseAPI>
     
-    init(api: MoyaProvider<FirebaseAPI>) {
+    init(api: TTProvider<FirebaseAPI>) {
         self.api = api
     }
     
@@ -23,15 +23,15 @@ final class FirebaseRepository {
             .map(AppVersionResponse.self)
             .map { $0.toDomain() }
             .catch { error in
-                if let moyaError = error as? MoyaError {
-                    switch moyaError {
-                    case .statusCode(let response):
-                        return Single.error(NetworkError.serverError(statusCode: response.statusCode))
-                    default:
-                        return Single.error(NetworkError.FAIL)
-                    }
-                }
-                
+                return Single.error(NetworkError.DECODEERROR)
+            }
+    }
+    
+    func getServerURL() -> Single<String> {
+        return self.api.rx.request(.getServerURL)
+            .map(ServerURLResponse.self)
+            .map { $0.base.value }
+            .catch { error in
                 return Single.error(NetworkError.DECODEERROR)
             }
     }

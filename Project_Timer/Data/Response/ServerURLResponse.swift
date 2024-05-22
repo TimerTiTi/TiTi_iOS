@@ -1,14 +1,15 @@
 //
-//  ServerURLDTO.swift
+//  ServerURLResponse.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2023/12/15.
-//  Copyright © 2023 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/05/15.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 
-struct ServerURLDTO: Decodable {
+/// TiTi 서버 URL 정보
+struct ServerURLResponse: Decodable {
     let base: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {

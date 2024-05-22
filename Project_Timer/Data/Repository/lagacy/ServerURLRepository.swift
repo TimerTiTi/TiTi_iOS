@@ -16,7 +16,7 @@ final class ServerURLRepository: ServerURLRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dto = try? JSONDecoder().decode(ServerURLDTO.self, from: data) else {
+                      let dto = try? JSONDecoder().decode(ServerURLResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }
