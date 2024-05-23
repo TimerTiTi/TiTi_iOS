@@ -400,7 +400,6 @@ extension TimerVC {
         self.bindTask()
         self.bindUI()
         self.bindSound()
-        self.bindWaringNewDate()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -433,7 +432,6 @@ extension TimerVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] runningUI in
                 if runningUI {
-                    NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                     self?.disableIdleTimer()
@@ -451,16 +449,6 @@ extension TimerVC {
             .sink(receiveValue: { [weak self] alert in
                 guard alert else { return }
                 self?.playSound()
-            })
-            .store(in: &self.cancellables)
-    }
-    private func bindWaringNewDate() {
-        self.viewModel?.$updateDate
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] warning in
-                guard warning else { return }
-                self?.newRecord()
             })
             .store(in: &self.cancellables)
     }
@@ -787,13 +775,6 @@ extension TimerVC {
     
     @objc func willEnterForeground(noti: Notification) {
         self.enterForeground()
-    }
-}
-
-extension TimerVC: NewRecordCreatable {
-    func newRecord() {
-        self.viewModel?.newRecord()
-        NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
     }
 }
 
