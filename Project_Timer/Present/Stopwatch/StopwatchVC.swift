@@ -397,7 +397,6 @@ extension StopwatchVC {
         self.bindDaily()
         self.bindTask()
         self.bindUI()
-        self.bindWaringNewDate()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -429,7 +428,6 @@ extension StopwatchVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] runningUI in
                 if runningUI {
-                    NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                     self?.disableIdleTimer()
@@ -438,16 +436,6 @@ extension StopwatchVC {
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
                 }
-            })
-            .store(in: &self.cancellables)
-    }
-    private func bindWaringNewDate() {
-        self.viewModel?.$updateDate
-            .removeDuplicates()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] warning in
-                guard warning else { return }
-                self?.newRecord()
             })
             .store(in: &self.cancellables)
     }
@@ -748,14 +736,6 @@ extension StopwatchVC {
     
     @objc func willEnterForeground(noti: Notification) {
         self.enterForeground()
-    }
-}
-
-extension StopwatchVC: NewRecordCreatable {
-    func newRecord() {
-        self.fetchColor()
-        self.viewModel?.newRecord()
-        NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
     }
 }
 

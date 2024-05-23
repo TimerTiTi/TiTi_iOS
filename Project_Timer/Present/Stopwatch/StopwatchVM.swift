@@ -22,7 +22,7 @@ final class StopwatchVM {
             self.timeOfTargetViewModel.updateRunning(to: runningUI)
         }
     }
-    @Published private(set) var updateDate = false
+    
     private(set) var timerRunning = false
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
@@ -67,7 +67,9 @@ final class StopwatchVM {
     }
     
     private func checkRecordDate() {
-        self.updateDate = RecordsManager.shared.showWarningOfRecordDate
+        if RecordsManager.shared.isDateChanged {
+            newRecord()
+        }
     }
     
     var settedGoalTime: Int {
@@ -115,7 +117,9 @@ final class StopwatchVM {
             async {
                 await self.endLiveActivity()
             }
+            self.checkRecordDate()
         } else {
+            self.checkRecordDate()
             self.updateAnimationSetting()
             RecordsManager.shared.recordTimes.recordStart()
             self.timerStart()
