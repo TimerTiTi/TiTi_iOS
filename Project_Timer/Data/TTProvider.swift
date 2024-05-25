@@ -8,27 +8,43 @@
 
 import Foundation
 import RxSwift
+import Combine
 import Moya
-import RxMoya
 
 /// 공통적인 에러를 반환하는 Provider
 final class TTProvider<T: TargetType>: MoyaProvider<T> {
-    func request(_ token: T) -> Single<Response> {
-        return super.rx.request(token)
-            .catch { error in
-                self.handleError(error)
+    func request(_ token: T) -> AnyPublisher<Response, NetworkError> {
+        return Future { promise in
+            super.request(token) { result in
+                switch result {
+                case .success(let response):
+                    promise(.success(response))
+                case .failure(let error):
+                    promise(.failure(self.handleError(error)))
+                }
             }
+        }
+        .eraseToAnyPublisher()
     }
 
-    private func handleError(_ error: Error) -> Single<Response> {
+    private func handleError(_ error: Error) -> NetworkError {
         if let moyaError = error as? MoyaError {
             switch moyaError {
             case .statusCode(let response):
-                return Single.error(NetworkError.serverError(statusCode: response.statusCode))
+                return NetworkError.serverError(statusCode: response.statusCode)
             default:
-                return Single.error(NetworkError.FAIL)
+                return NetworkError.FAIL
             }
         }
-        return Single.error(NetworkError.FAIL)
+        return NetworkError.FAIL
+    }
+}
+
+extension Publisher {
+    /// Repository의 공통적인 Decode 에러를 반환하는 Publisher
+    func catchDecodeError() -> AnyPublisher<Self.Output, NetworkError> {
+        return self
+            .mapError { _ in NetworkError.DECODEERROR }
+            .eraseToAnyPublisher()
     }
 }

@@ -13,3 +13,9 @@ struct SimpleResponse: Decodable {
     let data: Bool
     let message: String
 }
+
+extension SimpleResponse {
+    func toDomain() -> Bool {
+        return self.data
+    }
+}

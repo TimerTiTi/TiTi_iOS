@@ -8,8 +8,8 @@
 
 import Foundation
 import Moya
-import RxSwift
-import RxMoya
+import Combine
+import CombineMoya
 
 final class FirebaseRepository {
     private let api: TTProvider<FirebaseAPI>
@@ -18,21 +18,17 @@ final class FirebaseRepository {
         self.api = api
     }
     
-    func getAppVersion() -> Single<AppLatestVersionInfo> {
-        return self.api.rx.request(.getAppVersion)
+    func getAppVersion() -> AnyPublisher<AppLatestVersionInfo, NetworkError> {
+        return self.api.requestPublisher(.getAppVersion)
             .map(AppVersionResponse.self)
             .map { $0.toDomain() }
-            .catch { error in
-                return Single.error(NetworkError.DECODEERROR)
-            }
+            .catchDecodeError()
     }
     
-    func getServerURL() -> Single<String> {
-        return self.api.rx.request(.getServerURL)
+    func getServerURL() -> AnyPublisher<String, NetworkError> {
+        return self.api.requestPublisher(.getServerURL)
             .map(ServerURLResponse.self)
             .map { $0.base.value }
-            .catch { error in
-                return Single.error(NetworkError.DECODEERROR)
-            }
+            .catchDecodeError()
     }
 }
