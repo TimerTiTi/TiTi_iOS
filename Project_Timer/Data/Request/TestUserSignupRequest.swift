@@ -1,5 +1,5 @@
 //
-//  TestUserSignupInfo.swift
+//  TestUserSignupRequest.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/12/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TestUserSignupInfo: Encodable {
+struct TestUserSignupRequest: Encodable {
     let username: String
     let email: String
     let password: String

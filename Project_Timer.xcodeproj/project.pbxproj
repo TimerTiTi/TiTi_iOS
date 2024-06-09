@@ -148,6 +148,7 @@
 		87459708263FF0F000172C0F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87459707263FF0F000172C0F /* Storage.swift */; };
 		87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */; };
 		874964F52649590700113E25 /* StopwatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874964F42649590700113E25 /* StopwatchVC.swift */; };
+		874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
@@ -359,8 +360,8 @@
 		87D4DE122A0F83A500993C5C /* CalendarWidgetTaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */; };
 		87D5E65028C7460100D53F8D /* MonthSmallVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */; };
 		87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5E65228C7477100D53F8D /* MonthTime.swift */; };
-		87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */; };
-		87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */; };
+		87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */; };
+		87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */; };
 		87D7ED1A2952BA8800121DE6 /* JSONParameterEncoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
 		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
@@ -583,6 +584,7 @@
 		87459707263FF0F000172C0F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastestVersionInfo.swift; sourceTree = "<group>"; };
 		874964F42649590700113E25 /* StopwatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVC.swift; sourceTree = "<group>"; };
+		874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailExitRequest.swift; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
@@ -781,8 +783,8 @@
 		87D4DE102A0F83A500993C5C /* CalendarWidgetTaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWidgetTaskData.swift; sourceTree = "<group>"; };
 		87D5E64F28C7460100D53F8D /* MonthSmallVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallVM.swift; sourceTree = "<group>"; };
 		87D5E65228C7477100D53F8D /* MonthTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTime.swift; sourceTree = "<group>"; };
-		87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupInfo.swift; sourceTree = "<group>"; };
-		87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninInfo.swift; sourceTree = "<group>"; };
+		87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupRequest.swift; sourceTree = "<group>"; };
+		87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninRequest.swift; sourceTree = "<group>"; };
 		87D7ED192952BA8800121DE6 /* JSONParameterEncoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONParameterEncoder+Extension.swift"; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
 		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
@@ -1186,8 +1188,6 @@
 				878DA1F52AEE617900C60CBF /* SignupInfo.swift */,
 				875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */,
 				870800622B2C604100830B39 /* AuthInfo.swift */,
-				87D7ED142952B3C100121DE6 /* TestUserSignupInfo.swift */,
-				87D7ED162952B69200121DE6 /* TestUserSigninInfo.swift */,
 				87459705263FF0D700172C0F /* Daily.swift */,
 				870800702B2CAD9900830B39 /* TaskHistory.swift */,
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
@@ -1722,6 +1722,9 @@
 			isa = PBXGroup;
 			children = (
 				87D4DCCB2BA5477400BB5AAB /* ResetPasswordRequest.swift */,
+				874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */,
+				87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */,
+				87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1942,8 +1945,8 @@
 			children = (
 				87B90B402BF4BFEE00D6886E /* TTProvider.swift */,
 				87B90B3D2BF4BC0100D6886E /* Error */,
-				87D4DCCD2BA548E300BB5AAB /* Response */,
 				87D4DCCA2BA5476900BB5AAB /* Request */,
+				87D4DCCD2BA548E300BB5AAB /* Response */,
 				87F778E12B196F7400909511 /* Repository */,
 				875FAE232B1C6710008F19D2 /* API */,
 				875FAE222B1C653A008F19D2 /* DTO */,
@@ -2309,6 +2312,7 @@
 				873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */,
 				873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */,
 				8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */,
+				874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
 				87A8BC3B288D1436007ED793 /* LogVC.swift in Sources */,
@@ -2413,7 +2417,7 @@
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				870800872B2D599800830B39 /* SyncLogRepository.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
-				87D7ED172952B69200121DE6 /* TestUserSigninInfo.swift in Sources */,
+				87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */,
 				87D4DCC02BA5253600BB5AAB /* ResetPasswordEnvironment.swift in Sources */,
 				8706C3322AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift in Sources */,
 				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
@@ -2449,7 +2453,7 @@
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */,
-				87D7ED152952B3C100121DE6 /* TestUserSignupInfo.swift in Sources */,
+				87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
 				87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */,

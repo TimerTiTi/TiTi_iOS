@@ -33,7 +33,7 @@ final class SignupSigninVM {
         }
     }
     
-    func signup(info: TestUserSignupInfo) {
+    func signup(info: TestUserSignupRequest) {
         self.loadingText = "Waiting for Signup..."
         self.authUseCase.signup(signupInfo: info) { [weak self] result in
             self?.loadingText = nil
@@ -52,7 +52,7 @@ final class SignupSigninVM {
         }
     }
     
-    func signin(info: TestUserSigninInfo) {
+    func signin(info: TestUserSigninRequest) {
         self.loadingText = "Waiting for Signin..."
         self.authUseCase.signin(signinInfo: info) { [weak self] result in
             self?.loadingText = nil

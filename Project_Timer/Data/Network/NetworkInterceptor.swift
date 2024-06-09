@@ -65,7 +65,7 @@ extension NetworkInterceptor {
     private func signinForToken(completion: @escaping (String?) -> Void) {
         guard let username = KeyChain.shared.get(key: .username),
               let password = KeyChain.shared.get(key: .password) else { return }
-        let signinInfo = TestUserSigninInfo(username: username, password: password)
+        let signinInfo = TestUserSigninRequest(username: username, password: password)
         let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
         authUseCase.signin(signinInfo: signinInfo) { result in
             switch result {

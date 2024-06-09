@@ -18,15 +18,15 @@ final class AuthRepository {
         self.api = api
     }
     
-    func signup(info: TestUserSignupInfo) -> AnyPublisher<AuthInfo, NetworkError> {
-        return self.api.requestPublisher(.postSignup(info))
+    func signup(request: TestUserSignupRequest) -> AnyPublisher<AuthInfo, NetworkError> {
+        return self.api.requestPublisher(.postSignup(request))
             .map(AuthResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
-    func signin(info: TestUserSigninInfo) -> AnyPublisher<AuthInfo, NetworkError> {
-        return self.api.requestPublisher(.postSignin(info))
+    func signin(request: TestUserSigninRequest) -> AnyPublisher<AuthInfo, NetworkError> {
+        return self.api.requestPublisher(.postSignin(request))
             .map(AuthResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
@@ -39,8 +39,8 @@ final class AuthRepository {
             .catchDecodeError()
     }
     
-    func checkEmailExit(username: String, email: String) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.requestPublisher(.getCheckEmail(username, email))
+    func checkEmailExit(request: CheckEmailExitRequest) -> AnyPublisher<Bool, NetworkError> {
+        return self.api.requestPublisher(.getCheckEmail(request))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()

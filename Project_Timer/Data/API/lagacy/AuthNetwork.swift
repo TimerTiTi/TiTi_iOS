@@ -28,13 +28,13 @@ final class AuthNetwork {
         return base + "/auth/users/password"
     }
     
-    func signup(signupInfo: TestUserSignupInfo, completion: @escaping (NetworkResult) -> Void) {
+    func signup(signupInfo: TestUserSignupRequest, completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: self.signupURL, method: .post, param: nil, body: signupInfo) { result in
             completion(result)
         }
     }
     
-    func signin(signinInfo: TestUserSigninInfo, completion: @escaping (NetworkResult) -> Void) {
+    func signin(signinInfo: TestUserSigninRequest, completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: self.signinURL, method: .post, param: nil, body: signinInfo) { result in
             completion(result)
         }

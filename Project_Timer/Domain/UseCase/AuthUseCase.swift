@@ -15,7 +15,7 @@ final class AuthUseCase: AuthUseCaseInterface {
         self.repository = repository
     }
     
-    func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
+    func signup(signupInfo: TestUserSignupRequest, completion: @escaping (Result<String, NetworkError>) -> Void) {
         self.repository.signup(signupInfo: signupInfo) { result in
             // AuthInfo -> token 값반 반환
             switch result {
@@ -27,7 +27,7 @@ final class AuthUseCase: AuthUseCaseInterface {
         }
     }
     
-    func signin(signinInfo: TestUserSigninInfo, completion: @escaping (Result<String, NetworkError>) -> Void) {
+    func signin(signinInfo: TestUserSigninRequest, completion: @escaping (Result<String, NetworkError>) -> Void) {
         self.repository.signin(signinInfo: signinInfo) { result in
             // AuthInfo -> token 값반 반환
             switch result {

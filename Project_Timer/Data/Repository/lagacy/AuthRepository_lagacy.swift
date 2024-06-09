@@ -11,7 +11,7 @@ import Foundation
 final class AuthRepository_lagacy: AuthRepositoryInterface {
     private let api = AuthNetwork()
     
-    func signup(signupInfo: TestUserSignupInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
+    func signup(signupInfo: TestUserSignupRequest, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
         api.signup(signupInfo: signupInfo) { result in
             switch result.status {
             case .SUCCESS:
@@ -30,7 +30,7 @@ final class AuthRepository_lagacy: AuthRepositoryInterface {
         }
     }
     
-    func signin(signinInfo: TestUserSigninInfo, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
+    func signin(signinInfo: TestUserSigninRequest, completion: @escaping (Result<AuthInfo, NetworkError>) -> Void) {
         api.signin(signinInfo: signinInfo) { result in
             switch result.status {
             case .SUCCESS:

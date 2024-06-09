@@ -316,10 +316,10 @@ extension SignupSigninVC {
                   let password = self?.passwordTextField.textField.text else { return }
             
             if self?.viewModel.isSignin == true {
-                self?.viewModel.signin(info: TestUserSigninInfo(username: username, password: password))
+                self?.viewModel.signin(info: TestUserSigninRequest(username: username, password: password))
             } else {
                 guard let email = self?.emailTextField.textField.text else { return }
-                self?.viewModel.signup(info: TestUserSignupInfo(username: username, email: email, password: password))
+                self?.viewModel.signup(info: TestUserSignupRequest(username: username, email: email, password: password))
             }
         }), for: .touchUpInside)
         
