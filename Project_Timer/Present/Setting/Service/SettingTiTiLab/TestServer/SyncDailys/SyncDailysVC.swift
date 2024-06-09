@@ -120,7 +120,7 @@ extension SyncDailysVC {
 
 extension SyncDailysVC {
     private func configureViewModel() {
-        let dailysUseCase = DailysUseCase(repository: DailysRepository())
+        let dailysUseCase = DailysUseCase(repository: DailysRepository_lagacy())
         let recordTimesUseCase = RecordTimesUseCase(repository: RecordTimesRepository())
         let syncLogUseCase = SyncLogUseCase(repository: SyncLogRepository())
         let targetDailys = self.syncDeviceStatusView.configureDailys()

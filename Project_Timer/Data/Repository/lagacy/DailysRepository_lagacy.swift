@@ -1,5 +1,5 @@
 //
-//  DailysRepository.swift
+//  DailysRepository_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DailysRepository: DailysRepositoryInterface {
+final class DailysRepository_lagacy: DailysRepositoryInterface {
     private let api = DailysNetwork()
     
     func upload(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {

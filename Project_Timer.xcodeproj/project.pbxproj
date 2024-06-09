@@ -60,7 +60,7 @@
 		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
 		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
 		8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailysNetwork.swift */; };
-		8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository.swift */; };
+		8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */; };
 		8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyDTO.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
 		870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */; };
@@ -149,6 +149,7 @@
 		87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */; };
 		874964F52649590700113E25 /* StopwatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874964F42649590700113E25 /* StopwatchVC.swift */; };
 		874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */; };
+		874B542C2C1592460062D0AC /* DailysRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B542B2C1592460062D0AC /* DailysRepository.swift */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
@@ -498,7 +499,7 @@
 		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708006A2B2CA57C00830B39 /* DailysNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysNetwork.swift; sourceTree = "<group>"; };
-		8708006C2B2CA7AB00830B39 /* DailysRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository.swift; sourceTree = "<group>"; };
+		8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository_lagacy.swift; sourceTree = "<group>"; };
 		8708006E2B2CA92C00830B39 /* DailyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDTO.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
 		870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -585,6 +586,7 @@
 		87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastestVersionInfo.swift; sourceTree = "<group>"; };
 		874964F42649590700113E25 /* StopwatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVC.swift; sourceTree = "<group>"; };
 		874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailExitRequest.swift; sourceTree = "<group>"; };
+		874B542B2C1592460062D0AC /* DailysRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository.swift; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
@@ -1610,7 +1612,7 @@
 				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
-				8708006C2B2CA7AB00830B39 /* DailysRepository.swift */,
+				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository.swift */,
 				873731D22B2E931800D7BD9F /* NotificationRepository.swift */,
@@ -1986,6 +1988,7 @@
 				87B90B382BF4AEE000D6886E /* lagacy */,
 				87B90B392BF4AEF600D6886E /* FirebaseRepository.swift */,
 				87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */,
+				874B542B2C1592460062D0AC /* DailysRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2311,7 +2314,7 @@
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */,
 				873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */,
-				8708006D2B2CA7AB00830B39 /* DailysRepository.swift in Sources */,
+				8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */,
 				874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
@@ -2471,6 +2474,7 @@
 				8706C32E2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift in Sources */,
 				87199F442882BC430017D01A /* StandardDailyGraphView.swift in Sources */,
 				93B08521248DDF2F00E215BD /* AppDelegate.swift in Sources */,
+				874B542C2C1592460062D0AC /* DailysRepository.swift in Sources */,
 				870800522B2C3A0800830B39 /* ServerURLResponse.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				87F771BF2984101700BF1907 /* Todolist.swift in Sources */,
