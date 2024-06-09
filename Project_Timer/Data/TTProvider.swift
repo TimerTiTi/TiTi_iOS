@@ -18,6 +18,12 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
             super.request(token) { result in
                 switch result {
                 case .success(let response):
+                    if (200...299).contains(response.statusCode) {
+                        promise(.success(response))
+                    } else {
+                        // ErrorResponse 디코딩
+                        promise(.failure(NetworkError.errorResponse(response)))
+                    }
                     promise(.success(response))
                 case .failure(let error):
                     promise(.failure(self.handleError(error)))

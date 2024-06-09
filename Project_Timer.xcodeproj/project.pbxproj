@@ -1622,6 +1622,7 @@
 			isa = PBXGroup;
 			children = (
 				87163DC72ACAF2E8008D4072 /* NetworkError.swift */,
+				87B90B3E2BF4BC6D00D6886E /* ErrorResponse.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -1730,7 +1731,6 @@
 			children = (
 				8708005D2B2C5DF400830B39 /* FirebaseValue */,
 				87D4DCCE2BA5492700BB5AAB /* SimpleResponse.swift */,
-				87B90B3E2BF4BC6D00D6886E /* ErrorResponse.swift */,
 				87B90B3B2BF4B13D00D6886E /* AppVersionResponse.swift */,
 				870800512B2C3A0800830B39 /* ServerURLResponse.swift */,
 				8708005E2B2C5F5F00830B39 /* AuthResponse.swift */,

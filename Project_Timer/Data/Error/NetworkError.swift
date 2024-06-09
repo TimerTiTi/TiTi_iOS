@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Moya
 
 enum NetworkError: Error {
     case FAIL
@@ -17,6 +18,7 @@ enum NetworkError: Error {
     case NOTFOUND(String?) // 404
     case CONFLICT(String?) // 409
     case SERVERERROR(String?) // 500
+    case ERRORRESPONSE(ErrorResponse) // TiTi ErrorResponse
     
     static func error(_ result: NetworkResult) -> NetworkError {
         switch result.status {
@@ -46,6 +48,14 @@ enum NetworkError: Error {
         default:
             return .FAIL
         }
+    }
+    
+    /// ErrorResponse 반환
+    static func errorResponse(_ response: Response) -> NetworkError {
+        guard let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: response.data) else {
+            return .serverError(statusCode: response.statusCode)
+        }
+        return .ERRORRESPONSE(errorResponse)
     }
     
     /// 범용적으로 표시될 수 있는 alert title 값, CLIENTERROR의 경우 VM에서 처리

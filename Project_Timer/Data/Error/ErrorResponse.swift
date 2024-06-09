@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// 에러정보
+/// TiTi 에러
 struct ErrorResponse: Decodable {
     let code: String
     let message: String
