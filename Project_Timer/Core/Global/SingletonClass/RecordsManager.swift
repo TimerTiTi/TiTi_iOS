@@ -10,7 +10,7 @@ import Foundation
 
 final class RecordsManager {
     static let shared = RecordsManager()
-    var dailyManager = DailyManager()
+    var dailyManager = DailyManager.shared
     var taskManager = TaskManager()
     var recordTimes = RecordTimes()
     var currentDaily = Daily()

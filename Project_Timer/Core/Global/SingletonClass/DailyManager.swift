@@ -9,6 +9,7 @@
 import Foundation
 
 final class DailyManager {
+    static let shared = DailyManager()
     static let dailysFileName: String = "dailys.json"
     var dailys: [Daily] = [] {
         didSet {
@@ -16,6 +17,8 @@ final class DailyManager {
         }
     }
     var dates: [Date] = []
+    
+    private init() {}
     
     func loadDailys() {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
