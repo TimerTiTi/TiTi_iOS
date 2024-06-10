@@ -43,8 +43,12 @@ final class DailyManager {
 
     func modifyDaily(_ newDaily: Daily) {
         if let index = self.dailys.firstIndex(where: { $0.day == newDaily.day }) {
-            self.dailys[index] = newDaily
-        } else {
+            if newDaily.totalTime == 0 {
+                self.dailys.remove(at: index)
+            } else {
+                self.dailys[index] = newDaily
+            }
+        } else if newDaily.totalTime > 0 {
             self.dailys.append(newDaily)
             self.dailys.sort(by: { $0.day < $1.day })
         }
