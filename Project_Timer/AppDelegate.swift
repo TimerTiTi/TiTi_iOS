@@ -37,6 +37,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.checkSignined()
         self.checkNotification()
+        self.checkEmptyDailys()
         
         return true
     }
@@ -246,6 +247,14 @@ extension AppDelegate {
                     print(networkError.alertMessage)
                 }
             }
+        }
+    }
+    
+    private func checkEmptyDailys() {
+        guard let value = UserDefaultsManager.get(forKey: .didRemoveEmptyDailys) as? Bool, value else {
+            RecordsManager.shared.dailyManager.removeEmptyDailys()
+            UserDefaultsManager.set(to: true, forKey: .didRemoveEmptyDailys)
+            return
         }
     }
 }

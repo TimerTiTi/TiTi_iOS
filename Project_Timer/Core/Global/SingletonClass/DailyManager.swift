@@ -63,6 +63,13 @@ final class DailyManager {
         self.dailys.sort(by: { $0.day < $1.day })
         self.saveDailys()
     }
+    
+    func removeEmptyDailys() {
+        dailys = dailys.filter { daily in
+            return daily.totalTime > 0
+        }
+        self.saveDailys()
+    }
 }
 
 extension DailyManager {
