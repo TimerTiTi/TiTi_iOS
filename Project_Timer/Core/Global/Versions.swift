@@ -9,41 +9,44 @@
 import Foundation
 
 struct Versions {
-    /// useage 버튼 추가시 key 추가
-    enum Keys: String {
-        case todolistCheckVer
-        case timerCheckVer
-        case stopwatchCheckVer
-        case updateSharedUserDefaultsCheckVer
-    }
-    /// useage 표시 기준 버전, 신기능 추가시 값 변경 필요
-    enum Standard {
-        static let timer = "7.13"
-        static let stopwatch = "7.13"
-        static let todolist = "7.12"
-        static let sharedUserDefaults = "7.14"
+    
+    static private var lastUpdateVersion: String {
+        UserDefaultsManager.get(forKey: .lastUpdateVersion) as? String ?? "7.11"
     }
     
-    static func check(forKey key: Versions.Keys) -> Bool {
-        let lastCheckedVer = UserDefaults.standard.object(forKey: key.rawValue) as? String ?? "7.11"
-        var checkVer = ""
+    /// useage 버튼 추가시 key 추가
+    private enum Keys: String, CaseIterable {
+        case updateSharedUserDefaultsCheckVer = "7.14"
+        case removeEmptyDailys = "7.17"
+    }
+    
+    static func update() {
+        if lastUpdateVersion == String.currentVersion { return }
         
-        switch key {
-        case .timerCheckVer:
-            checkVer = Standard.timer
-        case .stopwatchCheckVer:
-            checkVer = Standard.stopwatch
-        case.todolistCheckVer:
-            checkVer = Standard.todolist
-        case .updateSharedUserDefaultsCheckVer:
-            checkVer = Standard.sharedUserDefaults
+        for key in Keys.allCases {
+            if !check(forKey: key) { continue }
+            switch key {
+            case .updateSharedUserDefaultsCheckVer:
+                configureSharedUserDefaults()
+            case .removeEmptyDailys:
+                checkEmptyDailys()
+            }
         }
         
-        return checkVer.compare(lastCheckedVer, options: .numeric) == .orderedDescending
+        UserDefaultsManager.set(to: String.currentVersion, forKey: .lastUpdateVersion)
     }
     
-    static func update(forKey key: Versions.Keys) {
-        let currentVer = String.currentVersion
-        UserDefaults.standard.setValue(currentVer, forKey: key.rawValue)
+    static private func check(forKey key: Versions.Keys) -> Bool {
+        let checkVer = key.rawValue
+        return checkVer.compare(lastUpdateVersion, options: .numeric) == .orderedDescending
+    }
+    
+    static private func configureSharedUserDefaults() {
+        /// UserDefaults.standard -> shared 반영
+        UserDefaults.updateShared()
+    }
+    
+    static private func checkEmptyDailys() {
+        RecordsManager.shared.dailyManager.removeEmptyDailys()
     }
 }

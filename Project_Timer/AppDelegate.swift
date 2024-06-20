@@ -30,14 +30,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             self.configureGoogleAdmob()
         }
         
+        self.updateToLastestVersion()
         self.configureNotificationCenterAddObserver()
         self.configureMacCatalyst()
-        self.configureSharedUserDefaults()
         self.configureWidget()
         
         self.checkSignined()
         self.checkNotification()
-        self.checkEmptyDailys()
         
         return true
     }
@@ -202,14 +201,6 @@ extension AppDelegate {
         #endif
     }
     
-    private func configureSharedUserDefaults() {
-        /// UserDefaults.standard -> shared 반영
-        if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
-            UserDefaults.updateShared()
-            Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
-        }
-    }
-    
     private func configureWidget() {
         WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
     }
@@ -250,11 +241,7 @@ extension AppDelegate {
         }
     }
     
-    private func checkEmptyDailys() {
-        guard let value = UserDefaultsManager.get(forKey: .didRemoveEmptyDailys) as? Bool, value else {
-            RecordsManager.shared.dailyManager.removeEmptyDailys()
-            UserDefaultsManager.set(to: true, forKey: .didRemoveEmptyDailys)
-            return
-        }
+    private func updateToLastestVersion() {
+        Versions.update()
     }
 }
