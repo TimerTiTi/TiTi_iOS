@@ -17,7 +17,7 @@ struct Versions {
     /// useage 버튼 추가시 key 추가
     private enum Keys: String, CaseIterable {
         case updateSharedUserDefaultsCheckVer = "7.14"
-        case removeEmptyDailys = "7.17"
+        case removeEmptyDailys = "7.17.3"
     }
     
     static func update() {
