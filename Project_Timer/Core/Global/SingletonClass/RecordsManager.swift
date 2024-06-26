@@ -16,7 +16,7 @@ final class RecordsManager {
     var currentDaily = Daily()
     var currentTask: Task?
     //FIXME: 회의 후 결정 및 변경
-    private let resetHour = 5
+    private let resetHour = 6
     
     var isDateChanged: Bool {
         let today = Date()
