@@ -65,9 +65,7 @@ final class DailyManager {
     }
     
     func removeEmptyDailys() {
-        dailys = dailys.filter { daily in
-            return daily.totalTime > 0
-        }
+        dailys = dailys.filter { $0.totalTime > 0 }
         self.saveDailys()
     }
 }
