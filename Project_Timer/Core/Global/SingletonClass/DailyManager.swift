@@ -9,6 +9,7 @@
 import Foundation
 
 final class DailyManager {
+    static let shared = DailyManager()
     static let dailysFileName: String = "dailys.json"
     var dailys: [Daily] = [] {
         didSet {
@@ -16,6 +17,8 @@ final class DailyManager {
         }
     }
     var dates: [Date] = []
+    
+    private init() {}
     
     func loadDailys() {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
@@ -43,8 +46,12 @@ final class DailyManager {
 
     func modifyDaily(_ newDaily: Daily) {
         if let index = self.dailys.firstIndex(where: { $0.day == newDaily.day }) {
-            self.dailys[index] = newDaily
-        } else {
+            if newDaily.totalTime == 0 {
+                self.dailys.remove(at: index)
+            } else {
+                self.dailys[index] = newDaily
+            }
+        } else if newDaily.totalTime > 0 {
             self.dailys.append(newDaily)
             self.dailys.sort(by: { $0.day < $1.day })
         }
@@ -54,6 +61,11 @@ final class DailyManager {
     func changeDailys(to serverDailys: [Daily]) {
         self.dailys = serverDailys
         self.dailys.sort(by: { $0.day < $1.day })
+        self.saveDailys()
+    }
+    
+    func removeEmptyDailys() {
+        dailys = dailys.filter { $0.totalTime > 0 }
         self.saveDailys()
     }
 }
