@@ -221,10 +221,10 @@ enum TLRkey: String {
     case Recording_Popup_CheckDailyDateTitle
     /// 새로운 날짜의 기록을 시작하시겠습니까?
     case Recording_Popup_CheckDailyDateDesc
-    /// 새로운 기록 설정
-    case Recording_Text_SetNewRecordTitle
-    /// 목표시간 설정
-    case Recording_Text_SetDailyTargetTime
+    /// 목표시간 수정 title
+    case Recording_Text_EditTargetTimeTitle
+    /// 목표시간 수정 subtitle
+    case Recording_Text_EditTargetTimeSubtitle
     
     /// 종료
     case Timer_Text_Finish
