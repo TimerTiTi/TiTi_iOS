@@ -120,6 +120,7 @@
 		8722104B2C2FF6E7003B97AD /* UpdateHistoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */; };
 		8722104D2C2FFA66003B97AD /* TTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722104C2C2FFA66003B97AD /* TTResponse.swift */; };
 		8722104F2C2FFD41003B97AD /* JSONDecoder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8722104E2C2FFD41003B97AD /* JSONDecoder+Extension.swift */; };
+		872210522C3007FD003B97AD /* FirebaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872210512C3007FD003B97AD /* FirebaseUseCase.swift */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
@@ -561,6 +562,7 @@
 		8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHistoryInfo.swift; sourceTree = "<group>"; };
 		8722104C2C2FFA66003B97AD /* TTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTResponse.swift; sourceTree = "<group>"; };
 		8722104E2C2FFD41003B97AD /* JSONDecoder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Extension.swift"; sourceTree = "<group>"; };
+		872210512C3007FD003B97AD /* FirebaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUseCase.swift; sourceTree = "<group>"; };
 		872B7552296A625B00D24394 /* production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = production.xcconfig; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
@@ -1959,6 +1961,7 @@
 		87F778E02B196EDF00909511 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				872210512C3007FD003B97AD /* FirebaseUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2454,6 +2457,7 @@
 				878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */,
 				87A48BC727DEF0C200F46D0F /* Date+Extension.swift in Sources */,
 				871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */,
+				872210522C3007FD003B97AD /* FirebaseUseCase.swift in Sources */,
 				87DC6A4728D00DF400455A06 /* WeekView.swift in Sources */,
 				873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */,
 				8706C32E2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift in Sources */,
