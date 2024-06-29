@@ -60,7 +60,7 @@ extension SettingVC {
     }
     
     private func configureViewModel() {
-        let getLatestVersionUseCase = GetLatestVersionUseCase(repository: AppLatestVersionRepository())
+        let getLatestVersionUseCase = GetLatestVersionUseCase_lagacy(repository: AppLatestVersionRepository())
         self.viewModel = SettingVM(getLatestVersionUseCase: getLatestVersionUseCase, isIpad: UIDevice.current.userInterfaceIdiom == .pad)
     }
     

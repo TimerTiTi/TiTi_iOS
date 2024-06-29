@@ -1,5 +1,5 @@
 //
-//  GetLatestVersionUseCase.swift
+//  GetLatestVersionUseCase_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/03.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class GetLatestVersionUseCase: GetLatestVersionUseCaseInterface {
+final class GetLatestVersionUseCase_lagacy: GetLatestVersionUseCaseInterface {
     let repository: AppLatestVersionRepositoryInterface
     
     init(repository: AppLatestVersionRepositoryInterface) {

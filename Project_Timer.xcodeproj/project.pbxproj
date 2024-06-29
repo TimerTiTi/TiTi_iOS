@@ -192,7 +192,7 @@
 		875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */; };
 		875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */; };
 		875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */; };
-		875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */; };
+		875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */; };
 		875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */; };
 		875FAE372B1C74AD008F19D2 /* FirebaseBooleanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE362B1C74AD008F19D2 /* FirebaseBooleanValue.swift */; };
 		875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE242AC9116B00B28723 /* UITextField+Extension.swift */; };
@@ -634,7 +634,7 @@
 		875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionInfo.swift; sourceTree = "<group>"; };
 		875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepository.swift; sourceTree = "<group>"; };
 		875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepositoryInterface.swift; sourceTree = "<group>"; };
-		875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCase.swift; sourceTree = "<group>"; };
+		875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCase_lagacy.swift; sourceTree = "<group>"; };
 		875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCaseInterface.swift; sourceTree = "<group>"; };
 		875FAE362B1C74AD008F19D2 /* FirebaseBooleanValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBooleanValue.swift; sourceTree = "<group>"; };
 		875FBE242AC9116B00B28723 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
@@ -1048,6 +1048,28 @@
 			path = lagacy;
 			sourceTree = "<group>";
 		};
+		872210502C3003EB003B97AD /* lagacy */ = {
+			isa = PBXGroup;
+			children = (
+				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
+				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
+				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
+				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
+				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
+				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
+				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
+				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */,
+				870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */,
+				870800662B2C67E900830B39 /* AuthUseCase.swift */,
+				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
+				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
+				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
+				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */,
+				87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */,
+			);
+			path = lagacy;
+			sourceTree = "<group>";
+		};
 		872C0ED9284ADD6800E8E3F2 /* UpdateHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -1228,13 +1250,6 @@
 		875FAE2D2B1C7058008F19D2 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
-				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
-				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
-				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
-				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
-				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
-				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -1936,6 +1951,7 @@
 				875FAE262B1C678E008F19D2 /* Entity */,
 				87F778E02B196EDF00909511 /* UseCase */,
 				875FAE2D2B1C7058008F19D2 /* Interface */,
+				872210502C3003EB003B97AD /* lagacy */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1943,14 +1959,6 @@
 		87F778E02B196EDF00909511 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase.swift */,
-				870800572B2C3B0C00830B39 /* GetServerURLUseCase.swift */,
-				870800662B2C67E900830B39 /* AuthUseCase.swift */,
-				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
-				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
-				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
-				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */,
-				87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2560,7 +2568,7 @@
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
 				873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
-				875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase.swift in Sources */,
+				875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */,
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
