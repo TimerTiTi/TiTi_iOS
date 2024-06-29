@@ -1,5 +1,5 @@
 //
-//  GetServerURLUseCase.swift
+//  GetServerURLUseCase_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class GetServerURLUseCase: GetServerURLUseCaseInterface {
+final class GetServerURLUseCase_lagacy: GetServerURLUseCaseInterface {
     let repository: ServerURLRepositoryInterface
     
     init(repository: ServerURLRepositoryInterface) {

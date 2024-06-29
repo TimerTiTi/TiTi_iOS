@@ -18,7 +18,7 @@ class NetworkURL {
     }
     
     func updateServerURL(completion: @escaping () -> Void) {
-        let getServerURLUseCase = GetServerURLUseCase(repository: ServerURLRepository())
+        let getServerURLUseCase = GetServerURLUseCase_lagacy(repository: ServerURLRepository())
         getServerURLUseCase.getServerURL { [weak self] result in
             switch result {
             case .success(let url):
