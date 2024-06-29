@@ -31,4 +31,32 @@ final class FirebaseRepository {
             .map { $0.base.value }
             .catchDecodeError()
     }
+    
+    func getTiTiFunctions() -> AnyPublisher<[FunctionInfo], NetworkError> {
+        return self.api.requestPublisher(.getTiTiFunctions)
+            .map(FunctionResponse.self)
+            .map { $0.functionInfos }
+            .catchDecodeError()
+    }
+    
+    func getUpdateHistorys() -> AnyPublisher<[UpdateHistoryInfo], NetworkError> {
+        return self.api.requestPublisher(.getUpdateHistorys)
+            .map(UpdateHistoryResponse.self)
+            .map { $0.updateInfos }
+            .catchDecodeError()
+    }
+    
+    func getYoutubeLink() -> AnyPublisher<String, NetworkError> {
+        return self.api.requestPublisher(.getYoutubeLink)
+            .map(YoutubeLinkResponse.self)
+            .map { $0.url.value }
+            .catchDecodeError()
+    }
+    
+    func getSurveys() -> AnyPublisher<[SurveyInfo], NetworkError> {
+        return self.api.requestPublisher(.getSurveys)
+            .map(SurveyResponse.self)
+            .map { $0.surveyInfos ?? [] }
+            .catchDecodeError()
+    }
 }
