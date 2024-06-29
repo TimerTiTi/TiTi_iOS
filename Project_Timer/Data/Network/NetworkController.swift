@@ -16,7 +16,7 @@ final class NetworkController {
 }
 
 extension NetworkController: TiTiFunctionsFetchable {
-    func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void) {
+    func getTiTiFunctions_lagacy(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
             switch result.status {
             case .SUCCESS:
@@ -34,7 +34,7 @@ extension NetworkController: TiTiFunctionsFetchable {
 }
 
 extension NetworkController: UpdateHistoryFetchable {
-    func getUpdateHistorys(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void) {
+    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
             switch result.status {
             case .SUCCESS:
@@ -52,7 +52,7 @@ extension NetworkController: UpdateHistoryFetchable {
 }
 
 extension NetworkController: YoutubeLinkFetchable {
-    func getYoutubeLink(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void) {
+    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
             switch result.status {
             case .SUCCESS:
@@ -70,7 +70,7 @@ extension NetworkController: YoutubeLinkFetchable {
 }
 
 extension NetworkController: SurveysFetchable {
-    func getSurveys(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void) {
+    func getSurveys_lagacy(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.surveys, method: .get) { result in
             switch result.status {
             case .SUCCESS:

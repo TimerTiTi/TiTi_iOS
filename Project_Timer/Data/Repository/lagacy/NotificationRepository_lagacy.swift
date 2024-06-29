@@ -16,7 +16,7 @@ final class NotificationRepository_lagacy: NotificationRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 if let data = result.data {
-                    guard let dto = try? JSONDecoder.dateFormatted.decode(NotificationDTO.self, from: data) else {
+                    guard let dto = try? JSONDecoder.dateFormatted.decode(NotificationResponse.self, from: data) else {
                         print(String(data: data, encoding: .utf8)!)
                         completion(.failure(.DECODEERROR))
                         return

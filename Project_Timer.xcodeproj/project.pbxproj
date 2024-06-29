@@ -134,7 +134,7 @@
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
 		873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */; };
 		873731D32B2E931800D7BD9F /* NotificationRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */; };
-		873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationDTO.swift */; };
+		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
 		873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */; };
 		873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */; };
 		873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */; };
@@ -574,7 +574,7 @@
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
 		873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNetwork.swift; sourceTree = "<group>"; };
 		873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository_lagacy.swift; sourceTree = "<group>"; };
-		873731D42B2E938400D7BD9F /* NotificationDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDTO.swift; sourceTree = "<group>"; };
+		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryInterface.swift; sourceTree = "<group>"; };
 		873731D82B2E97FE00D7BD9F /* GetNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCase.swift; sourceTree = "<group>"; };
 		873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCaseInterface.swift; sourceTree = "<group>"; };
@@ -1169,8 +1169,6 @@
 				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
-				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
-				873731D42B2E938400D7BD9F /* NotificationDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1203,6 +1201,7 @@
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
 				87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */,
+				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1745,6 +1744,7 @@
 				8708006E2B2CA92C00830B39 /* DailyResponse.swift */,
 				870800822B2D551700830B39 /* RecordTimesResponse.swift */,
 				870800882B2D59EB00830B39 /* SyncLogResponse.swift */,
+				873731D42B2E938400D7BD9F /* NotificationResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2322,7 +2322,7 @@
 				87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */,
-				873731D52B2E938400D7BD9F /* NotificationDTO.swift in Sources */,
+				873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */,
 				8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */,
 				874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,

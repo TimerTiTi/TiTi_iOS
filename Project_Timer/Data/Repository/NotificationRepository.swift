@@ -20,7 +20,7 @@ final class NotificationRepository {
     
     func get() -> AnyPublisher<NotificationInfo, NetworkError> {
         return self.api.requestPublisher(.getNotification)
-            .map(NotificationDTO.self)
+            .map(NotificationResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }

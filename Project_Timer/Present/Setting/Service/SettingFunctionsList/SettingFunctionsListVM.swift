@@ -24,7 +24,7 @@ final class SettingFunctionsListVM {
     }
     
     private func configureInfos() {
-        self.networkController.getTiTiFunctions { [weak self] result in
+        self.networkController.getTiTiFunctions_lagacy { [weak self] result in
             switch result {
             case .success(let functionInfos):
                 self?.infos = functionInfos
@@ -35,7 +35,7 @@ final class SettingFunctionsListVM {
     }
     
     private func configureYoutubeLink() {
-        self.networkController.getYoutubeLink { [weak self] result in
+        self.networkController.getYoutubeLink_lagacy { [weak self] result in
             switch result {
             case .success(let youtubeLinkInfo):
                 self?.youtubeLink = youtubeLinkInfo.url.value

@@ -13,6 +13,10 @@ enum FirebaseAPI {
     case getAppVersion
     case getServerURL
     case getNotification
+    case getTiTiFunctions
+    case getUpdateHistorys
+    case getYoutubeLink
+    case getSurveys
 }
 
 extension FirebaseAPI: TargetType {
@@ -36,12 +40,29 @@ extension FirebaseAPI: TargetType {
             case .en: return "/notification/en"
             case .zh: return "/notification/zh"
             }
+        case .getTiTiFunctions:
+            switch Language.current {
+            case .ko: return "/titifuncs"
+            case .en, .zh: return "/titifuncs_eng"
+            }
+        case .getUpdateHistorys:
+            switch Language.current {
+            case .ko: return "/updates?pageSize=100"
+            case .en, .zh: return "/updates_eng?pageSize=100"
+            }
+        case .getYoutubeLink:
+            return "/youtube"
+        case .getSurveys:
+            switch Language.current {
+            case .ko: return "/surveys"
+            case .en, .zh: return "/surveys_eng"
+            }
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getAppVersion, .getServerURL, .getNotification:
+        case .getAppVersion, .getServerURL, .getNotification, .getTiTiFunctions, .getUpdateHistorys, .getYoutubeLink, .getSurveys:
             return .get
         }
     }

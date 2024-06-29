@@ -20,7 +20,7 @@ final class SettingUpdateHistoryVM {
     }
     
     private func configureInfos() {
-        self.networkController.getUpdateHistorys { [weak self] result in
+        self.networkController.getUpdateHistorys_lagacy { [weak self] result in
             switch result {
             case .success(let updateInfo):
                 self?.infos = updateInfo.sorted(by: {

@@ -20,7 +20,7 @@ final class SettingTiTiLabVM {
     }
     
     private func configureInfos() {
-        self.networkController.getSurveys { [weak self] result in
+        self.networkController.getSurveys_lagacy { [weak self] result in
             switch result {
             case .success(let surveyInfos):
                 self?.infos = surveyInfos

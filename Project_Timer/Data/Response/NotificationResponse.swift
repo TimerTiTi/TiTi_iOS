@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NotificationDTO: Decodable, FirestoreValue {
+struct NotificationResponse: Decodable, FirestoreValue {
     var title: FirebaseStringValue
     var text: FirebaseStringValue
     var notiTitles: FirebaseStringArrayValue
@@ -42,7 +42,7 @@ struct NotificationDTO: Decodable, FirestoreValue {
     }
 }
 
-extension NotificationDTO {
+extension NotificationResponse {
     func toDomain() -> NotificationInfo {
         return .init(
             title: self.title.value,

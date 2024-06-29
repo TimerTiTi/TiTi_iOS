@@ -10,17 +10,17 @@ import Foundation
 import Alamofire
 
 protocol TiTiFunctionsFetchable {
-    func getTiTiFunctions(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
+    func getTiTiFunctions_lagacy(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
 }
 
 protocol UpdateHistoryFetchable {
-    func getUpdateHistorys(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void)
+    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void)
 }
 
 protocol YoutubeLinkFetchable {
-    func getYoutubeLink(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void)
+    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void)
 }
 
 protocol SurveysFetchable {
-    func getSurveys(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void)
+    func getSurveys_lagacy(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void)
 }
