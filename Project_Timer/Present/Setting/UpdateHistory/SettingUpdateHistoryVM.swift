@@ -11,7 +11,7 @@ import Combine
 
 final class SettingUpdateHistoryVM {
     let networkController: UpdateHistoryFetchable
-    @Published private(set) var infos: [UpdateInfo] = []
+    @Published private(set) var infos: [UpdateHistoryInfo] = []
     @Published private(set) var warning: (title: String, text: String)?
     
     init(networkController: UpdateHistoryFetchable) {

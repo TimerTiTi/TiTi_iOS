@@ -21,7 +21,7 @@ extension NetworkController: TiTiFunctionsFetchable {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let functionInfos: FunctionInfos = try? JSONDecoder().decode(FunctionInfos.self, from: data) else {
+                      let functionInfos: FunctionResponse = try? JSONDecoder().decode(FunctionResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }
@@ -34,12 +34,12 @@ extension NetworkController: TiTiFunctionsFetchable {
 }
 
 extension NetworkController: UpdateHistoryFetchable {
-    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void) {
+    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateHistoryInfo], NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let updateInfos: UpdateInfos = try? JSONDecoder().decode(UpdateInfos.self, from: data) else {
+                      let updateInfos: UpdateHistoryResponse = try? JSONDecoder().decode(UpdateHistoryResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }
@@ -52,12 +52,12 @@ extension NetworkController: UpdateHistoryFetchable {
 }
 
 extension NetworkController: YoutubeLinkFetchable {
-    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void) {
+    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkResponse, NetworkError>) -> Void) {
         self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let youtubeLinkInfo: YoutubeLinkInfo = try? JSONDecoder().decode(YoutubeLinkInfo.self, from: data) else {
+                      let youtubeLinkInfo: YoutubeLinkResponse = try? JSONDecoder().decode(YoutubeLinkResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }
@@ -75,7 +75,7 @@ extension NetworkController: SurveysFetchable {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let surveys: SurveyInfos = try? JSONDecoder().decode(SurveyInfos.self, from: data) else {
+                      let surveys: SurveyResponse = try? JSONDecoder().decode(SurveyResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }

@@ -9,7 +9,7 @@
 import Foundation
 
 /// youtubeInfo DTO
-struct YoutubeLinkInfo: Decodable {
+struct YoutubeLinkResponse: Decodable {
     let url: FirebaseStringValue
     
     private enum RootKey: String, CodingKey {

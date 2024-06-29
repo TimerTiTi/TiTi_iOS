@@ -14,11 +14,11 @@ protocol TiTiFunctionsFetchable {
 }
 
 protocol UpdateHistoryFetchable {
-    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateInfo], NetworkError>) -> Void)
+    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateHistoryInfo], NetworkError>) -> Void)
 }
 
 protocol YoutubeLinkFetchable {
-    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkInfo, NetworkError>) -> Void)
+    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkResponse, NetworkError>) -> Void)
 }
 
 protocol SurveysFetchable {

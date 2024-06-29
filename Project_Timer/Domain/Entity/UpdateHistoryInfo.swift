@@ -1,24 +1,14 @@
 //
-//  UpdateInfo.swift
+//  UpdateHistoryInfo.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/06/04.
-//  Copyright © 2022 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/06/29.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 
-/// Network 수신 DTO
-struct UpdateInfos: Decodable {
-    var updateInfos: [UpdateInfo]
-    
-    enum CodingKeys: String, CodingKey {
-        case updateInfos = "documents"
-    }
-}
-
-/// updateInfos 내 DTO
-struct UpdateInfo: Decodable, FirestoreValue {
+struct UpdateHistoryInfo: Decodable, FirestoreValue {
     var version: FirebaseStringValue
     var date: FirebaseStringValue
     var text: FirebaseStringValue

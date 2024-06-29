@@ -2,22 +2,12 @@
 //  FunctionInfo.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/06/05.
-//  Copyright © 2022 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/06/29.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 
-/// Network 수신 DTO
-struct FunctionInfos: Decodable {
-    let functionInfos: [FunctionInfo]
-    
-    enum CodingKeys: String, CodingKey {
-        case functionInfos = "documents"
-    }
-}
-
-/// survayInfos 내 DTO
 struct FunctionInfo: Decodable {
     let title: FirebaseStringValue
     let url: FirebaseStringValue

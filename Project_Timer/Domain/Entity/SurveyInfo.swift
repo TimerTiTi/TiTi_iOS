@@ -2,22 +2,12 @@
 //  SurveyInfo.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/07/03.
-//  Copyright © 2022 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/06/29.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
 
-/// Network 수신 DTO
-struct SurveyInfos: Decodable {
-    let surveyInfos: [SurveyInfo]?
-    
-    enum CodingKeys: String, CodingKey {
-        case surveyInfos = "documents"
-    }
-}
-
-/// survayInfos 내 DTO
 struct SurveyInfo: Decodable {
     let title: FirebaseStringValue
     let url: FirebaseStringValue
