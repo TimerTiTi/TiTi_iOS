@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class NotificationRepository: NotificationRepositoryInterface {
+final class NotificationRepository_lagacy: NotificationRepositoryInterface {
     private let api = NotificationNetwork()
     
     func get(completion: @escaping (Result<NotificationInfo?, NetworkError>) -> Void) {

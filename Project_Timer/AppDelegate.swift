@@ -225,7 +225,7 @@ extension AppDelegate {
     }
     
     private func checkNotification() {
-        let getNotficationUseCase = GetNotificationUseCase(repository: NotificationRepository())
+        let getNotficationUseCase = GetNotificationUseCase(repository: NotificationRepository_lagacy())
         let notificationUseCase = NotificationUseCase()
         
         getNotficationUseCase.getNoti { result in
