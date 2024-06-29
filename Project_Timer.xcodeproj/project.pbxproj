@@ -67,7 +67,7 @@
 		870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800742B2D3C9A00830B39 /* DailysUseCase.swift */; };
 		870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */; };
 		870800792B2D4DE500830B39 /* RecordTimesNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */; };
-		8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */; };
+		8708007B2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */; };
 		8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */; };
 		8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */; };
 		870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */; };
@@ -150,6 +150,7 @@
 		874964F52649590700113E25 /* StopwatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874964F42649590700113E25 /* StopwatchVC.swift */; };
 		874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */; };
 		874B542C2C1592460062D0AC /* DailysRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B542B2C1592460062D0AC /* DailysRepository.swift */; };
+		874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */; };
 		874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */; };
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
@@ -506,7 +507,7 @@
 		870800742B2D3C9A00830B39 /* DailysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCase.swift; sourceTree = "<group>"; };
 		870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCaseInterface.swift; sourceTree = "<group>"; };
 		870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesNetwork.swift; sourceTree = "<group>"; };
-		8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepository.swift; sourceTree = "<group>"; };
+		8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepository_lagacy.swift; sourceTree = "<group>"; };
 		8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepositoryInterface.swift; sourceTree = "<group>"; };
 		8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCase.swift; sourceTree = "<group>"; };
 		870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCaseInterface.swift; sourceTree = "<group>"; };
@@ -587,6 +588,7 @@
 		874964F42649590700113E25 /* StopwatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchVC.swift; sourceTree = "<group>"; };
 		874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailExitRequest.swift; sourceTree = "<group>"; };
 		874B542B2C1592460062D0AC /* DailysRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository.swift; sourceTree = "<group>"; };
+		874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepository.swift; sourceTree = "<group>"; };
 		874B9D1425CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_60G.otf; sourceTree = "<group>"; };
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
@@ -1613,7 +1615,7 @@
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
-				8708007A2B2D4F0800830B39 /* RecordTimesRepository.swift */,
+				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository.swift */,
 				873731D22B2E931800D7BD9F /* NotificationRepository.swift */,
 			);
@@ -1989,6 +1991,7 @@
 				87B90B392BF4AEF600D6886E /* FirebaseRepository.swift */,
 				87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */,
 				874B542B2C1592460062D0AC /* DailysRepository.swift */,
+				874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2343,6 +2346,7 @@
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
+				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
@@ -2542,7 +2546,7 @@
 				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
 				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
-				8708007B2B2D4F0800830B39 /* RecordTimesRepository.swift in Sources */,
+				8708007B2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,

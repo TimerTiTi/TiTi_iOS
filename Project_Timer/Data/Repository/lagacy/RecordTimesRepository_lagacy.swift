@@ -1,5 +1,5 @@
 //
-//  RecordTimesRepository.swift
+//  RecordTimesRepository_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RecordTimesRepository: RecordTimesRepositoryInterface {
+final class RecordTimesRepository_lagacy: RecordTimesRepositoryInterface {
     private let api = RecordTimesNetwork()
     
     func upload(recordTimes: RecordTimes, completion: @escaping (Result<Bool, NetworkError>) -> Void) {
