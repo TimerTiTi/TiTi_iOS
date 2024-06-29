@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 
+/// accessToken, refreshToken 주입
 final class NetworkInterceptor: RequestInterceptor {
     static let retryLimit = 3
     static let shared = NetworkInterceptor()

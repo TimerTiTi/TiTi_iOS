@@ -76,3 +76,11 @@ extension Network {
         return NetworkResult(status: status, data: data)
     }
 }
+
+extension JSONParameterEncoder {
+    static var dateFormatted: JSONParameterEncoder = {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        return JSONParameterEncoder(encoder: encoder)
+    }()
+}

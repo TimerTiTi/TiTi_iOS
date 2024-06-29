@@ -9,6 +9,7 @@
 import Foundation
 import Moya
 
+/// 네트워크 에러
 enum NetworkError: Error {
     case FAIL
     case TIMEOUT
@@ -18,7 +19,7 @@ enum NetworkError: Error {
     case NOTFOUND(String?) // 404
     case CONFLICT(String?) // 409
     case SERVERERROR(String?) // 500
-    case ERRORRESPONSE(ErrorResponse) // TiTi ErrorResponse
+    case ERRORRESPONSE(TTErrorResponse) // TiTi ErrorResponse
     
     static func error(_ result: NetworkResult) -> NetworkError {
         switch result.status {
@@ -52,7 +53,7 @@ enum NetworkError: Error {
     
     /// ErrorResponse 반환
     static func errorResponse(_ response: Response) -> NetworkError {
-        guard let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: response.data) else {
+        guard let errorResponse = try? JSONDecoder().decode(TTErrorResponse.self, from: response.data) else {
             return .serverError(statusCode: response.statusCode)
         }
         return .ERRORRESPONSE(errorResponse)

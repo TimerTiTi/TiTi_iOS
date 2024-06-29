@@ -2,8 +2,8 @@
 //  JSONDecoder+Extension.swift
 //  Project_Timer
 //
-//  Created by Kang Minsang on 2022/12/23.
-//  Copyright © 2022 FDEE. All rights reserved.
+//  Created by Kang Minsang on 2024/06/29.
+//  Copyright © 2024 FDEE. All rights reserved.
 //
 
 import Foundation
