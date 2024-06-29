@@ -27,7 +27,7 @@ final class DailysRepository_lagacy: DailysRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dtos = try? JSONDecoder.dateFormatted.decode([DailyDTO].self, from: data) else {
+                      let dtos = try? JSONDecoder.dateFormatted.decode([DailyResponse].self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }

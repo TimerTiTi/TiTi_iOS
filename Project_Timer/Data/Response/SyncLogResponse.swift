@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct SyncLogDTO: Decodable {
+struct SyncLogResponse: Decodable {
     let updatedAt: Date
     let dailysCount: Int
 }
 
-extension SyncLogDTO {
+extension SyncLogResponse {
     func toDomain() -> SyncLog {
         return .init(
             updatedAt: self.updatedAt,

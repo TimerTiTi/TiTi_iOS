@@ -1,5 +1,5 @@
 //
-//  SyncLogRepository.swift
+//  SyncLogRepository_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class SyncLogRepository: SyncLogRepositoryInterface {
+final class SyncLogRepository_lagacy: SyncLogRepositoryInterface {
     private let api = SyncLogNetwork()
     
     func get(completion: @escaping (Result<SyncLog?, NetworkError>) -> Void) {
@@ -16,7 +16,7 @@ final class SyncLogRepository: SyncLogRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 if let data = result.data {
-                    guard let dto = try? JSONDecoder.dateFormatted.decode(SyncLogDTO.self, from: data) else {
+                    guard let dto = try? JSONDecoder.dateFormatted.decode(SyncLogResponse.self, from: data) else {
                         completion(.failure(.DECODEERROR))
                         return
                     }

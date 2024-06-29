@@ -27,7 +27,7 @@ final class RecordTimesRepository_lagacy: RecordTimesRepositoryInterface {
             switch result.status {
             case .SUCCESS:
                 guard let data = result.data,
-                      let dto = try? JSONDecoder.dateFormatted.decode(RecordTimesDTO.self, from: data) else {
+                      let dto = try? JSONDecoder.dateFormatted.decode(RecordTimesResponse.self, from: data) else {
                     completion(.failure(.DECODEERROR))
                     return
                 }

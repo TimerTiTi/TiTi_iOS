@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DailyDTO: Decodable {
+struct DailyResponse: Decodable {
     var id: Int?
     var status: String?
     var day: Date
@@ -23,7 +23,7 @@ struct TaskHistoryDTO: Decodable {
     var endDate: Date
 }
 
-extension DailyDTO {
+extension DailyResponse {
     func toDomain() -> Daily {
         return .init(
             id: self.id,

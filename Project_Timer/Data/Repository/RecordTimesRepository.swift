@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Combine
 import Moya
+import Combine
 import CombineMoya
 
 final class RecordTimesRepository {
@@ -26,7 +26,7 @@ final class RecordTimesRepository {
     
     func get() -> AnyPublisher<RecordTimes, NetworkError> {
         return self.api.requestPublisher(.getRecordTime)
-            .map(RecordTimesDTO.self)
+            .map(RecordTimesResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }

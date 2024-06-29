@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecordTimesDTO: Decodable {
+struct RecordTimesResponse: Decodable {
     var recordingMode: Int
     var recording: Bool
     var recordStartAt: Date
@@ -24,7 +24,7 @@ struct RecordTimesDTO: Decodable {
     var recordStartTimeline: [Int]
 }
 
-extension RecordTimesDTO {
+extension RecordTimesResponse {
     func toDomain() -> RecordTimes {
         return .init(
             recordTask: self.recordTask,

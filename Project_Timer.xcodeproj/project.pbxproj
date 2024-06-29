@@ -61,7 +61,7 @@
 		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
 		8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailysNetwork.swift */; };
 		8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */; };
-		8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyDTO.swift */; };
+		8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyResponse.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
 		870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */; };
 		870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800742B2D3C9A00830B39 /* DailysUseCase.swift */; };
@@ -71,10 +71,10 @@
 		8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */; };
 		8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */; };
 		870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */; };
-		870800832B2D551700830B39 /* RecordTimesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800822B2D551700830B39 /* RecordTimesDTO.swift */; };
+		870800832B2D551700830B39 /* RecordTimesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800822B2D551700830B39 /* RecordTimesResponse.swift */; };
 		870800852B2D593400830B39 /* SyncLogNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800842B2D593400830B39 /* SyncLogNetwork.swift */; };
-		870800872B2D599800830B39 /* SyncLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800862B2D599800830B39 /* SyncLogRepository.swift */; };
-		870800892B2D59EB00830B39 /* SyncLogDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800882B2D59EB00830B39 /* SyncLogDTO.swift */; };
+		870800872B2D599800830B39 /* SyncLogRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */; };
+		870800892B2D59EB00830B39 /* SyncLogResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800882B2D59EB00830B39 /* SyncLogResponse.swift */; };
 		8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */; };
 		8708008D2B2D63D300830B39 /* SyncLogUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */; };
 		8708008F2B2D646C00830B39 /* SyncLogUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */; };
@@ -113,6 +113,7 @@
 		8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */; };
 		8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */; };
 		8721C6DD296944EE00410D57 /* ChangePrevGraphButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */; };
+		872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872210412C2FEE83003B97AD /* SyncLogRepository.swift */; };
 		872C0EDB284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */; };
 		872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */; };
 		872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872C0EE0284AE57200E8E3F2 /* SettingTiTiLabVC.swift */; };
@@ -501,7 +502,7 @@
 		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708006A2B2CA57C00830B39 /* DailysNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysNetwork.swift; sourceTree = "<group>"; };
 		8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository_lagacy.swift; sourceTree = "<group>"; };
-		8708006E2B2CA92C00830B39 /* DailyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDTO.swift; sourceTree = "<group>"; };
+		8708006E2B2CA92C00830B39 /* DailyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyResponse.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
 		870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepositoryInterface.swift; sourceTree = "<group>"; };
 		870800742B2D3C9A00830B39 /* DailysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCase.swift; sourceTree = "<group>"; };
@@ -511,10 +512,10 @@
 		8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepositoryInterface.swift; sourceTree = "<group>"; };
 		8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCase.swift; sourceTree = "<group>"; };
 		870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesUseCaseInterface.swift; sourceTree = "<group>"; };
-		870800822B2D551700830B39 /* RecordTimesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesDTO.swift; sourceTree = "<group>"; };
+		870800822B2D551700830B39 /* RecordTimesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesResponse.swift; sourceTree = "<group>"; };
 		870800842B2D593400830B39 /* SyncLogNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogNetwork.swift; sourceTree = "<group>"; };
-		870800862B2D599800830B39 /* SyncLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogRepository.swift; sourceTree = "<group>"; };
-		870800882B2D59EB00830B39 /* SyncLogDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogDTO.swift; sourceTree = "<group>"; };
+		870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogRepository_lagacy.swift; sourceTree = "<group>"; };
+		870800882B2D59EB00830B39 /* SyncLogResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogResponse.swift; sourceTree = "<group>"; };
 		8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogRepositoryInterface.swift; sourceTree = "<group>"; };
 		8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogUseCase.swift; sourceTree = "<group>"; };
 		8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogUseCaseInterface.swift; sourceTree = "<group>"; };
@@ -550,6 +551,7 @@
 		8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		8721C6DA296943C500410D57 /* ChangeNextGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNextGraphButton.swift; sourceTree = "<group>"; };
 		8721C6DC296944EE00410D57 /* ChangePrevGraphButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePrevGraphButton.swift; sourceTree = "<group>"; };
+		872210412C2FEE83003B97AD /* SyncLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncLogRepository.swift; sourceTree = "<group>"; };
 		872B7552296A625B00D24394 /* production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = production.xcconfig; sourceTree = "<group>"; };
 		872C0EDA284ADD8300E8E3F2 /* SettingUpdateHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUpdateHistoryVC.swift; sourceTree = "<group>"; };
 		872C0EDD284AE52800E8E3F2 /* SettingFunctionsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFunctionsListVC.swift; sourceTree = "<group>"; };
@@ -1161,14 +1163,11 @@
 		875FAE222B1C653A008F19D2 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				8708006E2B2CA92C00830B39 /* DailyDTO.swift */,
 				87F10938284C589A002E31EA /* FunctionInfo.swift */,
 				877D69FB2871C1CB00215B6D /* SurveyInfo.swift */,
 				872C0EE5284AF31000E8E3F2 /* UpdateInfo.swift */,
 				875C98C62871BB26008F7ADD /* YoutubeLinkInfo.swift */,
 				87476DAC28A2794B00FAD273 /* LastestVersionInfo.swift */,
-				870800822B2D551700830B39 /* RecordTimesDTO.swift */,
-				870800882B2D59EB00830B39 /* SyncLogDTO.swift */,
 				873731D42B2E938400D7BD9F /* NotificationDTO.swift */,
 			);
 			path = DTO;
@@ -1616,7 +1615,7 @@
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
-				870800862B2D599800830B39 /* SyncLogRepository.swift */,
+				870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */,
 				873731D22B2E931800D7BD9F /* NotificationRepository.swift */,
 			);
 			path = lagacy;
@@ -1741,6 +1740,9 @@
 				87B90B3B2BF4B13D00D6886E /* AppVersionResponse.swift */,
 				870800512B2C3A0800830B39 /* ServerURLResponse.swift */,
 				8708005E2B2C5F5F00830B39 /* AuthResponse.swift */,
+				8708006E2B2CA92C00830B39 /* DailyResponse.swift */,
+				870800822B2D551700830B39 /* RecordTimesResponse.swift */,
+				870800882B2D59EB00830B39 /* SyncLogResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1992,6 +1994,7 @@
 				87FB6B8C2BFE0B3F00CD7A9C /* AuthRepository.swift */,
 				874B542B2C1592460062D0AC /* DailysRepository.swift */,
 				874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */,
+				872210412C2FEE83003B97AD /* SyncLogRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2377,7 +2380,7 @@
 				878DA1F62AEE617900C60CBF /* SignupInfo.swift in Sources */,
 				879BE3202AC402A8007AAC46 /* SignupSigninVC.swift in Sources */,
 				048D8AD328AAC5CF00A2456D /* TaskCreateInteractionView.swift in Sources */,
-				870800832B2D551700830B39 /* RecordTimesDTO.swift in Sources */,
+				870800832B2D551700830B39 /* RecordTimesResponse.swift in Sources */,
 				8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */,
 				87FD9FA72998D0BD00D9B0FF /* TimerStopwatchAttributes.swift in Sources */,
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
@@ -2422,7 +2425,7 @@
 				87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */,
 				870800502B2C38F900830B39 /* ServerURLNetwork.swift in Sources */,
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
-				870800872B2D599800830B39 /* SyncLogRepository.swift in Sources */,
+				870800872B2D599800830B39 /* SyncLogRepository_lagacy.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
 				87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */,
 				87D4DCC02BA5253600BB5AAB /* ResetPasswordEnvironment.swift in Sources */,
@@ -2445,7 +2448,7 @@
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
 				87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */,
 				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
-				8708006F2B2CA92C00830B39 /* DailyDTO.swift in Sources */,
+				8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
 				8761BDCA2BCFEA7A00E9281A /* AuthAPI.swift in Sources */,
 				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
@@ -2543,6 +2546,7 @@
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */,
+				872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */,
 				870800582B2C3B0C00830B39 /* GetServerURLUseCase.swift in Sources */,
 				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
@@ -2580,7 +2584,7 @@
 				87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
-				870800892B2D59EB00830B39 /* SyncLogDTO.swift in Sources */,
+				870800892B2D59EB00830B39 /* SyncLogResponse.swift in Sources */,
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
 				873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,

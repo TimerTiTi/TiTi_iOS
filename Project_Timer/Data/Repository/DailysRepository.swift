@@ -27,7 +27,7 @@ final class DailysRepository {
     func getDailys() -> AnyPublisher<[Daily], NetworkError> {
         return self.api.request(.getDailys)
             .tryMap { response in
-                guard let dtos = try? JSONDecoder.dateFormatted.decode([DailyDTO].self, from: response.data) else {
+                guard let dtos = try? JSONDecoder.dateFormatted.decode([DailyResponse].self, from: response.data) else {
                     throw NetworkError.DECODEERROR
                 }
                 return dtos.map { $0.toDomain() }
