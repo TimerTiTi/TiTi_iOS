@@ -194,12 +194,7 @@
 		875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */; };
 		875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA332957E0360037A7EB /* NetworkInterceptor.swift */; };
 		875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875EDA352957F9510037A7EB /* LoadingIndicator.swift */; };
-		875FAE252B1C6721008F19D2 /* AppVersionNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE242B1C6721008F19D2 /* AppVersionNetwork.swift */; };
 		875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */; };
-		875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */; };
-		875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */; };
-		875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */; };
-		875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */; };
 		875FAE372B1C74AD008F19D2 /* FirebaseBooleanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FAE362B1C74AD008F19D2 /* FirebaseBooleanValue.swift */; };
 		875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE242AC9116B00B28723 /* UITextField+Extension.swift */; };
 		875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875FBE262AC91ED800B28723 /* CGPoint+Extension.swift */; };
@@ -642,12 +637,7 @@
 		875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		875EDA332957E0360037A7EB /* NetworkInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInterceptor.swift; sourceTree = "<group>"; };
 		875EDA352957F9510037A7EB /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
-		875FAE242B1C6721008F19D2 /* AppVersionNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionNetwork.swift; sourceTree = "<group>"; };
 		875FAE272B1C679D008F19D2 /* AppLatestVersionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionInfo.swift; sourceTree = "<group>"; };
-		875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepository.swift; sourceTree = "<group>"; };
-		875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLatestVersionRepositoryInterface.swift; sourceTree = "<group>"; };
-		875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCase_lagacy.swift; sourceTree = "<group>"; };
-		875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLatestVersionUseCaseInterface.swift; sourceTree = "<group>"; };
 		875FAE362B1C74AD008F19D2 /* FirebaseBooleanValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseBooleanValue.swift; sourceTree = "<group>"; };
 		875FBE242AC9116B00B28723 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		875FBE262AC91ED800B28723 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
@@ -1042,14 +1032,12 @@
 				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
 				87910820283875C0005D7B10 /* NetworkController.swift */,
-				875FAE242B1C6721008F19D2 /* AppVersionNetwork.swift */,
 				8708004F2B2C38F900830B39 /* ServerURLNetwork.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */,
 				8708006A2B2CA57C00830B39 /* DailysNetwork.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */,
 				870800842B2D593400830B39 /* SyncLogNetwork.swift */,
 				873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */,
-				875FAE2B2B1C6B57008F19D2 /* AppLatestVersionRepository.swift */,
 				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
@@ -1063,14 +1051,12 @@
 		872210502C3003EB003B97AD /* lagacy */ = {
 			isa = PBXGroup;
 			children = (
-				875FAE2E2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift */,
 				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
 				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
 				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
-				875FAE302B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift */,
 				870800572B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
 				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
@@ -1300,7 +1286,6 @@
 		875FAE332B1C717E008F19D2 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				875FAE342B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift */,
 				870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */,
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
 				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
@@ -2356,7 +2341,6 @@
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
-				875FAE2F2B1C7067008F19D2 /* AppLatestVersionRepositoryInterface.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
 				870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */,
@@ -2579,12 +2563,10 @@
 				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
-				875FAE352B1C718D008F19D2 /* GetLatestVersionUseCaseInterface.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				0437062D2869EC2200A5D3AA /* TimerTimeLabelVM.swift in Sources */,
 				872210592C300A08003B97AD /* GetUpdateHistorysUseCase.swift in Sources */,
 				878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */,
-				875FAE252B1C6721008F19D2 /* AppVersionNetwork.swift in Sources */,
 				04F0D2B9286607A7007ED596 /* BaseSingleTimeLabelVM.swift in Sources */,
 				8751C6F428472066007FAFC4 /* SettingCell.swift in Sources */,
 				87035DF2282201A500055378 /* TimerVM.swift in Sources */,
@@ -2598,7 +2580,6 @@
 				8760FCBB29553F06000BCCD1 /* SyncDailysVC.swift in Sources */,
 				873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */,
 				87D3CF05288BAA1300ED33B7 /* ProgressDailyTaskCell.swift in Sources */,
-				875FAE312B1C70C2008F19D2 /* GetLatestVersionUseCase_lagacy.swift in Sources */,
 				87199F48288303B60017D01A /* TasksProgressDailyGraphView.swift in Sources */,
 				87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */,
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
@@ -2615,7 +2596,6 @@
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,
 				87306D552B2609CE001B7C14 /* TLRzh.swift in Sources */,
 				87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */,
-				875FAE2C2B1C6B57008F19D2 /* AppLatestVersionRepository.swift in Sources */,
 				04504C602864AC3C00CA4C69 /* BaseTimeLabelVM.swift in Sources */,
 				8722105B2C300A5C003B97AD /* GetYoutubeLinkUseCase.swift in Sources */,
 				8772E91626705EE100A191BF /* TodolistVC.swift in Sources */,
