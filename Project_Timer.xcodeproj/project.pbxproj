@@ -46,12 +46,7 @@
 		8706C32E2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */; };
 		8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */; };
 		8706C3322AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */; };
-		870800502B2C38F900830B39 /* ServerURLNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708004F2B2C38F900830B39 /* ServerURLNetwork.swift */; };
 		870800522B2C3A0800830B39 /* ServerURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800512B2C3A0800830B39 /* ServerURLResponse.swift */; };
-		870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800532B2C3A5400830B39 /* ServerURLRepository.swift */; };
-		870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */; };
-		870800582B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800572B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift */; };
-		8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */; };
 		8708005C2B2C4D2D00830B39 /* AuthNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */; };
 		8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthResponse.swift */; };
 		870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */; };
@@ -491,12 +486,7 @@
 		8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldUnderlineView.swift; sourceTree = "<group>"; };
 		8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupTextFieldWarning.swift; sourceTree = "<group>"; };
 		8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSignupNextButtonForMac.swift; sourceTree = "<group>"; };
-		8708004F2B2C38F900830B39 /* ServerURLNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLNetwork.swift; sourceTree = "<group>"; };
 		870800512B2C3A0800830B39 /* ServerURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLResponse.swift; sourceTree = "<group>"; };
-		870800532B2C3A5400830B39 /* ServerURLRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepository.swift; sourceTree = "<group>"; };
-		870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLRepositoryInterface.swift; sourceTree = "<group>"; };
-		870800572B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCase_lagacy.swift; sourceTree = "<group>"; };
-		870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetServerURLUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetwork.swift; sourceTree = "<group>"; };
 		8708005E2B2C5F5F00830B39 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 		870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository_lagacy.swift; sourceTree = "<group>"; };
@@ -1032,13 +1022,11 @@
 				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
 				87910820283875C0005D7B10 /* NetworkController.swift */,
-				8708004F2B2C38F900830B39 /* ServerURLNetwork.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */,
 				8708006A2B2CA57C00830B39 /* DailysNetwork.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */,
 				870800842B2D593400830B39 /* SyncLogNetwork.swift */,
 				873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */,
-				870800532B2C3A5400830B39 /* ServerURLRepository.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
@@ -1051,13 +1039,11 @@
 		872210502C3003EB003B97AD /* lagacy */ = {
 			isa = PBXGroup;
 			children = (
-				870800552B2C3AC600830B39 /* ServerURLRepositoryInterface.swift */,
 				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
 				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
-				870800572B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
 				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
@@ -1286,7 +1272,6 @@
 		875FAE332B1C717E008F19D2 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				870800592B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift */,
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
 				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
@@ -2343,7 +2328,6 @@
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
-				870800542B2C3A5400830B39 /* ServerURLRepository.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
 				870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */,
@@ -2411,7 +2395,6 @@
 				87E5C70D2AE0268C00BE46B0 /* SignupEmailView.swift in Sources */,
 				049BBA9A28AB5747005BAB1B /* TaskModifyInteractionView.swift in Sources */,
 				87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */,
-				870800502B2C38F900830B39 /* ServerURLNetwork.swift in Sources */,
 				870E85012AD67E46000511BD /* KeyboardResponder.swift in Sources */,
 				870800872B2D599800830B39 /* SyncLogRepository_lagacy.swift in Sources */,
 				87A48BCB27DF112B00F46D0F /* LogHomeVM.swift in Sources */,
@@ -2495,7 +2478,6 @@
 				87A4704A26493D6E007B89D6 /* StaticCircularProgressView.swift in Sources */,
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
-				870800562B2C3AC600830B39 /* ServerURLRepositoryInterface.swift in Sources */,
 				8761BDC02BCFE52E00E9281A /* FirebaseAPI.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
 				8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */,
@@ -2510,7 +2492,6 @@
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				870800812B2D54B500830B39 /* RecordTimesUseCaseInterface.swift in Sources */,
-				8708005A2B2C3B5800830B39 /* GetServerURLUseCaseInterface.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */,
 				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
@@ -2538,7 +2519,6 @@
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */,
 				872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */,
-				870800582B2C3B0C00830B39 /* GetServerURLUseCase_lagacy.swift in Sources */,
 				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
 				8708007B2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift in Sources */,
