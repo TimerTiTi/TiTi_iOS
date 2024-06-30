@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class GetServerURLUseCasee {
+final class GetServerURLUseCase {
     private let repository: FirebaseRepository // TODO: 프로토콜로 수정
     
     init(repository: FirebaseRepository) {

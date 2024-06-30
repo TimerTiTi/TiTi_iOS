@@ -19,6 +19,8 @@ final class SyncDailysVM {
     @Published private(set) var loading: Bool = false
     @Published private(set) var saveDailysSuccess: Bool = false
     private(set) var loadingText: SyncDailysVC.LoadingStatus?
+    // Combine binding
+    private var cancellables = Set<AnyCancellable>()
     
     init(dailysUseCase: DailysUseCaseInterface,
          recordTimesUseCase: RecordTimesUseCaseInterface,
@@ -33,14 +35,16 @@ final class SyncDailysVM {
     }
     
     private func checkServerURL() {
-        NetworkURL.shared.updateServerURL { [weak self] in
-            if NetworkURL.shared.serverURL == nil {
-                self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
-            } else {
-                // fetch 서버 syncLog
-                self?.getSyncLog(afterUploaded: false)
+        NetworkURL.shared.getServerURL()
+            .sink { [weak self] url in
+                if url == nil {
+                    self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
+                } else {
+                    // fetch 서버 syncLog
+                    self?.getSyncLog(afterUploaded: false)
+                }
             }
-        }
+            .store(in: &self.cancellables)
     }
 }
 

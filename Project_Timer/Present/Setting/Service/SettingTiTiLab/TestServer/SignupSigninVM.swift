@@ -16,6 +16,8 @@ final class SignupSigninVM {
     @Published var alert: (title: String, text: String)?
     @Published var postable: Bool = false
     @Published var signinSuccess: Bool = false
+    // Combine binding
+    private var cancellables = Set<AnyCancellable>()
     
     init(authUseCase: AuthUseCaseInterface,
         isSignin: Bool) {
@@ -26,11 +28,14 @@ final class SignupSigninVM {
     }
     
     private func checkServerURL() {
-        NetworkURL.shared.updateServerURL { [weak self] in
-            if NetworkURL.shared.serverURL == nil {
-                self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
+        NetworkURL.shared.getServerURL()
+            .sink { [weak self] url in
+                if url == nil {
+                    self?.alert = (title: Localized.string(.Server_Popup_ServerCantUseTitle), text: Localized.string(.Server_Popup_ServerCantUseDesc))
+                }
             }
-        }
+            .store(in: &self.cancellables)
+        
     }
     
     func signup(info: TestUserSignupRequest) {

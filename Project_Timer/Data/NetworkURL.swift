@@ -8,33 +8,52 @@
 
 import Foundation
 import SwiftUI
+import Moya
+import Combine
 
-class NetworkURL {
+final class NetworkURL {
     static let shared = NetworkURL()
     private(set) var serverURL: String?
+    // Combine binding
+    private var cancellables = Set<AnyCancellable>()
     
     private init() {
-        self.updateServerURL() {}
+        self.getServerURL()
+            .sink { version in
+                print(version ?? "nil")
+            }
+            .store(in: &self.cancellables)
     }
     
-    func updateServerURL(completion: @escaping () -> Void) {
-        let getServerURLUseCase = GetServerURLUseCase_lagacy(repository: ServerURLRepository())
-        getServerURLUseCase.getServerURL { [weak self] result in
-            switch result {
-            case .success(let url):
-                guard url != "nil" else {
-                    self?.serverURL = nil
-                    completion()
-                    return
+    func getServerURL() -> AnyPublisher<String?, Never> {
+        // TODO: DI 수정
+        let api = TTProvider<FirebaseAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = FirebaseRepository(api: api)
+        let getServerURLUseCase = GetServerURLUseCase(repository: repository)
+        
+        return Future<String?, Never> { [weak self] promise in
+            guard let self else { promise(.success(nil)); return }
+            
+            getServerURLUseCase.execute()
+                .sink { [weak self] completion in
+                    if case .failure(let networkError) = completion {
+                        print("ERROR", #function, networkError)
+                        self?.serverURL = nil
+                        promise(.success(nil))
+                    }
+                } receiveValue: { [weak self] url in
+                    guard url != "nil" else {
+                        self?.serverURL = nil
+                        promise(.success(nil))
+                        return
+                    }
+                    
+                    self?.serverURL = url
+                    promise(.success(url))
                 }
-                
-                self?.serverURL = url
-                completion()
-            case .failure(_):
-                self?.serverURL = nil
-                completion()
-            }
+                .store(in: &self.cancellables)
         }
+        .eraseToAnyPublisher()
     }
     
     static let appstore: String = "itms-apps://itunes.apple.com/app/id1519159240"
