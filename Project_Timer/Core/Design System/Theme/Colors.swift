@@ -28,5 +28,5 @@ enum Colors {
     static let firstBackground = UIColor(named: "firstBackgroundColor")!
     static let wrongTextField = UIColor(named: "wrongTextFieldColor")!
     
-    static let ttPrimary = UIColor(named: "primary")!
+    static let ttPrimary = UIColor(named: "ttPrimary")!
 }
