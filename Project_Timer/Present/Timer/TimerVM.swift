@@ -23,7 +23,6 @@ final class TimerVM {
         }
     }
     @Published private(set) var soundAlert = false
-    @Published private(set) var warningNewDate = false
     private(set) var timerRunning = false
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private var showAnimation: Bool = true
@@ -69,7 +68,9 @@ final class TimerVM {
     }
     
     private func checkRecordDate() {
-        self.warningNewDate = RecordsManager.shared.showWarningOfRecordDate
+        if RecordsManager.shared.isDateChanged {
+            newRecord()
+        }
     }
     
     var settedTimerTime: Int {
@@ -117,7 +118,9 @@ final class TimerVM {
     func timerAction() {
         if self.timerRunning {
             self.terminateTimer()
+            self.checkRecordDate()
         } else {
+            self.checkRecordDate()
             self.updateAnimationSetting()
             RecordsManager.shared.recordTimes.recordStart()
             self.checkTimerReset()

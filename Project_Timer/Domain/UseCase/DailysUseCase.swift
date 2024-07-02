@@ -16,7 +16,8 @@ final class DailysUseCase: DailysUseCaseInterface {
     }
     
     func uploadDailys(dailys: [Daily], completion: @escaping (Result<Bool, NetworkError>) -> Void) {
-        self.repository.upload(dailys: dailys) { result in
+        let newDailys = dailys.filter { $0.totalTime > 0}
+        self.repository.upload(dailys: newDailys) { result in
             completion(result)
         }
     }

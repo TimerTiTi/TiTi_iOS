@@ -15,7 +15,14 @@ final class RecordsManager {
     var recordTimes = RecordTimes()
     var currentDaily = Daily()
     var currentTask: Task?
-    var showWarningOfRecordDate: Bool = false
+    //FIXME: 회의 후 결정 및 변경
+    private let resetHour = 6
+    
+    var isDateChanged: Bool {
+        let today = Date()
+        let compareDay = currentDaily.day.nextDay.setTime(hour: resetHour)
+        return today >= compareDay
+    }
     
     var isTaskTargetOn: Bool {
         return self.currentTask?.isTaskTargetTimeOn ?? false
@@ -36,22 +43,11 @@ final class RecordsManager {
         self.dailyManager.loadDailys()
         self.taskManager.loadTasks()
         self.configureCurrentTask()
-        self.configureWarningOfRecordDate()
-        NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .current) { [weak self] _ in
-            self?.showWarningOfRecordDate = false
-        }
     }
     
     private func configureCurrentTask() {
         if let task = taskManager.tasks.first(where: { $0.taskName == recordTimes.recordTask }) {
             self.currentTask = task
-        }
-    }
-    
-    private func configureWarningOfRecordDate() {
-        let today = Date().YYYYMMDDstyleString
-        if today != self.currentDaily.day.YYYYMMDDstyleString {
-            self.showWarningOfRecordDate = true
         }
     }
     
