@@ -16,7 +16,7 @@ protocol ToastViewProtocol: View {
     var presenter: ToastPresenter { get }
 }
 
-struct ToastView<Content: View>: ToastViewProtocol {
+struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
     @ObservedObject var presenter: ToastPresenter
     @State private var yOffset: CGFloat = 0
     let content: (_ presenter: ToastPresenter) -> Content
