@@ -263,6 +263,8 @@ struct TLRzh {
         case .Widget_Text_SampleTask3: value = "物理"
         case .Widget_Text_SampleTask4: value = "化学"
         case .Widget_Text_SampleTask5: value = "生物"
+            
+        case .Toast_Text_NewRecord: value = "开始录制!"
         }
         
         if let op = op, value.contains("{}") {

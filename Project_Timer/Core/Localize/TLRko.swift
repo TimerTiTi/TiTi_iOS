@@ -263,6 +263,8 @@ struct TLRko {
         case .Widget_Text_SampleTask3: value = "영어"
         case .Widget_Text_SampleTask4: value = "한국사"
         case .Widget_Text_SampleTask5: value = "탐구"
+        
+        case .Toast_Text_NewRecord: value = "기록 시작!"
         }
         
         if let op = op, value.contains("{}") {
