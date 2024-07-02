@@ -263,6 +263,8 @@ struct TLRen {
         case .Widget_Text_SampleTask3: value = "Coding"
         case .Widget_Text_SampleTask4: value = "Study"
         case .Widget_Text_SampleTask5: value = "Workout"
+            
+        case .Toast_Text_NewRecord: value = "Start Recording!"
         }
         
         if let op = op, value.contains("{}") {

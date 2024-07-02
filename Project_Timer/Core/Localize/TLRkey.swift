@@ -484,4 +484,7 @@ enum TLRkey: String {
     case Widget_Text_SampleTask4
     /// 탐구
     case Widget_Text_SampleTask5
+    
+    /// Toast Message: 기록 시작!
+    case Toast_Text_NewRecord
 }
