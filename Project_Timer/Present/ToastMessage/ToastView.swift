@@ -32,6 +32,7 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
                 .shadow(color: .gray.opacity(0.12),
                         radius: 4, x: 0, y: 4)
         )
+        .modifier(DeviceTypeScaleEffect())
         .offset(y: yOffset)
         .onAppear(perform: {
             show()
@@ -71,6 +72,16 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
             DispatchQueue.main.asyncAfter(deadline: .now()+0.15, execute: {
                 presenter.isPresenting = false
             })
+        }
+    }
+}
+
+struct DeviceTypeScaleEffect: ViewModifier {
+    func body(content: Content) -> some View {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            content.scaleEffect(2)
+        } else {
+            content
         }
     }
 }
