@@ -15,12 +15,11 @@ final class RecordsManager {
     var recordTimes = RecordTimes()
     var currentDaily = Daily()
     var currentTask: Task?
-    //FIXME: 회의 후 결정 및 변경
-    private let resetHour = 6
+    static let resetHour = 6
     
     var isDateChanged: Bool {
         let today = Date()
-        let compareDay = currentDaily.day.nextDay.setTime(hour: resetHour)
+        let compareDay = currentDaily.day.nextDay.setTime(hour: RecordsManager.resetHour)
         return today >= compareDay
     }
     
