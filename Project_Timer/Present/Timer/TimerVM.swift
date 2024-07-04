@@ -147,6 +147,7 @@ final class TimerVM {
         RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
+        ToastMessage.shared.show(type: .newRecord)
     }
     
     private func checkTimerReset() {

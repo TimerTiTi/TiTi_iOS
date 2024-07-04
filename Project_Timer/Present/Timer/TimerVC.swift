@@ -113,7 +113,6 @@ final class TimerVC: UIViewController {
         super.viewDidAppear(animated)
         self.startMotionDetection()
         self.configureApplicationActiveStateObserver()
-        ToastMessage.shared.show(type: .newRecord)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
