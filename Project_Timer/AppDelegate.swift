@@ -34,9 +34,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             self.configureGoogleAdmob()
         }
         
+        self.updateToLastestVersion()
         self.configureNotificationCenterAddObserver()
         self.configureMacCatalyst()
-        self.configureSharedUserDefaults()
         self.configureWidget()
         
         self.checkSignined()
@@ -208,14 +208,6 @@ extension AppDelegate {
         #endif
     }
     
-    private func configureSharedUserDefaults() {
-        /// UserDefaults.standard -> shared 반영
-        if Versions.check(forKey: .updateSharedUserDefaultsCheckVer) {
-            UserDefaults.updateShared()
-            Versions.update(forKey: .updateSharedUserDefaultsCheckVer)
-        }
-    }
-    
     private func configureWidget() {
         WidgetCenter.shared.reloadTimelines(ofKind: "CalendarWidget")
     }
@@ -254,5 +246,9 @@ extension AppDelegate {
                 }
             }
         }
+    }
+    
+    private func updateToLastestVersion() {
+        Versions.update()
     }
 }

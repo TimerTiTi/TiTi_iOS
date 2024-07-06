@@ -47,6 +47,8 @@ struct UserDefaultsManager {
         case languageCode
         // Notification
         case notificationPassDay
+        
+        case lastUpdateVersion
     }
     
     static func set<T>(to: T, forKey: Self.Keys) {
