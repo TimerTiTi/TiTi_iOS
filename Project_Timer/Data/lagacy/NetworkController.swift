@@ -9,16 +9,8 @@
 import Foundation
 import Alamofire
 
-protocol TiTiFunctionsFetchable {
-    func getTiTiFunctions_lagacy(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void)
-}
-
 protocol UpdateHistoryFetchable {
     func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateHistoryInfo], NetworkError>) -> Void)
-}
-
-protocol YoutubeLinkFetchable {
-    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkResponse, NetworkError>) -> Void)
 }
 
 protocol SurveysFetchable {
@@ -29,24 +21,6 @@ final class NetworkController {
     let network: Network
     init(network: Network) {
         self.network = network
-    }
-}
-
-extension NetworkController: TiTiFunctionsFetchable {
-    func getTiTiFunctions_lagacy(completion: @escaping (Result<[FunctionInfo], NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.Firestore.titifuncs, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let functionInfos: FunctionResponse = try? JSONDecoder().decode(FunctionResponse.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(functionInfos.functionInfos))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
     }
 }
 
@@ -61,24 +35,6 @@ extension NetworkController: UpdateHistoryFetchable {
                     return
                 }
                 completion(.success(updateInfos.updateInfos))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
-    }
-}
-
-extension NetworkController: YoutubeLinkFetchable {
-    func getYoutubeLink_lagacy(completion: @escaping (Result<YoutubeLinkResponse, NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.Firestore.youtubeLink, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let youtubeLinkInfo: YoutubeLinkResponse = try? JSONDecoder().decode(YoutubeLinkResponse.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(youtubeLinkInfo))
             default:
                 completion(.failure(NetworkError.error(result)))
             }

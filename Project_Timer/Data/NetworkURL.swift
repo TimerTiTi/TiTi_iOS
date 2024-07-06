@@ -65,19 +65,11 @@ final class NetworkURL {
     enum Firestore {
         static let domain: String = Infos.FirestoreURL.value
         static let links: String = domain + "/links"
-        static let youtubeLink: String = links + "/youtube"
         
         static var surveys: String {
             switch Language.current {
             case .ko: return domain + "/surveys"
             default: return domain + "/surveys_eng"
-            }
-        }
-        
-        static var titifuncs: String {
-            switch Language.current {
-            case .ko: return domain + "/titifuncs"
-            default: return domain + "/titifuncs_eng"
             }
         }
         
