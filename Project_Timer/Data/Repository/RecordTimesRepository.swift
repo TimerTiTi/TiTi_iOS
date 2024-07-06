@@ -25,7 +25,7 @@ final class RecordTimesRepository {
     }
     
     func get() -> AnyPublisher<RecordTimes, NetworkError> {
-        return self.api.requestPublisher(.getRecordTime)
+        return self.api.request(.getRecordTime)
             .map(RecordTimesResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()

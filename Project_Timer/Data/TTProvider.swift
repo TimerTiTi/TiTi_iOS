@@ -18,6 +18,8 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
             super.request(token) { result in
                 switch result {
                 case .success(let response):
+                    print("\nTTProvider success", token, "\(token.baseURL)\(token.path)")
+//                    print("-->", String(data: response.data, encoding: .utf8), "\n")
                     if (200...299).contains(response.statusCode) {
                         promise(.success(response))
                     } else {
@@ -26,6 +28,8 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
                     }
                     promise(.success(response))
                 case .failure(let error):
+                    print("\nTTProvider failure", token, "\(token.baseURL)\(token.path)")
+//                    print("-->", error.localizedDescription, "\n")
                     promise(.failure(self.handleError(error)))
                 }
             }
@@ -52,5 +56,23 @@ extension Publisher {
         return self
             .mapError { _ in NetworkError.DECODEERROR }
             .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output == Response, Failure == NetworkError {
+    /// TTProvider를 사용한 경우 map operator 사용
+    func map<D: Decodable>(_ type: D.Type) -> AnyPublisher<D, NetworkError> {
+        return self.tryMap { response in
+            do {
+                let decodedData = try JSONDecoder().decode(D.self, from: response.data)
+                return decodedData
+            } catch {
+                throw NetworkError.DECODEERROR
+            }
+        }
+        .mapError { error in
+            error as? NetworkError ?? NetworkError.FAIL
+        }
+        .eraseToAnyPublisher()
     }
 }

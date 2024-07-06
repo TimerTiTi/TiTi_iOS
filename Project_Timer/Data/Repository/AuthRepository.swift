@@ -19,35 +19,35 @@ final class AuthRepository {
     }
     
     func signup(request: TestUserSignupRequest) -> AnyPublisher<AuthInfo, NetworkError> {
-        return self.api.requestPublisher(.postSignup(request))
+        return self.api.request(.postSignup(request))
             .map(AuthResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
     func signin(request: TestUserSigninRequest) -> AnyPublisher<AuthInfo, NetworkError> {
-        return self.api.requestPublisher(.postSignin(request))
+        return self.api.request(.postSignin(request))
             .map(AuthResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
     func checkUsernameExit(username: String) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.requestPublisher(.getCheckUsername(username))
+        return self.api.request(.getCheckUsername(username))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
     func checkEmailExit(request: CheckEmailExitRequest) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.requestPublisher(.getCheckEmail(request))
+        return self.api.request(.getCheckEmail(request))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
     func updatePassword(request: ResetPasswordRequest) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.requestPublisher(.postUpdatePassword(request))
+        return self.api.request(.postUpdatePassword(request))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()

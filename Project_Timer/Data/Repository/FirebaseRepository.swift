@@ -19,42 +19,42 @@ final class FirebaseRepository {
     }
     
     func getAppVersion() -> AnyPublisher<AppLatestVersionInfo, NetworkError> {
-        return self.api.requestPublisher(.getAppVersion)
+        return self.api.request(.getAppVersion)
             .map(AppVersionResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
     }
     
     func getServerURL() -> AnyPublisher<String, NetworkError> {
-        return self.api.requestPublisher(.getServerURL)
+        return self.api.request(.getServerURL)
             .map(ServerURLResponse.self)
             .map { $0.base.value }
             .catchDecodeError()
     }
     
     func getTiTiFunctions() -> AnyPublisher<[FunctionInfo], NetworkError> {
-        return self.api.requestPublisher(.getTiTiFunctions)
+        return self.api.request(.getTiTiFunctions)
             .map(FunctionResponse.self)
             .map { $0.functionInfos }
             .catchDecodeError()
     }
     
     func getUpdateHistorys() -> AnyPublisher<[UpdateHistoryInfo], NetworkError> {
-        return self.api.requestPublisher(.getUpdateHistorys)
+        return self.api.request(.getUpdateHistorys)
             .map(UpdateHistoryResponse.self)
             .map { $0.updateInfos }
             .catchDecodeError()
     }
     
     func getYoutubeLink() -> AnyPublisher<String, NetworkError> {
-        return self.api.requestPublisher(.getYoutubeLink)
+        return self.api.request(.getYoutubeLink)
             .map(YoutubeLinkResponse.self)
             .map { $0.url.value }
             .catchDecodeError()
     }
     
     func getSurveys() -> AnyPublisher<[SurveyInfo], NetworkError> {
-        return self.api.requestPublisher(.getSurveys)
+        return self.api.request(.getSurveys)
             .map(SurveyResponse.self)
             .map { $0.surveyInfos ?? [] }
             .catchDecodeError()

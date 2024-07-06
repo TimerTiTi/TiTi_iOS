@@ -19,7 +19,7 @@ final class SyncLogRepository {
     }
     
     func get() -> AnyPublisher<SyncLog, NetworkError> {
-        return self.api.requestPublisher(.getSyncLog)
+        return self.api.request(.getSyncLog)
             .map(SyncLogResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()

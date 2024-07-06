@@ -12,14 +12,14 @@ import Combine
 import CombineMoya
 
 final class NotificationRepository {
-    private let api: MoyaProvider<FirebaseAPI>
+    private let api: TTProvider<FirebaseAPI>
     
-    init(api: MoyaProvider<FirebaseAPI>) {
+    init(api: TTProvider<FirebaseAPI>) {
         self.api = api
     }
     
     func get() -> AnyPublisher<NotificationInfo, NetworkError> {
-        return self.api.requestPublisher(.getNotification)
+        return self.api.request(.getNotification)
             .map(NotificationResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()
