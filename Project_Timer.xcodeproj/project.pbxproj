@@ -83,6 +83,7 @@
 		870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E22AEFF7FC00854DDB /* SignupPasswordView.swift */; };
 		870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E42AEFFA9300854DDB /* SignupPasswordModel.swift */; };
 		870F90E72AEFFF1A00854DDB /* SignupPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870F90E62AEFFF1A00854DDB /* SignupPasswordRoute.swift */; };
+		871616912C39956E00C4EF25 /* CheckUsernameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */; };
 		87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC72ACAF2E8008D4072 /* NetworkError.swift */; };
 		87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87163DC92ACAF89B008D4072 /* NetworkResult.swift */; };
 		87168D99299A819F003ED502 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875C98C82871BFCF008F7ADD /* UserDefaults+Extension.swift */; };
@@ -525,6 +526,7 @@
 		870F90E22AEFF7FC00854DDB /* SignupPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordView.swift; sourceTree = "<group>"; };
 		870F90E42AEFFA9300854DDB /* SignupPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordModel.swift; sourceTree = "<group>"; };
 		870F90E62AEFFF1A00854DDB /* SignupPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordRoute.swift; sourceTree = "<group>"; };
+		871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameRequest.swift; sourceTree = "<group>"; };
 		87163DC72ACAF2E8008D4072 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		87163DC92ACAF89B008D4072 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		87199F432882BC430017D01A /* StandardDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDailyGraphView.swift; sourceTree = "<group>"; };
@@ -1726,6 +1728,7 @@
 				874B54272C158F890062D0AC /* CheckEmailExitRequest.swift */,
 				87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */,
 				87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */,
+				871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2358,6 +2361,7 @@
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */,
 				87B90B3C2BF4B13D00D6886E /* AppVersionResponse.swift in Sources */,
+				871616912C39956E00C4EF25 /* CheckUsernameRequest.swift in Sources */,
 				875FAE282B1C679D008F19D2 /* AppLatestVersionInfo.swift in Sources */,
 				87DC6A4928D0104300455A06 /* WeekVM.swift in Sources */,
 				048D8AC628AA1B7700A2456D /* AddHistoryCell.swift in Sources */,

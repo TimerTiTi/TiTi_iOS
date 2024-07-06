@@ -16,7 +16,7 @@ final class CheckUsernameExitUseCsae {
         self.repository = repository
     }
     
-    func execute(username: String) -> AnyPublisher<Bool, NetworkError> {
-        return self.repository.checkUsernameExit(username: username)
+    func execute(request: CheckUsernameRequest) -> AnyPublisher<Bool, NetworkError> {
+        return self.repository.checkUsernameExit(request: request)
     }
 }

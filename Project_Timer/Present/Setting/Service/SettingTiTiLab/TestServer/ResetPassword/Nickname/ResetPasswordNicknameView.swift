@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct ResetPasswordNicknameView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -50,7 +52,7 @@ struct ResetPasswordNicknameView: View {
             .navigationDestination(for: ResetPasswordNicknameRoute.self) { destination in
                 switch destination {
                 case .resetPasswordEmail:
-                    let authUseCase = self.model.authUseCase
+                    let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
                     let infos = model.resetPasswordInfosForEmail
                     let viewModel = ResetPasswordEmailModel(
                         authUseCase: authUseCase,
@@ -120,13 +122,14 @@ struct ResetPasswordNicknameView: View {
 
 struct ResetPasswordNicknameView_Previews: PreviewProvider {
     static var previews: some View {
-        ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy())))
-        .environmentObject(ResetPasswordEnvironment())
+        // TODO: DI 수정
+        let api = TTProvider<AuthAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = AuthRepository(api: api)
+        let checkUsernameExitUseCase = CheckUsernameExitUseCsae(repository: repository)
+        let viewModel = ResetPasswordNicknameModel(checkUsenameExitUseCase: checkUsernameExitUseCase)
         
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel(authUseCase: AuthUseCase(repository: AuthRepository_lagacy())))
+            model: ResetPasswordNicknameModel(checkUsenameExitUseCase: checkUsernameExitUseCase))
         .environmentObject(ResetPasswordEnvironment())
-        .environment(\.locale, .init(identifier: "en"))
     }
 }

@@ -32,8 +32,8 @@ final class AuthRepository {
             .catchDecodeError()
     }
     
-    func checkUsernameExit(username: String) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.request(.getCheckUsername(username))
+    func checkUsernameExit(request: CheckUsernameRequest) -> AnyPublisher<Bool, NetworkError> {
+        return self.api.request(.getCheckUsername(request))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
             .catchDecodeError()

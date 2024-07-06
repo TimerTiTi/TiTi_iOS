@@ -12,7 +12,7 @@ import Moya
 enum AuthAPI {
     case postSignup(TestUserSignupRequest)
     case postSignin(TestUserSigninRequest)
-    case getCheckUsername(String)
+    case getCheckUsername(CheckUsernameRequest)
     case getCheckEmail(CheckEmailExitRequest)
     case postUpdatePassword(UpdatePasswordRequest)
 }
@@ -51,9 +51,9 @@ extension AuthAPI: TargetType {
         case .postSignin(let request):
             return .requestJSONEncodable(request)
         case .getCheckUsername(let request):
-            return .requestJSONEncodable(request)
+            return .requestParameters(parameters: Self.parameters(from: request), encoding: URLEncoding.queryString)
         case .getCheckEmail(let request):
-            return .requestJSONEncodable(request)
+            return .requestParameters(parameters: Self.parameters(from: request), encoding: URLEncoding.queryString)
         case .postUpdatePassword(let request):
             return .requestJSONEncodable(request)
         }
