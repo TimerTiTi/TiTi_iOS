@@ -47,8 +47,8 @@ extension FirebaseAPI: TargetType {
             }
         case .getUpdateHistorys:
             switch Language.current {
-            case .ko: return "/updates?pageSize=100"
-            case .en, .zh: return "/updates_eng?pageSize=100"
+            case .ko: return "/updates"
+            case .en, .zh: return "/updates_eng"
             }
         case .getYoutubeLink:
             return "/youtube"

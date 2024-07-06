@@ -9,10 +9,6 @@
 import Foundation
 import Alamofire
 
-protocol UpdateHistoryFetchable {
-    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateHistoryInfo], NetworkError>) -> Void)
-}
-
 protocol SurveysFetchable {
     func getSurveys_lagacy(completion: @escaping (Result<[SurveyInfo], NetworkError>) -> Void)
 }
@@ -21,24 +17,6 @@ final class NetworkController {
     let network: Network
     init(network: Network) {
         self.network = network
-    }
-}
-
-extension NetworkController: UpdateHistoryFetchable {
-    func getUpdateHistorys_lagacy(completion: @escaping (Result<[UpdateHistoryInfo], NetworkError>) -> Void) {
-        self.network.request(url: NetworkURL.Firestore.updates, method: .get) { result in
-            switch result.status {
-            case .SUCCESS:
-                guard let data = result.data,
-                      let updateInfos: UpdateHistoryResponse = try? JSONDecoder().decode(UpdateHistoryResponse.self, from: data) else {
-                    completion(.failure(.DECODEERROR))
-                    return
-                }
-                completion(.success(updateInfos.updateInfos))
-            default:
-                completion(.failure(NetworkError.error(result)))
-            }
-        }
     }
 }
 

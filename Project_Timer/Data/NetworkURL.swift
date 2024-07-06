@@ -72,13 +72,6 @@ final class NetworkURL {
             default: return domain + "/surveys_eng"
             }
         }
-        
-        static var updates: String {
-            switch Language.current {
-            case .ko: return domain + "/updates?pageSize=100"
-            default: return domain + "/updates_eng?pageSize=100"
-            }
-        }
     }
     
     enum WidgetInfo {
