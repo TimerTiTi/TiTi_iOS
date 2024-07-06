@@ -274,7 +274,6 @@
 		87906C7F2B9BF749000EC960 /* MiSans-Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */; };
 		87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */; };
 		8791081F28387537005D7B10 /* NetworkURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791081E28387537005D7B10 /* NetworkURL.swift */; };
-		87910821283875C0005D7B10 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910820283875C0005D7B10 /* NetworkController.swift */; };
 		87910828283876DD005D7B10 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 87910827283876DD005D7B10 /* Alamofire */; };
 		8791082A283877A4005D7B10 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87910829283877A4005D7B10 /* Network.swift */; };
 		8791082F28387D1F005D7B10 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791082E28387D1F005D7B10 /* String+Extension.swift */; };
@@ -698,7 +697,6 @@
 		87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Normal.ttf"; sourceTree = "<group>"; };
 		87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Semibold.ttf"; sourceTree = "<group>"; };
 		8791081E28387537005D7B10 /* NetworkURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURL.swift; sourceTree = "<group>"; };
-		87910820283875C0005D7B10 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		87910829283877A4005D7B10 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8791082E28387D1F005D7B10 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		8791C1F127DCD050000D6BA9 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
@@ -1021,7 +1019,6 @@
 			children = (
 				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
-				87910820283875C0005D7B10 /* NetworkController.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */,
 				8708006A2B2CA57C00830B39 /* DailysNetwork.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */,
@@ -2275,7 +2272,6 @@
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
 				87862E822B2D8C22004ED313 /* TTNotificationView.swift in Sources */,
-				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */,
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,

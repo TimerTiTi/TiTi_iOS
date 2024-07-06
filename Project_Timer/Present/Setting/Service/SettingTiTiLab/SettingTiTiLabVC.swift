@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Moya
 
 final class SettingTiTiLabVC: UIViewController {
     static let identifier = "SettingTiTiLabVC"
@@ -150,9 +151,12 @@ extension SettingTiTiLabVC {
     }
     
     private func configureViewModel() {
-        // MARK: NetworkController 생성 관련 로직고민이 필요
-        let networkController = NetworkController(network: Network())
-        self.viewModel = SettingTiTiLabVM(networkController: networkController)
+        // TODO: DI 수정
+        let api = TTProvider<FirebaseAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = FirebaseRepository(api: api)
+        let getSurveysUseCase = GetSurveysUseCase(repository: repository)
+        
+        self.viewModel = SettingTiTiLabVM(getSurveysUseCase: getSurveysUseCase)
     }
     
     private func stopLoader() {

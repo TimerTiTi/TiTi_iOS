@@ -62,18 +62,6 @@ final class NetworkURL {
     static let instagramToDeveloper: String = "https://www.instagram.com/dev_mindsang/"
     static let github: String = "https://github.com/TimerTiTi"
     
-    enum Firestore {
-        static let domain: String = Infos.FirestoreURL.value
-        static let links: String = domain + "/links"
-        
-        static var surveys: String {
-            switch Language.current {
-            case .ko: return domain + "/surveys"
-            default: return domain + "/surveys_eng"
-            }
-        }
-    }
-    
     enum WidgetInfo {
         static var calendarWidget: String {
             switch Language.current {
