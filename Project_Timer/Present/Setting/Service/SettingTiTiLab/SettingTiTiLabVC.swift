@@ -108,8 +108,12 @@ extension SettingTiTiLabVC {
     }
     
     private func showBetaSigninSignupVC(signin: Bool) {
-        let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
-        let viewModel = SignupSigninVM(authUseCase: authUseCase, isSignin: signin)
+        // TODO: DI 수정
+        let api = TTProvider<AuthAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = AuthRepository(api: api)
+        let signupUseCase = SignupUseCase(repository: repository)
+        let signinUseCase = SigninUseCase(repository: repository)
+        let viewModel = SignupSigninVM(signupUseCase: signupUseCase, signinUseCase: signinUseCase, isSignin: signin)
         let vc = SignupSigninVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
