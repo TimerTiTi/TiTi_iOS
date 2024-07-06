@@ -1,5 +1,5 @@
 //
-//  ResetPasswordRequest.swift
+//  UpdatePasswordRequest.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2024/03/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ResetPasswordRequest: Encodable {
+struct UpdatePasswordRequest: Encodable {
     let username: String
     let email: String
     let newPassword: String

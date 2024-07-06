@@ -57,7 +57,7 @@ final class AuthNetwork {
         }
     }
     
-    func updatePassword(request: ResetPasswordRequest, completion: @escaping (NetworkResult) -> Void) {
+    func updatePassword(request: UpdatePasswordRequest, completion: @escaping (NetworkResult) -> Void) {
         self.network.request(url: self.resetPasswordURL, method: .post, body: request) { result in
             completion(result)
         }

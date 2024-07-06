@@ -85,7 +85,7 @@ final class AuthRepository_lagacy: AuthRepositoryInterface {
         }
     }
     
-    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+    func updatePassword(request: UpdatePasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
         api.updatePassword(request: request) { result in
             switch result.status {
             case .SUCCESS:

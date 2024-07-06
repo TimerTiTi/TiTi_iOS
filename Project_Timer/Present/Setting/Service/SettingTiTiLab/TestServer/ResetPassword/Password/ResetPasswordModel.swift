@@ -130,7 +130,7 @@ extension ResetPasswordModel {
         } 
         // 비밀번호가 일치하는 경우 서버 통신
         else {
-            let request = ResetPasswordRequest(
+            let request = UpdatePasswordRequest(
                 username: self.infos.nickname,
                 email: self.infos.email,
                 newPassword: self.password2

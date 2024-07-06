@@ -14,7 +14,7 @@ enum AuthAPI {
     case postSignin(TestUserSigninRequest)
     case getCheckUsername(String)
     case getCheckEmail(CheckEmailExitRequest)
-    case postUpdatePassword(ResetPasswordRequest)
+    case postUpdatePassword(UpdatePasswordRequest)
 }
 
 extension AuthAPI: TargetType {

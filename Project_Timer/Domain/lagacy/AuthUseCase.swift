@@ -61,7 +61,7 @@ final class AuthUseCase: AuthUseCaseInterface {
         }
     }
     
-    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
+    func updatePassword(request: UpdatePasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void) {
         self.repository.updatePassword(request: request) { result in
             switch result {
             case .success(let simpleResponse):

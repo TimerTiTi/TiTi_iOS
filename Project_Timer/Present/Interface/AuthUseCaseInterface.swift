@@ -14,5 +14,5 @@ protocol AuthUseCaseInterface {
     func signin(signinInfo: TestUserSigninRequest, completion: @escaping (Result<String, NetworkError>) -> Void)
     func checkUsername(username: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
     func checkEmail(username: String, email: String, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
-    func updatePassword(request: ResetPasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
+    func updatePassword(request: UpdatePasswordRequest, completion: @escaping (Result<SimpleResponse, NetworkError>) -> Void)
 }

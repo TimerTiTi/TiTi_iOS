@@ -46,7 +46,7 @@ final class AuthRepository {
             .catchDecodeError()
     }
     
-    func updatePassword(request: ResetPasswordRequest) -> AnyPublisher<Bool, NetworkError> {
+    func updatePassword(request: UpdatePasswordRequest) -> AnyPublisher<Bool, NetworkError> {
         return self.api.request(.postUpdatePassword(request))
             .map(SimpleResponse.self)
             .map { $0.toDomain() }
