@@ -54,7 +54,7 @@ extension Publisher {
     /// Repository의 공통적인 Decode 에러를 반환하는 Publisher
     func catchDecodeError() -> AnyPublisher<Self.Output, NetworkError> {
         return self
-            .mapError { _ in NetworkError.DECODEERROR }
+            .mapError { error in return error as? NetworkError ?? .DECODEERROR }
             .eraseToAnyPublisher()
     }
 }
