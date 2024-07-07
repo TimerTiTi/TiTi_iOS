@@ -18,8 +18,8 @@ final class RecordTimesRepository {
         self.api = api
     }
     
-    func upload(info: RecordTimes) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.request(.postRecordTime(info))
+    func upload(request: RecordTimes) -> AnyPublisher<Bool, NetworkError> {
+        return self.api.request(.postRecordTime(request))
             .map { _ in true }
             .catchDecodeError()
     }

@@ -59,4 +59,11 @@ final class FirebaseRepository {
             .map { $0.surveyInfos ?? [] }
             .catchDecodeError()
     }
+    
+    func getNotification() -> AnyPublisher<NotificationInfo, NetworkError> {
+        return self.api.request(.getNotification)
+            .map(NotificationResponse.self)
+            .map { $0.toDomain() }
+            .catchDecodeError()
+    }
 }

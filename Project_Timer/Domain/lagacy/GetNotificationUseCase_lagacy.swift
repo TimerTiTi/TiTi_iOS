@@ -1,5 +1,5 @@
 //
-//  GetNotificationUseCase.swift
+//  GetNotificationUseCase_lagacy.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class GetNotificationUseCase: GetNotificationUseCaseInterface {
+final class GetNotificationUseCase_lagacy: GetNotificationUseCaseInterface {
     let repository: NotificationRepositoryInterface
     
     init(repository: NotificationRepositoryInterface) {
