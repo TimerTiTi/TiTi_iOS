@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Moya
 
 final class SyncDailysVC: UIViewController {
     static let identifier = "SyncDailysVC"
@@ -125,10 +126,16 @@ extension SyncDailysVC {
         let syncLogUseCase = SyncLogUseCase(repository: SyncLogRepository_lagacy())
         let targetDailys = self.syncDeviceStatusView.configureDailys()
         
+        // TODO: DI 수정
+        let api = TTProvider<DailysAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = DailysRepository(api: api)
+        let getDailysUseCase = GetDailysUseCase(repository: repository)
+        
         self.viewModel = SyncDailysVM(
             dailysUseCase: dailysUseCase,
             recordTimesUseCase: recordTimesUseCase,
             syncLogUseCase: syncLogUseCase,
+            getDailysUseCase: getDailysUseCase,
             targetDailys: targetDailys)
     }
 }

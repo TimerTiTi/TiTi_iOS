@@ -64,7 +64,9 @@ extension Publisher where Output == Response, Failure == NetworkError {
     func map<D: Decodable>(_ type: D.Type) -> AnyPublisher<D, NetworkError> {
         return self.tryMap { response in
             do {
-                let decodedData = try JSONDecoder().decode(D.self, from: response.data)
+                let jsonDecoder = JSONDecoder()
+                jsonDecoder.dateDecodingStrategy = .iso8601
+                let decodedData = try jsonDecoder.decode(D.self, from: response.data)
                 return decodedData
             } catch {
                 throw NetworkError.DECODEERROR

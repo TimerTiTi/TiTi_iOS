@@ -13,6 +13,7 @@ final class SyncDailysVM {
     private let dailysUseCase: DailysUseCaseInterface
     private let recordTimesUseCase: RecordTimesUseCaseInterface
     private let syncLogUseCase: SyncLogUseCaseInterface
+    private let getDailysUseCase: GetDailysUseCase
     private var targetDailys: [Daily]
     @Published private(set) var syncLog: SyncLog?
     @Published private(set) var alert: (title: String, text: String)?
@@ -25,10 +26,12 @@ final class SyncDailysVM {
     init(dailysUseCase: DailysUseCaseInterface,
          recordTimesUseCase: RecordTimesUseCaseInterface,
          syncLogUseCase: SyncLogUseCaseInterface,
+         getDailysUseCase: GetDailysUseCase,
         targetDailys: [Daily]) {
         self.dailysUseCase = dailysUseCase
         self.recordTimesUseCase = recordTimesUseCase
         self.syncLogUseCase = syncLogUseCase
+        self.getDailysUseCase = getDailysUseCase
         self.targetDailys = targetDailys
         
         self.checkServerURL()
@@ -126,25 +129,27 @@ extension SyncDailysVM {
     private func getDailys() {
         self.loadingText = .getDailys
         self.loading = true
-        self.dailysUseCase.getDailys { [weak self] result in
-            switch result {
-            case .success(let dailys):
+        self.getDailysUseCase.execute()
+            .sink { [weak self] completion in
+                if case .failure(let networkError) = completion {
+                    print("ERROR", #function, networkError)
+                    self?.loading = false
+                    switch networkError {
+                    case .CLIENTERROR(let message):
+                        if let message = message {
+                            print("[get Dailys ERROR] \(message)")
+                        }
+                        self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
+                    default:
+                        self?.alert = networkError.alertMessage
+                    }
+                }
+            } receiveValue: { [weak self] dailys in
                 self?.saveDailys(dailys)
                 self?.loading = false
                 self?.checkRecordTimes()
-            case .failure(let error):
-                self?.loading = false
-                switch error {
-                case .CLIENTERROR(let message):
-                    if let message = message {
-                        print("[get Dailys ERROR] \(message)")
-                    }
-                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
-                default:
-                    self?.alert = error.alertMessage
-                }
             }
-        }
+            .store(in: &self.cancellables)
     }
     
     /// getRecordTime -> getSyncLog 진행

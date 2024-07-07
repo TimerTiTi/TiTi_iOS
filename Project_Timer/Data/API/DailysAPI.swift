@@ -24,8 +24,10 @@ extension DailysAPI: TargetType {
     
     var path: String {
         switch self {
-        case .postDailys, .getDailys:
+        case .postDailys:
             return "/dailys/upload"
+        case .getDailys:
+            return "/dailys"
         case .postRecordTime, .getRecordTime:
             return "/recordTime"
         case .getSyncLog:
