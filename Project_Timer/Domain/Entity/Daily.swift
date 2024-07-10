@@ -28,8 +28,7 @@ struct Daily: Codable {
     private(set) var status: String? // server 반영여부
     
     init() {
-        let now = Date()
-        
+        let now = Date().setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
         if now.hour < RecordsManager.resetHour {
             /// 전 날 기록이 없고, 새벽에 들어오는 경우
             self.day = now.nextDay(offset: -1)
