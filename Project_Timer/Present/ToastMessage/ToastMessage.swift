@@ -13,6 +13,7 @@ final class ToastMessage: UIView {
     
     static let shared = ToastMessage()
     
+    private let height: CGFloat = 40
     private let presenter = ToastPresenter()
     private var toast: UIHostingController<AnyView>?
     private var animator: UIViewPropertyAnimator?
@@ -25,8 +26,9 @@ final class ToastMessage: UIView {
             translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 centerXAnchor.constraint(equalTo: window.centerXAnchor),
-                topAnchor.constraint(equalTo: window.safeAreaLayoutGuide.topAnchor)
+                bottomAnchor.constraint(equalTo: window.topAnchor)
             ])
+         
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name("updatedIsPresenting"), object: nil, queue: nil) { [weak self] notification in
@@ -52,6 +54,11 @@ final class ToastMessage: UIView {
     }
     
     private func setting(_ type: ToastType) {
+        presenter.height = height
+        if !UIDevice.current.orientation.isLandscape {
+            presenter.height += UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+        }
+        
         switch type {
         case .newRecord:
             let toastView = ToastView(presenter: presenter) { presenter in

@@ -15,8 +15,10 @@ final class ToastPresenter: ObservableObject {
             NotificationCenter.default.post(name: Notification.Name("updatedIsPresenting"), object: nil, userInfo: ["newValue": newValue])
         }
     }
+    var height: CGFloat
     
-    init(isPresenting: Bool = false) {
+    init(isPresenting: Bool = false, height: CGFloat = 0) {
         self.isPresenting = isPresenting
+        self.height = height
     }
 }

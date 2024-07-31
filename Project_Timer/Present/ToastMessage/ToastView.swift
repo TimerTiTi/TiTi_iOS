@@ -19,6 +19,7 @@ protocol ToastViewProtocol: View {
 struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
     @ObservedObject var presenter: ToastPresenter
     @State private var yOffset: CGFloat = 0
+    @State private var viewHeight: CGFloat = 0
     let content: (_ presenter: ToastPresenter) -> Content
     
     var body: some View {
@@ -32,6 +33,7 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
                 .shadow(color: .gray.opacity(0.12),
                         radius: 4, x: 0, y: 4)
         )
+        .onReadSize { viewHeight = $0.height }
         .offset(y: yOffset)
         .onAppear(perform: {
             show()
@@ -41,7 +43,7 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
     private func show() {
         if #available(iOS 17.0, *) {
             withAnimation(.easeIn(duration: 0.15)) {
-                yOffset = 40
+                yOffset = presenter.height + viewHeight
             } completion: {
                 DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
                     hide()
@@ -49,7 +51,7 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
             }
         } else {
             withAnimation(.easeIn(duration: 0.15)) {
-                yOffset = 40
+                yOffset = presenter.height + viewHeight
             }
             DispatchQueue.main.asyncAfter(deadline: .now()+1.15, execute: {
                 hide()
