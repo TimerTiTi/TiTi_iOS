@@ -48,19 +48,6 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showRecordDateWarning(title: String, text: String, completion: @escaping(() -> Void)) {
-        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default) { _ in
-            NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
-        }
-        let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .destructive) { _ in
-            completion()
-        }
-        alert.addAction(cancel)
-        alert.addAction(ok)
-        self.present(alert, animated: true)
-    }
-    
     func showTaskWarningAlert() {
         self.showAlertWithOK(title: Localized.string(.Recording_Popup_NoTaskWarningTitle), text: Localized.string(.Recording_Popup_NoTaskWarningDesc))
     }

@@ -34,6 +34,12 @@ enum Fonts {
     static func MiSansBold(size: CGFloat) -> Font {
         return Font.custom("MiSans-Bold", size: size)
     }
+    static func PretendardMedium(size: CGFloat) -> Font {
+        return .custom("Pretendard-Medium", size: size)
+    }
+    static func PretendardSemiBold(size: CGFloat) -> Font {
+        return .custom("Pretendard-SemiBold", size: size)
+    }
 }
 
 // MARK: UIFont
@@ -62,5 +68,11 @@ extension Fonts {
     }
     static func MiSansBold(size: CGFloat) -> UIFont? {
         return UIFont(name: "MiSans-Bold", size: size)
+    }
+    static func PretendardMedium(size: CGFloat) -> UIFont? {
+        return UIFont(name: "Pretendard-Medium", size: size)
+    }
+    static func PretendardSemiBold(size: CGFloat) -> UIFont? {
+        return UIFont(name: "Pretendard-SemiBold", size: size)
     }
 }

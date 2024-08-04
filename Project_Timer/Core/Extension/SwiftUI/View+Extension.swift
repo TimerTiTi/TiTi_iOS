@@ -48,7 +48,27 @@ extension View {
             self
         }
     }
+    
+    
+    /// view의 사이즈를 알아내는 함수
+    @ViewBuilder
+    func onReadSize(_ perform: @escaping (CGSize) -> Void) -> some View {
+        self.background {
+            GeometryReader { geometryProxy in
+              Color.clear
+                .preference(key: SizePreferenceKey.self, value: geometryProxy.size)
+            }
+        }
+        .onPreferenceChange(SizePreferenceKey.self, perform: perform)
+    }
 }
+
+/// view size preference key
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) { }
+}
+
 
 // MARK: Functions
 extension View {
