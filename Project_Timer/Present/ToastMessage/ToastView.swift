@@ -42,18 +42,18 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
     
     private func show() {
         if #available(iOS 17.0, *) {
-            withAnimation(.easeIn(duration: 0.15)) {
+            withAnimation(.spring(duration: 0.5)) {
                 yOffset = presenter.height + viewHeight
             } completion: {
-                DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5, execute: {
                     hide()
                 })
             }
         } else {
-            withAnimation(.easeIn(duration: 0.15)) {
+            withAnimation(.spring(duration: 0.5)) {
                 yOffset = presenter.height + viewHeight
             }
-            DispatchQueue.main.asyncAfter(deadline: .now()+1.15, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
                 hide()
             })
         }
@@ -61,16 +61,16 @@ struct ToastView<Content: ToastViewProtocol>: ToastViewProtocol {
     
     private func hide() {
         if #available(iOS 17.0, *) {
-            withAnimation(.easeOut(duration: 0.15)) {
+            withAnimation(.easeIn(duration: 0.5)) {
                 yOffset = 0
             } completion: {
                 presenter.isPresenting = false
             }
         } else {
-            withAnimation(.easeOut(duration: 0.15)) {
+            withAnimation(.easeIn(duration: 0.5)) {
                 yOffset = 0
             }
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.15, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 presenter.isPresenting = false
             })
         }
