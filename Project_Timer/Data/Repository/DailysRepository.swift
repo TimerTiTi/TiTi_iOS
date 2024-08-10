@@ -19,7 +19,10 @@ final class DailysRepository {
     }
     
     func uploadDailys(request: [Daily]) -> AnyPublisher<Bool, NetworkError> {
-        return self.api.request(.postDailys(request))
+        let headers: [String: String] = [
+            "gmt": "\(TimeZone.current.secondsFromGMT())"
+        ]
+        return self.api.request(.postDailys(body: request, headers: headers))
             .map { _ in true }
             .catchDecodeError()
     }

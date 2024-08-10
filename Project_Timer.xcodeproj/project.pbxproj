@@ -54,13 +54,8 @@
 		870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800642B2C623600830B39 /* AuthRepositoryInterface.swift */; };
 		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
 		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
-		8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006A2B2CA57C00830B39 /* DailysNetwork.swift */; };
-		8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */; };
 		8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyResponse.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
-		870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */; };
-		870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800742B2D3C9A00830B39 /* DailysUseCase.swift */; };
-		870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */; };
 		870800792B2D4DE500830B39 /* RecordTimesNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */; };
 		8708007B2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */; };
 		8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */; };
@@ -504,13 +499,8 @@
 		870800642B2C623600830B39 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
 		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
-		8708006A2B2CA57C00830B39 /* DailysNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysNetwork.swift; sourceTree = "<group>"; };
-		8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysRepository_lagacy.swift; sourceTree = "<group>"; };
 		8708006E2B2CA92C00830B39 /* DailyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyResponse.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
-		870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyRepositoryInterface.swift; sourceTree = "<group>"; };
-		870800742B2D3C9A00830B39 /* DailysUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCase.swift; sourceTree = "<group>"; };
-		870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailysUseCaseInterface.swift; sourceTree = "<group>"; };
 		870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesNetwork.swift; sourceTree = "<group>"; };
 		8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepository_lagacy.swift; sourceTree = "<group>"; };
 		8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -1054,12 +1044,10 @@
 				87163DC92ACAF89B008D4072 /* NetworkResult.swift */,
 				87910829283877A4005D7B10 /* Network.swift */,
 				8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */,
-				8708006A2B2CA57C00830B39 /* DailysNetwork.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */,
 				870800842B2D593400830B39 /* SyncLogNetwork.swift */,
 				873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */,
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
-				8708006C2B2CA7AB00830B39 /* DailysRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */,
 				873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */,
@@ -1071,12 +1059,10 @@
 			isa = PBXGroup;
 			children = (
 				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
-				870800722B2CB11B00830B39 /* DailyRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
 				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
-				870800742B2D3C9A00830B39 /* DailysUseCase.swift */,
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
 				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift */,
@@ -1305,7 +1291,6 @@
 			isa = PBXGroup;
 			children = (
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
-				870800762B2D41EA00830B39 /* DailysUseCaseInterface.swift */,
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 				8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */,
 				873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */,
@@ -2338,7 +2323,6 @@
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
 				873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */,
 				873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */,
-				8708006D2B2CA7AB00830B39 /* DailysRepository_lagacy.swift in Sources */,
 				874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
 				87A722A828CCB95C000DA304 /* MonthVM.swift in Sources */,
@@ -2347,7 +2331,6 @@
 				879BE3262AC42919007AAC46 /* SigninInputTextfield.swift in Sources */,
 				049BBA9E28AB76B8005BAB1B /* TaskInteractionViewPlaceholder.swift in Sources */,
 				87A722A628CCB928000DA304 /* LogHomeTaskCellView.swift in Sources */,
-				870800772B2D41EA00830B39 /* DailysUseCaseInterface.swift in Sources */,
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
@@ -2373,7 +2356,6 @@
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
-				870800752B2D3C9A00830B39 /* DailysUseCase.swift in Sources */,
 				870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */,
@@ -2514,7 +2496,6 @@
 				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
-				870800732B2CB11B00830B39 /* DailyRepositoryInterface.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */,
 				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
@@ -2570,7 +2551,6 @@
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
-				8708006B2B2CA57C00830B39 /* DailysNetwork.swift in Sources */,
 				872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */,
 				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
@@ -2784,11 +2764,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -2800,7 +2779,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = profile_grin_dev;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;

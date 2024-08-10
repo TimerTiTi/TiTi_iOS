@@ -20,3 +20,11 @@ extension TargetType {
         return dictionary
     }
 }
+
+extension JSONEncoder {
+    static var dateFormatted: JSONEncoder {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        return encoder
+    }
+}

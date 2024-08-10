@@ -121,7 +121,6 @@ extension SyncDailysVC {
 
 extension SyncDailysVC {
     private func configureViewModel() {
-        let dailysUseCase = DailysUseCase(repository: DailysRepository_lagacy())
         let recordTimesUseCase = RecordTimesUseCase(repository: RecordTimesRepository_lagacy())
         let syncLogUseCase = SyncLogUseCase(repository: SyncLogRepository_lagacy())
         let targetDailys = self.syncDeviceStatusView.configureDailys()
@@ -130,12 +129,13 @@ extension SyncDailysVC {
         let api = TTProvider<DailysAPI>(session: Session(interceptor: NetworkInterceptor.shared))
         let repository = DailysRepository(api: api)
         let getDailysUseCase = GetDailysUseCase(repository: repository)
+        let postDailysUseCase = PostDailysUseCase(repository: repository)
         
         self.viewModel = SyncDailysVM(
-            dailysUseCase: dailysUseCase,
             recordTimesUseCase: recordTimesUseCase,
             syncLogUseCase: syncLogUseCase,
             getDailysUseCase: getDailysUseCase,
+            postDailysUseCase: postDailysUseCase,
             targetDailys: targetDailys)
     }
 }
