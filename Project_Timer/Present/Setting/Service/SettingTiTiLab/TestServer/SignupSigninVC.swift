@@ -350,7 +350,7 @@ extension SignupSigninVC: MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["freedeveloper97@gmail.com"])
+            mail.setToRecipients(["contact.timertiti@gmail.com"])
             mail.setMessageBody("<p>\(self.transToHTML(text: text))</p>", isHTML: true)
             
             present(mail, animated: true)
