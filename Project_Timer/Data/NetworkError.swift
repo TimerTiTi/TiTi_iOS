@@ -21,17 +21,6 @@ enum NetworkError: Error {
     case SERVERERROR(String?) // 500
     case ERRORRESPONSE(TTErrorResponse) // TiTi ErrorResponse
     
-    static func error(_ result: NetworkResult) -> NetworkError {
-        switch result.status {
-        case .TIMEOUT:
-            return .TIMEOUT
-        case .SERVER(let statusCode):
-            return serverError(statusCode: statusCode, data: result.data)
-        default:
-            return .FAIL
-        }
-    }
-    
     static func serverError(statusCode: Int, data: Data? = nil) -> NetworkError {
         // MARK: Decoding 로직 필요
         let errorMessage: String? = ""

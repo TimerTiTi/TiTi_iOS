@@ -55,9 +55,7 @@ final class NetworkURL {
     }
     
     static let appstore: String = "itms-apps://itunes.apple.com/app/id1519159240"
-    static let developmentList: String = "https://deeply-eggplant-5ec.notion.site/TiTi-Development-List-b089afc1a4eb4cdb8c06840ca9cb1273"
     static let instagramToTiTi: String = "https://www.instagram.com/study_withtiti/"
-    static let instagramToDeveloper: String = "https://www.instagram.com/dev_mindsang/"
     static let github: String = "https://github.com/TimerTiTi"
     
     enum WidgetInfo {
