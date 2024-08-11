@@ -52,12 +52,11 @@ struct ResetPasswordNicknameView: View {
             .navigationDestination(for: ResetPasswordNicknameRoute.self) { destination in
                 switch destination {
                 case .resetPasswordEmail:
-                    let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
-                    let infos = model.resetPasswordInfosForEmail
-                    let viewModel = ResetPasswordEmailModel(
-                        authUseCase: authUseCase,
-                        infos: infos
-                    )
+                    // TODO: DI 수정
+                    let api = TTProvider<AuthAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+                    let repository = AuthRepository(api: api)
+                    let checkEmailExitUseCase = CheckEmailExitUseCase(repository: repository)
+                    let viewModel = ResetPasswordEmailModel(checkEmailExitUseCase: checkEmailExitUseCase, infos: model.resetPasswordInfosForEmail)
                     ResetPasswordEmailView(model: viewModel)
                 }
             }
@@ -129,7 +128,7 @@ struct ResetPasswordNicknameView_Previews: PreviewProvider {
         let viewModel = ResetPasswordNicknameModel(checkUsenameExitUseCase: checkUsernameExitUseCase)
         
         ResetPasswordNicknameView(
-            model: ResetPasswordNicknameModel(checkUsenameExitUseCase: checkUsernameExitUseCase))
+            model: viewModel)
         .environmentObject(ResetPasswordEnvironment())
     }
 }

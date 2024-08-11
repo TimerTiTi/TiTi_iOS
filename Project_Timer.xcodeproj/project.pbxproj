@@ -49,11 +49,7 @@
 		870800522B2C3A0800830B39 /* ServerURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800512B2C3A0800830B39 /* ServerURLResponse.swift */; };
 		8708005C2B2C4D2D00830B39 /* AuthNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */; };
 		8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708005E2B2C5F5F00830B39 /* AuthResponse.swift */; };
-		870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */; };
 		870800632B2C604100830B39 /* AuthInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800622B2C604100830B39 /* AuthInfo.swift */; };
-		870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800642B2C623600830B39 /* AuthRepositoryInterface.swift */; };
-		870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800662B2C67E900830B39 /* AuthUseCase.swift */; };
-		870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */; };
 		8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8708006E2B2CA92C00830B39 /* DailyResponse.swift */; };
 		870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800702B2CAD9900830B39 /* TaskHistory.swift */; };
 		870800792B2D4DE500830B39 /* RecordTimesNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */; };
@@ -139,7 +135,6 @@
 		87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */; };
 		87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
-		873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */; };
 		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
 		873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */; };
 		873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */; };
@@ -490,11 +485,7 @@
 		870800512B2C3A0800830B39 /* ServerURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerURLResponse.swift; sourceTree = "<group>"; };
 		8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetwork.swift; sourceTree = "<group>"; };
 		8708005E2B2C5F5F00830B39 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
-		870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository_lagacy.swift; sourceTree = "<group>"; };
 		870800622B2C604100830B39 /* AuthInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInfo.swift; sourceTree = "<group>"; };
-		870800642B2C623600830B39 /* AuthRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryInterface.swift; sourceTree = "<group>"; };
-		870800662B2C67E900830B39 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
-		870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseInterface.swift; sourceTree = "<group>"; };
 		8708006E2B2CA92C00830B39 /* DailyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyResponse.swift; sourceTree = "<group>"; };
 		870800702B2CAD9900830B39 /* TaskHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHistory.swift; sourceTree = "<group>"; };
 		870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTimesNetwork.swift; sourceTree = "<group>"; };
@@ -578,7 +569,6 @@
 		87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Bold.ttf"; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
-		873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNetwork.swift; sourceTree = "<group>"; };
 		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStringArrayValue.swift; sourceTree = "<group>"; };
 		873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreValue.swift; sourceTree = "<group>"; };
@@ -1038,8 +1028,6 @@
 				8708005B2B2C4D2D00830B39 /* AuthNetwork.swift */,
 				870800782B2D4DE500830B39 /* RecordTimesNetwork.swift */,
 				870800842B2D593400830B39 /* SyncLogNetwork.swift */,
-				873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */,
-				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */,
 			);
@@ -1049,10 +1037,8 @@
 		872210502C3003EB003B97AD /* lagacy */ = {
 			isa = PBXGroup;
 			children = (
-				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
-				870800662B2C67E900830B39 /* AuthUseCase.swift */,
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
 			);
@@ -1286,7 +1272,6 @@
 		875FAE332B1C717E008F19D2 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 				8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */,
 				87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */,
@@ -2317,7 +2302,6 @@
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
 				87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */,
 				049BBA9828AB3D94005BAB1B /* ModifyFinishButton.swift in Sources */,
-				873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */,
 				873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */,
 				874B54282C158F890062D0AC /* CheckEmailExitRequest.swift in Sources */,
 				8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */,
@@ -2352,7 +2336,6 @@
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
-				870800612B2C5FDA00830B39 /* AuthRepository_lagacy.swift in Sources */,
 				87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */,
 				8706C32C2AEF864000F7C842 /* TTSignupTitleView.swift in Sources */,
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
@@ -2388,7 +2371,6 @@
 				87DB923E2AC2D06C00FE6453 /* View+Extension.swift in Sources */,
 				043706272869D58C00A5D3AA /* TimerTimeLabelView.swift in Sources */,
 				874F9C312ABFF81300675A86 /* EmailSigninButton.swift in Sources */,
-				870800692B2C68EF00830B39 /* AuthUseCaseInterface.swift in Sources */,
 				871616962C3A149000C4EF25 /* GetDailysUseCase.swift in Sources */,
 				878DA8252B0C78D8001E924E /* SignupNicknameRoute.swift in Sources */,
 				870F90E52AEFFA9300854DDB /* SignupPasswordModel.swift in Sources */,
@@ -2406,7 +2388,6 @@
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				8708007D2B2D503600830B39 /* RecordTimesRepositoryInterface.swift in Sources */,
-				870800672B2C67E900830B39 /* AuthUseCase.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
@@ -2431,7 +2412,6 @@
 				87306D532B260969001B7C14 /* TLRen.swift in Sources */,
 				8708008F2B2D646C00830B39 /* SyncLogUseCaseInterface.swift in Sources */,
 				87199F5E28842F0E0017D01A /* CheckGraphButton.swift in Sources */,
-				870800652B2C623600830B39 /* AuthRepositoryInterface.swift in Sources */,
 				87F10930284C4337002E31EA /* TiTiLabHeaderView.swift in Sources */,
 				879D20812A19E44B00D8A420 /* TargetTimeView.swift in Sources */,
 				87A4704826493D4D007B89D6 /* RecordTimes.swift in Sources */,

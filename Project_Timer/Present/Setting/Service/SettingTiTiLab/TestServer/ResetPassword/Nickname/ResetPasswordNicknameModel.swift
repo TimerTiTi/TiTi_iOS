@@ -33,7 +33,7 @@ final class ResetPasswordNicknameModel: ObservableObject {
     // Combine binding
     private var cancellables = Set<AnyCancellable>()
     
-    let checkUsenameExitUseCase: CheckUsernameExitUseCsae
+    private let checkUsenameExitUseCase: CheckUsernameExitUseCsae
     
     init(checkUsenameExitUseCase: CheckUsernameExitUseCsae) {
         self.checkUsenameExitUseCase = checkUsenameExitUseCase

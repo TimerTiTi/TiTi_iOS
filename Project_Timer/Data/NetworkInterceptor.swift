@@ -8,12 +8,16 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 /// accessToken, refreshToken 주입
 final class NetworkInterceptor: RequestInterceptor {
     static let retryLimit = 3
     static let shared = NetworkInterceptor()
     private init() {}
+    
+    // Combine binding
+    private var cancellables = Set<AnyCancellable>()
     
     /// network request 전에 token 설정
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
@@ -63,20 +67,27 @@ final class NetworkInterceptor: RequestInterceptor {
 }
 
 extension NetworkInterceptor {
+    /// signin 과정을 통해 token 재발급
     private func signinForToken(completion: @escaping (String?) -> Void) {
         guard let username = KeyChain.shared.get(key: .username),
               let password = KeyChain.shared.get(key: .password) else { return }
+        
+        // TODO: DI 수정
+        let api = TTProvider<AuthAPI>()
+        let repository = AuthRepository(api: api)
+        let signinUseCase = SigninUseCase(repository: repository)
+        
         let signinInfo = TestUserSigninRequest(username: username, password: password)
-        let authUseCase = AuthUseCase(repository: AuthRepository_lagacy())
-        authUseCase.signin(signinInfo: signinInfo) { result in
-            switch result {
-            case .success(let token):
-                completion(token)
-            case .failure(let error):
-                let message = error.alertMessage
-                print("title: \(error.title)/nmessage: \(error.message)")
-                completion(nil)
+        signinUseCase.execute(request: signinInfo)
+            .sink { comp in
+                if case .failure(let networkError) = comp {
+                    print("ERROR", #function, networkError)
+                    print(networkError.alertMessage)
+                    completion(nil)
+                }
+            } receiveValue: { authInfo in
+                completion(authInfo.token)
             }
-        }
+            .store(in: &self.cancellables)
     }
 }
