@@ -121,21 +121,26 @@ extension SyncDailysVC {
 
 extension SyncDailysVC {
     private func configureViewModel() {
-        let recordTimesUseCase = RecordTimesUseCase(repository: RecordTimesRepository_lagacy())
-        let syncLogUseCase = SyncLogUseCase(repository: SyncLogRepository_lagacy())
         let targetDailys = self.syncDeviceStatusView.configureDailys()
         
         // TODO: DI 수정
         let api = TTProvider<DailysAPI>(session: Session(interceptor: NetworkInterceptor.shared))
-        let repository = DailysRepository(api: api)
-        let getDailysUseCase = GetDailysUseCase(repository: repository)
-        let postDailysUseCase = PostDailysUseCase(repository: repository)
+        let dailyRepository = DailysRepository(api: api)
+        let recordTimeRepository = RecordTimesRepository(api: api)
+        let syncLogRepository = SyncLogRepository(api: api)
+        let getDailysUseCase = GetDailysUseCase(repository: dailyRepository)
+        let postDailysUseCase = PostDailysUseCase(repository: dailyRepository)
+        let getRecordTimeUseCase = GetRecordTimeUseCase(repository: recordTimeRepository)
+        let postRecordTimeUseCase = PostRecordTimeUseCase(repository: recordTimeRepository)
+        let getSyncLogUseCase = GetSyncLogUseCase(repository: syncLogRepository)
         
         self.viewModel = SyncDailysVM(
-            recordTimesUseCase: recordTimesUseCase,
-            syncLogUseCase: syncLogUseCase,
             getDailysUseCase: getDailysUseCase,
             postDailysUseCase: postDailysUseCase,
-            targetDailys: targetDailys)
+            getRecordTimeUseCase: getRecordTimeUseCase,
+            postRecordTimeUseCase: postRecordTimeUseCase,
+            getSyncLogUseCase: getSyncLogUseCase,
+            targetDailys: targetDailys
+        )
     }
 }

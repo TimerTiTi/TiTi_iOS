@@ -1,5 +1,5 @@
 //
-//  PostRecordTimeUseCase.swift
+//  GetRecordTimeUseCase.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2024/07/07.
@@ -9,14 +9,14 @@
 import Foundation
 import Combine
 
-final class PostRecordTimeUseCase {
-    private let repository: RecordTimesRepository
+final class GetRecordTimeUseCase {
+    private let repository: RecordTimesRepository // TODO: 프로토콜로 수정
     
     init(repository: RecordTimesRepository) {
         self.repository = repository
     }
     
-    func execute(request: RecordTimes) -> AnyPublisher<Bool, NetworkError> {
-        self.repository.upload(request: request)
+    func execute() -> AnyPublisher<RecordTimes, NetworkError> {
+        return self.repository.get()
     }
 }

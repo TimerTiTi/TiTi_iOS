@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 final class GetSyncLogUseCase {
-    private let repository: SyncLogRepository
+    private let repository: SyncLogRepository // TODO: 프로토콜로 수정
     
     init(repository: SyncLogRepository) {
         self.repository = repository

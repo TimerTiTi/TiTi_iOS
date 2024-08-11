@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 final class GetDailysUseCase {
-    let repository: DailysRepository
+    let repository: DailysRepository // TODO: 프로토콜로 수정
     
     init(repository: DailysRepository) {
         self.repository = repository

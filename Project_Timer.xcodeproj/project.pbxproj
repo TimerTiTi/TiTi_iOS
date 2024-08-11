@@ -770,7 +770,6 @@
 		87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEmailRoute.swift; sourceTree = "<group>"; };
 		87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
-		87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResetPasswordRoute.swift; path = ../../../../../../../../../../Downloads/ResetPasswordRoute.swift; sourceTree = "<group>"; };
 		87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteView.swift; sourceTree = "<group>"; };
 		87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteModel.swift; sourceTree = "<group>"; };
 		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
@@ -980,9 +979,6 @@
 			children = (
 				871616952C3A149000C4EF25 /* GetDailysUseCase.swift */,
 				8716169D2C3A604C00C4EF25 /* PostDailysUseCase.swift */,
-				8716169F2C3A605600C4EF25 /* PostRecordTimeUseCase.swift */,
-				871616A12C3A606C00C4EF25 /* GetRecordTimeUseCase.swift */,
-				871616A32C3A607700C4EF25 /* GetSyncLogUseCase.swift */,
 			);
 			path = Dailys;
 			sourceTree = "<group>";
@@ -1186,6 +1182,23 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		874A9DF52C68F279006D2E19 /* RecordTimes */ = {
+			isa = PBXGroup;
+			children = (
+				871616A12C3A606C00C4EF25 /* GetRecordTimeUseCase.swift */,
+				8716169F2C3A605600C4EF25 /* PostRecordTimeUseCase.swift */,
+			);
+			path = RecordTimes;
+			sourceTree = "<group>";
+		};
+		874A9DF62C68F295006D2E19 /* SyncLog */ = {
+			isa = PBXGroup;
+			children = (
+				871616A32C3A607700C4EF25 /* GetSyncLogUseCase.swift */,
+			);
+			path = SyncLog;
+			sourceTree = "<group>";
+		};
 		874F9C342ABFFDE900675A86 /* LoginSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,13 +1255,6 @@
 				8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		875FAE2D2B1C7058008F19D2 /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interface;
 			sourceTree = "<group>";
 		};
 		875FAE322B1C7173008F19D2 /* Present */ = {
@@ -1690,7 +1696,6 @@
 			children = (
 				87D4DCBD2BA51EEA00BB5AAB /* ResetPasswordVC.swift */,
 				87D4DCBF2BA5253600BB5AAB /* ResetPasswordEnvironment.swift */,
-				87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */,
 				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
 				87D4DCD02BA5A4A300BB5AAB /* Email */,
 				87D4DCD72BA5C15C00BB5AAB /* Password */,
@@ -1756,7 +1761,7 @@
 		87D4DCD72BA5C15C00BB5AAB /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				87D4DCDC2BA5C1E800BB5AAB /* ResetPasswordRoute.swift */,
+				87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */,
 				87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */,
 				87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */,
 			);
@@ -1955,7 +1960,6 @@
 			children = (
 				875FAE262B1C678E008F19D2 /* Entity */,
 				87F778E02B196EDF00909511 /* UseCase */,
-				875FAE2D2B1C7058008F19D2 /* Interface */,
 				872210502C3003EB003B97AD /* lagacy */,
 			);
 			path = Domain;
@@ -1968,6 +1972,8 @@
 				872210532C300922003B97AD /* Firebase */,
 				877BDCDF2C390BAE00A50231 /* Auth */,
 				871616922C3A146400C4EF25 /* Dailys */,
+				874A9DF52C68F279006D2E19 /* RecordTimes */,
+				874A9DF62C68F295006D2E19 /* SyncLog */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
