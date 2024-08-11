@@ -60,10 +60,10 @@ final class FirebaseRepository {
             .catchDecodeError()
     }
     
-    func getNotification() -> AnyPublisher<NotificationInfo, NetworkError> {
+    func getNotification() -> AnyPublisher<NotificationInfo?, NetworkError> {
         return self.api.request(.getNotification)
             .map(NotificationResponse.self)
-            .map { $0.toDomain() }
+            .map { $0.visible.value == true ? $0.toDomain() : nil }
             .catchDecodeError()
     }
 }

@@ -140,11 +140,7 @@
 		87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
 		873731D12B2E92BD00D7BD9F /* NotificationNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */; };
-		873731D32B2E931800D7BD9F /* NotificationRepository_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */; };
 		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
-		873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */; };
-		873731D92B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D82B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift */; };
-		873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */; };
 		873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */; };
 		873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */; };
 		873977EB288D3FAA0025EE73 /* LogDailyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873977EA288D3FAA0025EE73 /* LogDailyVM.swift */; };
@@ -583,11 +579,7 @@
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
 		873731D02B2E92BD00D7BD9F /* NotificationNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNetwork.swift; sourceTree = "<group>"; };
-		873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository_lagacy.swift; sourceTree = "<group>"; };
 		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
-		873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepositoryInterface.swift; sourceTree = "<group>"; };
-		873731D82B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCase_lagacy.swift; sourceTree = "<group>"; };
-		873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationUseCaseInterface.swift; sourceTree = "<group>"; };
 		873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStringArrayValue.swift; sourceTree = "<group>"; };
 		873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreValue.swift; sourceTree = "<group>"; };
 		873977EA288D3FAA0025EE73 /* LogDailyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDailyVM.swift; sourceTree = "<group>"; };
@@ -1050,7 +1042,6 @@
 				870800602B2C5FDA00830B39 /* AuthRepository_lagacy.swift */,
 				8708007A2B2D4F0800830B39 /* RecordTimesRepository_lagacy.swift */,
 				870800862B2D599800830B39 /* SyncLogRepository_lagacy.swift */,
-				873731D22B2E931800D7BD9F /* NotificationRepository_lagacy.swift */,
 			);
 			path = lagacy;
 			sourceTree = "<group>";
@@ -1061,12 +1052,9 @@
 				870800642B2C623600830B39 /* AuthRepositoryInterface.swift */,
 				8708007C2B2D503600830B39 /* RecordTimesRepositoryInterface.swift */,
 				8708008A2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift */,
-				873731D62B2E97C100D7BD9F /* NotificationRepositoryInterface.swift */,
 				870800662B2C67E900830B39 /* AuthUseCase.swift */,
 				8708007E2B2D543500830B39 /* RecordTimesUseCase.swift */,
 				8708008C2B2D63D300830B39 /* SyncLogUseCase.swift */,
-				873731D82B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift */,
-				87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */,
 			);
 			path = lagacy;
 			sourceTree = "<group>";
@@ -1204,6 +1192,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		874A9DF42C6837BF006D2E19 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				87FB8D1A2B3C5DF300EA5693 /* NotificationUseCase.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		874F9C342ABFFDE900675A86 /* LoginSelect */ = {
 			isa = PBXGroup;
 			children = (
@@ -1293,7 +1289,6 @@
 				870800682B2C68EF00830B39 /* AuthUseCaseInterface.swift */,
 				870800802B2D54B500830B39 /* RecordTimesUseCaseInterface.swift */,
 				8708008E2B2D646C00830B39 /* SyncLogUseCaseInterface.swift */,
-				873731DA2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift */,
 				87FB8D1C2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift */,
 			);
 			path = Interface;
@@ -1984,6 +1979,7 @@
 		87F778E02B196EDF00909511 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				874A9DF42C6837BF006D2E19 /* Notification */,
 				872210532C300922003B97AD /* Firebase */,
 				877BDCDF2C390BAE00A50231 /* Auth */,
 				871616922C3A146400C4EF25 /* Dailys */,
@@ -2362,7 +2358,6 @@
 				877911BC2A18922400F0A713 /* SettingListCellInfo.swift in Sources */,
 				871616A02C3A605600C4EF25 /* PostRecordTimeUseCase.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
-				873731DB2B2E983500D7BD9F /* GetNotificationUseCaseInterface.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */,
@@ -2446,7 +2441,6 @@
 				87EFD6832AC12C3800C422B1 /* SigninSignupEnvironment.swift in Sources */,
 				93A892B124C14D4700F89180 /* CircularProgressView.swift in Sources */,
 				8791C1F427DCD120000D6BA9 /* UserDefaultsManager.swift in Sources */,
-				873731D72B2E97C100D7BD9F /* NotificationRepositoryInterface.swift in Sources */,
 				8765234F28C7964500487BFB /* TotalVM.swift in Sources */,
 				878899852894F09600B7F378 /* WeekTimelineView.swift in Sources */,
 				872210472C2FF676003B97AD /* SurveyInfo.swift in Sources */,
@@ -2572,7 +2566,6 @@
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
-				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase_lagacy.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* UpdatePasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
@@ -2602,7 +2595,6 @@
 				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,
 				879A2BA6284741A500B69DA7 /* SettingHeaderView.swift in Sources */,
 				8721C6DB296943C500410D57 /* ChangeNextGraphButton.swift in Sources */,
-				873731D32B2E931800D7BD9F /* NotificationRepository_lagacy.swift in Sources */,
 				877D69FC2871C1CB00215B6D /* SurveyResponse.swift in Sources */,
 				874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */,
 				87199F552883EB160017D01A /* TimelineView.swift in Sources */,

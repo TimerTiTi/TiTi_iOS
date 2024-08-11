@@ -19,9 +19,7 @@ final class NetworkURL {
     
     private init() {
         self.getServerURL()
-            .sink { version in
-                print(version ?? "nil")
-            }
+            .sink { _ in }
             .store(in: &self.cancellables)
     }
     

@@ -10,13 +10,13 @@ import Foundation
 import Combine
 
 final class GetNotificationUseCase {
-    private let repository: FirebaseRepository
+    private let repository: FirebaseRepository // TODO: 프로토콜로 수정
     
     init(repository: FirebaseRepository) {
         self.repository = repository
     }
     
-    func execute() -> AnyPublisher<NotificationInfo, NetworkError> {
+    func execute() -> AnyPublisher<NotificationInfo?, NetworkError> {
         return self.repository.getNotification()
     }
 }

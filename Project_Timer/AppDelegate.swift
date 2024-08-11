@@ -224,28 +224,27 @@ extension AppDelegate {
     }
     
     private func checkNotification() {
-        let getNotficationUseCase = GetNotificationUseCase_lagacy(repository: NotificationRepository_lagacy())
+        // TODO: DI 수정
+        let api = TTProvider<FirebaseAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = FirebaseRepository(api: api)
+        let getNotificationUseCase = GetNotificationUseCase(repository: repository)
         let notificationUseCase = NotificationUseCase()
         
-        getNotficationUseCase.getNoti { result in
-            switch result {
-            case .success(let noti):
-                guard let noti = noti else { return }
+        getNotificationUseCase.execute()
+            .sink { completion in
+                    if case .failure(let networkError) = completion {
+                        print("ERROR", #function, networkError)
+                    }
+            } receiveValue: { notificationInfo in
+                guard let notificationInfo = notificationInfo else { return }
                 guard notificationUseCase.isShowNotification() else { return }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let notificationVC = NotificationVC(noti: noti, notificationUseCase: notificationUseCase)
+                    let notificationVC = NotificationVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
                     SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
                 }
-            case .failure(let networkError):
-                switch networkError {
-                case .NOTFOUND(_):
-                    return
-                default:
-                    print(networkError.alertMessage)
-                }
             }
-        }
+            .store(in: &self.cancellables)
     }
     
     private func updateToLastestVersion() {
