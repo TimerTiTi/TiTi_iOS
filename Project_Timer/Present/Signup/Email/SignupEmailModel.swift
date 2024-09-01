@@ -21,6 +21,15 @@ class SignupEmailModel: ObservableObject {
         case exist
         case networkError
         case notExist
+        
+        var errorMessage: String {
+            switch self {
+            case .notValid: return Localized.string(.SignUp_Error_WrongEmailFormat)
+            case .exist: return "동일한 이메일이 존재합니다. 다른 이메일을 입력해주세요"
+            case .networkError: return "네트워크 오류가 발생했습니다."
+            case .notExist: return ""
+            }
+        }
     }
     
     let infos: SignupInfosForEmail
@@ -133,10 +142,9 @@ extension SignupEmailModel {
             self.emailStatus = nil
             self.getUsernameNotExistUseCase.execute(username: email)
                 .sink { [weak self] completion in
-                    if case .failure(let networkError) = completion {
-                        print("ERROR", #function, networkError)
-                        self?.emailStatus = .networkError
-                    }
+                    guard case .failure(let networkError) = completion else { return }
+                    print("ERROR", #function)
+                    self?.handleCheckEmailError(networkError)
                 } receiveValue: { [weak self] checkUsernameInfo in
                     if checkUsernameInfo.isNotExist {
                         self?.emailStatus = .notExist
@@ -174,5 +182,16 @@ extension SignupEmailModel {
     private func resetVerificationCode() {
         verificationCode = ""
         stage = .verificationCode
+    }
+}
+
+extension SignupEmailModel {
+    private func handleCheckEmailError(_ networkError: NetworkError) {
+        self.emailStatus = .networkError
+        guard case .ERRORRESPONSE(let ttErrorResponse) = networkError else { return }
+        print(ttErrorResponse.logMessage)
+        // TODO: 오류문구 표시가 필요한 경우 반영
+        print("title: \(ttErrorResponse.errorTitle)")
+        print("message: \(ttErrorResponse.errorMessage)")
     }
 }

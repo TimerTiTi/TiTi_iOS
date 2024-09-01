@@ -69,7 +69,7 @@ struct SignupEmailView: View {
                                     model.emailStatus = nil
                                 }
                                 TTSignupTextFieldUnderlineView(color: model.emailTintColor)
-                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.isWarningEmail)
+                                TTSignupTextFieldWarning(warning: model.emailStatus?.errorMessage ?? "", visible: model.isWarningEmail)
                                     .id(TTSignupTextFieldView.type.email)
                                 
                                 if model.stage == .verificationCode {

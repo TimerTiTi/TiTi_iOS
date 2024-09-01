@@ -19,7 +19,7 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
                 switch result {
                 case .success(let response):
                     print("\nTTProvider success", token, "\(token.baseURL)\(token.path)")
-                    print("-->", String(data: response.data, encoding: .utf8), "\n")
+//                    print("-->", String(data: response.data, encoding: .utf8), "\n")
                     if (200...299).contains(response.statusCode) {
                         promise(.success(response))
                     } else {
@@ -29,7 +29,7 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
                     promise(.success(response))
                 case .failure(let error):
                     print("\nTTProvider failure", token, "\(token.baseURL)\(token.path)")
-                    print("-->", error.localizedDescription, "\n")
+//                    print("-->", error.localizedDescription, "\n")
                     promise(.failure(self.handleError(error)))
                 }
             }
