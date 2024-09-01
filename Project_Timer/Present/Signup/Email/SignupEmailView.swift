@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct SignupEmailView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -64,10 +66,10 @@ struct SignupEmailView: View {
                                     model.checkEmail()
                                 }
                                 .onChange(of: model.email) { newValue in
-                                    model.validEmail = nil
+                                    model.emailStatus = nil
                                 }
                                 TTSignupTextFieldUnderlineView(color: model.emailTintColor)
-                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.validEmail == false)
+                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.isWarningEmail)
                                     .id(TTSignupTextFieldView.type.email)
                                 
                                 if model.stage == .verificationCode {
@@ -176,8 +178,15 @@ struct SignupEmailView_Previews: PreviewProvider {
     static let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
     
     static var previews: some View {
+        // TODO: DI 수정
+        let api = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = UserRepository(api: api)
+        let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: repository)
         SignupEmailView(
-            model: SignupEmailModel(infos: infos)
+            model: SignupEmailModel(
+                infos: infos,
+                getUsernameNotExistUseCase: getUsernameNotExistUseCase
+            )
         ).environmentObject(SigninSignupEnvironment())
     }
 }

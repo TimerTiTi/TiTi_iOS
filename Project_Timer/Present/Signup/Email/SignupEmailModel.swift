@@ -16,11 +16,27 @@ class SignupEmailModel: ObservableObject {
         case email
         case verificationCode
     }
+    enum EmailStatus {
+        case notValid
+        case exist
+        case networkError
+        case notExist
+    }
     
     let infos: SignupInfosForEmail
+    var emailStatus: EmailStatus? {
+        didSet {
+            switch self.emailStatus {
+            case .notValid, .exist, .networkError:
+                self.isWarningEmail = true
+            default:
+                self.isWarningEmail = false
+            }
+        }
+    }
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
-    @Published var validEmail: Bool?
+    @Published var isWarningEmail: Bool = false
     @Published var validVerificationCode: Bool?
     @Published var getVerificationSuccess: Bool = false
     @Published var stage: Stage = .email
@@ -29,8 +45,12 @@ class SignupEmailModel: ObservableObject {
     @Published var verificationCode: String = ""
     private var verificationKey = ""
     
-    init(infos: SignupInfosForEmail) {
+    private let getUsernameNotExistUseCase: GetUsernameNotExistUseCase
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(infos: SignupInfosForEmail, getUsernameNotExistUseCase: GetUsernameNotExistUseCase) {
         self.infos = infos
+        self.getUsernameNotExistUseCase = getUsernameNotExistUseCase
         // vender email 정보를 기본값으로 설정
         if let email = infos.venderInfo?.email {
             self.email = email
@@ -39,9 +59,10 @@ class SignupEmailModel: ObservableObject {
     
     // emailTextField underline 컬러
     var emailTintColor: Color {
-        if validEmail == false {
+        switch self.emailStatus {
+        case .notValid, .exist, .networkError:
             return Colors.wrongTextField.toColor
-        } else {
+        default:
             return focus == .email ? Color.blue : UIColor.placeholderText.toColor
         }
     }
@@ -106,13 +127,29 @@ extension SignupEmailModel {
     
     // email done 액션
     func checkEmail() {
-        validEmail = PredicateChecker.isValidEmail(email)
+        let validEmail = PredicateChecker.isValidEmail(email)
         // stage 변화 -> @FocusState 반영
         if validEmail == true {
-            // API 요청
-            resetVerificationCode()
+            self.emailStatus = nil
+            self.getUsernameNotExistUseCase.execute(username: email)
+                .sink { [weak self] completion in
+                    if case .failure(let networkError) = completion {
+                        print("ERROR", #function, networkError)
+                        self?.emailStatus = .networkError
+                    }
+                } receiveValue: { [weak self] checkUsernameInfo in
+                    if checkUsernameInfo.isNotExist {
+                        self?.emailStatus = .notExist
+                        self?.resetVerificationCode()
+                    } else {
+                        print("DetailInfo", #function, checkUsernameInfo.detailInfo)
+                        self?.emailStatus = .exist
+                    }
+                }
+                .store(in: &self.cancellables)
         } else {
-            resetEmail()
+            self.emailStatus = .notValid
+            self.resetEmail()
         }
     }
     

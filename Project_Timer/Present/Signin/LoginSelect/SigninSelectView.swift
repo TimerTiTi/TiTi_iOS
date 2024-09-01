@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct SigninSelectView: View {
     @EnvironmentObject var environment: SigninSignupEnvironment
@@ -40,8 +42,15 @@ struct SigninSelectView: View {
                 switch destination {
                 case .signupEmail:
                     let infos = model.signupInfosForEmail
+                    // TODO: DI 수정
+                    let api = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+                    let repository = UserRepository(api: api)
+                    let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: repository)
                     SignupEmailView(
-                        model: SignupEmailModel(infos: infos)
+                        model: SignupEmailModel(
+                            infos: infos,
+                            getUsernameNotExistUseCase: getUsernameNotExistUseCase
+                        )
                     )
                 case .signin:
                     SigninView()

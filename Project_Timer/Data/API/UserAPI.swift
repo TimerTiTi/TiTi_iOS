@@ -16,7 +16,7 @@ enum UserAPI {
 
 extension UserAPI: TargetType {
     var baseURL: URL {
-        return URL(string: NetworkURL.serverURL_V2)!
+        return URL(string: NetworkURL.serverURL_V2 + "/api/user")!
     }
     
     var path: String {

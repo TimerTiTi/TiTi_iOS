@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct SigninView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -39,8 +41,15 @@ struct SigninView: View {
                     Text("findPassword")
                 case .signup:
                     let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
+                    // TODO: DI 수정
+                    let api = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+                    let repository = UserRepository(api: api)
+                    let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: repository)
                     SignupEmailView(
-                        model: SignupEmailModel(infos: infos)
+                        model: SignupEmailModel(
+                            infos: infos,
+                            getUsernameNotExistUseCase: getUsernameNotExistUseCase
+                        )
                     )
                 }
             }
