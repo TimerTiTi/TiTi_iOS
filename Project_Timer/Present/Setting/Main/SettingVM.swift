@@ -27,9 +27,9 @@ final class SettingVM {
     
     private func configureSections() {
         // MARK: Dev
-        if Infos.isDevMode {
+//        if Infos.isDevMode {
             self.sections.append(Localized.string(.Settings_Text_ProfileSection))
-        }
+//        }
         
         self.sections.append(Localized.string(.Settings_Text_ServiceSection))
         self.sections.append(Localized.string(.Settings_Text_SettingSection))
@@ -43,12 +43,12 @@ final class SettingVM {
         
         var cells: [[SettingCellInfo]] = []
         // MARK: Dev
-        if Infos.isDevMode {
+//        if Infos.isDevMode {
             // Profile
             cells.append([
                 SettingCellInfo(title: Localized.string(.Settings_Button_SingInOption), subTitle: Localized.string(.Settings_Button_SingInOptionDesc), action: .modalFullscreen, destination: .signinSelect)
             ])
-        }
+//        }
         
         // Service
         cells.append([

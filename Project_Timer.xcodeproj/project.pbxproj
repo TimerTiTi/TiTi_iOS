@@ -87,6 +87,11 @@
 		871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69A2967C9C500AFED1C /* TimeTableView.swift */; };
 		871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69C2967C9D100AFED1C /* TimeTableVM.swift */; };
 		871BC8C82C8468CE0092DFA7 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8C72C8468CE0092DFA7 /* UserAPI.swift */; };
+		871BC8CB2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */; };
+		871BC8CD2C846DCF0092DFA7 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8CC2C846DCF0092DFA7 /* UserRepository.swift */; };
+		871BC8CF2C846EC00092DFA7 /* CheckUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */; };
+		871BC8D12C84701B0092DFA7 /* TTResponseDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */; };
+		871BC8D32C84703C0092DFA7 /* CheckUsernameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871DC0F42BC27E620024DA3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */; };
 		871DC0F52BC280D60024DA3B /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876E27752AC1CD2A0054250D /* Infos.swift */; };
@@ -508,6 +513,11 @@
 		871AB69A2967C9C500AFED1C /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
 		871AB69C2967C9D100AFED1C /* TimeTableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVM.swift; sourceTree = "<group>"; };
 		871BC8C72C8468CE0092DFA7 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsernameNotExistUseCase.swift; sourceTree = "<group>"; };
+		871BC8CC2C846DCF0092DFA7 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameResponse.swift; sourceTree = "<group>"; };
+		871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTResponseDetailInfo.swift; sourceTree = "<group>"; };
+		871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameInfo.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -992,6 +1002,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		871BC8C92C846D6E0092DFA7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		872210532C300922003B97AD /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1223,8 @@
 				872210462C2FF676003B97AD /* SurveyInfo.swift */,
 				872210482C2FF6AF003B97AD /* FunctionInfo.swift */,
 				8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */,
+				871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */,
+				871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1694,6 +1714,7 @@
 				875C98C62871BB26008F7ADD /* YoutubeLinkResponse.swift */,
 				87B90B3E2BF4BC6D00D6886E /* TTErrorResponse.swift */,
 				8722104C2C2FFA66003B97AD /* TTResponse.swift */,
+				871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1916,6 +1937,7 @@
 		87F778E02B196EDF00909511 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				871BC8C92C846D6E0092DFA7 /* User */,
 				874A9DF42C6837BF006D2E19 /* Notification */,
 				872210532C300922003B97AD /* Firebase */,
 				877BDCDF2C390BAE00A50231 /* Auth */,
@@ -1934,6 +1956,7 @@
 				874B542B2C1592460062D0AC /* DailysRepository.swift */,
 				874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */,
 				872210412C2FEE83003B97AD /* SyncLogRepository.swift */,
+				871BC8CC2C846DCF0092DFA7 /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2273,6 +2296,7 @@
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				875FAE372B1C74AD008F19D2 /* FirebaseBooleanValue.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */,
+				871BC8D12C84701B0092DFA7 /* TTResponseDetailInfo.swift in Sources */,
 				87FB8D1D2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
@@ -2292,6 +2316,7 @@
 				871616A02C3A605600C4EF25 /* PostRecordTimeUseCase.swift in Sources */,
 				8791081F28387537005D7B10 /* NetworkURL.swift in Sources */,
 				87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */,
+				871BC8CD2C846DCF0092DFA7 /* UserRepository.swift in Sources */,
 				873C197628D041DE00E02ADC /* DailyView.swift in Sources */,
 				87D4DCCF2BA5492700BB5AAB /* SimpleResponse.swift in Sources */,
 				87B90B3C2BF4B13D00D6886E /* AppVersionResponse.swift in Sources */,
@@ -2374,6 +2399,7 @@
 				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
 				8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
+				871BC8D32C84703C0092DFA7 /* CheckUsernameInfo.swift in Sources */,
 				8761BDCA2BCFEA7A00E9281A /* AuthAPI.swift in Sources */,
 				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
@@ -2432,6 +2458,7 @@
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				8761BDC02BCFE52E00E9281A /* FirebaseAPI.swift in Sources */,
+				871BC8CF2C846EC00092DFA7 /* CheckUsernameResponse.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
 				8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */,
 				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
@@ -2502,6 +2529,7 @@
 				8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */,
+				871BC8CB2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				870800892B2D59EB00830B39 /* SyncLogResponse.swift in Sources */,

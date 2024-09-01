@@ -109,6 +109,7 @@ extension SignupEmailModel {
         validEmail = PredicateChecker.isValidEmail(email)
         // stage 변화 -> @FocusState 반영
         if validEmail == true {
+            // API 요청
             resetVerificationCode()
         } else {
             resetEmail()

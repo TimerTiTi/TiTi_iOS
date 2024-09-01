@@ -11,7 +11,7 @@ import Moya
 
 enum UserAPI {
     /// 존재하는 Username인지 확인해요.
-    case checkUsername(username: String)
+    case checkUsername(request: CheckUsernameRequest)
 }
 
 extension UserAPI: TargetType {
@@ -35,12 +35,11 @@ extension UserAPI: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .checkUsername(let username):
+        case .checkUsername(let request):
             return .requestParameters(
-                parameters: [
-                    "username": username
-                ],
-                encoding: URLEncoding.queryString)
+                parameters: Self.parameters(from: request),
+                encoding: URLEncoding.queryString
+            )
         }
     }
     
