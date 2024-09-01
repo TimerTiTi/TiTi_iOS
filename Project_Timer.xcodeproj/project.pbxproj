@@ -86,6 +86,7 @@
 		871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */; };
 		871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69A2967C9C500AFED1C /* TimeTableView.swift */; };
 		871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69C2967C9D100AFED1C /* TimeTableVM.swift */; };
+		871BC8C82C8468CE0092DFA7 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8C72C8468CE0092DFA7 /* UserAPI.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871DC0F42BC27E620024DA3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */; };
 		871DC0F52BC280D60024DA3B /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876E27752AC1CD2A0054250D /* Infos.swift */; };
@@ -506,6 +507,7 @@
 		871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableDailyGraphView.swift; sourceTree = "<group>"; };
 		871AB69A2967C9C500AFED1C /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
 		871AB69C2967C9D100AFED1C /* TimeTableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVM.swift; sourceTree = "<group>"; };
+		871BC8C72C8468CE0092DFA7 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1174,10 +1176,11 @@
 		875FAE232B1C6710008F19D2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8761BDCD2BCFEFD500E9281A /* API.swift */,
 				8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */,
 				8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */,
 				8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */,
-				8761BDCD2BCFEFD500E9281A /* API.swift */,
+				871BC8C72C8468CE0092DFA7 /* UserAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -2490,6 +2493,7 @@
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
 				8769349727E1BBAF00D33F51 /* TodoCell.swift in Sources */,
 				0437062D2869EC2200A5D3AA /* TimerTimeLabelVM.swift in Sources */,
+				871BC8C82C8468CE0092DFA7 /* UserAPI.swift in Sources */,
 				872210592C300A08003B97AD /* GetUpdateHistorysUseCase.swift in Sources */,
 				878899882894F0B900B7F378 /* WeekTimelineVM.swift in Sources */,
 				04F0D2B9286607A7007ED596 /* BaseSingleTimeLabelVM.swift in Sources */,
