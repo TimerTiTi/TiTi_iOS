@@ -129,6 +129,11 @@
 		87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */; };
 		87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
+		8736B7452CA94DB8006BD389 /* AuthV2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7442CA94DB8006BD389 /* AuthV2API.swift */; };
+		8736B7472CA94E75006BD389 /* AuthV2Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7462CA94E75006BD389 /* AuthV2Repository.swift */; };
+		8736B7492CA94EBE006BD389 /* PostAuthCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */; };
+		8736B74B2CA94FC9006BD389 /* PostAuthCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */; };
+		8736B74D2CA950D4006BD389 /* PostAuthCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */; };
 		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
 		873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */; };
 		873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */; };
@@ -556,6 +561,11 @@
 		87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Bold.ttf"; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
+		8736B7442CA94DB8006BD389 /* AuthV2API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthV2API.swift; sourceTree = "<group>"; };
+		8736B7462CA94E75006BD389 /* AuthV2Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthV2Repository.swift; sourceTree = "<group>"; };
+		8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeRequest.swift; sourceTree = "<group>"; };
+		8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeResponse.swift; sourceTree = "<group>"; };
+		8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeInfo.swift; sourceTree = "<group>"; };
 		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStringArrayValue.swift; sourceTree = "<group>"; };
 		873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreValue.swift; sourceTree = "<group>"; };
@@ -1199,6 +1209,7 @@
 				8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */,
 				8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */,
 				871BC8C72C8468CE0092DFA7 /* UserAPI.swift */,
+				8736B7442CA94DB8006BD389 /* AuthV2API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1225,6 +1236,7 @@
 				8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */,
 				871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */,
 				871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */,
+				8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1692,6 +1704,7 @@
 				87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */,
 				87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */,
 				871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */,
+				8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1715,6 +1728,7 @@
 				87B90B3E2BF4BC6D00D6886E /* TTErrorResponse.swift */,
 				8722104C2C2FFA66003B97AD /* TTResponse.swift */,
 				871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */,
+				8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1957,6 +1971,7 @@
 				874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */,
 				872210412C2FEE83003B97AD /* SyncLogRepository.swift */,
 				871BC8CC2C846DCF0092DFA7 /* UserRepository.swift */,
+				8736B7462CA94E75006BD389 /* AuthV2Repository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2441,11 +2456,13 @@
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
 				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
+				8736B7492CA94EBE006BD389 /* PostAuthCodeRequest.swift in Sources */,
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */,
 				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
+				8736B7452CA94DB8006BD389 /* AuthV2API.swift in Sources */,
 				87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
 				879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */,
@@ -2494,6 +2511,7 @@
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
 				87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */,
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
+				8736B74B2CA94FC9006BD389 /* PostAuthCodeResponse.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */,
@@ -2502,6 +2520,7 @@
 				8722105D2C300A8C003B97AD /* GetSurveysUseCase.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
+				8736B74D2CA950D4006BD389 /* PostAuthCodeInfo.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* FirebaseStringValue.swift in Sources */,
@@ -2515,6 +2534,7 @@
 				87FB6B8D2BFE0B3F00CD7A9C /* AuthRepository.swift in Sources */,
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
+				8736B7472CA94E75006BD389 /* AuthV2Repository.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* UpdatePasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
