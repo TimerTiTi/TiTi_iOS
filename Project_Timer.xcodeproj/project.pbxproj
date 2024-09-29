@@ -134,6 +134,7 @@
 		8736B7492CA94EBE006BD389 /* PostAuthCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */; };
 		8736B74B2CA94FC9006BD389 /* PostAuthCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */; };
 		8736B74D2CA950D4006BD389 /* PostAuthCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */; };
+		8736B7502CA951EC006BD389 /* PostAuthCodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */; };
 		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
 		873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */; };
 		873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */; };
@@ -566,6 +567,7 @@
 		8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeRequest.swift; sourceTree = "<group>"; };
 		8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeResponse.swift; sourceTree = "<group>"; };
 		8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeInfo.swift; sourceTree = "<group>"; };
+		8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeUseCase.swift; sourceTree = "<group>"; };
 		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStringArrayValue.swift; sourceTree = "<group>"; };
 		873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreValue.swift; sourceTree = "<group>"; };
@@ -1151,6 +1153,14 @@
 				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		8736B74E2CA951B6006BD389 /* AuthV2 */ = {
+			isa = PBXGroup;
+			children = (
+				8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */,
+			);
+			path = AuthV2;
 			sourceTree = "<group>";
 		};
 		874A9DF42C6837BF006D2E19 /* Notification */ = {
@@ -1958,6 +1968,7 @@
 				871616922C3A146400C4EF25 /* Dailys */,
 				874A9DF52C68F279006D2E19 /* RecordTimes */,
 				874A9DF62C68F295006D2E19 /* SyncLog */,
+				8736B74E2CA951B6006BD389 /* AuthV2 */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -2528,6 +2539,7 @@
 				8722104D2C2FFA66003B97AD /* TTResponse.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
+				8736B7502CA951EC006BD389 /* PostAuthCodeUseCase.swift in Sources */,
 				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */,

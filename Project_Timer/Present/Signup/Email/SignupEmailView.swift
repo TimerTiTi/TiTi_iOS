@@ -179,13 +179,17 @@ struct SignupEmailView_Previews: PreviewProvider {
     
     static var previews: some View {
         // TODO: DI 수정
-        let api = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
-        let repository = UserRepository(api: api)
-        let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: repository)
+        let userApi = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let authApi = TTProvider<AuthV2API>(session: Session(interceptor: NetworkInterceptor.shared))
+        let userRepository = UserRepository(api: userApi)
+        let authRepository = AuthV2Repository(api: authApi)
+        let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: userRepository)
+        let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
         SignupEmailView(
             model: SignupEmailModel(
                 infos: infos,
-                getUsernameNotExistUseCase: getUsernameNotExistUseCase
+                getUsernameNotExistUseCase: getUsernameNotExistUseCase,
+                postAuthCodeUseCase: postAuthCodeUseCase
             )
         ).environmentObject(SigninSignupEnvironment())
     }

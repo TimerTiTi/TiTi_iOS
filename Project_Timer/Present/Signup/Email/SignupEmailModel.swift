@@ -55,11 +55,17 @@ class SignupEmailModel: ObservableObject {
     private var verificationKey = ""
     
     private let getUsernameNotExistUseCase: GetUsernameNotExistUseCase
+    private let postAuthCodeUseCase: PostAuthCodeUseCase
     private var cancellables = Set<AnyCancellable>()
     
-    init(infos: SignupInfosForEmail, getUsernameNotExistUseCase: GetUsernameNotExistUseCase) {
+    init(
+        infos: SignupInfosForEmail,
+        getUsernameNotExistUseCase: GetUsernameNotExistUseCase,
+        postAuthCodeUseCase: PostAuthCodeUseCase
+    ) {
         self.infos = infos
         self.getUsernameNotExistUseCase = getUsernameNotExistUseCase
+        self.postAuthCodeUseCase = postAuthCodeUseCase
         // vender email 정보를 기본값으로 설정
         if let email = infos.venderInfo?.email {
             self.email = email
@@ -147,8 +153,9 @@ extension SignupEmailModel {
                     self?.handleCheckEmailError(networkError)
                 } receiveValue: { [weak self] checkUsernameInfo in
                     if checkUsernameInfo.isNotExist {
+                        // 성공, valid 단계
                         self?.emailStatus = .notExist
-                        self?.resetVerificationCode()
+                        self?.postAuthCode()
                     } else {
                         print("DetailInfo", #function, checkUsernameInfo.detailInfo)
                         self?.emailStatus = .exist
@@ -159,6 +166,20 @@ extension SignupEmailModel {
             self.emailStatus = .notValid
             self.resetEmail()
         }
+    }
+    
+    /// 인증코드 전송
+    private func postAuthCode() {
+        self.postAuthCodeUseCase.execute(type: .signup(email: self.email))
+            .sink { [weak self] completion in
+                guard case .failure(let networkError) = completion else { return }
+                print("ERROR", #function)
+                self?.handleCheckEmailError(networkError)
+            } receiveValue: { [weak self] postAuthCodeInfo in
+                print("authKey: \(postAuthCodeInfo.authKey)")
+                self?.resetVerificationCode()
+            }
+            .store(in: &self.cancellables)
     }
     
     // 인증코드 done 액션
@@ -175,18 +196,19 @@ extension SignupEmailModel {
     }
     
     private func resetEmail() {
-        validVerificationCode = nil
-        stage = .email
+        self.validVerificationCode = nil
+        self.stage = .email
     }
     
     private func resetVerificationCode() {
-        verificationCode = ""
-        stage = .verificationCode
+        self.verificationCode = ""
+        self.stage = .verificationCode
     }
 }
 
 extension SignupEmailModel {
     private func handleCheckEmailError(_ networkError: NetworkError) {
+        // TODO: 서버 문제, 요청 문제 등 분기처리 필요
         self.emailStatus = .networkError
         guard case .ERRORRESPONSE(let ttErrorResponse) = networkError else { return }
         print(ttErrorResponse.logMessage)
