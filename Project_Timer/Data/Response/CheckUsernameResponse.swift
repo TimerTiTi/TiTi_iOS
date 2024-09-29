@@ -11,14 +11,14 @@ import Foundation
 struct CheckUsernameResponse: Decodable {
     let code: String
     let message: String
-    let is_present: Bool
+    let isPresent: Bool
 }
 
 extension CheckUsernameResponse {
     func toDomain() -> CheckUsernameInfo {
         return .init(
             detailInfo: .init(code: self.code, message: self.message),
-            isNotExist: !self.is_present
+            isNotExist: !self.isPresent
         )
     }
 }
