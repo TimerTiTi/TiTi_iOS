@@ -48,11 +48,13 @@ struct SigninView: View {
                     let authRepository = AuthV2Repository(api: authApi)
                     let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: userRepository)
                     let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
+                    let verifyAuthCodeUseCase = VerifyAuthCodeUseCase(repository: authRepository)
                     SignupEmailView(
                         model: SignupEmailModel(
                             infos: infos,
                             getUsernameNotExistUseCase: getUsernameNotExistUseCase,
-                            postAuthCodeUseCase: postAuthCodeUseCase
+                            postAuthCodeUseCase: postAuthCodeUseCase,
+                            verifyAuthCodeUseCase: verifyAuthCodeUseCase
                         )
                     )
                 }

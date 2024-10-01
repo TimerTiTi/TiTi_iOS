@@ -30,11 +30,15 @@ class SignupEmailModel: ObservableObject {
     
     enum Action {
         case resendAuthCode
+        case verifyAuthCode
     }
+    
     public func action(_ action: Action) {
         switch action {
         case .resendAuthCode:
             self.postAuthCode()
+        case .verifyAuthCode:
+            self.verifyAuthCode()
         }
     }
     
@@ -77,16 +81,19 @@ class SignupEmailModel: ObservableObject {
     
     private let getUsernameNotExistUseCase: GetUsernameNotExistUseCase
     private let postAuthCodeUseCase: PostAuthCodeUseCase
+    private let verifyAuthCodeUseCase: VerifyAuthCodeUseCase
     private var cancellables = Set<AnyCancellable>()
     
     init(
         infos: SignupInfosForEmail,
         getUsernameNotExistUseCase: GetUsernameNotExistUseCase,
-        postAuthCodeUseCase: PostAuthCodeUseCase
+        postAuthCodeUseCase: PostAuthCodeUseCase,
+        verifyAuthCodeUseCase: VerifyAuthCodeUseCase
     ) {
         self.infos = infos
         self.getUsernameNotExistUseCase = getUsernameNotExistUseCase
         self.postAuthCodeUseCase = postAuthCodeUseCase
+        self.verifyAuthCodeUseCase = verifyAuthCodeUseCase
         // vender email 정보를 기본값으로 설정
         if let email = infos.venderInfo?.email {
             self.email = email
@@ -191,12 +198,12 @@ extension SignupEmailModel {
     
     /// 인증코드 전송, 전송 시점 저장 및 authKey 수신 후 저장
     private func postAuthCode() {
-        self.postAuthCodeTerminateDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
+        self.postAuthCodeTerminateDate = Calendar.current.date(byAdding: .minute, value: 5, to: Date())
         self.postAuthCodeUseCase.execute(type: .signup(email: self.email))
             .sink { [weak self] completion in
                 guard case .failure(let networkError) = completion else { return }
                 print("ERROR", #function)
-                self?.handleCheckEmailError(networkError)
+                // TODO: 인증코드 전송 실패시 핸들링
             } receiveValue: { [weak self] postAuthCodeInfo in
                 print("authKey: \(postAuthCodeInfo.authKey)")
                 self?.authKey = postAuthCodeInfo.authKey
@@ -209,7 +216,7 @@ extension SignupEmailModel {
     // 인증코드 유효시간 표시 timer 동작
     func runTimer() {
         DispatchQueue.main.async { [weak self] in
-            self?.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { [weak self] timer in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
                 guard let postAuthCodeTerminateDate = self?.postAuthCodeTerminateDate else { return }
                 let remainSeconds = Int(postAuthCodeTerminateDate.timeIntervalSinceNow)
                 if remainSeconds <= 0 {
@@ -222,16 +229,21 @@ extension SignupEmailModel {
     }
     
     // 인증코드 done 액션
-    func checkVerificationCode() {
-        validVerificationCode = authCode.count > 7
-        // stage 변화 -> @StateFocus 반영
-        if validVerificationCode == true {
-            // verificationKey 수신 필요
-            authCode = "abcd1234"
-            getVerificationSuccess = true
-        } else {
-            resetVerificationCode()
-        }
+    private func verifyAuthCode() {
+        guard let authKey = self.authKey else { return }
+        let request = VerifyAuthCodeRequest(authKey: authKey, authCode: self.authCode)
+        self.verifyAuthCodeUseCase.execute(request: request)
+            .sink { [weak self] completion in
+                guard case .failure(let networkError) = completion else { return }
+                print("ERROR", #function)
+                // TODO: 인증코드 검증 실패시 핸들링
+            } receiveValue: { [weak self] verifyAuthCodeInfo in
+                print("authToken: \(verifyAuthCodeInfo.authToken)")
+                // TODO: authToken 전달 구현
+                self?.validVerificationCode = true
+                self?.getVerificationSuccess = true
+            }
+            .store(in: &self.cancellables)
     }
     
     private func resetEmail() {

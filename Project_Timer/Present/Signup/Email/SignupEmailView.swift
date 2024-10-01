@@ -150,7 +150,7 @@ struct SignupEmailView: View {
                 
                 HStack(alignment: .center, spacing: 16) {
                     TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.authCode, focus: $focus) {
-                        model.checkVerificationCode()
+                        model.action(.verifyAuthCode)
                     }
                     .frame(maxWidth: .infinity)
                     
@@ -194,11 +194,13 @@ struct SignupEmailView_Previews: PreviewProvider {
         let authRepository = AuthV2Repository(api: authApi)
         let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: userRepository)
         let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
+        let verifyAuthCodeUseCase = VerifyAuthCodeUseCase(repository: authRepository)
         SignupEmailView(
             model: SignupEmailModel(
                 infos: infos,
                 getUsernameNotExistUseCase: getUsernameNotExistUseCase,
-                postAuthCodeUseCase: postAuthCodeUseCase
+                postAuthCodeUseCase: postAuthCodeUseCase,
+                verifyAuthCodeUseCase: verifyAuthCodeUseCase
             )
         ).environmentObject(SigninSignupEnvironment())
     }
