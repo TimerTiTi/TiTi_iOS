@@ -24,4 +24,11 @@ final class AuthV2Repository {
             .map { $0.toDomain() }
             .catchDecodeError()
     }
+    
+    func verifyAuthCode(request: VerifyAuthCodeRequest) -> AnyPublisher<VerifyAuthCodeInfo, NetworkError> {
+        return self.api.request(.verifyAuthcode(request: request))
+            .map(VerifyAuthCodeResponse.self)
+            .map { $0.toDomain() }
+            .catchDecodeError()
+    }
 }

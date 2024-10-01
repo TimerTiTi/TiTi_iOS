@@ -155,6 +155,9 @@
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
+		874DCBE72CABEFB500CF9435 /* VerifyAuthCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */; };
+		874DCBE92CABF09100CF9435 /* VerifyAuthCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */; };
+		874DCBEB2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */; };
 		874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */; };
 		874F9C2D2ABFF73400675A86 /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */; };
 		874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */; };
@@ -588,6 +591,9 @@
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
+		874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeRequest.swift; sourceTree = "<group>"; };
+		874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeInfo.swift; sourceTree = "<group>"; };
+		874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeResponse.swift; sourceTree = "<group>"; };
 		874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectView.swift; sourceTree = "<group>"; };
 		874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
 		874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSigninButton.swift; sourceTree = "<group>"; };
@@ -1247,6 +1253,7 @@
 				871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */,
 				871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */,
 				8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */,
+				874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1715,6 +1722,7 @@
 				87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */,
 				871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */,
 				8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */,
+				874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1739,6 +1747,7 @@
 				8722104C2C2FFA66003B97AD /* TTResponse.swift */,
 				871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */,
 				8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */,
+				874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2329,6 +2338,7 @@
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */,
+				874DCBE72CABEFB500CF9435 /* VerifyAuthCodeRequest.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
@@ -2364,6 +2374,7 @@
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
 				87306D5D2B26CB5C001B7C14 /* Typographys.swift in Sources */,
 				8716169E2C3A604C00C4EF25 /* PostDailysUseCase.swift in Sources */,
+				874DCBEB2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift in Sources */,
 				87306D612B26CBBC001B7C14 /* Icons.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				871616A42C3A607700C4EF25 /* GetSyncLogUseCase.swift in Sources */,
@@ -2573,6 +2584,7 @@
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
 				87A7624726493BB500174401 /* LogHomeVC.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */,
+				874DCBE92CABF09100CF9435 /* VerifyAuthCodeInfo.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* Colors.swift in Sources */,
 				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
 				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,

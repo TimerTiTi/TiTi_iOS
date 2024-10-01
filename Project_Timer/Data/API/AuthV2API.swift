@@ -12,6 +12,8 @@ import Moya
 enum AuthV2API {
     /// 인증 코드를 생성하여 대상에게 전송해요.
     case postAuthcode(request: PostAuthCodeRequest)
+    /// 인증 코드를 검증해요.
+    case verifyAuthcode(request: VerifyAuthCodeRequest)
 }
 
 extension AuthV2API: TargetType {
@@ -23,12 +25,14 @@ extension AuthV2API: TargetType {
         switch self {
         case .postAuthcode:
             return "/code"
+        case .verifyAuthcode:
+            return "/code/verify"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postAuthcode:
+        case .postAuthcode, .verifyAuthcode:
             return .post
         }
     }
@@ -37,12 +41,14 @@ extension AuthV2API: TargetType {
         switch self {
         case .postAuthcode(let request):
             return .requestJSONEncodable(request)
+        case .verifyAuthcode(let request):
+            return .requestJSONEncodable(request)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .postAuthcode:
+        case .postAuthcode, .verifyAuthcode:
             return nil
         }
     }
