@@ -78,6 +78,7 @@ extension SyncDailysVM {
             case .success(_):
                 self?.getDailys()
             case .failure(let error):
+                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -102,6 +103,7 @@ extension SyncDailysVM {
             case .success(_):
                 self?.getSyncLog(afterUploaded: true)
             case .failure(let error):
+                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -154,6 +156,7 @@ extension SyncDailysVM {
                 self?.loading = false
                 self?.getSyncLog(afterUploaded: true)
             case .failure(let error):
+                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -182,6 +185,7 @@ extension SyncDailysVM {
                 }
                 self?.syncLog = syncLog
             case .failure(let error):
+                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
