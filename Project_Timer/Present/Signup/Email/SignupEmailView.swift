@@ -149,27 +149,36 @@ struct SignupEmailView: View {
                     .frame(height: 35)
                 
                 HStack(alignment: .center, spacing: 16) {
-                    TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.verificationCode, focus: $focus) {
+                    TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.authCode, focus: $focus) {
                         model.checkVerificationCode()
                     }
                     .frame(maxWidth: .infinity)
-                    // MARK: Timer 구현 필요
-                    Text("4 : 59")
+                    
+                    Text(remainTime(remainSeconds: model.authCodeRemainSeconds))
                         .font(Fonts.HGGGothicssiP40g(size: 18))
-                    // MARK: 재전송 구현 필요
-                    Button {
-                        // MARK: ViewModel 내에서 네트워킹이 필요한 부분
-                        print("resend")
-                    } label: {
-                        Text(Localized.string(.SignUp_Button_Resend))
-                            .font(Typographys.font(.normal_3, size: 18))
+                        .monospacedDigit()
+                    
+                    if model.authCodeRemainSeconds == 0 {
+                        Button {
+                            model.action(.resendAuthCode)
+                        } label: {
+                            Text(Localized.string(.SignUp_Button_Resend))
+                                .font(Typographys.font(.normal_3, size: 18))
+                        }
                     }
                 }
                 
                 TTSignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
+                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.authCode.isEmpty)
                     .id(TTSignupTextFieldView.type.verificationCode)
             }
+        }
+        
+        func remainTime(remainSeconds: Int?) -> String {
+            guard let remainSeconds else { return "0:00" }
+            let minutes = Int(remainSeconds) / 60
+            let seconds = Int(remainSeconds) % 60
+            return String(format: "%d:%02d", minutes, seconds)
         }
     }
 }

@@ -12,6 +12,34 @@ import SwiftUI
 
 // MARK: State
 class SignupEmailModel: ObservableObject {
+    
+    // MARK: State
+    
+    @Published var contentWidth: CGFloat = .zero
+    @Published var focus: TTSignupTextFieldView.type?
+    @Published var isWarningEmail: Bool = false
+    @Published var validVerificationCode: Bool?
+    @Published var getVerificationSuccess: Bool = false
+    @Published var stage: Stage = .email
+    
+    @Published var email: String = ""
+    @Published var authCode: String = ""
+    @Published var authCodeRemainSeconds: Int? // authCode 만료까지 남은 초
+    
+    // MARK: Action
+    
+    enum Action {
+        case resendAuthCode
+    }
+    public func action(_ action: Action) {
+        switch action {
+        case .resendAuthCode:
+            self.postAuthCode()
+        }
+    }
+    
+    // MARK: Properties
+    
     enum Stage {
         case email
         case verificationCode
@@ -43,16 +71,9 @@ class SignupEmailModel: ObservableObject {
             }
         }
     }
-    @Published var contentWidth: CGFloat = .zero
-    @Published var focus: TTSignupTextFieldView.type?
-    @Published var isWarningEmail: Bool = false
-    @Published var validVerificationCode: Bool?
-    @Published var getVerificationSuccess: Bool = false
-    @Published var stage: Stage = .email
-    
-    @Published var email: String = ""
-    @Published var verificationCode: String = ""
-    private var verificationKey = ""
+    private var postAuthCodeTerminateDate: Date? // authCode 만료 시점
+    private var authKey: String? // authCode 전송시 서버로부터 받은 5분간 유효한 authKey
+    private var timer: Timer? // authCode 전송 후 남은 시간, 1초간 업데이트
     
     private let getUsernameNotExistUseCase: GetUsernameNotExistUseCase
     private let postAuthCodeUseCase: PostAuthCodeUseCase
@@ -84,7 +105,7 @@ class SignupEmailModel: ObservableObject {
     
     // verificationCodeTextField underline 컬러
     var authCodeTintColor: Color {
-        if validVerificationCode == false && verificationCode.isEmpty {
+        if validVerificationCode == false && authCode.isEmpty {
             return Colors.wrongTextField.toColor
         } else {
             return focus == .verificationCode ? Color.blue : UIColor.placeholderText.toColor
@@ -98,7 +119,7 @@ class SignupEmailModel: ObservableObject {
             venderInfo: self.infos.venderInfo,
             emailInfo: SignupEmailInfo(
                 email: self.email,
-                verificationKey: self.verificationCode)
+                verificationKey: self.authCode)
         )
     }
     
@@ -109,7 +130,7 @@ class SignupEmailModel: ObservableObject {
             venderInfo: self.infos.venderInfo,
             emailInfo: SignupEmailInfo(
                 email: self.email,
-                verificationKey: self.verificationCode),
+                verificationKey: self.authCode),
             passwordInfo: nil
         )
     }
@@ -168,8 +189,9 @@ extension SignupEmailModel {
         }
     }
     
-    /// 인증코드 전송
+    /// 인증코드 전송, 전송 시점 저장 및 authKey 수신 후 저장
     private func postAuthCode() {
+        self.postAuthCodeTerminateDate = Calendar.current.date(byAdding: .minute, value: 1, to: Date())
         self.postAuthCodeUseCase.execute(type: .signup(email: self.email))
             .sink { [weak self] completion in
                 guard case .failure(let networkError) = completion else { return }
@@ -177,18 +199,35 @@ extension SignupEmailModel {
                 self?.handleCheckEmailError(networkError)
             } receiveValue: { [weak self] postAuthCodeInfo in
                 print("authKey: \(postAuthCodeInfo.authKey)")
+                self?.authKey = postAuthCodeInfo.authKey
                 self?.resetVerificationCode()
+                self?.runTimer()
             }
             .store(in: &self.cancellables)
     }
     
+    // 인증코드 유효시간 표시 timer 동작
+    func runTimer() {
+        DispatchQueue.main.async { [weak self] in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { [weak self] timer in
+                guard let postAuthCodeTerminateDate = self?.postAuthCodeTerminateDate else { return }
+                let remainSeconds = Int(postAuthCodeTerminateDate.timeIntervalSinceNow)
+                if remainSeconds <= 0 {
+                    self?.timer?.invalidate()
+                    self?.timer = nil
+                }
+                self?.authCodeRemainSeconds = remainSeconds
+            })
+        }
+    }
+    
     // 인증코드 done 액션
     func checkVerificationCode() {
-        validVerificationCode = verificationCode.count > 7
+        validVerificationCode = authCode.count > 7
         // stage 변화 -> @StateFocus 반영
         if validVerificationCode == true {
             // verificationKey 수신 필요
-            verificationKey = "abcd1234"
+            authCode = "abcd1234"
             getVerificationSuccess = true
         } else {
             resetVerificationCode()
@@ -201,7 +240,9 @@ extension SignupEmailModel {
     }
     
     private func resetVerificationCode() {
-        self.verificationCode = ""
+        self.authCode = ""
+        self.timer?.invalidate()
+        self.timer = nil
         self.stage = .verificationCode
     }
 }
