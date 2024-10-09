@@ -21,7 +21,7 @@ final class ToastMessage: UIView {
     private init() {
         super.init(frame: .zero)
         
-        if let window = UIApplication.shared.windows.first {
+        if let window = UIApplication.shared.firstWindow {
             window.addSubview(self)
             translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
@@ -56,7 +56,7 @@ final class ToastMessage: UIView {
     private func setting(_ type: ToastType) {
         presenter.height = height
         if !UIDevice.current.orientation.isLandscape {
-            presenter.height += UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0
+            presenter.height += UIApplication.shared.safeAreaTopInset
         }
         
         switch type {

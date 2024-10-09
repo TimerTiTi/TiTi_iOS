@@ -398,6 +398,7 @@
 		D9A5F1422C32FA3700CED4B0 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
+		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
 		D9DC51C52C243E37009A96F6 /* newRecordLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D9DC51C42C243E37009A96F6 /* newRecordLottie.json */; };
 		D9DC51CF2C26FC83009A96F6 /* newRecordToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */; };
 		D9DC51FF2C29A29F009A96F6 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51FE2C29A29F009A96F6 /* ToastView.swift */; };
@@ -820,6 +821,7 @@
 		D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		D9DC51C42C243E37009A96F6 /* newRecordLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newRecordLottie.json; sourceTree = "<group>"; };
 		D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newRecordToastView.swift; sourceTree = "<group>"; };
 		D9DC51FE2C29A29F009A96F6 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
@@ -1843,6 +1845,7 @@
 			isa = PBXGroup;
 			children = (
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
+				D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */,
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 				87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */,
@@ -2532,6 +2535,7 @@
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
+				D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */,
 				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
