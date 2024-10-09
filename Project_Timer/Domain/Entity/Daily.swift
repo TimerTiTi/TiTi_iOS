@@ -28,13 +28,13 @@ struct Daily: Codable {
     private(set) var status: String? // server 반영여부
     
     init() {
-        let now = Date().setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
+        var now = Date()
         if now.hour < RecordsManager.resetHour {
-            /// 전 날 기록이 없고, 새벽에 들어오는 경우
-            self.day = now.nextDay(offset: -1)
-        } else {
-            self.day = now
+            /// 전 날 기록이 없고, resetHour 이전에 들어오는 경우
+            /// 전 날의 기록으로 생성
+            now = now.nextDay(offset: -1)
         }
+        self.day = now.setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
     }
     
     init(newDate: Date) {
