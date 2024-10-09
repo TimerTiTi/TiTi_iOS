@@ -88,14 +88,14 @@ extension SyncDailysVC {
     }
     
     private func bindLoading() {
-        self.viewModel?.$loading
+        self.viewModel?.$isLoading
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] loading in
-                switch loading {
-                case true:
+            .dropFirst()
+            .sink(receiveValue: { [weak self] isLoading in
+                if isLoading {
                     let loadingText = self?.viewModel?.loadingText?.rawValue
                     LoadingIndicator.showLoading(text: loadingText)
-                case false:
+                } else {
                     LoadingIndicator.hideLoading()
                 }
             })
@@ -105,14 +105,11 @@ extension SyncDailysVC {
     private func bindError() {
         self.viewModel?.$alert
             .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .compactMap { $0 }
             .sink(receiveValue: { [weak self] error in
                 LoadingIndicator.hideLoading()
-                guard let error = error else { return }
-                self?.showAlertWithOKAfterHandler(title: error.title, text: error.text, completion: {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        LoadingIndicator.hideLoading()
-                    }
-                })
+                self?.showAlertWithOK(title: error.title, text: error.text)
             })
             .store(in: &self.cancellables)
     }

@@ -16,7 +16,7 @@ final class SyncDailysVM {
     private var targetDailys: [Daily]
     @Published private(set) var syncLog: SyncLog?
     @Published private(set) var alert: (title: String, text: String)?
-    @Published private(set) var loading: Bool = false
+    @Published private(set) var isLoading: Bool = false
     @Published private(set) var saveDailysSuccess: Bool = false
     private(set) var loadingText: SyncDailysVC.LoadingStatus?
     
@@ -71,14 +71,12 @@ extension SyncDailysVM {
     /// uploadDailys -> getDailys 진행
     private func uploadDailys() {
         self.loadingText = .uploadDailys
-        self.loading = true
+        self.isLoading = true
         self.dailysUseCase.uploadDailys(dailys: self.targetDailys) { [weak self] result in
-            self?.loading = false
             switch result {
             case .success(_):
                 self?.getDailys()
             case .failure(let error):
-                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -96,14 +94,11 @@ extension SyncDailysVM {
     private func uploadRecordTime() {
         let recordTimes = RecordsManager.shared.recordTimes
         self.loadingText = .uploadRecordTime
-        self.loading = true
         self.recordTimesUseCase.uploadRecordTimes(recordTimes: recordTimes) { [weak self] result in
-            self?.loading = false
             switch result {
             case .success(_):
                 self?.getSyncLog(afterUploaded: true)
             case .failure(let error):
-                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -123,15 +118,15 @@ extension SyncDailysVM {
     /// getDailys -> checkRecordTimes 진행
     private func getDailys() {
         self.loadingText = .getDailys
-        self.loading = true
+        if !self.isLoading {
+            self.isLoading = true
+        }
         self.dailysUseCase.getDailys { [weak self] result in
             switch result {
             case .success(let dailys):
                 self?.saveDailys(dailys)
-                self?.loading = false
                 self?.checkRecordTimes()
             case .failure(let error):
-                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -148,15 +143,12 @@ extension SyncDailysVM {
     /// getRecordTime -> getSyncLog 진행
     private func getRecordtime() {
         self.loadingText = .getRecordTime
-        self.loading = true
         self.recordTimesUseCase.getRecordTimes { [weak self] result in
             switch result {
             case .success(let recordTimes):
                 self?.saveRecordTimes(recordTimes)
-                self?.loading = false
                 self?.getSyncLog(afterUploaded: true)
             case .failure(let error):
-                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
@@ -173,11 +165,11 @@ extension SyncDailysVM {
     /// sync 로직 후 getSyncLog, 또는 화면진입시 진행
     private func getSyncLog(afterUploaded: Bool) {
         self.loadingText = .getSyncLog
-        self.loading = true
+        self.isLoading = true
         self.syncLogUseCase.getSyncLog { [weak self] result in
-            self?.loading = false
             switch result {
             case .success(let syncLog):
+                self?.isLoading = false
                 if let syncLog = syncLog, afterUploaded {
                     self?.saveLastUploadedDate(to: syncLog.updatedAt)
                     self?.targetDailys = []
@@ -185,7 +177,6 @@ extension SyncDailysVM {
                 }
                 self?.syncLog = syncLog
             case .failure(let error):
-                self?.loading = false
                 switch error {
                 case .CLIENTERROR(let message):
                     if let message = message {
