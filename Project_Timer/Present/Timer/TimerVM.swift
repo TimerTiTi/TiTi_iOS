@@ -69,7 +69,7 @@ final class TimerVM {
     
     private func checkRecordDate() {
         if RecordsManager.shared.isDateChanged {
-            newRecord()
+            self.createNewRecord()
         }
     }
     
@@ -142,7 +142,7 @@ final class TimerVM {
         self.updateTimes()
     }
     
-    func newRecord() {
+    func createNewRecord() {
         RecordsManager.shared.currentDaily.reset()
         RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
