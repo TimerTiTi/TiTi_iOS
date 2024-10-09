@@ -783,7 +783,7 @@ extension StopwatchVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_EditTargetTimeTitle),
-                                         subTitle: Date().YYYYMMDDstyleString + Localized.string(.Recording_Text_EditTargetTimeSubtitle),
+                                         subTitle: Localized.string(.Recording_Text_EditTargetTimeSubtitle, op: Date().YYYYMMDDstyleString),
                                          targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         

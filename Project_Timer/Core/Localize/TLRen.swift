@@ -124,7 +124,7 @@ struct TLRen {
         case .Recording_Popup_CheckDailyDateTitle: value = "Check the date of recording"
         case .Recording_Popup_CheckDailyDateDesc: value = "Do you want to start the New record?"
         case .Recording_Text_EditTargetTimeTitle: value = "Edit Target Time"
-        case .Recording_Text_EditTargetTimeSubtitle: value = " Edit the target time."
+        case .Recording_Text_EditTargetTimeSubtitle: value = "{} Edit the target time."
             
         case .Timer_Text_Finish: value = "FINISH"
         case .Timer_Text_TimerEndTime: value = "End Time"
