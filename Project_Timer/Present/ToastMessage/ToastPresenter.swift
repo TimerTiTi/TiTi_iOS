@@ -1,5 +1,5 @@
 //
-//  ToastData.swift
+//  ToastPresenter.swift
 //  Project_Timer
 //
 //  Created by Ryeong on 7/1/24.
