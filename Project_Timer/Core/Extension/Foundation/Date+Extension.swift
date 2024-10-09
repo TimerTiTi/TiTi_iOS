@@ -129,6 +129,6 @@ extension Date {
         components.hour = hour
         components.minute = minute
         components.second = second
-        return Calendar.current.date(from: components)!
+        return Calendar.current.date(from: components) ?? Date()
     }
 }
