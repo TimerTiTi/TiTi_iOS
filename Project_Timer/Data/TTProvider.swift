@@ -18,8 +18,21 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
             super.request(token) { result in
                 switch result {
                 case .success(let response):
-                    print("\nTTProvider success", token, "\(token.baseURL)\(token.path)")
-//                    print("-->", String(data: response.data, encoding: .utf8), "\n")
+                    let url = "[\(token.method.rawValue)] \(response.response?.url?.absoluteString ?? "No URL")"
+                    let requestBody = response.request?.httpBody.flatMap { String(data: $0, encoding: .utf8) }
+                    let responseBody = String(data: response.data, encoding: .utf8)
+                    
+                    let debugInfo = """
+                                ✅ TTProvider success
+                                ================================================
+                                1️⃣ moya: \(token)
+                                2️⃣ URL: \(url)
+                                3️⃣ Request Body: \(requestBody ?? "nil")
+                                4️⃣ Response Body: \(responseBody ?? "nil")
+                                ================================================
+                                """
+                    print(debugInfo)
+                    
                     if (200...299).contains(response.statusCode) {
                         promise(.success(response))
                     } else {
@@ -28,15 +41,26 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
                     }
                     promise(.success(response))
                 case .failure(let error):
-                    print("\nTTProvider failure", token, "\(token.baseURL)\(token.path)")
-//                    print("-->", error.localizedDescription, "\n")
+                    let url = "[\(token.method.rawValue)] \(token.baseURL)\(token.path), \(token.queryParameters ?? [:])"
+                    
+                    let debugInfo = """
+                                🚨 TTProvider failure
+                                ================================================
+                                1️⃣ moya: \(token)
+                                2️⃣ URL: \(url)
+                                3️⃣ errorCode: \(error.errorCode)
+                                4️⃣ errorDescription: \(error.localizedDescription)
+                                ================================================
+                                """
+                    print(debugInfo)
+                    
                     promise(.failure(self.handleError(error)))
                 }
             }
         }
         .eraseToAnyPublisher()
     }
-
+    
     private func handleError(_ error: Error) -> NetworkError {
         if let moyaError = error as? MoyaError {
             switch moyaError {
