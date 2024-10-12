@@ -18,6 +18,13 @@ final class AuthV2Repository {
         self.api = api
     }
     
+    func checkUsername(request: CheckUsernameRequest) -> AnyPublisher<CheckUsernameInfo, NetworkError> {
+        return self.api.request(.checkUsername(request: request))
+            .map(CheckUsernameResponse.self)
+            .map { $0.toDomain() }
+            .catchDecodeError()
+    }
+    
     func postAuthcode(request: PostAuthCodeRequest) -> AnyPublisher<PostAuthCodeInfo, NetworkError> {
         return self.api.request(.postAuthcode(request: request))
             .map(PostAuthCodeResponse.self)

@@ -42,11 +42,9 @@ struct SigninView: View {
                 case .signup:
                     let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
                     // TODO: DI 수정
-                    let userApi = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
                     let authApi = TTProvider<AuthV2API>(session: Session(interceptor: NetworkInterceptor.shared))
-                    let userRepository = UserRepository(api: userApi)
                     let authRepository = AuthV2Repository(api: authApi)
-                    let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: userRepository)
+                    let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: authRepository)
                     let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
                     let verifyAuthCodeUseCase = VerifyAuthCodeUseCase(repository: authRepository)
                     SignupEmailView(

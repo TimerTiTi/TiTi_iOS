@@ -10,9 +10,9 @@ import Foundation
 import Combine
 
 final class GetUsernameNotExistUseCase {
-    private let repository: UserRepository // TODO: 프로토콜로 수정
+    private let repository: AuthV2Repository // TODO: 프로토콜로 수정
     
-    init(repository: UserRepository) {
+    init(repository: AuthV2Repository) {
         self.repository = repository
     }
     

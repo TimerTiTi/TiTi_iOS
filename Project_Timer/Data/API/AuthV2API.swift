@@ -10,6 +10,8 @@ import Foundation
 import Moya
 
 enum AuthV2API {
+    /// 존재하는 Username인지 확인해요.
+    case checkUsername(request: CheckUsernameRequest)
     /// 인증 코드를 생성하여 대상에게 전송해요.
     case postAuthcode(request: PostAuthCodeRequest)
     /// 인증 코드를 검증해요.
@@ -23,6 +25,8 @@ extension AuthV2API: TargetType {
     
     var path: String {
         switch self {
+        case .checkUsername:
+            return "/accounts/check"
         case .postAuthcode:
             return "/code"
         case .verifyAuthcode:
@@ -32,6 +36,8 @@ extension AuthV2API: TargetType {
     
     var method: Moya.Method {
         switch self {
+        case .checkUsername:
+            return .get
         case .postAuthcode, .verifyAuthcode:
             return .post
         }
@@ -39,6 +45,11 @@ extension AuthV2API: TargetType {
     
     var task: Moya.Task {
         switch self {
+        case .checkUsername(let request):
+            return .requestParameters(
+                parameters: Self.parameters(from: request),
+                encoding: URLEncoding.queryString
+            )
         case .postAuthcode(let request):
             return .requestJSONEncodable(request)
         case .verifyAuthcode(let request):
@@ -48,7 +59,7 @@ extension AuthV2API: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .postAuthcode, .verifyAuthcode:
+        case .checkUsername, .postAuthcode, .verifyAuthcode:
             return nil
         }
     }
