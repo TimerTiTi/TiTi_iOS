@@ -36,7 +36,7 @@ struct SignupEmailInfo {
 
 /// password 정보
 struct SignupPasswordInfo {
-    let password: String
+    let encryptedPassword: String
 }
 
 /// nickname 정보

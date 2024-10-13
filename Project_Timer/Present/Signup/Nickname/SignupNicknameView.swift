@@ -92,6 +92,7 @@ struct SignupNicknameView: View {
 }
 
 struct SignupNicknameView_Previews: PreviewProvider {
+    // TODO: AES/GCM/NoPadding 암호화 필요
     static let infos = SignupInfosForNickname(
         type: .normal,
         venderInfo: nil,
@@ -99,7 +100,7 @@ struct SignupNicknameView_Previews: PreviewProvider {
             email: "freedeveloper97@gmail.com",
             authToken: "abcd1234"),
         passwordInfo: SignupPasswordInfo(
-            password: "Abcd1234!")
+            encryptedPassword: "Abcd1234!")
     )
     
     static var previews: some View {

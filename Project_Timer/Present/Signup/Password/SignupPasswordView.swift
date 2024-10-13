@@ -56,7 +56,7 @@ struct SignupPasswordView: View {
                                 TTSignupTitleView(title: Localized.string(.SignUp_Text_InputPasswordTitle), subTitle: Localized.string(.SignUp_Text_InputPasswordDesc))
                                 
                                 TTSignupSecureFieldView(type: .password, keyboardType: .alphabet, text: $model.password, focus: $focus) {
-                                    model.checkPassword()
+                                    model.action(.checkPassword)
                                 }
                                 TTSignupTextFieldUnderlineView(color: model.passwordTintColor)
                                 TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordFormat), visible: model.validPassword == false && model.password.isEmpty)
@@ -114,7 +114,7 @@ struct SignupPasswordView: View {
                     .frame(height: 16)
                 
                 TTSignupSecureFieldView(type: .password2, keyboardType: .alphabet, text: $model.password2, focus: $focus) {
-                    model.checkPassword2()
+                    model.action(.checkPassword2)
                 }
                 TTSignupTextFieldUnderlineView(color: model.password2TintColor)
                 TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_PasswordMismatch), visible: model.validPassword2 == false && model.password2.isEmpty)

@@ -85,6 +85,8 @@ class SignupEmailModel: ObservableObject {
     private let verifyAuthCodeUseCase: VerifyAuthCodeUseCase
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: init
+    
     init(
         infos: SignupInfosForEmail,
         getUsernameNotExistUseCase: GetUsernameNotExistUseCase,
@@ -151,6 +153,7 @@ class SignupEmailModel: ObservableObject {
 }
 
 // MARK: Action
+
 extension SignupEmailModel {
     // 화면크기에 따른 width 크기조정
     func updateContentWidth(size: CGSize) {

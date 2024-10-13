@@ -12,12 +12,9 @@ import Combine
 
 // MARK: State
 class SignupPasswordModel: ObservableObject {
-    enum Stage {
-        case password
-        case password2
-    }
     
-    let infos: SignupInfosForPassword
+    // MARK: State
+    
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
     @Published var validPassword: Bool?
@@ -26,6 +23,33 @@ class SignupPasswordModel: ObservableObject {
     
     @Published var password: String = ""
     @Published var password2: String = ""
+    
+    // MARK: Action
+    
+    enum Action {
+        case checkPassword
+        case checkPassword2
+    }
+    
+    public func action(_ action: Action) {
+        switch action {
+        case .checkPassword:
+            self.checkPassword()
+        case .checkPassword2:
+            self.checkPassword2()
+        }
+    }
+    
+    // MARK: Properties
+    
+    enum Stage {
+        case password
+        case password2
+    }
+    
+    let infos: SignupInfosForPassword
+    
+    // MARK: init
     
     init(infos: SignupInfosForPassword) {
         self.infos = infos
@@ -51,12 +75,13 @@ class SignupPasswordModel: ObservableObject {
     
     // SignupInfosForNickname 생성 후 반환
     var infosForNickname: SignupInfosForNickname {
+        // TODO: AES/GCM/NoPadding 암호화 필요
         return SignupInfosForNickname(
             type: self.infos.type,
             venderInfo: self.infos.venderInfo,
             emailInfo: self.infos.emailInfo,
             passwordInfo: SignupPasswordInfo(
-                password: self.password)
+                encryptedPassword: self.password)
         )
     }
 }
@@ -87,7 +112,7 @@ extension SignupPasswordModel {
     }
     
     // password done 액션
-    func checkPassword() {
+    private func checkPassword() {
         validPassword = PredicateChecker.isValidPassword(password)
         // stage 변화 -> @StateFocus 반영
         if validPassword == true {
@@ -98,7 +123,7 @@ extension SignupPasswordModel {
     }
     
     // password2 done 액션
-    func checkPassword2() {
+    private func checkPassword2() {
         let passwordValid = PredicateChecker.isValidPassword(password2)
         let samePassword = password == password2
         validPassword2 = (passwordValid && samePassword)
