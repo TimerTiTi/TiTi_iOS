@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct SignupEmailView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -64,10 +66,10 @@ struct SignupEmailView: View {
                                     model.checkEmail()
                                 }
                                 .onChange(of: model.email) { newValue in
-                                    model.validEmail = nil
+                                    model.emailStatus = nil
                                 }
                                 TTSignupTextFieldUnderlineView(color: model.emailTintColor)
-                                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongEmailFormat), visible: model.validEmail == false)
+                                TTSignupTextFieldWarning(warning: model.emailStatus?.errorMessage ?? "", visible: model.isWarningEmail)
                                     .id(TTSignupTextFieldView.type.email)
                                 
                                 if model.stage == .verificationCode {
@@ -147,27 +149,36 @@ struct SignupEmailView: View {
                     .frame(height: 35)
                 
                 HStack(alignment: .center, spacing: 16) {
-                    TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.verificationCode, focus: $focus) {
-                        model.checkVerificationCode()
+                    TTSignupTextFieldView(type: .verificationCode, keyboardType: .alphabet, text: $model.authCode, focus: $focus) {
+                        model.action(.verifyAuthCode)
                     }
                     .frame(maxWidth: .infinity)
-                    // MARK: Timer 구현 필요
-                    Text("4 : 59")
+                    
+                    Text(remainTime(remainSeconds: model.authCodeRemainSeconds))
                         .font(Fonts.HGGGothicssiP40g(size: 18))
-                    // MARK: 재전송 구현 필요
-                    Button {
-                        // MARK: ViewModel 내에서 네트워킹이 필요한 부분
-                        print("resend")
-                    } label: {
-                        Text(Localized.string(.SignUp_Button_Resend))
-                            .font(Typographys.font(.normal_3, size: 18))
+                        .monospacedDigit()
+                    
+                    if model.authCodeRemainSeconds == 0 {
+                        Button {
+                            model.action(.resendAuthCode)
+                        } label: {
+                            Text(Localized.string(.SignUp_Button_Resend))
+                                .font(Typographys.font(.normal_3, size: 18))
+                        }
                     }
                 }
                 
                 TTSignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.verificationCode.isEmpty)
+                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.authCode.isEmpty)
                     .id(TTSignupTextFieldView.type.verificationCode)
             }
+        }
+        
+        func remainTime(remainSeconds: Int?) -> String {
+            guard let remainSeconds else { return "0:00" }
+            let minutes = Int(remainSeconds) / 60
+            let seconds = Int(remainSeconds) % 60
+            return String(format: "%d:%02d", minutes, seconds)
         }
     }
 }
@@ -176,8 +187,19 @@ struct SignupEmailView_Previews: PreviewProvider {
     static let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
     
     static var previews: some View {
+        // TODO: DI 수정
+        let authApi = TTProvider<AuthV2API>(session: Session(interceptor: NetworkInterceptor.shared))
+        let authRepository = AuthV2Repository(api: authApi)
+        let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: authRepository)
+        let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
+        let verifyAuthCodeUseCase = VerifyAuthCodeUseCase(repository: authRepository)
         SignupEmailView(
-            model: SignupEmailModel(infos: infos)
+            model: SignupEmailModel(
+                infos: infos,
+                getUsernameNotExistUseCase: getUsernameNotExistUseCase,
+                postAuthCodeUseCase: postAuthCodeUseCase,
+                verifyAuthCodeUseCase: verifyAuthCodeUseCase
+            )
         ).environmentObject(SigninSignupEnvironment())
     }
 }

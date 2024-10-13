@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Combine
+import Moya
 
 struct SigninView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -39,8 +41,19 @@ struct SigninView: View {
                     Text("findPassword")
                 case .signup:
                     let infos = SignupInfosForEmail(type: .normal, venderInfo: nil)
+                    // TODO: DI 수정
+                    let authApi = TTProvider<AuthV2API>(session: Session(interceptor: NetworkInterceptor.shared))
+                    let authRepository = AuthV2Repository(api: authApi)
+                    let getUsernameNotExistUseCase = GetUsernameNotExistUseCase(repository: authRepository)
+                    let postAuthCodeUseCase = PostAuthCodeUseCase(repository: authRepository)
+                    let verifyAuthCodeUseCase = VerifyAuthCodeUseCase(repository: authRepository)
                     SignupEmailView(
-                        model: SignupEmailModel(infos: infos)
+                        model: SignupEmailModel(
+                            infos: infos,
+                            getUsernameNotExistUseCase: getUsernameNotExistUseCase,
+                            postAuthCodeUseCase: postAuthCodeUseCase,
+                            verifyAuthCodeUseCase: verifyAuthCodeUseCase
+                        )
                     )
                 }
             }

@@ -13,6 +13,13 @@ import Combine
 
 final class NetworkURL {
     static let shared = NetworkURL()
+    static var serverURL_V2: String {
+#if DEBUG || DEVELOP
+        return "http://ec2-43-200-217-188.ap-northeast-2.compute.amazonaws.com:8080"
+#else
+        return "http://ec2-43-200-217-188.ap-northeast-2.compute.amazonaws.com:8080"
+#endif
+    }
     private(set) var serverURL: String?
     // Combine binding
     private var cancellables = Set<AnyCancellable>()

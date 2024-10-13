@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 extension TargetType {
+    /// Request 구조체 -> dictionary 반환
     static func parameters(from encodable: Encodable) -> [String: Any] {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(encodable),
@@ -18,6 +19,19 @@ extension TargetType {
         }
         
         return dictionary
+    }
+    
+    /// 쿼리 파라미터 디버그를 위한 값 반환
+    var queryParameters: [String: Any]? {
+        switch task {
+        case .requestParameters(let parameters, let encoding):
+            if encoding is URLEncoding {
+                return parameters
+            }
+            return nil
+        default:
+            return nil
+        }
     }
 }
 

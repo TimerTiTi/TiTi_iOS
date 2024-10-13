@@ -86,6 +86,10 @@
 		871AB699296709C100AFED1C /* TimeTableDailyGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */; };
 		871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69A2967C9C500AFED1C /* TimeTableView.swift */; };
 		871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871AB69C2967C9D100AFED1C /* TimeTableVM.swift */; };
+		871BC8CB2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */; };
+		871BC8CF2C846EC00092DFA7 /* CheckUsernameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */; };
+		871BC8D12C84701B0092DFA7 /* TTResponseDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */; };
+		871BC8D32C84703C0092DFA7 /* CheckUsernameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */; };
 		871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */; };
 		871DC0F42BC27E620024DA3B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */; };
 		871DC0F52BC280D60024DA3B /* Infos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876E27752AC1CD2A0054250D /* Infos.swift */; };
@@ -123,6 +127,12 @@
 		87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D652B26CC79001B7C14 /* MiSans-Regular.ttf */; };
 		87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */; };
 		87306D872B26D00A001B7C14 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA75D7286F2AB900BAE2B2 /* Fonts.swift */; };
+		8736B7452CA94DB8006BD389 /* AuthV2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7442CA94DB8006BD389 /* AuthV2API.swift */; };
+		8736B7472CA94E75006BD389 /* AuthV2Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7462CA94E75006BD389 /* AuthV2Repository.swift */; };
+		8736B7492CA94EBE006BD389 /* PostAuthCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */; };
+		8736B74B2CA94FC9006BD389 /* PostAuthCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */; };
+		8736B74D2CA950D4006BD389 /* PostAuthCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */; };
+		8736B7502CA951EC006BD389 /* PostAuthCodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */; };
 		873731D52B2E938400D7BD9F /* NotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731D42B2E938400D7BD9F /* NotificationResponse.swift */; };
 		873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */; };
 		873731DF2B2EA2B000D7BD9F /* FirestoreValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */; };
@@ -143,6 +153,10 @@
 		874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */; };
 		874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */; };
 		874B9D1E25CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf in Resources */ = {isa = PBXBuildFile; fileRef = 874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */; };
+		874DCBE72CABEFB500CF9435 /* VerifyAuthCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */; };
+		874DCBE92CABF09100CF9435 /* VerifyAuthCodeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */; };
+		874DCBEB2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */; };
+		874DCBED2CAC0E7000CF9435 /* VerifyAuthCodeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874DCBEC2CAC0E7000CF9435 /* VerifyAuthCodeUseCase.swift */; };
 		874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */; };
 		874F9C2D2ABFF73400675A86 /* AppleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */; };
 		874F9C2F2ABFF7CF00675A86 /* GoogleSigninButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */; };
@@ -506,6 +520,10 @@
 		871AB698296709C100AFED1C /* TimeTableDailyGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableDailyGraphView.swift; sourceTree = "<group>"; };
 		871AB69A2967C9C500AFED1C /* TimeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableView.swift; sourceTree = "<group>"; };
 		871AB69C2967C9D100AFED1C /* TimeTableVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableVM.swift; sourceTree = "<group>"; };
+		871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsernameNotExistUseCase.swift; sourceTree = "<group>"; };
+		871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameResponse.swift; sourceTree = "<group>"; };
+		871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTResponseDetailInfo.swift; sourceTree = "<group>"; };
+		871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckUsernameInfo.swift; sourceTree = "<group>"; };
 		871C1A0228519CC200BDAE02 /* SettingDevInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDevInfoCell.swift; sourceTree = "<group>"; };
 		871DC0F32BC27E620024DA3B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		871EDFED288AF6E900B428A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -544,6 +562,12 @@
 		87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MiSans-Bold.ttf"; sourceTree = "<group>"; };
 		873648A22B0D8CE10053B080 /* Project_TimerDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDebug.entitlements; sourceTree = "<group>"; };
 		873648A32B0D8DDF0053B080 /* Project_TimerDevelop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_TimerDevelop.entitlements; sourceTree = "<group>"; };
+		8736B7442CA94DB8006BD389 /* AuthV2API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthV2API.swift; sourceTree = "<group>"; };
+		8736B7462CA94E75006BD389 /* AuthV2Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthV2Repository.swift; sourceTree = "<group>"; };
+		8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeRequest.swift; sourceTree = "<group>"; };
+		8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeResponse.swift; sourceTree = "<group>"; };
+		8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeInfo.swift; sourceTree = "<group>"; };
+		8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAuthCodeUseCase.swift; sourceTree = "<group>"; };
 		873731D42B2E938400D7BD9F /* NotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationResponse.swift; sourceTree = "<group>"; };
 		873731DC2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStringArrayValue.swift; sourceTree = "<group>"; };
 		873731DE2B2EA2AF00D7BD9F /* FirestoreValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreValue.swift; sourceTree = "<group>"; };
@@ -564,6 +588,10 @@
 		874B9D1525CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_80G.otf; sourceTree = "<group>"; };
 		874B9D1625CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_99G.otf; sourceTree = "<group>"; };
 		874B9D1825CAB233006FCD04 /* HGGGOTHICSSI_PRO_40G.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HGGGOTHICSSI_PRO_40G.otf; sourceTree = "<group>"; };
+		874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeRequest.swift; sourceTree = "<group>"; };
+		874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeInfo.swift; sourceTree = "<group>"; };
+		874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeResponse.swift; sourceTree = "<group>"; };
+		874DCBEC2CAC0E7000CF9435 /* VerifyAuthCodeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAuthCodeUseCase.swift; sourceTree = "<group>"; };
 		874F9C2A2ABFF51700675A86 /* SigninSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectView.swift; sourceTree = "<group>"; };
 		874F9C2C2ABFF73400675A86 /* AppleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSigninButton.swift; sourceTree = "<group>"; };
 		874F9C2E2ABFF7CF00675A86 /* GoogleSigninButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSigninButton.swift; sourceTree = "<group>"; };
@@ -1123,6 +1151,16 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		8736B74E2CA951B6006BD389 /* AuthV2 */ = {
+			isa = PBXGroup;
+			children = (
+				871BC8CA2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift */,
+				8736B74F2CA951EC006BD389 /* PostAuthCodeUseCase.swift */,
+				874DCBEC2CAC0E7000CF9435 /* VerifyAuthCodeUseCase.swift */,
+			);
+			path = AuthV2;
+			sourceTree = "<group>";
+		};
 		874A9DF42C6837BF006D2E19 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
@@ -1174,10 +1212,11 @@
 		875FAE232B1C6710008F19D2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				8761BDCD2BCFEFD500E9281A /* API.swift */,
 				8761BDBF2BCFE52E00E9281A /* FirebaseAPI.swift */,
 				8761BDC92BCFEA7A00E9281A /* AuthAPI.swift */,
 				8761BDCB2BCFEC8500E9281A /* DailysAPI.swift */,
-				8761BDCD2BCFEFD500E9281A /* API.swift */,
+				8736B7442CA94DB8006BD389 /* AuthV2API.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1202,6 +1241,10 @@
 				872210462C2FF676003B97AD /* SurveyInfo.swift */,
 				872210482C2FF6AF003B97AD /* FunctionInfo.swift */,
 				8722104A2C2FF6E7003B97AD /* UpdateHistoryInfo.swift */,
+				871BC8D02C84701B0092DFA7 /* TTResponseDetailInfo.swift */,
+				871BC8D22C84703C0092DFA7 /* CheckUsernameInfo.swift */,
+				8736B74C2CA950D4006BD389 /* PostAuthCodeInfo.swift */,
+				874DCBE82CABF09100CF9435 /* VerifyAuthCodeInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1669,6 +1712,8 @@
 				87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */,
 				87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */,
 				871616902C39956E00C4EF25 /* CheckUsernameRequest.swift */,
+				8736B7482CA94EBE006BD389 /* PostAuthCodeRequest.swift */,
+				874DCBE62CABEFB500CF9435 /* VerifyAuthCodeRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1691,6 +1736,9 @@
 				875C98C62871BB26008F7ADD /* YoutubeLinkResponse.swift */,
 				87B90B3E2BF4BC6D00D6886E /* TTErrorResponse.swift */,
 				8722104C2C2FFA66003B97AD /* TTResponse.swift */,
+				871BC8CE2C846EC00092DFA7 /* CheckUsernameResponse.swift */,
+				8736B74A2CA94FC9006BD389 /* PostAuthCodeResponse.swift */,
+				874DCBEA2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1919,6 +1967,7 @@
 				871616922C3A146400C4EF25 /* Dailys */,
 				874A9DF52C68F279006D2E19 /* RecordTimes */,
 				874A9DF62C68F295006D2E19 /* SyncLog */,
+				8736B74E2CA951B6006BD389 /* AuthV2 */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1931,6 +1980,7 @@
 				874B542B2C1592460062D0AC /* DailysRepository.swift */,
 				874B542D2C1595A00062D0AC /* RecordTimesRepository.swift */,
 				872210412C2FEE83003B97AD /* SyncLogRepository.swift */,
+				8736B7462CA94E75006BD389 /* AuthV2Repository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -2270,12 +2320,14 @@
 				877911BA2A1891B100F0A713 /* SettingSwitchListVM.swift in Sources */,
 				875FAE372B1C74AD008F19D2 /* FirebaseBooleanValue.swift in Sources */,
 				87BEBEE9281C17000095CD29 /* RecordsManager.swift in Sources */,
+				871BC8D12C84701B0092DFA7 /* TTResponseDetailInfo.swift in Sources */,
 				87FB8D1D2B3C5F4D00EA5693 /* NotificationUseCaseInterface.swift in Sources */,
 				87A48BCD27DF182400F46D0F /* SubjectCell.swift in Sources */,
 				04172E982885453F00F962F2 /* MotionDetector.swift in Sources */,
 				87F10936284C47A1002E31EA /* SettingTiTiLabVM.swift in Sources */,
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */,
+				874DCBE72CABEFB500CF9435 /* VerifyAuthCodeRequest.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
@@ -2310,6 +2362,7 @@
 				04573A9B2877FDDA008F8D44 /* CountdownTimeLabelVM.swift in Sources */,
 				87306D5D2B26CB5C001B7C14 /* Typographys.swift in Sources */,
 				8716169E2C3A604C00C4EF25 /* PostDailysUseCase.swift in Sources */,
+				874DCBEB2CABF0B700CF9435 /* VerifyAuthCodeResponse.swift in Sources */,
 				87306D612B26CBBC001B7C14 /* Icons.swift in Sources */,
 				87199F4B2883C6D80017D01A /* StandardDailyTaskCell.swift in Sources */,
 				871616A42C3A607700C4EF25 /* GetSyncLogUseCase.swift in Sources */,
@@ -2371,6 +2424,8 @@
 				87F1093B284C589A002E31EA /* SettingFunctionsListVM.swift in Sources */,
 				8708006F2B2CA92C00830B39 /* DailyResponse.swift in Sources */,
 				8788997C2894F00000B7F378 /* LogWeekVM.swift in Sources */,
+				871BC8D32C84703C0092DFA7 /* CheckUsernameInfo.swift in Sources */,
+				874DCBED2CAC0E7000CF9435 /* VerifyAuthCodeUseCase.swift in Sources */,
 				8761BDCA2BCFEA7A00E9281A /* AuthAPI.swift in Sources */,
 				87EFD6812AC115DB00C422B1 /* SigninSignupVC.swift in Sources */,
 				873C197828D044CC00E02ADC /* DailyVM.swift in Sources */,
@@ -2412,11 +2467,13 @@
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
 				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
+				8736B7492CA94EBE006BD389 /* PostAuthCodeRequest.swift in Sources */,
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */,
 				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
+				8736B7452CA94DB8006BD389 /* AuthV2API.swift in Sources */,
 				87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */,
 				874964F52649590700113E25 /* StopwatchVC.swift in Sources */,
 				879BE32E2AC68F95007AAC46 /* WhiteNavigationVC.swift in Sources */,
@@ -2429,6 +2486,7 @@
 				879E849C29C83D5100D65F48 /* RoundedShape.swift in Sources */,
 				87199F582883F2E00017D01A /* TimelineVM.swift in Sources */,
 				8761BDC02BCFE52E00E9281A /* FirebaseAPI.swift in Sources */,
+				871BC8CF2C846EC00092DFA7 /* CheckUsernameResponse.swift in Sources */,
 				877036CA29CD7B3B0078A30C /* TaskManager.swift in Sources */,
 				8761BDCC2BCFEC8500E9281A /* DailysAPI.swift in Sources */,
 				878DA8212B0C62E1001E924E /* SignupNicknameView.swift in Sources */,
@@ -2464,6 +2522,7 @@
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
 				87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */,
 				876E27762AC1CD2A0054250D /* Infos.swift in Sources */,
+				8736B74B2CA94FC9006BD389 /* PostAuthCodeResponse.swift in Sources */,
 				049BBA9C28AB58D4005BAB1B /* InteractionLeftTitleLabel.swift in Sources */,
 				871AB69D2967C9D100AFED1C /* TimeTableVM.swift in Sources */,
 				872210422C2FEE83003B97AD /* SyncLogRepository.swift in Sources */,
@@ -2472,6 +2531,7 @@
 				8722105D2C300A8C003B97AD /* GetSurveysUseCase.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
+				8736B74D2CA950D4006BD389 /* PostAuthCodeInfo.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
 				87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */,
 				875C98BE287172A5008F7ADD /* FirebaseStringValue.swift in Sources */,
@@ -2479,12 +2539,14 @@
 				8722104D2C2FFA66003B97AD /* TTResponse.swift in Sources */,
 				04573A992877FD78008F8D44 /* CountdownTimeLabelView.swift in Sources */,
 				87BEBEED281C282D0095CD29 /* Times.swift in Sources */,
+				8736B7502CA951EC006BD389 /* PostAuthCodeUseCase.swift in Sources */,
 				879BE3222AC40444007AAC46 /* SignupSigninVM.swift in Sources */,
 				8791C1F627DCE703000D6BA9 /* UIView+Extension.swift in Sources */,
 				87D4DCC92BA52FC800BB5AAB /* ResetPasswordNicknameRoute.swift in Sources */,
 				87FB6B8D2BFE0B3F00CD7A9C /* AuthRepository.swift in Sources */,
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
+				8736B7472CA94E75006BD389 /* AuthV2Repository.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* UpdatePasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
@@ -2498,6 +2560,7 @@
 				8706C3302AEF881500F7C842 /* TTSignupTextFieldWarning.swift in Sources */,
 				87F10932284C4367002E31EA /* SurveyCell.swift in Sources */,
 				87D4DCBE2BA51EEA00BB5AAB /* ResetPasswordVC.swift in Sources */,
+				871BC8CB2C846D890092DFA7 /* GetUsernameNotExistUseCase.swift in Sources */,
 				879E849F29C8400700D65F48 /* TimeLabelData.swift in Sources */,
 				04FA75D3286EE4D900BAE2B2 /* Color+Extension.swift in Sources */,
 				870800892B2D59EB00830B39 /* SyncLogResponse.swift in Sources */,
@@ -2509,6 +2572,7 @@
 				87789E44288BC1FC00759C01 /* TimeView.swift in Sources */,
 				87A7624726493BB500174401 /* LogHomeVC.swift in Sources */,
 				8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */,
+				874DCBE92CABF09100CF9435 /* VerifyAuthCodeInfo.swift in Sources */,
 				04FA75D6286F263300BAE2B2 /* Colors.swift in Sources */,
 				04E0DFC728A9191A004DABBE /* HistoryCell.swift in Sources */,
 				870C70712AD4ECB700024CAC /* SigninRoute.swift in Sources */,
@@ -2676,7 +2740,7 @@
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
