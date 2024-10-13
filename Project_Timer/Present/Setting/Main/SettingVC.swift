@@ -222,7 +222,7 @@ extension SettingVC: SettingActionDelegate {
             if MFMailComposeViewController.canSendMail() {
                 let mail = MFMailComposeViewController()
                 mail.mailComposeDelegate = self
-                mail.setToRecipients(["freedeveloper97@gmail.com"])
+                mail.setToRecipients(["contact.timertiti@gmail.com"])
                 mail.setMessageBody("<p>\(Localized.string(.EmailMessage_Text_Message))</p>", isHTML: true)
                 
                 present(mail, animated: true)
