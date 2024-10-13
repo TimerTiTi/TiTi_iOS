@@ -74,14 +74,15 @@ class SignupPasswordModel: ObservableObject {
     }
     
     // SignupInfosForNickname 생성 후 반환
-    var infosForNickname: SignupInfosForNickname {
-        // TODO: AES/GCM/NoPadding 암호화 필요
+    var infosForNickname: SignupInfosForNickname? {
+        guard let encryptedPassword = try? EncrypteManager.encryptAES256GCM(plaintext: self.password) else { return nil }
         return SignupInfosForNickname(
             type: self.infos.type,
             venderInfo: self.infos.venderInfo,
             emailInfo: self.infos.emailInfo,
             passwordInfo: SignupPasswordInfo(
-                encryptedPassword: self.password)
+                encryptedPassword: encryptedPassword
+            )
         )
     }
 }

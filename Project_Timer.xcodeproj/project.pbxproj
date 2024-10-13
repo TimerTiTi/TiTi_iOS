@@ -167,6 +167,7 @@
 		8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F528472133007FAFC4 /* SettingCellInfo.swift */; };
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */; };
+		875448292CBBCF090048ED52 /* EncrypteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875448282CBBCF090048ED52 /* EncrypteManager.swift */; };
 		8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* TaskSelectVM.swift */; };
 		8757AA3D290511FF00D97517 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* Task.swift */; };
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
@@ -602,6 +603,7 @@
 		8751C6F528472133007FAFC4 /* SettingCellInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCellInfo.swift; sourceTree = "<group>"; };
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		875448282CBBCF090048ED52 /* EncrypteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncrypteManager.swift; sourceTree = "<group>"; };
 		8757AA3A290511AB00D97517 /* TaskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVM.swift; sourceTree = "<group>"; };
 		8757AA3C290511FF00D97517 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -1197,6 +1199,14 @@
 				874F9C302ABFF81300675A86 /* EmailSigninButton.swift */,
 			);
 			path = LoginSelect;
+			sourceTree = "<group>";
+		};
+		875448242CBBC9490048ED52 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				875448282CBBCF090048ED52 /* EncrypteManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		875A96E128B9E48E007E441A /* InteractionView */ = {
@@ -1952,6 +1962,7 @@
 		87F778DD2B196E9400909511 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				875448242CBBC9490048ED52 /* Manager */,
 				875FAE262B1C678E008F19D2 /* Entity */,
 				87F778E02B196EDF00909511 /* UseCase */,
 			);
@@ -2330,6 +2341,7 @@
 				874DCBE72CABEFB500CF9435 /* VerifyAuthCodeRequest.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
+				875448292CBBCF090048ED52 /* EncrypteManager.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
