@@ -31,7 +31,7 @@ struct SignupVenderInfo {
 /// email 정보
 struct SignupEmailInfo {
     let email: String
-    let verificationKey: String
+    let authToken: String
 }
 
 /// password 정보

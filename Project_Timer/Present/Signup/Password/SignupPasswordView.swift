@@ -125,7 +125,7 @@ struct SignupPasswordView: View {
 }
 
 struct SignupPasswordView_Previews: PreviewProvider {
-    static let infos = SignupInfosForPassword(type: .normal, venderInfo: nil, emailInfo: SignupEmailInfo(email: "freedeveloper97@gmail.com", verificationKey: "abcd1234"))
+    static let infos = SignupInfosForPassword(type: .normal, venderInfo: nil, emailInfo: SignupEmailInfo(email: "freedeveloper97@gmail.com", authToken: "abcd1234"))
     
     static var previews: some View {
         SignupPasswordView(

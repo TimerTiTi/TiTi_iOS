@@ -97,7 +97,7 @@ struct SignupNicknameView_Previews: PreviewProvider {
         venderInfo: nil,
         emailInfo: SignupEmailInfo(
             email: "freedeveloper97@gmail.com",
-            verificationKey: "abcd1234"),
+            authToken: "abcd1234"),
         passwordInfo: SignupPasswordInfo(
             password: "Abcd1234!")
     )

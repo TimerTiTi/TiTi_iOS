@@ -22,8 +22,8 @@ class SignupEmailModel: ObservableObject {
     @Published var getVerificationSuccess: Bool = false
     @Published var stage: Stage = .email
     
-    @Published var email: String = ""
-    @Published var authCode: String = ""
+    @Published var email: String = "" // 이메일 TextField 값
+    @Published var authCode: String = "" // 인증코드 TextField 값
     @Published var authCodeRemainSeconds: Int? // authCode 만료까지 남은 초
     
     // MARK: Action
@@ -77,6 +77,7 @@ class SignupEmailModel: ObservableObject {
     }
     private var postAuthCodeTerminateDate: Date? // authCode 만료 시점
     private var authKey: String? // authCode 전송시 서버로부터 받은 5분간 유효한 authKey
+    private var authToken: String? // authCode 검증 성공시 서버로부터 받은 30분간 유효한 authToken
     private var timer: Timer? // authCode 전송 후 남은 시간, 1초간 업데이트
     
     private let getUsernameNotExistUseCase: GetUsernameNotExistUseCase
@@ -120,24 +121,30 @@ class SignupEmailModel: ObservableObject {
     }
     
     // SignupInfosForPassword 생성 후 반환
-    var infosForPassword: SignupInfosForPassword {
+    var infosForPassword: SignupInfosForPassword? {
+        guard let authToken = self.authToken else { return nil }
+        
         return SignupInfosForPassword(
             type: self.infos.type,
             venderInfo: self.infos.venderInfo,
             emailInfo: SignupEmailInfo(
                 email: self.email,
-                verificationKey: self.authCode)
+                authToken: authToken
+            )
         )
     }
     
     // SignupInfosForNickname 생성 후 반환
-    var infosForNickname: SignupInfosForNickname {
+    var infosForNickname: SignupInfosForNickname? {
+        guard let authToken = self.authToken else { return nil }
+        
         return SignupInfosForNickname(
             type: self.infos.type,
             venderInfo: self.infos.venderInfo,
             emailInfo: SignupEmailInfo(
                 email: self.email,
-                verificationKey: self.authCode),
+                authToken: authToken
+            ),
             passwordInfo: nil
         )
     }
@@ -239,7 +246,7 @@ extension SignupEmailModel {
                 // TODO: 인증코드 검증 실패시 핸들링
             } receiveValue: { [weak self] verifyAuthCodeInfo in
                 print("authToken: \(verifyAuthCodeInfo.authToken)")
-                // TODO: authToken 전달 구현
+                self?.authToken = verifyAuthCodeInfo.authToken
                 self?.validVerificationCode = true
                 self?.getVerificationSuccess = true
             }

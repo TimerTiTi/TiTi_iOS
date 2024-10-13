@@ -33,15 +33,17 @@ struct SignupEmailView: View {
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
                 case .signupPassword:
-                    let infos = model.infosForPassword
-                    SignupPasswordView(
-                        model: SignupPasswordModel(infos: infos)
-                    )
+                    if let infos = model.infosForPassword {
+                        SignupPasswordView(
+                            model: SignupPasswordModel(infos: infos)
+                        )
+                    }
                 case .signupNickname:
-                    let infos = model.infosForNickname
-                    SignupNicknameView(
-                        model: SignupNicknameModel(infos: infos)
-                    )
+                    if let infos = model.infosForNickname {
+                        SignupNicknameView(
+                            model: SignupNicknameModel(infos: infos)
+                        )
+                    }
                 }
             }
         }
