@@ -39,11 +39,11 @@ struct ResetPasswordView: View {
                         subTitle: Localized.string(.FindAccount_Text_ChangePasswordCompleted),
                         buttonTitle: Localized.string(.FindAccount_Button_GoToLogin)
                     )
-                    let viewModel = ResetPasswordCompleteModel(
+                    let viewModel = ChangeCompleteModel(
                         info: info) {
                             self.environment.resetSuccess = true
                         }
-                    ResetPasswordCompleteView(model: viewModel)
+                    ChangeCompleteView(model: viewModel)
                 }
             }
         }

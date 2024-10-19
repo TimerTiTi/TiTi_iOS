@@ -1,5 +1,5 @@
 //
-//  ResetPasswordCompleteView.swift
+//  ChangeCompleteView.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2024/03/17.
@@ -9,10 +9,10 @@
 import SwiftUI
 import Lottie
 
-struct ResetPasswordCompleteView: View {
-    @StateObject private var model: ResetPasswordCompleteModel
+struct ChangeCompleteView: View {
+    @StateObject private var model: ChangeCompleteModel
     
-    init(model: ResetPasswordCompleteModel) {
+    init(model: ChangeCompleteModel) {
         _model = StateObject(wrappedValue: model)
     }
     
@@ -33,7 +33,7 @@ struct ResetPasswordCompleteView: View {
     
     struct ContentView: View {
         @EnvironmentObject var environment: ResetPasswordEnvironment
-        @ObservedObject var model: ResetPasswordCompleteModel
+        @ObservedObject var model: ChangeCompleteModel
         
         var body: some View {
             HStack {
@@ -63,7 +63,7 @@ struct ResetPasswordCompleteView: View {
 
 struct ResetPasswordCompleteView_Previews: PreviewProvider {
     static var previews: some View {
-        ResetPasswordCompleteView(model: ResetPasswordCompleteModel(
+        ChangeCompleteView(model: ChangeCompleteModel(
             info: ChangeCompleteInfo(
                 title: "변경이 완료되었어요!",
                 subTitle: "비밀번호가 재설정 되었어요!",

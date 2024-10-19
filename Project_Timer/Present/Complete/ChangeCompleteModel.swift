@@ -1,5 +1,5 @@
 //
-//  ResetPasswordCompleteModel.swift
+//  ChangeCompleteModel.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2024/03/17.
@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 // MARK: State
-final class ResetPasswordCompleteModel: ObservableObject {
+final class ChangeCompleteModel: ObservableObject {
     @Published var contentWidth: CGFloat = .zero
     
     let info: ChangeCompleteInfo
@@ -22,7 +22,7 @@ final class ResetPasswordCompleteModel: ObservableObject {
     }
 }
 
-extension ResetPasswordCompleteModel {
+extension ChangeCompleteModel {
     // 화면크기에 따른 width 크기조정
     func updateContentWidth(size: CGSize) {
         switch size.deviceDetailType {

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SignupNicknameView: View {
+    @EnvironmentObject var environment: SigninSignupEnvironment
     @ObservedObject private var keyboard = KeyboardResponder.shared
     @StateObject private var model: SignupNicknameModel
     
@@ -33,6 +34,15 @@ struct SignupNicknameView: View {
                 case .signupTermOfUse:
                     let infos = model.signupInfosForTermOfUse
                     Text("SignupTermOfUse")
+                case .signupComplete:
+                    ChangeCompleteView(
+                        model: ChangeCompleteModel(
+                            info: model.signupInfosForComplete,
+                            buttonAction: {
+                                self.environment.signupSuccess = true
+                            }
+                        )
+                    )
                 }
             }
         }
@@ -74,7 +84,8 @@ struct SignupNicknameView: View {
                             })
                             .onReceive(model.$validNickname, perform: { valid in
                                 if valid == true {
-                                    environment.navigationPath.append(SignupNicknameRoute.signupTermOfUse)
+//                                    environment.navigationPath.append(SignupNicknameRoute.signupTermOfUse)
+                                    environment.navigationPath.append(SignupNicknameRoute.signupComplete)
                                 } else {
                                     focus = .nickname
                                     scroll(ScrollViewProxy, to: focus)

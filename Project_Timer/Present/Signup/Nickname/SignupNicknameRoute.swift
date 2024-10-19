@@ -10,4 +10,5 @@ import Foundation
 
 enum SignupNicknameRoute {
     case signupTermOfUse
+    case signupComplete
 }

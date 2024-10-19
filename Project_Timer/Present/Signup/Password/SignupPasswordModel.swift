@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import SwiftUI
 import Combine
+import SwiftUI
 
-// MARK: State
-class SignupPasswordModel: ObservableObject {
+final class SignupPasswordModel: ObservableObject {
     
     // MARK: State
     

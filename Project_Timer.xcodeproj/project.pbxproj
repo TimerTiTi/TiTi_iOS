@@ -350,8 +350,8 @@
 		87D4DCD62BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */; };
 		87D4DCD92BA5C17900BB5AAB /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */; };
 		87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */; };
-		87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */; };
-		87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */; };
+		87D4DCE02BA69FA500BB5AAB /* ChangeCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCDF2BA69FA500BB5AAB /* ChangeCompleteView.swift */; };
+		87D4DCE22BA6A12B00BB5AAB /* ChangeCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE12BA6A12B00BB5AAB /* ChangeCompleteModel.swift */; };
 		87D4DCE42BA6A18C00BB5AAB /* ChangeCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */; };
 		87D4DCE62BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */; };
 		87D4DCE82BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */; };
@@ -774,8 +774,8 @@
 		87D4DCD52BA5A7B100BB5AAB /* ResetPasswordEmailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordEmailRoute.swift; sourceTree = "<group>"; };
 		87D4DCD82BA5C17900BB5AAB /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		87D4DCDA2BA5C19C00BB5AAB /* ResetPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordModel.swift; sourceTree = "<group>"; };
-		87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteView.swift; sourceTree = "<group>"; };
-		87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordCompleteModel.swift; sourceTree = "<group>"; };
+		87D4DCDF2BA69FA500BB5AAB /* ChangeCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteView.swift; sourceTree = "<group>"; };
+		87D4DCE12BA6A12B00BB5AAB /* ChangeCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteModel.swift; sourceTree = "<group>"; };
 		87D4DCE32BA6A18C00BB5AAB /* ChangeCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCompleteInfo.swift; sourceTree = "<group>"; };
 		87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTChangeCompleteTitleView.swift; sourceTree = "<group>"; };
 		87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTBottomRoundButtonView.swift; sourceTree = "<group>"; };
@@ -1265,6 +1265,7 @@
 				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
 				870800902B2D693800830B39 /* Signin */,
 				87E5C70B2AE0266200BE46B0 /* Signup */,
+				87D4DCDE2BA69F8E00BB5AAB /* Complete */,
 				8791C1EA27DCCDF4000D6BA9 /* Timer */,
 				8791C1EB27DCCDFC000D6BA9 /* Stopwatch */,
 				8762717127DF83E400F812ED /* TaskSelect */,
@@ -1699,7 +1700,6 @@
 				87D4DCC32BA52CBF00BB5AAB /* Nickname */,
 				87D4DCD02BA5A4A300BB5AAB /* Email */,
 				87D4DCD72BA5C15C00BB5AAB /* Password */,
-				87D4DCDE2BA69F8E00BB5AAB /* Complete */,
 			);
 			path = ResetPassword;
 			sourceTree = "<group>";
@@ -1776,8 +1776,8 @@
 		87D4DCDE2BA69F8E00BB5AAB /* Complete */ = {
 			isa = PBXGroup;
 			children = (
-				87D4DCDF2BA69FA500BB5AAB /* ResetPasswordCompleteView.swift */,
-				87D4DCE12BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift */,
+				87D4DCDF2BA69FA500BB5AAB /* ChangeCompleteView.swift */,
+				87D4DCE12BA6A12B00BB5AAB /* ChangeCompleteModel.swift */,
 			);
 			path = Complete;
 			sourceTree = "<group>";
@@ -2276,7 +2276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87D4DCE02BA69FA500BB5AAB /* ResetPasswordCompleteView.swift in Sources */,
+				87D4DCE02BA69FA500BB5AAB /* ChangeCompleteView.swift in Sources */,
 				877911B22A188A3200F0A713 /* SettingSwitchListVC.swift in Sources */,
 				870800712B2CAD9900830B39 /* TaskHistory.swift in Sources */,
 				87163DC82ACAF2E8008D4072 /* NetworkError.swift in Sources */,
@@ -2394,7 +2394,7 @@
 				87F1093A284C589A002E31EA /* FunctionResponse.swift in Sources */,
 				875AA59C26494365005D15D6 /* TaskSelectVC.swift in Sources */,
 				875C98C72871BB26008F7ADD /* YoutubeLinkResponse.swift in Sources */,
-				87D4DCE22BA6A12B00BB5AAB /* ResetPasswordCompleteModel.swift in Sources */,
+				87D4DCE22BA6A12B00BB5AAB /* ChangeCompleteModel.swift in Sources */,
 				04B5293B28B4E40500906C86 /* PopupEditTaskNameVC.swift in Sources */,
 				8765234828C76FFE00487BFB /* WeekSmallVM.swift in Sources */,
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,

@@ -10,8 +10,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-// MARK: State
-class SignupEmailModel: ObservableObject {
+final class SignupEmailModel: ObservableObject {
     
     // MARK: State
     
