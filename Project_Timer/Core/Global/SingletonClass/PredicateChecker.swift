@@ -11,11 +11,11 @@ import Foundation
 /// 정규식 Checker
 struct PredicateChecker {
     /// email 정규식
-    static var emailCheck: String { "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" }
-    /// 패스워드 정규식, 8자 ~ 20자 이내 (10/13 기준)
-    static var passwordCheckInServer: String { "^(?=.*\\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&()])[A-Za-z\\d~!@#$%^&()]{8,20}$" }
-    /// 닉네임 정규식, 2자 ~ 15자 이내
-    static var nicknameCheck: String { "[A-Z0-9a-z,./<>?;':!@#$%^&*()-=_+]{2,15}" }
+    static var emailCheck: String { "^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$(?=.{0,255}$)" }
+    /// 패스워드 정규식, 8자 ~ 64자 이내 UNICODE (10/19 기준)
+    static var passwordCheckInServer: String { "^[\\S]{8,64}$" }
+    /// 닉네임 정규식, 1자 ~ 12자 이내 UNICODE (10/19 기준)
+    static var nicknameCheck: String { "^[\\S]{1,12}$" }
     
     static func resultOfPredicate(text: String, cheker: String) -> Bool {
         let predicate = NSPredicate(format: "SELF MATCHES %@", cheker)
