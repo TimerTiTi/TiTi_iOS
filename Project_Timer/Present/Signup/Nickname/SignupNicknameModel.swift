@@ -36,11 +36,14 @@ final class SignupNicknameModel: ObservableObject {
     // MARK: Properties
     
     let infos: SignupInfosForNickname
+    // MARK: 추후 이용약관 동의 추가되면 제거 필요
+    private let postSignupUseCase: PostSignupUseCase
     
     // MARK: init
     
-    init(infos: SignupInfosForNickname) {
+    init(infos: SignupInfosForNickname, postSignupUseCase: PostSignupUseCase) {
         self.infos = infos
+        self.postSignupUseCase = postSignupUseCase
     }
     
     // nicknameTextField underline 컬러

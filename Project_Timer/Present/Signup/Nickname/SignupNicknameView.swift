@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Moya
 
 struct SignupNicknameView: View {
     @EnvironmentObject var environment: SigninSignupEnvironment
@@ -115,13 +116,12 @@ struct SignupNicknameView_Previews: PreviewProvider {
     )
     
     static var previews: some View {
+        // TODO: DI 수정
+        let userApi = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let userRepository = UserRepository(api: userApi)
+        let postSignupUseCase = PostSignupUseCase(repository: userRepository)
         SignupNicknameView(
-            model: SignupNicknameModel(infos: infos))
+            model: SignupNicknameModel(infos: infos, postSignupUseCase: postSignupUseCase))
         .environmentObject(SigninSignupEnvironment())
-        
-        SignupNicknameView(
-            model: SignupNicknameModel(infos: infos))
-        .environmentObject(SigninSignupEnvironment())
-        .environment(\.locale, .init(identifier: "en"))
     }
 }

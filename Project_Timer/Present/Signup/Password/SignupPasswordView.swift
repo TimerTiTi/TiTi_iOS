@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Moya
 
 struct SignupPasswordView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
@@ -32,8 +33,12 @@ struct SignupPasswordView: View {
                 switch destination {
                 case .signupNickname:
                     if let infos = self.model.infosForNickname {
+                        // TODO: DI 수정
+                        let userApi = TTProvider<UserAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+                        let userRepository = UserRepository(api: userApi)
+                        let postSignupUseCase = PostSignupUseCase(repository: userRepository)
                         SignupNicknameView(
-                            model: SignupNicknameModel(infos: infos)
+                            model: SignupNicknameModel(infos: infos, postSignupUseCase: postSignupUseCase)
                         )
                     }
                 }
