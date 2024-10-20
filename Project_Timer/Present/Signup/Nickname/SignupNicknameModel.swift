@@ -38,6 +38,7 @@ final class SignupNicknameModel: ObservableObject {
     let infos: SignupInfosForNickname
     // MARK: 추후 이용약관 동의 추가되면 제거 필요
     private let postSignupUseCase: PostSignupUseCase
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: init
     
@@ -95,6 +96,38 @@ extension SignupNicknameModel {
     
     // nickname done 액션
     func checkNickname() {
+        // MARK: 추후 이용약관 동의화면으로 전환시 아래 주석 제거
+        /*
         validNickname = PredicateChecker.isValidNickname(nickname)
+        */
+        
+        // MARK: 이용약관 동의화면 생성시 해당 내용 제거
+        let validNickname = PredicateChecker.isValidNickname(nickname)
+        if validNickname {
+            self.requestSignup()
+        } else {
+            self.validNickname = false
+        }
+    }
+    
+    private func requestSignup() {
+        guard let encryptedPassword = self.infos.passwordInfo?.encryptedPassword else { return }
+        
+        self.postSignupUseCase.execute(request: .init(
+            username: self.infos.emailInfo.email,
+            encodedEncryptedPassword: encryptedPassword,
+            nickname: self.nickname,
+            authToken: self.infos.emailInfo.authToken
+        )).sink { [weak self] completion in
+            guard case .failure(let networkError) = completion else { return }
+            print("ERROR", #function)
+        } receiveValue: { [weak self] responseInfo in
+            if responseInfo.isSuccess {
+                self?.validNickname = true
+            } else {
+                print("ERROR!")
+            }
+        }
+        .store(in: &self.cancellables)
     }
 }

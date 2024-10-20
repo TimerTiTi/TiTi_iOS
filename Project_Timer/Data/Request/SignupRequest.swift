@@ -10,7 +10,7 @@ import Foundation
 
 struct SignupRequest: Encodable {
     let username: String
-    let wrappedEncryptedPassword: String
+    let encodedEncryptedPassword: String
     let nickname: String
     let authToken: String
 }
