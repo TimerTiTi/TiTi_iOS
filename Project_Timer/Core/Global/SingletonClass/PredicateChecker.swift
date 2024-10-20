@@ -11,7 +11,7 @@ import Foundation
 /// 정규식 Checker
 struct PredicateChecker {
     /// email 정규식
-    static var emailCheck: String { "^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$(?=.{0,255}$)" }
+    static var emailCheck: String { "^[a-zA-Z0-9._%+-]{1,64}@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$(?=.{0,255}$)" }
     /// 패스워드 정규식, 8자 ~ 64자 이내 UNICODE (10/19 기준)
     static var passwordCheckInServer: String { "^[\\S]{8,64}$" }
     /// 닉네임 정규식, 1자 ~ 12자 이내 UNICODE (10/19 기준)
