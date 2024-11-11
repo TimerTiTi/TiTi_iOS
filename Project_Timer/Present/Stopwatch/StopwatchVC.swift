@@ -12,7 +12,6 @@ import SwiftUI
 
 final class StopwatchVC: UIViewController {
     @IBOutlet weak var todayLabel: UILabel!
-    @IBOutlet weak var warningRecordDate: UIButton!
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
     @IBOutlet weak var taskButton: UIButton!
@@ -147,12 +146,6 @@ final class StopwatchVC: UIViewController {
     
     @IBAction func colorSelect(_ sender: Any) {
         self.showColorSelector()
-    }
-    
-    @IBAction func showRecordDateAlert(_ sender: Any) {
-        self.showRecordDateWarning(title: Localized.string(.Recording_Popup_CheckDailyDateTitle), text: Localized.string(.Recording_Popup_CheckDailyDateDesc)) { [weak self] in
-            self?.showSettingTargetTime()
-        }
     }
     
     @IBAction func toggleDarker(_ sender: Any) {
@@ -321,7 +314,7 @@ extension StopwatchVC {
         self.taskButton.titleLabel?.font = Typographys.uifont(.semibold_4, size: 18)
     }
     private func configureRendering() {
-        self.settingBT.setImage(UIImage.init(systemName: "calendar.badge.plus")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.settingBT.setImage(.init(named: "calendar")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.resetBT.setImage(UIImage.init(systemName: "clock.arrow.2.circlepath")?.withRenderingMode(.alwaysTemplate), for: .normal)
     }
     private func configureShadow() {
@@ -341,9 +334,6 @@ extension StopwatchVC {
         NotificationCenter.default.addObserver(self, selector: #selector(pauseWhenBackground(noti:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground(noti:)), name: UIApplication.willEnterForegroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name: UIDevice.orientationDidChangeNotification, object: nil)
-        NotificationCenter.default.addObserver(forName: .removeNewRecordWarning, object: nil, queue: .main) { [weak self] _ in
-            self?.hideWarningRecordDate()
-        }
     }
     private func configureViewModel() {
         self.viewModel = StopwatchVM()
@@ -407,7 +397,6 @@ extension StopwatchVC {
         self.bindDaily()
         self.bindTask()
         self.bindUI()
-        self.bindWaringNewDate()
     }
     private func bindTimes() {
         self.viewModel?.$times
@@ -439,7 +428,6 @@ extension StopwatchVC {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] runningUI in
                 if runningUI {
-                    NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
                     self?.setStartColor()
                     self?.setButtonsEnabledFalse()
                     self?.disableIdleTimer()
@@ -448,15 +436,6 @@ extension StopwatchVC {
                     self?.setButtonsEnabledTrue()
                     self?.enableIdleTimer()
                 }
-            })
-            .store(in: &self.cancellables)
-    }
-    private func bindWaringNewDate() {
-        self.viewModel?.$warningNewDate
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] warning in
-                guard warning else { return }
-                self?.showWarningRecordDate()
             })
             .store(in: &self.cancellables)
     }
@@ -600,20 +579,6 @@ extension StopwatchVC {
         self.innerProgress.setProgress(duration: duration, value: newInnerProgressPer, from: self.innerProgressPer)
         self.innerProgressPer = newInnerProgressPer
         self.darkerAnimation = false
-    }
-    
-    private func showWarningRecordDate() {
-        UIView.animate(withDuration: 0.15) {
-            self.warningRecordDate.alpha = 1
-            self.todayLabel.textColor = Colors.warningRed
-        }
-    }
-    
-    private func hideWarningRecordDate() {
-        UIView.animate(withDuration: 0.15) {
-            self.warningRecordDate.alpha = 0
-            self.todayLabel.textColor = self.textColor
-        }
     }
     
     private func disableIdleTimer() {
@@ -774,14 +739,6 @@ extension StopwatchVC {
     }
 }
 
-extension StopwatchVC: NewRecordCreatable {
-    func newRecord() {
-        self.fetchColor()
-        self.viewModel?.newRecord()
-        NotificationCenter.default.post(name: .removeNewRecordWarning, object: nil)
-    }
-}
-
 extension StopwatchVC: TaskChangeable {
     func selectTask(to task: String) {
         self.viewModel?.changeTask(to: task)
@@ -825,8 +782,8 @@ extension StopwatchVC: ColorUpdateable {
 extension StopwatchVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
-        let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_SetNewRecordTitle),
-                                         subTitle: "\(Date().YYYYMMDDstyleString) " + Localized.string(.Recording_Text_SetDailyTargetTime),
+        let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_EditTargetTimeTitle),
+                                         subTitle: Localized.string(.Recording_Text_EditTargetTimeSubtitle, op: Date().YYYYMMDDstyleString),
                                          targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         
@@ -837,7 +794,7 @@ extension StopwatchVC {
             guard let targetTime = targetTimeSettingVC.settedTargetTime else { return }
             RecordsManager.shared.recordTimes.updateGoalTime(to: targetTime)
             UserDefaultsManager.set(to: targetTime, forKey: .goalTimeOfDaily)
-            self?.newRecord()
+            self?.viewModel?.updateTimes()
         }))
         
         present(alert, animated: true)

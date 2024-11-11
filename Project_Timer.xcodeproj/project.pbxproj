@@ -395,6 +395,14 @@
 		93B08528248DDF2F00E215BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B08526248DDF2F00E215BD /* Main.storyboard */; };
 		93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */; };
 		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
+		D9A5F1422C32FA3700CED4B0 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */; };
+		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
+		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
+		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
+		D9DC51C52C243E37009A96F6 /* newRecordLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D9DC51C42C243E37009A96F6 /* newRecordLottie.json */; };
+		D9DC51CF2C26FC83009A96F6 /* newRecordToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */; };
+		D9DC51FF2C29A29F009A96F6 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51FE2C29A29F009A96F6 /* ToastView.swift */; };
+		D9DC52032C2D9F20009A96F6 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -810,6 +818,14 @@
 		93B0852E248DDF3000E215BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
 		A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
+		D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
+		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
+		D9DC51C42C243E37009A96F6 /* newRecordLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newRecordLottie.json; sourceTree = "<group>"; };
+		D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newRecordToastView.swift; sourceTree = "<group>"; };
+		D9DC51FE2C29A29F009A96F6 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
 		F426A4BDC73F07A7F14D3249 /* Pods-Project_Timer.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.develop.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.develop.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1099,6 +1115,8 @@
 				87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */,
 				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
+				D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */,
+				D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
@@ -1213,6 +1231,7 @@
 				87E6004928426EA3008D17B9 /* Setting */,
 				87862E852B2D9F8D004ED313 /* Notification */,
 				875FAE332B1C717E008F19D2 /* Interface */,
+				D9DC51C62C243EC4009A96F6 /* ToastMessage */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -1712,6 +1731,7 @@
 		87D4DCEC2BA6B11B00BB5AAB /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				D9DC51C42C243E37009A96F6 /* newRecordLottie.json */,
 				87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */,
 			);
 			path = Lottie;
@@ -1825,6 +1845,7 @@
 			isa = PBXGroup;
 			children = (
 				875C98CA2871C0A7008F7ADD /* UIImage+Extension.swift */,
+				D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */,
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
 				87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */,
@@ -2006,6 +2027,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D9DC51C62C243EC4009A96F6 /* ToastMessage */ = {
+			isa = PBXGroup;
+			children = (
+				D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */,
+				D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */,
+				D9DC51FE2C29A29F009A96F6 /* ToastView.swift */,
+				D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */,
+			);
+			path = ToastMessage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2036,6 +2068,7 @@
 				93B0851B248DDF2F00E215BD /* Resources */,
 				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 				871DC0F02BC274280024DA3B /* Embed Frameworks */,
+				66A4C9514F6901D7CD53A3B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2118,6 +2151,7 @@
 				87F50A17298FA3BD00ABF0CF /* newFeatures.strings in Resources */,
 				8760FB0D2A1DBBAB0068CEF5 /* LocalizableForWidget.strings in Resources */,
 				87D3CF03288BA6A500ED33B7 /* ProgressDailyTaskCell.xib in Resources */,
+				D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */,
 				048D8AD128AABC9F00A2456D /* AddNewTaskHistoryCell.xib in Resources */,
 				048D8AC728AA1B7700A2456D /* AddHistoryCell.xib in Resources */,
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
@@ -2129,6 +2163,7 @@
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
+				D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */,
 				8771190D28954B4A00F53FAD /* StandardWeekTaskCell.xib in Resources */,
 				87D4DCEE2BA6B13100BB5AAB /* successBlueLottie.json in Resources */,
 				87906C812B9BF759000EC960 /* MiSans-Semibold.ttf in Resources */,
@@ -2137,6 +2172,7 @@
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
 				874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
+				D9DC51C52C243E37009A96F6 /* newRecordLottie.json in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
 				87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */,
 			);
@@ -2145,6 +2181,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		66A4C9514F6901D7CD53A3B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		EC16A477924DCEC2DA0A756B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2230,12 +2283,14 @@
 				87910821283875C0005D7B10 /* NetworkController.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */,
+				D9DC51FF2C29A29F009A96F6 /* ToastView.swift in Sources */,
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				8708008D2B2D63D300830B39 /* SyncLogUseCase.swift in Sources */,
 				87EA022F2B9BF927003439F2 /* UIViewControllerPreview.swift in Sources */,
 				87EA02312B9BF941003439F2 /* UIViewPreview.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
 				870800852B2D593400830B39 /* SyncLogAPI.swift in Sources */,
+				D9DC52032C2D9F20009A96F6 /* ToastMessage.swift in Sources */,
 				87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */,
 				874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
@@ -2375,6 +2430,7 @@
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
+				D9DC51CF2C26FC83009A96F6 /* newRecordToastView.swift in Sources */,
 				87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
@@ -2478,6 +2534,7 @@
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
 				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
+				D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */,
 				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
@@ -2530,6 +2587,7 @@
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
 				8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */,
 				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
+				D9A5F1422C32FA3700CED4B0 /* ToastPresenter.swift in Sources */,
 				875FAE2A2B1C6829008F19D2 /* AppLatestVersionDTO.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
 			);
@@ -2671,11 +2729,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDevelop.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2C96RNDN63;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -2683,11 +2740,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.3;
+				MARKETING_VERSION = 7.17.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = profile_grin_dev;
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -2703,11 +2759,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2C96RNDN63;
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget;
@@ -2722,7 +2777,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.dev.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = profile_grin_dev_widget;
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2739,6 +2793,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
@@ -2755,6 +2810,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2771,9 +2827,10 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CODE_SIGN_ENTITLEMENTS = widgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget;
@@ -2787,6 +2844,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.FDEE.TiTi.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2918,6 +2976,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_TimerDebug.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = 2C96RNDN63;
@@ -2928,9 +2987,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.3;
+				MARKETING_VERSION = 7.17.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
@@ -2945,9 +3005,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Project_Timer/Project_Timer.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
-				DEVELOPMENT_TEAM = 2C96RNDN63;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = "";
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -2955,9 +3016,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.3;
+				MARKETING_VERSION = 7.17.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;

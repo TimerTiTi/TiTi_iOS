@@ -16,7 +16,7 @@ struct Daily: Codable {
     }
     
     static let fileName: String = "daily.json"
-    private(set) var day: Date = Date() // 기록 날짜값
+    private(set) var day: Date // 기록 날짜값
     private(set) var tasks: [String: Int] = [:] // 과목명-누적시간 값
     private(set) var maxTime: Int = 0 // 최고 연속시간
     private(set) var timeline = Array(repeating: 0, count: 24) // 시간대별 그래프값, (24시: 0)
@@ -27,7 +27,16 @@ struct Daily: Codable {
     private(set) var id: Int? // server pk
     private(set) var status: String? // server 반영여부
     
-    init() {}
+    init() {
+        var now = Date()
+        if now.hour < RecordsManager.resetHour {
+            /// 전 날 기록이 없고, resetHour 이전에 들어오는 경우
+            /// 전 날의 기록으로 생성
+            now = now.nextDay(offset: -1)
+        }
+        self.day = now.setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
+    }
+    
     init(newDate: Date) {
         self.day = newDate
     }

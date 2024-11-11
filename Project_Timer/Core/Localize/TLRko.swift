@@ -123,8 +123,8 @@ struct TLRko {
         case .Recording_Popup_NoTaskWarningDesc: value = "기록을 위해서 Task생성 후 선택해주세요"
         case .Recording_Popup_CheckDailyDateTitle: value = "기록중인 날짜를 확인해주세요"
         case .Recording_Popup_CheckDailyDateDesc: value = "새로운 날짜의 기록을 시작하시겠습니까?"
-        case .Recording_Text_SetNewRecordTitle: value = "새로운 기록 설정"
-        case .Recording_Text_SetDailyTargetTime: value = "목표시간 설정"
+        case .Recording_Text_EditTargetTimeTitle: value = "목표시간 수정"
+        case .Recording_Text_EditTargetTimeSubtitle: value = "의 목표시간을 수정해요!"
             
         case .Timer_Text_Finish: value = "종료"
         case .Timer_Text_TimerEndTime: value = "종료예정"
@@ -263,6 +263,8 @@ struct TLRko {
         case .Widget_Text_SampleTask3: value = "영어"
         case .Widget_Text_SampleTask4: value = "한국사"
         case .Widget_Text_SampleTask5: value = "탐구"
+        
+        case .Toast_Text_NewRecord: value = "기록 시작!"
         }
         
         if let op = op, value.contains("{}") {
