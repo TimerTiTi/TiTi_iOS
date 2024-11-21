@@ -22,6 +22,11 @@ final class DailyManager {
     
     func loadDailys() {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
+        // 비어 있으면 백업도 확인
+        if dailys.isEmpty {
+            self.dailys = Storage.retrive("tmp_\(Self.dailysFileName)", from: .documents, as: [Daily].self) ?? []
+        }
+        
         self.dates = self.dailys.map({ $0.day.zeroDate })
         print("load dailys!")
         
