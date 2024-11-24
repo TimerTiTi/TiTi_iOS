@@ -144,7 +144,7 @@ extension ResetPasswordModel {
                         print("ERROR", #function, networkError)
                         self?.validPassword2 = false
                         switch networkError {
-                        case .NOTFOUND(_):
+                        case .notFound(_):
                             self?.errorMessage = .notExist
                         default:
                             self?.errorMessage = .serverError

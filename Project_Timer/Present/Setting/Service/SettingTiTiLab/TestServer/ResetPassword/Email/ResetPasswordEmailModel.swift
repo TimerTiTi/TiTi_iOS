@@ -88,7 +88,7 @@ extension ResetPasswordEmailModel {
                     print("ERROR", #function, networkError)
                     self?.validEmail = false
                     switch networkError {
-                    case .NOTFOUND(_):
+                    case .notFound(_):
                         self?.errorMessage = .notExist
                     default:
                         self?.errorMessage = .serverError

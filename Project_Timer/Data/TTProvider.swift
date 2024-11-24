@@ -43,10 +43,10 @@ final class TTProvider<T: TargetType>: MoyaProvider<T> {
             case .statusCode(let response):
                 return NetworkError.serverError(statusCode: response.statusCode)
             default:
-                return NetworkError.FAIL
+                return NetworkError.fail
             }
         }
-        return NetworkError.FAIL
+        return NetworkError.fail
     }
 }
 
@@ -54,7 +54,7 @@ extension Publisher {
     /// Repository의 공통적인 Decode 에러를 반환하는 Publisher
     func catchDecodeError() -> AnyPublisher<Self.Output, NetworkError> {
         return self
-            .mapError { error in return error as? NetworkError ?? .DECODEERROR }
+            .mapError { error in return error as? NetworkError ?? .decode }
             .eraseToAnyPublisher()
     }
 }
@@ -69,11 +69,11 @@ extension Publisher where Output == Response, Failure == NetworkError {
                 let decodedData = try jsonDecoder.decode(D.self, from: response.data)
                 return decodedData
             } catch {
-                throw NetworkError.DECODEERROR
+                throw NetworkError.decode
             }
         }
         .mapError { error in
-            error as? NetworkError ?? NetworkError.FAIL
+            error as? NetworkError ?? NetworkError.fail
         }
         .eraseToAnyPublisher()
     }

@@ -84,7 +84,7 @@ extension ResetPasswordNicknameModel {
                     print("ERROR", #function, networkError)
                     self?.validNickname = false
                     switch networkError {
-                    case .NOTFOUND(_):
+                    case .notFound(_):
                         self?.errorMessage = .notExist
                     default:
                         self?.errorMessage = .serverError

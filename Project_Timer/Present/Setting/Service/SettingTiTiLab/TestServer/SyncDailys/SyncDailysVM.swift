@@ -88,7 +88,7 @@ extension SyncDailysVM {
                     print("ERROR", #function, networkError)
                     self?.loading = false
                     switch networkError {
-                    case .CLIENTERROR(let message):
+                    case .client(let message):
                         if let message = message {
                             print("[upload Dailys ERROR] \(message)")
                         }
@@ -114,7 +114,7 @@ extension SyncDailysVM {
                     print("ERROR", #function, networkError)
                     self?.loading = false
                     switch networkError {
-                    case .CLIENTERROR(let message):
+                    case .client(let message):
                         if let message = message {
                             print("[upload Recordtime ERROR] \(message)")
                         }
@@ -143,7 +143,7 @@ extension SyncDailysVM {
                     print("ERROR", #function, networkError)
                     self?.loading = false
                     switch networkError {
-                    case .CLIENTERROR(let message):
+                    case .client(let message):
                         if let message = message {
                             print("[get Dailys ERROR] \(message)")
                         }
@@ -170,7 +170,7 @@ extension SyncDailysVM {
                     print("ERROR", #function, networkError)
                     self?.loading = false
                     switch networkError {
-                    case .CLIENTERROR(let message):
+                    case .client(let message):
                         if let message = message {
                             print("[get RecordTimes ERROR] \(message)")
                         }
@@ -197,7 +197,7 @@ extension SyncDailysVM {
                     print("ERROR", #function, networkError)
                     self?.loading = false
                     switch networkError {
-                    case .CLIENTERROR(let message):
+                    case .client(let message):
                         if let message = message {
                             print("[get SyncLog ERROR] \(message)")
                         }

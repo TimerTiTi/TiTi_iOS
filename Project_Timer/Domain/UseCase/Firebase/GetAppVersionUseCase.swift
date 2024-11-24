@@ -18,7 +18,7 @@ final class GetAppVersionUseCase {
     
     func execute() -> AnyPublisher<AppLatestVersionInfo, NetworkError> {
         return self.repository.getAppVersion()
-            .flatMap { _ in Fail(error: NetworkError.FAIL) }
+            .flatMap { _ in Fail(error: NetworkError.fail) }
             .eraseToAnyPublisher()
     }
 }

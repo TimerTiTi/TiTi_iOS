@@ -48,7 +48,7 @@ final class SignupSigninVM {
                     print("ERROR", #function, networkError)
                     switch networkError {
                         // signup 관련 error message 추가
-                    case .CLIENTERROR(_):
+                    case .client(_):
                         self?.alert = (title: Localized.string(.SignUp_Error_SignupError), text: Localized.string(.SignUp_Error_CheckNicknameOrEmail))
                     default:
                         self?.alert = networkError.alertMessage
@@ -69,10 +69,10 @@ final class SignupSigninVM {
                     print("ERROR", #function, networkError)
                     switch networkError {
                         // signin 관련 error message 추가
-                    case .CLIENTERROR(_):
+                    case .client(_):
                         self?.alert = (title: Localized.string(.SignIn_Error_SigninFail), text: Localized.string(.SignIn_Error_CheckNicknameOrPassword))
                         // TestServer 에러핸들링 이슈로 404코드 추가
-                    case .NOTFOUND(_):
+                    case .notFound(_):
                         self?.alert = (title: Localized.string(.SignIn_Error_SigninFail), text: Localized.string(.SignIn_Error_CheckNicknameOrPassword))
                     default:
                         self?.alert = networkError.alertMessage
