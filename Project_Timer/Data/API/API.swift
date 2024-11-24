@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 extension TargetType {
-    static func parameters(from encodable: Encodable) -> [String: Any] {
+    func parameters(from encodable: Encodable) -> [String: Any] {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(encodable),
               let dictionary = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {

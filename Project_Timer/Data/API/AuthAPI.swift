@@ -51,9 +51,9 @@ extension AuthAPI: TargetType {
         case .postSignin(let request):
             return .requestJSONEncodable(request)
         case .getCheckUsername(let request):
-            return .requestParameters(parameters: Self.parameters(from: request), encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: self.parameters(from: request), encoding: URLEncoding.queryString)
         case .getCheckEmail(let request):
-            return .requestParameters(parameters: Self.parameters(from: request), encoding: URLEncoding.queryString)
+            return .requestParameters(parameters: self.parameters(from: request), encoding: URLEncoding.queryString)
         case .postUpdatePassword(let request):
             return .requestJSONEncodable(request)
         }
