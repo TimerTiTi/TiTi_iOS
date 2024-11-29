@@ -22,35 +22,35 @@ struct TTErrorResponse: Decodable {
     
     var errorTitle: String {
         switch self.code {
-        case "E9000":
-            return "잘못된 입력 오류"
-        case "E9001", "E9002", "E9003", "E9004", "E9005":
-            return "잘못된 요청 오류"
-        case "E9006":
-            return "인증정보 오류"
-        case "E9007":
-            return "잘못된 권한 오류"
-        case "E9999":
-            return "서버 오류"
-        default:
-            return "오류 발생"
+        case "E9000": // 입력 오류
+            return Localized.string(.Server_Error_Input)
+        case "E9001", "E9002", "E9003", "E9004", "E9005": // 요청 오류
+            return Localized.string(.Server_Error_Request)
+        case "E9006": // 인증정보 오류
+            return Localized.string(.Server_Error_Authentication)
+        case "E9007": // 권한 오류
+            return Localized.string(.Server_Error_Permission)
+        case "E9999": // 서버 오류
+            return Localized.string(.Server_Error_Server)
+        default: // 서버 오류
+            return Localized.string(.Server_Error_Server)
         }
     }
     
     var errorMessage: String {
         switch code {
         case "E9000":
-            return "입력값을 확인 후 다시 시도해주세요"
+            return Localized.string(.Server_Error_InputDesc)
         case "E9001", "E9002", "E9003", "E9004", "E9005":
-            return "개발자 실수로 오류가 발생했어요 🥲\n(\(self.code))"
+            return Localized.string(.Server_Error_ServiceDesc)
         case "E9006":
-            return "인증정보가 만료되어 다시 로그인해주세요"
+            return Localized.string(.Server_Error_AuthenticationDesc)
         case "E9007":
-            return "계속 문제가 발생하는 경우 문의해주세요\n(\(self.code))"
+            return Localized.string(.Server_Error_TryAgainDesc)
         case "E9999":
-            return "서버문제가 발생했어요 🥲\n(\(self.code))"
+            return Localized.string(.Server_Error_ServerDesc)
         default:
-            return "계속 문제가 발생하는 경우 문의해주세요\n(\(self.code))"
+            return Localized.string(.Server_Error_ServerDesc)
         }
     }
 }
