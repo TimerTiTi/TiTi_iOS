@@ -356,7 +356,7 @@ enum TLRkey: String {
     case SignUp_Text_InputEmailDesc
     /// 이메일
     case SignUp_Hint_Email
-    /// 잘못된 형식입니다. 올바른 형식으로 입력해 주세요
+    /// 잘못된 이메일 형식이에요.
     case SignUp_Error_WrongEmailFormat
     /// 인증코드가 발송되었습니다. 이메일을 확인해 주세요
     case SignUp_Toast_SendCodeComplete
@@ -383,9 +383,9 @@ enum TLRkey: String {
     case SignUp_Text_ConfirmPasswordDesc
     /// 비밀번호 재입력
     case SignUp_Hint_ConfirmPassword
-    /// "영문, 숫자를 포함하여 8자 이상 20자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
+    /// 8-64자 이내로 입력해주세요.
     case SignUp_Error_PasswordFormat
-    /// 동일하지 않습니다. 다시 입력해 주세요
+    /// 비밀번호가 일치하지 않아요.
     case SignUp_Error_PasswordMismatch
     
     /// 닉네임을 입력해 주세요
@@ -394,7 +394,7 @@ enum TLRkey: String {
     case SignUp_Text_InputNicknameDesc
     /// 닉네임
     case SignUp_Hint_Nickname
-    /// "2자 이상 12자 이내로 입력해 주세요. 특수문자는 !@#$%^&*()만 가능합니다"
+    /// 1-12자 이내로 입력해주세요.
     case SignUp_Error_WrongNicknameFormat
     
     /// 회원가입 불가
