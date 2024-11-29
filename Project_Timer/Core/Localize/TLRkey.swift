@@ -366,12 +366,10 @@ enum TLRkey: String {
     case SignUp_Button_Resend
     /// 이미 사용 중인 이메일입니다. 다른 이메일을 입력해 주세요
     case SignUp_Error_DuplicateEmail
-    /// 인증코드가 올바르지 않습니다. 다시 확인해 주세요
+    /// 인증 코드가 일치하지 않아요
     case SignUp_Error_WrongCode
-    /// 인증코드 전송 시도가 너무 많습니다. 60분간 요청이 제한돼요
-    case SignUp_Error_TooManySend
-    /// 인증코드 확인 시도가 너무 많습니다. 10분간 요청이 제한돼요
-    case SignUp_Error_TooManyConfirm
+    /// 인증 코드가 만료되었어요. 재전송 후 다시 시도해주세요
+    case SignUp_Error_CodeExpired
     
     /// 비밀번호를 입력해 주세요
     case SignUp_Text_InputPasswordTitle
@@ -405,6 +403,13 @@ enum TLRkey: String {
     case SignUp_Error_EnterDifferentValue
     /// 닉네임 또는 이메일을 확인해주세요 (5자리 이상)
     case SignUp_Error_CheckNicknameOrEmail
+    
+    /// 서버에 문제가 발생했어요. 다시 시도해주세요.
+    case SignUp_Error_Server
+    /// 이미 사용중인 이메일입니다. 다시 시도해주세요.
+    case SignUp_Error_DuplicateEmailInProcess
+    /// 인증 코드가 만료되었어요. 다시 시도해주세요.
+    case SignUp_Error_CodeExpiredInProcess
     
     /// 기존 계정의 닉네임을 입력해 주세요
     case FindAccount_Text_InputNicknameDesc

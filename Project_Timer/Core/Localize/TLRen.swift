@@ -199,10 +199,9 @@ struct TLRen {
         case .SignUp_Toast_SendCodeComplete: value = "Verification Code has been sent. Please check your email"
         case .SignUp_Hint_VerificationCode: value = "Verification Code"
         case .SignUp_Button_Resend: value = "Resend"
-        case .SignUp_Error_DuplicateEmail: value = "This Email is already in use. Please enter another one"
-        case .SignUp_Error_WrongCode: value = "Invalid Verification Code. Please check again"
-        case .SignUp_Error_TooManySend: value = "Too many attempts. The request is limited for 60 minutes"
-        case .SignUp_Error_TooManyConfirm: value = "Too many attempts. The request is limited for 10 minutes"
+        case .SignUp_Error_DuplicateEmail: value = "This email is already in use. Please enter a different email"
+        case .SignUp_Error_WrongCode: value = "The verification code does not match"
+        case .SignUp_Error_CodeExpired: value = "The verification code has expired. Please resend and try again"
             
         case .SignUp_Text_InputPasswordTitle: value = "Please create a new password"
         case .SignUp_Text_InputPasswordDesc: value = "Password should be 8 or more characters\ninclude both English and Numbers"
@@ -221,6 +220,10 @@ struct TLRen {
         case .SignUp_Popup_SignupSuccess: value = "Signup Success"
         case .SignUp_Error_EnterDifferentValue: value = "Please enter your nickname or email in a different value"
         case .SignUp_Error_CheckNicknameOrEmail: value = "Please check your nickname or email (at least 5 characters)"
+            
+        case .SignUp_Error_Server: value = "A problem occurred with the server. Please try again."
+        case .SignUp_Error_DuplicateEmailInProcess: value = "This email is already in use. Please try again."
+        case .SignUp_Error_CodeExpiredInProcess: value = "The verification code has expired. Please try again."
             
         case .FindAccount_Text_InputNicknameDesc: value = "Please enter your nickname for the registered account"
         case .FindAccount_Error_NotRegisteredNickname: value = "This nickname is not registered"

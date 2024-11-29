@@ -200,9 +200,8 @@ struct TLRko {
         case .SignUp_Hint_VerificationCode: value = "인증코드"
         case .SignUp_Button_Resend: value = "재전송"
         case .SignUp_Error_DuplicateEmail: value = "이미 사용 중인 이메일입니다. 다른 이메일을 입력해 주세요"
-        case .SignUp_Error_WrongCode: value = "인증코드가 올바르지 않습니다. 다시 확인해 주세요"
-        case .SignUp_Error_TooManySend: value = "인증코드 전송 시도가 너무 많습니다. 60분간 요청이 제한돼요"
-        case .SignUp_Error_TooManyConfirm: value = "인증코드 확인 시도가 너무 많습니다. 10분간 요청이 제한돼요"
+        case .SignUp_Error_WrongCode: value = "인증 코드가 일치하지 않아요"
+        case .SignUp_Error_CodeExpired: value = "인증 코드가 만료되었어요. 재전송 후 다시 시도해주세요"
             
         case .SignUp_Text_InputPasswordTitle: value = "비밀번호를 입력해 주세요"
         case .SignUp_Text_InputPasswordDesc: value = "8자리 이상 비밀번호를 입력해 주세요 (영어, 숫자 포함)"
@@ -221,6 +220,10 @@ struct TLRko {
         case .SignUp_Popup_SignupSuccess: value = "회원가입 성공"
         case .SignUp_Error_EnterDifferentValue: value = "닉네임, 또는 이메일을 다른값으로 입력해주세요"
         case .SignUp_Error_CheckNicknameOrEmail: value = "닉네임 또는 이메일을 확인해주세요 (5자리 이상)"
+            
+        case .SignUp_Error_Server: value = "서버에 문제가 발생했어요. 다시 시도해주세요."
+        case .SignUp_Error_DuplicateEmailInProcess: value = "이미 사용중인 이메일입니다. 다시 시도해주세요."
+        case .SignUp_Error_CodeExpiredInProcess: value = "인증 코드가 만료되었어요. 다시 시도해주세요."
             
         case .FindAccount_Text_InputNicknameDesc: value = "기존 계정의 닉네임을 입력해 주세요"
         case .FindAccount_Error_NotRegisteredNickname: value = "가입되지 않은 닉네임입니다"

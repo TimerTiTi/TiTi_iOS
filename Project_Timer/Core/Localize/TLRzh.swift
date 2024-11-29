@@ -199,10 +199,9 @@ struct TLRzh {
         case .SignUp_Toast_SendCodeComplete: value = "验证码已发送。 请检查您的电子邮件"
         case .SignUp_Hint_VerificationCode: value = "验证码"
         case .SignUp_Button_Resend: value = "重新发送"
-        case .SignUp_Error_DuplicateEmail: value = "此电子邮件已在使用中。 请输入另一个"
-        case .SignUp_Error_WrongCode: value = "验证码错误。 请再次检查"
-        case .SignUp_Error_TooManySend: value = "太多的尝试。 请求被限制为60分钟"
-        case .SignUp_Error_TooManyConfirm: value = "太多的尝试。 请求限制为10分钟"
+        case .SignUp_Error_DuplicateEmail: value = "该邮箱已被使用，请输入其他邮箱"
+        case .SignUp_Error_WrongCode: value = "验证码不匹配"
+        case .SignUp_Error_CodeExpired: value = "验证码已过期，请重新发送并重试"
             
         case .SignUp_Text_InputPasswordTitle: value = "请创建新密码"
         case .SignUp_Text_InputPasswordDesc: value = "密码必须是8个或更多字符（包括英文和数字）"
@@ -221,6 +220,10 @@ struct TLRzh {
         case .SignUp_Popup_SignupSuccess: value = "注册成功"
         case .SignUp_Error_EnterDifferentValue: value = "请输入您的昵称或电子邮件为不同的值"
         case .SignUp_Error_CheckNicknameOrEmail: value = "请检查您的昵称或电子邮件（至少5个字符)"
+            
+        case .SignUp_Error_Server: value = "服务器出现问题，请重试。"
+        case .SignUp_Error_DuplicateEmailInProcess: value = "该邮箱已被使用，请重试。"
+        case .SignUp_Error_CodeExpiredInProcess: value = "验证码已过期，请重试。"
             
         case .FindAccount_Text_InputNicknameDesc: value = "请输入注册账户的昵称"
         case .FindAccount_Error_NotRegisteredNickname: value = "此昵称未注册"
