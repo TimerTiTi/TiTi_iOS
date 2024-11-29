@@ -243,6 +243,17 @@ struct TLRko {
         case .Server_Error_ServerErrorTryAgain: value = "서버에 오류가 발생했습니다. 잠시 후 다시 시도해주세요"
         case .Server_Error_UploadError: value = "업로드 오류"
         case .Server_Error_DownloadError: value = "다운로드 오류"
+        case .Server_Error_Request: value = "요청 오류"
+        case .Server_Error_Server: value = "서버 오류"
+        case .Server_Error_Input: value = "입력 오류"
+        case .Server_Error_Permission: value = "권한 오류"
+        case .Server_Error_Authentication: value = "인증정보 오류"
+        case .Server_Error_Registration: value = "등록 오류"
+        case .Server_Error_ServerDesc: value = "서비스 오류가 발생했어요 🥲"
+        case .Server_Error_ServiceDesc: value = "서버에 문제가 발생했어요 🛠️"
+        case .Server_Error_InputDesc: value = "입력값을 확인 후 다시 시도해주세요"
+        case .Server_Error_TryAgainDesc: value = "문제가 계속 발생할 경우 개발팀에 문의해주세요"
+        case .Server_Error_AuthenticationDesc: value = "인증정보가 만료되어 다시 로그인해주세요"
             
         case .Notification_Button_PassToday: value = "오늘 그만보기"
             

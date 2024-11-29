@@ -243,6 +243,17 @@ struct TLRzh {
         case .Server_Error_ServerErrorTryAgain: value = "服务器出错啦! 请稍后再试。"
         case .Server_Error_UploadError: value = "上传错误"
         case .Server_Error_DownloadError: value = "下载错误"
+        case .Server_Error_Request: value = "请求错误"
+        case .Server_Error_Server: value = "服务器错误"
+        case .Server_Error_Input: value = "输入错误"
+        case .Server_Error_Permission: value = "权限错误"
+        case .Server_Error_Authentication: value = "认证信息错误"
+        case .Server_Error_Registration: value = "注册错误"
+        case .Server_Error_ServerDesc: value = "发生了服务错误 🥲"
+        case .Server_Error_ServiceDesc: value = "服务器出现问题 🛠️"
+        case .Server_Error_InputDesc: value = "请检查输入后重试。"
+        case .Server_Error_TryAgainDesc: value = "如果问题持续存在，请联系开发团队。"
+        case .Server_Error_AuthenticationDesc: value = "认证信息已过期，请重新登录。"
             
         case .Notification_Button_PassToday: value = "今日不再显示"
             

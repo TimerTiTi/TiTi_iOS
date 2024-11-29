@@ -447,6 +447,28 @@ enum TLRkey: String {
     case Server_Error_UploadError
     /// 다운로드 오류
     case Server_Error_DownloadError
+    /// 요청 오류
+    case Server_Error_Request
+    /// 서버 오류
+    case Server_Error_Server
+    /// 입력 오류
+    case Server_Error_Input
+    /// 권한 오류
+    case Server_Error_Permission
+    /// 인증정보 오류
+    case Server_Error_Authentication
+    /// 등록 오류
+    case Server_Error_Registration
+    /// 서비스 오류가 발생했어요 🥲
+    case Server_Error_ServiceDesc
+    /// 서버에 문제가 발생했어요 🛠️
+    case Server_Error_ServerDesc
+    /// 입력값을 확인 후 다시 시도해주세요
+    case Server_Error_InputDesc
+    /// 문제가 계속 발생할 경우 개발팀에 문의해주세요
+    case Server_Error_TryAgainDesc
+    /// 인증정보가 만료되어 다시 로그인해주세요
+    case Server_Error_AuthenticationDesc
     
     /// 오늘 그만보기
     case Notification_Button_PassToday

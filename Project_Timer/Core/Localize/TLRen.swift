@@ -243,6 +243,17 @@ struct TLRen {
         case .Server_Error_ServerErrorTryAgain: value = "The server something went wrong. Please try again in a few minutes"
         case .Server_Error_UploadError: value = "Upload Error"
         case .Server_Error_DownloadError: value = "Download Error"
+        case .Server_Error_Request: value = "Request Error"
+        case .Server_Error_Server: value = "Server Error"
+        case .Server_Error_Input: value = "Input Error"
+        case .Server_Error_Permission: value = "Permission Error"
+        case .Server_Error_Authentication: value = "Authentication Error"
+        case .Server_Error_Registration: value = "Registration Error"
+        case .Server_Error_ServerDesc: value = "A service error has occurred 🥲"
+        case .Server_Error_ServiceDesc: value = "A problem has occurred with the server 🛠️"
+        case .Server_Error_InputDesc: value = "Please check the input and try again."
+        case .Server_Error_TryAgainDesc: value = "If the problem persists, please contact the development team."
+        case .Server_Error_AuthenticationDesc: value = "Your authentication information has expired. Please sign in again."
             
         case .Notification_Button_PassToday: value = "Dismiss for Today"
             
