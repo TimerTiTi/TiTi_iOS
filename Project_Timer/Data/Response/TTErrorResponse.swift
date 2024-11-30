@@ -20,7 +20,8 @@ struct TTErrorResponse: Decodable {
             .joined(separator: "\n")
     }
     
-    var errorTitle: String {
+    /// code에 따라 Alert로 표시되는 title
+    var title: String {
         switch self.code {
         case "E9000": // 입력 오류
             return Localized.string(.Server_Error_Input)
@@ -37,7 +38,8 @@ struct TTErrorResponse: Decodable {
         }
     }
     
-    var errorMessage: String {
+    /// code에 따라 Alert로 표시되는 text
+    var text: String {
         switch code {
         case "E9000":
             return Localized.string(.Server_Error_InputDesc)
@@ -52,6 +54,16 @@ struct TTErrorResponse: Decodable {
         default:
             return Localized.string(.Server_Error_ServerDesc)
         }
+    }
+    
+    /// code에 따라 Alert로 표시되는 title, text
+    var alertMessage: (title: String, text: String) {
+        return (title: self.title, text: self.text)
+    }
+    
+    /// Alert로 표시되는 title, text의 default 값
+    static var defaultAlertMessage: (title: String, text: String) {
+        return (title: Localized.string(.Server_Error_Server), text: Localized.string(.Server_Error_ServerDesc))
     }
 }
 

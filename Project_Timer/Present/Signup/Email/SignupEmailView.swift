@@ -13,6 +13,7 @@ import Moya
 struct SignupEmailView: View {
     @ObservedObject private var keyboard = KeyboardResponder.shared
     @StateObject private var model: SignupEmailModel
+    @State private var isShowAlert = false
     
     init(model: SignupEmailModel) {
         _model = StateObject(wrappedValue: model)
@@ -30,6 +31,19 @@ struct SignupEmailView: View {
             .onChange(of: geometry.size, perform: { value in
                 model.updateContentWidth(size: value)
             })
+            .onReceive(model.$alert, perform: { alert in
+                isShowAlert = (alert != nil)
+            })
+            .alert(isPresented: $isShowAlert) {
+                Alert(
+                    title: Text(model.alert?.title ?? ""),
+                    message: Text(model.alert?.text ?? ""),
+                    dismissButton: .default(Text(Localized.string(.Common_Text_OK))) {
+                        model.alert = nil
+                    }
+                )
+            }
+            
             .navigationDestination(for: SignupEmailRoute.self) { destination in
                 switch destination {
                 case .signupPassword:
@@ -175,7 +189,7 @@ struct SignupEmailView: View {
                 }
                 
                 TTSignupTextFieldUnderlineView(color: model.authCodeTintColor)
-                TTSignupTextFieldWarning(warning: Localized.string(.SignUp_Error_WrongCode), visible: model.validVerificationCode == false && model.authCode.isEmpty)
+                TTSignupTextFieldWarning(warning: model.authCodeStatus?.errorMessage ?? "", visible: model.isWarningAuthCode)
                     .id(TTSignupTextFieldView.type.verificationCode)
             }
         }

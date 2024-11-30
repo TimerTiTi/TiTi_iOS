@@ -17,9 +17,11 @@ final class SignupEmailModel: ObservableObject {
     @Published var contentWidth: CGFloat = .zero
     @Published var focus: TTSignupTextFieldView.type?
     @Published var isWarningEmail: Bool = false
+    @Published var isWarningAuthCode: Bool = false
     @Published var validVerificationCode: Bool?
     @Published var getVerificationSuccess: Bool = false
     @Published var stage: Stage = .email
+    @Published var alert: (title: String, text: String)?
     
     @Published var email: String = "" // 이메일 TextField 값
     @Published var authCode: String = "" // 인증코드 TextField 값
@@ -50,15 +52,26 @@ final class SignupEmailModel: ObservableObject {
     enum EmailStatus {
         case notValid
         case exist
-        case networkError
         case notExist
         
         var errorMessage: String {
             switch self {
             case .notValid: return Localized.string(.SignUp_Error_WrongEmailFormat)
-            case .exist: return "동일한 이메일이 존재합니다. 다른 이메일을 입력해주세요"
-            case .networkError: return "네트워크 오류가 발생했습니다."
+            case .exist: return Localized.string(.SignUp_Error_DuplicateEmailInProcess)
             case .notExist: return ""
+            }
+        }
+    }
+    enum AuthCodeStatus {
+        case verified
+        case expired
+        case invalied
+        
+        var errorMessage: String {
+            switch self {
+            case .expired: return Localized.string(.SignUp_Error_CodeExpired)
+            case .invalied: return Localized.string(.SignUp_Error_WrongCode)
+            case .verified: return ""
             }
         }
     }
@@ -67,10 +80,20 @@ final class SignupEmailModel: ObservableObject {
     var emailStatus: EmailStatus? {
         didSet {
             switch self.emailStatus {
-            case .notValid, .exist, .networkError:
+            case .notValid, .exist:
                 self.isWarningEmail = true
             default:
                 self.isWarningEmail = false
+            }
+        }
+    }
+    var authCodeStatus: AuthCodeStatus? {
+        didSet {
+            switch self.authCodeStatus {
+            case .expired, .invalied:
+                self.isWarningAuthCode = true
+            default:
+                self.isWarningAuthCode = false
             }
         }
     }
@@ -105,7 +128,7 @@ final class SignupEmailModel: ObservableObject {
     // emailTextField underline 컬러
     var emailTintColor: Color {
         switch self.emailStatus {
-        case .notValid, .exist, .networkError:
+        case .notValid, .exist:
             return Colors.wrongTextField.toColor
         default:
             return focus == .email ? Color.blue : UIColor.placeholderText.toColor
@@ -212,7 +235,7 @@ extension SignupEmailModel {
             .sink { [weak self] completion in
                 guard case .failure(let networkError) = completion else { return }
                 print("ERROR", #function)
-                // TODO: 인증코드 전송 실패시 핸들링
+                self?.handlePostAuthCodeError(networkError)
             } receiveValue: { [weak self] postAuthCodeInfo in
                 print("authKey: \(postAuthCodeInfo.authKey)")
                 self?.authKey = postAuthCodeInfo.authKey
@@ -245,7 +268,7 @@ extension SignupEmailModel {
             .sink { [weak self] completion in
                 guard case .failure(let networkError) = completion else { return }
                 print("ERROR", #function)
-                // TODO: 인증코드 검증 실패시 핸들링
+                self?.handleVerifyAuthCodeError(networkError)
             } receiveValue: { [weak self] verifyAuthCodeInfo in
                 print("authToken: \(verifyAuthCodeInfo.authToken)")
                 self?.authToken = verifyAuthCodeInfo.authToken
@@ -268,14 +291,46 @@ extension SignupEmailModel {
     }
 }
 
+// MARK: Error Handling
+
 extension SignupEmailModel {
     private func handleCheckEmailError(_ networkError: NetworkError) {
-        // TODO: 서버 문제, 요청 문제 등 분기처리 필요
-        self.emailStatus = .networkError
-        guard case .ERRORRESPONSE(let ttErrorResponse) = networkError else { return }
-        print(ttErrorResponse.logMessage)
-        // TODO: 오류문구 표시가 필요한 경우 반영
-        print("title: \(ttErrorResponse.errorTitle)")
-        print("message: \(ttErrorResponse.errorMessage)")
+        if case .ERRORRESPONSE(let ttErrorResponse) = networkError {
+            print(ttErrorResponse.logMessage)
+            self.alert = ttErrorResponse.alertMessage
+        } else {
+            print(networkError)
+            self.alert = TTErrorResponse.defaultAlertMessage
+        }
+    }
+    
+    private func handlePostAuthCodeError(_ networkError: NetworkError) {
+        if case .ERRORRESPONSE(let ttErrorResponse) = networkError {
+            switch ttErrorResponse.code {
+            case "AU7000":
+                self.alert = TTErrorResponse.defaultAlertMessage
+            default:
+                self.alert = ttErrorResponse.alertMessage
+            }
+        } else {
+            print(networkError)
+            self.alert = TTErrorResponse.defaultAlertMessage
+        }
+    }
+    
+    private func handleVerifyAuthCodeError(_ networkError: NetworkError) {
+        if case .ERRORRESPONSE(let ttErrorResponse) = networkError {
+            switch ttErrorResponse.code {
+            case "AU1002":
+                self.authCodeStatus = .expired
+            case "AU1003":
+                self.authCodeStatus = .invalied
+            default:
+                self.alert = ttErrorResponse.alertMessage
+            }
+        } else {
+            print(networkError)
+            self.alert = TTErrorResponse.defaultAlertMessage
+        }
     }
 }
