@@ -119,7 +119,7 @@ extension SettingUpdateHistoryVC: UICollectionViewDataSource {
 
 extension SettingUpdateHistoryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? UpdateInfoCell else { return .init(width: self.updateList.bounds.width, height: 0) }
         let textHeight = cell.textLabel.frame.height
         
         return CGSize(width: self.updateList.bounds.width, height: textHeight + 79.67 - 17)
