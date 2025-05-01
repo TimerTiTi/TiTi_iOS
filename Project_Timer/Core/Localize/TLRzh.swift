@@ -126,8 +126,8 @@ struct TLRzh {
         case .Recording_Popup_NoTaskWarningDesc: value = "在开始录制之前，创建新任务，然后选择"
         case .Recording_Popup_CheckDailyDateTitle: value = "请确认记录中的日期。"
         case .Recording_Popup_CheckDailyDateDesc: value = "开始记录新日期吗 ？"
-        case .Recording_Text_SetNewRecordTitle: value = "新建日志设置"
-        case .Recording_Text_SetDailyTargetTime: value = "设定目标时间"
+        case .Recording_Text_EditTargetTimeTitle: value = "修改目标时间"
+        case .Recording_Text_EditTargetTimeSubtitle: value = " 修改目标时间"
             
         case .Timer_Text_Finish: value = "结束"
         case .Timer_Text_TimerEndTime: value = "结束时间"
@@ -266,6 +266,8 @@ struct TLRzh {
         case .Widget_Text_SampleTask3: value = "物理"
         case .Widget_Text_SampleTask4: value = "化学"
         case .Widget_Text_SampleTask5: value = "生物"
+            
+        case .Toast_Text_NewRecord: value = "开始录制!"
         }
         
         if let op = op, value.contains("{}") {

@@ -46,12 +46,21 @@ public class Storage {
         encoder.dateEncodingStrategy = .iso8601
         
         do {
+            
             let data = try encoder.encode(obj)
-            //동일이름의 파일이 있는 경우 삭제
-            if FileManager.default.fileExists(atPath: url.path) {
+            
+            // 동일한 파일이 있으면 백업후 삭제
+            if let backupData = FileManager.default.contents(atPath: url.path) {
+                let backupURL = directory.url.appendingPathComponent("tmp_\(fileName)", isDirectory: false)
+                if FileManager.default.fileExists(atPath: backupURL.path) {
+                    try FileManager.default.removeItem(at: backupURL)
+                }
+                FileManager.default.createFile(atPath: backupURL.path, contents: backupData)
+                
                 try FileManager.default.removeItem(at: url)
             }
-            //파일을 저장
+            
+            // 데이터 저장
             FileManager.default.createFile(atPath: url.path, contents: data, attributes: nil)
         } catch let error {
             if Infos.isDevMode {

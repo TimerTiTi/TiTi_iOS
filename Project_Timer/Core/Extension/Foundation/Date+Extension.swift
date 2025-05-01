@@ -123,4 +123,12 @@ extension Date {
         let S = Int(dateFormatter.string(from: self))! //초
         return M*60+S
     }
+    
+    func setTime(hour: Int = 0, minute: Int = 0, second: Int = 0) -> Date {
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
+        components.hour = hour
+        components.minute = minute
+        components.second = second
+        return Calendar.current.date(from: components) ?? Date()
+    }
 }

@@ -18,7 +18,7 @@ final class SyncDailysVM {
     private var targetDailys: [Daily]
     @Published private(set) var syncLog: SyncLog?
     @Published private(set) var alert: (title: String, text: String)?
-    @Published private(set) var loading: Bool = false
+    @Published private(set) var isLoading: Bool = false
     @Published private(set) var saveDailysSuccess: Bool = false
     private(set) var loadingText: SyncDailysVC.LoadingStatus?
     // Combine binding
@@ -154,8 +154,18 @@ extension SyncDailysVM {
                 }
             } receiveValue: { [weak self] dailys in
                 self?.saveDailys(dailys)
-                self?.loading = false
                 self?.checkRecordTimes()
+            case .failure(let error):
+                self?.loading = false
+                switch error {
+                case .CLIENTERROR(let message):
+                    if let message = message {
+                        print("[get Dailys ERROR] \(message)")
+                    }
+                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
+                default:
+                    self?.alert = error.alertMessage
+                }
             }
             .store(in: &self.cancellables)
     }
@@ -181,7 +191,6 @@ extension SyncDailysVM {
                 }
             } receiveValue: { [weak self] recordTimes in
                 self?.saveRecordTimes(recordTimes)
-                self?.loading = false
                 self?.getSyncLog(afterUploaded: true)
             }
             .store(in: &self.cancellables)

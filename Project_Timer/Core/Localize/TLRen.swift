@@ -126,8 +126,8 @@ struct TLRen {
         case .Recording_Popup_NoTaskWarningDesc: value = "before start recording, Create a new Task, and select that"
         case .Recording_Popup_CheckDailyDateTitle: value = "Check the date of recording"
         case .Recording_Popup_CheckDailyDateDesc: value = "Do you want to start the New record?"
-        case .Recording_Text_SetNewRecordTitle: value = "Setting New Record"
-        case .Recording_Text_SetDailyTargetTime: value = "setting TargetTime"
+        case .Recording_Text_EditTargetTimeTitle: value = "Edit Target Time"
+        case .Recording_Text_EditTargetTimeSubtitle: value = "{} Edit the target time."
             
         case .Timer_Text_Finish: value = "FINISH"
         case .Timer_Text_TimerEndTime: value = "End Time"
@@ -266,6 +266,8 @@ struct TLRen {
         case .Widget_Text_SampleTask3: value = "Coding"
         case .Widget_Text_SampleTask4: value = "Study"
         case .Widget_Text_SampleTask5: value = "Workout"
+            
+        case .Toast_Text_NewRecord: value = "Start Recording!"
         }
         
         if let op = op, value.contains("{}") {

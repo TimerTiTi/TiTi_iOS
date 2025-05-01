@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol NewRecordCreatable: AnyObject {
-    func newRecord()
-}
-
 protocol TaskChangeable: AnyObject {
     func selectTask(to: String)
 }
