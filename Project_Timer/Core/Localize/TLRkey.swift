@@ -46,6 +46,11 @@ enum TLRkey: String {
     /// 안내
     case Common_Popup_Inform
     
+    /// 최신버전 정보를 불러오지 못했어요
+    case App_Popup_FetchVersionErrorTitle
+    /// 문제가 계속될 경우 문의 부탁드려요.
+    case App_Popup_FetchVersionErrorDesc
+    
     /// {}시간 경과되었습니다.
     case System_Noti_StopwatchHourPassed
     /// 타이머가 종료되었습니다!

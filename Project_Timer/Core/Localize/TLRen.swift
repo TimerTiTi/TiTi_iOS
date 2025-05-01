@@ -31,6 +31,9 @@ struct TLRen {
         case .Common_Popup_Warning: value = "Warning"
         case .Common_Popup_Inform: value = "Inform"
             
+        case .App_Popup_FetchVersionErrorTitle: value = "Failed to fetch the latest version information"
+        case .App_Popup_FetchVersionErrorDesc: value = "If the issue persists, please contact support."
+            
         case .System_Noti_StopwatchHourPassed: value = "{}hours passed."
         case .System_Noti_TimerFinished: value = "Timer finished!"
         case .System_Noti_Timer5Left: value = "5 minutes left"

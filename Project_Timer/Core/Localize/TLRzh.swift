@@ -31,6 +31,9 @@ struct TLRzh {
         case .Common_Popup_Warning: value = "警告"
         case .Common_Popup_Inform: value = "向导"
             
+        case .App_Popup_FetchVersionErrorTitle: value = "无法获取最新版本信息。"
+        case .App_Popup_FetchVersionErrorDesc: value = "如果问题仍然存在，请联系客服。"
+            
         case .System_Noti_StopwatchHourPassed: value = "{}时间已过。"
         case .System_Noti_TimerFinished: value = "计时器已结束 ！"
         case .System_Noti_Timer5Left: value = "还剩5分钟"

@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import Moya
 
 final class SettingUpdateHistoryVC: UIViewController {
     static let identifier = "SettingUpdateHistoryVC"
@@ -58,9 +59,12 @@ extension SettingUpdateHistoryVC {
     }
     
     private func configureViewModel() {
-        // MARK: NetworkController 주입 고민이 필요
-        let networkController = NetworkController(network: Network())
-        self.viewModel = SettingUpdateHistoryVM(networkController: networkController)
+        // TODO: DI 수정
+        let api = TTProvider<FirebaseAPI>(session: Session(interceptor: NetworkInterceptor.shared))
+        let repository = FirebaseRepository(api: api)
+        let getUpdateHistorysUseCase = GetUpdateHistorysUseCase(repository: repository)
+        
+        self.viewModel = SettingUpdateHistoryVM(getUpdateHistorysUseCase: getUpdateHistorysUseCase)
     }
     
     private func stopLoader() {
@@ -115,7 +119,7 @@ extension SettingUpdateHistoryVC: UICollectionViewDataSource {
 
 extension SettingUpdateHistoryVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpdateInfoCell.identifier, for: indexPath) as? UpdateInfoCell else { return .zero }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? UpdateInfoCell else { return .init(width: self.updateList.bounds.width, height: 0) }
         let textHeight = cell.textLabel.frame.height
         
         return CGSize(width: self.updateList.bounds.width, height: textHeight + 79.67 - 17)

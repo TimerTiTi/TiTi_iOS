@@ -31,6 +31,9 @@ struct TLRko {
         case .Common_Popup_Warning: value = "경고"
         case .Common_Popup_Inform: value = "안내"
             
+        case .App_Popup_FetchVersionErrorTitle: value = "최신버전 정보를 불러오지 못했어요"
+        case .App_Popup_FetchVersionErrorDesc: value = "문제가 계속될 경우 문의 부탁드려요."
+            
         case .System_Noti_StopwatchHourPassed: value = "{}시간 경과되었습니다."
         case .System_Noti_TimerFinished: value = "타이머가 종료되었습니다!"
         case .System_Noti_Timer5Left: value = "5분 남았습니다"
