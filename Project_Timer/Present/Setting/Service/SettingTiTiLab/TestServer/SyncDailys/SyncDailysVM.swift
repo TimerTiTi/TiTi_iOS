@@ -86,7 +86,6 @@ extension SyncDailysVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -112,7 +111,6 @@ extension SyncDailysVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -124,7 +122,6 @@ extension SyncDailysVM {
                     }
                 }
             } receiveValue: { [weak self] _ in
-                self?.isLoading = false
                 self?.getSyncLog(afterUploaded: true)
             }
             .store(in: &self.cancellables)
@@ -141,7 +138,6 @@ extension SyncDailysVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -167,7 +163,6 @@ extension SyncDailysVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -193,7 +188,6 @@ extension SyncDailysVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
