@@ -81,12 +81,12 @@ extension SyncDailysVM {
     /// uploadDailys -> getDailys 진행
     private func uploadDailys() {
         self.loadingText = .uploadDailys
-        self.loading = true
+        self.isLoading = true
         self.postDailysUseCase.execute(request: self.targetDailys)
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.loading = false
+                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -107,12 +107,12 @@ extension SyncDailysVM {
     private func uploadRecordTime() {
         let recordTimes = RecordsManager.shared.recordTimes
         self.loadingText = .uploadRecordTime
-        self.loading = true
+        self.isLoading = true
         self.postRecordTimeUseCase.execute(request: recordTimes)
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.loading = false
+                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -124,7 +124,7 @@ extension SyncDailysVM {
                     }
                 }
             } receiveValue: { [weak self] _ in
-                self?.loading = false
+                self?.isLoading = false
                 self?.getSyncLog(afterUploaded: true)
             }
             .store(in: &self.cancellables)
@@ -136,12 +136,12 @@ extension SyncDailysVM {
     /// getDailys -> checkRecordTimes 진행
     private func getDailys() {
         self.loadingText = .getDailys
-        self.loading = true
+        self.isLoading = true
         self.getDailysUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.loading = false
+                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -155,17 +155,6 @@ extension SyncDailysVM {
             } receiveValue: { [weak self] dailys in
                 self?.saveDailys(dailys)
                 self?.checkRecordTimes()
-            case .failure(let error):
-                self?.loading = false
-                switch error {
-                case .CLIENTERROR(let message):
-                    if let message = message {
-                        print("[get Dailys ERROR] \(message)")
-                    }
-                    self?.alert = (title: Localized.string(.Server_Error_DownloadError), text: Localized.string(.Server_Error_DecodeError))
-                default:
-                    self?.alert = error.alertMessage
-                }
             }
             .store(in: &self.cancellables)
     }
@@ -173,12 +162,12 @@ extension SyncDailysVM {
     /// getRecordTime -> getSyncLog 진행
     private func getRecordtime() {
         self.loadingText = .getRecordTime
-        self.loading = true
+        self.isLoading = true
         self.getRecordTimeUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.loading = false
+                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -199,12 +188,12 @@ extension SyncDailysVM {
     /// sync 로직 후 getSyncLog, 또는 화면진입시 진행
     private func getSyncLog(afterUploaded: Bool) {
         self.loadingText = .getSyncLog
-        self.loading = true
+        self.isLoading = true
         self.getSyncLogUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.loading = false
+                    self?.isLoading = false
                     switch networkError {
                     case .client(let message):
                         if let message = message {
@@ -216,7 +205,7 @@ extension SyncDailysVM {
                     }
                 }
             } receiveValue: { [weak self] syncLog in
-                self?.loading = false
+                self?.isLoading = false
                 if afterUploaded {
                     self?.saveLastUploadedDate(to: syncLog.updatedAt)
                     self?.targetDailys = []
