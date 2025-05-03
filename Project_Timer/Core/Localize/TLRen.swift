@@ -53,6 +53,7 @@ struct TLRen {
         case .Settings_Button_Functions: value = "TiTi Functions"
         case .Settings_Button_TiTiLab: value = "TiTi Lab"
         case .Settings_Text_SettingSection: value = "Setting"
+        case .Settings_Button_Record: value = "Record"
         case .Settings_Button_Notification: value = "Notification"
         case .Settings_Button_UI: value = "UI"
         case .Settings_Button_Control: value = "Control"

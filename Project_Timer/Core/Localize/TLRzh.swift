@@ -53,6 +53,7 @@ struct TLRzh {
         case .Settings_Button_Functions: value = "功能"
         case .Settings_Button_TiTiLab: value = "TiTi实验室"
         case .Settings_Text_SettingSection: value = "设置"
+        case .Settings_Button_Record: value = "记录"
         case .Settings_Button_Notification: value = "通知"
         case .Settings_Button_UI: value = "用户界面"
         case .Settings_Button_Control: value = "控制"

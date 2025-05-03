@@ -53,6 +53,7 @@ struct TLRko {
         case .Settings_Button_Functions: value = "TiTi 기능들"
         case .Settings_Button_TiTiLab: value = "TiTi 연구소"
         case .Settings_Text_SettingSection: value = "설정"
+        case .Settings_Button_Record: value = "기록"
         case .Settings_Button_Notification: value = "알림"
         case .Settings_Button_UI: value = "UI"
         case .Settings_Button_Control: value = "제어"

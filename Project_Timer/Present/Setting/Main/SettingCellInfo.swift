@@ -64,6 +64,7 @@ enum Destination {
     case website(url: String)
     case deeplink(url: String)
     // class 분기처리
+    case record
     case notification
     case ui
     case control

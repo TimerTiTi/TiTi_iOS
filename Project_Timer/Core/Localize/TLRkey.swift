@@ -87,6 +87,8 @@ enum TLRkey: String {
     case Settings_Button_TiTiLab
     /// 설정
     case Settings_Text_SettingSection
+    /// 기록
+    case Settings_Button_Record
     /// 알림
     case Settings_Button_Notification
     /// UI

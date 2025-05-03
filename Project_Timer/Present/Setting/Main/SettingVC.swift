@@ -176,6 +176,8 @@ extension SettingVC: SettingActionDelegate {
     
     func pushVC(destination: Destination) {
         switch destination {
+        case .record:
+            self.navigationController?.pushViewController(SettingRecordVC(), animated: true)
         case .notification:
             self.navigationController?.pushViewController(SettingSwitchListVC(dataSource: .notification), animated: true)
         case .ui:
