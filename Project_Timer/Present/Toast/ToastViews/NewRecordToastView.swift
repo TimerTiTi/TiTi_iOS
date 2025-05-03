@@ -9,29 +9,29 @@
 import SwiftUI
 
 struct NewRecordToastView: ToastView {
-    let height: CGFloat = 40
-    let topConstraint: CGFloat = 8
+    let height: CGFloat = 48
+    let topConstraint: CGFloat = 0
     let recordDate: String
     
     var body: some View {
         ZStack(alignment: .center) {
-            HStack(spacing: 8) {
-                Image(systemName: "checkmark.circle")
-                    .resizable()
-                    .font(.system(size: 16, weight: .medium))
+            HStack(spacing: 16) {
+                Circle()
                     .foregroundStyle(Color(uiColor: Colors.Primary.value))
                     .frame(width: 16, height: 16)
                 
-                Text(recordDate)
-                    .font(Fonts.PretendardMedium(size: 16))
-                    .foregroundStyle(Color(uiColor: Colors.Primary.value))
-                
-                Text(Localized.string(.Toast_Text_NewRecord))
-                    .font(Fonts.PretendardMedium(size: 16))
-                    .foregroundStyle(Color(uiColor: Colors.TextPrimary.value))
+                HStack(spacing: 8) {
+                    Text(recordDate)
+                        .font(Fonts.PretendardSemiBold(size: 16))
+                        .foregroundStyle(Color(UIColor.label))
+                    
+                    Text(Localized.string(.Toast_Text_NewRecord))
+                        .font(Fonts.PretendardMedium(size: 16))
+                        .foregroundStyle(Color(uiColor: Colors.TextPrimary.value))
+                }
             }
             .padding(
-                EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 16)
+                EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 18)
             )
         }
         .zIndex(1)

@@ -32,6 +32,7 @@ enum Colors: String {
     case Primary
     case TextPrimary
     case BackgroundPrimary
+    case GreenPrimary
     
-    var value: UIColor { UIColor(named: self.rawValue)! }
+    var value: UIColor { UIColor(named: self.rawValue) ?? .label }
 }

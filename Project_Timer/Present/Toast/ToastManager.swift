@@ -31,18 +31,22 @@ final class ToastManager {
             }
         }()
         
-        let toastPresenter = ToastViewPresenter(content: toastView, toastViewModel: toastViewModel)
-        let toastHosting = UIHostingController(rootView: AnyView(toastPresenter))
-        toastHosting.view.backgroundColor = .clear
-        self.toastHosting = toastHosting
-        keyWindow.addSubview(toastHosting.view)
-        toastHosting.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            toastHosting.view.centerXAnchor.constraint(equalTo: keyWindow.centerXAnchor),
-            toastHosting.view.topAnchor.constraint(equalTo: keyWindow.topAnchor)
-        ])
-        
-        toastViewModel.action(.startAnimation)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            
+            let toastPresenter = ToastViewPresenter(content: toastView, toastViewModel: toastViewModel)
+            let toastHosting = UIHostingController(rootView: AnyView(toastPresenter))
+            toastHosting.view.backgroundColor = .clear
+            self.toastHosting = toastHosting
+            keyWindow.addSubview(toastHosting.view)
+            toastHosting.view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                toastHosting.view.centerXAnchor.constraint(equalTo: keyWindow.centerXAnchor),
+                toastHosting.view.topAnchor.constraint(equalTo: keyWindow.topAnchor)
+            ])
+            
+            toastViewModel.action(.startAnimation)
+        }
     }
     
     private func bind() {
@@ -50,8 +54,10 @@ final class ToastManager {
             .dropFirst()
             .filter { !$0 }
             .sink { [weak self] _ in
-                self?.toastHosting?.view.removeFromSuperview()
-                self?.toastHosting = nil
+                DispatchQueue.main.async { [weak self] in
+                    self?.toastHosting?.view.removeFromSuperview()
+                    self?.toastHosting = nil
+                }
             }
             .store(in: &cancellables)
     }

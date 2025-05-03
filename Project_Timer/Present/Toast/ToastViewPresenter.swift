@@ -28,12 +28,11 @@ struct ToastViewPresenter<Content: ToastView>: View {
     var body: some View {
         ZStack {
             content
+                .frame(height: content.height)
         }
         .background(
-            RoundedRectangle(cornerRadius: 160)
-                .frame(height: content.height)
+            RoundedRectangle(cornerRadius: content.height/2, style: .continuous)
                 .foregroundStyle(Color(uiColor: Colors.BackgroundPrimary.value))
-                .shadow(color: Color(uiColor: Colors.BackgroundPrimary.value).opacity(0.12), radius: 4, x: 0, y: 0)
         )
         .offset(y: yOffset)
         .ignoresSafeArea()
