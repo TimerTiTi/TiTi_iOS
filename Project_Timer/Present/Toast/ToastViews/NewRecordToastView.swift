@@ -12,13 +12,22 @@ struct NewRecordToastView: ToastView {
     let height: CGFloat = 48
     let topConstraint: CGFloat = 0
     let recordDate: String
+    @State var scale: CGFloat = 0
     
     var body: some View {
         ZStack(alignment: .center) {
             HStack(spacing: 16) {
                 Circle()
+                    .scaleEffect(scale)
                     .foregroundStyle(Color(uiColor: Colors.Primary.value))
                     .frame(width: 16, height: 16)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation(.spring(response: 0.4, dampingFraction: 0.5)) {
+                                scale = 1.0
+                            }
+                        }
+                    }
                 
                 HStack(spacing: 8) {
                     Text(recordDate)
