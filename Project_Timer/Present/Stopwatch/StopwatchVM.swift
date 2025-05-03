@@ -140,7 +140,9 @@ final class StopwatchVM {
         RecordsManager.shared.recordTimes.reset()
         self.updateDaily()
         self.updateTimes()
-        ToastMessage.shared.show(type: .newRecord)
+        ToastManager.shared.show(toast: .newRecord(
+            date: RecordsManager.shared.currentDaily.day.YYYYMMDDstyleString)
+        )
     }
     
     private func timerStart() {
