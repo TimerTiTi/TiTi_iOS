@@ -15,7 +15,7 @@ final class RecordsManager {
     var recordTimes = RecordTimes()
     var currentDaily = Daily()
     var currentTask: Task?
-    static let resetHour = 6
+    static var resetHour: Int { UserDefaultsManager.get(forKey: .recordResetHour) as? Int ?? 6 }
     
     var isDateChanged: Bool {
         let today = Date()

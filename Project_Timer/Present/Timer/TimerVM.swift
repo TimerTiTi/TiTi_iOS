@@ -67,7 +67,7 @@ final class TimerVM {
         }
     }
     
-    private func checkRecordDate() {
+    func checkRecordDate() {
         if RecordsManager.shared.isDateChanged {
             self.createNewRecord()
         }

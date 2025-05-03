@@ -349,7 +349,7 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
-		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
+		87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingListCell.swift */; };
 		87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */; };
 		87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */; };
 		87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
@@ -397,6 +397,8 @@
 		AB35A8AA2DC4620700A6E7B4 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */; };
 		AB35A8AD2DC5EE3F00A6E7B4 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */; };
 		AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */; };
+		AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */; };
+		AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -765,7 +767,7 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupRequest.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninRequest.swift; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
-		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
+		87D83E872B296069003C40AE /* TTSettingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingListCell.swift; sourceTree = "<group>"; };
 		87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageListView.swift; sourceTree = "<group>"; };
 		87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVM.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
@@ -814,6 +816,8 @@
 		AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
 		AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
+		AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordListView.swift; sourceTree = "<group>"; };
+		AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordViewModel.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -1804,7 +1808,7 @@
 		87D83E862B29604C003C40AE /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */,
+				87D83E872B296069003C40AE /* TTSettingListCell.swift */,
 				8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */,
 				87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */,
 				87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */,
@@ -2035,6 +2039,8 @@
 			isa = PBXGroup;
 			children = (
 				AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */,
+				AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */,
+				AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -2412,6 +2418,7 @@
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
+				AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */,
 				87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
@@ -2456,6 +2463,7 @@
 				87B90B412BF4BFEE00D6886E /* TTProvider.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
+				AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				871616A22C3A606C00C4EF25 /* GetRecordTimeUseCase.swift in Sources */,
@@ -2463,7 +2471,7 @@
 				87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
-				87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */,
+				87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,

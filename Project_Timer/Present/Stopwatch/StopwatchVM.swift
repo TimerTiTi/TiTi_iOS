@@ -66,7 +66,7 @@ final class StopwatchVM {
         }
     }
     
-    private func checkRecordDate() {
+    func checkRecordDate() {
         if RecordsManager.shared.isDateChanged {
             self.newRecord()
         }
