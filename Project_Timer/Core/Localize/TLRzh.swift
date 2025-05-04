@@ -88,6 +88,10 @@ struct TLRzh {
         case .SyncDaily_Popup_InfoFirstSyncTitle: value = "第一次同步通知"
         case .SyncDaily_Popup_InfoFirstSyncDesc: value = "首次同步可能需要很长时间才能反映所有Daily信息（10s），请不要关闭应用程序，等待。"
             
+        case .SettingRecord_Text_RecordResetTimeTitle: value = "用于新记录日期的重置时间"
+        case .SettingRecord_Text_RecordResetTimeDesc: value = "新的一天的记录将根据重置时间开始。"
+        case .SettingRecord_Popup_InputRecordResetTime: value = "请输入要设定的重置时间，使用24小时制（0～23）。"
+            
         case .SwitchSetting_Button_Update: value = "更新"
         case .SwitchSetting_Button_5minNotiDesc: value = "结束前5分钟提醒"
         case .SwitchSetting_Button_EndNotiDesc: value = "结束"

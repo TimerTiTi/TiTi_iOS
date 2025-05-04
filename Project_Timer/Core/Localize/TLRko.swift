@@ -88,6 +88,10 @@ struct TLRko {
         case .SyncDaily_Popup_InfoFirstSyncTitle: value = "첫 동기화 안내"
         case .SyncDaily_Popup_InfoFirstSyncDesc: value = "첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다."
             
+        case .SettingRecord_Text_RecordResetTimeTitle: value = "기록 날짜의 갱신 시각"
+        case .SettingRecord_Text_RecordResetTimeDesc: value = "갱신 시각을 기준으로 새로운 날짜의 기록이 시작됩니다."
+        case .SettingRecord_Popup_InputRecordResetTime: value = "갱신 시각을 24시간 형태로 입력해주세요. (0 ~ 23)"
+            
         case .SwitchSetting_Button_Update: value = "업데이트"
         case .SwitchSetting_Button_5minNotiDesc: value = "종료 5분전 알림"
         case .SwitchSetting_Button_EndNotiDesc: value = "종료 알림"

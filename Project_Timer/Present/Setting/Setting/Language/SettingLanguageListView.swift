@@ -25,19 +25,19 @@ struct SettingLanguageListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 1) {
-                TTSettingListCell(title: Localized.string(.Language_Button_SystemLanguage), subTitle: currentLanguage, isSelected: isSelected(.system)) {
+                TTSettingListCell(title: Localized.string(.Language_Button_SystemLanguage), subTitle: currentLanguage, isSelectable: true, isSelected: isSelected(.system)) {
                     viewModel.selected = .system
                 }
                 
-                TTSettingListCell(title: "한국어", subTitle: Localized.string(.Language_Button_Korean), isSelected: isSelected(.ko)) {
+                TTSettingListCell(title: "한국어", subTitle: Localized.string(.Language_Button_Korean), isSelectable: true, isSelected: isSelected(.ko)) {
                     viewModel.selected = .ko
                 }
                 
-                TTSettingListCell(title: "English", subTitle: Localized.string(.Language_Button_English), isSelected: isSelected(.en)) {
+                TTSettingListCell(title: "English", subTitle: Localized.string(.Language_Button_English), isSelectable: true, isSelected: isSelected(.en)) {
                     viewModel.selected = .en
                 }
                 
-                TTSettingListCell(title: "简体中文", subTitle: Localized.string(.Language_Button_Chinese), isSelected: isSelected(.zh)) {
+                TTSettingListCell(title: "简体中文", subTitle: Localized.string(.Language_Button_Chinese), isSelectable: true, isSelected: isSelected(.zh)) {
                     viewModel.selected = .zh
                 }
             }

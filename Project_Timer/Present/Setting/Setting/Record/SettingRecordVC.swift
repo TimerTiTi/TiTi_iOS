@@ -60,7 +60,8 @@ extension SettingRecordVC {
             .filter { $0 }
             .sink { [weak self] _ in
                 guard let self else { return }
-                showAlertWithNumInput(title: "기록 날짜 갱신시간", text: "변경하고자 하는 갱신시간을 24시간 형태로 입력해주세요", placeHolder: "\(viewModel.resetHour)") { [weak self] hour in
+                showAlertWithNumInput(title: Localized.string(.SettingRecord_Text_RecordResetTimeTitle), text: Localized.string(.SettingRecord_Popup_InputRecordResetTime), placeHolder: "\(viewModel.resetHour)") { [weak self] hour in
+                    guard (0...23).contains(hour) else { return }
                     self?.viewModel.action(.changeResetHour(to: hour))
                 }
             }
