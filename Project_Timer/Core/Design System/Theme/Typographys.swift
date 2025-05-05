@@ -111,7 +111,7 @@ extension Typographys {
         case .semibold_4:
             return Fonts.MiSansRegular(size: size)
         case .bold_5:
-            return Fonts.MiSansDemibold(size: size)
+            return Fonts.MiSansSemibold(size: size)
         case .heavy_6:
             return Fonts.MiSansBold(size: size)
         }
