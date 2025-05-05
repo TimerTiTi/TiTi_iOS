@@ -10,14 +10,14 @@ import Foundation
 
 final class TaskManager {
     static let fileName = "tasks.json"
-    var tasks: [Task] = [] {
+    var tasks: [RecordTask] = [] {
         didSet {
             self.saveTasks()
         }
     }
     
     func loadTasks() {
-        self.tasks = Storage.retrive(Self.fileName, from: .documents, as: [Task].self) ?? []
+        self.tasks = Storage.retrive(Self.fileName, from: .documents, as: [RecordTask].self) ?? []
         if self.tasks.isEmpty {
             self.loadFromUserDefaults()
         }
@@ -26,7 +26,7 @@ final class TaskManager {
     private func loadFromUserDefaults() {
         let taskNames = UserDefaults.standard.value(forKey: "tasks") as? [String] ?? []
         guard taskNames.isEmpty == false else { return }
-        self.tasks = taskNames.map { Task($0) }
+        self.tasks = taskNames.map { RecordTask($0) }
     }
     
     private func saveTasks() {
@@ -34,7 +34,7 @@ final class TaskManager {
     }
     
     func addNewTask(taskName: String) {
-        let newTask = Task(taskName)
+        let newTask = RecordTask(taskName)
         self.tasks.append(newTask)
     }
     

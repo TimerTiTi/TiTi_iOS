@@ -179,7 +179,7 @@ extension AppDelegate {
     
     private func configureGoogleAdmob() {
         /// 애드몹 이니셜라이즈
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        MobileAds.shared.start(completionHandler: nil)
         // MARK: 릴리즈할 때 해당 부분 제거!!!!!!
 //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4d05e46e5ab0994dee203a9e0477ddaf" ]
         

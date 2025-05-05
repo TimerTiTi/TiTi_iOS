@@ -11,7 +11,7 @@ import Combine
 
 final class TaskSelectVM {
     let manager: TaskManager
-    @Published private(set) var tasks: [Task] = []
+    @Published private(set) var tasks: [RecordTask] = []
     @Published private(set) var selectedTask: String?
     init() {
         self.manager = RecordsManager.shared.taskManager

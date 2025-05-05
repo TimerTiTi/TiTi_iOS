@@ -47,7 +47,7 @@ final class TaskCell: UITableViewCell {
         self.editTargetTime?()
     }
     
-    func configure(task: Task, color: UIColor?) {
+    func configure(task: RecordTask, color: UIColor?) {
         self.configureColor(color: color)
         self.taskNameLabel.text = task.taskName
         self.taskTargetTimeSwitch.isOn = task.isTaskTargetTimeOn

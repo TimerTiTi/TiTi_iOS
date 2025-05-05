@@ -13,7 +13,7 @@ final class RecordsManager {
     var dailyManager = DailyManager()
     var taskManager = TaskManager()
     var recordTimes = RecordTimes()
-    var currentTask: Task?
+    var currentTask: RecordTask?
     static var resetHour: Int { UserDefaultsManager.get(forKey: .recordResetHour) as? Int ?? 6 }
     
     var isDateChanged: Bool {

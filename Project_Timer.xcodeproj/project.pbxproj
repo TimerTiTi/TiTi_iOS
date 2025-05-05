@@ -154,7 +154,7 @@
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */; };
 		8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* TaskSelectVM.swift */; };
-		8757AA3D290511FF00D97517 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* Task.swift */; };
+		8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* RecordTask.swift */; };
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
@@ -586,7 +586,7 @@
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		8757AA3A290511AB00D97517 /* TaskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVM.swift; sourceTree = "<group>"; };
-		8757AA3C290511FF00D97517 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		8757AA3C290511FF00D97517 /* RecordTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTask.swift; sourceTree = "<group>"; };
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
@@ -1217,7 +1217,7 @@
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
-				8757AA3C290511FF00D97517 /* Task.swift */,
+				8757AA3C290511FF00D97517 /* RecordTask.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
@@ -2525,7 +2525,7 @@
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */,
-				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
+				8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872210492C2FF6AF003B97AD /* FunctionInfo.swift in Sources */,
@@ -2773,7 +2773,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2863,7 +2863,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget;
@@ -3020,7 +3020,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3041,7 +3041,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -3049,7 +3049,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
