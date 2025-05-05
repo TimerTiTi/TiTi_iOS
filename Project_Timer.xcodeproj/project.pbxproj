@@ -399,6 +399,7 @@
 		AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */; };
 		AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */; };
 		AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */; };
+		AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -850,6 +851,7 @@
 				8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
+				AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */,
 				8761BDC42BCFE64000E9281A /* Moya in Frameworks */,
 				540418171CE07D46B1BD8E3B /* Pods_Project_Timer.framework in Frameworks */,
 				8761BDC62BCFE64000E9281A /* ReactiveMoya in Frameworks */,
@@ -2098,6 +2100,7 @@
 				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 				871DC0F02BC274280024DA3B /* Embed Frameworks */,
 				66A4C9514F6901D7CD53A3B9 /* [CP] Copy Pods Resources */,
+				AB177FA12DC8D341006C1796 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2117,6 +2120,7 @@
 				8761BDC32BCFE64000E9281A /* Moya */,
 				8761BDC52BCFE64000E9281A /* ReactiveMoya */,
 				8761BDC72BCFE64000E9281A /* RxMoya */,
+				AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2230,6 +2234,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AB177FA12DC8D341006C1796 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 		EC16A477924DCEC2DA0A756B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2728,7 +2754,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2920,7 +2946,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3201,6 +3227,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
