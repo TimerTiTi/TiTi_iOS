@@ -19,11 +19,23 @@ final class ToastManager {
     private let toastViewModel = ToastViewModel()
     private var toastHosting: UIHostingController<AnyView>?
     private var cancellables: Set<AnyCancellable> = []
+    private var retryCount: Int = 3
     
     public func show(toast: Toast) {
         guard !toastViewModel.isVisible else { return }
-        guard let keyWindow = UIApplication.shared.keyWindow else { return }
+        guard let keyWindow = UIApplication.shared.keyWindow else {
+            // 아직 window 가 활성화되기 전
+            // retry 만료된 경우 toast 표시 안함
+            guard retryCount > 1 else { return }
+            retryCount -= 1
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                guard let self else { return }
+                show(toast: toast)
+            }
+            return
+        }
         
+        retryCount = 3
         let toastView: some ToastView = {
             switch toast {
             case .newRecord(let date):

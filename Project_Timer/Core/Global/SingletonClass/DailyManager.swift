@@ -42,15 +42,7 @@ final class DailyManager {
             currentDaily = savedDaily
         } else {
             // 앱 최초 설치 시점, 저장된 Daily 값이 없는 경우
-            currentDaily = Daily()
-            currentDaily.save()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                guard let self else { return }
-                ToastManager.shared.show(toast: .newRecord(
-                    date: currentDaily.day.YYYYMMDDstyleString)
-                )
-            }
+            resetDaily()
         }
     }
     
