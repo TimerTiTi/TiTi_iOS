@@ -43,7 +43,7 @@ final class LogWeekVC: UIViewController {
         self.configureBiggerUI()
         #endif
         
-        self.viewModel?.selectDate(to: RecordsManager.shared.currentDaily.day.zeroDate.localDate)
+        self.viewModel?.selectDate(to: RecordsManager.shared.dailyManager.currentDaily.day.zeroDate.localDate)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -27,26 +27,25 @@ struct Daily: Codable {
     private(set) var id: Int? // server pk
     private(set) var status: String? // server 반영여부
     
+    /// Create
     init() {
-        var now = Date()
-        if now.hour < RecordsManager.resetHour {
-            /// 전 날 기록이 없고, resetHour 이전에 들어오는 경우
-            /// 전 날의 기록으로 생성
-            now = now.nextDay(offset: -1)
+        let now = Date()
+        let dayHour = RecordsManager.resetHour
+        
+        if now.hour < dayHour {
+            self.day = now.nextDay(offset: -1).setTime(hour: dayHour)
+        } else {
+            self.day = now.setTime(hour: dayHour)
         }
-        self.day = now.setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
+        
+        print("Daily(\(self.day.YYYYMMDDHMSstyleString)) init")
+    }
+    /// Modify
+    init(newDate: Date) {
+        self.day = newDate.setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
     }
     
-    init(newDate: Date) {
-        self.day = newDate
-    }
-    init(day: Date,taskHistorys: [String: [TaskHistory]]) {
-        self.day = day
-        self.taskHistorys = taskHistorys
-        self.updateTasks()
-        self.updateMaxTime()
-        self.updateTimeline()
-    }
+    /// SyncDaily
     init(id: Int?, status: String?, day: Date, timeline: [Int],
          maxTime: Int, tasks: [String: Int], taskHistorys: [String: [TaskHistory]]?) {
         self.id = id
@@ -124,10 +123,6 @@ struct Daily: Codable {
     
     func save() {
         Storage.store(self, to: .documents, as: Daily.fileName)
-    }
-    
-    mutating func load() {
-        self = Storage.retrive(Daily.fileName, from: .documents, as: Daily.self) ?? Daily()
     }
 }
 
@@ -224,8 +219,18 @@ extension Daily {
     }
 }
 
-// MARK: text용
+// MARK: Preview용
 extension Daily {
+    
+    /// Preview
+    init(day: Date,taskHistorys: [String: [TaskHistory]]) {
+        self.day = day.setTime(hour: RecordsManager.resetHour, minute: 0, second: 0)
+        self.taskHistorys = taskHistorys
+        self.updateTasks()
+        self.updateMaxTime()
+        self.updateTimeline()
+    }
+    
     static var testInfo: Daily {
         let startDate = Date().zeroDate
         let endDate = Calendar.current.date(byAdding: .hour, value: 23, to: startDate)!
