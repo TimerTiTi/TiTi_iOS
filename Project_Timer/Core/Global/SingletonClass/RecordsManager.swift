@@ -55,4 +55,9 @@ final class RecordsManager {
         }
         self.dailyManager.modifyDaily(newDaily)
     }
+    
+    public func resetNewRecord() {
+        self.dailyManager.resetDaily()
+        self.recordTimes.reset()
+    }
 }

@@ -143,13 +143,9 @@ final class TimerVM {
     }
     
     func createNewRecord() {
-        RecordsManager.shared.dailyManager.currentDaily.reset()
-        RecordsManager.shared.recordTimes.reset()
+        RecordsManager.shared.resetNewRecord()
         self.updateDaily()
         self.updateTimes()
-        ToastManager.shared.show(toast: .newRecord(
-            date: RecordsManager.shared.dailyManager.currentDaily.day.YYYYMMDDstyleString)
-        )
     }
     
     private func checkTimerReset() {

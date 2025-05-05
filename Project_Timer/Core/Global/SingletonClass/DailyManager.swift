@@ -41,8 +41,16 @@ final class DailyManager {
         if let savedDaily = Storage.retrive(Daily.fileName, from: .documents, as: Daily.self) {
             currentDaily = savedDaily
         } else {
+            // 앱 최초 설치 시점, 저장된 Daily 값이 없는 경우
             currentDaily = Daily()
             currentDaily.save()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                guard let self else { return }
+                ToastManager.shared.show(toast: .newRecord(
+                    date: currentDaily.day.YYYYMMDDstyleString)
+                )
+            }
         }
     }
     
@@ -89,6 +97,16 @@ final class DailyManager {
     public func updateDaily(to daily: Daily) {
         currentDaily = daily
         currentDaily.save()
+    }
+    
+    /// 새로운 날짜의 Daily 생성
+    public func resetDaily() {
+        currentDaily = Daily()
+        currentDaily.save()
+        
+        ToastManager.shared.show(toast: .newRecord(
+            date: currentDaily.day.YYYYMMDDstyleString)
+        )
     }
 }
 

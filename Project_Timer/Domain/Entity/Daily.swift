@@ -115,12 +115,6 @@ struct Daily: Codable {
         self.save()
     }
     
-    // 새로운 날짜의 기록 시작시 reset
-    mutating func reset() {
-        self = Daily()
-        self.save()
-    }
-    
     func save() {
         Storage.store(self, to: .documents, as: Daily.fileName)
     }
