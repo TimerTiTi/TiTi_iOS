@@ -10,6 +10,7 @@ import UIKit
 
 enum Icons: String {
     case TickCircle
+    case Close18
     
     var value: UIImage { UIImage(named: self.rawValue)! }
 }
