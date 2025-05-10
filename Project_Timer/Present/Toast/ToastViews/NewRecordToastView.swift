@@ -36,7 +36,7 @@ struct NewRecordToastView: ToastView {
                     
                     Text(Localized.string(.Toast_Text_NewRecord))
                         .font(Fonts.PretendardMedium(size: 16))
-                        .foregroundStyle(Color(uiColor: Colors.TextPrimary.value))
+                        .foregroundStyle(Color(uiColor: Colors.TextSecondary.value))
                 }
             }
             .padding(

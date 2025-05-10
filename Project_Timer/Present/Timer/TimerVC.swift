@@ -108,6 +108,10 @@ final class TimerVC: UIViewController {
         self.viewModel?.updateDaily()
         self.viewModel?.checkRecordDate()
         self.checkBigUI()
+        
+        ToastManager.shared.show(toast: .newRecord(
+            date: RecordsManager.shared.dailyManager.currentDaily.day.YYYYMMDDstyleString)
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {
