@@ -19,4 +19,8 @@ extension UIApplication {
     var safeAreaTopInset: CGFloat {
         return keyWindow?.safeAreaInsets.top ?? 0
     }
+    
+    var safeAreaBottomInset: CGFloat {
+        return keyWindow?.safeAreaInsets.bottom ?? 0
+    }
 }

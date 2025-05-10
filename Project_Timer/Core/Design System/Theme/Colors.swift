@@ -37,6 +37,7 @@ enum Colors: String {
     case BackgroundSecondary
     case BackgroundSub1
     case DividerPrimary
+    case Gray70
     
     var value: UIColor { UIColor(named: self.rawValue) ?? .label }
 }

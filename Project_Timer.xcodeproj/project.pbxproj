@@ -400,6 +400,9 @@
 		AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */; };
 		AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */; };
 		AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */; };
+		AB3AB9812DCF4226001B899A /* NotificationBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */; };
+		AB3AB9832DCF8C0D001B899A /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */; };
+		AB3AB9852DCF9522001B899A /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -819,6 +822,9 @@
 		AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
 		AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordListView.swift; sourceTree = "<group>"; };
 		AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordViewModel.swift; sourceTree = "<group>"; };
+		AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetView.swift; sourceTree = "<group>"; };
+		AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -1141,8 +1147,10 @@
 				87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */,
 				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
+				AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */,
 				D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */,
 				D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */,
+				AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
@@ -1375,6 +1383,7 @@
 			isa = PBXGroup;
 			children = (
 				87862E862B2D9FA1004ED313 /* NotificationVC.swift */,
+				AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -2195,10 +2204,12 @@
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
 				87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */,
+				AB3AB9852DCF9522001B899A /* Pretendard-Bold.otf in Resources */,
 				871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */,
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				87906C7F2B9BF749000EC960 /* MiSans-Normal.ttf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
+				AB3AB9832DCF8C0D001B899A /* Pretendard-Regular.otf in Resources */,
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */,
@@ -2430,6 +2441,7 @@
 				87D4DCD42BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				877911B82A18903000F0A713 /* SettingListCell.swift in Sources */,
+				AB3AB9812DCF4226001B899A /* NotificationBottomSheetView.swift in Sources */,
 				870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionResponse.swift in Sources */,
