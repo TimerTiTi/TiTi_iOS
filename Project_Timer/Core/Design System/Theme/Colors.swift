@@ -30,8 +30,13 @@ enum Colors: String {
     
     /* V2 */
     case Primary
+    case TextPrimary
     case TextSecondary
+    case TextSub1
     case BackgroundPrimary
+    case BackgroundSecondary
+    case BackgroundSub1
+    case DividerPrimary
     
     var value: UIColor { UIColor(named: self.rawValue) ?? .label }
 }
