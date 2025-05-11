@@ -253,6 +253,7 @@ struct TLRko {
         case .Server_Error_DownloadError: value = "다운로드 오류"
             
         case .Notification_Button_PassToday: value = "오늘 그만보기"
+        case .Notification_Button_PassWeek: value = "1주일간 다시 보지 않기"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다"
         case .WidgetSetting_Text_Description: value = "위젯 설명"

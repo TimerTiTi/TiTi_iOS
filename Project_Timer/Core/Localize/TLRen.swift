@@ -253,6 +253,7 @@ struct TLRen {
         case .Server_Error_DownloadError: value = "Download Error"
             
         case .Notification_Button_PassToday: value = "Dismiss for Today"
+        case .Notification_Button_PassWeek: value = "Dismiss for a week"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "Setting the target time for color density display based on total time by date"
         case .WidgetSetting_Text_Description: value = "About Widget"

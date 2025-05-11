@@ -253,6 +253,7 @@ struct TLRzh {
         case .Server_Error_DownloadError: value = "下载错误"
             
         case .Notification_Button_PassToday: value = "今日不再显示"
+        case .Notification_Button_PassWeek: value = "一周内不再显示"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "根据日期的总时间设置颜色密度显示的目标时间"
         case .WidgetSetting_Text_Description: value = "关于小部件"

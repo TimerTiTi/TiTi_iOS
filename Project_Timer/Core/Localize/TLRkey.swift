@@ -464,6 +464,8 @@ enum TLRkey: String {
     
     /// 오늘 그만보기
     case Notification_Button_PassToday
+    /// 1주일간 다시 보지 않기
+    case Notification_Button_PassWeek
     
     /// 날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다
     case WidgetSetting_Text_DailyTargetTimeDesc

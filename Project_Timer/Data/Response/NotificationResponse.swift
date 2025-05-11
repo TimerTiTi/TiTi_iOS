@@ -46,6 +46,7 @@ extension NotificationResponse {
     func toDomain() -> NotificationInfo {
         return .init(
             title: self.title.value,
+            subTitle: self.title.value,
             text: self.text.value,
             notis: self.transToDetailInfos()
         )

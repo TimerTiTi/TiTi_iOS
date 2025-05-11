@@ -10,8 +10,12 @@ import SwiftUI
 
 struct NotificationBottomSheetView: View {
     
-    @State var isSelectHideWeek: Bool = false
-    @State var close: Bool = false
+    @State private var isSelectHideWeek: Bool = false
+    @State private var textHeight: CGFloat = 0
+    
+    let info: NotificationInfo
+    let closeAction: () -> Void
+    let passWeekAction: ((Bool) -> Void)
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -20,66 +24,44 @@ struct NotificationBottomSheetView: View {
                 .padding(.horizontal, 22)
             
             ZStack(alignment: .leading) {
-                
                 VStack(alignment: .leading, spacing: 0) {
                     
-                    Title("공지사항")
-                    SubTitle("기록동기화 (Sync Dailys) 기능 중단 안내")
+                    Title(info.title)
+                    SubTitle(info.subTitle)
                     
                     Spacer().frame(height: 14)
-                    
                     Divider()
                         .frame(height: 1)
                         .background(Color(uiColor: Colors.DividerPrimary.value))
-                    
                     Spacer().frame(height: 20)
                     
-                    ZStack(alignment: .leading) {
-                        
-                        VStack(alignment: .leading, spacing: 0) {
-                            
-                            InfoTitle("중단일시")
-                            InfoSubTitle("2023.03.01 10:00:00Z (UTC 기준)")
-                            
-                        }
-                        .padding(.init(top: 14, leading: 18, bottom: 14, trailing: 18))
-                        
+                    ForEach(info.notis, id: \.self) { detailInfo in
+                        DetailInfo(detailInfo)
+                        Spacer().frame(height: 20)
                     }
-                    .background(Color(uiColor: Colors.BackgroundSecondary.value))
-                    .cornerRadius(8)
-                    
-                    Spacer().frame(height: 20)
                     
                     ScrollView(.vertical) {
-                        Text("""
-                        안녕하세요. TimerTiTi 개발팀입니다.
-                        
-                        현재 운영 중인 서버 이전 작업으로 기록 동기화
-                        (Sync Dailys) 기능이 잠시 데한될 예정입니다.
-                        작업 시간 동안에는 동기화 기능이 제한되므로
-                        미리 기록 동기화를 진행해 주시길 바랍니다.
-                        사용자분들은 이용에 참고 부탁드립니다.
-                        
-                        안녕하세요. TimerTiTi 개발팀입니다.
-                        
-                        현재 운영 중인 서버 이전 작업으로 기록 동기화
-                        (Sync Dailys) 기능이 잠시 데한될 예정입니다.
-                        작업 시간 동안에는 동기화 기능이 제한되므로
-                        미리 기록 동기화를 진행해 주시길 바랍니다.
-                        사용자분들은 이용에 참고 부탁드립니다.
-                        """)
-                        .font(Fonts.PretendardReqular(size: 14))
-                        .foregroundStyle(Color(uiColor: Colors.TextSecondary.value))
-                        .padding(.horizontal, 12)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(info.text)
+                            .font(Fonts.PretendardReqular(size: 14))
+                            .foregroundStyle(Color(uiColor: Colors.TextSecondary.value))
+                            .padding(.horizontal, info.notis.isEmpty ? 0 : 12)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .lineSpacing(6)
+                            .background(GeometryReader { proxy in
+                                Color.clear
+                                    .preference(key: TextHeightPreferenceKey.self, value: proxy.size.height)
+                            })
                         
                     }
-                    .frame(maxHeight: 150)
+                    .frame(height: min(max(textHeight, 50), 150))
+                    .onPreferenceChange(TextHeightPreferenceKey.self) { value in
+                        textHeight = value
+                    }
                     
-                    Spacer().frame(height: 30)
+                    Spacer().frame(height: 28)
                     
-                    TTBottomRoundButtonView(title: "확인", height: 46) {
-                        print("tap")
+                    TTBottomRoundButtonView(title: Localized.string(.Common_Text_OK), height: 49) {
+                        closeAction()
                     }
                     
                 }
@@ -87,8 +69,8 @@ struct NotificationBottomSheetView: View {
                 .background(
                     Color(uiColor: Colors.BackgroundPrimary.value)
                         .cornerRadius(16, corners: [.topLeft, .topRight])
+                        .ignoresSafeArea()
                 )
-                
             }
             
         }
@@ -107,7 +89,7 @@ struct NotificationBottomSheetView: View {
                         .padding(isSelectHideWeek ? 2 : 0.5)
                         .frame(width: 18, height: 18)
                     
-                    Text("1주일간 다시 보지 않기")
+                    Text(Localized.string(.Notification_Button_PassWeek))
                         .font(Fonts.PretendardReqular(size: 15))
                         .foregroundStyle(Color.white)
                 }
@@ -116,7 +98,7 @@ struct NotificationBottomSheetView: View {
             Spacer()
             
             Button {
-                close = true
+                closeAction()
             } label: {
                 Image(uiImage: Icons.Close18.value)
                     .resizable()
@@ -140,21 +122,41 @@ struct NotificationBottomSheetView: View {
             .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
     }
     
-    func InfoTitle(_ title: String) -> some View {
-        Text(title)
-            .font(Fonts.PretendardSemiBold(size: 15))
-            .foregroundStyle(Color(uiColor: Colors.Primary.value))
-            .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
-    }
-    
-    func InfoSubTitle(_ title: String) -> some View {
-        Text(title)
-            .font(Fonts.PretendardMedium(size: 15))
-            .foregroundStyle(Color(uiColor: Colors.TextSub1.value))
-            .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
+    func DetailInfo(_ info: NotificationDetailInfo) -> some View {
+        ZStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
+                
+                Text(info.title)
+                    .font(Fonts.PretendardSemiBold(size: 15))
+                    .foregroundStyle(Color(uiColor: Colors.Primary.value))
+                    .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
+                Text(info.text)
+                    .font(Fonts.PretendardMedium(size: 15))
+                    .foregroundStyle(Color(uiColor: Colors.TextSub1.value))
+                    .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
+                
+            }
+            .padding(.init(top: 14, leading: 18, bottom: 14, trailing: 18))
+        }
+        .background(Color(uiColor: Colors.BackgroundSecondary.value))
+        .cornerRadius(8)
     }
 }
 
+// PreferenceKey 선언 (하위 뷰가 측정한 값을 상위 뷰로 전달하는 방법)
+struct TextHeightPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        // 가장 최신값을 저장
+        value = nextValue()
+    }
+}
+
+
 #Preview {
-    NotificationBottomSheetView()
+    NotificationBottomSheetView(info: .testInfo, closeAction: {
+        print("close")
+    }, passWeekAction: { isPass in
+        print("isPass: \(isPass)")
+    })
 }

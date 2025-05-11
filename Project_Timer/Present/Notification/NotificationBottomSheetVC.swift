@@ -32,7 +32,12 @@ final class NotificationBottomSheetVC: BaseBottomSheetVC {
 
 extension NotificationBottomSheetVC {
     private func configureHostingVC() {
-        let notificationView = NotificationBottomSheetView()
+        let notificationView = NotificationBottomSheetView(info: noti) { [weak self] in
+            self?.dismissBottomSheet()
+        } passWeekAction: { isPass in
+            print("isPass: \(isPass)")
+        }
+
         let hostingController = UIHostingController(rootView: notificationView)
         hostingController.view.backgroundColor = .clear
         
