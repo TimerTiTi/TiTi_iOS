@@ -78,7 +78,7 @@ class BaseBottomSheetVC: UIViewController {
     private func presentBottomSheet() {
         self.view.layoutIfNeeded()
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.dimmedBackgroundView.alpha = 1
             self.container.snp.updateConstraints { make in
                 make.bottom.equalToSuperview()
