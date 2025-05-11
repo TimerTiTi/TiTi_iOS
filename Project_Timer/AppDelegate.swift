@@ -243,8 +243,8 @@ extension AppDelegate {
                 guard let notificationInfo = notificationInfo else { return }
                 guard notificationUseCase.isShowNotification() else { return }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let notificationVC = NotificationVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
+                DispatchQueue.main.async {
+                    let notificationVC = NotificationBottomSheetVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
                     SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
                 }
             }

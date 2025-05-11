@@ -403,6 +403,13 @@
 		AB3AB9812DCF4226001B899A /* NotificationBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */; };
 		AB3AB9832DCF8C0D001B899A /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */; };
 		AB3AB9852DCF9522001B899A /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */; };
+		AB3AB9872DD05F59001B899A /* NotificationBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */; };
+		AB3AB9892DD06882001B899A /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */; };
+		AB3AB98C2DD06A77001B899A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB98B2DD06A77001B899A /* SnapKit */; };
+		AB3AB98F2DD06AD5001B899A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB98E2DD06AD5001B899A /* Then */; };
+		AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9912DD07372001B899A /* RxCocoa */; };
+		AB3AB9942DD07372001B899A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9932DD07372001B899A /* RxRelay */; };
+		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -825,6 +832,8 @@
 		AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetView.swift; sourceTree = "<group>"; };
 		AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetVC.swift; sourceTree = "<group>"; };
+		AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -848,15 +857,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3AB9962DD07372001B899A /* RxSwift in Frameworks */,
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
 				8761BDC22BCFE64000E9281A /* CombineMoya in Frameworks */,
+				AB3AB98C2DD06A77001B899A /* SnapKit in Frameworks */,
 				876C3B0D2B1045C5002A5132 /* GoogleSignInSwift in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
+				AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
+				AB3AB9942DD07372001B899A /* RxRelay in Frameworks */,
 				8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
+				AB3AB98F2DD06AD5001B899A /* Then in Frameworks */,
 				AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */,
 				8761BDC42BCFE64000E9281A /* Moya in Frameworks */,
 				540418171CE07D46B1BD8E3B /* Pods_Project_Timer.framework in Frameworks */,
@@ -1384,6 +1398,7 @@
 			children = (
 				87862E862B2D9FA1004ED313 /* NotificationVC.swift */,
 				AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */,
+				AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1556,6 +1571,7 @@
 				879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */,
 				879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */,
 				87862E882B2DBBDA004ED313 /* PopupVC.swift */,
+				AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2130,6 +2146,11 @@
 				8761BDC52BCFE64000E9281A /* ReactiveMoya */,
 				8761BDC72BCFE64000E9281A /* RxMoya */,
 				AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */,
+				AB3AB98B2DD06A77001B899A /* SnapKit */,
+				AB3AB98E2DD06AD5001B899A /* Then */,
+				AB3AB9912DD07372001B899A /* RxCocoa */,
+				AB3AB9932DD07372001B899A /* RxRelay */,
+				AB3AB9952DD07372001B899A /* RxSwift */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2170,6 +2191,9 @@
 				876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				8761BDBD2BCFE47000E9281A /* XCRemoteSwiftPackageReference "Moya" */,
+				AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */,
+				AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -2530,6 +2554,7 @@
 				870800522B2C3A0800830B39 /* ServerURLResponse.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				87F771BF2984101700BF1907 /* Todolist.swift in Sources */,
+				AB3AB9872DD05F59001B899A /* NotificationBottomSheetVC.swift in Sources */,
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
 				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
@@ -2581,6 +2606,7 @@
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
+				AB3AB9892DD06882001B899A /* BaseBottomSheetVC.swift in Sources */,
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
@@ -3182,6 +3208,30 @@
 				minimumVersion = 4.4.1;
 			};
 		};
+		AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3244,6 +3294,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
+		};
+		AB3AB98B2DD06A77001B899A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AB3AB98E2DD06AD5001B899A /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		AB3AB9912DD07372001B899A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AB3AB9932DD07372001B899A /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AB3AB9952DD07372001B899A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// tapGesture 클로저들을 담은 딕셔너리가 저장되는 고유 식별 키 (Associated Object의 메모리 주소 역할)
+private var TapGestureDictKey: UInt8 = 0
+
 extension UIView {
     @IBInspectable
     public var cornerRadius: CGFloat
@@ -76,6 +79,32 @@ extension UIView {
         self.isHidden = false
         UIView.animate(withDuration: 0.3) {
             self.alpha = 1
+        }
+    }
+    
+    func tapGesture(identifier: String = UUID().uuidString, _ tapAction: @escaping () -> Void) {
+        isUserInteractionEnabled = true
+        
+        // 현재 뷰(self)에 연결된 클로저 딕셔너리를 가져오거나 새로 생성
+        var actions = objc_getAssociatedObject(self, &TapGestureDictKey) as? [String: () -> Void] ?? [:]
+        actions[identifier] = tapAction
+        
+        // TapGestureDictKey의 주소를 포인터 키로 사용해 갱신된 딕셔너리를 Associated Object에 저장
+        objc_setAssociatedObject(self, &TapGestureDictKey, actions, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        // 단일 제스처만 추가 (여러 번 등록되지 않도록)
+        if !(gestureRecognizers?.contains(where: { $0 is UITapGestureRecognizer }) ?? false) {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+            addGestureRecognizer(tap)
+        }
+    }
+    
+    @objc private func handleTapGesture() {
+        // 저장된 모든 클로저를 순차적으로 실행
+        if let actions = objc_getAssociatedObject(self, &TapGestureDictKey) as? [String: () -> Void] {
+            for (_, action) in actions {
+                action()
+            }
         }
     }
 }

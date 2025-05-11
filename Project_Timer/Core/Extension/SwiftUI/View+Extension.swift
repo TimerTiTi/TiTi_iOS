@@ -65,7 +65,8 @@ extension View {
     
     /// 특정 코너 radius 주는 함수
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
+        mask(RoundedCorner(radius: radius, corners: corners))
+            .ignoresSafeArea()
     }
 }
 

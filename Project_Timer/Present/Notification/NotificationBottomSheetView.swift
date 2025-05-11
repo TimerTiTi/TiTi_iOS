@@ -83,15 +83,15 @@ struct NotificationBottomSheetView: View {
                     }
                     
                 }
-                .padding(.init(top: 20, leading: 20, bottom: 20 + UIApplication.shared.safeAreaBottomInset, trailing: 20))
+                .padding(.init(top: 20, leading: 20, bottom: 20, trailing: 20))
+                .background(
+                    Color(uiColor: Colors.BackgroundPrimary.value)
+                        .cornerRadius(16, corners: [.topLeft, .topRight])
+                )
                 
             }
-            .frame(maxWidth: .infinity)
-            .background(Color(uiColor: Colors.BackgroundPrimary.value))
-            .cornerRadius(16, corners: [.topLeft, .topRight])
             
         }
-        .background(Color.black.opacity(0.2))
         
     }
     
