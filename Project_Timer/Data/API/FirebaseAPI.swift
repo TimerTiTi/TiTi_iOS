@@ -36,7 +36,7 @@ extension FirebaseAPI: TargetType {
             return "/server/url"
         case .getNotification:
             switch Language.current {
-            case .ko: return "/notification/ko"
+            case .ko: return "/notification/v2/ko/obj"
             case .en: return "/notification/en"
             case .zh: return "/notification/zh"
             }
