@@ -40,8 +40,10 @@ struct NotificationResponse: Decodable, FirestoreValue {
         infoTexts = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .infoTexts)
         isVisible = try fieldContainer.decode(FirebaseBooleanValue.self, forKey: .isVisible)
         
-        title = transString(title)
-        text = transString(text)
+        title = title.transString
+        text = text.transString
+        infoTitles = infoTitles.transString
+        infoTexts = infoTexts.transString
     }
 }
 

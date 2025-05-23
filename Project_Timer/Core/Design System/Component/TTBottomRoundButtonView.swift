@@ -14,7 +14,7 @@ struct TTBottomRoundButtonView: View {
     let height: CGFloat
     let action: () -> Void
     
-    init(title: String, radius: CGFloat = 8, height: CGFloat = 60, action: @escaping () -> Void) {
+    init(title: String, radius: CGFloat = 12, height: CGFloat = 60, action: @escaping () -> Void) {
         self.title = title
         self.radius = radius
         self.height = height

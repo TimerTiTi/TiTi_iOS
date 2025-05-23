@@ -237,8 +237,6 @@ enum TLRkey: String {
     case Recording_Popup_CheckDailyDateDesc
     /// 목표시간 수정 title
     case Recording_Text_EditTargetTimeTitle
-    /// 목표시간 수정 subtitle
-    case Recording_Text_EditTargetTimeSubtitle
     
     /// 종료
     case Timer_Text_Finish

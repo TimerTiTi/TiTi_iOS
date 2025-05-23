@@ -42,11 +42,11 @@ struct NotificationBottomSheetView: View {
                     
                     ScrollView(.vertical) {
                         Text(info.text)
-                            .font(Fonts.PretendardReqular(size: 14))
-                            .foregroundStyle(Color(uiColor: Colors.TextSecondary.value))
-                            .padding(.horizontal, info.notis.isEmpty ? 0 : 12)
+                            .font(Fonts.PretendardReqular(size: 16))
+                            .foregroundStyle(Color(uiColor: Colors.TextPrimary.value))
+                            .padding(.horizontal, info.notis.isEmpty ? 0 : 18)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .lineSpacing(6)
+                            .lineSpacing(4)
                             .background(GeometryReader { proxy in
                                 Color.clear
                                     .preference(key: TextHeightPreferenceKey.self, value: proxy.size.height)
@@ -117,18 +117,18 @@ struct NotificationBottomSheetView: View {
     
     func SubTitle(_ title: String) -> some View {
         Text(title)
-            .font(Fonts.PretendardMedium(size: 15))
+            .font(Fonts.PretendardMedium(size: 16))
             .foregroundStyle(Color(uiColor: Colors.TextSecondary.value))
             .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
     }
     
     func DetailInfo(_ info: NotificationDetailInfo) -> some View {
         ZStack(alignment: .leading) {
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 2) {
                 
                 Text(info.title)
-                    .font(Fonts.PretendardSemiBold(size: 15))
-                    .foregroundStyle(Color(uiColor: Colors.Primary.value))
+                    .font(Fonts.PretendardBold(size: 18))
+                    .foregroundStyle(Color(uiColor: Colors.PrimarySecondary.value))
                     .frame(maxWidth: .infinity, minHeight: 24, alignment: .leading)
                 Text(info.text)
                     .font(Fonts.PretendardMedium(size: 15))
@@ -139,7 +139,7 @@ struct NotificationBottomSheetView: View {
             .padding(.init(top: 14, leading: 18, bottom: 14, trailing: 18))
         }
         .background(Color(uiColor: Colors.BackgroundSecondary.value))
-        .cornerRadius(8)
+        .cornerRadius(12)
     }
 }
 

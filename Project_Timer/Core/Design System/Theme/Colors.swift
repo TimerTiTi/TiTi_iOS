@@ -30,6 +30,7 @@ enum Colors: String {
     
     /* V2 */
     case Primary
+    case PrimarySecondary
     case TextPrimary
     case TextSecondary
     case TextSub1

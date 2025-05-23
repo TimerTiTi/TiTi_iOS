@@ -132,7 +132,6 @@ struct TLRzh {
         case .Recording_Popup_CheckDailyDateTitle: value = "请确认记录中的日期。"
         case .Recording_Popup_CheckDailyDateDesc: value = "开始记录新日期吗 ？"
         case .Recording_Text_EditTargetTimeTitle: value = "修改目标时间"
-        case .Recording_Text_EditTargetTimeSubtitle: value = " 修改目标时间"
             
         case .Timer_Text_Finish: value = "结束"
         case .Timer_Text_TimerEndTime: value = "结束时间"
