@@ -14,10 +14,12 @@ import RxCocoa
 
 class BaseBottomSheetVC: UIViewController {
     
-    public var dimmedBackgroundView: UIView!
-    public var container: UIView!
+    private let isDismissEnable: Bool
+    private var dimmedBackgroundView: UIView!
+    private var container: UIView!
     
-    init() {
+    init(isDismissEnable: Bool = true) {
+        self.isDismissEnable = isDismissEnable
         super.init(nibName: nil, bundle: nil)
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
@@ -62,6 +64,7 @@ class BaseBottomSheetVC: UIViewController {
     }
     
     private func configureActions() {
+        guard isDismissEnable else { return }
         dimmedBackgroundView.tapGesture { [weak self] in
             self?.dismissBottomSheet()
         }

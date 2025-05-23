@@ -17,7 +17,7 @@ final class NotificationBottomSheetVC: BaseBottomSheetVC {
     init(noti: NotificationInfo, notificationUseCase: NotificationUseCaseInterface) {
         self.noti = noti
         self.notificationUseCase = notificationUseCase
-        super.init()
+        super.init(isDismissEnable: false)
     }
     
     required init?(coder: NSCoder) {

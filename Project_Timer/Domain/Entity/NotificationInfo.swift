@@ -9,6 +9,7 @@
 import Foundation
 
 struct NotificationInfo {
+    var id: String
     var title: String
     var subTitle: String
     var text: String
@@ -23,6 +24,7 @@ struct NotificationDetailInfo: Hashable {
 extension NotificationInfo {
     static var testInfo: NotificationInfo {
         return .init(
+            id: "2501",
             title: "공지사항",
             subTitle: "서버 이전작업에 따른 서비스 이용 일시 중단안내",
             text: """

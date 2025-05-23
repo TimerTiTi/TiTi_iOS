@@ -85,8 +85,8 @@ struct NotificationBottomSheetView: View {
                 HStack(spacing: 8) {
                     Circle()
                         .fill(Color.white)
-                        .stroke(Color(uiColor: isSelectHideWeek ? Colors.Primary.value : Colors.Gray70.value), lineWidth: isSelectHideWeek ? 4 : 1)
-                        .padding(isSelectHideWeek ? 2 : 0.5)
+                        .stroke(Color(uiColor: isSelectHideWeek ? Colors.Primary.value : Colors.Gray70.value), lineWidth: isSelectHideWeek ? 5 : 1)
+                        .padding(isSelectHideWeek ? 2.5 : 0.5)
                         .frame(width: 18, height: 18)
                     
                     Text(Localized.string(.Notification_Button_PassWeek))

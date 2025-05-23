@@ -9,6 +9,7 @@
 import Foundation
 
 struct NotificationResponse: Decodable, FirestoreValue {
+    var id: FirebaseStringValue
     var title: FirebaseStringValue
     var subTitle: FirebaseStringValue
     var text: FirebaseStringValue
@@ -21,6 +22,7 @@ struct NotificationResponse: Decodable, FirestoreValue {
     }
     
     private enum FieldKeys: String, CodingKey {
+        case id
         case title
         case subTitle
         case text
@@ -33,6 +35,7 @@ struct NotificationResponse: Decodable, FirestoreValue {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
+        id = try fieldContainer.decode(FirebaseStringValue.self, forKey: .id)
         title = try fieldContainer.decode(FirebaseStringValue.self, forKey: .title)
         subTitle = try fieldContainer.decode(FirebaseStringValue.self, forKey: .subTitle)
         text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
@@ -50,6 +53,7 @@ struct NotificationResponse: Decodable, FirestoreValue {
 extension NotificationResponse {
     func toDomain() -> NotificationInfo {
         return .init(
+            id: id.value,
             title: title.value,
             subTitle: subTitle.value,
             text: text.value,
