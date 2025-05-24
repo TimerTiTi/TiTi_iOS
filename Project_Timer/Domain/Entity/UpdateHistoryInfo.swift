@@ -28,6 +28,6 @@ struct UpdateHistoryInfo: Decodable, FirestoreValue {
         self.date = try fieldContainer.decode(FirebaseStringValue.self, forKey: .date)
         self.text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
         
-        self.text = transString(self.text)
+        self.text = self.text.transString
     }
 }

@@ -9,51 +9,61 @@
 import Foundation
 
 struct NotificationResponse: Decodable, FirestoreValue {
+    var id: FirebaseStringValue
     var title: FirebaseStringValue
+    var subTitle: FirebaseStringValue
     var text: FirebaseStringValue
-    var notiTitles: FirebaseStringArrayValue
-    var notiTexts: FirebaseStringArrayValue
-    var visible: FirebaseBooleanValue
+    var infoTitles: FirebaseStringArrayValue
+    var infoTexts: FirebaseStringArrayValue
+    var isVisible: FirebaseBooleanValue
     
     private enum RootKey: String, CodingKey {
         case fields
     }
     
     private enum FieldKeys: String, CodingKey {
+        case id
         case title
+        case subTitle
         case text
-        case notiTitles
-        case notiTexts
-        case visible
+        case infoTitles
+        case infoTexts
+        case isVisible
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: RootKey.self)
         let fieldContainer = try container.nestedContainer(keyedBy: FieldKeys.self, forKey: .fields)
         
-        self.title = try fieldContainer.decode(FirebaseStringValue.self, forKey: .title)
-        self.text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
-        self.notiTitles = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .notiTitles)
-        self.notiTexts = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .notiTexts)
-        self.visible = try fieldContainer.decode(FirebaseBooleanValue.self, forKey: .visible)
+        id = try fieldContainer.decode(FirebaseStringValue.self, forKey: .id)
+        title = try fieldContainer.decode(FirebaseStringValue.self, forKey: .title)
+        subTitle = try fieldContainer.decode(FirebaseStringValue.self, forKey: .subTitle)
+        text = try fieldContainer.decode(FirebaseStringValue.self, forKey: .text)
+        infoTitles = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .infoTitles)
+        infoTexts = try fieldContainer.decode(FirebaseStringArrayValue.self, forKey: .infoTexts)
+        isVisible = try fieldContainer.decode(FirebaseBooleanValue.self, forKey: .isVisible)
         
-        self.title = transString(self.title)
-        self.text = transString(self.text)
+        title = title.transString
+        text = text.transString
+        infoTitles = infoTitles.transString
+        infoTexts = infoTexts.transString
     }
 }
 
 extension NotificationResponse {
     func toDomain() -> NotificationInfo {
         return .init(
-            title: self.title.value,
-            text: self.text.value,
-            notis: self.transToDetailInfos()
+            id: id.value,
+            title: title.value,
+            subTitle: subTitle.value,
+            text: text.value,
+            notis: transToDetailInfos()
         )
     }
     
     func transToDetailInfos() -> [NotificationDetailInfo] {
-        let titles = self.notiTitles.arrayValue.values.map { $0.value }
-        let texts = self.notiTexts.arrayValue.values.map { $0.value }
+        let titles = infoTitles.arrayValue.values.map { $0.value }
+        let texts = infoTexts.arrayValue.values.map { $0.value }
         
         return zip(titles, texts).map {
             NotificationDetailInfo(title: $0.0, text: $0.1)

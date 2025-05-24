@@ -132,7 +132,6 @@ struct TLRzh {
         case .Recording_Popup_CheckDailyDateTitle: value = "请确认记录中的日期。"
         case .Recording_Popup_CheckDailyDateDesc: value = "开始记录新日期吗 ？"
         case .Recording_Text_EditTargetTimeTitle: value = "修改目标时间"
-        case .Recording_Text_EditTargetTimeSubtitle: value = " 修改目标时间"
             
         case .Timer_Text_Finish: value = "结束"
         case .Timer_Text_TimerEndTime: value = "结束时间"
@@ -253,6 +252,7 @@ struct TLRzh {
         case .Server_Error_DownloadError: value = "下载错误"
             
         case .Notification_Button_PassToday: value = "今日不再显示"
+        case .Notification_Button_PassWeek: value = "一周内不再显示"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "根据日期的总时间设置颜色密度显示的目标时间"
         case .WidgetSetting_Text_Description: value = "关于小部件"

@@ -132,7 +132,6 @@ struct TLRen {
         case .Recording_Popup_CheckDailyDateTitle: value = "Check the date of recording"
         case .Recording_Popup_CheckDailyDateDesc: value = "Do you want to start the New record?"
         case .Recording_Text_EditTargetTimeTitle: value = "Edit Target Time"
-        case .Recording_Text_EditTargetTimeSubtitle: value = "{} Edit the target time."
             
         case .Timer_Text_Finish: value = "FINISH"
         case .Timer_Text_TimerEndTime: value = "End Time"
@@ -253,6 +252,7 @@ struct TLRen {
         case .Server_Error_DownloadError: value = "Download Error"
             
         case .Notification_Button_PassToday: value = "Dismiss for Today"
+        case .Notification_Button_PassWeek: value = "Dismiss for a week"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "Setting the target time for color density display based on total time by date"
         case .WidgetSetting_Text_Description: value = "About Widget"

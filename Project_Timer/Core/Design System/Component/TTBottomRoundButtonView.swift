@@ -10,10 +10,14 @@ import SwiftUI
 
 struct TTBottomRoundButtonView: View {
     let title: String
+    let radius: CGFloat
+    let height: CGFloat
     let action: () -> Void
     
-    init(title: String, action: @escaping () -> Void) {
+    init(title: String, radius: CGFloat = 12, height: CGFloat = 60, action: @escaping () -> Void) {
         self.title = title
+        self.radius = radius
+        self.height = height
         self.action = action
     }
     
@@ -23,16 +27,13 @@ struct TTBottomRoundButtonView: View {
                 self.action()
             } label: {
                 Text(self.title)
-                    .foregroundStyle(UIColor.label.toColor)
-                    .font(Typographys.font(.bold_5, size: 20))
-                    .frame(height: 60)
+                    .foregroundStyle(.white)
+                    .font(Fonts.PretendardSemiBold(size: 18))
+                    .frame(height: height)
                     .frame(maxWidth: .infinity)
             }
-            .background(Color.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            
-            Spacer()
-                .frame(height: 45)
+            .background(Color(uiColor: Colors.Primary.value))
+            .clipShape(RoundedRectangle(cornerRadius: radius))
         }
     }
 }
