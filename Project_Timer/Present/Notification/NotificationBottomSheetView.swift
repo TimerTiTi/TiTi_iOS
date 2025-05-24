@@ -10,7 +10,7 @@ import SwiftUI
 
 struct NotificationBottomSheetView: View {
     
-    @State private var isSelectHideWeek: Bool = false
+    @State private var isSelectPassWeek: Bool = false
     @State private var textHeight: CGFloat = 0
     
     let info: NotificationInfo
@@ -80,13 +80,14 @@ struct NotificationBottomSheetView: View {
     var TopButtons: some View {
         HStack {
             Button {
-                isSelectHideWeek.toggle()
+                isSelectPassWeek.toggle()
+                passWeekAction(isSelectPassWeek)
             } label: {
                 HStack(spacing: 8) {
                     Circle()
                         .fill(Color.white)
-                        .stroke(Color(uiColor: isSelectHideWeek ? Colors.Primary.value : Colors.Gray70.value), lineWidth: isSelectHideWeek ? 5 : 1)
-                        .padding(isSelectHideWeek ? 2.5 : 0.5)
+                        .stroke(Color(uiColor: isSelectPassWeek ? Colors.Primary.value : Colors.Gray70.value), lineWidth: isSelectPassWeek ? 5 : 1)
+                        .padding(isSelectPassWeek ? 2.5 : 0.5)
                         .frame(width: 18, height: 18)
                     
                     Text(Localized.string(.Notification_Button_PassWeek))

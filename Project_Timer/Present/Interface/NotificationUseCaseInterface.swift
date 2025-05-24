@@ -9,6 +9,8 @@
 import Foundation
 
 protocol NotificationUseCaseInterface {
-    func isShowNotification() -> Bool
-    func setPassDay()
+    func isVisible(info: NotificationInfo) -> Bool
+    func updateDisplayCount(info: NotificationInfo)
+    func savePassDay(info: NotificationInfo, isPass: Bool)
+    func reset(info: NotificationInfo)
 }

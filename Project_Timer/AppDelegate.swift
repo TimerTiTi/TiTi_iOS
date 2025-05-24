@@ -241,7 +241,7 @@ extension AppDelegate {
                     }
             } receiveValue: { notificationInfo in
                 guard let notificationInfo = notificationInfo else { return }
-                guard notificationUseCase.isShowNotification() else { return }
+                guard notificationUseCase.isVisible(info: notificationInfo) else { return }
                 
                 DispatchQueue.main.async {
                     let notificationVC = NotificationBottomSheetVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
