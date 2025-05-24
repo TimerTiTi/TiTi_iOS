@@ -154,7 +154,7 @@
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */; };
 		8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* TaskSelectVM.swift */; };
-		8757AA3D290511FF00D97517 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* Task.swift */; };
+		8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* RecordTask.swift */; };
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
@@ -349,7 +349,7 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
-		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
+		87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingListCell.swift */; };
 		87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */; };
 		87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */; };
 		87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
@@ -396,6 +396,10 @@
 		AB35A8A82DC3CC4300A6E7B4 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8A72DC3CC4300A6E7B4 /* ToastManager.swift */; };
 		AB35A8AA2DC4620700A6E7B4 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */; };
 		AB35A8AD2DC5EE3F00A6E7B4 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */; };
+		AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */; };
+		AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */; };
+		AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */; };
+		AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -583,7 +587,7 @@
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		8757AA3A290511AB00D97517 /* TaskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVM.swift; sourceTree = "<group>"; };
-		8757AA3C290511FF00D97517 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		8757AA3C290511FF00D97517 /* RecordTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTask.swift; sourceTree = "<group>"; };
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
@@ -764,7 +768,7 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupRequest.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninRequest.swift; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
-		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
+		87D83E872B296069003C40AE /* TTSettingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingListCell.swift; sourceTree = "<group>"; };
 		87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageListView.swift; sourceTree = "<group>"; };
 		87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVM.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
@@ -812,6 +816,9 @@
 		AB35A8A72DC3CC4300A6E7B4 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
 		AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
 		AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
+		AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordListView.swift; sourceTree = "<group>"; };
+		AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordViewModel.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -844,6 +851,7 @@
 				8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
+				AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */,
 				8761BDC42BCFE64000E9281A /* Moya in Frameworks */,
 				540418171CE07D46B1BD8E3B /* Pods_Project_Timer.framework in Frameworks */,
 				8761BDC62BCFE64000E9281A /* ReactiveMoya in Frameworks */,
@@ -1211,7 +1219,7 @@
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
-				8757AA3C290511FF00D97517 /* Task.swift */,
+				8757AA3C290511FF00D97517 /* RecordTask.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
@@ -1340,6 +1348,7 @@
 		877911AF2A18865100F0A713 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				AB35A8AF2DC60A1100A6E7B4 /* Record */,
 				877911B12A188A3200F0A713 /* SettingSwitchListVC.swift */,
 				877911B92A1891B100F0A713 /* SettingSwitchListVM.swift */,
 				877911B72A18903000F0A713 /* SettingListCell.swift */,
@@ -1801,7 +1810,7 @@
 		87D83E862B29604C003C40AE /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */,
+				87D83E872B296069003C40AE /* TTSettingListCell.swift */,
 				8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */,
 				87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */,
 				87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */,
@@ -2028,6 +2037,16 @@
 			path = ToastViews;
 			sourceTree = "<group>";
 		};
+		AB35A8AF2DC60A1100A6E7B4 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */,
+				AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */,
+				AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		D777B167BDE24D9E3DE50CB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2081,6 +2100,7 @@
 				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 				871DC0F02BC274280024DA3B /* Embed Frameworks */,
 				66A4C9514F6901D7CD53A3B9 /* [CP] Copy Pods Resources */,
+				AB177FA12DC8D341006C1796 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2100,6 +2120,7 @@
 				8761BDC32BCFE64000E9281A /* Moya */,
 				8761BDC52BCFE64000E9281A /* ReactiveMoya */,
 				8761BDC72BCFE64000E9281A /* RxMoya */,
+				AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2213,6 +2234,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AB177FA12DC8D341006C1796 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 		EC16A477924DCEC2DA0A756B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2401,6 +2444,7 @@
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
+				AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */,
 				87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
@@ -2445,6 +2489,7 @@
 				87B90B412BF4BFEE00D6886E /* TTProvider.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
+				AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				871616A22C3A606C00C4EF25 /* GetRecordTimeUseCase.swift in Sources */,
@@ -2452,7 +2497,7 @@
 				87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
-				87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */,
+				87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
@@ -2506,7 +2551,7 @@
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */,
-				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
+				8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872210492C2FF6AF003B97AD /* FunctionInfo.swift in Sources */,
@@ -2517,6 +2562,7 @@
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,
+				AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateHistoryResponse.swift in Sources */,
 				87BF666A28F80E9400CD6F19 /* NormalTimeLabelView.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingVC.swift in Sources */,
@@ -2708,7 +2754,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2753,7 +2799,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2843,7 +2889,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget;
@@ -2900,7 +2946,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -3000,7 +3046,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3021,7 +3067,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -3029,7 +3075,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3097,7 +3143,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 		8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
@@ -3181,6 +3227,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

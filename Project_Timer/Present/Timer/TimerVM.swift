@@ -40,7 +40,7 @@ final class TimerVM {
         let currentTimes = RecordsManager.shared.recordTimes.currentTimes()
         let isWhite = UserDefaultsManager.get(forKey: .timerTextIsWhite) as? Bool ?? true
         self.times = currentTimes
-        self.daily = RecordsManager.shared.currentDaily
+        self.daily = RecordsManager.shared.dailyManager.currentDaily
         self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfTimerViewModel = TimerTimeLabelVM(time: currentTimes.timer, fontSize: 70, isWhite: isWhite)
@@ -67,7 +67,7 @@ final class TimerVM {
         }
     }
     
-    private func checkRecordDate() {
+    func checkRecordDate() {
         if RecordsManager.shared.isDateChanged {
             self.createNewRecord()
         }
@@ -95,7 +95,7 @@ final class TimerVM {
     }
     
     func updateDaily() {
-        self.daily = RecordsManager.shared.currentDaily
+        self.daily = RecordsManager.shared.dailyManager.currentDaily
     }
     
     func updateTask() {
@@ -109,7 +109,7 @@ final class TimerVM {
     }
     
     func changeTask(to taskName: String) {
-        let currentTaskSumTime = RecordsManager.shared.currentDaily.tasks[taskName] ?? 0
+        let currentTaskSumTime = RecordsManager.shared.dailyManager.currentDaily.tasks[taskName] ?? 0
         self.taskName = taskName
         RecordsManager.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
@@ -143,13 +143,9 @@ final class TimerVM {
     }
     
     func createNewRecord() {
-        RecordsManager.shared.currentDaily.reset()
-        RecordsManager.shared.recordTimes.reset()
+        RecordsManager.shared.resetNewRecord()
         self.updateDaily()
         self.updateTimes()
-        ToastManager.shared.show(toast: .newRecord(
-            date: RecordsManager.shared.currentDaily.day.YYYYMMDDstyleString)
-        )
     }
     
     private func checkTimerReset() {
@@ -203,7 +199,7 @@ final class TimerVM {
         self.runningUI = false
         self.soundAlert = true
         let endAt = Date()
-        RecordsManager.shared.currentDaily.update(at: endAt)
+        RecordsManager.shared.dailyManager.currentDaily.update(at: endAt)
         self.updateDaily()
         RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
         RecordsManager.shared.dailyManager.addDaily(self.daily)

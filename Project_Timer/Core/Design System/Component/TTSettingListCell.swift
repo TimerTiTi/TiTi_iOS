@@ -1,5 +1,5 @@
 //
-//  TTSettingSelectableCell.swift
+//  TTSettingListCell.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2023/12/13.
@@ -8,10 +8,12 @@
 
 import SwiftUI
 
-struct TTSettingSelectableCell: View {
+struct TTSettingListCell: View {
     let title: String
-    let subTitle: String?
-    let isSelected: Bool
+    var subTitle: String? = nil
+    var rightTitle: String? = nil
+    var isSelectable: Bool = false
+    var isSelected: Bool = false
     let action: () -> Void
     
     var body: some View {
@@ -34,9 +36,17 @@ struct TTSettingSelectableCell: View {
                         
                     }
                     Spacer()
-                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                        .renderingMode(.template)
-                        .foregroundStyle(Color.primary.opacity(0.85))
+                    
+                    if isSelectable {
+                        Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
+                            .renderingMode(.template)
+                            .foregroundStyle(Color.primary.opacity(0.85))
+                    }
+                    if let rightTitle {
+                        Text(rightTitle)
+                            .font(Typographys.autoFont(rightTitle, .normal_3, size: 16))
+                            .foregroundStyle(Color.primary)
+                    }
                 }
                 .padding(.horizontal, 16)
             }
@@ -46,7 +56,7 @@ struct TTSettingSelectableCell: View {
 }
 
 #Preview {
-    TTSettingSelectableCell(title: "简体中文", subTitle: "한국어", isSelected: true) {
+    TTSettingListCell(title: "简体中文", subTitle: "한국어", isSelected: true) {
         print("tap")
     }
 }

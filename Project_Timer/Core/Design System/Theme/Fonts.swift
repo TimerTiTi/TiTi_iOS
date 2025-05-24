@@ -63,8 +63,8 @@ extension Fonts {
     static func MiSansRegular(size: CGFloat) -> UIFont? {
         return UIFont(name: "MiSans-Regular", size: size)
     }
-    static func MiSansDemibold(size: CGFloat) -> UIFont? {
-        return UIFont(name: "MiSans-Demibold", size: size)
+    static func MiSansSemibold(size: CGFloat) -> UIFont? {
+        return UIFont(name: "MiSans-Semibold", size: size)
     }
     static func MiSansBold(size: CGFloat) -> UIFont? {
         return UIFont(name: "MiSans-Bold", size: size)

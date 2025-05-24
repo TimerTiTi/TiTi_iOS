@@ -11,6 +11,6 @@ target 'Project_Timer' do
   use_frameworks!
 
   # Pods for Project_Timer
-  pod 'Google-Mobile-Ads-SDK', '~>11.13'
+  pod 'Google-Mobile-Ads-SDK', '~>12'
 
 end

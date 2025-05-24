@@ -53,6 +53,7 @@ struct TLRen {
         case .Settings_Button_Functions: value = "TiTi Functions"
         case .Settings_Button_TiTiLab: value = "TiTi Lab"
         case .Settings_Text_SettingSection: value = "Setting"
+        case .Settings_Button_Record: value = "Record"
         case .Settings_Button_Notification: value = "Notification"
         case .Settings_Button_UI: value = "UI"
         case .Settings_Button_Control: value = "Control"
@@ -86,6 +87,10 @@ struct TLRen {
         case .SyncDaily_Button_SyncNow: value = "Sync Now"
         case .SyncDaily_Popup_InfoFirstSyncTitle: value = "First Sync"
         case .SyncDaily_Popup_InfoFirstSyncDesc: value = "For the first synchronization, it may take a long time for all Daily information to be reflected (10s), so please wait without shutting down the app."
+            
+        case .SettingRecord_Text_RecordResetTimeTitle: value = "Reset Time for New Record Date"
+        case .SettingRecord_Text_RecordResetTimeDesc: value = "A new day's record starts based on the reset time."
+        case .SettingRecord_Popup_InputRecordResetTime: value = "Please enter the reset time to set in 24-hour format (0–23)."
             
         case .SwitchSetting_Button_Update: value = "Update"
         case .SwitchSetting_Button_5minNotiDesc: value = "5 minutes before end"

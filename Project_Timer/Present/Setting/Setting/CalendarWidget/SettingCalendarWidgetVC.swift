@@ -206,7 +206,7 @@ extension SettingCalendarWidgetVC {
         self.dailyTargetButton.addAction(UIAction(handler: { [weak self] _ in
             guard let dailyTargetButton = self?.dailyTargetButton else { return }
             
-            self?.showAlertWithTextField(title: Localized.string(.Common_Text_TargetTime), text: Localized.string(.Common_Popup_SetDailyTargetTime), placeHolder: "\(dailyTargetButton.settedHour/3600)") { [weak self] hour in
+            self?.showAlertWithNumInput(title: Localized.string(.Common_Text_TargetTime), text: Localized.string(.Common_Popup_SetDailyTargetTime), placeHolder: "\(dailyTargetButton.settedHour/3600)") { [weak self] hour in
                 UserDefaultsManager.set(to: hour*3600, forKey: dailyTargetButton.key)
                 self?.update()
             }
@@ -227,27 +227,6 @@ extension SettingCalendarWidgetVC: Updateable {
 
 // MARK: Present
 extension SettingCalendarWidgetVC {
-    private func showAlertWithTextField(title: String, text: String, placeHolder: String, handler: @escaping ((Int) -> Void)) {
-        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.font = Fonts.HGGGothicssiP60g(size: 14)
-            textField.textColor = .label
-            textField.placeholder = placeHolder
-            textField.textAlignment = .center
-            textField.keyboardType = .numberPad
-        }
-        
-        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
-        let update = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { _ in
-            guard let text = alert.textFields?.first?.text,
-                  let hour = Int(text) else { return }
-            handler(hour)
-        }
-        alert.addAction(cancel)
-        alert.addAction(update)
-        
-        self.present(alert, animated: true)
-    }
     
     private func showHowToUseWidgetVC(url: String) {
         let contentViewController = HowToUseWidgetVC(url: url)

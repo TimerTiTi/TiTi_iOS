@@ -106,6 +106,7 @@ final class TimerVC: UIViewController {
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
         self.viewModel?.updateDaily()
+        self.viewModel?.checkRecordDate()
         self.checkBigUI()
     }
     

@@ -104,6 +104,7 @@ final class StopwatchVC: UIViewController {
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
         self.viewModel?.updateDaily()
+        self.viewModel?.checkRecordDate()
         self.checkBigUI()
     }
     

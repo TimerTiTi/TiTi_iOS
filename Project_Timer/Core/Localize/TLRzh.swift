@@ -53,6 +53,7 @@ struct TLRzh {
         case .Settings_Button_Functions: value = "功能"
         case .Settings_Button_TiTiLab: value = "TiTi实验室"
         case .Settings_Text_SettingSection: value = "设置"
+        case .Settings_Button_Record: value = "记录"
         case .Settings_Button_Notification: value = "通知"
         case .Settings_Button_UI: value = "用户界面"
         case .Settings_Button_Control: value = "控制"
@@ -86,6 +87,10 @@ struct TLRzh {
         case .SyncDaily_Button_SyncNow: value = "同步"
         case .SyncDaily_Popup_InfoFirstSyncTitle: value = "第一次同步通知"
         case .SyncDaily_Popup_InfoFirstSyncDesc: value = "首次同步可能需要很长时间才能反映所有Daily信息（10s），请不要关闭应用程序，等待。"
+            
+        case .SettingRecord_Text_RecordResetTimeTitle: value = "用于新记录日期的重置时间"
+        case .SettingRecord_Text_RecordResetTimeDesc: value = "新的一天的记录将根据重置时间开始。"
+        case .SettingRecord_Popup_InputRecordResetTime: value = "请输入要设定的重置时间，使用24小时制（0～23）。"
             
         case .SwitchSetting_Button_Update: value = "更新"
         case .SwitchSetting_Button_5minNotiDesc: value = "结束前5分钟提醒"

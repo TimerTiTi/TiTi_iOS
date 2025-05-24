@@ -48,6 +48,28 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    func showAlertWithNumInput(title: String, text: String, placeHolder: String, completion: @escaping ((Int) -> Void)) {
+        let alert = UIAlertController(title: title, message: text, preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.font = UIFont.systemFont(ofSize: 14)
+            textField.textColor = .label
+            textField.placeholder = placeHolder
+            textField.textAlignment = .center
+            textField.keyboardType = .numberPad
+        }
+        
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let update = UIAlertAction(title: Localized.string(.Common_Text_Done), style: .destructive) { _ in
+            guard let text = alert.textFields?.first?.text,
+                  let hour = Int(text) else { return }
+            completion(hour)
+        }
+        alert.addAction(cancel)
+        alert.addAction(update)
+        
+        self.present(alert, animated: true)
+    }
+    
     func showTaskWarningAlert() {
         self.showAlertWithOK(title: Localized.string(.Recording_Popup_NoTaskWarningTitle), text: Localized.string(.Recording_Popup_NoTaskWarningDesc))
     }

@@ -40,7 +40,7 @@ final class StopwatchVM {
         let currentTimes = RecordsManager.shared.recordTimes.currentTimes()
         let isWhite = UserDefaultsManager.get(forKey: .stopwatchTextIsWhite) as? Bool ?? true
         self.times = currentTimes
-        self.daily = RecordsManager.shared.currentDaily
+        self.daily = RecordsManager.shared.dailyManager.currentDaily
         self.taskName = RecordsManager.shared.recordTimes.recordTask
         self.timeOfSumViewModel = NormalTimeLabelVM(time: currentTimes.sum, fontSize: 32, isWhite: isWhite)
         self.timeOfStopwatchViewModel = StopwatchTimeLabelVM(time: currentTimes.stopwatch, fontSize: 70, isWhite: isWhite)
@@ -66,7 +66,7 @@ final class StopwatchVM {
         }
     }
     
-    private func checkRecordDate() {
+    func checkRecordDate() {
         if RecordsManager.shared.isDateChanged {
             self.newRecord()
         }
@@ -89,7 +89,7 @@ final class StopwatchVM {
     }
     
     func updateDaily() {
-        self.daily = RecordsManager.shared.currentDaily
+        self.daily = RecordsManager.shared.dailyManager.currentDaily
     }
     
     func updateTask() {
@@ -103,7 +103,7 @@ final class StopwatchVM {
     }
     
     func changeTask(to taskName: String) {
-        let currentTaskSumTime = RecordsManager.shared.currentDaily.tasks[taskName] ?? 0
+        let currentTaskSumTime = RecordsManager.shared.dailyManager.currentDaily.tasks[taskName] ?? 0
         self.taskName = taskName
         RecordsManager.shared.recordTimes.updateTask(to: taskName, fromTime: currentTaskSumTime)
         self.updateTimes()
@@ -136,13 +136,9 @@ final class StopwatchVM {
     }
     
     func newRecord() {
-        RecordsManager.shared.currentDaily.reset()
-        RecordsManager.shared.recordTimes.reset()
+        RecordsManager.shared.resetNewRecord()
         self.updateDaily()
         self.updateTimes()
-        ToastManager.shared.show(toast: .newRecord(
-            date: RecordsManager.shared.currentDaily.day.YYYYMMDDstyleString)
-        )
     }
     
     private func timerStart() {
@@ -175,7 +171,7 @@ final class StopwatchVM {
         self.timerRunning = false
         self.runningUI = false
         let endAt = Date()
-        RecordsManager.shared.currentDaily.update(at: endAt)
+        RecordsManager.shared.dailyManager.currentDaily.update(at: endAt)
         self.updateDaily()
         RecordsManager.shared.recordTimes.recordStop(finishAt: endAt, taskTime: self.daily.tasks[self.taskName] ?? 0)
         RecordsManager.shared.dailyManager.addDaily(self.daily)

@@ -10,16 +10,15 @@ import Foundation
 
 final class RecordsManager {
     static let shared = RecordsManager()
-    var dailyManager = DailyManager.shared
+    var dailyManager = DailyManager()
     var taskManager = TaskManager()
     var recordTimes = RecordTimes()
-    var currentDaily = Daily()
-    var currentTask: Task?
-    static let resetHour = 6
+    var currentTask: RecordTask?
+    static var resetHour: Int { UserDefaultsManager.get(forKey: .recordResetHour) as? Int ?? 6 }
     
     var isDateChanged: Bool {
         let today = Date()
-        let compareDay = currentDaily.day.nextDay.setTime(hour: RecordsManager.resetHour)
+        let compareDay = dailyManager.currentDaily.day.nextDay.setTime(hour: RecordsManager.resetHour)
         return today >= compareDay
     }
     
@@ -32,14 +31,12 @@ final class RecordsManager {
     
     var currentTaskSumTime: Int {
         if let taskName = currentTask?.taskName {
-            return currentDaily.tasks[taskName] ?? 0
+            return dailyManager.currentDaily.tasks[taskName] ?? 0
         } else { return 0 }
     }
     
     private init() {
         self.recordTimes.load()
-        self.currentDaily.load()
-        self.dailyManager.loadDailys()
         self.taskManager.loadTasks()
         self.configureCurrentTask()
     }
@@ -52,11 +49,15 @@ final class RecordsManager {
     
     func modifyRecord(with newDaily: Daily) {
         // 오늘의 기록인 경우 daily도 업데이트
-        if currentDaily.day.YYYYMMDDstyleString == newDaily.day.YYYYMMDDstyleString {
-            self.currentDaily = newDaily
-            self.currentDaily.save()
+        if dailyManager.currentDaily.day.YYYYMMDDstyleString == newDaily.day.YYYYMMDDstyleString {
+            dailyManager.updateDaily(to: newDaily)
             self.recordTimes.sync(newDaily)
         }
         self.dailyManager.modifyDaily(newDaily)
+    }
+    
+    public func resetNewRecord() {
+        self.dailyManager.resetDaily()
+        self.recordTimes.reset()
     }
 }

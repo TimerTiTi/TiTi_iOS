@@ -47,6 +47,8 @@ struct UserDefaultsManager {
         case languageCode
         // Notification
         case notificationPassDay
+        // Record
+        case recordResetHour
         
         case lastUpdateVersion
     }
