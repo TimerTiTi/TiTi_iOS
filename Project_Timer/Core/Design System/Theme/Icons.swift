@@ -6,4 +6,10 @@
 //  Copyright © 2023 FDEE. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum Icons: String {
+    case TickCircle
+    
+    var value: UIImage { UIImage(named: self.rawValue)! }
+}
