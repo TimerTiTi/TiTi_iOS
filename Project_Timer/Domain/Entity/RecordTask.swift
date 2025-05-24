@@ -1,5 +1,5 @@
 //
-//  Task.swift
+//  RecordTask.swift
 //  Project_Timer
 //
 //  Created by Kang Minsang on 2022/10/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Task: Codable, Equatable {
+struct RecordTask: Codable, Equatable {
     var taskName: String
     var taskTargetTime: Int
     var isTaskTargetTimeOn: Bool

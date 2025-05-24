@@ -17,7 +17,16 @@ enum Infos: String {
     case ADMOB_AD_ID
     
     var value: String {
-        return Bundle.main.infoDictionary?[self.rawValue] as? String ?? ""
+        switch self {
+        case .ADMOB_AD_ID:
+            #if DEBUG
+            return "ca-app-pub-3940256099942544/1712485313"
+            #else
+            return Bundle.main.infoDictionary?[self.rawValue] as? String ?? ""
+            #endif
+        default:
+            return Bundle.main.infoDictionary?[self.rawValue] as? String ?? ""
+        }
     }
     
     static var isDevMode: Bool {

@@ -10,6 +10,7 @@ import SwiftUI
 import Foundation
 
 // MARK: View modifier
+
 extension View {
     /// iOS17 widget: containerbackground
     /// https://nemecek.be/blog/192/hotfixing-widgets-for-ios-17-containerbackground-padding
@@ -61,7 +62,26 @@ extension View {
         }
         .onPreferenceChange(SizePreferenceKey.self, perform: perform)
     }
+    
+    /// 특정 코너 radius 주는 함수
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        mask(RoundedCorner(radius: radius, corners: corners))
+            .ignoresSafeArea()
+    }
 }
+
+// MARK: Functions
+
+extension View {
+    func scroll(_ scrollViewProxy: ScrollViewProxy, to: any Hashable) {
+        #if targetEnvironment(macCatalyst)
+        #else
+        scrollViewProxy.scrollTo(to, anchor: .bottom)
+        #endif
+    }
+}
+
+// MARK: Helper
 
 /// view size preference key
 struct SizePreferenceKey: PreferenceKey {
@@ -69,13 +89,13 @@ struct SizePreferenceKey: PreferenceKey {
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) { }
 }
 
-
-// MARK: Functions
-extension View {
-    func scroll(_ scrollViewProxy: ScrollViewProxy, to: any Hashable) {
-        #if targetEnvironment(macCatalyst)
-        #else
-        scrollViewProxy.scrollTo(to, anchor: .bottom)
-        #endif
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        
+        return Path(path.cgPath)
     }
 }

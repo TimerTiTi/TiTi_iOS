@@ -9,9 +9,17 @@
 import Foundation
 
 protocol FirestoreValue {}
-extension FirestoreValue {
-    func transString(_ stringValue: FirebaseStringValue) -> FirebaseStringValue {
-        let transString = stringValue.value.replacingOccurrences(of: "\\n", with: "\n")
+
+extension FirebaseStringValue {
+    var transString: FirebaseStringValue {
+        let transString = self.value.replacingOccurrences(of: "\\n", with: "\n")
         return FirebaseStringValue(value: transString)
+    }
+}
+
+extension FirebaseStringArrayValue {
+    var transString: FirebaseStringArrayValue {
+        let transStrings = self.arrayValue.values.map { $0.transString }
+        return FirebaseStringArrayValue(arrayValue: .init(values: transStrings))
     }
 }

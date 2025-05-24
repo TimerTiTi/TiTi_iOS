@@ -179,7 +179,7 @@ extension AppDelegate {
     
     private func configureGoogleAdmob() {
         /// 애드몹 이니셜라이즈
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        MobileAds.shared.start(completionHandler: nil)
         // MARK: 릴리즈할 때 해당 부분 제거!!!!!!
 //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4d05e46e5ab0994dee203a9e0477ddaf" ]
         
@@ -241,10 +241,10 @@ extension AppDelegate {
                     }
             } receiveValue: { notificationInfo in
                 guard let notificationInfo = notificationInfo else { return }
-                guard notificationUseCase.isShowNotification() else { return }
+                guard notificationUseCase.isVisible(info: notificationInfo) else { return }
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    let notificationVC = NotificationVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
+                DispatchQueue.main.async {
+                    let notificationVC = NotificationBottomSheetVC(noti: notificationInfo, notificationUseCase: notificationUseCase)
                     SceneDelegate.sharedWindow?.rootViewController?.present(notificationVC, animated: true)
                 }
             }

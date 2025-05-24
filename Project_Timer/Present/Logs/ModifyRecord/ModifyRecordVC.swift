@@ -31,7 +31,7 @@ final class ModifyRecordVC: UIViewController {
     private var taskInteractionFrameViewHeight: NSLayoutConstraint?
     private var viewModel: ModifyRecordVM?
     private var cancellables: Set<AnyCancellable> = []
-    private var rewardedAd: GADRewardedAd?
+    private var rewardedAd: RewardedAd?
     enum GraphCollectionView: Int {
         case standardDailyGraphView = 0
         case timeTableDailyGraphView = 1
@@ -40,7 +40,9 @@ final class ModifyRecordVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadRewardedAd()
+        Task {
+            await loadRewardedAd()
+        }
         self.configureNavigationBar()
         self.configureScrollView()
         self.configurePage()
@@ -767,56 +769,55 @@ extension ModifyRecordVC {
 }
 
 // MARK: 애드몹
-extension ModifyRecordVC: GADFullScreenContentDelegate {
+extension ModifyRecordVC: FullScreenContentDelegate {
     /// 광고 로드
-    private func loadRewardedAd() {
+    private func loadRewardedAd() async {
         let adID = Infos.ADMOB_AD_ID.value
         
-        let request = GADRequest()
-        GADRewardedAd.load(withAdUnitID: adID,
-                           request: request) { [weak self] ad, error in
-            if let error = error {
-                print("Failed to load rewarded ad with error: \(error.localizedDescription)")
-                self?.viewModel?.isRemoveAd = true
-                return
-            }
-            
-            self?.rewardedAd = ad
-            self?.rewardedAd?.fullScreenContentDelegate = self
+        do {
+            rewardedAd = try await RewardedAd.load(
+                with: adID, request: Request())
+            rewardedAd?.fullScreenContentDelegate = self
             print("Rewarded ad loaded.")
+        } catch {
+            print("Rewarded ad failed to load with error: \(error.localizedDescription)")
+            viewModel?.isRemoveAd = true
         }
     }
     
     private func showRewardedAd() {
-        if let ad = rewardedAd {
-            ad.present(fromRootViewController: self) {
-                let reward = ad.adReward
-                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-                self.viewModel?.save()
-            }
-        } else {
-            print("Ad wasn't ready")
+        guard let rewardedAd = rewardedAd else {
+            return print("Ad wasn't ready.")
+        }
+        
+        // The UIViewController parameter is an optional.
+        rewardedAd.present(from: nil) { [weak self] in
+            let reward = rewardedAd.adReward
+            print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+            self?.viewModel?.save()
         }
     }
     
     /// 델리게이트에게 전면 광고 표시 실패를 알림
-    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         print("Ad did fail to present full screen content.")
     }
     
     /// 델리게이트에게 전면 광고 표시 성공을 알림
-    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Ad will present full screen content.")
     }
     
     /// 델리게이트에게 전면 광고가 dismiss 되었음을 알림
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
         
         self.showOKAlert(title: Localized.string(.Common_Popup_SaveCompleted), message: Localized.string(.EditDaily_Popup_EditTaskSaved)) { [weak self] in
             self?.viewModel?.reset()
         }
         // 다음 광고 미리 로드
-        self.loadRewardedAd()
+        Task { [weak self] in
+            await self?.loadRewardedAd()
+        }
     }
 }

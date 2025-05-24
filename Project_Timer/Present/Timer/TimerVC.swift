@@ -106,6 +106,7 @@ final class TimerVC: UIViewController {
         self.viewModel?.updateModeNum()
         self.viewModel?.updateTimes()
         self.viewModel?.updateDaily()
+        self.viewModel?.checkRecordDate()
         self.checkBigUI()
     }
     
@@ -826,7 +827,7 @@ extension TimerVC {
     private func showSettingTargetTime() {
         guard let targetTimeSettingVC = storyboard?.instantiateViewController(withIdentifier: TargetTimeSettingPopupVC.identifier) as? TargetTimeSettingPopupVC else { return }
         let info = TargetTimeSettingInfo(title: Localized.string(.Recording_Text_EditTargetTimeTitle),
-                                         subTitle: Localized.string(.Recording_Text_EditTargetTimeSubtitle, op: Date().YYYYMMDDstyleString),
+                                         subTitle: "",
                                          targetTime: RecordsManager.shared.recordTimes.settedGoalTime)
         targetTimeSettingVC.configure(info: info)
         

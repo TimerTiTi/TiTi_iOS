@@ -9,7 +9,6 @@
 import Foundation
 
 final class DailyManager {
-    static let shared = DailyManager()
     static let dailysFileName: String = "dailys.json"
     var dailys: [Daily] = [] {
         didSet {
@@ -17,10 +16,14 @@ final class DailyManager {
         }
     }
     var dates: [Date] = []
+    var currentDaily: Daily!
     
-    private init() {}
+    init() {
+        loadDailys()
+        loadDaily()
+    }
     
-    func loadDailys() {
+    private func loadDailys() {
         self.dailys = Storage.retrive(Self.dailysFileName, from: .documents, as: [Daily].self) ?? []
         // 비어 있으면 백업도 확인
         if dailys.isEmpty {
@@ -32,6 +35,15 @@ final class DailyManager {
         
         // 위젯용 데이터 저장
         self.saveCalendarWidgetData()
+    }
+    
+    private func loadDaily() {
+        if let savedDaily = Storage.retrive(Daily.fileName, from: .documents, as: Daily.self) {
+            currentDaily = savedDaily
+        } else {
+            // 앱 최초 설치 시점, 저장된 Daily 값이 없는 경우
+            resetDaily()
+        }
     }
     
     func saveDailys() {
@@ -72,6 +84,21 @@ final class DailyManager {
     func removeEmptyDailys() {
         dailys = dailys.filter { $0.totalTime > 0 }
         self.saveDailys()
+    }
+    
+    public func updateDaily(to daily: Daily) {
+        currentDaily = daily
+        currentDaily.save()
+    }
+    
+    /// 새로운 날짜의 Daily 생성
+    public func resetDaily() {
+        currentDaily = Daily()
+        currentDaily.save()
+        
+        ToastManager.shared.show(toast: .newRecord(
+            date: currentDaily.day.YYYYMMDDstyleString)
+        )
     }
 }
 

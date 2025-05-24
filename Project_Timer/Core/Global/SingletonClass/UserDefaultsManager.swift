@@ -45,8 +45,10 @@ struct UserDefaultsManager {
         case calendarWidgetTargetTime
         // language
         case languageCode
-        // Notification
-        case notificationPassDay
+        // Notice
+        case noticesInfo
+        // Record
+        case recordResetHour
         
         case lastUpdateVersion
     }

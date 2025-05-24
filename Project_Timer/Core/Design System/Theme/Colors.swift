@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Colors {
+enum Colors: String {
     static let shadow = UIColor(named: "shadow")
     static let timerBackground = UIColor(named: "timerBackground")
     static let stopwatchBackground = UIColor(named: "stopwatchBackground")
@@ -28,5 +28,17 @@ enum Colors {
     static let firstBackground = UIColor(named: "firstBackgroundColor")!
     static let wrongTextField = UIColor(named: "wrongTextFieldColor")!
     
-    static let ttPrimary = UIColor(named: "ttPrimary")!
+    /* V2 */
+    case Primary
+    case PrimarySecondary
+    case TextPrimary
+    case TextSecondary
+    case TextSub1
+    case BackgroundPrimary
+    case BackgroundSecondary
+    case BackgroundSub1
+    case DividerPrimary
+    case Gray70
+    
+    var value: UIColor { UIColor(named: self.rawValue) ?? .label }
 }

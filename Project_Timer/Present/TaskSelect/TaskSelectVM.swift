@@ -11,7 +11,7 @@ import Combine
 
 final class TaskSelectVM {
     let manager: TaskManager
-    @Published private(set) var tasks: [Task] = []
+    @Published private(set) var tasks: [RecordTask] = []
     @Published private(set) var selectedTask: String?
     init() {
         self.manager = RecordsManager.shared.taskManager
@@ -60,13 +60,13 @@ final class TaskSelectVM {
 extension TaskSelectVM {
     private func resetTaskname(before: String, after: String) {
         let currentTask = RecordsManager.shared.recordTimes.recordTask
-        var tasks = RecordsManager.shared.currentDaily.tasks
+        var tasks = RecordsManager.shared.dailyManager.currentDaily.tasks
         
         if let beforeTime = tasks[before] {
             tasks.removeValue(forKey: before)
             tasks[after] = beforeTime
-            RecordsManager.shared.currentDaily.updateTasks(to: tasks)
-            RecordsManager.shared.dailyManager.modifyDaily(RecordsManager.shared.currentDaily)
+            RecordsManager.shared.dailyManager.currentDaily.updateTasks(to: tasks)
+            RecordsManager.shared.dailyManager.modifyDaily(RecordsManager.shared.dailyManager.currentDaily)
         }
         
         if currentTask == before {

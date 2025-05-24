@@ -58,6 +58,7 @@ final class SettingVM {
         
         // Setting
         cells.append([
+            SettingCellInfo(title: Localized.string(.Settings_Button_Record), action: .pushVC, destination: .record),
             SettingCellInfo(title: Localized.string(.Settings_Button_Notification), action: .pushVC, destination: .notification),
             SettingCellInfo(title: Localized.string(.Settings_Button_UI), action: .pushVC, destination: .ui),
             SettingCellInfo(title: Localized.string(.Settings_Button_Control), action: .pushVC, destination: .control),

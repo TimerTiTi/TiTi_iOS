@@ -9,7 +9,9 @@
 import Foundation
 
 struct NotificationInfo {
+    var id: String
     var title: String
+    var subTitle: String
     var text: String
     var notis: [NotificationDetailInfo]
 }
@@ -22,7 +24,9 @@ struct NotificationDetailInfo: Hashable {
 extension NotificationInfo {
     static var testInfo: NotificationInfo {
         return .init(
-            title: "서버 이전작업에 따른\n서비스 이용 일시 중단안내",
+            id: "2501",
+            title: "공지사항",
+            subTitle: "서버 이전작업에 따른 서비스 이용 일시 중단안내",
             text: """
 안녕하세요. TimerTiTi 개발팀입니다.
 
@@ -37,10 +41,6 @@ extension NotificationInfo {
                 .init(
                     title: "중단 일시",
                     text: "2023.12.26 10:00 (UTC 기준)"
-                ),
-                .init(
-                    title: "중단 기능",
-                    text: "기록동기화(Sync Dailys)"
                 )
             ]
         )

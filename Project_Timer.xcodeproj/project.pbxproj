@@ -154,7 +154,7 @@
 		8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F72847234A007FAFC4 /* SettingVM.swift */; };
 		8751C6FA28472A8D007FAFC4 /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */; };
 		8757AA3B290511AB00D97517 /* TaskSelectVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3A290511AB00D97517 /* TaskSelectVM.swift */; };
-		8757AA3D290511FF00D97517 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* Task.swift */; };
+		8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3C290511FF00D97517 /* RecordTask.swift */; };
 		8757AA3F29052DDF00D97517 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8757AA3E29052DDF00D97517 /* TaskCell.swift */; };
 		87585AE22955A49F007E9139 /* SyncDeviceStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */; };
 		8758E4F528C7124900A99484 /* MonthSmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758E4F428C7124900A99484 /* MonthSmallView.swift */; };
@@ -219,9 +219,7 @@
 		877BDCE92C390CA800A50231 /* UpdatePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877BDCE82C390CA800A50231 /* UpdatePasswordUseCase.swift */; };
 		877D69FC2871C1CB00215B6D /* SurveyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877D69FB2871C1CB00215B6D /* SurveyResponse.swift */; };
 		878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878431AC27F6F461000A98B3 /* TodolistVM.swift */; };
-		87862E822B2D8C22004ED313 /* TTNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E812B2D8C22004ED313 /* TTNotificationView.swift */; };
 		87862E842B2D989A004ED313 /* NotificationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E832B2D989A004ED313 /* NotificationInfo.swift */; };
-		87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E862B2D9FA1004ED313 /* NotificationVC.swift */; };
 		87862E892B2DBBDA004ED313 /* PopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87862E882B2DBBDA004ED313 /* PopupVC.swift */; };
 		878813E32A2084F5000ED2C1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E22A2084F5000ED2C1 /* CloseButton.swift */; };
 		878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */; };
@@ -349,7 +347,7 @@
 		87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */; };
 		87D7ED172952B69200121DE6 /* TestUserSigninRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */; };
 		87D83E852B285D4D003C40AE /* SettingLanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */; };
-		87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */; };
+		87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E872B296069003C40AE /* TTSettingListCell.swift */; };
 		87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */; };
 		87D83E8C2B29703A003C40AE /* SettingLanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */; };
 		87D83E8D2B297E60003C40AE /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8791C1F327DCD120000D6BA9 /* UserDefaultsManager.swift */; };
@@ -393,14 +391,28 @@
 		93B08528248DDF2F00E215BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B08526248DDF2F00E215BD /* Main.storyboard */; };
 		93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93B0852B248DDF3000E215BD /* LaunchScreen.storyboard */; };
 		93C1358A2539540F00707258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93B08529248DDF3000E215BD /* Assets.xcassets */; };
-		D9A5F1422C32FA3700CED4B0 /* ToastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */; };
+		AB35A8A82DC3CC4300A6E7B4 /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8A72DC3CC4300A6E7B4 /* ToastManager.swift */; };
+		AB35A8AA2DC4620700A6E7B4 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */; };
+		AB35A8AD2DC5EE3F00A6E7B4 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */; };
+		AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */; };
+		AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */; };
+		AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */; };
+		AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */; };
+		AB3AB9812DCF4226001B899A /* NotificationBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */; };
+		AB3AB9832DCF8C0D001B899A /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */; };
+		AB3AB9852DCF9522001B899A /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */; };
+		AB3AB9872DD05F59001B899A /* NotificationBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */; };
+		AB3AB9892DD06882001B899A /* BaseBottomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */; };
+		AB3AB98C2DD06A77001B899A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB98B2DD06A77001B899A /* SnapKit */; };
+		AB3AB98F2DD06AD5001B899A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB98E2DD06AD5001B899A /* Then */; };
+		AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9912DD07372001B899A /* RxCocoa */; };
+		AB3AB9942DD07372001B899A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9932DD07372001B899A /* RxRelay */; };
+		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
-		D9DC51C52C243E37009A96F6 /* newRecordLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = D9DC51C42C243E37009A96F6 /* newRecordLottie.json */; };
-		D9DC51CF2C26FC83009A96F6 /* newRecordToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */; };
-		D9DC51FF2C29A29F009A96F6 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51FE2C29A29F009A96F6 /* ToastView.swift */; };
-		D9DC52032C2D9F20009A96F6 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */; };
+		D9DC51CF2C26FC83009A96F6 /* NewRecordToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51CE2C26FC83009A96F6 /* NewRecordToastView.swift */; };
+		D9DC51FF2C29A29F009A96F6 /* ToastViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DC51FE2C29A29F009A96F6 /* ToastViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -583,7 +595,7 @@
 		8751C6F72847234A007FAFC4 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
 		8751C6F928472A8D007FAFC4 /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		8757AA3A290511AB00D97517 /* TaskSelectVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSelectVM.swift; sourceTree = "<group>"; };
-		8757AA3C290511FF00D97517 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		8757AA3C290511FF00D97517 /* RecordTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTask.swift; sourceTree = "<group>"; };
 		8757AA3E29052DDF00D97517 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		87585AE12955A49F007E9139 /* SyncDeviceStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncDeviceStatusView.swift; sourceTree = "<group>"; };
 		8758E4F428C7124900A99484 /* MonthSmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSmallView.swift; sourceTree = "<group>"; };
@@ -637,9 +649,7 @@
 		877BDCE82C390CA800A50231 /* UpdatePasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordUseCase.swift; sourceTree = "<group>"; };
 		877D69FB2871C1CB00215B6D /* SurveyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResponse.swift; sourceTree = "<group>"; };
 		878431AC27F6F461000A98B3 /* TodolistVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodolistVM.swift; sourceTree = "<group>"; };
-		87862E812B2D8C22004ED313 /* TTNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTNotificationView.swift; sourceTree = "<group>"; };
 		87862E832B2D989A004ED313 /* NotificationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationInfo.swift; sourceTree = "<group>"; };
-		87862E862B2D9FA1004ED313 /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		87862E882B2DBBDA004ED313 /* PopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupVC.swift; sourceTree = "<group>"; };
 		878813E22A2084F5000ED2C1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		878813E42A209BA0000ED2C1 /* HowToAddWidgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToAddWidgetVC.swift; sourceTree = "<group>"; };
@@ -764,7 +774,7 @@
 		87D7ED142952B3C100121DE6 /* TestUserSignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSignupRequest.swift; sourceTree = "<group>"; };
 		87D7ED162952B69200121DE6 /* TestUserSigninRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserSigninRequest.swift; sourceTree = "<group>"; };
 		87D83E842B285D4D003C40AE /* SettingLanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVC.swift; sourceTree = "<group>"; };
-		87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingSelectableCell.swift; sourceTree = "<group>"; };
+		87D83E872B296069003C40AE /* TTSettingListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSettingListCell.swift; sourceTree = "<group>"; };
 		87D83E892B2964EC003C40AE /* SettingLanguageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageListView.swift; sourceTree = "<group>"; };
 		87D83E8B2B29703A003C40AE /* SettingLanguageVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingLanguageVM.swift; sourceTree = "<group>"; };
 		87DA71722A124261006294DE /* MonthWidgetData+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MonthWidgetData+Snapshot.swift"; sourceTree = "<group>"; };
@@ -809,14 +819,22 @@
 		93B0852E248DDF3000E215BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B08534248DEEBA00E215BD /* Project_Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Project_Timer.entitlements; sourceTree = "<group>"; };
 		A9F348000F0D4026C9EBB793 /* Pods-Project_Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.debug.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.debug.xcconfig"; sourceTree = "<group>"; };
-		D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastPresenter.swift; sourceTree = "<group>"; };
+		AB35A8A72DC3CC4300A6E7B4 /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
+		AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordVC.swift; sourceTree = "<group>"; };
+		AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordListView.swift; sourceTree = "<group>"; };
+		AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRecordViewModel.swift; sourceTree = "<group>"; };
+		AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetView.swift; sourceTree = "<group>"; };
+		AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetVC.swift; sourceTree = "<group>"; };
+		AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
-		D9DC51C42C243E37009A96F6 /* newRecordLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newRecordLottie.json; sourceTree = "<group>"; };
-		D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newRecordToastView.swift; sourceTree = "<group>"; };
-		D9DC51FE2C29A29F009A96F6 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
+		D9DC51CE2C26FC83009A96F6 /* NewRecordToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecordToastView.swift; sourceTree = "<group>"; };
+		D9DC51FE2C29A29F009A96F6 /* ToastViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewPresenter.swift; sourceTree = "<group>"; };
 		EF0BDFDFBC511E7A47A45D16 /* Pods-Project_Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.release.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.release.xcconfig"; sourceTree = "<group>"; };
 		F426A4BDC73F07A7F14D3249 /* Pods-Project_Timer.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Project_Timer.develop.xcconfig"; path = "Target Support Files/Pods-Project_Timer/Pods-Project_Timer.develop.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -835,15 +853,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3AB9962DD07372001B899A /* RxSwift in Frameworks */,
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
 				8761BDC22BCFE64000E9281A /* CombineMoya in Frameworks */,
+				AB3AB98C2DD06A77001B899A /* SnapKit in Frameworks */,
 				876C3B0D2B1045C5002A5132 /* GoogleSignInSwift in Frameworks */,
 				8773AF5227DCB5D100739A09 /* FSCalendar in Frameworks */,
+				AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
+				AB3AB9942DD07372001B899A /* RxRelay in Frameworks */,
 				8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
+				AB3AB98F2DD06AD5001B899A /* Then in Frameworks */,
+				AB3AB97D2DC8D4D6001B899A /* FirebaseCrashlytics in Frameworks */,
 				8761BDC42BCFE64000E9281A /* Moya in Frameworks */,
 				540418171CE07D46B1BD8E3B /* Pods_Project_Timer.framework in Frameworks */,
 				8761BDC62BCFE64000E9281A /* ReactiveMoya in Frameworks */,
@@ -1107,6 +1131,7 @@
 			isa = PBXGroup;
 			children = (
 				87306D5C2B26CB5C001B7C14 /* Typographys.swift */,
+				87306D602B26CBBC001B7C14 /* Icons.swift */,
 				04FA75D5286F263300BAE2B2 /* Colors.swift */,
 				04FA75D7286F2AB900BAE2B2 /* Fonts.swift */,
 			);
@@ -1116,7 +1141,6 @@
 		87306D5F2B26CBB3001B7C14 /* Icon */ = {
 			isa = PBXGroup;
 			children = (
-				87306D602B26CBBC001B7C14 /* Icons.swift */,
 				879BE3232AC42758007AAC46 /* TiTiImage.swift */,
 			);
 			path = Icon;
@@ -1133,8 +1157,10 @@
 				87906C7E2B9BF749000EC960 /* MiSans-Normal.ttf */,
 				87906C802B9BF759000EC960 /* MiSans-Semibold.ttf */,
 				87306D692B26CC7A001B7C14 /* MiSans-Bold.ttf */,
+				AB3AB9822DCF8C0D001B899A /* Pretendard-Regular.otf */,
 				D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */,
 				D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */,
+				AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */,
 				878B507125B6E31600B9EFD7 /* timer.mp3 */,
 				87D4DCEC2BA6B11B00BB5AAB /* Lottie */,
 			);
@@ -1211,7 +1237,7 @@
 				87A4704726493D4D007B89D6 /* RecordTimes.swift */,
 				878BF7EE2955E73C0044C079 /* SyncLog.swift */,
 				87BEBEEC281C282D0095CD29 /* Times.swift */,
-				8757AA3C290511FF00D97517 /* Task.swift */,
+				8757AA3C290511FF00D97517 /* RecordTask.swift */,
 				87199F502883D0B00017D01A /* TaskInfo.swift */,
 				87862E832B2D989A004ED313 /* NotificationInfo.swift */,
 				87D4DCC62BA52F3800BB5AAB /* ResetPasswordInfo.swift */,
@@ -1238,7 +1264,7 @@
 				87E6004928426EA3008D17B9 /* Setting */,
 				87862E852B2D9F8D004ED313 /* Notification */,
 				875FAE332B1C717E008F19D2 /* Interface */,
-				D9DC51C62C243EC4009A96F6 /* ToastMessage */,
+				D9DC51C62C243EC4009A96F6 /* Toast */,
 			);
 			path = Present;
 			sourceTree = "<group>";
@@ -1340,6 +1366,7 @@
 		877911AF2A18865100F0A713 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				AB35A8AF2DC60A1100A6E7B4 /* Record */,
 				877911B12A188A3200F0A713 /* SettingSwitchListVC.swift */,
 				877911B92A1891B100F0A713 /* SettingSwitchListVM.swift */,
 				877911B72A18903000F0A713 /* SettingListCell.swift */,
@@ -1365,7 +1392,8 @@
 		87862E852B2D9F8D004ED313 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				87862E862B2D9FA1004ED313 /* NotificationVC.swift */,
+				AB3AB9802DCF4226001B899A /* NotificationBottomSheetView.swift */,
+				AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -1538,6 +1566,7 @@
 				879BE32B2AC68EC7007AAC46 /* PortraitVC.swift */,
 				879BE32D2AC68F95007AAC46 /* WhiteNavigationVC.swift */,
 				87862E882B2DBBDA004ED313 /* PopupVC.swift */,
+				AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1746,7 +1775,6 @@
 		87D4DCEC2BA6B11B00BB5AAB /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				D9DC51C42C243E37009A96F6 /* newRecordLottie.json */,
 				87D4DCED2BA6B13100BB5AAB /* successBlueLottie.json */,
 			);
 			path = Lottie;
@@ -1802,14 +1830,13 @@
 		87D83E862B29604C003C40AE /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				87D83E872B296069003C40AE /* TTSettingSelectableCell.swift */,
+				87D83E872B296069003C40AE /* TTSettingListCell.swift */,
 				8706C32B2AEF864000F7C842 /* TTSignupTitleView.swift */,
 				87E5C70E2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift */,
 				87A8CD242AF0C37200D4C1D7 /* TTSignupSecureFieldView.swift */,
 				8706C32D2AEF878D00F7C842 /* TTSignupTextFieldUnderlineView.swift */,
 				8706C32F2AEF881500F7C842 /* TTSignupTextFieldWarning.swift */,
 				8706C3312AEF8A0300F7C842 /* TTSignupNextButtonForMac.swift */,
-				87862E812B2D8C22004ED313 /* TTNotificationView.swift */,
 				87D4DCE52BA6A2AB00BB5AAB /* TTChangeCompleteTitleView.swift */,
 				87D4DCE72BA6A8AA00BB5AAB /* TTBottomRoundButtonView.swift */,
 				87BF666828F809DE00CD6F19 /* TimeLabelView */,
@@ -2021,6 +2048,24 @@
 			path = Project_Timer;
 			sourceTree = "<group>";
 		};
+		AB35A8AE2DC5EF8A00A6E7B4 /* ToastViews */ = {
+			isa = PBXGroup;
+			children = (
+				D9DC51CE2C26FC83009A96F6 /* NewRecordToastView.swift */,
+			);
+			path = ToastViews;
+			sourceTree = "<group>";
+		};
+		AB35A8AF2DC60A1100A6E7B4 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				AB35A8B02DC60A2E00A6E7B4 /* SettingRecordVC.swift */,
+				AB35A8B22DC6393500A6E7B4 /* SettingRecordListView.swift */,
+				AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
 		D777B167BDE24D9E3DE50CB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2031,15 +2076,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D9DC51C62C243EC4009A96F6 /* ToastMessage */ = {
+		D9DC51C62C243EC4009A96F6 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
-				D9DC52022C2D9F20009A96F6 /* ToastMessage.swift */,
-				D9DC51CE2C26FC83009A96F6 /* newRecordToastView.swift */,
-				D9DC51FE2C29A29F009A96F6 /* ToastView.swift */,
-				D9A5F1412C32FA3700CED4B0 /* ToastPresenter.swift */,
+				AB35A8AC2DC5EE3F00A6E7B4 /* Toast.swift */,
+				AB35A8A72DC3CC4300A6E7B4 /* ToastManager.swift */,
+				AB35A8A92DC4620700A6E7B4 /* ToastViewModel.swift */,
+				D9DC51FE2C29A29F009A96F6 /* ToastViewPresenter.swift */,
+				AB35A8AE2DC5EF8A00A6E7B4 /* ToastViews */,
 			);
-			path = ToastMessage;
+			path = Toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2073,6 +2119,7 @@
 				878B30F92992BB5B00BE7413 /* Embed Foundation Extensions */,
 				871DC0F02BC274280024DA3B /* Embed Frameworks */,
 				66A4C9514F6901D7CD53A3B9 /* [CP] Copy Pods Resources */,
+				AB177FA12DC8D341006C1796 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2092,6 +2139,12 @@
 				8761BDC32BCFE64000E9281A /* Moya */,
 				8761BDC52BCFE64000E9281A /* ReactiveMoya */,
 				8761BDC72BCFE64000E9281A /* RxMoya */,
+				AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */,
+				AB3AB98B2DD06A77001B899A /* SnapKit */,
+				AB3AB98E2DD06AD5001B899A /* Then */,
+				AB3AB9912DD07372001B899A /* RxCocoa */,
+				AB3AB9932DD07372001B899A /* RxRelay */,
+				AB3AB9952DD07372001B899A /* RxSwift */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2132,6 +2185,9 @@
 				876C3B092B10361E002A5132 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				8761BDBD2BCFE47000E9281A /* XCRemoteSwiftPackageReference "Moya" */,
+				AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */,
+				AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 93B0851E248DDF2F00E215BD /* Products */;
 			projectDirPath = "";
@@ -2166,10 +2222,12 @@
 				878B507225B6E31600B9EFD7 /* timer.mp3 in Resources */,
 				87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */,
 				87306D712B26CC7B001B7C14 /* MiSans-Regular.ttf in Resources */,
+				AB3AB9852DCF9522001B899A /* Pretendard-Bold.otf in Resources */,
 				871EDFEC288AF6E900B428A6 /* InfoPlist.strings in Resources */,
 				874B9D1C25CAB233006FCD04 /* HGGGOTHICSSI_PRO_99G.otf in Resources */,
 				87906C7F2B9BF749000EC960 /* MiSans-Normal.ttf in Resources */,
 				93B0852D248DDF3000E215BD /* LaunchScreen.storyboard in Resources */,
+				AB3AB9832DCF8C0D001B899A /* Pretendard-Regular.otf in Resources */,
 				04E0DFC828A9191A004DABBE /* HistoryCell.xib in Resources */,
 				87199F4F2883CCDB0017D01A /* StandardDailyTaskCell.xib in Resources */,
 				D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */,
@@ -2181,7 +2239,6 @@
 				874B9D1B25CAB233006FCD04 /* HGGGOTHICSSI_PRO_80G.otf in Resources */,
 				93C1358A2539540F00707258 /* Assets.xcassets in Resources */,
 				874B9D1A25CAB233006FCD04 /* HGGGOTHICSSI_PRO_60G.otf in Resources */,
-				D9DC51C52C243E37009A96F6 /* newRecordLottie.json in Resources */,
 				93B08528248DDF2F00E215BD /* Main.storyboard in Resources */,
 				87306D792B26CC7B001B7C14 /* MiSans-Bold.ttf in Resources */,
 			);
@@ -2206,6 +2263,28 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Project_Timer/Pods-Project_Timer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AB177FA12DC8D341006C1796 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 		EC16A477924DCEC2DA0A756B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2285,22 +2364,19 @@
 				04E0DFCB28A926C1004DABBE /* TaskInteractionView.swift in Sources */,
 				875A5F7B2A20836600679A72 /* HowToUseWidgetVC.swift in Sources */,
 				87199F512883D0B00017D01A /* TaskInfo.swift in Sources */,
+				AB35A8AD2DC5EE3F00A6E7B4 /* Toast.swift in Sources */,
 				875FBE252AC9116B00B28723 /* UITextField+Extension.swift in Sources */,
 				87199F532883D0F70017D01A /* UIColor+Extension.swift in Sources */,
 				870E117C2A0F7EF000CFA77C /* CalendarWidgetCellData.swift in Sources */,
 				879BE31E2AC317DB007AAC46 /* CGSize+Extension.swift in Sources */,
-				87862E822B2D8C22004ED313 /* TTNotificationView.swift in Sources */,
 				878BF7ED2955E5430044C079 /* SyncDailysVM.swift in Sources */,
 				870C70732AD51BEB00024CAC /* PredicateChecker.swift in Sources */,
-				D9DC51FF2C29A29F009A96F6 /* ToastView.swift in Sources */,
+				D9DC51FF2C29A29F009A96F6 /* ToastViewPresenter.swift in Sources */,
 				879BE3242AC42758007AAC46 /* TiTiImage.swift in Sources */,
 				87EA022F2B9BF927003439F2 /* UIViewControllerPreview.swift in Sources */,
 				87EA02312B9BF941003439F2 /* UIViewPreview.swift in Sources */,
 				87B90B3A2BF4AEF600D6886E /* FirebaseRepository.swift in Sources */,
 				873C197A28D04B5B00E02ADC /* DayOfWeekText.swift in Sources */,
-				870800852B2D593400830B39 /* SyncLogAPI.swift in Sources */,
-				D9DC52032C2D9F20009A96F6 /* ToastMessage.swift in Sources */,
-				87163DCA2ACAF89B008D4072 /* NetworkResult.swift in Sources */,
 				874F9C2B2ABFF51700675A86 /* SigninSelectView.swift in Sources */,
 				871C1A0328519CC200BDAE02 /* SettingDevInfoCell.swift in Sources */,
 				87ED9ABF28D16FC200186677 /* TasksCircularProgressDTO.swift in Sources */,
@@ -2337,6 +2413,7 @@
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
+				AB35A8A82DC3CC4300A6E7B4 /* ToastManager.swift in Sources */,
 				875FBE272AC91ED800B28723 /* CGPoint+Extension.swift in Sources */,
 				875EDA342957E0360037A7EB /* NetworkInterceptor.swift in Sources */,
 				870E11752A0E226D00CFA77C /* CalendarWidgetData.swift in Sources */,
@@ -2381,6 +2458,7 @@
 				87D4DCD42BA5A53F00BB5AAB /* ResetPasswordEmailModel.swift in Sources */,
 				878899822894F05F00B7F378 /* StandardWeekTaskCell.swift in Sources */,
 				877911B82A18903000F0A713 /* SettingListCell.swift in Sources */,
+				AB3AB9812DCF4226001B899A /* NotificationBottomSheetView.swift in Sources */,
 				870F90E32AEFF7FC00854DDB /* SignupPasswordView.swift in Sources */,
 				87BEBEEB281C19CA0095CD29 /* StopwatchVM.swift in Sources */,
 				87F1093A284C589A002E31EA /* FunctionResponse.swift in Sources */,
@@ -2395,6 +2473,7 @@
 				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
+				AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */,
 				87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */,
 				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
@@ -2434,11 +2513,12 @@
 				87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */,
 				87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */,
 				8751C6F628472133007FAFC4 /* SettingCellInfo.swift in Sources */,
-				D9DC51CF2C26FC83009A96F6 /* newRecordToastView.swift in Sources */,
+				D9DC51CF2C26FC83009A96F6 /* NewRecordToastView.swift in Sources */,
 				87D4DCC72BA52F3800BB5AAB /* ResetPasswordInfo.swift in Sources */,
 				87B90B412BF4BFEE00D6886E /* TTProvider.swift in Sources */,
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
+				AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				871616A22C3A606C00C4EF25 /* GetRecordTimeUseCase.swift in Sources */,
@@ -2446,7 +2526,7 @@
 				87D7ED152952B3C100121DE6 /* TestUserSignupRequest.swift in Sources */,
 				878DA8232B0C6B1E001E924E /* SigninSelectModel.swift in Sources */,
 				04504C642864C7F500CA4C69 /* BaseTimeLabelView.swift in Sources */,
-				87D83E882B296069003C40AE /* TTSettingSelectableCell.swift in Sources */,
+				87D83E882B296069003C40AE /* TTSettingListCell.swift in Sources */,
 				04504C5B286485BE00CA4C69 /* BaseSingleTimeLabelView.swift in Sources */,
 				87789E42288BBD0900759C01 /* DayOfWeekLabel.swift in Sources */,
 				87A722A428CCB8D9000DA304 /* MonthView.swift in Sources */,
@@ -2467,12 +2547,12 @@
 				870800522B2C3A0800830B39 /* ServerURLResponse.swift in Sources */,
 				8791C1F227DCD050000D6BA9 /* Notification+Extension.swift in Sources */,
 				87F771BF2984101700BF1907 /* Todolist.swift in Sources */,
+				AB3AB9872DD05F59001B899A /* NotificationBottomSheetVC.swift in Sources */,
 				878BF7EF2955E73C0044C079 /* SyncLog.swift in Sources */,
 				87306D512B26086D001B7C14 /* TLRko.swift in Sources */,
 				878431AD27F6F461000A98B3 /* TodolistVM.swift in Sources */,
 				878DA1F82AEE68DA00C60CBF /* SignupEmailModel.swift in Sources */,
 				04FA75D8286F2AB900BAE2B2 /* Fonts.swift in Sources */,
-				87862E872B2D9FA1004ED313 /* NotificationVC.swift in Sources */,
 				8751C6F82847234A007FAFC4 /* SettingVM.swift in Sources */,
 				879D207D2A19D3BA00D8A420 /* ThemeColorDirectionView.swift in Sources */,
 				87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */,
@@ -2500,7 +2580,7 @@
 				87476DAD28A2794B00FAD273 /* LastestVersionInfo.swift in Sources */,
 				87459706263FF0D700172C0F /* Daily.swift in Sources */,
 				87FB8D1B2B3C5DF400EA5693 /* NotificationUseCase.swift in Sources */,
-				8757AA3D290511FF00D97517 /* Task.swift in Sources */,
+				8757AA3D290511FF00D97517 /* RecordTask.swift in Sources */,
 				04E0DFCD28A94460004DABBE /* PaddingLabel.swift in Sources */,
 				87405D6628F5869D00576D2C /* ColorofTextSelectorVC.swift in Sources */,
 				872210492C2FF6AF003B97AD /* FunctionInfo.swift in Sources */,
@@ -2511,12 +2591,14 @@
 				8788997A2894EFEE00B7F378 /* LogWeekVC.swift in Sources */,
 				872C0EE1284AE57200E8E3F2 /* SettingTiTiLabVC.swift in Sources */,
 				875EDA362957F9510037A7EB /* LoadingIndicator.swift in Sources */,
+				AB35A8B12DC60A2E00A6E7B4 /* SettingRecordVC.swift in Sources */,
 				872C0EE6284AF31000E8E3F2 /* UpdateHistoryResponse.swift in Sources */,
 				87BF666A28F80E9400CD6F19 /* NormalTimeLabelView.swift in Sources */,
 				87E6004B28426EBF008D17B9 /* SettingVC.swift in Sources */,
 				93B08523248DDF2F00E215BD /* SceneDelegate.swift in Sources */,
 				875C98CB2871C0A7008F7ADD /* UIImage+Extension.swift in Sources */,
 				87459708263FF0F000172C0F /* Storage.swift in Sources */,
+				AB3AB9892DD06882001B899A /* BaseBottomSheetVC.swift in Sources */,
 				8788997F2894F03300B7F378 /* StandardWeekGraphView.swift in Sources */,
 				8721C6D9296941F800410D57 /* UIScrollView+Extension.swift in Sources */,
 				8788AFE528828D3500D26E7D /* LogDailyVC.swift in Sources */,
@@ -2528,6 +2610,7 @@
 				87D4DCD22BA5A4C400BB5AAB /* ResetPasswordEmailView.swift in Sources */,
 				878813E52A209BA0000ED2C1 /* HowToAddWidgetVC.swift in Sources */,
 				8722105D2C300A8C003B97AD /* GetSurveysUseCase.swift in Sources */,
+				AB35A8AA2DC4620700A6E7B4 /* ToastViewModel.swift in Sources */,
 				8765234C28C7948700487BFB /* TotalTime.swift in Sources */,
 				87A7F5D4267270F800F69EBA /* Todo.swift in Sources */,
 				879D207F2A19D40400D8A420 /* Updateable.swift in Sources */,
@@ -2543,10 +2626,8 @@
 				87FB6B8D2BFE0B3F00CD7A9C /* AuthRepository.swift in Sources */,
 				87D4DCC22BA5298B00BB5AAB /* ResetPasswordNicknameView.swift in Sources */,
 				87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */,
-				8708008B2B2D5A4400830B39 /* SyncLogRepositoryInterface.swift in Sources */,
 				D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */,
-				873731D92B2E97FE00D7BD9F /* GetNotificationUseCase.swift in Sources */,
-				87D4DCCC2BA5477400BB5AAB /* ResetPasswordRequest.swift in Sources */,
+				87D4DCCC2BA5477400BB5AAB /* UpdatePasswordRequest.swift in Sources */,
 				87D4DCCC2BA5477400BB5AAB /* UpdatePasswordRequest.swift in Sources */,
 				879A2BA8284746A500B69DA7 /* SettingFooterView.swift in Sources */,
 				04E0DFC328A9031A004DABBE /* ModifyRecordVM.swift in Sources */,
@@ -2593,10 +2674,7 @@
 				874F9C332ABFFDDF00675A86 /* SigninView.swift in Sources */,
 				87D4DCDB2BA5C19C00BB5AAB /* ResetPasswordModel.swift in Sources */,
 				87DE1177268AC9AD0012F043 /* DailyManager.swift in Sources */,
-				8708007F2B2D543500830B39 /* RecordTimesUseCase.swift in Sources */,
-				8708005F2B2C5F5F00830B39 /* AuthDTO.swift in Sources */,
-				D9A5F1422C32FA3700CED4B0 /* ToastPresenter.swift in Sources */,
-				875FAE2A2B1C6829008F19D2 /* AppLatestVersionDTO.swift in Sources */,
+				8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */,
 				877BDCE72C390C9300A50231 /* CheckEmailExitUseCase.swift in Sources */,
 				8708005F2B2C5F5F00830B39 /* AuthResponse.swift in Sources */,
 				8721C6D72969123E00410D57 /* IOUsecase.swift in Sources */,
@@ -2706,7 +2784,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2746,12 +2824,12 @@
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2841,7 +2919,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = widget;
@@ -2898,7 +2976,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -2993,12 +3071,12 @@
 				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3019,15 +3097,15 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2C96RNDN63;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Project_Timer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.17.4;
+				MARKETING_VERSION = 7.18;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3095,7 +3173,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 11.0.0;
 			};
 		};
 		8773AF5027DCB5D100739A09 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
@@ -3120,6 +3198,30 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.4.1;
+			};
+		};
+		AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -3179,6 +3281,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87D4DCE92BA6B04B00BB5AAB /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		AB3AB97C2DC8D4D6001B899A /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		AB3AB98B2DD06A77001B899A /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB98A2DD06A77001B899A /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AB3AB98E2DD06AD5001B899A /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB98D2DD06AD5001B899A /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		AB3AB9912DD07372001B899A /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AB3AB9932DD07372001B899A /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AB3AB9952DD07372001B899A /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

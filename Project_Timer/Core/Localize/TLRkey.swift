@@ -87,6 +87,8 @@ enum TLRkey: String {
     case Settings_Button_TiTiLab
     /// 설정
     case Settings_Text_SettingSection
+    /// 기록
+    case Settings_Button_Record
     /// 알림
     case Settings_Button_Notification
     /// UI
@@ -151,6 +153,13 @@ enum TLRkey: String {
     case SyncDaily_Popup_InfoFirstSyncTitle
     /// 첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다.
     case SyncDaily_Popup_InfoFirstSyncDesc
+    
+    /// 기록 날짜의 갱신 시각
+    case SettingRecord_Text_RecordResetTimeTitle
+    /// 갱신 시각을 기준으로 새로운 날짜의 기록이 시작됩니다.
+    case SettingRecord_Text_RecordResetTimeDesc
+    /// 갱신 시각을 24시간 형태로 입력해주세요. (0 ~ 23)
+    case SettingRecord_Popup_InputRecordResetTime
     
     /// 업데이트
     case SwitchSetting_Button_Update
@@ -228,8 +237,6 @@ enum TLRkey: String {
     case Recording_Popup_CheckDailyDateDesc
     /// 목표시간 수정 title
     case Recording_Text_EditTargetTimeTitle
-    /// 목표시간 수정 subtitle
-    case Recording_Text_EditTargetTimeSubtitle
     
     /// 종료
     case Timer_Text_Finish
@@ -455,6 +462,8 @@ enum TLRkey: String {
     
     /// 오늘 그만보기
     case Notification_Button_PassToday
+    /// 1주일간 다시 보지 않기
+    case Notification_Button_PassWeek
     
     /// 날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다
     case WidgetSetting_Text_DailyTargetTimeDesc

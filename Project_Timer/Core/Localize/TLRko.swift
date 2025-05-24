@@ -53,6 +53,7 @@ struct TLRko {
         case .Settings_Button_Functions: value = "TiTi 기능들"
         case .Settings_Button_TiTiLab: value = "TiTi 연구소"
         case .Settings_Text_SettingSection: value = "설정"
+        case .Settings_Button_Record: value = "기록"
         case .Settings_Button_Notification: value = "알림"
         case .Settings_Button_UI: value = "UI"
         case .Settings_Button_Control: value = "제어"
@@ -86,6 +87,10 @@ struct TLRko {
         case .SyncDaily_Button_SyncNow: value = "동기화"
         case .SyncDaily_Popup_InfoFirstSyncTitle: value = "첫 동기화 안내"
         case .SyncDaily_Popup_InfoFirstSyncDesc: value = "첫 동기화의 경우 모든 Daily 정보가 반영되기까지 오래걸릴 수 있으며(10s), 앱을 종료하지 말고 기다리시기 바랍니다."
+            
+        case .SettingRecord_Text_RecordResetTimeTitle: value = "기록 날짜의 갱신 시각"
+        case .SettingRecord_Text_RecordResetTimeDesc: value = "갱신 시각을 기준으로 새로운 날짜의 기록이 시작됩니다."
+        case .SettingRecord_Popup_InputRecordResetTime: value = "갱신 시각을 24시간 형태로 입력해주세요. (0 ~ 23)"
             
         case .SwitchSetting_Button_Update: value = "업데이트"
         case .SwitchSetting_Button_5minNotiDesc: value = "종료 5분전 알림"
@@ -127,7 +132,6 @@ struct TLRko {
         case .Recording_Popup_CheckDailyDateTitle: value = "기록중인 날짜를 확인해주세요"
         case .Recording_Popup_CheckDailyDateDesc: value = "새로운 날짜의 기록을 시작하시겠습니까?"
         case .Recording_Text_EditTargetTimeTitle: value = "목표시간 수정"
-        case .Recording_Text_EditTargetTimeSubtitle: value = "의 목표시간을 수정해요!"
             
         case .Timer_Text_Finish: value = "종료"
         case .Timer_Text_TimerEndTime: value = "종료예정"
@@ -248,6 +252,7 @@ struct TLRko {
         case .Server_Error_DownloadError: value = "다운로드 오류"
             
         case .Notification_Button_PassToday: value = "오늘 그만보기"
+        case .Notification_Button_PassWeek: value = "일주일 동안 이 안내창 보지 않기"
             
         case .WidgetSetting_Text_DailyTargetTimeDesc: value = "날짜별 누적 시간에 따른 색 농도표시를 위한 목표 시간을 설정합니다"
         case .WidgetSetting_Text_Description: value = "위젯 설명"

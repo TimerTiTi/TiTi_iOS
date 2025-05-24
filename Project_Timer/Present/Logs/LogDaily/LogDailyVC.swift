@@ -71,7 +71,7 @@ final class LogDailyVC: UIViewController {
         self.configureBiggerUI()
         #endif
         
-        self.viewModel?.updateDaily(to: RecordsManager.shared.currentDaily)
+        self.viewModel?.updateDaily(to: RecordsManager.shared.dailyManager.currentDaily)
     }
     
     override func viewWillAppear(_ animated: Bool) {

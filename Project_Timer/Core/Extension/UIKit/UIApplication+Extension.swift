@@ -10,13 +10,17 @@ import UIKit
 
 extension UIApplication {
     
-    var firstWindow: UIWindow? {
-        let scenes = UIApplication.shared.connectedScenes
-        let windowScene = scenes.first as? UIWindowScene
-        return windowScene?.windows.first
+    var keyWindow: UIWindow? {
+        return UIApplication.shared.connectedScenes
+            .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+            .first
     }
     
     var safeAreaTopInset: CGFloat {
-        return firstWindow?.safeAreaInsets.top ?? 0
+        return keyWindow?.safeAreaInsets.top ?? 0
+    }
+    
+    var safeAreaBottomInset: CGFloat {
+        return keyWindow?.safeAreaInsets.bottom ?? 0
     }
 }

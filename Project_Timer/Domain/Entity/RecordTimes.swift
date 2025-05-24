@@ -64,7 +64,7 @@ struct RecordTimes: Codable {
     mutating func recordStart() {
         self.recordStartAt = Date()
         self.recording = true
-        self.recordStartTimeline = RecordsManager.shared.currentDaily.timeline
+        self.recordStartTimeline = RecordsManager.shared.dailyManager.currentDaily.timeline
         self.save()
     }
     // 기록 종료시 설정
