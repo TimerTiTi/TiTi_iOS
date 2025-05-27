@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAnalytics
+import FirebaseAppCheck
 import GoogleMobileAds
 import WidgetKit
 import GoogleSignIn
@@ -27,6 +28,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     private var cancellables = Set<AnyCancellable>()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let providerFactory = TTAppCheckProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        FirebaseApp.configure()
+        
         self.checkLatestVersion(isLaunch: true)
         self.checkGoogleSignOut()
         
@@ -180,14 +185,6 @@ extension AppDelegate {
     private func configureGoogleAdmob() {
         /// 애드몹 이니셜라이즈
         MobileAds.shared.start(completionHandler: nil)
-        // MARK: 릴리즈할 때 해당 부분 제거!!!!!!
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "4d05e46e5ab0994dee203a9e0477ddaf" ]
-        
-        /// 앱 실행시 Analytics 에 정보 전달부분
-        FirebaseApp.configure()
-        Analytics.logEvent("launch", parameters: [
-            AnalyticsParameterItemID: "ver \(String.currentVersion)",
-        ])
     }
     
     private func configureNotificationCenterAddObserver() {
@@ -253,5 +250,15 @@ extension AppDelegate {
     
     private func updateToLastestVersion() {
         Versions.update()
+    }
+}
+
+class TTAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
+    func createProvider(with app: FirebaseApp) -> AppCheckProvider? {
+#if DEBUG
+        return AppCheckDebugProvider(app: app)
+#else
+        return AppAttestProvider(app: app)
+#endif
     }
 }

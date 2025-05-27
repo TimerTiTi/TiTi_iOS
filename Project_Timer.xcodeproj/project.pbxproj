@@ -408,6 +408,8 @@
 		AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9912DD07372001B899A /* RxCocoa */; };
 		AB3AB9942DD07372001B899A /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9932DD07372001B899A /* RxRelay */; };
 		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
+		AB6A55902DE5EB7E00E3D1C2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */; };
+		AB6A55922DE5F17900E3D1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -853,6 +855,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6A55902DE5EB7E00E3D1C2 /* FirebaseAppCheck in Frameworks */,
 				AB3AB9962DD07372001B899A /* RxSwift in Frameworks */,
 				8773AF4F27DCB59400739A09 /* FirebaseDatabase in Frameworks */,
 				87910828283876DD005D7B10 /* Alamofire in Frameworks */,
@@ -863,6 +866,7 @@
 				AB3AB9922DD07372001B899A /* RxCocoa in Frameworks */,
 				8773AF4D27DCB59400739A09 /* FirebaseAnalytics in Frameworks */,
 				AB3AB9942DD07372001B899A /* RxRelay in Frameworks */,
+				AB6A55922DE5F17900E3D1C2 /* FirebaseAuth in Frameworks */,
 				8761BDC82BCFE64000E9281A /* RxMoya in Frameworks */,
 				876C3B0B2B1045C5002A5132 /* GoogleSignIn in Frameworks */,
 				87D4DCEB2BA6B04B00BB5AAB /* Lottie in Frameworks */,
@@ -2145,6 +2149,8 @@
 				AB3AB9912DD07372001B899A /* RxCocoa */,
 				AB3AB9932DD07372001B899A /* RxRelay */,
 				AB3AB9952DD07372001B899A /* RxSwift */,
+				AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */,
+				AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */,
 			);
 			productName = Project_Timer;
 			productReference = 93B0851D248DDF2F00E215BD /* TiTi.app */;
@@ -2829,7 +2835,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18;
+				MARKETING_VERSION = 7.18.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3076,7 +3082,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18;
+				MARKETING_VERSION = 7.18.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3105,7 +3111,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18;
+				MARKETING_VERSION = 7.18.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3311,6 +3317,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AB3AB9902DD07372001B899A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8773AF4B27DCB59400739A09 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
