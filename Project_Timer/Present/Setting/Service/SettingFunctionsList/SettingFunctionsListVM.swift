@@ -26,7 +26,7 @@ final class SettingFunctionsListVM {
         self.getTiTiFunctionsUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
-                    // TODO: FB Event
+                    FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "FunctionsList", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     self?.warning = networkError.alertMessage
                 }

@@ -27,7 +27,7 @@ final class SettingTiTiLabVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    // TODO: FB Event
+                    FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "TiTiLab", reason: String(networkError.localizedDescription.prefix(100))))
                     self?.stopLoading = true
                 }
             } receiveValue: { [weak self] surveyInfos in

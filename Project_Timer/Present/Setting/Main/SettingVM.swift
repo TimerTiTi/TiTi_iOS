@@ -91,7 +91,7 @@ final class SettingVM {
         self.getAppVersionUseCase.execute()
           .sink { completion in
               if case .failure(let networkError) = completion {
-                  // TODO: FB Event
+                  FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "Setting", reason: String(networkError.message.prefix(100))))
                   print("ERROR", #function, networkError)
               }
           } receiveValue: { [weak self] appLatestVersionInfo in

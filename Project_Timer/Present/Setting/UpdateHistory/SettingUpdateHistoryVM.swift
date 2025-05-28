@@ -25,7 +25,7 @@ final class SettingUpdateHistoryVM {
         self.getUpdateHistorysUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
-                    // TODO: FB Event
+                    FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "UpdateHistory", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     self?.warning = networkError.alertMessage
                 }

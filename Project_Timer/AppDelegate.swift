@@ -119,8 +119,8 @@ extension AppDelegate {
         
         getAppVersionUseCase.execute()
             .sink { completion in
-                if case .failure = completion {
-                    // TODO: FB Event
+                if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "AppVersion", reason: String(networkError.localizedDescription.prefix(100))))
                     print("appVersion 불러오기 실패")
                 }
             } receiveValue: { [weak self] appLatestVersionInfo in

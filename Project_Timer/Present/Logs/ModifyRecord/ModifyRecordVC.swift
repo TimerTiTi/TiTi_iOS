@@ -481,14 +481,16 @@ extension ModifyRecordVC {
     }
     
     /// Ok와 Cancel 버튼이 있는 Alert 생성
-    private func showOKCancelAlert(title: String?, message: String?, handler: (()->Void)?) {
+    private func showOKCancelAlert(title: String?, message: String?, cancelAction: (() -> Void)? = nil, okAction: (()->Void)?) {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
         
-        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default)
+        let cancel = UIAlertAction(title: Localized.string(.Common_Text_Cencel), style: .default) { _ in
+            cancelAction?()
+        }
         let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default) { _ in
-            handler?()
+            okAction?()
         }
         
         alert.addAction(cancel)
@@ -647,12 +649,10 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
         
         switch mode {
         case .existingTask:
-            FirebaseEvent.shared.postEvent(.editTaskName)
             self.showEditTaskNameAlert(title: Localized.string(.EditDaily_Popup_EditTaskName)) { [weak self] text in
                 self?.viewModel?.changeTaskName(to: text)
             }
         case .newTask:
-            FirebaseEvent.shared.postEvent(.createTaskName)
             self.showEditTaskNameAlert(title: Localized.string(.EditDaily_Popup_EnterTaskName)) { [weak self] text in
                 self?.viewModel?.setNewTaskName(text)
             }
@@ -665,7 +665,6 @@ extension ModifyRecordVC: EditTaskButtonDelegate {
 // MARK: 히스토리 편집 버튼 (연필 모양)
 extension ModifyRecordVC: EditHistoryButtonDelegate {
     func editHistoryButtonTapped(at indexPath: IndexPath?) {
-        FirebaseEvent.shared.postEvent(.editRecordHistory)
         guard let index = indexPath?.row,
               let history = self.viewModel?.selectedTaskHistorys[safe: index] else { return }
         
@@ -678,7 +677,6 @@ extension ModifyRecordVC: EditHistoryButtonDelegate {
 // MARK: 기존 Task에 기록 추가 버튼
 extension ModifyRecordVC: AddHistoryButtonDelegate {
     func addHistoryButtonTapped() {
-        FirebaseEvent.shared.postEvent(.createRecordInRecord)
         guard let day = self.viewModel?.currentDaily.day else { return }
         
         // 초기 placeholder는 00:00:00
@@ -692,7 +690,6 @@ extension ModifyRecordVC: AddHistoryButtonDelegate {
 // MARK: 새로운 Task 기록 추가 버튼
 extension ModifyRecordVC: AddNewTaskHistoryButtonDelegate {
     func addNewTaskHistoryButtonTapped() {
-        FirebaseEvent.shared.postEvent(.createRecordInRecord)
         self.viewModel?.changeToNewTaskMode()
     }
 }
@@ -735,15 +732,16 @@ extension ModifyRecordVC: DateValidator {
 // MARK: 네비게이션 바 아이템 버튼
 extension ModifyRecordVC {
     @objc func saveButtonTapped() {
-        FirebaseEvent.shared.postEvent(.saveRecord)
         if self.viewModel?.isRemoveAd == true {
             self.viewModel?.save()
             self.showOKAlert(title: Localized.string(.Common_Popup_SaveCompleted), message: Localized.string(.EditDaily_Popup_EditTaskSaved)) { [weak self] in
                 self?.viewModel?.reset()
             }
         } else {
-            self.showOKCancelAlert(title: Localized.string(.Common_Popup_Inform),
-                                   message: Localized.string(.EditDaily_Popup_WatchADRequired)) { [weak self] in
+            self.showOKCancelAlert(title: Localized.string(.Common_Popup_Inform), message: Localized.string(.EditDaily_Popup_WatchADRequired)) {
+                FirebaseAnalytics.log(AdEvent.ad_declined(screen: AdScreen.EditRecord.rawValue))
+            } okAction: { [weak self] in
+                FirebaseAnalytics.log(AdEvent.ad_request(screen: AdScreen.EditRecord.rawValue))
                 self?.showRewardedAd()
             }
         }
@@ -787,11 +785,11 @@ extension ModifyRecordVC: FullScreenContentDelegate {
     
     private func showRewardedAd() {
         guard let rewardedAd = rewardedAd else {
-            return print("Ad wasn't ready.")
+            FirebaseAnalytics.log(AdEvent.ad_request_failed(screen: AdScreen.EditRecord.rawValue, reason: "Ad not ready"))
+            return
         }
         
-        // The UIViewController parameter is an optional.
-        rewardedAd.present(from: nil) { [weak self] in
+        rewardedAd.present(from: self) { [weak self] in
             let reward = rewardedAd.adReward
             print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
             self?.viewModel?.save()
@@ -800,11 +798,13 @@ extension ModifyRecordVC: FullScreenContentDelegate {
     
     /// 델리게이트에게 전면 광고 표시 실패를 알림
     func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        FirebaseAnalytics.log(AdEvent.ad_request_failed(screen: AdScreen.EditRecord.rawValue, reason: String(error.localizedDescription.prefix(100))))
         print("Ad did fail to present full screen content.")
     }
     
     /// 델리게이트에게 전면 광고 표시 성공을 알림
     func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
+        FirebaseAnalytics.log(AdEvent.ad_request_impression(screen: AdScreen.EditRecord.rawValue))
         print("Ad will present full screen content.")
     }
     

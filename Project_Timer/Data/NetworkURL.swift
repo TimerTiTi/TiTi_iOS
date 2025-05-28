@@ -35,7 +35,7 @@ final class NetworkURL {
             getServerURLUseCase.execute()
                 .sink { [weak self] completion in
                     if case .failure(let networkError) = completion {
-                        // TODO: FB Event
+                        FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "NetworkURL", reason: String(networkError.localizedDescription.prefix(100))))
                         print("ERROR", #function, networkError)
                         let url = Infos.ServerURL_devminsang2.value
                         self?.serverURL = url
