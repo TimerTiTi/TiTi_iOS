@@ -13,6 +13,7 @@ final class SettingTiTiLabVM {
     let getSurveysUseCase: GetSurveysUseCase
     @Published private(set) var infos: [SurveyInfo] = []
     @Published private(set) var warning: (title: String, text: String)?
+    @Published private(set) var stopLoading: Bool = false
     // Combine binding
     private var cancellables = Set<AnyCancellable>()
     
@@ -26,7 +27,8 @@ final class SettingTiTiLabVM {
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
                     print("ERROR", #function, networkError)
-                    self?.warning = networkError.alertMessage
+                    // TODO: FB Event
+                    self?.stopLoading = true
                 }
             } receiveValue: { [weak self] surveyInfos in
                 self?.infos = surveyInfos

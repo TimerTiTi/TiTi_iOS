@@ -118,13 +118,10 @@ extension AppDelegate {
         let getAppVersionUseCase = GetAppVersionUseCase(repository: repository)
         
         getAppVersionUseCase.execute()
-            .sink { [weak self] completion in
+            .sink { completion in
                 if case .failure = completion {
-                    // MARK: 버전 불러오기 실패 Alert 표시
-                    let title = Localized.string(.App_Popup_FetchVersionErrorTitle)
-                    let text = Localized.string(.App_Popup_FetchVersionErrorDesc)
-                    let ok = UIAlertAction(title: Localized.string(.Common_Text_OK), style: .default)
-                    self?.showAlert(title: title, text: text, actions: [ok])
+                    // TODO: FB Event
+                    print("appVersion 불러오기 실패")
                 }
             } receiveValue: { [weak self] appLatestVersionInfo in
                 let storeVersion = appLatestVersionInfo.latestVersion

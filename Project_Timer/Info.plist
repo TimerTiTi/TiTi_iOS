@@ -57,12 +57,7 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>$(ServerURL)</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-			<key>$(ServerURL2)</key>
+			<key>$(ServerURL_devminsang2)</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
@@ -286,10 +281,8 @@
 			<string>3qcr597p9d.skadnetwork</string>
 		</dict>
 	</array>
-	<key>ServerURL</key>
-	<string>$(ServerURL)</string>
-	<key>ServerURL2</key>
-	<string>$(ServerURL2)</string>
+	<key>ServerURL_devminsang2</key>
+	<string>$(ServerURL_devminsang2)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HGGGOTHICSSI_PRO_40G.otf</string>

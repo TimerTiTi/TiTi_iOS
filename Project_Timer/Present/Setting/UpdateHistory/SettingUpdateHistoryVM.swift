@@ -25,6 +25,7 @@ final class SettingUpdateHistoryVM {
         self.getUpdateHistorysUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    // TODO: FB Event
                     print("ERROR", #function, networkError)
                     self?.warning = networkError.alertMessage
                 }

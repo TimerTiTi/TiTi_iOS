@@ -26,6 +26,7 @@ final class SettingFunctionsListVM {
         self.getTiTiFunctionsUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    // TODO: FB Event
                     print("ERROR", #function, networkError)
                     self?.warning = networkError.alertMessage
                 }
