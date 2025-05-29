@@ -16,10 +16,7 @@ final class LogVC: UIViewController {
     private var pageSegmentedControl: UISegmentedControl!
     private var settingButton: UIButton!
     private var frameView: UIView!
-    private lazy var pageViewController: UIPageViewController = {
-        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        return pageViewController
-    }()
+    private var pageViewController: UIPageViewController!
     private var childVCs: [UIViewController] = []
     private var currentPage: Int = 0 {
         didSet {
@@ -34,7 +31,6 @@ final class LogVC: UIViewController {
         self.configureUI()
         self.bindAction()
         self.configureObservation()
-        self.configurePageViewController()
         self.configureChildViewControllers()
     }
     
@@ -91,6 +87,16 @@ extension LogVC {
                 make.bottom.equalTo(view.safeAreaLayoutGuide)
             }
         }
+        
+        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal).then {
+            frameView.addSubview($0.view)
+            addChild($0)
+            $0.didMove(toParent: self)
+            $0.dataSource = self
+            $0.view.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
     }
     
     private func bindAction() {
@@ -120,22 +126,6 @@ extension LogVC {
                 self?.currentPage = pageIndex
             }
         }
-    }
-    
-    private func configurePageViewController() {
-        self.frameView.addSubview(self.pageViewController.view)
-        self.addChild(self.pageViewController)
-        self.pageViewController.didMove(toParent: self)
-        
-        self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.pageViewController.view.leadingAnchor.constraint(equalTo: self.frameView.leadingAnchor),
-            self.pageViewController.view.topAnchor.constraint(equalTo: self.frameView.topAnchor),
-            self.pageViewController.view.trailingAnchor.constraint(equalTo: self.frameView.trailingAnchor),
-            self.pageViewController.view.bottomAnchor.constraint(equalTo: self.frameView.bottomAnchor)
-        ])
-        
-        self.pageViewController.dataSource = self
     }
     
     private func configureChildViewControllers() {
