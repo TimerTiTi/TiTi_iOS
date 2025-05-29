@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SnapKit
+import Then
+import RxSwift
 
 final class LogVC: UIViewController {
     static let changePageIndex = Notification.Name("changePageIndex")
-    @IBOutlet weak var pageSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var frameView: UIView!
-    @IBOutlet weak var settingButton: UIButton!
+    private var pageSegmentedControl: UISegmentedControl!
+    private var settingButton: UIButton!
+    private var frameView: UIView!
     private lazy var pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
         return pageViewController
@@ -24,9 +27,12 @@ final class LogVC: UIViewController {
             self.checkSettingButton()
         }
     }
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureUI()
+        self.bindAction()
         self.configureObservation()
         self.configurePageViewController()
         self.configureChildViewControllers()
@@ -49,20 +55,65 @@ final class LogVC: UIViewController {
         #endif
         self.tabBarController?.updateTabbarColor(backgroundColor: Colors.tabbarBackground, tintColor: .label, normalColor: .lightGray)
     }
-    
-    @IBAction func changePage(_ sender: UISegmentedControl) {
-        self.changeVC(oldValue: self.currentPage, newValue: sender.selectedSegmentIndex)
-    }
-    
-    @IBAction func showSettingBottomSheet(_ sender: Any) {
-        guard let logVC = self.childVCs[0] as? LogHomeVC else { return }
-        let height: CGFloat = self.view.bounds.width <= 375 ? 425 : 500
-        let bottomSheetVC = BottomSheetViewController(contentViewController: LogSettingVC(delegate: logVC), defaultHeight: height, cornerRadius: 25, isPannedable: true)
-        self.present(bottomSheetVC, animated: false, completion: nil)
-    }
 }
 
 extension LogVC {
+    private func configureUI() {
+        pageSegmentedControl = UISegmentedControl(items: ["Home", "Daily", "Week"]).then {
+            $0.selectedSegmentIndex = 0
+            view.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide)
+                make.centerX.equalToSuperview()
+            }
+        }
+        
+        settingButton = UIButton(type: .system).then {
+            $0.setImage(.init(systemName: "gearshape"), for: .normal)
+            $0.tintColor = .label
+            $0.imageView?.contentMode = .scaleAspectFit
+            $0.contentHorizontalAlignment = .fill
+            $0.contentVerticalAlignment = .fill
+            view.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.centerY.equalTo(pageSegmentedControl)
+                make.right.equalToSuperview().inset(16)
+                make.size.equalTo(28)
+            }
+        }
+        
+        frameView = UIView().then {
+            $0.backgroundColor = .systemBackground
+            view.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.top.equalTo(pageSegmentedControl.snp.bottom).offset(8)
+                make.horizontalEdges.equalToSuperview()
+                make.bottom.equalTo(view.safeAreaLayoutGuide)
+            }
+        }
+    }
+    
+    private func bindAction() {
+        pageSegmentedControl.rx.selectedSegmentIndex
+            .skip(1)
+            .subscribe(onNext: { [weak self] newIndex in
+                guard let self = self else { return }
+                self.changeVC(oldValue: self.currentPage, newValue: newIndex)
+            })
+            .disposed(by: disposeBag)
+        
+        settingButton.rx.tap
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance) // 빠른 중복 탭 방지 (선택)
+            .bind { [weak self] in
+                guard let self = self else { return }
+                guard let logVC = self.childVCs[0] as? LogHomeVC else { return }
+                let height: CGFloat = self.view.bounds.width <= 375 ? 425 : 500
+                let bottomSheetVC = BottomSheetViewController(contentViewController: LogSettingVC(delegate: logVC), defaultHeight: height, cornerRadius: 25, isPannedable: true)
+                self.present(bottomSheetVC, animated: false, completion: nil)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     private func configureObservation() {
         NotificationCenter.default.addObserver(forName: LogVC.changePageIndex, object: nil, queue: .main) { [weak self] noti in
             if let pageIndex = noti.userInfo?["pageIndex"] as? Int {

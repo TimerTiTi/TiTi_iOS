@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F3L-38-EoM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -990,7 +989,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="qS4-TX-vp4"/>
                                             </scrollView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="sHk-ia-ZKg">
-                                                <rect key="frame" x="128.33333333333331" y="653.33333333333337" width="133.33333333333331" height="25.666666666666629"/>
+                                                <rect key="frame" x="149.66666666666666" y="653.33333333333337" width="90.666666666666657" height="25.666666666666629"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                             </pageControl>
@@ -1084,7 +1083,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="eHe-Ui-EuU"/>
                                             </scrollView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="bT1-qt-SlH">
-                                                <rect key="frame" x="128.33333333333337" y="321" width="133.66666666666663" height="26"/>
+                                                <rect key="frame" x="149.66666666666666" y="321" width="90.666666666666657" height="26"/>
                                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="currentPageIndicatorTintColor" systemColor="labelColor"/>
                                             </pageControl>
@@ -1608,50 +1607,11 @@
                     <view key="view" contentMode="scaleToFill" id="cWw-C3-jEI">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-4h-eDe">
-                                <rect key="frame" x="111.66666666666669" y="91" width="167" height="32"/>
-                                <segments>
-                                    <segment title="Home"/>
-                                    <segment title="Daily"/>
-                                    <segment title="Week"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changePage:" destination="AEA-qf-y0K" eventType="valueChanged" id="1c1-Tl-kvI"/>
-                                </connections>
-                            </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-a4-Qq6">
-                                <rect key="frame" x="0.0" y="130" width="390" height="680"/>
-                                <color key="backgroundColor" name="system_backg"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xiq-1x-HSn">
-                                <rect key="frame" x="347" y="93.333333333333329" width="27" height="26.666666666666671"/>
-                                <color key="tintColor" systemColor="labelColor"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="gearshape" catalog="system"/>
-                                <connections>
-                                    <action selector="showSettingBottomSheet:" destination="AEA-qf-y0K" eventType="touchUpInside" id="b08-ug-ije"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="VoZ-gf-MpS"/>
                         <color key="backgroundColor" name="system_backg"/>
-                        <constraints>
-                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="bottom" secondItem="9Hd-a4-Qq6" secondAttribute="bottom" id="3RO-Ph-1df"/>
-                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="trailing" secondItem="xiq-1x-HSn" secondAttribute="trailing" constant="16" id="5oG-pV-lGN"/>
-                            <constraint firstItem="Hcb-4h-eDe" firstAttribute="top" secondItem="VoZ-gf-MpS" secondAttribute="top" id="Gih-XI-zqo"/>
-                            <constraint firstItem="9Hd-a4-Qq6" firstAttribute="leading" secondItem="VoZ-gf-MpS" secondAttribute="leading" id="O0I-Pi-XTd"/>
-                            <constraint firstItem="VoZ-gf-MpS" firstAttribute="trailing" secondItem="9Hd-a4-Qq6" secondAttribute="trailing" id="VvG-mA-G6v"/>
-                            <constraint firstItem="xiq-1x-HSn" firstAttribute="centerY" secondItem="Hcb-4h-eDe" secondAttribute="centerY" id="e2R-IL-c0g"/>
-                            <constraint firstItem="9Hd-a4-Qq6" firstAttribute="top" secondItem="Hcb-4h-eDe" secondAttribute="bottom" constant="8" id="l2z-rM-5xu"/>
-                            <constraint firstItem="Hcb-4h-eDe" firstAttribute="centerX" secondItem="VoZ-gf-MpS" secondAttribute="centerX" id="tiX-vO-zCz"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZwW-CZ-gMB"/>
                     <connections>
-                        <outlet property="frameView" destination="9Hd-a4-Qq6" id="fup-Ew-MHD"/>
-                        <outlet property="pageSegmentedControl" destination="Hcb-4h-eDe" id="XZi-jm-SUj"/>
-                        <outlet property="settingButton" destination="xiq-1x-HSn" id="8pi-15-ZmD"/>
                         <segue destination="RCx-ia-dL6" kind="show" id="MRQ-4r-Bz7"/>
                     </connections>
                 </viewController>
@@ -4104,8 +4064,8 @@
         <image name="checklist" catalog="system" width="128" height="107"/>
         <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="104"/>
-        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
+        <image name="clock.arrow.2.circlepath" catalog="system" width="128" height="117"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="119"/>
         <image name="cloud" catalog="system" width="128" height="87"/>
         <image name="email" width="256" height="256"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
@@ -4117,7 +4077,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rainbow" width="33.333332061767578" height="33.333332061767578"/>
         <image name="square" catalog="system" width="128" height="114"/>
-        <image name="square.and.arrow.up" catalog="system" width="108" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <image name="stopwatch" catalog="system" width="121" height="128"/>
         <image name="sun.max" catalog="system" width="128" height="125"/>
         <image name="sun.max.fill" catalog="system" width="128" height="125"/>
@@ -4157,16 +4117,16 @@
             <color red="0.59200000762939453" green="0.82400000095367432" blue="0.76099997758865356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D4">
-            <color red="0.65098039215686276" green="0.87058823529411766" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.65100002288818359" green="0.87099999189376831" blue="0.60399997234344482" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D5">
             <color red="0.98799997568130493" green="0.90200001001358032" blue="0.44699999690055847" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D6">
-            <color red="1" green="0.77254901960784317" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.77300000190734863" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D7">
-            <color red="0.99599999189376831" green="0.66299998760223389" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.99607843137254903" green="0.66274509803921566" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="D8">
             <color red="1" green="0.6119999885559082" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -4202,25 +4162,25 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemFillColor">
-            <color red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
