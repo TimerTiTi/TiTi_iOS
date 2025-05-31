@@ -9,23 +9,27 @@
 import UIKit
 import SwiftUI
 import Combine
+import SnapKit
+import Then
 
 final class LogHomeVC: UIViewController {
     static let identifier = "LogHomeVC"
+    private var scrollView: UIScrollView!
     // contentViews
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var totalView: UIView!
-    @IBOutlet weak var monthSmallView: UIView!
-    @IBOutlet weak var weekSmallView: UIView!
-    @IBOutlet weak var monthView: UIView!
-    @IBOutlet weak var weekView: UIView!
-    @IBOutlet weak var dailyView: UIView!
+    private var contentView: UIView!
+    private var stackView: UIStackView!
+    private var totalView: UIView!
+    private var monthSmallView: UIView!
+    private var weekSmallView: UIView!
+    private var monthView: UIView!
+    private var weekView: UIView!
+    private var dailyView: UIView!
     // layers
-    @IBOutlet weak var totalLayer: UIStackView!
-    @IBOutlet weak var monthWeekLayer: UIStackView!
-    @IBOutlet weak var monthLayer: UIStackView!
-    @IBOutlet weak var weekLayer: UIStackView!
-    @IBOutlet weak var dailyLayer: UIStackView!
+    private var totalLayer: UIStackView!
+    private var monthWeekLayer: UIStackView!
+    private var monthLayer: UIStackView!
+    private var weekLayer: UIStackView!
+    private var dailyLayer: UIStackView!
     
     private var viewModel: LogHomeVM?
     private var cancellables: Set<AnyCancellable> = []
@@ -33,11 +37,18 @@ final class LogHomeVC: UIViewController {
     private var progressWidth: CGFloat = 0
     private var progressHeight: CGFloat = 0
     
-    @IBOutlet var stackViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet var stackViewBottomConstraint: NSLayoutConstraint!
+    // MARK: - Initialization
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureUI()
         self.configureViewModel()
         self.configureTotal()
         self.configureMonthSmall()
@@ -69,14 +80,197 @@ final class LogHomeVC: UIViewController {
 
 // MARK: Device UI Configure
 extension LogHomeVC {
+    private func configureUI() {
+        scrollView = UIScrollView().then {
+            view.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+        }
+        
+        contentView = UIView().then {
+            scrollView.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+                make.width.equalToSuperview()
+            }
+        }
+        
+        stackView = UIStackView().then {
+            $0.axis = .vertical
+            $0.spacing = 17
+            contentView.addSubview($0)
+            $0.snp.makeConstraints { make in
+                make.verticalEdges.equalToSuperview().inset(8)
+                make.centerX.equalToSuperview()
+            }
+        }
+        
+        totalLayer = UIStackView().then { totalLayer in
+            totalLayer.axis = .vertical
+            totalLayer.spacing = 8
+            totalLayer.alignment = .center
+            stackView.addArrangedSubview(totalLayer)
+            
+            totalView = UIView().then {
+                $0.backgroundColor = .secondarySystemBackground
+                $0.layer.cornerRadius = 25
+                totalLayer.addArrangedSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.width.equalTo(339)
+                    make.height.equalTo(158)
+                }
+            }
+            
+            _ = UILabel().then {
+                $0.text = "Total"
+                $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                $0.textAlignment = .center
+                totalLayer.addArrangedSubview($0)
+            }
+        }
+        
+        monthWeekLayer = UIStackView().then { monthWeekLayer in
+            monthWeekLayer.axis = .horizontal
+            monthWeekLayer.spacing = 23
+            stackView.addArrangedSubview(monthWeekLayer)
+            
+            // Month
+            _ = UIStackView().then { monthSmallLayer in
+                monthSmallLayer.axis = .vertical
+                monthSmallLayer.spacing = 8
+                monthSmallLayer.alignment = .center
+                monthWeekLayer.addArrangedSubview(monthSmallLayer)
+                
+                monthSmallView = UIView().then {
+                    $0.backgroundColor = .secondarySystemBackground
+                    $0.layer.cornerRadius = 25
+                    monthSmallLayer.addArrangedSubview($0)
+                    $0.snp.makeConstraints { make in
+                        make.width.equalTo(158)
+                        make.height.equalTo(158)
+                    }
+                }
+                
+                _ = UILabel().then {
+                    $0.text = "Month"
+                    $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                    $0.textAlignment = .center
+                    monthSmallLayer.addArrangedSubview($0)
+                }
+            }
+            
+            // Week
+            _ = UIStackView().then { weekSmallLayer in
+                weekSmallLayer.axis = .vertical
+                weekSmallLayer.spacing = 8
+                weekSmallLayer.alignment = .center
+                monthWeekLayer.addArrangedSubview(weekSmallLayer)
+                
+                weekSmallView = UIView().then {
+                    $0.backgroundColor = .secondarySystemBackground
+                    $0.layer.cornerRadius = 25
+                    weekSmallLayer.addArrangedSubview($0)
+                    $0.snp.makeConstraints { make in
+                        make.width.equalTo(158)
+                        make.height.equalTo(158)
+                    }
+                }
+                
+                _ = UILabel().then {
+                    $0.text = "Week"
+                    $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                    $0.textAlignment = .center
+                    weekSmallLayer.addArrangedSubview($0)
+                }
+            }
+        }
+        
+        monthLayer = UIStackView().then { monthLayer in
+            monthLayer.axis = .vertical
+            monthLayer.spacing = 8
+            monthLayer.alignment = .center
+            stackView.addArrangedSubview(monthLayer)
+            
+            monthView = UIView().then {
+                $0.backgroundColor = .secondarySystemBackground
+                $0.layer.cornerRadius = 25
+                monthLayer.addArrangedSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.width.equalTo(339)
+                    make.height.equalTo(158)
+                }
+            }
+            
+            _ = UILabel().then {
+                $0.text = "Month"
+                $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                $0.textAlignment = .center
+                monthLayer.addArrangedSubview($0)
+            }
+        }
+        
+        weekLayer = UIStackView().then { weekLayer in
+            weekLayer.axis = .vertical
+            weekLayer.spacing = 8
+            weekLayer.alignment = .center
+            stackView.addArrangedSubview(weekLayer)
+            
+            weekView = UIView().then {
+                $0.backgroundColor = .secondarySystemBackground
+                $0.layer.cornerRadius = 25
+                weekLayer.addArrangedSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.width.equalTo(339)
+                    make.height.equalTo(158)
+                }
+            }
+            
+            _ = UILabel().then {
+                $0.text = "Week"
+                $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                $0.textAlignment = .center
+                weekLayer.addArrangedSubview($0)
+            }
+        }
+        
+        dailyLayer = UIStackView().then { dailyLayer in
+            dailyLayer.axis = .vertical
+            dailyLayer.spacing = 8
+            dailyLayer.alignment = .center
+            stackView.addArrangedSubview(dailyLayer)
+            
+            dailyView = UIView().then {
+                $0.backgroundColor = .secondarySystemBackground
+                $0.layer.cornerRadius = 25
+                dailyLayer.addArrangedSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.width.equalTo(339)
+                    make.height.equalTo(158)
+                }
+            }
+            
+            _ = UILabel().then {
+                $0.text = "Daily"
+                $0.font = Fonts.HGGGothicssiP60g(size: 12)
+                $0.textAlignment = .center
+                dailyLayer.addArrangedSubview($0)
+            }
+        }
+    }
+    
     private func configureBiggerUI() {
         guard UIDevice.current.userInterfaceIdiom == .pad else { return }
         #if targetEnvironment(macCatalyst)
         let height: CGFloat = self.contentView.bounds.height
         let scale: CGFloat = 1.25
-        self.stackViewTopConstraint.constant = 8+((scale-1)/2*height)
-        self.stackViewBottomConstraint.constant = 8+((scale-1)/2*height)
-        self.contentView.transform = CGAffineTransform.init(scaleX: scale, y: scale)
+        let inset = 8 + ((scale-1)/2*height)
+        
+        stackView.snp.updateConstraints { make in
+            make.verticalEdges.equalToSuperview().inset(inset)
+        }
+        
+        contentView.transform = CGAffineTransform(scaleX: scale, y: scale)
         #endif
     }
 }

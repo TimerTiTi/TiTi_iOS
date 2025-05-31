@@ -129,8 +129,8 @@ extension LogVC {
     }
     
     private func configureChildViewControllers() {
-        guard let logHomeVC = self.storyboard?.instantiateViewController(withIdentifier: LogHomeVC.identifier),
-              let logDailyVC = self.storyboard?.instantiateViewController(withIdentifier: LogDailyVC.identifier) as? LogDailyVC,
+        let logHomeVC = LogHomeVC()
+        guard let logDailyVC = self.storyboard?.instantiateViewController(withIdentifier: LogDailyVC.identifier) as? LogDailyVC,
               let logWeekVC = self.storyboard?.instantiateViewController(withIdentifier: LogWeekVC.identifier) else { return }
         logDailyVC.configureDelegate(to: self)
         
