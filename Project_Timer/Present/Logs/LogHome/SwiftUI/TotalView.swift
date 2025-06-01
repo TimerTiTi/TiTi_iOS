@@ -56,8 +56,7 @@ extension TotalView {
 }
 
 #Preview {
-    let totalVM = TotalVM()
+    let totalVM = TotalVM(parent: LogHomeVM())
     let dailys: [Daily] = [.testInfo]
-    totalVM.update(totalTime: TotalTime(dailys: dailys))
-    return TotalView(viewModel: totalVM)
+    TotalView(viewModel: totalVM)
 }

@@ -11,12 +11,18 @@ import SwiftUI
 import Combine
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 final class LogHomeVC: UIViewController {
     static let identifier = "LogHomeVC"
     private var scrollView: UIScrollView!
     // contentViews
     private var contentView: UIView!
+    private var monthNavigationLayer: UIView!
+    private var previousMonthButton: UIButton!
+    private var currentMonthLabel: UILabel!
+    private var nextMonthButton: UIButton!
     private var stackView: UIStackView!
     private var totalView: UIView!
     private var monthSmallView: UIView!
@@ -36,6 +42,8 @@ final class LogHomeVC: UIViewController {
     private var colors: [UIColor] = []
     private var progressWidth: CGFloat = 0
     private var progressHeight: CGFloat = 0
+
+    private let disposeBag = DisposeBag()
     
     // MARK: - Initialization
     init() {
@@ -49,6 +57,8 @@ final class LogHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.bindActions()
+        self.bindStatuses()
         self.configureViewModel()
         self.configureTotal()
         self.configureMonthSmall()
@@ -56,7 +66,6 @@ final class LogHomeVC: UIViewController {
         self.configureMonth()
         self.configureWeek()
         self.configureDaily()
-        self.bindAll()
         self.configureBiggerUI()
     }
     
@@ -96,12 +105,56 @@ extension LogHomeVC {
             }
         }
         
+        monthNavigationLayer = UIView().then { monthNavigationLayer in
+            contentView.addSubview(monthNavigationLayer)
+            monthNavigationLayer.snp.makeConstraints { make in
+                make.top.equalToSuperview().inset(8)
+                make.centerX.equalToSuperview()
+                make.height.equalTo(30)
+            }
+            
+            previousMonthButton = UIButton(type: .system).then {
+                $0.setTitle("<", for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+                $0.setTitleColor(UIColor.gray, for: .normal)
+                monthNavigationLayer.addSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.leading.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                }
+            }
+            
+            currentMonthLabel = UILabel().then {
+                $0.text = "YYYY.MM"
+                $0.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+                $0.textColor = UIColor.darkGray
+                monthNavigationLayer.addSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.leading.equalTo(previousMonthButton.snp.trailing).offset(15)
+                    make.centerY.equalToSuperview()
+                }
+            }
+            
+            nextMonthButton = UIButton(type: .system).then {
+                $0.setTitle(">", for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+                $0.setTitleColor(UIColor.gray, for: .normal)
+                monthNavigationLayer.addSubview($0)
+                $0.snp.makeConstraints { make in
+                    make.leading.equalTo(currentMonthLabel.snp.trailing).offset(15)
+                    make.trailing.equalToSuperview()
+                    make.centerY.equalToSuperview()
+                }
+            }
+        }
+        
         stackView = UIStackView().then {
             $0.axis = .vertical
             $0.spacing = 17
             contentView.addSubview($0)
             $0.snp.makeConstraints { make in
-                make.verticalEdges.equalToSuperview().inset(8)
+                make.top.equalTo(monthNavigationLayer.snp.bottom).offset(10)
+                make.bottom.equalToSuperview().inset(8)
                 make.centerX.equalToSuperview()
             }
         }
@@ -356,20 +409,31 @@ extension LogHomeVC {
 
 // MARK: Binding
 extension LogHomeVC {
-    private func bindAll() {
-        self.bindDaily()
+    private func bindActions() {
+        previousMonthButton.rx.tap
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .bind { [weak self] in
+                self?.viewModel?.goToPreviousMonth()
+            }
+            .disposed(by: disposeBag)
+            
+        nextMonthButton.rx.tap
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance) 
+            .bind { [weak self] in
+                self?.viewModel?.goToNextMonth()
+            }
+            .disposed(by: disposeBag)
     }
-    
-    private func bindDaily() {
-        self.viewModel?.$daily
+
+    private func bindStatuses() {    
+        viewModel?.$daily
             .receive(on: DispatchQueue.main)
-            .dropFirst()
-            .sink(receiveValue: { daily in
-                guard daily.tasks != [:] else {
-                    print("no data error")
-                    return
-                }
-                print("selected daily: \(daily.day.zeroDate.localDate.YYYYMMDDstyleString)")
+            .sink(receiveValue: { [weak self] daily in
+                guard let self = self else { return }
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YYYY.MM"
+                let monthString = dateFormatter.string(from: daily.day.zeroDate.localDate)
+                self.currentMonthLabel.text = monthString
             })
             .store(in: &self.cancellables)
     }

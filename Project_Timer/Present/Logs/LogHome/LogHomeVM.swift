@@ -9,7 +9,10 @@
 import Foundation
 import Combine
 
-final class LogHomeVM {
+// loadDaily -> daily 수정 -> updateDaily -> dailyVM 업데이트
+// updateDailys -> dailys 수정 -> 네 가지 viewModel 업데이트
+
+final class LogHomeVM: ObservableObject {
     @Published private(set) var daily: Daily = Daily() {
         didSet {
             self.updateDaily()
@@ -17,9 +20,8 @@ final class LogHomeVM {
     }
     private var subjectTimes: [Int] = []
     private var subjectNameTimes: [(name: String, time: String)] = []
-    private var dailys: [Daily] = [] {
+    @Published private(set) var dailys: [Daily] = [] {
         didSet {
-            self.updateTotal()
             self.updateWeekDates()
             self.updateMonth()
             self.updateMonth()
@@ -31,7 +33,7 @@ final class LogHomeVM {
             self.updateWeek()
         }
     }
-    let totalVM: TotalVM
+    var totalVM: TotalVM?
     let monthSmallVM: MonthSmallVM
     let weekSmallVM: WeekSmallVM
     let monthVM: MonthVM
@@ -39,12 +41,13 @@ final class LogHomeVM {
     let dailyVM: DailyVM
     
     init() {
-        self.totalVM = TotalVM()
         self.monthSmallVM = MonthSmallVM()
         self.weekSmallVM = WeekSmallVM()
         self.monthVM = MonthVM()
         self.weekVM = WeekVM()
         self.dailyVM = DailyVM()
+        
+        self.totalVM = TotalVM(parent: self)
     }
     
     func updateDailys() {
@@ -56,20 +59,24 @@ final class LogHomeVM {
     }
     
     func updateColor() {
-        self.totalVM.updateColor()
+        self.totalVM?.updateColor()
         self.monthSmallVM.updateColor()
         self.weekSmallVM.updateColor()
         self.monthVM.updateColor()
         self.weekVM.updateColor()
         self.dailyVM.updateColor()
     }
+    
+    func goToPreviousMonth() {
+        // TODO: 이전달로 변경
+    }
+    
+    func goToNextMonth() {
+        // TODO: 다음달로 변경
+    }
 }
 
 extension LogHomeVM {
-    private func updateTotal() {
-        self.totalVM.update(totalTime: TotalTime(dailys: self.dailys))
-    }
-    
     private func updateMonth() {
         let monthTime = MonthTime(baseDate: Date(), dailys: self.dailys)
         self.monthSmallVM.update(monthTime: monthTime)
