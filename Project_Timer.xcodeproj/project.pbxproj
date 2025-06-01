@@ -410,6 +410,7 @@
 		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
 		AB6A55902DE5EB7E00E3D1C2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */; };
 		AB6A55922DE5F17900E3D1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */; };
+		AB849E872DED1A08007F3C26 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E862DED1A08007F3C26 /* MainTabBarController.swift */; };
 		ABE48CF52DE7471E001CB707 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */; };
 		ABE48CF72DE74750001CB707 /* DebugEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF62DE74750001CB707 /* DebugEvent.swift */; };
 		ABE48CFA2DE74BAD001CB707 /* ActionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */; };
@@ -836,6 +837,7 @@
 		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetVC.swift; sourceTree = "<group>"; };
 		AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
+		AB849E862DED1A08007F3C26 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		ABE48CF62DE74750001CB707 /* DebugEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugEvent.swift; sourceTree = "<group>"; };
 		ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEvent.swift; sourceTree = "<group>"; };
@@ -1265,6 +1267,7 @@
 		875FAE322B1C7173008F19D2 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				AB849E852DED18B0007F3C26 /* MainTabBar */,
 				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
 				870800902B2D693800830B39 /* Signin */,
 				87E5C70B2AE0266200BE46B0 /* Signup */,
@@ -2080,6 +2083,14 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		AB849E852DED18B0007F3C26 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AB849E862DED1A08007F3C26 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		ABE48CF32DE7470D001CB707 /* AnalyticsEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -2556,6 +2567,7 @@
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */,
+				AB849E872DED1A08007F3C26 /* MainTabBarController.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				871616A22C3A606C00C4EF25 /* GetRecordTimeUseCase.swift in Sources */,

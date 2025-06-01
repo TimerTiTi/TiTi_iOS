@@ -15,10 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         
-        let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        let rootViewController = MainTabBarController()
         self.window?.rootViewController = rootViewController
         
         // MARK: loading 화면 설정
@@ -36,8 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showTabbarController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabbarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        let tabbarController = MainTabBarController()
         tabbarController.tabBar.backgroundColor = .clear
         
         let snapshot: UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
