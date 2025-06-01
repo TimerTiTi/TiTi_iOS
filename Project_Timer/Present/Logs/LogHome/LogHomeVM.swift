@@ -43,9 +43,13 @@ final class LogHomeVM: ObservableObject {
         self.updateDaily()
         self.updateWeekDates()
 
+        // 전체 데이터
         self.totalTime = TotalTime(dailys: self.dailys)
+        // 오늘 기준 이번달
         self.monthTime = MonthTime(baseDate: Date(), dailys: self.dailys)
+        // 오늘 기준 이번주
         self.weekSmallTime = WeekSmallTime(weekDates: self.weekDates, dailys: self.dailys)
+        // 오늘 기준 이번주
         self.weekTime = WeekTime(weekDates: self.weekDates, dailys: self.dailys)
     }
 
@@ -57,26 +61,21 @@ final class LogHomeVM: ObservableObject {
         self.weekVM?.updateColor()
         self.dailyVM?.updateColor()
     }
-
-    public func goToPreviousMonth() {
-        // TODO: 이전달로 변경
-    }
-    
-    public func goToNextMonth() {
-        // TODO: 다음달로 변경
-    }
 }
 
 extension LogHomeVM {
     private func updateDailys() {
+        // 전체 데이터
         self.dailys = RecordsManager.shared.dailyManager.dailys
     }
     
     private func updateDaily() {
+        // 기록중인 daily 기준
         self.daily = RecordsManager.shared.dailyManager.currentDaily
     }
 
     private func updateWeekDates() {
+        // 오늘 기준
         let baseDate = Date().zeroDate.localDate
         let indexDayOfWeek = baseDate.indexDayOfWeek
         let mon = Calendar.current.date(byAdding: .day, value: -indexDayOfWeek, to: baseDate) ?? Date()

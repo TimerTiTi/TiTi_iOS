@@ -19,10 +19,6 @@ final class LogHomeVC: UIViewController {
     private var scrollView: UIScrollView!
     // contentViews
     private var contentView: UIView!
-    private var monthNavigationLayer: UIView!
-    private var previousMonthButton: UIButton!
-    private var currentMonthLabel: UILabel!
-    private var nextMonthButton: UIButton!
     private var stackView: UIStackView!
     private var totalView: UIView!
     private var monthSmallView: UIView!
@@ -57,8 +53,6 @@ final class LogHomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
-        self.bindActions()
-        self.bindStatuses()
         self.configureViewModel()
         self.configureTotal()
         self.configureMonthSmall()
@@ -104,56 +98,12 @@ extension LogHomeVC {
             }
         }
         
-        monthNavigationLayer = UIView().then { monthNavigationLayer in
-            contentView.addSubview(monthNavigationLayer)
-            monthNavigationLayer.snp.makeConstraints { make in
-                make.top.equalToSuperview().inset(8)
-                make.centerX.equalToSuperview()
-                make.height.equalTo(30)
-            }
-            
-            previousMonthButton = UIButton(type: .system).then {
-                $0.setTitle("<", for: .normal)
-                $0.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-                $0.setTitleColor(UIColor.gray, for: .normal)
-                monthNavigationLayer.addSubview($0)
-                $0.snp.makeConstraints { make in
-                    make.leading.equalToSuperview()
-                    make.centerY.equalToSuperview()
-                }
-            }
-            
-            currentMonthLabel = UILabel().then {
-                $0.text = "YYYY.MM"
-                $0.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-                $0.textColor = UIColor.darkGray
-                monthNavigationLayer.addSubview($0)
-                $0.snp.makeConstraints { make in
-                    make.leading.equalTo(previousMonthButton.snp.trailing).offset(15)
-                    make.centerY.equalToSuperview()
-                }
-            }
-            
-            nextMonthButton = UIButton(type: .system).then {
-                $0.setTitle(">", for: .normal)
-                $0.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .bold)
-                $0.setTitleColor(UIColor.gray, for: .normal)
-                monthNavigationLayer.addSubview($0)
-                $0.snp.makeConstraints { make in
-                    make.leading.equalTo(currentMonthLabel.snp.trailing).offset(15)
-                    make.trailing.equalToSuperview()
-                    make.centerY.equalToSuperview()
-                }
-            }
-        }
-        
         stackView = UIStackView().then {
             $0.axis = .vertical
             $0.spacing = 17
             contentView.addSubview($0)
             $0.snp.makeConstraints { make in
-                make.top.equalTo(monthNavigationLayer.snp.bottom).offset(10)
-                make.bottom.equalToSuperview().inset(8)
+                make.verticalEdges.equalToSuperview().inset(8)
                 make.centerX.equalToSuperview()
             }
         }
@@ -403,29 +353,6 @@ extension LogHomeVC {
             view.trailingAnchor.constraint(equalTo: frameView.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: frameView.bottomAnchor),
         ])
-    }
-}
-
-// MARK: Binding
-extension LogHomeVC {
-    private func bindActions() {
-        previousMonthButton.rx.tap
-            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
-            .bind { [weak self] in
-                self?.viewModel?.goToPreviousMonth()
-            }
-            .disposed(by: disposeBag)
-            
-        nextMonthButton.rx.tap
-            .throttle(.milliseconds(300), scheduler: MainScheduler.instance) 
-            .bind { [weak self] in
-                self?.viewModel?.goToNextMonth()
-            }
-            .disposed(by: disposeBag)
-    }
-
-    private func bindStatuses() {    
-        // TODO: 달 변경사항 표시
     }
 }
 
