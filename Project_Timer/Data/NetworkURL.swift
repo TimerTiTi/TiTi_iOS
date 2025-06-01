@@ -35,14 +35,17 @@ final class NetworkURL {
             getServerURLUseCase.execute()
                 .sink { [weak self] completion in
                     if case .failure(let networkError) = completion {
+                        FirebaseAnalytics.log(DebugEvent.debug_firestoreFail(screen: "NetworkURL", reason: String(networkError.localizedDescription.prefix(100))))
                         print("ERROR", #function, networkError)
-                        self?.serverURL = nil
-                        promise(.success(nil))
+                        let url = Infos.ServerURL_devminsang2.value
+                        self?.serverURL = url
+                        promise(.success(url))
                     }
                 } receiveValue: { [weak self] url in
                     guard url != "nil" else {
-                        self?.serverURL = nil
-                        promise(.success(nil))
+                        let url = Infos.ServerURL_devminsang2.value
+                        self?.serverURL = url
+                        promise(.success(url))
                         return
                     }
                     

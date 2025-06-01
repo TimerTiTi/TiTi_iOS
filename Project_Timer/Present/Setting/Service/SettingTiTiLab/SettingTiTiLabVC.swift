@@ -173,6 +173,7 @@ extension SettingTiTiLabVC {
     private func bindAll() {
         self.bindCells()
         self.bindWarning()
+        self.bindStopLoading()
     }
     
     private func bindCells() {
@@ -194,6 +195,18 @@ extension SettingTiTiLabVC {
                 guard let warning = warning else { return }
                 self?.stopLoader()
                 self?.showAlertWithOK(title: warning.title, text: warning.text)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func bindStopLoading() {
+        self.viewModel?.$stopLoading
+            .receive(on: DispatchQueue.main)
+            .dropFirst()
+            .sink(receiveValue: { [weak self] isStop in
+                if isStop {
+                    self?.stopLoader()
+                }
             })
             .store(in: &self.cancellables)
     }

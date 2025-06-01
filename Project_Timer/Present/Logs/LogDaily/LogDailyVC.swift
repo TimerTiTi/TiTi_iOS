@@ -127,10 +127,10 @@ final class LogDailyVC: UIViewController {
     
     @IBAction func modifyRecord(_ sender: Any) {
         if let targetDaily = self.viewModel?.currentDaily {
-            FirebaseEvent.shared.postEvent(.editRecord)
+            FirebaseAnalytics.log(AdEvent.ad_visit(screen: AdScreen.EditRecord.rawValue, reason: "Edit"))
             self.delegate?.showModifyRecordVC(daily: targetDaily, isReverseColor: self.isReverseColor)
         } else {
-            FirebaseEvent.shared.postEvent(.createRecord)
+            FirebaseAnalytics.log(AdEvent.ad_visit(screen: AdScreen.EditRecord.rawValue, reason: "Create"))
             guard let selectedDate = self.viewModel?.selectedDate else { return }
             self.delegate?.showCreateRecordVC(date: selectedDate, isReverseColor: self.isReverseColor)
         }

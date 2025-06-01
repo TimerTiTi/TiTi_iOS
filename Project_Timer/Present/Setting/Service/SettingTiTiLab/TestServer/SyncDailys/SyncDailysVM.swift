@@ -85,6 +85,7 @@ extension SyncDailysVM {
         self.postDailysUseCase.execute(request: self.targetDailys)
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "UploadDailys", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                     case .client(let message):
@@ -110,6 +111,7 @@ extension SyncDailysVM {
         self.postRecordTimeUseCase.execute(request: recordTimes)
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "UploadRecordTime", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                     case .client(let message):
@@ -137,6 +139,7 @@ extension SyncDailysVM {
         self.getDailysUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "GetDailys", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                     case .client(let message):
@@ -162,6 +165,7 @@ extension SyncDailysVM {
         self.getRecordTimeUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "GetRecordtime", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                     case .client(let message):
@@ -187,6 +191,7 @@ extension SyncDailysVM {
         self.getSyncLogUseCase.execute()
             .sink { [weak self] completion in
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "GetSyncLog", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                     case .client(let message):

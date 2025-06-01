@@ -45,6 +45,7 @@ final class SignupSigninVM {
             .sink { [weak self] completion in
                 self?.loadingText = nil
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "Signup", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                         // signup 관련 error message 추가
@@ -66,6 +67,7 @@ final class SignupSigninVM {
             .sink { [weak self] completion in
                 self?.loadingText = nil
                 if case .failure(let networkError) = completion {
+                    FirebaseAnalytics.log(DebugEvent.debug_serverFail(screen: "Signin", reason: String(networkError.localizedDescription.prefix(100))))
                     print("ERROR", #function, networkError)
                     switch networkError {
                         // signin 관련 error message 추가

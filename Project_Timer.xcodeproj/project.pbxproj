@@ -313,7 +313,7 @@
 		87BF666C28F80EA500CD6F19 /* NormalTimeLabelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BF666B28F80EA500CD6F19 /* NormalTimeLabelVM.swift */; };
 		87C2F97B28A6BFC700F44D98 /* ModifyRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F97A28A6BFC700F44D98 /* ModifyRecordVC.swift */; };
 		87CA3B512618591100DD9BB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 87CA3B532618591100DD9BB5 /* Localizable.strings */; };
-		87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */; };
+		87CAC06228B8711D0036CF24 /* FirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CAC06128B8711D0036CF24 /* FirebaseAnalytics.swift */; };
 		87CBC7DE2BDCDF0400DADB72 /* ResetPasswordRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */; };
 		87CEDD3D28F5338B007ACF6E /* ColorSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */; };
 		87D1250128771AAD00018658 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1250028771AAD00018658 /* Language.swift */; };
@@ -410,6 +410,10 @@
 		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
 		AB6A55902DE5EB7E00E3D1C2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */; };
 		AB6A55922DE5F17900E3D1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */; };
+		ABE48CF52DE7471E001CB707 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */; };
+		ABE48CF72DE74750001CB707 /* DebugEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF62DE74750001CB707 /* DebugEvent.swift */; };
+		ABE48CFA2DE74BAD001CB707 /* ActionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */; };
+		ABE48CFC2DE75017001CB707 /* AdEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CFB2DE75017001CB707 /* AdEvent.swift */; };
 		D9A5F14A2C33043F00CED4B0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */; };
 		D9A5F14C2C33044A00CED4B0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */; };
 		D9D337FE2CB6D6C6005141D5 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */; };
@@ -744,7 +748,7 @@
 		87CA3B552618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		87CA3B562618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		87CA3B572618591F00DD9BB5 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEvent.swift; sourceTree = "<group>"; };
+		87CAC06128B8711D0036CF24 /* FirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalytics.swift; sourceTree = "<group>"; };
 		87CBC7DD2BDCDF0400DADB72 /* ResetPasswordRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordRoute.swift; sourceTree = "<group>"; };
 		87CEDD3C28F5338B007ACF6E /* ColorSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelectorVC.swift; sourceTree = "<group>"; };
 		87D1250028771AAD00018658 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
@@ -832,6 +836,10 @@
 		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetVC.swift; sourceTree = "<group>"; };
 		AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
+		ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
+		ABE48CF62DE74750001CB707 /* DebugEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugEvent.swift; sourceTree = "<group>"; };
+		ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEvent.swift; sourceTree = "<group>"; };
+		ABE48CFB2DE75017001CB707 /* AdEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdEvent.swift; sourceTree = "<group>"; };
 		D9A5F1492C33043F00CED4B0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		D9A5F14B2C33044A00CED4B0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -1956,6 +1964,8 @@
 		87F778DD2B196E9400909511 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				ABE48CF82DE74870001CB707 /* Logging */,
+				ABE48CF32DE7470D001CB707 /* AnalyticsEvent */,
 				875FAE262B1C678E008F19D2 /* Entity */,
 				87F778E02B196EDF00909511 /* UseCase */,
 			);
@@ -1995,7 +2005,7 @@
 				87DE1176268AC9AD0012F043 /* DailyManager.swift */,
 				877036C929CD7B3B0078A30C /* TaskManager.swift */,
 				04172E972885453F00F962F2 /* MotionDetector.swift */,
-				87CAC06128B8711D0036CF24 /* FirebaseEvent.swift */,
+				87CAC06128B8711D0036CF24 /* FirebaseAnalytics.swift */,
 				8760FCB829541BE3000BCCD1 /* KeyChain.swift */,
 				870C70722AD51BEB00024CAC /* PredicateChecker.swift */,
 				870E85002AD67E46000511BD /* KeyboardResponder.swift */,
@@ -2068,6 +2078,24 @@
 				AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		ABE48CF32DE7470D001CB707 /* AnalyticsEvent */ = {
+			isa = PBXGroup;
+			children = (
+				ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */,
+				ABE48CF62DE74750001CB707 /* DebugEvent.swift */,
+				ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */,
+				ABE48CFB2DE75017001CB707 /* AdEvent.swift */,
+			);
+			path = AnalyticsEvent;
+			sourceTree = "<group>";
+		};
+		ABE48CF82DE74870001CB707 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		D777B167BDE24D9E3DE50CB4 /* Pods */ = {
@@ -2400,7 +2428,9 @@
 				875C98C3287176E4008F7ADD /* FunctionsActionDelegate.swift in Sources */,
 				8765234A28C7709700487BFB /* WeekSmallView.swift in Sources */,
 				8765235128C79C4400487BFB /* TotalView.swift in Sources */,
+				ABE48CFC2DE75017001CB707 /* AdEvent.swift in Sources */,
 				878813E72A20D60D000ED2C1 /* HowToAddWidgetContentView.swift in Sources */,
+				ABE48CFA2DE74BAD001CB707 /* ActionEvent.swift in Sources */,
 				878DA1FD2AEF7CEF00C60CBF /* ConfigureForTextFieldRootView.swift in Sources */,
 				87ED9ABD28D1661200186677 /* TasksCircularProgressSwiftUIView.swift in Sources */,
 				87DA71772A13AA16006294DE /* CalendarWidgetData+init.swift in Sources */,
@@ -2416,6 +2446,7 @@
 				87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */,
 				873731DD2B2E9AA900D7BD9F /* FirebaseStringArrayValue.swift in Sources */,
 				8760FB0C2A1DBB490068CEF5 /* Widget+Extentions.swift in Sources */,
+				ABE48CF52DE7471E001CB707 /* AnalyticsEvent.swift in Sources */,
 				874B542E2C1595A00062D0AC /* RecordTimesRepository.swift in Sources */,
 				879BE32C2AC68EC7007AAC46 /* PortraitVC.swift in Sources */,
 				879053FF29558EF4008B9258 /* SyncUserStatusView.swift in Sources */,
@@ -2476,7 +2507,7 @@
 				87A48BC927DF026800F46D0F /* Int+Extension.swift in Sources */,
 				872C0EDE284AE52800E8E3F2 /* SettingFunctionsListVC.swift in Sources */,
 				87D1250128771AAD00018658 /* Language.swift in Sources */,
-				87CAC06228B8711D0036CF24 /* FirebaseEvent.swift in Sources */,
+				87CAC06228B8711D0036CF24 /* FirebaseAnalytics.swift in Sources */,
 				879D20792A19B3D300D8A420 /* ThemeColorSelectorView.swift in Sources */,
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
 				AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */,
@@ -2580,6 +2611,7 @@
 				878DA81F2B0C62A9001E924E /* SignupNicknameModel.swift in Sources */,
 				87306D572B260AB8001B7C14 /* TLRkey.swift in Sources */,
 				043706332869FB9F00A5D3AA /* StopwatchTimeLabelVM.swift in Sources */,
+				ABE48CF72DE74750001CB707 /* DebugEvent.swift in Sources */,
 				87BEBEEF281CD7EC0095CD29 /* UIViewController+Extension.swift in Sources */,
 				87D4C95A28950B4E008ECAA4 /* WeekDailysData.swift in Sources */,
 				87199F462883018C0017D01A /* TimelineDailyGraphView.swift in Sources */,
@@ -2835,7 +2867,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18.1;
+				MARKETING_VERSION = 7.18.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3082,7 +3114,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18.1;
+				MARKETING_VERSION = 7.18.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3111,7 +3143,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7.18.1;
+				MARKETING_VERSION = 7.18.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "$(APP_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
