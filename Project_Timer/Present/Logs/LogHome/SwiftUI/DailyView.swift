@@ -107,6 +107,6 @@ extension DailyView {
 
 
 #Preview {
-    let dailyVM = DailyVM()
+    let dailyVM = DailyVM(parent: LogHomeVM())
     return DailyView(viewModel: dailyVM)
 }

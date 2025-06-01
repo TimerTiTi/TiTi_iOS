@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 final class DailyVM: ObservableObject {
     @Published var day: Date = Date()
@@ -15,12 +16,27 @@ final class DailyVM: ObservableObject {
     @Published var color1Index: Int = 2
     @Published var color2Index: Int = 1
     
-    init() {
+    private weak var parent: LogHomeVM?
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(parent: LogHomeVM) {
+        self.parent = parent
+        self.bind()
         self.updateColor()
         self.resetTimes()
     }
     
-    func update(daily: Daily?) {
+    private func bind() {
+        parent?.$daily
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] daily in
+                guard let self = self else { return }
+                self.update(daily: daily)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func update(daily: Daily?) {
         self.day = daily?.day ?? Date()
         self.daily = daily
         guard let timeline = daily?.timeline else {
@@ -34,7 +50,7 @@ final class DailyVM: ObservableObject {
         self.updateColor()
     }
 
-    func updateColor() {
+    public func updateColor() {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         let isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
         let offset = isReverseColor ? -1 : 1

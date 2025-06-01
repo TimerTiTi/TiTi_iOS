@@ -9,94 +9,73 @@
 import Foundation
 import Combine
 
-// loadDaily -> daily 수정 -> updateDaily -> dailyVM 업데이트
-// updateDailys -> dailys 수정 -> 네 가지 viewModel 업데이트
-
 final class LogHomeVM: ObservableObject {
-    @Published private(set) var daily: Daily = Daily() {
-        didSet {
-            self.updateDaily()
-        }
-    }
+    @Published private(set) var dailys: [Daily] = []
+    @Published private(set) var daily: Daily?
+    @Published private(set) var weekDates: [Date] = []
+    @Published private(set) var totalTime: TotalTime?
+    @Published private(set) var monthTime: MonthTime?
+    @Published private(set) var weekSmallTime: WeekSmallTime?
+    @Published var weekTime: WeekTime?
+    private var cancellables = Set<AnyCancellable>()
+    
+    var totalVM: TotalVM?
+    var monthSmallVM: MonthSmallVM?
+    var weekSmallVM: WeekSmallVM?
+    var monthVM: MonthVM?
+    var weekVM: WeekVM?
+    var dailyVM: DailyVM?
+
     private var subjectTimes: [Int] = []
     private var subjectNameTimes: [(name: String, time: String)] = []
-    @Published private(set) var dailys: [Daily] = [] {
-        didSet {
-            self.updateWeekDates()
-            self.updateMonth()
-            self.updateMonth()
-        }
-    }
-    private var weekDates: [Date] = [] {
-        didSet {
-            self.updateWeekSmall()
-            self.updateWeek()
-        }
-    }
-    var totalVM: TotalVM?
-    let monthSmallVM: MonthSmallVM
-    let weekSmallVM: WeekSmallVM
-    let monthVM: MonthVM
-    let weekVM: WeekVM
-    let dailyVM: DailyVM
     
     init() {
-        self.monthSmallVM = MonthSmallVM()
-        self.weekSmallVM = WeekSmallVM()
-        self.monthVM = MonthVM()
-        self.weekVM = WeekVM()
-        self.dailyVM = DailyVM()
-        
         self.totalVM = TotalVM(parent: self)
+        self.monthVM = MonthVM(parent: self)
+        self.monthSmallVM = MonthSmallVM(parent: self)
+        self.weekSmallVM = WeekSmallVM(parent: self)
+        self.weekVM = WeekVM(parent: self)
+        self.dailyVM = DailyVM(parent: self)
     }
-    
-    func updateDailys() {
-        self.dailys = RecordsManager.shared.dailyManager.dailys
+
+    public func update() {
+        self.updateDailys()
+        self.updateDaily()
+        self.updateWeekDates()
+
+        self.totalTime = TotalTime(dailys: self.dailys)
+        self.monthTime = MonthTime(baseDate: Date(), dailys: self.dailys)
+        self.weekSmallTime = WeekSmallTime(weekDates: self.weekDates, dailys: self.dailys)
+        self.weekTime = WeekTime(weekDates: self.weekDates, dailys: self.dailys)
     }
-    
-    func loadDaily() {
-        self.daily = RecordsManager.shared.dailyManager.currentDaily
-    }
-    
-    func updateColor() {
+
+    public func updateColor() {
         self.totalVM?.updateColor()
-        self.monthSmallVM.updateColor()
-        self.weekSmallVM.updateColor()
-        self.monthVM.updateColor()
-        self.weekVM.updateColor()
-        self.dailyVM.updateColor()
+        self.monthSmallVM?.updateColor()
+        self.weekSmallVM?.updateColor()
+        self.monthVM?.updateColor()
+        self.weekVM?.updateColor()
+        self.dailyVM?.updateColor()
     }
-    
-    func goToPreviousMonth() {
+
+    public func goToPreviousMonth() {
         // TODO: 이전달로 변경
     }
     
-    func goToNextMonth() {
+    public func goToNextMonth() {
         // TODO: 다음달로 변경
     }
 }
 
 extension LogHomeVM {
-    private func updateMonth() {
-        let monthTime = MonthTime(baseDate: Date(), dailys: self.dailys)
-        self.monthSmallVM.update(monthTime: monthTime)
-        self.monthVM.update(monthTime: monthTime)
-    }
-    
-    private func updateWeekSmall() {
-        self.weekSmallVM.update(weekSmallTime: WeekSmallTime(weekDates: self.weekDates, dailys: self.dailys))
-    }
-    
-    private func updateWeek() {
-        self.weekVM.update(weekTime: WeekTime(weekDates: self.weekDates, dailys: self.dailys))
+    private func updateDailys() {
+        self.dailys = RecordsManager.shared.dailyManager.dailys
     }
     
     private func updateDaily() {
-        self.dailyVM.update(daily: self.daily)
+        self.daily = RecordsManager.shared.dailyManager.currentDaily
     }
-}
 
-extension LogHomeVM {
     private func updateWeekDates() {
         let baseDate = Date().zeroDate.localDate
         let indexDayOfWeek = baseDate.indexDayOfWeek

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 final class WeekVM: ObservableObject {
     @Published var weekDates: [Date] = []
@@ -17,12 +18,27 @@ final class WeekVM: ObservableObject {
     @Published var color1Index: Int = 2
     @Published var color2Index: Int = 1
     
-    init() {
+    private weak var parent: LogHomeVM?
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(parent: LogHomeVM) {
+        self.parent = parent
+        self.bind()
         self.updateColor()
         self.resetTimes()
     }
     
-    func update(weekTime: WeekTime) {
+    private func bind() {
+        parent?.$weekTime
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] weekTime in
+                guard let self = self else { return }
+                self.update(weekTime: weekTime)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func update(weekTime: WeekTime) {
         self.weekDates = weekTime.weekDates
         self.weekNum = weekTime.weekNum
         self.totalTime = weekTime.totalTime
@@ -41,7 +57,7 @@ final class WeekVM: ObservableObject {
         self.weekTimes = weekTimes
     }
 
-    func updateColor() {
+    public func updateColor() {
         let userColorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         let isReverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
         let offset = isReverseColor ? -1 : 1

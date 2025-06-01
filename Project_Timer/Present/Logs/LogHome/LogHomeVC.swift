@@ -72,8 +72,7 @@ final class LogHomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: LogVC.changePageIndex, object: nil, userInfo: ["pageIndex" : 0])
-        self.viewModel?.loadDaily()
-        self.viewModel?.updateDailys()
+        self.viewModel?.update()
     }
     
     override func viewWillLayoutSubviews() {
@@ -426,22 +425,12 @@ extension LogHomeVC {
     }
 
     private func bindStatuses() {    
-        viewModel?.$daily
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] daily in
-                guard let self = self else { return }
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "YYYY.MM"
-                let monthString = dateFormatter.string(from: daily.day.zeroDate.localDate)
-                self.currentMonthLabel.text = monthString
-            })
-            .store(in: &self.cancellables)
+        // TODO: 달 변경사항 표시
     }
 }
 
 extension LogHomeVC: Updateable {
     func update() {
-        self.viewModel?.loadDaily()
-        self.viewModel?.updateDailys()
+        self.viewModel?.update()
     }
 }

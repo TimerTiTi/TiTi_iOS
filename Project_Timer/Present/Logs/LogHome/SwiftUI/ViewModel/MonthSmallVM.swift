@@ -7,23 +7,39 @@
 //
 
 import Foundation
+import Combine
 
 final class MonthSmallVM: ObservableObject {
     @Published var totalTime: Int = 0
     @Published var maxTime: Int = 0
     @Published var colorIndex: Int = 1
     
-    init() {
+    private weak var parent: LogHomeVM?
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(parent: LogHomeVM) {
+        self.parent = parent
+        self.bind()
         self.updateColor()
     }
     
-    func update(monthTime: MonthTime) {
+    private func bind() {
+        parent?.$monthTime
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] monthTime in
+                guard let self = self else { return }
+                self.update(monthTime: monthTime)
+            })
+            .store(in: &self.cancellables)
+    }
+    
+    private func update(monthTime: MonthTime) {
         self.totalTime = monthTime.totalTime
         self.maxTime = monthTime.maxTime
         self.colorIndex = monthTime.colorIndex
     }
     
-    func updateColor() {
+    public func updateColor() {
         self.colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
     }
 }

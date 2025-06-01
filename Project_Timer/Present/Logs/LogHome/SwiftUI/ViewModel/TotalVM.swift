@@ -25,11 +25,11 @@ final class TotalVM: ObservableObject {
     }
     
     private func bind() {
-        parent?.$dailys
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: { [weak self] dailys in
+        parent?.$totalTime
+            .compactMap { $0 }
+            .sink(receiveValue: { [weak self] totalTime in
                 guard let self = self else { return }
-                self.update(totalTime: TotalTime(dailys: dailys))
+                self.update(totalTime: totalTime)
             })
             .store(in: &self.cancellables)
     }
@@ -41,7 +41,7 @@ final class TotalVM: ObservableObject {
         self.updateColor()
     }
     
-    func updateColor() {
+    public func updateColor() {
         colorIndex = UserDefaultsManager.get(forKey: .startColor) as? Int ?? 1
         reverseColor = UserDefaultsManager.get(forKey: .reverseColor) as? Bool ?? false
     }
