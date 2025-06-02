@@ -82,6 +82,9 @@ final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.traitOverrides.horizontalSizeClass = .compact
+        self.tabBar.isTranslucent = true
+        
         setupTabBar()
     }
     
@@ -112,9 +115,7 @@ final class MainTabBarController: UITabBarController {
             }
         }
         
-        // 필요시 추가 탭
         self.viewControllers = viewControllers
-        self.tabBar.isTranslucent = true
     }
 }
 
