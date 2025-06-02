@@ -297,7 +297,6 @@
 		87A8CD272AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */; };
 		87A8CD292AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */; };
 		87AE748429062ACA00FA0A60 /* TimeSelectorPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */; };
-		87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */; };
 		87B539AB299BB710001E354C /* Versions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B539AA299BB710001E354C /* Versions.swift */; };
 		87B7A53C2AC02202002AFDFE /* SigninSelectRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B7A53B2AC02202002AFDFE /* SigninSelectRoute.swift */; };
 		87B90B3A2BF4AEF600D6886E /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B90B392BF4AEF600D6886E /* FirebaseRepository.swift */; };
@@ -410,6 +409,7 @@
 		AB3AB9962DD07372001B899A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AB3AB9952DD07372001B899A /* RxSwift */; };
 		AB6A55902DE5EB7E00E3D1C2 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A558F2DE5EB7E00E3D1C2 /* FirebaseAppCheck */; };
 		AB6A55922DE5F17900E3D1C2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AB6A55912DE5F17900E3D1C2 /* FirebaseAuth */; };
+		AB849E872DED1A08007F3C26 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB849E862DED1A08007F3C26 /* MainTabBarController.swift */; };
 		ABE48CF52DE7471E001CB707 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */; };
 		ABE48CF72DE74750001CB707 /* DebugEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF62DE74750001CB707 /* DebugEvent.swift */; };
 		ABE48CFA2DE74BAD001CB707 /* ActionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */; };
@@ -729,7 +729,6 @@
 		87A8CD262AF0C4B600D4C1D7 /* OverlayShowButtonForSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayShowButtonForSecureFieldView.swift; sourceTree = "<group>"; };
 		87A8CD282AF0C5CB00D4C1D7 /* OverlayRemoveButtonForTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayRemoveButtonForTextFieldView.swift; sourceTree = "<group>"; };
 		87AE748329062ACA00FA0A60 /* TimeSelectorPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorPopupVC.swift; sourceTree = "<group>"; };
-		87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		87B539AA299BB710001E354C /* Versions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versions.swift; sourceTree = "<group>"; };
 		87B7A53B2AC02202002AFDFE /* SigninSelectRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninSelectRoute.swift; sourceTree = "<group>"; };
 		87B90B392BF4AEF600D6886E /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
@@ -836,6 +835,7 @@
 		AB3AB9842DCF9522001B899A /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		AB3AB9862DD05F59001B899A /* NotificationBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBottomSheetVC.swift; sourceTree = "<group>"; };
 		AB3AB9882DD06882001B899A /* BaseBottomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseBottomSheetVC.swift; sourceTree = "<group>"; };
+		AB849E862DED1A08007F3C26 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		ABE48CF42DE7471E001CB707 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		ABE48CF62DE74750001CB707 /* DebugEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugEvent.swift; sourceTree = "<group>"; };
 		ABE48CF92DE74BAD001CB707 /* ActionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionEvent.swift; sourceTree = "<group>"; };
@@ -1265,6 +1265,7 @@
 		875FAE322B1C7173008F19D2 /* Present */ = {
 			isa = PBXGroup;
 			children = (
+				AB849E852DED18B0007F3C26 /* MainTabBar */,
 				87EFD6822AC12C3800C422B1 /* SigninSignupEnvironment.swift */,
 				870800902B2D693800830B39 /* Signin */,
 				87E5C70B2AE0266200BE46B0 /* Signup */,
@@ -1893,7 +1894,6 @@
 				D9D337FD2CB6D6C6005141D5 /* UIApplication+Extension.swift */,
 				87BEBEEE281CD7EC0095CD29 /* UIViewController+Extension.swift */,
 				8791C1F527DCE703000D6BA9 /* UIView+Extension.swift */,
-				87AEF670289D23400018FCC8 /* UITabBarController+Extension.swift */,
 				8721C6D8296941F800410D57 /* UIScrollView+Extension.swift */,
 				87199F522883D0F70017D01A /* UIColor+Extension.swift */,
 				875FBE242AC9116B00B28723 /* UITextField+Extension.swift */,
@@ -2078,6 +2078,14 @@
 				AB35A8B42DC6393E00A6E7B4 /* SettingRecordViewModel.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		AB849E852DED18B0007F3C26 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AB849E862DED1A08007F3C26 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
 			sourceTree = "<group>";
 		};
 		ABE48CF32DE7470D001CB707 /* AnalyticsEvent */ = {
@@ -2512,7 +2520,6 @@
 				871AB69B2967C9C500AFED1C /* TimeTableView.swift in Sources */,
 				AB35A8B52DC6393E00A6E7B4 /* SettingRecordViewModel.swift in Sources */,
 				87E5C70F2AE0C0E500BE46B0 /* TTSignupTextFieldView.swift in Sources */,
-				87AEF671289D23400018FCC8 /* UITabBarController+Extension.swift in Sources */,
 				87199F5C28840E970017D01A /* TasksCircularProgressView.swift in Sources */,
 				87DC6A4B28D010A400455A06 /* WeekTime.swift in Sources */,
 				87BE88E72AD425BE0010A84A /* SigninTextFieldView.swift in Sources */,
@@ -2556,6 +2563,7 @@
 				8750082D2905998200E27B4A /* TargetTimeSettingPopupVC.swift in Sources */,
 				8760FCB929541BE3000BCCD1 /* KeyChain.swift in Sources */,
 				AB35A8B32DC6393500A6E7B4 /* SettingRecordListView.swift in Sources */,
+				AB849E872DED1A08007F3C26 /* MainTabBarController.swift in Sources */,
 				87D5E65328C7477100D53F8D /* MonthTime.swift in Sources */,
 				87D83E8A2B2964EC003C40AE /* SettingLanguageListView.swift in Sources */,
 				871616A22C3A606C00C4EF25 /* GetRecordTimeUseCase.swift in Sources */,

@@ -13,6 +13,7 @@ import AVFoundation
 import SwiftUI
 
 final class TimerVC: UIViewController {
+    static let identifier = "TimerVC"
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!

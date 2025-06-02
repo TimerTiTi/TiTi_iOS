@@ -9,6 +9,7 @@
 import UIKit
 
 final class LogVC: UIViewController {
+    static let identifier = "LogVC"
     static let changePageIndex = Notification.Name("changePageIndex")
     @IBOutlet weak var pageSegmentedControl: UISegmentedControl!
     @IBOutlet weak var frameView: UIView!

@@ -15,13 +15,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let rootViewController: UITabBarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
-        self.window?.rootViewController = rootViewController
+        let rootViewController = MainTabBarController()
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
         
         // MARK: loading 화면 설정
+        let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         if VCNum == 2 {
             rootViewController.selectedIndex = 1
         }
@@ -36,13 +38,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showTabbarController() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabbarController = storyboard.instantiateInitialViewController() as? UITabBarController ?? UITabBarController()
+        let tabbarController = MainTabBarController()
         tabbarController.tabBar.backgroundColor = .clear
         
         let snapshot: UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
         tabbarController.view.addSubview(snapshot)
-        self.window?.rootViewController = tabbarController
+        window?.rootViewController = tabbarController
         
         UIView.animate(withDuration: 0.3) {
             snapshot.layer.opacity = 0
