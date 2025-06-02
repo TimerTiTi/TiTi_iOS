@@ -15,12 +15,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let rootViewController = MainTabBarController()
-        self.window?.rootViewController = rootViewController
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
         
         // MARK: loading 화면 설정
+        let VCNum = UserDefaults.standard.value(forKey: "VCNum") as? Int ?? 1
         if VCNum == 2 {
             rootViewController.selectedIndex = 1
         }
@@ -40,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let snapshot: UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
         tabbarController.view.addSubview(snapshot)
-        self.window?.rootViewController = tabbarController
+        window?.rootViewController = tabbarController
         
         UIView.animate(withDuration: 0.3) {
             snapshot.layer.opacity = 0
