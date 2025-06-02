@@ -13,7 +13,7 @@ import Moya
 import Combine
 
 final class SettingVC: UIViewController {
-    static let identifier = "SettingVC"
+    static let identifier = "SettingViewController"
     
     @IBOutlet weak var settings: UICollectionView!
     

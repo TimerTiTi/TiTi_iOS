@@ -10,6 +10,7 @@ import UIKit
 import Combine
 
 final class TodolistVC: UIViewController {
+    static let identifier = "TodolistVC"
     @IBOutlet weak var fraim: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var inputFraim: UIView!

@@ -11,6 +11,7 @@ import Combine
 import SwiftUI
 
 final class StopwatchVC: UIViewController {
+    static let identifier = "StopwatchVC"
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var colorSelector: UIButton!
     @IBOutlet weak var colorSelectorBorderView: UIImageView!
