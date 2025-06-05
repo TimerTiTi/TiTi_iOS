@@ -225,7 +225,9 @@ final class TimerVM {
     private func sendNotification() {
         guard UserDefaultsManager.get(forKey: .timerPushable) as? Bool ?? true else { return }
         let remainTimer = self.times.timer
-        self.postNoti(interval: Double(remainTimer), body: Localized.string(.System_Noti_TimerFinished), identifier: "Timer finished")
+        if remainTimer > 0 {
+            self.postNoti(interval: Double(remainTimer), body: Localized.string(.System_Noti_TimerFinished), identifier: "Timer finished")
+        }
         
         guard UserDefaultsManager.get(forKey: .timer5minPushable) as? Bool ?? true else { return }
         let alarm_5m = remainTimer - 300
